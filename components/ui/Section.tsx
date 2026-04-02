@@ -6,7 +6,7 @@ type Props = {
   className?: string;
   id?: string;
   as?: 'section' | 'article' | 'div';
-};
+} & Omit<React.HTMLAttributes<HTMLElement>, 'className' | 'id' | 'children'>;
 
 export default function Section({
   variant = 'light',
@@ -14,17 +14,12 @@ export default function Section({
   className,
   id,
   as: Tag = 'section',
+  ...rest
 }: Props) {
-  const cls = [
-    styles.section,
-    styles[variant],
-    className,
-  ]
-    .filter(Boolean)
-    .join(' ');
+  const cls = [styles.section, styles[variant], className].filter(Boolean).join(' ');
 
   return (
-    <Tag id={id} className={cls}>
+    <Tag id={id} className={cls} {...rest}>
       {children}
     </Tag>
   );

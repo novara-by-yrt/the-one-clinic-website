@@ -18,15 +18,29 @@ type TextareaProps = {
 type Props = BaseProps | TextareaProps;
 
 export default function Input(props: Props) {
-  const { label, theme = 'light', id, className } = props;
+  if (props.multiline) {
+    // Destructure custom props out so only valid HTML attrs are spread
+    const { label, theme = 'light', id, className, multiline: _m, rows, ...htmlProps } = props;
 
-  const fieldCls = [
-    styles.field,
-    styles[theme],
-    className,
-  ]
-    .filter(Boolean)
-    .join(' ');
+    const fieldCls = [styles.field, styles[theme], styles.textarea, className]
+      .filter(Boolean)
+      .join(' ');
+
+    return (
+      <div className={styles.wrapper}>
+        {label && (
+          <label htmlFor={id} className={`${styles.label} ${styles[theme]}`}>
+            {label}
+          </label>
+        )}
+        <textarea id={id} className={fieldCls} rows={rows ?? 4} {...htmlProps} />
+      </div>
+    );
+  }
+
+  const { label, theme = 'light', id, className, multiline: _m, ...htmlProps } = props;
+
+  const fieldCls = [styles.field, styles[theme], className].filter(Boolean).join(' ');
 
   return (
     <div className={styles.wrapper}>
@@ -35,21 +49,7 @@ export default function Input(props: Props) {
           {label}
         </label>
       )}
-
-      {props.multiline ? (
-        <textarea
-          id={id}
-          className={`${fieldCls} ${styles.textarea}`}
-          rows={props.rows ?? 4}
-          {...(props as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
-        />
-      ) : (
-        <input
-          id={id}
-          className={fieldCls}
-          {...(props as React.InputHTMLAttributes<HTMLInputElement>)}
-        />
-      )}
+      <input id={id} className={fieldCls} {...htmlProps} />
     </div>
   );
 }
