@@ -5,7 +5,8 @@ import TrustStrip   from '@/components/sections/TrustStrip';
 import Services    from '@/components/sections/Services';
 import Benefits    from '@/components/sections/Benefits';
 import CaseStudies from '@/components/sections/CaseStudies';
-import Process     from '@/components/sections/Process';
+import Process            from '@/components/sections/Process';
+import TestimonialVideos  from '@/components/sections/TestimonialVideos';
 import Testimonials from '@/components/sections/Testimonials';
 import LeadForm    from '@/components/sections/LeadForm';
 import FAQ         from '@/components/sections/FAQ';
@@ -22,6 +23,7 @@ export default function Home() {
       <Benefits />
       <CaseStudies />
       <Process />
+      <TestimonialVideos />
       <Testimonials />
       <LeadForm />
       <FAQ />
