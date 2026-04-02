@@ -7,6 +7,7 @@ import Benefits    from '@/components/sections/Benefits';
 import CaseStudies from '@/components/sections/CaseStudies';
 import Process            from '@/components/sections/Process';
 import TestimonialVideos  from '@/components/sections/TestimonialVideos';
+import MeetTheExperts    from '@/components/sections/MeetTheExperts';
 import Testimonials from '@/components/sections/Testimonials';
 import LeadForm    from '@/components/sections/LeadForm';
 import FAQ         from '@/components/sections/FAQ';
@@ -24,6 +25,7 @@ export default function Home() {
       <CaseStudies />
       <Process />
       <TestimonialVideos />
+      <MeetTheExperts />
       <Testimonials />
       <LeadForm />
       <FAQ />
