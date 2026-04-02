@@ -10,34 +10,24 @@ import styles from './Services.module.css';
 
 const SERVICES = [
   {
-    title: 'Face',
+    title: 'Medical Aesthetics',
     description:
-      'Anti-wrinkle injections, dermal fillers, and contouring treatments to refresh and rejuvenate.',
+      'Laser treatments, skin resurfacing, and anti-ageing procedures delivered by qualified medical professionals.',
   },
   {
-    title: 'Skin',
+    title: 'Health & Wellbeing',
     description:
-      'Advanced peels, laser resurfacing, and medical-grade facials for radiant, healthy skin.',
+      'GP-led services including health screenings, chronic condition management, and mental health support.',
   },
   {
-    title: 'Hair',
+    title: 'Body Treatments',
     description:
-      'PRP therapy and targeted treatments to restore density and promote natural regrowth.',
+      'Medically supervised weight management and body confidence programmes tailored to your goals.',
   },
   {
-    title: 'Body',
+    title: 'Minor Surgery',
     description:
-      'Non-surgical fat reduction, skin tightening, and body contouring with proven technology.',
-  },
-  {
-    title: 'Wellness',
-    description:
-      'IV drips, vitamin therapies, and holistic programmes designed for total-body vitality.',
-  },
-  {
-    title: 'Bespoke',
-    description:
-      'Fully tailored treatment plans combining multiple modalities for transformative results.',
+      'Safe, clinical removal of moles, cysts, and skin lesions by experienced doctors in a sterile environment.',
   },
 ];
 
@@ -61,11 +51,11 @@ export default function Services() {
             What We Offer
           </motion.p>
           <motion.h2 className={styles.heading} variants={fadeUp}>
-            Our Treatments
+            Our Services
           </motion.h2>
           <motion.p className={styles.subtext} variants={fadeUp}>
-            A comprehensive range of clinician-led aesthetic and wellness
-            treatments, each personalised to your goals.
+            Medical expertise and aesthetic care combined — everything you
+            need for your health and confidence, under one roof.
           </motion.p>
         </motion.div>
 

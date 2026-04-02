@@ -19,19 +19,20 @@ export default function FinalCTA() {
           viewport={VIEWPORT}
         >
           <motion.p className={styles.eyebrow} variants={fadeUp}>
-            Ready to Begin?
+            Take the First Step
           </motion.p>
           <motion.h2 className={styles.heading} variants={fadeUp}>
-            Begin Your
+            Ready to Feel
             <br />
-            <em className={styles.headingAccent}>Transformation</em>
+            <em className={styles.headingAccent}>Your Best?</em>
           </motion.h2>
           <motion.p className={styles.subtext} variants={fadeUp}>
-            Take the first step. Your free consultation is waiting.
+            Our team is here to help. Book your consultation today and
+            take control of your health and confidence.
           </motion.p>
           <motion.div className={styles.cta} variants={fadeUp}>
             <Button variant="primary" theme="dark">
-              Book Free Consultation
+              Book Your Consultation
             </Button>
           </motion.div>
         </motion.div>

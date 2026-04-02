@@ -67,7 +67,7 @@ export default function Hero() {
               variants={FADE_UP}
               transition={TRANSITION_SMOOTH}
             >
-              Premium Aesthetic &amp; Wellness
+              Medical &amp; Aesthetic Care — Leicester
             </motion.p>
 
             {/* H1 Headline */}
@@ -76,9 +76,9 @@ export default function Hero() {
               variants={FADE_UP}
               transition={TRANSITION_SMOOTH}
             >
-              Your Best Self
+              Where Expertise
               <br />
-              <em className={styles.headlineAccent}>Starts Here</em>
+              <em className={styles.headlineAccent}>Meets Care</em>
             </motion.h1>
 
             {/* Subtext */}
@@ -87,8 +87,9 @@ export default function Hero() {
               variants={FADE_UP}
               transition={TRANSITION_SMOOTH}
             >
-              Expert-led treatments tailored to you. Discover a new standard
-              in aesthetic medicine and personal wellness.
+              A modern medical and aesthetics clinic offering advanced
+              treatments, weight management, and holistic healthcare
+              under one roof.
             </motion.p>
 
             {/* CTAs */}
@@ -98,7 +99,7 @@ export default function Hero() {
               transition={TRANSITION_SMOOTH}
             >
               <Button variant="primary" theme="dark">
-                Book Consultation
+                Book a Consultation
               </Button>
 
               <Link href="#treatments" className={styles.secondaryCta}>

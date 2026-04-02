@@ -9,22 +9,22 @@ import styles from './CaseStudies.module.css';
 
 const CASES = [
   {
-    treatment: 'Anti-Wrinkle',
-    area:       'Forehead & Eyes',
-    outcome:    'Lines visibly softened within 72 hours. Natural, refreshed appearance maintained for 4 months.',
-    tag:        'Most Popular',
+    treatment: 'Weight Management',
+    area:       '12-Week Programme',
+    outcome:    'Patient achieved sustained weight loss through a medically supervised plan combining nutrition, medication, and lifestyle coaching.',
+    tag:        'Long-Term Results',
   },
   {
-    treatment: 'Dermal Fillers',
-    area:       'Lips & Cheeks',
-    outcome:    'Restored volume and symmetry with a result the patient described as "exactly what I wanted".',
+    treatment: 'Skin Resurfacing',
+    area:       'Full Face',
+    outcome:    'Visible reduction in acne scarring and uneven texture. Patient regained confidence within weeks of treatment.',
     tag:        null,
   },
   {
-    treatment: 'Laser Resurfacing',
-    area:       'Full Face',
-    outcome:    'Significant reduction in acne scarring and texture after a single treatment session.',
-    tag:        'Dramatic Results',
+    treatment: 'Holistic Health Review',
+    area:       'GP & Wellbeing',
+    outcome:    'Comprehensive health screening identified early risk factors. Patient now manages their condition proactively with ongoing clinic support.',
+    tag:        'Patient-First Approach',
   },
 ];
 
@@ -43,10 +43,11 @@ export default function CaseStudies() {
             Patient Outcomes
           </motion.p>
           <motion.h2 className={styles.heading} variants={fadeUp}>
-            Real Results
+            Real Transformations
           </motion.h2>
           <motion.p className={styles.subtext} variants={fadeUp}>
-            Every result is real, every patient is unique. See the transformations our treatments deliver.
+            Helping patients achieve confidence and long-term results — one
+            personalised treatment at a time.
           </motion.p>
         </motion.div>
 

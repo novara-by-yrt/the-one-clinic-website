@@ -48,14 +48,14 @@ export default function LeadForm() {
           ) : (
             <>
               <motion.p className={styles.eyebrow} variants={fadeUp}>
-                Free Consultation
+                Get Started
               </motion.p>
               <motion.h2 className={styles.heading} variants={fadeUp}>
-                Book Your Free Consultation
+                Start Your Journey Today
               </motion.h2>
               <motion.p className={styles.subtext} variants={fadeUp}>
-                No obligation, no pressure — just an honest conversation about
-                your goals with a specialist who listens.
+                Book a consultation with our expert team and discover
+                the right treatment for you.
               </motion.p>
 
               <motion.form
@@ -93,7 +93,7 @@ export default function LeadForm() {
                   theme="light"
                   className={styles.submitBtn}
                 >
-                  Book Now — It's Free
+                  Book Consultation
                 </Button>
 
                 <p className={styles.privacy}>

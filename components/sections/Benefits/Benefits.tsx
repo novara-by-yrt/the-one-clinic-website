@@ -9,23 +9,23 @@ import styles from './Benefits.module.css';
 const BENEFITS = [
   {
     number: '01',
-    title: 'Expert Practitioners',
-    description: 'Every treatment is delivered by fully qualified clinicians with years of specialist experience.',
+    title: 'Expert-Led Care',
+    description: 'Every service is led by experienced, qualified doctors — not aestheticians. Your safety is the priority.',
   },
   {
     number: '02',
-    title: 'Personalised Care',
-    description: 'No two patients are the same. Your plan is built around your unique anatomy and goals.',
+    title: 'Everything Under One Roof',
+    description: 'Medical care, aesthetics, and wellbeing in a single clinic. No referrals, no gaps, no compromise.',
   },
   {
     number: '03',
-    title: 'Proven Results',
-    description: 'We use only clinically validated treatments and technologies that deliver measurable outcomes.',
+    title: 'Personalised Treatment Plans',
+    description: 'Your consultation shapes everything. We build plans around your health, goals, and lifestyle.',
   },
   {
     number: '04',
-    title: 'Ongoing Support',
-    description: 'Your journey doesn\'t end after treatment. We provide continuous guidance and aftercare.',
+    title: 'Advanced Technology',
+    description: 'We use the latest clinical techniques and evidence-based treatments to deliver lasting results.',
   },
 ];
 

@@ -10,22 +10,22 @@ const STEPS = [
   {
     number: '01',
     title:       'Consultation',
-    description: 'A private, no-obligation consultation with a specialist to discuss your goals and medical history.',
+    description: 'A private, no-obligation consultation with a qualified doctor to discuss your health, concerns, and goals.',
   },
   {
     number: '02',
     title:       'Assessment',
-    description: 'A detailed aesthetic assessment and personalised treatment plan tailored to your unique needs.',
+    description: 'A thorough clinical assessment to understand your full medical picture and identify the right approach.',
   },
   {
     number: '03',
-    title:       'Treatment',
-    description: 'Your procedure is performed with precision in our clinical environment using leading technologies.',
+    title:       'Personalised Treatment Plan',
+    description: 'A plan built specifically for you — combining the right treatments, timeline, and support for your needs.',
   },
   {
     number: '04',
-    title:       'Aftercare',
-    description: 'Dedicated follow-up support to monitor your results and ensure long-term satisfaction.',
+    title:       'Ongoing Care & Results',
+    description: 'Regular check-ins, progress reviews, and ongoing clinical support to ensure lasting, meaningful results.',
   },
 ];
 

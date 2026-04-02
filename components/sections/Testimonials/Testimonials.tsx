@@ -9,19 +9,19 @@ import styles from './Testimonials.module.css';
 
 const TESTIMONIALS = [
   {
-    quote: 'I\'ve tried several clinics but The One Clinic is in a different league. The results are subtle, natural, and exactly what I asked for.',
-    name:  'Sarah M.',
-    role:  'Anti-Wrinkle Treatment',
+    quote: 'The weight management programme changed my life. The doctors were supportive every step of the way — I finally have a plan that works.',
+    name:  'Amara L.',
+    role:  'Weight Management Programme',
   },
   {
-    quote: 'From my first consultation to my follow-up, every step felt genuinely personalised. I\'ve never felt so looked after.',
-    name:  'James K.',
-    role:  'Full-Face Filler',
+    quote: 'I came in for help managing a long-term condition and left feeling genuinely heard. The level of care here is unlike any GP I\'ve visited.',
+    name:  'David R.',
+    role:  'Health & Wellbeing',
   },
   {
-    quote: 'I was nervous about my first aesthetic treatment, but the team put me completely at ease. The outcome exceeded every expectation.',
-    name:  'Priya A.',
-    role:  'Laser Resurfacing',
+    quote: 'From the first call to my follow-up, everything felt seamless and professional. The clinic is calm, the team is brilliant.',
+    name:  'Priya S.',
+    role:  'Medical Aesthetics',
   },
 ];
 

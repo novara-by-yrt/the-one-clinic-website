@@ -9,34 +9,34 @@ import styles from './FAQ.module.css';
 
 const QUESTIONS = [
   {
-    question: 'Are the treatments safe?',
+    question: 'What treatments do you offer?',
     answer:
-      'All of our treatments are performed by qualified medical practitioners in a regulated clinical environment. We only use CE-marked and FDA-cleared devices and products. A thorough consultation and medical assessment is conducted before any treatment begins.',
+      'We offer a wide range of services including medical aesthetics (laser treatments, skin resurfacing, anti-ageing), GP and health screenings, weight management programmes, mental health support, and minor surgical procedures such as mole and cyst removal.',
   },
   {
-    question: 'How do I know which treatment is right for me?',
+    question: 'Do I need a consultation before treatment?',
     answer:
-      'During your free consultation, one of our specialists will conduct a detailed facial or body assessment, listen to your concerns, and recommend a treatment plan tailored specifically to your anatomy and goals. We never take a one-size-fits-all approach.',
+      'Yes. Every patient begins with a consultation. This allows our doctors to understand your medical history, assess your suitability, and recommend the safest and most effective treatment for your specific needs.',
   },
   {
-    question: 'Is there downtime after treatment?',
+    question: 'Are treatments safe?',
     answer:
-      'Downtime varies by treatment. Many of our injectables and skin treatments have minimal downtime, with patients returning to daily activities the same day. More intensive procedures such as laser resurfacing may require 3–5 days of healing time. Your practitioner will advise you fully in advance.',
+      'All treatments are carried out by qualified, experienced doctors in a regulated clinical setting. We use only evidence-based techniques and clinically approved products. Your safety and wellbeing come first at every stage.',
   },
   {
-    question: 'How long do results last?',
+    question: 'How long is recovery?',
     answer:
-      'Results vary depending on the treatment, the patient\'s age, lifestyle, and metabolism. Anti-wrinkle injections typically last 3–4 months, while dermal fillers can last 12–18 months. We will discuss realistic expectations and maintenance timelines during your consultation.',
+      'Recovery depends on the treatment. Many procedures — including most aesthetic treatments — have little to no downtime. More clinical procedures may require a short recovery period. Your doctor will explain exactly what to expect before you commit to anything.',
   },
   {
-    question: 'What is your cancellation policy?',
+    question: 'Do you offer personalised treatment plans?',
     answer:
-      'We ask for 48 hours\' notice for any cancellations or rescheduling. Late cancellations or no-shows may incur a fee. We appreciate your understanding as cancelled appointments limit our ability to offer those slots to other patients.',
+      'Absolutely. We don\'t use off-the-shelf solutions. Every plan is built around your individual health, goals, and circumstances — whether that\'s a single treatment or an ongoing care programme.',
   },
   {
-    question: 'Do you offer payment plans?',
+    question: 'How do I book an appointment?',
     answer:
-      'Yes. We offer flexible finance options through our approved provider, allowing you to spread the cost of treatment over 6 to 24 months. Ask our team for details during your consultation.',
+      'You can book a consultation using the form on this page, or contact us directly by phone or email. A member of our team will confirm your appointment and answer any questions before your visit.',
   },
 ];
 
