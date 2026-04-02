@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
@@ -29,40 +30,69 @@ const BENEFITS = [
   },
 ];
 
+// Replace src with your clinic/team image when available
+const CLINIC_IMAGE = '/images/benefits-clinic.jpg';
+const HAS_IMAGE    = false; // set to true once image is uploaded
+
 export default function Benefits() {
   return (
     <Section variant="light" data-section-theme="light">
       <Container>
-        <motion.div
-          className={styles.header}
-          variants={stagger()}
-          initial="hidden"
-          whileInView="show"
-          viewport={VIEWPORT}
-        >
-          <motion.p className={styles.eyebrow} variants={fadeUp}>
-            Why Us
-          </motion.p>
-          <motion.h2 className={styles.heading} variants={fadeUp}>
-            Why Choose The One Clinic
-          </motion.h2>
-        </motion.div>
+        <div className={styles.layout}>
 
-        <motion.div
-          className={styles.grid}
-          variants={stagger(0.1)}
-          initial="hidden"
-          whileInView="show"
-          viewport={VIEWPORT}
-        >
-          {BENEFITS.map((b) => (
-            <motion.div key={b.number} className={styles.item} variants={fadeUp}>
-              <span className={styles.number} aria-hidden="true">{b.number}</span>
-              <h3 className={styles.title}>{b.title}</h3>
-              <p className={styles.desc}>{b.description}</p>
+          {/* ── Left: header + benefit items ────────────────── */}
+          <motion.div
+            className={styles.textCol}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.div className={styles.header} variants={fadeUp}>
+              <p className={styles.eyebrow}>Why Us</p>
+              <h2 className={styles.heading}>Why Choose The One Clinic</h2>
             </motion.div>
-          ))}
-        </motion.div>
+
+            <div className={styles.items}>
+              {BENEFITS.map((b) => (
+                <motion.div key={b.number} className={styles.item} variants={fadeUp}>
+                  <div className={styles.itemTop}>
+                    <span className={styles.number} aria-hidden="true">{b.number}</span>
+                    <h3 className={styles.title}>{b.title}</h3>
+                  </div>
+                  <p className={styles.desc}>{b.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* ── Right: clinic image ──────────────────────────── */}
+          <motion.div
+            className={styles.imageCol}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <div className={styles.imageWrap}>
+              {HAS_IMAGE ? (
+                <Image
+                  src={CLINIC_IMAGE}
+                  alt="The One Clinic — expert team and environment"
+                  fill
+                  className={styles.image}
+                  sizes="(max-width: 900px) 100vw, 50vw"
+                />
+              ) : (
+                /* Placeholder — replace with <Image> once image is uploaded */
+                <div className={styles.imagePlaceholder} aria-hidden="true">
+                  <span className={styles.imagePlaceholderText}>Clinic Image</span>
+                </div>
+              )}
+            </div>
+          </motion.div>
+
+        </div>
       </Container>
     </Section>
   );

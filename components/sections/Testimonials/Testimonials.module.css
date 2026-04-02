@@ -48,9 +48,9 @@
   width: 100%;
   flex-shrink: 0;
   padding: var(--space-6) var(--space-7);
-  border: 1px solid rgb(255 255 255 / 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: var(--radius-lg, 0.75rem);
-  background: rgb(255 255 255 / 0.03);
+  background: rgb(255 255 255 / 0.06);
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
@@ -61,7 +61,7 @@
   font-size: 5rem;
   line-height: 0.7;
   font-family: Georgia, serif;
-  color: rgb(255 255 255 / 0.1);
+  color: rgba(255, 255, 255, 0.25);
   display: block;
   user-select: none;
 }
@@ -74,7 +74,7 @@
 .quote p {
   font-size: 1.125rem;
   line-height: 1.7;
-  color: rgb(255 255 255 / 0.82);
+  color: rgba(255, 255, 255, 0.95);
   font-style: normal;
 }
 

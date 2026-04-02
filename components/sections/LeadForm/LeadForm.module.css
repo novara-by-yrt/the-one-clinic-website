@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-8);
-  align-items: start;
+  align-items: stretch; /* both columns share the same height */
 }
 
 /* ── Form column ────────────────────────────────────────────────── */
@@ -58,6 +58,8 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+  /* stretch to fill grid row height so map can grow */
+  height: 100%;
 }
 
 /* ── Contact info ───────────────────────────────────────────────── */
@@ -108,13 +110,14 @@
   color: var(--color-text-muted);
 }
 
-/* ── Map embed wrapper ──────────────────────────────────────────── */
+/* ── Map embed wrapper — grows to fill remaining column height ───── */
 .mapWrap {
   position: relative;
   border-radius: 0.75rem;
   overflow: hidden;
   border: 1px solid var(--color-border-light);
-  aspect-ratio: 4 / 3;
+  flex: 1;          /* fill remaining height after contact info */
+  min-height: 280px; /* never collapse below this */
 }
 
 .mapIframe {
@@ -204,14 +207,20 @@
   .grid {
     grid-template-columns: 1fr;
     gap: var(--space-7);
+    align-items: start;
+  }
+
+  .mapCol {
+    height: auto;
+  }
+
+  .mapWrap {
+    flex: unset;
+    aspect-ratio: 16 / 9;
   }
 
   .heading {
     font-size: var(--text-h3);
-  }
-
-  .mapWrap {
-    aspect-ratio: 16 / 9;
   }
 }
 

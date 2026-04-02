@@ -38,19 +38,25 @@
 /* ── Card ───────────────────────────────────────────────────────── */
 .card {
   padding: var(--space-5);
-  border: 1px solid rgb(255 255 255 / 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: var(--radius-lg, 0.75rem);
-  background: rgb(255 255 255 / 0.02);
+  background: rgb(255 255 255 / 0.04);
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
-  transition: border-color 0.25s ease, background 0.25s ease;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
   cursor: default;
 }
 
 .card:hover {
-  border-color: rgb(255 255 255 / 0.22);
-  background: rgb(255 255 255 / 0.045);
+  border-color: rgba(255, 255, 255, 0.7);
+  background: rgb(255 255 255 / 0.08);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgb(0 0 0 / 0.4);
 }
 
 .cardTop {
@@ -61,34 +67,39 @@
 
 .number {
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.1em;
-  color: rgb(255 255 255 / 0.3);
+  color: rgba(255, 255, 255, 0.55);
+  transition: color 0.25s ease;
+}
+
+.card:hover .number {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .arrow {
   font-size: 1rem;
-  color: rgb(255 255 255 / 0.2);
+  color: rgba(255, 255, 255, 0.35);
   transition: color 0.25s ease, transform 0.25s ease;
 }
 
 .card:hover .arrow {
-  color: rgb(255 255 255 / 0.6);
-  transform: translate(2px, -2px);
+  color: var(--color-white);
+  transform: translate(3px, -3px);
 }
 
 .cardTitle {
   font-size: 1.25rem;
   font-weight: 600;
   letter-spacing: -0.01em;
-  color: var(--color-text-light);
+  color: var(--color-white);
   line-height: 1.2;
 }
 
 .cardDesc {
   font-size: 0.9375rem;
   line-height: 1.65;
-  color: rgb(255 255 255 / 0.5);
+  color: rgba(255, 255, 255, 0.65);
   flex: 1;
 }
 
