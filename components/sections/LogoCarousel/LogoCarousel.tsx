@@ -95,7 +95,7 @@ export default function LogoCarousel() {
                 width={logo.w}
                 height={logo.h}
                 draggable={false}
-                style={{ height: '52px', width: 'auto', objectFit: 'contain' }}
+                style={{ height: '72px', width: 'auto', objectFit: 'contain' }}
               />
             </div>
           ))}

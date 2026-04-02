@@ -1,17 +1,19 @@
 /* ── Section shell ─────────────────────────────────────────────── */
 .section {
-  padding-block: var(--space-5) !important;
+  padding-block: var(--space-6) !important;
   overflow: hidden;
+  border-top: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
 }
 
 .label {
   text-align: center;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--color-text-muted);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-5);
 }
 
 /* ── Viewport with left/right fade masks ───────────────────────── */
@@ -21,15 +23,15 @@
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
-    black 8%,
-    black 92%,
+    black 10%,
+    black 90%,
     transparent 100%
   );
   mask-image: linear-gradient(
     to right,
     transparent 0%,
-    black 8%,
-    black 92%,
+    black 10%,
+    black 90%,
     transparent 100%
   );
   cursor: grab;
@@ -44,9 +46,8 @@
   display: flex;
   align-items: center;
   width: max-content;
-  gap: var(--space-8);
+  gap: var(--space-10);
   will-change: transform;
-  /* Disable default touch scroll so we own the gesture */
   touch-action: pan-y;
   user-select: none;
   -webkit-user-select: none;
@@ -58,16 +59,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-inline: var(--space-2);
-  opacity: 0.65;
-  transition: opacity 0.25s ease;
+  padding-inline: var(--space-3);
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
 }
 
 .logoWrap:hover {
   opacity: 1;
 }
 
-/* Prevent Next.js image drag */
 .logoWrap img {
   pointer-events: none;
   -webkit-user-drag: none;
@@ -76,27 +76,27 @@
 /* ── Responsive ─────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .section {
-    padding-block: var(--space-4) !important;
+    padding-block: var(--space-5) !important;
+  }
+
+  .track {
+    gap: var(--space-8);
   }
 
   .viewport {
     -webkit-mask-image: linear-gradient(
       to right,
       transparent 0%,
-      black 5%,
-      black 95%,
+      black 6%,
+      black 94%,
       transparent 100%
     );
     mask-image: linear-gradient(
       to right,
       transparent 0%,
-      black 5%,
-      black 95%,
+      black 6%,
+      black 94%,
       transparent 100%
     );
-  }
-
-  .track {
-    gap: var(--space-6);
   }
 }

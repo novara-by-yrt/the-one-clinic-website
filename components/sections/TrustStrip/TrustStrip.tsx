@@ -7,9 +7,9 @@ import { fadeIn, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './TrustStrip.module.css';
 
 const ITEMS = [
-  { value: '✓', label: 'Led by highly trained doctors' },
-  { value: '✓', label: 'Trusted by patients in Leicester' },
-  { value: '✓', label: 'Comprehensive medical & aesthetic care' },
+  'Led by highly trained doctors',
+  'Trusted by patients in Leicester',
+  'Comprehensive medical & aesthetic care',
 ];
 
 export default function TrustStrip() {
@@ -25,10 +25,12 @@ export default function TrustStrip() {
           role="list"
           aria-label="Trust indicators"
         >
-          {ITEMS.map((item) => (
-            <motion.li key={item.label} className={styles.item} variants={fadeIn}>
-              <span className={styles.value} aria-hidden="true">{item.value}</span>
-              <span className={styles.label}>{item.label}</span>
+          {ITEMS.map((text) => (
+            <motion.li key={text} className={styles.item} variants={fadeIn}>
+              <span className={styles.check} aria-hidden="true">
+                <span className={styles.checkMark} />
+              </span>
+              <span className={styles.label}>{text}</span>
             </motion.li>
           ))}
         </motion.ul>
