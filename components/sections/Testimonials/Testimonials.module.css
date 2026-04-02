@@ -63,6 +63,19 @@
   justify-content: space-between;
 }
 
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.star {
+  width: 20px;
+  height: 20px;
+  fill: #F6B100;
+  flex-shrink: 0;
+}
+
 .googleLogo {
   width: auto;
   height: 26px;
