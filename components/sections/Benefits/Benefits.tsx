@@ -50,7 +50,7 @@ export default function Benefits() {
   }, []);
 
   return (
-    <Section variant="light" data-section-theme="light">
+    <Section variant="light" data-section-theme="light" className={styles.section}>
       <Container>
         <div className={styles.layout}>
 

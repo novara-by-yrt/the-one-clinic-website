@@ -61,31 +61,22 @@ export default function Accordion({
                 {/* Question */}
                 <span className={styles.question}>{item.question}</span>
 
-                {/* Plus / minus icon */}
+                {/* Down-arrow chevron — rotates 180° when open */}
                 <span className={styles.icon} aria-hidden="true">
                   <svg
                     className={styles.iconSvg}
                     width="12"
-                    height="12"
-                    viewBox="0 0 12 12"
+                    height="8"
+                    viewBox="0 0 12 8"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    {/* Horizontal bar — always visible */}
-                    <line
-                      className={`${styles.iconBar} ${styles.iconBarHorizontal}`}
-                      x1="1" y1="6" x2="11" y2="6"
+                    <polyline
+                      points="1,1.5 6,6.5 11,1.5"
                       stroke="currentColor"
                       strokeWidth="1.75"
                       strokeLinecap="round"
-                    />
-                    {/* Vertical bar — rotates+fades on open */}
-                    <line
-                      className={`${styles.iconBar} ${styles.iconBarVertical}`}
-                      x1="6" y1="1" x2="6" y2="11"
-                      stroke="currentColor"
-                      strokeWidth="1.75"
-                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                   </svg>
                 </span>

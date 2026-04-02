@@ -32,8 +32,8 @@
 
 /* Dark theme item */
 .accordion.dark .item {
-  border-color: rgb(255 255 255 / 0.09);
-  background: rgb(255 255 255 / 0.02);
+  border-color: rgb(255 255 255 / 0.16);
+  background: rgb(255 255 255 / 0.06);
 }
 
 .accordion.dark .item:hover {
@@ -173,21 +173,15 @@
   color: var(--color-text-dark);
 }
 
-/* SVG lines inside the icon */
+/* Chevron rotates 180° when item is open */
 .iconSvg {
   overflow: visible;
-}
-
-.iconBar {
-  transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
-              opacity 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
   transform-origin: center;
 }
 
-/* Vertical bar disappears (rotates into horizontal) when open */
-.open .iconBarVertical {
-  transform: rotate(90deg);
-  opacity: 0;
+.open .iconSvg {
+  transform: rotate(180deg);
 }
 
 /* ── Collapse panel ───────────────────────────────────────────── */
