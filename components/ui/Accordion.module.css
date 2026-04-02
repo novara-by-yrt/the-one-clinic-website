@@ -3,7 +3,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
 }
 
 /* ── Item ─────────────────────────────────────────────────────── */
@@ -69,9 +69,9 @@
 .trigger {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-2);
   width: 100%;
-  padding: var(--space-4) var(--space-4);
+  padding: 13px var(--space-3);
   text-align: left;
   background: none;
   border: none;
@@ -80,11 +80,11 @@
 
 /* ── Number badge ─────────────────────────────────────────────── */
 .number {
-  font-size: 0.6875rem;
+  font-size: 0.625rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   flex-shrink: 0;
-  min-width: 28px;
+  min-width: 22px;
   transition: color 0.2s ease;
 }
 
@@ -106,10 +106,10 @@
 
 /* ── Question text ────────────────────────────────────────────── */
 .question {
-  font-size: var(--text-body);
+  font-size: 0.9375rem;
   font-weight: 500;
   flex: 1;
-  line-height: 1.4;
+  line-height: 1.35;
   transition: color 0.2s ease;
 }
 
@@ -125,11 +125,11 @@
   color: var(--color-text-light);
 }
 
-/* ── Plus / minus icon ────────────────────────────────────────── */
+/* ── Chevron icon ─────────────────────────────────────────────── */
 .icon {
   flex-shrink: 0;
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   border: 1px solid transparent;
   display: flex;
@@ -203,10 +203,10 @@
 
 /* ── Answer text ──────────────────────────────────────────────── */
 .answer {
-  padding: 0 var(--space-4) var(--space-4);
-  padding-left: calc(var(--space-4) + 28px + var(--space-3));
-  font-size: 0.9375rem;
-  line-height: 1.7;
+  padding: 0 var(--space-3) var(--space-3);
+  padding-left: calc(var(--space-3) + 22px + var(--space-2));
+  font-size: 0.875rem;
+  line-height: 1.65;
 }
 
 .accordion.light .answer {

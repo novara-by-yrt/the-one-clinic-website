@@ -66,7 +66,7 @@ export default function FAQ() {
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <Accordion items={QUESTIONS} theme="dark" />
+          <Accordion items={QUESTIONS} theme="light" />
         </motion.div>
       </Container>
     </Section>
