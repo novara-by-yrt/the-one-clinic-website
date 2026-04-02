@@ -10,7 +10,7 @@ type Theme = 'light' | 'dark';
 
 const NAV_LINKS = [
   { label: 'Home',       href: '/' },
-  { label: 'Treatments', href: '#treatments' },
+  { label: 'Treatments', href: '/treatments' },
   { label: 'Results',    href: '#results' },
   { label: 'About',      href: '#about' },
 ];
