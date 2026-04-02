@@ -40,8 +40,11 @@ export default function Header() {
   const [menuOpen, setMenuOpen]         = useState(false);
   const observerRef                     = useRef<IntersectionObserver | null>(null);
 
-  // Derived active theme
-  const theme: Theme = !scrolled ? 'dark' : sectionTheme;
+  // Invert section theme → header must CONTRAST the section
+  const headerTheme: Theme = sectionTheme === 'dark' ? 'light' : 'dark';
+
+  // Before scrolling: hero is dark → show white text on transparent bg
+  const theme: Theme = !scrolled ? 'dark' : headerTheme;
 
   // ── Scroll detection ──────────────────────────────────────────
   useEffect(() => {
@@ -89,17 +92,18 @@ export default function Header() {
   const closeMenu = useCallback(() => setMenuOpen(false), []);
 
   // ── Animated header bg / border colors ───────────────────────
+  // Background and border CONTRAST the section colour
   const bgColor = !scrolled
     ? 'rgba(0,0,0,0)'
     : sectionTheme === 'dark'
-    ? '#000000'
-    : '#FFFFFF';
+    ? '#FFFFFF'          // dark section → white header
+    : '#0a0a0a';         // light section → black header
 
   const borderColor = !scrolled
     ? 'rgba(0,0,0,0)'
     : sectionTheme === 'dark'
-    ? 'rgba(255,255,255,0.1)'
-    : 'rgba(0,0,0,0.08)';
+    ? 'rgba(0,0,0,0.08)'         // border on white header
+    : 'rgba(255,255,255,0.1)';   // border on black header
 
   return (
     <>
