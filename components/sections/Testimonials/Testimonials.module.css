@@ -56,6 +56,21 @@
   gap: var(--space-4);
 }
 
+/* ── Top row: quote mark + Google logo ──────────────────────────── */
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.googleLogo {
+  width: auto;
+  height: 26px;
+  object-fit: contain;
+  opacity: 0.9;
+  flex-shrink: 0;
+}
+
 /* ── Large decorative quote mark ────────────────────────────────── */
 .quoteIcon {
   font-size: 5rem;

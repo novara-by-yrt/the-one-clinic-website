@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import styles from './Header.module.css';
 
@@ -122,7 +123,14 @@ export default function Header() {
 
             {/* Logo */}
             <Link href="/" className={styles.logo} aria-label="The One Clinic – home">
-              <span className={styles.logoText}>TheOneClinic</span>
+              <Image
+                src="/images/LOGO.png"
+                alt="The One Clinic"
+                width={140}
+                height={40}
+                className={styles.logoImg}
+                priority
+              />
             </Link>
 
             {/* Desktop nav */}

@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
@@ -108,8 +109,17 @@ export default function Testimonials() {
                 exit="exit"
                 className={styles.slide}
               >
-                {/* Decorative quote mark */}
-                <span className={styles.quoteIcon} aria-hidden="true">"</span>
+                {/* Top row: quote mark left, Google logo right */}
+                <div className={styles.cardTop}>
+                  <span className={styles.quoteIcon} aria-hidden="true">"</span>
+                  <Image
+                    src="/images/Google-logo.png"
+                    alt="Google review"
+                    width={80}
+                    height={28}
+                    className={styles.googleLogo}
+                  />
+                </div>
 
                 <blockquote className={styles.quote}>
                   <p>{t.quote}</p>
