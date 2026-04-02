@@ -1,5 +1,6 @@
-import Hero        from '@/components/sections/Hero';
-import TrustStrip  from '@/components/sections/TrustStrip';
+import Hero         from '@/components/sections/Hero';
+import VideoSection  from '@/components/sections/VideoSection';
+import TrustStrip   from '@/components/sections/TrustStrip';
 import Services    from '@/components/sections/Services';
 import Benefits    from '@/components/sections/Benefits';
 import CaseStudies from '@/components/sections/CaseStudies';
@@ -13,6 +14,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <VideoSection />
       <TrustStrip />
       <Services />
       <Benefits />
