@@ -1,0 +1,102 @@
+/* ── Section shell ─────────────────────────────────────────────── */
+.section {
+  padding-block: var(--space-5) !important;
+  overflow: hidden;
+}
+
+.label {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+}
+
+/* ── Viewport with left/right fade masks ───────────────────────── */
+.viewport {
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  cursor: grab;
+}
+
+.viewport:active {
+  cursor: grabbing;
+}
+
+/* ── Scrolling track ────────────────────────────────────────────── */
+.track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: var(--space-8);
+  will-change: transform;
+  /* Disable default touch scroll so we own the gesture */
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ── Individual logo slot ───────────────────────────────────────── */
+.logoWrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: var(--space-2);
+  opacity: 0.65;
+  transition: opacity 0.25s ease;
+}
+
+.logoWrap:hover {
+  opacity: 1;
+}
+
+/* Prevent Next.js image drag */
+.logoWrap img {
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .section {
+    padding-block: var(--space-4) !important;
+  }
+
+  .viewport {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 5%,
+      black 95%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 5%,
+      black 95%,
+      transparent 100%
+    );
+  }
+
+  .track {
+    gap: var(--space-6);
+  }
+}

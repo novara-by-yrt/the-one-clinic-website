@@ -1,4 +1,5 @@
-import Hero         from '@/components/sections/Hero';
+import Hero          from '@/components/sections/Hero';
+import LogoCarousel  from '@/components/sections/LogoCarousel';
 import VideoSection  from '@/components/sections/VideoSection';
 import TrustStrip   from '@/components/sections/TrustStrip';
 import Services    from '@/components/sections/Services';
@@ -14,6 +15,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <LogoCarousel />
       <VideoSection />
       <TrustStrip />
       <Services />
