@@ -1,69 +1,116 @@
-/* ── Root ─────────────────────────────────── */
+/* ── Root ─────────────────────────────────────────────────────── */
 .accordion {
   width: 100%;
   display: flex;
   flex-direction: column;
+  gap: 6px;
 }
 
-/* ── Item ─────────────────────────────────── */
+/* ── Item ─────────────────────────────────────────────────────── */
 .item {
-  border-bottom: 1px solid transparent;
+  border-radius: 0.625rem;
+  border: 1px solid transparent;
+  overflow: hidden;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
 }
 
-.light .item,
+/* Light theme item */
 .accordion.light .item {
-  border-bottom-color: var(--color-border-light);
+  border-color: var(--color-border-light);
+  background: var(--color-white);
 }
 
-.dark .item,
+.accordion.light .item:hover {
+  border-color: rgb(0 0 0 / 0.18);
+  box-shadow: 0 4px 20px rgb(0 0 0 / 0.07);
+  transform: translateY(-1px);
+}
+
+/* Dark theme item */
 .accordion.dark .item {
-  border-bottom-color: var(--color-border-dark);
+  border-color: rgb(255 255 255 / 0.16);
+  background: rgb(255 255 255 / 0.06);
 }
 
-.item:first-child {
-  border-top: 1px solid transparent;
+.accordion.dark .item:hover {
+  border-color: rgb(255 255 255 / 0.2);
+  background: rgb(255 255 255 / 0.05);
+  transform: translateY(-1px);
 }
 
-.accordion.light .item:first-child {
-  border-top-color: var(--color-border-light);
+/* Open state */
+.accordion.light .item.open {
+  border-color: rgb(0 0 0 / 0.15);
+  box-shadow: 0 4px 24px rgb(0 0 0 / 0.08);
+  transform: none;
 }
 
-.accordion.dark .item:first-child {
-  border-top-color: var(--color-border-dark);
+.accordion.dark .item.open {
+  border-color: rgb(255 255 255 / 0.2);
+  background: rgb(255 255 255 / 0.05);
+  transform: none;
 }
 
-/* ── Heading (reset h3) ──────────────────── */
+/* ── Heading reset ────────────────────────────────────────────── */
 .heading {
   font-size: inherit;
   font-weight: inherit;
   line-height: inherit;
   letter-spacing: inherit;
   text-transform: none;
+  margin: 0;
 }
 
-/* ── Trigger button ──────────────────────── */
+/* ── Trigger ──────────────────────────────────────────────────── */
 .trigger {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: var(--space-2);
   width: 100%;
-  padding-block: var(--space-3);
+  padding: 13px var(--space-3);
   text-align: left;
   background: none;
   border: none;
   cursor: pointer;
-  transition: opacity var(--duration-fast) var(--ease-default);
 }
 
-.trigger:hover {
-  opacity: 0.65;
+/* ── Number badge ─────────────────────────────────────────────── */
+.number {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+  min-width: 22px;
+  transition: color 0.2s ease;
 }
 
-/* ── Question text ───────────────────────── */
+.accordion.light .number {
+  color: rgb(0 0 0 / 0.25);
+}
+
+.accordion.dark .number {
+  color: rgb(255 255 255 / 0.25);
+}
+
+.accordion.light .open .number {
+  color: var(--color-text-dark);
+}
+
+.accordion.dark .open .number {
+  color: rgb(255 255 255 / 0.7);
+}
+
+/* ── Question text ────────────────────────────────────────────── */
 .question {
-  font-size: var(--text-body);
-  font-weight: var(--fw-medium);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  flex: 1;
+  line-height: 1.35;
+  transition: color 0.2s ease;
 }
 
 .accordion.light .question {
@@ -71,34 +118,77 @@
 }
 
 .accordion.dark .question {
+  color: rgb(255 255 255 / 0.75);
+}
+
+.accordion.dark .open .question {
   color: var(--color-text-light);
 }
 
-/* ── Chevron icon ────────────────────────── */
+/* ── Chevron icon ─────────────────────────────────────────────── */
 .icon {
   flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid transparent;
   display: flex;
   align-items: center;
-  transition: transform var(--duration-base) var(--ease-out);
+  justify-content: center;
+  margin-left: auto;
+  transition: border-color 0.25s ease, background 0.25s ease;
 }
 
 .accordion.light .icon {
+  border-color: var(--color-border-light);
   color: var(--color-text-dark);
 }
 
 .accordion.dark .icon {
+  border-color: rgb(255 255 255 / 0.12);
+  color: rgb(255 255 255 / 0.6);
+}
+
+.accordion.light .item:hover .icon {
+  border-color: rgb(0 0 0 / 0.25);
+  background: rgb(0 0 0 / 0.04);
+  color: var(--color-text-dark);
+}
+
+.accordion.dark .item:hover .icon {
+  border-color: rgb(255 255 255 / 0.3);
+  background: rgb(255 255 255 / 0.06);
   color: var(--color-text-light);
 }
 
-.open .icon {
+.accordion.light .open .icon {
+  background: var(--color-text-dark);
+  border-color: var(--color-text-dark);
+  color: white;
+}
+
+.accordion.dark .open .icon {
+  background: rgb(255 255 255 / 0.9);
+  border-color: rgb(255 255 255 / 0.9);
+  color: var(--color-text-dark);
+}
+
+/* Chevron rotates 180° when item is open */
+.iconSvg {
+  overflow: visible;
+  transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transform-origin: center;
+}
+
+.open .iconSvg {
   transform: rotate(180deg);
 }
 
-/* ── Collapse panel — CSS grid trick ─────── */
+/* ── Collapse panel ───────────────────────────────────────────── */
 .body {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows var(--duration-base) var(--ease-out);
+  transition: grid-template-rows 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
   overflow: hidden;
 }
 
@@ -106,17 +196,17 @@
   grid-template-rows: 1fr;
 }
 
-/* ── Inner must have overflow: hidden ────── */
 .bodyInner {
   overflow: hidden;
   min-height: 0;
 }
 
-/* ── Answer text ─────────────────────────── */
+/* ── Answer text ──────────────────────────────────────────────── */
 .answer {
-  padding-bottom: var(--space-3);
-  font-size: var(--text-body);
-  line-height: var(--lh-normal);
+  padding: 0 var(--space-3) var(--space-3);
+  padding-left: calc(var(--space-3) + 22px + var(--space-2));
+  font-size: 0.875rem;
+  line-height: 1.65;
 }
 
 .accordion.light .answer {
@@ -124,5 +214,5 @@
 }
 
 .accordion.dark .answer {
-  color: rgb(255 255 255 / 0.6);
+  color: rgb(255 255 255 / 0.55);
 }

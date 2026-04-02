@@ -1,6 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
@@ -29,40 +31,102 @@ const BENEFITS = [
   },
 ];
 
-export default function Benefits() {
-  return (
-    <Section variant="light" data-section-theme="light">
-      <Container>
-        <motion.div
-          className={styles.header}
-          variants={stagger()}
-          initial="hidden"
-          whileInView="show"
-          viewport={VIEWPORT}
-        >
-          <motion.p className={styles.eyebrow} variants={fadeUp}>
-            Why Us
-          </motion.p>
-          <motion.h2 className={styles.heading} variants={fadeUp}>
-            Why Choose The One Clinic
-          </motion.h2>
-        </motion.div>
+const SLIDES = [
+  { src: '/images/Doctor1.jpg', alt: 'The One Clinic — Doctor 1' },
+  { src: '/images/Doctor2.jpg', alt: 'The One Clinic — Doctor 2' },
+];
 
-        <motion.div
-          className={styles.grid}
-          variants={stagger(0.1)}
-          initial="hidden"
-          whileInView="show"
-          viewport={VIEWPORT}
-        >
-          {BENEFITS.map((b) => (
-            <motion.div key={b.number} className={styles.item} variants={fadeUp}>
-              <span className={styles.number} aria-hidden="true">{b.number}</span>
-              <h3 className={styles.title}>{b.title}</h3>
-              <p className={styles.desc}>{b.description}</p>
+const INTERVAL = 3000; // ms
+
+export default function Benefits() {
+  const [active, setActive] = useState(0);
+
+  // Auto-advance every 3 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActive((i) => (i + 1) % SLIDES.length);
+    }, INTERVAL);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <Section variant="light" data-section-theme="light" className={styles.section}>
+      <Container>
+        <div className={styles.layout}>
+
+          {/* ── Left: header + benefit items ────────────────── */}
+          <motion.div
+            className={styles.textCol}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.div className={styles.header} variants={fadeUp}>
+              <p className={styles.eyebrow}>Why Us</p>
+              <h2 className={styles.heading}>Why Choose The One Clinic</h2>
             </motion.div>
-          ))}
-        </motion.div>
+
+            <div className={styles.items}>
+              {BENEFITS.map((b) => (
+                <motion.div key={b.number} className={styles.item} variants={fadeUp}>
+                  <div className={styles.itemTop}>
+                    <span className={styles.number} aria-hidden="true">{b.number}</span>
+                    <h3 className={styles.title}>{b.title}</h3>
+                  </div>
+                  <p className={styles.desc}>{b.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* ── Right: auto-scrolling doctor image slideshow ─ */}
+          <motion.div
+            className={styles.imageCol}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <div className={styles.imageWrap}>
+              {/* Crossfade slides */}
+              <AnimatePresence mode="sync">
+                <motion.div
+                  key={active}
+                  className={styles.slide}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.8, ease: 'easeInOut' }}
+                >
+                  <Image
+                    src={SLIDES[active].src}
+                    alt={SLIDES[active].alt}
+                    fill
+                    className={styles.image}
+                    sizes="(max-width: 900px) 100vw, 50vw"
+                    priority={active === 0}
+                  />
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Pagination dots — no arrows */}
+              <div className={styles.dots} role="tablist" aria-label="Doctor image slideshow">
+                {SLIDES.map((_, i) => (
+                  <button
+                    key={i}
+                    className={`${styles.dot} ${i === active ? styles.dotActive : ''}`}
+                    onClick={() => setActive(i)}
+                    role="tab"
+                    aria-selected={i === active}
+                    aria-label={`Show image ${i + 1} of ${SLIDES.length}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+        </div>
       </Container>
     </Section>
   );

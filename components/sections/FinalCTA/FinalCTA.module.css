@@ -1,15 +1,41 @@
 .section {
-  border-top: 1px solid var(--color-border-dark);
+  position: relative;
+  overflow: hidden;
 }
 
+/* ── Background image + overlay ─────────────────────────────────── */
+.bgWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bgImage {
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.38);
+}
+
+/* ── Content sits above the bg ──────────────────────────────────── */
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Content pushed to the right half */
 .content {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
   gap: var(--space-3);
-  max-width: 640px;
-  margin-inline: auto;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: 0;
 }
 
 .eyebrow {
@@ -17,7 +43,7 @@
   font-weight: var(--fw-medium);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgb(255 255 255 / 0.35);
+  color: rgb(255 255 255 / 0.55);
 }
 
 .heading {
@@ -30,13 +56,13 @@
 
 .headingAccent {
   font-style: italic;
-  color: rgb(255 255 255 / 0.5);
+  color: rgb(255 255 255 / 0.65);
 }
 
 .subtext {
   font-size: var(--text-body);
-  color: rgb(255 255 255 / 0.5);
-  max-width: 360px;
+  color: rgb(255 255 255 / 0.7);
+  max-width: 380px;
 }
 
 .cta {
@@ -44,5 +70,14 @@
 }
 
 @media (max-width: 768px) {
+  .content {
+    align-items: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+  }
+
+  .subtext { max-width: 100%; }
   .cta > * { width: 100%; }
 }

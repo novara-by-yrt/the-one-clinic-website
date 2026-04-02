@@ -1,6 +1,5 @@
 .strip {
-  padding-block: var(--space-3) !important; /* compact strip */
-  border-top: none;
+  padding-block: var(--space-5) !important;
 }
 
 .list {
@@ -8,72 +7,69 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0;
+  gap: var(--space-2);
 }
 
+/* ── Each trust badge ───────────────────────────────────────────── */
 .item {
-  display: flex;
-  flex-direction: column;
+  display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: var(--space-2) var(--space-4);
-  position: relative;
+  gap: var(--space-2);
+  padding: 0.625rem 1.25rem;
+  border: 1px solid var(--color-border-light);
+  border-radius: 100px;
+  background: var(--color-white);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Vertical divider between items */
-.item + .item::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 20%;
-  height: 60%;
-  width: 1px;
-  background-color: var(--color-border-light);
+.item:hover {
+  border-color: rgb(0 0 0 / 0.2);
+  box-shadow: 0 2px 12px rgb(0 0 0 / 0.06);
 }
 
-.value {
-  font-size: var(--text-h3);
-  font-weight: var(--fw-bold);
-  color: var(--color-text-dark);
-  line-height: 1;
-  letter-spacing: -0.02em;
+/* ── Check icon ─────────────────────────────────────────────────── */
+.check {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: var(--color-text-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.stars {
-  font-size: 1rem;
-  letter-spacing: 0.05em;
-  color: var(--color-text-dark);
+.checkMark {
+  display: block;
+  width: 9px;
+  height: 6px;
+  border-left: 1.5px solid white;
+  border-bottom: 1.5px solid white;
+  transform: rotate(-45deg) translateY(-1px);
 }
 
+/* ── Label ──────────────────────────────────────────────────────── */
 .label {
-  font-size: var(--text-small);
-  font-weight: var(--fw-regular);
-  color: var(--color-text-muted);
-  letter-spacing: 0.02em;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-dark);
   white-space: nowrap;
+  letter-spacing: 0.01em;
 }
 
+/* ── Responsive ─────────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .item {
-    padding: var(--space-2);
-    min-width: 45%;
+  .list {
+    gap: var(--space-2);
   }
 
-  .value {
-    font-size: var(--text-h3);
+  .label {
+    font-size: 0.8125rem;
   }
 }
 
 @media (max-width: 480px) {
   .item {
-    min-width: 100%;
-  }
-
-  .item + .item::before {
-    display: none;
-  }
-
-  .item + .item {
-    border-top: 1px solid var(--color-border-light);
+    padding: 0.5rem 1rem;
   }
 }

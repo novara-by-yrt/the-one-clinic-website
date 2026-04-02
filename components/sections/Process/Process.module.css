@@ -1,9 +1,113 @@
-.header {
-  max-width: 480px;
-  margin-bottom: var(--space-5);
+/* ── Section padding (compact) ───────────────────────────────────── */
+.section {
+  padding-block: var(--space-6);
+}
+
+@media (max-width: 1024px) {
+  .section { padding-block: var(--space-5); }
+}
+
+/* ── Two-column layout ───────────────────────────────────────────── */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  align-items: stretch;
+}
+
+/* ── Left: image slideshow ───────────────────────────────────────── */
+.imageCol {
+  align-self: stretch;
   display: flex;
   flex-direction: column;
-  gap: var(--space-1);
+}
+
+.imageWrap {
+  position: relative;
+  flex: 1;
+  min-height: 380px;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: #e8e8e8;
+  /* Subtle shadow for depth */
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.1);
+}
+
+/* Each slide fills the wrapper absolutely so they crossfade */
+.slide {
+  position: absolute;
+  inset: 0;
+}
+
+.image {
+  object-fit: cover;
+}
+
+/* Gradient scrim at the bottom for dots readability */
+.imageWrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 55%,
+    rgba(0, 0, 0, 0.38) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Pagination dots ─────────────────────────────────────────────── */
+.dots {
+  position: absolute;
+  bottom: var(--space-4);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.dot:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.dotActive {
+  background: white;
+  transform: scale(1.35);
+}
+
+.dot:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 3px;
+  border-radius: 50%;
+}
+
+/* ── Right: text column ──────────────────────────────────────────── */
+.textCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  justify-content: center;
+}
+
+/* ── Header ──────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
 }
 
 .eyebrow {
@@ -19,56 +123,52 @@
   font-weight: var(--fw-bold);
   letter-spacing: -0.02em;
   color: var(--color-text-dark);
+  line-height: var(--lh-tight);
 }
 
-/* ── Steps row ────────────────────────────── */
+.subtext {
+  font-size: var(--text-body);
+  line-height: 1.65;
+  color: var(--color-text-muted);
+  max-width: 400px;
+}
+
+/* ── Steps list ──────────────────────────────────────────────────── */
 .steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-3);
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .step {
-  position: relative;
   display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding-block: var(--space-3);
+  border-top: 1px solid var(--color-border-light);
 }
 
-/* Step number circle */
+.step:last-child {
+  border-bottom: 1px solid var(--color-border-light);
+}
+
 .stepNumber {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: 1px solid var(--color-border-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--text-small);
-  font-weight: var(--fw-medium);
-  color: var(--color-text-dark);
-  letter-spacing: 0.04em;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  min-width: 28px;
+  padding-top: 3px;
   flex-shrink: 0;
-  background-color: var(--color-bg-light);
-  position: relative;
-  z-index: 1;
-}
-
-/* Horizontal connector line */
-.connector {
-  position: absolute;
-  top: 24px; /* half of 48px circle */
-  left: calc(48px + var(--space-2));
-  right: calc(-1 * var(--space-3));
-  height: 1px;
-  background-color: var(--color-border-light);
 }
 
 .stepContent {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .stepTitle {
@@ -84,19 +184,41 @@
   color: var(--color-text-muted);
 }
 
-/* ── Responsive ───────────────────────────── */
-@media (max-width: 1024px) {
-  .steps { grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
-  .connector { display: none; }
+/* ── Responsive ──────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  /* Image above text on mobile */
+  .imageCol {
+    align-self: auto;
+  }
+
+  .imageWrap {
+    min-height: 280px;
+    aspect-ratio: 4 / 3;
+    flex: unset;
+  }
+
+  .textCol {
+    gap: var(--space-4);
+  }
+
+  .heading {
+    font-size: var(--text-h3);
+  }
+
+  .subtext {
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
-  .steps { grid-template-columns: 1fr; gap: var(--space-3); }
-
-  .step {
-    flex-direction: row;
-    gap: var(--space-3);
+  .imageWrap {
+    aspect-ratio: 16 / 10;
+    min-height: unset;
+    border-radius: 0.75rem;
   }
-
-  .stepContent { padding-top: 10px; }
 }

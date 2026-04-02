@@ -1,6 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
@@ -29,47 +31,105 @@ const STEPS = [
   },
 ];
 
-export default function Process() {
-  return (
-    <Section variant="light" data-section-theme="light">
-      <Container>
-        <motion.div
-          className={styles.header}
-          variants={stagger()}
-          initial="hidden"
-          whileInView="show"
-          viewport={VIEWPORT}
-        >
-          <motion.p className={styles.eyebrow} variants={fadeUp}>
-            The Journey
-          </motion.p>
-          <motion.h2 className={styles.heading} variants={fadeUp}>
-            How It Works
-          </motion.h2>
-        </motion.div>
+const SLIDES = [
+  { src: '/images/location1.jpg', alt: 'The One Clinic — Leicester' },
+  { src: '/images/location2.jpg', alt: 'The One Clinic — interior' },
+  { src: '/images/location3.jpg', alt: 'The One Clinic — treatment room' },
+];
 
-        <motion.ol
-          className={styles.steps}
-          variants={stagger(0.15)}
-          initial="hidden"
-          whileInView="show"
-          viewport={VIEWPORT}
-          aria-label="Treatment process steps"
-        >
-          {STEPS.map((step, i) => (
-            <motion.li key={step.number} className={styles.step} variants={fadeUp}>
-              <div className={styles.stepNumber} aria-hidden="true">{step.number}</div>
-              {/* Connector line (hidden on last item via CSS) */}
-              {i < STEPS.length - 1 && (
-                <div className={styles.connector} aria-hidden="true" />
-              )}
-              <div className={styles.stepContent}>
-                <h3 className={styles.stepTitle}>{step.title}</h3>
-                <p className={styles.stepDesc}>{step.description}</p>
+const INTERVAL = 4000;
+
+export default function Process() {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActive((i) => (i + 1) % SLIDES.length);
+    }, INTERVAL);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <Section variant="light" data-section-theme="light" className={styles.section}>
+      <Container>
+        <div className={styles.layout}>
+
+          {/* ── Left: image slideshow ──────────────────────── */}
+          <motion.div
+            className={styles.imageCol}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <div className={styles.imageWrap}>
+              <AnimatePresence mode="sync">
+                <motion.div
+                  key={active}
+                  className={styles.slide}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.9, ease: 'easeInOut' }}
+                >
+                  <Image
+                    src={SLIDES[active].src}
+                    alt={SLIDES[active].alt}
+                    fill
+                    className={styles.image}
+                    sizes="(max-width: 900px) 100vw, 50vw"
+                    priority={active === 0}
+                  />
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Dots */}
+              <div className={styles.dots} role="tablist" aria-label="Clinic image slideshow">
+                {SLIDES.map((_, i) => (
+                  <button
+                    key={i}
+                    className={`${styles.dot} ${i === active ? styles.dotActive : ''}`}
+                    onClick={() => setActive(i)}
+                    role="tab"
+                    aria-selected={i === active}
+                    aria-label={`Show image ${i + 1} of ${SLIDES.length}`}
+                  />
+                ))}
               </div>
-            </motion.li>
-          ))}
-        </motion.ol>
+            </div>
+          </motion.div>
+
+          {/* ── Right: header + steps ──────────────────────── */}
+          <motion.div
+            className={styles.textCol}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.div className={styles.header} variants={fadeUp}>
+              <p className={styles.eyebrow}>The Journey</p>
+              <h2 className={styles.heading}>How It Works</h2>
+              <p className={styles.subtext}>
+                From your first visit to long-term results — here's what to expect
+                when you choose The One Clinic.
+              </p>
+            </motion.div>
+
+            <ol className={styles.steps} aria-label="Treatment process steps">
+              {STEPS.map((step) => (
+                <motion.li key={step.number} className={styles.step} variants={fadeUp}>
+                  <span className={styles.stepNumber} aria-hidden="true">{step.number}</span>
+                  <div className={styles.stepContent}>
+                    <h3 className={styles.stepTitle}>{step.title}</h3>
+                    <p className={styles.stepDesc}>{step.description}</p>
+                  </div>
+                </motion.li>
+              ))}
+            </ol>
+          </motion.div>
+
+        </div>
       </Container>
     </Section>
   );

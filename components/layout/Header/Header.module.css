@@ -37,20 +37,22 @@
   flex-shrink: 0;
 }
 
-.logoText {
-  font-size: var(--text-body);
-  font-weight: var(--fw-bold);
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-  transition: color 0.3s ease;
+.logoImg {
+  display: block;
+  width: auto;
+  height: 36px;
+  object-fit: contain;
+  transition: filter 0.3s ease;
 }
 
-.header[data-theme='light'] .logoText {
-  color: var(--color-text-dark);
+/* On light header (scrolled over dark section) → logo is dark */
+.header[data-theme='light'] .logoImg {
+  filter: brightness(0);
 }
 
-.header[data-theme='dark'] .logoText {
-  color: var(--color-text-light);
+/* On dark header (hero / scrolled over light section) → logo is white */
+.header[data-theme='dark'] .logoImg {
+  filter: brightness(0) invert(1);
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -64,16 +66,17 @@
 .navList {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
 .navLink {
   position: relative;
   display: inline-flex;
   flex-direction: column;
-  font-size: var(--text-small);
+  font-size: 0.8125rem;
   font-weight: var(--fw-medium);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
   transition: opacity 0.2s ease;
 }
 
@@ -124,8 +127,8 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  padding: 10px 24px;
-  font-size: var(--text-small);
+  padding: 9px 20px;
+  font-size: 0.8125rem;
   font-weight: var(--fw-medium);
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -281,7 +284,7 @@
 /* ═══════════════════════════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════════════════════════ */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .desktopNav,
   .ctaLink {
     display: none;

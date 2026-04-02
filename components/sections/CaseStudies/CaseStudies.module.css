@@ -1,3 +1,4 @@
+/* ── Header ─────────────────────────────────────────────────────── */
 .header {
   text-align: center;
   max-width: 560px;
@@ -27,117 +28,135 @@
   color: rgb(255 255 255 / 0.5);
 }
 
-/* ── Grid ─────────────────────────────────── */
+/* ── Desktop 3-column grid ──────────────────────────────────────── */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-2);
+  gap: var(--space-3);
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--color-border-dark);
-  border-radius: var(--radius-md);
+.imageCard {
+  position: relative;
+  width: 100%;
+  /* Height auto-derives from the image's natural aspect ratio */
+  aspect-ratio: auto;
+  border-radius: 0.75rem;
   overflow: hidden;
+  background: #111;
 }
 
-/* ── Image placeholder ────────────────────── */
-.imagePlaceholder {
-  aspect-ratio: 4 / 3;
-  background-color: #111111;
+/* Make next/image fill the card and show full image (contain, not cover) */
+.cardImage {
+  object-fit: contain !important;
+  /* next/image with fill needs position:relative on parent and explicit height */
+}
+
+/*
+ * Because next/image fill gives the img position:absolute, we need to give the
+ * card a real height. We size it to the image's natural ratio by making the img
+ * itself define the height via an invisible spacer trick: set padding-bottom to
+ * give the card enough room. The before-after images are roughly square.
+ * We use padding-top on the card wrapper instead of aspect-ratio so the full
+ * image is always visible. Adjust the % if the images have a different ratio.
+ */
+.imageCard::before {
+  content: '';
+  display: block;
+  padding-top: 100%; /* 1:1 — adjust if images are taller/shorter */
+}
+
+/* ── Mobile only visibility ─────────────────────────────────────── */
+.mobileOnly {
+  display: none;
+}
+
+/* ── Mobile slideshow ───────────────────────────────────────────── */
+.slideshow {
+  position: relative;
+}
+
+.slideshowTrack {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background: #111;
+  touch-action: pan-y;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+}
+
+.slideImage {
+  object-fit: contain !important;
+}
+
+/* Arrow buttons */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid var(--color-border-dark);
-  background-image:
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-  background-size: 40px 40px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 
-.placeholderLabel {
-  font-size: var(--text-small);
-  font-weight: var(--fw-medium);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgb(255 255 255 / 0.2);
+.arrow:hover {
+  background: rgba(0, 0, 0, 0.8);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
-/* ── Card body ────────────────────────────── */
-.body {
-  padding: var(--space-3);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex: 1;
-}
+.arrowPrev { left: var(--space-2); }
+.arrowNext { right: var(--space-2); }
 
-.tag {
-  display: inline-block;
-  font-size: 10px;
-  font-weight: var(--fw-medium);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgb(255 255 255 / 0.9);
-  border: 1px solid rgb(255 255 255 / 0.2);
-  border-radius: var(--radius-sm);
-  padding: 3px 8px;
-  align-self: flex-start;
-  margin-bottom: 4px;
-}
-
-.cardTitle {
-  font-size: var(--text-body);
-  font-weight: var(--fw-bold);
-  color: var(--color-text-light);
-  letter-spacing: -0.01em;
-}
-
-.area {
-  font-size: var(--text-small);
-  font-weight: var(--fw-medium);
-  color: rgb(255 255 255 / 0.4);
-  letter-spacing: 0.02em;
-}
-
-.outcome {
-  font-size: var(--text-small);
-  line-height: var(--lh-normal);
-  color: rgb(255 255 255 / 0.55);
-}
-
-/* ── CTA ──────────────────────────────────── */
-.cta {
-  margin-top: var(--space-5);
+/* Pagination dots */
+.dots {
   display: flex;
   justify-content: center;
-}
-
-.ctaLink {
-  display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: var(--text-small);
-  font-weight: var(--fw-medium);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--color-white);
-  border-bottom: 1px solid rgb(255 255 255 / 0.3);
-  padding-bottom: 4px;
-  transition: border-color 0.2s ease, gap 0.2s ease;
+  margin-top: var(--space-3);
 }
 
-.ctaLink:hover { border-color: var(--color-white); gap: 12px; }
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
 
-.arrow { transition: transform 0.2s ease; }
-.ctaLink:hover .arrow { transform: translateX(3px); }
+.dot:hover {
+  background: rgba(255, 255, 255, 0.65);
+}
 
-/* ── Responsive ───────────────────────────── */
+.dotActive {
+  background: white;
+  transform: scale(1.35);
+}
+
+/* ── Responsive ─────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .grid { grid-template-columns: repeat(2, 1fr); }
+  .grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-2); }
 }
 
 @media (max-width: 768px) {
-  .grid { grid-template-columns: 1fr; }
+  /* Hide desktop grid, show mobile slideshow */
+  .grid     { display: none; }
+  .mobileOnly { display: block; }
 }

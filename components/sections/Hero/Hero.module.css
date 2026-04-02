@@ -11,6 +11,48 @@
   overflow: hidden;
 }
 
+/* ── Background video ────────────────────────────────────────── */
+.videoBg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/*
+ * Cover technique: the iframe is 16:9. We need it to fill any
+ * viewport shape (tall portrait on mobile, wide landscape on desktop).
+ * Solution: size it so it's always at least as wide AND as tall as the
+ * container, then centre it.
+ *
+ *   width  = max(100vw, 100vh × 16/9)
+ *   height = max(100vh, 100vw × 9/16)
+ */
+.videoSizer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: max(100%, calc(100vh * 16 / 9));
+  height: max(100%, calc(100vw * 9 / 16));
+  pointer-events: none;
+}
+
+.videoIframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* ── Overlay dims the video so foreground text pops ─────────── */
+.videoOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.52);
+  z-index: 1;
+}
+
 /* ── Subtle grid texture ─────────────────────────────────────── */
 .gridOverlay {
   position: absolute;
@@ -20,12 +62,13 @@
     linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
   background-size: 80px 80px;
   pointer-events: none;
+  z-index: 2;
 }
 
 /* ── Content wrapper (Framer motion target for parallax) ─────── */
 .contentWrapper {
   position: relative;
-  z-index: 1;
+  z-index: 3;
   width: 100%;
   /* Header offset — header is fixed at 80px */
   padding-top: 80px;
@@ -38,7 +81,7 @@
   align-items: flex-start;
   gap: var(--space-3);
   max-width: 800px;
-  padding-block: var(--space-8);
+  padding-block: var(--space-5);
 }
 
 /* ── Eyebrow ─────────────────────────────────────────────────── */
@@ -123,7 +166,7 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  z-index: 1;
+  z-index: 3;
 }
 
 .scrollLine {
@@ -151,7 +194,7 @@
   .content {
     max-width: 640px;
     gap: var(--space-2);
-    padding-block: var(--space-7);
+    padding-block: var(--space-4);
   }
 }
 
@@ -168,7 +211,7 @@
   .content {
     max-width: 100%;
     gap: var(--space-2);
-    padding-block: var(--space-6);
+    padding-block: var(--space-3);
   }
 
   .subtext {

@@ -1,6 +1,13 @@
-.wrapper {
-  max-width: 480px;
-  margin-inline: auto;
+/* ── Two-column grid ────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  align-items: stretch; /* both columns share the same height */
+}
+
+/* ── Form column ────────────────────────────────────────────────── */
+.formCol {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
@@ -19,6 +26,7 @@
   font-weight: var(--fw-bold);
   letter-spacing: -0.02em;
   color: var(--color-text-dark);
+  line-height: 1.1;
 }
 
 .subtext {
@@ -27,7 +35,6 @@
   margin-bottom: var(--space-2);
 }
 
-/* ── Form ─────────────────────────────────── */
 .form {
   display: flex;
   flex-direction: column;
@@ -46,14 +53,129 @@
   margin-top: 4px;
 }
 
-/* ── Success state ────────────────────────── */
+/* ── Map column ─────────────────────────────────────────────────── */
+.mapCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  /* stretch to fill grid row height so map can grow */
+  height: 100%;
+}
+
+/* ── Contact info ───────────────────────────────────────────────── */
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.contactRow {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.contactIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-light);
+  background: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-dark);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.contactLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 2px;
+}
+
+.contactValue {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text-dark);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contactValue:hover {
+  color: var(--color-text-muted);
+}
+
+/* ── Map embed wrapper — grows to fill remaining column height ───── */
+.mapWrap {
+  position: relative;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid var(--color-border-light);
+  flex: 1;          /* fill remaining height after contact info */
+  min-height: 280px; /* never collapse below this */
+}
+
+.mapIframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* ── Transparent clickable overlay ─────────────────────────────── */
+.mapOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: var(--space-3);
+  text-decoration: none;
+  /* Subtle gradient at bottom so the CTA badge is readable */
+  background: linear-gradient(to top, rgb(0 0 0 / 0.18) 0%, transparent 40%);
+  transition: background 0.2s ease;
+}
+
+.mapOverlay:hover {
+  background: linear-gradient(to top, rgb(0 0 0 / 0.30) 0%, transparent 50%);
+}
+
+.mapCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--color-white);
+  border-radius: 100px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.15);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.mapOverlay:hover .mapCta {
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.2);
+  transform: translateY(-1px);
+}
+
+/* ── Success state ──────────────────────────────────────────────── */
 .success {
+  max-width: 480px;
+  margin-inline: auto;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-2);
-  padding-block: var(--space-4);
+  gap: var(--space-3);
+  padding-block: var(--space-6);
 }
 
 .successIcon {
@@ -66,10 +188,44 @@
   justify-content: center;
   font-size: var(--text-h3);
   color: var(--color-text-dark);
-  margin-inline: auto;
 }
 
-/* ── Mobile ───────────────────────────────── */
-@media (max-width: 768px) {
-  .heading { font-size: var(--text-h2); }
+.successHeading {
+  font-size: var(--text-h2);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+  color: var(--color-text-dark);
+}
+
+.successText {
+  color: var(--color-text-muted);
+  line-height: var(--lh-normal);
+}
+
+/* ── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-7);
+    align-items: start;
+  }
+
+  .mapCol {
+    height: auto;
+  }
+
+  .mapWrap {
+    flex: unset;
+    aspect-ratio: 16 / 9;
+  }
+
+  .heading {
+    font-size: var(--text-h3);
+  }
+}
+
+@media (max-width: 480px) {
+  .mapWrap {
+    aspect-ratio: 4 / 3;
+  }
 }

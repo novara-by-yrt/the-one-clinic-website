@@ -35,17 +35,17 @@ export default function Accordion({
   }
 
   return (
-    <div className={`${styles.accordion} ${styles[theme]}`} role="list">
+    <div className={`${styles.accordion} ${styles[theme]}`}>
       {items.map((item, i) => {
-        const isOpen = openIndexes.has(i);
+        const isOpen    = openIndexes.has(i);
         const headingId = `accordion-heading-${i}`;
-        const panelId = `accordion-panel-${i}`;
+        const panelId   = `accordion-panel-${i}`;
+        const num       = String(i + 1).padStart(2, '0');
 
         return (
           <div
             key={i}
             className={`${styles.item} ${isOpen ? styles.open : ''}`}
-            role="listitem"
           >
             <h3 className={styles.heading}>
               <button
@@ -55,19 +55,26 @@ export default function Accordion({
                 aria-controls={panelId}
                 onClick={() => toggle(i)}
               >
+                {/* Number */}
+                <span className={styles.number} aria-hidden="true">{num}</span>
+
+                {/* Question */}
                 <span className={styles.question}>{item.question}</span>
+
+                {/* Down-arrow chevron — rotates 180° when open */}
                 <span className={styles.icon} aria-hidden="true">
                   <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
+                    className={styles.iconSvg}
+                    width="12"
+                    height="8"
+                    viewBox="0 0 12 8"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path
-                      d="M3 6L8 11L13 6"
+                    <polyline
+                      points="1,1.5 6,6.5 11,1.5"
                       stroke="currentColor"
-                      strokeWidth="1.5"
+                      strokeWidth="1.75"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
