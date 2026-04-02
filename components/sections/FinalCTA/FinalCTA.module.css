@@ -1,5 +1,29 @@
 .section {
-  border-top: 1px solid var(--color-border-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Background image + overlay ─────────────────────────────────── */
+.bgWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bgImage {
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.58);
+}
+
+/* ── Content sits above the bg ──────────────────────────────────── */
+.container {
+  position: relative;
+  z-index: 1;
 }
 
 .content {

@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
@@ -30,11 +31,24 @@ const BENEFITS = [
   },
 ];
 
-// Replace src with your clinic/team image when available
-const CLINIC_IMAGE = '/images/benefits-clinic.jpg';
-const HAS_IMAGE    = false; // set to true once image is uploaded
+const SLIDES = [
+  { src: '/images/Doctor1.jpg', alt: 'The One Clinic — Doctor 1' },
+  { src: '/images/Doctor2.jpg', alt: 'The One Clinic — Doctor 2' },
+];
+
+const INTERVAL = 3000; // ms
 
 export default function Benefits() {
+  const [active, setActive] = useState(0);
+
+  // Auto-advance every 3 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActive((i) => (i + 1) % SLIDES.length);
+    }, INTERVAL);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <Section variant="light" data-section-theme="light">
       <Container>
@@ -66,7 +80,7 @@ export default function Benefits() {
             </div>
           </motion.div>
 
-          {/* ── Right: clinic image ──────────────────────────── */}
+          {/* ── Right: auto-scrolling doctor image slideshow ─ */}
           <motion.div
             className={styles.imageCol}
             variants={fadeUp}
@@ -75,20 +89,40 @@ export default function Benefits() {
             viewport={VIEWPORT}
           >
             <div className={styles.imageWrap}>
-              {HAS_IMAGE ? (
-                <Image
-                  src={CLINIC_IMAGE}
-                  alt="The One Clinic — expert team and environment"
-                  fill
-                  className={styles.image}
-                  sizes="(max-width: 900px) 100vw, 50vw"
-                />
-              ) : (
-                /* Placeholder — replace with <Image> once image is uploaded */
-                <div className={styles.imagePlaceholder} aria-hidden="true">
-                  <span className={styles.imagePlaceholderText}>Clinic Image</span>
-                </div>
-              )}
+              {/* Crossfade slides */}
+              <AnimatePresence mode="sync">
+                <motion.div
+                  key={active}
+                  className={styles.slide}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.8, ease: 'easeInOut' }}
+                >
+                  <Image
+                    src={SLIDES[active].src}
+                    alt={SLIDES[active].alt}
+                    fill
+                    className={styles.image}
+                    sizes="(max-width: 900px) 100vw, 50vw"
+                    priority={active === 0}
+                  />
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Pagination dots — no arrows */}
+              <div className={styles.dots} role="tablist" aria-label="Doctor image slideshow">
+                {SLIDES.map((_, i) => (
+                  <button
+                    key={i}
+                    className={`${styles.dot} ${i === active ? styles.dotActive : ''}`}
+                    onClick={() => setActive(i)}
+                    role="tab"
+                    aria-selected={i === active}
+                    aria-label={`Show image ${i + 1} of ${SLIDES.length}`}
+                  />
+                ))}
+              </div>
             </div>
           </motion.div>
 

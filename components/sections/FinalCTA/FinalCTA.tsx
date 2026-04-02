@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
@@ -10,7 +11,20 @@ import styles from './FinalCTA.module.css';
 export default function FinalCTA() {
   return (
     <Section variant="dark" data-section-theme="dark" className={styles.section}>
-      <Container>
+      {/* Background image with dark overlay */}
+      <div className={styles.bgWrap} aria-hidden="true">
+        <Image
+          src="/images/Background image.jpg"
+          alt=""
+          fill
+          className={styles.bgImage}
+          sizes="100vw"
+          priority={false}
+        />
+        <div className={styles.overlay} />
+      </div>
+
+      <Container className={styles.container}>
         <motion.div
           className={styles.content}
           variants={stagger(0.2)}
