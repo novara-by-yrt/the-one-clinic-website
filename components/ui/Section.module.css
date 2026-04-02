@@ -1,0 +1,55 @@
+/* ── Base vertical rhythm ─────────────────── */
+.section {
+  width: 100%;
+  padding-block: var(--space-8); /* 96px desktop */
+}
+
+/* ── Light variant ───────────────────────── */
+.light {
+  background-color: var(--color-bg-light);
+  color: var(--color-text-dark);
+  border-top: 1px solid var(--color-border-light);
+}
+
+.light h1,
+.light h2,
+.light h3,
+.light h4 {
+  color: var(--color-text-dark);
+}
+
+.light p {
+  color: var(--color-text-muted);
+}
+
+/* ── Dark variant ────────────────────────── */
+.dark {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-light);
+  border-top: 1px solid var(--color-border-dark);
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4 {
+  color: var(--color-text-light);
+}
+
+.dark p {
+  color: rgb(255 255 255 / 0.65);
+}
+
+/* ── Tablet (1024px) ─────────────────────── */
+@media (max-width: 1024px) {
+  .section {
+    padding-block: var(--space-6); /* 64px */
+  }
+}
+
+/* ── Mobile (768px) ──────────────────────── */
+@media (max-width: 768px) {
+  .section {
+    padding-block: var(--space-5); /* 48px */
+  }
+}

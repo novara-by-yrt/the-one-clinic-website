@@ -1,0 +1,50 @@
+/* ── Base ─────────────────────────────────── */
+.card {
+  padding: var(--space-3); /* 24px */
+  border-radius: var(--radius-md); /* 12px */
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+
+/* ── Light ────────────────────────────────── */
+.light {
+  background-color: var(--color-bg-light);
+  border: 1px solid var(--color-border-light);
+  color: var(--color-text-dark);
+}
+
+/* ── Dark ─────────────────────────────────── */
+.dark {
+  background-color: var(--color-bg-dark);
+  border: 1px solid var(--color-border-dark);
+  color: var(--color-text-light);
+}
+
+/* ── Hover lift ──────────────────────────── */
+.hoverable:hover {
+  transform: translateY(-4px);
+}
+
+.light.hoverable:hover {
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.08);
+}
+
+.dark.hoverable:hover {
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.6);
+}
+
+/* ── Tablet ───────────────────────────────── */
+@media (max-width: 1024px) {
+  .card {
+    padding: var(--space-3);
+  }
+}
+
+/* ── Mobile ───────────────────────────────── */
+@media (max-width: 768px) {
+  .card {
+    padding: var(--space-2); /* 16px */
+    border-radius: var(--radius-sm);
+  }
+}

@@ -1,0 +1,128 @@
+/* ── Root ─────────────────────────────────── */
+.accordion {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Item ─────────────────────────────────── */
+.item {
+  border-bottom: 1px solid transparent;
+}
+
+.light .item,
+.accordion.light .item {
+  border-bottom-color: var(--color-border-light);
+}
+
+.dark .item,
+.accordion.dark .item {
+  border-bottom-color: var(--color-border-dark);
+}
+
+.item:first-child {
+  border-top: 1px solid transparent;
+}
+
+.accordion.light .item:first-child {
+  border-top-color: var(--color-border-light);
+}
+
+.accordion.dark .item:first-child {
+  border-top-color: var(--color-border-dark);
+}
+
+/* ── Heading (reset h3) ──────────────────── */
+.heading {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-transform: none;
+}
+
+/* ── Trigger button ──────────────────────── */
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  width: 100%;
+  padding-block: var(--space-3);
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity var(--duration-fast) var(--ease-default);
+}
+
+.trigger:hover {
+  opacity: 0.65;
+}
+
+/* ── Question text ───────────────────────── */
+.question {
+  font-size: var(--text-body);
+  font-weight: var(--fw-medium);
+}
+
+.accordion.light .question {
+  color: var(--color-text-dark);
+}
+
+.accordion.dark .question {
+  color: var(--color-text-light);
+}
+
+/* ── Chevron icon ────────────────────────── */
+.icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.accordion.light .icon {
+  color: var(--color-text-dark);
+}
+
+.accordion.dark .icon {
+  color: var(--color-text-light);
+}
+
+.open .icon {
+  transform: rotate(180deg);
+}
+
+/* ── Collapse panel — CSS grid trick ─────── */
+.body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--duration-base) var(--ease-out);
+  overflow: hidden;
+}
+
+.open .body {
+  grid-template-rows: 1fr;
+}
+
+/* ── Inner must have overflow: hidden ────── */
+.bodyInner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ── Answer text ─────────────────────────── */
+.answer {
+  padding-bottom: var(--space-3);
+  font-size: var(--text-body);
+  line-height: var(--lh-normal);
+}
+
+.accordion.light .answer {
+  color: var(--color-text-muted);
+}
+
+.accordion.dark .answer {
+  color: rgb(255 255 255 / 0.6);
+}
