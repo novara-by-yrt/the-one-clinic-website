@@ -9,10 +9,11 @@ import styles from './Header.module.css';
 type Theme = 'light' | 'dark';
 
 const NAV_LINKS = [
-  { label: 'Home',       href: '/' },
-  { label: 'Treatments', href: '/treatments' },
-  { label: 'Results',    href: '#results' },
-  { label: 'About',      href: '#about' },
+  { label: 'About Our Clinic',   href: '#about' },
+  { label: 'Treatments',         href: '/treatments' },
+  { label: 'Conditions',         href: '#conditions' },
+  { label: 'Membership',         href: '#membership' },
+  { label: 'Patient Experience', href: '#results' },
 ];
 
 // ── Framer Motion variants ──────────────────────────────────────

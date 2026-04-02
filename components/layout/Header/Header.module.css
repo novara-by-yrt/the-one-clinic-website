@@ -64,16 +64,17 @@
 .navList {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
 .navLink {
   position: relative;
   display: inline-flex;
   flex-direction: column;
-  font-size: var(--text-small);
+  font-size: 0.8125rem;
   font-weight: var(--fw-medium);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
   transition: opacity 0.2s ease;
 }
 
@@ -124,8 +125,8 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  padding: 10px 24px;
-  font-size: var(--text-small);
+  padding: 9px 20px;
+  font-size: 0.8125rem;
   font-weight: var(--fw-medium);
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -281,7 +282,7 @@
 /* ═══════════════════════════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════════════════════════ */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .desktopNav,
   .ctaLink {
     display: none;
