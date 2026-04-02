@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
+import Script from 'next/script';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 import styles from './Hero.module.css';
@@ -49,8 +50,27 @@ export default function Hero() {
       aria-label="Hero"
       data-section-theme="dark"
     >
+      {/* ── Wistia background video ─────────────────────────── */}
+      <div className={styles.videoBg} aria-hidden="true">
+        <div className={styles.videoSizer}>
+          <iframe
+            src="https://fast.wistia.net/embed/iframe/hu75ttgmlm?web_component=true&seo=false&autoPlay=true&silentAutoPlay=true&muted=true&loop=true&endVideoBehavior=loop&controlsVisibleOnLoad=false&playbar=false&fullscreenButton=false&volumeControl=false&settingsControl=false&playsinline=true"
+            title=""
+            allow="autoplay; fullscreen"
+            allowFullScreen
+            frameBorder="0"
+            scrolling="no"
+            className={styles.videoIframe}
+          />
+        </div>
+      </div>
+      {/* ── Dark overlay so text stays readable ─────────────── */}
+      <div className={styles.videoOverlay} aria-hidden="true" />
+
       {/* ── Subtle grid background texture ─────────────────── */}
       <div className={styles.gridOverlay} aria-hidden="true" />
+
+      <Script src="https://fast.wistia.net/player.js" strategy="lazyOnload" />
 
       {/* ── Animated content wrapper ────────────────────────── */}
       <motion.div className={styles.contentWrapper} style={{ y: contentY, opacity }}>
