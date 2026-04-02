@@ -1,6 +1,8 @@
 @import './variables.css';
 
-/* ── Reset ───────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════
+   RESET
+═══════════════════════════════════════════════════════════════ */
 *,
 *::before,
 *::after {
@@ -18,15 +20,15 @@ html {
 
 body {
   font-family: var(--font-sans);
-  font-size: var(--text-base);
-  line-height: var(--leading-normal);
-  color: var(--color-text);
-  background-color: var(--color-bg);
+  font-size: var(--text-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-normal);
+  color: var(--color-text-dark);
+  background-color: var(--color-bg-light);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ── Media ───────────────────────────────────────────────────── */
 img,
 video,
 svg {
@@ -34,15 +36,9 @@ svg {
   max-width: 100%;
 }
 
-/* ── Typography ──────────────────────────────────────────────── */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: var(--font-bold);
-  line-height: var(--leading-tight);
-  color: var(--color-neutral-900);
-}
-
-p {
-  line-height: var(--leading-relaxed);
+ul,
+ol {
+  list-style: none;
 }
 
 a {
@@ -50,13 +46,10 @@ a {
   text-decoration: none;
 }
 
-/* ── Lists ───────────────────────────────────────────────────── */
-ul, ol {
-  list-style: none;
-}
-
-/* ── Forms ───────────────────────────────────────────────────── */
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   font: inherit;
   color: inherit;
 }
@@ -67,22 +60,151 @@ button {
   border: none;
 }
 
-/* ── Focus ───────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════
+   TYPOGRAPHY
+═══════════════════════════════════════════════════════════════ */
+h1 {
+  font-size: var(--text-h1);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: var(--text-h2);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-size: var(--text-h3);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.01em;
+}
+
+h4 {
+  font-size: var(--text-body);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-normal);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: var(--text-body);
+  line-height: var(--lh-normal);
+  color: var(--color-text-muted);
+}
+
+/* ── Tablet (1024px) ─────────────────────── */
+@media (max-width: 1024px) {
+  h1 { font-size: 3rem; }       /* 48px */
+  h2 { font-size: 2.25rem; }    /* 36px */
+  h3 { font-size: 1.5rem; }     /* 24px */
+}
+
+/* ── Mobile (768px) ──────────────────────── */
+@media (max-width: 768px) {
+  h1 { font-size: 2.25rem; }    /* 36px */
+  h2 { font-size: 1.75rem; }    /* 28px */
+  h3 { font-size: 1.25rem; }    /* 20px */
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   FOCUS
+═══════════════════════════════════════════════════════════════ */
 :focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--color-black);
   outline-offset: 3px;
   border-radius: var(--radius-sm);
 }
 
-/* ── Container utility ───────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════
+   SECTION THEME SYSTEM
+   Alternating pattern: .section-light → .section-dark → repeat
+═══════════════════════════════════════════════════════════════ */
+.section-light {
+  background-color: var(--color-bg-light);
+  color: var(--color-text-dark);
+  border-top: 1px solid var(--color-border-light);
+}
+
+.section-light h1,
+.section-light h2,
+.section-light h3,
+.section-light h4 {
+  color: var(--color-text-dark);
+}
+
+.section-light p {
+  color: var(--color-text-muted);
+}
+
+.section-dark {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-light);
+  border-top: 1px solid var(--color-border-dark);
+}
+
+.section-dark h1,
+.section-dark h2,
+.section-dark h3,
+.section-dark h4 {
+  color: var(--color-text-light);
+}
+
+.section-dark p {
+  color: rgb(255 255 255 / 0.65);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LAYOUT UTILITIES
+═══════════════════════════════════════════════════════════════ */
+
+/* Centered content wrapper */
 .container {
   width: 100%;
-  max-width: var(--container-xl);
+  max-width: var(--container-width);
   margin-inline: auto;
   padding-inline: var(--container-padding);
 }
 
-/* ── Visually hidden (accessibility) ────────────────────────── */
+/* Base section vertical rhythm */
+.section {
+  padding-block: var(--space-8); /* 96px desktop */
+}
+
+@media (max-width: 1024px) {
+  .section {
+    padding-block: var(--space-6); /* 64px tablet */
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-block: var(--space-5); /* 48px mobile */
+  }
+}
+
+/* Text alignment */
+.text-center {
+  text-align: center;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SITE WRAPPER
+═══════════════════════════════════════════════════════════════ */
+.site-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ACCESSIBILITY
+═══════════════════════════════════════════════════════════════ */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -94,15 +216,3 @@ button {
   white-space: nowrap;
   border-width: 0;
 }
-
-/* ── Site layout wrapper ─────────────────────────────────────── */
-.site-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100dvh;
-}
-
-/* ── Breakpoints (mobile-first reference)
-   --bp-tablet: 1024px
-   --bp-mobile: 768px
-──────────────────────────────────────────────────────────────── */
