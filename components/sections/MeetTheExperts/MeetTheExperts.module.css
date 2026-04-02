@@ -50,10 +50,9 @@
   min-width: 0;
   border-radius: 1.25rem;
   overflow: hidden;
-  /* Subtle border + shadow for the card frame */
-  border: 1px solid var(--color-border-light);
-  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.08);
-  background: #fff;
+  border: 1px solid rgb(255 255 255 / 0.08);
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.35);
+  background: #0a0a0a;
 }
 
 /* ── Animated inner: the sliding content ────────────────────────── */
@@ -112,7 +111,7 @@
   flex-direction: column;
   gap: var(--space-4);
   padding: var(--space-6) var(--space-6);
-  background: #fff;
+  background: #0a0a0a;
   justify-content: center;
 }
 
@@ -127,13 +126,13 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: rgb(255 255 255 / 0.4);
 }
 
 .doctorName {
   font-size: clamp(1.4rem, 2.5vw, 1.75rem);
   font-weight: var(--fw-bold);
-  color: var(--color-text-dark);
+  color: #fff;
   letter-spacing: -0.02em;
   line-height: 1.2;
 }
@@ -141,7 +140,7 @@
 .doctorRole {
   font-size: var(--text-small);
   font-weight: var(--fw-medium);
-  color: var(--color-text-muted);
+  color: rgb(255 255 255 / 0.5);
   letter-spacing: 0.02em;
 }
 
@@ -151,7 +150,7 @@
   display: block;
   width: 40px;
   height: 2px;
-  background: var(--color-text-dark);
+  background: rgb(255 255 255 / 0.25);
   margin-top: var(--space-2);
   border-radius: 2px;
 }
@@ -166,7 +165,7 @@
 .para {
   font-size: 0.9375rem;
   line-height: 1.7;
-  color: var(--color-text-muted);
+  color: rgb(255 255 255 / 0.65);
 }
 
 /* ── Speciality tag pills ────────────────────────────────────────── */
@@ -181,9 +180,9 @@
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: var(--color-text-dark);
-  background: #f4f4f4;
-  border: 1px solid var(--color-border-light);
+  color: rgb(255 255 255 / 0.85);
+  background: rgb(255 255 255 / 0.07);
+  border: 1px solid rgb(255 255 255 / 0.14);
   border-radius: 100px;
   padding: 5px 12px;
 }
