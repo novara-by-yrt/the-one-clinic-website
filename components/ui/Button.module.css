@@ -1,0 +1,72 @@
+/* ── Base ─────────────────────────────────── */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 32px;
+  font-size: var(--text-small);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    transform var(--duration-fast) var(--ease-out),
+    opacity var(--duration-fast) var(--ease-out);
+  user-select: none;
+}
+
+.button:hover {
+  transform: scale(1.02);
+  opacity: 0.88;
+}
+
+.button:active {
+  transform: scale(0.98);
+  opacity: 1;
+}
+
+/* ── Primary — light section ─────────────── */
+.primary.light {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
+}
+
+/* ── Primary — dark section ──────────────── */
+.primary.dark {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-color: var(--color-white);
+}
+
+/* ── Secondary — light section ───────────── */
+.secondary.light {
+  background-color: transparent;
+  color: var(--color-black);
+  border-color: var(--color-black);
+}
+
+/* ── Secondary — dark section ────────────── */
+.secondary.dark {
+  background-color: transparent;
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+/* ── Disabled ─────────────────────────────── */
+.button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── Mobile ──────────────────────────────── */
+@media (max-width: 768px) {
+  .button {
+    padding: 12px 24px;
+  }
+}

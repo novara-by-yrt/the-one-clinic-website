@@ -1,0 +1,61 @@
+/* ── Base vertical rhythm ─────────────────── */
+.section {
+  width: 100%;
+  padding-block: var(--space-8); /* 96px desktop */
+}
+
+/* ── Light variant ───────────────────────── */
+.light {
+  background-color: var(--color-bg-light);
+  color: var(--color-text-dark);
+  border-top: 1px solid var(--color-border-light);
+}
+
+/*
+  Use :where() to give these cascade rules zero class-level specificity.
+  This lets any component CSS Module class (specificity 0,1,0) override them
+  without needing !important — :where(.light) contributes 0, only the element
+  tag (0,0,1) counts, so component classes (0,1,0) always win.
+*/
+:where(.light) h1,
+:where(.light) h2,
+:where(.light) h3,
+:where(.light) h4 {
+  color: var(--color-text-dark);
+}
+
+:where(.light) p {
+  color: var(--color-text-muted);
+}
+
+/* ── Dark variant ────────────────────────── */
+.dark {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-light);
+  border-top: 1px solid var(--color-border-dark);
+}
+
+:where(.dark) h1,
+:where(.dark) h2,
+:where(.dark) h3,
+:where(.dark) h4 {
+  color: var(--color-text-light);
+}
+
+:where(.dark) p {
+  color: rgb(255 255 255 / 0.65);
+}
+
+/* ── Tablet (1024px) ─────────────────────── */
+@media (max-width: 1024px) {
+  .section {
+    padding-block: var(--space-6); /* 64px */
+  }
+}
+
+/* ── Mobile (768px) ──────────────────────── */
+@media (max-width: 768px) {
+  .section {
+    padding-block: var(--space-5); /* 48px */
+  }
+}

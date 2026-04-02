@@ -1,0 +1,198 @@
+/* ═══════════════════════════════════════════════════════════════
+   HERO SECTION
+═══════════════════════════════════════════════════════════════ */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  background-color: var(--color-bg-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ── Subtle grid texture ─────────────────────────────────────── */
+.gridOverlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+}
+
+/* ── Content wrapper (Framer motion target for parallax) ─────── */
+.contentWrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  /* Header offset — header is fixed at 80px */
+  padding-top: 80px;
+}
+
+/* ── Content block ───────────────────────────────────────────── */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  max-width: 800px;
+  padding-block: var(--space-8);
+}
+
+/* ── Eyebrow ─────────────────────────────────────────────────── */
+.eyebrow {
+  font-size: var(--text-small);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.45);
+  line-height: var(--lh-normal);
+}
+
+/* ── Headline ────────────────────────────────────────────────── */
+.headline {
+  font-size: clamp(2.5rem, 6vw, var(--text-h1)); /* fluid: 40px → 64px */
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.03em;
+  color: var(--color-text-light);
+  /* Prevent orphaned single word on last line */
+  text-wrap: balance;
+}
+
+.headlineAccent {
+  font-style: italic;
+  color: rgb(255 255 255 / 0.55);
+}
+
+/* ── Subtext ─────────────────────────────────────────────────── */
+.subtext {
+  font-size: var(--text-body);
+  font-weight: var(--fw-regular);
+  line-height: 1.65;
+  color: rgb(255 255 255 / 0.5);
+  max-width: 480px;
+  text-wrap: pretty;
+}
+
+/* ── CTAs row ────────────────────────────────────────────────── */
+.ctas {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding-top: var(--space-2);
+}
+
+/* ── Secondary CTA link ──────────────────────────────────────── */
+.secondaryCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-small);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.02em;
+  color: rgb(255 255 255 / 0.55);
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.secondaryCta:hover {
+  color: var(--color-white);
+  gap: 12px;
+}
+
+.arrow {
+  display: inline-block;
+  font-style: normal;
+  transition: transform 0.2s ease;
+}
+
+.secondaryCta:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* ── Scroll indicator ────────────────────────────────────────── */
+.scrollIndicator {
+  position: absolute;
+  bottom: var(--space-4);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 1;
+}
+
+.scrollLine {
+  display: block;
+  width: 1px;
+  height: 40px;
+  background: rgb(255 255 255 / 0.3);
+  transform-origin: top;
+}
+
+.scrollLabel {
+  font-size: 10px;
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.3);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════════ */
+
+/* ── Tablet (1024px) ─────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .content {
+    max-width: 640px;
+    gap: var(--space-2);
+    padding-block: var(--space-7);
+  }
+}
+
+/* ── Mobile (768px) ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 100svh;
+  }
+
+  .contentWrapper {
+    padding-top: 64px; /* reduced header height on mobile */
+  }
+
+  .content {
+    max-width: 100%;
+    gap: var(--space-2);
+    padding-block: var(--space-6);
+  }
+
+  .subtext {
+    max-width: 100%;
+  }
+
+  .ctas {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: var(--space-2);
+  }
+
+  /* Full-width button on mobile */
+  .ctas > :first-child {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .secondaryCta {
+    justify-content: center;
+  }
+
+  .scrollIndicator {
+    display: none; /* clean on mobile */
+  }
+}

@@ -1,0 +1,102 @@
+.header {
+  text-align: center;
+  max-width: 560px;
+  margin-inline: auto;
+  margin-bottom: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.eyebrow {
+  font-size: var(--text-small);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.35);
+}
+
+.heading {
+  font-size: var(--text-h2);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+  color: var(--color-text-light);
+}
+
+.subtext {
+  color: rgb(255 255 255 / 0.5);
+  line-height: var(--lh-normal);
+}
+
+/* ── Grid ─────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+}
+
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTitle {
+  font-size: var(--text-h3);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.01em;
+  color: var(--color-text-light);
+  margin-bottom: var(--space-2);
+}
+
+.cardDesc {
+  font-size: var(--text-small);
+  line-height: var(--lh-normal);
+  color: rgb(255 255 255 / 0.5);
+  flex: 1;
+}
+
+/* ── CTA ──────────────────────────────────── */
+.cta {
+  margin-top: var(--space-5);
+  display: flex;
+  justify-content: center;
+}
+
+.ctaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-small);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  border-bottom: 1px solid rgb(255 255 255 / 0.3);
+  padding-bottom: 4px;
+  transition: border-color 0.2s ease, gap 0.2s ease;
+}
+
+.ctaLink:hover {
+  border-color: var(--color-white);
+  gap: 12px;
+}
+
+.arrow {
+  transition: transform 0.2s ease;
+}
+
+.ctaLink:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* ── Responsive ───────────────────────────── */
+@media (max-width: 1024px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+  .header { margin-bottom: var(--space-4); }
+  .heading { font-size: var(--text-h2); }
+}
