@@ -89,7 +89,7 @@
   font-weight: var(--fw-medium);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-text-muted) !important;
+  color: var(--color-text-muted);
 }
 
 .eyebrowLight {
@@ -97,21 +97,21 @@
   font-weight: var(--fw-medium);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgb(255 255 255 / 0.35) !important;
+  color: rgb(255 255 255 / 0.35);
 }
 
 .headingDark {
   font-size: var(--text-h2);
   font-weight: var(--fw-bold);
   letter-spacing: -0.02em;
-  color: var(--color-text-dark) !important;
+  color: var(--color-text-dark);
 }
 
 .headingLight {
   font-size: var(--text-h2);
   font-weight: var(--fw-bold);
   letter-spacing: -0.02em;
-  color: var(--color-text-light) !important;
+  color: var(--color-text-light);
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -137,7 +137,7 @@
 .overviewPara {
   font-size: var(--text-body);
   line-height: 1.75;
-  color: var(--color-text-muted) !important;
+  color: var(--color-text-muted);
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -165,7 +165,7 @@
 .benefitDesc {
   font-size: var(--text-small);
   line-height: var(--lh-normal);
-  color: rgb(255 255 255 / 0.5) !important;
+  color: rgb(255 255 255 / 0.5);
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -215,7 +215,7 @@
 .stepDesc {
   font-size: var(--text-small);
   line-height: var(--lh-normal);
-  color: var(--color-text-muted) !important;
+  color: var(--color-text-muted);
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -247,7 +247,7 @@
   font-weight: var(--fw-bold);
   line-height: var(--lh-tight);
   letter-spacing: -0.03em;
-  color: var(--color-text-light) !important;
+  color: var(--color-text-light);
 }
 
 .ctaAccent {
@@ -257,7 +257,7 @@
 
 .ctaSubtext {
   font-size: var(--text-body);
-  color: rgb(255 255 255 / 0.5) !important;
+  color: rgb(255 255 255 / 0.5);
   max-width: 380px;
 }
 

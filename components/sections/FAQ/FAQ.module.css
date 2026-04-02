@@ -11,14 +11,14 @@
   font-weight: var(--fw-medium);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgb(255 255 255 / 0.35) !important;
+  color: rgb(255 255 255 / 0.35);
 }
 
 .heading {
   font-size: var(--text-h2);
   font-weight: var(--fw-bold);
   letter-spacing: -0.02em;
-  color: var(--color-text-light) !important;
+  color: var(--color-text-light);
 }
 
 .body {

@@ -16,6 +16,8 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  /* Prevent horizontal scroll from any overflowing child */
+  overflow-x: hidden;
 }
 
 body {
@@ -27,6 +29,7 @@ body {
   background-color: var(--color-bg-light);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 img,
@@ -122,24 +125,12 @@ p {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   SECTION THEME SYSTEM
-   Alternating pattern: .section-light → .section-dark → repeat
+   SECTION THEME SYSTEM (global utility classes)
 ═══════════════════════════════════════════════════════════════ */
 .section-light {
   background-color: var(--color-bg-light);
   color: var(--color-text-dark);
   border-top: 1px solid var(--color-border-light);
-}
-
-.section-light h1,
-.section-light h2,
-.section-light h3,
-.section-light h4 {
-  color: var(--color-text-dark);
-}
-
-.section-light p {
-  color: var(--color-text-muted);
 }
 
 .section-dark {
@@ -148,22 +139,9 @@ p {
   border-top: 1px solid var(--color-border-dark);
 }
 
-.section-dark h1,
-.section-dark h2,
-.section-dark h3,
-.section-dark h4 {
-  color: var(--color-text-light);
-}
-
-.section-dark p {
-  color: rgb(255 255 255 / 0.65);
-}
-
 /* ═══════════════════════════════════════════════════════════════
    LAYOUT UTILITIES
 ═══════════════════════════════════════════════════════════════ */
-
-/* Centered content wrapper */
 .container {
   width: 100%;
   max-width: var(--container-width);
@@ -171,24 +149,18 @@ p {
   padding-inline: var(--container-padding);
 }
 
-/* Base section vertical rhythm */
 .section {
-  padding-block: var(--space-8); /* 96px desktop */
+  padding-block: var(--space-8);
 }
 
 @media (max-width: 1024px) {
-  .section {
-    padding-block: var(--space-6); /* 64px tablet */
-  }
+  .section { padding-block: var(--space-6); }
 }
 
 @media (max-width: 768px) {
-  .section {
-    padding-block: var(--space-5); /* 48px mobile */
-  }
+  .section { padding-block: var(--space-5); }
 }
 
-/* Text alignment */
 .text-center {
   text-align: center;
 }
@@ -200,6 +172,30 @@ p {
   display: flex;
   flex-direction: column;
   min-height: 100dvh;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SKIP TO CONTENT
+═══════════════════════════════════════════════════════════════ */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-3);
+  z-index: 9999;
+  padding: 12px 20px;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font-size: var(--text-small);
+  font-weight: var(--fw-medium);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: var(--space-2);
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -215,4 +211,24 @@ p {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   REDUCED MOTION
+   Disables Framer Motion animations for users who prefer it.
+   The `transform` and `opacity` overrides catch motion.div
+   elements before they animate.
+═══════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

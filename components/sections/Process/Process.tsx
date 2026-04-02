@@ -54,7 +54,7 @@ export default function Process() {
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
-          role="list"
+          aria-label="Treatment process steps"
         >
           {STEPS.map((step, i) => (
             <motion.li key={step.number} className={styles.step} variants={fadeUp}>

@@ -11,14 +11,14 @@
   font-weight: var(--fw-medium);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-text-muted) !important;
+  color: var(--color-text-muted);
 }
 
 .heading {
   font-size: var(--text-h2);
   font-weight: var(--fw-bold);
   letter-spacing: -0.02em;
-  color: var(--color-text-dark) !important;
+  color: var(--color-text-dark);
 }
 
 /* ── Steps row ────────────────────────────── */
@@ -81,7 +81,7 @@
 .stepDesc {
   font-size: var(--text-small);
   line-height: var(--lh-normal);
-  color: var(--color-text-muted) !important;
+  color: var(--color-text-muted);
 }
 
 /* ── Responsive ───────────────────────────── */

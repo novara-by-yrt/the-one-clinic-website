@@ -148,7 +148,7 @@ export default function TreatmentTemplate({ treatment }: Props) {
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
-            role="list"
+            aria-label="Treatment process steps"
           >
             {process.map((step) => (
               <motion.li key={step.number} className={styles.processStep} variants={fadeUp}>

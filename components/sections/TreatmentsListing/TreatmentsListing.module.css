@@ -94,7 +94,7 @@
 .cardDesc {
   font-size: var(--text-small);
   line-height: var(--lh-normal);
-  color: var(--color-text-muted) !important;
+  color: var(--color-text-muted);
   flex: 1;
 }
 

@@ -13,18 +13,18 @@
   font-weight: var(--fw-medium);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgb(255 255 255 / 0.35) !important;
+  color: rgb(255 255 255 / 0.35);
 }
 
 .heading {
   font-size: var(--text-h2);
   font-weight: var(--fw-bold);
   letter-spacing: -0.02em;
-  color: var(--color-text-light) !important;
+  color: var(--color-text-light);
 }
 
 .subtext {
-  color: rgb(255 255 255 / 0.5) !important;
+  color: rgb(255 255 255 / 0.5);
 }
 
 /* ── Grid ─────────────────────────────────── */
@@ -97,14 +97,14 @@
 .area {
   font-size: var(--text-small);
   font-weight: var(--fw-medium);
-  color: rgb(255 255 255 / 0.4) !important;
+  color: rgb(255 255 255 / 0.4);
   letter-spacing: 0.02em;
 }
 
 .outcome {
   font-size: var(--text-small);
   line-height: var(--lh-normal);
-  color: rgb(255 255 255 / 0.55) !important;
+  color: rgb(255 255 255 / 0.55);
 }
 
 /* ── CTA ──────────────────────────────────── */

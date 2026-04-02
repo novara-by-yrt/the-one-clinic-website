@@ -11,14 +11,20 @@
   border-top: 1px solid var(--color-border-light);
 }
 
-.light h1,
-.light h2,
-.light h3,
-.light h4 {
+/*
+  Use :where() to give these cascade rules zero class-level specificity.
+  This lets any component CSS Module class (specificity 0,1,0) override them
+  without needing !important — :where(.light) contributes 0, only the element
+  tag (0,0,1) counts, so component classes (0,1,0) always win.
+*/
+:where(.light) h1,
+:where(.light) h2,
+:where(.light) h3,
+:where(.light) h4 {
   color: var(--color-text-dark);
 }
 
-.light p {
+:where(.light) p {
   color: var(--color-text-muted);
 }
 
@@ -29,14 +35,14 @@
   border-top: 1px solid var(--color-border-dark);
 }
 
-.dark h1,
-.dark h2,
-.dark h3,
-.dark h4 {
+:where(.dark) h1,
+:where(.dark) h2,
+:where(.dark) h3,
+:where(.dark) h4 {
   color: var(--color-text-light);
 }
 
-.dark p {
+:where(.dark) p {
   color: rgb(255 255 255 / 0.65);
 }
 
