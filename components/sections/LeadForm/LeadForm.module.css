@@ -47,6 +47,13 @@
   border: 1px solid var(--color-border-light);
   box-shadow: 0 4px 32px rgb(0 0 0 / 0.07);
   background: #fff;
+  padding-block: var(--space-6);
+}
+
+@media (max-width: 600px) {
+  .formWrap {
+    padding-block: 0;
+  }
 }
 
 /* ── Map / contact section below form ───────────────────────────── */
