@@ -32,6 +32,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     initials: 'GB',
     image: '/images/imgi_21_team-thumb-BEDI.jpg',
     role: 'General Practitioner & Psychiatrist',
+    profileUrl: '/team/dr-gunjan-bedi',
     bio: [
       'Dr Gunjan Bedi brings a unique and comprehensive perspective to patient care, combining qualifications in General Practice, Psychiatry, and Aesthetic Medicine.',
       'Her breadth of expertise allows her to take a truly holistic approach — addressing both the physical and psychological dimensions of each patient\'s health and wellbeing.',
