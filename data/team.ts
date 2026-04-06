@@ -6,6 +6,8 @@ export type TeamMember = {
   image?: string;
   role: string;
   bio: string[];
+  /** Overrides the default /our-team/[slug] URL for the Read More link */
+  profileUrl?: string;
 };
 
 export const TEAM_MEMBERS: TeamMember[] = [
@@ -15,10 +17,12 @@ export const TEAM_MEMBERS: TeamMember[] = [
     credentials: 'MBBS, MRCGP',
     initials: 'SV',
     image: '/images/imgi_20_team-thumb-VIRMANI.jpg',
-    role: 'General Practitioner',
+    role: 'Co-Founder & GP',
+    profileUrl: '/team/dr-sumit-virmani',
     bio: [
-      'Dr Sumit Virmani is a highly experienced General Practitioner holding the MBBS and MRCGP qualifications.',
-      'At The One Clinic, Dr Virmani combines his extensive background in general medicine with a passion for patient-centred care, ensuring every consultation is thorough, personalised, and results-focused.',
+      'Dr Sumit Virmani is co-founder of The One Clinic. He has extensive experience having worked as a medical doctor for over 15 years, with over 12 of these years working as a local GP.',
+      'His particular skills are in performing minor surgery, and the excision of skin lesions. Throughout his work he has been rewarded by the help he has given to his patients. He is especially proud when a person completes their treatment feeling elated by the transformation in their appearance. This has led to a growing interest in aesthetics, particularly with body contouring procedures and hair rejuvenation.',
+      'Dr Virmani is currently a locally practising GP. He aims to continue this service within his role at The One Clinic, as well as focusing on aesthetic procedures and ensuring his patients have access to a wide range of health and well-being treatments.',
     ],
   },
   {

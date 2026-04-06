@@ -3,7 +3,6 @@ import TeamHero from '@/components/sections/TeamHero';
 import TeamIntro from '@/components/sections/TeamIntro';
 import DoctorsGrid from '@/components/sections/DoctorsGrid';
 import TeamTrustStrip from '@/components/sections/TeamTrustStrip';
-import VideoSection from '@/components/sections/VideoSection';
 import Testimonials from '@/components/sections/Testimonials';
 import LeadForm from '@/components/sections/LeadForm';
 
@@ -20,7 +19,6 @@ export default function OurTeamPage() {
       <TeamIntro />
       <DoctorsGrid />
       <TeamTrustStrip />
-      <VideoSection />
       <Testimonials />
       <LeadForm />
     </>

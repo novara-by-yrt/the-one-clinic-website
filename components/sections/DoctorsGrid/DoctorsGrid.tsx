@@ -74,7 +74,7 @@ export default function DoctorsGrid() {
                     <p className={styles.credentials}>{member.credentials}</p>
                   )}
                 </div>
-                <Link href={`/our-team/${member.slug}`} className={styles.cta}>
+                <Link href={member.profileUrl ?? `/our-team/${member.slug}`} className={styles.cta}>
                   Read More
                   <span className={styles.ctaArrow} aria-hidden="true">→</span>
                 </Link>
