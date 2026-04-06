@@ -44,15 +44,17 @@ const SLIDE_VARIANTS = {
 const TRANSITION = { duration: 0.42, ease: [0.25, 0.1, 0.25, 1] as const };
 
 export default function MeetTheExperts() {
-  const [active, setActive]       = useState(0);
-  const [direction, setDirection] = useState(1);
-  const touchStartX               = useRef(0);
-  const touchStartY               = useRef(0);
+  const [active, setActive]           = useState(0);
+  const [direction, setDirection]     = useState(1);
+  const [bioExpanded, setBioExpanded] = useState(false);
+  const touchStartX                   = useRef(0);
+  const touchStartY                   = useRef(0);
 
   function go(next: number) {
     const clamped = (next + DOCTORS.length) % DOCTORS.length;
     setDirection(next > active ? 1 : -1);
     setActive(clamped);
+    setBioExpanded(false); // collapse bio when switching doctors
   }
 
   function onTouchStart(e: React.TouchEvent) {
@@ -147,9 +149,36 @@ export default function MeetTheExperts() {
                   </div>
 
                   <div className={styles.bioText}>
-                    {doc.bio.map((para, i) => (
-                      <p key={i} className={styles.para}>{para}</p>
-                    ))}
+                    {/* First paragraph always visible */}
+                    <p className={styles.para}>{doc.bio[0]}</p>
+
+                    {/* Remaining paragraphs — animated expand */}
+                    <AnimatePresence initial={false}>
+                      {bioExpanded && (
+                        <motion.div
+                          className={styles.bioExtra}
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+                        >
+                          {doc.bio.slice(1).map((para, i) => (
+                            <p key={i} className={styles.para}>{para}</p>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+
+                    {/* See More / See Less toggle */}
+                    {doc.bio.length > 1 && (
+                      <button
+                        className={styles.seeMoreBtn}
+                        onClick={() => setBioExpanded((v) => !v)}
+                        aria-expanded={bioExpanded}
+                      >
+                        {bioExpanded ? 'See Less ↑' : 'See More ↓'}
+                      </button>
+                    )}
                   </div>
 
                   {/* Tag pills */}

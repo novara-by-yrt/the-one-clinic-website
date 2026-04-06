@@ -162,10 +162,36 @@
   gap: var(--space-2);
 }
 
+.bioExtra {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
 .para {
   font-size: 0.9375rem;
   line-height: 1.7;
   color: rgb(255 255 255 / 0.65);
+}
+
+/* ── See More / See Less button ──────────────────────────────────── */
+.seeMoreBtn {
+  align-self: flex-start;
+  margin-top: var(--space-1);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.5);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.seeMoreBtn:hover {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* ── Speciality tag pills ────────────────────────────────────────── */
@@ -312,23 +338,9 @@
     display: none;
   }
 
-  /* Show only the first bio paragraph to keep card compact */
-  .para:not(:first-child) {
-    display: none;
-  }
-
-  .bioText {
-    gap: 0;
-  }
-
   .para {
     font-size: 0.875rem;
     line-height: 1.6;
-    /* Clamp to 4 lines as an extra safety net */
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
   }
 
   .tags {
