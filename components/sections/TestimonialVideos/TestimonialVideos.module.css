@@ -181,45 +181,6 @@
   }
 }
 
-/*
- * Mobile: horizontal scroll snap so each video fills the viewport.
- * The user can swipe between videos naturally without crowding them.
- */
-@media (max-width: 768px) {
-  .header {
-    margin-bottom: var(--space-5);
-  }
-
-  .grid {
-    /* Override grid — use horizontal scroll snap */
-    display: flex;
-    gap: var(--space-3);
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    /* Pull out to full viewport width, ignore container padding */
-    margin-inline: calc(-1 * var(--container-px, 1.25rem));
-    padding-inline: var(--container-px, 1.25rem);
-    /* Hide scrollbar but keep functionality */
-    scrollbar-width: none;
-    padding-bottom: var(--space-3);
-  }
-
-  .grid::-webkit-scrollbar {
-    display: none;
-  }
-
-  .videoCard {
-    /* Each card snaps to center and takes ~80vw */
-    flex: 0 0 78vw;
-    scroll-snap-align: center;
-  }
-
-  .videoCard:hover {
-    transform: none;
-  }
-}
-
 @media (max-width: 480px) {
   .videoCard {
     flex: 0 0 86vw;
