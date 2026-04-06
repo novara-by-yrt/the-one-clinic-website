@@ -65,7 +65,7 @@ export default function FacilityStats() {
             Built to Meet Every Need
           </motion.h2>
           <motion.p className={styles.subtext} variants={fadeUp}>
-            Wide range of treatments under one roof
+            The main part of the clinic contains 5 consulting rooms and 2 treatment rooms, over 3 floors.
           </motion.p>
         </motion.div>
 
@@ -93,7 +93,7 @@ export default function FacilityStats() {
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <p className={styles.accessTitle}>Inclusive for All</p>
+          <p className={styles.accessTitle}>Fully Inclusive</p>
           <ul className={styles.accessList} role="list">
             {ACCESS.map((a) => (
               <li key={a.label} className={styles.accessItem}>

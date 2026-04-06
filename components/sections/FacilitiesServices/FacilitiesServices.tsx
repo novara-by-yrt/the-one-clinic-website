@@ -59,8 +59,9 @@ export default function FacilitiesServices() {
             Services Under One Roof
           </motion.h2>
           <motion.p className={styles.subtext} variants={fadeUp}>
-            From medical health to transformative aesthetics, our multidisciplinary team
-            covers every aspect of your wellbeing.
+            Our range of treatments provide solutions for a number of wellbeing concerns.
+            With everything you need under one roof, a visit to The One Clinic will leave
+            you glowing from head to toe, inside and out.
           </motion.p>
         </motion.div>
 
@@ -94,8 +95,9 @@ export default function FacilitiesServices() {
         >
           <div className={styles.trustContent}>
             <p className={styles.trustQuote}>
-              Our doctors are GMC-registered with 45+ years of combined clinical experience —
-              bringing unrivalled expertise to every consultation.
+              Next to our patients, a highly treasured part of our provision is our team.
+              Our proficient doctors are fully qualified and trained to the highest standards.
+              We all appear on the GMC register and boast over 45 years of valuable experience between us.
             </p>
             <Link href="#team" className={styles.trustCta}>
               Meet Our Team

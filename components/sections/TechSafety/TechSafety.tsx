@@ -47,8 +47,10 @@ export default function TechSafety() {
             Equipped for Excellence
           </motion.h2>
           <motion.p className={styles.subtext} variants={fadeUp}>
-            Every tool we use is chosen for its clinical efficacy, safety record,
-            and contribution to the patient experience.
+            All machines and equipment used at the clinic are modern, state-of-the-art devices
+            that are medically approved for safety and efficiency. We select world-leading,
+            innovative devices and first-rate products to help our patients achieve the best
+            results possible.
           </motion.p>
         </motion.div>
 

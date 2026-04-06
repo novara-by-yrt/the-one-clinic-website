@@ -24,7 +24,7 @@ export default function FacilitiesHero() {
             Our Facilities
           </motion.h1>
           <motion.p className={styles.subheading} variants={fadeUp}>
-            Designed for comfort. Built for excellence. Equipped for results.
+            The One Clinic is a purpose built facility that takes care of all your needs.
           </motion.p>
           <motion.div className={styles.ctas} variants={fadeUp}>
             <Link href="#lead-form" className={styles.btnPrimary}>

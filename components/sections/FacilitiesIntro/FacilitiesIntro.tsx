@@ -27,19 +27,22 @@ export default function FacilitiesIntro() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eyebrow} variants={fadeUp}>
-              Welcome to The One Clinic
+              About Our Clinic
             </motion.p>
             <motion.h2 className={styles.heading} variants={fadeUp}>
-              A Premium Clinical Environment
+              Our Facilities
             </motion.h2>
             <motion.p className={styles.body} variants={fadeUp}>
-              At The One Clinic, our facilities are thoughtfully designed to provide a seamless,
-              comfortable, and premium patient experience.
+              Behind our charming 19th Century building you&apos;ll find convenient parking which has
+              space for 15 cars. Patients can feel safe in the knowledge that as a CQC registered
+              clinic, every step has been taken to ensure their safety, as well as using ICU data
+              protection and adhering to GDPR guidance.
             </motion.p>
             <motion.p className={styles.body} variants={fadeUp}>
-              Set within a charming 19th century building, our purpose-built clinic combines
-              heritage character with modern medical innovation — creating a space where you
-              feel both at home and in expert hands.
+              Our reception area is located at the front of the building, where our front-of-house
+              representative will book you in. You&apos;ll be offered some refreshments while you wait
+              for treatment, and you&apos;ll be shown our &lsquo;skincare bar&rsquo; where we display a collection
+              of the products available at our clinic, which you are free to sample.
             </motion.p>
           </motion.div>
 

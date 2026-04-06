@@ -10,7 +10,7 @@ const CARDS = [
   {
     title: 'Reception & Check-in',
     description:
-      'Our welcoming team ensures a seamless arrival — greeting you by name, managing your appointment, and setting a tone of calm professionalism from the outset.',
+      'Our reception area is located at the front of the building, where our front-of-house representative will book you in and ensure your visit gets off to the perfect start.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
@@ -21,7 +21,7 @@ const CARDS = [
   {
     title: 'Refreshments',
     description:
-      'Enjoy complimentary refreshments while you settle in, creating a relaxed and unhurried atmosphere before your consultation begins.',
+      'You&apos;ll be offered refreshments while you wait for treatment, creating a relaxed and unhurried atmosphere before your consultation begins.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
@@ -35,7 +35,7 @@ const CARDS = [
   {
     title: 'Skincare Bar',
     description:
-      'Browse and sample our curated collection of clinically approved skincare products, personally selected to complement your treatment plan.',
+      'We display a collection of the products available at our clinic which you are free to sample — a carefully curated selection to complement your treatment.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 2a10 10 0 0 1 0 20 10 10 0 0 1 0-20" />
