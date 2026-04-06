@@ -2,26 +2,22 @@
    HERO
 ═══════════════════════════════════════════ */
 .hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: calc(100vh - 64px);
   background: var(--color-bg-dark);
+  padding-block: var(--space-8) var(--space-9);
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: clamp(var(--space-6), 5vw, var(--space-9));
+  align-items: center;
 }
 
 /* Left panel */
 .heroLeft {
   display: flex;
-  align-items: center;
-  padding: var(--space-7) var(--space-6);
-  position: relative;
-  z-index: 1;
-}
-
-.heroInner {
-  display: flex;
   flex-direction: column;
-  gap: var(--space-6);
-  max-width: 480px;
+  gap: var(--space-5);
 }
 
 .back {
@@ -141,22 +137,15 @@
 /* Right panel — photo */
 .heroPhoto {
   position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: 16px;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .photo {
   object-fit: cover;
   object-position: center top;
-}
-
-/* Gradient blending photo edges into the dark bg on left + bottom */
-.photoGradient {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to right, var(--color-bg-dark) 0%, transparent 18%),
-    linear-gradient(to top, var(--color-bg-dark) 0%, transparent 20%);
-  pointer-events: none;
 }
 
 /* ═══════════════════════════════════════════
@@ -381,37 +370,28 @@
    RESPONSIVE
 ═══════════════════════════════════════════ */
 
-/* Tablet — stack hero vertically, photo comes first */
-@media (max-width: 900px) {
-  .hero {
+/* Tablet — shrink image column */
+@media (max-width: 1024px) {
+  .heroGrid {
+    grid-template-columns: 1fr 300px;
+    gap: var(--space-6);
+  }
+}
+
+/* Tablet small — stack, photo above text */
+@media (max-width: 768px) {
+  .heroGrid {
     grid-template-columns: 1fr;
-    grid-template-rows: 55vw auto;
-    min-height: unset;
+    gap: var(--space-5);
   }
 
   .heroPhoto {
-    grid-row: 1;
-    min-height: 55vw;
-  }
-
-  .heroLeft {
-    grid-row: 2;
-    padding: var(--space-6) var(--space-4);
-    justify-content: flex-start;
-  }
-
-  .heroInner {
-    max-width: 100%;
-    gap: var(--space-4);
-  }
-
-  .photoGradient {
-    background:
-      linear-gradient(to bottom, transparent 60%, var(--color-bg-dark) 100%);
-  }
-
-  .statsRow {
-    grid-template-columns: repeat(3, 1fr);
+    order: -1;
+    aspect-ratio: 4 / 5;
+    border-radius: 12px;
+    max-width: 280px;
+    width: 100%;
+    margin-inline: auto;
   }
 
   .bioLayout {
@@ -434,13 +414,14 @@
 }
 
 /* Mobile */
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   .hero {
-    grid-template-rows: 80vw auto;
+    padding-block: var(--space-6) var(--space-7);
   }
 
   .heroPhoto {
-    min-height: 80vw;
+    max-width: 100%;
+    aspect-ratio: 3 / 4;
   }
 
   .name {

@@ -33,68 +33,62 @@ export default function DrVirmaniPage() {
   return (
     <>
       {/* ─────────────────────────────────────────
-          HERO  —  split screen, dark
+          HERO  —  text left, photo right
       ───────────────────────────────────────── */}
       <section className={styles.hero} data-section-theme="dark">
-
-        {/* Left panel */}
-        <div className={styles.heroLeft}>
+        <Container>
           <motion.div
-            className={styles.heroInner}
+            className={styles.heroGrid}
             variants={stagger(0.1)}
             initial="hidden"
             animate="show"
           >
-            <motion.div variants={fadeUp}>
-              <Link href="/our-team" className={styles.back}>
-                <span aria-hidden="true">←</span> Our Team
-              </Link>
-            </motion.div>
+            {/* Left — text content */}
+            <div className={styles.heroLeft}>
+              <motion.div variants={fadeUp}>
+                <Link href="/our-team" className={styles.back}>
+                  <span aria-hidden="true">←</span> Our Team
+                </Link>
+              </motion.div>
 
-            <motion.div className={styles.heroText} variants={stagger(0.08)}>
-              <motion.p className={styles.eyebrow} variants={fadeUp}>
-                The One Clinic
-              </motion.p>
-              <motion.h1 className={styles.name} variants={fadeUp}>
-                Dr Sumit<br />Virmani
-              </motion.h1>
-              <motion.p className={styles.credentials} variants={fadeUp}>
-                MBBS, MRCGP
-              </motion.p>
-              <motion.p className={styles.role} variants={fadeUp}>
-                Co-Founder &amp; GP
-              </motion.p>
-            </motion.div>
+              <motion.div className={styles.heroText} variants={stagger(0.08)}>
+                <motion.p className={styles.eyebrow} variants={fadeUp}>
+                  The One Clinic
+                </motion.p>
+                <motion.h1 className={styles.name} variants={fadeUp}>
+                  Dr Sumit<br />Virmani
+                </motion.h1>
+                <motion.p className={styles.credentials} variants={fadeUp}>
+                  MBBS, MRCGP
+                </motion.p>
+                <motion.p className={styles.role} variants={fadeUp}>
+                  Co-Founder &amp; GP
+                </motion.p>
+              </motion.div>
 
-            <motion.div className={styles.heroCtas} variants={fadeUp}>
-              <Link href="#lead-form" className={styles.btnPrimary}>
-                Book Consultation
-              </Link>
-              <Link href="/our-team" className={styles.btnGhost}>
-                View All Team
-              </Link>
+              <motion.div className={styles.heroCtas} variants={fadeUp}>
+                <Link href="#lead-form" className={styles.btnPrimary}>
+                  Book Consultation
+                </Link>
+                <Link href="/our-team" className={styles.btnGhost}>
+                  View All Team
+                </Link>
+              </motion.div>
+            </div>
+
+            {/* Right — photo */}
+            <motion.div className={styles.heroPhoto} variants={fadeUp}>
+              <Image
+                src="/images/imgi_20_team-thumb-VIRMANI.jpg"
+                alt="Dr Sumit Virmani"
+                fill
+                priority
+                className={styles.photo}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 300px, 400px"
+              />
             </motion.div>
           </motion.div>
-        </div>
-
-        {/* Right panel — photo */}
-        <motion.div
-          className={styles.heroPhoto}
-          initial={{ opacity: 0, scale: 1.04 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
-        >
-          <Image
-            src="/images/imgi_20_team-thumb-VIRMANI.jpg"
-            alt="Dr Sumit Virmani"
-            fill
-            priority
-            className={styles.photo}
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
-          <div className={styles.photoGradient} />
-        </motion.div>
-
+        </Container>
       </section>
 
       {/* ─────────────────────────────────────────
