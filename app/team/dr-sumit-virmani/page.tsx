@@ -3,19 +3,24 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { fadeUp, stagger } from '@/lib/motion';
-import Section from '@/components/ui/Section';
+import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import Container from '@/components/ui/Container';
 import LeadForm from '@/components/sections/LeadForm';
 import styles from './page.module.css';
 
-const TAGS = [
-  '15+ Years Experience',
+const STATS = [
+  { value: '15+', label: 'Years in Medicine' },
+  { value: '12+', label: 'Years as a GP' },
+  { value: '1',   label: 'Clinic Co-Founded' },
+];
+
+const SPECIALTIES = [
   'Minor Surgery',
   'Skin Lesion Excision',
   'Body Contouring',
   'Hair Rejuvenation',
   'GP Services',
+  'Aesthetic Medicine',
 ];
 
 const BIO = [
@@ -27,89 +32,163 @@ const BIO = [
 export default function DrVirmaniPage() {
   return (
     <>
-      {/* ── Profile ── */}
-      <Section variant="light" data-section-theme="light" className={styles.section}>
-        <Container>
+      {/* ─────────────────────────────────────────
+          HERO  —  split screen, dark
+      ───────────────────────────────────────── */}
+      <section className={styles.hero} data-section-theme="dark">
 
-          {/* Back link */}
+        {/* Left panel */}
+        <div className={styles.heroLeft}>
           <motion.div
-            className={styles.backWrap}
-            variants={fadeUp}
+            className={styles.heroInner}
+            variants={stagger(0.1)}
             initial="hidden"
             animate="show"
           >
-            <Link href="/our-team" className={styles.back}>
-              <span aria-hidden="true">←</span> Our Team
-            </Link>
+            <motion.div variants={fadeUp}>
+              <Link href="/our-team" className={styles.back}>
+                <span aria-hidden="true">←</span> Our Team
+              </Link>
+            </motion.div>
+
+            <motion.div className={styles.heroText} variants={stagger(0.08)}>
+              <motion.p className={styles.eyebrow} variants={fadeUp}>
+                The One Clinic
+              </motion.p>
+              <motion.h1 className={styles.name} variants={fadeUp}>
+                Dr Sumit<br />Virmani
+              </motion.h1>
+              <motion.p className={styles.credentials} variants={fadeUp}>
+                MBBS, MRCGP
+              </motion.p>
+              <motion.p className={styles.role} variants={fadeUp}>
+                Co-Founder &amp; GP
+              </motion.p>
+            </motion.div>
+
+            <motion.div className={styles.heroCtas} variants={fadeUp}>
+              <Link href="#lead-form" className={styles.btnPrimary}>
+                Book Consultation
+              </Link>
+              <Link href="/our-team" className={styles.btnGhost}>
+                View All Team
+              </Link>
+            </motion.div>
           </motion.div>
+        </div>
 
-          <div className={styles.layout}>
+        {/* Right panel — photo */}
+        <motion.div
+          className={styles.heroPhoto}
+          initial={{ opacity: 0, scale: 1.04 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
+        >
+          <Image
+            src="/images/imgi_20_team-thumb-VIRMANI.jpg"
+            alt="Dr Sumit Virmani"
+            fill
+            priority
+            className={styles.photo}
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+          <div className={styles.photoGradient} />
+        </motion.div>
 
-            {/* Left — photo */}
-            <motion.div
-              className={styles.photoCol}
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-            >
-              <div className={styles.photoWrap}>
-                <Image
-                  src="/images/imgi_20_team-thumb-VIRMANI.jpg"
-                  alt="Dr Sumit Virmani"
-                  fill
-                  priority
-                  className={styles.photo}
-                  sizes="(max-width: 900px) 100vw, 40vw"
-                />
-              </div>
-            </motion.div>
+      </section>
 
-            {/* Right — content */}
-            <motion.div
-              className={styles.content}
-              variants={stagger(0.1)}
-              initial="hidden"
-              animate="show"
-            >
-              {/* Name block */}
-              <motion.div className={styles.nameBlock} variants={fadeUp}>
-                <p className={styles.eyebrow}>Our Team</p>
-                <h1 className={styles.name}>Dr Sumit Virmani</h1>
-                <p className={styles.credentials}>MBBS, MRCGP</p>
-                <p className={styles.role}>Co-Founder &amp; GP</p>
+      {/* ─────────────────────────────────────────
+          STATS STRIP  —  dark
+      ───────────────────────────────────────── */}
+      <section className={styles.statsSection} data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.statsRow}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {STATS.map((s) => (
+              <motion.div key={s.label} className={styles.stat} variants={fadeUp}>
+                <span className={styles.statValue}>{s.value}</span>
+                <span className={styles.statLabel}>{s.label}</span>
               </motion.div>
-
-              {/* Tags */}
-              <motion.div className={styles.tags} variants={fadeUp}>
-                {TAGS.map((tag) => (
-                  <span key={tag} className={styles.tag}>{tag}</span>
-                ))}
-              </motion.div>
-
-              {/* Divider */}
-              <hr className={styles.divider} />
-
-              {/* Bio */}
-              <motion.div className={styles.bioBlock} variants={fadeUp}>
-                {BIO.map((para, i) => (
-                  <p key={i} className={styles.bio}>{para}</p>
-                ))}
-              </motion.div>
-
-              {/* CTAs */}
-              <motion.div className={styles.actions} variants={fadeUp}>
-                <Link href="#lead-form" className={styles.btnPrimary}>
-                  Book Consultation
-                </Link>
-                <Link href="/our-team" className={styles.btnSecondary}>
-                  ← Back to Team
-                </Link>
-              </motion.div>
-            </motion.div>
-
-          </div>
+            ))}
+          </motion.div>
         </Container>
-      </Section>
+      </section>
+
+      {/* ─────────────────────────────────────────
+          BIO  —  light
+      ───────────────────────────────────────── */}
+      <section className={styles.bioSection} data-section-theme="light">
+        <Container>
+          <motion.div
+            className={styles.bioLayout}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {/* Sidebar label */}
+            <motion.aside className={styles.bioSidebar} variants={fadeUp}>
+              <p className={styles.sidebarLabel}>About</p>
+              <div className={styles.sidebarLine} />
+            </motion.aside>
+
+            {/* Body text */}
+            <motion.div className={styles.bioBody} variants={stagger(0.08)}>
+              {BIO.map((para, i) => (
+                <motion.p key={i} className={styles.bio} variants={fadeUp}>
+                  {para}
+                </motion.p>
+              ))}
+
+              {/* Specialties */}
+              <motion.div className={styles.specialtiesWrap} variants={fadeUp}>
+                <p className={styles.specialtiesLabel}>Areas of Expertise</p>
+                <div className={styles.tags}>
+                  {SPECIALTIES.map((s) => (
+                    <span key={s} className={styles.tag}>{s}</span>
+                  ))}
+                </div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
+
+      {/* ─────────────────────────────────────────
+          BOOK CTA  —  dark
+      ───────────────────────────────────────── */}
+      <section className={styles.ctaSection} data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.ctaInner}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.ctaEyebrow} variants={fadeUp}>
+              Ready to begin?
+            </motion.p>
+            <motion.h2 className={styles.ctaHeading} variants={fadeUp}>
+              Book a Consultation<br />with Dr Virmani
+            </motion.h2>
+            <motion.p className={styles.ctaSubtext} variants={fadeUp}>
+              Take the first step towards exceptional care. Our team will be in touch to
+              confirm your appointment.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <Link href="#lead-form" className={styles.ctaBtn}>
+                Book Consultation
+              </Link>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
 
       <LeadForm />
     </>
