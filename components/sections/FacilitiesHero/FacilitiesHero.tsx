@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
@@ -10,7 +11,20 @@ import styles from './FacilitiesHero.module.css';
 export default function FacilitiesHero() {
   return (
     <Section variant="dark" data-section-theme="dark" className={styles.hero}>
-      <Container>
+      {/* Background image */}
+      <div className={styles.bgWrap}>
+        <Image
+          src="/images/location1.jpg"
+          alt=""
+          fill
+          priority
+          className={styles.bgImage}
+          sizes="100vw"
+        />
+        <div className={styles.overlay} />
+      </div>
+
+      <Container className={styles.container}>
         <motion.div
           className={styles.content}
           variants={stagger(0.1)}
