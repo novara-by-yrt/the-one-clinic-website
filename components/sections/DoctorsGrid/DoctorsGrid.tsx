@@ -6,79 +6,8 @@ import { motion } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
+import { TEAM_MEMBERS } from '@/data/team';
 import styles from './DoctorsGrid.module.css';
-
-type Member = {
-  name: string;
-  credentials: string;
-  initials: string;
-  image?: string;
-};
-
-const MEMBERS: Member[] = [
-  {
-    name: 'Dr Sumit Virmani',
-    credentials: 'MBBS, MRCGP',
-    initials: 'SV',
-    image: '/images/imgi_20_team-thumb-VIRMANI.jpg',
-  },
-  {
-    name: 'Dr Gunjan Bedi',
-    credentials: 'MBBS, MRCpsych, MRCGP, BCAM',
-    initials: 'GB',
-    image: '/images/imgi_21_team-thumb-BEDI.jpg',
-  },
-  {
-    name: 'Dr Mahesh Kodivalasa',
-    credentials: '',
-    initials: 'MK',
-  },
-  {
-    name: 'Dr Hari Subramaniam',
-    credentials: 'MSc, MD, DPM, DNB, FRCPsych',
-    initials: 'HS',
-  },
-  {
-    name: 'Dr Amol Vaze',
-    credentials: '',
-    initials: 'AV',
-  },
-  {
-    name: 'Dr Ralph Mitchell',
-    credentials: '',
-    initials: 'RM',
-  },
-  {
-    name: 'Mr Thangasamy Sankar',
-    credentials: 'FRCS — Plastic Surgery & Laser',
-    initials: 'TS',
-  },
-  {
-    name: 'Nurse Sanj',
-    credentials: 'Clinical Nurse',
-    initials: 'NS',
-  },
-  {
-    name: 'Sam',
-    credentials: 'Patient Coordinator',
-    initials: 'S',
-  },
-  {
-    name: 'Chloe',
-    credentials: 'Patient Care Team',
-    initials: 'C',
-  },
-  {
-    name: 'Hollie',
-    credentials: 'Patient Care Team',
-    initials: 'H',
-  },
-  {
-    name: 'Charley',
-    credentials: 'Patient Care Team',
-    initials: 'CH',
-  },
-];
 
 export default function DoctorsGrid() {
   return (
@@ -113,9 +42,9 @@ export default function DoctorsGrid() {
           viewport={VIEWPORT}
           role="list"
         >
-          {MEMBERS.map((member) => (
+          {TEAM_MEMBERS.map((member) => (
             <motion.article
-              key={member.name}
+              key={member.slug}
               className={styles.card}
               variants={fadeUp}
               role="listitem"
@@ -128,7 +57,7 @@ export default function DoctorsGrid() {
                     alt={member.name}
                     fill
                     className={styles.photo}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   />
                 ) : (
                   <div className={styles.initialsWrap} aria-hidden="true">
@@ -145,8 +74,8 @@ export default function DoctorsGrid() {
                     <p className={styles.credentials}>{member.credentials}</p>
                   )}
                 </div>
-                <Link href="#lead-form" className={styles.cta}>
-                  Book Consultation
+                <Link href={`/our-team/${member.slug}`} className={styles.cta}>
+                  Read More
                   <span className={styles.ctaArrow} aria-hidden="true">→</span>
                 </Link>
               </div>
