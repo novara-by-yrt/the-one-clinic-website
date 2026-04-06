@@ -264,10 +264,9 @@
 
 @media (max-width: 768px) {
   .section {
-    padding-block: var(--space-6);
+    padding-block: var(--space-5);
   }
 
-  /* On mobile, arrows sit outside the card — push into corners */
   .slideshowOuter {
     gap: var(--space-2);
   }
@@ -277,16 +276,16 @@
     height: 38px;
   }
 
-  /* Stack image on top, content below */
+  /* Stack: image top, content below */
   .cardInner {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
     min-height: unset;
   }
 
+  /* Shorter image on mobile — 3:2 gives a nice wide shot */
   .imageCol {
     position: relative;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 2;
   }
 
   .imageWrap {
@@ -294,33 +293,64 @@
     inset: 0;
   }
 
+  /* Stronger gradient so name overlay is legible */
+  .nameOverlay {
+    padding: var(--space-4) var(--space-3) var(--space-3);
+  }
+
   .contentCol {
-    padding: var(--space-4) var(--space-4);
-    gap: var(--space-3);
+    padding: var(--space-3) var(--space-3);
+    gap: var(--space-2);
   }
 
   .doctorName {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+  }
+
+  /* Hide credentials + name + role — already shown in image overlay */
+  .contentTop {
+    display: none;
+  }
+
+  /* Show only the first bio paragraph to keep card compact */
+  .para:not(:first-child) {
+    display: none;
+  }
+
+  .bioText {
+    gap: 0;
+  }
+
+  .para {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    /* Clamp to 4 lines as an extra safety net */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .tags {
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  /* Limit to first 2 tags on mobile */
+  .tag:nth-child(n+3) {
+    display: none;
   }
 }
 
 @media (max-width: 480px) {
   .slideshowOuter {
-    gap: var(--space-1);
+    gap: 6px;
   }
 
   .navBtn {
     width: 34px;
     height: 34px;
     flex-shrink: 0;
-  }
-
-  .imageCol {
-    aspect-ratio: 3 / 2;
-  }
-
-  .tags {
-    gap: 6px;
   }
 
   .tag {

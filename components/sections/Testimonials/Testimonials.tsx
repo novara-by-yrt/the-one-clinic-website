@@ -109,23 +109,27 @@ export default function Testimonials() {
                 exit="exit"
                 className={styles.slide}
               >
-                {/* Top row: quote mark | 5 stars | Google logo */}
+                {/* Top: quote mark left | Google logo + stars centred | spacer right */}
                 <div className={styles.cardTop}>
                   <span className={styles.quoteIcon} aria-hidden="true">"</span>
-                  <div className={styles.stars} aria-label="5 out of 5 stars">
-                    {[...Array(5)].map((_, i) => (
-                      <svg key={i} className={styles.star} viewBox="0 0 20 20" aria-hidden="true">
-                        <path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.49L10 14.25l-4.94 2.6.94-5.49-4-3.9 5.53-.8z" />
-                      </svg>
-                    ))}
+                  <div className={styles.centerBadge}>
+                    <Image
+                      src="/images/Google-logo.png"
+                      alt="Google review"
+                      width={72}
+                      height={24}
+                      className={styles.googleLogo}
+                    />
+                    <div className={styles.stars} aria-label="5 out of 5 stars">
+                      {[...Array(5)].map((_, i) => (
+                        <svg key={i} className={styles.star} viewBox="0 0 20 20" aria-hidden="true">
+                          <path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.49L10 14.25l-4.94 2.6.94-5.49-4-3.9 5.53-.8z" />
+                        </svg>
+                      ))}
+                    </div>
                   </div>
-                  <Image
-                    src="/images/Google-logo.png"
-                    alt="Google review"
-                    width={80}
-                    height={28}
-                    className={styles.googleLogo}
-                  />
+                  {/* Invisible spacer keeps center badge truly centred */}
+                  <span aria-hidden="true" className={styles.quoteIconSpacer} />
                 </div>
 
                 <blockquote className={styles.quote}>

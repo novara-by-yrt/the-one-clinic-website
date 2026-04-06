@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Script from 'next/script';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
@@ -8,21 +9,40 @@ import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './TestimonialVideos.module.css';
 
 const VIDEOS = [
-  {
-    id:    'idcb1vywka',
-    title: 'Customer Testimonial',
-  },
-  {
-    id:    'onscmatqmy',
-    title: 'Customer Testimonial — Oxana',
-  },
-  {
-    id:    'fm142sxmlw',
-    title: 'Customer Testimonial — Mahanoor',
-  },
+  { id: 'idcb1vywka', title: 'Customer Testimonial' },
+  { id: 'onscmatqmy', title: 'Customer Testimonial — Oxana' },
+  { id: 'fm142sxmlw', title: 'Customer Testimonial — Mahanoor' },
 ];
 
+const SLIDE_VARIANTS = {
+  enter:  (dir: number) => ({ x: dir > 0 ? '100%' : '-100%', opacity: 0 }),
+  center: { x: '0%', opacity: 1 },
+  exit:   (dir: number) => ({ x: dir > 0 ? '-100%' : '100%', opacity: 0 }),
+};
+
 export default function TestimonialVideos() {
+  const [active, setActive]       = useState(0);
+  const [direction, setDirection] = useState(1);
+  const touchStartX               = useRef(0);
+  const touchStartY               = useRef(0);
+
+  function go(next: number) {
+    const n = (next + VIDEOS.length) % VIDEOS.length;
+    setDirection(next >= active ? 1 : -1);
+    setActive(n);
+  }
+
+  function onTouchStart(e: React.TouchEvent) {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  }
+
+  function onTouchEnd(e: React.TouchEvent) {
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    const dy = Math.abs(e.changedTouches[0].clientY - touchStartY.current);
+    if (Math.abs(dx) > 44 && Math.abs(dx) > dy) go(active + (dx < 0 ? 1 : -1));
+  }
+
   return (
     <Section variant="dark" data-section-theme="dark" className={styles.section}>
       <Script src="https://fast.wistia.net/player.js" strategy="lazyOnload" />
@@ -36,18 +56,14 @@ export default function TestimonialVideos() {
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <motion.p className={styles.eyebrow} variants={fadeUp}>
-            Patient Stories
-          </motion.p>
-          <motion.h2 className={styles.heading} variants={fadeUp}>
-            Hear From Our Patients
-          </motion.h2>
+          <motion.p className={styles.eyebrow} variants={fadeUp}>Patient Stories</motion.p>
+          <motion.h2 className={styles.heading} variants={fadeUp}>Hear From Our Patients</motion.h2>
           <motion.p className={styles.subtext} variants={fadeUp}>
             Real people, real results — in their own words.
           </motion.p>
         </motion.div>
 
-        {/* ── Video grid ─────────────────────────────────────── */}
+        {/* ── Desktop: 3-column grid ─────────────────────────── */}
         <motion.div
           className={styles.grid}
           variants={stagger(0.12)}
@@ -57,7 +73,6 @@ export default function TestimonialVideos() {
         >
           {VIDEOS.map((v) => (
             <motion.div key={v.id} className={styles.videoCard} variants={fadeUp}>
-              {/* Portrait 9:16 aspect wrapper */}
               <div className={styles.videoWrap}>
                 <iframe
                   src={`https://fast.wistia.net/embed/iframe/${v.id}?web_component=true&seo=true`}
@@ -72,6 +87,80 @@ export default function TestimonialVideos() {
             </motion.div>
           ))}
         </motion.div>
+
+        {/* ── Mobile: slideshow with arrows + dots ───────────── */}
+        <div className={styles.mobileSlideshow}>
+          {/* Arrows + slide track */}
+          <div className={styles.mobileTrackRow}>
+            <button
+              className={styles.mobileArrow}
+              onClick={() => go(active - 1)}
+              aria-label="Previous video"
+            >
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <polyline points="11,3 5,9 11,15" stroke="currentColor" strokeWidth="2"
+                  strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+
+            <div
+              className={styles.mobileTrack}
+              onTouchStart={onTouchStart}
+              onTouchEnd={onTouchEnd}
+            >
+              <AnimatePresence custom={direction} mode="popLayout" initial={false}>
+                <motion.div
+                  key={active}
+                  className={styles.mobileSlide}
+                  custom={direction}
+                  variants={SLIDE_VARIANTS}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ duration: 0.38, ease: [0.25, 0.1, 0.25, 1] }}
+                >
+                  <div className={styles.videoWrapMobile}>
+                    <iframe
+                      src={`https://fast.wistia.net/embed/iframe/${VIDEOS[active].id}?web_component=true&seo=true`}
+                      title={VIDEOS[active].title}
+                      allow="autoplay; fullscreen"
+                      allowFullScreen
+                      frameBorder="0"
+                      scrolling="no"
+                      className={styles.iframe}
+                    />
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            <button
+              className={styles.mobileArrow}
+              onClick={() => go(active + 1)}
+              aria-label="Next video"
+            >
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <polyline points="7,3 13,9 7,15" stroke="currentColor" strokeWidth="2"
+                  strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Pagination dots */}
+          <div className={styles.mobileDots} role="tablist" aria-label="Patient testimonial videos">
+            {VIDEOS.map((_, i) => (
+              <button
+                key={i}
+                className={`${styles.mobileDot} ${i === active ? styles.mobileDotActive : ''}`}
+                onClick={() => go(i)}
+                role="tab"
+                aria-selected={i === active}
+                aria-label={`Video ${i + 1} of ${VIDEOS.length}`}
+              />
+            ))}
+          </div>
+        </div>
+
       </Container>
     </Section>
   );

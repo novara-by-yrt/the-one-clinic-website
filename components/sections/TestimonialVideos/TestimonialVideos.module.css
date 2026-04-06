@@ -83,10 +83,101 @@
   display: block;
 }
 
+/* ── Mobile slideshow (hidden on desktop) ────────────────────────── */
+.mobileSlideshow { display: none; }
+
 /* ── Responsive ──────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .grid {
-    gap: var(--space-3);
+  .grid { gap: var(--space-3); }
+}
+
+@media (max-width: 768px) {
+  /* Hide desktop grid, show mobile slideshow */
+  .grid            { display: none; }
+  .mobileSlideshow { display: block; }
+
+  .header { margin-bottom: var(--space-5); }
+
+  /* Arrow + track row */
+  .mobileTrackRow {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  /* Arrow buttons */
+  .mobileArrow {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgb(255 255 255 / 0.08);
+    border: 1px solid rgb(255 255 255 / 0.15);
+    color: rgba(255, 255, 255, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .mobileArrow:hover {
+    background: rgb(255 255 255 / 0.15);
+    border-color: rgb(255 255 255 / 0.35);
+    color: #fff;
+  }
+
+  /* Slide track — clips the sliding card */
+  .mobileTrack {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 1px solid rgb(255 255 255 / 0.1);
+    background: #0d0d0d;
+  }
+
+  /* Animated slide wrapper */
+  .mobileSlide {
+    width: 100%;
+  }
+
+  /* Portrait 9:16 video in the mobile slide */
+  .videoWrapMobile {
+    position: relative;
+    width: 100%;
+    padding-top: 177.78%;
+    overflow: hidden;
+    touch-action: pan-y;
+  }
+
+  /* Pagination dots */
+  .mobileDots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: var(--space-3);
+  }
+
+  .mobileDot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgb(255 255 255 / 0.25);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+
+  .mobileDot:hover {
+    background: rgb(255 255 255 / 0.55);
+  }
+
+  .mobileDotActive {
+    background: #fff;
+    transform: scale(1.35);
   }
 }
 
