@@ -24,7 +24,7 @@ const NAV: NavItem[] = [
     label: 'About Our Clinic',
     href:  '#about',
     simple: [
-      { label: 'Our Facilities', href: '#facilities' },
+      { label: 'Our Facilities', href: '/our-facilities' },
       { label: 'Our Team',       href: '#team' },
       { label: 'What We Do',     href: '#what-we-do' },
     ],
