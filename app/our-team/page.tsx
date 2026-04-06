@@ -1,0 +1,30 @@
+import type { Metadata } from 'next';
+import TeamHero from '@/components/sections/TeamHero';
+import TeamIntro from '@/components/sections/TeamIntro';
+import DoctorsGrid from '@/components/sections/DoctorsGrid';
+import ExtendedTeam from '@/components/sections/ExtendedTeam';
+import TeamTrustStrip from '@/components/sections/TeamTrustStrip';
+import VideoSection from '@/components/sections/VideoSection';
+import Testimonials from '@/components/sections/Testimonials';
+import LeadForm from '@/components/sections/LeadForm';
+
+export const metadata: Metadata = {
+  title: 'Our Team',
+  description:
+    'Meet the GMC-registered doctors and expert team at The One Clinic, Leicester \u2014 with over 45 years of combined experience across general health, dermatology, and medical aesthetics.',
+};
+
+export default function OurTeamPage() {
+  return (
+    <>
+      <TeamHero />
+      <TeamIntro />
+      <DoctorsGrid />
+      <ExtendedTeam />
+      <TeamTrustStrip />
+      <VideoSection />
+      <Testimonials />
+      <LeadForm />
+    </>
+  );
+}
