@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import TeamHero from '@/components/sections/TeamHero';
 import TeamIntro from '@/components/sections/TeamIntro';
 import DoctorsGrid from '@/components/sections/DoctorsGrid';
-import ExtendedTeam from '@/components/sections/ExtendedTeam';
 import TeamTrustStrip from '@/components/sections/TeamTrustStrip';
 import VideoSection from '@/components/sections/VideoSection';
 import Testimonials from '@/components/sections/Testimonials';
@@ -20,7 +19,6 @@ export default function OurTeamPage() {
       <TeamHero />
       <TeamIntro />
       <DoctorsGrid />
-      <ExtendedTeam />
       <TeamTrustStrip />
       <VideoSection />
       <Testimonials />

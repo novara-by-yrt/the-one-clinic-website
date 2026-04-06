@@ -8,14 +8,14 @@ import Container from '@/components/ui/Container';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './DoctorsGrid.module.css';
 
-type Doctor = {
+type Member = {
   name: string;
   credentials: string;
   initials: string;
   image?: string;
 };
 
-const DOCTORS: Doctor[] = [
+const MEMBERS: Member[] = [
   {
     name: 'Dr Sumit Virmani',
     credentials: 'MBBS, MRCGP',
@@ -48,6 +48,36 @@ const DOCTORS: Doctor[] = [
     credentials: '',
     initials: 'RM',
   },
+  {
+    name: 'Mr Thangasamy Sankar',
+    credentials: 'FRCS — Plastic Surgery & Laser',
+    initials: 'TS',
+  },
+  {
+    name: 'Nurse Sanj',
+    credentials: 'Clinical Nurse',
+    initials: 'NS',
+  },
+  {
+    name: 'Sam',
+    credentials: 'Patient Coordinator',
+    initials: 'S',
+  },
+  {
+    name: 'Chloe',
+    credentials: 'Patient Care Team',
+    initials: 'C',
+  },
+  {
+    name: 'Hollie',
+    credentials: 'Patient Care Team',
+    initials: 'H',
+  },
+  {
+    name: 'Charley',
+    credentials: 'Patient Care Team',
+    initials: 'CH',
+  },
 ];
 
 export default function DoctorsGrid() {
@@ -63,46 +93,46 @@ export default function DoctorsGrid() {
           viewport={VIEWPORT}
         >
           <motion.p className={styles.eyebrow} variants={fadeUp}>
-            Our Doctors
+            The One Clinic
           </motion.p>
           <motion.h2 className={styles.heading} variants={fadeUp}>
-            Meet the Medical Team
+            Meet the Team
           </motion.h2>
           <motion.p className={styles.subtext} variants={fadeUp}>
-            Every doctor at The One Clinic is fully qualified, GMC-registered, and
-            dedicated to delivering the highest standard of care.
+            Every member of our team is dedicated to delivering exceptional,
+            personalised care in a safe and welcoming environment.
           </motion.p>
         </motion.div>
 
         {/* Grid */}
         <motion.div
           className={styles.grid}
-          variants={stagger(0.08)}
+          variants={stagger(0.06)}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
           role="list"
         >
-          {DOCTORS.map((doc) => (
+          {MEMBERS.map((member) => (
             <motion.article
-              key={doc.name}
+              key={member.name}
               className={styles.card}
               variants={fadeUp}
               role="listitem"
             >
               {/* Photo / initials */}
               <div className={styles.photoWrap}>
-                {doc.image ? (
+                {member.image ? (
                   <Image
-                    src={doc.image}
-                    alt={doc.name}
+                    src={member.image}
+                    alt={member.name}
                     fill
                     className={styles.photo}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
                 ) : (
                   <div className={styles.initialsWrap} aria-hidden="true">
-                    <span className={styles.initials}>{doc.initials}</span>
+                    <span className={styles.initials}>{member.initials}</span>
                   </div>
                 )}
               </div>
@@ -110,9 +140,9 @@ export default function DoctorsGrid() {
               {/* Body */}
               <div className={styles.body}>
                 <div className={styles.meta}>
-                  <h3 className={styles.name}>{doc.name}</h3>
-                  {doc.credentials && (
-                    <p className={styles.credentials}>{doc.credentials}</p>
+                  <h3 className={styles.name}>{member.name}</h3>
+                  {member.credentials && (
+                    <p className={styles.credentials}>{member.credentials}</p>
                   )}
                 </div>
                 <Link href="#lead-form" className={styles.cta}>
