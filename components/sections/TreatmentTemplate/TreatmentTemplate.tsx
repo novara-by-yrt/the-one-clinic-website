@@ -7,7 +7,8 @@ import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import Card from '@/components/ui/Card';
 import Accordion from '@/components/ui/Accordion';
-import Button from '@/components/ui/Button';
+import Button      from '@/components/ui/Button';
+import TrustBadges from '@/components/ui/TrustBadges';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './TreatmentTemplate.module.css';
 
@@ -58,21 +59,8 @@ export default function TreatmentTemplate({ treatment }: Props) {
               </motion.div>
 
               {/* Review badges */}
-              <motion.div className={styles.reviewBadges} variants={fadeUp}>
-                <div className={styles.reviewBadge}>
-                  <span className={`${styles.reviewBadgeIcon} ${styles.reviewBadgeGoogle}`}>G</span>
-                  <div className={styles.reviewBadgeText}>
-                    <span className={styles.reviewStars}>★★★★★</span>
-                    <span className={styles.reviewLabel}>Google Reviews</span>
-                  </div>
-                </div>
-                <div className={styles.reviewBadge}>
-                  <span className={`${styles.reviewBadgeIcon} ${styles.reviewBadgeTrustpilot}`}>★</span>
-                  <div className={styles.reviewBadgeText}>
-                    <span className={styles.reviewStars}>★★★★★</span>
-                    <span className={styles.reviewLabel}>Trustpilot</span>
-                  </div>
-                </div>
+              <motion.div variants={fadeUp}>
+                <TrustBadges theme="dark" />
               </motion.div>
 
               {/* Trust items */}

@@ -6,6 +6,7 @@ import Section      from '@/components/ui/Section';
 import Container    from '@/components/ui/Container';
 import Accordion    from '@/components/ui/Accordion';
 import BookConsultationButton from '@/components/ui/BookConsultationButton';
+import TrustBadges          from '@/components/ui/TrustBadges';
 import LeadForm     from '@/components/sections/LeadForm';
 import Testimonials from '@/components/sections/Testimonials';
 import FinalCTA     from '@/components/sections/FinalCTA';
@@ -122,21 +123,8 @@ export default function HealthScreeningPage() {
               </motion.div>
 
               {/* Review badges */}
-              <motion.div className={styles.reviewBadges} variants={fadeUp}>
-                <div className={styles.reviewBadge}>
-                  <span className={`${styles.reviewBadgeIcon} ${styles.reviewBadgeGoogle}`}>G</span>
-                  <div className={styles.reviewBadgeText}>
-                    <span className={styles.reviewStars}>★★★★★</span>
-                    <span className={styles.reviewLabel}>Google Reviews</span>
-                  </div>
-                </div>
-                <div className={styles.reviewBadge}>
-                  <span className={`${styles.reviewBadgeIcon} ${styles.reviewBadgeTrustpilot}`}>★</span>
-                  <div className={styles.reviewBadgeText}>
-                    <span className={styles.reviewStars}>★★★★★</span>
-                    <span className={styles.reviewLabel}>Trustpilot</span>
-                  </div>
-                </div>
+              <motion.div variants={fadeUp}>
+                <TrustBadges theme="dark" />
               </motion.div>
 
               {/* Trust items */}
