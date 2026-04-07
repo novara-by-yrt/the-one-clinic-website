@@ -1,20 +1,86 @@
 /* ═══════════════════════════════════════════
-   FOOTER
+   FOOTER SHELL
 ═══════════════════════════════════════════ */
 .footer {
   background: #000;
   color: #fff;
   /* Extra bottom padding so sticky CTA bar doesn't cover footer */
-  padding: 52px 0 calc(48px + 68px);
+  padding-bottom: calc(48px + 68px);
   position: relative;
   overflow: hidden;
 }
 
-/* ── Inner layout ────────────────────────── */
+/* ═══════════════════════════════════════════
+   NEWSLETTER BAND
+═══════════════════════════════════════════ */
+.newsletterBand {
+  border-bottom: 1px solid rgb(255 255 255 / 0.08);
+  padding: 64px 0 0;
+}
+
+.newsletterInner {
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(48px, 7vw, 96px);
+  align-items: center;
+}
+
+/* ── Newsletter copy (left) ──────────────── */
+.newsletterText {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-bottom: 64px;
+}
+
+.newsletterEyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.38);
+  margin: 0;
+}
+
+.newsletterTitle {
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #fff;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.newsletterTitleAccent {
+  color: rgb(255 255 255 / 0.55);
+  font-style: italic;
+}
+
+.newsletterDesc {
+  font-size: 0.9375rem;
+  color: rgb(255 255 255 / 0.45);
+  line-height: 1.65;
+  max-width: 360px;
+  margin: 0;
+}
+
+/* ── Newsletter form (right) ─────────────── */
+.newsletterFormWrap {
+  /* iframe is 395px; no extra padding so it reaches the divider */
+  overflow: hidden;
+}
+
+/* ═══════════════════════════════════════════
+   CONTACT / LEGAL ROW
+═══════════════════════════════════════════ */
 .inner {
   max-width: var(--container-width);
   margin-inline: auto;
   padding-inline: var(--container-padding);
+  padding-top: 52px;
   display: flex;
   align-items: flex-start;
   gap: clamp(32px, 4vw, 64px);
@@ -50,9 +116,7 @@
   transition: opacity 0.2s ease;
 }
 
-.contactItem:hover {
-  opacity: 0.65;
-}
+.contactItem:hover { opacity: 0.65; }
 
 .address {
   font-size: 0.9375rem;
@@ -76,13 +140,9 @@
   transition: opacity 0.2s ease;
 }
 
-.viewMap:hover {
-  opacity: 0.65;
-}
+.viewMap:hover { opacity: 0.65; }
 
-.circleArrow {
-  flex-shrink: 0;
-}
+.circleArrow { flex-shrink: 0; }
 
 /* ── Social icons ─────────────────────── */
 .socials {
@@ -101,9 +161,7 @@
   justify-content: center;
   color: #fff;
   text-decoration: none;
-  transition:
-    border-color 0.2s ease,
-    background 0.2s ease;
+  transition: border-color 0.2s ease, background 0.2s ease;
 }
 
 .socialLink:hover {
@@ -161,9 +219,7 @@
   transition: opacity 0.2s ease;
 }
 
-.legalLink:hover {
-  opacity: 0.65;
-}
+.legalLink:hover { opacity: 0.65; }
 
 .legalLink:focus-visible {
   outline: 2px solid rgb(255 255 255 / 0.6);
@@ -186,24 +242,29 @@
   transition: color 0.2s ease;
 }
 
-.siteByLink:hover {
-  color: rgb(255 255 255 / 0.75);
-}
+.siteByLink:hover { color: rgb(255 255 255 / 0.75); }
 
 /* ═══════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════ */
 
-/* Tablet: stack left and right */
+/* Tablet */
 @media (max-width: 1024px) {
+  .newsletterInner {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .newsletterText {
+    padding-bottom: 0;
+  }
+
   .inner {
     flex-wrap: wrap;
     gap: var(--space-5);
   }
 
-  .centerZone {
-    display: none;
-  }
+  .centerZone { display: none; }
 
   .rightZone {
     align-items: flex-start;
@@ -228,10 +289,10 @@
   }
 }
 
-/* Mobile: stack columns */
+/* Mobile */
 @media (max-width: 580px) {
-  .footer {
-    padding-top: 40px;
+  .newsletterBand {
+    padding-top: 48px;
   }
 
   .leftZone {

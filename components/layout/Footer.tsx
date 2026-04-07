@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import styles from './Footer.module.css';
 
 const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=36+De+Montfort+St,+Leicester+LE1+7GS,+United+Kingdom';
@@ -34,12 +35,59 @@ export default function Footer() {
 
   return (
     <footer className={styles.footer} role="contentinfo">
+      <Script src="https://link.leadpipeline.ai/js/form_embed.js" strategy="lazyOnload" />
+
+      {/* ══════════════════════════════════════════════
+          NEWSLETTER BAND
+      ══════════════════════════════════════════════ */}
+      <div className={styles.newsletterBand}>
+        <div className={styles.newsletterInner}>
+
+          {/* Left: copy */}
+          <div className={styles.newsletterText}>
+            <p className={styles.newsletterEyebrow}>Stay Informed</p>
+            <h2 className={styles.newsletterTitle}>
+              Keep me in the loop,<br />
+              <span className={styles.newsletterTitleAccent}>The One Newsletter</span>
+            </h2>
+            <p className={styles.newsletterDesc}>
+              Expert health insights, treatment updates, and exclusive offers from
+              The One Clinic delivered straight to your inbox.
+            </p>
+          </div>
+
+          {/* Right: form */}
+          <div className={styles.newsletterFormWrap}>
+            <iframe
+              src="https://link.leadpipeline.ai/widget/form/dViZEitr7fnCtl8rKT3Q"
+              style={{ width: '100%', height: '395px', border: 'none', borderRadius: '0px', display: 'block' }}
+              id="inline-dViZEitr7fnCtl8rKT3Q"
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-trigger-value=""
+              data-activation-type="alwaysActivated"
+              data-activation-value=""
+              data-deactivation-type="neverDeactivate"
+              data-deactivation-value=""
+              data-form-name="Newsletter Form"
+              data-height="395"
+              data-layout-iframe-id="inline-dViZEitr7fnCtl8rKT3Q"
+              data-form-id="dViZEitr7fnCtl8rKT3Q"
+              title="Newsletter Form"
+            />
+          </div>
+
+        </div>
+      </div>
+
+      {/* ══════════════════════════════════════════════
+          CONTACT / LEGAL ROW
+      ══════════════════════════════════════════════ */}
       <div className={styles.inner}>
 
-        {/* ── Left zone: Contact + Connect ───────────────── */}
+        {/* Left zone: Contact + Connect */}
         <div className={styles.leftZone}>
 
-          {/* Contact column */}
           <div className={styles.col}>
             <p className={styles.colLabel}>Contact</p>
             <a href="tel:07481342374" className={styles.contactItem}>07481342374</a>
@@ -60,7 +108,6 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Connect column */}
           <div className={styles.col}>
             <p className={styles.colLabel}>Connect</p>
             <div className={styles.socials}>
@@ -87,10 +134,10 @@ export default function Footer() {
 
         </div>
 
-        {/* ── Centre: decorative spacer ───────────────────── */}
+        {/* Centre: decorative spacer */}
         <div className={styles.centerZone} aria-hidden="true" />
 
-        {/* ── Right zone: legal ────────────────────────────── */}
+        {/* Right zone: legal */}
         <div className={styles.rightZone}>
           <p className={styles.copyright}>
             &copy; THE ONE CLINIC {year}. ALL RIGHTS RESERVED.
