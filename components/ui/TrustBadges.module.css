@@ -1,0 +1,177 @@
+/* ═══════════════════════════════════════════
+   TRUST BADGES
+   Two-panel card: Google | Trustpilot
+═══════════════════════════════════════════ */
+
+.wrap {
+  display: inline-flex;
+  align-items: stretch;
+  border-radius: 14px;
+  overflow: hidden;
+  /* Subtle entrance shadow for depth */
+  transition: box-shadow 0.25s ease;
+}
+
+/* ── Dark variant (hero / dark sections) ── */
+.dark {
+  background: rgb(255 255 255 / 0.07);
+  border: 1px solid rgb(255 255 255 / 0.13);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 24px rgb(0 0 0 / 0.25);
+}
+
+.dark:hover {
+  box-shadow: 0 6px 32px rgb(0 0 0 / 0.35);
+}
+
+/* ── Light variant (white / light sections) ── */
+.light {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 16px rgb(0 0 0 / 0.06);
+}
+
+.light:hover {
+  box-shadow: 0 4px 24px rgb(0 0 0 / 0.1);
+}
+
+/* ── Individual badge panel ── */
+.badge {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 20px;
+}
+
+/* ── Logo + name row ── */
+.badgeHeader {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.platform {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.dark .platform {
+  color: rgb(255 255 255 / 0.95);
+}
+
+.light .platform {
+  color: #111827;
+}
+
+.verified {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 100px;
+}
+
+.dark .verified {
+  background: rgb(255 255 255 / 0.09);
+  color: rgb(255 255 255 / 0.5);
+}
+
+.light .verified {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+/* ── Stars row ── */
+.stars {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+/* ── Rating summary ── */
+.summary {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  line-height: 1;
+}
+
+.score {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.dark .score {
+  color: rgb(255 255 255 / 0.95);
+}
+
+.light .score {
+  color: #111827;
+}
+
+.dot {
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dark .dot {
+  background: rgb(255 255 255 / 0.25);
+}
+
+.light .dot {
+  background: #d1d5db;
+}
+
+.count {
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.dark .count {
+  color: rgb(255 255 255 / 0.4);
+}
+
+.light .count {
+  color: #9ca3af;
+}
+
+/* ── Vertical divider between panels ── */
+.sep {
+  width: 1px;
+  margin-block: 12px;
+  flex-shrink: 0;
+}
+
+.dark .sep {
+  background: rgb(255 255 255 / 0.1);
+}
+
+.light .sep {
+  background: #e5e7eb;
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+
+/* On small mobile, stack the two panels vertically */
+@media (max-width: 400px) {
+  .wrap {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .sep {
+    width: auto;
+    height: 1px;
+    margin-block: 0;
+    margin-inline: 14px;
+  }
+}

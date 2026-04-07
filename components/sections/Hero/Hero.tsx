@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
+import TrustBadges from '@/components/ui/TrustBadges';
 import styles from './Hero.module.css';
 
 // ── Animation variants ──────────────────────────────────────────
@@ -126,6 +127,14 @@ export default function Hero() {
                 Explore Treatments
                 <span className={styles.arrow} aria-hidden="true">→</span>
               </Link>
+            </motion.div>
+
+            {/* Trust badges */}
+            <motion.div
+              variants={FADE_UP}
+              transition={{ ...TRANSITION_SMOOTH, delay: 0.1 }}
+            >
+              <TrustBadges theme="dark" />
             </motion.div>
           </motion.div>
         </Container>
