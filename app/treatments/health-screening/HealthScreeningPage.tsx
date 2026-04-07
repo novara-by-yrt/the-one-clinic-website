@@ -163,7 +163,7 @@ export default function HealthScreeningPage() {
       <Section variant="dark" data-section-theme="dark" className={styles.glanceSection}>
         <Container>
           <motion.div
-            className={styles.sectionHeader}
+            className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
@@ -200,7 +200,7 @@ export default function HealthScreeningPage() {
       <Section variant="light" data-section-theme="light">
         <Container>
           <motion.div
-            className={styles.sectionHeader}
+            className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
@@ -241,7 +241,7 @@ export default function HealthScreeningPage() {
       <Section variant="dark" data-section-theme="dark">
         <Container>
           <motion.div
-            className={styles.sectionHeader}
+            className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
@@ -371,7 +371,7 @@ export default function HealthScreeningPage() {
       <Section variant="dark" data-section-theme="dark">
         <Container>
           <motion.div
-            className={styles.sectionHeader}
+            className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"

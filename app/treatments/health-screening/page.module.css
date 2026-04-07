@@ -294,7 +294,7 @@
   max-width: 740px;
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
 }
 
 .journeyStep {
@@ -407,6 +407,13 @@
   gap: var(--space-3);
 }
 
+/* Center the eyebrow + heading within the how-it-works text column */
+.howText > .eyebrowDark,
+.howText > .headingDark {
+  text-align: center;
+  align-self: center;
+}
+
 .howPara {
   font-size: var(--text-body);
   line-height: 1.75;
@@ -510,6 +517,7 @@
 ════════════════════════════════════════════════════ */
 .faqBody {
   max-width: 740px;
+  margin: 0 auto;
 }
 
 /* ════════════════════════════════════════════════════
@@ -519,6 +527,17 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-3);
+  align-items: stretch;
+}
+
+/* Ensure motion wrapper and card fill the grid cell */
+.relatedGrid > * {
+  display: flex;
+  flex-direction: column;
+}
+
+.relatedGrid > * > * {
+  flex: 1;
 }
 
 .relatedCard {
