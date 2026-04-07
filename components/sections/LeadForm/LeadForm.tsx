@@ -67,7 +67,7 @@ export default function LeadForm() {
             <div className={styles.formSide}>
               <iframe
                 src="https://link.leadpipeline.ai/widget/form/Az3D8kxDVBz2diDQJ3uY"
-                style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
+                style={{ width: '100%', height: '509px', border: 'none', display: 'block', flex: '1 0 auto' }}
                 id="inline-Az3D8kxDVBz2diDQJ3uY"
                 data-layout="{'id':'INLINE'}"
                 data-trigger-type="alwaysShow"

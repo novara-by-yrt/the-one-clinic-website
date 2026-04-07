@@ -26,10 +26,45 @@ const AWARDS = [
   },
 ];
 
+/* ── Trust-box icons ─────────────────────────────────────────── */
+function DoctorIcon() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {/* Person silhouette */}
+      <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+      <path d="M4.5 20.118a7.5 7.5 0 0115 0"/>
+      {/* Medical cross badge */}
+      <circle cx="18.5" cy="17.5" r="4" fill="currentColor" stroke="none" opacity="0.1"/>
+      <path d="M18.5 15v5M16 17.5h5"/>
+    </svg>
+  );
+}
+
+function StarIcon() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+    </svg>
+  );
+}
+
+function MedicalIcon() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {/* Medical cross in circle */}
+      <circle cx="12" cy="12" r="9.5"/>
+      <path d="M12 7.5v9M7.5 12h9"/>
+    </svg>
+  );
+}
+
 const ITEMS = [
-  { icon: '✦', text: 'Led by highly trained doctors' },
-  { icon: '✦', text: 'Trusted by patients in Leicester' },
-  { icon: '✦', text: 'Comprehensive medical & aesthetic care' },
+  { icon: <DoctorIcon />,  text: 'Led by highly trained doctors' },
+  { icon: <StarIcon />,    text: 'Trusted by patients in Leicester' },
+  { icon: <MedicalIcon />, text: 'Comprehensive medical & aesthetic care' },
 ];
 
 export default function TrustStrip() {
@@ -89,7 +124,7 @@ export default function TrustStrip() {
         >
           {ITEMS.map(({ icon, text }) => (
             <motion.div key={text} className={styles.trustBox} variants={fadeUp}>
-              <span className={styles.trustIcon} aria-hidden="true">{icon}</span>
+              <span className={styles.trustIcon}>{icon}</span>
               <span className={styles.trustLabel}>{text}</span>
             </motion.div>
           ))}

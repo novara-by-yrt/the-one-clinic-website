@@ -112,10 +112,11 @@
   border: 1px solid var(--color-border-light);
   box-shadow: 0 4px 32px rgb(0 0 0 / 0.07);
   background: #fff;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  /* min-height ensures map has enough height even on short viewports */
-  min-height: 480px;
+  /* The 20px top+bottom padding adds 40px; total box height = 509 + 40px = 549px
+     which the map fills via align-items: stretch on the parent grid */
 }
 
 /* ── Responsive ─────────────────────────────────────────────────── */
