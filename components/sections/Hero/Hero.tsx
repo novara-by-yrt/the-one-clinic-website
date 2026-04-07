@@ -119,7 +119,7 @@ export default function Hero() {
               variants={FADE_UP}
               transition={TRANSITION_SMOOTH}
             >
-              <Button variant="primary" theme="dark">
+              <Button variant="primary" theme="dark" onClick={() => window.dispatchEvent(new CustomEvent('openCallbackModal'))}>
                 Book a Consultation
               </Button>
 

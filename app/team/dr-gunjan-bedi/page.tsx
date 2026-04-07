@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import BookConsultationButton from '@/components/ui/BookConsultationButton';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
@@ -67,9 +68,9 @@ export default function DrBediPage() {
               </motion.div>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
-                <Link href="#lead-form" className={styles.btnPrimary}>
+                <BookConsultationButton className={styles.btnPrimary}>
                   Book Consultation
-                </Link>
+                </BookConsultationButton>
                 <Link href="/our-team" className={styles.btnGhost}>
                   View All Team
                 </Link>
@@ -176,9 +177,9 @@ export default function DrBediPage() {
               confirm your appointment.
             </motion.p>
             <motion.div variants={fadeUp}>
-              <Link href="#lead-form" className={styles.ctaBtn}>
+              <BookConsultationButton className={styles.ctaBtn}>
                 Book Consultation
-              </Link>
+              </BookConsultationButton>
             </motion.div>
           </motion.div>
         </Container>

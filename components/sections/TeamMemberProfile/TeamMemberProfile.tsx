@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import BookConsultationButton from '@/components/ui/BookConsultationButton';
 import { motion } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
@@ -75,9 +76,9 @@ export default function TeamMemberProfile({ member }: { member: TeamMember }) {
               </motion.div>
 
               <motion.div className={styles.actions} variants={fadeUp}>
-                <Link href="#lead-form" className={styles.btnPrimary}>
+                <BookConsultationButton className={styles.btnPrimary}>
                   Book Consultation
-                </Link>
+                </BookConsultationButton>
                 <Link href="/our-team" className={styles.btnSecondary}>
                   ← Back to Team
                 </Link>

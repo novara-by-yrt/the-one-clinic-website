@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import BookConsultationButton from '@/components/ui/BookConsultationButton';
 import { motion } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
@@ -59,10 +60,10 @@ export default function ExtendedTeam() {
                 </div>
               </div>
               <p className={styles.specialistBio}>{SPECIALIST.bio}</p>
-              <Link href="#lead-form" className={styles.specialistCta}>
+              <BookConsultationButton className={styles.specialistCta}>
                 Book Consultation
                 <span aria-hidden="true" className={styles.ctaArrow}>→</span>
-              </Link>
+              </BookConsultationButton>
             </div>
           </motion.article>
         </motion.div>

@@ -50,7 +50,7 @@ export default function TreatmentTemplate({ treatment }: Props) {
               {shortDescription}
             </motion.p>
             <motion.div className={styles.heroCta} variants={fadeUp}>
-              <Button variant="primary" theme="dark">
+              <Button variant="primary" theme="dark" onClick={() => window.dispatchEvent(new CustomEvent('openCallbackModal'))}>
                 Book Consultation
               </Button>
               <Link href="/treatments" className={styles.backLink}>

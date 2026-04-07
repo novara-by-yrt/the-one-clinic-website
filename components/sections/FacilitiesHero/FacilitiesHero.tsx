@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import BookConsultationButton from '@/components/ui/BookConsultationButton';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Section from '@/components/ui/Section';
@@ -41,9 +42,9 @@ export default function FacilitiesHero() {
             The One Clinic is a purpose built facility that takes care of all your needs.
           </motion.p>
           <motion.div className={styles.ctas} variants={fadeUp}>
-            <Link href="#lead-form" className={styles.btnPrimary}>
+            <BookConsultationButton className={styles.btnPrimary}>
               Book Consultation
-            </Link>
+            </BookConsultationButton>
             <Link href="/treatments" className={styles.btnSecondary}>
               View Treatments
             </Link>

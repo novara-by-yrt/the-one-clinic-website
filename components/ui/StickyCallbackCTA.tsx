@@ -28,6 +28,13 @@ export default function StickyCallbackCTA() {
     return () => window.removeEventListener('keydown', onKey);
   }, [open]);
 
+  /* Listen for global "open modal" trigger from any component */
+  useEffect(() => {
+    function onOpenModal() { setOpen(true); }
+    window.addEventListener('openCallbackModal', onOpenModal);
+    return () => window.removeEventListener('openCallbackModal', onOpenModal);
+  }, []);
+
   return (
     <>
       <Script src="https://link.leadpipeline.ai/js/form_embed.js" strategy="lazyOnload" />
