@@ -26,22 +26,18 @@
   pointer-events: none;
 }
 
-/* 2-column grid: left content + right card */
 .heroContent {
   position: relative;
   z-index: 1;
-  width: 100%;
+  max-width: 680px;
   padding-block: var(--space-8);
-  display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: clamp(32px, 5vw, 72px);
-  align-items: center;
-}
-
-.heroLeft {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
+}
+
+.heroLeft {
+  display: contents;
 }
 
 .heroCategory {
@@ -235,6 +231,42 @@
 .heroCardPara {
   font-size: 0.9375rem;
   line-height: 1.72;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* ════════════════════════════════════════════════════
+   OVERVIEW (Understanding Eye Bags)
+════════════════════════════════════════════════════ */
+.overviewGrid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.overviewLabel {
+  padding-top: 6px;
+}
+
+.overviewBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.overviewHeading {
+  font-size: clamp(1.5rem, 3vw, var(--text-h2));
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+  color: var(--color-text-dark);
+  line-height: var(--lh-tight);
+  margin: 0;
+}
+
+.overviewPara {
+  font-size: var(--text-body);
+  line-height: 1.75;
   color: var(--color-text-muted);
   margin: 0;
 }
@@ -564,20 +596,14 @@
    RESPONSIVE
 ════════════════════════════════════════════════════ */
 @media (max-width: 960px) {
-  .heroContent {
-    grid-template-columns: 1fr;
-  }
-  .heroCard {
-    max-width: 560px;
-  }
-  .relatedGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .relatedGrid { grid-template-columns: repeat(2, 1fr); }
+  .overviewGrid { grid-template-columns: 1fr; gap: var(--space-3); }
+  .overviewLabel { padding-top: 0; }
 }
 
 @media (max-width: 768px) {
   .hero { padding-top: 64px; min-height: auto; }
-  .heroContent { padding-block: var(--space-6); }
+  .heroContent { padding-block: var(--space-6); max-width: 100%; }
 
   .heroCtas {
     flex-direction: column;

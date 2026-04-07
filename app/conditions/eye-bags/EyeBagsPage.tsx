@@ -121,28 +121,46 @@ export default function EyeBagsPage() {
                 </span>
               </motion.div>
             </div>
-
-            {/* ── Right card: Understanding Eye Bags ──────── */}
-            <motion.div className={styles.heroCard} variants={fadeUp}>
-              <p className={styles.heroCardEyebrow}>About This Condition</p>
-              <h2 className={styles.heroCardHeading}>Understanding Eye Bags</h2>
-              <p className={styles.heroCardPara}>
-                Eye bags are a common concern that develops with age, often creating a tired
-                appearance. They occur when fat pads beneath the eyes begin to shift, causing a
-                puffy or sagging look in the under-eye area.
-              </p>
-              <p className={styles.heroCardPara}>
-                The skin around the eyes is delicate and naturally loses collagen over time,
-                reducing firmness and elasticity. This process varies depending on genetics,
-                lifestyle, and environmental factors.
-              </p>
-            </motion.div>
           </motion.div>
         </Container>
       </section>
 
       {/* ════════════════════════════════════════
-          2. OPTIONS TO TREAT
+          2. UNDERSTANDING EYE BAGS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light">
+        <Container>
+          <motion.div
+            className={styles.overviewGrid}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.div className={styles.overviewLabel} variants={fadeUp}>
+              <p className={styles.eyebrowDark}>About This Condition</p>
+            </motion.div>
+            <div className={styles.overviewBody}>
+              <motion.h2 className={styles.overviewHeading} variants={fadeUp}>
+                Understanding Eye Bags
+              </motion.h2>
+              <motion.p className={styles.overviewPara} variants={fadeUp}>
+                Eye bags are a common concern that develops with age, often creating a tired
+                appearance. They occur when fat pads beneath the eyes begin to shift, causing a
+                puffy or sagging look in the under-eye area.
+              </motion.p>
+              <motion.p className={styles.overviewPara} variants={fadeUp}>
+                The skin around the eyes is delicate and naturally loses collagen over time,
+                reducing firmness and elasticity. This process varies depending on genetics,
+                lifestyle, and environmental factors.
+              </motion.p>
+            </div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          3. OPTIONS TO TREAT
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
