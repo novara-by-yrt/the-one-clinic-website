@@ -4,8 +4,7 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-6);
-  max-width: 860px;
-  margin-inline: auto;
+  width: 100%;
 }
 
 /* ── Header ──────────────────────────────────────────────────────── */
@@ -15,6 +14,7 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-2);
+  max-width: 560px;
 }
 
 .eyebrow {
@@ -31,96 +31,33 @@
   letter-spacing: -0.02em;
   color: var(--color-text-dark);
   line-height: 1.1;
+  margin: 0;
 }
 
 .subtext {
   color: var(--color-text-muted);
   line-height: var(--lh-normal);
-  max-width: 480px;
+  max-width: 420px;
+  margin: 0;
 }
 
-/* ── Form iframe wrapper ─────────────────────────────────────────── */
-.formWrap {
-  width: 100%;
-  border-radius: 1rem;
-  overflow: hidden;
-  border: 1px solid var(--color-border-light);
-  box-shadow: 0 4px 32px rgb(0 0 0 / 0.07);
-  background: #fff;
-  padding-block: var(--space-6);
-}
-
-@media (max-width: 600px) {
-  .formWrap {
-    padding-block: 0;
-  }
-}
-
-/* ── Map / contact section below form ───────────────────────────── */
-.mapSection {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+/* ── Side-by-side grid: map (left) | form (right) ──────────────── */
+.sideGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: var(--space-4);
+  width: 100%;
+  align-items: stretch;
+  min-height: 520px;
 }
 
-/* ── Contact info ───────────────────────────────────────────────── */
-.contactInfo {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-4);
-}
-
-.contactRow {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-3);
-  flex: 1;
-  min-width: 220px;
-}
-
-.contactIcon {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid var(--color-border-light);
-  background: var(--color-white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-text-dark);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.contactLabel {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin-bottom: 2px;
-}
-
-.contactValue {
-  font-size: 0.9375rem;
-  font-weight: 500;
-  color: var(--color-text-dark);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.contactValue:hover {
-  color: var(--color-text-muted);
-}
-
-/* ── Map embed ───────────────────────────────────────────────────── */
-.mapWrap {
+/* ── Map side (left) ─────────────────────────────────────────────── */
+.mapSide {
   position: relative;
   border-radius: 0.75rem;
   overflow: hidden;
   border: 1px solid var(--color-border-light);
-  aspect-ratio: 16 / 7;
+  box-shadow: 0 4px 24px rgb(0 0 0 / 0.06);
 }
 
 .mapIframe {
@@ -132,7 +69,7 @@
   display: block;
 }
 
-/* ── Transparent clickable overlay ─────────────────────────────── */
+/* Open in Google Maps overlay */
 .mapOverlay {
   position: absolute;
   inset: 0;
@@ -141,12 +78,12 @@
   justify-content: flex-end;
   padding: var(--space-3);
   text-decoration: none;
-  background: linear-gradient(to top, rgb(0 0 0 / 0.18) 0%, transparent 40%);
+  background: linear-gradient(to top, rgb(0 0 0 / 0.2) 0%, transparent 40%);
   transition: background 0.2s ease;
 }
 
 .mapOverlay:hover {
-  background: linear-gradient(to top, rgb(0 0 0 / 0.30) 0%, transparent 50%);
+  background: linear-gradient(to top, rgb(0 0 0 / 0.32) 0%, transparent 50%);
 }
 
 .mapCta {
@@ -168,14 +105,40 @@
   transform: translateY(-1px);
 }
 
+/* ── Form side (right) ───────────────────────────────────────────── */
+.formSide {
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--color-border-light);
+  box-shadow: 0 4px 32px rgb(0 0 0 / 0.07);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  /* min-height ensures map has enough height even on short viewports */
+  min-height: 480px;
+}
+
 /* ── Responsive ─────────────────────────────────────────────────── */
-@media (max-width: 600px) {
-  .contactInfo {
-    flex-direction: column;
-    gap: var(--space-3);
+
+/* Tablet: stack vertically */
+@media (max-width: 860px) {
+  .sideGrid {
+    grid-template-columns: 1fr;
+    min-height: unset;
   }
 
-  .mapWrap {
+  .mapSide {
+    aspect-ratio: 16 / 7;
+    position: relative;
+  }
+
+  .formSide {
+    min-height: 480px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mapSide {
     aspect-ratio: 4 / 3;
   }
 }

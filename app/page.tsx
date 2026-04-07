@@ -10,7 +10,6 @@ import TestimonialVideos  from '@/components/sections/TestimonialVideos';
 import MeetTheExperts    from '@/components/sections/MeetTheExperts';
 import Testimonials from '@/components/sections/Testimonials';
 import LeadForm    from '@/components/sections/LeadForm';
-import FAQ         from '@/components/sections/FAQ';
 import FinalCTA    from '@/components/sections/FinalCTA';
 
 export default function Home() {
@@ -28,7 +27,6 @@ export default function Home() {
       <MeetTheExperts />
       <Testimonials />
       <LeadForm />
-      <FAQ />
       <FinalCTA />
     </>
   );

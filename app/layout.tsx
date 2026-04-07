@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import StickyCallbackCTA from '@/components/ui/StickyCallbackCTA';
 import '@/styles/globals.css';
 
 const inter = localFont({
@@ -79,6 +80,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <StickyCallbackCTA />
         </div>
       </body>
     </html>
