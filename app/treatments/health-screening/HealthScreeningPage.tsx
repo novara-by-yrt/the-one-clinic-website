@@ -1,13 +1,11 @@
 'use client';
 
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Section      from '@/components/ui/Section';
 import Container    from '@/components/ui/Container';
 import Accordion    from '@/components/ui/Accordion';
 import BookConsultationButton from '@/components/ui/BookConsultationButton';
 import LeadForm     from '@/components/sections/LeadForm';
-import VideoSection from '@/components/sections/VideoSection';
 import Testimonials from '@/components/sections/Testimonials';
 import FinalCTA     from '@/components/sections/FinalCTA';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
@@ -118,9 +116,32 @@ export default function HealthScreeningPage() {
               <BookConsultationButton className={styles.heroCtaPrimary}>
                 Book Appointment
               </BookConsultationButton>
-              <Link href="#contact" className={styles.heroCtaSecondary}>
-                Contact Us
-              </Link>
+            </motion.div>
+
+            <motion.div className={styles.heroTrust} variants={fadeUp}>
+              <span className={styles.heroTrustItem}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+                  <path d="M4.5 20.118a7.5 7.5 0 0115 0"/>
+                  <path d="M18.5 15v5M16 17.5h5"/>
+                </svg>
+                Led by highly trained doctors
+              </span>
+              <span className={styles.heroTrustDivider} aria-hidden="true" />
+              <span className={styles.heroTrustItem}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                </svg>
+                Trusted by patients in Leicester
+              </span>
+              <span className={styles.heroTrustDivider} aria-hidden="true" />
+              <span className={styles.heroTrustItem}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9.5"/>
+                  <path d="M12 7.5v9M7.5 12h9"/>
+                </svg>
+                Comprehensive medical &amp; aesthetic care
+              </span>
             </motion.div>
           </motion.div>
         </Container>
@@ -158,7 +179,12 @@ export default function HealthScreeningPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          3. AT A GLANCE
+          3. PATIENT REVIEWS
+      ════════════════════════════════════════ */}
+      <Testimonials />
+
+      {/* ════════════════════════════════════════
+          4. AT A GLANCE
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark" className={styles.glanceSection}>
         <Container>
@@ -447,10 +473,8 @@ export default function HealthScreeningPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          11-13. GLOBAL SECTIONS
+          FINAL CTA
       ════════════════════════════════════════ */}
-      <VideoSection />
-      <Testimonials />
       <FinalCTA />
     </>
   );
