@@ -101,93 +101,96 @@ export default function HealthScreeningPage() {
             initial="hidden"
             animate="show"
           >
-            <motion.span className={styles.heroCategory} variants={fadeUp}>
-              Health &amp; Wellbeing
-            </motion.span>
+            {/* ── Left column ─────────────────────────────── */}
+            <div className={styles.heroLeft}>
+              <motion.span className={styles.heroCategory} variants={fadeUp}>
+                Health &amp; Wellbeing
+              </motion.span>
 
-            <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-              Health Screening Leicester
-            </motion.h1>
+              <motion.h1 className={styles.heroTitle} variants={fadeUp}>
+                Health Screening Leicester
+              </motion.h1>
 
-            <motion.p className={styles.heroDesc} variants={fadeUp}>
-              Proactive care through advanced cardiovascular screening
-            </motion.p>
+              <motion.p className={styles.heroDesc} variants={fadeUp}>
+                Proactive care through advanced cardiovascular screening
+              </motion.p>
 
-            <motion.div className={styles.heroCtas} variants={fadeUp}>
-              <BookConsultationButton className={styles.heroCtaPrimary}>
-                Book Appointment
-              </BookConsultationButton>
-            </motion.div>
+              <motion.div className={styles.heroCtas} variants={fadeUp}>
+                <BookConsultationButton className={styles.heroCtaPrimary}>
+                  Book Appointment
+                </BookConsultationButton>
+              </motion.div>
 
-            <motion.div className={styles.heroTrust} variants={fadeUp}>
-              <span className={styles.heroTrustItem}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
-                  <path d="M4.5 20.118a7.5 7.5 0 0115 0"/>
-                  <path d="M18.5 15v5M16 17.5h5"/>
-                </svg>
-                Led by highly trained doctors
-              </span>
-              <span className={styles.heroTrustDivider} aria-hidden="true" />
-              <span className={styles.heroTrustItem}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
-                </svg>
-                Trusted by patients in Leicester
-              </span>
-              <span className={styles.heroTrustDivider} aria-hidden="true" />
-              <span className={styles.heroTrustItem}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <circle cx="12" cy="12" r="9.5"/>
-                  <path d="M12 7.5v9M7.5 12h9"/>
-                </svg>
-                Comprehensive medical &amp; aesthetic care
-              </span>
+              {/* Review badges */}
+              <motion.div className={styles.reviewBadges} variants={fadeUp}>
+                <div className={styles.reviewBadge}>
+                  <span className={`${styles.reviewBadgeIcon} ${styles.reviewBadgeGoogle}`}>G</span>
+                  <div className={styles.reviewBadgeText}>
+                    <span className={styles.reviewStars}>★★★★★</span>
+                    <span className={styles.reviewLabel}>Google Reviews</span>
+                  </div>
+                </div>
+                <div className={styles.reviewBadge}>
+                  <span className={`${styles.reviewBadgeIcon} ${styles.reviewBadgeTrustpilot}`}>★</span>
+                  <div className={styles.reviewBadgeText}>
+                    <span className={styles.reviewStars}>★★★★★</span>
+                    <span className={styles.reviewLabel}>Trustpilot</span>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Trust items */}
+              <motion.div className={styles.heroTrust} variants={fadeUp}>
+                <span className={styles.heroTrustItem}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+                    <path d="M4.5 20.118a7.5 7.5 0 0115 0"/>
+                    <path d="M18.5 15v5M16 17.5h5"/>
+                  </svg>
+                  Led by highly trained doctors
+                </span>
+                <span className={styles.heroTrustDivider} aria-hidden="true" />
+                <span className={styles.heroTrustItem}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                  </svg>
+                  Trusted by patients in Leicester
+                </span>
+                <span className={styles.heroTrustDivider} aria-hidden="true" />
+                <span className={styles.heroTrustItem}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9.5"/>
+                    <path d="M12 7.5v9M7.5 12h9"/>
+                  </svg>
+                  Comprehensive medical &amp; aesthetic care
+                </span>
+              </motion.div>
+            </div>
+
+            {/* ── Right card: What is Health Screening ─────── */}
+            <motion.div className={styles.heroCard} variants={fadeUp}>
+              <p className={styles.heroCardEyebrow}>About This Treatment</p>
+              <h2 className={styles.heroCardHeading}>What is Health Screening?</h2>
+              <p className={styles.heroCardPara}>
+                Health screening at Leicester&apos;s One Clinic explores and treats a wide range of
+                different health and well-being issues. Our experienced medical team conducts
+                thorough assessments designed to identify risk factors early, giving you the best
+                chance of maintaining and improving your long-term health.
+              </p>
             </motion.div>
           </motion.div>
         </Container>
       </section>
 
       {/* ════════════════════════════════════════
-          2. WHAT IS HEALTH SCREENING
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
-        <Container>
-          <motion.div
-            className={styles.overviewGrid}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.div className={styles.overviewLabel} variants={fadeUp}>
-              <p className={styles.eyebrowDark}>About This Treatment</p>
-            </motion.div>
-
-            <div className={styles.overviewBody}>
-              <motion.h2 className={styles.overviewHeading} variants={fadeUp}>
-                What is Health Screening?
-              </motion.h2>
-              <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Health screening at Leicester&apos;s One Clinic explores and treats a wide range of
-                different health and well-being issues. Our experienced medical team conducts
-                thorough assessments designed to identify risk factors early, giving you the best
-                chance of maintaining and improving your long-term health.
-              </motion.p>
-            </div>
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          3. PATIENT REVIEWS
+          2. PATIENT REVIEWS
       ════════════════════════════════════════ */}
       <Testimonials />
 
       {/* ════════════════════════════════════════
           4. AT A GLANCE
       ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark" className={styles.glanceSection}>
+      <Section variant="light" data-section-theme="light" className={styles.glanceSection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -196,10 +199,10 @@ export default function HealthScreeningPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
               Treatment Overview
             </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
               At a Glance
             </motion.h2>
           </motion.div>
@@ -308,47 +311,72 @@ export default function HealthScreeningPage() {
       {/* ════════════════════════════════════════
           6. HOW DOES IT WORK
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
+          {/* Header */}
           <motion.div
-            className={styles.howGrid}
-            variants={stagger(0.12)}
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <div className={styles.howText}>
-              <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-                The Science
-              </motion.p>
-              <motion.h2 className={styles.headingDark} variants={fadeUp}>
-                How Does Health Screening Work
-              </motion.h2>
-              <motion.p className={styles.howPara} variants={fadeUp}>
-                Screening evaluates cardiovascular health and identifies risk factors such as high
-                blood pressure, lifestyle risks, and underlying conditions to support early
-                intervention. Using a combination of clinical assessment and diagnostic technology,
-                our doctors build a comprehensive picture of your cardiovascular health.
-              </motion.p>
-              <motion.p className={styles.howPara} variants={fadeUp}>
-                Results are reviewed in detail with your clinician, who will explain findings in
-                plain language and outline the most appropriate next steps, whether that is
-                lifestyle guidance, medication, further investigation, or a structured monitoring
-                programme.
-              </motion.p>
-            </div>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>The Science</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              How Does Health Screening Work
+            </motion.h2>
+          </motion.div>
 
-            <motion.div className={styles.howCard} variants={fadeUp}>
-              <p className={styles.howCardEyebrow}>Screening Covers</p>
-              <ul className={styles.howCardList} role="list">
-                {['Blood pressure analysis', 'Heart rate & rhythm', 'Cholesterol levels', 'BMI & lifestyle review', 'Family history assessment', 'Risk stratification'].map((item) => (
-                  <li key={item} className={styles.howCardItem}>
-                    <span className={styles.howCardDot} aria-hidden="true" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+          {/* Two-column explanation text */}
+          <motion.div
+            className={styles.howTextGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.howPara} variants={fadeUp}>
+              Screening evaluates cardiovascular health and identifies risk factors such as high
+              blood pressure, lifestyle risks, and underlying conditions to support early
+              intervention. Using a combination of clinical assessment and diagnostic technology,
+              our doctors build a comprehensive picture of your cardiovascular health.
+            </motion.p>
+            <motion.p className={styles.howPara} variants={fadeUp}>
+              Results are reviewed in detail with your clinician, who will explain findings in
+              plain language and outline the most appropriate next steps — whether that is
+              lifestyle guidance, medication, further investigation, or a structured monitoring
+              programme.
+            </motion.p>
+          </motion.div>
+
+          {/* Screening Covers checklist */}
+          <motion.div
+            className={styles.howCoversWrap}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.howCoversLabel} variants={fadeUp}>Screening Covers</motion.p>
+            <motion.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
+              {[
+                'Blood pressure analysis',
+                'Heart rate & rhythm',
+                'Cholesterol levels',
+                'BMI & lifestyle review',
+                'Family history assessment',
+                'Risk stratification',
+              ].map((item) => (
+                <motion.li key={item} className={styles.howCoversItem} variants={fadeUp}>
+                  <span className={styles.howCoversCheck} aria-hidden="true">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <polyline points="2,6 5,9 10,3" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  {item}
+                </motion.li>
+              ))}
+            </motion.ul>
           </motion.div>
         </Container>
       </Section>

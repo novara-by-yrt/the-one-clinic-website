@@ -25,7 +25,7 @@ export default function TreatmentTemplate({ treatment }: Props) {
 
   return (
     <>
-      {/* ── 1. Hero ────────────────────────────────────────────── */}
+      {/* ── 1. Hero + Overview (combined) ──────────────────────── */}
       <section
         className={styles.hero}
         aria-label={`${title} – hero`}
@@ -36,56 +36,84 @@ export default function TreatmentTemplate({ treatment }: Props) {
         <Container>
           <motion.div
             className={styles.heroContent}
-            variants={stagger(0.18)}
+            variants={stagger(0.15)}
             initial="hidden"
             animate="show"
           >
-            <motion.span className={styles.category} variants={fadeUp}>
-              {category}
-            </motion.span>
-            <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-              {title}
-            </motion.h1>
-            <motion.p className={styles.heroDesc} variants={fadeUp}>
-              {shortDescription}
-            </motion.p>
-            <motion.div className={styles.heroCta} variants={fadeUp}>
-              <Button variant="primary" theme="dark" onClick={() => window.dispatchEvent(new CustomEvent('openCallbackModal'))}>
-                Book Consultation
-              </Button>
-              <Link href="/treatments" className={styles.backLink}>
-                ← All Treatments
-              </Link>
+            {/* Left column */}
+            <div className={styles.heroLeft}>
+              <motion.span className={styles.category} variants={fadeUp}>
+                {category}
+              </motion.span>
+              <motion.h1 className={styles.heroTitle} variants={fadeUp}>
+                {title}
+              </motion.h1>
+              <motion.p className={styles.heroDesc} variants={fadeUp}>
+                {shortDescription}
+              </motion.p>
+              <motion.div className={styles.heroCta} variants={fadeUp}>
+                <Button variant="primary" theme="dark" onClick={() => window.dispatchEvent(new CustomEvent('openCallbackModal'))}>
+                  Book Consultation
+                </Button>
+              </motion.div>
+
+              {/* Review badges */}
+              <motion.div className={styles.reviewBadges} variants={fadeUp}>
+                <div className={styles.reviewBadge}>
+                  <span className={`${styles.reviewBadgeIcon} ${styles.reviewBadgeGoogle}`}>G</span>
+                  <div className={styles.reviewBadgeText}>
+                    <span className={styles.reviewStars}>★★★★★</span>
+                    <span className={styles.reviewLabel}>Google Reviews</span>
+                  </div>
+                </div>
+                <div className={styles.reviewBadge}>
+                  <span className={`${styles.reviewBadgeIcon} ${styles.reviewBadgeTrustpilot}`}>★</span>
+                  <div className={styles.reviewBadgeText}>
+                    <span className={styles.reviewStars}>★★★★★</span>
+                    <span className={styles.reviewLabel}>Trustpilot</span>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Trust items */}
+              <motion.div className={styles.heroTrust} variants={fadeUp}>
+                <span className={styles.heroTrustItem}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+                    <path d="M4.5 20.118a7.5 7.5 0 0115 0"/>
+                    <path d="M18.5 15v5M16 17.5h5"/>
+                  </svg>
+                  Led by highly trained doctors
+                </span>
+                <span className={styles.heroTrustDivider} aria-hidden="true" />
+                <span className={styles.heroTrustItem}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                  </svg>
+                  Trusted by patients in Leicester
+                </span>
+                <span className={styles.heroTrustDivider} aria-hidden="true" />
+                <span className={styles.heroTrustItem}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9.5"/>
+                    <path d="M12 7.5v9M7.5 12h9"/>
+                  </svg>
+                  Comprehensive medical &amp; aesthetic care
+                </span>
+              </motion.div>
+            </div>
+
+            {/* Right card: What is this treatment */}
+            <motion.div className={styles.heroCard} variants={fadeUp}>
+              <p className={styles.heroCardEyebrow}>About This Treatment</p>
+              <h2 className={styles.heroCardHeading}>What is {title}?</h2>
+              {paragraphs.map((para, i) => (
+                <p key={i} className={styles.heroCardPara}>{para}</p>
+              ))}
             </motion.div>
           </motion.div>
         </Container>
       </section>
-
-      {/* ── 2. Overview ────────────────────────────────────────── */}
-      <Section variant="light" data-section-theme="light">
-        <Container>
-          <motion.div
-            className={styles.overviewGrid}
-            variants={stagger()}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <div className={styles.overviewLabel}>
-              <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-                About This Treatment
-              </motion.p>
-            </div>
-            <div className={styles.overviewBody}>
-              {paragraphs.map((para, i) => (
-                <motion.p key={i} className={styles.overviewPara} variants={fadeUp}>
-                  {para}
-                </motion.p>
-              ))}
-            </div>
-          </motion.div>
-        </Container>
-      </Section>
 
       {/* ── 3. Benefits ────────────────────────────────────────── */}
       <Section variant="dark" data-section-theme="dark">

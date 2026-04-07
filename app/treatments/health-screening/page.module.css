@@ -35,11 +35,116 @@
 .heroContent {
   position: relative;
   z-index: 1;
-  max-width: 680px;
-  padding-block: var(--space-7);
+  width: 100%;
+  padding-block: var(--space-8);
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+
+.heroLeft {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
+}
+
+/* ── Right-side card ─────────────────────────────────────── */
+.heroCard {
+  background: rgba(255 255 255 / 0.95);
+  border-radius: 20px;
+  padding: var(--space-5);
+  box-shadow: 0 16px 56px rgba(0 0 0 / 0.28);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.heroCardEyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.heroCardHeading {
+  font-size: clamp(1.25rem, 2.2vw, 1.625rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+  color: var(--color-text-dark);
+  line-height: 1.2;
+  margin: 0 0 4px;
+}
+
+.heroCardPara {
+  font-size: 0.9375rem;
+  line-height: 1.72;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* ── Review badges ───────────────────────────────────────── */
+.reviewBadges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.reviewBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255 255 255 / 0.10);
+  border: 1px solid rgba(255 255 255 / 0.2);
+  border-radius: 100px;
+  padding: 7px 14px 7px 7px;
+  backdrop-filter: blur(8px);
+}
+
+.reviewBadgeIcon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.8125rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.reviewBadgeGoogle {
+  background: #fff;
+  color: #4285F4;
+}
+
+.reviewBadgeTrustpilot {
+  background: #00B67A;
+  color: #fff;
+}
+
+.reviewBadgeText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.reviewStars {
+  color: #FFB800;
+  font-size: 0.625rem;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.reviewLabel {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: rgba(255 255 255 / 0.78);
+  letter-spacing: 0.05em;
+  line-height: 1;
 }
 
 .heroCategory {
@@ -218,7 +323,7 @@
    AT A GLANCE
 ════════════════════════════════════════════════════ */
 .glanceSection {
-  background: #000 !important;
+  background: #f4f4f4 !important;
   border-top: none;
   border-bottom: none;
 }
@@ -396,75 +501,70 @@
 /* ════════════════════════════════════════════════════
    HOW DOES IT WORK
 ════════════════════════════════════════════════════ */
-.howGrid {
+.howSection {
+  background: #f9f9f9 !important;
+}
+
+/* Two-column paragraph grid */
+.howTextGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-8);
-  align-items: start;
-}
-
-.howText {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-}
-
-/* Center the eyebrow + heading within the how-it-works text column */
-.howText > .eyebrowDark,
-.howText > .headingDark {
-  text-align: center;
-  align-self: center;
+  gap: var(--space-5);
+  margin-bottom: var(--space-7);
 }
 
 .howPara {
   font-size: var(--text-body);
-  line-height: 1.75;
+  line-height: 1.78;
   color: var(--color-text-muted);
   margin: 0;
 }
 
-.howCard {
-  background: var(--color-bg-light);
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-lg);
-  padding: var(--space-5);
-  box-shadow: 0 2px 24px rgb(0 0 0 / 0.05);
-  position: sticky;
-  top: 88px;
+/* Screening covers checklist */
+.howCoversWrap {
+  background: #000;
+  border-radius: 20px;
+  padding: var(--space-6) var(--space-6);
 }
 
-.howCardEyebrow {
-  font-size: 0.75rem;
+.howCoversLabel {
+  font-size: 0.6875rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin: 0 0 var(--space-3);
+  color: rgba(255 255 255 / 0.38);
+  margin: 0 0 var(--space-4);
 }
 
-.howCardList {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+.howCoversList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3) var(--space-5);
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.howCardItem {
+.howCoversItem {
   display: flex;
   align-items: center;
   gap: 12px;
   font-size: 0.9375rem;
   font-weight: var(--fw-medium);
-  color: var(--color-text-dark);
+  color: #fff;
+  letter-spacing: -0.01em;
 }
 
-.howCardDot {
-  width: 6px;
-  height: 6px;
+.howCoversCheck {
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
-  background: var(--color-text-dark);
+  background: rgba(255 255 255 / 0.12);
+  border: 1px solid rgba(255 255 255 / 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255 255 255 / 0.9);
   flex-shrink: 0;
 }
 
@@ -602,12 +702,20 @@
 @media (max-width: 1024px) {
   .glanceGrid { grid-template-columns: repeat(2, 1fr); }
   .relatedGrid { grid-template-columns: repeat(2, 1fr); }
-  .howGrid { grid-template-columns: 1fr; gap: var(--space-5); }
-  .howCard { position: static; }
+  .howCoversList { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 960px) {
+  .heroContent {
+    grid-template-columns: 1fr;
+  }
+  .heroCard {
+    max-width: 560px;
+  }
 }
 
 @media (max-width: 768px) {
-  .hero { padding-top: 64px; min-height: 80vh; }
+  .hero { padding-top: 64px; min-height: auto; }
   .heroContent { padding-block: var(--space-6); }
 
   .heroCtas {
@@ -630,6 +738,10 @@
   .overviewLabel { padding-top: 0; }
 
   .benefitsGrid { grid-template-columns: 1fr; }
+
+  .howTextGrid { grid-template-columns: 1fr; }
+  .howCoversWrap { padding: var(--space-4); }
+  .howCoversList { grid-template-columns: 1fr; gap: var(--space-2); }
 
   .journeyStep { gap: var(--space-3); }
 
