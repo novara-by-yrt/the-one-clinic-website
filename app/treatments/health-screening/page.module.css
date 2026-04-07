@@ -5,33 +5,31 @@
   position: relative;
   min-height: 72vh;
   background-color: var(--color-bg-dark);
+  background-image: url('/images/Treatment%20hero%20section%20background%20image.jpg');
+  background-size: cover;
+  background-position: center;
   display: flex;
   align-items: center;
   overflow: hidden;
   padding-top: 80px;
 }
 
-/* Subtle grid texture */
+/* Dark overlay for text legibility */
 .heroGrid {
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(255 255 255 / 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255 255 255 / 0.03) 1px, transparent 1px);
-  background-size: 80px 80px;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.55) 60%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
   pointer-events: none;
 }
 
-/* Radial glow from bottom-left */
+/* Kept for compatibility – no longer renders visible content */
 .heroGradient {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 70% 60% at 10% 90%,
-    rgba(255 255 255 / 0.04) 0%,
-    transparent 70%
-  );
-  pointer-events: none;
+  display: none;
 }
 
 .heroContent {

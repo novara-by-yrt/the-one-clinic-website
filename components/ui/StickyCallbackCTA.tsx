@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import Script from 'next/script';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './StickyCallbackCTA.module.css';
@@ -76,42 +77,57 @@ export default function StickyCallbackCTA() {
                 exit={{ opacity: 0, y: 32 }}
                 transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
               >
-                {/* Header row */}
-                <div className={styles.modalTop}>
-                  <div>
-                    <p className={styles.modalEyebrow}>Get In Touch</p>
-                    <h2 className={styles.modalHeading}>Request a Call Back</h2>
-                  </div>
-                  <button
-                    className={styles.closeBtn}
-                    onClick={() => setOpen(false)}
-                    aria-label="Close"
-                  >
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-                      <path d="M4 4l10 10M14 4L4 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    </svg>
-                  </button>
+                {/* Team image – desktop only */}
+                <div className={styles.modalImage} aria-hidden="true">
+                  <Image
+                    src="/images/Team Image.jpg"
+                    alt=""
+                    fill
+                    style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                    sizes="380px"
+                    priority
+                  />
                 </div>
 
-                {/* Form iframe */}
-                <div className={styles.modalForm}>
-                  <iframe
-                    src="https://link.leadpipeline.ai/widget/form/Az3D8kxDVBz2diDQJ3uY"
-                    style={{ width: '100%', height: '509px', border: 'none' }}
-                    id="popup-callback-Az3D8kxDVBz2diDQJ3uY"
-                    data-layout="{'id':'INLINE'}"
-                    data-trigger-type="alwaysShow"
-                    data-trigger-value=""
-                    data-activation-type="alwaysActivated"
-                    data-activation-value=""
-                    data-deactivation-type="neverDeactivate"
-                    data-deactivation-value=""
-                    data-form-name="Book Consultation"
-                    data-height="509"
-                    data-layout-iframe-id="popup-callback-Az3D8kxDVBz2diDQJ3uY"
-                    data-form-id="Az3D8kxDVBz2diDQJ3uY"
-                    title="Request a Call Back"
-                  />
+                {/* Form side */}
+                <div className={styles.modalContent}>
+                  {/* Header row */}
+                  <div className={styles.modalTop}>
+                    <div>
+                      <p className={styles.modalEyebrow}>Get In Touch</p>
+                      <h2 className={styles.modalHeading}>Request a Call Back</h2>
+                    </div>
+                    <button
+                      className={styles.closeBtn}
+                      onClick={() => setOpen(false)}
+                      aria-label="Close"
+                    >
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                        <path d="M4 4l10 10M14 4L4 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                      </svg>
+                    </button>
+                  </div>
+
+                  {/* Form iframe */}
+                  <div className={styles.modalForm}>
+                    <iframe
+                      src="https://link.leadpipeline.ai/widget/form/Az3D8kxDVBz2diDQJ3uY"
+                      style={{ width: '100%', height: '509px', border: 'none' }}
+                      id="popup-callback-Az3D8kxDVBz2diDQJ3uY"
+                      data-layout="{'id':'INLINE'}"
+                      data-trigger-type="alwaysShow"
+                      data-trigger-value=""
+                      data-activation-type="alwaysActivated"
+                      data-activation-value=""
+                      data-deactivation-type="neverDeactivate"
+                      data-deactivation-value=""
+                      data-form-name="Book Consultation"
+                      data-height="509"
+                      data-layout-iframe-id="popup-callback-Az3D8kxDVBz2diDQJ3uY"
+                      data-form-id="Az3D8kxDVBz2diDQJ3uY"
+                      title="Request a Call Back"
+                    />
+                  </div>
                 </div>
               </motion.div>
             </div>
