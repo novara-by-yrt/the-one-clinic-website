@@ -35,18 +35,15 @@
 .heroContent {
   position: relative;
   z-index: 1;
-  width: 100%;
+  max-width: 680px;
   padding-block: var(--space-8);
-  display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: clamp(32px, 5vw, 72px);
-  align-items: center;
-}
-
-.heroLeft {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
+}
+
+.heroLeft {
+  display: contents;
 }
 
 /* ── Right-side card ─────────────────────────────────────── */
@@ -339,8 +336,8 @@
   flex-direction: column;
   gap: 12px;
   padding: var(--space-5) var(--space-4);
-  background: rgb(255 255 255 / 0.04);
-  border: 1px solid rgb(255 255 255 / 0.1);
+  background: #000;
+  border: 1px solid rgba(255 255 255 / 0.08);
   border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
@@ -705,18 +702,9 @@
   .howCoversList { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (max-width: 960px) {
-  .heroContent {
-    grid-template-columns: 1fr;
-  }
-  .heroCard {
-    max-width: 560px;
-  }
-}
-
 @media (max-width: 768px) {
   .hero { padding-top: 64px; min-height: auto; }
-  .heroContent { padding-block: var(--space-6); }
+  .heroContent { padding-block: var(--space-6); max-width: 100%; }
 
   .heroCtas {
     flex-direction: column;

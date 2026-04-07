@@ -166,18 +166,6 @@ export default function HealthScreeningPage() {
                 </span>
               </motion.div>
             </div>
-
-            {/* ── Right card: What is Health Screening ─────── */}
-            <motion.div className={styles.heroCard} variants={fadeUp}>
-              <p className={styles.heroCardEyebrow}>About This Treatment</p>
-              <h2 className={styles.heroCardHeading}>What is Health Screening?</h2>
-              <p className={styles.heroCardPara}>
-                Health screening at Leicester&apos;s One Clinic explores and treats a wide range of
-                different health and well-being issues. Our experienced medical team conducts
-                thorough assessments designed to identify risk factors early, giving you the best
-                chance of maintaining and improving your long-term health.
-              </p>
-            </motion.div>
           </motion.div>
         </Container>
       </section>
@@ -186,6 +174,36 @@ export default function HealthScreeningPage() {
           2. PATIENT REVIEWS
       ════════════════════════════════════════ */}
       <Testimonials />
+
+      {/* ════════════════════════════════════════
+          3. WHAT IS HEALTH SCREENING
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light">
+        <Container>
+          <motion.div
+            className={styles.overviewGrid}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.div className={styles.overviewLabel} variants={fadeUp}>
+              <p className={styles.eyebrowDark}>About This Treatment</p>
+            </motion.div>
+            <div className={styles.overviewBody}>
+              <motion.h2 className={styles.overviewHeading} variants={fadeUp}>
+                What is Health Screening?
+              </motion.h2>
+              <motion.p className={styles.overviewPara} variants={fadeUp}>
+                Health screening at Leicester&apos;s One Clinic explores and treats a wide range of
+                different health and well-being issues. Our experienced medical team conducts
+                thorough assessments designed to identify risk factors early, giving you the best
+                chance of maintaining and improving your long-term health.
+              </motion.p>
+            </div>
+          </motion.div>
+        </Container>
+      </Section>
 
       {/* ════════════════════════════════════════
           4. AT A GLANCE
