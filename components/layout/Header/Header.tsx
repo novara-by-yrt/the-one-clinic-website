@@ -120,7 +120,7 @@ const NAV: NavItem[] = [
       },
     ],
   },
-  { label: 'Membership',         href: '#membership' },
+  { label: 'Membership',         href: 'https://theoneclinic.eu.zenoti.com/webstoreNew/sales/membership/4fbea838-3725-4392-a22a-3b301fbd0229' },
   { label: 'Patient Experience', href: '#results' },
 ];
 
@@ -285,8 +285,15 @@ export default function Header() {
                         className={`${styles.navLink} ${hasDropdown ? styles.navLinkBtn : ''}`}
                         aria-expanded={hasDropdown ? isOpen : undefined}
                         onClick={() => {
-                          if (!hasDropdown) window.location.href = item.href;
-                          else setOpenDropdown(isOpen ? null : i);
+                          if (!hasDropdown) {
+                            if (item.href.startsWith('http')) {
+                              window.open(item.href, '_blank', 'noopener,noreferrer');
+                            } else {
+                              window.location.href = item.href;
+                            }
+                          } else {
+                            setOpenDropdown(isOpen ? null : i);
+                          }
                         }}
                       >
                         <span className={styles.navLinkInner}>{item.label}</span>
@@ -419,7 +426,12 @@ export default function Header() {
                             <Chevron open={isExpanded} size={12} />
                           </button>
                         ) : (
-                          <Link href={item.href} className={styles.mobileNavLink} onClick={closeMenu}>
+                          <Link
+                            href={item.href}
+                            className={styles.mobileNavLink}
+                            onClick={closeMenu}
+                            {...(item.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                          >
                             {item.label}
                           </Link>
                         )}
