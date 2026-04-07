@@ -71,7 +71,6 @@ export default function Services() {
           <motion.h2 className={styles.heading} variants={fadeUp}>
             Popular Treatments
           </motion.h2>
-          <motion.div className={styles.headingLine} variants={fadeUp} aria-hidden="true" />
         </motion.div>
 
         {/* ── 3 × 2 grid ─────────────────────────────────────── */}

@@ -88,7 +88,7 @@ export default function Hero() {
               variants={FADE_UP}
               transition={TRANSITION_SMOOTH}
             >
-              Medical &amp; Aesthetic Care — Leicester
+              Medical &amp; Aesthetic Care, Leicester
             </motion.p>
 
             {/* H1 Headline */}

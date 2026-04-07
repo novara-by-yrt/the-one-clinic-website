@@ -35,7 +35,7 @@ const CARDS = [
   {
     title: 'Skincare Bar',
     description:
-      'We display a collection of the products available at our clinic which you are free to sample — a carefully curated selection to complement your treatment.',
+      'We display a collection of the products available at our clinic which you are free to sample, a carefully curated selection to complement your treatment.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 2a10 10 0 0 1 0 20 10 10 0 0 1 0-20" />

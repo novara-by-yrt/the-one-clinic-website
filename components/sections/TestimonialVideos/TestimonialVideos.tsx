@@ -10,8 +10,8 @@ import styles from './TestimonialVideos.module.css';
 
 const VIDEOS = [
   { id: 'idcb1vywka', title: 'Customer Testimonial' },
-  { id: 'onscmatqmy', title: 'Customer Testimonial — Oxana' },
-  { id: 'fm142sxmlw', title: 'Customer Testimonial — Mahanoor' },
+  { id: 'onscmatqmy', title: 'Customer Testimonial, Oxana' },
+  { id: 'fm142sxmlw', title: 'Customer Testimonial, Mahanoor' },
 ];
 
 const SLIDE_VARIANTS = {
@@ -59,7 +59,7 @@ export default function TestimonialVideos() {
           <motion.p className={styles.eyebrow} variants={fadeUp}>Patient Stories</motion.p>
           <motion.h2 className={styles.heading} variants={fadeUp}>Hear From Our Patients</motion.h2>
           <motion.p className={styles.subtext} variants={fadeUp}>
-            Real people, real results — in their own words.
+            Real people, real results, in their own words.
           </motion.p>
         </motion.div>
 

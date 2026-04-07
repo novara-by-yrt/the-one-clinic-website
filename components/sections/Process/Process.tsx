@@ -22,7 +22,7 @@ const STEPS = [
   {
     number: '03',
     title:       'Personalised Treatment Plan',
-    description: 'A plan built specifically for you — combining the right treatments, timeline, and support for your needs.',
+    description: 'A plan built specifically for you, combining the right treatments, timeline, and support for your needs.',
   },
   {
     number: '04',
@@ -111,7 +111,7 @@ export default function Process() {
               <p className={styles.eyebrow}>The Journey</p>
               <h2 className={styles.heading}>How It Works</h2>
               <p className={styles.subtext}>
-                From your first visit to long-term results — here's what to expect
+                From your first visit to long-term results, here&apos;s what to expect
                 when you choose The One Clinic.
               </p>
             </motion.div>

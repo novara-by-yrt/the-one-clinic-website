@@ -10,8 +10,9 @@ import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import { TEAM_MEMBERS } from '@/data/team';
 import styles from './MeetTheExperts.module.css';
 
-// Pixels per animation frame at ~60 fps (≈ 30 px/s — comfortable reading pace)
-const SPEED = 0.5;
+// Pixels per animation frame at ~60 fps (≈ 21 px/s — comfortable reading pace)
+const SPEED = 0.35;
+const CARD_STEP = 240; // card width (220) + gap (20)
 
 export default function MeetTheExperts() {
   const trackRef      = useRef<HTMLDivElement>(null);
@@ -57,6 +58,17 @@ export default function MeetTheExperts() {
     draggingRef.current = false;
   }
 
+  function scrollBy(amount: number) {
+    const track = trackRef.current;
+    if (!track) return;
+    const halfWidth = track.scrollWidth / 2;
+    let next = posRef.current + amount;
+    while (next <= -halfWidth) next += halfWidth;
+    while (next > 0) next -= halfWidth;
+    posRef.current = next;
+    track.style.transform = `translateX(${next}px)`;
+  }
+
   return (
     <Section variant="light" data-section-theme="light" className={styles.section}>
       <Container>
@@ -77,6 +89,28 @@ export default function MeetTheExperts() {
 
       {/* ── Carousel viewport (full-width, no Container) ───── */}
       <div className={styles.carouselOuter}>
+        {/* Arrow buttons */}
+        <button
+          className={`${styles.arrowBtn} ${styles.arrowPrev}`}
+          onClick={() => scrollBy(CARD_STEP)}
+          aria-label="Previous team members"
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M11 4L6 9L11 14" stroke="currentColor" strokeWidth="2"
+              strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+        <button
+          className={`${styles.arrowBtn} ${styles.arrowNext}`}
+          onClick={() => scrollBy(-CARD_STEP)}
+          aria-label="Next team members"
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M7 4L12 9L7 14" stroke="currentColor" strokeWidth="2"
+              strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+
         {/* Edge fade masks */}
         <div className={styles.fadeLeft}  aria-hidden="true" />
         <div className={styles.fadeRight} aria-hidden="true" />

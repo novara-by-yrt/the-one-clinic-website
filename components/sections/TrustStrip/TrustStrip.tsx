@@ -79,26 +79,21 @@ export default function TrustStrip() {
           viewport={VIEWPORT}
         />
 
-        {/* ── Trust items row ──────────────────────────────── */}
-        <motion.ul
-          className={styles.list}
+        {/* ── Trust items grid ─────────────────────────────── */}
+        <motion.div
+          className={styles.trustGrid}
           variants={stagger(0.1)}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
-          role="list"
-          aria-label="Trust indicators"
         >
-          {ITEMS.map(({ icon, text }, i) => (
-            <motion.li key={text} className={styles.item} variants={fadeUp}>
-              <span className={styles.itemIcon} aria-hidden="true">{icon}</span>
-              <span className={styles.label}>{text}</span>
-              {i < ITEMS.length - 1 && (
-                <span className={styles.itemSep} aria-hidden="true" />
-              )}
-            </motion.li>
+          {ITEMS.map(({ icon, text }) => (
+            <motion.div key={text} className={styles.trustBox} variants={fadeUp}>
+              <span className={styles.trustIcon} aria-hidden="true">{icon}</span>
+              <span className={styles.trustLabel}>{text}</span>
+            </motion.div>
           ))}
-        </motion.ul>
+        </motion.div>
 
       </Container>
     </Section>
