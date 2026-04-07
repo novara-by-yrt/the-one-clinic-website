@@ -160,7 +160,7 @@ export default function HealthScreeningPage() {
       {/* ════════════════════════════════════════
           3. AT A GLANCE
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.glanceSection}>
+      <Section variant="dark" data-section-theme="dark" className={styles.glanceSection}>
         <Container>
           <motion.div
             className={styles.sectionHeader}
@@ -169,10 +169,10 @@ export default function HealthScreeningPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
               Treatment Overview
             </motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
               At a Glance
             </motion.h2>
           </motion.div>

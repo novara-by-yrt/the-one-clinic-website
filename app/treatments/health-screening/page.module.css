@@ -218,9 +218,9 @@
    AT A GLANCE
 ════════════════════════════════════════════════════ */
 .glanceSection {
-  background: var(--color-bg-light) !important;
-  border-top: 1px solid var(--color-border-light);
-  border-bottom: 1px solid var(--color-border-light);
+  background: #000 !important;
+  border-top: none;
+  border-bottom: none;
 }
 
 .glanceGrid {
@@ -232,34 +232,58 @@
 .glanceCard {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: var(--space-4) var(--space-4);
-  background: #fff;
-  border: 1px solid var(--color-border-light);
+  gap: 12px;
+  padding: var(--space-5) var(--space-4);
+  background: rgb(255 255 255 / 0.04);
+  border: 1px solid rgb(255 255 255 / 0.1);
   border-radius: var(--radius-lg);
-  box-shadow: 0 2px 12px rgb(0 0 0 / 0.04);
-  transition: box-shadow 0.22s ease, transform 0.22s ease;
+  position: relative;
+  overflow: hidden;
+  transition:
+    background 0.28s ease,
+    border-color 0.28s ease,
+    transform 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+/* Subtle top-edge accent line */
+.glanceCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 16px;
+  right: 16px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgb(255 255 255 / 0.35) 40%,
+    rgb(255 255 255 / 0.35) 60%,
+    transparent
+  );
 }
 
 .glanceCard:hover {
-  box-shadow: 0 6px 24px rgb(0 0 0 / 0.08);
-  transform: translateY(-2px);
+  background: rgb(255 255 255 / 0.08);
+  border-color: rgb(255 255 255 / 0.22);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgb(0 0 0 / 0.5);
 }
 
 .glanceLabel {
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: rgb(255 255 255 / 0.38);
 }
 
 .glanceValue {
-  font-size: 1.125rem;
+  font-size: 1.1875rem;
   font-weight: var(--fw-bold);
   letter-spacing: -0.02em;
-  color: var(--color-text-dark);
-  line-height: 1.2;
+  color: #fff;
+  line-height: 1.25;
 }
 
 /* ════════════════════════════════════════════════════
