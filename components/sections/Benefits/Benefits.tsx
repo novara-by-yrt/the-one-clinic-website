@@ -12,7 +12,7 @@ const BENEFITS = [
   {
     number: '01',
     title: 'Expert-Led Care',
-    description: 'Every service is led by experienced, qualified doctors — not aestheticians. Your safety is the priority.',
+    description: 'Every service is led by experienced, qualified doctors, not aestheticians. Your safety is the priority.',
   },
   {
     number: '02',
@@ -63,8 +63,7 @@ export default function Benefits() {
             viewport={VIEWPORT}
           >
             <motion.div className={styles.header} variants={fadeUp}>
-              <p className={styles.eyebrow}>Why Us</p>
-              <h2 className={styles.heading}>Why Choose The One Clinic</h2>
+              <h2 className={styles.heading}>Why Choose The One Clinic?</h2>
             </motion.div>
 
             <div className={styles.items}>
