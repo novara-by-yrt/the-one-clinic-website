@@ -27,9 +27,9 @@ const AWARDS = [
 ];
 
 const ITEMS = [
-  'Led by highly trained doctors',
-  'Trusted by patients in Leicester',
-  'Comprehensive medical & aesthetic care',
+  { icon: '✦', text: 'Led by highly trained doctors' },
+  { icon: '✦', text: 'Trusted by patients in Leicester' },
+  { icon: '✦', text: 'Comprehensive medical & aesthetic care' },
 ];
 
 export default function TrustStrip() {
@@ -82,19 +82,20 @@ export default function TrustStrip() {
         {/* ── Trust items row ──────────────────────────────── */}
         <motion.ul
           className={styles.list}
-          variants={stagger(0.08)}
+          variants={stagger(0.1)}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
           role="list"
           aria-label="Trust indicators"
         >
-          {ITEMS.map((text) => (
+          {ITEMS.map(({ icon, text }, i) => (
             <motion.li key={text} className={styles.item} variants={fadeUp}>
-              <span className={styles.check} aria-hidden="true">
-                <span className={styles.checkMark} />
-              </span>
+              <span className={styles.itemIcon} aria-hidden="true">{icon}</span>
               <span className={styles.label}>{text}</span>
+              {i < ITEMS.length - 1 && (
+                <span className={styles.itemSep} aria-hidden="true" />
+              )}
             </motion.li>
           ))}
         </motion.ul>

@@ -40,10 +40,10 @@ export default function VideoSection() {
             Watch &amp; Learn
           </motion.p>
           <motion.h2 className={styles.heading} variants={fadeUp}>
-            See The One Clinic in Action
+            The One Clinic Where Expertise Meets Care
           </motion.h2>
           <motion.p className={styles.subtext} variants={fadeUp}>
-            Discover who we are and hear from the patients we've helped.
+            Experience our holistic approach and the real transformations our clients experience.
           </motion.p>
         </motion.div>
 
@@ -57,12 +57,6 @@ export default function VideoSection() {
         >
           {VIDEOS.map((video) => (
             <motion.div key={video.id} className={styles.videoCard} variants={fadeUp}>
-              <div className={styles.videoMeta}>
-                <span className={styles.videoLabel}>{video.label}</span>
-                <h3 className={styles.videoTitle}>{video.title}</h3>
-                <p className={styles.videoDesc}>{video.desc}</p>
-              </div>
-
               {/* 16:9 responsive wrapper */}
               <div className={styles.videoWrapper}>
                 <iframe

@@ -7,9 +7,9 @@
 
 /* ── Section eyebrow ──────────────────────── */
 .sectionEyebrow {
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-text-muted);
   margin-bottom: var(--space-3);
@@ -100,7 +100,7 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: var(--space-2);
+  gap: 0;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -109,46 +109,39 @@
 .item {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  padding: 0.625rem 1.25rem;
-  border: 1px solid var(--color-border-light);
-  border-radius: 100px;
-  background: var(--color-white);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  gap: 10px;
+  padding: 0 var(--space-4);
 }
 
-.item:hover {
-  border-color: rgb(0 0 0 / 0.2);
-  box-shadow: 0 2px 12px rgb(0 0 0 / 0.06);
-}
-
-/* ── Check icon ───────────────────────────── */
-.check {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background-color: var(--color-text-dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.itemIcon {
+  font-size: 0.5rem;
+  color: var(--color-text-dark);
   flex-shrink: 0;
+  line-height: 1;
 }
 
-.checkMark {
+/* Vertical pipe between items */
+.itemSep {
   display: block;
-  width: 9px;
-  height: 6px;
-  border-left: 1.5px solid white;
-  border-bottom: 1.5px solid white;
-  transform: rotate(-45deg) translateY(-1px);
+  width: 1px;
+  height: 22px;
+  background: var(--color-border-light);
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.item {
+  position: relative;
 }
 
 .label {
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 600;
   color: var(--color-text-dark);
+  letter-spacing: -0.01em;
   white-space: nowrap;
-  letter-spacing: 0.01em;
 }
 
 /* ═══════════════════════════════════════════
@@ -169,16 +162,32 @@
     font-size: 0.6875rem;
   }
 
-  .list {
-    gap: var(--space-2);
+  .label {
+    font-size: 0.9375rem;
   }
 
-  .label {
-    font-size: 0.8125rem;
+  .item {
+    padding: 0 var(--space-3);
   }
 }
 
-/* Mobile — single column */
+/* Mobile — items wrap, awards stack */
+@media (max-width: 600px) {
+  .list {
+    flex-direction: column;
+    gap: var(--space-2);
+    align-items: flex-start;
+  }
+
+  .item {
+    padding: 0;
+  }
+
+  .itemSep {
+    display: none;
+  }
+}
+
 @media (max-width: 480px) {
   .awardCards {
     flex-direction: column;
@@ -191,7 +200,8 @@
     padding: 14px 16px;
   }
 
-  .item {
-    padding: 0.5rem 1rem;
+  .label {
+    font-size: 0.875rem;
+    white-space: normal;
   }
 }
