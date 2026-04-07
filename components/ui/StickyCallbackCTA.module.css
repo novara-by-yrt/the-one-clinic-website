@@ -81,7 +81,7 @@
 .modalImage {
   position: relative;
   flex: 0 0 320px;
-  background: #111;
+  align-self: stretch;
   overflow: hidden;
 }
 
