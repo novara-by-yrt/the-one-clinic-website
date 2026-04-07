@@ -1,0 +1,177 @@
+/* ── Two-column layout ─────────────────────────────── */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+/* Swap column order on desktop for the second section */
+.layoutReverse {
+  direction: rtl;
+}
+
+.layoutReverse > * {
+  direction: ltr;
+}
+
+/* ── Left text column ───────────────────────────────── */
+.textCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.eyebrow {
+  font-size: var(--text-small);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.heading {
+  font-size: clamp(1.75rem, 3.5vw, var(--text-h2));
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+  color: var(--color-text-dark);
+  line-height: 1.15;
+  margin: 0;
+}
+
+.body {
+  color: var(--color-text-muted);
+  line-height: var(--lh-normal);
+  font-size: 1rem;
+}
+
+/* ── Right card column ──────────────────────────────── */
+.cardCol {
+  /* ensures card fills column height */
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+}
+
+.factCard {
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: 0 2px 24px rgb(0 0 0 / 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  height: 100%;
+}
+
+.cardEyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* ── Stat pillars grid ──────────────────────────────── */
+.pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pillar {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pillarValue {
+  font-size: 1.375rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+  color: var(--color-text-dark);
+}
+
+.pillarLabel {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  font-weight: var(--fw-medium);
+}
+
+/* ── Card divider ───────────────────────────────────── */
+.cardDivider {
+  height: 1px;
+  background: var(--color-border-light);
+}
+
+/* ── Quote text ─────────────────────────────────────── */
+.cardQuote {
+  font-size: 0.9375rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* ── Mission statement ──────────────────────────────── */
+.missionStatement {
+  font-size: 1.0625rem;
+  color: var(--color-text-dark);
+  line-height: 1.65;
+}
+
+/* ── Book Consultation button ───────────────────────── */
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  background: var(--color-text-dark);
+  color: #fff;
+  font-size: var(--text-small);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition:
+    opacity var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+  margin-top: var(--space-1);
+}
+
+.ctaBtn:hover {
+  opacity: 0.85;
+  transform: scale(1.02);
+}
+
+/* ── Alternate section subtle bg ───────────────────── */
+.altSection {
+  background: var(--color-bg-light) !important;
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 900px) {
+  .layout,
+  .layoutReverse {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    direction: ltr;
+  }
+
+  .layoutReverse > * {
+    direction: ltr;
+  }
+
+  .ctaBtn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .cardCol {
+    align-self: auto;
+  }
+}

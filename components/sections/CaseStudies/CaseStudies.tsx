@@ -130,7 +130,7 @@ export default function CaseStudies() {
             Real Transformations
           </motion.h2>
           <motion.p className={styles.subtext} variants={fadeUp}>
-            Helping patients achieve confidence and long-term results — one
+            Helping patients achieve confidence and long-term results, one
             personalised treatment at a time.
           </motion.p>
         </motion.div>

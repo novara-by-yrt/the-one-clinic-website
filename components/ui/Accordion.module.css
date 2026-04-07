@@ -32,13 +32,13 @@
 
 /* Dark theme item */
 .accordion.dark .item {
-  border-color: rgb(255 255 255 / 0.16);
-  background: rgb(255 255 255 / 0.06);
+  border-color: rgb(255 255 255 / 0.14);
+  background: rgb(255 255 255 / 0.10);
 }
 
 .accordion.dark .item:hover {
-  border-color: rgb(255 255 255 / 0.2);
-  background: rgb(255 255 255 / 0.05);
+  border-color: rgb(255 255 255 / 0.26);
+  background: rgb(255 255 255 / 0.14);
   transform: translateY(-1px);
 }
 
@@ -50,8 +50,8 @@
 }
 
 .accordion.dark .item.open {
-  border-color: rgb(255 255 255 / 0.2);
-  background: rgb(255 255 255 / 0.05);
+  border-color: rgb(255 255 255 / 0.28);
+  background: rgb(255 255 255 / 0.16);
   transform: none;
 }
 
@@ -93,7 +93,7 @@
 }
 
 .accordion.dark .number {
-  color: rgb(255 255 255 / 0.25);
+  color: rgb(255 255 255 / 0.40);
 }
 
 .accordion.light .open .number {
@@ -101,7 +101,7 @@
 }
 
 .accordion.dark .open .number {
-  color: rgb(255 255 255 / 0.7);
+  color: rgb(255 255 255 / 0.85);
 }
 
 /* ── Question text ────────────────────────────────────────────── */
@@ -118,11 +118,11 @@
 }
 
 .accordion.dark .question {
-  color: rgb(255 255 255 / 0.75);
+  color: rgb(255 255 255 / 0.88);
 }
 
 .accordion.dark .open .question {
-  color: var(--color-text-light);
+  color: #fff;
 }
 
 /* ── Chevron icon ─────────────────────────────────────────────── */
@@ -214,5 +214,5 @@
 }
 
 .accordion.dark .answer {
-  color: rgb(255 255 255 / 0.55);
+  color: rgb(255 255 255 / 0.72);
 }

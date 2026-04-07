@@ -26,12 +26,12 @@ const QUESTIONS = [
   {
     question: 'How long is recovery?',
     answer:
-      'Recovery depends on the treatment. Many procedures — including most aesthetic treatments — have little to no downtime. More clinical procedures may require a short recovery period. Your doctor will explain exactly what to expect before you commit to anything.',
+      'Recovery depends on the treatment. Many procedures, including most aesthetic treatments, have little to no downtime. More clinical procedures may require a short recovery period. Your doctor will explain exactly what to expect before you commit to anything.',
   },
   {
     question: 'Do you offer personalised treatment plans?',
     answer:
-      'Absolutely. We don\'t use off-the-shelf solutions. Every plan is built around your individual health, goals, and circumstances — whether that\'s a single treatment or an ongoing care programme.',
+      'Absolutely. We don\'t use off-the-shelf solutions. Every plan is built around your individual health, goals, and circumstances, whether that\'s a single treatment or an ongoing care programme.',
   },
   {
     question: 'How do I book an appointment?',

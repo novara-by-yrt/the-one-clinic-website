@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
+import TrustBadges from '@/components/ui/TrustBadges';
 import styles from './Hero.module.css';
 
 // ── Animation variants ──────────────────────────────────────────
@@ -87,7 +88,7 @@ export default function Hero() {
               variants={FADE_UP}
               transition={TRANSITION_SMOOTH}
             >
-              Medical &amp; Aesthetic Care — Leicester
+              Medical &amp; Aesthetic Care, Leicester
             </motion.p>
 
             {/* H1 Headline */}
@@ -118,7 +119,7 @@ export default function Hero() {
               variants={FADE_UP}
               transition={TRANSITION_SMOOTH}
             >
-              <Button variant="primary" theme="dark">
+              <Button variant="primary" theme="dark" onClick={() => window.dispatchEvent(new CustomEvent('openCallbackModal'))}>
                 Book a Consultation
               </Button>
 
@@ -126,6 +127,14 @@ export default function Hero() {
                 Explore Treatments
                 <span className={styles.arrow} aria-hidden="true">→</span>
               </Link>
+            </motion.div>
+
+            {/* Trust badges */}
+            <motion.div
+              variants={FADE_UP}
+              transition={{ ...TRANSITION_SMOOTH, delay: 0.1 }}
+            >
+              <TrustBadges theme="dark" />
             </motion.div>
           </motion.div>
         </Container>

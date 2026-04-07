@@ -1,189 +1,274 @@
 'use client';
 
-import { useState, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './Testimonials.module.css';
 
-const TESTIMONIALS = [
+/* ── Data ───────────────────────────────────────────────────── */
+const REVIEWS = [
   {
-    quote: 'The weight management programme changed my life. The doctors were supportive every step of the way — I finally have a plan that works.',
-    name:  'Amara L.',
-    role:  'Weight Management Programme',
+    name: 'Amara L.',
+    initial: 'A',
+    avatarBg: '#4285F4',
+    timeAgo: '2 weeks ago',
+    review:
+      'The weight management programme changed my life. The doctors were supportive every step of the way. I finally have a plan that works for my lifestyle and I have never felt better.',
   },
   {
-    quote: 'I came in for help managing a long-term condition and left feeling genuinely heard. The level of care here is unlike any GP I\'ve visited.',
-    name:  'David R.',
-    role:  'Health & Wellbeing',
+    name: 'David R.',
+    initial: 'D',
+    avatarBg: '#0F9D58',
+    timeAgo: '1 month ago',
+    review:
+      'I came in for help managing a long-term condition and left feeling genuinely heard. The level of care here is unlike any GP I have visited. Exceptional service from start to finish.',
   },
   {
-    quote: 'From the first call to my follow-up, everything felt seamless and professional. The clinic is calm, the team is brilliant.',
-    name:  'Priya S.',
-    role:  'Medical Aesthetics',
+    name: 'Priya S.',
+    initial: 'P',
+    avatarBg: '#9C27B0',
+    timeAgo: '1 month ago',
+    review:
+      'From the first call to my follow-up, everything felt seamless and professional. The clinic is calm, the team is brilliant and the results speak for themselves.',
+  },
+  {
+    name: 'James T.',
+    initial: 'J',
+    avatarBg: '#E53935',
+    timeAgo: '2 months ago',
+    review:
+      'Absolutely brilliant experience from start to finish. Dr Virmani took time to explain everything clearly. I felt completely at ease and the outcome exceeded my expectations.',
+  },
+  {
+    name: 'Sofia M.',
+    initial: 'S',
+    avatarBg: '#FF7043',
+    timeAgo: '2 months ago',
+    review:
+      'I had my skin treatment here and the results are incredible. The team was professional, friendly and made me feel completely comfortable throughout the entire process.',
+  },
+  {
+    name: 'Ravi K.',
+    initial: 'R',
+    avatarBg: '#34A853',
+    timeAgo: '3 months ago',
+    review:
+      'Top-class clinic. Everything from reception to the treatment itself was handled with care and precision. Will definitely be returning for follow-up treatments.',
+  },
+  {
+    name: 'Natalia W.',
+    initial: 'N',
+    avatarBg: '#1565C0',
+    timeAgo: '3 months ago',
+    review:
+      'Dr Bedi was amazing. She listened to all my concerns and tailored the treatment perfectly. The results are so natural-looking. Highly recommend to anyone considering aesthetics.',
+  },
+  {
+    name: 'Michael B.',
+    initial: 'M',
+    avatarBg: '#F57F17',
+    timeAgo: '4 months ago',
+    review:
+      'Outstanding clinic. The facilities are modern and spotless. Staff are welcoming and knowledgeable. I was impressed by the high standard throughout my visit.',
   },
 ];
 
+const PER_PAGE = 4;
+
+/* ── Icons ──────────────────────────────────────────────────── */
+function GoogleG() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+      <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+    </svg>
+  );
+}
+
+function StarIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" className={styles.starSvg}>
+      <path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.49L10 14.25l-4.94 2.6.94-5.49-4-3.9 5.53-.8z"/>
+    </svg>
+  );
+}
+
+function VerifiedBadge() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 20 20" aria-label="Verified review" className={styles.verifiedSvg}>
+      <path d="M10 0C4.48 0 0 4.48 0 10s4.48 10 10 10 10-4.48 10-10S15.52 0 10 0zm-2 14.5l-4-4 1.41-1.41L8 11.67l6.59-6.59L16 6.5l-8 8z"/>
+    </svg>
+  );
+}
+
+/* ── Slide animation ────────────────────────────────────────── */
 const SLIDE = {
-  enter:  (dir: number) => ({ x: dir > 0 ? 80 : -80, opacity: 0 }),
-  center: { x: 0, opacity: 1, transition: { duration: 0.45, ease: [0.25, 0.1, 0.25, 1] as const } },
-  exit:   (dir: number) => ({ x: dir > 0 ? -80 : 80, opacity: 0, transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] as const } }),
+  enter:  (d: number) => ({ x: d > 0 ? 60 : -60, opacity: 0 }),
+  center: { x: 0, opacity: 1 },
+  exit:   (d: number) => ({ x: d > 0 ? -60 : 60, opacity: 0 }),
 };
+const TRANSITION = { duration: 0.42, ease: [0.25, 0.1, 0.25, 1] as const };
 
+/* ── Component ──────────────────────────────────────────────── */
 export default function Testimonials() {
-  const [active, setActive]       = useState(0);
-  const [direction, setDirection] = useState(1);
-  const touchStartX               = useRef(0);
+  const [page, setPage] = useState(0);
+  const [dir,  setDir]  = useState(1);
 
-  function goTo(index: number) {
-    setDirection(index > active ? 1 : -1);
-    setActive(index);
+  const totalPages = Math.ceil(REVIEWS.length / PER_PAGE);
+  const visible    = REVIEWS.slice(page * PER_PAGE, (page + 1) * PER_PAGE);
+
+  function goTo(next: number, direction: number) {
+    setDir(direction);
+    setPage(next);
   }
 
-  function prev() {
-    const next = (active - 1 + TESTIMONIALS.length) % TESTIMONIALS.length;
-    setDirection(-1);
-    setActive(next);
-  }
-
-  function next() {
-    const nextIdx = (active + 1) % TESTIMONIALS.length;
-    setDirection(1);
-    setActive(nextIdx);
-  }
-
-  function onTouchStart(e: React.TouchEvent) {
-    touchStartX.current = e.touches[0].clientX;
-  }
-
+  function onTouchStart(e: React.TouchEvent) { (e.currentTarget as HTMLDivElement).dataset.tx = String(e.touches[0].clientX); }
   function onTouchEnd(e: React.TouchEvent) {
-    const delta = e.changedTouches[0].clientX - touchStartX.current;
-    if (delta < -50) next();
-    if (delta >  50) prev();
+    const start = Number((e.currentTarget as HTMLDivElement).dataset.tx ?? 0);
+    const delta = e.changedTouches[0].clientX - start;
+    if (delta < -50) goTo((page + 1) % totalPages, 1);
+    if (delta >  50) goTo((page - 1 + totalPages) % totalPages, -1);
   }
-
-  const t = TESTIMONIALS[active];
 
   return (
-    <Section variant="dark" data-section-theme="dark">
+    <Section variant="dark" data-section-theme="dark" className={styles.section}>
       <Container>
-        {/* Header */}
+
+        {/* ── Rating header ─────────────────────────────── */}
         <motion.div
-          className={styles.header}
-          variants={stagger()}
+          className={styles.ratingHeader}
+          variants={stagger(0.1)}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <motion.p className={styles.eyebrow} variants={fadeUp}>
-            Testimonials
+          <motion.p className={styles.excellentText} variants={fadeUp}>
+            Excellent
           </motion.p>
-          <motion.h2 className={styles.heading} variants={fadeUp}>
-            What Our Patients Say
-          </motion.h2>
+          <motion.div className={styles.headerStars} variants={fadeUp} aria-label="5 out of 5 stars">
+            {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
+          </motion.div>
+          <motion.p className={styles.basedOn} variants={fadeUp}>
+            Based on <strong>120+</strong> reviews
+          </motion.p>
+          <motion.div variants={fadeUp}>
+            <Image
+              src="/images/Google-logo.png"
+              alt="Google Reviews"
+              width={88}
+              height={30}
+              className={styles.googleWordmark}
+            />
+          </motion.div>
         </motion.div>
 
-        {/* Slider */}
+        {/* ── Carousel ──────────────────────────────────── */}
         <motion.div
-          className={styles.sliderWrap}
+          className={styles.carouselRow}
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
         >
-          {/* Slide area */}
+          {/* Prev arrow */}
+          <button
+            className={styles.arrowBtn}
+            onClick={() => goTo((page - 1 + totalPages) % totalPages, -1)}
+            aria-label="Previous reviews"
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M11 4L6 9L11 14" stroke="currentColor" strokeWidth="2"
+                strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+
+          {/* Cards viewport */}
           <div
-            className={styles.slideArea}
+            className={styles.viewport}
             onTouchStart={onTouchStart}
             onTouchEnd={onTouchEnd}
           >
-            <AnimatePresence mode="wait" custom={direction}>
+            <AnimatePresence mode="wait" custom={dir}>
               <motion.div
-                key={active}
-                custom={direction}
+                key={page}
+                className={styles.cardsGrid}
+                custom={dir}
                 variants={SLIDE}
                 initial="enter"
                 animate="center"
                 exit="exit"
-                className={styles.slide}
+                transition={TRANSITION}
               >
-                {/* Top row: quote mark | 5 stars | Google logo */}
-                <div className={styles.cardTop}>
-                  <span className={styles.quoteIcon} aria-hidden="true">"</span>
-                  <div className={styles.stars} aria-label="5 out of 5 stars">
-                    {[...Array(5)].map((_, i) => (
-                      <svg key={i} className={styles.star} viewBox="0 0 20 20" aria-hidden="true">
-                        <path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.49L10 14.25l-4.94 2.6.94-5.49-4-3.9 5.53-.8z" />
-                      </svg>
-                    ))}
-                  </div>
-                  <Image
-                    src="/images/Google-logo.png"
-                    alt="Google review"
-                    width={80}
-                    height={28}
-                    className={styles.googleLogo}
-                  />
-                </div>
+                {visible.map((r) => (
+                  <div key={r.name} className={styles.card}>
+                    {/* Card header row */}
+                    <div className={styles.cardHeader}>
+                      <div
+                        className={styles.avatar}
+                        style={{ background: r.avatarBg }}
+                        aria-hidden="true"
+                      >
+                        {r.initial}
+                      </div>
+                      <div className={styles.authorInfo}>
+                        <p className={styles.authorName}>{r.name}</p>
+                        <p className={styles.timeAgo}>{r.timeAgo}</p>
+                      </div>
+                      <div className={styles.googleG}>
+                        <GoogleG />
+                      </div>
+                    </div>
 
-                <blockquote className={styles.quote}>
-                  <p>{t.quote}</p>
-                </blockquote>
+                    {/* Stars + verified badge */}
+                    <div className={styles.starsRow} aria-label="5 out of 5 stars, verified review">
+                      {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
+                      <VerifiedBadge />
+                    </div>
 
-                <footer className={styles.footer}>
-                  <div className={styles.avatar} aria-hidden="true">
-                    {t.name.charAt(0)}
+                    {/* Review text */}
+                    <p className={styles.reviewText}>{r.review}</p>
+
+                    <button className={styles.readMore} type="button">
+                      Read more
+                    </button>
                   </div>
-                  <div>
-                    <cite className={styles.name}>{t.name}</cite>
-                    <p className={styles.role}>{t.role}</p>
-                  </div>
-                </footer>
+                ))}
               </motion.div>
             </AnimatePresence>
           </div>
 
-          {/* Controls row */}
-          <div className={styles.controls}>
-            {/* Prev arrow */}
-            <button
-              className={styles.arrowBtn}
-              onClick={prev}
-              aria-label="Previous testimonial"
-            >
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-                <path d="M11 4L6 9L11 14" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-
-            {/* Pagination dots */}
-            <div className={styles.dots} role="tablist" aria-label="Testimonial navigation">
-              {TESTIMONIALS.map((_, i) => (
-                <button
-                  key={i}
-                  className={`${styles.dot} ${i === active ? styles.dotActive : ''}`}
-                  onClick={() => goTo(i)}
-                  role="tab"
-                  aria-selected={i === active}
-                  aria-label={`Testimonial ${i + 1} of ${TESTIMONIALS.length}`}
-                />
-              ))}
-            </div>
-
-            {/* Next arrow */}
-            <button
-              className={styles.arrowBtn}
-              onClick={next}
-              aria-label="Next testimonial"
-            >
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-                <path d="M7 4L12 9L7 14" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-          </div>
+          {/* Next arrow */}
+          <button
+            className={styles.arrowBtn}
+            onClick={() => goTo((page + 1) % totalPages, 1)}
+            aria-label="Next reviews"
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M7 4L12 9L7 14" stroke="currentColor" strokeWidth="2"
+                strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
         </motion.div>
+
+        {/* ── Pagination dots ────────────────────────────── */}
+        <div className={styles.dots} role="tablist" aria-label="Review page navigation">
+          {Array.from({ length: totalPages }).map((_, i) => (
+            <button
+              key={i}
+              className={`${styles.dot} ${i === page ? styles.dotActive : ''}`}
+              onClick={() => goTo(i, i > page ? 1 : -1)}
+              role="tab"
+              aria-selected={i === page}
+              aria-label={`Page ${i + 1} of ${totalPages}`}
+            />
+          ))}
+        </div>
+
       </Container>
     </Section>
   );

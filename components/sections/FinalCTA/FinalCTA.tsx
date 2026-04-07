@@ -45,7 +45,7 @@ export default function FinalCTA() {
             take control of your health and confidence.
           </motion.p>
           <motion.div className={styles.cta} variants={fadeUp}>
-            <Button variant="primary" theme="dark">
+            <Button variant="primary" theme="dark" onClick={() => window.dispatchEvent(new CustomEvent('openCallbackModal'))}>
               Book Your Consultation
             </Button>
           </motion.div>

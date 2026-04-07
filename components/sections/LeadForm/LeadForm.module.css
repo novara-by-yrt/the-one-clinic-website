@@ -1,16 +1,20 @@
-/* ── Two-column grid ────────────────────────────────────────────── */
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-8);
-  align-items: stretch; /* both columns share the same height */
-}
-
-/* ── Form column ────────────────────────────────────────────────── */
-.formCol {
+/* ── Outer stack ─────────────────────────────────────────────────── */
+.inner {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  width: 100%;
+}
+
+/* ── Header ──────────────────────────────────────────────────────── */
+.header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: var(--space-2);
+  max-width: 560px;
 }
 
 .eyebrow {
@@ -22,102 +26,38 @@
 }
 
 .heading {
-  font-size: var(--text-h2);
+  font-size: clamp(1.75rem, 4vw, var(--text-h2));
   font-weight: var(--fw-bold);
   letter-spacing: -0.02em;
   color: var(--color-text-dark);
   line-height: 1.1;
+  margin: 0;
 }
 
 .subtext {
   color: var(--color-text-muted);
   line-height: var(--lh-normal);
-  margin-bottom: var(--space-2);
+  max-width: 420px;
+  margin: 0;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.submitBtn {
-  width: 100%;
-  margin-top: var(--space-1);
-}
-
-.privacy {
-  font-size: 12px;
-  color: var(--color-text-muted);
-  text-align: center;
-  margin-top: 4px;
-}
-
-/* ── Map column ─────────────────────────────────────────────────── */
-.mapCol {
-  display: flex;
-  flex-direction: column;
+/* ── Side-by-side grid: map (left) | form (right) ──────────────── */
+.sideGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: var(--space-4);
-  /* stretch to fill grid row height so map can grow */
-  height: 100%;
+  width: 100%;
+  align-items: stretch;
+  min-height: 520px;
 }
 
-/* ── Contact info ───────────────────────────────────────────────── */
-.contactInfo {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-}
-
-.contactRow {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-3);
-}
-
-.contactIcon {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid var(--color-border-light);
-  background: var(--color-white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-text-dark);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.contactLabel {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin-bottom: 2px;
-}
-
-.contactValue {
-  font-size: 0.9375rem;
-  font-weight: 500;
-  color: var(--color-text-dark);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.contactValue:hover {
-  color: var(--color-text-muted);
-}
-
-/* ── Map embed wrapper — grows to fill remaining column height ───── */
-.mapWrap {
+/* ── Map side (left) ─────────────────────────────────────────────── */
+.mapSide {
   position: relative;
   border-radius: 0.75rem;
   overflow: hidden;
   border: 1px solid var(--color-border-light);
-  flex: 1;          /* fill remaining height after contact info */
-  min-height: 280px; /* never collapse below this */
+  box-shadow: 0 4px 24px rgb(0 0 0 / 0.06);
 }
 
 .mapIframe {
@@ -129,7 +69,7 @@
   display: block;
 }
 
-/* ── Transparent clickable overlay ─────────────────────────────── */
+/* Open in Google Maps overlay */
 .mapOverlay {
   position: absolute;
   inset: 0;
@@ -138,13 +78,12 @@
   justify-content: flex-end;
   padding: var(--space-3);
   text-decoration: none;
-  /* Subtle gradient at bottom so the CTA badge is readable */
-  background: linear-gradient(to top, rgb(0 0 0 / 0.18) 0%, transparent 40%);
+  background: linear-gradient(to top, rgb(0 0 0 / 0.2) 0%, transparent 40%);
   transition: background 0.2s ease;
 }
 
 .mapOverlay:hover {
-  background: linear-gradient(to top, rgb(0 0 0 / 0.30) 0%, transparent 50%);
+  background: linear-gradient(to top, rgb(0 0 0 / 0.32) 0%, transparent 50%);
 }
 
 .mapCta {
@@ -166,66 +105,41 @@
   transform: translateY(-1px);
 }
 
-/* ── Success state ──────────────────────────────────────────────── */
-.success {
-  max-width: 480px;
-  margin-inline: auto;
-  text-align: center;
+/* ── Form side (right) ───────────────────────────────────────────── */
+.formSide {
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--color-border-light);
+  box-shadow: 0 4px 32px rgb(0 0 0 / 0.07);
+  background: #fff;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--space-3);
-  padding-block: var(--space-6);
-}
-
-.successIcon {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  border: 1px solid var(--color-border-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--text-h3);
-  color: var(--color-text-dark);
-}
-
-.successHeading {
-  font-size: var(--text-h2);
-  font-weight: var(--fw-bold);
-  letter-spacing: -0.02em;
-  color: var(--color-text-dark);
-}
-
-.successText {
-  color: var(--color-text-muted);
-  line-height: var(--lh-normal);
+  /* The 20px top+bottom padding adds 40px; total box height = 509 + 40px = 549px
+     which the map fills via align-items: stretch on the parent grid */
 }
 
 /* ── Responsive ─────────────────────────────────────────────────── */
-@media (max-width: 900px) {
-  .grid {
+
+/* Tablet: stack vertically */
+@media (max-width: 860px) {
+  .sideGrid {
     grid-template-columns: 1fr;
-    gap: var(--space-7);
-    align-items: start;
+    min-height: unset;
   }
 
-  .mapCol {
-    height: auto;
+  .mapSide {
+    aspect-ratio: 16 / 7;
+    position: relative;
   }
 
-  .mapWrap {
-    flex: unset;
-    aspect-ratio: 16 / 9;
-  }
-
-  .heading {
-    font-size: var(--text-h3);
+  .formSide {
+    min-height: 480px;
   }
 }
 
 @media (max-width: 480px) {
-  .mapWrap {
+  .mapSide {
     aspect-ratio: 4 / 3;
   }
 }

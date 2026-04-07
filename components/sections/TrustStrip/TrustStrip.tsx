@@ -1,39 +1,135 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
-import { fadeIn, stagger, VIEWPORT } from '@/lib/motion';
+import { fadeUp, fadeIn, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './TrustStrip.module.css';
 
+const AWARDS = [
+  {
+    src: '/images/imgi_86_AM_Awards_2025-black_FINALIST-1024x704.png',
+    alt: 'Aesthetic Medicine Awards 2025 Finalist',
+    label: 'Aesthetic Medicine Awards',
+    sublabel: 'Awards 2025 · Finalist',
+    width: 1024,
+    height: 704,
+  },
+  {
+    src: '/images/imgi_35_Untitled-3-5-e1749493207346.png',
+    alt: 'Aesthetics Awards Highly Commended 2025',
+    label: 'Aesthetics Awards',
+    sublabel: 'Highly Commended · 2025',
+    width: 400,
+    height: 280,
+  },
+];
+
+/* ── Trust-box icons ─────────────────────────────────────────── */
+function DoctorIcon() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {/* Person silhouette */}
+      <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+      <path d="M4.5 20.118a7.5 7.5 0 0115 0"/>
+      {/* Medical cross badge */}
+      <circle cx="18.5" cy="17.5" r="4" fill="currentColor" stroke="none" opacity="0.1"/>
+      <path d="M18.5 15v5M16 17.5h5"/>
+    </svg>
+  );
+}
+
+function StarIcon() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+    </svg>
+  );
+}
+
+function MedicalIcon() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {/* Medical cross in circle */}
+      <circle cx="12" cy="12" r="9.5"/>
+      <path d="M12 7.5v9M7.5 12h9"/>
+    </svg>
+  );
+}
+
 const ITEMS = [
-  'Led by highly trained doctors',
-  'Trusted by patients in Leicester',
-  'Comprehensive medical & aesthetic care',
+  { icon: <DoctorIcon />,  text: 'Led by highly trained doctors' },
+  { icon: <StarIcon />,    text: 'Trusted by patients in Leicester' },
+  { icon: <MedicalIcon />, text: 'Comprehensive medical & aesthetic care' },
 ];
 
 export default function TrustStrip() {
   return (
     <Section variant="light" data-section-theme="light" className={styles.strip}>
       <Container>
-        <motion.ul
-          className={styles.list}
-          variants={stagger(0.08)}
+
+        {/* ── Awards row ───────────────────────────────────── */}
+        <motion.div
+          className={styles.awardsRow}
+          variants={stagger(0.12)}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
-          role="list"
-          aria-label="Trust indicators"
         >
-          {ITEMS.map((text) => (
-            <motion.li key={text} className={styles.item} variants={fadeIn}>
-              <span className={styles.check} aria-hidden="true">
-                <span className={styles.checkMark} />
-              </span>
-              <span className={styles.label}>{text}</span>
-            </motion.li>
+          <motion.p className={styles.sectionEyebrow} variants={fadeUp}>
+            Awards &amp; Recognition
+          </motion.p>
+
+          <div className={styles.awardCards}>
+            {AWARDS.map((award) => (
+              <motion.div key={award.src} className={styles.awardCard} variants={fadeUp}>
+                <div className={styles.awardImgWrap}>
+                  <Image
+                    src={award.src}
+                    alt={award.alt}
+                    width={award.width}
+                    height={award.height}
+                    style={{ height: '64px', width: 'auto', objectFit: 'contain' }}
+                  />
+                </div>
+                <div className={styles.awardMeta}>
+                  <p className={styles.awardLabel}>{award.label}</p>
+                  <p className={styles.awardSublabel}>{award.sublabel}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* ── Divider ──────────────────────────────────────── */}
+        <motion.div
+          className={styles.ruleDivider}
+          variants={fadeIn}
+          initial="hidden"
+          whileInView="show"
+          viewport={VIEWPORT}
+        />
+
+        {/* ── Trust items grid ─────────────────────────────── */}
+        <motion.div
+          className={styles.trustGrid}
+          variants={stagger(0.1)}
+          initial="hidden"
+          whileInView="show"
+          viewport={VIEWPORT}
+        >
+          {ITEMS.map(({ icon, text }) => (
+            <motion.div key={text} className={styles.trustBox} variants={fadeUp}>
+              <span className={styles.trustIcon}>{icon}</span>
+              <span className={styles.trustLabel}>{text}</span>
+            </motion.div>
           ))}
-        </motion.ul>
+        </motion.div>
+
       </Container>
     </Section>
   );
