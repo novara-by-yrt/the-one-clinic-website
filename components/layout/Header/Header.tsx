@@ -26,7 +26,7 @@ const NAV: NavItem[] = [
     simple: [
       { label: 'Our Facilities', href: '/our-facilities' },
       { label: 'Our Team',       href: '/our-team' },
-      { label: 'What We Do',     href: '#what-we-do' },
+      { label: 'What We Do',     href: '/what-we-do' },
     ],
   },
   {
