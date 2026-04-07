@@ -80,8 +80,8 @@
 /* ── Team image panel (desktop left column) ───────────────── */
 .modalImage {
   position: relative;
-  flex: 0 0 340px;
-  min-height: 100%;
+  flex: 0 0 320px;
+  background: #111;
   overflow: hidden;
 }
 
@@ -100,7 +100,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 24px 24px 16px;
+  padding: 28px 28px 16px;
   gap: 16px;
 }
 
@@ -149,7 +149,7 @@
 
 /* ── Form area ────────────────────────────────────────────── */
 .modalForm {
-  padding: 0 0 8px;
+  padding: 0 28px 24px;
 }
 
 /* ── Responsive ───────────────────────────────────────────── */
@@ -181,6 +181,10 @@
   }
 
   .modalTop {
-    padding: 20px 16px 12px;
+    padding: 20px 20px 12px;
+  }
+
+  .modalForm {
+    padding: 0 20px 20px;
   }
 }

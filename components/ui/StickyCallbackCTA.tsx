@@ -83,7 +83,7 @@ export default function StickyCallbackCTA() {
                     src="/images/Team Image.jpg"
                     alt=""
                     fill
-                    style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                    style={{ objectFit: 'contain', objectPosition: 'center center' }}
                     sizes="380px"
                     priority
                   />
