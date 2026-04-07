@@ -334,10 +334,10 @@
 .glanceCard {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
   padding: var(--space-5) var(--space-4);
-  background: #000;
-  border: 1px solid rgba(255 255 255 / 0.08);
+  background: #111;
+  border: 1px solid rgba(255 255 255 / 0.10);
   border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
@@ -348,28 +348,28 @@
     box-shadow 0.28s ease;
 }
 
-/* Subtle top-edge accent line */
+/* Top-edge shimmer accent */
 .glanceCard::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 16px;
-  right: 16px;
+  left: 20px;
+  right: 20px;
   height: 1px;
   background: linear-gradient(
     to right,
     transparent,
-    rgb(255 255 255 / 0.35) 40%,
-    rgb(255 255 255 / 0.35) 60%,
+    rgba(255 255 255 / 0.45) 40%,
+    rgba(255 255 255 / 0.45) 60%,
     transparent
   );
 }
 
 .glanceCard:hover {
-  background: rgb(255 255 255 / 0.08);
-  border-color: rgb(255 255 255 / 0.22);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgb(0 0 0 / 0.5);
+  background: #1c1c1c;
+  border-color: rgba(255 255 255 / 0.22);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0 0 0 / 0.35);
 }
 
 .glanceLabel {
@@ -377,15 +377,15 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgb(255 255 255 / 0.38);
+  color: rgba(255 255 255 / 0.45);
 }
 
 .glanceValue {
-  font-size: 1.1875rem;
+  font-size: 1.25rem;
   font-weight: var(--fw-bold);
   letter-spacing: -0.02em;
   color: #fff;
-  line-height: 1.25;
+  line-height: 1.2;
 }
 
 /* ════════════════════════════════════════════════════
