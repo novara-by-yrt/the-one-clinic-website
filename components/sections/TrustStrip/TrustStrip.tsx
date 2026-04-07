@@ -1,10 +1,30 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
-import { fadeIn, stagger, VIEWPORT } from '@/lib/motion';
+import { fadeUp, fadeIn, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './TrustStrip.module.css';
+
+const AWARDS = [
+  {
+    src: '/images/imgi_86_AM_Awards_2025-black_FINALIST-1024x704.png',
+    alt: 'Aesthetic Medicine Awards 2025 Finalist',
+    label: 'Aesthetic Medicine Awards',
+    sublabel: 'Awards 2025 · Finalist',
+    width: 1024,
+    height: 704,
+  },
+  {
+    src: '/images/imgi_35_Untitled-3-5-e1749493207346.png',
+    alt: 'Aesthetics Awards Highly Commended 2025',
+    label: 'Aesthetics Awards',
+    sublabel: 'Highly Commended · 2025',
+    width: 400,
+    height: 280,
+  },
+];
 
 const ITEMS = [
   'Led by highly trained doctors',
@@ -16,6 +36,50 @@ export default function TrustStrip() {
   return (
     <Section variant="light" data-section-theme="light" className={styles.strip}>
       <Container>
+
+        {/* ── Awards row ───────────────────────────────────── */}
+        <motion.div
+          className={styles.awardsRow}
+          variants={stagger(0.12)}
+          initial="hidden"
+          whileInView="show"
+          viewport={VIEWPORT}
+        >
+          <motion.p className={styles.sectionEyebrow} variants={fadeUp}>
+            Awards &amp; Recognition
+          </motion.p>
+
+          <div className={styles.awardCards}>
+            {AWARDS.map((award) => (
+              <motion.div key={award.src} className={styles.awardCard} variants={fadeUp}>
+                <div className={styles.awardImgWrap}>
+                  <Image
+                    src={award.src}
+                    alt={award.alt}
+                    width={award.width}
+                    height={award.height}
+                    style={{ height: '64px', width: 'auto', objectFit: 'contain' }}
+                  />
+                </div>
+                <div className={styles.awardMeta}>
+                  <p className={styles.awardLabel}>{award.label}</p>
+                  <p className={styles.awardSublabel}>{award.sublabel}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* ── Divider ──────────────────────────────────────── */}
+        <motion.div
+          className={styles.ruleDivider}
+          variants={fadeIn}
+          initial="hidden"
+          whileInView="show"
+          viewport={VIEWPORT}
+        />
+
+        {/* ── Trust items row ──────────────────────────────── */}
         <motion.ul
           className={styles.list}
           variants={stagger(0.08)}
@@ -26,7 +90,7 @@ export default function TrustStrip() {
           aria-label="Trust indicators"
         >
           {ITEMS.map((text) => (
-            <motion.li key={text} className={styles.item} variants={fadeIn}>
+            <motion.li key={text} className={styles.item} variants={fadeUp}>
               <span className={styles.check} aria-hidden="true">
                 <span className={styles.checkMark} />
               </span>
@@ -34,6 +98,7 @@ export default function TrustStrip() {
             </motion.li>
           ))}
         </motion.ul>
+
       </Container>
     </Section>
   );
