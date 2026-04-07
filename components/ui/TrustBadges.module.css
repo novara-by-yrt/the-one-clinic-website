@@ -58,7 +58,7 @@
 }
 
 .dark .platform {
-  color: rgb(255 255 255 / 0.95);
+  color: #ffffff;
 }
 
 .light .platform {
@@ -76,7 +76,7 @@
 
 .dark .verified {
   background: rgb(255 255 255 / 0.09);
-  color: rgb(255 255 255 / 0.5);
+  color: rgb(255 255 255 / 0.7);
 }
 
 .light .verified {
@@ -106,7 +106,7 @@
 }
 
 .dark .score {
-  color: rgb(255 255 255 / 0.95);
+  color: #ffffff;
 }
 
 .light .score {
@@ -122,7 +122,7 @@
 }
 
 .dark .dot {
-  background: rgb(255 255 255 / 0.25);
+  background: rgb(255 255 255 / 0.4);
 }
 
 .light .dot {
@@ -135,7 +135,7 @@
 }
 
 .dark .count {
-  color: rgb(255 255 255 / 0.4);
+  color: rgb(255 255 255 / 0.75);
 }
 
 .light .count {
