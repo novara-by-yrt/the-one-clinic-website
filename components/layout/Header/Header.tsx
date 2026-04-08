@@ -360,7 +360,7 @@ export default function Header() {
             </nav>
 
             {/* Desktop CTA */}
-            <Link href="#contact" className={styles.ctaLink} aria-label="Contact us">
+            <Link href="/contact" className={styles.ctaLink} aria-label="Contact us">
               Contact
             </Link>
 
@@ -510,7 +510,7 @@ export default function Header() {
             </nav>
 
             <motion.div className={styles.mobileCta} variants={ctaVariants} initial="closed" animate="open">
-              <Link href="#contact" className={styles.mobileCtaLink} onClick={closeMenu}>
+              <Link href="/contact" className={styles.mobileCtaLink} onClick={closeMenu}>
                 Book a Consultation
               </Link>
             </motion.div>

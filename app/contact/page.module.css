@@ -1,0 +1,398 @@
+/* ── Hero ──────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  background: #000;
+  padding: 140px 0 80px;
+  overflow: hidden;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+}
+
+.heroGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+}
+
+.heroEyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.5);
+  margin: 0 0 16px;
+}
+
+.heroTitle {
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #fff;
+  margin: 0 0 20px;
+  line-height: 1.05;
+}
+
+.heroDesc {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: rgb(255 255 255 / 0.65);
+  margin: 0;
+  max-width: 520px;
+}
+
+/* ── Main 2-col grid ──────────────────────────────────────────── */
+.mainGrid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .mainGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Info column ──────────────────────────────────────────────── */
+.infoCol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.infoCard {
+  background: #fff;
+  border: 1px solid rgb(0 0 0 / 0.08);
+  border-radius: 16px;
+  padding: 28px;
+}
+
+.infoHeading {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text-dark, #111);
+  margin: 0 0 20px;
+}
+
+/* ── Contact rows ─────────────────────────────────────────────── */
+.contactRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--color-text-dark, #111);
+  padding: 10px 0;
+  border-bottom: 1px solid rgb(0 0 0 / 0.06);
+  transition: color 0.2s ease;
+}
+
+.contactRow:last-of-type {
+  border-bottom: none;
+}
+
+.contactRow:hover {
+  color: #555;
+}
+
+.contactIcon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #888;
+}
+
+.contactText {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+/* ── Social ───────────────────────────────────────────────────── */
+.socialRow {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.socialBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border: 1px solid rgb(0 0 0 / 0.12);
+  border-radius: 100px;
+  text-decoration: none;
+  color: var(--color-text-dark, #111);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.socialBtn:hover {
+  background: #f5f5f5;
+  border-color: rgb(0 0 0 / 0.2);
+}
+
+/* ── Hours ────────────────────────────────────────────────────── */
+.hoursList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hoursRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgb(0 0 0 / 0.05);
+  font-size: 0.9rem;
+}
+
+.hoursRow:last-child {
+  border-bottom: none;
+}
+
+.hoursDay {
+  color: var(--color-text-dark, #111);
+  font-weight: 500;
+}
+
+.hoursTime {
+  color: #555;
+}
+
+/* ── Form column ──────────────────────────────────────────────── */
+.formCol {
+  position: sticky;
+  top: 100px;
+}
+
+.formCard {
+  background: #fff;
+  border: 1px solid rgb(0 0 0 / 0.08);
+  border-radius: 16px;
+  padding: 28px;
+}
+
+.formEyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted, #888);
+  margin: 0 0 4px;
+}
+
+.formHeading {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text-dark, #111);
+  margin: 0 0 24px;
+  line-height: 1.2;
+}
+
+/* ── Facilities ───────────────────────────────────────────────── */
+.facilitiesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.facilitiesText {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgb(255 255 255 / 0.7);
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  .facilitiesGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* ── Map section ──────────────────────────────────────────────── */
+.mapSection {
+  background: var(--color-bg-light, #f4f4f4);
+}
+
+.mapWrapper {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.mapWrapper iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.mapInfo {
+  padding: 48px 0 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.mapText {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--color-text-muted, #555);
+  margin: 0;
+}
+
+.directionsBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #000;
+  color: #fff;
+  border-radius: 100px;
+  text-decoration: none;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-top: 24px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.directionsBtn:hover {
+  background: #222;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 720px) {
+  .mapInfo {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 36px 0 0;
+  }
+}
+
+/* ── Areas / categories ───────────────────────────────────────── */
+.areasHeader {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.areasIntro {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-text-muted, #555);
+  max-width: 640px;
+  margin: 16px auto 0;
+}
+
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 600px) {
+  .categoriesGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.categoryCard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px;
+  border: 1px solid rgb(0 0 0 / 0.1);
+  border-radius: 16px;
+  background: #fff;
+  text-decoration: none;
+  color: var(--color-text-dark, #111);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.categoryCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgb(0 0 0 / 0.1);
+}
+
+.categoryTitle {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--color-text-dark, #111);
+}
+
+.categoryDesc {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-text-muted, #555);
+  margin: 0;
+  flex: 1;
+}
+
+.categoryArrow {
+  display: flex;
+  align-items: center;
+  color: #888;
+  margin-top: 8px;
+}
+
+/* ── Shared eyebrows / headings ───────────────────────────────── */
+.eyebrowLight {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.5);
+  margin: 0 0 8px;
+}
+
+.eyebrowDark {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted, #888);
+  margin: 0 0 8px;
+}
+
+.headingLight {
+  font-size: clamp(1.625rem, 3vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: #fff;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.headingDark {
+  font-size: clamp(1.625rem, 3vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--color-text-dark, #111);
+  margin: 0;
+  line-height: 1.1;
+}
