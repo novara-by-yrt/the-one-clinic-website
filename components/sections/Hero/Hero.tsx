@@ -55,7 +55,7 @@ export default function Hero() {
       <div className={styles.videoBg} aria-hidden="true">
         <div className={styles.videoSizer}>
           <iframe
-            src="https://fast.wistia.net/embed/iframe/hu75ttgmlm?web_component=true&seo=false&autoPlay=true&silentAutoPlay=true&muted=true&loop=true&endVideoBehavior=loop&controlsVisibleOnLoad=false&playbar=false&fullscreenButton=false&volumeControl=false&settingsControl=false&playsinline=true"
+            src="https://fast.wistia.net/embed/iframe/jab2wa4wv4?web_component=true&seo=false&autoPlay=true&silentAutoPlay=true&muted=true&loop=true&endVideoBehavior=loop&controlsVisibleOnLoad=false&playbar=false&fullscreenButton=false&volumeControl=false&settingsControl=false&playsinline=true"
             title=""
             allow="autoplay; fullscreen"
             allowFullScreen
