@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Section           from '@/components/ui/Section';
 import Container         from '@/components/ui/Container';
 import BookConsultationButton from '@/components/ui/BookConsultationButton';
+import Breadcrumb             from '@/components/ui/Breadcrumb';
 import MeetTheExperts    from '@/components/sections/MeetTheExperts';
 import LeadForm          from '@/components/sections/LeadForm';
 import VideoSection      from '@/components/sections/VideoSection';
@@ -45,6 +46,19 @@ export default function EyeBagsPage() {
         data-section-theme="dark"
       >
         <div className={styles.heroGrid} aria-hidden="true" />
+
+        {/* Breadcrumb — pinned to top of hero */}
+        <div className={styles.heroBreadcrumb}>
+          <Container>
+            <Breadcrumb
+              theme="dark"
+              items={[
+                { label: 'Conditions', href: '/conditions' },
+                { label: 'Eye Bags' },
+              ]}
+            />
+          </Container>
+        </div>
 
         <Container>
           <motion.div

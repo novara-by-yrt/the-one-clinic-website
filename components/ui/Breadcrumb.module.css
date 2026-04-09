@@ -1,0 +1,70 @@
+.nav {
+  display: inline-block;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  padding: 4px 2px;
+  transition: opacity 0.15s ease;
+}
+
+.link:hover {
+  opacity: 0.75;
+}
+
+.current {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 4px 2px;
+}
+
+.sep {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 3px;
+  flex-shrink: 0;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ── Dark theme (hero on image/dark backgrounds) ── */
+.dark .link   { color: rgba(255 255 255 / 0.52); }
+.dark .current { color: rgba(255 255 255 / 0.92); }
+.dark .sep    { color: rgba(255 255 255 / 0.28); }
+
+/* ── Light theme ── */
+.light .link   { color: var(--color-text-muted, #888); }
+.light .current { color: var(--color-text-dark, #111); }
+.light .sep    { color: rgba(0 0 0 / 0.28); }

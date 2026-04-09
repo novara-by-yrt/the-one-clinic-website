@@ -7,6 +7,7 @@ import Container    from '@/components/ui/Container';
 import Accordion    from '@/components/ui/Accordion';
 import BookConsultationButton from '@/components/ui/BookConsultationButton';
 import TrustBadges          from '@/components/ui/TrustBadges';
+import Breadcrumb           from '@/components/ui/Breadcrumb';
 import LeadForm     from '@/components/sections/LeadForm';
 import Testimonials from '@/components/sections/Testimonials';
 import FinalCTA     from '@/components/sections/FinalCTA';
@@ -133,6 +134,19 @@ export default function HealthScreeningPage() {
       >
         <div className={styles.heroGrid} aria-hidden="true" />
         <div className={styles.heroGradient} aria-hidden="true" />
+
+        {/* Breadcrumb — pinned to top of hero */}
+        <div className={styles.heroBreadcrumb}>
+          <Container>
+            <Breadcrumb
+              theme="dark"
+              items={[
+                { label: 'Treatments', href: '/treatments' },
+                { label: 'Health Screening Leicester' },
+              ]}
+            />
+          </Container>
+        </div>
 
         <Container>
           <motion.div
