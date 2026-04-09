@@ -9,6 +9,7 @@ import BookConsultationButton from '@/components/ui/BookConsultationButton';
 import TrustBadges          from '@/components/ui/TrustBadges';
 import Breadcrumb           from '@/components/ui/Breadcrumb';
 import LeadForm     from '@/components/sections/LeadForm';
+import MeetTheExperts from '@/components/sections/MeetTheExperts';
 import Testimonials from '@/components/sections/Testimonials';
 import FinalCTA     from '@/components/sections/FinalCTA';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
@@ -470,7 +471,12 @@ export default function HealthScreeningPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. FAQ
+          8. MEET THE EXPERTS
+      ════════════════════════════════════════ */}
+      <MeetTheExperts />
+
+      {/* ════════════════════════════════════════
+          9. FAQ
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>

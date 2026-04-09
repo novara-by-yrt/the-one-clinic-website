@@ -6,6 +6,8 @@ import Section           from '@/components/ui/Section';
 import Container         from '@/components/ui/Container';
 import BookConsultationButton from '@/components/ui/BookConsultationButton';
 import Breadcrumb             from '@/components/ui/Breadcrumb';
+import TrustBadges            from '@/components/ui/TrustBadges';
+import Accordion              from '@/components/ui/Accordion';
 import MeetTheExperts    from '@/components/sections/MeetTheExperts';
 import LeadForm          from '@/components/sections/LeadForm';
 import VideoSection      from '@/components/sections/VideoSection';
@@ -13,6 +15,40 @@ import Testimonials      from '@/components/sections/Testimonials';
 import FinalCTA          from '@/components/sections/FinalCTA';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
+
+/* ── FAQ data ──────────────────────────────────────────────────── */
+const FAQS = [
+  {
+    question: 'What causes eye bags?',
+    answer:
+      'Eye bags develop when the fat pads beneath the eyes shift forward and the skin loses collagen and elasticity with age. Genetics, lack of sleep, fluid retention, UV exposure, and lifestyle factors such as smoking and diet can all accelerate their appearance.',
+  },
+  {
+    question: 'What treatment does The One Clinic recommend for eye bags?',
+    answer:
+      'We typically use injectable hyaluronic acid dermal fillers to restore volume in the tear trough area, smoothing the transition between the lower eyelid and the cheek. For milder cases, skin-strengthening treatments can improve skin quality and slow further development.',
+  },
+  {
+    question: 'Is tear trough filler treatment painful?',
+    answer:
+      'A topical anaesthetic cream is applied before treatment to ensure your comfort. Most patients experience minimal discomfort during the procedure. Any mild tenderness, bruising, or swelling typically resolves within a few days.',
+  },
+  {
+    question: 'How long do results from eye bag treatment last?',
+    answer:
+      'Results from hyaluronic acid fillers typically last between 12 and 18 months, depending on the individual\'s metabolism, lifestyle, and the volume of product used. Maintenance treatments can sustain and build on your results over time.',
+  },
+  {
+    question: 'Am I suitable for eye bag treatment?',
+    answer:
+      'Most healthy adults who are bothered by the appearance of their eye bags are suitable candidates. A thorough assessment is carried out at your consultation to determine the most appropriate approach for your anatomy. Certain medical conditions or medications may affect suitability.',
+  },
+  {
+    question: 'How many sessions will I need?',
+    answer:
+      'The majority of patients achieve their desired result in a single session. In some cases a follow-up appointment may be recommended to refine or build on initial results. Your doctor will advise on the most suitable treatment plan at your consultation.',
+  },
+];
 
 /* ── Related data ──────────────────────────────────────────────── */
 const RELATED_TREATMENTS = [
@@ -91,21 +127,8 @@ export default function EyeBagsPage() {
               </motion.div>
 
               {/* Review badges */}
-              <motion.div className={styles.reviewBadges} variants={fadeUp}>
-                <div className={styles.reviewBadge}>
-                  <span className={`${styles.reviewBadgeIcon} ${styles.reviewBadgeGoogle}`}>G</span>
-                  <div className={styles.reviewBadgeText}>
-                    <span className={styles.reviewStars}>★★★★★</span>
-                    <span className={styles.reviewLabel}>Google Reviews</span>
-                  </div>
-                </div>
-                <div className={styles.reviewBadge}>
-                  <span className={`${styles.reviewBadgeIcon} ${styles.reviewBadgeTrustpilot}`}>★</span>
-                  <div className={styles.reviewBadgeText}>
-                    <span className={styles.reviewStars}>★★★★★</span>
-                    <span className={styles.reviewLabel}>Trustpilot</span>
-                  </div>
-                </div>
+              <motion.div variants={fadeUp}>
+                <TrustBadges theme="dark" />
               </motion.div>
 
               {/* Trust items */}
@@ -272,7 +295,37 @@ export default function EyeBagsPage() {
       <MeetTheExperts />
 
       {/* ════════════════════════════════════════
-          5. CONSULTATION CTA
+          5. FAQ
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Frequently Asked Questions
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.faqBody}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <Accordion items={FAQS} theme="dark" />
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          6. CONSULTATION CTA
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark" className={styles.ctaBand}>
         <Container>
