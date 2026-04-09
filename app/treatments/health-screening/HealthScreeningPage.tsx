@@ -203,69 +203,58 @@ export default function HealthScreeningPage() {
       <Testimonials />
 
       {/* ════════════════════════════════════════
-          3. WHAT IS HEALTH SCREENING
+          3. WHAT IS + AT A GLANCE (COMBINED)
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
           <motion.div
-            className={styles.overviewGrid}
-            variants={stagger(0.12)}
+            variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div className={styles.overviewLabel} variants={fadeUp}>
+            {/* Section title — full width at top */}
+            <motion.div className={styles.combinedHeader} variants={fadeUp}>
               <p className={styles.eyebrowDark}>About This Treatment</p>
+              <h2 className={styles.combinedHeading}>What is Health Screening?</h2>
             </motion.div>
-            <div className={styles.overviewBody}>
-              <motion.h2 className={styles.overviewHeading} variants={fadeUp}>
-                What is Health Screening?
-              </motion.h2>
-              <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Health screening at Leicester&apos;s One Clinic explores and treats a wide range of
-                different health and well-being issues. Our experienced medical team conducts
-                thorough assessments designed to identify risk factors early, giving you the best
-                chance of maintaining and improving your long-term health.
-              </motion.p>
-            </div>
-          </motion.div>
-        </Container>
-      </Section>
 
-      {/* ════════════════════════════════════════
-          4. AT A GLANCE
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.glanceSection}>
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-              Treatment Overview
-            </motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              At a Glance
-            </motion.h2>
-          </motion.div>
+            {/* Two-column body: text left, cards right */}
+            <div className={styles.combinedBody}>
 
-          <motion.div
-            className={styles.glanceGrid}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {AT_A_GLANCE.map((item) => (
-              <motion.div key={item.label} className={styles.glanceCard} variants={fadeUp}>
-                <span className={styles.glanceIcon}>{item.icon}</span>
-                <span className={styles.glanceLabel}>{item.label}</span>
-                <span className={styles.glanceValue}>{item.value}</span>
+              {/* Left — description */}
+              <motion.div className={styles.combinedLeft} variants={fadeUp}>
+                <p className={styles.overviewPara}>
+                  Health screening at Leicester&apos;s One Clinic explores and treats a wide range of
+                  different health and well-being issues. Our experienced medical team conducts
+                  thorough assessments designed to identify risk factors early, giving you the best
+                  chance of maintaining and improving your long-term health.
+                </p>
+                <BookConsultationButton className={styles.combinedCta}>
+                  Book Your Screening
+                </BookConsultationButton>
               </motion.div>
-            ))}
+
+              {/* Right — At a Glance cards */}
+              <div className={styles.combinedRight}>
+                <motion.p className={styles.combinedRightLabel} variants={fadeUp}>
+                  At a Glance
+                </motion.p>
+                <motion.div
+                  className={styles.combinedCards}
+                  variants={stagger(0.08)}
+                >
+                  {AT_A_GLANCE.map((item) => (
+                    <motion.div key={item.label} className={styles.glanceCard} variants={fadeUp}>
+                      <span className={styles.glanceIcon}>{item.icon}</span>
+                      <span className={styles.glanceLabel}>{item.label}</span>
+                      <span className={styles.glanceValue}>{item.value}</span>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </div>
+
+            </div>
           </motion.div>
         </Container>
       </Section>
