@@ -109,17 +109,17 @@ const TECH_CARDS = [
   {
     eyebrow: '01',
     title: 'Endolift',
-    desc: 'A fine laser fibre guided beneath the skin surface precisely melts localised fat and contracts collagen fibres simultaneously — lifting and tightening from within without any surgical incision.',
+    desc: 'A fine laser fibre guided beneath the skin surface precisely melts localised fat and contracts collagen fibres simultaneously, lifting and tightening from within without any surgical incision.',
   },
   {
     eyebrow: '02',
     title: 'LipoLift',
-    desc: 'Combined with Ecojet, a gentle water-assisted system, LipoLift precisely emulsifies and removes small fat deposits with minimal trauma to surrounding tissue — sculpting the contour without a scalpel.',
+    desc: 'Combined with Ecojet, a gentle water-assisted system, LipoLift precisely emulsifies and removes small fat deposits with minimal trauma to surrounding tissue, sculpting the contour without a scalpel.',
   },
   {
     eyebrow: '03',
     title: 'BioLift',
-    desc: 'Bio-stimulating injectables — including Profhilo or polynucleotides — replenish lost volume and deeply hydrate the dermis, amplifying and prolonging the lifting and tightening effects.',
+    desc: 'Bio-stimulating injectables, including Profhilo or polynucleotides, replenish lost volume and deeply hydrate the dermis, amplifying and prolonging the lifting and tightening effects.',
   },
 ];
 
@@ -134,7 +134,7 @@ const ELIGIBILITY = [
 const TREATED_BENEFITS = [
   {
     title: 'Non-Surgical Facelift',
-    desc: 'Lifts and tightens skin without cuts, stitches, or scars — delivering a rejuvenated appearance with none of the surgical risks.',
+    desc: 'Lifts and tightens skin without cuts, stitches, or scars, delivering a rejuvenated appearance with none of the surgical risks.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -174,7 +174,7 @@ const TREATED_BENEFITS = [
   },
   {
     title: 'Natural, Precise Results',
-    desc: 'Targets even delicate areas — such as under the eyes — safely and with remarkable precision for a refreshed, natural-looking outcome.',
+    desc: 'Targets even delicate areas, such as under the eyes, safely and with remarkable precision for a refreshed, natural-looking outcome.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
@@ -184,7 +184,7 @@ const TREATED_BENEFITS = [
   },
   {
     title: 'Minimal Downtime',
-    desc: 'Quick recovery with most patients returning to daily activities within 1–2 days — ideal for those with busy schedules.',
+    desc: 'Quick recovery with most patients returning to daily activities within 1–2 days. Ideal for those with busy schedules.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
@@ -405,7 +405,7 @@ export default function EndoliftPage() {
                 <h2 className={styles.combinedHeading}>What is Endolift?</h2>
                 <p className={styles.combinedDesc}>
                   Endolift is a minimally invasive laser treatment that lifts, tightens, and contours
-                  the skin — all without surgery. This treatment encourages collagen production,
+                  the skin, all without surgery. This treatment encourages collagen production,
                   helping remodel the skin on your face, neck, jawline, and even your arms, abdomen,
                   or thighs.
                 </p>
@@ -516,7 +516,7 @@ export default function EndoliftPage() {
           >
             <p className={styles.finalResultsEyebrow}>Final Results</p>
             <p className={styles.finalResultsText}>
-              When combined, Endolift, LipoLift, and BioLift deliver complete skin renewal —
+              When combined, Endolift, LipoLift, and BioLift deliver complete skin renewal,
               addressing laxity, fat deposits, and volume loss in a single programme for a
               naturally sculpted, youthful outcome.
             </p>
@@ -685,7 +685,7 @@ export default function EndoliftPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.howPara} variants={fadeUp}>
-              Endolift uses advanced laser technology — a very thin laser fibre that is gently
+              Endolift uses advanced laser technology: a very thin laser fibre that is gently
               inserted under the skin in targeted areas. The laser energy selectively melts small
               fat deposits and stimulates the surrounding connective tissue to contract, tightening
               and reshaping the skin from within.
@@ -773,7 +773,7 @@ export default function EndoliftPage() {
                 around 6–9 months.
               </p>
               <p className={styles.resultsAfterCardNote}>
-                Results are long-lasting — often 2–3 years — depending on age, skin condition,
+                Results are long-lasting, often 2–3 years, depending on age, skin condition,
                 and lifestyle. A good skincare routine helps maintain the effect.
               </p>
             </motion.div>
@@ -1114,14 +1114,14 @@ export default function EndoliftPage() {
                 patient care and achieving outstanding results.
               </motion.p>
               <motion.p className={styles.expertBioPara} variants={fadeUp}>
-                His growing interest in aesthetic medicine — particularly body contouring and
-                hair rejuvenation — reflects his commitment to helping patients look and feel their
+                His growing interest in aesthetic medicine, particularly body contouring and
+                hair rejuvenation, reflects his commitment to helping patients look and feel their
                 best. Alongside his ongoing GP practice, Dr Virmani continues to offer safe,
                 effective, and transformative aesthetic treatments at The One Clinic.
               </motion.p>
               <motion.p className={styles.expertBioPara} variants={fadeUp}>
                 Every patient receives holistic, results-driven care tailored to their individual
-                goals — from the initial consultation through to their final outcome.
+                goals, from the initial consultation through to their final outcome.
               </motion.p>
             </motion.div>
           </motion.div>
