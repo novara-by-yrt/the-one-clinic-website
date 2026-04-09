@@ -295,13 +295,14 @@ const BA_IMAGES = [
 /* ── Page component ───────────────────────────────────────────── */
 export default function EndoliftPage() {
   const [baIndex, setBaIndex] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(3);
+  const [visibleCount, setVisibleCount] = useState(2);
+  const [showAllFaqs, setShowAllFaqs] = useState(false);
 
   useEffect(() => {
     const update = () => {
-      if (window.innerWidth < 640) setVisibleCount(1);
-      else if (window.innerWidth < 1024) setVisibleCount(2);
-      else setVisibleCount(3);
+      if (window.innerWidth < 768) setVisibleCount(1);
+      else if (window.innerWidth < 1024) setVisibleCount(1);
+      else setVisibleCount(2);
     };
     update();
     window.addEventListener('resize', update);
@@ -810,6 +811,7 @@ export default function EndoliftPage() {
                 Skin continues to improve over 3–6 months, with final results typically visible at
                 around 6–9 months.
               </p>
+              <div className={styles.resultsAfterCardSpacer} />
               <p className={styles.resultsAfterCardNote}>
                 Results are long-lasting, often 2–3 years, depending on age, skin condition,
                 and lifestyle. A good skincare routine helps maintain the effect.
@@ -844,6 +846,7 @@ export default function EndoliftPage() {
                   </li>
                 ))}
               </ul>
+              <div className={styles.resultsAfterCardSpacer} />
               <p className={styles.resultsAfterCardNote}>
                 These usually fade within a few days. The risk of serious complications is
                 extremely low when performed by a trained doctor.
@@ -1249,7 +1252,33 @@ export default function EndoliftPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <Accordion items={FAQS} theme="dark" />
+            <Accordion items={showAllFaqs ? FAQS : FAQS.slice(0, 5)} theme="dark" />
+
+            {FAQS.length > 5 && (
+              <div className={styles.faqToggleWrap}>
+                <button
+                  className={styles.faqToggleBtn}
+                  onClick={() => setShowAllFaqs((v) => !v)}
+                  aria-expanded={showAllFaqs}
+                >
+                  {showAllFaqs ? (
+                    <>
+                      Show Less
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M4 10l4-4 4 4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </>
+                  ) : (
+                    <>
+                      Show More
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </>
+                  )}
+                </button>
+              </div>
+            )}
           </motion.div>
         </Container>
       </Section>

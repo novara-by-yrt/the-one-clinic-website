@@ -764,6 +764,34 @@
   margin: 0 auto;
 }
 
+.faqToggleWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-4);
+}
+
+.faqToggleBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 28px;
+  background: rgba(255 255 255 / 0.07);
+  border: 1px solid rgba(255 255 255 / 0.14);
+  border-radius: 100px;
+  color: rgba(255 255 255 / 0.82);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.faqToggleBtn:hover {
+  background: rgba(255 255 255 / 0.12);
+  border-color: rgba(255 255 255 / 0.25);
+  color: #fff;
+}
+
 /* ════════════════════════════════════════════════════
    RELATED TREATMENTS
 ════════════════════════════════════════════════════ */
@@ -928,7 +956,7 @@
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  aspect-ratio: 5 / 3;
+  aspect-ratio: 4 / 3;
   background: #f0f0f0;
   box-shadow: 0 4px 20px rgba(0 0 0 / 0.08);
 }
@@ -1295,7 +1323,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-3);
-  align-items: start;
+  align-items: stretch;
 }
 
 .resultsAfterCard {
@@ -1308,6 +1336,12 @@
   border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
+  height: 100%;
+}
+
+/* Spacer: makes list/body grow so the note always sits at the bottom */
+.resultsAfterCardSpacer {
+  flex: 1;
 }
 
 .resultsAfterCard::before {
