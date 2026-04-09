@@ -812,6 +812,171 @@
 }
 
 /* ════════════════════════════════════════════════════
+   CLINIC INTRO (Best Endolift Leicester)
+════════════════════════════════════════════════════ */
+.clinicIntroBody {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: center;
+}
+
+.clinicIntroLeft {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-right: clamp(var(--space-6), 6vw, 80px);
+  border-right: 1px solid rgba(0 0 0 / 0.07);
+}
+
+.clinicIntroDesc {
+  padding-left: clamp(var(--space-6), 6vw, 80px);
+  font-size: 1.0625rem;
+  line-height: 1.82;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* ════════════════════════════════════════════════════
+   COST BANNER
+════════════════════════════════════════════════════ */
+.costBanner {
+  background: #0a0a0a;
+  padding-block: clamp(var(--space-8), 8vw, 96px);
+}
+
+.costBannerInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4);
+}
+
+.costBannerEyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255 255 255 / 0.35);
+  margin: 0;
+}
+
+.costBannerPrice {
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: #fff;
+  margin: 0;
+}
+
+.costBannerNote {
+  font-size: 1rem;
+  line-height: 1.72;
+  color: rgba(255 255 255 / 0.48);
+  max-width: 520px;
+  margin: 0;
+}
+
+/* ════════════════════════════════════════════════════
+   WHY CHOOSE THE ONE CLINIC (6 reasons)
+════════════════════════════════════════════════════ */
+.clinicReasonsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+.clinicReasonCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-4);
+  background: rgba(255 255 255 / 0.04);
+  border: 1px solid rgba(255 255 255 / 0.08);
+  border-radius: var(--radius-lg);
+  transition: background 0.22s ease, border-color 0.22s ease;
+}
+
+.clinicReasonCard:hover {
+  background: rgba(255 255 255 / 0.07);
+  border-color: rgba(255 255 255 / 0.14);
+}
+
+.clinicReasonNumber {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(255 255 255 / 0.28);
+}
+
+.clinicReasonText {
+  font-size: 1rem;
+  font-weight: var(--fw-medium);
+  color: rgba(255 255 255 / 0.82);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ════════════════════════════════════════════════════
+   EXPERT SPOTLIGHT (Dr Virmani)
+════════════════════════════════════════════════════ */
+.expertSpotlight {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 0;
+  align-items: start;
+}
+
+.expertSpotlightLeft {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-right: clamp(var(--space-6), 6vw, 80px);
+  border-right: 1px solid rgba(0 0 0 / 0.07);
+}
+
+.expertName {
+  font-size: clamp(1.625rem, 3vw, 2.25rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.025em;
+  color: var(--color-text-dark);
+  line-height: 1.15;
+  margin: 0;
+}
+
+.expertCredentials {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-3);
+}
+
+.expertSpotlightRight {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-left: clamp(var(--space-6), 6vw, 80px);
+}
+
+.expertBioPara {
+  font-size: 1.0625rem;
+  line-height: 1.82;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* CTA sub-text on the banner */
+.ctaBannerSub {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: rgba(255 255 255 / 0.55);
+  margin: 0;
+  max-width: 480px;
+  text-align: center;
+}
+
+/* ════════════════════════════════════════════════════
    TREATED BENEFITS (6-card grid)
 ════════════════════════════════════════════════════ */
 .treatedBenefitsGrid {
@@ -1327,6 +1492,8 @@
   .techCardsGrid { grid-template-columns: 1fr 1fr; }
   .treatedBenefitsGrid { grid-template-columns: repeat(2, 1fr); }
   .resultsAfterGrid { grid-template-columns: 1fr 1fr; }
+  .clinicReasonsGrid { grid-template-columns: repeat(2, 1fr); }
+  .expertSpotlight { grid-template-columns: 260px 1fr; }
 }
 
 /* Combined section: collapse to single column on tablet/mobile */
@@ -1392,6 +1559,19 @@
 
   /* Tech cards: single column */
   .techCardsGrid { grid-template-columns: 1fr; }
+
+  /* Clinic intro: stack */
+  .clinicIntroBody { grid-template-columns: 1fr; }
+  .clinicIntroLeft { padding-right: 0; border-right: none; padding-bottom: var(--space-4); border-bottom: 1px solid rgba(0 0 0 / 0.08); }
+  .clinicIntroDesc { padding-left: 0; padding-top: var(--space-1); }
+
+  /* Why Choose The One Clinic: 1-col */
+  .clinicReasonsGrid { grid-template-columns: 1fr 1fr; }
+
+  /* Expert spotlight: stack */
+  .expertSpotlight { grid-template-columns: 1fr; }
+  .expertSpotlightLeft { padding-right: 0; border-right: none; padding-bottom: var(--space-5); border-bottom: 1px solid rgba(0 0 0 / 0.08); margin-bottom: var(--space-2); }
+  .expertSpotlightRight { padding-left: 0; }
 
   /* Final results banner: stack vertically */
   .finalResultsBanner {
@@ -1488,4 +1668,7 @@
 
   /* Treated benefits: 1-col */
   .treatedBenefitsGrid { grid-template-columns: 1fr; }
+
+  /* Clinic reasons: 1-col */
+  .clinicReasonsGrid { grid-template-columns: 1fr; }
 }

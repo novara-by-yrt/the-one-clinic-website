@@ -210,36 +210,65 @@ const CONDITIONS_BODY = [
   'Buttock Area',
 ];
 
+const CLINIC_REASONS = [
+  { n: '01', text: 'All-in-one clinic with medical & aesthetic services.' },
+  { n: '02', text: 'Highly trained, compassionate doctors.' },
+  { n: '03', text: 'Customised treatments based on listening & expertise.' },
+  { n: '04', text: 'State-of-the-art facilities & modern equipment.' },
+  { n: '05', text: 'Strong reputation & excellent reviews.' },
+  { n: '06', text: 'Comprehensive care and referrals with specialists.' },
+];
+
 const FAQS = [
   {
-    question: 'What areas can Endolift treat?',
+    question: 'Am I suitable for Endolift treatment?',
     answer:
-      'Endolift is highly versatile and can treat the face, jowls, neck, jawline, double chin, upper arms, abdomen, thighs, and knees. During your consultation, your doctor will assess which areas will benefit most and recommend a personalised treatment plan.',
+      'Endolift is ideal for those with mild to moderate sagging, loose skin, or signs of ageing who want a non-surgical, minimally invasive lift on the face, neck, or jawline. A consultation with our experts will confirm if it\'s right for you.',
   },
   {
-    question: 'How many Endolift sessions will I need?',
+    question: 'Is this treatment safe?',
     answer:
-      'Most patients achieve excellent results in a single session. In some cases a second treatment may be recommended to further refine the outcome. Your doctor will advise on the optimal number of sessions based on your individual anatomy and goals.',
+      'Yes. Performed by trained professionals, Endolift targets deeper skin layers safely with minimal discomfort and downtime. A thorough consultation ensures it suits your skin and health.',
   },
   {
-    question: 'Is Endolift painful?',
+    question: 'Does Endolift really work?',
     answer:
-      'Endolift is performed under local anaesthetic to ensure a comfortable experience throughout. Most patients report only mild pressure or a gentle warmth during the procedure. Any post-treatment tenderness or swelling typically resolves within one to two days.',
+      'Yes. Endolift lifts, tightens, and contours skin by melting small fat pockets and stimulating collagen, giving natural, long-lasting results.',
   },
   {
-    question: 'What is the recovery like after Endolift?',
+    question: 'How long do the Endolift results last?',
     answer:
-      'Endolift has minimal downtime. You may experience mild swelling, redness, or bruising for one to two days after treatment. Most patients return to normal daily activities the following day. Strenuous exercise and direct heat exposure should be avoided for a short period post-treatment.',
+      'Results typically last 2–3 years, depending on your skin, age, and lifestyle. A good skincare routine helps maintain the effects for longer.',
   },
   {
-    question: 'When will I see results from Endolift?',
+    question: 'What does an Endolift do?',
     answer:
-      'Some initial tightening is visible shortly after treatment, with continued improvement over three to six months as collagen remodelling takes place. Results can last several years, particularly when maintained with a healthy skincare routine and lifestyle.',
+      'It removes small fat deposits, tightens sagging skin, and boosts collagen, leaving skin firmer, smoother, and naturally contoured.',
   },
   {
-    question: 'Am I suitable for Endolift?',
+    question: 'How painful is an Endolift?',
     answer:
-      'Endolift is suitable for most healthy adults experiencing mild to moderate skin laxity who are looking for a non-surgical alternative. A thorough consultation is carried out before treatment to assess your suitability. Those who are pregnant, breastfeeding, or have certain medical conditions may not be suitable candidates.',
+      'Most patients feel only mild pressure or warmth. Local anaesthesia ensures the procedure is comfortable, and any minor soreness usually settles quickly.',
+  },
+  {
+    question: 'How many treatment sessions will I need?',
+    answer:
+      '1–2 sessions are usually enough. Your doctor will create a personalised plan based on your skin and goals. Some may see results in a single session, others may benefit from a second.',
+  },
+  {
+    question: 'What can I expect after Endolift?',
+    answer:
+      'You may notice temporary swelling, redness, or warmth for a few days. Most people resume normal activities quickly. Following your aftercare advice helps recovery and results.',
+  },
+  {
+    question: 'Is Endolift better than fillers?',
+    answer:
+      'Endolift tightens and lifts skin from underneath, while fillers mainly add volume. They work differently, but can be combined for optimal results.',
+  },
+  {
+    question: 'What does Endolift cost in the UK?',
+    answer:
+      'Prices vary by area and treatment size. At The One Clinic, Endolift starts from £1,500 per session. A consultation will provide an exact quote based on your individual needs.',
   },
 ];
 
@@ -826,8 +855,11 @@ export default function EndoliftPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
-              Your Skin Deserves The<br />Same Endolift Glow!
+              Turn The Clock Backwards,<br />Your Endolift Facelift Awaits!
             </motion.h2>
+            <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
+              Let our experts create your personalised Endolift plan!
+            </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
                 Book Consultation
@@ -890,6 +922,144 @@ export default function EndoliftPage() {
                   </li>
                 ))}
               </ul>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          NEW: BEST ENDOLIFT LEICESTER EXPERIENCE
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light">
+        <Container>
+          <motion.div
+            className={styles.clinicIntroBody}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.div className={styles.clinicIntroLeft} variants={fadeUp}>
+              <p className={styles.eyebrowDark}>Endolift Treatment</p>
+              <h2 className={styles.combinedHeading}>
+                Best Endolift<br />Leicester Experience
+              </h2>
+            </motion.div>
+            <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
+              Experience the best Endolift in Leicester at our clinic. Our expert doctors deliver
+              safe, non-surgical skin-lifting and contouring treatments for the face, neck, and body.
+              Enjoy natural, long-lasting results with minimal downtime and personalised care
+              tailored to you.
+            </motion.p>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          NEW: COST BANNER
+      ════════════════════════════════════════ */}
+      <section className={styles.costBanner} data-section-theme="dark" aria-label="Endolift cost">
+        <Container>
+          <motion.div
+            className={styles.costBannerInner}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
+              Endolift Cost at The One Clinic
+            </motion.p>
+            <motion.p className={styles.costBannerPrice} variants={fadeUp}>
+              Endolift Cost Starts From £1,500
+            </motion.p>
+            <motion.p className={styles.costBannerNote} variants={fadeUp}>
+              The final price depends on your personalised treatment plan and will be discussed
+              during your consultation with our expert.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={styles.ctaBannerBtn}>
+                Get a Quote
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
+
+      {/* ════════════════════════════════════════
+          NEW: WHY CHOOSE THE ONE CLINIC
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Why Us
+            </motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Why Choose The One Clinic For Endolift Laser
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.clinicReasonsGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {CLINIC_REASONS.map((r) => (
+              <motion.div key={r.n} className={styles.clinicReasonCard} variants={fadeUp}>
+                <span className={styles.clinicReasonNumber}>{r.n}</span>
+                <p className={styles.clinicReasonText}>{r.text}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          NEW: DR VIRMANI SPOTLIGHT
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light">
+        <Container>
+          <motion.div
+            className={styles.expertSpotlight}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.div className={styles.expertSpotlightLeft} variants={fadeUp}>
+              <p className={styles.eyebrowDark}>Meet The Expert</p>
+              <h2 className={styles.expertName}>Dr Sumit Virmani</h2>
+              <p className={styles.expertCredentials}>MBBS, MRCGP &nbsp;·&nbsp; Co-Founder</p>
+              <BookConsultationButton className={styles.combinedCta}>
+                Book With Dr Virmani
+              </BookConsultationButton>
+            </motion.div>
+            <motion.div className={styles.expertSpotlightRight} variants={stagger(0.08)}>
+              <motion.p className={styles.expertBioPara} variants={fadeUp}>
+                Dr Sumit Virmani, the co-founder of The One Clinic, brings over 15 years of medical
+                expertise, including more than a decade as a trusted local GP. With advanced skills
+                in minor surgery and a keen eye for detail, Dr Virmani is passionate about
+                patient care and achieving outstanding results.
+              </motion.p>
+              <motion.p className={styles.expertBioPara} variants={fadeUp}>
+                His growing interest in aesthetic medicine — particularly body contouring and
+                hair rejuvenation — reflects his commitment to helping patients look and feel their
+                best. Alongside his ongoing GP practice, Dr Virmani continues to offer safe,
+                effective, and transformative aesthetic treatments at The One Clinic.
+              </motion.p>
+              <motion.p className={styles.expertBioPara} variants={fadeUp}>
+                Every patient receives holistic, results-driven care tailored to their individual
+                goals — from the initial consultation through to their final outcome.
+              </motion.p>
             </motion.div>
           </motion.div>
         </Container>
