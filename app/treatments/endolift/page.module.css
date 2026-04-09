@@ -474,6 +474,16 @@
   transform: translateY(-1px);
 }
 
+/* White variant — for dark section CTAs (e.g. Why Choose Endolift Laser) */
+.ctaWhiteInvert {
+  background: #fff !important;
+  color: #111 !important;
+}
+
+.ctaWhiteInvert:hover {
+  opacity: 0.88 !important;
+}
+
 /* ── Right column ────────────────────────────────── */
 .combinedRight {
   display: flex;
@@ -687,8 +697,7 @@
    TREATABLE CONDITIONS
 ════════════════════════════════════════════════════ */
 .conditionsSection {
-  background: var(--color-bg-light) !important;
-  border-top: 1px solid var(--color-border-light);
+  /* dark section — no override needed */
 }
 
 .conditionsList {
@@ -856,8 +865,28 @@
 }
 
 /* ════════════════════════════════════════════════════
-   BEFORE & AFTER GALLERY
+   BEFORE & AFTER CAROUSEL
 ════════════════════════════════════════════════════ */
+.baSliderViewport {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-5);
+}
+
+.baSliderTrack {
+  display: flex;
+  transition: transform 0.48s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.baSlideItem {
+  flex: 1 0 0;
+  padding: 0 var(--space-2);
+}
+
+.baSlideItem:first-child { padding-left: 0; }
+.baSlideItem:last-child  { padding-right: 0; }
+
 .baImageWrap {
   position: relative;
   border-radius: var(--radius-lg);
@@ -865,16 +894,69 @@
   aspect-ratio: 5 / 3;
   background: #f0f0f0;
   box-shadow: 0 4px 20px rgba(0 0 0 / 0.08);
-  transition: transform 0.28s ease, box-shadow 0.28s ease;
-}
-
-.baImageWrap:hover {
-  transform: scale(1.02);
-  box-shadow: 0 12px 40px rgba(0 0 0 / 0.15);
 }
 
 .baImage {
   object-fit: cover;
+}
+
+/* Controls row */
+.baControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.baArrowBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-light);
+  background: #fff;
+  color: var(--color-text-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.baArrowBtn:hover:not(:disabled) {
+  background: #f4f4f4;
+  border-color: rgba(0 0 0 / 0.18);
+}
+
+.baArrowBtn:disabled {
+  opacity: 0.32;
+  cursor: default;
+}
+
+.baDots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.baDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(0 0 0 / 0.18);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.baDot:hover {
+  background: rgba(0 0 0 / 0.4);
+}
+
+.baDotActive {
+  background: #111;
+  transform: scale(1.3);
 }
 
 /* ════════════════════════════════════════════════════
@@ -1038,49 +1120,66 @@
 }
 
 /* ════════════════════════════════════════════════════
-   EXPERT SPOTLIGHT (Dr Virmani)
+   EXPERT CARD — DR VIRMANI (premium dark)
 ════════════════════════════════════════════════════ */
-.expertSpotlight {
+.expertCard {
   display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 0;
-  align-items: start;
+  grid-template-columns: 400px 1fr;
+  min-height: 560px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(255 255 255 / 0.04);
+  border: 1px solid rgba(255 255 255 / 0.10);
 }
 
-.expertSpotlightLeft {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  padding-right: clamp(var(--space-6), 6vw, 80px);
-  border-right: 1px solid rgba(0 0 0 / 0.07);
+.expertCardPhotoPanel {
+  position: relative;
+  min-height: 520px;
 }
 
-.expertName {
-  font-size: clamp(1.625rem, 3vw, 2.25rem);
-  font-weight: var(--fw-bold);
-  letter-spacing: -0.025em;
-  color: var(--color-text-dark);
-  line-height: 1.15;
-  margin: 0;
+.expertCardPhoto {
+  object-fit: cover;
+  object-position: top center;
 }
 
-.expertCredentials {
-  font-size: 0.9375rem;
-  color: var(--color-text-muted);
-  margin: 0 0 var(--space-3);
-}
-
-.expertSpotlightRight {
+.expertCardContent {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-  padding-left: clamp(var(--space-6), 6vw, 80px);
+  padding: clamp(var(--space-6), 6vw, 72px);
+  justify-content: center;
 }
 
-.expertBioPara {
-  font-size: 1.0625rem;
-  line-height: 1.82;
-  color: var(--color-text-muted);
+.expertCardName {
+  font-size: clamp(1.875rem, 3.2vw, 2.75rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.03em;
+  color: #fff;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.expertCardBadges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.expertCardBadge {
+  background: rgba(255 255 255 / 0.07);
+  border: 1px solid rgba(255 255 255 / 0.14);
+  border-radius: 100px;
+  padding: 6px 18px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: rgba(255 255 255 / 0.68);
+  letter-spacing: 0.04em;
+}
+
+.expertCardBio {
+  font-size: 1rem;
+  line-height: 1.78;
+  color: rgba(255 255 255 / 0.52);
   margin: 0;
 }
 
@@ -1264,12 +1363,12 @@
 }
 
 /* ════════════════════════════════════════════════════
-   TREATABLE AREAS — 2-COLUMN CATEGORIES
+   TREATABLE AREAS — 2-COLUMN CATEGORIES (DARK)
 ════════════════════════════════════════════════════ */
 .conditionsIntro {
   font-size: 1.0625rem;
   line-height: 1.72;
-  color: var(--color-text-muted);
+  color: rgba(255 255 255 / 0.55);
   max-width: 540px;
   text-align: center;
   margin: var(--space-1) 0 0;
@@ -1279,24 +1378,47 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-4);
-  max-width: 760px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
 .areasGroup {
-  background: #fff;
-  border: 1px solid var(--color-border-light);
+  background: #111;
+  border: 1px solid rgba(255 255 255 / 0.08);
   border-radius: var(--radius-lg);
-  padding: var(--space-4) var(--space-5);
-  box-shadow: 0 2px 12px rgb(0 0 0 / 0.04);
+  padding: var(--space-5) var(--space-5);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.25s ease;
+}
+
+/* Shimmer top-edge accent */
+.areasGroup::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255 255 255 / 0.35) 40%,
+    rgba(255 255 255 / 0.35) 60%,
+    transparent
+  );
+}
+
+.areasGroup:hover {
+  border-color: rgba(255 255 255 / 0.16);
 }
 
 .areasGroupLabel {
   font-size: 0.6875rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: rgba(255 255 255 / 0.38);
   margin: 0 0 var(--space-3);
 }
 
@@ -1315,9 +1437,9 @@
   gap: 14px;
   font-size: 0.9375rem;
   font-weight: var(--fw-medium);
-  color: var(--color-text-dark);
+  color: rgba(255 255 255 / 0.82);
   padding: 11px 0;
-  border-bottom: 1px solid var(--color-border-light);
+  border-bottom: 1px solid rgba(255 255 255 / 0.07);
 }
 
 .areasGroupItem:last-child {
@@ -1330,11 +1452,11 @@
 }
 
 .areasItemDot {
-  width: 7px;
-  height: 7px;
-  min-width: 7px;
+  width: 6px;
+  height: 6px;
+  min-width: 6px;
   border-radius: 50%;
-  background: var(--color-text-dark);
+  background: rgba(255 255 255 / 0.45);
   flex-shrink: 0;
 }
 
@@ -1523,12 +1645,6 @@
   margin: var(--space-1) 0 0;
 }
 
-.beforeAfterGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-3);
-}
-
 .beforeAfterPlaceholder {
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -1573,13 +1689,13 @@
 }
 
 .ctaBannerHeading {
-  font-size: clamp(2rem, 5vw, 3.75rem);
+  font-size: clamp(0.875rem, 4.5vw, 3.75rem);
   font-weight: var(--fw-bold);
   letter-spacing: -0.035em;
-  line-height: 1.1;
+  line-height: 1.15;
   color: #fff;
   margin: 0;
-  max-width: 700px;
+  max-width: 760px;
 }
 
 .ctaBannerBtn {
@@ -1614,8 +1730,7 @@
   .treatedBenefitsGrid { grid-template-columns: repeat(2, 1fr); }
   .resultsAfterGrid { grid-template-columns: 1fr 1fr; }
   .clinicReasonsGrid { grid-template-columns: repeat(2, 1fr); }
-  .expertSpotlight { grid-template-columns: 240px 1fr; }
-  .beforeAfterGrid { grid-template-columns: repeat(2, 1fr); }
+  .expertCard { grid-template-columns: 300px 1fr; }
 }
 
 /* Combined section: collapse to single column on tablet/mobile */
@@ -1697,10 +1812,10 @@
   /* Why Choose The One Clinic: 1-col */
   .clinicReasonsGrid { grid-template-columns: 1fr 1fr; }
 
-  /* Expert spotlight: stack */
-  .expertSpotlight { grid-template-columns: 1fr; }
-  .expertSpotlightLeft { padding-right: 0; border-right: none; padding-bottom: var(--space-5); border-bottom: 1px solid rgba(0 0 0 / 0.08); margin-bottom: var(--space-2); }
-  .expertSpotlightRight { padding-left: 0; }
+  /* Expert card: stack photo above content on mobile */
+  .expertCard { grid-template-columns: 1fr; min-height: auto; }
+  .expertCardPhotoPanel { min-height: 360px; }
+  .expertCardContent { padding: var(--space-6) var(--space-5); }
 
   /* Final results banner: stack vertically */
   .finalResultsBanner {
@@ -1713,9 +1828,6 @@
     padding-bottom: var(--space-2);
     border-bottom: 1px solid rgba(255 255 255 / 0.1);
   }
-
-  /* Before & after: 2-col on tablet */
-  .beforeAfterGrid { grid-template-columns: repeat(2, 1fr); }
 
   /* Results grid: 1 col on tablet */
   .resultsAfterGrid { grid-template-columns: 1fr; }
@@ -1789,17 +1901,11 @@
   .conditionsList { flex-direction: column; align-items: stretch; }
   .conditionPill { justify-content: flex-start; }
 
-  /* CTA banner heading size */
-  .ctaBannerHeading { font-size: clamp(1.75rem, 7vw, 2.5rem); }
-
   /* Treated benefits: 1-col */
   .treatedBenefitsGrid { grid-template-columns: 1fr; }
 
   /* Clinic reasons: 1-col */
   .clinicReasonsGrid { grid-template-columns: 1fr; }
-
-  /* Before & after: 2-col on small mobile (landscape images work well 2-up) */
-  .beforeAfterGrid { grid-template-columns: repeat(2, 1fr); }
 
   /* Standalone At a Glance: 1-col */
   .glanceStandaloneGrid { grid-template-columns: 1fr; }

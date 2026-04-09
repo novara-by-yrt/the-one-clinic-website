@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -292,6 +293,26 @@ const BA_IMAGES = [
 
 /* ── Page component ───────────────────────────────────────────── */
 export default function EndoliftPage() {
+  const [baIndex, setBaIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(3);
+
+  useEffect(() => {
+    const update = () => {
+      if (window.innerWidth < 640) setVisibleCount(1);
+      else if (window.innerWidth < 1024) setVisibleCount(2);
+      else setVisibleCount(3);
+    };
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
+
+  useEffect(() => {
+    setBaIndex((i) => Math.min(i, BA_IMAGES.length - visibleCount));
+  }, [visibleCount]);
+
+  const maxBaIndex = BA_IMAGES.length - visibleCount;
+
   return (
     <>
       {/* ════════════════════════════════════════
@@ -651,7 +672,7 @@ export default function EndoliftPage() {
               If any of these sound familiar, Endolift laser skin tightening could be the right solution for you.
             </motion.p>
             <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.combinedCta}>
+              <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
                 Book Your Consultation
               </BookConsultationButton>
             </motion.div>
@@ -864,25 +885,68 @@ export default function EndoliftPage() {
             </motion.p>
           </motion.div>
 
-          <motion.div
-            className={styles.beforeAfterGrid}
-            variants={stagger(0.08)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {BA_IMAGES.map((img) => (
-              <motion.div key={img.src} className={styles.baImageWrap} variants={fadeUp}>
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  className={styles.baImage}
-                  sizes="(max-width: 580px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          {/* Carousel viewport */}
+          <div className={styles.baSliderViewport}>
+            <div
+              className={styles.baSliderTrack}
+              style={{
+                transform: `translateX(-${baIndex * (100 / BA_IMAGES.length)}%)`,
+                width: `${(BA_IMAGES.length / visibleCount) * 100}%`,
+              }}
+            >
+              {BA_IMAGES.map((img) => (
+                <div key={img.src} className={styles.baSlideItem}>
+                  <div className={styles.baImageWrap}>
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      className={styles.baImage}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Controls: arrows + dots */}
+          <div className={styles.baControls}>
+            <button
+              className={styles.baArrowBtn}
+              onClick={() => setBaIndex((i) => Math.max(0, i - 1))}
+              aria-label="Previous before and after image"
+              disabled={baIndex === 0}
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M12.5 15l-5-5 5-5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+
+            <div className={styles.baDots} role="tablist" aria-label="Before and after carousel navigation">
+              {Array.from({ length: maxBaIndex + 1 }).map((_, i) => (
+                <button
+                  key={i}
+                  className={`${styles.baDot} ${baIndex === i ? styles.baDotActive : ''}`}
+                  onClick={() => setBaIndex(i)}
+                  aria-label={`Go to image set ${i + 1}`}
+                  aria-selected={baIndex === i}
+                  role="tab"
                 />
-              </motion.div>
-            ))}
-          </motion.div>
+              ))}
+            </div>
+
+            <button
+              className={styles.baArrowBtn}
+              onClick={() => setBaIndex((i) => Math.min(maxBaIndex, i + 1))}
+              aria-label="Next before and after image"
+              disabled={baIndex === maxBaIndex}
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M7.5 5l5 5-5 5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+          </div>
         </Container>
       </Section>
 
@@ -926,7 +990,7 @@ export default function EndoliftPage() {
       {/* ════════════════════════════════════════
           7. TREATABLE AREAS
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.conditionsSection}>
+      <Section variant="dark" data-section-theme="dark" className={styles.conditionsSection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -935,10 +999,10 @@ export default function EndoliftPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
               Treatable Areas
             </motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
               What Areas Can Be Treated With Endolift?
             </motion.h2>
             <motion.p className={styles.conditionsIntro} variants={fadeUp}>
@@ -1080,49 +1144,59 @@ export default function EndoliftPage() {
       {/* ════════════════════════════════════════
           NEW: DR VIRMANI SPOTLIGHT
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="dark" data-section-theme="dark">
         <Container>
           <motion.div
-            className={styles.expertSpotlight}
+            className={styles.expertCard}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div className={styles.expertSpotlightLeft} variants={fadeUp}>
-              <div className={styles.expertPhotoWrap}>
-                <Image
-                  src="/images/imgi_20_team-thumb-VIRMANI.jpg"
-                  alt="Dr Sumit Virmani – Co-Founder, The One Clinic"
-                  fill
-                  className={styles.expertPhoto}
-                  sizes="(max-width: 768px) 100vw, 280px"
-                />
-              </div>
-              <p className={styles.eyebrowDark}>Meet The Expert</p>
-              <h2 className={styles.expertName}>Dr Sumit Virmani</h2>
-              <p className={styles.expertCredentials}>MBBS, MRCGP &nbsp;·&nbsp; Co-Founder</p>
-              <BookConsultationButton className={styles.combinedCta}>
-                Book With Dr Virmani
-              </BookConsultationButton>
+            {/* Left: full-bleed photo panel */}
+            <motion.div className={styles.expertCardPhotoPanel} variants={fadeUp}>
+              <Image
+                src="/images/imgi_20_team-thumb-VIRMANI.jpg"
+                alt="Dr Sumit Virmani – Co-Founder, The One Clinic"
+                fill
+                className={styles.expertCardPhoto}
+                sizes="(max-width: 768px) 100vw, 420px"
+              />
             </motion.div>
-            <motion.div className={styles.expertSpotlightRight} variants={stagger(0.08)}>
-              <motion.p className={styles.expertBioPara} variants={fadeUp}>
+
+            {/* Right: content */}
+            <motion.div className={styles.expertCardContent} variants={stagger(0.08)}>
+              <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+                Meet The Expert
+              </motion.p>
+              <motion.h2 className={styles.expertCardName} variants={fadeUp}>
+                Dr Sumit Virmani
+              </motion.h2>
+
+              <motion.div className={styles.expertCardBadges} variants={fadeUp}>
+                <span className={styles.expertCardBadge}>MBBS</span>
+                <span className={styles.expertCardBadge}>MRCGP</span>
+                <span className={styles.expertCardBadge}>Co-Founder</span>
+              </motion.div>
+
+              <motion.p className={styles.expertCardBio} variants={fadeUp}>
                 Dr Sumit Virmani, the co-founder of The One Clinic, brings over 15 years of medical
                 expertise, including more than a decade as a trusted local GP. With advanced skills
                 in minor surgery and a keen eye for detail, Dr Virmani is passionate about
                 patient care and achieving outstanding results.
               </motion.p>
-              <motion.p className={styles.expertBioPara} variants={fadeUp}>
+              <motion.p className={styles.expertCardBio} variants={fadeUp}>
                 His growing interest in aesthetic medicine, particularly body contouring and
                 hair rejuvenation, reflects his commitment to helping patients look and feel their
                 best. Alongside his ongoing GP practice, Dr Virmani continues to offer safe,
                 effective, and transformative aesthetic treatments at The One Clinic.
               </motion.p>
-              <motion.p className={styles.expertBioPara} variants={fadeUp}>
-                Every patient receives holistic, results-driven care tailored to their individual
-                goals, from the initial consultation through to their final outcome.
-              </motion.p>
+
+              <motion.div variants={fadeUp}>
+                <BookConsultationButton className={styles.ctaBannerBtn}>
+                  Book With Dr Virmani
+                </BookConsultationButton>
+              </motion.div>
             </motion.div>
           </motion.div>
         </Container>
