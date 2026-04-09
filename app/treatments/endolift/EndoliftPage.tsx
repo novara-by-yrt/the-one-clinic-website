@@ -18,23 +18,52 @@ import styles from './page.module.css';
 /* ── Static data ──────────────────────────────────────────────── */
 const AT_A_GLANCE = [
   {
-    label: 'Expected Outcome',
-    value: 'Skin lift & contouring',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 2L8 6h3v6H9l3 4 3-4h-2V6h3L12 2z"/>
-        <path d="M5 19h14"/>
-        <path d="M5 22h14"/>
-      </svg>
-    ),
-  },
-  {
-    label: 'Appointment Time',
-    value: '60–90 minutes',
+    label: 'Treatment Duration',
+    value: '30–45 minutes',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
         <polyline points="12 6 12 12 16 14"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Treatment Frequency',
+    value: 'Every 1–2 years',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="1 4 1 10 7 10"/>
+        <path d="M3.51 15a9 9 0 1 0 .49-3.1"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Downtime',
+    value: '1–3 days',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+        <path d="M9 12l2 2 4-4"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Results Longevity',
+    value: '2–3 years or more',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+        <polyline points="17 6 23 6 23 12"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Treatment Cost',
+    value: 'From £1,500',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <line x1="12" y1="1" x2="12" y2="23"/>
+        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
       </svg>
     ),
   },
@@ -47,16 +76,6 @@ const AT_A_GLANCE = [
         <path d="M5 21V7l8-4v4"/>
         <path d="M19 21V11l-6-4"/>
         <path d="M9 21v-4h6v4"/>
-      </svg>
-    ),
-  },
-  {
-    label: 'Downtime',
-    value: 'Minimal 1–2 days',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
-        <path d="M9 12l2 2 4-4"/>
       </svg>
     ),
   },
@@ -111,13 +130,84 @@ const ELIGIBILITY = [
   'Hoping for natural, gradual improvement with minimal downtime',
 ];
 
-const CONDITIONS = [
-  'Skin laxity & looseness',
-  'Jowls & sagging jawline',
-  'Neck laxity',
-  'Double chin',
-  'Upper arm skin laxity',
-  'Abdominal skin laxity',
+const TREATED_BENEFITS = [
+  {
+    title: 'Non-Surgical Facelift',
+    desc: 'Lifts and tightens skin without cuts, stitches, or scars — delivering a rejuvenated appearance with none of the surgical risks.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Visible Tightening',
+    desc: 'Skin appears firmer immediately after treatment, with continued improvement developing progressively over the following months.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+        <polyline points="17 6 23 6 23 12"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Collagen Boost',
+    desc: 'Stimulates the natural production of new collagen and elastin for long-lasting firmness, improved skin texture, and enhanced elasticity.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12"/>
+        <path d="M12 6v6l4 2"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Fat Reduction',
+    desc: 'Precisely melts small, stubborn fat deposits to smooth and contour areas such as the double chin, love handles, or inner thighs.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <circle cx="12" cy="12" r="4"/>
+        <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Natural, Precise Results',
+    desc: 'Targets even delicate areas — such as under the eyes — safely and with remarkable precision for a refreshed, natural-looking outcome.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+        <circle cx="12" cy="12" r="3"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Minimal Downtime',
+    desc: 'Quick recovery with most patients returning to daily activities within 1–2 days — ideal for those with busy schedules.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+        <polyline points="22 4 12 14.01 9 11.01"/>
+      </svg>
+    ),
+  },
+];
+
+const CONDITIONS_FACE = [
+  'Chin & Jawline',
+  'Nasolabial Folds',
+  'Smile & Laughter Lines',
+  'Lower Eyelids',
+  'Neck & Décolletage',
+];
+
+const CONDITIONS_BODY = [
+  'Stomach',
+  'Arms',
+  'Inner Thighs',
+  'Ankles',
+  'Knees',
+  'Buttock Area',
 ];
 
 const FAQS = [
@@ -407,6 +497,46 @@ export default function EndoliftPage() {
       </Section>
 
       {/* ════════════════════════════════════════
+          NEW: TREATED BENEFITS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              What You Gain
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Endolift Treated Benefits
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.treatedBenefitsGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {TREATED_BENEFITS.map((b) => (
+              <motion.div key={b.title} className={styles.treatedBenefitCard} variants={fadeUp}>
+                <span className={styles.treatedBenefitIconWrap} aria-hidden="true">
+                  {b.icon}
+                </span>
+                <h3 className={styles.treatedBenefitTitle}>{b.title}</h3>
+                <p className={styles.treatedBenefitDesc}>{b.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
           5. WHY CHOOSE ENDOLIFT LASER
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
@@ -531,6 +661,118 @@ export default function EndoliftPage() {
       </Section>
 
       {/* ════════════════════════════════════════
+          NEW: RESULTS, AFTERCARE & SIDE EFFECTS
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Post-Treatment
+            </motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Results, Aftercare &amp; Side Effects
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.resultsAfterGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {/* Card 1 — Results Timeline */}
+            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+              <div className={styles.resultsAfterCardHead}>
+                <span className={styles.resultsAfterCardIcon} aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                    <polyline points="17 6 23 6 23 12"/>
+                  </svg>
+                </span>
+                <h3 className={styles.resultsAfterCardTitle}>When Will You See Results?</h3>
+              </div>
+              <p className={styles.resultsAfterCardBody}>
+                Some visible tightening appears within 4–8 weeks as new collagen begins to form.
+                Skin continues to improve over 3–6 months, with final results typically visible at
+                around 6–9 months.
+              </p>
+              <p className={styles.resultsAfterCardNote}>
+                Results are long-lasting — often 2–3 years — depending on age, skin condition,
+                and lifestyle. A good skincare routine helps maintain the effect.
+              </p>
+            </motion.div>
+
+            {/* Card 2 — Side Effects */}
+            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+              <div className={styles.resultsAfterCardHead}>
+                <span className={styles.resultsAfterCardIcon} aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="8" x2="12" y2="12"/>
+                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                  </svg>
+                </span>
+                <h3 className={styles.resultsAfterCardTitle}>Side Effects</h3>
+              </div>
+              <p className={styles.resultsAfterCardBody}>
+                Endolift is minimally invasive and generally very safe. Most patients experience
+                only mild, temporary effects:
+              </p>
+              <ul className={styles.resultsAfterCardList} role="list">
+                {[
+                  'Slight redness or warmth in the treated area',
+                  'Mild swelling or tenderness',
+                  'Minor bruising in some cases',
+                ].map((item) => (
+                  <li key={item} className={styles.resultsAfterCardListItem}>
+                    <span className={styles.resultsAfterDot} aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <p className={styles.resultsAfterCardNote}>
+                These usually fade within a few days. The risk of serious complications is
+                extremely low when performed by a trained doctor.
+              </p>
+            </motion.div>
+
+            {/* Card 3 — Aftercare */}
+            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+              <div className={styles.resultsAfterCardHead}>
+                <span className={styles.resultsAfterCardIcon} aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                  </svg>
+                </span>
+                <h3 className={styles.resultsAfterCardTitle}>Aftercare Tips</h3>
+              </div>
+              <ul className={styles.resultsAfterCardList} role="list">
+                {[
+                  'Avoid heat, saunas, and intense exercise for 48 hours',
+                  'Keep skin well-hydrated and clean',
+                  'Do not touch or rub the treated areas',
+                  'Follow any specific advice from your doctor for best results',
+                ].map((item) => (
+                  <li key={item} className={styles.resultsAfterCardListItem}>
+                    <span className={styles.resultsAfterDot} aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
           NEW: BEFORE & AFTER
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
@@ -608,29 +850,48 @@ export default function EndoliftPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-              Treatable Concerns
+              Treatable Areas
             </motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Endolift Treatable Concerns
+              What Areas Can Be Treated With Endolift?
             </motion.h2>
+            <motion.p className={styles.conditionsIntro} variants={fadeUp}>
+              Endolift is our treatment of choice to tackle skin sagging and stubborn fat cells
+              on various face and body areas.
+            </motion.p>
           </motion.div>
 
-          <motion.ul
-            className={styles.conditionsList}
+          <motion.div
+            className={styles.areasColumns}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
-            role="list"
-            aria-label="Treatable areas"
           >
-            {CONDITIONS.map((c) => (
-              <motion.li key={c} className={styles.conditionPill} variants={fadeUp}>
-                <span className={styles.conditionDot} aria-hidden="true" />
-                {c}
-              </motion.li>
-            ))}
-          </motion.ul>
+            <motion.div className={styles.areasGroup} variants={fadeUp}>
+              <p className={styles.areasGroupLabel}>Face &amp; Neck</p>
+              <ul className={styles.areasGroupList} role="list">
+                {CONDITIONS_FACE.map((area) => (
+                  <li key={area} className={styles.areasGroupItem}>
+                    <span className={styles.areasItemDot} aria-hidden="true" />
+                    {area}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div className={styles.areasGroup} variants={fadeUp}>
+              <p className={styles.areasGroupLabel}>Body</p>
+              <ul className={styles.areasGroupList} role="list">
+                {CONDITIONS_BODY.map((area) => (
+                  <li key={area} className={styles.areasGroupItem}>
+                    <span className={styles.areasItemDot} aria-hidden="true" />
+                    {area}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </motion.div>
         </Container>
       </Section>
 
