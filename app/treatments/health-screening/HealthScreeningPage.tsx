@@ -15,10 +15,49 @@ import styles from './page.module.css';
 
 /* ── Static data ──────────────────────────────────────────────── */
 const AT_A_GLANCE = [
-  { label: 'Expected Outcome', value: 'Cardiovascular analysis' },
-  { label: 'Appointment Time', value: '30 minutes' },
-  { label: 'Appointment Type', value: 'In-clinic' },
-  { label: 'Frequency',        value: 'As directed' },
+  {
+    label: 'Expected Outcome',
+    value: 'Cardiovascular analysis',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Appointment Time',
+    value: '30 minutes',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Appointment Type',
+    value: 'In-clinic',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M3 21h18"/>
+        <path d="M5 21V7l8-4v4"/>
+        <path d="M19 21V11l-6-4"/>
+        <path d="M9 21v-4h6v4"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Frequency',
+    value: 'As directed',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+        <line x1="16" y1="2" x2="16" y2="6"/>
+        <line x1="8" y1="2" x2="8" y2="6"/>
+        <line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+    ),
+  },
 ];
 
 const JOURNEY_STEPS = [
@@ -222,6 +261,7 @@ export default function HealthScreeningPage() {
           >
             {AT_A_GLANCE.map((item) => (
               <motion.div key={item.label} className={styles.glanceCard} variants={fadeUp}>
+                <span className={styles.glanceIcon}>{item.icon}</span>
                 <span className={styles.glanceLabel}>{item.label}</span>
                 <span className={styles.glanceValue}>{item.value}</span>
               </motion.div>

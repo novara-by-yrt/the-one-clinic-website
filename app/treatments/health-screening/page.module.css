@@ -334,7 +334,7 @@
 .glanceCard {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   padding: var(--space-5) var(--space-4);
   background: #111;
   border: 1px solid rgba(255 255 255 / 0.10);
@@ -342,6 +342,19 @@
   position: relative;
   overflow: hidden;
   transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.glanceIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(255 255 255 / 0.07);
+  border: 1px solid rgba(255 255 255 / 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255 255 255 / 0.65);
+  flex-shrink: 0;
 }
 
 /* Top-edge shimmer accent */
@@ -719,13 +732,61 @@
 
   .overviewLabel { padding-top: 0; }
 
+  /* ── Benefits: center all content on mobile ── */
   .benefitsGrid { grid-template-columns: 1fr; }
+
+  .benefitCard {
+    align-items: center;
+    text-align: center;
+  }
 
   .howTextGrid { grid-template-columns: 1fr; }
   .howCoversWrap { padding: var(--space-4); }
   .howCoversList { grid-template-columns: 1fr; gap: var(--space-2); }
 
-  .journeyStep { gap: var(--space-3); }
+  /* ── Treatment Journey: vertical timeline ── */
+  .journeyStep {
+    position: relative;
+    border-top: none;
+    border-bottom: none;
+    padding-top: 0;
+    padding-bottom: 28px;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+
+  .journeyStep:last-child {
+    padding-bottom: 0;
+  }
+
+  /* Vertical connecting line between steps */
+  .journeyStep:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 18px;  /* (38px circle / 2) – (2px line / 2) */
+    top: 38px;   /* bottom edge of the circle badge */
+    bottom: 0;
+    width: 2px;
+    background: rgba(0 0 0 / 0.1);
+    pointer-events: none;
+  }
+
+  /* Step number becomes a circle badge */
+  .stepNum {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    border-radius: 50%;
+    background: #111;
+    color: #fff;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0;
+  }
 
   .headingDark,
   .headingLight { font-size: clamp(1.5rem, 5vw, var(--text-h2)); }
@@ -734,6 +795,17 @@
 @media (max-width: 580px) {
   .glanceGrid { grid-template-columns: 1fr 1fr; }
   .relatedGrid { grid-template-columns: 1fr; }
+
+  /* Glance cards: center icon + text in 2-col mobile grid */
+  .glanceCard {
+    align-items: center;
+    text-align: center;
+    padding: var(--space-4) var(--space-3);
+  }
+
+  .glanceIcon {
+    margin-bottom: 2px;
+  }
 
   .conditionsList { flex-direction: column; align-items: stretch; }
   .conditionPill { justify-content: flex-start; }
