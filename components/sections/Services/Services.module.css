@@ -34,7 +34,7 @@
 .carouselOuter {
   position: relative;
   overflow: hidden;
-  padding-bottom: var(--space-7);
+  padding-bottom: var(--space-2);
 }
 
 /* Edge fade masks */
@@ -225,6 +225,36 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #fff;
+}
+
+/* ── Explore all CTA ──────────────────────────────────── */
+.exploreCta {
+  display: flex;
+  justify-content: center;
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-7);
+}
+
+.exploreAllBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 32px;
+  background: #000;
+  color: #fff;
+  border-radius: 100px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 16px rgb(0 0 0 / 0.15);
+}
+
+.exploreAllBtn:hover {
+  background: #1a1a1a;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgb(0 0 0 / 0.2);
 }
 
 /* ═══════════════════════════════════

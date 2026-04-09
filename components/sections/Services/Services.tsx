@@ -126,7 +126,7 @@ export default function Services() {
           viewport={VIEWPORT}
         >
           <motion.p className={styles.eyebrow} variants={fadeUp}>
-            Our Treatments
+            Our
           </motion.p>
           <motion.h2 className={styles.heading} variants={fadeUp}>
             Popular Treatments
@@ -209,6 +209,25 @@ export default function Services() {
           ))}
         </div>
       </div>
+
+      {/* ── Explore all treatments CTA ─────────────────────── */}
+      <Container>
+        <motion.div
+          className={styles.exploreCta}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+        >
+          <Link href="/treatments" className={styles.exploreAllBtn}>
+            Explore All Treatments
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6"
+                strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </Link>
+        </motion.div>
+      </Container>
     </Section>
   );
 }
