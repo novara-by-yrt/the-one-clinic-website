@@ -812,12 +812,275 @@
 }
 
 /* ════════════════════════════════════════════════════
+   ENDOLIFT COMBINATION (TRIPLE ACTION)
+════════════════════════════════════════════════════ */
+.combinationIntroText {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: rgba(255 255 255 / 0.55);
+  max-width: 560px;
+  text-align: center;
+  margin: var(--space-2) 0 0;
+}
+
+.techCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.techCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  background: rgba(255 255 255 / 0.04);
+  border: 1px solid rgba(255 255 255 / 0.09);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.techCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 24px;
+  right: 24px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255 255 255 / 0.3) 40%,
+    rgba(255 255 255 / 0.3) 60%,
+    transparent
+  );
+}
+
+.techCard:hover {
+  background: rgba(255 255 255 / 0.07);
+  border-color: rgba(255 255 255 / 0.15);
+}
+
+.techCardEyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255 255 255 / 0.3);
+}
+
+.techCardTitle {
+  font-size: 1.375rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.techCardDesc {
+  font-size: 0.9375rem;
+  line-height: 1.72;
+  color: rgba(255 255 255 / 0.52);
+  margin: 0;
+}
+
+.finalResultsBanner {
+  background: rgba(255 255 255 / 0.05);
+  border: 1px solid rgba(255 255 255 / 0.1);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5) var(--space-6);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-5);
+  align-items: center;
+}
+
+.finalResultsEyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255 255 255 / 0.38);
+  white-space: nowrap;
+  margin: 0;
+  padding-right: var(--space-5);
+  border-right: 1px solid rgba(255 255 255 / 0.1);
+}
+
+.finalResultsText {
+  font-size: 1rem;
+  line-height: 1.72;
+  color: rgba(255 255 255 / 0.72);
+  margin: 0;
+}
+
+/* ════════════════════════════════════════════════════
+   ELIGIBILITY (WHY CHOOSE ENDOLIFT LASER)
+════════════════════════════════════════════════════ */
+.eligibilityWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.eligibilityIntro {
+  font-size: 1.0625rem;
+  color: rgba(255 255 255 / 0.6);
+  margin: 0;
+  align-self: flex-start;
+}
+
+.eligibilityList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.eligibilityItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 1.0625rem;
+  font-weight: var(--fw-medium);
+  color: rgba(255 255 255 / 0.85);
+  line-height: 1.6;
+  padding: var(--space-3) var(--space-4);
+  background: rgba(255 255 255 / 0.04);
+  border: 1px solid rgba(255 255 255 / 0.07);
+  border-radius: 10px;
+}
+
+.eligibilityCheck {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 50%;
+  background: rgba(255 255 255 / 0.1);
+  border: 1px solid rgba(255 255 255 / 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255 255 255 / 0.9);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.eligibilityClosing {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255 255 255 / 0.5);
+  text-align: center;
+  margin: 0;
+}
+
+/* ════════════════════════════════════════════════════
+   BEFORE & AFTER
+════════════════════════════════════════════════════ */
+.beforeAfterSubheading {
+  font-size: 1.0625rem;
+  line-height: 1.72;
+  color: var(--color-text-muted);
+  max-width: 520px;
+  text-align: center;
+  margin: var(--space-1) 0 0;
+}
+
+.beforeAfterGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+.beforeAfterPlaceholder {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  background: #f0f0f0;
+  border: 1px solid var(--color-border-light);
+}
+
+.placeholderInner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: var(--space-3);
+}
+
+.placeholderLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(0 0 0 / 0.3);
+}
+
+/* ════════════════════════════════════════════════════
+   CTA BANNER
+════════════════════════════════════════════════════ */
+.ctaBanner {
+  background: #111;
+  padding-block: clamp(var(--space-8), 10vw, 120px);
+}
+
+.ctaBannerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-5);
+}
+
+.ctaBannerHeading {
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  color: #fff;
+  margin: 0;
+  max-width: 700px;
+}
+
+.ctaBannerBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 40px;
+  background: #fff;
+  color: #111;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.ctaBannerBtn:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+}
+
+/* ════════════════════════════════════════════════════
    RESPONSIVE
 ════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
   .glanceGrid { grid-template-columns: repeat(2, 1fr); }
   .relatedGrid { grid-template-columns: repeat(2, 1fr); }
   .howCoversList { grid-template-columns: repeat(2, 1fr); }
+  .techCardsGrid { grid-template-columns: 1fr 1fr; }
 }
 
 /* Combined section: collapse to single column on tablet/mobile */
@@ -880,6 +1143,24 @@
   .howTextGrid { grid-template-columns: 1fr; }
   .howCoversWrap { padding: var(--space-4); }
   .howCoversList { grid-template-columns: 1fr; gap: var(--space-2); }
+
+  /* Tech cards: single column */
+  .techCardsGrid { grid-template-columns: 1fr; }
+
+  /* Final results banner: stack vertically */
+  .finalResultsBanner {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  .finalResultsEyebrow {
+    padding-right: 0;
+    border-right: none;
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid rgba(255 255 255 / 0.1);
+  }
+
+  /* Before & after: 2-col on tablet */
+  .beforeAfterGrid { grid-template-columns: repeat(2, 1fr); }
 
   /* ── Treatment Journey: vertical timeline ── */
   .journeyStep {
@@ -946,4 +1227,10 @@
 
   .conditionsList { flex-direction: column; align-items: stretch; }
   .conditionPill { justify-content: flex-start; }
+
+  /* Before & after: 1-col on small mobile */
+  .beforeAfterGrid { grid-template-columns: 1fr; }
+
+  /* CTA banner heading size */
+  .ctaBannerHeading { font-size: clamp(1.75rem, 7vw, 2.5rem); }
 }

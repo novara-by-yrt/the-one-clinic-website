@@ -85,23 +85,30 @@ const JOURNEY_STEPS = [
   },
 ];
 
-const BENEFITS = [
+const TECH_CARDS = [
   {
-    title: 'No Surgery Required',
-    desc: 'A minimally invasive procedure with no scalpel, no general anaesthesia, and no surgical scarring — just precise laser energy under the skin.',
+    eyebrow: '01',
+    title: 'Endolift',
+    desc: 'A fine laser fibre guided beneath the skin surface precisely melts localised fat and contracts collagen fibres simultaneously — lifting and tightening from within without any surgical incision.',
   },
   {
-    title: 'Natural Collagen Stimulation',
-    desc: 'Laser energy triggers the body\'s own collagen and elastin production, delivering gradual, natural-looking improvements that develop over months.',
+    eyebrow: '02',
+    title: 'LipoLift',
+    desc: 'Combined with Ecojet, a gentle water-assisted system, LipoLift precisely emulsifies and removes small fat deposits with minimal trauma to surrounding tissue — sculpting the contour without a scalpel.',
   },
   {
-    title: 'Treats Multiple Areas',
-    desc: 'Effectively addresses the face, neck, jawline, double chin, upper arms, abdomen, and thighs — all in a single, tailored session.',
+    eyebrow: '03',
+    title: 'BioLift',
+    desc: 'Bio-stimulating injectables — including Profhilo or polynucleotides — replenish lost volume and deeply hydrate the dermis, amplifying and prolonging the lifting and tightening effects.',
   },
-  {
-    title: 'Long-Lasting Results',
-    desc: 'Clinical improvements continue for several months post-treatment and can last years, particularly when combined with a healthy lifestyle.',
-  },
+];
+
+const ELIGIBILITY = [
+  'Not ready for surgery but want visible, long-lasting results',
+  'Struggling with sagging skin on the face, neck, or body',
+  'Looking to reduce jowls or define the jawline without an operation',
+  'Wanting skin tightening on the arms, abdomen, or thighs',
+  'Hoping for natural, gradual improvement with minimal downtime',
 ];
 
 const CONDITIONS = [
@@ -302,6 +309,63 @@ export default function EndoliftPage() {
       </Section>
 
       {/* ════════════════════════════════════════
+          NEW: ENDOLIFT COMBINATION
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Our Approach
+            </motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              A Triple Action for Sculpted Skin
+            </motion.h2>
+            <motion.p className={styles.combinationIntroText} variants={fadeUp}>
+              At The One Clinic, our Endolift Combination combines three technologies, ideal for
+              those who want to lift, tighten, and contour their face or body safely.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.techCardsGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {TECH_CARDS.map((card) => (
+              <motion.div key={card.title} className={styles.techCard} variants={fadeUp}>
+                <span className={styles.techCardEyebrow}>{card.eyebrow}</span>
+                <h3 className={styles.techCardTitle}>{card.title}</h3>
+                <p className={styles.techCardDesc}>{card.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            className={styles.finalResultsBanner}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <p className={styles.finalResultsEyebrow}>Final Results</p>
+            <p className={styles.finalResultsText}>
+              When combined, Endolift, LipoLift, and BioLift deliver complete skin renewal —
+              addressing laxity, fat deposits, and volume loss in a single programme for a
+              naturally sculpted, youthful outcome.
+            </p>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
           4. TREATMENT JOURNEY
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
@@ -343,7 +407,7 @@ export default function EndoliftPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          5. WHY CHOOSE ENDOLIFT
+          5. WHY CHOOSE ENDOLIFT LASER
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -355,32 +419,43 @@ export default function EndoliftPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Key Benefits
+              Is This Right for You?
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Why Choose Endolift
+              Why Choose an Endolift Laser?
             </motion.h2>
           </motion.div>
 
           <motion.div
-            className={styles.benefitsGrid}
+            className={styles.eligibilityWrap}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {BENEFITS.map((b) => (
-              <motion.div key={b.title} className={styles.benefitCard} variants={fadeUp}>
-                <div className={styles.benefitIcon} aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                    stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="3,10 8,15 17,5" />
-                  </svg>
-                </div>
-                <h3 className={styles.benefitTitle}>{b.title}</h3>
-                <p className={styles.benefitDesc}>{b.desc}</p>
-              </motion.div>
-            ))}
+            <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
+              You can choose Endolift laser skin tightening if you are:
+            </motion.p>
+            <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
+              {ELIGIBILITY.map((item) => (
+                <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
+                  <span className={styles.eligibilityCheck} aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+            <motion.p className={styles.eligibilityClosing} variants={fadeUp}>
+              If any of these sound familiar, Endolift laser skin tightening could be the right solution for you.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={styles.combinedCta}>
+                Book Your Consultation
+              </BookConsultationButton>
+            </motion.div>
           </motion.div>
         </Container>
       </Section>
@@ -454,6 +529,71 @@ export default function EndoliftPage() {
           </motion.div>
         </Container>
       </Section>
+
+      {/* ════════════════════════════════════════
+          NEW: BEFORE & AFTER
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Real Results
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Endolift Before &amp; After
+            </motion.h2>
+            <motion.p className={styles.beforeAfterSubheading} variants={fadeUp}>
+              Real skin lifting and tightening results from our patients at The One Clinic, Leicester.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.beforeAfterGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {[1, 2, 3].map((n) => (
+              <motion.div key={n} className={styles.beforeAfterPlaceholder} variants={fadeUp}>
+                <div className={styles.placeholderInner}>
+                  <span className={styles.placeholderLabel}>Result {n}</span>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          NEW: CTA BANNER
+      ════════════════════════════════════════ */}
+      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book Endolift consultation">
+        <Container>
+          <motion.div
+            className={styles.ctaBannerContent}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
+              Your Skin Deserves The<br />Same Endolift Glow!
+            </motion.h2>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={styles.ctaBannerBtn}>
+                Book Consultation
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
 
       {/* ════════════════════════════════════════
           7. TREATABLE AREAS
