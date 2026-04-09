@@ -1128,8 +1128,9 @@
   min-height: 560px;
   border-radius: 20px;
   overflow: hidden;
-  background: rgba(255 255 255 / 0.04);
-  border: 1px solid rgba(255 255 255 / 0.10);
+  background: #0d0d0d;
+  border: 1px solid rgba(255 255 255 / 0.08);
+  box-shadow: 0 24px 64px rgba(0 0 0 / 0.18);
 }
 
 .expertCardPhotoPanel {
@@ -1716,6 +1717,13 @@
 .ctaBannerBtn:hover {
   opacity: 0.88;
   transform: translateY(-2px);
+}
+
+/* ════════════════════════════════════════════════════
+   GRAY SECTION BACKGROUND OVERRIDE
+════════════════════════════════════════════════════ */
+.sectionGray {
+  background-color: #f3f3f3 !important;
 }
 
 /* ════════════════════════════════════════════════════

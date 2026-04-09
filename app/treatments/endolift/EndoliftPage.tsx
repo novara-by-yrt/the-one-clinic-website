@@ -410,7 +410,7 @@ export default function EndoliftPage() {
       {/* ════════════════════════════════════════
           3A. WHAT IS ENDOLIFT?
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
           <motion.div
             className={styles.whatIsGrid}
@@ -589,7 +589,7 @@ export default function EndoliftPage() {
       {/* ════════════════════════════════════════
           NEW: TREATED BENEFITS
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -1144,7 +1144,7 @@ export default function EndoliftPage() {
       {/* ════════════════════════════════════════
           NEW: DR VIRMANI SPOTLIGHT
       ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
+      <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
           <motion.div
             className={styles.expertCard}
@@ -1245,7 +1245,7 @@ export default function EndoliftPage() {
       {/* ════════════════════════════════════════
           11. RELATED TREATMENTS
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
