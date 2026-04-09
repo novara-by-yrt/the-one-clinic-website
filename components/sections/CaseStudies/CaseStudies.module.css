@@ -87,6 +87,23 @@
   padding-top: 100%; /* 1:1 — adjust if images are taller/shorter */
 }
 
+/* ── Treatment title label ──────────────────────────────────────── */
+.imageTitle {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 28px 16px 14px;
+  background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, transparent 100%);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  z-index: 1;
+}
+
 /* ── Mobile only visibility ─────────────────────────────────────── */
 .mobileOnly {
   display: none;

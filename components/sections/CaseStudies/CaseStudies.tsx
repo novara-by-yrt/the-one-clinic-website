@@ -9,9 +9,9 @@ import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './CaseStudies.module.css';
 
 const IMAGES = [
-  { src: '/images/Before and after 1.png', alt: 'Before and after treatment result 1' },
-  { src: '/images/Before and after 2.png', alt: 'Before and after treatment result 2' },
-  { src: '/images/Before and after 3.png', alt: 'Before and after treatment result 3' },
+  { src: '/images/Before and after 1.png', alt: 'Lumecca Laser before and after',       title: 'Lumecca Laser' },
+  { src: '/images/Before and after 2.png', alt: 'Endolift before and after',             title: 'Endolift' },
+  { src: '/images/Before and after 3.png', alt: 'Laser Mole Removal before and after',  title: 'Laser Mole Removal' },
 ];
 
 // ── Mobile slideshow ─────────────────────────────────────────────
@@ -94,6 +94,9 @@ function MobileSlideshow() {
         </svg>
       </button>
 
+      {/* Treatment title label */}
+      <div className={styles.imageTitle}>{IMAGES[active].title}</div>
+
       {/* Pagination dots */}
       <div className={styles.dots} role="tablist" aria-label="Before and after results">
         {IMAGES.map((_, i) => (
@@ -162,6 +165,7 @@ export default function CaseStudies() {
                 className={styles.cardImage}
                 sizes="(max-width: 768px) 0vw, (max-width: 1024px) 50vw, 33vw"
               />
+              <div className={styles.imageTitle}>{img.title}</div>
             </motion.div>
           ))}
         </motion.div>

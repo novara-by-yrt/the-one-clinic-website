@@ -90,10 +90,10 @@ export default function Benefits() {
           {/* ── Right: auto-scrolling doctor image slideshow ─ */}
           <motion.div
             className={styles.imageCol}
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
+            initial={{ opacity: 0, x: 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.85, ease: [0.25, 0.1, 0.25, 1] }}
           >
             <div className={styles.imageWrap}>
               {/* Crossfade slides */}
