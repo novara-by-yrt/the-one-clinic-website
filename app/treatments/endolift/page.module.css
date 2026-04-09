@@ -7,6 +7,7 @@
   display: flex;
   align-items: center;
   overflow: hidden;
+  overflow-x: hidden;
   padding-top: 80px;
 }
 
@@ -23,10 +24,10 @@
 .heroInner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(var(--space-6), 5vw, 72px);
+  gap: clamp(var(--space-5), 5vw, 72px);
   align-items: center;
-  padding-block: clamp(var(--space-10), 10vw, 120px);
-  padding-top: clamp(var(--space-10), 10vw, 120px);
+  padding-top: clamp(64px, 7vw, 100px);
+  padding-bottom: clamp(64px, 7vw, 100px);
 }
 
 .heroLeft {
@@ -1810,18 +1811,23 @@
   /* Hero: stack image below text on tablet */
   .heroInner {
     grid-template-columns: 1fr;
-    padding-block: clamp(var(--space-8), 8vw, 96px);
+    padding-top: clamp(52px, 7vw, 80px);
+    padding-bottom: clamp(52px, 7vw, 80px);
   }
+  /* Full square image — no cropping */
   .heroImageWrap {
-    min-height: 300px;
-    aspect-ratio: 16 / 9;
+    min-height: unset;
+    aspect-ratio: 1 / 1;
     align-self: auto;
+    max-width: 540px;
+    margin-inline: auto;
+    width: 100%;
   }
 }
 
 @media (max-width: 768px) {
-  .hero { padding-top: 64px; }
-  .heroInner { gap: var(--space-5); padding-top: clamp(var(--space-8), 8vw, 96px); }
+  .hero { padding-top: 64px; overflow-x: hidden; }
+  .heroInner { gap: var(--space-4); padding-top: 48px; padding-bottom: 48px; }
 
   .heroCtas {
     flex-direction: column;
