@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Section            from '@/components/ui/Section';
 import Container          from '@/components/ui/Container';
@@ -279,6 +280,16 @@ const RELATED = [
   { title: 'Non Surgical Blepharoplasty', href: '/treatments/blepharoplasty',    desc: 'Eye area rejuvenation without surgery or scarring.' },
 ];
 
+const BA_IMAGES = [
+  { src: '/images/BA1.jpg', alt: 'Endolift before and after result 1' },
+  { src: '/images/BA2.jpg', alt: 'Endolift before and after result 2' },
+  { src: '/images/BA3.jpg', alt: 'Endolift before and after result 3' },
+  { src: '/images/BA4.jpg', alt: 'Endolift before and after result 4' },
+  { src: '/images/BA5.jpg', alt: 'Endolift before and after result 5' },
+  { src: '/images/BA6.jpg', alt: 'Endolift before and after result 6' },
+  { src: '/images/BA7.jpg', alt: 'Endolift before and after result 7' },
+];
+
 /* ── Page component ───────────────────────────────────────────── */
 export default function EndoliftPage() {
   return (
@@ -376,24 +387,22 @@ export default function EndoliftPage() {
       <Testimonials />
 
       {/* ════════════════════════════════════════
-          3. WHAT IS ENDOLIFT + AT A GLANCE
+          3A. WHAT IS ENDOLIFT?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
           <motion.div
-            className={styles.combinedBody}
+            className={styles.whatIsGrid}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {/* Left: eyebrow → heading → description → CTA */}
-            <motion.div className={styles.combinedLeft} variants={stagger(0.12)}>
-              <motion.div className={styles.combinedLeftTop} variants={fadeUp}>
+            {/* Left: text */}
+            <motion.div className={styles.whatIsContent} variants={stagger(0.12)}>
+              <motion.div className={styles.whatIsTextGroup} variants={fadeUp}>
                 <p className={styles.eyebrowDark}>About This Treatment</p>
-                <h2 className={styles.combinedHeading}>
-                  What is Endolift?
-                </h2>
+                <h2 className={styles.combinedHeading}>What is Endolift?</h2>
                 <p className={styles.combinedDesc}>
                   Endolift is a minimally invasive laser treatment that lifts, tightens, and contours
                   the skin — all without surgery. This treatment encourages collagen production,
@@ -408,21 +417,52 @@ export default function EndoliftPage() {
               </motion.div>
             </motion.div>
 
-            {/* Right: At a Glance cards */}
-            <div className={styles.combinedRight}>
-              <motion.p className={styles.combinedRightLabel} variants={fadeUp}>
-                At a Glance
-              </motion.p>
-              <motion.div className={styles.combinedCards} variants={stagger(0.08)}>
-                {AT_A_GLANCE.map((item) => (
-                  <motion.div key={item.label} className={styles.glanceCard} variants={fadeUp}>
-                    <span className={styles.glanceIcon}>{item.icon}</span>
-                    <span className={styles.glanceLabel}>{item.label}</span>
-                    <span className={styles.glanceValue}>{item.value}</span>
-                  </motion.div>
-                ))}
+            {/* Right: image */}
+            <motion.div className={styles.whatIsImageWrap} variants={fadeUp}>
+              <Image
+                src="/images/endolift-work.jpg"
+                alt="Endolift laser treatment in progress at The One Clinic"
+                fill
+                className={styles.whatIsImage}
+                sizes="(max-width: 900px) 100vw, 50vw"
+              />
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          3B. AT A GLANCE
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Endolift Treatment at a Glance
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.glanceStandaloneGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {AT_A_GLANCE.map((item) => (
+              <motion.div key={item.label} className={styles.glanceCard} variants={fadeUp}>
+                <span className={styles.glanceIcon}>{item.icon}</span>
+                <span className={styles.glanceLabel}>{item.label}</span>
+                <span className={styles.glanceValue}>{item.value}</span>
               </motion.div>
-            </div>
+            ))}
           </motion.div>
         </Container>
       </Section>
@@ -826,16 +866,20 @@ export default function EndoliftPage() {
 
           <motion.div
             className={styles.beforeAfterGrid}
-            variants={stagger(0.1)}
+            variants={stagger(0.08)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {[1, 2, 3].map((n) => (
-              <motion.div key={n} className={styles.beforeAfterPlaceholder} variants={fadeUp}>
-                <div className={styles.placeholderInner}>
-                  <span className={styles.placeholderLabel}>Result {n}</span>
-                </div>
+            {BA_IMAGES.map((img) => (
+              <motion.div key={img.src} className={styles.baImageWrap} variants={fadeUp}>
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className={styles.baImage}
+                  sizes="(max-width: 580px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                />
               </motion.div>
             ))}
           </motion.div>
@@ -846,6 +890,16 @@ export default function EndoliftPage() {
           NEW: CTA BANNER
       ════════════════════════════════════════ */}
       <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book Endolift consultation">
+        {/* Watermark logo */}
+        <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
+          <Image
+            src="/images/Background-logo.png"
+            alt=""
+            fill
+            className={styles.ctaBannerLogo}
+            sizes="100vw"
+          />
+        </div>
         <Container>
           <motion.div
             className={styles.ctaBannerContent}
@@ -1036,6 +1090,15 @@ export default function EndoliftPage() {
             viewport={VIEWPORT}
           >
             <motion.div className={styles.expertSpotlightLeft} variants={fadeUp}>
+              <div className={styles.expertPhotoWrap}>
+                <Image
+                  src="/images/imgi_20_team-thumb-VIRMANI.jpg"
+                  alt="Dr Sumit Virmani – Co-Founder, The One Clinic"
+                  fill
+                  className={styles.expertPhoto}
+                  sizes="(max-width: 768px) 100vw, 280px"
+                />
+              </div>
               <p className={styles.eyebrowDark}>Meet The Expert</p>
               <h2 className={styles.expertName}>Dr Sumit Virmani</h2>
               <p className={styles.expertCredentials}>MBBS, MRCGP &nbsp;·&nbsp; Co-Founder</p>

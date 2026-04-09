@@ -5,24 +5,24 @@
   position: relative;
   min-height: 72vh;
   background-color: var(--color-bg-dark);
-  background-image: url('/images/Treatment%20hero%20section%20background%20image.jpg');
+  background-image: url('/images/Background%20image1.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: center top;
   display: flex;
   align-items: center;
   overflow: hidden;
   padding-top: 80px;
 }
 
-/* Dark overlay for text legibility */
+/* Dark overlay — strong enough to keep white text legible over any photo */
 .heroGrid {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.55) 0%,
-    rgba(0, 0, 0, 0.30) 55%,
-    rgba(0, 0, 0, 0.10) 100%
+    105deg,
+    rgba(0, 0, 0, 0.78) 0%,
+    rgba(0, 0, 0, 0.58) 50%,
+    rgba(0, 0, 0, 0.35) 100%
   );
   pointer-events: none;
 }
@@ -812,6 +812,107 @@
 }
 
 /* ════════════════════════════════════════════════════
+   WHAT IS ENDOLIFT? (image + text)
+════════════════════════════════════════════════════ */
+.whatIsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--space-6), 6vw, 80px);
+  align-items: center;
+}
+
+.whatIsContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.whatIsTextGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  flex: 1;
+}
+
+.whatIsImageWrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  box-shadow: 0 24px 64px rgba(0 0 0 / 0.14);
+}
+
+.whatIsImage {
+  object-fit: cover;
+}
+
+/* ════════════════════════════════════════════════════
+   AT A GLANCE — STANDALONE FULL-WIDTH GRID
+════════════════════════════════════════════════════ */
+.glanceStandaloneGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+/* ════════════════════════════════════════════════════
+   BEFORE & AFTER GALLERY
+════════════════════════════════════════════════════ */
+.baImageWrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 5 / 3;
+  background: #f0f0f0;
+  box-shadow: 0 4px 20px rgba(0 0 0 / 0.08);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.baImageWrap:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 40px rgba(0 0 0 / 0.15);
+}
+
+.baImage {
+  object-fit: cover;
+}
+
+/* ════════════════════════════════════════════════════
+   CTA BANNER — LOGO WATERMARK
+════════════════════════════════════════════════════ */
+.ctaBannerLogoWrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ctaBannerLogo {
+  object-fit: contain;
+  object-position: center;
+  opacity: 0.07;
+}
+
+/* ════════════════════════════════════════════════════
+   EXPERT PHOTO
+════════════════════════════════════════════════════ */
+.expertPhotoWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: var(--space-4);
+  box-shadow: 0 16px 48px rgba(0 0 0 / 0.12);
+  background: #f4f4f4;
+}
+
+.expertPhoto {
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* ════════════════════════════════════════════════════
    CLINIC INTRO (Best Endolift Leicester)
 ════════════════════════════════════════════════════ */
 .clinicIntroBody {
@@ -841,11 +942,28 @@
    COST BANNER
 ════════════════════════════════════════════════════ */
 .costBanner {
-  background: #0a0a0a;
+  position: relative;
+  background-color: #050505;
+  background-image: url('/images/Background%20image2.jpg');
+  background-size: cover;
+  background-position: center;
   padding-block: clamp(var(--space-8), 8vw, 96px);
+  overflow: hidden;
+}
+
+/* Dark overlay over cost banner photo */
+.costBanner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .costBannerInner {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1407,7 +1525,7 @@
 
 .beforeAfterGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--space-3);
 }
 
@@ -1440,8 +1558,10 @@
    CTA BANNER
 ════════════════════════════════════════════════════ */
 .ctaBanner {
-  background: #111;
+  position: relative;
+  background: #0d0d0d;
   padding-block: clamp(var(--space-8), 10vw, 120px);
+  overflow: hidden;
 }
 
 .ctaBannerContent {
@@ -1487,13 +1607,15 @@
 ════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
   .glanceGrid { grid-template-columns: repeat(2, 1fr); }
+  .glanceStandaloneGrid { grid-template-columns: repeat(3, 1fr); }
   .relatedGrid { grid-template-columns: repeat(2, 1fr); }
   .howCoversList { grid-template-columns: repeat(2, 1fr); }
   .techCardsGrid { grid-template-columns: 1fr 1fr; }
   .treatedBenefitsGrid { grid-template-columns: repeat(2, 1fr); }
   .resultsAfterGrid { grid-template-columns: 1fr 1fr; }
   .clinicReasonsGrid { grid-template-columns: repeat(2, 1fr); }
-  .expertSpotlight { grid-template-columns: 260px 1fr; }
+  .expertSpotlight { grid-template-columns: 240px 1fr; }
+  .beforeAfterGrid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* Combined section: collapse to single column on tablet/mobile */
@@ -1559,6 +1681,13 @@
 
   /* Tech cards: single column */
   .techCardsGrid { grid-template-columns: 1fr; }
+
+  /* What is Endolift: stack on mobile */
+  .whatIsGrid { grid-template-columns: 1fr; gap: var(--space-5); }
+  .whatIsImageWrap { aspect-ratio: 4 / 3; }
+
+  /* Standalone At a Glance: 2-col on mobile */
+  .glanceStandaloneGrid { grid-template-columns: repeat(2, 1fr); }
 
   /* Clinic intro: stack */
   .clinicIntroBody { grid-template-columns: 1fr; }
@@ -1660,9 +1789,6 @@
   .conditionsList { flex-direction: column; align-items: stretch; }
   .conditionPill { justify-content: flex-start; }
 
-  /* Before & after: 1-col on small mobile */
-  .beforeAfterGrid { grid-template-columns: 1fr; }
-
   /* CTA banner heading size */
   .ctaBannerHeading { font-size: clamp(1.75rem, 7vw, 2.5rem); }
 
@@ -1671,4 +1797,10 @@
 
   /* Clinic reasons: 1-col */
   .clinicReasonsGrid { grid-template-columns: 1fr; }
+
+  /* Before & after: 2-col on small mobile (landscape images work well 2-up) */
+  .beforeAfterGrid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Standalone At a Glance: 1-col */
+  .glanceStandaloneGrid { grid-template-columns: 1fr; }
 }
