@@ -137,7 +137,17 @@ export default function Testimonials() {
 
   return (
     <Section variant="dark" data-section-theme="dark" className={styles.section}>
-      <Container>
+      {/* Background image */}
+      <div className={styles.bgWrap} aria-hidden="true">
+        <Image
+          src="/images/Black background image.jpg"
+          alt=""
+          fill
+          className={styles.bgImg}
+          sizes="100vw"
+        />
+      </div>
+      <Container className={styles.contentLayer}>
 
         {/* ── Rating header ─────────────────────────────── */}
         <motion.div

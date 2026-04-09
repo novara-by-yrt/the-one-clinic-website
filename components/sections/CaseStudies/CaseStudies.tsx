@@ -114,8 +114,18 @@ function MobileSlideshow() {
 // ── Main component ───────────────────────────────────────────────
 export default function CaseStudies() {
   return (
-    <Section id="results" variant="dark" data-section-theme="dark">
-      <Container>
+    <Section id="results" variant="dark" data-section-theme="dark" className={styles.section}>
+      {/* Background image */}
+      <div className={styles.bgWrap} aria-hidden="true">
+        <Image
+          src="/images/Black background image.jpg"
+          alt=""
+          fill
+          className={styles.bgImg}
+          sizes="100vw"
+        />
+      </div>
+      <Container className={styles.contentLayer}>
         <motion.div
           className={styles.header}
           variants={stagger()}

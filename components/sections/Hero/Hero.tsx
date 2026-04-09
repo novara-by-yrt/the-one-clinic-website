@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import Script from 'next/script';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
@@ -51,6 +52,18 @@ export default function Hero() {
       aria-label="Hero"
       data-section-theme="dark"
     >
+      {/* ── Black background image (visible on all devices; video plays on top) */}
+      <div className={styles.heroBg} aria-hidden="true">
+        <Image
+          src="/images/Black background image.jpg"
+          alt=""
+          fill
+          priority
+          className={styles.heroBgImg}
+          sizes="100vw"
+        />
+      </div>
+
       {/* ── Wistia background video ─────────────────────────── */}
       <div className={styles.videoBg} aria-hidden="true">
         <div className={styles.videoSizer}>

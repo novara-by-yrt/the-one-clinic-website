@@ -34,6 +34,7 @@ const BENEFITS = [
 const SLIDES = [
   { src: '/images/Doctor1.jpg', alt: 'The One Clinic — Doctor 1' },
   { src: '/images/Doctor2.jpg', alt: 'The One Clinic — Doctor 2' },
+  { src: '/images/imgi_78_GTR_0328-1-1.jpg', alt: 'The One Clinic — Clinical care' },
 ];
 
 const INTERVAL = 3000; // ms

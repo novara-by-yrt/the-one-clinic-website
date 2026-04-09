@@ -80,10 +80,10 @@ export default function StickyCallbackCTA() {
                 {/* Team image – desktop only */}
                 <div className={styles.modalImage} aria-hidden="true">
                   <Image
-                    src="/images/Team Image.jpg"
+                    src="/images/imgi_78_GTR_0328-1-1.jpg"
                     alt=""
                     fill
-                    style={{ objectFit: 'cover', objectPosition: 'center center' }}
+                    style={{ objectFit: 'cover', objectPosition: 'center top' }}
                     sizes="380px"
                     priority
                   />

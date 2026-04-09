@@ -11,12 +11,24 @@
   overflow: hidden;
 }
 
+/* ── Background image (below video; always visible as base layer) */
+.heroBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.heroBgImg {
+  object-fit: cover;
+  object-position: center;
+}
+
 /* ── Background video ────────────────────────────────────────── */
 .videoBg {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  z-index: 0;
+  z-index: 1;
 }
 
 /*

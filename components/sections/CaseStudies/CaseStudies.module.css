@@ -1,3 +1,25 @@
+/* ── Section: needs position:relative for bg image ─────────────── */
+.section {
+  position: relative;
+  overflow: hidden;
+}
+
+.bgWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bgImg {
+  object-fit: cover;
+  object-position: center;
+}
+
+.contentLayer {
+  position: relative;
+  z-index: 1;
+}
+
 /* ── Header ─────────────────────────────────────────────────────── */
 .header {
   text-align: center;

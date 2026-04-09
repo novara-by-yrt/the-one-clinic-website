@@ -109,6 +109,7 @@
   border-radius: 0.75rem;
   overflow: hidden;
   background: #0a0a0a;
+  /* Contain ensures full image is always visible */
 }
 
 /* Each slide fills the wrapper absolutely so they crossfade */
@@ -118,7 +119,8 @@
 }
 
 .image {
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center top;
 }
 
 /* ── Pagination dots ─────────────────────────────────────────────── */
@@ -171,7 +173,8 @@
   }
 
   .imageWrap {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 4;
+    min-height: unset;
   }
 
   .heading {
