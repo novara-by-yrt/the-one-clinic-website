@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import Script from 'next/script';
 import { motion } from 'framer-motion';
 import Section            from '@/components/ui/Section';
 import Container          from '@/components/ui/Container';
@@ -323,9 +324,6 @@ export default function EndoliftPage() {
         aria-label="Endolift Leicester – hero"
         data-section-theme="dark"
       >
-        <div className={styles.heroGrid} aria-hidden="true" />
-        <div className={styles.heroGradient} aria-hidden="true" />
-
         {/* Breadcrumb — pinned to top of hero */}
         <div className={styles.heroBreadcrumb}>
           <Container>
@@ -341,11 +339,12 @@ export default function EndoliftPage() {
 
         <Container>
           <motion.div
-            className={styles.heroContent}
-            variants={stagger(0.15)}
+            className={styles.heroInner}
+            variants={stagger(0.12)}
             initial="hidden"
             animate="show"
           >
+            {/* Left: text */}
             <div className={styles.heroLeft}>
               <motion.span className={styles.heroCategory} variants={fadeUp}>
                 Medical Aesthetics
@@ -398,6 +397,20 @@ export default function EndoliftPage() {
                 </span>
               </motion.div>
             </div>
+
+            {/* Right: image */}
+            <motion.div className={styles.heroImageWrap} variants={fadeUp}>
+              <Image
+                src="/images/endolift-work.jpg"
+                alt="Endolift laser treatment in progress at The One Clinic"
+                fill
+                priority
+                className={styles.heroImage}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              {/* Subtle bottom-fade to blend with section */}
+              <div className={styles.heroImageFade} aria-hidden="true" />
+            </motion.div>
           </motion.div>
         </Container>
       </section>
@@ -438,14 +451,18 @@ export default function EndoliftPage() {
               </motion.div>
             </motion.div>
 
-            {/* Right: image */}
-            <motion.div className={styles.whatIsImageWrap} variants={fadeUp}>
-              <Image
-                src="/images/endolift-work.jpg"
-                alt="Endolift laser treatment in progress at The One Clinic"
-                fill
-                className={styles.whatIsImage}
-                sizes="(max-width: 900px) 100vw, 50vw"
+            {/* Right: Wistia video */}
+            <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
+              <Script src="https://fast.wistia.net/player.js" strategy="lazyOnload" />
+              <iframe
+                src="https://fast.wistia.net/embed/iframe/2u0e7sshum?web_component=true&seo=true"
+                title="Endolift service page Video"
+                allow="autoplay; fullscreen"
+                allowFullScreen
+                frameBorder={0}
+                scrolling="no"
+                className={styles.whatIsVideoFrame}
+                name="wistia_embed"
               />
             </motion.div>
           </motion.div>

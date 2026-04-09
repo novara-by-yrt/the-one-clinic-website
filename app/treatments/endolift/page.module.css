@@ -3,33 +3,11 @@
 ════════════════════════════════════════════════════ */
 .hero {
   position: relative;
-  min-height: 72vh;
-  background-color: var(--color-bg-dark);
-  background-image: url('/images/Background%20image1.jpg');
-  background-size: cover;
-  background-position: center top;
+  background-color: #090909;
   display: flex;
   align-items: center;
   overflow: hidden;
   padding-top: 80px;
-}
-
-/* Dark overlay — strong enough to keep white text legible over any photo */
-.heroGrid {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    105deg,
-    rgba(0, 0, 0, 0.78) 0%,
-    rgba(0, 0, 0, 0.58) 50%,
-    rgba(0, 0, 0, 0.35) 100%
-  );
-  pointer-events: none;
-}
-
-/* Kept for compatibility – no longer renders visible content */
-.heroGradient {
-  display: none;
 }
 
 /* Breadcrumb strip — sits just below the fixed header */
@@ -41,18 +19,51 @@
   z-index: 2;
 }
 
-.heroContent {
-  position: relative;
-  z-index: 1;
-  max-width: 680px;
-  padding-block: var(--space-8);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
+/* Two-column inner grid */
+.heroInner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--space-6), 5vw, 72px);
+  align-items: center;
+  padding-block: clamp(var(--space-10), 10vw, 120px);
+  padding-top: clamp(var(--space-10), 10vw, 120px);
 }
 
 .heroLeft {
-  display: contents;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  position: relative;
+  z-index: 1;
+}
+
+/* Right: image panel */
+.heroImageWrap {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  align-self: stretch;
+  min-height: 480px;
+  box-shadow:
+    0 0 0 1px rgba(255 255 255 / 0.07),
+    0 40px 80px rgba(0 0 0 / 0.6);
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Subtle bottom-fade so the image dissolves into the dark bg */
+.heroImageFade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 55%,
+    rgba(9, 9, 9, 0.55) 100%
+  );
+  pointer-events: none;
 }
 
 /* ── Right-side card ─────────────────────────────────────── */
@@ -859,6 +870,25 @@
 
 .whatIsImage {
   object-fit: cover;
+}
+
+/* Wistia video embed — square ratio matching original image slot */
+.whatIsVideoWrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  box-shadow: 0 24px 64px rgba(0 0 0 / 0.14);
+  background: #000;
+}
+
+.whatIsVideoFrame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
 }
 
 /* ════════════════════════════════════════════════════
@@ -1776,9 +1806,22 @@
   }
 }
 
+@media (max-width: 900px) {
+  /* Hero: stack image below text on tablet */
+  .heroInner {
+    grid-template-columns: 1fr;
+    padding-block: clamp(var(--space-8), 8vw, 96px);
+  }
+  .heroImageWrap {
+    min-height: 300px;
+    aspect-ratio: 16 / 9;
+    align-self: auto;
+  }
+}
+
 @media (max-width: 768px) {
-  .hero { padding-top: 64px; min-height: auto; }
-  .heroContent { padding-block: var(--space-6); max-width: 100%; }
+  .hero { padding-top: 64px; }
+  .heroInner { gap: var(--space-5); padding-top: clamp(var(--space-8), 8vw, 96px); }
 
   .heroCtas {
     flex-direction: column;
@@ -1817,6 +1860,7 @@
   /* What is Endolift: stack on mobile */
   .whatIsGrid { grid-template-columns: 1fr; gap: var(--space-5); }
   .whatIsImageWrap { aspect-ratio: 4 / 3; }
+  .whatIsVideoWrap { aspect-ratio: 4 / 3; }
 
   /* Standalone At a Glance: 2-col on mobile */
   .glanceStandaloneGrid { grid-template-columns: repeat(2, 1fr); }
