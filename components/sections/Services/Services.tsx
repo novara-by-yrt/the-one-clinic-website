@@ -1,5 +1,6 @@
 'use client';
 
+import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -53,9 +54,68 @@ const TREATMENTS = [
   },
 ];
 
+// Pixels per animation frame — slow, elegant pace (~21 px/s at 60fps)
+const SPEED = 0.35;
+const CARD_STEP = 320; // card width (300) + gap (20)
+
 export default function Services() {
+  const trackRef      = useRef<HTMLDivElement>(null);
+  const posRef        = useRef(0);
+  const rafRef        = useRef<number>(0);
+  const draggingRef   = useRef(false);
+  const touchStartX   = useRef(0);
+  const touchStartPos = useRef(0);
+
+  useEffect(() => {
+    function tick() {
+      const track = trackRef.current;
+      if (track && !draggingRef.current) {
+        // Left-to-right: increment posRef; wrap when it reaches 0
+        posRef.current += SPEED;
+        const halfWidth = track.scrollWidth / 2;
+        if (posRef.current >= 0) posRef.current -= halfWidth;
+        track.style.transform = `translateX(${posRef.current}px)`;
+      }
+      rafRef.current = requestAnimationFrame(tick);
+    }
+    rafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, []);
+
+  function onTouchStart(e: React.TouchEvent) {
+    draggingRef.current   = true;
+    touchStartX.current   = e.touches[0].clientX;
+    touchStartPos.current = posRef.current;
+  }
+
+  function onTouchMove(e: React.TouchEvent) {
+    if (!draggingRef.current || !trackRef.current) return;
+    const delta     = e.touches[0].clientX - touchStartX.current;
+    const halfWidth = trackRef.current.scrollWidth / 2;
+    let next        = touchStartPos.current + delta;
+    while (next <= -halfWidth) next += halfWidth;
+    while (next > 0)           next -= halfWidth;
+    posRef.current = next;
+    trackRef.current.style.transform = `translateX(${next}px)`;
+  }
+
+  function onTouchEnd() {
+    draggingRef.current = false;
+  }
+
+  function scrollBy(amount: number) {
+    const track = trackRef.current;
+    if (!track) return;
+    const halfWidth = track.scrollWidth / 2;
+    let next = posRef.current + amount;
+    while (next <= -halfWidth) next += halfWidth;
+    while (next > 0)           next -= halfWidth;
+    posRef.current = next;
+    track.style.transform = `translateX(${next}px)`;
+  }
+
   return (
-    <Section id="treatments" variant="light" data-section-theme="light">
+    <Section id="treatments" variant="light" data-section-theme="light" className={styles.section}>
       <Container>
         {/* ── Header ─────────────────────────────────────────── */}
         <motion.div
@@ -72,33 +132,72 @@ export default function Services() {
             Popular Treatments
           </motion.h2>
         </motion.div>
+      </Container>
 
-        {/* ── 3 × 2 grid ─────────────────────────────────────── */}
-        <motion.div
-          className={styles.grid}
-          variants={stagger(0.08)}
-          initial="hidden"
-          whileInView="show"
-          viewport={VIEWPORT}
+      {/* ── Carousel (full viewport width, no Container) ───── */}
+      <div className={styles.carouselOuter}>
+        {/* Arrow buttons */}
+        <button
+          className={`${styles.arrowBtn} ${styles.arrowPrev}`}
+          onClick={() => scrollBy(-CARD_STEP)}
+          aria-label="Previous treatments"
         >
-          {TREATMENTS.map((t) => (
-            <motion.div key={t.title} className={styles.card} variants={fadeUp}>
-              {/* Background: gradient fallback + image on top */}
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M11 4L6 9L11 14" stroke="currentColor" strokeWidth="2"
+              strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+        <button
+          className={`${styles.arrowBtn} ${styles.arrowNext}`}
+          onClick={() => scrollBy(CARD_STEP)}
+          aria-label="Next treatments"
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M7 4L12 9L7 14" stroke="currentColor" strokeWidth="2"
+              strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+
+        {/* Edge fade masks */}
+        <div className={styles.fadeLeft}  aria-hidden="true" />
+        <div className={styles.fadeRight} aria-hidden="true" />
+
+        {/* Scrolling track — items duplicated for seamless loop */}
+        <div
+          ref={trackRef}
+          className={styles.track}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+          aria-label="Popular treatments carousel"
+        >
+          {[...TREATMENTS, ...TREATMENTS].map((t, i) => (
+            <div
+              key={i}
+              className={styles.card}
+              aria-hidden={i >= TREATMENTS.length ? true : undefined}
+            >
+              {/* Background gradient fallback */}
               <div className={styles.cardBg} style={{ background: t.bg }} aria-hidden="true" />
+              {/* Treatment image */}
               <div className={styles.cardImg} aria-hidden="true">
                 <Image
                   src={t.image}
                   alt={t.title}
                   fill
                   className={styles.img}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  sizes="300px"
+                  draggable={false}
                 />
               </div>
-              {/* Dark overlay — stronger at bottom */}
+              {/* Dark overlay */}
               <div className={styles.overlay} aria-hidden="true" />
-
               {/* Text content */}
-              <Link href={t.href} className={styles.cardContent}>
+              <Link
+                href={t.href}
+                className={styles.cardContent}
+                tabIndex={i >= TREATMENTS.length ? -1 : 0}
+              >
                 <p className={styles.cardCategory}>{t.category}</p>
                 <h3 className={styles.cardTitle}>{t.title}</h3>
                 <div className={styles.exploreRow}>
@@ -106,10 +205,10 @@ export default function Services() {
                   <span className={styles.exploreLabel}>Explore</span>
                 </div>
               </Link>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
-      </Container>
+        </div>
+      </div>
     </Section>
   );
 }

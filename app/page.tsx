@@ -21,11 +21,11 @@ export default function Home() {
       <TrustStrip />
       <Services />
       <Benefits />
-      <CaseStudies />
+      <Testimonials />
       <Process />
       <TestimonialVideos />
       <MeetTheExperts />
-      <Testimonials />
+      <CaseStudies />
       <LeadForm />
       <FinalCTA />
     </>

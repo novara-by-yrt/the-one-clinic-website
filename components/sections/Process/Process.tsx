@@ -117,8 +117,15 @@ export default function Process() {
             </motion.div>
 
             <ol className={styles.steps} aria-label="Treatment process steps">
-              {STEPS.map((step) => (
-                <motion.li key={step.number} className={styles.step} variants={fadeUp}>
+              {STEPS.map((step, i) => (
+                <motion.li
+                  key={step.number}
+                  className={styles.step}
+                  initial={{ opacity: 0, y: 28 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-50px 0px' }}
+                  transition={{ duration: 0.75, ease: [0.25, 0.1, 0.25, 1], delay: i * 0.14 }}
+                >
                   <span className={styles.stepNumber} aria-hidden="true">{step.number}</span>
                   <div className={styles.stepContent}>
                     <h3 className={styles.stepTitle}>{step.title}</h3>

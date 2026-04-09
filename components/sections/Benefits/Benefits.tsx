@@ -67,8 +67,15 @@ export default function Benefits() {
             </motion.div>
 
             <div className={styles.items}>
-              {BENEFITS.map((b) => (
-                <motion.div key={b.number} className={styles.item} variants={fadeUp}>
+              {BENEFITS.map((b, i) => (
+                <motion.div
+                  key={b.number}
+                  className={styles.item}
+                  initial={{ opacity: 0, y: 28 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-50px 0px' }}
+                  transition={{ duration: 0.75, ease: [0.25, 0.1, 0.25, 1], delay: i * 0.14 }}
+                >
                   <div className={styles.itemTop}>
                     <span className={styles.number} aria-hidden="true">{b.number}</span>
                     <h3 className={styles.title}>{b.title}</h3>
