@@ -122,7 +122,7 @@ const NAV: NavItem[] = [
   },
   { label: 'Membership',         href: 'https://theoneclinic.eu.zenoti.com/webstoreNew/sales/membership/4fbea838-3725-4392-a22a-3b301fbd0229' },
   { label: 'Patient Experience', href: '#results' },
-  { label: 'Contact',            href: '/contact' },
+  { label: 'Contact Us',         href: '/contact' },
 ];
 
 // ── Motion variants ─────────────────────────────────────────────
@@ -361,9 +361,13 @@ export default function Header() {
             </nav>
 
             {/* Desktop CTA */}
-            <Link href="/contact" className={styles.ctaLink} aria-label="Contact us">
-              Contact
-            </Link>
+            <button
+              className={styles.ctaLink}
+              onClick={() => window.dispatchEvent(new CustomEvent('openCallbackModal'))}
+              aria-label="Book a consultation"
+            >
+              Book a Consultation
+            </button>
 
             {/* Hamburger */}
             <button
@@ -511,9 +515,12 @@ export default function Header() {
             </nav>
 
             <motion.div className={styles.mobileCta} variants={ctaVariants} initial="closed" animate="open">
-              <Link href="/contact" className={styles.mobileCtaLink} onClick={closeMenu}>
+              <button
+                className={styles.mobileCtaLink}
+                onClick={() => { closeMenu(); window.dispatchEvent(new CustomEvent('openCallbackModal')); }}
+              >
                 Book a Consultation
-              </Link>
+              </button>
             </motion.div>
           </motion.div>
         )}

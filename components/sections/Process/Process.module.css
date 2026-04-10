@@ -258,7 +258,7 @@
 
 @media (max-width: 768px) {
   .imageWrap {
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 1 / 1;
     min-height: unset;
     border-radius: 0.75rem;
   }

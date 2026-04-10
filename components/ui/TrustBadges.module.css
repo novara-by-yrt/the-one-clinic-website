@@ -51,10 +51,18 @@
   gap: 7px;
 }
 
+/* Ensure brand icons never flex-shrink away */
+.badgeHeader svg {
+  flex-shrink: 0;
+  display: block;
+}
+
 .platform {
   font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: -0.01em;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .dark .platform {
@@ -72,6 +80,8 @@
   text-transform: uppercase;
   padding: 2px 7px;
   border-radius: 100px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .dark .verified {
@@ -161,9 +171,9 @@
    RESPONSIVE
 ═══════════════════════════════════════════ */
 
-/* On small mobile, reduce padding to keep badges side-by-side */
-@media (max-width: 400px) {
+/* Compact side-by-side layout on mobile */
+@media (max-width: 540px) {
   .badge {
-    padding: 11px 12px;
+    padding: 10px 10px;
   }
 }

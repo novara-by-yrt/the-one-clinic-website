@@ -127,28 +127,27 @@
     color: #fff;
   }
 
-  /* Slide track — clips the sliding card */
+  /* Slide track */
   .mobileTrack {
     flex: 1;
     position: relative;
-    overflow: hidden;
     border-radius: 1rem;
     border: 1px solid rgb(255 255 255 / 0.1);
     background: #0d0d0d;
+    /* overflow: hidden intentionally omitted — combining overflow:hidden +
+       border-radius on an iframe parent blocks touch events on iOS Safari */
   }
 
-  /* Animated slide wrapper */
+  /* Slide wrapper */
   .mobileSlide {
     width: 100%;
   }
 
-  /* Portrait 9:16 video in the mobile slide */
+  /* Portrait 9:16 video — aspect-ratio avoids overflow:hidden on iframe parent */
   .videoWrapMobile {
     position: relative;
     width: 100%;
-    padding-top: 177.78%;
-    overflow: hidden;
-    touch-action: pan-y;
+    aspect-ratio: 9 / 16;
   }
 
   /* Pagination dots */

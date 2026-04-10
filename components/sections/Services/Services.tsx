@@ -314,6 +314,11 @@ const TREATMENTS: Treatment[] = [
   },
 ];
 
+// Only show Medical Aesthetics cards that have a photo
+const DISPLAYED_TREATMENTS = TREATMENTS.filter(
+  (t) => t.category !== 'Medical Aesthetics' || !!t.image,
+);
+
 // px per frame — slow, elegant pace (~21 px/s at 60fps)
 const SPEED = 0.35;
 const CARD_STEP = 300; // card width (280) + gap (20)
@@ -437,30 +442,28 @@ export default function Services() {
             onTouchEnd={onTouchEnd}
             aria-label="Popular treatments carousel"
           >
-            {[...TREATMENTS, ...TREATMENTS].map((t, i) => (
+            {[...DISPLAYED_TREATMENTS, ...DISPLAYED_TREATMENTS].map((t, i) => (
               <div
                 key={i}
                 className={styles.card}
-                aria-hidden={i >= TREATMENTS.length ? true : undefined}
+                aria-hidden={i >= DISPLAYED_TREATMENTS.length ? true : undefined}
               >
                 <div className={styles.cardBg} style={{ background: t.bg }} aria-hidden="true" />
                 {t.image && (
-                  <div className={styles.cardImg} aria-hidden="true">
-                    <Image
-                      src={t.image}
-                      alt={t.title}
-                      fill
-                      className={styles.img}
-                      sizes="280px"
-                      draggable={false}
-                    />
-                  </div>
+                  <Image
+                    src={t.image}
+                    alt={t.title}
+                    fill
+                    className={styles.img}
+                    sizes="(max-width: 480px) 200px, (max-width: 768px) 240px, 280px"
+                    draggable={false}
+                  />
                 )}
                 <div className={styles.overlay} aria-hidden="true" />
                 <Link
                   href={t.href}
                   className={styles.cardContent}
-                  tabIndex={i >= TREATMENTS.length ? -1 : 0}
+                  tabIndex={i >= DISPLAYED_TREATMENTS.length ? -1 : 0}
                 >
                   <p className={styles.cardCategory}>{t.category}</p>
                   <h3 className={styles.cardTitle}>{t.title}</h3>
