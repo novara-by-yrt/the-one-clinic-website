@@ -342,6 +342,26 @@ export default function Services() {
     return () => cancelAnimationFrame(rafRef.current);
   }, []);
 
+  function onPrev() {
+    const track = trackRef.current;
+    if (!track) return;
+    const halfWidth = track.scrollWidth / 2;
+    let next = posRef.current + CARD_STEP;
+    if (next > 0) next -= halfWidth;
+    posRef.current = next;
+    track.style.transform = `translateX(${next}px)`;
+  }
+
+  function onNext() {
+    const track = trackRef.current;
+    if (!track) return;
+    const halfWidth = track.scrollWidth / 2;
+    let next = posRef.current - CARD_STEP;
+    if (next <= -halfWidth) next += halfWidth;
+    posRef.current = next;
+    track.style.transform = `translateX(${next}px)`;
+  }
+
   function onTouchStart(e: React.TouchEvent) {
     draggingRef.current   = true;
     touchStartX.current   = e.touches[0].clientX;
@@ -399,6 +419,16 @@ export default function Services() {
         >
           <div className={styles.fadeLeft}  aria-hidden="true" />
           <div className={styles.fadeRight} aria-hidden="true" />
+          <button className={`${styles.arrowBtn} ${styles.arrowPrev}`} onClick={onPrev} aria-label="Previous treatments">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M11 4L6 9L11 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+          <button className={`${styles.arrowBtn} ${styles.arrowNext}`} onClick={onNext} aria-label="Next treatments">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M7 4L12 9L7 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
           <div
             ref={trackRef}
             className={styles.track}

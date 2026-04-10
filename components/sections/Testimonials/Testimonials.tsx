@@ -265,20 +265,6 @@ export default function Testimonials() {
           </button>
         </motion.div>
 
-        {/* ── Pagination dots ────────────────────────────── */}
-        <div className={styles.dots} role="tablist" aria-label="Review page navigation">
-          {Array.from({ length: totalPages }).map((_, i) => (
-            <button
-              key={i}
-              className={`${styles.dot} ${i === page ? styles.dotActive : ''}`}
-              onClick={() => goTo(i, i > page ? 1 : -1)}
-              role="tab"
-              aria-selected={i === page}
-              aria-label={`Page ${i + 1} of ${totalPages}`}
-            />
-          ))}
-        </div>
-
       </Container>
     </Section>
   );
