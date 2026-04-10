@@ -153,17 +153,6 @@ export default function Footer() {
               Sitemap <CircleArrow />
             </a>
           </nav>
-          <p className={styles.siteBy}>
-            Site by&nbsp;
-            <a
-              href="https://blowmedia.co.uk"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.siteByLink}
-            >
-              Blow Media Ltd.
-            </a>
-          </p>
         </div>
 
       </div>
