@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Script from 'next/script';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
@@ -14,11 +14,6 @@ const VIDEOS = [
   { id: 'fm142sxmlw', title: 'Customer Testimonial, Mahanoor' },
 ];
 
-const SLIDE_VARIANTS = {
-  enter:  (dir: number) => ({ x: dir > 0 ? '100%' : '-100%', opacity: 0 }),
-  center: { x: '0%', opacity: 1 },
-  exit:   (dir: number) => ({ x: dir > 0 ? '-100%' : '100%', opacity: 0 }),
-};
 
 export default function TestimonialVideos() {
   const [active, setActive]       = useState(0);
@@ -108,30 +103,20 @@ export default function TestimonialVideos() {
               onTouchStart={onTouchStart}
               onTouchEnd={onTouchEnd}
             >
-              <AnimatePresence custom={direction} mode="popLayout" initial={false}>
-                <motion.div
-                  key={active}
-                  className={styles.mobileSlide}
-                  custom={direction}
-                  variants={SLIDE_VARIANTS}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={{ duration: 0.38, ease: [0.25, 0.1, 0.25, 1] }}
-                >
-                  <div className={styles.videoWrapMobile}>
-                    <iframe
-                      src={`https://fast.wistia.net/embed/iframe/${VIDEOS[active].id}?web_component=true&seo=true`}
-                      title={VIDEOS[active].title}
-                      allow="autoplay; fullscreen"
-                      allowFullScreen
-                      frameBorder="0"
-                      scrolling="no"
-                      className={styles.iframe}
-                    />
-                  </div>
-                </motion.div>
-              </AnimatePresence>
+              <div className={styles.mobileSlide}>
+                <div className={styles.videoWrapMobile}>
+                  <iframe
+                    key={active}
+                    src={`https://fast.wistia.net/embed/iframe/${VIDEOS[active].id}?web_component=true&seo=true`}
+                    title={VIDEOS[active].title}
+                    allow="autoplay; fullscreen"
+                    allowFullScreen
+                    frameBorder="0"
+                    scrolling="no"
+                    className={styles.iframe}
+                  />
+                </div>
+              </div>
             </div>
 
             <button
