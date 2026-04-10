@@ -51,6 +51,12 @@
   gap: 7px;
 }
 
+/* Ensure brand icons never flex-shrink away */
+.badgeHeader svg {
+  flex-shrink: 0;
+  display: block;
+}
+
 .platform {
   font-size: 0.875rem;
   font-weight: 700;
@@ -161,9 +167,22 @@
    RESPONSIVE
 ═══════════════════════════════════════════ */
 
-/* On small mobile, reduce padding to keep badges side-by-side */
-@media (max-width: 400px) {
+/* Stack badges vertically on mobile so icons are never clipped */
+@media (max-width: 540px) {
+  .wrap {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  /* Separator becomes a horizontal rule */
+  .sep {
+    width: auto;
+    height: 1px;
+    margin: 0 14px;
+  }
+
   .badge {
-    padding: 11px 12px;
+    padding: 12px 16px;
   }
 }
