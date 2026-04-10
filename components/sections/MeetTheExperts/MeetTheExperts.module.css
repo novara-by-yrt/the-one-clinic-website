@@ -41,7 +41,6 @@
 .carouselOuter {
   position: relative;
   overflow: hidden;
-  /* Slight padding so first/last card peek */
   padding-block: var(--space-2);
 }
 
@@ -101,13 +100,8 @@
   outline-offset: 3px;
 }
 
-.arrowPrev {
-  left: 16px;
-}
-
-.arrowNext {
-  right: 16px;
-}
+.arrowPrev { left: 16px; }
+.arrowNext { right: 16px; }
 
 /* ── Scrolling track ────────────────────────────────────────── */
 .track {
@@ -115,7 +109,6 @@
   gap: 20px;
   width: max-content;
   will-change: transform;
-  /* Allow touch drag without page scroll hijack */
   touch-action: pan-y;
   padding-inline: 24px;
   cursor: grab;
@@ -127,51 +120,37 @@
 
 /* ── Individual card ────────────────────────────────────────── */
 .card {
+  position: relative;
   flex-shrink: 0;
   width: 300px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  text-decoration: none;
-  border-radius: var(--radius-lg);
+  aspect-ratio: 3 / 4;
+  border-radius: 20px;
   overflow: hidden;
-  background: #fff;
-  border: 1px solid var(--color-border-light);
-  box-shadow: 0 2px 12px rgb(0 0 0 / 0.05);
+  text-decoration: none;
+  box-shadow:
+    0 4px 16px rgb(0 0 0 / 0.12),
+    0 1px 4px  rgb(0 0 0 / 0.06);
   transition:
-    box-shadow 0.25s ease,
-    transform 0.25s ease;
+    transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1),
+    box-shadow 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .card:hover {
-  box-shadow: 0 8px 32px rgb(0 0 0 / 0.12);
-  transform: translateY(-4px);
+  transform: translateY(-6px);
+  box-shadow:
+    0 16px 48px rgb(0 0 0 / 0.18),
+    0 4px 12px  rgb(0 0 0 / 0.1);
 }
 
-/* ── Photo area (3:4 portrait) ──────────────────────────────── */
-.photoWrap {
-  position: relative;
-  aspect-ratio: 3 / 4;
-  background: #111;
-  overflow: hidden;
-}
-
+/* ── Full-card photo ────────────────────────────────────────── */
 .photo {
   object-fit: cover;
   object-position: center top;
-  transition: transform 0.5s ease;
+  transition: transform 0.55s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .card:hover .photo {
-  transform: scale(1.04);
-}
-
-/* Subtle bottom gradient on photo */
-.photoOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.25) 0%, transparent 45%);
-  pointer-events: none;
+  transform: scale(1.05);
 }
 
 /* Initials fallback */
@@ -181,25 +160,51 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.5rem;
+  font-size: 2.75rem;
   font-weight: var(--fw-bold);
-  color: rgba(255,255,255,0.6);
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  color: rgba(255, 255, 255, 0.55);
+  background: linear-gradient(160deg, #1a1a2e 0%, #2d2d44 100%);
   letter-spacing: -0.02em;
 }
 
-/* ── Card info ──────────────────────────────────────────────── */
-.cardInfo {
+/* ── Bottom gradient scrim (darkens photo so glass panel pops) ─ */
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.28) 38%,
+    transparent 62%
+  );
+  pointer-events: none;
+}
+
+/* ── Frosted glass info panel ───────────────────────────────── */
+.glassPanel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 18px 18px 20px;
+  background: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
   display: flex;
   flex-direction: column;
   gap: 3px;
-  padding: 0 16px 16px;
+  transition: background 0.3s ease;
+}
+
+.card:hover .glassPanel {
+  background: rgba(255, 255, 255, 0.18);
 }
 
 .cardName {
-  font-size: 0.9375rem;
-  font-weight: var(--fw-bold);
-  color: var(--color-text-dark);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
   letter-spacing: -0.01em;
   line-height: 1.2;
   margin: 0;
@@ -208,18 +213,45 @@
 .cardCredentials {
   font-size: 0.6875rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
-  color: var(--color-text-muted);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
   margin: 0;
 }
 
 .cardRole {
   font-size: 0.8125rem;
-  font-weight: var(--fw-medium);
-  color: var(--color-text-muted);
-  margin: 2px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 1px 0 0;
   line-height: 1.3;
+}
+
+/* ── Arrow chip (top-right corner) ─────────────────────────── */
+.arrowChip {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.card:hover .arrowChip {
+  background: rgba(255, 255, 255, 0.32);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.08);
 }
 
 /* ══════════════════════════════════
@@ -247,7 +279,18 @@
   }
 
   .cardName {
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
+  }
+
+  .glassPanel {
+    padding: 14px 14px 16px;
+  }
+
+  .arrowChip {
+    width: 30px;
+    height: 30px;
+    top: 10px;
+    right: 10px;
   }
 
   .fadeLeft,
