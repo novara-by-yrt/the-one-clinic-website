@@ -9,62 +9,222 @@ import Container from '@/components/ui/Container';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './Services.module.css';
 
-const TREATMENTS = [
+type Treatment = {
+  title: string;
+  category: string;
+  desc: string;
+  href: string;
+  image?: string;
+  bg: string;
+};
+
+const HEALTH_WELLBEING: Treatment[] = [
   {
-    title: 'Anti-Wrinkle',
-    category: 'Injections',
-    desc: 'Smooth fine lines and restore a naturally refreshed look with expertly placed muscle-relaxing injections.',
-    href: '/treatments/anti-wrinkle',
-    image: '/images/service-anti-wrinkle.jpg',
-    bg: 'linear-gradient(160deg,#0d1117 0%,#1c2333 100%)',
+    title: 'Health Screening',
+    category: 'Health & Wellbeing',
+    desc: 'Comprehensive health checks to detect risks early and keep you at your best.',
+    href: '/treatments/health-screening',
+    bg: 'linear-gradient(160deg,#0a1520 0%,#122236 100%)',
   },
   {
+    title: 'Private GP',
+    category: 'Health & Wellbeing',
+    desc: 'Same-day and next-day private GP appointments for expert diagnosis and care.',
+    href: '/treatments/private-gp',
+    bg: 'linear-gradient(160deg,#0d1714 0%,#162a24 100%)',
+  },
+  {
+    title: 'Joint Injections',
+    category: 'Health & Wellbeing',
+    desc: 'Targeted injections to relieve joint pain and restore mobility quickly.',
+    href: '/treatments/joint-injections',
+    bg: 'linear-gradient(160deg,#100d17 0%,#1e1633 100%)',
+  },
+  {
+    title: 'Minor Surgery',
+    category: 'Health & Wellbeing',
+    desc: 'Skilled minor surgical procedures performed safely in our clinical setting.',
+    href: '/treatments/minor-surgery',
+    bg: 'linear-gradient(160deg,#17100d 0%,#2e1c16 100%)',
+  },
+  {
+    title: 'GP Home Visits',
+    category: 'Health & Wellbeing',
+    desc: 'Expert GP care delivered to you at home in Leicester and surrounding areas.',
+    href: '/treatments/gp-home-visits',
+    bg: 'linear-gradient(160deg,#0d1317 0%,#132030 100%)',
+  },
+  {
+    title: 'Travel Vaccines',
+    category: 'Health & Wellbeing',
+    desc: 'Full travel health consultations, vaccines and immunisations for safe trips.',
+    href: '/treatments/travel-vaccine',
+    bg: 'linear-gradient(160deg,#0d1117 0%,#131c2a 100%)',
+  },
+  {
+    title: 'Weight Management',
+    category: 'Health & Wellbeing',
+    desc: 'Medically supervised weight loss programmes tailored to your goals.',
+    href: '/treatments/weight-management',
+    bg: 'linear-gradient(160deg,#110d17 0%,#1f1533 100%)',
+  },
+  {
+    title: 'Medical Insurance Exam',
+    category: 'Health & Wellbeing',
+    desc: 'Professional medicals and reports for insurance and employment purposes.',
+    href: '/treatments/medical-insurance',
+    bg: 'linear-gradient(160deg,#0d1714 0%,#1a2a1c 100%)',
+  },
+  {
+    title: 'Dermatologist',
+    category: 'Health & Wellbeing',
+    desc: 'Expert dermatology consultations for skin conditions and concerns.',
+    href: '/treatments/dermatologist',
+    bg: 'linear-gradient(160deg,#171210 0%,#2a1f18 100%)',
+  },
+  {
+    title: "Men's Health",
+    category: 'Health & Wellbeing',
+    desc: 'Confidential, specialist care addressing the full range of male health needs.',
+    href: '/treatments/mens-health',
+    bg: 'linear-gradient(160deg,#0d1117 0%,#1a1f2a 100%)',
+  },
+  {
+    title: "Women's Health",
+    category: 'Health & Wellbeing',
+    desc: 'Dedicated care from experienced clinicians for women at every life stage.',
+    href: '/treatments/womens-health',
+    bg: 'linear-gradient(160deg,#170d12 0%,#2a1520 100%)',
+  },
+  {
+    title: 'Menopause & HRT',
+    category: 'Health & Wellbeing',
+    desc: 'Personalised menopause management, HRT and contraception consultations.',
+    href: '/treatments/menopause-hrt',
+    bg: 'linear-gradient(160deg,#0d1717 0%,#162828 100%)',
+  },
+];
+
+const MEDICAL_AESTHETICS: Treatment[] = [
+  {
     title: 'Dermal Fillers',
-    category: 'Enhancement',
+    category: 'Medical Aesthetics',
     desc: 'Restore lost volume and define facial contours with precision-placed hyaluronic acid fillers.',
     href: '/treatments/dermal-fillers',
     image: '/images/service-dermal-fillers.jpg',
     bg: 'linear-gradient(160deg,#0d1714 0%,#162a24 100%)',
   },
   {
-    title: 'Laser Hair Removal',
-    category: 'Permanent Reduction',
-    desc: 'Permanently reduce unwanted hair with our advanced laser system — safe, fast, and effective on all skin tones.',
-    href: '/treatments/laser-resurfacing',
-    image: '/images/service-laser-hair-removal.jpg',
-    bg: 'linear-gradient(160deg,#100d17 0%,#1e1633 100%)',
+    title: 'Lumecca IPL',
+    category: 'Medical Aesthetics',
+    desc: 'Intense pulsed light therapy to treat sun damage, redness and uneven skin tone.',
+    href: '/treatments/lumecca-ipl',
+    bg: 'linear-gradient(160deg,#17100d 0%,#2e1c16 100%)',
+  },
+  {
+    title: 'HydraFacial Keravive',
+    category: 'Medical Aesthetics',
+    desc: 'A scalp treatment that cleanses, exfoliates and nourishes for thicker-looking hair.',
+    href: '/treatments/hydrafacial-keravive',
+    bg: 'linear-gradient(160deg,#0d1317 0%,#132030 100%)',
   },
   {
     title: 'Morpheus8',
-    category: 'Skin Remodeling',
-    desc: 'Combine microneedling with radiofrequency energy to tighten skin, reduce wrinkles, and remodel deep collagen.',
-    href: '/treatments/body-contouring',
+    category: 'Medical Aesthetics',
+    desc: 'Combine microneedling with radiofrequency energy to tighten skin and remodel deep collagen.',
+    href: '/treatments/morpheus8',
     image: '/images/service-morpheus8.jpg',
     bg: 'linear-gradient(160deg,#17100d 0%,#2e1c16 100%)',
   },
   {
-    title: 'Hydrafacial',
-    category: 'Deep Cleanse',
-    desc: 'A multi-step treatment that cleanses, extracts, and hydrates for instantly radiant, glowing skin.',
+    title: 'Anti-Wrinkle',
+    category: 'Medical Aesthetics',
+    desc: 'Smooth fine lines and restore a naturally refreshed look with expertly placed injections.',
     href: '/treatments/anti-wrinkle',
+    image: '/images/service-anti-wrinkle.jpg',
+    bg: 'linear-gradient(160deg,#0d1117 0%,#1c2333 100%)',
+  },
+  {
+    title: 'Hydrafacial',
+    category: 'Medical Aesthetics',
+    desc: 'A multi-step treatment that cleanses, extracts and hydrates for instantly radiant skin.',
+    href: '/treatments/hydrafacial',
     image: '/images/service-hydrafacial.jpg',
     bg: 'linear-gradient(160deg,#0d1317 0%,#132030 100%)',
   },
   {
-    title: 'Fat Freezing',
-    category: 'Body Contouring',
-    desc: 'Cryolipolysis safely targets and permanently eliminates stubborn fat cells without surgery or downtime.',
+    title: 'Vampire Facial',
+    category: 'Medical Aesthetics',
+    desc: 'PRP therapy that uses your own growth factors to rejuvenate and refresh your skin.',
+    href: '/treatments/vampire-facial',
+    bg: 'linear-gradient(160deg,#170d10 0%,#2a1520 100%)',
+  },
+  {
+    title: 'Chemical Peels',
+    category: 'Medical Aesthetics',
+    desc: 'Controlled exfoliation to resurface skin, reduce pigmentation and refine texture.',
+    href: '/treatments/chemical-peels',
+    bg: 'linear-gradient(160deg,#0d1117 0%,#1a2030 100%)',
+  },
+  {
+    title: 'Body Contouring',
+    category: 'Medical Aesthetics',
+    desc: 'Non-surgical fat reduction and body shaping treatments for lasting, visible results.',
     href: '/treatments/body-contouring',
     image: '/images/service-fat-freezing.jpg',
     bg: 'linear-gradient(160deg,#0d1117 0%,#131c2a 100%)',
   },
+  {
+    title: 'Endolift Laser',
+    category: 'Medical Aesthetics',
+    desc: 'Minimally invasive laser lifting for face, neck and body — no surgery required.',
+    href: '/treatments/endolift',
+    bg: 'linear-gradient(160deg,#100d17 0%,#1e1633 100%)',
+  },
+  {
+    title: 'IV Drip Therapy',
+    category: 'Medical Aesthetics',
+    desc: 'Bespoke nutrient infusions delivered directly into the bloodstream for rapid results.',
+    href: '/treatments/iv-drip',
+    bg: 'linear-gradient(160deg,#0d1317 0%,#0d2030 100%)',
+  },
+  {
+    title: 'Deep Laser Resurfacing',
+    category: 'Medical Aesthetics',
+    desc: 'Advanced laser to dramatically improve skin texture, scars and pigmentation.',
+    href: '/treatments/laser-resurfacing',
+    image: '/images/service-laser-hair-removal.jpg',
+    bg: 'linear-gradient(160deg,#171510 0%,#2a2316 100%)',
+  },
+  {
+    title: 'Mole Removal',
+    category: 'Medical Aesthetics',
+    desc: 'Safe and precise mole removal by experienced clinicians for peace of mind.',
+    href: '/treatments/mole-removal',
+    bg: 'linear-gradient(160deg,#0d1117 0%,#1c2333 100%)',
+  },
+  {
+    title: 'Laser Mole Removal',
+    category: 'Medical Aesthetics',
+    desc: 'Non-surgical laser treatment for quick and effective mole and lesion removal.',
+    href: '/treatments/laser-mole-removal',
+    bg: 'linear-gradient(160deg,#0d1714 0%,#162a24 100%)',
+  },
 ];
 
-// Pixels per animation frame — slow, elegant pace (~21 px/s at 60fps)
+// px per frame — slow, elegant pace (~21 px/s at 60fps)
 const SPEED = 0.35;
-const CARD_STEP = 380; // card width (360) + gap (20)
 
-export default function Services() {
+// ── Reusable carousel row ────────────────────────────────────────
+function CarouselRow({
+  items,
+  direction,
+  label,
+}: {
+  items: Treatment[];
+  direction: 'rtl' | 'ltr';
+  label: string;
+}) {
   const trackRef      = useRef<HTMLDivElement>(null);
   const posRef        = useRef(0);
   const rafRef        = useRef<number>(0);
@@ -77,17 +237,21 @@ export default function Services() {
     function tick() {
       const track = trackRef.current;
       if (track && !draggingRef.current && !hoveredRef.current) {
-        // Left-to-right: increment posRef; wrap when it reaches 0
-        posRef.current += SPEED;
         const halfWidth = track.scrollWidth / 2;
-        if (posRef.current >= 0) posRef.current -= halfWidth;
+        if (direction === 'rtl') {
+          posRef.current -= SPEED;
+          if (posRef.current <= -halfWidth) posRef.current += halfWidth;
+        } else {
+          posRef.current += SPEED;
+          if (posRef.current >= 0) posRef.current -= halfWidth;
+        }
         track.style.transform = `translateX(${posRef.current}px)`;
       }
       rafRef.current = requestAnimationFrame(tick);
     }
     rafRef.current = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafRef.current);
-  }, []);
+  }, [direction]);
 
   function onTouchStart(e: React.TouchEvent) {
     draggingRef.current   = true;
@@ -110,104 +274,48 @@ export default function Services() {
     draggingRef.current = false;
   }
 
-  function scrollBy(amount: number) {
-    const track = trackRef.current;
-    if (!track) return;
-    const halfWidth = track.scrollWidth / 2;
-    let next = posRef.current + amount;
-    while (next <= -halfWidth) next += halfWidth;
-    while (next > 0)           next -= halfWidth;
-    posRef.current = next;
-    track.style.transform = `translateX(${next}px)`;
-  }
-
   return (
-    <Section id="treatments" variant="light" data-section-theme="light" className={styles.section}>
-      <Container>
-        {/* ── Header ─────────────────────────────────────────── */}
-        <motion.div
-          className={styles.header}
-          variants={stagger(0.12)}
-          initial="hidden"
-          whileInView="show"
-          viewport={VIEWPORT}
-        >
-          <motion.p className={styles.eyebrow} variants={fadeUp}>
-            Our
-          </motion.p>
-          <motion.h2 className={styles.heading} variants={fadeUp}>
-            Popular Treatments
-          </motion.h2>
-        </motion.div>
-      </Container>
-
-      {/* ── Carousel (full viewport width, no Container) ───── */}
+    <div className={styles.rowWrap}>
+      <p className={styles.rowLabel}>{label}</p>
       <div
         className={styles.carouselOuter}
         onMouseEnter={() => { hoveredRef.current = true; }}
         onMouseLeave={() => { hoveredRef.current = false; }}
       >
-        {/* Arrow buttons */}
-        <button
-          className={`${styles.arrowBtn} ${styles.arrowPrev}`}
-          onClick={() => scrollBy(-CARD_STEP)}
-          aria-label="Previous treatments"
-        >
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-            <path d="M11 4L6 9L11 14" stroke="currentColor" strokeWidth="2"
-              strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </button>
-        <button
-          className={`${styles.arrowBtn} ${styles.arrowNext}`}
-          onClick={() => scrollBy(CARD_STEP)}
-          aria-label="Next treatments"
-        >
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-            <path d="M7 4L12 9L7 14" stroke="currentColor" strokeWidth="2"
-              strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </button>
-
-        {/* Edge fade masks */}
         <div className={styles.fadeLeft}  aria-hidden="true" />
         <div className={styles.fadeRight} aria-hidden="true" />
-
-        {/* Scrolling track — items duplicated for seamless loop */}
         <div
           ref={trackRef}
           className={styles.track}
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
-          aria-label="Popular treatments carousel"
+          aria-label={`${label} treatments carousel`}
         >
-          {[...TREATMENTS, ...TREATMENTS].map((t, i) => (
+          {[...items, ...items].map((t, i) => (
             <div
               key={i}
               className={styles.card}
-              aria-hidden={i >= TREATMENTS.length ? true : undefined}
+              aria-hidden={i >= items.length ? true : undefined}
             >
-              {/* Background gradient fallback */}
               <div className={styles.cardBg} style={{ background: t.bg }} aria-hidden="true" />
-              {/* Treatment image */}
-              <div className={styles.cardImg} aria-hidden="true">
-                <Image
-                  src={t.image}
-                  alt={t.title}
-                  fill
-                  className={styles.img}
-                  sizes="300px"
-                  draggable={false}
-                />
-              </div>
-              {/* Dark overlay */}
+              {t.image && (
+                <div className={styles.cardImg} aria-hidden="true">
+                  <Image
+                    src={t.image}
+                    alt={t.title}
+                    fill
+                    className={styles.img}
+                    sizes="360px"
+                    draggable={false}
+                  />
+                </div>
+              )}
               <div className={styles.overlay} aria-hidden="true" />
-              {/* Text content */}
               <Link
                 href={t.href}
                 className={styles.cardContent}
-                tabIndex={i >= TREATMENTS.length ? -1 : 0}
+                tabIndex={i >= items.length ? -1 : 0}
               >
                 <p className={styles.cardCategory}>{t.category}</p>
                 <h3 className={styles.cardTitle}>{t.title}</h3>
@@ -221,8 +329,34 @@ export default function Services() {
           ))}
         </div>
       </div>
+    </div>
+  );
+}
 
-      {/* ── Explore all treatments CTA ─────────────────────── */}
+// ── Main section ─────────────────────────────────────────────────
+export default function Services() {
+  return (
+    <Section id="treatments" variant="light" data-section-theme="light" className={styles.section}>
+      <Container>
+        <motion.div
+          className={styles.header}
+          variants={stagger(0.12)}
+          initial="hidden"
+          whileInView="show"
+          viewport={VIEWPORT}
+        >
+          <motion.p className={styles.eyebrow} variants={fadeUp}>Our</motion.p>
+          <motion.h2 className={styles.heading} variants={fadeUp}>Popular Treatments</motion.h2>
+        </motion.div>
+      </Container>
+
+      {/* Row 1: Health & Wellbeing — right to left */}
+      <CarouselRow items={HEALTH_WELLBEING} direction="rtl" label="Health & Wellbeing" />
+
+      {/* Row 2: Medical Aesthetics — left to right */}
+      <CarouselRow items={MEDICAL_AESTHETICS} direction="ltr" label="Medical Aesthetics" />
+
+      {/* Explore all CTA */}
       <Container>
         <motion.div
           className={styles.exploreCta}
