@@ -445,16 +445,14 @@ export default function Services() {
               >
                 <div className={styles.cardBg} style={{ background: t.bg }} aria-hidden="true" />
                 {t.image && (
-                  <div className={styles.cardImg} aria-hidden="true">
-                    <Image
-                      src={t.image}
-                      alt={t.title}
-                      fill
-                      className={styles.img}
-                      sizes="280px"
-                      draggable={false}
-                    />
-                  </div>
+                  <Image
+                    src={t.image}
+                    alt={t.title}
+                    fill
+                    className={styles.img}
+                    sizes="(max-width: 480px) 200px, (max-width: 768px) 240px, 280px"
+                    draggable={false}
+                  />
                 )}
                 <div className={styles.overlay} aria-hidden="true" />
                 <Link
