@@ -1,3 +1,25 @@
+/* ── Section: needs position:relative for bg image ─────────────── */
+.section {
+  position: relative;
+  overflow: hidden;
+}
+
+.bgWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bgImg {
+  object-fit: cover;
+  object-position: center;
+}
+
+.contentLayer {
+  position: relative;
+  z-index: 1;
+}
+
 /* ── Header ─────────────────────────────────────────────────────── */
 .header {
   text-align: center;
@@ -33,6 +55,24 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-3);
+}
+
+/* Wrapper holding title + image card in a column */
+.imageCardWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Treatment title label (above the image) ────────────────────── */
+.imageTitle {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  margin: 0;
 }
 
 .imageCard {
@@ -72,6 +112,13 @@
 
 /* ── Mobile slideshow ───────────────────────────────────────────── */
 .slideshow {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Inner wrapper so arrows are positioned relative to the track only */
+.slideshowInner {
   position: relative;
 }
 
@@ -148,6 +195,35 @@
 .dotActive {
   background: white;
   transform: scale(1.35);
+}
+
+/* ── View More button ───────────────────────────────────────────── */
+.viewMoreRow {
+  display: flex;
+  justify-content: center;
+  padding-top: var(--space-5);
+}
+
+.viewMoreBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 32px;
+  background: #ffffff;
+  color: #000000;
+  border-radius: 20px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 24px rgb(255 255 255 / 0.12);
+}
+
+.viewMoreBtn:hover {
+  background: rgba(255, 255, 255, 0.88);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 32px rgb(255 255 255 / 0.18);
 }
 
 /* ── Responsive ─────────────────────────────────────────────────── */

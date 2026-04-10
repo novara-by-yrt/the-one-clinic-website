@@ -14,7 +14,7 @@ export default function FinalCTA() {
       {/* Background image with dark overlay */}
       <div className={styles.bgWrap} aria-hidden="true">
         <Image
-          src="/images/Background image.jpg"
+          src="/images/Background section image new1.jpg"
           alt=""
           fill
           className={styles.bgImage}

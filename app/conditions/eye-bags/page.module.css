@@ -26,6 +26,15 @@
   pointer-events: none;
 }
 
+/* Breadcrumb strip — sits just below the fixed header */
+.heroBreadcrumb {
+  position: absolute;
+  top: 88px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
 .heroContent {
   position: relative;
   z-index: 1;
@@ -318,6 +327,14 @@
   align-items: center;
   text-align: center;
   margin-bottom: var(--space-5);
+}
+
+/* ════════════════════════════════════════════════════
+   FAQ
+════════════════════════════════════════════════════ */
+.faqBody {
+  max-width: 740px;
+  margin: 0 auto;
 }
 
 /* ════════════════════════════════════════════════════

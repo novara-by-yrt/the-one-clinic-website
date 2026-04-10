@@ -137,7 +137,17 @@ export default function Testimonials() {
 
   return (
     <Section variant="dark" data-section-theme="dark" className={styles.section}>
-      <Container>
+      {/* Background image */}
+      <div className={styles.bgWrap} aria-hidden="true">
+        <Image
+          src="/images/Black background image.jpg"
+          alt=""
+          fill
+          className={styles.bgImg}
+          sizes="100vw"
+        />
+      </div>
+      <Container className={styles.contentLayer}>
 
         {/* ── Rating header ─────────────────────────────── */}
         <motion.div
@@ -254,20 +264,6 @@ export default function Testimonials() {
             </svg>
           </button>
         </motion.div>
-
-        {/* ── Pagination dots ────────────────────────────── */}
-        <div className={styles.dots} role="tablist" aria-label="Review page navigation">
-          {Array.from({ length: totalPages }).map((_, i) => (
-            <button
-              key={i}
-              className={`${styles.dot} ${i === page ? styles.dotActive : ''}`}
-              onClick={() => goTo(i, i > page ? 1 : -1)}
-              role="tab"
-              aria-selected={i === page}
-              aria-label={`Page ${i + 1} of ${totalPages}`}
-            />
-          ))}
-        </div>
 
       </Container>
     </Section>

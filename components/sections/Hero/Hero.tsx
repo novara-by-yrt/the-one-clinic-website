@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import Script from 'next/script';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
@@ -51,11 +52,23 @@ export default function Hero() {
       aria-label="Hero"
       data-section-theme="dark"
     >
+      {/* ── Black background image (visible on all devices; video plays on top) */}
+      <div className={styles.heroBg} aria-hidden="true">
+        <Image
+          src="/images/Black background image.jpg"
+          alt=""
+          fill
+          priority
+          className={styles.heroBgImg}
+          sizes="100vw"
+        />
+      </div>
+
       {/* ── Wistia background video ─────────────────────────── */}
       <div className={styles.videoBg} aria-hidden="true">
         <div className={styles.videoSizer}>
           <iframe
-            src="https://fast.wistia.net/embed/iframe/hu75ttgmlm?web_component=true&seo=false&autoPlay=true&silentAutoPlay=true&muted=true&loop=true&endVideoBehavior=loop&controlsVisibleOnLoad=false&playbar=false&fullscreenButton=false&volumeControl=false&settingsControl=false&playsinline=true"
+            src="https://fast.wistia.net/embed/iframe/2ny75uwy3d?web_component=true&seo=false&autoPlay=true&silentAutoPlay=true&muted=true&loop=true&endVideoBehavior=loop&controlsVisibleOnLoad=false&playbar=false&fullscreenButton=false&volumeControl=false&settingsControl=false&playsinline=true"
             title=""
             allow="autoplay; fullscreen"
             allowFullScreen
@@ -112,6 +125,28 @@ export default function Hero() {
               treatments, weight management, and holistic healthcare
               under one roof.
             </motion.p>
+
+            {/* Credential badges */}
+            <motion.div
+              className={styles.credBadges}
+              variants={FADE_UP}
+              transition={TRANSITION_SMOOTH}
+            >
+              <span className={styles.credBadge}>
+                <svg className={styles.credCheck} viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <circle cx="8" cy="8" r="7.25" stroke="currentColor" strokeWidth="1.25" strokeOpacity="0.5"/>
+                  <path d="M5 8.25l2 2 4-4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                Led by highly trained doctors
+              </span>
+              <span className={styles.credBadge}>
+                <svg className={styles.credCheck} viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <circle cx="8" cy="8" r="7.25" stroke="currentColor" strokeWidth="1.25" strokeOpacity="0.5"/>
+                  <path d="M5 8.25l2 2 4-4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                Comprehensive medical &amp; aesthetic care
+              </span>
+            </motion.div>
 
             {/* CTAs */}
             <motion.div

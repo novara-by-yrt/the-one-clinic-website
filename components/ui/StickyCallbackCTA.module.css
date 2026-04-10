@@ -5,12 +5,17 @@
   left: 0;
   right: 0;
   z-index: 90;
-  background: #000;
-  border-top: 1px solid rgb(255 255 255 / 0.12);
   padding: 12px 24px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (min-width: 768px) {
+  .ctaBtn {
+    padding: 15px 44px;
+    font-size: 1rem;
+  }
 }
 
 .ctaBtn {
@@ -20,8 +25,8 @@
   padding: 13px 36px;
   background: #fff;
   color: #000;
-  border: none;
-  border-radius: 100px;
+  border: 2px solid #000;
+  border-radius: 20px;
   font-size: 0.9375rem;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -30,13 +35,19 @@
     background 0.2s ease,
     transform 0.2s ease,
     box-shadow 0.2s ease;
-  box-shadow: 0 2px 16px rgb(255 255 255 / 0.15);
+  box-shadow:
+    0 2px 16px rgb(0 0 0 / 0.18),
+    0 0 0 3px rgb(0 0 0 / 0.08),
+    0 0 20px rgb(0 0 0 / 0.12);
 }
 
 .ctaBtn:hover {
   background: #e8e8e8;
   transform: translateY(-1px);
-  box-shadow: 0 4px 24px rgb(255 255 255 / 0.2);
+  box-shadow:
+    0 4px 24px rgb(0 0 0 / 0.22),
+    0 0 0 3px rgb(0 0 0 / 0.1),
+    0 0 32px rgb(0 0 0 / 0.16);
 }
 
 .phoneIcon {

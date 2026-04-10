@@ -10,9 +10,8 @@ import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import { TEAM_MEMBERS } from '@/data/team';
 import styles from './MeetTheExperts.module.css';
 
-// Pixels per animation frame at ~60 fps (≈ 21 px/s — comfortable reading pace)
-const SPEED = 0.35;
-const CARD_STEP = 240; // card width (220) + gap (20)
+const SPEED     = 0.35;
+const CARD_STEP = 320; // card width (300) + gap (20)
 
 export default function MeetTheExperts() {
   const trackRef      = useRef<HTMLDivElement>(null);
@@ -38,8 +37,8 @@ export default function MeetTheExperts() {
   }, []);
 
   function onTouchStart(e: React.TouchEvent) {
-    draggingRef.current  = true;
-    touchStartX.current  = e.touches[0].clientX;
+    draggingRef.current   = true;
+    touchStartX.current   = e.touches[0].clientX;
     touchStartPos.current = posRef.current;
   }
 
@@ -124,7 +123,6 @@ export default function MeetTheExperts() {
           onTouchEnd={onTouchEnd}
           aria-label="Meet the experts carousel"
         >
-          {/* Render the list twice for seamless loop */}
           {[...TEAM_MEMBERS, ...TEAM_MEMBERS].map((member, i) => (
             <Link
               key={i}
@@ -133,32 +131,41 @@ export default function MeetTheExperts() {
               aria-hidden={i >= TEAM_MEMBERS.length ? true : undefined}
               tabIndex={i >= TEAM_MEMBERS.length ? -1 : 0}
             >
-              {/* Photo or initials */}
-              <div className={styles.photoWrap}>
-                {member.image ? (
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className={styles.photo}
-                    sizes="220px"
-                    draggable={false}
-                  />
-                ) : (
-                  <div className={styles.initials} aria-hidden="true">
-                    {member.initials}
-                  </div>
-                )}
-                <div className={styles.photoOverlay} aria-hidden="true" />
-              </div>
+              {/* Full-card photo */}
+              {member.image ? (
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  fill
+                  className={styles.photo}
+                  sizes="300px"
+                  draggable={false}
+                />
+              ) : (
+                <div className={styles.initials} aria-hidden="true">
+                  {member.initials}
+                </div>
+              )}
 
-              {/* Name + role */}
-              <div className={styles.cardInfo}>
+              {/* Dark gradient scrim so glass panel reads clearly */}
+              <div className={styles.scrim} aria-hidden="true" />
+
+              {/* Frosted glass info panel */}
+              <div className={styles.glassPanel}>
                 <p className={styles.cardName}>{member.name}</p>
                 {member.credentials && (
                   <p className={styles.cardCredentials}>{member.credentials}</p>
                 )}
                 <p className={styles.cardRole}>{member.role}</p>
+              </div>
+
+              {/* Arrow chip — top right */}
+              <div className={styles.arrowChip} aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 12L12 2M12 2H5M12 2v7"
+                    stroke="currentColor" strokeWidth="1.8"
+                    strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </div>
             </Link>
           ))}

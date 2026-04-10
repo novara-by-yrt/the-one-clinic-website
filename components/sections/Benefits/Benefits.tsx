@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import Image from 'next/image';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
@@ -34,20 +34,48 @@ const BENEFITS = [
 const SLIDES = [
   { src: '/images/Doctor1.jpg', alt: 'The One Clinic — Doctor 1' },
   { src: '/images/Doctor2.jpg', alt: 'The One Clinic — Doctor 2' },
+  { src: '/images/imgi_78_GTR_0328-1-1.jpg', alt: 'The One Clinic — Clinical care' },
 ];
 
-const INTERVAL = 3000; // ms
+const INTERVAL = 3000;
+const SEQ_STEP  = 700; // ms each item stays highlighted
+const SEQ_DELAY = 350; // ms before sequence starts
 
 export default function Benefits() {
-  const [active, setActive] = useState(0);
+  const [active,  setActive]  = useState(0);
+  const [seqIdx,  setSeqIdx]  = useState(-1);
 
-  // Auto-advance every 3 seconds
+  const itemsRef = useRef<HTMLDivElement>(null);
+  const inView   = useInView(itemsRef, { once: true, amount: 0.4 });
+
+  // Slideshow auto-advance
   useEffect(() => {
     const timer = setInterval(() => {
       setActive((i) => (i + 1) % SLIDES.length);
     }, INTERVAL);
     return () => clearInterval(timer);
   }, []);
+
+  // One-shot scroll sequence
+  useEffect(() => {
+    if (!inView) return;
+
+    let idx = 0;
+    let handle: ReturnType<typeof setTimeout>;
+
+    function next() {
+      setSeqIdx(idx);
+      idx++;
+      if (idx < BENEFITS.length) {
+        handle = setTimeout(next, SEQ_STEP);
+      } else {
+        handle = setTimeout(() => setSeqIdx(-1), SEQ_STEP);
+      }
+    }
+
+    handle = setTimeout(next, SEQ_DELAY);
+    return () => clearTimeout(handle);
+  }, [inView]);
 
   return (
     <Section variant="light" data-section-theme="light" className={styles.section}>
@@ -66,11 +94,18 @@ export default function Benefits() {
               <h2 className={styles.heading}>Why Choose The One Clinic?</h2>
             </motion.div>
 
-            <div className={styles.items}>
-              {BENEFITS.map((b) => (
-                <motion.div key={b.number} className={styles.item} variants={fadeUp}>
+            <div className={styles.items} ref={itemsRef}>
+              {BENEFITS.map((b, i) => (
+                <motion.div
+                  key={b.number}
+                  className={`${styles.item} ${i === seqIdx ? styles.highlighted : ''}`}
+                  initial={{ opacity: 0, y: 28 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-50px 0px' }}
+                  transition={{ duration: 0.75, ease: [0.25, 0.1, 0.25, 1], delay: i * 0.14 }}
+                >
                   <div className={styles.itemTop}>
-                    <span className={styles.number} aria-hidden="true">{b.number}</span>
+                    <div className={styles.number} aria-hidden="true">{b.number}</div>
                     <h3 className={styles.title}>{b.title}</h3>
                   </div>
                   <p className={styles.desc}>{b.description}</p>
@@ -82,13 +117,12 @@ export default function Benefits() {
           {/* ── Right: auto-scrolling doctor image slideshow ─ */}
           <motion.div
             className={styles.imageCol}
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
+            initial={{ opacity: 0, x: 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.85, ease: [0.25, 0.1, 0.25, 1] }}
           >
             <div className={styles.imageWrap}>
-              {/* Crossfade slides */}
               <AnimatePresence mode="sync">
                 <motion.div
                   key={active}
@@ -109,7 +143,6 @@ export default function Benefits() {
                 </motion.div>
               </AnimatePresence>
 
-              {/* Pagination dots — no arrows */}
               <div className={styles.dots} role="tablist" aria-label="Doctor image slideshow">
                 {SLIDES.map((_, i) => (
                   <button
