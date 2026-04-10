@@ -120,7 +120,7 @@
 .card {
   position: relative;
   flex-shrink: 0;
-  width: 300px;
+  width: 360px;
   aspect-ratio: 4 / 3;
   overflow: hidden;
   cursor: pointer;
@@ -267,11 +267,11 @@
 ═══════════════════════════════════ */
 
 @media (max-width: 768px) {
-  .card { width: 260px; }
+  .card { width: 300px; }
   .fadeLeft, .fadeRight { width: 60px; }
 }
 
 @media (max-width: 480px) {
-  .card { width: 220px; }
+  .card { width: 260px; }
   .fadeLeft, .fadeRight { width: 40px; }
 }

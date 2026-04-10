@@ -12,7 +12,7 @@ import styles from './MeetTheExperts.module.css';
 
 // Pixels per animation frame at ~60 fps (≈ 21 px/s — comfortable reading pace)
 const SPEED = 0.35;
-const CARD_STEP = 280; // card width (260) + gap (20)
+const CARD_STEP = 320; // card width (300) + gap (20)
 
 export default function MeetTheExperts() {
   const trackRef      = useRef<HTMLDivElement>(null);

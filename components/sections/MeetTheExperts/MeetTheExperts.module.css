@@ -128,7 +128,7 @@
 /* ── Individual card ────────────────────────────────────────── */
 .card {
   flex-shrink: 0;
-  width: 260px;
+  width: 300px;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -237,13 +237,13 @@
   }
 
   .card {
-    width: 210px;
+    width: 250px;
   }
 }
 
 @media (max-width: 480px) {
   .card {
-    width: 190px;
+    width: 220px;
   }
 
   .cardName {

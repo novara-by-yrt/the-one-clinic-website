@@ -56,7 +56,7 @@ const TREATMENTS = [
 
 // Pixels per animation frame — slow, elegant pace (~21 px/s at 60fps)
 const SPEED = 0.35;
-const CARD_STEP = 320; // card width (300) + gap (20)
+const CARD_STEP = 380; // card width (360) + gap (20)
 
 export default function Services() {
   const trackRef      = useRef<HTMLDivElement>(null);
