@@ -52,7 +52,7 @@ export default function TrustStrip() {
                     alt={award.alt}
                     width={award.width}
                     height={award.height}
-                    style={{ height: '64px', width: 'auto', objectFit: 'contain' }}
+                    style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
                   />
                 </div>
                 <div className={styles.awardMeta}>
