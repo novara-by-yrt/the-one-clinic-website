@@ -1,7 +1,7 @@
 import Script from 'next/script';
 import styles from './Footer.module.css';
 
-const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=36+De+Montfort+St,+Leicester+LE1+7GS,+United+Kingdom';
+const MAPS_URL = 'https://www.google.com/maps/place/The+One+Clinic+-+Leicester/@52.6272773,-1.1274381,17z/data=!3m1!4b1!4m5!3m4!1s0x4877615117ed46ad:0xa43d46d372fdae33!8m2!3d52.6272741!4d-1.1252494';
 
 /* ── Inline SVGs ──────────────────────────────────────────── */
 function CircleArrow() {
