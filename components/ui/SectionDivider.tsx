@@ -10,13 +10,13 @@
 type Props = {
   from: 'dark' | 'light';
   to:   'dark' | 'light';
-  /** Gradient height in px (default 80) */
+  /** Gradient height in px (default 32) */
   height?: number;
 };
 
 const COLOR = { dark: '#000000', light: '#ffffff' } as const;
 
-export default function SectionDivider({ from, to, height = 80 }: Props) {
+export default function SectionDivider({ from, to, height = 32 }: Props) {
   // Same-colour neighbours need no divider — render nothing
   if (from === to) return null;
 
