@@ -47,55 +47,58 @@ function MobileSlideshow() {
 
   return (
     <div className={styles.slideshow}>
-      <div
-        className={styles.slideshowTrack}
-        onTouchStart={onTouchStart}
-        onTouchEnd={onTouchEnd}
-      >
-        <AnimatePresence custom={direction} mode="popLayout" initial={false}>
-          <motion.div
-            key={active}
-            className={styles.slide}
-            custom={direction}
-            variants={variants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ duration: 0.38, ease: [0.25, 0.1, 0.25, 1] }}
-          >
-            <Image
-              src={IMAGES[active].src}
-              alt={IMAGES[active].alt}
-              fill
-              className={styles.slideImage}
-              sizes="100vw"
-            />
-          </motion.div>
-        </AnimatePresence>
+      {/* Treatment title — above the image */}
+      <p className={styles.imageTitle}>{IMAGES[active].title}</p>
+
+      {/* Track + arrows wrapped so arrows position relative to the image */}
+      <div className={styles.slideshowInner}>
+        <div
+          className={styles.slideshowTrack}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+        >
+          <AnimatePresence custom={direction} mode="popLayout" initial={false}>
+            <motion.div
+              key={active}
+              className={styles.slide}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.38, ease: [0.25, 0.1, 0.25, 1] }}
+            >
+              <Image
+                src={IMAGES[active].src}
+                alt={IMAGES[active].alt}
+                fill
+                className={styles.slideImage}
+                sizes="100vw"
+              />
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Arrow buttons */}
+        <button
+          className={`${styles.arrow} ${styles.arrowPrev}`}
+          onClick={() => go(active - 1)}
+          aria-label="Previous image"
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <polyline points="11,3 5,9 11,15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
+        <button
+          className={`${styles.arrow} ${styles.arrowNext}`}
+          onClick={() => go(active + 1)}
+          aria-label="Next image"
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <polyline points="7,3 13,9 7,15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
       </div>
-
-      {/* Arrow buttons */}
-      <button
-        className={`${styles.arrow} ${styles.arrowPrev}`}
-        onClick={() => go(active - 1)}
-        aria-label="Previous image"
-      >
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <polyline points="11,3 5,9 11,15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </button>
-      <button
-        className={`${styles.arrow} ${styles.arrowNext}`}
-        onClick={() => go(active + 1)}
-        aria-label="Next image"
-      >
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <polyline points="7,3 13,9 7,15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </button>
-
-      {/* Treatment title label */}
-      <div className={styles.imageTitle}>{IMAGES[active].title}</div>
 
       {/* Pagination dots */}
       <div className={styles.dots} role="tablist" aria-label="Before and after results">
@@ -157,15 +160,17 @@ export default function CaseStudies() {
           viewport={VIEWPORT}
         >
           {IMAGES.map((img, i) => (
-            <motion.div key={i} className={styles.imageCard} variants={fadeUp}>
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                className={styles.cardImage}
-                sizes="(max-width: 768px) 0vw, (max-width: 1024px) 50vw, 33vw"
-              />
-              <div className={styles.imageTitle}>{img.title}</div>
+            <motion.div key={i} className={styles.imageCardWrap} variants={fadeUp}>
+              <p className={styles.imageTitle}>{img.title}</p>
+              <div className={styles.imageCard}>
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className={styles.cardImage}
+                  sizes="(max-width: 768px) 0vw, (max-width: 1024px) 50vw, 33vw"
+                />
+              </div>
             </motion.div>
           ))}
         </motion.div>

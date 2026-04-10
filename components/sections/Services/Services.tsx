@@ -13,6 +13,7 @@ const TREATMENTS = [
   {
     title: 'Anti-Wrinkle',
     category: 'Injections',
+    desc: 'Smooth fine lines and restore a naturally refreshed look with expertly placed muscle-relaxing injections.',
     href: '/treatments/anti-wrinkle',
     image: '/images/service-anti-wrinkle.jpg',
     bg: 'linear-gradient(160deg,#0d1117 0%,#1c2333 100%)',
@@ -20,6 +21,7 @@ const TREATMENTS = [
   {
     title: 'Dermal Fillers',
     category: 'Enhancement',
+    desc: 'Restore lost volume and define facial contours with precision-placed hyaluronic acid fillers.',
     href: '/treatments/dermal-fillers',
     image: '/images/service-dermal-fillers.jpg',
     bg: 'linear-gradient(160deg,#0d1714 0%,#162a24 100%)',
@@ -27,6 +29,7 @@ const TREATMENTS = [
   {
     title: 'Laser Hair Removal',
     category: 'Permanent Reduction',
+    desc: 'Permanently reduce unwanted hair with our advanced laser system — safe, fast, and effective on all skin tones.',
     href: '/treatments/laser-resurfacing',
     image: '/images/service-laser-hair-removal.jpg',
     bg: 'linear-gradient(160deg,#100d17 0%,#1e1633 100%)',
@@ -34,6 +37,7 @@ const TREATMENTS = [
   {
     title: 'Morpheus8',
     category: 'Skin Remodeling',
+    desc: 'Combine microneedling with radiofrequency energy to tighten skin, reduce wrinkles, and remodel deep collagen.',
     href: '/treatments/body-contouring',
     image: '/images/service-morpheus8.jpg',
     bg: 'linear-gradient(160deg,#17100d 0%,#2e1c16 100%)',
@@ -41,13 +45,15 @@ const TREATMENTS = [
   {
     title: 'Hydrafacial',
     category: 'Deep Cleanse',
+    desc: 'A multi-step treatment that cleanses, extracts, and hydrates for instantly radiant, glowing skin.',
     href: '/treatments/anti-wrinkle',
     image: '/images/service-hydrafacial.jpg',
     bg: 'linear-gradient(160deg,#0d1317 0%,#132030 100%)',
   },
   {
     title: 'Fat Freezing',
-    category: 'Permanent Reduction',
+    category: 'Body Contouring',
+    desc: 'Cryolipolysis safely targets and permanently eliminates stubborn fat cells without surgery or downtime.',
     href: '/treatments/body-contouring',
     image: '/images/service-fat-freezing.jpg',
     bg: 'linear-gradient(160deg,#0d1117 0%,#131c2a 100%)',
@@ -63,13 +69,14 @@ export default function Services() {
   const posRef        = useRef(0);
   const rafRef        = useRef<number>(0);
   const draggingRef   = useRef(false);
+  const hoveredRef    = useRef(false);
   const touchStartX   = useRef(0);
   const touchStartPos = useRef(0);
 
   useEffect(() => {
     function tick() {
       const track = trackRef.current;
-      if (track && !draggingRef.current) {
+      if (track && !draggingRef.current && !hoveredRef.current) {
         // Left-to-right: increment posRef; wrap when it reaches 0
         posRef.current += SPEED;
         const halfWidth = track.scrollWidth / 2;
@@ -135,7 +142,11 @@ export default function Services() {
       </Container>
 
       {/* ── Carousel (full viewport width, no Container) ───── */}
-      <div className={styles.carouselOuter}>
+      <div
+        className={styles.carouselOuter}
+        onMouseEnter={() => { hoveredRef.current = true; }}
+        onMouseLeave={() => { hoveredRef.current = false; }}
+      >
         {/* Arrow buttons */}
         <button
           className={`${styles.arrowBtn} ${styles.arrowPrev}`}
@@ -200,6 +211,7 @@ export default function Services() {
               >
                 <p className={styles.cardCategory}>{t.category}</p>
                 <h3 className={styles.cardTitle}>{t.title}</h3>
+                <p className={styles.cardDesc}>{t.desc}</p>
                 <div className={styles.exploreRow}>
                   <span className={styles.exploreLine} aria-hidden="true" />
                   <span className={styles.exploreLabel}>Explore</span>

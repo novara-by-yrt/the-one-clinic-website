@@ -14,21 +14,22 @@ const LOGOS = [
   { src: '/images/imgi_96_Logo-InMode2-1536x630.png',               alt: 'InMode',                  w: 1536, h: 630 },
 ];
 
-// Speed in px per frame at 60fps (~36px/s — comfortable reading pace)
-const SPEED = 0.6;
+// Speed in px per frame at 60fps (~18px/s — slow, relaxed pace)
+const SPEED = 0.3;
 
 export default function LogoCarousel() {
   const trackRef       = useRef<HTMLDivElement>(null);
   const posRef         = useRef(0);
   const rafRef         = useRef<number>(0);
   const draggingRef    = useRef(false);
+  const hoveredRef     = useRef(false);
   const touchStartX    = useRef(0);
   const touchStartPos  = useRef(0);
 
   useEffect(() => {
     function tick() {
       const track = trackRef.current;
-      if (track && !draggingRef.current) {
+      if (track && !draggingRef.current && !hoveredRef.current) {
         posRef.current -= SPEED;
 
         // Seamless wrap: reset after scrolling one full set of logos
@@ -73,7 +74,11 @@ export default function LogoCarousel() {
       <p className={styles.label}>Accreditations &amp; Partners</p>
 
       {/* Fade masks on the edges */}
-      <div className={styles.viewport}>
+      <div
+        className={styles.viewport}
+        onMouseEnter={() => { hoveredRef.current = true; }}
+        onMouseLeave={() => { hoveredRef.current = false; }}
+      >
         <div
           ref={trackRef}
           className={styles.track}

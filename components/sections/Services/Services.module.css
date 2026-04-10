@@ -197,6 +197,22 @@
   margin: 0 0 4px;
 }
 
+.cardDesc {
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 8px 0 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.card:hover .cardDesc {
+  max-height: 100px;
+  opacity: 1;
+}
+
 .exploreRow {
   display: flex;
   align-items: center;
