@@ -352,92 +352,106 @@ export default function Services() {
   }
 
   return (
-    <Section id="treatments" variant="light" data-section-theme="light" className={styles.section}>
-      <Container>
-        <motion.div
-          className={styles.header}
-          variants={stagger(0.12)}
-          initial="hidden"
-          whileInView="show"
-          viewport={VIEWPORT}
-        >
-          <motion.p className={styles.eyebrow} variants={fadeUp}>Our</motion.p>
-          <motion.h2 className={styles.heading} variants={fadeUp}>Popular Treatments</motion.h2>
-        </motion.div>
-      </Container>
-
-      {/* ── Carousel ────────────────────────────────────────── */}
-      <div
-        className={styles.carouselOuter}
-        onMouseEnter={() => { hoveredRef.current = true; }}
-        onMouseLeave={() => { hoveredRef.current = false; }}
-      >
-        <div className={styles.fadeLeft}  aria-hidden="true" />
-        <div className={styles.fadeRight} aria-hidden="true" />
-        <div
-          ref={trackRef}
-          className={styles.track}
-          onTouchStart={onTouchStart}
-          onTouchMove={onTouchMove}
-          onTouchEnd={onTouchEnd}
-          aria-label="Popular treatments carousel"
-        >
-          {[...TREATMENTS, ...TREATMENTS].map((t, i) => (
-            <div
-              key={i}
-              className={styles.card}
-              aria-hidden={i >= TREATMENTS.length ? true : undefined}
-            >
-              <div className={styles.cardBg} style={{ background: t.bg }} aria-hidden="true" />
-              {t.image && (
-                <div className={styles.cardImg} aria-hidden="true">
-                  <Image
-                    src={t.image}
-                    alt={t.title}
-                    fill
-                    className={styles.img}
-                    sizes="280px"
-                    draggable={false}
-                  />
-                </div>
-              )}
-              <div className={styles.overlay} aria-hidden="true" />
-              <Link
-                href={t.href}
-                className={styles.cardContent}
-                tabIndex={i >= TREATMENTS.length ? -1 : 0}
-              >
-                <p className={styles.cardCategory}>{t.category}</p>
-                <h3 className={styles.cardTitle}>{t.title}</h3>
-                <p className={styles.cardDesc}>{t.desc}</p>
-                <div className={styles.exploreRow}>
-                  <span className={styles.exploreLine} aria-hidden="true" />
-                  <span className={styles.exploreLabel}>Explore</span>
-                </div>
-              </Link>
-            </div>
-          ))}
-        </div>
+    <Section id="treatments" variant="dark" data-section-theme="dark" className={styles.section}>
+      {/* Background image */}
+      <div className={styles.bgWrap} aria-hidden="true">
+        <Image
+          src="/images/Black background image.jpg"
+          alt=""
+          fill
+          className={styles.bgImg}
+          sizes="100vw"
+        />
       </div>
 
-      {/* ── Explore all CTA ─────────────────────────────────── */}
-      <Container>
-        <motion.div
-          className={styles.exploreCta}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+      {/* Content layer above background */}
+      <div className={styles.contentLayer}>
+        <Container>
+          <motion.div
+            className={styles.header}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrow} variants={fadeUp}>Our</motion.p>
+            <motion.h2 className={styles.heading} variants={fadeUp}>Popular Treatments</motion.h2>
+          </motion.div>
+        </Container>
+
+        {/* ── Carousel ────────────────────────────────────────── */}
+        <div
+          className={styles.carouselOuter}
+          onMouseEnter={() => { hoveredRef.current = true; }}
+          onMouseLeave={() => { hoveredRef.current = false; }}
         >
-          <Link href="/treatments" className={styles.exploreAllBtn}>
-            Explore All Treatments
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6"
-                strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </Link>
-        </motion.div>
-      </Container>
+          <div className={styles.fadeLeft}  aria-hidden="true" />
+          <div className={styles.fadeRight} aria-hidden="true" />
+          <div
+            ref={trackRef}
+            className={styles.track}
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+            aria-label="Popular treatments carousel"
+          >
+            {[...TREATMENTS, ...TREATMENTS].map((t, i) => (
+              <div
+                key={i}
+                className={styles.card}
+                aria-hidden={i >= TREATMENTS.length ? true : undefined}
+              >
+                <div className={styles.cardBg} style={{ background: t.bg }} aria-hidden="true" />
+                {t.image && (
+                  <div className={styles.cardImg} aria-hidden="true">
+                    <Image
+                      src={t.image}
+                      alt={t.title}
+                      fill
+                      className={styles.img}
+                      sizes="280px"
+                      draggable={false}
+                    />
+                  </div>
+                )}
+                <div className={styles.overlay} aria-hidden="true" />
+                <Link
+                  href={t.href}
+                  className={styles.cardContent}
+                  tabIndex={i >= TREATMENTS.length ? -1 : 0}
+                >
+                  <p className={styles.cardCategory}>{t.category}</p>
+                  <h3 className={styles.cardTitle}>{t.title}</h3>
+                  <p className={styles.cardDesc}>{t.desc}</p>
+                  <div className={styles.exploreRow}>
+                    <span className={styles.exploreLine} aria-hidden="true" />
+                    <span className={styles.exploreLabel}>Explore</span>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Explore all CTA ─────────────────────────────────── */}
+        <Container>
+          <motion.div
+            className={styles.exploreCta}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          >
+            <Link href="/treatments" className={styles.exploreAllBtn}>
+              Explore All Treatments
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6"
+                  strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </Link>
+          </motion.div>
+        </Container>
+      </div>
     </Section>
   );
 }
