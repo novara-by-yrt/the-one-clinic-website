@@ -71,16 +71,17 @@ export default function MeetTheExperts() {
   return (
     <Section variant="light" data-section-theme="light" className={styles.section}>
       {/* Background texture */}
-      <Image
-        src="/bg-image-white.png"
-        alt=""
-        fill
-        className={styles.bgImage}
-        sizes="100vw"
-        aria-hidden="true"
-      />
+      <div className={styles.bgWrap} aria-hidden="true">
+        <Image
+          src="/bg-image-white.png"
+          alt=""
+          fill
+          className={styles.bgImage}
+          sizes="100vw"
+        />
+      </div>
 
-      <Container>
+      <Container className={styles.headerContainer}>
         <motion.div
           className={styles.header}
           variants={stagger(0.12)}

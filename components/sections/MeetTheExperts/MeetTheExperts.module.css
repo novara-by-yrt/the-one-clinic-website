@@ -6,9 +6,21 @@
 }
 
 /* ── Background image ───────────────────────────────────────── */
+.bgWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
 .bgImage {
   object-fit: cover;
   object-position: center;
+}
+
+/* Ensure header text and carousel render above the bg image */
+.headerContainer {
+  position: relative;
+  z-index: 1;
 }
 
 /* ── Header ────────────────────────────────────────────────── */
@@ -47,6 +59,7 @@
 /* ── Carousel outer (full viewport width) ───────────────────── */
 .carouselOuter {
   position: relative;
+  z-index: 1;
   overflow: hidden;
   padding-block: var(--space-2);
 }
