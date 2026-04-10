@@ -25,6 +25,7 @@ const TREATMENTS: Treatment[] = [
     category: 'Health & Wellbeing',
     desc: 'Comprehensive health checks to detect risks early and keep you at your best.',
     href: '/treatments/health-screening',
+    image: '/images/Health Screening.jpg',
     bg: 'linear-gradient(160deg,#0a1520 0%,#122236 100%)',
   },
   {
@@ -32,6 +33,7 @@ const TREATMENTS: Treatment[] = [
     category: 'Health & Wellbeing',
     desc: 'Same-day and next-day private GP appointments for expert diagnosis and care.',
     href: '/treatments/private-gp',
+    image: '/images/Private GP.jpg',
     bg: 'linear-gradient(160deg,#0d1714 0%,#162a24 100%)',
   },
   {
@@ -39,6 +41,7 @@ const TREATMENTS: Treatment[] = [
     category: 'Health & Wellbeing',
     desc: 'Targeted injections to relieve joint pain and restore mobility quickly.',
     href: '/treatments/joint-injections',
+    image: '/images/Joint Injections.jpg',
     bg: 'linear-gradient(160deg,#100d17 0%,#1e1633 100%)',
   },
   {
@@ -46,6 +49,7 @@ const TREATMENTS: Treatment[] = [
     category: 'Health & Wellbeing',
     desc: 'Skilled minor surgical procedures performed safely in our clinical setting.',
     href: '/treatments/minor-surgery',
+    image: '/images/Minor Surgery.jpg',
     bg: 'linear-gradient(160deg,#17100d 0%,#2e1c16 100%)',
   },
   {
@@ -53,6 +57,7 @@ const TREATMENTS: Treatment[] = [
     category: 'Health & Wellbeing',
     desc: 'Expert GP care delivered to you at home in Leicester and surrounding areas.',
     href: '/treatments/gp-home-visits',
+    image: '/images/GP Home Visits.jpg',
     bg: 'linear-gradient(160deg,#0d1317 0%,#132030 100%)',
   },
   {
@@ -60,6 +65,7 @@ const TREATMENTS: Treatment[] = [
     category: 'Health & Wellbeing',
     desc: 'Full travel health consultations, vaccines and immunisations for safe trips.',
     href: '/treatments/travel-vaccine',
+    image: '/images/Travel Vaccines.jpg',
     bg: 'linear-gradient(160deg,#0d1117 0%,#131c2a 100%)',
   },
   {
@@ -67,6 +73,7 @@ const TREATMENTS: Treatment[] = [
     category: 'Health & Wellbeing',
     desc: 'Medically supervised weight loss programmes tailored to your goals.',
     href: '/treatments/weight-management',
+    image: '/images/Weight Management.jpg',
     bg: 'linear-gradient(160deg,#110d17 0%,#1f1533 100%)',
   },
   {
@@ -74,6 +81,7 @@ const TREATMENTS: Treatment[] = [
     category: 'Health & Wellbeing',
     desc: 'Professional medicals and reports for insurance and employment purposes.',
     href: '/treatments/medical-insurance',
+    image: '/images/Medical Insurance Exam.jpg',
     bg: 'linear-gradient(160deg,#0d1714 0%,#1a2a1c 100%)',
   },
   {
@@ -81,6 +89,7 @@ const TREATMENTS: Treatment[] = [
     category: 'Health & Wellbeing',
     desc: 'Expert dermatology consultations for skin conditions and concerns.',
     href: '/treatments/dermatologist',
+    image: '/images/Dermatologist.jpg',
     bg: 'linear-gradient(160deg,#171210 0%,#2a1f18 100%)',
   },
   {
@@ -88,6 +97,7 @@ const TREATMENTS: Treatment[] = [
     category: 'Health & Wellbeing',
     desc: 'Confidential, specialist care addressing the full range of male health needs.',
     href: '/treatments/mens-health',
+    image: "/images/Men's Health.jpg",
     bg: 'linear-gradient(160deg,#0d1117 0%,#1a1f2a 100%)',
   },
   {
@@ -95,6 +105,7 @@ const TREATMENTS: Treatment[] = [
     category: 'Health & Wellbeing',
     desc: 'Dedicated care from experienced clinicians for women at every life stage.',
     href: '/treatments/womens-health',
+    image: "/images/Women's Health.jpg",
     bg: 'linear-gradient(160deg,#170d12 0%,#2a1520 100%)',
   },
   {
@@ -102,6 +113,7 @@ const TREATMENTS: Treatment[] = [
     category: 'Health & Wellbeing',
     desc: 'Personalised menopause management, HRT and contraception consultations.',
     href: '/treatments/menopause-hrt',
+    image: '/images/Menopause & HRT.jpg',
     bg: 'linear-gradient(160deg,#0d1717 0%,#162828 100%)',
   },
   // ── Medical Aesthetics ──────────────────────────────────────────
