@@ -55,10 +55,6 @@ export default function TrustStrip() {
                     style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
                   />
                 </div>
-                <div className={styles.awardMeta}>
-                  <p className={styles.awardLabel}>{award.label}</p>
-                  <p className={styles.awardSublabel}>{award.sublabel}</p>
-                </div>
               </motion.div>
             ))}
           </div>
