@@ -1,7 +1,14 @@
 /* ── Section ──────────────────────────────────────────────── */
 .section {
+  position: relative;
   padding-block: var(--space-7) var(--space-6);
   overflow: hidden;
+}
+
+/* ── Background image ───────────────────────────────────────── */
+.bgImage {
+  object-fit: cover;
+  object-position: center;
 }
 
 /* ── Header ────────────────────────────────────────────────── */

@@ -26,16 +26,15 @@
   z-index: 1;
 }
 
-/* Content pushed to the right half */
 .content {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
+  align-items: center;
+  text-align: center;
   gap: var(--space-3);
   max-width: 520px;
   margin-left: auto;
-  margin-right: 0;
+  margin-right: auto;
 }
 
 .eyebrow {
@@ -71,10 +70,6 @@
 
 @media (max-width: 768px) {
   .content {
-    align-items: center;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
     max-width: 100%;
   }
 
