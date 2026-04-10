@@ -43,6 +43,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Dr Mahesh Kodivalasa',
     credentials: '',
     initials: 'MK',
+    image: '/images/Dr Mahesh Kodivalasa.webp',
     role: 'Doctor',
     bio: [
       'Dr Mahesh Kodivalasa is a valued member of The One Clinic medical team, bringing dedication and clinical expertise to every patient interaction.',
@@ -54,6 +55,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Dr Hari Subramaniam',
     credentials: 'MSc, MD, DPM, DNB, FRCPsych',
     initials: 'HS',
+    image: '/images/Dr Hari Subramaniam.webp',
     role: 'Consultant Psychiatrist',
     bio: [
       'Dr Hari Subramaniam is a Consultant Psychiatrist with an impressive portfolio of qualifications including MSc, MD, DPM, DNB, and FRCPsych.',
@@ -65,6 +67,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Dr Amol Vaze',
     credentials: '',
     initials: 'AV',
+    image: '/images/Dr Amol Vaze.jpg',
     role: 'Doctor',
     bio: [
       'Dr Amol Vaze is an experienced clinician committed to providing exceptional patient care at The One Clinic.',
@@ -76,6 +79,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Dr Ralph Mitchell',
     credentials: '',
     initials: 'RM',
+    image: '/images/Dr Ralph Mitchell.png',
     role: 'Doctor',
     bio: [
       'Dr Ralph Mitchell is a dedicated member of The One Clinic\'s medical team, bringing clinical expertise and a compassionate approach to every consultation.',
@@ -87,6 +91,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Mr Thangasamy Sankar',
     credentials: 'FRCS',
     initials: 'TS',
+    image: '/images/Mr. Thangasamy Sankar.jpg',
     role: 'Consultant Plastic Surgeon & Laser Specialist',
     bio: [
       'Mr Thangasamy Sankar is a highly skilled Consultant Plastic Surgeon holding the prestigious FRCS qualification, with specialist expertise in both surgical aesthetics and laser treatments.',
@@ -98,6 +103,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Nurse Sanj',
     credentials: '',
     initials: 'NS',
+    image: '/images/Nurse Sanj.png',
     role: 'Clinical Nurse',
     bio: [
       'Nurse Sanj is an integral part of the clinical team at The One Clinic, providing expert nursing care and ensuring every patient feels comfortable and well-supported throughout their treatment.',
@@ -109,6 +115,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Sam',
     credentials: '',
     initials: 'S',
+    image: '/images/Sam.jpg',
     role: 'Patient Coordinator',
     bio: [
       'Sam is a dedicated Patient Coordinator at The One Clinic, ensuring every patient journey runs seamlessly from the first point of contact through to aftercare.',
@@ -120,6 +127,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Chloe',
     credentials: '',
     initials: 'C',
+    image: '/images/Chloe.jpg',
     role: 'Patient Care Team',
     bio: [
       'Chloe is a valued member of The One Clinic\'s patient care team, dedicated to providing a warm, welcoming experience for every visitor.',
@@ -131,6 +139,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Hollie',
     credentials: '',
     initials: 'H',
+    image: '/images/Hollie.jpg',
     role: 'Patient Care Team',
     bio: [
       'Hollie brings enthusiasm and care to her role within The One Clinic\'s patient team, ensuring every patient receives attentive and thoughtful support.',
@@ -142,6 +151,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Charley',
     credentials: '',
     initials: 'CH',
+    image: '/images/Charley.png',
     role: 'Patient Care Team',
     bio: [
       'Charley is a committed member of The One Clinic\'s front-of-house and patient care team, playing a key role in creating a welcoming and professional environment.',
