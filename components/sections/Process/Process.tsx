@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import Image from 'next/image';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
@@ -37,17 +37,45 @@ const SLIDES = [
   { src: '/images/location3.jpg', alt: 'The One Clinic — treatment room' },
 ];
 
-const INTERVAL = 4000;
+const INTERVAL  = 4000;
+const SEQ_STEP  = 700;
+const SEQ_DELAY = 350;
 
 export default function Process() {
   const [active, setActive] = useState(0);
+  const [seqIdx, setSeqIdx] = useState(-1);
 
+  const stepsRef = useRef<HTMLOListElement>(null);
+  const inView   = useInView(stepsRef, { once: true, amount: 0.4 });
+
+  // Slideshow auto-advance
   useEffect(() => {
     const timer = setInterval(() => {
       setActive((i) => (i + 1) % SLIDES.length);
     }, INTERVAL);
     return () => clearInterval(timer);
   }, []);
+
+  // One-shot scroll sequence
+  useEffect(() => {
+    if (!inView) return;
+
+    let idx = 0;
+    let handle: ReturnType<typeof setTimeout>;
+
+    function next() {
+      setSeqIdx(idx);
+      idx++;
+      if (idx < STEPS.length) {
+        handle = setTimeout(next, SEQ_STEP);
+      } else {
+        handle = setTimeout(() => setSeqIdx(-1), SEQ_STEP);
+      }
+    }
+
+    handle = setTimeout(next, SEQ_DELAY);
+    return () => clearTimeout(handle);
+  }, [inView]);
 
   return (
     <Section variant="light" data-section-theme="light" className={styles.section}>
@@ -116,11 +144,11 @@ export default function Process() {
               </p>
             </motion.div>
 
-            <ol className={styles.steps} aria-label="Treatment process steps">
+            <ol className={styles.steps} aria-label="Treatment process steps" ref={stepsRef}>
               {STEPS.map((step, i) => (
                 <motion.li
                   key={step.number}
-                  className={styles.step}
+                  className={`${styles.step} ${i === seqIdx ? styles.highlighted : ''}`}
                   initial={{ opacity: 0, y: 28 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-50px 0px' }}

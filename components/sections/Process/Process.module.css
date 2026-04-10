@@ -161,7 +161,8 @@
   border-bottom: 1px solid var(--color-border-light);
 }
 
-.step:hover {
+.step:hover,
+.step.highlighted {
   background: rgba(0, 0, 0, 0.035);
 }
 
@@ -185,7 +186,8 @@
     color 0.25s ease;
 }
 
-.step:hover .stepNumber {
+.step:hover .stepNumber,
+.step.highlighted .stepNumber {
   background: #000;
   border-color: #000;
   color: #fff;
@@ -206,7 +208,8 @@
   transition: color 0.25s ease;
 }
 
-.step:hover .stepTitle {
+.step:hover .stepTitle,
+.step.highlighted .stepTitle {
   color: #000;
 }
 
@@ -217,7 +220,8 @@
   transition: color 0.25s ease;
 }
 
-.step:hover .stepDesc {
+.step:hover .stepDesc,
+.step.highlighted .stepDesc {
   color: rgba(0, 0, 0, 0.65);
 }
 

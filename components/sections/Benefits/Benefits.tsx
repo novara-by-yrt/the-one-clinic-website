@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import Image from 'next/image';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
@@ -37,18 +37,45 @@ const SLIDES = [
   { src: '/images/imgi_78_GTR_0328-1-1.jpg', alt: 'The One Clinic — Clinical care' },
 ];
 
-const INTERVAL = 3000; // ms
+const INTERVAL = 3000;
+const SEQ_STEP  = 700; // ms each item stays highlighted
+const SEQ_DELAY = 350; // ms before sequence starts
 
 export default function Benefits() {
-  const [active, setActive] = useState(0);
+  const [active,  setActive]  = useState(0);
+  const [seqIdx,  setSeqIdx]  = useState(-1);
 
-  // Auto-advance every 3 seconds
+  const itemsRef = useRef<HTMLDivElement>(null);
+  const inView   = useInView(itemsRef, { once: true, amount: 0.4 });
+
+  // Slideshow auto-advance
   useEffect(() => {
     const timer = setInterval(() => {
       setActive((i) => (i + 1) % SLIDES.length);
     }, INTERVAL);
     return () => clearInterval(timer);
   }, []);
+
+  // One-shot scroll sequence
+  useEffect(() => {
+    if (!inView) return;
+
+    let idx = 0;
+    let handle: ReturnType<typeof setTimeout>;
+
+    function next() {
+      setSeqIdx(idx);
+      idx++;
+      if (idx < BENEFITS.length) {
+        handle = setTimeout(next, SEQ_STEP);
+      } else {
+        handle = setTimeout(() => setSeqIdx(-1), SEQ_STEP);
+      }
+    }
+
+    handle = setTimeout(next, SEQ_DELAY);
+    return () => clearTimeout(handle);
+  }, [inView]);
 
   return (
     <Section variant="light" data-section-theme="light" className={styles.section}>
@@ -67,11 +94,11 @@ export default function Benefits() {
               <h2 className={styles.heading}>Why Choose The One Clinic?</h2>
             </motion.div>
 
-            <div className={styles.items}>
+            <div className={styles.items} ref={itemsRef}>
               {BENEFITS.map((b, i) => (
                 <motion.div
                   key={b.number}
-                  className={styles.item}
+                  className={`${styles.item} ${i === seqIdx ? styles.highlighted : ''}`}
                   initial={{ opacity: 0, y: 28 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-50px 0px' }}
@@ -96,7 +123,6 @@ export default function Benefits() {
             transition={{ duration: 0.85, ease: [0.25, 0.1, 0.25, 1] }}
           >
             <div className={styles.imageWrap}>
-              {/* Crossfade slides */}
               <AnimatePresence mode="sync">
                 <motion.div
                   key={active}
@@ -117,7 +143,6 @@ export default function Benefits() {
                 </motion.div>
               </AnimatePresence>
 
-              {/* Pagination dots — no arrows */}
               <div className={styles.dots} role="tablist" aria-label="Doctor image slideshow">
                 {SLIDES.map((_, i) => (
                   <button
