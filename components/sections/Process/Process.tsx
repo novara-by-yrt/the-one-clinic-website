@@ -126,7 +126,7 @@ export default function Process() {
                   viewport={{ once: true, margin: '-50px 0px' }}
                   transition={{ duration: 0.75, ease: [0.25, 0.1, 0.25, 1], delay: i * 0.14 }}
                 >
-                  <span className={styles.stepNumber} aria-hidden="true">{step.number}</span>
+                  <div className={styles.stepNumber} aria-hidden="true">{step.number}</div>
                   <div className={styles.stepContent}>
                     <h3 className={styles.stepTitle}>{step.title}</h3>
                     <p className={styles.stepDesc}>{step.description}</p>

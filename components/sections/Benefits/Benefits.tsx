@@ -78,7 +78,7 @@ export default function Benefits() {
                   transition={{ duration: 0.75, ease: [0.25, 0.1, 0.25, 1], delay: i * 0.14 }}
                 >
                   <div className={styles.itemTop}>
-                    <span className={styles.number} aria-hidden="true">{b.number}</span>
+                    <div className={styles.number} aria-hidden="true">{b.number}</div>
                     <h3 className={styles.title}>{b.title}</h3>
                   </div>
                   <p className={styles.desc}>{b.description}</p>
