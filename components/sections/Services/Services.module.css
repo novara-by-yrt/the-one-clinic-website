@@ -35,21 +35,6 @@
   margin: 0;
 }
 
-/* ── Row wrapper + label ──────────────────────────────── */
-.rowWrap {
-  margin-bottom: var(--space-3);
-}
-
-.rowLabel {
-  text-align: center;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin: 0 0 var(--space-2);
-}
-
 /* ── Carousel outer (full viewport width) ─────────────── */
 .carouselOuter {
   position: relative;
@@ -135,8 +120,8 @@
 .card {
   position: relative;
   flex-shrink: 0;
-  width: 360px;
-  aspect-ratio: 4 / 3;
+  width: 280px;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
   cursor: pointer;
   border-radius: 12px;
@@ -298,11 +283,11 @@
 ═══════════════════════════════════ */
 
 @media (max-width: 768px) {
-  .card { width: 300px; }
+  .card { width: 240px; }
   .fadeLeft, .fadeRight { width: 60px; }
 }
 
 @media (max-width: 480px) {
-  .card { width: 260px; }
+  .card { width: 200px; }
   .fadeLeft, .fadeRight { width: 40px; }
 }

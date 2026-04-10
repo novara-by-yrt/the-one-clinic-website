@@ -18,7 +18,8 @@ type Treatment = {
   bg: string;
 };
 
-const HEALTH_WELLBEING: Treatment[] = [
+const TREATMENTS: Treatment[] = [
+  // ── Health & Wellbeing ──────────────────────────────────────────
   {
     title: 'Health Screening',
     category: 'Health & Wellbeing',
@@ -103,9 +104,7 @@ const HEALTH_WELLBEING: Treatment[] = [
     href: '/treatments/menopause-hrt',
     bg: 'linear-gradient(160deg,#0d1717 0%,#162828 100%)',
   },
-];
-
-const MEDICAL_AESTHETICS: Treatment[] = [
+  // ── Medical Aesthetics ──────────────────────────────────────────
   {
     title: 'Dermal Fillers',
     category: 'Medical Aesthetics',
@@ -137,7 +136,7 @@ const MEDICAL_AESTHETICS: Treatment[] = [
     bg: 'linear-gradient(160deg,#17100d 0%,#2e1c16 100%)',
   },
   {
-    title: 'Anti-Wrinkle',
+    title: 'Wrinkle Relaxing Injections',
     category: 'Medical Aesthetics',
     desc: 'Smooth fine lines and restore a naturally refreshed look with expertly placed injections.',
     href: '/treatments/anti-wrinkle',
@@ -167,6 +166,13 @@ const MEDICAL_AESTHETICS: Treatment[] = [
     bg: 'linear-gradient(160deg,#0d1117 0%,#1a2030 100%)',
   },
   {
+    title: 'Skin Analysis',
+    category: 'Medical Aesthetics',
+    desc: 'Advanced 3D skin imaging with Life Viz Camera for a precise, personalised treatment plan.',
+    href: '/treatments/skin-analysis',
+    bg: 'linear-gradient(160deg,#0d1520 0%,#142038 100%)',
+  },
+  {
     title: 'Body Contouring',
     category: 'Medical Aesthetics',
     desc: 'Non-surgical fat reduction and body shaping treatments for lasting, visible results.',
@@ -180,6 +186,83 @@ const MEDICAL_AESTHETICS: Treatment[] = [
     desc: 'Minimally invasive laser lifting for face, neck and body — no surgery required.',
     href: '/treatments/endolift',
     bg: 'linear-gradient(160deg,#100d17 0%,#1e1633 100%)',
+  },
+  {
+    title: 'Skincare – Alumier MD',
+    category: 'Medical Aesthetics',
+    desc: 'Medical-grade skincare products tailored to your skin type and treatment goals.',
+    href: '/treatments/alumier-md',
+    bg: 'linear-gradient(160deg,#0d1417 0%,#142028 100%)',
+  },
+  {
+    title: 'Skin Lesion Removal',
+    category: 'Medical Aesthetics',
+    desc: 'Safe removal of benign skin lesions by experienced medical professionals.',
+    href: '/treatments/skin-lesion',
+    bg: 'linear-gradient(160deg,#171512 0%,#2a2218 100%)',
+  },
+  {
+    title: 'Exosome Therapy',
+    category: 'Medical Aesthetics',
+    desc: 'Cutting-edge regenerative medicine harnessing exosomes to rejuvenate and repair skin.',
+    href: '/treatments/exosome-therapy',
+    bg: 'linear-gradient(160deg,#0d1720 0%,#102535 100%)',
+  },
+  {
+    title: 'Polynucleotides',
+    category: 'Medical Aesthetics',
+    desc: 'Regenerative injections that stimulate collagen for deep, lasting skin improvement.',
+    href: '/treatments/polynucleotides',
+    bg: 'linear-gradient(160deg,#0f0d17 0%,#1c1a30 100%)',
+  },
+  {
+    title: 'Cool Bleph',
+    category: 'Medical Aesthetics',
+    desc: 'Non-surgical eyelid rejuvenation to reduce puffiness and refresh tired eyes.',
+    href: '/treatments/cool-bleph',
+    bg: 'linear-gradient(160deg,#0d1017 0%,#151e30 100%)',
+  },
+  {
+    title: 'COOL Glow Peel',
+    category: 'Medical Aesthetics',
+    desc: 'Full-face glow peel for brighter, smoother skin with zero downtime.',
+    href: '/treatments/cool-glow-peel',
+    bg: 'linear-gradient(160deg,#171714 0%,#2a2820 100%)',
+  },
+  {
+    title: 'Cool Scar Lift',
+    category: 'Medical Aesthetics',
+    desc: 'Advanced treatment to reduce the appearance of scars and uneven skin texture.',
+    href: '/treatments/cool-scar-lift',
+    bg: 'linear-gradient(160deg,#101714 0%,#1a2820 100%)',
+  },
+  {
+    title: 'Mole Removal',
+    category: 'Medical Aesthetics',
+    desc: 'Safe and precise mole removal by experienced clinicians for peace of mind.',
+    href: '/treatments/mole-removal',
+    bg: 'linear-gradient(160deg,#0d1117 0%,#1c2333 100%)',
+  },
+  {
+    title: 'Laser Mole Removal',
+    category: 'Medical Aesthetics',
+    desc: 'Non-surgical laser treatment for quick and effective mole and lesion removal.',
+    href: '/treatments/laser-mole-removal',
+    bg: 'linear-gradient(160deg,#0d1714 0%,#162a24 100%)',
+  },
+  {
+    title: 'Laser Snoring Treatment',
+    category: 'Medical Aesthetics',
+    desc: 'Gentle laser therapy to tighten throat tissue and reduce snoring effectively.',
+    href: '/treatments/laser-snoring',
+    bg: 'linear-gradient(160deg,#171014 0%,#2a1a22 100%)',
+  },
+  {
+    title: 'Laser Vaginal Rejuvenation',
+    category: 'Medical Aesthetics',
+    desc: 'Non-invasive laser treatment to restore comfort and confidence with no downtime.',
+    href: '/treatments/laser-vaginal',
+    bg: 'linear-gradient(160deg,#17100d 0%,#2e1c16 100%)',
   },
   {
     title: 'IV Drip Therapy',
@@ -197,34 +280,33 @@ const MEDICAL_AESTHETICS: Treatment[] = [
     bg: 'linear-gradient(160deg,#171510 0%,#2a2316 100%)',
   },
   {
-    title: 'Mole Removal',
+    title: 'Body Confidence Package',
     category: 'Medical Aesthetics',
-    desc: 'Safe and precise mole removal by experienced clinicians for peace of mind.',
-    href: '/treatments/mole-removal',
-    bg: 'linear-gradient(160deg,#0d1117 0%,#1c2333 100%)',
+    desc: 'A curated combination of body treatments for comprehensive contouring and confidence.',
+    href: '/treatments/body-confidence',
+    bg: 'linear-gradient(160deg,#0d1117 0%,#1a202a 100%)',
   },
   {
-    title: 'Laser Mole Removal',
+    title: 'Lipoma Removal',
     category: 'Medical Aesthetics',
-    desc: 'Non-surgical laser treatment for quick and effective mole and lesion removal.',
-    href: '/treatments/laser-mole-removal',
-    bg: 'linear-gradient(160deg,#0d1714 0%,#162a24 100%)',
+    desc: 'Expert surgical removal of lipomas for a smooth, comfortable result.',
+    href: '/treatments/lipoma-removal',
+    bg: 'linear-gradient(160deg,#151714 0%,#222820 100%)',
+  },
+  {
+    title: 'Non Surgical Blepharoplasty',
+    category: 'Medical Aesthetics',
+    desc: 'Lift and rejuvenate the eyelid area without surgery using advanced techniques.',
+    href: '/treatments/blepharoplasty',
+    bg: 'linear-gradient(160deg,#0d1020 0%,#141830 100%)',
   },
 ];
 
 // px per frame — slow, elegant pace (~21 px/s at 60fps)
 const SPEED = 0.35;
+const CARD_STEP = 300; // card width (280) + gap (20)
 
-// ── Reusable carousel row ────────────────────────────────────────
-function CarouselRow({
-  items,
-  direction,
-  label,
-}: {
-  items: Treatment[];
-  direction: 'rtl' | 'ltr';
-  label: string;
-}) {
+export default function Services() {
   const trackRef      = useRef<HTMLDivElement>(null);
   const posRef        = useRef(0);
   const rafRef        = useRef<number>(0);
@@ -237,21 +319,16 @@ function CarouselRow({
     function tick() {
       const track = trackRef.current;
       if (track && !draggingRef.current && !hoveredRef.current) {
+        posRef.current -= SPEED;
         const halfWidth = track.scrollWidth / 2;
-        if (direction === 'rtl') {
-          posRef.current -= SPEED;
-          if (posRef.current <= -halfWidth) posRef.current += halfWidth;
-        } else {
-          posRef.current += SPEED;
-          if (posRef.current >= 0) posRef.current -= halfWidth;
-        }
+        if (posRef.current <= -halfWidth) posRef.current += halfWidth;
         track.style.transform = `translateX(${posRef.current}px)`;
       }
       rafRef.current = requestAnimationFrame(tick);
     }
     rafRef.current = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafRef.current);
-  }, [direction]);
+  }, []);
 
   function onTouchStart(e: React.TouchEvent) {
     draggingRef.current   = true;
@@ -275,67 +352,6 @@ function CarouselRow({
   }
 
   return (
-    <div className={styles.rowWrap}>
-      <p className={styles.rowLabel}>{label}</p>
-      <div
-        className={styles.carouselOuter}
-        onMouseEnter={() => { hoveredRef.current = true; }}
-        onMouseLeave={() => { hoveredRef.current = false; }}
-      >
-        <div className={styles.fadeLeft}  aria-hidden="true" />
-        <div className={styles.fadeRight} aria-hidden="true" />
-        <div
-          ref={trackRef}
-          className={styles.track}
-          onTouchStart={onTouchStart}
-          onTouchMove={onTouchMove}
-          onTouchEnd={onTouchEnd}
-          aria-label={`${label} treatments carousel`}
-        >
-          {[...items, ...items].map((t, i) => (
-            <div
-              key={i}
-              className={styles.card}
-              aria-hidden={i >= items.length ? true : undefined}
-            >
-              <div className={styles.cardBg} style={{ background: t.bg }} aria-hidden="true" />
-              {t.image && (
-                <div className={styles.cardImg} aria-hidden="true">
-                  <Image
-                    src={t.image}
-                    alt={t.title}
-                    fill
-                    className={styles.img}
-                    sizes="360px"
-                    draggable={false}
-                  />
-                </div>
-              )}
-              <div className={styles.overlay} aria-hidden="true" />
-              <Link
-                href={t.href}
-                className={styles.cardContent}
-                tabIndex={i >= items.length ? -1 : 0}
-              >
-                <p className={styles.cardCategory}>{t.category}</p>
-                <h3 className={styles.cardTitle}>{t.title}</h3>
-                <p className={styles.cardDesc}>{t.desc}</p>
-                <div className={styles.exploreRow}>
-                  <span className={styles.exploreLine} aria-hidden="true" />
-                  <span className={styles.exploreLabel}>Explore</span>
-                </div>
-              </Link>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// ── Main section ─────────────────────────────────────────────────
-export default function Services() {
-  return (
     <Section id="treatments" variant="light" data-section-theme="light" className={styles.section}>
       <Container>
         <motion.div
@@ -350,13 +366,61 @@ export default function Services() {
         </motion.div>
       </Container>
 
-      {/* Row 1: Health & Wellbeing — right to left */}
-      <CarouselRow items={HEALTH_WELLBEING} direction="rtl" label="Health & Wellbeing" />
+      {/* ── Carousel ────────────────────────────────────────── */}
+      <div
+        className={styles.carouselOuter}
+        onMouseEnter={() => { hoveredRef.current = true; }}
+        onMouseLeave={() => { hoveredRef.current = false; }}
+      >
+        <div className={styles.fadeLeft}  aria-hidden="true" />
+        <div className={styles.fadeRight} aria-hidden="true" />
+        <div
+          ref={trackRef}
+          className={styles.track}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+          aria-label="Popular treatments carousel"
+        >
+          {[...TREATMENTS, ...TREATMENTS].map((t, i) => (
+            <div
+              key={i}
+              className={styles.card}
+              aria-hidden={i >= TREATMENTS.length ? true : undefined}
+            >
+              <div className={styles.cardBg} style={{ background: t.bg }} aria-hidden="true" />
+              {t.image && (
+                <div className={styles.cardImg} aria-hidden="true">
+                  <Image
+                    src={t.image}
+                    alt={t.title}
+                    fill
+                    className={styles.img}
+                    sizes="280px"
+                    draggable={false}
+                  />
+                </div>
+              )}
+              <div className={styles.overlay} aria-hidden="true" />
+              <Link
+                href={t.href}
+                className={styles.cardContent}
+                tabIndex={i >= TREATMENTS.length ? -1 : 0}
+              >
+                <p className={styles.cardCategory}>{t.category}</p>
+                <h3 className={styles.cardTitle}>{t.title}</h3>
+                <p className={styles.cardDesc}>{t.desc}</p>
+                <div className={styles.exploreRow}>
+                  <span className={styles.exploreLine} aria-hidden="true" />
+                  <span className={styles.exploreLabel}>Explore</span>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
 
-      {/* Row 2: Medical Aesthetics — left to right */}
-      <CarouselRow items={MEDICAL_AESTHETICS} direction="ltr" label="Medical Aesthetics" />
-
-      {/* Explore all CTA */}
+      {/* ── Explore all CTA ─────────────────────────────────── */}
       <Container>
         <motion.div
           className={styles.exploreCta}
