@@ -40,7 +40,7 @@ const EYE_BAG_TYPES = [
 const CAUSES = [
   {
     title: 'Ageing',
-    desc: 'Tissues and muscles weaken over time, allowing fat pads to shift and skin to sag.',
+    desc: 'Tissues and muscles weaken over time.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -50,7 +50,7 @@ const CAUSES = [
   },
   {
     title: 'Genetics',
-    desc: 'Some people are more prone to under-eye bags due to inherited skin and fat characteristics.',
+    desc: 'Some people are more prone to bags.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M6 3c0 4.5 6 4.5 6 9s-6 4.5-6 9"/>
@@ -62,7 +62,7 @@ const CAUSES = [
   },
   {
     title: 'Lack of Sleep',
-    desc: 'Poor sleep causes fluid to pool under the eyes, making them look puffy and tired.',
+    desc: 'It makes the eyes look puffy and tired.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
@@ -71,7 +71,7 @@ const CAUSES = [
   },
   {
     title: 'Fluid Accumulation',
-    desc: 'Fluid can build up under the eyes, especially after salty meals or in the morning.',
+    desc: 'Especially after salty meals or in the morning.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
@@ -80,7 +80,7 @@ const CAUSES = [
   },
   {
     title: 'Allergies',
-    desc: 'Allergic reactions cause swelling and irritation around the eyes, contributing to puffiness.',
+    desc: 'Swelling and irritation around the eyes.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -91,7 +91,7 @@ const CAUSES = [
   },
   {
     title: 'Lifestyle Factors',
-    desc: 'Stress, smoking, and sun exposure accelerate skin ageing and worsen under-eye appearance.',
+    desc: 'Stress, smoking, and sun exposure.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -278,11 +278,23 @@ export default function EyeBagsPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div className={styles.overviewLabel} variants={fadeUp}>
-              <p className={styles.eyebrowDark}>About This Condition</p>
+            {/* Image */}
+            <motion.div className={styles.overviewImageWrap} variants={fadeUp}>
+              <Image
+                src="/images/Doctor2.jpg"
+                alt="Under-eye area showing eye bags at The One Clinic Leicester"
+                fill
+                className={styles.overviewImage}
+                sizes="(max-width: 900px) 100vw, 45vw"
+              />
+              <div className={styles.overviewImageFade} aria-hidden="true" />
             </motion.div>
 
+            {/* Text */}
             <div className={styles.overviewBody}>
+              <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+                About This Condition
+              </motion.p>
               <motion.h2 className={styles.overviewHeading} variants={fadeUp}>
                 What are Eye Bags?
               </motion.h2>
@@ -291,11 +303,6 @@ export default function EyeBagsPage() {
                 They appear when the muscles and tissues supporting the eyelids
                 weaken with age. Fat can move downwards, and fluid may build up,
                 making the eyes look tired.
-              </motion.p>
-              <motion.p className={styles.overviewPara} variants={fadeUp}>
-                The skin around the eyes is among the thinnest on the body and
-                naturally loses collagen and elasticity over time, making changes
-                in this area one of the earliest signs of ageing.
               </motion.p>
             </div>
           </motion.div>
@@ -318,7 +325,7 @@ export default function EyeBagsPage() {
               Classification
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Types of Eye Bags
+              Types OF Eye Bags
             </motion.h2>
           </motion.div>
 

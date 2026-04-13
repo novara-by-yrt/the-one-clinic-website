@@ -213,13 +213,36 @@
 ════════════════════════════════════════════════════ */
 .overviewGrid {
   display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: var(--space-6);
-  align-items: start;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--space-4), 5vw, var(--space-7));
+  align-items: center;
 }
 
-.overviewLabel {
-  padding-top: 6px;
+/* Image panel */
+.overviewImageWrap {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  box-shadow:
+    0 0 0 1px rgba(0 0 0 / 0.06),
+    0 24px 64px rgba(0 0 0 / 0.12);
+}
+
+.overviewImage {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.overviewImageFade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 55%,
+    rgba(255, 255, 255, 0.15) 100%
+  );
+  pointer-events: none;
 }
 
 .overviewBody {
@@ -626,10 +649,13 @@
 
   .overviewGrid {
     grid-template-columns: 1fr;
-    gap: var(--space-3);
+    gap: var(--space-5);
   }
 
-  .overviewLabel { padding-top: 0; }
+  .overviewImageWrap {
+    aspect-ratio: 16 / 9;
+    max-width: 100%;
+  }
 
   .causesGrid { grid-template-columns: repeat(2, 1fr); }
   .relatedGrid { grid-template-columns: repeat(2, 1fr); }
