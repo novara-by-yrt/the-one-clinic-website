@@ -473,8 +473,11 @@ export default function EndoliftPage() {
       {/* ════════════════════════════════════════
           3B. AT A GLANCE
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
-        <Container>
+      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
+        <div className={styles.whiteBgWrap} aria-hidden="true">
+          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
+        </div>
+        <Container className={styles.whiteBgContent}>
           <motion.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
@@ -607,8 +610,11 @@ export default function EndoliftPage() {
       {/* ════════════════════════════════════════
           NEW: TREATED BENEFITS
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
-        <Container>
+      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
+        <div className={styles.whiteBgWrap} aria-hidden="true">
+          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
+        </div>
+        <Container className={styles.whiteBgContent}>
           <motion.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
@@ -885,8 +891,11 @@ export default function EndoliftPage() {
       {/* ════════════════════════════════════════
           NEW: BEFORE & AFTER
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
-        <Container>
+      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
+        <div className={styles.whiteBgWrap} aria-hidden="true">
+          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
+        </div>
+        <Container className={styles.whiteBgContent}>
           <motion.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}

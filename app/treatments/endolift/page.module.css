@@ -1037,7 +1037,7 @@
 .ctaBannerLogo {
   object-fit: contain;
   object-position: center;
-  opacity: 0.07;
+  opacity: 0.18;
 }
 
 /* ════════════════════════════════════════════════════
@@ -1274,19 +1274,16 @@
   gap: var(--space-2);
   padding: var(--space-4) var(--space-4);
   background: #fff;
-  border: 1.5px solid #111;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: var(--radius-lg);
-  box-shadow:
-    4px 4px 0 #111,
-    0 8px 24px rgb(0 0 0 / 0.08);
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
 }
 
 .treatedBenefitCard:hover {
-  box-shadow:
-    6px 6px 0 #111,
-    0 16px 40px rgb(0 0 0 / 0.13);
-  transform: translateY(-3px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.13);
+  transform: translateY(-6px);
+  border-color: rgba(0, 0, 0, 0.16);
 }
 
 .treatedBenefitIconWrap {
@@ -1801,6 +1798,32 @@
 ════════════════════════════════════════════════════ */
 .sectionGray {
   background-color: #f3f3f3 !important;
+}
+
+/* ════════════════════════════════════════════════════
+   WHITE TEXTURE BACKGROUND (bg-image-white.png)
+   Applied to: At a Glance, Treated Benefits, Before & After
+════════════════════════════════════════════════════ */
+.whiteBgSection {
+  position: relative !important;
+  overflow: hidden;
+}
+
+.whiteBgWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.whiteBgImg {
+  object-fit: cover;
+  object-position: center;
+}
+
+.whiteBgContent {
+  position: relative;
+  z-index: 1;
 }
 
 /* ════════════════════════════════════════════════════
