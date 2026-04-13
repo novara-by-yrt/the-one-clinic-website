@@ -2188,7 +2188,7 @@
   /* Expert card: stack photo above content on mobile */
   .expertCard { grid-template-columns: 1fr; min-height: auto; }
   .expertCardPhotoPanel { min-height: 360px; }
-  .expertCardContent { padding: var(--space-6) var(--space-5); }
+  .expertCardContent { padding: var(--space-4); }
 
   /* Final results banner: stack vertically */
   .finalResultsBanner {
@@ -2221,6 +2221,47 @@
 
   .headingDark,
   .headingLight { font-size: clamp(1.5rem, 5vw, var(--text-h2)); }
+
+  /* ── Fix: expert card content padding was too large (64px/48px) ── */
+  .expertCardContent { padding: var(--space-4) var(--space-4); }
+  .expertCardPhotoPanel { min-height: 320px; }
+
+  /* ── Fix: CTA banner heading clamp minimum was ~17px ── */
+  .ctaBannerHeading { font-size: clamp(1.5rem, 7vw, 3.75rem); }
+
+  /* ── Reduce paddings for all dark cards ── */
+  .techCard                { padding: var(--space-4); }
+  .resultsAfterCard        { padding: var(--space-4); }
+  .areasGroup              { padding: var(--space-4); }
+  .clinicReasonCard        { padding: var(--space-4) var(--space-3); }
+
+  /* ── CTA spacing ── */
+  .combinedCtaWrapper { padding-top: var(--space-4); }
+
+  /* ── Full-width CTA buttons ── */
+  .combinedCta  { width: 100%; justify-content: center; }
+  .ctaBannerBtn { width: 100%; max-width: 360px; align-self: center; }
+
+  /* ── Tighten section-header bottom margin ── */
+  .sectionHeaderCentre { margin-bottom: var(--space-4); }
+
+  /* ── Glance card: reduce padding in 2-col layout ── */
+  .glanceCard { padding: var(--space-4) var(--space-3); }
+
+  /* ── Treated-benefits grid: tighter gap ── */
+  .treatedBenefitsGrid { gap: var(--space-2); }
+
+  /* ── Clinic reasons: 1-col on mobile ── */
+  .clinicReasonsGrid { grid-template-columns: 1fr; gap: var(--space-2); }
+
+  /* ── Journey list: remove fixed max-width so it fills width ── */
+  .journeyList { max-width: 100%; }
+
+  /* ── What-is section: full-width CTA ── */
+  .whatIsContent .combinedCta { width: 100%; }
+
+  /* ── Eligibility wrap: full width ── */
+  .eligibilityWrap { max-width: 100%; }
 }
 
 @media (max-width: 580px) {
@@ -2249,4 +2290,90 @@
 
   /* Standalone At a Glance: 1-col */
   .glanceStandaloneGrid { grid-template-columns: 1fr; }
+
+  /* ── Expert card: smaller photo, tighter content ── */
+  .expertCardPhotoPanel { min-height: 240px; }
+  .expertCardContent    { padding: var(--space-3) var(--space-3); }
+
+  /* ── Further reduce card paddings on small phones ── */
+  .techCard         { padding: var(--space-3); }
+  .resultsAfterCard { padding: var(--space-3); }
+  .areasGroup       { padding: var(--space-3); }
+  .clinicReasonCard { padding: var(--space-3); }
+
+  /* ── Eligibility items: slightly compact ── */
+  .eligibilityItem  { font-size: 1rem; padding: var(--space-2) var(--space-3); }
+  .eligibilityCheck { width: 24px; height: 24px; min-width: 24px; }
+
+  /* ── How covers wrap: less internal padding ── */
+  .howCoversWrap { padding: var(--space-3); }
+
+  /* ── CTA buttons ── */
+  .ctaBannerBtn { max-width: 100%; }
+  .combinedCta  { padding: 12px 24px; }
+
+  /* ── Glance card padding ── */
+  .glanceCard { padding: var(--space-3); }
+
+  /* ── finalResults banner ── */
+  .finalResultsBanner { padding: var(--space-4) var(--space-3); }
+
+  /* ── Areas group items ── */
+  .areasGroupItem { font-size: 0.9375rem; }
+}
+
+/* ══════════════════════════════════════════════════
+   SMALL PHONES  ≤ 400px
+══════════════════════════════════════════════════ */
+@media (max-width: 400px) {
+  /* Hero inner: tighter vertical padding */
+  .heroInner { padding-top: 40px; padding-bottom: 40px; }
+
+  /* Headings: ensure never overflow */
+  .heroTitle { font-size: clamp(1.75rem, 8.5vw, 2.25rem); }
+  .combinedHeading { font-size: clamp(1.625rem, 7.5vw, 2.875rem); }
+  .expertCardName  { font-size: clamp(1.5rem, 7vw, 2.75rem); }
+
+  /* Glance standalone: tighter gap */
+  .glanceStandaloneGrid { gap: var(--space-2); }
+
+  /* Expert card photo */
+  .expertCardPhotoPanel { min-height: 200px; }
+  .expertCardContent    { padding: var(--space-3) var(--space-2); }
+
+  /* Slideshow arrow buttons */
+  .expertSlideArrow { width: 40px; height: 40px; }
+
+  /* Journey step: compact */
+  .journeyStep { grid-template-columns: 40px 1fr; gap: var(--space-2); }
+  .stepNumCircle { width: 36px; height: 36px; font-size: 0.6875rem; }
+
+  /* Tech card */
+  .techCard { padding: var(--space-3) var(--space-2); }
+  .techCardEyebrow { font-size: 2.75rem; }
+
+  /* Treated benefit card */
+  .treatedBenefitCard { padding: var(--space-3) var(--space-2); }
+
+  /* Results card */
+  .resultsAfterCard { padding: var(--space-3) var(--space-2); }
+
+  /* Clinic reason cards */
+  .clinicReasonCard { padding: var(--space-3) var(--space-2); }
+  .clinicReasonNumber { font-size: 2rem; }
+
+  /* Areas group */
+  .areasGroup { padding: var(--space-3) var(--space-2); }
+
+  /* CTA buttons: full-width, smaller font */
+  .ctaBannerBtn { font-size: 0.875rem; padding: 13px 20px; }
+  .combinedCta  { font-size: 0.875rem; padding: 12px 20px; }
+  .heroCtaPrimary { font-size: 0.875rem; padding: 12px 20px; }
+
+  /* Before & After controls */
+  .baControls { gap: var(--space-2); }
+  .baArrowBtn { width: 38px; height: 38px; }
+
+  /* FAQ toggle button */
+  .faqToggleBtn { padding: 10px 20px; font-size: 0.875rem; }
 }
