@@ -78,7 +78,7 @@ const NAV: NavItem[] = [
           { label: 'Laser Mole Removal',                      href: '/treatments/laser-mole-removal' },
           { label: 'Laser Snoring Treatment',                 href: '/treatments/laser-snoring-treatment' },
           { label: 'Laser Vaginal Rejuvenation',              href: '/treatments/laser-vaginal' },
-          { label: 'IV Drip Therapy',                         href: '/treatments/iv-drip' },
+          { label: 'IV Drip Therapy',                         href: '/treatments/iv-drip-therapy' },
           { label: 'Deep Laser Resurfacing',                  href: '/treatments/laser-resurfacing' },
           { label: 'The Body Confidence Package',             href: '/treatments/body-confidence' },
           { label: 'Lipoma Removal Leicester',                href: '/treatments/lipoma-removal' },
