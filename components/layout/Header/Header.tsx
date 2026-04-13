@@ -74,7 +74,7 @@ const NAV: NavItem[] = [
           { label: 'Cool Bleph',                              href: '/treatments/cool-bleph' },
           { label: 'COOL Glow Peel (Full Face)',              href: '/treatments/cool-glow-full-face' },
           { label: 'Cool Scar Lift',                          href: '/treatments/cool-scar-lift' },
-          { label: 'Mole Removal',                            href: '/treatments/mole-removal' },
+          { label: 'Mole Removal',                            href: '/treatments/mole-removal-leicester' },
           { label: 'Laser Mole Removal',                      href: '/treatments/laser-mole-removal' },
           { label: 'Laser Snoring Treatment',                 href: '/treatments/laser-snoring' },
           { label: 'Laser Vaginal Rejuvenation',              href: '/treatments/laser-vaginal' },
