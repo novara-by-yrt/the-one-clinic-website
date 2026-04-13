@@ -58,7 +58,7 @@ const NAV: NavItem[] = [
           { label: 'Lumecca IPL',                              href: '/treatments/lumecca-ipl-leicester' },
           { label: 'HydraFacial Keravive',                    href: '/treatments/hydrafacial-keravive' },
           { label: 'Morpheus8',                               href: '/treatments/morpheus8' },
-          { label: 'Wrinkle Relaxing Injections',             href: '/treatments/anti-wrinkle' },
+          { label: 'Wrinkle Relaxing Injections',             href: '/treatments/wrinkle-relaxing-injections' },
           { label: 'Hydrafacial Leicester',                   href: '/treatments/hydrafacial' },
           { label: 'Vampire Facial',                          href: '/treatments/vampire-facial' },
           { label: 'Chemical Peels',                          href: '/treatments/chemical-peels' },
