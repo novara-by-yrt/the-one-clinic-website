@@ -2122,12 +2122,12 @@
     padding-top: clamp(52px, 7vw, 80px);
     padding-bottom: clamp(52px, 7vw, 80px);
   }
-  /* Full square image — no cropping */
+  /* Portrait image — 3/4 aspect ratio */
   .heroImageWrap {
     min-height: unset;
-    aspect-ratio: 1 / 1;
-    align-self: auto;
-    max-width: 540px;
+    aspect-ratio: 3 / 4;
+    align-self: center;
+    max-width: 100%;
     margin-inline: auto;
     width: 100%;
   }
@@ -2139,6 +2139,8 @@
 
   /* Prevent any child (e.g. inline-flex TrustBadges) from causing overflow */
   .heroLeft { min-width: 0; max-width: 100%; overflow-x: hidden; }
+
+  .heroImage { object-position: top center; }
 
   .heroCtas {
     flex-direction: column;
@@ -2331,7 +2333,7 @@
 ══════════════════════════════════════════════════ */
 @media (max-width: 400px) {
   /* Hero inner: tighter vertical padding */
-  .heroInner { padding-top: 40px; padding-bottom: 40px; }
+  .heroInner { padding-top: 80px; padding-bottom: 40px; }
 
   /* Headings: ensure never overflow */
   .heroTitle { font-size: clamp(1.75rem, 8.5vw, 2.25rem); }
