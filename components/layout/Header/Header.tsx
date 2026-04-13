@@ -76,7 +76,7 @@ const NAV: NavItem[] = [
           { label: 'Cool Scar Lift',                          href: '/treatments/cool-scar-lift' },
           { label: 'Mole Removal',                            href: '/treatments/mole-removal-leicester' },
           { label: 'Laser Mole Removal',                      href: '/treatments/laser-mole-removal' },
-          { label: 'Laser Snoring Treatment',                 href: '/treatments/laser-snoring' },
+          { label: 'Laser Snoring Treatment',                 href: '/treatments/laser-snoring-treatment' },
           { label: 'Laser Vaginal Rejuvenation',              href: '/treatments/laser-vaginal' },
           { label: 'IV Drip Therapy',                         href: '/treatments/iv-drip' },
           { label: 'Deep Laser Resurfacing',                  href: '/treatments/laser-resurfacing' },
