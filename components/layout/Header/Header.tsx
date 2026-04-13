@@ -72,7 +72,7 @@ const NAV: NavItem[] = [
           { label: 'Regenerative Medicine – Exosome Therapy', href: '/treatments/regenerative-medicine-exosome-therapy' },
           { label: 'Regenerative Medicine – Polynucleotides', href: '/treatments/polynucleotides' },
           { label: 'Cool Bleph',                              href: '/treatments/cool-bleph' },
-          { label: 'COOL Glow Peel (Full Face)',              href: '/treatments/cool-glow-peel' },
+          { label: 'COOL Glow Peel (Full Face)',              href: '/treatments/cool-glow-full-face' },
           { label: 'Cool Scar Lift',                          href: '/treatments/cool-scar-lift' },
           { label: 'Mole Removal',                            href: '/treatments/mole-removal' },
           { label: 'Laser Mole Removal',                      href: '/treatments/laser-mole-removal' },
