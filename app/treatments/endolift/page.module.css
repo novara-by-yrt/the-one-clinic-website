@@ -1369,7 +1369,7 @@
   gap: var(--space-2);
   padding: var(--space-4) var(--space-4);
   background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1.5px solid #4a4a4a;
   border-radius: var(--radius-lg);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
   transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
@@ -1378,7 +1378,7 @@
 .treatedBenefitCard:hover {
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.13);
   transform: translateY(-6px);
-  border-color: rgba(0, 0, 0, 0.16);
+  border-color: #222;
 }
 
 .treatedBenefitIconWrap {
@@ -1660,15 +1660,15 @@
   display: flex;
   flex-direction: column;
   padding: var(--space-5);
-  background: rgba(255 255 255 / 0.04);
-  border: 1px solid rgba(255 255 255 / 0.1);
+  background: #ffffff;
+  border: 1px solid rgba(0 0 0 / 0.09);
   border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
+  box-shadow: 0 2px 20px rgba(0 0 0 / 0.07);
   transition:
-    background 0.35s ease,
-    border-color 0.35s ease,
-    box-shadow 0.35s ease;
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
 }
 
 /* Animated shimmer sweep on hover */
@@ -1678,7 +1678,7 @@
   top: 0; left: -100%; right: auto;
   width: 60%;
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(255 255 255 / 0.55), transparent);
+  background: linear-gradient(to right, transparent, rgba(0 0 0 / 0.18), transparent);
   transition: left 0.6s ease;
 }
 
@@ -1687,9 +1687,8 @@
 }
 
 .techCard:hover {
-  background: rgba(255 255 255 / 0.08);
-  border-color: rgba(255 255 255 / 0.2);
-  box-shadow: 0 24px 64px rgba(0 0 0 / 0.4);
+  box-shadow: 0 20px 56px rgba(0 0 0 / 0.13);
+  border-color: rgba(0 0 0 / 0.18);
 }
 
 /* Large decorative number */
@@ -1698,13 +1697,13 @@
   font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1;
-  color: rgba(255 255 255 / 0.07);
+  color: rgba(0 0 0 / 0.06);
   margin-bottom: var(--space-3);
   transition: color 0.35s ease;
 }
 
 .techCard:hover .techCardEyebrow {
-  color: rgba(255 255 255 / 0.14);
+  color: rgba(0 0 0 / 0.1);
 }
 
 /* Thin separator before title */
@@ -1712,23 +1711,23 @@
   font-size: 1.375rem;
   font-weight: var(--fw-bold);
   letter-spacing: -0.02em;
-  color: #fff;
+  color: #111827;
   margin: 0 0 var(--space-2);
   line-height: 1.2;
   padding-top: var(--space-3);
-  border-top: 1px solid rgba(255 255 255 / 0.1);
+  border-top: 1px solid rgba(0 0 0 / 0.07);
 }
 
 .techCardDesc {
   font-size: 0.9375rem;
   line-height: 1.72;
-  color: rgba(255 255 255 / 0.55);
+  color: #6B7280;
   margin: 0;
   transition: color 0.35s ease;
 }
 
 .techCard:hover .techCardDesc {
-  color: rgba(255 255 255 / 0.78);
+  color: #374151;
 }
 
 .finalResultsBanner {
@@ -1946,6 +1945,71 @@
 .whiteBgContent {
   position: relative;
   z-index: 1;
+}
+
+/* ════════════════════════════════════════════════════
+   EXPERT SLIDESHOW CONTROLS
+════════════════════════════════════════════════════ */
+.expertSlideshow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.expertSlideControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.expertSlideArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(0 0 0 / 0.14);
+  background: #fff;
+  color: #111;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.expertSlideArrow:hover:not(:disabled) {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+  transform: scale(1.06);
+}
+
+.expertSlideArrow:disabled {
+  opacity: 0.28;
+  cursor: default;
+}
+
+.expertSlideDots {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.expertSlideDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0 0 0 / 0.2);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.expertSlideDotActive {
+  background: #111;
+  transform: scale(1.35);
 }
 
 /* ════════════════════════════════════════════════════

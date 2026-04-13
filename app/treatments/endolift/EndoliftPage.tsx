@@ -275,6 +275,29 @@ const FAQS = [
   },
 ];
 
+const EXPERTS = [
+  {
+    name: 'Dr Sumit Virmani',
+    credentials: ['MBBS', 'MRCGP', 'Co-Founder'],
+    image: '/images/imgi_20_team-thumb-VIRMANI.jpg',
+    alt: 'Dr Sumit Virmani, Co-Founder, The One Clinic',
+    bio: [
+      'Dr Sumit Virmani, the co-founder of The One Clinic, brings over 15 years of medical expertise, including more than a decade as a trusted local GP. With advanced skills in minor surgery and a keen eye for detail, Dr Virmani is passionate about patient care and achieving outstanding results.',
+      'His growing interest in aesthetic medicine, particularly body contouring and hair rejuvenation, reflects his commitment to helping patients look and feel their best. Alongside his ongoing GP practice, Dr Virmani continues to offer safe, effective, and transformative aesthetic treatments at The One Clinic.',
+    ],
+  },
+  {
+    name: 'Dr Gunjan Bedi',
+    credentials: ['MBBS', 'MRCpsych', 'MRCGP', 'BCAM'],
+    image: '/images/imgi_21_team-thumb-BEDI.jpg',
+    alt: 'Dr Gunjan Bedi, General Practitioner and Aesthetics Practitioner, The One Clinic',
+    bio: [
+      'Dr Gunjan Bedi is a highly skilled, advanced aesthetics practitioner at The One Clinic. She is a highly experienced doctor, having worked in the medical sector for over 20 years, with over 10 years service as a GP.',
+      'Dr Bedi brings a unique and comprehensive perspective to patient care, combining qualifications in General Practice, Psychiatry, and Aesthetic Medicine. Her breadth of expertise allows her to take a truly holistic approach, addressing both the physical and psychological dimensions of each patient\'s wellbeing.',
+    ],
+  },
+];
+
 const RELATED = [
   { title: 'Morpheus8',                   href: '/treatments/morpheus8',         desc: 'Fractional radiofrequency skin remodelling for face and body.' },
   { title: 'Dermal Fillers',              href: '/treatments/dermal-fillers',    desc: 'Restore volume and structure to the face with precision filler.' },
@@ -297,6 +320,7 @@ export default function EndoliftPage() {
   const [baIndex, setBaIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(2);
   const [showAllFaqs, setShowAllFaqs] = useState(false);
+  const [expertIndex, setExpertIndex] = useState(0);
 
   useEffect(() => {
     const update = () => {
@@ -322,7 +346,7 @@ export default function EndoliftPage() {
       ════════════════════════════════════════ */}
       <section
         className={styles.hero}
-        aria-label="Endolift Leicester – hero"
+        aria-label="Endolift Leicester, hero"
         data-section-theme="dark"
       >
         {/* Breadcrumb — pinned to top of hero */}
@@ -1192,63 +1216,89 @@ export default function EndoliftPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          NEW: DR VIRMANI SPOTLIGHT
+          NEW: MEET THE EXPERT (SLIDESHOW)
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
-          <motion.div
-            className={styles.expertCard}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {/* Left: full-bleed photo panel */}
-            <motion.div className={styles.expertCardPhotoPanel} variants={fadeUp}>
-              <Image
-                src="/images/imgi_20_team-thumb-VIRMANI.jpg"
-                alt="Dr Sumit Virmani – Co-Founder, The One Clinic"
-                fill
-                className={styles.expertCardPhoto}
-                sizes="(max-width: 768px) 100vw, 420px"
-              />
-            </motion.div>
-
-            {/* Right: content */}
-            <motion.div className={styles.expertCardContent} variants={stagger(0.08)}>
-              <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-                Meet The Expert
-              </motion.p>
-              <motion.h2 className={styles.expertCardName} variants={fadeUp}>
-                Dr Sumit Virmani
-              </motion.h2>
-
-              <motion.div className={styles.expertCardBadges} variants={fadeUp}>
-                <span className={styles.expertCardBadge}>MBBS</span>
-                <span className={styles.expertCardBadge}>MRCGP</span>
-                <span className={styles.expertCardBadge}>Co-Founder</span>
+          <div className={styles.expertSlideshow}>
+            {/* Card — keyed to re-animate on slide change */}
+            <motion.div
+              key={expertIndex}
+              className={styles.expertCard}
+              variants={stagger(0.1)}
+              initial="hidden"
+              animate="show"
+            >
+              {/* Left: full-bleed photo panel */}
+              <motion.div className={styles.expertCardPhotoPanel} variants={fadeUp}>
+                <Image
+                  src={EXPERTS[expertIndex].image}
+                  alt={EXPERTS[expertIndex].alt}
+                  fill
+                  className={styles.expertCardPhoto}
+                  sizes="(max-width: 768px) 100vw, 420px"
+                />
               </motion.div>
 
-              <motion.p className={styles.expertCardBio} variants={fadeUp}>
-                Dr Sumit Virmani, the co-founder of The One Clinic, brings over 15 years of medical
-                expertise, including more than a decade as a trusted local GP. With advanced skills
-                in minor surgery and a keen eye for detail, Dr Virmani is passionate about
-                patient care and achieving outstanding results.
-              </motion.p>
-              <motion.p className={styles.expertCardBio} variants={fadeUp}>
-                His growing interest in aesthetic medicine, particularly body contouring and
-                hair rejuvenation, reflects his commitment to helping patients look and feel their
-                best. Alongside his ongoing GP practice, Dr Virmani continues to offer safe,
-                effective, and transformative aesthetic treatments at The One Clinic.
-              </motion.p>
+              {/* Right: content */}
+              <motion.div className={styles.expertCardContent} variants={stagger(0.08)}>
+                <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+                  Meet The Expert
+                </motion.p>
+                <motion.h2 className={styles.expertCardName} variants={fadeUp}>
+                  {EXPERTS[expertIndex].name}
+                </motion.h2>
 
-              <motion.div variants={fadeUp}>
-                <BookConsultationButton className={styles.ctaBannerBtn}>
-                  Book With Dr Virmani
-                </BookConsultationButton>
+                <motion.div className={styles.expertCardBadges} variants={fadeUp}>
+                  {EXPERTS[expertIndex].credentials.map((c) => (
+                    <span key={c} className={styles.expertCardBadge}>{c}</span>
+                  ))}
+                </motion.div>
+
+                {EXPERTS[expertIndex].bio.map((para, i) => (
+                  <motion.p key={i} className={styles.expertCardBio} variants={fadeUp}>
+                    {para}
+                  </motion.p>
+                ))}
               </motion.div>
             </motion.div>
-          </motion.div>
+
+            {/* Slideshow controls */}
+            <div className={styles.expertSlideControls}>
+              <button
+                className={styles.expertSlideArrow}
+                onClick={() => setExpertIndex((i) => Math.max(0, i - 1))}
+                disabled={expertIndex === 0}
+                aria-label="Previous expert"
+              >
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M12.5 15l-5-5 5-5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+
+              <div className={styles.expertSlideDots}>
+                {EXPERTS.map((expert, i) => (
+                  <button
+                    key={expert.name}
+                    className={`${styles.expertSlideDot} ${expertIndex === i ? styles.expertSlideDotActive : ''}`}
+                    onClick={() => setExpertIndex(i)}
+                    aria-label={`View ${expert.name}`}
+                  />
+                ))}
+              </div>
+
+              <button
+                className={styles.expertSlideArrow}
+                onClick={() => setExpertIndex((i) => Math.min(EXPERTS.length - 1, i + 1))}
+                disabled={expertIndex === EXPERTS.length - 1}
+                aria-label="Next expert"
+              >
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M7.5 5l5 5-5 5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
         </Container>
       </Section>
 
