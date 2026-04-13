@@ -80,7 +80,7 @@ const NAV: NavItem[] = [
           { label: 'Laser Vaginal Rejuvenation',              href: '/treatments/laser-vaginal' },
           { label: 'IV Drip Therapy',                         href: '/treatments/iv-drip-therapy' },
           { label: 'Deep Laser Resurfacing',                  href: '/treatments/laser-resurfacing' },
-          { label: 'The Body Confidence Package',             href: '/treatments/body-confidence' },
+          { label: 'The Body Confidence Package',             href: '/treatments/the-body-confidence-package' },
           { label: 'Lipoma Removal Leicester',                href: '/treatments/lipoma-removal' },
           { label: 'Liposuction Leicester',                   href: '/treatments/liposuction-leicester' },
           { label: 'Non Surgical Blepharoplasty',             href: '/treatments/blepharoplasty' },
