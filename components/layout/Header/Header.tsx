@@ -65,7 +65,7 @@ const NAV: NavItem[] = [
           { label: 'Skin Analysis – Life Viz 3D Camera',      href: '/treatments/skin-analysis' },
           { label: 'Body Contouring',                         href: '/treatments/body-contouring' },
           { label: 'Endolift Laser',                          href: '/treatments/endolift' },
-          { label: 'Skincare – Alumier MD',                   href: '/treatments/alumier-md' },
+          { label: 'Skincare – Alumier MD',                   href: '/treatments/skincare-alumier-md' },
           { label: 'Skin Lesion Removal Leicester',           href: '/treatments/skin-lesion' },
           { label: 'Wart Removal Leicester',                 href: '/treatments/wart-removal-leicester' },
           { label: 'Acne Scar Removal Leicester',           href: '/treatments/acne-scar-removal-leicester' },
