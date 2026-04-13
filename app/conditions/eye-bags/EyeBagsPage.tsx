@@ -11,9 +11,7 @@ import TrustBadges            from '@/components/ui/TrustBadges';
 import Breadcrumb             from '@/components/ui/Breadcrumb';
 import LeadForm               from '@/components/sections/LeadForm';
 import MeetTheExperts         from '@/components/sections/MeetTheExperts';
-import VideoSection           from '@/components/sections/VideoSection';
 import Testimonials           from '@/components/sections/Testimonials';
-import FinalCTA               from '@/components/sections/FinalCTA';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
 
@@ -379,23 +377,11 @@ export default function EyeBagsPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {/* Image */}
-            <motion.div className={styles.overviewImageWrap} variants={fadeUp}>
-              <Image
-                src="/images/Doctor2.jpg"
-                alt="Under-eye area showing eye bags at The One Clinic Leicester"
-                fill
-                className={styles.overviewImage}
-                sizes="(max-width: 900px) 100vw, 45vw"
-              />
-              <div className={styles.overviewImageFade} aria-hidden="true" />
+            <motion.div className={styles.overviewLabel} variants={fadeUp}>
+              <p className={styles.eyebrowDark}>About This Condition</p>
             </motion.div>
 
-            {/* Text */}
             <div className={styles.overviewBody}>
-              <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-                About This Condition
-              </motion.p>
               <motion.h2 className={styles.overviewHeading} variants={fadeUp}>
                 What are Eye Bags?
               </motion.h2>
@@ -431,30 +417,17 @@ export default function EyeBagsPage() {
           </motion.div>
 
           <motion.div
-            className={styles.typesGrid}
+            className={styles.typesContent}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {/* Image panel */}
-            <motion.div className={styles.typesImageWrap} variants={fadeUp}>
-              <Image
-                src="/images/Doctor1.jpg"
-                alt="Under-eye area illustrating different types of eye bags"
-                fill
-                className={styles.typesImage}
-                sizes="(max-width: 900px) 100vw, 45vw"
-              />
-              <div className={styles.typesImageOverlay} aria-hidden="true" />
-            </motion.div>
+            <motion.p className={styles.typesIntro} variants={fadeUp}>
+              The three main types of under-eye bags are:
+            </motion.p>
 
-            {/* Type cards */}
-            <div className={styles.typesList}>
-              <motion.p className={styles.typesIntro} variants={fadeUp}>
-                The three main types of under-eye bags are:
-              </motion.p>
-
+            <div className={styles.typesCardsRow}>
               {EYE_BAG_TYPES.map((type) => (
                 <motion.div
                   key={type.num}
@@ -478,7 +451,7 @@ export default function EyeBagsPage() {
       {/* ════════════════════════════════════════
           4. EYE BAGS CAUSES
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="light" data-section-theme="light" className={styles.causesSection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -651,18 +624,6 @@ export default function EyeBagsPage() {
                 variants={fadeUp}
                 whileHover={{ y: -4, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
               >
-                {/* Thumbnail */}
-                <div className={styles.treatmentThumb}>
-                  <Image
-                    src={t.image}
-                    alt={`${t.title} before and after result at The One Clinic`}
-                    fill
-                    className={styles.treatmentThumbImg}
-                    sizes="(max-width: 768px) 100vw, 25vw"
-                  />
-                </div>
-
-                {/* Body */}
                 <div className={styles.treatmentCardBody}>
                   <Link href={t.href} className={styles.treatmentTitleLink}>
                     <h3 className={styles.treatmentTitle}>{t.title}</h3>
@@ -782,6 +743,11 @@ export default function EyeBagsPage() {
       <MeetTheExperts />
 
       {/* ════════════════════════════════════════
+          GOOGLE REVIEWS
+      ════════════════════════════════════════ */}
+      <Testimonials />
+
+      {/* ════════════════════════════════════════
           11. WHY CHOOSE THE ONE CLINIC
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
@@ -856,7 +822,23 @@ export default function EyeBagsPage() {
       {/* ════════════════════════════════════════
           13. CONSULTATION CTA
       ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark" className={styles.ctaBand}>
+      <section
+        className={styles.ctaBand}
+        data-section-theme="dark"
+        aria-label="Eye bags consultation CTA"
+      >
+        {/* Background image */}
+        <div className={styles.ctaBandBgWrap} aria-hidden="true">
+          <Image
+            src="/images/Background section image new1.jpg"
+            alt=""
+            fill
+            className={styles.ctaBandBgImg}
+            sizes="100vw"
+          />
+          <div className={styles.ctaBandOverlay} />
+        </div>
+
         <Container>
           <motion.div
             className={styles.ctaContent}
@@ -886,7 +868,7 @@ export default function EyeBagsPage() {
             </motion.div>
           </motion.div>
         </Container>
-      </Section>
+      </section>
 
       {/* ════════════════════════════════════════
           14. COST BANNER
@@ -1015,12 +997,6 @@ export default function EyeBagsPage() {
         </Container>
       </Section>
 
-      {/* ════════════════════════════════════════
-          GLOBAL SECTIONS
-      ════════════════════════════════════════ */}
-      <VideoSection />
-      <Testimonials />
-      <FinalCTA />
     </>
   );
 }
