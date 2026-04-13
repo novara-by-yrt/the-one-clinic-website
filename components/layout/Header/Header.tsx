@@ -68,6 +68,7 @@ const NAV: NavItem[] = [
           { label: 'Skincare – Alumier MD',                   href: '/treatments/skincare-alumier-md' },
           { label: 'Skin Lesion Removal Leicester',           href: '/treatments/skin-lesion' },
           { label: 'BCC Removal Leicester',                  href: '/treatments/basal-cell-carcinoma-bcc-removal-leicester' },
+          { label: 'Skin Tag Removal Leicester',             href: '/treatments/skin-tags-removal-leicester' },
           { label: 'Wart Removal Leicester',                 href: '/treatments/wart-removal-leicester' },
           { label: 'Acne Scar Removal Leicester',           href: '/treatments/acne-scar-removal-leicester' },
           { label: 'Regenerative Medicine – Exosome Therapy', href: '/treatments/regenerative-medicine-exosome-therapy' },
