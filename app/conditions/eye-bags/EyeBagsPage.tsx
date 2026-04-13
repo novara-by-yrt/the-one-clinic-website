@@ -11,9 +11,7 @@ import TrustBadges            from '@/components/ui/TrustBadges';
 import Breadcrumb             from '@/components/ui/Breadcrumb';
 import LeadForm               from '@/components/sections/LeadForm';
 import MeetTheExperts         from '@/components/sections/MeetTheExperts';
-import VideoSection           from '@/components/sections/VideoSection';
 import Testimonials           from '@/components/sections/Testimonials';
-import FinalCTA               from '@/components/sections/FinalCTA';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
 
@@ -40,7 +38,7 @@ const EYE_BAG_TYPES = [
 const CAUSES = [
   {
     title: 'Ageing',
-    desc: 'Tissues and muscles weaken over time, allowing fat pads to shift and skin to sag.',
+    desc: 'Tissues and muscles weaken over time.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -50,7 +48,7 @@ const CAUSES = [
   },
   {
     title: 'Genetics',
-    desc: 'Some people are more prone to under-eye bags due to inherited skin and fat characteristics.',
+    desc: 'Some people are more prone to bags.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M6 3c0 4.5 6 4.5 6 9s-6 4.5-6 9"/>
@@ -62,7 +60,7 @@ const CAUSES = [
   },
   {
     title: 'Lack of Sleep',
-    desc: 'Poor sleep causes fluid to pool under the eyes, making them look puffy and tired.',
+    desc: 'It makes the eyes look puffy and tired.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
@@ -71,7 +69,7 @@ const CAUSES = [
   },
   {
     title: 'Fluid Accumulation',
-    desc: 'Fluid can build up under the eyes, especially after salty meals or in the morning.',
+    desc: 'Especially after salty meals or in the morning.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
@@ -80,7 +78,7 @@ const CAUSES = [
   },
   {
     title: 'Allergies',
-    desc: 'Allergic reactions cause swelling and irritation around the eyes, contributing to puffiness.',
+    desc: 'Swelling and irritation around the eyes.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -91,7 +89,7 @@ const CAUSES = [
   },
   {
     title: 'Lifestyle Factors',
-    desc: 'Stress, smoking, and sun exposure accelerate skin ageing and worsen under-eye appearance.',
+    desc: 'Stress, smoking, and sun exposure.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -106,34 +104,39 @@ const CAUSES = [
 /* ── FAQ data ──────────────────────────────────────────────────── */
 const FAQS = [
   {
-    question: 'What causes eye bags?',
+    question: 'How to get rid of eye bags naturally?',
     answer:
-      'Eye bags develop when the fat pads beneath the eyes shift forward and the skin loses collagen and elasticity with age. Genetics, lack of sleep, fluid retention, UV exposure, and lifestyle factors such as smoking and diet can all accelerate their appearance.',
+      'Eye bags may improve with lifestyle changes such as getting enough sleep, reducing salt intake, staying hydrated, and using cold compresses. While these methods can help temporarily, lasting results are usually achieved with treatments like dermal fillers, Cool Bleph, or laser resurfacing.',
   },
   {
-    question: 'What treatment does The One Clinic recommend for eye bags?',
+    question: 'How to get rid of under-eye bags permanently?',
     answer:
-      'We typically use injectable hyaluronic acid dermal fillers to restore volume in the tear trough area, smoothing the transition between the lower eyelid and the cheek. For milder cases, skin-strengthening treatments can improve skin quality and slow further development.',
+      'Truly permanent removal of eye bags is typically achieved through surgical blepharoplasty, which addresses underlying fat and excess skin. Non-surgical options like dermal fillers or Cool Bleph provide significant long-lasting improvement — often 12 months or more — but results are not permanent and maintenance is recommended.',
   },
   {
-    question: 'Is tear trough filler treatment painful?',
+    question: 'How do I get rid of eye bags that won\'t go away?',
     answer:
-      'A topical anaesthetic cream is applied before treatment to ensure your comfort. Most patients experience minimal discomfort during the procedure. Any mild tenderness, bruising, or swelling typically resolves within a few days.',
+      'Persistent eye bags that don\'t respond to sleep, diet changes, or cold compresses are usually fat-based or caused by skin laxity. For lasting results, treatments like dermal fillers, Cool Bleph, laser resurfacing, or blepharoplasty can reduce puffiness and restore a refreshed look.',
   },
   {
-    question: 'How long do results from eye bag treatment last?',
+    question: 'How to tell if eye bags are fluid or fat?',
     answer:
-      "Results from hyaluronic acid fillers typically last between 12 and 18 months, depending on the individual's metabolism, lifestyle, and the volume of product used. Maintenance treatments can sustain and build on your results over time.",
+      'Fluid-based bags are soft and typically worse in the morning, improving throughout the day. Fat-based bags feel firmer, stay in place regardless of time of day, and do not change with rest or fluid intake. Our specialists can assess your situation and recommend the most appropriate treatment.',
   },
   {
-    question: 'Am I suitable for eye bag treatment?',
+    question: 'What deficiency causes bags under the eyes?',
     answer:
-      'Most healthy adults who are bothered by the appearance of their eye bags are suitable candidates. A thorough assessment is carried out at your consultation to determine the most appropriate approach for your anatomy. Certain medical conditions or medications may affect suitability.',
+      'Eye bags are rarely caused by a nutritional deficiency. Poor sleep, dehydration, or excess salt are far more common contributors. While iron or vitamin K deficiency can affect skin tone around the eyes, they do not directly cause structural puffiness. Treatments like dermal fillers or Cool Bleph address the underlying causes more effectively than supplements.',
   },
   {
-    question: 'How many sessions will I need?',
+    question: 'Can drinking water reduce eye bags?',
     answer:
-      'The majority of patients achieve their desired result in a single session. In some cases a follow-up appointment may be recommended to refine or build on initial results. Your doctor will advise on the most suitable treatment plan at your consultation.',
+      'Staying well hydrated helps reduce fluid retention and mild morning puffiness. However, drinking more water will not remove persistent fat-based or skin-laxity eye bags. Professional treatments are needed for meaningful, lasting results.',
+  },
+  {
+    question: 'What is the best eye puffiness reducer?',
+    answer:
+      'For temporary mild puffiness, cold compresses or caffeine-based eye creams can offer short-term relief. For a visible and lasting improvement, treatments such as dermal fillers, Cool Bleph, laser resurfacing, chemical peels, or blepharoplasty provide the best results depending on the type and severity of your eye bags.',
   },
 ];
 
@@ -160,6 +163,102 @@ const RELATED_CONDITIONS = [
     href:  '/conditions/jowls',
     tag:   'Face',
   },
+];
+
+/* ── Risk factors ─────────────────────────────────────────────── */
+const RISK_FACTORS = [
+  'Older adults.',
+  'People with a family history of eye bags.',
+  'Those who often lack sleep.',
+  'People with allergies.',
+  'Individuals who smoke or consume alcohol.',
+  'Those prone to fluid retention.',
+];
+
+/* ── Diagnose steps ───────────────────────────────────────────── */
+const DIAGNOSE_STEPS = [
+  {
+    num: '01',
+    text: 'Examine the under-eye area to see the type and severity of puffiness.',
+  },
+  {
+    num: '02',
+    text: 'Discuss your medical history, lifestyle, and any concerns you have.',
+  },
+  {
+    num: '03',
+    text: 'Recommend the most suitable treatment options, surgical or non-surgical.',
+  },
+];
+
+/* ── Treatments for eye bags ──────────────────────────────────── */
+const TREATMENTS = [
+  {
+    title:  'Dermal Fillers',
+    desc:   'Restore volume and smooth the under-eye area to reduce under-eye bags.',
+    href:   '/treatments/dermal-fillers',
+    image:  '/images/BA1.jpg',
+  },
+  {
+    title:  'Cool Bleph',
+    desc:   'The laser blepharoplasty strengthens and firms the under-eye skin, reducing sagging.',
+    href:   '/treatments/cool-bleph',
+    image:  '/images/BA2.jpg',
+  },
+  {
+    title:  'Chemical Peel',
+    desc:   'Removes dead skin & refreshes the under-eye skin.',
+    href:   '/treatments/chemical-peel',
+    image:  '/images/BA3.jpg',
+  },
+  {
+    title:  'Polynucleotides',
+    desc:   'Promotes deep skin regeneration and rejuvenation of the under-eye area.',
+    href:   '/treatments/polynucleotides',
+    image:  '/images/BA4.jpg',
+  },
+];
+
+/* ── When to call a doctor ────────────────────────────────────── */
+const WHEN_TO_CALL = [
+  'Sudden or severe swelling.',
+  'Pain, irritation, or redness around the eyes.',
+  'Vision changes or blurred vision.',
+  'Bags accompanied by a rash or other unusual symptoms.',
+];
+
+/* ── Results timeline ─────────────────────────────────────────── */
+const RESULTS_TIMELINE = [
+  {
+    phase: 'Immediate',
+    title: 'Reduced Puffiness',
+    desc:  'Reduced puffiness and smoother under-eye area.',
+  },
+  {
+    phase: '1–2 Weeks',
+    title: 'Firmer Skin',
+    desc:  'Skin feels firmer and more refreshed.',
+  },
+  {
+    phase: '4–8 Weeks',
+    title: 'Full Improvement',
+    desc:  'Full improvement in appearance, natural look.',
+  },
+  {
+    phase: 'Long-term',
+    title: 'Maintained Results',
+    desc:  'Maintain results with proper care and follow-ups.',
+  },
+];
+
+/* ── Why choose The One Clinic ────────────────────────────────── */
+const CLINIC_REASONS = [
+  { n: '01', text: 'All-in-one clinic with medical & aesthetic services.' },
+  { n: '02', text: 'Highly trained, compassionate doctors.' },
+  { n: '03', text: 'Customised treatments based on listening & expertise.' },
+  { n: '04', text: 'State-of-the-art facilities & modern equipment.' },
+  { n: '05', text: 'Strong reputation & excellent reviews.' },
+  { n: '06', text: 'Comprehensive care and referrals with specialists.' },
 ];
 
 /* ════════════════════════════════════════════════════════════════
@@ -292,11 +391,6 @@ export default function EyeBagsPage() {
                 weaken with age. Fat can move downwards, and fluid may build up,
                 making the eyes look tired.
               </motion.p>
-              <motion.p className={styles.overviewPara} variants={fadeUp}>
-                The skin around the eyes is among the thinnest on the body and
-                naturally loses collagen and elasticity over time, making changes
-                in this area one of the earliest signs of ageing.
-              </motion.p>
             </div>
           </motion.div>
         </Container>
@@ -318,35 +412,22 @@ export default function EyeBagsPage() {
               Classification
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Types of Eye Bags
+              Types OF Eye Bags
             </motion.h2>
           </motion.div>
 
           <motion.div
-            className={styles.typesGrid}
+            className={styles.typesContent}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {/* Image panel */}
-            <motion.div className={styles.typesImageWrap} variants={fadeUp}>
-              <Image
-                src="/images/Doctor1.jpg"
-                alt="Under-eye area illustrating different types of eye bags"
-                fill
-                className={styles.typesImage}
-                sizes="(max-width: 900px) 100vw, 45vw"
-              />
-              <div className={styles.typesImageOverlay} aria-hidden="true" />
-            </motion.div>
+            <motion.p className={styles.typesIntro} variants={fadeUp}>
+              The three main types of under-eye bags are:
+            </motion.p>
 
-            {/* Type cards */}
-            <div className={styles.typesList}>
-              <motion.p className={styles.typesIntro} variants={fadeUp}>
-                The three main types of under-eye bags are:
-              </motion.p>
-
+            <div className={styles.typesCardsRow}>
               {EYE_BAG_TYPES.map((type) => (
                 <motion.div
                   key={type.num}
@@ -370,7 +451,7 @@ export default function EyeBagsPage() {
       {/* ════════════════════════════════════════
           4. EYE BAGS CAUSES
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="light" data-section-theme="light" className={styles.causesSection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -418,12 +499,298 @@ export default function EyeBagsPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          5. MEET THE EXPERTS
+          5. WHO IS MORE LIKELY?
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light">
+        <Container>
+          <motion.div
+            className={styles.riskGrid}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {/* Left: heading + intro */}
+            <motion.div className={styles.riskLeft} variants={stagger(0.1)}>
+              <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+                Risk Factors
+              </motion.p>
+              <motion.h2 className={styles.riskHeading} variants={fadeUp}>
+                Who Is More Likely to Develop Bags Under Eyes?
+              </motion.h2>
+              <motion.p className={styles.riskIntro} variants={fadeUp}>
+                The following individuals may be more at risk of developing eye bags.
+              </motion.p>
+            </motion.div>
+
+            {/* Right: checklist */}
+            <motion.ul
+              className={styles.riskList}
+              role="list"
+              variants={stagger(0.08)}
+            >
+              {RISK_FACTORS.map((item) => (
+                <motion.li key={item} className={styles.riskItem} variants={fadeUp}>
+                  <span className={styles.riskCheck} aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          6. HOW DO WE DIAGNOSE?
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Our Process
+            </motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              How Do We Diagnose Eye Bags?
+            </motion.h2>
+            <motion.p className={styles.diagnoseIntro} variants={fadeUp}>
+              Our specialists will:
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.diagnoseGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {DIAGNOSE_STEPS.map((step) => (
+              <motion.div
+                key={step.num}
+                className={styles.diagnoseCard}
+                variants={fadeUp}
+              >
+                <span className={styles.diagnoseNum} aria-hidden="true">
+                  {step.num}
+                </span>
+                <p className={styles.diagnoseText}>{step.text}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          7. TREATMENTS FOR EYE BAGS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Your Options
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Treatments For Bags Under Eyes
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.treatmentsGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {TREATMENTS.map((t) => (
+              <motion.div
+                key={t.title}
+                className={styles.treatmentCard}
+                variants={fadeUp}
+                whileHover={{ y: -4, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
+              >
+                <div className={styles.treatmentCardBody}>
+                  <Link href={t.href} className={styles.treatmentTitleLink}>
+                    <h3 className={styles.treatmentTitle}>{t.title}</h3>
+                    <span className={styles.treatmentArrow} aria-hidden="true">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </span>
+                  </Link>
+                  <p className={styles.treatmentDesc}>{t.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          8. WHEN TO CALL A DOCTOR?
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.whenToCallWrap}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {/* Left: heading */}
+            <motion.div className={styles.whenToCallLeft} variants={stagger(0.1)}>
+              <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+                Medical Advice
+              </motion.p>
+              <motion.h2 className={styles.whenToCallHeading} variants={fadeUp}>
+                When to Call a Doctor?
+              </motion.h2>
+              <motion.p className={styles.whenToCallIntro} variants={fadeUp}>
+                Most under-eye bags are harmless and only affect appearance. See a
+                doctor if you notice:
+              </motion.p>
+            </motion.div>
+
+            {/* Right: warning list */}
+            <motion.ul
+              className={styles.whenToCallList}
+              role="list"
+              variants={stagger(0.08)}
+            >
+              {WHEN_TO_CALL.map((item) => (
+                <motion.li key={item} className={styles.whenToCallItem} variants={fadeUp}>
+                  <span className={styles.whenToCallIcon} aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="8" x2="12" y2="12"/>
+                      <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          9. RESULTS & EXPECTATIONS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              What To Expect
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Results &amp; Expectations
+            </motion.h2>
+            <motion.p className={styles.sectionSubtext} variants={fadeUp}>
+              After treatment for under-eye bags, here is what you can expect at
+              each stage of your recovery.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.resultsGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {RESULTS_TIMELINE.map((item) => (
+              <motion.div
+                key={item.phase}
+                className={styles.resultCard}
+                variants={fadeUp}
+                whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
+              >
+                <span className={styles.resultPhase}>{item.phase}</span>
+                <h3 className={styles.resultTitle}>{item.title}</h3>
+                <p className={styles.resultDesc}>{item.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          10. MEET THE EXPERTS
       ════════════════════════════════════════ */}
       <MeetTheExperts />
 
       {/* ════════════════════════════════════════
-          6. FAQ
+          GOOGLE REVIEWS
+      ════════════════════════════════════════ */}
+      <Testimonials />
+
+      {/* ════════════════════════════════════════
+          11. WHY CHOOSE THE ONE CLINIC
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Why Us
+            </motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Why Choose The One Clinic For Eye Bags Treatment
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.whyGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {CLINIC_REASONS.map((r) => (
+              <motion.div
+                key={r.n}
+                className={styles.whyCard}
+                variants={fadeUp}
+                whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
+              >
+                <span className={styles.whyNumber}>{r.n}</span>
+                <p className={styles.whyText}>{r.text}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          12. FAQ
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -453,9 +820,25 @@ export default function EyeBagsPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          7. CONSULTATION CTA
+          13. CONSULTATION CTA
       ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark" className={styles.ctaBand}>
+      <section
+        className={styles.ctaBand}
+        data-section-theme="dark"
+        aria-label="Eye bags consultation CTA"
+      >
+        {/* Background image */}
+        <div className={styles.ctaBandBgWrap} aria-hidden="true">
+          <Image
+            src="/images/Background section image new1.jpg"
+            alt=""
+            fill
+            className={styles.ctaBandBgImg}
+            sizes="100vw"
+          />
+          <div className={styles.ctaBandOverlay} />
+        </div>
+
         <Container>
           <motion.div
             className={styles.ctaContent}
@@ -468,16 +851,16 @@ export default function EyeBagsPage() {
               Take the First Step
             </motion.p>
             <motion.h2 className={styles.ctaHeading} variants={fadeUp}>
-              Book your consultation and explore{' '}
-              <em className={styles.ctaAccent}>personalised treatment options.</em>
+              It&apos;s Time To Get Rid Of{' '}
+              <em className={styles.ctaAccent}>Eye Bags!</em>
             </motion.h2>
             <motion.p className={styles.ctaSubtext} variants={fadeUp}>
-              Our team will assess your concerns and recommend the most suitable
-              approach for a natural, refreshed result.
+              Talk to our specialists today to find the best treatment for your
+              eyes and restore a refreshed, youthful look.
             </motion.p>
             <motion.div className={styles.ctaBtns} variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBtnPrimary}>
-                Book A Consultation
+                Book a Consultation
               </BookConsultationButton>
               <Link href="#contact" className={styles.ctaBtnSecondary}>
                 Contact Us
@@ -485,7 +868,41 @@ export default function EyeBagsPage() {
             </motion.div>
           </motion.div>
         </Container>
-      </Section>
+      </section>
+
+      {/* ════════════════════════════════════════
+          14. COST BANNER
+      ════════════════════════════════════════ */}
+      <section
+        className={styles.costBand}
+        data-section-theme="dark"
+        aria-label="Eye bags treatment cost"
+      >
+        <Container>
+          <motion.div
+            className={styles.costBandInner}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.costBandEyebrow} variants={fadeUp}>
+              Pricing
+            </motion.p>
+            <motion.h2 className={styles.costBandHeading} variants={fadeUp}>
+              Eye Bags Treatment Cost
+            </motion.h2>
+            <motion.p className={styles.costBandNote} variants={fadeUp}>
+              Contact us to enquire
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={styles.ctaBtnPrimary}>
+                Book A Consultation
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
 
       {/* ════════════════════════════════════════
           8. LEAD FORM
@@ -580,12 +997,6 @@ export default function EyeBagsPage() {
         </Container>
       </Section>
 
-      {/* ════════════════════════════════════════
-          GLOBAL SECTIONS
-      ════════════════════════════════════════ */}
-      <VideoSection />
-      <Testimonials />
-      <FinalCTA />
     </>
   );
 }
