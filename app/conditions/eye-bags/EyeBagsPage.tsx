@@ -248,6 +248,16 @@ const RESULTS_TIMELINE = [
   },
 ];
 
+/* ── Why choose The One Clinic ────────────────────────────────── */
+const CLINIC_REASONS = [
+  { n: '01', text: 'All-in-one clinic with medical & aesthetic services.' },
+  { n: '02', text: 'Highly trained, compassionate doctors.' },
+  { n: '03', text: 'Customised treatments based on listening & expertise.' },
+  { n: '04', text: 'State-of-the-art facilities & modern equipment.' },
+  { n: '05', text: 'Strong reputation & excellent reviews.' },
+  { n: '06', text: 'Comprehensive care and referrals with specialists.' },
+];
+
 /* ════════════════════════════════════════════════════════════════
    PAGE
 ════════════════════════════════════════════════════════════════ */
@@ -767,7 +777,49 @@ export default function EyeBagsPage() {
       <MeetTheExperts />
 
       {/* ════════════════════════════════════════
-          6. FAQ
+          11. WHY CHOOSE THE ONE CLINIC
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Why Us
+            </motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Why Choose The One Clinic For Eye Bags Treatment
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.whyGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {CLINIC_REASONS.map((r) => (
+              <motion.div
+                key={r.n}
+                className={styles.whyCard}
+                variants={fadeUp}
+                whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
+              >
+                <span className={styles.whyNumber}>{r.n}</span>
+                <p className={styles.whyText}>{r.text}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          12. FAQ
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -797,7 +849,7 @@ export default function EyeBagsPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          7. CONSULTATION CTA
+          13. CONSULTATION CTA
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark" className={styles.ctaBand}>
         <Container>
@@ -812,16 +864,16 @@ export default function EyeBagsPage() {
               Take the First Step
             </motion.p>
             <motion.h2 className={styles.ctaHeading} variants={fadeUp}>
-              Book your consultation and explore{' '}
-              <em className={styles.ctaAccent}>personalised treatment options.</em>
+              It&apos;s Time To Get Rid Of{' '}
+              <em className={styles.ctaAccent}>Eye Bags!</em>
             </motion.h2>
             <motion.p className={styles.ctaSubtext} variants={fadeUp}>
-              Our team will assess your concerns and recommend the most suitable
-              approach for a natural, refreshed result.
+              Talk to our specialists today to find the best treatment for your
+              eyes and restore a refreshed, youthful look.
             </motion.p>
             <motion.div className={styles.ctaBtns} variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBtnPrimary}>
-                Book A Consultation
+                Book a Consultation
               </BookConsultationButton>
               <Link href="#contact" className={styles.ctaBtnSecondary}>
                 Contact Us
@@ -830,6 +882,40 @@ export default function EyeBagsPage() {
           </motion.div>
         </Container>
       </Section>
+
+      {/* ════════════════════════════════════════
+          14. COST BANNER
+      ════════════════════════════════════════ */}
+      <section
+        className={styles.costBand}
+        data-section-theme="dark"
+        aria-label="Eye bags treatment cost"
+      >
+        <Container>
+          <motion.div
+            className={styles.costBandInner}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.costBandEyebrow} variants={fadeUp}>
+              Pricing
+            </motion.p>
+            <motion.h2 className={styles.costBandHeading} variants={fadeUp}>
+              Eye Bags Treatment Cost
+            </motion.h2>
+            <motion.p className={styles.costBandNote} variants={fadeUp}>
+              Contact us to enquire
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={styles.ctaBtnPrimary}>
+                Book A Consultation
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
 
       {/* ════════════════════════════════════════
           8. LEAD FORM

@@ -920,6 +920,142 @@
 }
 
 /* ════════════════════════════════════════════════════
+   WHY CHOOSE THE ONE CLINIC
+════════════════════════════════════════════════════ */
+.whyGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+.whyCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5) var(--space-4);
+  background: rgba(255 255 255 / 0.04);
+  border: 1px solid rgba(255 255 255 / 0.1);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* Left accent bar */
+.whyCard::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 24px;
+  bottom: 24px;
+  width: 2px;
+  border-radius: 0 2px 2px 0;
+  background: rgba(255 255 255 / 0.1);
+  transition: background 0.35s ease, top 0.35s ease, bottom 0.35s ease;
+}
+
+.whyCard:hover {
+  background: rgba(255 255 255 / 0.08);
+  border-color: rgba(255 255 255 / 0.2);
+  box-shadow: 0 20px 56px rgba(0 0 0 / 0.38);
+}
+
+.whyCard:hover::after {
+  background: rgba(255 255 255 / 0.55);
+  top: 14px;
+  bottom: 14px;
+}
+
+.whyNumber {
+  font-size: 2.75rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: rgba(255 255 255 / 0.08);
+  margin-bottom: var(--space-2);
+  transition: color 0.35s ease;
+}
+
+.whyCard:hover .whyNumber {
+  color: rgba(255 255 255 / 0.18);
+}
+
+.whyText {
+  font-size: 0.9375rem;
+  font-weight: var(--fw-medium);
+  color: rgba(255 255 255 / 0.72);
+  line-height: 1.6;
+  margin: 0;
+  transition: color 0.35s ease;
+}
+
+.whyCard:hover .whyText {
+  color: rgba(255 255 255 / 0.92);
+}
+
+/* ════════════════════════════════════════════════════
+   COST BAND
+════════════════════════════════════════════════════ */
+.costBand {
+  position: relative;
+  background-color: #050505;
+  background-image: url('/images/Background%20image2.jpg');
+  background-size: cover;
+  background-position: center;
+  padding-block: clamp(var(--space-7), 8vw, 96px);
+  overflow: hidden;
+}
+
+/* Dark overlay */
+.costBand::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.76);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.costBandInner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4);
+}
+
+.costBandEyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255 255 255 / 0.35);
+  margin: 0;
+}
+
+.costBandHeading {
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: #fff;
+  margin: 0;
+}
+
+.costBandNote {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: rgba(255 255 255 / 0.52);
+  max-width: 480px;
+  margin: 0;
+}
+
+/* ════════════════════════════════════════════════════
    RESULTS & EXPECTATIONS
 ════════════════════════════════════════════════════ */
 .resultsGrid {
@@ -1042,6 +1178,7 @@
   .treatmentsGrid  { grid-template-columns: 1fr; }
   .whenToCallWrap  { grid-template-columns: 1fr; gap: var(--space-5); }
   .resultsGrid     { grid-template-columns: repeat(2, 1fr); }
+  .whyGrid         { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
@@ -1077,6 +1214,7 @@
   .causesGrid   { grid-template-columns: 1fr; }
   .relatedGrid  { grid-template-columns: 1fr; }
   .resultsGrid  { grid-template-columns: 1fr; }
+  .whyGrid      { grid-template-columns: 1fr; }
 
   .treatmentCard {
     flex-direction: column;
