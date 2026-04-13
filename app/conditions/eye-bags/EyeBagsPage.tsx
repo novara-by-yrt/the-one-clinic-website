@@ -1,20 +1,107 @@
 'use client';
 
-import Link from 'next/link';
+import Image from 'next/image';
+import Link  from 'next/link';
 import { motion } from 'framer-motion';
-import Section           from '@/components/ui/Section';
-import Container         from '@/components/ui/Container';
-import BookConsultationButton from '@/components/ui/BookConsultationButton';
-import Breadcrumb             from '@/components/ui/Breadcrumb';
-import TrustBadges            from '@/components/ui/TrustBadges';
+import Section                from '@/components/ui/Section';
+import Container              from '@/components/ui/Container';
 import Accordion              from '@/components/ui/Accordion';
-import MeetTheExperts    from '@/components/sections/MeetTheExperts';
-import LeadForm          from '@/components/sections/LeadForm';
-import VideoSection      from '@/components/sections/VideoSection';
-import Testimonials      from '@/components/sections/Testimonials';
-import FinalCTA          from '@/components/sections/FinalCTA';
+import BookConsultationButton from '@/components/ui/BookConsultationButton';
+import TrustBadges            from '@/components/ui/TrustBadges';
+import Breadcrumb             from '@/components/ui/Breadcrumb';
+import LeadForm               from '@/components/sections/LeadForm';
+import MeetTheExperts         from '@/components/sections/MeetTheExperts';
+import VideoSection           from '@/components/sections/VideoSection';
+import Testimonials           from '@/components/sections/Testimonials';
+import FinalCTA               from '@/components/sections/FinalCTA';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
+
+/* ── Eye bag types ────────────────────────────────────────────── */
+const EYE_BAG_TYPES = [
+  {
+    num: '01',
+    title: 'Fluid-Based',
+    desc: 'Soft, puffy under the eyes that can change in size during the day.',
+  },
+  {
+    num: '02',
+    title: 'Fat-Based',
+    desc: 'Fuller, rounded bags that create a noticeable bulge under the eyes.',
+  },
+  {
+    num: '03',
+    title: 'Hollows / Sagging Skin',
+    desc: 'Sunken or droopy appearance that creates shadows, making the eyes look tired.',
+  },
+];
+
+/* ── Causes ───────────────────────────────────────────────────── */
+const CAUSES = [
+  {
+    title: 'Ageing',
+    desc: 'Tissues and muscles weaken over time, allowing fat pads to shift and skin to sag.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Genetics',
+    desc: 'Some people are more prone to under-eye bags due to inherited skin and fat characteristics.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M6 3c0 4.5 6 4.5 6 9s-6 4.5-6 9"/>
+        <path d="M18 3c0 4.5-6 4.5-6 9s6 4.5 6 9"/>
+        <line x1="3" y1="9" x2="21" y2="9"/>
+        <line x1="3" y1="15" x2="21" y2="15"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Lack of Sleep',
+    desc: 'Poor sleep causes fluid to pool under the eyes, making them look puffy and tired.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Fluid Accumulation',
+    desc: 'Fluid can build up under the eyes, especially after salty meals or in the morning.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Allergies',
+    desc: 'Allergic reactions cause swelling and irritation around the eyes, contributing to puffiness.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="12" y1="8" x2="12" y2="12"/>
+        <line x1="12" y1="16" x2="12.01" y2="16"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Lifestyle Factors',
+    desc: 'Stress, smoking, and sun exposure accelerate skin ageing and worsen under-eye appearance.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+      </svg>
+    ),
+  },
+];
 
 /* ── FAQ data ──────────────────────────────────────────────────── */
 const FAQS = [
@@ -36,7 +123,7 @@ const FAQS = [
   {
     question: 'How long do results from eye bag treatment last?',
     answer:
-      'Results from hyaluronic acid fillers typically last between 12 and 18 months, depending on the individual\'s metabolism, lifestyle, and the volume of product used. Maintenance treatments can sustain and build on your results over time.',
+      "Results from hyaluronic acid fillers typically last between 12 and 18 months, depending on the individual's metabolism, lifestyle, and the volume of product used. Maintenance treatments can sustain and build on your results over time.",
   },
   {
     question: 'Am I suitable for eye bag treatment?',
@@ -67,9 +154,17 @@ const RELATED_CONDITIONS = [
     href:  '/conditions/thin-lips',
     tag:   'Face',
   },
+  {
+    title: 'Jowls / Sagging Skin',
+    desc:  'Lift and tighten sagging skin around the jawline and lower face.',
+    href:  '/conditions/jowls',
+    tag:   'Face',
+  },
 ];
 
-/* ── Page ──────────────────────────────────────────────────────── */
+/* ════════════════════════════════════════════════════════════════
+   PAGE
+════════════════════════════════════════════════════════════════ */
 export default function EyeBagsPage() {
   return (
     <>
@@ -78,12 +173,10 @@ export default function EyeBagsPage() {
       ════════════════════════════════════════ */}
       <section
         className={styles.hero}
-        aria-label="Eye Bags – hero"
+        aria-label="Eye Bags, hero"
         data-section-theme="dark"
       >
-        <div className={styles.heroGrid} aria-hidden="true" />
-
-        {/* Breadcrumb — pinned to top of hero */}
+        {/* Breadcrumb — pinned below fixed header */}
         <div className={styles.heroBreadcrumb}>
           <Container>
             <Breadcrumb
@@ -98,12 +191,12 @@ export default function EyeBagsPage() {
 
         <Container>
           <motion.div
-            className={styles.heroContent}
-            variants={stagger(0.15)}
+            className={styles.heroInner}
+            variants={stagger(0.12)}
             initial="hidden"
             animate="show"
           >
-            {/* ── Left column ─────────────────────────────── */}
+            {/* Left: text content */}
             <div className={styles.heroLeft}>
               <motion.span className={styles.heroCategory} variants={fadeUp}>
                 Conditions · Face
@@ -114,19 +207,17 @@ export default function EyeBagsPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Restore a refreshed, youthful appearance around the eyes
+                Get rid of eye bags for a smooth &amp; refreshed look with
+                treatments just for you.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
                 <BookConsultationButton className={styles.heroCtaPrimary}>
-                  Book Consultation
+                  Book A Consultation
                 </BookConsultationButton>
-                <Link href="#contact" className={styles.heroCtaSecondary}>
-                  Contact Us
-                </Link>
               </motion.div>
 
-              {/* Review badges */}
+              {/* Trust badges */}
               <motion.div variants={fadeUp}>
                 <TrustBadges theme="dark" />
               </motion.div>
@@ -158,12 +249,25 @@ export default function EyeBagsPage() {
                 </span>
               </motion.div>
             </div>
+
+            {/* Right: hero image */}
+            <motion.div className={styles.heroImageWrap} variants={fadeUp}>
+              <Image
+                src="/images/Doctor2.jpg"
+                alt="Close-up of under-eye area showing eye bags, treated at The One Clinic Leicester"
+                fill
+                className={styles.heroImage}
+                sizes="(max-width: 900px) 100vw, 50vw"
+                priority
+              />
+              <div className={styles.heroImageFade} aria-hidden="true" />
+            </motion.div>
           </motion.div>
         </Container>
       </section>
 
       {/* ════════════════════════════════════════
-          2. UNDERSTANDING EYE BAGS
+          2. WHAT ARE EYE BAGS?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
@@ -177,19 +281,21 @@ export default function EyeBagsPage() {
             <motion.div className={styles.overviewLabel} variants={fadeUp}>
               <p className={styles.eyebrowDark}>About This Condition</p>
             </motion.div>
+
             <div className={styles.overviewBody}>
               <motion.h2 className={styles.overviewHeading} variants={fadeUp}>
-                Understanding Eye Bags
+                What are Eye Bags?
               </motion.h2>
               <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Eye bags are a common concern that develops with age, often creating a tired
-                appearance. They occur when fat pads beneath the eyes begin to shift, causing a
-                puffy or sagging look in the under-eye area.
+                Under-eye bags are mild puffiness or swelling under the eyes.
+                They appear when the muscles and tissues supporting the eyelids
+                weaken with age. Fat can move downwards, and fluid may build up,
+                making the eyes look tired.
               </motion.p>
               <motion.p className={styles.overviewPara} variants={fadeUp}>
-                The skin around the eyes is delicate and naturally loses collagen over time,
-                reducing firmness and elasticity. This process varies depending on genetics,
-                lifestyle, and environmental factors.
+                The skin around the eyes is among the thinnest on the body and
+                naturally loses collagen and elasticity over time, making changes
+                in this area one of the earliest signs of ageing.
               </motion.p>
             </div>
           </motion.div>
@@ -197,7 +303,7 @@ export default function EyeBagsPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          3. OPTIONS TO TREAT
+          3. TYPES OF EYE BAGS
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -209,42 +315,60 @@ export default function EyeBagsPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Treatment Options
+              Classification
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Options to Treat Eye Bags
+              Types of Eye Bags
             </motion.h2>
           </motion.div>
 
           <motion.div
-            className={styles.treatGrid}
+            className={styles.typesGrid}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div className={styles.treatCard} variants={fadeUp}>
-              <span className={styles.treatNum} aria-hidden="true">01</span>
-              <p className={styles.treatText}>
-                While creams and topical products may offer minimal improvement, cosmetic
-                treatments provide more effective and longer-lasting results for those seeking
-                a meaningful change.
-              </p>
+            {/* Image panel */}
+            <motion.div className={styles.typesImageWrap} variants={fadeUp}>
+              <Image
+                src="/images/Doctor1.jpg"
+                alt="Under-eye area illustrating different types of eye bags"
+                fill
+                className={styles.typesImage}
+                sizes="(max-width: 900px) 100vw, 45vw"
+              />
+              <div className={styles.typesImageOverlay} aria-hidden="true" />
             </motion.div>
-            <motion.div className={styles.treatCard} variants={fadeUp}>
-              <span className={styles.treatNum} aria-hidden="true">02</span>
-              <p className={styles.treatText}>
-                At The One Clinic, injectable hyaluronic acid dermal fillers are used to restore
-                volume and smooth the under-eye area. In mild cases, skin-strengthening treatments
-                may be used to improve skin quality and slow progression.
-              </p>
-            </motion.div>
+
+            {/* Type cards */}
+            <div className={styles.typesList}>
+              <motion.p className={styles.typesIntro} variants={fadeUp}>
+                The three main types of under-eye bags are:
+              </motion.p>
+
+              {EYE_BAG_TYPES.map((type) => (
+                <motion.div
+                  key={type.num}
+                  className={styles.typeCard}
+                  variants={fadeUp}
+                >
+                  <span className={styles.typeNum} aria-hidden="true">
+                    {type.num}
+                  </span>
+                  <div className={styles.typeCardBody}>
+                    <h3 className={styles.typeTitle}>{type.title}</h3>
+                    <p className={styles.typeDesc}>{type.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          3. WHAT TO KNOW
+          4. EYE BAGS CAUSES
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
@@ -256,46 +380,50 @@ export default function EyeBagsPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-              Key Information
+              Root Causes
             </motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              What to Know About Eye Bags
+              Eye Bags Causes
             </motion.h2>
+            <motion.p className={styles.sectionSubtext} variants={fadeUp}>
+              Understanding what contributes to under-eye bags helps identify
+              the right treatment approach for long-lasting results.
+            </motion.p>
           </motion.div>
 
           <motion.div
-            className={styles.knowLayout}
-            variants={stagger(0.1)}
+            className={styles.causesGrid}
+            variants={stagger(0.08)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.knowIntro} variants={fadeUp}>
-              Eye bags are a natural part of ageing but can be significantly improved with the
-              right treatment approach. Early intervention can help maintain skin quality and
-              prevent further development.
-            </motion.p>
-
-            <motion.div className={styles.knowCard} variants={fadeUp}>
-              <h3 className={styles.knowH3}>Is Eye Bags Curable?</h3>
-              <p className={styles.knowPara}>
-                Eye bags cannot be permanently cured, but their appearance can be effectively
-                reduced and managed with appropriate treatments. With the right approach,
-                most patients achieve a noticeably refreshed and rested appearance that can
-                be maintained over time.
-              </p>
-            </motion.div>
+            {CAUSES.map((cause) => (
+              <motion.div
+                key={cause.title}
+                className={styles.causeCard}
+                variants={fadeUp}
+                whileHover={{
+                  y: -6,
+                  transition: { type: 'spring', stiffness: 280, damping: 18 },
+                }}
+              >
+                <span className={styles.causeIcon}>{cause.icon}</span>
+                <h3 className={styles.causeTitle}>{cause.title}</h3>
+                <p className={styles.causeDesc}>{cause.desc}</p>
+              </motion.div>
+            ))}
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          4. MEET THE EXPERTS
+          5. MEET THE EXPERTS
       ════════════════════════════════════════ */}
       <MeetTheExperts />
 
       {/* ════════════════════════════════════════
-          5. FAQ
+          6. FAQ
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -325,7 +453,7 @@ export default function EyeBagsPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          6. CONSULTATION CTA
+          7. CONSULTATION CTA
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark" className={styles.ctaBand}>
         <Container>
@@ -340,16 +468,16 @@ export default function EyeBagsPage() {
               Take the First Step
             </motion.p>
             <motion.h2 className={styles.ctaHeading} variants={fadeUp}>
-              Book your consultation today and explore{' '}
+              Book your consultation and explore{' '}
               <em className={styles.ctaAccent}>personalised treatment options.</em>
             </motion.h2>
             <motion.p className={styles.ctaSubtext} variants={fadeUp}>
-              Our team of experts will assess your concerns and recommend the most suitable
+              Our team will assess your concerns and recommend the most suitable
               approach for a natural, refreshed result.
             </motion.p>
             <motion.div className={styles.ctaBtns} variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBtnPrimary}>
-                Book Consultation
+                Book A Consultation
               </BookConsultationButton>
               <Link href="#contact" className={styles.ctaBtnSecondary}>
                 Contact Us
@@ -360,14 +488,14 @@ export default function EyeBagsPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          6. FORM
+          8. LEAD FORM
       ════════════════════════════════════════ */}
       <div id="contact">
         <LeadForm />
       </div>
 
       {/* ════════════════════════════════════════
-          7. RELATED TREATMENTS
+          9. RELATED TREATMENTS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
@@ -410,7 +538,7 @@ export default function EyeBagsPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. RELATED CONDITIONS
+          10. RELATED CONDITIONS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.relatedConditionsSection}>
         <Container>

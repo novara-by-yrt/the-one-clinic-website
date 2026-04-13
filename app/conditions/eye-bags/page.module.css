@@ -1,32 +1,17 @@
 /* ════════════════════════════════════════════════════
-   HERO
+   HERO  (two-column, matches Endolift design)
 ════════════════════════════════════════════════════ */
 .hero {
   position: relative;
-  min-height: 72vh;
-  background-color: var(--color-bg-dark);
-  background-image: url('/images/Treatment%20hero%20section%20background%20image.jpg');
-  background-size: cover;
-  background-position: center;
+  background-color: #090909;
   display: flex;
   align-items: center;
   overflow: hidden;
+  overflow-x: hidden;
   padding-top: 80px;
 }
 
-.heroGrid {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.55) 0%,
-    rgba(0, 0, 0, 0.30) 55%,
-    rgba(0, 0, 0, 0.10) 100%
-  );
-  pointer-events: none;
-}
-
-/* Breadcrumb strip — sits just below the fixed header */
+/* Breadcrumb strip — sits just below fixed header */
 .heroBreadcrumb {
   position: absolute;
   top: 88px;
@@ -35,18 +20,52 @@
   z-index: 2;
 }
 
-.heroContent {
-  position: relative;
-  z-index: 1;
-  max-width: 680px;
-  padding-block: var(--space-8);
+/* Two-column grid */
+.heroInner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--space-5), 5vw, 72px);
+  align-items: center;
+  padding-top: clamp(64px, 7vw, 100px);
+  padding-bottom: clamp(64px, 7vw, 100px);
+}
+
+/* Left: text */
+.heroLeft {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
+  position: relative;
+  z-index: 1;
+  min-width: 0;
 }
 
-.heroLeft {
-  display: contents;
+/* Right: image */
+.heroImageWrap {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  align-self: stretch;
+  min-height: 480px;
+  box-shadow:
+    0 0 0 1px rgba(255 255 255 / 0.07),
+    0 40px 80px rgba(0 0 0 / 0.6);
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.heroImageFade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 55%,
+    rgba(9, 9, 9, 0.5) 100%
+  );
+  pointer-events: none;
 }
 
 .heroCategory {
@@ -55,11 +74,11 @@
   font-weight: var(--fw-medium);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255 255 255 / 0.42);
+  color: rgba(255 255 255 / 0.4);
 }
 
 .heroTitle {
-  font-size: clamp(2.5rem, 6vw, 4.25rem);
+  font-size: clamp(2.25rem, 5.5vw, 4rem);
   font-weight: var(--fw-bold);
   line-height: var(--lh-tight);
   letter-spacing: -0.03em;
@@ -70,8 +89,8 @@
 .heroDesc {
   font-size: clamp(1rem, 2vw, 1.2rem);
   line-height: 1.65;
-  color: rgba(255 255 255 / 0.62);
-  max-width: 460px;
+  color: rgba(255 255 255 / 0.6);
+  max-width: 500px;
 }
 
 .heroCtas {
@@ -86,109 +105,31 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 32px;
-  background: var(--color-white);
-  color: var(--color-text-dark);
-  font-size: var(--text-small);
-  font-weight: var(--fw-medium);
+  gap: 10px;
+  padding: 13px 36px;
+  background: #fff;
+  color: #000;
+  font-size: 0.9375rem;
+  font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  border-radius: var(--radius-sm);
-  border: none;
-  cursor: pointer;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  border-radius: 20px;
+  box-shadow: 0 2px 16px rgb(255 255 255 / 0.15);
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .heroCtaPrimary:hover {
-  opacity: 0.9;
-  transform: scale(1.02);
+  background: #e8e8e8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 24px rgb(255 255 255 / 0.2);
 }
 
-.heroCtaSecondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 28px;
-  background: transparent;
-  color: var(--color-text-light);
-  font-size: var(--text-small);
-  font-weight: var(--fw-medium);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(255 255 255 / 0.35);
-  text-decoration: none;
-  backdrop-filter: blur(4px);
-  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
-}
-
-.heroCtaSecondary:hover {
-  border-color: rgba(255 255 255 / 0.8);
-  background: rgba(255 255 255 / 0.07);
-  transform: scale(1.02);
-}
-
-/* ── Review badges ───────────────────────────────────────── */
-.reviewBadges {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.reviewBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(255 255 255 / 0.10);
-  border: 1px solid rgba(255 255 255 / 0.2);
-  border-radius: 100px;
-  padding: 7px 14px 7px 7px;
-  backdrop-filter: blur(8px);
-}
-
-.reviewBadgeIcon {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 0.8125rem;
-  flex-shrink: 0;
-  line-height: 1;
-}
-
-.reviewBadgeGoogle    { background: #fff;     color: #4285F4; }
-.reviewBadgeTrustpilot { background: #00B67A; color: #fff; }
-
-.reviewBadgeText {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.reviewStars {
-  color: #FFB800;
-  font-size: 0.625rem;
-  letter-spacing: 1px;
-  line-height: 1;
-}
-
-.reviewLabel {
-  font-size: 0.6875rem;
-  font-weight: 600;
-  color: rgba(255 255 255 / 0.78);
-  letter-spacing: 0.05em;
-  line-height: 1;
-}
-
-/* ── Trust items ─────────────────────────────────────────── */
 .heroTrust {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 10px 0;
+  padding-top: var(--space-2);
 }
 
 .heroTrustItem {
@@ -197,7 +138,8 @@
   gap: 7px;
   font-size: 0.8125rem;
   font-weight: 500;
-  color: rgba(255 255 255 / 0.72);
+  color: rgba(255 255 255 / 0.75);
+  letter-spacing: 0.01em;
 }
 
 .heroTrustDivider {
@@ -206,78 +148,6 @@
   background: rgba(255 255 255 / 0.25);
   margin: 0 14px;
   flex-shrink: 0;
-}
-
-/* ── Right card ──────────────────────────────────────────── */
-.heroCard {
-  background: rgba(255 255 255 / 0.96);
-  border-radius: 20px;
-  padding: var(--space-5);
-  box-shadow: 0 16px 56px rgba(0 0 0 / 0.28);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.heroCardEyebrow {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin: 0;
-}
-
-.heroCardHeading {
-  font-size: clamp(1.25rem, 2.2vw, 1.625rem);
-  font-weight: var(--fw-bold);
-  letter-spacing: -0.02em;
-  color: var(--color-text-dark);
-  line-height: 1.2;
-  margin: 0 0 4px;
-}
-
-.heroCardPara {
-  font-size: 0.9375rem;
-  line-height: 1.72;
-  color: var(--color-text-muted);
-  margin: 0;
-}
-
-/* ════════════════════════════════════════════════════
-   OVERVIEW (Understanding Eye Bags)
-════════════════════════════════════════════════════ */
-.overviewGrid {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: var(--space-6);
-  align-items: start;
-}
-
-.overviewLabel {
-  padding-top: 6px;
-}
-
-.overviewBody {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-}
-
-.overviewHeading {
-  font-size: clamp(1.5rem, 3vw, var(--text-h2));
-  font-weight: var(--fw-bold);
-  letter-spacing: -0.02em;
-  color: var(--color-text-dark);
-  line-height: var(--lh-tight);
-  margin: 0;
-}
-
-.overviewPara {
-  font-size: var(--text-body);
-  line-height: 1.75;
-  color: var(--color-text-muted);
-  margin: 0;
 }
 
 /* ════════════════════════════════════════════════════
@@ -329,111 +199,227 @@
   margin-bottom: var(--space-5);
 }
 
-/* ════════════════════════════════════════════════════
-   FAQ
-════════════════════════════════════════════════════ */
-.faqBody {
-  max-width: 740px;
-  margin: 0 auto;
+.sectionSubtext {
+  font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  max-width: 560px;
+  text-align: center;
+  margin: 0;
 }
 
 /* ════════════════════════════════════════════════════
-   OPTIONS TO TREAT
+   OVERVIEW  (What are Eye Bags?)
 ════════════════════════════════════════════════════ */
-.treatGrid {
+.overviewGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-4);
+  grid-template-columns: 200px 1fr;
+  gap: var(--space-6);
+  align-items: start;
 }
 
-.treatCard {
+.overviewLabel {
+  padding-top: 6px;
+}
+
+.overviewBody {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
-  padding: var(--space-5);
+}
+
+.overviewHeading {
+  font-size: clamp(1.5rem, 3vw, var(--text-h2));
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+  color: var(--color-text-dark);
+  line-height: var(--lh-tight);
+  margin: 0;
+}
+
+.overviewPara {
+  font-size: var(--text-body);
+  line-height: 1.75;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* ════════════════════════════════════════════════════
+   TYPES OF EYE BAGS
+════════════════════════════════════════════════════ */
+.typesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--space-4), 5vw, var(--space-7));
+  align-items: start;
+}
+
+/* Image panel */
+.typesImageWrap {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  box-shadow:
+    0 0 0 1px rgba(255 255 255 / 0.06),
+    0 24px 64px rgba(0 0 0 / 0.5);
+}
+
+.typesImage {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.typesImageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 0, 0, 0.45) 100%
+  );
+  pointer-events: none;
+}
+
+/* Types list */
+.typesList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-top: var(--space-1);
+}
+
+.typesIntro {
+  font-size: clamp(0.9375rem, 1.6vw, 1.0625rem);
+  line-height: 1.7;
+  color: rgba(255 255 255 / 0.5);
+  margin: 0 0 var(--space-2);
+}
+
+/* Individual type card */
+.typeCard {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
   background: rgba(255 255 255 / 0.05);
-  border: 1px solid rgba(255 255 255 / 0.10);
-  border-radius: 16px;
+  border: 1px solid rgba(255 255 255 / 0.09);
+  border-radius: 14px;
   position: relative;
   overflow: hidden;
   transition: background 0.25s ease, border-color 0.25s ease;
 }
 
-.treatCard::before {
+/* Subtle top shimmer */
+.typeCard::before {
   content: '';
   position: absolute;
   top: 0; left: 16px; right: 16px; height: 1px;
   background: linear-gradient(
     to right,
     transparent,
-    rgba(255 255 255 / 0.3) 40%,
-    rgba(255 255 255 / 0.3) 60%,
+    rgba(255 255 255 / 0.2) 40%,
+    rgba(255 255 255 / 0.2) 60%,
     transparent
   );
 }
 
-.treatCard:hover {
+.typeCard:hover {
   background: rgba(255 255 255 / 0.08);
-  border-color: rgba(255 255 255 / 0.18);
+  border-color: rgba(255 255 255 / 0.15);
 }
 
-.treatNum {
+.typeNum {
   font-size: 0.625rem;
   font-weight: 800;
   letter-spacing: 0.15em;
-  color: rgba(255 255 255 / 0.28);
-  display: block;
+  color: rgba(255 255 255 / 0.25);
+  flex-shrink: 0;
+  padding-top: 3px;
 }
 
-.treatText {
-  font-size: var(--text-body);
-  line-height: 1.75;
-  color: rgba(255 255 255 / 0.72);
-  margin: 0;
-}
-
-/* ════════════════════════════════════════════════════
-   WHAT TO KNOW
-════════════════════════════════════════════════════ */
-.knowLayout {
+.typeCardBody {
   display: flex;
   flex-direction: column;
-  gap: var(--space-5);
-  max-width: 760px;
-  margin-inline: auto;
+  gap: 6px;
 }
 
-.knowIntro {
+.typeTitle {
   font-size: clamp(1rem, 1.8vw, 1.125rem);
-  line-height: 1.78;
-  color: var(--color-text-muted);
-  text-align: center;
-  margin: 0;
-}
-
-.knowCard {
-  background: #000;
-  border-radius: 16px;
-  padding: var(--space-5) var(--space-6);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.knowH3 {
-  font-size: clamp(1.1rem, 2vw, 1.375rem);
   font-weight: var(--fw-bold);
-  letter-spacing: -0.02em;
-  color: #fff;
+  letter-spacing: -0.015em;
+  color: rgba(255 255 255 / 0.92);
   margin: 0;
   line-height: 1.25;
 }
 
-.knowPara {
-  font-size: var(--text-body);
-  line-height: 1.72;
-  color: rgba(255 255 255 / 0.65);
+.typeDesc {
+  font-size: var(--text-small);
+  line-height: 1.65;
+  color: rgba(255 255 255 / 0.52);
   margin: 0;
+}
+
+/* ════════════════════════════════════════════════════
+   EYE BAGS CAUSES
+════════════════════════════════════════════════════ */
+.causesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+.causeCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-4);
+  background: #ffffff;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 16px rgba(0 0 0 / 0.05);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+
+.causeCard:hover {
+  box-shadow: 0 12px 40px rgba(0 0 0 / 0.11);
+  border-color: rgba(0 0 0 / 0.14);
+}
+
+.causeIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #f4f4f5;
+  color: #111827;
+  flex-shrink: 0;
+}
+
+.causeTitle {
+  font-size: 1.0625rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.015em;
+  color: var(--color-text-dark);
+  margin: 0;
+  line-height: 1.25;
+}
+
+.causeDesc {
+  font-size: var(--text-small);
+  line-height: 1.65;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* ════════════════════════════════════════════════════
+   FAQ
+════════════════════════════════════════════════════ */
+.faqBody {
+  max-width: 740px;
+  margin: 0 auto;
 }
 
 /* ════════════════════════════════════════════════════
@@ -495,7 +481,7 @@
   font-weight: var(--fw-medium);
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  border-radius: var(--radius-sm);
+  border-radius: 20px;
   border: none;
   cursor: pointer;
   transition: opacity 0.2s ease, transform 0.2s ease;
@@ -517,7 +503,7 @@
   font-weight: var(--fw-medium);
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  border-radius: var(--radius-sm);
+  border-radius: 20px;
   border: 1px solid rgba(255 255 255 / 0.35);
   text-decoration: none;
   transition: border-color 0.2s ease, background 0.2s ease;
@@ -558,10 +544,7 @@
   box-shadow: 0 2px 12px rgba(0 0 0 / 0.04);
   text-decoration: none;
   position: relative;
-  transition:
-    box-shadow 0.25s ease,
-    border-color 0.25s ease,
-    transform 0.25s ease;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 }
 
 .relatedCard:hover {
@@ -612,35 +595,86 @@
 /* ════════════════════════════════════════════════════
    RESPONSIVE
 ════════════════════════════════════════════════════ */
-@media (max-width: 960px) {
-  .relatedGrid { grid-template-columns: repeat(2, 1fr); }
-  .overviewGrid { grid-template-columns: 1fr; gap: var(--space-3); }
+
+/* Tablet — stack hero image below text; types image scales  */
+@media (max-width: 900px) {
+  .heroInner {
+    grid-template-columns: 1fr;
+    padding-top: clamp(52px, 7vw, 80px);
+    padding-bottom: clamp(52px, 7vw, 80px);
+  }
+
+  .heroImageWrap {
+    min-height: unset;
+    aspect-ratio: 4 / 3;
+    align-self: auto;
+    max-width: 540px;
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  /* Types: stack image above cards */
+  .typesGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .typesImageWrap {
+    aspect-ratio: 16 / 9;
+    max-width: 100%;
+  }
+
+  .overviewGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
   .overviewLabel { padding-top: 0; }
+
+  .causesGrid { grid-template-columns: repeat(2, 1fr); }
+  .relatedGrid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
-  .hero { padding-top: 64px; min-height: auto; }
-  .heroContent { padding-block: var(--space-6); max-width: 100%; }
+  .hero { padding-top: 64px; overflow-x: hidden; }
+  .heroInner { gap: var(--space-4); padding-top: 48px; padding-bottom: 48px; }
+
+  /* Prevent inline-flex children from causing overflow */
+  .heroLeft { max-width: 100%; overflow-x: hidden; }
 
   .heroCtas {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    gap: var(--space-2);
   }
-  .heroCtaPrimary,
-  .heroCtaSecondary { width: 100%; justify-content: center; }
 
+  .heroCtaPrimary { width: 100%; justify-content: center; }
+
+  .heroTrust { gap: 8px 0; }
   .heroTrustDivider { display: none; }
   .heroTrustItem { font-size: 0.75rem; }
 
-  .treatGrid { grid-template-columns: 1fr; }
+  .headingDark,
+  .headingLight { font-size: clamp(1.5rem, 5vw, var(--text-h2)); }
 
-  .knowCard { padding: var(--space-4); }
+  .sectionHeaderCentre { margin-bottom: var(--space-4); }
 
   .ctaBtns { flex-direction: column; align-items: stretch; }
   .ctaBtnPrimary,
   .ctaBtnSecondary { width: 100%; }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 580px) {
+  .causesGrid { grid-template-columns: 1fr; }
   .relatedGrid { grid-template-columns: 1fr; }
+
+  .typeCard { padding: var(--space-3); }
+  .causeCard { padding: var(--space-3); }
+}
+
+@media (max-width: 400px) {
+  .heroTitle { font-size: clamp(1.75rem, 8.5vw, 2.25rem); }
+  .heroInner { padding-top: 40px; padding-bottom: 40px; }
+  .heroCtaPrimary { font-size: 0.875rem; padding: 12px 20px; }
+  .ctaBtnPrimary  { font-size: 0.875rem; padding: 13px 20px; }
 }
