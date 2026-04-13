@@ -69,7 +69,7 @@ const NAV: NavItem[] = [
           { label: 'Skin Lesion Removal Leicester',           href: '/treatments/skin-lesion' },
           { label: 'Wart Removal Leicester',                 href: '/treatments/wart-removal-leicester' },
           { label: 'Acne Scar Removal Leicester',           href: '/treatments/acne-scar-removal-leicester' },
-          { label: 'Regenerative Medicine – Exosome Therapy', href: '/treatments/exosome-therapy' },
+          { label: 'Regenerative Medicine – Exosome Therapy', href: '/treatments/regenerative-medicine-exosome-therapy' },
           { label: 'Regenerative Medicine – Polynucleotides', href: '/treatments/polynucleotides' },
           { label: 'Cool Bleph',                              href: '/treatments/cool-bleph' },
           { label: 'COOL Glow Peel (Full Face)',              href: '/treatments/cool-glow-peel' },
