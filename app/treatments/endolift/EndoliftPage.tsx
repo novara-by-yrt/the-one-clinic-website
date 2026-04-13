@@ -670,7 +670,12 @@ export default function EndoliftPage() {
             viewport={VIEWPORT}
           >
             {TREATED_BENEFITS.map((b) => (
-              <motion.div key={b.title} className={styles.treatedBenefitCard} variants={fadeUp}>
+              <motion.div
+                key={b.title}
+                className={styles.treatedBenefitCard}
+                variants={fadeUp}
+                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
+              >
                 <span className={styles.treatedBenefitIconWrap} aria-hidden="true">
                   {b.icon}
                 </span>
@@ -1166,7 +1171,7 @@ export default function EndoliftPage() {
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
-                Get a Quote
+                Book A Consultation
               </BookConsultationButton>
             </motion.div>
           </motion.div>
