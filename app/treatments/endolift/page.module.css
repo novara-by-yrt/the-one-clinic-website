@@ -1013,7 +1013,8 @@
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  aspect-ratio: 4 / 3;
+  /* Natural image ratio is 280×170 ≈ 5:3; use 5/3 so cover never crops */
+  aspect-ratio: 5 / 3;
   background: #f0f0f0;
   box-shadow: 0 4px 20px rgba(0 0 0 / 0.08);
 }
@@ -2187,7 +2188,8 @@
 
   /* Expert card: stack photo above content on mobile */
   .expertCard { grid-template-columns: 1fr; min-height: auto; }
-  .expertCardPhotoPanel { min-height: 360px; }
+  /* Use aspect-ratio so photo scales with width — never a flat crop strip */
+  .expertCardPhotoPanel { min-height: unset; aspect-ratio: 4 / 3; }
   .expertCardContent { padding: var(--space-4); }
 
   /* Final results banner: stack vertically */
@@ -2224,7 +2226,6 @@
 
   /* ── Fix: expert card content padding was too large (64px/48px) ── */
   .expertCardContent { padding: var(--space-4) var(--space-4); }
-  .expertCardPhotoPanel { min-height: 320px; }
 
   /* ── Fix: CTA banner heading clamp minimum was ~17px ── */
   .ctaBannerHeading { font-size: clamp(1.5rem, 7vw, 3.75rem); }
@@ -2291,9 +2292,8 @@
   /* Standalone At a Glance: 1-col */
   .glanceStandaloneGrid { grid-template-columns: 1fr; }
 
-  /* ── Expert card: smaller photo, tighter content ── */
-  .expertCardPhotoPanel { min-height: 240px; }
-  .expertCardContent    { padding: var(--space-3) var(--space-3); }
+  /* ── Expert card: tighter content padding on small phones ── */
+  .expertCardContent { padding: var(--space-3) var(--space-3); }
 
   /* ── Further reduce card paddings on small phones ── */
   .techCard         { padding: var(--space-3); }
@@ -2337,9 +2337,8 @@
   /* Glance standalone: tighter gap */
   .glanceStandaloneGrid { gap: var(--space-2); }
 
-  /* Expert card photo */
-  .expertCardPhotoPanel { min-height: 200px; }
-  .expertCardContent    { padding: var(--space-3) var(--space-2); }
+  /* Expert card content: tightest padding at ≤400px */
+  .expertCardContent { padding: var(--space-3) var(--space-2); }
 
   /* Slideshow arrow buttons */
   .expertSlideArrow { width: 40px; height: 40px; }
