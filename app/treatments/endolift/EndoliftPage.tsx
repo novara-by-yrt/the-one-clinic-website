@@ -541,7 +541,12 @@ export default function EndoliftPage() {
             viewport={VIEWPORT}
           >
             {TECH_CARDS.map((card) => (
-              <motion.div key={card.title} className={styles.techCard} variants={fadeUp}>
+              <motion.div
+                key={card.title}
+                className={styles.techCard}
+                variants={fadeUp}
+                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
+              >
                 <span className={styles.techCardEyebrow}>{card.eyebrow}</span>
                 <h3 className={styles.techCardTitle}>{card.title}</h3>
                 <p className={styles.techCardDesc}>{card.desc}</p>
@@ -596,7 +601,10 @@ export default function EndoliftPage() {
           >
             {JOURNEY_STEPS.map((step) => (
               <motion.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
-                <span className={styles.stepNum} aria-hidden="true">{step.n}</span>
+                <div className={styles.stepLeft}>
+                  <div className={styles.stepNumCircle} aria-hidden="true">{step.n}</div>
+                  <div className={styles.stepConnector} aria-hidden="true" />
+                </div>
                 <div className={styles.stepBody}>
                   <h3 className={styles.stepTitle}>{step.title}</h3>
                   <p className={styles.stepDesc}>{step.desc}</p>
@@ -1047,7 +1055,11 @@ export default function EndoliftPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div className={styles.areasGroup} variants={fadeUp}>
+            <motion.div
+              className={styles.areasGroup}
+              variants={fadeUp}
+              whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
+            >
               <p className={styles.areasGroupLabel}>Face &amp; Neck</p>
               <ul className={styles.areasGroupList} role="list">
                 {CONDITIONS_FACE.map((area) => (
@@ -1059,7 +1071,11 @@ export default function EndoliftPage() {
               </ul>
             </motion.div>
 
-            <motion.div className={styles.areasGroup} variants={fadeUp}>
+            <motion.div
+              className={styles.areasGroup}
+              variants={fadeUp}
+              whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
+            >
               <p className={styles.areasGroupLabel}>Body</p>
               <ul className={styles.areasGroupList} role="list">
                 {CONDITIONS_BODY.map((area) => (
@@ -1161,7 +1177,12 @@ export default function EndoliftPage() {
             viewport={VIEWPORT}
           >
             {CLINIC_REASONS.map((r) => (
-              <motion.div key={r.n} className={styles.clinicReasonCard} variants={fadeUp}>
+              <motion.div
+                key={r.n}
+                className={styles.clinicReasonCard}
+                variants={fadeUp}
+                whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
+              >
                 <span className={styles.clinicReasonNumber}>{r.n}</span>
                 <p className={styles.clinicReasonText}>{r.text}</p>
               </motion.div>
