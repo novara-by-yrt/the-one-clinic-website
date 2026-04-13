@@ -62,7 +62,6 @@ export default function TrustBadges({ theme = 'dark', className }: TrustBadgesPr
         <div className={styles.badgeHeader}>
           <GoogleIcon />
           <span className={styles.platform}>Google</span>
-          <span className={styles.verified}>Excellent</span>
         </div>
         <Stars color="#FBBC04" />
         <p className={styles.summary}>
@@ -80,7 +79,6 @@ export default function TrustBadges({ theme = 'dark', className }: TrustBadgesPr
         <div className={styles.badgeHeader}>
           <TrustpilotIcon />
           <span className={styles.platform}>Trustpilot</span>
-          <span className={styles.verified}>Excellent</span>
         </div>
         <Stars color="#00B67A" />
         <p className={styles.summary}>
