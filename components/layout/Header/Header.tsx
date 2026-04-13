@@ -48,6 +48,7 @@ const NAV: NavItem[] = [
           { label: "Men's Health",                                            href: '/treatments/mens-health' },
           { label: "Women's Health Clinic",                                   href: '/treatments/womens-health' },
           { label: "Women's Health – Menopause / HRT / Contraception",       href: '/treatments/menopause-hrt' },
+          { label: 'Mental Health Consultation',                              href: '/treatments/mental-health-consultation' },
         ],
       },
       {
