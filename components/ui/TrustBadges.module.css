@@ -173,7 +173,15 @@
 
 /* Compact side-by-side layout on mobile */
 @media (max-width: 540px) {
+  /* Constrain to parent width so it never causes horizontal scroll */
+  .wrap {
+    width: 100%;
+  }
+
+  /* Each badge panel shares available space equally */
   .badge {
+    flex: 1;
+    min-width: 0;
     padding: 10px 10px;
   }
 }

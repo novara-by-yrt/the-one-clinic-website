@@ -36,6 +36,7 @@
   gap: var(--space-3);
   position: relative;
   z-index: 1;
+  min-width: 0; /* prevent grid blowout from inline-flex children */
 }
 
 /* Right: image panel */
@@ -210,7 +211,7 @@
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  border-radius: 100px;
+  border-radius: 20px;
   box-shadow: 0 2px 16px rgb(255 255 255 / 0.15);
   transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -481,7 +482,7 @@
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  border-radius: 100px;
+  border-radius: 20px;
   box-shadow: 0 2px 16px rgb(0 0 0 / 0.15);
   transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -535,58 +536,115 @@
 }
 
 /* ════════════════════════════════════════════════════
-   TREATMENT JOURNEY
+   TREATMENT JOURNEY  —  vertical timeline
 ════════════════════════════════════════════════════ */
 .journeyList {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  max-width: 740px;
   list-style: none;
   padding: 0;
   margin: 0 auto;
+  max-width: 680px;
 }
 
 .journeyStep {
-  display: flex;
+  display: grid;
+  grid-template-columns: 60px 1fr;
   gap: var(--space-4);
-  padding-block: var(--space-4);
-  border-bottom: 1px solid var(--color-border-light);
+  cursor: default;
 }
 
-.journeyStep:first-child {
-  border-top: 1px solid var(--color-border-light);
+/* Left column: circle + connector */
+.stepLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* Numbered circle */
+.stepNumCircle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border-light);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.journeyStep:hover .stepNumCircle {
+  background: #000;
+  border-color: #000;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(0 0 0 / 0.18);
+}
+
+/* Vertical connector line */
+.stepConnector {
+  flex: 1;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--color-border-light) 0%, transparent 100%);
+  margin-top: 10px;
+  min-height: 24px;
+}
+
+.journeyStep:last-child .stepConnector {
+  display: none;
+}
+
+/* Right column: content */
+.stepBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 12px;
+  padding-bottom: var(--space-5);
+}
+
+.journeyStep:last-child .stepBody {
+  padding-bottom: 0;
+}
+
+.stepTitle {
+  font-size: 1.0625rem;
+  font-weight: var(--fw-bold);
+  color: var(--color-text-dark);
+  letter-spacing: -0.01em;
+  margin: 0;
+  transition: color 0.25s ease;
+}
+
+.journeyStep:hover .stepTitle {
+  color: #000;
+}
+
+.stepDesc {
+  font-size: var(--text-small);
+  line-height: 1.68;
+  color: var(--color-text-muted);
+  margin: 0;
+  transition: color 0.25s ease;
+}
+
+.journeyStep:hover .stepDesc {
+  color: rgba(0 0 0 / 0.65);
+}
+
+/* Legacy class kept for any other uses */
 .stepNum {
   font-size: var(--text-small);
   font-weight: var(--fw-medium);
   color: var(--color-text-muted);
   letter-spacing: 0.06em;
-  flex-shrink: 0;
-  width: 36px;
-  padding-top: 3px;
-}
-
-.stepBody {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.stepTitle {
-  font-size: var(--text-body);
-  font-weight: var(--fw-bold);
-  color: var(--color-text-dark);
-  letter-spacing: -0.01em;
-  margin: 0;
-}
-
-.stepDesc {
-  font-size: var(--text-small);
-  line-height: var(--lh-normal);
-  color: var(--color-text-muted);
-  margin: 0;
 }
 
 /* ════════════════════════════════════════════════════
@@ -956,7 +1014,8 @@
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  aspect-ratio: 4 / 3;
+  /* Natural image ratio is 280×170 ≈ 5:3; use 5/3 so cover never crops */
+  aspect-ratio: 5 / 3;
   background: #f0f0f0;
   box-shadow: 0 4px 20px rgba(0 0 0 / 0.08);
 }
@@ -1037,7 +1096,7 @@
 .ctaBannerLogo {
   object-fit: contain;
   object-position: center;
-  opacity: 0.07;
+  opacity: 0.18;
 }
 
 /* ════════════════════════════════════════════════════
@@ -1157,31 +1216,69 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
-  padding: var(--space-4) var(--space-4);
+  padding: var(--space-5) var(--space-4);
   background: rgba(255 255 255 / 0.04);
-  border: 1px solid rgba(255 255 255 / 0.08);
+  border: 1px solid rgba(255 255 255 / 0.1);
   border-radius: var(--radius-lg);
-  transition: background 0.22s ease, border-color 0.22s ease;
+  position: relative;
+  overflow: hidden;
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* Left accent bar */
+.clinicReasonCard::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 24px;
+  bottom: 24px;
+  width: 2px;
+  border-radius: 0 2px 2px 0;
+  background: rgba(255 255 255 / 0.1);
+  transition: background 0.35s ease, top 0.35s ease, bottom 0.35s ease;
 }
 
 .clinicReasonCard:hover {
-  background: rgba(255 255 255 / 0.07);
-  border-color: rgba(255 255 255 / 0.14);
+  background: rgba(255 255 255 / 0.08);
+  border-color: rgba(255 255 255 / 0.2);
+  box-shadow: 0 20px 56px rgba(0 0 0 / 0.38);
 }
 
+.clinicReasonCard:hover::after {
+  background: rgba(255 255 255 / 0.55);
+  top: 14px;
+  bottom: 14px;
+}
+
+/* Large decorative number */
 .clinicReasonNumber {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  color: rgba(255 255 255 / 0.28);
+  font-size: 2.75rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: rgba(255 255 255 / 0.08);
+  margin-bottom: var(--space-2);
+  transition: color 0.35s ease;
+}
+
+.clinicReasonCard:hover .clinicReasonNumber {
+  color: rgba(255 255 255 / 0.18);
 }
 
 .clinicReasonText {
-  font-size: 1rem;
+  font-size: 0.9375rem;
   font-weight: var(--fw-medium);
-  color: rgba(255 255 255 / 0.82);
-  line-height: 1.55;
+  color: rgba(255 255 255 / 0.72);
+  line-height: 1.6;
   margin: 0;
+  transition: color 0.35s ease;
+}
+
+.clinicReasonCard:hover .clinicReasonText {
+  color: rgba(255 255 255 / 0.92);
 }
 
 /* ════════════════════════════════════════════════════
@@ -1273,50 +1370,86 @@
   flex-direction: column;
   gap: var(--space-2);
   padding: var(--space-4) var(--space-4);
-  background: #fff;
-  border: 1.5px solid #111;
+  background: #1e1e1e;
+  border: 1px solid rgba(255 255 255 / 0.07);
   border-radius: var(--radius-lg);
-  box-shadow:
-    4px 4px 0 #111,
-    0 8px 24px rgb(0 0 0 / 0.08);
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  box-shadow: 0 4px 20px rgba(0 0 0 / 0.22);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Top-edge shimmer line that fades in on hover */
+.treatedBenefitCard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    rgba(255 255 255 / 0),
+    rgba(255 255 255 / 0.28),
+    rgba(255 255 255 / 0)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.treatedBenefitCard:hover::before {
+  opacity: 1;
 }
 
 .treatedBenefitCard:hover {
-  box-shadow:
-    6px 6px 0 #111,
-    0 16px 40px rgb(0 0 0 / 0.13);
-  transform: translateY(-3px);
+  background: #272727;
+  border-color: rgba(255 255 255 / 0.16);
+  box-shadow: 0 20px 56px rgba(0 0 0 / 0.45);
 }
 
 .treatedBenefitIconWrap {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: #f4f4f4;
-  border: 1px solid rgba(0 0 0 / 0.06);
+  background: rgba(255 255 255 / 0.06);
+  border: 1px solid rgba(255 255 255 / 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-text-dark);
+  color: rgba(255 255 255 / 0.7);
   flex-shrink: 0;
   margin-bottom: var(--space-1);
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.treatedBenefitCard:hover .treatedBenefitIconWrap {
+  background: rgba(255 255 255 / 0.13);
+  border-color: rgba(255 255 255 / 0.22);
+  color: #fff;
 }
 
 .treatedBenefitTitle {
   font-size: 1rem;
   font-weight: var(--fw-bold);
   letter-spacing: -0.01em;
-  color: var(--color-text-dark);
+  color: rgba(255 255 255 / 0.92);
   margin: 0;
   line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+.treatedBenefitCard:hover .treatedBenefitTitle {
+  color: #fff;
 }
 
 .treatedBenefitDesc {
   font-size: 0.9rem;
   line-height: 1.68;
-  color: var(--color-text-muted);
+  color: rgba(255 255 255 / 0.48);
   margin: 0;
+  transition: color 0.3s ease;
+}
+
+.treatedBenefitCard:hover .treatedBenefitDesc {
+  color: rgba(255 255 255 / 0.78);
 }
 
 /* ════════════════════════════════════════════════════
@@ -1453,48 +1586,45 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-4);
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
 .areasGroup {
-  background: #111;
-  border: 1px solid rgba(255 255 255 / 0.08);
+  background: rgba(255 255 255 / 0.03);
+  border: 1px solid rgba(255 255 255 / 0.1);
   border-radius: var(--radius-lg);
   padding: var(--space-5) var(--space-5);
   position: relative;
   overflow: hidden;
-  transition: border-color 0.25s ease;
+  transition:
+    border-color 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
-/* Shimmer top-edge accent */
+/* Full-width gradient top accent */
 .areasGroup::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 20px;
-  right: 20px;
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(255 255 255 / 0.35) 40%,
-    rgba(255 255 255 / 0.35) 60%,
-    transparent
-  );
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255 255 255 / 0.35) 50%, transparent 100%);
 }
 
 .areasGroup:hover {
-  border-color: rgba(255 255 255 / 0.16);
+  background: rgba(255 255 255 / 0.06);
+  border-color: rgba(255 255 255 / 0.2);
+  box-shadow: 0 20px 56px rgba(0 0 0 / 0.4);
 }
 
 .areasGroupLabel {
   font-size: 0.6875rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255 255 255 / 0.38);
-  margin: 0 0 var(--space-3);
+  color: rgba(255 255 255 / 0.45);
+  margin: 0 0 var(--space-4);
 }
 
 .areasGroupList {
@@ -1512,9 +1642,16 @@
   gap: 14px;
   font-size: 0.9375rem;
   font-weight: var(--fw-medium);
-  color: rgba(255 255 255 / 0.82);
-  padding: 11px 0;
+  color: rgba(255 255 255 / 0.72);
+  padding: 12px 0;
   border-bottom: 1px solid rgba(255 255 255 / 0.07);
+  transition: color 0.22s ease, padding-left 0.22s ease;
+  cursor: default;
+}
+
+.areasGroupItem:hover {
+  color: #fff;
+  padding-left: 6px;
 }
 
 .areasGroupItem:last-child {
@@ -1531,8 +1668,14 @@
   height: 6px;
   min-width: 6px;
   border-radius: 50%;
-  background: rgba(255 255 255 / 0.45);
+  background: rgba(255 255 255 / 0.35);
   flex-shrink: 0;
+  transition: background 0.22s ease, transform 0.22s ease;
+}
+
+.areasGroupItem:hover .areasItemDot {
+  background: #fff;
+  transform: scale(1.5);
 }
 
 /* ════════════════════════════════════════════════════
@@ -1557,59 +1700,75 @@
 .techCard {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
   padding: var(--space-5);
-  background: rgba(255 255 255 / 0.04);
-  border: 1px solid rgba(255 255 255 / 0.09);
+  background: #ffffff;
+  border: 1px solid rgba(0 0 0 / 0.09);
   border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
-  transition: background 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 2px 20px rgba(0 0 0 / 0.07);
+  transition:
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
 }
 
+/* Animated shimmer sweep on hover */
 .techCard::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 24px;
-  right: 24px;
+  top: 0; left: -100%; right: auto;
+  width: 60%;
   height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(255 255 255 / 0.3) 40%,
-    rgba(255 255 255 / 0.3) 60%,
-    transparent
-  );
+  background: linear-gradient(to right, transparent, rgba(0 0 0 / 0.18), transparent);
+  transition: left 0.6s ease;
+}
+
+.techCard:hover::before {
+  left: 120%;
 }
 
 .techCard:hover {
-  background: rgba(255 255 255 / 0.07);
-  border-color: rgba(255 255 255 / 0.15);
+  box-shadow: 0 20px 56px rgba(0 0 0 / 0.13);
+  border-color: rgba(0 0 0 / 0.18);
 }
 
+/* Large decorative number */
 .techCardEyebrow {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(255 255 255 / 0.3);
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: rgba(0 0 0 / 0.06);
+  margin-bottom: var(--space-3);
+  transition: color 0.35s ease;
 }
 
+.techCard:hover .techCardEyebrow {
+  color: rgba(0 0 0 / 0.1);
+}
+
+/* Thin separator before title */
 .techCardTitle {
   font-size: 1.375rem;
   font-weight: var(--fw-bold);
   letter-spacing: -0.02em;
-  color: #fff;
-  margin: 0;
+  color: #111827;
+  margin: 0 0 var(--space-2);
   line-height: 1.2;
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(0 0 0 / 0.07);
 }
 
 .techCardDesc {
   font-size: 0.9375rem;
   line-height: 1.72;
-  color: rgba(255 255 255 / 0.52);
+  color: #6B7280;
   margin: 0;
+  transition: color 0.35s ease;
+}
+
+.techCard:hover .techCardDesc {
+  color: #374151;
 }
 
 .finalResultsBanner {
@@ -1677,12 +1836,26 @@
   gap: 14px;
   font-size: 1.0625rem;
   font-weight: var(--fw-medium);
-  color: rgba(255 255 255 / 0.85);
+  color: #111827;
   line-height: 1.6;
   padding: var(--space-3) var(--space-4);
-  background: rgba(255 255 255 / 0.04);
-  border: 1px solid rgba(255 255 255 / 0.07);
+  background: #ffffff;
+  border: 1px solid rgba(0 0 0 / 0.1);
   border-radius: 10px;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.2s ease,
+    box-shadow 0.25s ease;
+}
+
+.eligibilityItem:hover {
+  background: #111;
+  border-color: #111;
+  color: #ffffff;
+  transform: translateX(5px);
+  box-shadow: 0 8px 28px rgba(0 0 0 / 0.4);
 }
 
 .eligibilityCheck {
@@ -1690,14 +1863,21 @@
   height: 28px;
   min-width: 28px;
   border-radius: 50%;
-  background: rgba(255 255 255 / 0.1);
-  border: 1px solid rgba(255 255 255 / 0.16);
+  background: rgba(0 0 0 / 0.06);
+  border: 1px solid rgba(0 0 0 / 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255 255 255 / 0.9);
+  color: #111;
   flex-shrink: 0;
   margin-top: 2px;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.eligibilityItem:hover .eligibilityCheck {
+  background: rgba(255 255 255 / 0.12);
+  border-color: rgba(255 255 255 / 0.22);
+  color: #fff;
 }
 
 .eligibilityClosing {
@@ -1778,14 +1958,14 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 13px 36px;
+  padding: 14px 36px;
   background: #fff;
   color: #000;
   font-size: 0.9375rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  border-radius: 100px;
+  border-radius: 20px;
   box-shadow: 0 2px 16px rgb(255 255 255 / 0.15);
   transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -1801,6 +1981,97 @@
 ════════════════════════════════════════════════════ */
 .sectionGray {
   background-color: #f3f3f3 !important;
+}
+
+/* ════════════════════════════════════════════════════
+   WHITE TEXTURE BACKGROUND (bg-image-white.png)
+   Applied to: At a Glance, Treated Benefits, Before & After
+════════════════════════════════════════════════════ */
+.whiteBgSection {
+  position: relative !important;
+  overflow: hidden;
+}
+
+.whiteBgWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.whiteBgImg {
+  object-fit: cover;
+  object-position: center;
+}
+
+.whiteBgContent {
+  position: relative;
+  z-index: 1;
+}
+
+/* ════════════════════════════════════════════════════
+   EXPERT SLIDESHOW CONTROLS
+════════════════════════════════════════════════════ */
+.expertSlideshow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.expertSlideControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.expertSlideArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(0 0 0 / 0.14);
+  background: #fff;
+  color: #111;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.expertSlideArrow:hover:not(:disabled) {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+  transform: scale(1.06);
+}
+
+.expertSlideArrow:disabled {
+  opacity: 0.28;
+  cursor: default;
+}
+
+.expertSlideDots {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.expertSlideDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0 0 0 / 0.2);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.expertSlideDotActive {
+  background: #111;
+  transform: scale(1.35);
 }
 
 /* ════════════════════════════════════════════════════
@@ -1866,9 +2137,12 @@
   .hero { padding-top: 64px; overflow-x: hidden; }
   .heroInner { gap: var(--space-4); padding-top: 48px; padding-bottom: 48px; }
 
+  /* Prevent any child (e.g. inline-flex TrustBadges) from causing overflow */
+  .heroLeft { min-width: 0; max-width: 100%; overflow-x: hidden; }
+
   .heroCtas {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     gap: var(--space-2);
   }
 
@@ -1918,8 +2192,9 @@
 
   /* Expert card: stack photo above content on mobile */
   .expertCard { grid-template-columns: 1fr; min-height: auto; }
-  .expertCardPhotoPanel { min-height: 360px; }
-  .expertCardContent { padding: var(--space-6) var(--space-5); }
+  /* Use aspect-ratio so photo scales with width — never a flat crop strip */
+  .expertCardPhotoPanel { min-height: unset; aspect-ratio: 4 / 3; }
+  .expertCardContent { padding: var(--space-4); }
 
   /* Final results banner: stack vertically */
   .finalResultsBanner {
@@ -1939,52 +2214,59 @@
   /* Areas columns: stack */
   .areasColumns { grid-template-columns: 1fr; gap: var(--space-3); }
 
-  /* ── Treatment Journey: vertical timeline ── */
+  /* ── Treatment Journey: compact on mobile ── */
   .journeyStep {
-    position: relative;
-    border-top: none;
-    border-bottom: none;
-    padding-top: 0;
-    padding-bottom: 28px;
+    grid-template-columns: 48px 1fr;
     gap: var(--space-3);
-    align-items: flex-start;
   }
 
-  .journeyStep:last-child {
-    padding-bottom: 0;
-  }
-
-  /* Vertical connecting line between steps */
-  .journeyStep:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    left: 18px;  /* (38px circle / 2) – (2px line / 2) */
-    top: 38px;   /* bottom edge of the circle badge */
-    bottom: 0;
-    width: 2px;
-    background: rgba(0 0 0 / 0.1);
-    pointer-events: none;
-  }
-
-  /* Step number becomes a circle badge */
-  .stepNum {
-    width: 38px;
-    height: 38px;
-    min-width: 38px;
-    border-radius: 50%;
-    background: #111;
-    color: #fff;
-    font-size: 0.6875rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 0;
+  .stepNumCircle {
+    width: 44px;
+    height: 44px;
   }
 
   .headingDark,
   .headingLight { font-size: clamp(1.5rem, 5vw, var(--text-h2)); }
+
+  /* ── Fix: expert card content padding was too large (64px/48px) ── */
+  .expertCardContent { padding: var(--space-4) var(--space-4); }
+
+  /* ── Fix: CTA banner heading clamp minimum was ~17px ── */
+  .ctaBannerHeading { font-size: clamp(1.5rem, 7vw, 3.75rem); }
+
+  /* ── Reduce paddings for all dark cards ── */
+  .techCard                { padding: var(--space-4); }
+  .resultsAfterCard        { padding: var(--space-4); }
+  .areasGroup              { padding: var(--space-4); }
+  .clinicReasonCard        { padding: var(--space-4) var(--space-3); }
+
+  /* ── CTA spacing ── */
+  .combinedCtaWrapper { padding-top: var(--space-4); }
+
+  /* ── Full-width CTA buttons ── */
+  .combinedCta  { width: 100%; justify-content: center; }
+  .ctaBannerBtn { width: 100%; max-width: 360px; align-self: center; }
+
+  /* ── Tighten section-header bottom margin ── */
+  .sectionHeaderCentre { margin-bottom: var(--space-4); }
+
+  /* ── Glance card: reduce padding in 2-col layout ── */
+  .glanceCard { padding: var(--space-4) var(--space-3); }
+
+  /* ── Treated-benefits grid: tighter gap ── */
+  .treatedBenefitsGrid { gap: var(--space-2); }
+
+  /* ── Clinic reasons: 1-col on mobile ── */
+  .clinicReasonsGrid { grid-template-columns: 1fr; gap: var(--space-2); }
+
+  /* ── Journey list: remove fixed max-width so it fills width ── */
+  .journeyList { max-width: 100%; }
+
+  /* ── What-is section: full-width CTA ── */
+  .whatIsContent .combinedCta { width: 100%; }
+
+  /* ── Eligibility wrap: full width ── */
+  .eligibilityWrap { max-width: 100%; }
 }
 
 @media (max-width: 580px) {
@@ -2013,4 +2295,88 @@
 
   /* Standalone At a Glance: 1-col */
   .glanceStandaloneGrid { grid-template-columns: 1fr; }
+
+  /* ── Expert card: tighter content padding on small phones ── */
+  .expertCardContent { padding: var(--space-3) var(--space-3); }
+
+  /* ── Further reduce card paddings on small phones ── */
+  .techCard         { padding: var(--space-3); }
+  .resultsAfterCard { padding: var(--space-3); }
+  .areasGroup       { padding: var(--space-3); }
+  .clinicReasonCard { padding: var(--space-3); }
+
+  /* ── Eligibility items: slightly compact ── */
+  .eligibilityItem  { font-size: 1rem; padding: var(--space-2) var(--space-3); }
+  .eligibilityCheck { width: 24px; height: 24px; min-width: 24px; }
+
+  /* ── How covers wrap: less internal padding ── */
+  .howCoversWrap { padding: var(--space-3); }
+
+  /* ── CTA buttons ── */
+  .ctaBannerBtn { max-width: 100%; }
+  .combinedCta  { padding: 12px 24px; }
+
+  /* ── Glance card padding ── */
+  .glanceCard { padding: var(--space-3); }
+
+  /* ── finalResults banner ── */
+  .finalResultsBanner { padding: var(--space-4) var(--space-3); }
+
+  /* ── Areas group items ── */
+  .areasGroupItem { font-size: 0.9375rem; }
+}
+
+/* ══════════════════════════════════════════════════
+   SMALL PHONES  ≤ 400px
+══════════════════════════════════════════════════ */
+@media (max-width: 400px) {
+  /* Hero inner: tighter vertical padding */
+  .heroInner { padding-top: 40px; padding-bottom: 40px; }
+
+  /* Headings: ensure never overflow */
+  .heroTitle { font-size: clamp(1.75rem, 8.5vw, 2.25rem); }
+  .combinedHeading { font-size: clamp(1.625rem, 7.5vw, 2.875rem); }
+  .expertCardName  { font-size: clamp(1.5rem, 7vw, 2.75rem); }
+
+  /* Glance standalone: tighter gap */
+  .glanceStandaloneGrid { gap: var(--space-2); }
+
+  /* Expert card content: tightest padding at ≤400px */
+  .expertCardContent { padding: var(--space-3) var(--space-2); }
+
+  /* Slideshow arrow buttons */
+  .expertSlideArrow { width: 40px; height: 40px; }
+
+  /* Journey step: compact */
+  .journeyStep { grid-template-columns: 40px 1fr; gap: var(--space-2); }
+  .stepNumCircle { width: 36px; height: 36px; font-size: 0.6875rem; }
+
+  /* Tech card */
+  .techCard { padding: var(--space-3) var(--space-2); }
+  .techCardEyebrow { font-size: 2.75rem; }
+
+  /* Treated benefit card */
+  .treatedBenefitCard { padding: var(--space-3) var(--space-2); }
+
+  /* Results card */
+  .resultsAfterCard { padding: var(--space-3) var(--space-2); }
+
+  /* Clinic reason cards */
+  .clinicReasonCard { padding: var(--space-3) var(--space-2); }
+  .clinicReasonNumber { font-size: 2rem; }
+
+  /* Areas group */
+  .areasGroup { padding: var(--space-3) var(--space-2); }
+
+  /* CTA buttons: full-width, smaller font */
+  .ctaBannerBtn { font-size: 0.875rem; padding: 13px 20px; }
+  .combinedCta  { font-size: 0.875rem; padding: 12px 20px; }
+  .heroCtaPrimary { font-size: 0.875rem; padding: 12px 20px; }
+
+  /* Before & After controls */
+  .baControls { gap: var(--space-2); }
+  .baArrowBtn { width: 38px; height: 38px; }
+
+  /* FAQ toggle button */
+  .faqToggleBtn { padding: 10px 20px; font-size: 0.875rem; }
 }
