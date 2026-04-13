@@ -108,37 +108,37 @@ const FAQS = [
   {
     question: 'How to get rid of eye bags naturally?',
     answer:
-      'Eye bags may improve with lifestyle changes such as getting enough sleep, reducing salt intake, staying hydrated, and using cold compresses. While these methods can help temporarily, lasting results are usually achieved with treatments like dermal fillers, Collagen Bleph, or laser resurfacing.',
+      'Eye bags may improve with lifestyle changes such as getting enough sleep, reducing salt intake, staying hydrated, and using cold compresses. While these methods can help temporarily, lasting results are usually achieved with treatments like dermal fillers, Cool Bleph, or laser resurfacing.',
   },
   {
     question: 'How to get rid of under-eye bags permanently?',
     answer:
-      'Non-surgical options like dermal fillers or Collagen Bleph can also provide long-lasting improvement, depending on the type of bags.',
+      'Truly permanent removal of eye bags is typically achieved through surgical blepharoplasty, which addresses underlying fat and excess skin. Non-surgical options like dermal fillers or Cool Bleph provide significant long-lasting improvement — often 12 months or more — but results are not permanent and maintenance is recommended.',
   },
   {
     question: 'How do I get rid of eye bags that won\'t go away?',
     answer:
-      'Eye bags may improve with sleep, diet changes, or cold compresses. For lasting results, treatments like dermal fillers, Collagen Bleph, laser resurfacing, or blepharoplasty can reduce puffiness and restore a refreshed look.',
+      'Persistent eye bags that don\'t respond to sleep, diet changes, or cold compresses are usually fat-based or caused by skin laxity. For lasting results, treatments like dermal fillers, Cool Bleph, laser resurfacing, or blepharoplasty can reduce puffiness and restore a refreshed look.',
   },
   {
     question: 'How to tell if eye bags are fluid or fat?',
     answer:
-      'Fluid-based bags are soft and may change during the day. Fat-based bags feel firmer and stay in place. Our specialists can assess your situation and recommend the best treatment.',
+      'Fluid-based bags are soft and typically worse in the morning, improving throughout the day. Fat-based bags feel firmer, stay in place regardless of time of day, and do not change with rest or fluid intake. Our specialists can assess your situation and recommend the most appropriate treatment.',
   },
   {
     question: 'What deficiency causes bags under the eyes?',
     answer:
-      'Eye bags are rarely caused by a deficiency. Poor sleep, dehydration, or excess salt may worsen them. Yet treatments like dermal fillers or Cool Bleph are more effective than supplements.',
+      'Eye bags are rarely caused by a nutritional deficiency. Poor sleep, dehydration, or excess salt are far more common contributors. While iron or vitamin K deficiency can affect skin tone around the eyes, they do not directly cause structural puffiness. Treatments like dermal fillers or Cool Bleph address the underlying causes more effectively than supplements.',
   },
   {
     question: 'Can drinking water reduce eye bags?',
     answer:
-      'Staying hydrated can reduce mild fluid retention, but it usually won\'t remove persistent eye bags. Professional treatments are more effective for lasting results.',
+      'Staying well hydrated helps reduce fluid retention and mild morning puffiness. However, drinking more water will not remove persistent fat-based or skin-laxity eye bags. Professional treatments are needed for meaningful, lasting results.',
   },
   {
     question: 'What is the best eye puffiness reducer?',
     answer:
-      'For mild cases, cold compresses or creams may help. For a visible and lasting improvement, dermal fillers, laser resurfacing, Collagen Bleph, chemical peels, or blepharoplasty provide the best results.',
+      'For temporary mild puffiness, cold compresses or caffeine-based eye creams can offer short-term relief. For a visible and lasting improvement, treatments such as dermal fillers, Cool Bleph, laser resurfacing, chemical peels, or blepharoplasty provide the best results depending on the type and severity of your eye bags.',
   },
 ];
 
