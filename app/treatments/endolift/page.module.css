@@ -36,6 +36,7 @@
   gap: var(--space-3);
   position: relative;
   z-index: 1;
+  min-width: 0; /* prevent grid blowout from inline-flex children */
 }
 
 /* Right: image panel */
@@ -2136,9 +2137,12 @@
   .hero { padding-top: 64px; overflow-x: hidden; }
   .heroInner { gap: var(--space-4); padding-top: 48px; padding-bottom: 48px; }
 
+  /* Prevent any child (e.g. inline-flex TrustBadges) from causing overflow */
+  .heroLeft { min-width: 0; max-width: 100%; overflow-x: hidden; }
+
   .heroCtas {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     gap: var(--space-2);
   }
 
