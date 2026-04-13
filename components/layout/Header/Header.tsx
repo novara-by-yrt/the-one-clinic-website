@@ -83,7 +83,7 @@ const NAV: NavItem[] = [
           { label: 'The Body Confidence Package',             href: '/treatments/the-body-confidence-package' },
           { label: 'Lipoma Removal Leicester',                href: '/treatments/lipoma-removal' },
           { label: 'Liposuction Leicester',                   href: '/treatments/liposuction-leicester' },
-          { label: 'Non Surgical Blepharoplasty',             href: '/treatments/blepharoplasty' },
+          { label: 'Non Surgical Blepharoplasty',             href: '/treatments/non-surgical-blepharoplasty-leicester' },
         ],
       },
     ],
