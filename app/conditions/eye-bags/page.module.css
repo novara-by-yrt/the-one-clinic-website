@@ -616,6 +616,384 @@
 }
 
 /* ════════════════════════════════════════════════════
+   WHO IS MORE LIKELY? (Risk Factors)
+════════════════════════════════════════════════════ */
+.riskGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--space-6), 6vw, 80px);
+  align-items: start;
+}
+
+.riskLeft {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.riskHeading {
+  font-size: clamp(1.5rem, 3vw, var(--text-h2));
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+  color: var(--color-text-dark);
+  line-height: var(--lh-tight);
+  margin: 0;
+}
+
+.riskIntro {
+  font-size: var(--text-body);
+  line-height: 1.72;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.riskList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.riskItem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 1rem;
+  font-weight: var(--fw-medium);
+  color: var(--color-text-dark);
+  padding: 14px 18px;
+  background: #f8f8f8;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  letter-spacing: -0.01em;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.riskItem:hover {
+  background: #f0f0f0;
+  border-color: rgba(0 0 0 / 0.12);
+}
+
+.riskCheck {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+/* ════════════════════════════════════════════════════
+   HOW DO WE DIAGNOSE?
+════════════════════════════════════════════════════ */
+.diagnoseIntro {
+  font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
+  line-height: 1.7;
+  color: rgba(255 255 255 / 0.45);
+  text-align: center;
+  margin: 0;
+}
+
+.diagnoseGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+.diagnoseCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-4);
+  background: rgba(255 255 255 / 0.05);
+  border: 1px solid rgba(255 255 255 / 0.09);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+/* Top shimmer line */
+.diagnoseCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 24px;
+  right: 24px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255 255 255 / 0.25) 40%,
+    rgba(255 255 255 / 0.25) 60%,
+    transparent
+  );
+}
+
+.diagnoseCard:hover {
+  background: rgba(255 255 255 / 0.08);
+  border-color: rgba(255 255 255 / 0.15);
+}
+
+.diagnoseNum {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: rgba(255 255 255 / 0.08);
+}
+
+.diagnoseText {
+  font-size: 1rem;
+  line-height: 1.72;
+  color: rgba(255 255 255 / 0.72);
+  margin: 0;
+}
+
+/* ════════════════════════════════════════════════════
+   TREATMENTS FOR EYE BAGS
+════════════════════════════════════════════════════ */
+.treatmentsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+
+.treatmentCard {
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 16px rgba(0 0 0 / 0.05);
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.treatmentCard:hover {
+  box-shadow: 0 12px 40px rgba(0 0 0 / 0.11);
+  border-color: rgba(0 0 0 / 0.12);
+}
+
+.treatmentThumb {
+  position: relative;
+  width: 130px;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+.treatmentThumbImg {
+  object-fit: cover;
+  object-position: center;
+}
+
+.treatmentCardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: var(--space-4);
+  flex: 1;
+  min-width: 0;
+}
+
+.treatmentTitleLink {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.treatmentTitleLink:hover .treatmentTitle {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.treatmentTitleLink:hover .treatmentArrow {
+  color: var(--color-text-dark);
+  transform: translate(3px, -1px);
+}
+
+.treatmentTitle {
+  font-size: 1.0625rem;
+  font-weight: var(--fw-bold);
+  color: var(--color-text-dark);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin: 0;
+  flex: 1;
+}
+
+.treatmentArrow {
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.treatmentDesc {
+  font-size: var(--text-small);
+  line-height: 1.65;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* ════════════════════════════════════════════════════
+   WHEN TO CALL A DOCTOR?
+════════════════════════════════════════════════════ */
+.whenToCallWrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--space-6), 6vw, 80px);
+  align-items: start;
+}
+
+.whenToCallLeft {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.whenToCallHeading {
+  font-size: clamp(1.5rem, 3vw, var(--text-h2));
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+  color: var(--color-text-light);
+  line-height: var(--lh-tight);
+  margin: 0;
+}
+
+.whenToCallIntro {
+  font-size: var(--text-body);
+  line-height: 1.72;
+  color: rgba(255 255 255 / 0.55);
+  margin: 0;
+}
+
+.whenToCallList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.whenToCallItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 1rem;
+  font-weight: var(--fw-medium);
+  color: rgba(255 255 255 / 0.82);
+  padding: 16px 20px;
+  background: rgba(255 255 255 / 0.05);
+  border: 1px solid rgba(255 255 255 / 0.09);
+  border-radius: 12px;
+  line-height: 1.55;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.whenToCallItem:hover {
+  background: rgba(255 255 255 / 0.09);
+  border-color: rgba(255 255 255 / 0.16);
+}
+
+.whenToCallIcon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(255 200 80 / 0.12);
+  border: 1px solid rgba(255 200 80 / 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255 200 80 / 0.9);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ════════════════════════════════════════════════════
+   RESULTS & EXPECTATIONS
+════════════════════════════════════════════════════ */
+.resultsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+}
+
+.resultCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: #ffffff;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 16px rgba(0 0 0 / 0.05);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+
+/* Top accent bar */
+.resultCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, #1a1a1a, #666);
+  opacity: 0.1;
+  transition: opacity 0.25s ease;
+}
+
+.resultCard:hover::before {
+  opacity: 0.35;
+}
+
+.resultCard:hover {
+  box-shadow: 0 12px 40px rgba(0 0 0 / 0.1);
+  border-color: rgba(0 0 0 / 0.14);
+}
+
+.resultPhase {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  padding: 5px 12px;
+  background: #f4f4f5;
+  border-radius: 100px;
+  display: inline-block;
+  align-self: flex-start;
+}
+
+.resultTitle {
+  font-size: 1.0625rem;
+  font-weight: var(--fw-bold);
+  color: var(--color-text-dark);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.resultDesc {
+  font-size: var(--text-small);
+  line-height: 1.65;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* ════════════════════════════════════════════════════
    RESPONSIVE
 ════════════════════════════════════════════════════ */
 
@@ -657,8 +1035,13 @@
     max-width: 100%;
   }
 
-  .causesGrid { grid-template-columns: repeat(2, 1fr); }
-  .relatedGrid { grid-template-columns: repeat(2, 1fr); }
+  .causesGrid      { grid-template-columns: repeat(2, 1fr); }
+  .relatedGrid     { grid-template-columns: repeat(2, 1fr); }
+  .riskGrid        { grid-template-columns: 1fr; gap: var(--space-5); }
+  .diagnoseGrid    { grid-template-columns: 1fr; }
+  .treatmentsGrid  { grid-template-columns: 1fr; }
+  .whenToCallWrap  { grid-template-columns: 1fr; gap: var(--space-5); }
+  .resultsGrid     { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
@@ -691,10 +1074,19 @@
 }
 
 @media (max-width: 580px) {
-  .causesGrid { grid-template-columns: 1fr; }
-  .relatedGrid { grid-template-columns: 1fr; }
+  .causesGrid   { grid-template-columns: 1fr; }
+  .relatedGrid  { grid-template-columns: 1fr; }
+  .resultsGrid  { grid-template-columns: 1fr; }
 
-  .typeCard { padding: var(--space-3); }
+  .treatmentCard {
+    flex-direction: column;
+  }
+  .treatmentThumb {
+    width: 100%;
+    height: 160px;
+  }
+
+  .typeCard  { padding: var(--space-3); }
   .causeCard { padding: var(--space-3); }
 }
 

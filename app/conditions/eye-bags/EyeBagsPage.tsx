@@ -162,6 +162,92 @@ const RELATED_CONDITIONS = [
   },
 ];
 
+/* ── Risk factors ─────────────────────────────────────────────── */
+const RISK_FACTORS = [
+  'Older adults.',
+  'People with a family history of eye bags.',
+  'Those who often lack sleep.',
+  'People with allergies.',
+  'Individuals who smoke or consume alcohol.',
+  'Those prone to fluid retention.',
+];
+
+/* ── Diagnose steps ───────────────────────────────────────────── */
+const DIAGNOSE_STEPS = [
+  {
+    num: '01',
+    text: 'Examine the under-eye area to see the type and severity of puffiness.',
+  },
+  {
+    num: '02',
+    text: 'Discuss your medical history, lifestyle, and any concerns you have.',
+  },
+  {
+    num: '03',
+    text: 'Recommend the most suitable treatment options, surgical or non-surgical.',
+  },
+];
+
+/* ── Treatments for eye bags ──────────────────────────────────── */
+const TREATMENTS = [
+  {
+    title:  'Dermal Fillers',
+    desc:   'Restore volume and smooth the under-eye area to reduce under-eye bags.',
+    href:   '/treatments/dermal-fillers',
+    image:  '/images/BA1.jpg',
+  },
+  {
+    title:  'Cool Bleph',
+    desc:   'The laser blepharoplasty strengthens and firms the under-eye skin, reducing sagging.',
+    href:   '/treatments/cool-bleph',
+    image:  '/images/BA2.jpg',
+  },
+  {
+    title:  'Chemical Peel',
+    desc:   'Removes dead skin & refreshes the under-eye skin.',
+    href:   '/treatments/chemical-peel',
+    image:  '/images/BA3.jpg',
+  },
+  {
+    title:  'Polynucleotides',
+    desc:   'Promotes deep skin regeneration and rejuvenation of the under-eye area.',
+    href:   '/treatments/polynucleotides',
+    image:  '/images/BA4.jpg',
+  },
+];
+
+/* ── When to call a doctor ────────────────────────────────────── */
+const WHEN_TO_CALL = [
+  'Sudden or severe swelling.',
+  'Pain, irritation, or redness around the eyes.',
+  'Vision changes or blurred vision.',
+  'Bags accompanied by a rash or other unusual symptoms.',
+];
+
+/* ── Results timeline ─────────────────────────────────────────── */
+const RESULTS_TIMELINE = [
+  {
+    phase: 'Immediate',
+    title: 'Reduced Puffiness',
+    desc:  'Reduced puffiness and smoother under-eye area.',
+  },
+  {
+    phase: '1–2 Weeks',
+    title: 'Firmer Skin',
+    desc:  'Skin feels firmer and more refreshed.',
+  },
+  {
+    phase: '4–8 Weeks',
+    title: 'Full Improvement',
+    desc:  'Full improvement in appearance, natural look.',
+  },
+  {
+    phase: 'Long-term',
+    title: 'Maintained Results',
+    desc:  'Maintain results with proper care and follow-ups.',
+  },
+];
+
 /* ════════════════════════════════════════════════════════════════
    PAGE
 ════════════════════════════════════════════════════════════════ */
@@ -425,7 +511,258 @@ export default function EyeBagsPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          5. MEET THE EXPERTS
+          5. WHO IS MORE LIKELY?
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light">
+        <Container>
+          <motion.div
+            className={styles.riskGrid}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {/* Left: heading + intro */}
+            <motion.div className={styles.riskLeft} variants={stagger(0.1)}>
+              <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+                Risk Factors
+              </motion.p>
+              <motion.h2 className={styles.riskHeading} variants={fadeUp}>
+                Who Is More Likely to Develop Bags Under Eyes?
+              </motion.h2>
+              <motion.p className={styles.riskIntro} variants={fadeUp}>
+                The following individuals may be more at risk of developing eye bags.
+              </motion.p>
+            </motion.div>
+
+            {/* Right: checklist */}
+            <motion.ul
+              className={styles.riskList}
+              role="list"
+              variants={stagger(0.08)}
+            >
+              {RISK_FACTORS.map((item) => (
+                <motion.li key={item} className={styles.riskItem} variants={fadeUp}>
+                  <span className={styles.riskCheck} aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          6. HOW DO WE DIAGNOSE?
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Our Process
+            </motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              How Do We Diagnose Eye Bags?
+            </motion.h2>
+            <motion.p className={styles.diagnoseIntro} variants={fadeUp}>
+              Our specialists will:
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.diagnoseGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {DIAGNOSE_STEPS.map((step) => (
+              <motion.div
+                key={step.num}
+                className={styles.diagnoseCard}
+                variants={fadeUp}
+              >
+                <span className={styles.diagnoseNum} aria-hidden="true">
+                  {step.num}
+                </span>
+                <p className={styles.diagnoseText}>{step.text}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          7. TREATMENTS FOR EYE BAGS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Your Options
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Treatments For Bags Under Eyes
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.treatmentsGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {TREATMENTS.map((t) => (
+              <motion.div
+                key={t.title}
+                className={styles.treatmentCard}
+                variants={fadeUp}
+                whileHover={{ y: -4, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
+              >
+                {/* Thumbnail */}
+                <div className={styles.treatmentThumb}>
+                  <Image
+                    src={t.image}
+                    alt={`${t.title} before and after result at The One Clinic`}
+                    fill
+                    className={styles.treatmentThumbImg}
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                  />
+                </div>
+
+                {/* Body */}
+                <div className={styles.treatmentCardBody}>
+                  <Link href={t.href} className={styles.treatmentTitleLink}>
+                    <h3 className={styles.treatmentTitle}>{t.title}</h3>
+                    <span className={styles.treatmentArrow} aria-hidden="true">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </span>
+                  </Link>
+                  <p className={styles.treatmentDesc}>{t.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          8. WHEN TO CALL A DOCTOR?
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.whenToCallWrap}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {/* Left: heading */}
+            <motion.div className={styles.whenToCallLeft} variants={stagger(0.1)}>
+              <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+                Medical Advice
+              </motion.p>
+              <motion.h2 className={styles.whenToCallHeading} variants={fadeUp}>
+                When to Call a Doctor?
+              </motion.h2>
+              <motion.p className={styles.whenToCallIntro} variants={fadeUp}>
+                Most under-eye bags are harmless and only affect appearance. See a
+                doctor if you notice:
+              </motion.p>
+            </motion.div>
+
+            {/* Right: warning list */}
+            <motion.ul
+              className={styles.whenToCallList}
+              role="list"
+              variants={stagger(0.08)}
+            >
+              {WHEN_TO_CALL.map((item) => (
+                <motion.li key={item} className={styles.whenToCallItem} variants={fadeUp}>
+                  <span className={styles.whenToCallIcon} aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="8" x2="12" y2="12"/>
+                      <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          9. RESULTS & EXPECTATIONS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              What To Expect
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Results &amp; Expectations
+            </motion.h2>
+            <motion.p className={styles.sectionSubtext} variants={fadeUp}>
+              After treatment for under-eye bags, here is what you can expect at
+              each stage of your recovery.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.resultsGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {RESULTS_TIMELINE.map((item) => (
+              <motion.div
+                key={item.phase}
+                className={styles.resultCard}
+                variants={fadeUp}
+                whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
+              >
+                <span className={styles.resultPhase}>{item.phase}</span>
+                <h3 className={styles.resultTitle}>{item.title}</h3>
+                <p className={styles.resultDesc}>{item.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          10. MEET THE EXPERTS
       ════════════════════════════════════════ */}
       <MeetTheExperts />
 
