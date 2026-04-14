@@ -37,7 +37,7 @@ const BENEFITS = [
   },
   {
     title: 'Minimal Scarring',
-    desc: 'Using advanced surgical techniques and wound closure methods, our team minimise post-procedure scarring — leaving you with the cleanest possible result.',
+    desc: 'Using advanced surgical techniques and wound closure methods, our team minimise post-procedure scarring, leaving you with the cleanest possible result.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -63,7 +63,7 @@ const OVERVIEW_POINTS = [
   'Precise mole excision performed under local anaesthetic',
   'Histological analysis available for complete peace of mind',
   'Minimal downtime with expert wound care advice',
-  'No GP referral required — book directly with our team',
+  'No GP referral required, book directly with our team',
 ];
 
 const FAQS = [
@@ -129,7 +129,7 @@ export default function MoleRemovalPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Safe, precise mole removal performed by our expert medical team using proven surgical techniques — with histological analysis available for complete peace of mind.
+                Safe, precise mole removal performed by our expert medical team using proven surgical techniques, with histological analysis available for complete peace of mind.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -209,7 +209,7 @@ export default function MoleRemovalPage() {
                   Mole removal is a minor surgical procedure in which a mole or skin lesion is
                   precisely excised under local anaesthetic. Whether for cosmetic reasons or
                   concern about a changing lesion, our clinical team carry out a thorough
-                  assessment before proceeding — and all tissue can be sent for histological
+                  assessment before proceeding, and all tissue can be sent for histological
                   analysis to provide absolute reassurance.
                 </p>
               </motion.div>

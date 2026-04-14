@@ -18,7 +18,7 @@ import styles from './page.module.css';
 const BENEFITS = [
   {
     title: 'Instantly Glowing Skin',
-    desc: 'Cleanse, exfoliate, extract, and hydrate in one 30–45 minute session. Leave with visibly brighter, smoother skin — no recovery needed.',
+    desc: 'Cleanse, exfoliate, extract, and hydrate in one 30 to 45 minute session. Leave with visibly brighter, smoother skin, no recovery needed.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -28,7 +28,7 @@ const BENEFITS = [
   },
   {
     title: 'Zero Downtime',
-    desc: 'HydraFacial is completely non-invasive. There is no redness, peeling, or recovery period — making it perfect before events.',
+    desc: 'HydraFacial is completely non-invasive. There is no redness, peeling, or recovery period, making it perfect before events.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
@@ -40,7 +40,7 @@ const BENEFITS = [
   },
   {
     title: 'Suitable for All Skin Types',
-    desc: 'Whether dry, oily, sensitive, or combination — HydraFacial is tailored to your skin. Safe for all ages and skin tones.',
+    desc: 'Whether dry, oily, sensitive, or combination, HydraFacial is tailored to your skin. Safe for all ages and skin tones.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -65,14 +65,14 @@ const OVERVIEW_POINTS = [
   'Deeply cleanses, exfoliates, and hydrates in one session',
   'Removes impurities and unclogs pores with gentle suction',
   'Infuses skin with antioxidants and hyaluronic acid',
-  'No downtime — no waiting lists — no referral required',
+  'No downtime, no waiting lists, no referral required',
 ];
 
 const FAQS = [
   {
     question: 'What is a HydraFacial?',
     answer:
-      'HydraFacial is a patented, multi-step skin treatment that cleanses, exfoliates, extracts congestion, and infuses the skin with nourishing serums — all in a single session. It is suitable for all skin types and delivers immediate, visible results with no discomfort or downtime.',
+      'HydraFacial is a patented, multi-step skin treatment that cleanses, exfoliates, extracts congestion, and infuses the skin with nourishing serums, all in a single session. It is suitable for all skin types and delivers immediate, visible results with no discomfort or downtime.',
   },
   {
     question: 'How quickly will I see results?',
@@ -211,7 +211,7 @@ export default function HydrafacialPage() {
                   HydraFacial is a multi-step medical-grade facial that uses a patented Vortex-Fusion
                   technology to cleanse, exfoliate, extract, and infuse the skin with powerful serums.
                   At The One Clinic, our expert team tailors every HydraFacial to your specific skin
-                  type and concerns — delivering a radiant result in under an hour.
+                  type and concerns, delivering a radiant result in under an hour.
                 </p>
               </motion.div>
 

@@ -19,7 +19,7 @@ export default function TeamIntro() {
       <Container>
         <div className={styles.layout}>
 
-          {/* Left — text */}
+          {/* Left, text */}
           <motion.div
             className={styles.textCol}
             variants={stagger(0.1)}
@@ -45,7 +45,7 @@ export default function TeamIntro() {
             </motion.p>
           </motion.div>
 
-          {/* Right — credentials card */}
+          {/* Right, credentials card */}
           <motion.div
             className={styles.cardCol}
             variants={fadeUp}

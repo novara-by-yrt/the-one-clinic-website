@@ -7,15 +7,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import styles from './StickyCallbackCTA.module.css';
 
 /* ── Timing constants ──────────────────────────────────────────── */
-const FIRST_DELAY  = 15_000;   // 15 s  — first auto-show after page load
-const SECOND_DELAY = 120_000;  // 2 min — second auto-show after first close
+const FIRST_DELAY  = 15_000;   // 15 s , first auto-show after page load
+const SECOND_DELAY = 120_000;  // 2 min, second auto-show after first close
 
 /* ── localStorage helpers ──────────────────────────────────────── */
 /**
  * Popup phase stored in localStorage:
- *   '0' — never auto-triggered
- *   '1' — auto-triggered once (open or closed), waiting for 2nd trigger
- *   '2' — both auto-triggers used; never show automatically again
+ *   '0', never auto-triggered
+ *   '1', auto-triggered once (open or closed), waiting for 2nd trigger
+ *   '2', both auto-triggers used; never show automatically again
  */
 const KEY_PHASE     = 'toc_popup_phase';
 const KEY_CLOSED_AT = 'toc_popup_closed_at'; // Unix ms timestamp
@@ -69,7 +69,7 @@ export default function StickyCallbackCTA() {
     };
   }, []);
 
-  /* ── One-time mount setup — runs once (component lives in root layout) */
+  /* ── One-time mount setup, runs once (component lives in root layout) */
   useEffect(() => {
     const phase = Number(lsGet(KEY_PHASE) ?? '0');
     if (phase >= 2) return; // done forever
@@ -102,7 +102,7 @@ export default function StickyCallbackCTA() {
     isAutoRef.current = false;
     setOpen(false);
 
-    if (!wasAuto) return; // manual open — don't advance phase
+    if (!wasAuto) return; // manual open, don't advance phase
 
     const phase = Number(lsGet(KEY_PHASE) ?? '0');
 
@@ -112,7 +112,7 @@ export default function StickyCallbackCTA() {
       lsSet(KEY_CLOSED_AT, String(now));
       armSecondTrigger(now);
     }
-    // phase === 2: second auto-show dismissed — cleanup2Ref is already a no-op
+    // phase === 2: second auto-show dismissed, cleanup2Ref is already a no-op
     cleanup2Ref.current();
   }, [armSecondTrigger]);
 
@@ -184,7 +184,7 @@ export default function StickyCallbackCTA() {
                 exit={{ opacity: 0, y: 32 }}
                 transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
               >
-                {/* Team image — desktop only */}
+                {/* Team image, desktop only */}
                 <div className={styles.modalImage} aria-hidden="true">
                   <Image
                     src="/images/imgi_78_GTR_0328-1-1.jpg"

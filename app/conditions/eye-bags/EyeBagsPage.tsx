@@ -111,7 +111,7 @@ const FAQS = [
   {
     question: 'How to get rid of under-eye bags permanently?',
     answer:
-      'Truly permanent removal of eye bags is typically achieved through surgical blepharoplasty, which addresses underlying fat and excess skin. Non-surgical options like dermal fillers or Cool Bleph provide significant long-lasting improvement — often 12 months or more — but results are not permanent and maintenance is recommended.',
+      'Truly permanent removal of eye bags is typically achieved through surgical blepharoplasty, which addresses underlying fat and excess skin. Non-surgical options like dermal fillers or Cool Bleph provide significant long-lasting improvement, often 12 months or more, but results are not permanent and maintenance is recommended.',
   },
   {
     question: 'How do I get rid of eye bags that won\'t go away?',
@@ -235,12 +235,12 @@ const RESULTS_TIMELINE = [
     desc:  'Reduced puffiness and smoother under-eye area.',
   },
   {
-    phase: '1–2 Weeks',
+    phase: '1 to 2 Weeks',
     title: 'Firmer Skin',
     desc:  'Skin feels firmer and more refreshed.',
   },
   {
-    phase: '4–8 Weeks',
+    phase: '4 to 8 Weeks',
     title: 'Full Improvement',
     desc:  'Full improvement in appearance, natural look.',
   },
@@ -275,7 +275,7 @@ export default function EyeBagsPage() {
         aria-label="Eye Bags, hero"
         data-section-theme="dark"
       >
-        {/* Breadcrumb — pinned below fixed header */}
+        {/* Breadcrumb, pinned below fixed header */}
         <div className={styles.heroBreadcrumb}>
           <Container>
             <Breadcrumb
@@ -852,7 +852,7 @@ export default function EyeBagsPage() {
             </motion.p>
             <motion.h2 className={styles.ctaHeading} variants={fadeUp}>
               It&apos;s Time To Get Rid Of{' '}
-              <em className={styles.ctaAccent}>Eye Bags!</em>
+              <span className={styles.ctaAccent}>Eye Bags!</span>
             </motion.h2>
             <motion.p className={styles.ctaSubtext} variants={fadeUp}>
               Talk to our specialists today to find the best treatment for your

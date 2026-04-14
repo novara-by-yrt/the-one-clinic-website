@@ -20,7 +20,7 @@ import styles from './page.module.css';
 const BENEFITS = [
   {
     title: 'Expert Menopause Assessment',
-    desc: 'Our doctors are experienced in diagnosing perimenopause and menopause, assessing your symptom profile, and recommending the most appropriate management — including HRT where suitable.',
+    desc: 'Our doctors are experienced in diagnosing perimenopause and menopause, assessing your symptom profile, and recommending the most appropriate management, including HRT where suitable.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
@@ -30,7 +30,7 @@ const BENEFITS = [
   },
   {
     title: 'Personalised HRT Prescriptions',
-    desc: 'No one-size-fits-all approach. We work with you to find the right type, dose, and delivery method of HRT — whether patches, gel, tablets, or implants — reviewing and adjusting over time.',
+    desc: 'No one-size-fits-all approach. We work with you to find the right type, dose, and delivery method of HRT, whether patches, gel, tablets, or implants, reviewing and adjusting over time.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12"/>
@@ -40,7 +40,7 @@ const BENEFITS = [
   },
   {
     title: 'Full Contraception Service',
-    desc: 'From the combined pill and progesterone-only pill to the contraceptive injection, patch, and implant referrals — we provide comprehensive contraception advice and prescriptions.',
+    desc: 'From the combined pill and progesterone-only pill to the contraceptive injection, patch, and implant referrals, we provide comprehensive contraception advice and prescriptions.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -63,7 +63,7 @@ const BENEFITS = [
 
 const OVERVIEW_POINTS = [
   'Perimenopause and menopause assessment and management',
-  'HRT prescriptions — patches, gel, tablets, and topical options',
+  'HRT prescriptions, patches, gel, tablets, and topical options',
   'Contraception advice, prescriptions, and switching support',
   'Regular reviews, blood tests, and ongoing hormonal monitoring',
 ];
@@ -72,22 +72,22 @@ const FAQS = [
   {
     question: 'How do I know if I need HRT?',
     answer:
-      'HRT is typically considered for women experiencing moderate to severe menopause symptoms such as hot flushes, night sweats, mood changes, brain fog, sleep disturbance, vaginal dryness, and reduced libido. During your consultation, your doctor will take a full symptom history, discuss your medical background, and assess whether HRT is appropriate for you — and if so, which type and dose would suit you best.',
+      'HRT is typically considered for women experiencing moderate to severe menopause symptoms such as hot flushes, night sweats, mood changes, brain fog, sleep disturbance, vaginal dryness, and reduced libido. During your consultation, your doctor will take a full symptom history, discuss your medical background, and assess whether HRT is appropriate for you, and if so, which type and dose would suit you best.',
   },
   {
     question: 'Is HRT safe?',
     answer:
-      "For most women, the benefits of HRT significantly outweigh the risks when prescribed appropriately. Modern HRT — particularly body-identical preparations — has an excellent safety profile. Your doctor will review your personal and family medical history to identify any contraindications and select the safest formulation for you. HRT is not suitable for all women, and this will be discussed openly and honestly at your consultation.",
+      "For most women, the benefits of HRT significantly outweigh the risks when prescribed appropriately. Modern HRT, particularly body-identical preparations, has an excellent safety profile. Your doctor will review your personal and family medical history to identify any contraindications and select the safest formulation for you. HRT is not suitable for all women, and this will be discussed openly and honestly at your consultation.",
   },
   {
     question: 'Can I switch my contraception at this appointment?',
     answer:
-      'Yes. If you are looking to change your current method of contraception — for example, from the combined pill to a progesterone-only method, or to discuss long-acting reversible contraception (LARC) such as the implant or coil — our doctors can advise on all options, prescribe where appropriate, and arrange referrals for fitting if needed.',
+      'Yes. If you are looking to change your current method of contraception, for example, from the combined pill to a progesterone-only method, or to discuss long-acting reversible contraception (LARC) such as the implant or coil, our doctors can advise on all options, prescribe where appropriate, and arrange referrals for fitting if needed.',
   },
   {
     question: 'Do I need a referral to be seen?',
     answer:
-      'No referral is required. You can book directly with The One Clinic. If specialist gynaecological input is needed — for example for complex menopause cases or surgical contraception — we will arrange this referral promptly on your behalf.',
+      'No referral is required. You can book directly with The One Clinic. If specialist gynaecological input is needed, for example for complex menopause cases or surgical contraception, we will arrange this referral promptly on your behalf.',
   },
 ];
 
@@ -109,7 +109,7 @@ export default function MenopauseHRTPage() {
               theme="dark"
               items={[
                 { label: 'Treatments', href: '/treatments' },
-                { label: "Women's Health – Menopause / HRT / Contraception" },
+                { label: "Women's Health, Menopause / HRT / Contraception" },
               ]}
             />
           </Container>
@@ -133,7 +133,7 @@ export default function MenopauseHRTPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Personalised hormonal health care for women — expert assessment, HRT management, and contraception all under one roof.
+                Personalised hormonal health care for women, expert assessment, HRT management, and contraception all under one roof.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -322,7 +322,7 @@ export default function MenopauseHRTPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
-              Feel Like Yourself Again —<br />We Are Here to Help.
+              Feel Like Yourself Again ,<br />We Are Here to Help.
             </motion.h2>
             <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
               Book a confidential consultation with our women's hormonal health specialists today.

@@ -22,7 +22,7 @@ import styles from './page.module.css';
 const AT_A_GLANCE = [
   {
     label: 'Treatment Duration',
-    value: '30–45 minutes',
+    value: '30 to 45 minutes',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -32,7 +32,7 @@ const AT_A_GLANCE = [
   },
   {
     label: 'Treatment Frequency',
-    value: 'Every 1–2 years',
+    value: 'Every 1 to 2 years',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="1 4 1 10 7 10"/>
@@ -42,7 +42,7 @@ const AT_A_GLANCE = [
   },
   {
     label: 'Downtime',
-    value: '1–3 days',
+    value: '1 to 3 days',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
@@ -52,7 +52,7 @@ const AT_A_GLANCE = [
   },
   {
     label: 'Results Longevity',
-    value: '2–3 years or more',
+    value: '2 to 3 years or more',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
@@ -103,7 +103,7 @@ const JOURNEY_STEPS = [
   {
     n: '04',
     title: 'Recovery & Ongoing Results',
-    desc: 'Minimal downtime of 1–2 days. Skin improvements develop progressively over 3–6 months as new collagen matures and remodels.',
+    desc: 'Minimal downtime of 1 to 2 days. Skin improvements develop progressively over 3 to 6 months as new collagen matures and remodels.',
   },
 ];
 
@@ -186,7 +186,7 @@ const TREATED_BENEFITS = [
   },
   {
     title: 'Minimal Downtime',
-    desc: 'Quick recovery with most patients returning to daily activities within 1–2 days. Ideal for those with busy schedules.',
+    desc: 'Quick recovery with most patients returning to daily activities within 1 to 2 days. Ideal for those with busy schedules.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
@@ -241,7 +241,7 @@ const FAQS = [
   {
     question: 'How long do the Endolift results last?',
     answer:
-      'Results typically last 2–3 years, depending on your skin, age, and lifestyle. A good skincare routine helps maintain the effects for longer.',
+      'Results typically last 2 to 3 years, depending on your skin, age, and lifestyle. A good skincare routine helps maintain the effects for longer.',
   },
   {
     question: 'What does an Endolift do?',
@@ -256,7 +256,7 @@ const FAQS = [
   {
     question: 'How many treatment sessions will I need?',
     answer:
-      '1–2 sessions are usually enough. Your doctor will create a personalised plan based on your skin and goals. Some may see results in a single session, others may benefit from a second.',
+      '1 to 2 sessions are usually enough. Your doctor will create a personalised plan based on your skin and goals. Some may see results in a single session, others may benefit from a second.',
   },
   {
     question: 'What can I expect after Endolift?',
@@ -349,7 +349,7 @@ export default function EndoliftPage() {
         aria-label="Endolift Leicester, hero"
         data-section-theme="dark"
       >
-        {/* Breadcrumb — pinned to top of hero */}
+        {/* Breadcrumb, pinned to top of hero */}
         <div className={styles.heroBreadcrumb}>
           <Container>
             <Breadcrumb
@@ -838,7 +838,7 @@ export default function EndoliftPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {/* Card 1 — Results Timeline */}
+            {/* Card 1, Results Timeline */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -850,18 +850,18 @@ export default function EndoliftPage() {
                 <h3 className={styles.resultsAfterCardTitle}>When Will You See Results?</h3>
               </div>
               <p className={styles.resultsAfterCardBody}>
-                Some visible tightening appears within 4–8 weeks as new collagen begins to form.
-                Skin continues to improve over 3–6 months, with final results typically visible at
-                around 6–9 months.
+                Some visible tightening appears within 4 to 8 weeks as new collagen begins to form.
+                Skin continues to improve over 3 to 6 months, with final results typically visible at
+                around 6 to 9 months.
               </p>
               <div className={styles.resultsAfterCardSpacer} />
               <p className={styles.resultsAfterCardNote}>
-                Results are long-lasting, often 2–3 years, depending on age, skin condition,
+                Results are long-lasting, often 2 to 3 years, depending on age, skin condition,
                 and lifestyle. A good skincare routine helps maintain the effect.
               </p>
             </motion.div>
 
-            {/* Card 2 — Side Effects */}
+            {/* Card 2, Side Effects */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -896,7 +896,7 @@ export default function EndoliftPage() {
               </p>
             </motion.div>
 
-            {/* Card 3 — Aftercare */}
+            {/* Card 3, Aftercare */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -1226,7 +1226,7 @@ export default function EndoliftPage() {
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
           <div className={styles.expertSlideshow}>
-            {/* Card — keyed to re-animate on slide change */}
+            {/* Card, keyed to re-animate on slide change */}
             <motion.div
               key={expertIndex}
               className={styles.expertCard}

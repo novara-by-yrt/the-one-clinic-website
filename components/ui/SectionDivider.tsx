@@ -17,7 +17,7 @@ type Props = {
 const COLOR = { dark: '#000000', light: '#ffffff' } as const;
 
 export default function SectionDivider({ from, to, height = 32 }: Props) {
-  // Same-colour neighbours need no divider — render nothing
+  // Same-colour neighbours need no divider, render nothing
   if (from === to) return null;
 
   return (

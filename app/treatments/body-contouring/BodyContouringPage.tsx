@@ -18,7 +18,7 @@ import styles from './page.module.css';
 const BENEFITS = [
   {
     title: 'No Surgery Required',
-    desc: 'Non-surgical body contouring achieves meaningful fat reduction and body reshaping without incisions, anaesthetic, or hospital stays — with significantly less downtime than surgical alternatives.',
+    desc: 'Non-surgical body contouring achieves meaningful fat reduction and body reshaping without incisions, anaesthetic, or hospital stays, with significantly less downtime than surgical alternatives.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -27,7 +27,7 @@ const BENEFITS = [
   },
   {
     title: 'Targets Stubborn Fat',
-    desc: 'Body contouring treatments focus on localised fat deposits that are resistant to diet and exercise — including the abdomen, flanks, thighs, arms, and back.',
+    desc: 'Body contouring treatments focus on localised fat deposits that are resistant to diet and exercise, including the abdomen, flanks, thighs, arms, and back.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -82,7 +82,7 @@ const FAQS = [
   {
     question: 'How many sessions will I need?',
     answer:
-      'The number of sessions varies depending on the treatment type and the area being addressed. Most patients undergo a course of 4–8 sessions for optimal results. A personalised treatment plan will be outlined at your initial consultation.',
+      'The number of sessions varies depending on the treatment type and the area being addressed. Most patients undergo a course of 4 to 8 sessions for optimal results. A personalised treatment plan will be outlined at your initial consultation.',
   },
   {
     question: 'Do I need a referral for body contouring?',
@@ -131,7 +131,7 @@ export default function BodyContouringPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Non-surgical fat reduction and body sculpting for stubborn areas. Tone, tighten, and reshape — no surgery, no downtime.
+                Non-surgical fat reduction and body sculpting for stubborn areas. Tone, tighten, and reshape, no surgery, no downtime.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>

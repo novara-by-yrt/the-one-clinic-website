@@ -28,7 +28,7 @@ const BENEFITS = [
     ),
   },
   {
-    title: 'Fast Access — No Long Waits',
+    title: 'Fast Access, No Long Waits',
     desc: 'NHS waiting lists for mental health support can be months long. We offer same-day and next-day appointments so you can access help when you need it most.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -72,7 +72,7 @@ const FAQS = [
   {
     question: 'What mental health conditions do you support?',
     answer:
-      'We provide assessment and initial management for a wide range of mental health concerns including anxiety disorders, depression, panic attacks, stress, burnout, low mood, sleep disturbances, and adjustment disorders. Where specialist psychiatric input is required — for example, for bipolar disorder, psychosis, or complex trauma — we will arrange a prompt referral to an appropriate specialist.',
+      'We provide assessment and initial management for a wide range of mental health concerns including anxiety disorders, depression, panic attacks, stress, burnout, low mood, sleep disturbances, and adjustment disorders. Where specialist psychiatric input is required, for example, for bipolar disorder, psychosis, or complex trauma, we will arrange a prompt referral to an appropriate specialist.',
   },
   {
     question: 'Can I be prescribed medication at a mental health consultation?',
@@ -82,12 +82,12 @@ const FAQS = [
   {
     question: 'What happens during a mental health consultation?',
     answer:
-      'Your first appointment typically lasts 45–60 minutes. Your doctor will take a detailed history of your symptoms, explore how they affect your daily life, review your medical background, and discuss your goals. Together you will agree on a management plan which may include lifestyle advice, talking therapies, medication, or referral — or a combination of these.',
+      'Your first appointment typically lasts 45 to 60 minutes. Your doctor will take a detailed history of your symptoms, explore how they affect your daily life, review your medical background, and discuss your goals. Together you will agree on a management plan which may include lifestyle advice, talking therapies, medication, or referral, or a combination of these.',
   },
   {
     question: 'Is everything discussed kept completely confidential?',
     answer:
-      'Yes. All consultations are completely confidential. Information is only shared with other healthcare professionals directly involved in your care, and only with your consent. The only exception is if there is a serious and immediate risk to your safety or the safety of others — in which case we have a duty of care to act appropriately, and we would discuss this with you.',
+      'Yes. All consultations are completely confidential. Information is only shared with other healthcare professionals directly involved in your care, and only with your consent. The only exception is if there is a serious and immediate risk to your safety or the safety of others, in which case we have a duty of care to act appropriately, and we would discuss this with you.',
   },
 ];
 
@@ -133,7 +133,7 @@ export default function MentalHealthPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Compassionate, expert mental health support — fast access, no waiting lists, and a doctor who truly listens.
+                Compassionate, expert mental health support, fast access, no waiting lists, and a doctor who truly listens.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -214,8 +214,8 @@ export default function MentalHealthPage() {
                 <p className={styles.combinedDesc}>
                   A private mental health consultation gives you dedicated, unhurried time with a
                   qualified doctor to discuss your emotional and psychological wellbeing. At The
-                  One Clinic, our doctors — including Dr Gunjan Bedi who holds qualifications in
-                  both General Practice and Psychiatry — offer a holistic approach to mental health,
+                  One Clinic, our doctors, including Dr Gunjan Bedi who holds qualifications in
+                  both General Practice and Psychiatry, offer a holistic approach to mental health,
                   treating mind and body together to support your overall wellbeing.
                 </p>
               </motion.div>
@@ -325,7 +325,7 @@ export default function MentalHealthPage() {
               You Don't Have to<br />Face This Alone.
             </motion.h2>
             <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
-              Take the first step — book a confidential mental health consultation today.
+              Take the first step, book a confidential mental health consultation today.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>

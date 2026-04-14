@@ -18,7 +18,7 @@ export default function FacilitiesIntro() {
     <Section variant="light" data-section-theme="light">
       <Container>
         <div className={styles.layout}>
-          {/* Left — text */}
+          {/* Left, text */}
           <motion.div
             className={styles.textCol}
             variants={stagger(0.1)}
@@ -46,7 +46,7 @@ export default function FacilitiesIntro() {
             </motion.p>
           </motion.div>
 
-          {/* Right — fact card */}
+          {/* Right, fact card */}
           <motion.div
             className={styles.cardCol}
             variants={fadeUp}

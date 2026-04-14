@@ -37,7 +37,7 @@ const BENEFITS = [
   },
   {
     title: 'Improves Sleep Quality',
-    desc: 'By tightening the soft palate tissue, laser treatment reduces the vibration that causes snoring — helping both you and your partner enjoy better, uninterrupted sleep.',
+    desc: 'By tightening the soft palate tissue, laser treatment reduces the vibration that causes snoring, helping both you and your partner enjoy better, uninterrupted sleep.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
@@ -60,21 +60,21 @@ const BENEFITS = [
 
 const OVERVIEW_POINTS = [
   'Non-surgical laser procedure targeting the soft palate',
-  'Reduces tissue vibration — the primary cause of snoring',
+  'Reduces tissue vibration, the primary cause of snoring',
   'Minimal downtime with no general anaesthetic required',
-  'No GP referral needed — book directly with our team',
+  'No GP referral needed, book directly with our team',
 ];
 
 const FAQS = [
   {
     question: 'How does laser snoring treatment work?',
     answer:
-      'Laser snoring treatment uses a precisely targeted laser to gently tighten the soft palate and uvula tissue. This reduces the tissue laxity that causes vibration during sleep — which is the main source of snoring. The treatment stimulates collagen remodelling, producing a firmer palate over subsequent weeks.',
+      'Laser snoring treatment uses a precisely targeted laser to gently tighten the soft palate and uvula tissue. This reduces the tissue laxity that causes vibration during sleep, which is the main source of snoring. The treatment stimulates collagen remodelling, producing a firmer palate over subsequent weeks.',
   },
   {
     question: 'How many sessions will I need?',
     answer:
-      'Most patients see a noticeable improvement after a single session, though a course of 2–3 treatments is often recommended for optimal and longer-lasting results. Your clinician will advise the most appropriate protocol at your consultation.',
+      'Most patients see a noticeable improvement after a single session, though a course of 2 to 3 treatments is often recommended for optimal and longer-lasting results. Your clinician will advise the most appropriate protocol at your consultation.',
   },
   {
     question: 'Is laser snoring treatment painful?',
@@ -128,7 +128,7 @@ export default function LaserSnoringPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                A fast, non-surgical solution to reduce snoring and improve sleep quality — for you and those around you.
+                A fast, non-surgical solution to reduce snoring and improve sleep quality, for you and those around you.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -207,7 +207,7 @@ export default function LaserSnoringPage() {
                 <p className={styles.combinedDesc}>
                   Laser snoring treatment is a non-surgical procedure that uses targeted laser
                   energy to gently tighten the tissues of the soft palate. This reduces the
-                  vibration that occurs during sleep — the primary cause of snoring — without
+                  vibration that occurs during sleep, the primary cause of snoring, without
                   the need for surgery, anaesthetic, or significant downtime.
                 </p>
               </motion.div>

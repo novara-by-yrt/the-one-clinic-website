@@ -21,7 +21,7 @@ export default function WhatWeDoContent() {
       <Section variant="light" data-section-theme="light">
         <Container>
           <div className={styles.layout}>
-            {/* Left — text */}
+            {/* Left, text */}
             <motion.div
               className={styles.textCol}
               variants={stagger(0.1)}
@@ -53,7 +53,7 @@ export default function WhatWeDoContent() {
               </motion.p>
             </motion.div>
 
-            {/* Right — stat card */}
+            {/* Right, stat card */}
             <motion.div
               className={styles.cardCol}
               variants={fadeUp}
@@ -86,7 +86,7 @@ export default function WhatWeDoContent() {
       <Section variant="light" data-section-theme="light" className={styles.altSection}>
         <Container>
           <div className={`${styles.layout} ${styles.layoutReverse}`}>
-            {/* Left (visually right on desktop due to reverse) — quote card */}
+            {/* Left (visually right on desktop due to reverse), quote card */}
             <motion.div
               className={styles.cardCol}
               variants={fadeUp}
@@ -115,7 +115,7 @@ export default function WhatWeDoContent() {
               </div>
             </motion.div>
 
-            {/* Right (visually left) — text */}
+            {/* Right (visually left), text */}
             <motion.div
               className={styles.textCol}
               variants={stagger(0.1)}

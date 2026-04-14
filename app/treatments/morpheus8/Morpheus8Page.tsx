@@ -18,7 +18,7 @@ import styles from './page.module.css';
 const BENEFITS = [
   {
     title: 'Tighter, Firmer Skin',
-    desc: 'Radiofrequency energy heats deep tissue layers to stimulate collagen and elastin production — delivering measurable skin tightening results.',
+    desc: 'Radiofrequency energy heats deep tissue layers to stimulate collagen and elastin production, delivering measurable skin tightening results.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -28,7 +28,7 @@ const BENEFITS = [
   },
   {
     title: 'Minimal Downtime',
-    desc: 'Morpheus8 requires minimal recovery. Most patients return to normal activities within 1–3 days with only mild redness.',
+    desc: 'Morpheus8 requires minimal recovery. Most patients return to normal activities within 1 to 3 days with only mild redness.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
@@ -72,17 +72,17 @@ const FAQS = [
   {
     question: 'What is Morpheus8?',
     answer:
-      'Morpheus8 is a fractional radiofrequency (RF) microneedling device that delivers controlled energy deep into the skin and underlying fat. It stimulates collagen remodelling, tightens lax skin, and improves texture — producing results that continue to improve over several months.',
+      'Morpheus8 is a fractional radiofrequency (RF) microneedling device that delivers controlled energy deep into the skin and underlying fat. It stimulates collagen remodelling, tightens lax skin, and improves texture, producing results that continue to improve over several months.',
   },
   {
     question: 'How many sessions will I need?',
     answer:
-      'Most patients achieve excellent results with 1–3 sessions spaced 4–6 weeks apart. A personalised treatment plan is created at your consultation based on your skin concerns and goals.',
+      'Most patients achieve excellent results with 1 to 3 sessions spaced 4 to 6 weeks apart. A personalised treatment plan is created at your consultation based on your skin concerns and goals.',
   },
   {
     question: 'Is Morpheus8 painful?',
     answer:
-      'A topical anaesthetic cream is applied before treatment to ensure comfort. Most patients experience mild warmth and pressure during the procedure. Downtime is typically 1–3 days of redness and mild swelling.',
+      'A topical anaesthetic cream is applied before treatment to ensure comfort. Most patients experience mild warmth and pressure during the procedure. Downtime is typically 1 to 3 days of redness and mild swelling.',
   },
   {
     question: 'Do I need a referral for Morpheus8?',
@@ -210,7 +210,7 @@ export default function Morpheus8Page() {
                 <p className={styles.combinedDesc}>
                   Morpheus8 combines fractional microneedling with radiofrequency energy to remodel
                   skin and underlying fat at depth. The result is tighter, smoother, more youthful-looking
-                  skin — without surgery. At The One Clinic, all Morpheus8 treatments are delivered by
+                  skin, without surgery. At The One Clinic, all Morpheus8 treatments are delivered by
                   our expert clinical team with bespoke settings for your skin type and concerns.
                 </p>
               </motion.div>

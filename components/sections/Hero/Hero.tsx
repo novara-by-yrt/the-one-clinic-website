@@ -112,7 +112,7 @@ export default function Hero() {
             >
               Where Expertise
               <br />
-              <em className={styles.headlineAccent}>Meets Care</em>
+              <span className={styles.headlineAccent}>Meets Care</span>
             </motion.h1>
 
             {/* Subtext */}

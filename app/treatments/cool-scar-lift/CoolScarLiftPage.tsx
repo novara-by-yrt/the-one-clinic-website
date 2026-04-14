@@ -72,7 +72,7 @@ const FAQS = [
   {
     question: 'What is Cool Scar Lift?',
     answer:
-      'Cool Scar Lift is an advanced non-surgical treatment that uses targeted energy technology to remodel scar tissue and stimulate the skin\'s natural healing response. It breaks down the fibrous bands within scars, lifts depressed areas, and improves overall skin texture — delivering progressive, natural-looking results.',
+      'Cool Scar Lift is an advanced non-surgical treatment that uses targeted energy technology to remodel scar tissue and stimulate the skin\'s natural healing response. It breaks down the fibrous bands within scars, lifts depressed areas, and improves overall skin texture, delivering progressive, natural-looking results.',
   },
   {
     question: 'What types of scars can be treated?',
@@ -82,7 +82,7 @@ const FAQS = [
   {
     question: 'How many sessions will I need?',
     answer:
-      'The number of sessions depends on the type, age, and severity of the scar. Many patients see improvement after 2–4 treatments spaced a few weeks apart. A bespoke treatment plan will be created for you at your consultation.',
+      'The number of sessions depends on the type, age, and severity of the scar. Many patients see improvement after 2 to 4 treatments spaced a few weeks apart. A bespoke treatment plan will be created for you at your consultation.',
   },
   {
     question: 'Do I need a referral for Cool Scar Lift?',
@@ -131,7 +131,7 @@ export default function CoolScarLiftPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Advanced non-surgical scar reduction. Remodel scar tissue, improve skin texture, and restore confidence — no surgery, no downtime.
+                Advanced non-surgical scar reduction. Remodel scar tissue, improve skin texture, and restore confidence, no surgery, no downtime.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -210,7 +210,7 @@ export default function CoolScarLiftPage() {
                 <p className={styles.combinedDesc}>
                   Cool Scar Lift is a non-surgical treatment that targets scar tissue at its source.
                   Using advanced energy-based technology, it breaks down fibrous scar bands, stimulates
-                  new collagen formation, and gradually lifts and smooths the skin — improving both the
+                  new collagen formation, and gradually lifts and smooths the skin, improving both the
                   appearance and texture of even long-standing scars.
                 </p>
               </motion.div>

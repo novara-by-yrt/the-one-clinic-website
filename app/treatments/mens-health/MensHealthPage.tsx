@@ -20,7 +20,7 @@ import styles from './page.module.css';
 const BENEFITS = [
   {
     title: 'A Discreet, Judgement-Free Space',
-    desc: "Men often delay seeking help for sensitive health issues. We provide a completely confidential, relaxed environment where you can speak openly — without embarrassment or judgement.",
+    desc: "Men often delay seeking help for sensitive health issues. We provide a completely confidential, relaxed environment where you can speak openly, without embarrassment or judgement.",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -28,7 +28,7 @@ const BENEFITS = [
     ),
   },
   {
-    title: 'Fast Access — No Long Waits',
+    title: 'Fast Access, No Long Waits',
     desc: 'Same-day and next-day appointments available. Get seen quickly, receive answers, and start feeling better without waiting weeks for a standard NHS slot.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -39,7 +39,7 @@ const BENEFITS = [
   },
   {
     title: 'Comprehensive Male Health Care',
-    desc: 'From testosterone and sexual health to cardiovascular risk and mental wellbeing — our doctors take a whole-body approach to male health, addressing all concerns in one place.',
+    desc: 'From testosterone and sexual health to cardiovascular risk and mental wellbeing, our doctors take a whole-body approach to male health, addressing all concerns in one place.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
@@ -49,7 +49,7 @@ const BENEFITS = [
   },
   {
     title: 'Ongoing Care & Monitoring',
-    desc: 'Regular check-ins, blood test reviews, and treatment adjustments ensure your health is managed proactively — not just reactively. See the same doctor every time.',
+    desc: 'Regular check-ins, blood test reviews, and treatment adjustments ensure your health is managed proactively, not just reactively. See the same doctor every time.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
@@ -80,12 +80,12 @@ const FAQS = [
   {
     question: 'Is erectile dysfunction something a GP can treat?',
     answer:
-      "Yes. Erectile dysfunction (ED) is a very common condition that is entirely treatable in most cases. Our doctors will take a thorough history, identify any underlying causes (such as cardiovascular disease, diabetes, or hormonal issues), and recommend an appropriate treatment plan — which may include lifestyle changes, medication, or referral to a specialist where necessary. There is no need to feel embarrassed; it's a medical condition like any other.",
+      "Yes. Erectile dysfunction (ED) is a very common condition that is entirely treatable in most cases. Our doctors will take a thorough history, identify any underlying causes (such as cardiovascular disease, diabetes, or hormonal issues), and recommend an appropriate treatment plan, which may include lifestyle changes, medication, or referral to a specialist where necessary. There is no need to feel embarrassed; it's a medical condition like any other.",
   },
   {
     question: 'Do I need a referral to book a men\'s health appointment?',
     answer:
-      "No referral is needed. You can book directly with The One Clinic at any time. If specialist input is required following your consultation — for example, a referral to a urologist or endocrinologist — we will arrange this on your behalf.",
+      "No referral is needed. You can book directly with The One Clinic at any time. If specialist input is required following your consultation, for example, a referral to a urologist or endocrinologist, we will arrange this on your behalf.",
   },
 ];
 
@@ -131,7 +131,7 @@ export default function MensHealthPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Discreet, expert care for every aspect of male health — from testosterone and sexual health to cardiovascular risk and mental wellbeing.
+                Discreet, expert care for every aspect of male health, from testosterone and sexual health to cardiovascular risk and mental wellbeing.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>

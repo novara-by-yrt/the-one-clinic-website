@@ -29,7 +29,7 @@ export default function TreatmentTemplate({ treatment }: Props) {
       {/* ── 1. Hero + Overview (combined) ──────────────────────── */}
       <section
         className={styles.hero}
-        aria-label={`${title} – hero`}
+        aria-label={`${title}, hero`}
         data-section-theme="dark"
       >
         <div className={styles.heroGrid} aria-hidden="true" />
@@ -229,7 +229,7 @@ export default function TreatmentTemplate({ treatment }: Props) {
             <motion.h2 className={styles.ctaHeading} variants={fadeUp}>
               Book Your Free
               <br />
-              <em className={styles.ctaAccent}>Consultation Today</em>
+              <span className={styles.ctaAccent}>Consultation Today</span>
             </motion.h2>
             <motion.p className={styles.ctaSubtext} variants={fadeUp}>
               No obligation. A specialist will design a plan tailored to your goals.

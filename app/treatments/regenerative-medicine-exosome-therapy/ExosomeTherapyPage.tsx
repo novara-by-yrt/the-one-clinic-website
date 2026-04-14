@@ -18,7 +18,7 @@ import styles from './page.module.css';
 const BENEFITS = [
   {
     title: 'Next-Generation Regeneration',
-    desc: 'Exosomes are nano-sized biological messengers that carry growth factors and signalling proteins directly into skin cells — triggering repair and renewal at a cellular level that no conventional treatment can replicate.',
+    desc: 'Exosomes are nano-sized biological messengers that carry growth factors and signalling proteins directly into skin cells, triggering repair and renewal at a cellular level that no conventional treatment can replicate.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -37,7 +37,7 @@ const BENEFITS = [
   },
   {
     title: 'Accelerates Treatment Recovery',
-    desc: 'Applied after procedures such as Morpheus8, laser resurfacing, or microneedling, exosomes dramatically accelerate skin healing — reducing downtime and enhancing the final result.',
+    desc: 'Applied after procedures such as Morpheus8, laser resurfacing, or microneedling, exosomes dramatically accelerate skin healing, reducing downtime and enhancing the final result.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
@@ -72,7 +72,7 @@ const FAQS = [
   {
     question: 'What is exosome therapy?',
     answer:
-      'Exosomes are extracellular vesicles — tiny biological particles — naturally produced by cells to carry growth factors, proteins, and genetic information between cells. In aesthetic medicine, laboratory-derived exosomes are applied to the skin to stimulate collagen production, accelerate repair, and improve overall skin quality at a cellular level.',
+      'Exosomes are extracellular vesicles, tiny biological particles, naturally produced by cells to carry growth factors, proteins, and genetic information between cells. In aesthetic medicine, laboratory-derived exosomes are applied to the skin to stimulate collagen production, accelerate repair, and improve overall skin quality at a cellular level.',
   },
   {
     question: 'How is exosome therapy delivered?',
@@ -82,12 +82,12 @@ const FAQS = [
   {
     question: 'What results can I expect from exosome therapy?',
     answer:
-      'Patients typically notice improved skin texture, radiance, and hydration within 1–2 weeks, with continued improvement over 2–3 months as collagen remodelling progresses. Exosomes also significantly reduce post-treatment redness and downtime when used alongside other procedures.',
+      'Patients typically notice improved skin texture, radiance, and hydration within 1 to 2 weeks, with continued improvement over 2 to 3 months as collagen remodelling progresses. Exosomes also significantly reduce post-treatment redness and downtime when used alongside other procedures.',
   },
   {
     question: 'Do I need a referral for exosome therapy?',
     answer:
-      'No referral is needed. You can book directly with The One Clinic. A full skin consultation is carried out to determine the most appropriate treatment protocol — whether as a standalone treatment or in combination with another procedure.',
+      'No referral is needed. You can book directly with The One Clinic. A full skin consultation is carried out to determine the most appropriate treatment protocol, whether as a standalone treatment or in combination with another procedure.',
   },
 ];
 
@@ -108,7 +108,7 @@ export default function ExosomeTherapyPage() {
               theme="dark"
               items={[
                 { label: 'Treatments', href: '/treatments' },
-                { label: 'Regenerative Medicine – Exosome Therapy' },
+                { label: 'Regenerative Medicine, Exosome Therapy' },
               ]}
             />
           </Container>
@@ -211,7 +211,7 @@ export default function ExosomeTherapyPage() {
                   Exosome therapy is a next-generation regenerative treatment that uses naturally
                   occurring nano-vesicles to deliver a concentrated payload of growth factors,
                   proteins, and repair signals directly to skin cells. The result is accelerated
-                  collagen synthesis, reduced inflammation, and visibly improved skin quality —
+                  collagen synthesis, reduced inflammation, and visibly improved skin quality ,
                   representing a significant advance beyond traditional biostimulatory treatments.
                 </p>
               </motion.div>

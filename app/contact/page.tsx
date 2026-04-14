@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Contact Us | The One Clinic Leicester',
     description:
-      'Get in touch with The One Clinic. Book a consultation or ask a question — our team is ready to help.',
+      'Get in touch with The One Clinic. Book a consultation or ask a question, our team is ready to help.',
   },
 };
 

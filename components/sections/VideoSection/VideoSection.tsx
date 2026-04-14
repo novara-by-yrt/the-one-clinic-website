@@ -75,7 +75,7 @@ export default function VideoSection() {
         </motion.div>
       </Container>
 
-      {/* Wistia player — loaded once, lazy */}
+      {/* Wistia player, loaded once, lazy */}
       <Script
         src="https://fast.wistia.net/player.js"
         strategy="lazyOnload"

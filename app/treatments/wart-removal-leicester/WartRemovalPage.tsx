@@ -37,7 +37,7 @@ const BENEFITS = [
   },
   {
     title: 'Multiple Treatment Options',
-    desc: 'We offer several evidence-based removal methods including cryotherapy (freezing), cauterisation, and surgical excision — tailored to the type and location of your wart.',
+    desc: 'We offer several evidence-based removal methods including cryotherapy (freezing), cauterisation, and surgical excision, tailored to the type and location of your wart.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
@@ -131,7 +131,7 @@ export default function WartRemovalPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Safe, effective removal of warts and verrucas by our expert clinical team. Fast access, medically assessed — no GP referral required.
+                Safe, effective removal of warts and verrucas by our expert clinical team. Fast access, medically assessed, no GP referral required.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -210,8 +210,8 @@ export default function WartRemovalPage() {
                 <p className={styles.combinedDesc}>
                   Warts and verrucas are caused by the human papillomavirus (HPV) and can be
                   stubborn to treat with over-the-counter products. At The One Clinic, our doctors
-                  assess each lesion and recommend the most effective clinical removal method —
-                  whether cryotherapy, cauterisation, or surgical excision — for a faster, more
+                  assess each lesion and recommend the most effective clinical removal method ,
+                  whether cryotherapy, cauterisation, or surgical excision, for a faster, more
                   reliable result.
                 </p>
               </motion.div>

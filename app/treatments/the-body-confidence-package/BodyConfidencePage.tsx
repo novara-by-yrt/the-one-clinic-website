@@ -18,7 +18,7 @@ import styles from './page.module.css';
 const BENEFITS = [
   {
     title: 'Comprehensive, Curated Care',
-    desc: 'The Body Confidence Package combines the most effective body aesthetic treatments into a single, expertly curated programme — addressing multiple concerns in one cohesive plan.',
+    desc: 'The Body Confidence Package combines the most effective body aesthetic treatments into a single, expertly curated programme, addressing multiple concerns in one cohesive plan.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -27,7 +27,7 @@ const BENEFITS = [
   },
   {
     title: 'Visible, Lasting Results',
-    desc: 'By combining complementary treatments, the package delivers results that are greater than the sum of their parts — targeting stubborn fat, skin laxity, and texture for a truly transformative outcome.',
+    desc: 'By combining complementary treatments, the package delivers results that are greater than the sum of their parts, targeting stubborn fat, skin laxity, and texture for a truly transformative outcome.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -37,7 +37,7 @@ const BENEFITS = [
   },
   {
     title: 'Fully Personalised Protocol',
-    desc: 'No two bodies are the same. Your package is built around your individual goals, body type, and lifestyle — ensuring every treatment chosen is the right one for you.',
+    desc: 'No two bodies are the same. Your package is built around your individual goals, body type, and lifestyle, ensuring every treatment chosen is the right one for you.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
@@ -47,7 +47,7 @@ const BENEFITS = [
   },
   {
     title: 'Expert-Led from Start to Finish',
-    desc: 'From your initial consultation through to your final session, you are guided by our experienced clinical team — ensuring safe, effective treatment every step of the way.',
+    desc: 'From your initial consultation through to your final session, you are guided by our experienced clinical team, ensuring safe, effective treatment every step of the way.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -63,7 +63,7 @@ const OVERVIEW_POINTS = [
   'Combines body contouring, skin tightening, and targeted fat reduction',
   'Tailored treatment plan created at your personal consultation',
   'Non-surgical options available with minimal downtime',
-  'No GP referral required — book directly with our team',
+  'No GP referral required, book directly with our team',
 ];
 
 const FAQS = [
@@ -129,7 +129,7 @@ export default function BodyConfidencePage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                A curated combination of expert aesthetic treatments designed to help you look and feel your absolute best — inside and out.
+                A curated combination of expert aesthetic treatments designed to help you look and feel your absolute best, inside and out.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>

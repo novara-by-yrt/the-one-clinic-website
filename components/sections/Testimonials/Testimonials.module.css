@@ -321,6 +321,18 @@
     display: none;
   }
 
+  /* Show full review text — remove 4-line clamp on mobile */
+  .reviewText {
+    display: block;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+  }
+
+  /* Slightly taller card so full review has room */
+  .card {
+    min-height: 260px;
+  }
+
   .excellentText {
     font-size: 1.75rem;
   }

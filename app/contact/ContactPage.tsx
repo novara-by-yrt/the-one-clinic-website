@@ -18,13 +18,13 @@ const MAPS_EMBED = 'https://maps.google.com/maps?q=36+De+Montfort+St,+Leicester+
 const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=36+De+Montfort+St,+Leicester+LE1+7GS,+United+Kingdom';
 
 const HOURS = [
-  { day: 'Monday',    hours: '09:00 – 18:00' },
-  { day: 'Tuesday',   hours: '09:00 – 18:00' },
-  { day: 'Wednesday', hours: '09:00 – 18:00' },
-  { day: 'Thursday',  hours: '09:00 – 18:00' },
-  { day: 'Friday',    hours: '09:00 – 18:00' },
-  { day: 'Saturday',  hours: '09:00 – 16:00' },
-  { day: 'Sunday',    hours: '09:00 – 18:00' },
+  { day: 'Monday',    hours: '09:00, 18:00' },
+  { day: 'Tuesday',   hours: '09:00, 18:00' },
+  { day: 'Wednesday', hours: '09:00, 18:00' },
+  { day: 'Thursday',  hours: '09:00, 18:00' },
+  { day: 'Friday',    hours: '09:00, 18:00' },
+  { day: 'Saturday',  hours: '09:00, 16:00' },
+  { day: 'Sunday',    hours: '09:00, 18:00' },
 ];
 
 const CATEGORIES = [
@@ -36,7 +36,7 @@ const CATEGORIES = [
   {
     title: 'Medical Aesthetics',
     href: '/treatments',
-    desc: 'Anti-wrinkle treatments, dermal fillers, skin rejuvenation, and more — delivered by GMC-registered doctors.',
+    desc: 'Anti-wrinkle treatments, dermal fillers, skin rejuvenation, and more, delivered by GMC-registered doctors.',
   },
 ];
 
@@ -50,7 +50,7 @@ export default function ContactPage() {
       ══════════════════════════════════════ */}
       <section
         className={styles.hero}
-        aria-label="Contact – hero"
+        aria-label="Contact, hero"
         data-section-theme="dark"
       >
         <div className={styles.heroGrid} aria-hidden="true" />
@@ -82,7 +82,7 @@ export default function ContactPage() {
         <Container>
           <div className={styles.mainGrid}>
 
-            {/* Left — contact details */}
+            {/* Left, contact details */}
             <motion.div
               className={styles.infoCol}
               variants={stagger(0.12)}
@@ -175,7 +175,7 @@ export default function ContactPage() {
               </motion.div>
             </motion.div>
 
-            {/* Right — form */}
+            {/* Right, form */}
             <motion.div
               className={styles.formCol}
               variants={fadeUp}

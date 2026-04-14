@@ -18,7 +18,7 @@ import styles from './page.module.css';
 const BENEFITS = [
   {
     title: 'Fast & Effective Removal',
-    desc: 'Skin tags are removed quickly and cleanly in a single session using cryotherapy, surgical excision, or electrocautery — whichever method is most appropriate for the size and location of the tag.',
+    desc: 'Skin tags are removed quickly and cleanly in a single session using cryotherapy, surgical excision, or electrocautery, whichever method is most appropriate for the size and location of the tag.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -37,7 +37,7 @@ const BENEFITS = [
   },
   {
     title: 'Multiple Tags in One Visit',
-    desc: 'Whether you have one skin tag or several, our team can assess and treat multiple tags in a single appointment — saving you time and delivering immediate results.',
+    desc: 'Whether you have one skin tag or several, our team can assess and treat multiple tags in a single appointment, saving you time and delivering immediate results.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
@@ -65,7 +65,7 @@ const OVERVIEW_POINTS = [
   'Removal via cryotherapy, surgical excision, or electrocautery',
   'Multiple skin tags treated in a single appointment',
   'Quick procedure with minimal downtime',
-  'No GP referral required — book directly with our team',
+  'No GP referral required, book directly with our team',
 ];
 
 const FAQS = [
@@ -131,7 +131,7 @@ export default function SkinTagsRemovalPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Fast, safe, and effective removal of skin tags by our expert medical team — single session, minimal discomfort, immediate results.
+                Fast, safe, and effective removal of skin tags by our expert medical team, single session, minimal discomfort, immediate results.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -211,7 +211,7 @@ export default function SkinTagsRemovalPage() {
                   Skin tag removal is a quick minor procedure to remove benign skin growths that
                   commonly appear on the neck, armpits, groin, and eyelids. Our clinical team
                   assess each lesion before proceeding and select the most appropriate removal
-                  method — ensuring a clean result with minimal discomfort and downtime.
+                  method, ensuring a clean result with minimal discomfort and downtime.
                 </p>
               </motion.div>
 

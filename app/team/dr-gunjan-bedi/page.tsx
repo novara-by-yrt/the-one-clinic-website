@@ -34,7 +34,7 @@ export default function DrBediPage() {
   return (
     <>
       {/* ─────────────────────────────────────────
-          HERO  —  text left, photo right
+          HERO ,  text left, photo right
       ───────────────────────────────────────── */}
       <section className={styles.hero} data-section-theme="dark">
         <Container>
@@ -44,7 +44,7 @@ export default function DrBediPage() {
             initial="hidden"
             animate="show"
           >
-            {/* Left — text content */}
+            {/* Left, text content */}
             <div className={styles.heroLeft}>
               <motion.div variants={fadeUp}>
                 <Link href="/our-team" className={styles.back}>
@@ -77,7 +77,7 @@ export default function DrBediPage() {
               </motion.div>
             </div>
 
-            {/* Right — photo */}
+            {/* Right, photo */}
             <motion.div className={styles.heroPhoto} variants={fadeUp}>
               <Image
                 src="/images/imgi_21_team-thumb-BEDI.jpg"
@@ -93,7 +93,7 @@ export default function DrBediPage() {
       </section>
 
       {/* ─────────────────────────────────────────
-          STATS STRIP  —  dark
+          STATS STRIP ,  dark
       ───────────────────────────────────────── */}
       <section className={styles.statsSection} data-section-theme="dark">
         <Container>
@@ -115,7 +115,7 @@ export default function DrBediPage() {
       </section>
 
       {/* ─────────────────────────────────────────
-          BIO  —  light
+          BIO ,  light
       ───────────────────────────────────────── */}
       <section className={styles.bioSection} data-section-theme="light">
         <Container>
@@ -155,7 +155,7 @@ export default function DrBediPage() {
       </section>
 
       {/* ─────────────────────────────────────────
-          BOOK CTA  —  dark
+          BOOK CTA ,  dark
       ───────────────────────────────────────── */}
       <section className={styles.ctaSection} data-section-theme="dark">
         <Container>

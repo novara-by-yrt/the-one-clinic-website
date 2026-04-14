@@ -18,7 +18,7 @@ import styles from './page.module.css';
 const BENEFITS = [
   {
     title: 'Improves Multiple Skin Concerns',
-    desc: 'Chemical peels effectively address uneven skin tone, dullness, fine lines, acne, pigmentation, and enlarged pores — delivering visible improvement after a single treatment or course.',
+    desc: 'Chemical peels effectively address uneven skin tone, dullness, fine lines, acne, pigmentation, and enlarged pores, delivering visible improvement after a single treatment or course.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -28,7 +28,7 @@ const BENEFITS = [
   },
   {
     title: 'Tailored Peel Strength',
-    desc: 'We offer superficial, medium, and bespoke peels matched to your skin type and concern. From gentle lunch-break treatments to deeper resurfacing — your clinician selects the right peel for you.',
+    desc: 'We offer superficial, medium, and bespoke peels matched to your skin type and concern. From gentle lunch-break treatments to deeper resurfacing, your clinician selects the right peel for you.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -37,7 +37,7 @@ const BENEFITS = [
   },
   {
     title: 'Stimulates Skin Renewal',
-    desc: 'By removing the outer layer of dead skin cells, chemical peels activate the skin\'s natural regeneration process — producing fresher, smoother skin with improved clarity and radiance.',
+    desc: 'By removing the outer layer of dead skin cells, chemical peels activate the skin\'s natural regeneration process, producing fresher, smoother skin with improved clarity and radiance.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
@@ -82,7 +82,7 @@ const FAQS = [
   {
     question: 'How much downtime is involved?',
     answer:
-      'Downtime varies by peel depth. Superficial peels may cause mild redness or flaking for 1–3 days. Medium-depth peels typically involve 5–7 days of peeling and redness. Your clinician will advise on what to expect and how to care for your skin during the recovery period.',
+      'Downtime varies by peel depth. Superficial peels may cause mild redness or flaking for 1 to 3 days. Medium-depth peels typically involve 5 to 7 days of peeling and redness. Your clinician will advise on what to expect and how to care for your skin during the recovery period.',
   },
   {
     question: 'Do I need a referral for a chemical peel?',
@@ -211,7 +211,7 @@ export default function ChemicalPeelsPage() {
                   A chemical peel uses a precisely formulated acid solution to remove the outer
                   layers of skin, stimulating fresh cell turnover and collagen production beneath.
                   The result is brighter, smoother, and more even-toned skin. At The One Clinic,
-                  we offer a range of peel strengths — each selected by our clinical team to match
+                  we offer a range of peel strengths, each selected by our clinical team to match
                   your skin type, concerns, and desired downtime.
                 </p>
               </motion.div>

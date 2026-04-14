@@ -18,7 +18,7 @@ import styles from './page.module.css';
 const BENEFITS = [
   {
     title: 'Fast, Visible Results',
-    desc: 'Wrinkle relaxing injections take effect within 3–7 days, with full results visible at 2 weeks. Fine lines and dynamic wrinkles are visibly smoothed for a refreshed, more youthful appearance.',
+    desc: 'Wrinkle relaxing injections take effect within 3 to 7 days, with full results visible at 2 weeks. Fine lines and dynamic wrinkles are visibly smoothed for a refreshed, more youthful appearance.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -28,7 +28,7 @@ const BENEFITS = [
   },
   {
     title: 'Natural-Looking Finish',
-    desc: 'When administered by an experienced clinician, results look completely natural. The goal is always to preserve facial expression while softening lines — never a frozen appearance.',
+    desc: 'When administered by an experienced clinician, results look completely natural. The goal is always to preserve facial expression while softening lines, never a frozen appearance.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -37,7 +37,7 @@ const BENEFITS = [
   },
   {
     title: 'Minimal Downtime',
-    desc: 'Treatment takes 15–30 minutes and most patients return to normal activities immediately. Mild redness or swelling at injection sites settles within a few hours.',
+    desc: 'Treatment takes 15 to 30 minutes and most patients return to normal activities immediately. Mild redness or swelling at injection sites settles within a few hours.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
@@ -63,7 +63,7 @@ const BENEFITS = [
 
 const OVERVIEW_POINTS = [
   'Smooths forehead lines, frown lines, and crow\'s feet',
-  'Results last 3–4 months, with longer duration over repeat treatments',
+  'Results last 3 to 4 months, with longer duration over repeat treatments',
   'Personalised dosing for a natural, refreshed result',
   'No waiting lists and no GP referral required',
 ];
@@ -72,17 +72,17 @@ const FAQS = [
   {
     question: 'What are wrinkle relaxing injections?',
     answer:
-      'Wrinkle relaxing injections use a purified protein (botulinum toxin) to temporarily relax the muscles responsible for dynamic wrinkles — lines caused by facial expression such as frowning, squinting, and raising the eyebrows. Treatment smooths these lines while preserving natural facial movement.',
+      'Wrinkle relaxing injections use a purified protein (botulinum toxin) to temporarily relax the muscles responsible for dynamic wrinkles, lines caused by facial expression such as frowning, squinting, and raising the eyebrows. Treatment smooths these lines while preserving natural facial movement.',
   },
   {
     question: 'Which areas can be treated?',
     answer:
-      'The most commonly treated areas are the forehead lines, frown lines (between the brows), and crow\'s feet (around the eyes). Other areas including bunny lines, lip lines, chin dimpling, neck bands, and excessive sweating can also be addressed — all discussed at your consultation.',
+      'The most commonly treated areas are the forehead lines, frown lines (between the brows), and crow\'s feet (around the eyes). Other areas including bunny lines, lip lines, chin dimpling, neck bands, and excessive sweating can also be addressed, all discussed at your consultation.',
   },
   {
     question: 'How long do results last?',
     answer:
-      'Results typically last 3–4 months. With regular treatments, many patients find that results last progressively longer as the muscles gradually weaken over time. A maintenance appointment is usually recommended every 3–4 months to sustain your results.',
+      'Results typically last 3 to 4 months. With regular treatments, many patients find that results last progressively longer as the muscles gradually weaken over time. A maintenance appointment is usually recommended every 3 to 4 months to sustain your results.',
   },
   {
     question: 'Do I need a referral for wrinkle relaxing injections?',
@@ -131,7 +131,7 @@ export default function WrinkleRelaxingPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Expert anti-wrinkle treatment to smooth fine lines and restore a natural, refreshed appearance — administered by our GMC-registered doctors.
+                Expert anti-wrinkle treatment to smooth fine lines and restore a natural, refreshed appearance, administered by our GMC-registered doctors.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -210,7 +210,7 @@ export default function WrinkleRelaxingPage() {
                 <p className={styles.combinedDesc}>
                   Wrinkle relaxing injections use a purified botulinum toxin to gently relax the
                   facial muscles that cause dynamic expression lines. The result is smoother skin
-                  across the forehead, between the brows, and around the eyes — with a natural,
+                  across the forehead, between the brows, and around the eyes, with a natural,
                   rested appearance that never looks overdone. At The One Clinic, every treatment
                   is precisely tailored to your facial anatomy by our expert doctors.
                 </p>

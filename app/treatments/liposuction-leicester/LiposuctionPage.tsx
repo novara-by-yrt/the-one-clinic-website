@@ -18,7 +18,7 @@ import styles from './page.module.css';
 const BENEFITS = [
   {
     title: 'Targets Stubborn Fat',
-    desc: 'Liposuction removes localised fat deposits that are resistant to diet and exercise — including the abdomen, flanks, thighs, arms, back, and chin.',
+    desc: 'Liposuction removes localised fat deposits that are resistant to diet and exercise, including the abdomen, flanks, thighs, arms, back, and chin.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -82,7 +82,7 @@ const FAQS = [
   {
     question: 'What is the recovery time after liposuction?',
     answer:
-      'Most patients can return to light activities within 1–2 weeks. Swelling and bruising are normal in the weeks following surgery, and final results become visible over 3–6 months as the tissues settle. A compression garment is typically worn for 4–6 weeks to support healing.',
+      'Most patients can return to light activities within 1 to 2 weeks. Swelling and bruising are normal in the weeks following surgery, and final results become visible over 3 to 6 months as the tissues settle. A compression garment is typically worn for 4 to 6 weeks to support healing.',
   },
   {
     question: 'Do I need a referral for liposuction?',
@@ -131,7 +131,7 @@ export default function LiposuctionPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Expert surgical fat removal for stubborn areas. Precise body contouring by our experienced clinical team — no waiting lists.
+                Expert surgical fat removal for stubborn areas. Precise body contouring by our experienced clinical team, no waiting lists.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -209,7 +209,7 @@ export default function LiposuctionPage() {
                 <h2 className={styles.combinedHeading}>What is Liposuction?</h2>
                 <p className={styles.combinedDesc}>
                   Liposuction is a surgical procedure that precisely removes stubborn fat deposits
-                  from targeted areas of the body. It is designed to reshape and contour — not as a
+                  from targeted areas of the body. It is designed to reshape and contour, not as a
                   weight-loss solution, but to address areas that remain resistant despite diet and
                   exercise. At The One Clinic, every procedure is personalised and performed by our
                   expert medical team in a safe, private setting.

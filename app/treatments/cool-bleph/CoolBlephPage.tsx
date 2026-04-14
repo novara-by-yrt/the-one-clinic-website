@@ -27,7 +27,7 @@ const BENEFITS = [
   },
   {
     title: 'Zero Downtime',
-    desc: 'Return to your normal day immediately after treatment. No swelling, bruising, or recovery period — perfect for busy lifestyles.',
+    desc: 'Return to your normal day immediately after treatment. No swelling, bruising, or recovery period, perfect for busy lifestyles.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -37,7 +37,7 @@ const BENEFITS = [
   },
   {
     title: 'Natural-Looking Results',
-    desc: 'Tighter, more refreshed eyes that look naturally younger — not operated on. Friends will notice you look well-rested, not treated.',
+    desc: 'Tighter, more refreshed eyes that look naturally younger, not operated on. Friends will notice you look well-rested, not treated.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
@@ -72,7 +72,7 @@ const FAQS = [
   {
     question: 'What is Cool Bleph?',
     answer:
-      'Cool Bleph is a non-surgical eyelid rejuvenation treatment that uses a combination of cooling and energy-based technology to tighten and refresh the skin around the eyes. It targets upper and lower eyelid laxity, under-eye bags, and periorbital skin texture — with no incisions and no downtime.',
+      'Cool Bleph is a non-surgical eyelid rejuvenation treatment that uses a combination of cooling and energy-based technology to tighten and refresh the skin around the eyes. It targets upper and lower eyelid laxity, under-eye bags, and periorbital skin texture, with no incisions and no downtime.',
   },
   {
     question: 'How quickly can I get an appointment?',
@@ -82,7 +82,7 @@ const FAQS = [
   {
     question: 'How many Cool Bleph sessions will I need?',
     answer:
-      'Most patients see excellent results after a single session. A course of 2–3 treatments spaced a few weeks apart may be recommended for more advanced concerns. A personalised plan is created at your consultation.',
+      'Most patients see excellent results after a single session. A course of 2 to 3 treatments spaced a few weeks apart may be recommended for more advanced concerns. A personalised plan is created at your consultation.',
   },
   {
     question: 'Do I need a referral for Cool Bleph?',
@@ -131,7 +131,7 @@ export default function CoolBlephPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Non-surgical eyelid rejuvenation that lifts, tightens, and refreshes the eye area. No surgery — no downtime.
+                Non-surgical eyelid rejuvenation that lifts, tightens, and refreshes the eye area. No surgery, no downtime.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -210,7 +210,7 @@ export default function CoolBlephPage() {
                 <p className={styles.combinedDesc}>
                   Cool Bleph is a cutting-edge non-surgical treatment designed to rejuvenate the
                   delicate skin around the eyes. Using advanced energy technology, it tightens
-                  loose upper and lower eyelid skin, reduces puffiness, and stimulates collagen —
+                  loose upper and lower eyelid skin, reduces puffiness, and stimulates collagen ,
                   delivering a naturally refreshed appearance without surgery or recovery time.
                 </p>
               </motion.div>

@@ -48,7 +48,7 @@ function MobileSlideshow() {
 
   return (
     <div className={styles.slideshow}>
-      {/* Treatment title — above the image */}
+      {/* Treatment title, above the image */}
       <p className={styles.imageTitle}>{IMAGES[active].title}</p>
 
       {/* Track + arrows wrapped so arrows position relative to the image */}

@@ -18,7 +18,7 @@ import styles from './page.module.css';
 const BENEFITS = [
   {
     title: 'Targets All Scar Types',
-    desc: 'Our treatments address icepick, boxcar, rolling, and hypertrophic acne scars — whether shallow or deep, recent or long-standing — with clinically proven techniques.',
+    desc: 'Our treatments address icepick, boxcar, rolling, and hypertrophic acne scars, whether shallow or deep, recent or long-standing, with clinically proven techniques.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -49,7 +49,7 @@ const BENEFITS = [
   },
   {
     title: 'Expert-Led, No Waiting',
-    desc: 'All acne scar treatments at The One Clinic are planned and delivered by our experienced medical team. No NHS waiting lists — fast access to specialist care.',
+    desc: 'All acne scar treatments at The One Clinic are planned and delivered by our experienced medical team. No NHS waiting lists, fast access to specialist care.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -72,12 +72,12 @@ const FAQS = [
   {
     question: 'What treatments are available for acne scars?',
     answer:
-      'At The One Clinic we offer a range of evidence-based acne scar treatments including deep laser resurfacing, Morpheus8 (radiofrequency microneedling), chemical peels, and PRP therapy. The most suitable option depends on your scar type, depth, skin tone, and overall goals — all assessed at your consultation.',
+      'At The One Clinic we offer a range of evidence-based acne scar treatments including deep laser resurfacing, Morpheus8 (radiofrequency microneedling), chemical peels, and PRP therapy. The most suitable option depends on your scar type, depth, skin tone, and overall goals, all assessed at your consultation.',
   },
   {
     question: 'How many sessions will I need?',
     answer:
-      'The number of sessions varies depending on the severity of scarring and the treatment chosen. Many patients see significant improvement after 3–6 sessions. A personalised treatment plan with realistic expectations will be discussed at your initial consultation.',
+      'The number of sessions varies depending on the severity of scarring and the treatment chosen. Many patients see significant improvement after 3 to 6 sessions. A personalised treatment plan with realistic expectations will be discussed at your initial consultation.',
   },
   {
     question: 'Are acne scar treatments painful?',
@@ -131,7 +131,7 @@ export default function AcneScarRemovalPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Advanced laser and resurfacing treatments to reduce acne scarring and restore smooth, confident skin — expertly delivered by our clinical team.
+                Advanced laser and resurfacing treatments to reduce acne scarring and restore smooth, confident skin, expertly delivered by our clinical team.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -210,8 +210,8 @@ export default function AcneScarRemovalPage() {
                 <p className={styles.combinedDesc}>
                   Acne scars form when inflamed breakouts damage the deeper layers of skin during
                   healing. At The One Clinic, our doctors assess the type and depth of your scarring
-                  to recommend the most effective treatment — from deep laser resurfacing and
-                  Morpheus8 to chemical peels and PRP — delivering real, visible improvement in
+                  to recommend the most effective treatment, from deep laser resurfacing and
+                  Morpheus8 to chemical peels and PRP, delivering real, visible improvement in
                   skin texture and confidence.
                 </p>
               </motion.div>

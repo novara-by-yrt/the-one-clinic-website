@@ -18,7 +18,7 @@ import styles from './page.module.css';
 const BENEFITS = [
   {
     title: '100% Natural Treatment',
-    desc: 'The Vampire Facial uses your own platelet-rich plasma — no synthetic fillers, no foreign substances. Your skin is rejuvenated entirely through your body\'s own healing biology.',
+    desc: 'The Vampire Facial uses your own platelet-rich plasma, no synthetic fillers, no foreign substances. Your skin is rejuvenated entirely through your body\'s own healing biology.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -37,7 +37,7 @@ const BENEFITS = [
   },
   {
     title: 'Minimal Downtime',
-    desc: 'Most patients experience only mild redness for 24–48 hours following treatment. The procedure itself takes around 60 minutes and normal activities can typically be resumed the same day.',
+    desc: 'Most patients experience only mild redness for 24 to 48 hours following treatment. The procedure itself takes around 60 minutes and normal activities can typically be resumed the same day.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
@@ -64,7 +64,7 @@ const BENEFITS = [
 const OVERVIEW_POINTS = [
   'Harnesses platelet-rich plasma from your own blood to rejuvenate skin',
   'Improves fine lines, skin tone, texture, and radiance',
-  'Fully natural — no synthetic products or fillers involved',
+  'Fully natural, no synthetic products or fillers involved',
   'No waiting lists and no GP referral required',
 ];
 
@@ -77,12 +77,12 @@ const FAQS = [
   {
     question: 'Is the Vampire Facial painful?',
     answer:
-      'A topical numbing cream is applied before treatment to minimise discomfort. Most patients find the procedure very tolerable. Mild redness and sensitivity immediately after treatment is normal and typically settles within 24–48 hours.',
+      'A topical numbing cream is applied before treatment to minimise discomfort. Most patients find the procedure very tolerable. Mild redness and sensitivity immediately after treatment is normal and typically settles within 24 to 48 hours.',
   },
   {
     question: 'How many sessions will I need?',
     answer:
-      'A course of 3 sessions spaced 4–6 weeks apart is typically recommended for optimal results. Maintenance sessions can be carried out once or twice a year thereafter. Your personalised treatment plan will be discussed at your consultation.',
+      'A course of 3 sessions spaced 4 to 6 weeks apart is typically recommended for optimal results. Maintenance sessions can be carried out once or twice a year thereafter. Your personalised treatment plan will be discussed at your consultation.',
   },
   {
     question: 'Do I need a referral for a Vampire Facial?',
@@ -131,7 +131,7 @@ export default function VampireFacialPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Natural PRP skin rejuvenation using your own platelet-rich plasma. Restore radiance, improve texture, and stimulate collagen — expertly delivered.
+                Natural PRP skin rejuvenation using your own platelet-rich plasma. Restore radiance, improve texture, and stimulate collagen, expertly delivered.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -210,7 +210,7 @@ export default function VampireFacialPage() {
                 <p className={styles.combinedDesc}>
                   The Vampire Facial combines micro-needling with platelet-rich plasma (PRP) derived
                   from your own blood. PRP is packed with growth factors that signal the skin to
-                  repair and regenerate — stimulating collagen and elastin production for visibly
+                  repair and regenerate, stimulating collagen and elastin production for visibly
                   smoother, firmer, and more radiant skin. At The One Clinic, every treatment is
                   tailored to your skin by our expert medical team.
                 </p>

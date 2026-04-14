@@ -49,7 +49,7 @@ const BENEFITS = [
   },
   {
     title: 'Expert Medical Team',
-    desc: 'All lipoma removals at The One Clinic are carried out by our experienced doctors. No waiting lists, no GP referral required — just expert care when you need it.',
+    desc: 'All lipoma removals at The One Clinic are carried out by our experienced doctors. No waiting lists, no GP referral required, just expert care when you need it.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -64,7 +64,7 @@ const BENEFITS = [
 const OVERVIEW_POINTS = [
   'Safe removal of benign fatty lumps under local anaesthetic',
   'Clinical assessment carried out before every procedure',
-  'Minimal downtime — most patients resume normal activity same day',
+  'Minimal downtime, most patients resume normal activity same day',
   'No waiting lists and no GP referral required',
 ];
 
@@ -77,7 +77,7 @@ const FAQS = [
   {
     question: 'How is a lipoma removed?',
     answer:
-      'Lipoma removal is a minor surgical procedure performed under local anaesthetic. A small incision is made over the lump, the fatty tissue is carefully removed, and the wound is closed with sutures. The procedure is typically completed in 20–45 minutes depending on the size and location of the lipoma.',
+      'Lipoma removal is a minor surgical procedure performed under local anaesthetic. A small incision is made over the lump, the fatty tissue is carefully removed, and the wound is closed with sutures. The procedure is typically completed in 20 to 45 minutes depending on the size and location of the lipoma.',
   },
   {
     question: 'How quickly can I get an appointment?',
@@ -131,7 +131,7 @@ export default function LipomaRemovalPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Safe, expert removal of lipomas and fatty lumps under local anaesthetic. Fast access, minimal downtime — no GP referral required.
+                Safe, expert removal of lipomas and fatty lumps under local anaesthetic. Fast access, minimal downtime, no GP referral required.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -211,7 +211,7 @@ export default function LipomaRemovalPage() {
                   Lipoma removal is a minor surgical procedure to remove benign fatty lumps that
                   develop beneath the skin. At The One Clinic, every lump is clinically assessed
                   by a doctor before treatment. Removal is performed under local anaesthetic,
-                  meaning you remain awake and comfortable throughout — with most patients returning
+                  meaning you remain awake and comfortable throughout, with most patients returning
                   to normal activities the same day.
                 </p>
               </motion.div>

@@ -29,7 +29,7 @@ const BENEFITS = [
   },
   {
     title: 'Unhurried Consultations',
-    desc: 'We give you the time you need. Our appointments are longer than a standard NHS slot — so there is no rushing, and every concern is heard and addressed properly.',
+    desc: 'We give you the time you need. Our appointments are longer than a standard NHS slot, so there is no rushing, and every concern is heard and addressed properly.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -39,7 +39,7 @@ const BENEFITS = [
   },
   {
     title: 'Comprehensive Care Under One Roof',
-    desc: 'From contraception and cervical screening to menstrual health and menopause — we cover a wide range of women\'s health services, with referrals arranged swiftly where needed.',
+    desc: 'From contraception and cervical screening to menstrual health and menopause, we cover a wide range of women\'s health services, with referrals arranged swiftly where needed.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
@@ -87,7 +87,7 @@ const FAQS = [
   {
     question: 'Is a referral needed to book a women\'s health appointment?',
     answer:
-      "No referral is required. You can book directly with The One Clinic at any time. If a specialist referral is needed following your consultation — for example, to a gynaecologist — we will arrange this promptly on your behalf.",
+      "No referral is required. You can book directly with The One Clinic at any time. If a specialist referral is needed following your consultation, for example, to a gynaecologist, we will arrange this promptly on your behalf.",
   },
 ];
 
@@ -133,7 +133,7 @@ export default function WomensHealthPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Confidential, expert care for every stage of a woman's health journey — from a team you can trust.
+                Confidential, expert care for every stage of a woman's health journey, from a team you can trust.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -322,7 +322,7 @@ export default function WomensHealthPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
-              Your Health, Your Terms —<br />We Are Here to Help.
+              Your Health, Your Terms ,<br />We Are Here to Help.
             </motion.h2>
             <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
               Book a confidential women's health consultation with our expert team today.

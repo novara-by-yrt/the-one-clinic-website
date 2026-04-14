@@ -170,7 +170,7 @@ export default function MeetTheExperts() {
                 <p className={styles.cardRole}>{member.role}</p>
               </div>
 
-              {/* Arrow chip — top right */}
+              {/* Arrow chip, top right */}
               <div className={styles.arrowChip} aria-hidden="true">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                   <path d="M2 12L12 2M12 2H5M12 2v7"

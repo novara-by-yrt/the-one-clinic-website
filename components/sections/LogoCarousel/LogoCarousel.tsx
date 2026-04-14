@@ -14,7 +14,7 @@ const LOGOS = [
   { src: '/images/imgi_96_Logo-InMode2-1536x630.png',               alt: 'InMode',                  w: 1536, h: 630 },
 ];
 
-// Speed in px per frame at 60fps (~18px/s — slow, relaxed pace)
+// Speed in px per frame at 60fps (~18px/s, slow, relaxed pace)
 const SPEED = 0.3;
 
 export default function LogoCarousel() {
@@ -87,7 +87,7 @@ export default function LogoCarousel() {
           onTouchEnd={onTouchEnd}
           aria-label="Accreditations and partner logos"
         >
-          {/* Render twice — second set is aria-hidden for screen readers */}
+          {/* Render twice, second set is aria-hidden for screen readers */}
           {[...LOGOS, ...LOGOS].map((logo, i) => (
             <div
               key={i}

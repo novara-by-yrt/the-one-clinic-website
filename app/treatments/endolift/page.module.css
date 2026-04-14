@@ -1774,32 +1774,43 @@
 }
 
 .finalResultsBanner {
-  background: rgba(255 255 255 / 0.05);
-  border: 1px solid rgba(255 255 255 / 0.1);
+  background: #fff;
+  border: 1px solid rgba(0 0 0 / 0.12);
   border-radius: var(--radius-lg);
   padding: var(--space-5) var(--space-6);
   display: grid;
   grid-template-columns: auto 1fr;
   gap: var(--space-5);
   align-items: center;
+  cursor: default;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.finalResultsBanner:hover {
+  box-shadow: 0 20px 56px rgba(0 0 0 / 0.22);
+  transform: translateY(-3px);
+  border-color: rgba(0 0 0 / 0.22);
 }
 
 .finalResultsEyebrow {
-  font-size: 0.6875rem;
-  font-weight: 700;
+  font-size: 0.75rem;
+  font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255 255 255 / 0.38);
+  color: #0a0a0a;
   white-space: nowrap;
   margin: 0;
   padding-right: var(--space-5);
-  border-right: 1px solid rgba(255 255 255 / 0.1);
+  border-right: 2px solid rgba(0 0 0 / 0.15);
 }
 
 .finalResultsText {
   font-size: 1rem;
   line-height: 1.72;
-  color: rgba(255 255 255 / 0.72);
+  color: rgba(0 0 0 / 0.62);
   margin: 0;
 }
 
@@ -2209,7 +2220,7 @@
     padding-right: 0;
     border-right: none;
     padding-bottom: var(--space-2);
-    border-bottom: 1px solid rgba(255 255 255 / 0.1);
+    border-bottom: 2px solid rgba(0 0 0 / 0.15);
   }
 
   /* Results grid: 1 col on tablet */
@@ -2245,7 +2256,7 @@
   .clinicReasonCard        { padding: var(--space-4) var(--space-3); }
 
   /* ── CTA spacing ── */
-  .combinedCtaWrapper { padding-top: var(--space-4); }
+  .combinedCtaWrapper { padding-top: var(--space-4); display: none; }
 
   /* ── Full-width CTA buttons ── */
   .combinedCta  { width: 100%; justify-content: center; }
