@@ -7,7 +7,7 @@ import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import styles from './Header.module.css';
 
-// ── Types ───────────────────────────────────────────────────────
+// ── Types ────────────────────────────────────────────────────────
 type Theme    = 'light' | 'dark';
 type NavLink  = { label: string; href: string };
 type NavGroup = { group: string; items: NavLink[] };
@@ -18,7 +18,7 @@ type NavItem  = {
   groups?: NavGroup[];
 };
 
-// ── Nav data ────────────────────────────────────────────────────
+// ── Nav data ─────────────────────────────────────────────────────
 const NAV: NavItem[] = [
   {
     label: 'About Our Clinic',
@@ -36,56 +36,56 @@ const NAV: NavItem[] = [
       {
         group: 'Health & Wellbeing',
         items: [
-          { label: 'Health Screening',                                        href: '/treatments/health-screening' },
-          { label: 'Private GP Leicester',                                    href: '/treatments/private-gp' },
-          { label: 'Joint Injections',                                        href: '/treatments/joint-injections' },
-          { label: 'Minor Surgery',                                           href: '/treatments/minor-surgery' },
-          { label: 'GP Home Visits Leicester',                                href: '/treatments/gp-home-visits' },
-          { label: 'Travel Vaccine & Immunisations',                          href: '/treatments/travel-vaccine' },
-          { label: 'Weight Management',                                       href: '/treatments/weight-management' },
-          { label: 'Medical Insurance Examination',                           href: '/treatments/medical-insurance' },
-          { label: 'Dermatologist Leicester',                                 href: '/treatments/dermatologist' },
-          { label: "Men's Health",                                            href: '/treatments/mens-health' },
-          { label: "Women's Health Clinic",                                   href: '/treatments/womens-health' },
-          { label: "Women's Health, Menopause / HRT / Contraception",       href: '/treatments/menopause-hrt' },
-          { label: 'Mental Health Consultation',                              href: '/treatments/mental-health-consultation' },
+          { label: 'Health Screening',                                      href: '/treatments/health-screening' },
+          { label: 'Private GP Leicester',                                  href: '/treatments/private-gp' },
+          { label: 'Joint Injections',                                      href: '/treatments/joint-injections' },
+          { label: 'Minor Surgery',                                         href: '/treatments/minor-surgery' },
+          { label: 'GP Home Visits Leicester',                              href: '/treatments/gp-home-visits' },
+          { label: 'Travel Vaccine & Immunisations',                        href: '/treatments/travel-vaccine' },
+          { label: 'Weight Management',                                     href: '/treatments/weight-management' },
+          { label: 'Medical Insurance Examination',                         href: '/treatments/medical-insurance' },
+          { label: 'Dermatologist Leicester',                               href: '/treatments/dermatologist' },
+          { label: "Men's Health",                                          href: '/treatments/mens-health' },
+          { label: "Women's Health Clinic",                                 href: '/treatments/womens-health' },
+          { label: "Women's Health, Menopause / HRT / Contraception",      href: '/treatments/menopause-hrt' },
+          { label: 'Mental Health Consultation',                            href: '/treatments/mental-health-consultation' },
         ],
       },
       {
         group: 'Medical Aesthetics',
         items: [
-          { label: 'Dermal Fillers',                           href: '/treatments/dermal-fillers' },
-          { label: 'Lumecca IPL',                              href: '/treatments/lumecca-ipl-leicester' },
-          { label: 'HydraFacial Keravive',                    href: '/treatments/hydrafacial-keravive' },
-          { label: 'Morpheus8',                               href: '/treatments/morpheus8' },
-          { label: 'Wrinkle Relaxing Injections',             href: '/treatments/wrinkle-relaxing-injections' },
-          { label: 'Hydrafacial Leicester',                   href: '/treatments/hydrafacial' },
-          { label: 'Vampire Facial',                          href: '/treatments/vampire-facial' },
-          { label: 'Chemical Peels',                          href: '/treatments/chemical-peels' },
-          { label: 'Skin Analysis, Life Viz 3D Camera',      href: '/treatments/skin-analysis' },
-          { label: 'Body Contouring',                         href: '/treatments/body-contouring' },
-          { label: 'Endolift Laser',                          href: '/treatments/endolift' },
-          { label: 'Skincare, Alumier MD',                   href: '/treatments/skincare-alumier-md' },
-          { label: 'Skin Lesion Removal Leicester',           href: '/treatments/skin-lesion' },
-          { label: 'BCC Removal Leicester',                  href: '/treatments/basal-cell-carcinoma-bcc-removal-leicester' },
-          { label: 'Skin Tag Removal Leicester',             href: '/treatments/skin-tags-removal-leicester' },
-          { label: 'Wart Removal Leicester',                 href: '/treatments/wart-removal-leicester' },
-          { label: 'Acne Scar Removal Leicester',           href: '/treatments/acne-scar-removal-leicester' },
-          { label: 'Regenerative Medicine, Exosome Therapy', href: '/treatments/regenerative-medicine-exosome-therapy' },
-          { label: 'Regenerative Medicine, Polynucleotides', href: '/treatments/polynucleotides-leicester' },
-          { label: 'Cool Bleph',                              href: '/treatments/cool-bleph' },
-          { label: 'COOL Glow Peel (Full Face)',              href: '/treatments/cool-glow-full-face' },
-          { label: 'Cool Scar Lift',                          href: '/treatments/cool-scar-lift' },
-          { label: 'Mole Removal',                            href: '/treatments/mole-removal-leicester' },
-          { label: 'Laser Mole Removal',                      href: '/treatments/laser-mole-removal' },
-          { label: 'Laser Snoring Treatment',                 href: '/treatments/laser-snoring-treatment' },
-          { label: 'Laser Vaginal Rejuvenation',              href: '/treatments/laser-vaginal' },
-          { label: 'IV Drip Therapy',                         href: '/treatments/iv-drip-therapy' },
-          { label: 'Deep Laser Resurfacing',                  href: '/treatments/laser-resurfacing' },
-          { label: 'The Body Confidence Package',             href: '/treatments/the-body-confidence-package' },
-          { label: 'Lipoma Removal Leicester',                href: '/treatments/lipoma-removal' },
-          { label: 'Liposuction Leicester',                   href: '/treatments/liposuction-leicester' },
-          { label: 'Non Surgical Blepharoplasty',             href: '/treatments/non-surgical-blepharoplasty-leicester' },
+          { label: 'Dermal Fillers',                            href: '/treatments/dermal-fillers' },
+          { label: 'Lumecca IPL',                               href: '/treatments/lumecca-ipl-leicester' },
+          { label: 'HydraFacial Keravive',                     href: '/treatments/hydrafacial-keravive' },
+          { label: 'Morpheus8',                                 href: '/treatments/morpheus8' },
+          { label: 'Wrinkle Relaxing Injections',               href: '/treatments/wrinkle-relaxing-injections' },
+          { label: 'Hydrafacial Leicester',                     href: '/treatments/hydrafacial' },
+          { label: 'Vampire Facial',                            href: '/treatments/vampire-facial' },
+          { label: 'Chemical Peels',                            href: '/treatments/chemical-peels' },
+          { label: 'Skin Analysis, Life Viz 3D Camera',         href: '/treatments/skin-analysis' },
+          { label: 'Body Contouring',                           href: '/treatments/body-contouring' },
+          { label: 'Endolift Laser',                            href: '/treatments/endolift' },
+          { label: 'Skincare, Alumier MD',                      href: '/treatments/skincare-alumier-md' },
+          { label: 'Skin Lesion Removal Leicester',             href: '/treatments/skin-lesion' },
+          { label: 'BCC Removal Leicester',                     href: '/treatments/basal-cell-carcinoma-bcc-removal-leicester' },
+          { label: 'Skin Tag Removal Leicester',                href: '/treatments/skin-tags-removal-leicester' },
+          { label: 'Wart Removal Leicester',                    href: '/treatments/wart-removal-leicester' },
+          { label: 'Acne Scar Removal Leicester',               href: '/treatments/acne-scar-removal-leicester' },
+          { label: 'Regenerative Medicine, Exosome Therapy',   href: '/treatments/regenerative-medicine-exosome-therapy' },
+          { label: 'Regenerative Medicine, Polynucleotides',   href: '/treatments/polynucleotides-leicester' },
+          { label: 'Cool Bleph',                                href: '/treatments/cool-bleph' },
+          { label: 'COOL Glow Peel (Full Face)',                href: '/treatments/cool-glow-full-face' },
+          { label: 'Cool Scar Lift',                            href: '/treatments/cool-scar-lift' },
+          { label: 'Mole Removal',                              href: '/treatments/mole-removal-leicester' },
+          { label: 'Laser Mole Removal',                        href: '/treatments/laser-mole-removal' },
+          { label: 'Laser Snoring Treatment',                   href: '/treatments/laser-snoring-treatment' },
+          { label: 'Laser Vaginal Rejuvenation',                href: '/treatments/laser-vaginal' },
+          { label: 'IV Drip Therapy',                           href: '/treatments/iv-drip-therapy' },
+          { label: 'Deep Laser Resurfacing',                    href: '/treatments/laser-resurfacing' },
+          { label: 'The Body Confidence Package',               href: '/treatments/the-body-confidence-package' },
+          { label: 'Lipoma Removal Leicester',                  href: '/treatments/lipoma-removal' },
+          { label: 'Liposuction Leicester',                     href: '/treatments/liposuction-leicester' },
+          { label: 'Non Surgical Blepharoplasty',               href: '/treatments/non-surgical-blepharoplasty-leicester' },
         ],
       },
     ],
@@ -97,31 +97,31 @@ const NAV: NavItem[] = [
       {
         group: 'Face',
         items: [
-          { label: 'Eye Bags',                    href: '/conditions/eye-bags' },
-          { label: 'Jowls / Sagging Skin',        href: '/conditions/jowls' },
-          { label: 'Nasolabial Folds',            href: '/conditions/nasolabial-folds' },
-          { label: 'Turkey Neck / Necklines',     href: '/conditions/turkey-neck' },
-          { label: 'Facial Redness / Rosacea',    href: '/conditions/rosacea' },
-          { label: 'Thin Lips',                   href: '/conditions/thin-lips' },
-          { label: 'Weak Chin / Weak Jawline',    href: '/conditions/weak-chin' },
+          { label: 'Eye Bags',                   href: '/conditions/eye-bags' },
+          { label: 'Jowls / Sagging Skin',       href: '/conditions/jowls' },
+          { label: 'Nasolabial Folds',           href: '/conditions/nasolabial-folds' },
+          { label: 'Turkey Neck / Necklines',    href: '/conditions/turkey-neck' },
+          { label: 'Facial Redness / Rosacea',   href: '/conditions/rosacea' },
+          { label: 'Thin Lips',                  href: '/conditions/thin-lips' },
+          { label: 'Weak Chin / Weak Jawline',   href: '/conditions/weak-chin' },
         ],
       },
       {
         group: 'Skin',
         items: [
-          { label: 'Pigmentation',                           href: '/treatments/pigmentation-treatment-leicester' },
-          { label: 'Spider Veins / Thread Veins',            href: '/conditions/thread-veins' },
-          { label: 'Hyperpigmentation / Sun Damage / Freckles', href: '/conditions/hyperpigmentation' },
+          { label: 'Pigmentation',                                href: '/treatments/pigmentation-treatment-leicester' },
+          { label: 'Spider Veins / Thread Veins',                 href: '/conditions/thread-veins' },
+          { label: 'Hyperpigmentation / Sun Damage / Freckles',   href: '/conditions/hyperpigmentation' },
         ],
       },
       {
         group: 'Body',
         items: [
-          { label: 'Cellulite',                                                      href: '/conditions/cellulite' },
-          { label: 'Abdominal Fat / Belly Fat',                                      href: '/conditions/abdominal-fat' },
-          { label: 'Stretch Marks',                                                  href: '/conditions/stretch-marks' },
-          { label: 'Excessive Sweating',                                             href: '/conditions/sweating' },
-          { label: 'Excess Body Fat / Arm / Bra / Back / Thigh Fat',                href: '/conditions/excess-fat' },
+          { label: 'Cellulite',                                                   href: '/conditions/cellulite' },
+          { label: 'Abdominal Fat / Belly Fat',                                   href: '/conditions/abdominal-fat' },
+          { label: 'Stretch Marks',                                               href: '/conditions/stretch-marks' },
+          { label: 'Excessive Sweating',                                          href: '/conditions/sweating' },
+          { label: 'Excess Body Fat / Arm / Bra / Back / Thigh Fat',             href: '/conditions/excess-fat' },
         ],
       },
     ],
@@ -131,20 +131,28 @@ const NAV: NavItem[] = [
   { label: 'Contact Us',         href: '/contact' },
 ];
 
-// ── Motion variants ─────────────────────────────────────────────
+// ── Motion variants ──────────────────────────────────────────────
 const menuVariants   = { closed: { opacity: 0, x: '100%' }, open: { opacity: 1, x: 0 } };
 const menuTransition = { duration: 0.38, ease: [0.32, 0.72, 0, 1] as const };
-const dropdownVars   = {
-  closed: { opacity: 0, y: -6, pointerEvents: 'none' as const },
-  open:   { opacity: 1, y: 0,  pointerEvents: 'auto' as const },
+
+const simpleDropVars = {
+  closed: { opacity: 0, y: -8,  scale: 0.97, pointerEvents: 'none' as const },
+  open:   { opacity: 1, y: 0,   scale: 1,    pointerEvents: 'auto' as const },
 };
-const dropdownTrans  = { duration: 0.2, ease: [0.25, 0.1, 0.25, 1] as const };
-const ctaVariants    = {
-  closed: { opacity: 0, y: 12 },
-  open:   { opacity: 1, y: 0, transition: { delay: 0.32, duration: 0.28 } },
+const simpleDropTrans = { duration: 0.2, ease: [0.25, 0.1, 0.25, 1] as const };
+
+const megaVars = {
+  closed: { opacity: 0, y: -10, pointerEvents: 'none' as const },
+  open:   { opacity: 1, y: 0,   pointerEvents: 'auto' as const },
+};
+const megaTrans = { duration: 0.26, ease: [0.25, 0.1, 0.25, 1] as const };
+
+const backdropVars = {
+  closed: { opacity: 0 },
+  open:   { opacity: 1 },
 };
 
-// ── Chevron SVG ──────────────────────────────────────────────────
+// ── Chevron ──────────────────────────────────────────────────────
 function Chevron({ open, size = 10 }: { open: boolean; size?: number }) {
   return (
     <svg
@@ -152,31 +160,40 @@ function Chevron({ open, size = 10 }: { open: boolean; size?: number }) {
       viewBox="0 0 10 6"
       fill="none"
       aria-hidden="true"
-      style={{ transition: 'transform 0.25s ease', transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }}
+      style={{
+        transition: 'transform 0.25s ease',
+        transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
+        flexShrink: 0,
+      }}
     >
-      <polyline points="1,1 5,5 9,1" stroke="currentColor" strokeWidth="1.5"
-        strokeLinecap="round" strokeLinejoin="round" />
+      <polyline
+        points="1,1 5,5 9,1"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
 
-// ── Component ───────────────────────────────────────────────────
+// ── Component ────────────────────────────────────────────────────
 export default function Header() {
   const [scrolled, setScrolled]         = useState(false);
   const [sectionTheme, setSectionTheme] = useState<Theme>('dark');
   const [menuOpen, setMenuOpen]         = useState(false);
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
-  // Mobile accordion state
-  const [mobileExpanded, setMobileExpanded]      = useState<Set<number>>(new Set());
+  const [mobileExpanded, setMobileExpanded]           = useState<Set<number>>(new Set());
   const [mobileGroupExpanded, setMobileGroupExpanded] = useState<Set<string>>(new Set());
 
-  const observerRef  = useRef<IntersectionObserver | null>(null);
-  const closeTimer   = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
+  const closeTimer  = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const headerRef   = useRef<HTMLElement>(null);
 
   const headerTheme: Theme = sectionTheme === 'dark' ? 'light' : 'dark';
   const theme: Theme       = !scrolled ? 'dark' : headerTheme;
 
-  // ── Scroll detection ──────────────────────────────────────────
+  // ── Scroll detection ─────────────────────────────────────────
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     onScroll();
@@ -205,11 +222,23 @@ export default function Header() {
     return () => observerRef.current?.disconnect();
   }, []);
 
-  // ── Body scroll lock ──────────────────────────────────────────
+  // ── Body scroll lock (mobile menu) ───────────────────────────
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
+
+  // ── Click outside to close desktop dropdown ──────────────────
+  useEffect(() => {
+    if (openDropdown === null) return;
+    function handleClickOut(e: MouseEvent) {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
+        setOpenDropdown(null);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOut);
+    return () => document.removeEventListener('mousedown', handleClickOut);
+  }, [openDropdown]);
 
   const closeMenu = useCallback(() => {
     setMenuOpen(false);
@@ -223,19 +252,19 @@ export default function Header() {
     setOpenDropdown(i);
   }
   function closeDd() {
-    closeTimer.current = setTimeout(() => setOpenDropdown(null), 120);
+    closeTimer.current = setTimeout(() => setOpenDropdown(null), 150);
   }
 
-  // ── Mobile accordion helpers ──────────────────────────────────
+  // ── Mobile accordion ─────────────────────────────────────────
   function toggleMobile(i: number) {
-    setMobileExpanded((prev) => {
+    setMobileExpanded((prev: Set<number>) => {
       const next = new Set(prev);
       next.has(i) ? next.delete(i) : next.add(i);
       return next;
     });
   }
   function toggleMobileGroup(key: string) {
-    setMobileGroupExpanded((prev) => {
+    setMobileGroupExpanded((prev: Set<string>) => {
       const next = new Set(prev);
       next.has(key) ? next.delete(key) : next.add(key);
       return next;
@@ -243,15 +272,19 @@ export default function Header() {
   }
 
   // ── Animated header colours ───────────────────────────────────
-  const bgColor = !scrolled ? 'rgba(0,0,0,0)'
-    : sectionTheme === 'dark' ? '#FFFFFF' : '#0a0a0a';
+  const bgColor     = !scrolled ? 'rgba(0,0,0,0)'
+    : sectionTheme === 'dark'   ? '#FFFFFF' : '#0a0a0a';
   const borderColor = !scrolled ? 'rgba(0,0,0,0)'
-    : sectionTheme === 'dark' ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.1)';
+    : sectionTheme === 'dark'   ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.1)';
+
+  // True if any mega-menu is open (used for semi-transparent backdrop)
+  const anyMegaOpen = openDropdown !== null && !!NAV[openDropdown]?.groups;
 
   return (
     <>
       {/* ── Header bar ───────────────────────────────────────── */}
       <motion.header
+        ref={headerRef as never}
         className={styles.header}
         role="banner"
         data-theme={theme}
@@ -289,7 +322,7 @@ export default function Header() {
                       onMouseLeave={() => hasDropdown && closeDd()}
                     >
                       <button
-                        className={`${styles.navLink} ${hasDropdown ? styles.navLinkBtn : ''}`}
+                        className={`${styles.navLink} ${isOpen ? styles.navLinkActive : ''}`}
                         aria-expanded={hasDropdown ? isOpen : undefined}
                         onClick={() => {
                           if (!hasDropdown) {
@@ -303,63 +336,41 @@ export default function Header() {
                           }
                         }}
                       >
-                        <span className={styles.navLinkInner}>{item.label}</span>
+                        <span className={styles.navLinkText}>{item.label}</span>
                         {hasDropdown && <Chevron open={isOpen} />}
                       </button>
 
-                      {/* ── Dropdown panel ─────────────────── */}
-                      <AnimatePresence>
-                        {hasDropdown && isOpen && (
-                          <motion.div
-                            className={`${styles.dropdown} ${item.groups ? styles.megaMenu : styles.simpleDropdown}`}
-                            variants={dropdownVars}
-                            initial="closed"
-                            animate="open"
-                            exit="closed"
-                            transition={dropdownTrans}
-                            onMouseEnter={() => openDd(i)}
-                            onMouseLeave={() => closeDd()}
-                          >
-                            {/* Simple dropdown (About Our Clinic) */}
-                            {item.simple && (
-                              <ul className={styles.simpleList}>
+                      {/* Simple dropdown (About Our Clinic) */}
+                      {item.simple && (
+                        <AnimatePresence>
+                          {isOpen && (
+                            <motion.div
+                              className={styles.simpleDropdown}
+                              variants={simpleDropVars}
+                              initial="closed"
+                              animate="open"
+                              exit="closed"
+                              transition={simpleDropTrans}
+                              onMouseEnter={() => openDd(i)}
+                              onMouseLeave={() => closeDd()}
+                            >
+                              <ul className={styles.simpleList} role="list">
                                 {item.simple.map((link) => (
                                   <li key={link.href}>
-                                    <Link href={link.href} className={styles.ddItem}
-                                      onClick={() => setOpenDropdown(null)}>
+                                    <Link
+                                      href={link.href}
+                                      className={styles.ddItem}
+                                      onClick={() => setOpenDropdown(null)}
+                                    >
                                       {link.label}
                                     </Link>
                                   </li>
                                 ))}
                               </ul>
-                            )}
-
-                            {/* Mega menu (Treatments / Conditions) */}
-                            {item.groups && (
-                              <div
-                                className={styles.megaGrid}
-                                style={{ '--cols': item.groups.length } as React.CSSProperties}
-                              >
-                                {item.groups.map((grp) => (
-                                  <div key={grp.group} className={styles.megaCol}>
-                                    <p className={styles.megaGroupTitle}>{grp.group}</p>
-                                    <ul className={styles.megaList}>
-                                      {grp.items.map((link) => (
-                                        <li key={link.href}>
-                                          <Link href={link.href} className={styles.ddItem}
-                                            onClick={() => setOpenDropdown(null)}>
-                                            {link.label}
-                                          </Link>
-                                        </li>
-                                      ))}
-                                    </ul>
-                                  </div>
-                                ))}
-                              </div>
-                            )}
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      )}
                     </li>
                   );
                 })}
@@ -378,157 +389,282 @@ export default function Header() {
             {/* Hamburger */}
             <button
               className={styles.menuBtn}
-              onClick={() => setMenuOpen((o) => !o)}
+              onClick={() => setMenuOpen((o: boolean) => !o)}
               aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={menuOpen}
               aria-controls="mobile-menu"
             >
-              <motion.span className={styles.bar}
+              <motion.span
+                className={styles.bar}
                 animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
-                transition={{ duration: 0.25 }} />
-              <motion.span className={styles.bar}
+                transition={{ duration: 0.25 }}
+              />
+              <motion.span
+                className={styles.bar}
                 animate={menuOpen ? { opacity: 0, scaleX: 0.2 } : { opacity: 1, scaleX: 1 }}
-                transition={{ duration: 0.2 }} />
-              <motion.span className={styles.bar}
+                transition={{ duration: 0.2 }}
+              />
+              <motion.span
+                className={styles.bar}
                 animate={menuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
-                transition={{ duration: 0.25 }} />
+                transition={{ duration: 0.25 }}
+              />
             </button>
 
           </div>
         </Container>
+
+        {/* ── Mega menu panels — rendered at header level for full-width ── */}
+        {NAV.map((item, i) => {
+          if (!item.groups) return null;
+          const isOpen = openDropdown === i;
+          return (
+            <AnimatePresence key={item.label}>
+              {isOpen && (
+                <motion.div
+                  className={styles.megaPanel}
+                  variants={megaVars}
+                  initial="closed"
+                  animate="open"
+                  exit="closed"
+                  transition={megaTrans}
+                  onMouseEnter={() => openDd(i)}
+                  onMouseLeave={() => closeDd()}
+                  role="region"
+                  aria-label={`${item.label} menu`}
+                >
+                  <Container>
+                    <div className={styles.megaInner}>
+
+                      {/* Header row: category label + view-all */}
+                      <div className={styles.megaHeader}>
+                        <span className={styles.megaCategoryLabel}>{item.label}</span>
+                        <Link
+                          href={item.href}
+                          className={styles.megaViewAll}
+                          onClick={() => setOpenDropdown(null)}
+                        >
+                          View all {item.label}
+                          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+                            <path d="M2.5 6.5h8M7.5 3l3.5 3.5L7.5 10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </Link>
+                      </div>
+
+                      {/* Group columns */}
+                      <div
+                        className={styles.megaGrid}
+                        style={{ '--cols': item.groups.length } as React.CSSProperties}
+                      >
+                        {item.groups.map((grp) => (
+                          <div key={grp.group} className={styles.megaCol}>
+                            <p className={styles.megaGroupTitle}>
+                              <span className={styles.megaGroupDot} aria-hidden="true" />
+                              {grp.group}
+                            </p>
+                            <ul className={styles.megaList} role="list">
+                              {grp.items.map((link) => (
+                                <li key={link.href}>
+                                  <Link
+                                    href={link.href}
+                                    className={styles.ddItem}
+                                    onClick={() => setOpenDropdown(null)}
+                                  >
+                                    {link.label}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+
+                    </div>
+                  </Container>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          );
+        })}
       </motion.header>
+
+      {/* ── Mega menu backdrop (desktop only) ────────────────── */}
+      <AnimatePresence>
+        {anyMegaOpen && (
+          <motion.div
+            className={styles.megaBackdrop}
+            variants={backdropVars}
+            initial="closed"
+            animate="open"
+            exit="closed"
+            transition={{ duration: 0.22 }}
+            onClick={() => setOpenDropdown(null)}
+            aria-hidden="true"
+          />
+        )}
+      </AnimatePresence>
 
       {/* ── Mobile drawer ─────────────────────────────────────── */}
       <AnimatePresence>
         {menuOpen && (
-          <motion.div
-            id="mobile-menu"
-            className={styles.mobileMenu}
-            role="dialog"
-            aria-label="Navigation menu"
-            aria-modal="true"
-            variants={menuVariants}
-            initial="closed"
-            animate="open"
-            exit="closed"
-            transition={menuTransition}
-          >
-            <button className={styles.closeBtn} onClick={closeMenu} aria-label="Close navigation menu">
-              <span aria-hidden="true">✕</span>
-            </button>
+          <>
+            {/* Backdrop */}
+            <motion.div
+              className={styles.mobileBackdrop}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={closeMenu}
+              aria-hidden="true"
+            />
 
-            <nav aria-label="Mobile navigation" className={styles.mobileNav}>
-              <ul className={styles.mobileNavList}>
-                {NAV.map((item, i) => {
-                  const hasDropdown = !!(item.simple || item.groups);
-                  const isExpanded  = mobileExpanded.has(i);
+            {/* Drawer */}
+            <motion.div
+              id="mobile-menu"
+              className={styles.mobileMenu}
+              role="dialog"
+              aria-label="Navigation menu"
+              aria-modal="true"
+              variants={menuVariants}
+              initial="closed"
+              animate="open"
+              exit="closed"
+              transition={menuTransition}
+            >
+              {/* Drawer header */}
+              <div className={styles.mobileMenuHeader}>
+                <Link href="/" className={styles.mobileLogo} onClick={closeMenu} aria-label="The One Clinic, home">
+                  <Image
+                    src="/images/LOGO.png"
+                    alt="The One Clinic"
+                    width={110}
+                    height={32}
+                    style={{ filter: 'brightness(0) invert(1)' }}
+                    priority={false}
+                  />
+                </Link>
+                <button className={styles.closeBtn} onClick={closeMenu} aria-label="Close navigation menu">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M2 2l12 12M14 2L2 14" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
+                  </svg>
+                </button>
+              </div>
 
-                  return (
-                    <li key={item.label} className={styles.mobileNavItem}>
-                      {/* Top-level row */}
-                      <div className={styles.mobileNavRow}>
-                        {hasDropdown ? (
-                          <button
-                            className={styles.mobileNavLink}
-                            onClick={() => toggleMobile(i)}
-                            aria-expanded={isExpanded}
-                          >
-                            {item.label}
-                            <Chevron open={isExpanded} size={12} />
-                          </button>
-                        ) : (
-                          <Link
-                            href={item.href}
-                            className={styles.mobileNavLink}
-                            onClick={closeMenu}
-                            {...(item.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                          >
-                            {item.label}
-                          </Link>
-                        )}
-                      </div>
+              {/* Nav */}
+              <nav aria-label="Mobile navigation" className={styles.mobileNav}>
+                <ul className={styles.mobileNavList} role="list">
+                  {NAV.map((item, i) => {
+                    const hasDropdown = !!(item.simple || item.groups);
+                    const isExpanded  = mobileExpanded.has(i);
 
-                      {/* Expandable sub-content */}
-                      <AnimatePresence initial={false}>
-                        {hasDropdown && isExpanded && (
-                          <motion.div
-                            className={styles.mobileSubContent}
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                          >
-                            {/* Simple flat list (About) */}
-                            {item.simple && (
-                              <ul className={styles.mobileSubList}>
-                                {item.simple.map((link) => (
-                                  <li key={link.href}>
-                                    <Link href={link.href} className={styles.mobileSubLink} onClick={closeMenu}>
-                                      {link.label}
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
-                            )}
+                    return (
+                      <li key={item.label} className={styles.mobileNavItem}>
+                        <div className={styles.mobileNavRow}>
+                          {hasDropdown ? (
+                            <button
+                              className={`${styles.mobileNavLink} ${isExpanded ? styles.mobileNavLinkOpen : ''}`}
+                              onClick={() => toggleMobile(i)}
+                              aria-expanded={isExpanded}
+                            >
+                              <span>{item.label}</span>
+                              <Chevron open={isExpanded} size={12} />
+                            </button>
+                          ) : (
+                            <Link
+                              href={item.href}
+                              className={styles.mobileNavLink}
+                              onClick={closeMenu}
+                              {...(item.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                            >
+                              {item.label}
+                            </Link>
+                          )}
+                        </div>
 
-                            {/* Grouped (Treatments / Conditions) */}
-                            {item.groups && (
-                              <div className={styles.mobileGroups}>
-                                {item.groups.map((grp) => {
-                                  const gKey       = `${i}-${grp.group}`;
-                                  const grpOpen    = mobileGroupExpanded.has(gKey);
-                                  return (
-                                    <div key={grp.group} className={styles.mobileGroup}>
-                                      <button
-                                        className={styles.mobileGroupTitle}
-                                        onClick={() => toggleMobileGroup(gKey)}
-                                        aria-expanded={grpOpen}
-                                      >
-                                        {grp.group}
-                                        <Chevron open={grpOpen} size={10} />
-                                      </button>
-                                      <AnimatePresence initial={false}>
-                                        {grpOpen && (
-                                          <motion.ul
-                                            className={styles.mobileSubList}
-                                            initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: 'auto', opacity: 1 }}
-                                            exit={{ height: 0, opacity: 0 }}
-                                            transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
-                                          >
-                                            {grp.items.map((link) => (
-                                              <li key={link.href}>
-                                                <Link href={link.href} className={styles.mobileSubLink} onClick={closeMenu}>
-                                                  {link.label}
-                                                </Link>
-                                              </li>
-                                            ))}
-                                          </motion.ul>
-                                        )}
-                                      </AnimatePresence>
-                                    </div>
-                                  );
-                                })}
-                              </div>
-                            )}
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </li>
-                  );
-                })}
-              </ul>
-            </nav>
+                        <AnimatePresence initial={false}>
+                          {hasDropdown && isExpanded && (
+                            <motion.div
+                              className={styles.mobileSubContent}
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                            >
+                              {/* Simple flat list */}
+                              {item.simple && (
+                                <ul className={styles.mobileSubList} role="list">
+                                  {item.simple.map((link) => (
+                                    <li key={link.href}>
+                                      <Link href={link.href} className={styles.mobileSubLink} onClick={closeMenu}>
+                                        {link.label}
+                                      </Link>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
 
-            <motion.div className={styles.mobileCta} variants={ctaVariants} initial="closed" animate="open">
-              <button
-                className={styles.mobileCtaLink}
-                onClick={() => { closeMenu(); window.dispatchEvent(new CustomEvent('openCallbackModal')); }}
-              >
-                Book a Consultation
-              </button>
+                              {/* Grouped (Treatments / Conditions) */}
+                              {item.groups && (
+                                <div className={styles.mobileGroups}>
+                                  {item.groups.map((grp) => {
+                                    const gKey    = `${i}-${grp.group}`;
+                                    const grpOpen = mobileGroupExpanded.has(gKey);
+                                    return (
+                                      <div key={grp.group} className={styles.mobileGroup}>
+                                        <button
+                                          className={`${styles.mobileGroupBtn} ${grpOpen ? styles.mobileGroupBtnOpen : ''}`}
+                                          onClick={() => toggleMobileGroup(gKey)}
+                                          aria-expanded={grpOpen}
+                                        >
+                                          <span>{grp.group}</span>
+                                          <Chevron open={grpOpen} size={10} />
+                                        </button>
+                                        <AnimatePresence initial={false}>
+                                          {grpOpen && (
+                                            <motion.ul
+                                              className={styles.mobileSubList}
+                                              role="list"
+                                              initial={{ height: 0, opacity: 0 }}
+                                              animate={{ height: 'auto', opacity: 1 }}
+                                              exit={{ height: 0, opacity: 0 }}
+                                              transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+                                            >
+                                              {grp.items.map((link) => (
+                                                <li key={link.href}>
+                                                  <Link href={link.href} className={styles.mobileSubLink} onClick={closeMenu}>
+                                                    {link.label}
+                                                  </Link>
+                                                </li>
+                                              ))}
+                                            </motion.ul>
+                                          )}
+                                        </AnimatePresence>
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                              )}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </nav>
+
+              {/* CTA */}
+              <div className={styles.mobileCta}>
+                <button
+                  className={styles.mobileCtaLink}
+                  onClick={() => { closeMenu(); window.dispatchEvent(new CustomEvent('openCallbackModal')); }}
+                >
+                  Book a Consultation
+                </button>
+              </div>
             </motion.div>
-          </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>
