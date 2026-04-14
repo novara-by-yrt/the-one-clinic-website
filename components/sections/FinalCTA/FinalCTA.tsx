@@ -38,7 +38,7 @@ export default function FinalCTA() {
           <motion.h2 className={styles.heading} variants={fadeUp}>
             Ready to Feel
             <br />
-            <em className={styles.headingAccent}>Your Best?</em>
+            <span className={styles.headingAccent}>Your Best?</span>
           </motion.h2>
           <motion.p className={styles.subtext} variants={fadeUp}>
             Our team is here to help. Book your consultation today and

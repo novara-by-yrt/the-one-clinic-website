@@ -39,7 +39,7 @@ const BENEFITS = [
   },
   {
     title: 'Fast Recovery',
-    desc: 'Most patients return to normal daily activities within 24–48 hours. Our team provides comprehensive aftercare guidance to support smooth, rapid healing.',
+    desc: 'Most patients return to normal daily activities within 24 to 48 hours. Our team provides comprehensive aftercare guidance to support smooth, rapid healing.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
@@ -49,7 +49,7 @@ const BENEFITS = [
   },
   {
     title: 'Same-Day Procedures',
-    desc: 'Most minor surgical procedures are completed in a single appointment at our clinic — no waiting lists, no hospital referrals, and no unnecessary delays.',
+    desc: 'Most minor surgical procedures are completed in a single appointment at our clinic, no waiting lists, no hospital referrals, and no unnecessary delays.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -131,7 +131,7 @@ export default function MinorSurgeryPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Safe, precise removal of moles, cysts, lipomas, and skin lesions — performed by expert doctors at The One Clinic.
+                Safe, precise removal of moles, cysts, lipomas, and skin lesions, performed by expert doctors at The One Clinic.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -158,7 +158,7 @@ export default function MinorSurgeryPage() {
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                   </svg>
-                  Local anaesthetic — no hospital stay
+                  Local anaesthetic, no hospital stay
                 </span>
                 <span className={styles.heroTrustDivider} aria-hidden="true" />
                 <span className={styles.heroTrustItem}>

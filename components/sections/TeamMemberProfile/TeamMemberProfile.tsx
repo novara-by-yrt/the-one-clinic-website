@@ -29,7 +29,7 @@ export default function TeamMemberProfile({ member }: { member: TeamMember }) {
           </motion.div>
 
           <div className={styles.layout}>
-            {/* Left — photo */}
+            {/* Left, photo */}
             <motion.div
               className={styles.photoCol}
               variants={fadeUp}
@@ -54,7 +54,7 @@ export default function TeamMemberProfile({ member }: { member: TeamMember }) {
               </div>
             </motion.div>
 
-            {/* Right — details */}
+            {/* Right, details */}
             <motion.div
               className={styles.detailCol}
               variants={stagger(0.1)}

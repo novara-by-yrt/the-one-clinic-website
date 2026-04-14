@@ -18,7 +18,7 @@ import styles from './page.module.css';
 const BENEFITS = [
   {
     title: 'Instant Radiance',
-    desc: 'The COOL Glow Peel delivers an immediate brightening effect — smoothing skin texture, refining pores, and revealing a luminous complexion after a single treatment.',
+    desc: 'The COOL Glow Peel delivers an immediate brightening effect, smoothing skin texture, refining pores, and revealing a luminous complexion after a single treatment.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -28,7 +28,7 @@ const BENEFITS = [
   },
   {
     title: 'Zero Downtime',
-    desc: 'Unlike deeper chemical peels, the COOL Glow Peel is formulated for a comfortable experience with no significant peeling or recovery period — making it the perfect lunchtime treatment.',
+    desc: 'Unlike deeper chemical peels, the COOL Glow Peel is formulated for a comfortable experience with no significant peeling or recovery period, making it the perfect lunchtime treatment.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -37,7 +37,7 @@ const BENEFITS = [
   },
   {
     title: 'Targets Multiple Concerns',
-    desc: 'The COOL Glow Peel addresses dullness, uneven skin tone, mild pigmentation, fine lines, and enlarged pores — delivering a comprehensive complexion refresh in a single session.',
+    desc: 'The COOL Glow Peel addresses dullness, uneven skin tone, mild pigmentation, fine lines, and enlarged pores, delivering a comprehensive complexion refresh in a single session.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
@@ -49,7 +49,7 @@ const BENEFITS = [
   },
   {
     title: 'Safe for All Skin Types',
-    desc: 'The COOL Glow Peel\'s advanced formulation is designed to be well tolerated across all skin types, including sensitive skin — administered by our trained clinical team for maximum safety.',
+    desc: 'The COOL Glow Peel\'s advanced formulation is designed to be well tolerated across all skin types, including sensitive skin, administered by our trained clinical team for maximum safety.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -63,7 +63,7 @@ const BENEFITS = [
 
 const OVERVIEW_POINTS = [
   'Brightens, smooths, and refreshes the full face in a single session',
-  'No significant downtime — return to normal activities immediately',
+  'No significant downtime, return to normal activities immediately',
   'Improves skin tone, texture, and radiance',
   'No waiting lists and no GP referral required',
 ];
@@ -72,7 +72,7 @@ const FAQS = [
   {
     question: 'What is the COOL Glow Peel?',
     answer:
-      'The COOL Glow Peel is an advanced superficial skin resurfacing treatment designed to refresh and brighten the complexion with minimal downtime. Using a carefully formulated blend of exfoliating acids and skin-conditioning actives, it removes dull surface cells and stimulates skin renewal — leaving the face visibly smoother, clearer, and more radiant.',
+      'The COOL Glow Peel is an advanced superficial skin resurfacing treatment designed to refresh and brighten the complexion with minimal downtime. Using a carefully formulated blend of exfoliating acids and skin-conditioning actives, it removes dull surface cells and stimulates skin renewal, leaving the face visibly smoother, clearer, and more radiant.',
   },
   {
     question: 'Is the COOL Glow Peel suitable for sensitive skin?',
@@ -82,7 +82,7 @@ const FAQS = [
   {
     question: 'How many treatments will I need?',
     answer:
-      'Many patients are delighted with results after a single session, particularly as a pre-event skin refresh. For ongoing improvement in skin quality, a course of 4–6 treatments spaced 2–4 weeks apart is recommended. Your clinician will advise based on your skin goals.',
+      'Many patients are delighted with results after a single session, particularly as a pre-event skin refresh. For ongoing improvement in skin quality, a course of 4 to 6 treatments spaced 2 to 4 weeks apart is recommended. Your clinician will advise based on your skin goals.',
   },
   {
     question: 'Do I need a referral for the COOL Glow Peel?',
@@ -131,7 +131,7 @@ export default function CoolGlowPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Instant radiance and skin refresh with zero downtime. Full-face brightening and rejuvenation — the perfect lunchtime treatment.
+                Instant radiance and skin refresh with zero downtime. Full-face brightening and rejuvenation, the perfect lunchtime treatment.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -211,7 +211,7 @@ export default function CoolGlowPage() {
                   The COOL Glow Peel is a professional full-face skin resurfacing treatment that
                   combines gentle exfoliation with skin-brightening and conditioning actives. It
                   removes dulling surface cells, improves skin tone and texture, and stimulates
-                  healthy cell renewal — with no significant downtime. At The One Clinic, it is
+                  healthy cell renewal, with no significant downtime. At The One Clinic, it is
                   tailored to your skin and delivered by our expert clinical team.
                 </p>
               </motion.div>

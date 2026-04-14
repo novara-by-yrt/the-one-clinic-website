@@ -18,7 +18,7 @@ import styles from './page.module.css';
 const BENEFITS = [
   {
     title: 'No Surgery, No Scarring',
-    desc: 'Non-surgical blepharoplasty achieves visible eyelid lifting and tightening without incisions, stitches, or surgical risk — making it an ideal alternative for patients who want results without the commitment of surgery.',
+    desc: 'Non-surgical blepharoplasty achieves visible eyelid lifting and tightening without incisions, stitches, or surgical risk, making it an ideal alternative for patients who want results without the commitment of surgery.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -37,7 +37,7 @@ const BENEFITS = [
   },
   {
     title: 'Natural, Lasting Results',
-    desc: 'By stimulating collagen and tightening the skin around the eyelids, the treatment delivers a naturally refreshed, more open appearance — with results that continue to improve over several weeks.',
+    desc: 'By stimulating collagen and tightening the skin around the eyelids, the treatment delivers a naturally refreshed, more open appearance, with results that continue to improve over several weeks.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
@@ -47,7 +47,7 @@ const BENEFITS = [
   },
   {
     title: 'Expert-Led Treatment',
-    desc: 'Our experienced clinical team assess each patient carefully before treatment to determine the most effective approach — whether plasma, radiofrequency, or a combination protocol.',
+    desc: 'Our experienced clinical team assess each patient carefully before treatment to determine the most effective approach, whether plasma, radiofrequency, or a combination protocol.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -61,16 +61,16 @@ const BENEFITS = [
 
 const OVERVIEW_POINTS = [
   'Lifts and tightens hooded or drooping upper and lower eyelids',
-  'Plasma or radiofrequency technology — no surgical incisions',
-  'Results continue to develop over 4–8 weeks post-treatment',
-  'No GP referral required — book directly with our team',
+  'Plasma or radiofrequency technology, no surgical incisions',
+  'Results continue to develop over 4 to 8 weeks post-treatment',
+  'No GP referral required, book directly with our team',
 ];
 
 const FAQS = [
   {
     question: 'What is non-surgical blepharoplasty?',
     answer:
-      'Non-surgical blepharoplasty uses advanced energy-based technology — typically plasma or radiofrequency — to tighten and lift the skin around the upper and lower eyelids. The treatment stimulates collagen production and causes controlled skin contraction, producing a lifting effect comparable to surgical blepharoplasty but without incisions or anaesthetic.',
+      'Non-surgical blepharoplasty uses advanced energy-based technology, typically plasma or radiofrequency, to tighten and lift the skin around the upper and lower eyelids. The treatment stimulates collagen production and causes controlled skin contraction, producing a lifting effect comparable to surgical blepharoplasty but without incisions or anaesthetic.',
   },
   {
     question: 'How long do results last?',
@@ -129,7 +129,7 @@ export default function NonSurgicalBlepharoplastyPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Lift and rejuvenate hooded or drooping eyelids without surgery — restoring a more youthful, refreshed appearance.
+                Lift and rejuvenate hooded or drooping eyelids without surgery, restoring a more youthful, refreshed appearance.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -208,7 +208,7 @@ export default function NonSurgicalBlepharoplastyPage() {
                 <p className={styles.combinedDesc}>
                   Non-surgical blepharoplasty is an advanced, non-invasive treatment that uses
                   plasma or radiofrequency energy to tighten and lift the skin of the upper and
-                  lower eyelids. It addresses hooding, excess skin, and puffiness — delivering a
+                  lower eyelids. It addresses hooding, excess skin, and puffiness, delivering a
                   more alert, youthful eye contour without the risks or recovery associated with
                   surgical blepharoplasty.
                 </p>

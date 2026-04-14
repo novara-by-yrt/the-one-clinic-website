@@ -64,7 +64,7 @@ const BENEFITS = [
 const OVERVIEW_POINTS = [
   'Restore lost volume to lips, cheeks, and jawline',
   'Smooth deep lines and facial folds naturally',
-  'Hyaluronic acid fillers — fully reversible',
+  'Hyaluronic acid fillers, fully reversible',
   'No surgery, no waiting lists, no referral required',
 ];
 
@@ -72,7 +72,7 @@ const FAQS = [
   {
     question: 'What are dermal fillers?',
     answer:
-      'Dermal fillers are injectable treatments — typically hyaluronic acid — used to restore volume, smooth lines, and enhance facial contours. Results are immediate and natural-looking, and the treatment is fully reversible.',
+      'Dermal fillers are injectable treatments, typically hyaluronic acid, used to restore volume, smooth lines, and enhance facial contours. Results are immediate and natural-looking, and the treatment is fully reversible.',
   },
   {
     question: 'How quickly can I get an appointment?',
@@ -82,7 +82,7 @@ const FAQS = [
   {
     question: 'Are dermal fillers suitable for ongoing treatment?',
     answer:
-      'Yes. Many patients return every 9–18 months to maintain their results. Our doctors create a bespoke plan so your appearance remains consistent and natural over time.',
+      'Yes. Many patients return every 9 to 18 months to maintain their results. Our doctors create a bespoke plan so your appearance remains consistent and natural over time.',
   },
   {
     question: 'Do I need a referral for dermal fillers?',
@@ -132,7 +132,7 @@ export default function DermalFillersPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Natural volume restoration and contouring by GMC-registered doctors. Immediate results — no surgery, no downtime.
+                Natural volume restoration and contouring by GMC-registered doctors. Immediate results, no surgery, no downtime.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -213,7 +213,7 @@ export default function DermalFillersPage() {
                 <p className={styles.combinedDesc}>
                   Dermal fillers are minimally invasive injectable treatments that restore lost volume,
                   smooth deep lines, and refine facial contours. At The One Clinic, all treatments are
-                  performed by GMC-registered doctors using premium hyaluronic acid fillers — delivering
+                  performed by GMC-registered doctors using premium hyaluronic acid fillers, delivering
                   natural, beautiful results with no surgery and minimal downtime.
                 </p>
               </motion.div>

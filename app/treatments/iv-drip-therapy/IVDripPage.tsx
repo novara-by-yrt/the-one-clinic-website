@@ -18,7 +18,7 @@ import styles from './page.module.css';
 const BENEFITS = [
   {
     title: '100% Bioavailability',
-    desc: 'Unlike oral supplements, IV therapy delivers nutrients directly into the bloodstream — bypassing the digestive system for immediate, complete absorption with no loss of potency.',
+    desc: 'Unlike oral supplements, IV therapy delivers nutrients directly into the bloodstream, bypassing the digestive system for immediate, complete absorption with no loss of potency.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -27,7 +27,7 @@ const BENEFITS = [
   },
   {
     title: 'Fast, Visible Results',
-    desc: 'Many patients notice increased energy, improved skin radiance, and enhanced wellbeing within hours of treatment — results that oral supplementation simply cannot match in speed or impact.',
+    desc: 'Many patients notice increased energy, improved skin radiance, and enhanced wellbeing within hours of treatment, results that oral supplementation simply cannot match in speed or impact.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -37,7 +37,7 @@ const BENEFITS = [
   },
   {
     title: 'Tailored to Your Needs',
-    desc: 'Every IV drip at The One Clinic is formulated to your individual health goals — whether boosting immunity, aiding recovery, enhancing skin health, or replenishing energy levels.',
+    desc: 'Every IV drip at The One Clinic is formulated to your individual health goals, whether boosting immunity, aiding recovery, enhancing skin health, or replenishing energy levels.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
@@ -62,8 +62,8 @@ const BENEFITS = [
 const OVERVIEW_POINTS = [
   'Nutrients delivered directly into the bloodstream for maximum absorption',
   'Formulations available for energy, immunity, skin glow, and recovery',
-  'Sessions typically take 30–45 minutes in a relaxed clinical setting',
-  'No GP referral required — book directly with our team',
+  'Sessions typically take 30 to 45 minutes in a relaxed clinical setting',
+  'No GP referral required, book directly with our team',
 ];
 
 const FAQS = [
@@ -129,7 +129,7 @@ export default function IVDripPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Premium vitamin and nutrient infusions delivered directly into the bloodstream — for energy, immunity, recovery, and radiant health.
+                Premium vitamin and nutrient infusions delivered directly into the bloodstream, for energy, immunity, recovery, and radiant health.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>

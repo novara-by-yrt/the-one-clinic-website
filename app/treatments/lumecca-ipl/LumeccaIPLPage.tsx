@@ -28,7 +28,7 @@ const BENEFITS = [
   },
   {
     title: 'No Downtime',
-    desc: 'Lumecca IPL is a lunchtime treatment. Return to your normal routine immediately — no recovery period needed.',
+    desc: 'Lumecca IPL is a lunchtime treatment. Return to your normal routine immediately, no recovery period needed.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
@@ -40,7 +40,7 @@ const BENEFITS = [
   },
   {
     title: 'Treats Multiple Concerns',
-    desc: 'One device targets pigmentation, sun spots, rosacea, broken capillaries, and uneven skin tone — in a single session.',
+    desc: 'One device targets pigmentation, sun spots, rosacea, broken capillaries, and uneven skin tone, in a single session.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -63,7 +63,7 @@ const BENEFITS = [
 
 const OVERVIEW_POINTS = [
   'Targets pigmentation, sun damage, and rosacea',
-  'Non-invasive — no needles, no surgery, no downtime',
+  'Non-invasive, no needles, no surgery, no downtime',
   'Results visible after just one treatment session',
   'No waiting lists and no referral required',
 ];
@@ -77,12 +77,12 @@ const FAQS = [
   {
     question: 'How quickly can I see results?',
     answer:
-      'Many patients notice an improvement within a few days of their first session as pigmented lesions darken and naturally shed. Optimal results typically appear after 1–3 treatments spaced several weeks apart.',
+      'Many patients notice an improvement within a few days of their first session as pigmented lesions darken and naturally shed. Optimal results typically appear after 1 to 3 treatments spaced several weeks apart.',
   },
   {
     question: 'Is Lumecca IPL suitable for all skin types?',
     answer:
-      'Lumecca IPL is most effective for lighter skin tones (Fitzpatrick I–III). A thorough consultation and skin assessment is carried out before treatment to confirm suitability and ensure the safest, most effective settings are used for your skin.',
+      'Lumecca IPL is most effective for lighter skin tones (Fitzpatrick I,III). A thorough consultation and skin assessment is carried out before treatment to confirm suitability and ensure the safest, most effective settings are used for your skin.',
   },
   {
     question: 'Do I need a referral for Lumecca IPL?',
@@ -132,7 +132,7 @@ export default function LumeccaIPLPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                The most powerful IPL treatment available. Clear pigmentation, sun damage, and redness — with no downtime.
+                The most powerful IPL treatment available. Clear pigmentation, sun damage, and redness, with no downtime.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -214,7 +214,7 @@ export default function LumeccaIPLPage() {
                   Lumecca is the most powerful intense pulsed light (IPL) device available, delivering
                   up to three times more energy than conventional IPL systems. At The One Clinic, our
                   expert team uses Lumecca to target pigmentation, sun damage, rosacea, and broken
-                  capillaries — producing remarkable results in fewer sessions.
+                  capillaries, producing remarkable results in fewer sessions.
                 </p>
               </motion.div>
 

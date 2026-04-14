@@ -18,7 +18,7 @@ import styles from './page.module.css';
 const BENEFITS = [
   {
     title: 'Deep Cellular Repair',
-    desc: 'Polynucleotides are biological molecules derived from DNA that signal skin cells to repair and regenerate — stimulating collagen production and improving skin quality at a foundational level.',
+    desc: 'Polynucleotides are biological molecules derived from DNA that signal skin cells to repair and regenerate, stimulating collagen production and improving skin quality at a foundational level.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -28,7 +28,7 @@ const BENEFITS = [
   },
   {
     title: 'Visible Skin Rejuvenation',
-    desc: 'Patients typically notice improved hydration, smoother texture, reduced fine lines, and restored radiance — with results developing progressively over 4–8 weeks as collagen remodelling advances.',
+    desc: 'Patients typically notice improved hydration, smoother texture, reduced fine lines, and restored radiance, with results developing progressively over 4 to 8 weeks as collagen remodelling advances.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
@@ -38,7 +38,7 @@ const BENEFITS = [
   },
   {
     title: 'Natural & Biocompatible',
-    desc: 'Polynucleotides are highly biocompatible and well-tolerated. They work with the body\'s own repair mechanisms — making them suitable for all skin types and a safe choice for patients seeking natural-looking improvement.',
+    desc: 'Polynucleotides are highly biocompatible and well-tolerated. They work with the body\'s own repair mechanisms, making them suitable for all skin types and a safe choice for patients seeking natural-looking improvement.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -63,7 +63,7 @@ const OVERVIEW_POINTS = [
   'Stimulates collagen and elastin production for deep skin renewal',
   'Improves hydration, texture, fine lines, and overall radiance',
   'Suitable for face, neck, décolletage, and under-eye areas',
-  'No GP referral required — book directly with our team',
+  'No GP referral required, book directly with our team',
 ];
 
 const FAQS = [
@@ -75,7 +75,7 @@ const FAQS = [
   {
     question: 'How many sessions do I need?',
     answer:
-      'A course of 3–4 sessions spaced 2–4 weeks apart is typically recommended for optimal results, followed by maintenance treatments every 3–6 months. Your clinician will advise the most appropriate protocol based on your skin condition and goals.',
+      'A course of 3 to 4 sessions spaced 2 to 4 weeks apart is typically recommended for optimal results, followed by maintenance treatments every 3 to 6 months. Your clinician will advise the most appropriate protocol based on your skin condition and goals.',
   },
   {
     question: 'What areas can be treated with polynucleotides?',
@@ -106,7 +106,7 @@ export default function PolynucleotidesPage() {
               theme="dark"
               items={[
                 { label: 'Treatments', href: '/treatments' },
-                { label: 'Regenerative Medicine – Polynucleotides' },
+                { label: 'Regenerative Medicine, Polynucleotides' },
               ]}
             />
           </Container>
@@ -129,7 +129,7 @@ export default function PolynucleotidesPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Advanced regenerative treatment that repairs skin at a cellular level — restoring hydration, collagen, and radiance from within.
+                Advanced regenerative treatment that repairs skin at a cellular level, restoring hydration, collagen, and radiance from within.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -209,7 +209,7 @@ export default function PolynucleotidesPage() {
                   Polynucleotides (PDRN) are advanced biological molecules injected into the skin
                   to stimulate cellular repair and renewal. By activating the skin&apos;s own
                   regenerative processes, they deliver deep improvements in texture, hydration,
-                  and firmness — making them one of the most effective skin rejuvenation treatments
+                  and firmness, making them one of the most effective skin rejuvenation treatments
                   available in modern aesthetic medicine.
                 </p>
               </motion.div>

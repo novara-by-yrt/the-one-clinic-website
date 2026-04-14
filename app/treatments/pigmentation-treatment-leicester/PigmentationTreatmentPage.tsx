@@ -18,7 +18,7 @@ import styles from './page.module.css';
 const BENEFITS = [
   {
     title: 'Targeted Precision',
-    desc: 'Advanced laser and IPL technology selectively targets melanin deposits in the skin — breaking down dark spots and discolouration without affecting the surrounding tissue.',
+    desc: 'Advanced laser and IPL technology selectively targets melanin deposits in the skin, breaking down dark spots and discolouration without affecting the surrounding tissue.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -41,7 +41,7 @@ const BENEFITS = [
   },
   {
     title: 'Even, Radiant Skin Tone',
-    desc: 'Treatment progressively lightens and fades areas of discolouration, restoring a more uniform, luminous complexion — with continued improvement as the skin renews over several weeks.',
+    desc: 'Treatment progressively lightens and fades areas of discolouration, restoring a more uniform, luminous complexion, with continued improvement as the skin renews over several weeks.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
@@ -51,7 +51,7 @@ const BENEFITS = [
   },
   {
     title: 'Expert Skin Assessment',
-    desc: 'Our clinical team carry out a thorough skin analysis before recommending a treatment plan — ensuring the right approach is taken for your skin type, tone, and the nature of your pigmentation.',
+    desc: 'Our clinical team carry out a thorough skin analysis before recommending a treatment plan, ensuring the right approach is taken for your skin type, tone, and the nature of your pigmentation.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -67,24 +67,24 @@ const OVERVIEW_POINTS = [
   'Treats sun spots, melasma, post-inflammatory marks, and age spots',
   'Laser, IPL, and chemical peel options tailored to your skin type',
   'Progressive results with continued improvement over several weeks',
-  'No GP referral required — book directly with our team',
+  'No GP referral required, book directly with our team',
 ];
 
 const FAQS = [
   {
     question: 'What causes skin pigmentation?',
     answer:
-      'Pigmentation occurs when melanin — the pigment responsible for skin colour — is produced unevenly. Common causes include sun exposure (sun spots, freckles), hormonal changes (melasma), post-inflammatory hyperpigmentation following acne or injury, and the natural ageing process. The type and cause of pigmentation determines the most appropriate treatment approach.',
+      'Pigmentation occurs when melanin, the pigment responsible for skin colour, is produced unevenly. Common causes include sun exposure (sun spots, freckles), hormonal changes (melasma), post-inflammatory hyperpigmentation following acne or injury, and the natural ageing process. The type and cause of pigmentation determines the most appropriate treatment approach.',
   },
   {
     question: 'How many sessions will I need?',
     answer:
-      'The number of sessions depends on the type, depth, and extent of the pigmentation being treated. Superficial sun spots may respond well after 1–2 sessions, while conditions such as melasma typically require a course of treatments alongside ongoing sun protection. Your clinician will outline a personalised plan at your consultation.',
+      'The number of sessions depends on the type, depth, and extent of the pigmentation being treated. Superficial sun spots may respond well after 1 to 2 sessions, while conditions such as melasma typically require a course of treatments alongside ongoing sun protection. Your clinician will outline a personalised plan at your consultation.',
   },
   {
     question: 'Is pigmentation treatment suitable for all skin tones?',
     answer:
-      'Many pigmentation treatments can be adapted for a wide range of skin tones, but careful assessment is essential — particularly for deeper skin tones where certain laser wavelengths carry a higher risk of post-inflammatory hyperpigmentation. Our team will assess your skin thoroughly and recommend only treatments that are safe and appropriate for you.',
+      'Many pigmentation treatments can be adapted for a wide range of skin tones, but careful assessment is essential, particularly for deeper skin tones where certain laser wavelengths carry a higher risk of post-inflammatory hyperpigmentation. Our team will assess your skin thoroughly and recommend only treatments that are safe and appropriate for you.',
   },
   {
     question: 'Do I need a referral for pigmentation treatment?',
@@ -133,7 +133,7 @@ export default function PigmentationTreatmentPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Advanced laser and light-based treatments to reduce dark spots, sun damage, and uneven skin tone — restoring a clear, radiant complexion.
+                Advanced laser and light-based treatments to reduce dark spots, sun damage, and uneven skin tone, restoring a clear, radiant complexion.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -212,8 +212,8 @@ export default function PigmentationTreatmentPage() {
                 <p className={styles.combinedDesc}>
                   Pigmentation treatment uses advanced laser, IPL (intense pulsed light), or
                   chemical peel technology to break down excess melanin deposits in the skin.
-                  The approach is carefully matched to the type and depth of discolouration —
-                  whether sun spots, post-inflammatory marks, or melasma — delivering a
+                  The approach is carefully matched to the type and depth of discolouration ,
+                  whether sun spots, post-inflammatory marks, or melasma, delivering a
                   progressively clearer, more even skin tone.
                 </p>
               </motion.div>

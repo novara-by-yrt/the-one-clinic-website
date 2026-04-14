@@ -114,7 +114,7 @@ export default function ResultsPage() {
             <motion.p className={styles.heroEyebrow} variants={fadeUp}>Patient Outcomes</motion.p>
             <motion.h1 className={styles.heroTitle} variants={fadeUp}>Real Transformations</motion.h1>
             <motion.p className={styles.heroDesc} variants={fadeUp}>
-              Genuine before and after results from our patients — delivered by
+              Genuine before and after results from our patients, delivered by
               experienced, qualified doctors at The One Clinic Leicester.
             </motion.p>
           </motion.div>
@@ -174,7 +174,7 @@ export default function ResultsPage() {
             <div className={styles.comingSoonInner}>
               <span className={styles.comingSoonDot} aria-hidden="true" />
               <p className={styles.comingSoonText}>
-                More transformations are on their way — check back soon for new results
+                More transformations are on their way, check back soon for new results
                 across our full range of treatments.
               </p>
             </div>

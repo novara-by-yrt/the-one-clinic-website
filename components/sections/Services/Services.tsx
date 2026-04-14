@@ -195,12 +195,12 @@ const TREATMENTS: Treatment[] = [
   {
     title: 'Endolift Laser',
     category: 'Medical Aesthetics',
-    desc: 'Minimally invasive laser lifting for face, neck and body — no surgery required.',
+    desc: 'Minimally invasive laser lifting for face, neck and body, no surgery required.',
     href: '/treatments/endolift',
     bg: 'linear-gradient(160deg,#100d17 0%,#1e1633 100%)',
   },
   {
-    title: 'Skincare – Alumier MD',
+    title: 'Skincare, Alumier MD',
     category: 'Medical Aesthetics',
     desc: 'Medical-grade skincare products tailored to your skin type and treatment goals.',
     href: '/treatments/alumier-md',
@@ -319,7 +319,7 @@ const DISPLAYED_TREATMENTS = TREATMENTS.filter(
   (t) => t.category !== 'Medical Aesthetics' || !!t.image,
 );
 
-// px per frame — slow, elegant pace (~21 px/s at 60fps)
+// px per frame, slow, elegant pace (~21 px/s at 60fps)
 const SPEED = 0.35;
 const CARD_STEP = 300; // card width (280) + gap (20)
 

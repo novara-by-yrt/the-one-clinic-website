@@ -18,7 +18,7 @@ import styles from './page.module.css';
 const BENEFITS = [
   {
     title: 'Fast Access to Treatment',
-    desc: 'See a GMC-registered doctor quickly — without NHS waiting lists. Most lesions are assessed and treated within a single visit.',
+    desc: 'See a GMC-registered doctor quickly, without NHS waiting lists. Most lesions are assessed and treated within a single visit.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -64,7 +64,7 @@ const BENEFITS = [
 const OVERVIEW_POINTS = [
   'Removal of moles, cysts, lipomas, and skin tags',
   'Full clinical assessment included before any procedure',
-  'Performed under local anaesthetic — minimal discomfort',
+  'Performed under local anaesthetic, minimal discomfort',
   'No waiting lists and no GP referral required',
 ];
 
@@ -131,7 +131,7 @@ export default function SkinLesionPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Safe, expert removal of moles, cysts, lipomas, and skin tags by GMC-registered doctors. Fast access — no waiting lists.
+                Safe, expert removal of moles, cysts, lipomas, and skin tags by GMC-registered doctors. Fast access, no waiting lists.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>

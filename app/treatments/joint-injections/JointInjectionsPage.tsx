@@ -30,7 +30,7 @@ const BENEFITS = [
   },
   {
     title: 'Improved Mobility',
-    desc: 'By reducing swelling and stiffness, joint injections help restore range of movement and function to affected joints — so you can move freely again.',
+    desc: 'By reducing swelling and stiffness, joint injections help restore range of movement and function to affected joints, so you can move freely again.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
@@ -64,7 +64,7 @@ const BENEFITS = [
 
 const OVERVIEW_POINTS = [
   'Rapid relief from joint pain and inflammation',
-  'Minimally invasive in-clinic procedure — no surgery required',
+  'Minimally invasive in-clinic procedure, no surgery required',
   'Suitable for knees, hips, shoulders, ankles, and more',
   'Administered by GMC-registered doctors',
 ];
@@ -83,12 +83,12 @@ const FAQS = [
   {
     question: 'How quickly will I feel the results?',
     answer:
-      'This depends on the type of injection. A local anaesthetic component may provide immediate short-term relief. Cortisone injections typically take 2–7 days to reach full effect and can last several months. Hyaluronic acid injections may take a little longer to build up but offer sustained lubrication and pain relief.',
+      'This depends on the type of injection. A local anaesthetic component may provide immediate short-term relief. Cortisone injections typically take 2 to 7 days to reach full effect and can last several months. Hyaluronic acid injections may take a little longer to build up but offer sustained lubrication and pain relief.',
   },
   {
     question: 'How long do joint injections last?',
     answer:
-      'The duration of relief varies by injection type and individual. Cortisone injections generally provide relief for 3–6 months; some patients find results last longer. Hyaluronic acid injections can provide relief for 6–12 months. Your doctor will advise on the recommended frequency for your situation.',
+      'The duration of relief varies by injection type and individual. Cortisone injections generally provide relief for 3 to 6 months; some patients find results last longer. Hyaluronic acid injections can provide relief for 6 to 12 months. Your doctor will advise on the recommended frequency for your situation.',
   },
 ];
 
@@ -134,7 +134,7 @@ export default function JointInjectionsPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Fast, targeted relief from joint pain and inflammation — administered by expert doctors at The One Clinic.
+                Fast, targeted relief from joint pain and inflammation, administered by expert doctors at The One Clinic.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -214,8 +214,8 @@ export default function JointInjectionsPage() {
                 <p className={styles.eyebrowDark}>About This Treatment</p>
                 <h2 className={styles.combinedHeading}>What is a Joint Injection?</h2>
                 <p className={styles.combinedDesc}>
-                  Joint injections deliver therapeutic agents — such as corticosteroids or hyaluronic
-                  acid — directly into an affected joint to reduce pain, swelling, and stiffness.
+                  Joint injections deliver therapeutic agents, such as corticosteroids or hyaluronic
+                  acid, directly into an affected joint to reduce pain, swelling, and stiffness.
                   At The One Clinic, our experienced doctors use precise injection techniques to
                   provide targeted relief, helping you regain mobility and quality of life quickly
                   and safely.

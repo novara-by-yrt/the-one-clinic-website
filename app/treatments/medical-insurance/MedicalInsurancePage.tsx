@@ -31,7 +31,7 @@ const BENEFITS = [
   },
   {
     title: 'Thorough & Impartial Reports',
-    desc: 'Our doctors provide accurate, objective assessments with no conflicts of interest. Reports are prepared to the required standard and delivered promptly — typically within 3–5 working days.',
+    desc: 'Our doctors provide accurate, objective assessments with no conflicts of interest. Reports are prepared to the required standard and delivered promptly, typically within 3 to 5 working days.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
@@ -90,7 +90,7 @@ const FAQS = [
   {
     question: 'How long does a medical insurance examination take?',
     answer:
-      'The duration depends on the type of examination required. A standard life insurance medical typically takes 30–45 minutes. More comprehensive independent medical assessments may take 60–90 minutes. You will be advised of the expected duration when you book.',
+      'The duration depends on the type of examination required. A standard life insurance medical typically takes 30 to 45 minutes. More comprehensive independent medical assessments may take 60 to 90 minutes. You will be advised of the expected duration when you book.',
   },
 ];
 
@@ -136,7 +136,7 @@ export default function MedicalInsurancePage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Thorough, impartial medical examinations and independent health reports — prepared by GMC-registered doctors at The One Clinic.
+                Thorough, impartial medical examinations and independent health reports, prepared by GMC-registered doctors at The One Clinic.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -164,7 +164,7 @@ export default function MedicalInsurancePage() {
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                     <polyline points="14 2 14 8 20 8"/>
                   </svg>
-                  Reports in 3–5 working days
+                  Reports in 3 to 5 working days
                 </span>
                 <span className={styles.heroTrustDivider} aria-hidden="true" />
                 <span className={styles.heroTrustItem}>
@@ -220,7 +220,7 @@ export default function MedicalInsurancePage() {
                   a qualified doctor on behalf of an insurer, employer, solicitor, or other
                   requesting body. At The One Clinic, our GMC-registered doctors conduct thorough,
                   objective examinations and produce professionally written reports that meet the
-                  required standards — delivered promptly and handled with complete confidentiality.
+                  required standards, delivered promptly and handled with complete confidentiality.
                 </p>
               </motion.div>
 

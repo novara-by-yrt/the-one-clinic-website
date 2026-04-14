@@ -47,7 +47,7 @@ const NAV: NavItem[] = [
           { label: 'Dermatologist Leicester',                                 href: '/treatments/dermatologist' },
           { label: "Men's Health",                                            href: '/treatments/mens-health' },
           { label: "Women's Health Clinic",                                   href: '/treatments/womens-health' },
-          { label: "Women's Health – Menopause / HRT / Contraception",       href: '/treatments/menopause-hrt' },
+          { label: "Women's Health, Menopause / HRT / Contraception",       href: '/treatments/menopause-hrt' },
           { label: 'Mental Health Consultation',                              href: '/treatments/mental-health-consultation' },
         ],
       },
@@ -62,17 +62,17 @@ const NAV: NavItem[] = [
           { label: 'Hydrafacial Leicester',                   href: '/treatments/hydrafacial' },
           { label: 'Vampire Facial',                          href: '/treatments/vampire-facial' },
           { label: 'Chemical Peels',                          href: '/treatments/chemical-peels' },
-          { label: 'Skin Analysis – Life Viz 3D Camera',      href: '/treatments/skin-analysis' },
+          { label: 'Skin Analysis, Life Viz 3D Camera',      href: '/treatments/skin-analysis' },
           { label: 'Body Contouring',                         href: '/treatments/body-contouring' },
           { label: 'Endolift Laser',                          href: '/treatments/endolift' },
-          { label: 'Skincare – Alumier MD',                   href: '/treatments/skincare-alumier-md' },
+          { label: 'Skincare, Alumier MD',                   href: '/treatments/skincare-alumier-md' },
           { label: 'Skin Lesion Removal Leicester',           href: '/treatments/skin-lesion' },
           { label: 'BCC Removal Leicester',                  href: '/treatments/basal-cell-carcinoma-bcc-removal-leicester' },
           { label: 'Skin Tag Removal Leicester',             href: '/treatments/skin-tags-removal-leicester' },
           { label: 'Wart Removal Leicester',                 href: '/treatments/wart-removal-leicester' },
           { label: 'Acne Scar Removal Leicester',           href: '/treatments/acne-scar-removal-leicester' },
-          { label: 'Regenerative Medicine – Exosome Therapy', href: '/treatments/regenerative-medicine-exosome-therapy' },
-          { label: 'Regenerative Medicine – Polynucleotides', href: '/treatments/polynucleotides-leicester' },
+          { label: 'Regenerative Medicine, Exosome Therapy', href: '/treatments/regenerative-medicine-exosome-therapy' },
+          { label: 'Regenerative Medicine, Polynucleotides', href: '/treatments/polynucleotides-leicester' },
           { label: 'Cool Bleph',                              href: '/treatments/cool-bleph' },
           { label: 'COOL Glow Peel (Full Face)',              href: '/treatments/cool-glow-full-face' },
           { label: 'Cool Scar Lift',                          href: '/treatments/cool-scar-lift' },
@@ -263,7 +263,7 @@ export default function Header() {
           <div className={styles.inner}>
 
             {/* Logo */}
-            <Link href="/" className={styles.logo} aria-label="The One Clinic – home">
+            <Link href="/" className={styles.logo} aria-label="The One Clinic, home">
               <Image
                 src="/images/LOGO.png"
                 alt="The One Clinic"

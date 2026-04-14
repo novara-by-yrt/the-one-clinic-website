@@ -20,7 +20,7 @@ import styles from './page.module.css';
 const BENEFITS = [
   {
     title: 'Fast Access to a Specialist',
-    desc: 'See a qualified skin specialist quickly — without NHS waiting lists. Same-day and next-day appointments are available for acute skin concerns.',
+    desc: 'See a qualified skin specialist quickly, without NHS waiting lists. Same-day and next-day appointments are available for acute skin concerns.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -40,7 +40,7 @@ const BENEFITS = [
   },
   {
     title: 'Comprehensive Treatment Plans',
-    desc: 'From prescription topicals and oral medications to advanced clinic-based treatments — your plan is designed specifically for your condition, skin type, and lifestyle.',
+    desc: 'From prescription topicals and oral medications to advanced clinic-based treatments, your plan is designed specifically for your condition, skin type, and lifestyle.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
@@ -83,12 +83,12 @@ const FAQS = [
   {
     question: 'How long does a dermatology consultation take?',
     answer:
-      'Initial consultations are typically 30–45 minutes, allowing time for a thorough history, full skin examination, diagnosis, and discussion of your treatment options. Follow-up appointments are usually 20–30 minutes.',
+      'Initial consultations are typically 30 to 45 minutes, allowing time for a thorough history, full skin examination, diagnosis, and discussion of your treatment options. Follow-up appointments are usually 20 to 30 minutes.',
   },
   {
     question: 'Can you test or biopsy suspicious moles at the clinic?',
     answer:
-      'Yes. Our doctors can perform dermoscopic assessment of suspicious lesions during your consultation. Where a biopsy is recommended, this can often be arranged promptly. Results are reviewed with you and next steps — including any referral for specialist surgical management if required — are discussed clearly.',
+      'Yes. Our doctors can perform dermoscopic assessment of suspicious lesions during your consultation. Where a biopsy is recommended, this can often be arranged promptly. Results are reviewed with you and next steps, including any referral for specialist surgical management if required, are discussed clearly.',
   },
 ];
 
@@ -134,7 +134,7 @@ export default function DermatologistPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Expert diagnosis and treatment of all skin conditions — fast access to a skin specialist with no waiting lists.
+                Expert diagnosis and treatment of all skin conditions, fast access to a skin specialist with no waiting lists.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -216,7 +216,7 @@ export default function DermatologistPage() {
                 <p className={styles.combinedDesc}>
                   A private dermatologist is a specialist in the diagnosis and treatment of
                   conditions affecting the skin, hair, and nails. At The One Clinic, our
-                  dermatology service provides rapid access to expert assessment — whether you
+                  dermatology service provides rapid access to expert assessment, whether you
                   have an unexplained rash, a chronic skin condition, a suspicious mole, or
                   simply want clear, healthy skin. We provide accurate diagnoses, prescription
                   treatments, and clinic-based procedures, all in one place.

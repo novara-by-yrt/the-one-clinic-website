@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'The Body Confidence Package Leicester | The One Clinic',
     description:
-      'Transform how you look and feel with The Body Confidence Package at The One Clinic Leicester — a curated combination of expert aesthetic treatments.',
+      'Transform how you look and feel with The Body Confidence Package at The One Clinic Leicester, a curated combination of expert aesthetic treatments.',
   },
 };
 

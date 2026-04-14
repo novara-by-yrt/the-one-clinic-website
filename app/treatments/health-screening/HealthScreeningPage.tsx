@@ -130,13 +130,13 @@ export default function HealthScreeningPage() {
       ════════════════════════════════════════ */}
       <section
         className={styles.hero}
-        aria-label="Health Screening Leicester – hero"
+        aria-label="Health Screening Leicester, hero"
         data-section-theme="dark"
       >
         <div className={styles.heroGrid} aria-hidden="true" />
         <div className={styles.heroGradient} aria-hidden="true" />
 
-        {/* Breadcrumb — pinned to top of hero */}
+        {/* Breadcrumb, pinned to top of hero */}
         <div className={styles.heroBreadcrumb}>
           <Container>
             <Breadcrumb
@@ -393,7 +393,7 @@ export default function HealthScreeningPage() {
             </motion.p>
             <motion.p className={styles.howPara} variants={fadeUp}>
               Results are reviewed in detail with your clinician, who will explain findings in
-              plain language and outline the most appropriate next steps — whether that is
+              plain language and outline the most appropriate next steps, whether that is
               lifestyle guidance, medication, further investigation, or a structured monitoring
               programme.
             </motion.p>

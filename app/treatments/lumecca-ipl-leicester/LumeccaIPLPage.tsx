@@ -18,7 +18,7 @@ import styles from './page.module.css';
 const BENEFITS = [
   {
     title: 'Targets Multiple Skin Concerns',
-    desc: 'A single Lumecca IPL session addresses sun damage, pigmentation, age spots, freckles, facial redness, rosacea, and broken capillaries — delivering visible results with minimal sessions.',
+    desc: 'A single Lumecca IPL session addresses sun damage, pigmentation, age spots, freckles, facial redness, rosacea, and broken capillaries, delivering visible results with minimal sessions.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -28,7 +28,7 @@ const BENEFITS = [
   },
   {
     title: 'Fast, Noticeable Results',
-    desc: 'Lumecca delivers up to 3x more light energy than standard IPL devices. Most patients see a significant improvement in skin tone and clarity after just 1–2 treatments.',
+    desc: 'Lumecca delivers up to 3x more light energy than standard IPL devices. Most patients see a significant improvement in skin tone and clarity after just 1 to 2 treatments.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -82,7 +82,7 @@ const FAQS = [
   {
     question: 'How many sessions will I need?',
     answer:
-      'Many patients see significant improvement after just 1–2 sessions. A course of 2–3 treatments spaced 3–4 weeks apart is typically recommended for optimal results. Your personalised plan will be discussed at your consultation.',
+      'Many patients see significant improvement after just 1 to 2 sessions. A course of 2 to 3 treatments spaced 3 to 4 weeks apart is typically recommended for optimal results. Your personalised plan will be discussed at your consultation.',
   },
   {
     question: 'Do I need a referral for Lumecca IPL?',
@@ -131,7 +131,7 @@ export default function LumeccaIPLPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                The most powerful IPL available for pigmentation, sun damage, and redness. Clearer, more radiant skin — often in just 1–2 sessions.
+                The most powerful IPL available for pigmentation, sun damage, and redness. Clearer, more radiant skin, often in just 1 to 2 sessions.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -210,7 +210,7 @@ export default function LumeccaIPLPage() {
                 <p className={styles.combinedDesc}>
                   Lumecca is the most powerful intense pulsed light (IPL) device for treating skin
                   pigmentation and vascular concerns. Using precisely controlled broad-spectrum light,
-                  it targets melanin and haemoglobin beneath the skin surface — breaking down
+                  it targets melanin and haemoglobin beneath the skin surface, breaking down
                   discolouration, reducing redness, and stimulating skin renewal for visibly clearer,
                   more even-toned results. At The One Clinic, every treatment is tailored to your
                   skin by our expert clinical team.

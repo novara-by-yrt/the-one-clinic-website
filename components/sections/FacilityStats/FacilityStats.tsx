@@ -9,9 +9,9 @@ import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './FacilityStats.module.css';
 
 const SLIDES = [
-  { src: '/images/location1.jpg', alt: 'The One Clinic — Leicester' },
-  { src: '/images/location2.jpg', alt: 'The One Clinic — interior' },
-  { src: '/images/location3.jpg', alt: 'The One Clinic — treatment room' },
+  { src: '/images/location1.jpg', alt: 'The One Clinic, Leicester' },
+  { src: '/images/location2.jpg', alt: 'The One Clinic, interior' },
+  { src: '/images/location3.jpg', alt: 'The One Clinic, treatment room' },
 ];
 
 const STATS = [

@@ -31,7 +31,7 @@ const BENEFITS = [
   },
   {
     title: 'Convenient Appointment Times',
-    desc: 'Early morning, evening, and weekend slots available — designed to fit around your life, not the other way round.',
+    desc: 'Early morning, evening, and weekend slots available, designed to fit around your life, not the other way round.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
@@ -55,7 +55,7 @@ const BENEFITS = [
   },
   {
     title: 'Peace of Mind',
-    desc: 'An unhurried, thorough consultation with a GMC-registered doctor who listens — giving you the clarity and reassurance you deserve.',
+    desc: 'An unhurried, thorough consultation with a GMC-registered doctor who listens, giving you the clarity and reassurance you deserve.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -66,7 +66,7 @@ const BENEFITS = [
 
 const OVERVIEW_POINTS = [
   'Quick access to same-day and next-day appointments',
-  'Longer consultation time — up to 60 minutes',
+  'Longer consultation time, up to 60 minutes',
   'Personalised care tailored to your individual needs',
   'No waiting lists and no referral required',
 ];
@@ -75,7 +75,7 @@ const FAQS = [
   {
     question: 'What is a Private GP?',
     answer:
-      'A private GP is a fully qualified, GMC-registered doctor who provides medical consultations outside the NHS. You benefit from longer appointment times, faster access, and a more personalised approach to your healthcare — without waiting lists or referral requirements.',
+      'A private GP is a fully qualified, GMC-registered doctor who provides medical consultations outside the NHS. You benefit from longer appointment times, faster access, and a more personalised approach to your healthcare, without waiting lists or referral requirements.',
   },
   {
     question: 'How quickly can I get an appointment?',
@@ -138,7 +138,7 @@ export default function PrivateGPPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Same-day access to a GMC-registered doctor. Thorough, unhurried consultations — on your terms.
+                Same-day access to a GMC-registered doctor. Thorough, unhurried consultations, on your terms.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -217,7 +217,7 @@ export default function PrivateGPPage() {
                 <p className={styles.eyebrowDark}>About This Service</p>
                 <h2 className={styles.combinedHeading}>What is a Private GP Service?</h2>
                 <p className={styles.combinedDesc}>
-                  A private GP service gives you direct, fast access to a fully qualified doctor —
+                  A private GP service gives you direct, fast access to a fully qualified doctor ,
                   without the delays, constraints, or 10-minute slots of the NHS. At The One Clinic,
                   our GMC-registered GPs offer thorough consultations, same-day prescriptions, and
                   onward specialist referrals, all in a calm, confidential environment.

@@ -131,7 +131,7 @@ export default function GPHomeVisitsPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                A qualified private doctor comes to you — same-day visits available across Leicester and the surrounding area.
+                A qualified private doctor comes to you, same-day visits available across Leicester and the surrounding area.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -176,7 +176,7 @@ export default function GPHomeVisitsPage() {
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
                 src="/images/GP Home Visits.jpg"
-                alt="GP home visit — doctor visiting patient at home in Leicester"
+                alt="GP home visit, doctor visiting patient at home in Leicester"
                 fill
                 priority
                 className={styles.heroImage}
@@ -214,7 +214,7 @@ export default function GPHomeVisitsPage() {
                   A private GP home visit brings qualified medical care directly to you. Whether
                   you are too unwell to travel, caring for a loved one at home, or simply value
                   the convenience of being seen where you are most comfortable, our doctors will
-                  come to your location and provide a full clinical assessment — including
+                  come to your location and provide a full clinical assessment, including
                   prescriptions, referrals, and follow-up advice.
                 </p>
               </motion.div>
@@ -355,7 +355,7 @@ export default function GPHomeVisitsPage() {
             </motion.p>
             <motion.p className={styles.costBannerNote} variants={fadeUp}>
               Pricing varies depending on location and visit duration. All costs are confirmed
-              transparently at the time of booking — no hidden fees.
+              transparently at the time of booking, no hidden fees.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>

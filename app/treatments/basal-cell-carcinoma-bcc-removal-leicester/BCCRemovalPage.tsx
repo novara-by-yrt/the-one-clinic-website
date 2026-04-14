@@ -18,7 +18,7 @@ import styles from './page.module.css';
 const BENEFITS = [
   {
     title: 'Expert Surgical Excision',
-    desc: 'BCC removal at The One Clinic is performed by our experienced medical team using precise surgical excision techniques — ensuring complete removal with clean margins and the best possible cosmetic outcome.',
+    desc: 'BCC removal at The One Clinic is performed by our experienced medical team using precise surgical excision techniques, ensuring complete removal with clean margins and the best possible cosmetic outcome.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -27,7 +27,7 @@ const BENEFITS = [
   },
   {
     title: 'Histological Confirmation',
-    desc: 'All removed tissue is sent for histological analysis to confirm complete excision and verify the diagnosis — giving you and your clinical team absolute certainty and peace of mind.',
+    desc: 'All removed tissue is sent for histological analysis to confirm complete excision and verify the diagnosis, giving you and your clinical team absolute certainty and peace of mind.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="11" cy="11" r="8"/>
@@ -37,7 +37,7 @@ const BENEFITS = [
   },
   {
     title: 'Fast Access to Treatment',
-    desc: 'Avoiding NHS waiting lists, our team can see you quickly — reducing anxiety and ensuring prompt treatment. Early removal of BCC leads to the best outcomes and minimal recurrence risk.',
+    desc: 'Avoiding NHS waiting lists, our team can see you quickly, reducing anxiety and ensuring prompt treatment. Early removal of BCC leads to the best outcomes and minimal recurrence risk.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -47,7 +47,7 @@ const BENEFITS = [
   },
   {
     title: 'Full Post-Operative Care',
-    desc: 'Our team provide comprehensive wound care guidance and follow-up support after your procedure — ensuring your recovery is smooth, your scar heals well, and any concerns are addressed promptly.',
+    desc: 'Our team provide comprehensive wound care guidance and follow-up support after your procedure, ensuring your recovery is smooth, your scar heals well, and any concerns are addressed promptly.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -62,8 +62,8 @@ const BENEFITS = [
 const OVERVIEW_POINTS = [
   'Surgical excision under local anaesthetic with clean margin removal',
   'All tissue sent for histological analysis as standard',
-  'Fast access to treatment — no long NHS waiting lists',
-  'No GP referral required — book directly with our team',
+  'Fast access to treatment, no long NHS waiting lists',
+  'No GP referral required, book directly with our team',
 ];
 
 const FAQS = [
@@ -80,7 +80,7 @@ const FAQS = [
   {
     question: 'What are the signs of a BCC?',
     answer:
-      'BCCs can present in various ways — common appearances include a pearly or waxy bump, a flat flesh-coloured or brown scar-like lesion, a bleeding or scabbing sore that heals and returns, or a pink growth with raised edges. If you notice any new or changing skin lesion, early assessment by a clinician is strongly recommended.',
+      'BCCs can present in various ways, common appearances include a pearly or waxy bump, a flat flesh-coloured or brown scar-like lesion, a bleeding or scabbing sore that heals and returns, or a pink growth with raised edges. If you notice any new or changing skin lesion, early assessment by a clinician is strongly recommended.',
   },
   {
     question: 'Do I need a referral for BCC removal?',
@@ -129,7 +129,7 @@ export default function BCCRemovalPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Expert surgical removal of basal cell carcinoma by our experienced medical team — fast access, clear margins, and full histological confirmation.
+                Expert surgical removal of basal cell carcinoma by our experienced medical team, fast access, clear margins, and full histological confirmation.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -209,7 +209,7 @@ export default function BCCRemovalPage() {
                   Basal cell carcinoma (BCC) removal is a minor surgical procedure to excise the
                   most common form of skin cancer under local anaesthetic. Our medical team perform
                   precise excision with appropriate margins, with all tissue sent for histological
-                  analysis as standard — ensuring complete removal and confirmed diagnosis.
+                  analysis as standard, ensuring complete removal and confirmed diagnosis.
                 </p>
               </motion.div>
 

@@ -27,7 +27,7 @@ const BENEFITS = [
   },
   {
     title: 'Minimal Downtime',
-    desc: 'Most patients return to daily activities within 24–48 hours. The procedure itself is completed in a single short session with minimal discomfort.',
+    desc: 'Most patients return to daily activities within 24 to 48 hours. The procedure itself is completed in a single short session with minimal discomfort.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -72,17 +72,17 @@ const FAQS = [
   {
     question: 'What is laser vaginal rejuvenation?',
     answer:
-      'Laser vaginal rejuvenation is a non-surgical procedure that uses controlled laser energy to stimulate collagen production and tighten the vaginal tissue. It is used to address vaginal laxity, dryness, and discomfort — often related to childbirth, hormonal changes, or ageing — restoring both comfort and confidence.',
+      'Laser vaginal rejuvenation is a non-surgical procedure that uses controlled laser energy to stimulate collagen production and tighten the vaginal tissue. It is used to address vaginal laxity, dryness, and discomfort, often related to childbirth, hormonal changes, or ageing, restoring both comfort and confidence.',
   },
   {
     question: 'Is the procedure painful?',
     answer:
-      'Most patients report little to no discomfort during treatment. A topical anaesthetic may be applied to ensure maximum comfort. The procedure typically takes 20–30 minutes and most women return to normal activities within 24–48 hours.',
+      'Most patients report little to no discomfort during treatment. A topical anaesthetic may be applied to ensure maximum comfort. The procedure typically takes 20 to 30 minutes and most women return to normal activities within 24 to 48 hours.',
   },
   {
     question: 'How many sessions will I need?',
     answer:
-      'A course of 1–3 sessions is typically recommended, spaced several weeks apart. The number of sessions depends on your individual concerns and goals, which will be discussed in detail during your consultation.',
+      'A course of 1 to 3 sessions is typically recommended, spaced several weeks apart. The number of sessions depends on your individual concerns and goals, which will be discussed in detail during your consultation.',
   },
   {
     question: 'Do I need a referral for laser vaginal rejuvenation?',
@@ -131,7 +131,7 @@ export default function LaserVaginalPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Non-surgical intimate health treatment for laxity, dryness, and comfort. Confidential, expert care — no surgery, no downtime.
+                Non-surgical intimate health treatment for laxity, dryness, and comfort. Confidential, expert care, no surgery, no downtime.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -210,7 +210,7 @@ export default function LaserVaginalPage() {
                 <p className={styles.combinedDesc}>
                   Laser vaginal rejuvenation is a clinically proven, non-surgical procedure that uses
                   laser energy to stimulate collagen and elastin in the vaginal walls. It restores
-                  tone, moisture, and comfort — addressing concerns caused by childbirth, menopause,
+                  tone, moisture, and comfort, addressing concerns caused by childbirth, menopause,
                   or the natural ageing process, in a safe and confidential environment.
                 </p>
               </motion.div>

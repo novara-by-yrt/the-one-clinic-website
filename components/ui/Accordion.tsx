@@ -61,7 +61,7 @@ export default function Accordion({
                 {/* Question */}
                 <span className={styles.question}>{item.question}</span>
 
-                {/* Down-arrow chevron — rotates 180° when open */}
+                {/* Down-arrow chevron, rotates 180° when open */}
                 <span className={styles.icon} aria-hidden="true">
                   <svg
                     className={styles.iconSvg}

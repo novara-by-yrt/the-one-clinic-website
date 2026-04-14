@@ -89,7 +89,6 @@
 
 .cardQuote {
   font-size: 0.9375rem;
-  font-style: italic;
   color: var(--color-text-muted);
   line-height: 1.6;
 }

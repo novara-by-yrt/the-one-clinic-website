@@ -5,7 +5,7 @@ import TreatmentsListing from '@/components/sections/TreatmentsListing/Treatment
 export const metadata: Metadata = {
   title: 'Treatments',
   description:
-    'Explore our full range of clinician-led aesthetic and wellness treatments — from anti-wrinkle and dermal fillers to laser resurfacing, hair restoration, body contouring, and IV wellness therapy.',
+    'Explore our full range of clinician-led aesthetic and wellness treatments, from anti-wrinkle and dermal fillers to laser resurfacing, hair restoration, body contouring, and IV wellness therapy.',
 };
 
 export default function TreatmentsPage() {

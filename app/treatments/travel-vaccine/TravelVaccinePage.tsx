@@ -31,7 +31,7 @@ const BENEFITS = [
   },
   {
     title: 'All Major Vaccines Available',
-    desc: 'From hepatitis A and typhoid to yellow fever, rabies, and meningitis — we stock a comprehensive range of travel vaccinations, all administered by qualified clinical staff.',
+    desc: 'From hepatitis A and typhoid to yellow fever, rabies, and meningitis, we stock a comprehensive range of travel vaccinations, all administered by qualified clinical staff.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
@@ -41,7 +41,7 @@ const BENEFITS = [
   },
   {
     title: 'Same-Day Appointments',
-    desc: 'Travelling sooner than planned? We offer same-day and next-day travel clinic appointments so you can get protected without delay — even at short notice.',
+    desc: 'Travelling sooner than planned? We offer same-day and next-day travel clinic appointments so you can get protected without delay, even at short notice.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -76,7 +76,7 @@ const FAQS = [
   {
     question: 'How far in advance should I book my travel vaccines?',
     answer:
-      'We recommend booking your travel health consultation at least 6–8 weeks before departure. Some vaccines require multiple doses spaced over several weeks to be fully effective. However, if you are travelling at short notice, we can still help — some single-dose vaccines can be given up to the day before travel. Contact us as soon as possible and we will do our best to protect you in time.',
+      'We recommend booking your travel health consultation at least 6 to 8 weeks before departure. Some vaccines require multiple doses spaced over several weeks to be fully effective. However, if you are travelling at short notice, we can still help, some single-dose vaccines can be given up to the day before travel. Contact us as soon as possible and we will do our best to protect you in time.',
   },
   {
     question: 'Do I need antimalarials for my trip?',
@@ -132,7 +132,7 @@ export default function TravelVaccinePage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Expert travel health advice and all major vaccinations — stay protected wherever in the world you are heading.
+                Expert travel health advice and all major vaccinations, stay protected wherever in the world you are heading.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -214,7 +214,7 @@ export default function TravelVaccinePage() {
                   appointment where our doctors assess the specific health risks associated with
                   your destination and itinerary. We provide personalised vaccination schedules,
                   antimalarial prescriptions, and expert advice on food and water safety, insect
-                  bite prevention, and what to do if you become unwell abroad — so you can travel
+                  bite prevention, and what to do if you become unwell abroad, so you can travel
                   with confidence.
                 </p>
               </motion.div>

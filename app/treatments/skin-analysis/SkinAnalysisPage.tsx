@@ -18,7 +18,7 @@ import styles from './page.module.css';
 const BENEFITS = [
   {
     title: 'See What the Eye Cannot',
-    desc: 'The Life Viz 3D camera captures subsurface pigmentation, pores, wrinkles, and texture in clinical detail — revealing concerns invisible to the naked eye.',
+    desc: 'The Life Viz 3D camera captures subsurface pigmentation, pores, wrinkles, and texture in clinical detail, revealing concerns invisible to the naked eye.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -28,7 +28,7 @@ const BENEFITS = [
   },
   {
     title: 'Truly Personalised Treatment',
-    desc: 'Your analysis results directly inform your treatment plan. Every recommendation is based on your unique skin data — not guesswork.',
+    desc: 'Your analysis results directly inform your treatment plan. Every recommendation is based on your unique skin data, not guesswork.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
@@ -65,14 +65,14 @@ const OVERVIEW_POINTS = [
   'Captures 3D images of skin texture, pores, and pigmentation',
   'Identifies hidden sun damage, redness, and hydration levels',
   'Informs a precise, bespoke skin treatment plan',
-  'No contact, no downtime — no referral required',
+  'No contact, no downtime, no referral required',
 ];
 
 const FAQS = [
   {
     question: 'What is the Life Viz 3D skin analysis?',
     answer:
-      'The Life Viz is a clinical-grade 3D imaging system that photographs your skin from multiple angles using different light spectrums. It measures and maps wrinkles, pigmentation, pores, redness, and subsurface concerns — producing a detailed report that guides your personalised treatment plan.',
+      'The Life Viz is a clinical-grade 3D imaging system that photographs your skin from multiple angles using different light spectrums. It measures and maps wrinkles, pigmentation, pores, redness, and subsurface concerns, producing a detailed report that guides your personalised treatment plan.',
   },
   {
     question: 'How long does the skin analysis take?',
@@ -210,7 +210,7 @@ export default function SkinAnalysisPage() {
                 <p className={styles.combinedDesc}>
                   The Life Viz 3D camera is a medical-grade imaging system that analyses your skin in
                   extraordinary detail. Using multi-spectral lighting, it maps texture, pigmentation,
-                  pores, wrinkles, and vascular concerns — giving our clinicians the precise data needed
+                  pores, wrinkles, and vascular concerns, giving our clinicians the precise data needed
                   to build your most effective treatment plan.
                 </p>
               </motion.div>

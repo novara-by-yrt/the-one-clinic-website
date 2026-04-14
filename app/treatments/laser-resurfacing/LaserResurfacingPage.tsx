@@ -18,7 +18,7 @@ import styles from './page.module.css';
 const BENEFITS = [
   {
     title: 'Dramatic Skin Renewal',
-    desc: 'Deep laser resurfacing removes damaged outer skin layers and triggers intensive collagen remodelling — delivering transformative results that lighter treatments cannot match.',
+    desc: 'Deep laser resurfacing removes damaged outer skin layers and triggers intensive collagen remodelling, delivering transformative results that lighter treatments cannot match.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -72,12 +72,12 @@ const FAQS = [
   {
     question: 'What is deep laser resurfacing?',
     answer:
-      'Deep laser resurfacing uses high-energy laser beams to remove the outer layers of damaged skin and heat the deeper dermis, triggering the body\'s natural collagen repair response. The result is dramatically smoother, tighter, and more even skin — addressing concerns that superficial treatments cannot reach.',
+      'Deep laser resurfacing uses high-energy laser beams to remove the outer layers of damaged skin and heat the deeper dermis, triggering the body\'s natural collagen repair response. The result is dramatically smoother, tighter, and more even skin, addressing concerns that superficial treatments cannot reach.',
   },
   {
     question: 'What is the downtime after deep laser resurfacing?',
     answer:
-      'Deep laser resurfacing typically requires 5–10 days of recovery as the skin heals and regenerates. During this time, redness and peeling are normal parts of the process. Full results become visible over the following weeks as new skin matures.',
+      'Deep laser resurfacing typically requires 5 to 10 days of recovery as the skin heals and regenerates. During this time, redness and peeling are normal parts of the process. Full results become visible over the following weeks as new skin matures.',
   },
   {
     question: 'How many sessions are needed?',
@@ -210,7 +210,7 @@ export default function LaserResurfacingPage() {
                 <p className={styles.combinedDesc}>
                   Deep laser resurfacing is one of the most powerful skin renewal treatments available.
                   High-energy laser beams precisely remove damaged skin layers while simultaneously
-                  stimulating deep collagen remodelling — resulting in dramatically smoother, firmer,
+                  stimulating deep collagen remodelling, resulting in dramatically smoother, firmer,
                   and more radiant skin. At The One Clinic, all treatments are tailored to your skin
                   type and concerns by our expert medical team.
                 </p>

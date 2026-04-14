@@ -18,7 +18,7 @@ import styles from './page.module.css';
 const BENEFITS = [
   {
     title: 'Medical-Grade Formulations',
-    desc: 'AlumierMD products contain pharmaceutical-grade active ingredients at concentrations that make a measurable difference to skin health — far beyond what over-the-counter products can achieve.',
+    desc: 'AlumierMD products contain pharmaceutical-grade active ingredients at concentrations that make a measurable difference to skin health, far beyond what over-the-counter products can achieve.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -27,7 +27,7 @@ const BENEFITS = [
   },
   {
     title: 'Personalised Prescriptions',
-    desc: 'No two skins are the same. Your AlumierMD regime is prescribed by our clinicians based on a thorough skin analysis — targeting your specific concerns with exactly the right products.',
+    desc: 'No two skins are the same. Your AlumierMD regime is prescribed by our clinicians based on a thorough skin analysis, targeting your specific concerns with exactly the right products.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -49,7 +49,7 @@ const BENEFITS = [
   },
   {
     title: 'Complements Clinical Treatments',
-    desc: 'AlumierMD skincare is designed to work alongside in-clinic treatments such as chemical peels, Morpheus8, and laser resurfacing — preparing the skin before and optimising results after.',
+    desc: 'AlumierMD skincare is designed to work alongside in-clinic treatments such as chemical peels, Morpheus8, and laser resurfacing, preparing the skin before and optimising results after.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -72,7 +72,7 @@ const FAQS = [
   {
     question: 'What is AlumierMD?',
     answer:
-      'AlumierMD is a professional medical-grade skincare range developed by leading scientists and skin experts. Available exclusively through licensed clinics, it uses high-concentration active ingredients — including retinol, vitamin C, AHAs, and peptides — to deliver clinical results at home between professional treatments.',
+      'AlumierMD is a professional medical-grade skincare range developed by leading scientists and skin experts. Available exclusively through licensed clinics, it uses high-concentration active ingredients, including retinol, vitamin C, AHAs, and peptides, to deliver clinical results at home between professional treatments.',
   },
   {
     question: 'How is AlumierMD different from high-street skincare?',
@@ -87,7 +87,7 @@ const FAQS = [
   {
     question: 'How do I get started with AlumierMD at The One Clinic?',
     answer:
-      'Book a skin consultation with our team. We carry out a thorough skin analysis to understand your concerns, history, and goals — then prescribe a bespoke AlumierMD home care regime. Products are available to purchase directly from The One Clinic, with ongoing support from our clinical team.',
+      'Book a skin consultation with our team. We carry out a thorough skin analysis to understand your concerns, history, and goals, then prescribe a bespoke AlumierMD home care regime. Products are available to purchase directly from The One Clinic, with ongoing support from our clinical team.',
   },
 ];
 
@@ -108,7 +108,7 @@ export default function AlumierMDPage() {
               theme="dark"
               items={[
                 { label: 'Treatments', href: '/treatments' },
-                { label: 'Skincare – AlumierMD' },
+                { label: 'Skincare, AlumierMD' },
               ]}
             />
           </Container>
@@ -131,7 +131,7 @@ export default function AlumierMDPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Personalised medical-grade skincare prescribed by our clinical experts. Real ingredients, real results — tailored to your skin.
+                Personalised medical-grade skincare prescribed by our clinical experts. Real ingredients, real results, tailored to your skin.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -210,7 +210,7 @@ export default function AlumierMDPage() {
                 <p className={styles.combinedDesc}>
                   AlumierMD is a science-driven, medical-grade skincare range available exclusively
                   through licensed clinics. Each product is formulated with high-concentration active
-                  ingredients to target specific skin concerns — from fine lines and pigmentation to
+                  ingredients to target specific skin concerns, from fine lines and pigmentation to
                   acne and sensitivity. At The One Clinic, our skin experts prescribe a personalised
                   home care regime following a detailed skin analysis, ensuring you get exactly what
                   your skin needs.

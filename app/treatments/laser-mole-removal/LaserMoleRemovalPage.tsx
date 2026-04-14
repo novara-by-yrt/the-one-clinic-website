@@ -64,7 +64,7 @@ const BENEFITS = [
 const OVERVIEW_POINTS = [
   'Removes raised, flat, and pigmented moles with laser precision',
   'Clinical assessment carried out before every procedure',
-  'Minimal downtime — most patients resume normal activity same day',
+  'Minimal downtime, most patients resume normal activity same day',
   'No waiting lists and no GP referral required',
 ];
 
@@ -72,7 +72,7 @@ const FAQS = [
   {
     question: 'What is laser mole removal?',
     answer:
-      'Laser mole removal uses concentrated light energy to break down the pigment and tissue within a mole. The laser targets the mole precisely, causing it to gradually fade and disappear over the weeks following treatment — without the need for surgical cutting or stitches.',
+      'Laser mole removal uses concentrated light energy to break down the pigment and tissue within a mole. The laser targets the mole precisely, causing it to gradually fade and disappear over the weeks following treatment, without the need for surgical cutting or stitches.',
   },
   {
     question: 'Is laser mole removal safe?',
@@ -131,7 +131,7 @@ export default function LaserMoleRemovalPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Precise, safe laser mole removal by our expert clinical team. Minimal scarring, fast results — no surgery required.
+                Precise, safe laser mole removal by our expert clinical team. Minimal scarring, fast results, no surgery required.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>

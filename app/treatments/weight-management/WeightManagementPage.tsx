@@ -30,7 +30,7 @@ const BENEFITS = [
   },
   {
     title: 'Personalised to You',
-    desc: 'No generic diet plans. Your programme accounts for your medical history, lifestyle, metabolism, and goals — giving you a realistic, sustainable path to lasting results.',
+    desc: 'No generic diet plans. Your programme accounts for your medical history, lifestyle, metabolism, and goals, giving you a realistic, sustainable path to lasting results.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -52,7 +52,7 @@ const BENEFITS = [
   },
   {
     title: 'Holistic Approach',
-    desc: 'Combining nutrition guidance, behavioural support, and medical interventions where appropriate — including access to prescription weight-loss medications for eligible patients.',
+    desc: 'Combining nutrition guidance, behavioural support, and medical interventions where appropriate, including access to prescription weight-loss medications for eligible patients.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12"/>
@@ -83,12 +83,12 @@ const FAQS = [
   {
     question: 'How long does a weight management programme last?',
     answer:
-      'Programmes are tailored to the individual. Initial programmes typically run for 12 weeks, with ongoing support available for as long as needed. Most patients begin to see meaningful results within the first 4–8 weeks, with continued improvement over time.',
+      'Programmes are tailored to the individual. Initial programmes typically run for 12 weeks, with ongoing support available for as long as needed. Most patients begin to see meaningful results within the first 4 to 8 weeks, with continued improvement over time.',
   },
   {
     question: 'How is this different from following a diet on my own?',
     answer:
-      'Medical weight management combines clinical expertise, regular monitoring, and personalised interventions that go far beyond standard diet plans. Your doctor can identify medical barriers to weight loss, prescribe appropriate medications, and adapt your plan in response to your progress — giving you significantly better long-term outcomes than unsupervised dieting.',
+      'Medical weight management combines clinical expertise, regular monitoring, and personalised interventions that go far beyond standard diet plans. Your doctor can identify medical barriers to weight loss, prescribe appropriate medications, and adapt your plan in response to your progress, giving you significantly better long-term outcomes than unsupervised dieting.',
   },
 ];
 
@@ -134,7 +134,7 @@ export default function WeightManagementPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Medically supervised weight loss tailored to you — sustainable results backed by expert doctors at The One Clinic.
+                Medically supervised weight loss tailored to you, sustainable results backed by expert doctors at The One Clinic.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -214,8 +214,8 @@ export default function WeightManagementPage() {
                 <h2 className={styles.combinedHeading}>What is Medical Weight Management?</h2>
                 <p className={styles.combinedDesc}>
                   Medical weight management is a clinician-led programme that combines health
-                  assessment, personalised nutrition and lifestyle guidance, and — where appropriate
-                  — prescription medication to help you achieve and maintain a healthy weight. Unlike
+                  assessment, personalised nutrition and lifestyle guidance, and, where appropriate
+                 , prescription medication to help you achieve and maintain a healthy weight. Unlike
                   commercial diets, our approach addresses the medical, metabolic, and behavioural
                   factors that make weight loss difficult, giving you the tools and support to
                   succeed long term.

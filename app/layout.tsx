@@ -25,7 +25,7 @@ const inter = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL('https://theoneclinic.com'),
   title: {
-    default: 'The One Clinic — Premium Aesthetic & Wellness',
+    default: 'The One Clinic, Premium Aesthetic & Wellness',
     template: '%s | The One Clinic',
   },
   description:
@@ -45,13 +45,13 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_GB',
     siteName: 'The One Clinic',
-    title: 'The One Clinic — Premium Aesthetic & Wellness',
+    title: 'The One Clinic, Premium Aesthetic & Wellness',
     description:
       'Expert-led aesthetic and wellness treatments tailored to you. Discover a new standard in cosmetic medicine.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'The One Clinic — Premium Aesthetic & Wellness',
+    title: 'The One Clinic, Premium Aesthetic & Wellness',
     description:
       'Expert-led aesthetic and wellness treatments tailored to you.',
   },

@@ -4,7 +4,7 @@ import LiposuctionPage from './LiposuctionPage';
 export const metadata: Metadata = {
   title: 'Liposuction Leicester | Body Contouring Surgery | The One Clinic',
   description:
-    'Liposuction in Leicester. Expert surgical fat removal for stubborn areas — abdomen, thighs, arms, and more. Personalised body contouring at The One Clinic.',
+    'Liposuction in Leicester. Expert surgical fat removal for stubborn areas, abdomen, thighs, arms, and more. Personalised body contouring at The One Clinic.',
   keywords: [
     'liposuction Leicester',
     'liposuction surgery Leicester',

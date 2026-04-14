@@ -18,7 +18,7 @@ import styles from './page.module.css';
 const BENEFITS = [
   {
     title: 'Deep Scalp Cleansing',
-    desc: 'Keravive uses HydraFacial technology to extract impurities, excess sebum, and follicle-clogging debris from the scalp — creating the ideal environment for healthy hair growth.',
+    desc: 'Keravive uses HydraFacial technology to extract impurities, excess sebum, and follicle-clogging debris from the scalp, creating the ideal environment for healthy hair growth.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -82,7 +82,7 @@ const FAQS = [
   {
     question: 'How many sessions are recommended?',
     answer:
-      'A course of 3 monthly in-clinic sessions is typically recommended for optimal results, supplemented by daily use of the Keravive take-home spray. Maintenance sessions every 3–6 months can help sustain results long-term.',
+      'A course of 3 monthly in-clinic sessions is typically recommended for optimal results, supplemented by daily use of the Keravive take-home spray. Maintenance sessions every 3 to 6 months can help sustain results long-term.',
   },
   {
     question: 'Do I need a referral for HydraFacial Keravive?',
@@ -131,7 +131,7 @@ export default function HydrafacialKeravivePage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Advanced scalp cleansing and follicle nourishment for healthier, fuller-looking hair. Expert Keravive treatment — no downtime, no referral needed.
+                Advanced scalp cleansing and follicle nourishment for healthier, fuller-looking hair. Expert Keravive treatment, no downtime, no referral needed.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -211,7 +211,7 @@ export default function HydrafacialKeravivePage() {
                   HydraFacial Keravive is a clinically proven scalp health treatment that combines
                   powerful extraction and hydration technology with a proprietary blend of growth
                   factors and peptides. It addresses the root causes of scalp congestion, dryness,
-                  and hair thinning — creating the optimal environment for healthier, more resilient
+                  and hair thinning, creating the optimal environment for healthier, more resilient
                   hair growth.
                 </p>
               </motion.div>
