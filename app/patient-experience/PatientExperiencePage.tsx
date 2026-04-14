@@ -139,6 +139,50 @@ export default function PatientExperiencePage() {
       </Section>
 
       {/* ════════════════════════════════════════
+          YOUR AFTERCARE
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light">
+        <Container>
+          <motion.div
+            className={styles.aftercareGrid}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {/* Text */}
+            <motion.div className={styles.aftercareText} variants={stagger(0.1)}>
+              <motion.p className={styles.aftercareEyebrow} variants={fadeUp}>
+                Ongoing Support
+              </motion.p>
+              <motion.h2 className={styles.aftercareHeading} variants={fadeUp}>
+                Your Aftercare
+              </motion.h2>
+              <motion.p className={styles.aftercarePara} variants={fadeUp}>
+                [PASTE YOUR AFTERCARE TEXT HERE]
+              </motion.p>
+              <motion.div variants={fadeUp} className={styles.aftercareCta}>
+                <BookConsultationButton className={styles.aftercareCtaBtn}>
+                  Book a Consultation
+                </BookConsultationButton>
+              </motion.div>
+            </motion.div>
+
+            {/* Image */}
+            <motion.div className={styles.aftercareImageWrap} variants={fadeUp}>
+              <Image
+                src="/images/Health Screening.jpg"
+                alt="Aftercare at The One Clinic Leicester"
+                fill
+                className={styles.aftercareImage}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
           YOUR JOURNEY — PROCESS STEPS
       ════════════════════════════════════════ */}
       <Process />
