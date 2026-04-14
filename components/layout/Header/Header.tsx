@@ -118,7 +118,7 @@ const NAV: NavItem[] = [
         group: 'Body',
         items: [
           { label: 'Cellulite',                                                   href: '/conditions/cellulite' },
-          { label: 'Abdominal Fat / Belly Fat',                                   href: '/conditions/abdominal-fat' },
+          { label: 'Abdominal Fat / Belly Fat',                                   href: '/conditions/abdominal-fat-belly-fat' },
           { label: 'Stretch Marks',                                               href: '/conditions/stretch-marks' },
           { label: 'Excessive Sweating',                                          href: '/conditions/sweating' },
           { label: 'Excess Body Fat / Arm / Bra / Back / Thigh Fat',             href: '/conditions/excess-fat' },
