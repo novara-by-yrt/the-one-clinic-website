@@ -109,7 +109,7 @@ const NAV: NavItem[] = [
       {
         group: 'Skin',
         items: [
-          { label: 'Pigmentation',                                href: '/treatments/pigmentation-treatment-leicester' },
+          { label: 'Pigmentation',                                href: '/conditions/pigmentation' },
           { label: 'Spider Veins / Thread Veins',                 href: '/conditions/thread-veins' },
           { label: 'Hyperpigmentation / Sun Damage / Freckles',   href: '/conditions/hyperpigmentation' },
         ],
