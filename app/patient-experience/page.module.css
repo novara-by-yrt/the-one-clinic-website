@@ -98,7 +98,71 @@
   transform: translateY(-1px);
 }
 
+/* ── Consultation Section ─────────────────────────────────────── */
+.consultGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.consultText {
+  display: flex;
+  flex-direction: column;
+}
+
+.consultEyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(0 0 0 / 0.4);
+  margin: 0 0 16px;
+}
+
+.consultHeading {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #0a0a0a;
+  line-height: 1.1;
+  margin: 0 0 20px;
+}
+
+.consultPara {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgb(0 0 0 / 0.6);
+  margin: 0;
+}
+
+.consultImageWrap {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 14px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.consultImage {
+  object-fit: cover;
+  object-position: center top;
+}
+
 /* ── Responsive ───────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .consultGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  /* Image above text on mobile */
+  .consultImageWrap {
+    order: -1;
+    aspect-ratio: 3 / 2;
+  }
+}
+
 @media (max-width: 640px) {
   .hero {
     padding: 120px 0 72px;
