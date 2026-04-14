@@ -100,6 +100,45 @@ export default function PatientExperiencePage() {
       </Section>
 
       {/* ════════════════════════════════════════
+          YOUR TREATMENT
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light">
+        <Container>
+          <motion.div
+            className={styles.treatGrid}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {/* Image */}
+            <motion.div className={styles.treatImageWrap} variants={fadeUp}>
+              <Image
+                src="/images/Dermatologist.jpg"
+                alt="Treatment at The One Clinic Leicester"
+                fill
+                className={styles.treatImage}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </motion.div>
+
+            {/* Text */}
+            <motion.div className={styles.treatText} variants={stagger(0.1)}>
+              <motion.p className={styles.treatEyebrow} variants={fadeUp}>
+                In Safe Hands
+              </motion.p>
+              <motion.h2 className={styles.treatHeading} variants={fadeUp}>
+                Your Treatment
+              </motion.h2>
+              <motion.p className={styles.treatPara} variants={fadeUp}>
+                [PASTE YOUR TREATMENT TEXT HERE]
+              </motion.p>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
           YOUR JOURNEY — PROCESS STEPS
       ════════════════════════════════════════ */}
       <Process />
