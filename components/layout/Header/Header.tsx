@@ -111,7 +111,7 @@ const NAV: NavItem[] = [
         items: [
           { label: 'Pigmentation',                                href: '/conditions/pigmentation' },
           { label: 'Spider Veins / Thread Veins',                 href: '/conditions/spider-veins-thread-veins' },
-          { label: 'Hyperpigmentation / Sun Damage / Freckles',   href: '/conditions/hyperpigmentation' },
+          { label: 'Hyperpigmentation / Sun Damage / Freckles',   href: '/conditions/hyperpigmentation-sun-damage-freckles' },
         ],
       },
       {
