@@ -19,7 +19,6 @@
   pointer-events: none;
 }
 
-/* Radial glow for depth */
 .heroGrid::after {
   content: '';
   position: absolute;
@@ -45,7 +44,7 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: rgb(255 255 255 / 0.45);
-  margin: 0 0 20px;
+  margin: 0 0 16px;
 }
 
 .heroTitle {
@@ -98,30 +97,34 @@
   transform: translateY(-1px);
 }
 
-/* ── Consultation Section ─────────────────────────────────────── */
-.consultGrid {
+/* ── Shared: split-section layout ────────────────────────────── */
+/*
+ * Used by Your Consultation, Your Treatment, and Your Aftercare.
+ * All three sections share identical structure — only column order differs.
+ */
+.splitGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 64px;
+  gap: 72px;
   align-items: center;
 }
 
-.consultText {
+.splitText {
   display: flex;
   flex-direction: column;
 }
 
-.consultEyebrow {
+.splitEyebrow {
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgb(0 0 0 / 0.4);
-  margin: 0 0 16px;
+  color: rgb(0 0 0 / 0.38);
+  margin: 0 0 14px;
 }
 
-.consultHeading {
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
+.splitHeading {
+  font-size: clamp(1.875rem, 3vw, 2.625rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   color: #0a0a0a;
@@ -129,69 +132,37 @@
   margin: 0 0 20px;
 }
 
-.consultPara {
+.splitPara {
   font-size: 1.0625rem;
-  line-height: 1.7;
-  color: rgb(0 0 0 / 0.6);
+  line-height: 1.72;
+  color: rgb(0 0 0 / 0.58);
   margin: 0;
 }
 
-.consultImageWrap {
+/* Extra bottom margin when a CTA follows the paragraph */
+.splitParaWithCta {
+  margin: 0 0 32px;
+}
+
+.splitImageWrap {
   position: relative;
   aspect-ratio: 4 / 5;
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
   width: 100%;
 }
 
-.consultImage {
+.splitImage {
   object-fit: cover;
   object-position: center top;
 }
 
-/* ── Aftercare Section ────────────────────────────────────────── */
-.aftercareGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
-}
-
-.aftercareText {
-  display: flex;
-  flex-direction: column;
-}
-
-.aftercareEyebrow {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgb(0 0 0 / 0.4);
-  margin: 0 0 16px;
-}
-
-.aftercareHeading {
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: #0a0a0a;
-  line-height: 1.1;
-  margin: 0 0 20px;
-}
-
-.aftercarePara {
-  font-size: 1.0625rem;
-  line-height: 1.7;
-  color: rgb(0 0 0 / 0.6);
-  margin: 0 0 32px;
-}
-
-.aftercareCta {
+/* ── Aftercare CTA ────────────────────────────────────────────── */
+.splitCta {
   display: flex;
 }
 
-.aftercareCtaBtn {
+.splitCtaBtn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -208,97 +179,27 @@
   cursor: pointer;
 }
 
-.aftercareCtaBtn:hover {
+.splitCtaBtn:hover {
   background: #1a1a1a;
   transform: translateY(-1px);
 }
 
-.aftercareImageWrap {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  border-radius: 14px;
-  overflow: hidden;
-  width: 100%;
-}
-
-.aftercareImage {
-  object-fit: cover;
-  object-position: center top;
-}
-
-/* ── Treatment Section ────────────────────────────────────────── */
-.treatGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
-}
-
-.treatText {
-  display: flex;
-  flex-direction: column;
-}
-
-.treatEyebrow {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgb(0 0 0 / 0.4);
-  margin: 0 0 16px;
-}
-
-.treatHeading {
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: #0a0a0a;
-  line-height: 1.1;
-  margin: 0 0 20px;
-}
-
-.treatPara {
-  font-size: 1.0625rem;
-  line-height: 1.7;
-  color: rgb(0 0 0 / 0.6);
-  margin: 0;
-}
-
-.treatImageWrap {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  border-radius: 14px;
-  overflow: hidden;
-  width: 100%;
-}
-
-.treatImage {
-  object-fit: cover;
-  object-position: center top;
-}
-
 /* ── Responsive ───────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .consultGrid,
-  .treatGrid,
-  .aftercareGrid {
+  .splitGrid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 28px;
   }
 
-  /* Image above text on mobile */
-  .consultImageWrap {
-    order: -1;
+  .splitImageWrap {
     aspect-ratio: 3 / 2;
   }
 
-  .treatImageWrap,
-  .aftercareImageWrap {
-    aspect-ratio: 3 / 2;
-  }
-
-  /* Image stacks above text — aftercare image is the second child */
-  .aftercareImageWrap {
+  /*
+   * Consultation and aftercare: image is second in the DOM (text comes first).
+   * On mobile, push it above the text via order.
+   */
+  .splitImageAbove {
     order: -1;
   }
 }

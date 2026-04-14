@@ -2,16 +2,16 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import Container           from '@/components/ui/Container';
-import Section             from '@/components/ui/Section';
+import Container              from '@/components/ui/Container';
+import Section                from '@/components/ui/Section';
 import BookConsultationButton from '@/components/ui/BookConsultationButton';
-import ArrivalExperience   from '@/components/sections/ArrivalExperience';
-import Process             from '@/components/sections/Process';
-import TestimonialVideos   from '@/components/sections/TestimonialVideos';
-import Testimonials        from '@/components/sections/Testimonials';
-import CaseStudies         from '@/components/sections/CaseStudies';
-import MeetTheExperts      from '@/components/sections/MeetTheExperts';
-import LeadForm            from '@/components/sections/LeadForm';
+import ArrivalExperience      from '@/components/sections/ArrivalExperience';
+import Process                from '@/components/sections/Process';
+import TestimonialVideos      from '@/components/sections/TestimonialVideos';
+import Testimonials           from '@/components/sections/Testimonials';
+import CaseStudies            from '@/components/sections/CaseStudies';
+import MeetTheExperts         from '@/components/sections/MeetTheExperts';
+import LeadForm               from '@/components/sections/LeadForm';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
 
@@ -61,37 +61,39 @@ export default function PatientExperiencePage() {
       </section>
 
       {/* ════════════════════════════════════════
-          YOUR CONSULTATION
+          YOUR CONSULTATION  —  text | image
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
           <motion.div
-            className={styles.consultGrid}
+            className={styles.splitGrid}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {/* Text */}
-            <motion.div className={styles.consultText} variants={stagger(0.1)}>
-              <motion.p className={styles.consultEyebrow} variants={fadeUp}>
+            <motion.div className={styles.splitText} variants={stagger(0.1)}>
+              <motion.p className={styles.splitEyebrow} variants={fadeUp}>
                 Your Journey Begins
               </motion.p>
-              <motion.h2 className={styles.consultHeading} variants={fadeUp}>
+              <motion.h2 className={styles.splitHeading} variants={fadeUp}>
                 Your Consultation
               </motion.h2>
-              <motion.p className={styles.consultPara} variants={fadeUp}>
+              <motion.p className={styles.splitPara} variants={fadeUp}>
                 [PASTE YOUR CONSULTATION TEXT HERE]
               </motion.p>
             </motion.div>
 
-            {/* Image */}
-            <motion.div className={styles.consultImageWrap} variants={fadeUp}>
+            {/* splitImageAbove → appears above text on mobile */}
+            <motion.div
+              className={`${styles.splitImageWrap} ${styles.splitImageAbove}`}
+              variants={fadeUp}
+            >
               <Image
                 src="/images/Private GP.jpg"
                 alt="Consultation at The One Clinic Leicester"
                 fill
-                className={styles.consultImage}
+                className={styles.splitImage}
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </motion.div>
@@ -100,37 +102,36 @@ export default function PatientExperiencePage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          YOUR TREATMENT
+          YOUR TREATMENT  —  image | text
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
           <motion.div
-            className={styles.treatGrid}
+            className={styles.splitGrid}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {/* Image */}
-            <motion.div className={styles.treatImageWrap} variants={fadeUp}>
+            {/* Image is first in DOM → naturally appears above text on mobile */}
+            <motion.div className={styles.splitImageWrap} variants={fadeUp}>
               <Image
                 src="/images/Dermatologist.jpg"
                 alt="Treatment at The One Clinic Leicester"
                 fill
-                className={styles.treatImage}
+                className={styles.splitImage}
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </motion.div>
 
-            {/* Text */}
-            <motion.div className={styles.treatText} variants={stagger(0.1)}>
-              <motion.p className={styles.treatEyebrow} variants={fadeUp}>
+            <motion.div className={styles.splitText} variants={stagger(0.1)}>
+              <motion.p className={styles.splitEyebrow} variants={fadeUp}>
                 In Safe Hands
               </motion.p>
-              <motion.h2 className={styles.treatHeading} variants={fadeUp}>
+              <motion.h2 className={styles.splitHeading} variants={fadeUp}>
                 Your Treatment
               </motion.h2>
-              <motion.p className={styles.treatPara} variants={fadeUp}>
+              <motion.p className={styles.splitPara} variants={fadeUp}>
                 [PASTE YOUR TREATMENT TEXT HERE]
               </motion.p>
             </motion.div>
@@ -139,42 +140,44 @@ export default function PatientExperiencePage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          YOUR AFTERCARE
+          YOUR AFTERCARE  —  text | image
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
           <motion.div
-            className={styles.aftercareGrid}
+            className={styles.splitGrid}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {/* Text */}
-            <motion.div className={styles.aftercareText} variants={stagger(0.1)}>
-              <motion.p className={styles.aftercareEyebrow} variants={fadeUp}>
+            <motion.div className={styles.splitText} variants={stagger(0.1)}>
+              <motion.p className={styles.splitEyebrow} variants={fadeUp}>
                 Ongoing Support
               </motion.p>
-              <motion.h2 className={styles.aftercareHeading} variants={fadeUp}>
+              <motion.h2 className={styles.splitHeading} variants={fadeUp}>
                 Your Aftercare
               </motion.h2>
-              <motion.p className={styles.aftercarePara} variants={fadeUp}>
+              <motion.p className={`${styles.splitPara} ${styles.splitParaWithCta}`} variants={fadeUp}>
                 [PASTE YOUR AFTERCARE TEXT HERE]
               </motion.p>
-              <motion.div variants={fadeUp} className={styles.aftercareCta}>
-                <BookConsultationButton className={styles.aftercareCtaBtn}>
+              <motion.div className={styles.splitCta} variants={fadeUp}>
+                <BookConsultationButton className={styles.splitCtaBtn}>
                   Book a Consultation
                 </BookConsultationButton>
               </motion.div>
             </motion.div>
 
-            {/* Image */}
-            <motion.div className={styles.aftercareImageWrap} variants={fadeUp}>
+            {/* splitImageAbove → appears above text on mobile */}
+            <motion.div
+              className={`${styles.splitImageWrap} ${styles.splitImageAbove}`}
+              variants={fadeUp}
+            >
               <Image
                 src="/images/Health Screening.jpg"
                 alt="Aftercare at The One Clinic Leicester"
                 fill
-                className={styles.aftercareImage}
+                className={styles.splitImage}
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </motion.div>
