@@ -59,29 +59,24 @@ export default function PatientExperiencePage() {
       </section>
 
       {/* ════════════════════════════════════════
-          YOUR JOURNEY — PROCESS STEPS
+          HOW IT WORKS — PROCESS STEPS
       ════════════════════════════════════════ */}
       <Process />
 
       {/* ════════════════════════════════════════
-          ARRIVAL EXPERIENCE
-      ════════════════════════════════════════ */}
-      <ArrivalExperience />
-
-      {/* ════════════════════════════════════════
-          PATIENT VIDEO TESTIMONIALS
+          HEAR FROM OUR PATIENTS — VIDEO TESTIMONIALS
       ════════════════════════════════════════ */}
       <TestimonialVideos />
 
       {/* ════════════════════════════════════════
-          GOOGLE REVIEWS
+          THE ARRIVAL EXPERIENCE
       ════════════════════════════════════════ */}
-      <Testimonials />
+      <ArrivalExperience />
 
       {/* ════════════════════════════════════════
-          BEFORE & AFTER RESULTS
+          EXCELLENT PATIENT REVIEWS
       ════════════════════════════════════════ */}
-      <CaseStudies />
+      <Testimonials />
 
       {/* ════════════════════════════════════════
           MEET THE EXPERTS
@@ -89,7 +84,12 @@ export default function PatientExperiencePage() {
       <MeetTheExperts />
 
       {/* ════════════════════════════════════════
-          LEAD FORM
+          REAL TRANSFORMATIONS — BEFORE & AFTER
+      ════════════════════════════════════════ */}
+      <CaseStudies />
+
+      {/* ════════════════════════════════════════
+          START YOUR JOURNEY TODAY — LEAD FORM
       ════════════════════════════════════════ */}
       <div id="contact">
         <LeadForm />

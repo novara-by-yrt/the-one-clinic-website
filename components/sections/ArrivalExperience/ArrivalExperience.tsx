@@ -10,7 +10,7 @@ const CARDS = [
   {
     title: 'Reception & Check-in',
     description:
-      'Our reception area is located at the front of the building, where our front-of-house representative will book you in and ensure your visit gets off to the perfect start.',
+      'Our welcoming front-of-house team greets you from the moment you arrive, handling check-in promptly so you can settle in and look forward to your appointment.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
@@ -19,9 +19,9 @@ const CARDS = [
     ),
   },
   {
-    title: 'Refreshments',
+    title: 'Complimentary Refreshments',
     description:
-      'You&apos;ll be offered refreshments while you wait for treatment, creating a relaxed and unhurried atmosphere before your consultation begins.',
+      "Settle in with a complimentary drink of your choice. We take pride in creating a calm, unhurried atmosphere so you feel completely at ease before your treatment begins.",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
@@ -35,7 +35,7 @@ const CARDS = [
   {
     title: 'Skincare Bar',
     description:
-      'We display a collection of the products available at our clinic which you are free to sample, a carefully curated selection to complement your treatment.',
+      'Browse our curated selection of clinic-approved skincare products, all available to sample freely. Our team are on hand to recommend what best suits your skin type and treatment goals.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 2a10 10 0 0 1 0 20 10 10 0 0 1 0-20" />
@@ -47,7 +47,7 @@ const CARDS = [
   {
     title: 'Personalised Experience',
     description:
-      'From your first interaction to follow-up aftercare, every touchpoint is tailored to your unique needs, goals, and medical history.',
+      'No two patients are alike. Every element of your visit — from your consultation notes to your aftercare plan — is tailored specifically to your goals, concerns, and medical history.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
@@ -58,7 +58,7 @@ const CARDS = [
 
 export default function ArrivalExperience() {
   return (
-    <Section variant="dark" data-section-theme="dark">
+    <Section variant="light" data-section-theme="light">
       <Container>
         {/* Header */}
         <motion.div
