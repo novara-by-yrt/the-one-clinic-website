@@ -134,7 +134,7 @@
   font-weight: var(--fw-medium);
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  border-radius: 20px;
+  border-radius: 50px;
   text-decoration: none;
   transition:
     opacity var(--duration-fast) var(--ease-out),
