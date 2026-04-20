@@ -484,7 +484,7 @@ export default function EndoliftPage() {
                 title="Endolift service page Video"
                 allow="autoplay; fullscreen"
                 allowFullScreen
-                frameBorder={0}
+                frameBorder="0"
                 scrolling="no"
                 className={styles.whatIsVideoFrame}
                 name="wistia_embed"
