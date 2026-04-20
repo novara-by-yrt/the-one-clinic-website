@@ -79,9 +79,17 @@
 .header[data-theme='light'] .navLink:hover { background: rgba(0,0,0,0.05); color: #000; }
 .header[data-theme='dark']  .navLink:hover { background: rgba(255,255,255,0.09); color: #fff; }
 
-/* Active (dropdown open) state */
-.header[data-theme='light'] .navLinkActive { background: rgba(0,0,0,0.06); color: #000; }
-.header[data-theme='dark']  .navLinkActive { background: rgba(255,255,255,0.11); color: #fff; }
+/* Active (dropdown open) state — stronger highlight + bottom indicator */
+.header[data-theme='light'] .navLinkActive {
+  background: rgba(0,0,0,0.09);
+  color: #000;
+  box-shadow: inset 0 -2px 0 rgba(0,0,0,0.65);
+}
+.header[data-theme='dark'] .navLinkActive {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  box-shadow: inset 0 -2px 0 rgba(255,255,255,0.75);
+}
 
 /* ── Animated underline ─────────────────────────────────────── */
 .navLinkText {
@@ -229,10 +237,15 @@
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.megaGroupBtn:hover { background: rgba(0,0,0,0.025); }
+.megaGroupBtn:hover { background: rgba(0,0,0,0.03); }
 .megaGroupBtn:hover::before,
 .megaGroupBtnOpen::before { transform: scaleY(1); }
-.megaGroupBtnOpen { background: rgba(0,0,0,0.02); }
+
+/* Open group: clearly distinct from idle/hover */
+.megaGroupBtnOpen {
+  background: rgba(0,0,0,0.07);
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,0.05);
+}
 
 .megaGroupLabel {
   font-size: 0.6875rem;
@@ -244,8 +257,8 @@
   flex: 1;
   min-width: 0;
 }
-.megaGroupBtn:hover .megaGroupLabel,
-.megaGroupBtnOpen .megaGroupLabel { color: rgba(0,0,0,0.75); }
+.megaGroupBtn:hover .megaGroupLabel { color: rgba(0,0,0,0.68); }
+.megaGroupBtnOpen .megaGroupLabel   { color: rgba(0,0,0,0.88); font-weight: 800; }
 
 /* Item count badge */
 .megaGroupCount {
@@ -258,10 +271,10 @@
   flex-shrink: 0;
   transition: background 0.15s ease, color 0.15s ease;
 }
-.megaGroupBtn:hover .megaGroupCount,
+.megaGroupBtn:hover .megaGroupCount { background: rgba(0,0,0,0.09); color: rgba(0,0,0,0.5); }
 .megaGroupBtnOpen .megaGroupCount {
-  background: rgba(0,0,0,0.1);
-  color: rgba(0,0,0,0.55);
+  background: rgba(0,0,0,0.15);
+  color: rgba(0,0,0,0.7);
 }
 
 /* Scrollable item list inside accordion */

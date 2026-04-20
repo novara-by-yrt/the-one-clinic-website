@@ -429,7 +429,6 @@ export default function Header() {
                                     <div key={grp.group} className={styles.megaAccordionGroup}>
                                       <button
                                         className={`${styles.megaGroupBtn} ${grpOpen ? styles.megaGroupBtnOpen : ''}`}
-                                        onMouseEnter={() => setOpenMegaGroup(gKey)}
                                         onClick={() => toggleDesktopGroup(gKey)}
                                         aria-expanded={grpOpen}
                                       >
