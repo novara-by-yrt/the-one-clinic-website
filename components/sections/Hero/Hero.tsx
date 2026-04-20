@@ -155,7 +155,7 @@ export default function Hero() {
               transition={TRANSITION_SMOOTH}
             >
               <Button variant="primary" theme="dark" onClick={() => window.dispatchEvent(new CustomEvent('openCallbackModal'))}>
-                Book a Consultation
+                Book a Video or Face-to-Face Consultation
               </Button>
 
               <Link href="#treatments" className={styles.secondaryCta}>
