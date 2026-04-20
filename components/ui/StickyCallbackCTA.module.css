@@ -5,15 +5,22 @@
   left: 0;
   right: 0;
   z-index: 90;
-  padding: 12px 24px;
+  padding: 14px 24px;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: rgba(6, 6, 6, 0.92);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 -2px 32px rgba(0, 0, 0, 0.55),
+    0 -1px 0 rgba(255, 255, 255, 0.04);
 }
 
 @media (min-width: 768px) {
   .ctaBtn {
-    padding: 15px 44px;
+    padding: 15px 52px;
     font-size: 1rem;
   }
 }
@@ -22,32 +29,83 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 13px 36px;
-  background: #fff;
+  padding: 14px 44px;
+  background: #ffffff;
   color: #000;
-  border: 2px solid #000;
-  border-radius: 20px;
+  border: none;
+  border-radius: 50px;
   font-size: 0.9375rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
   transition:
-    background 0.2s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+    background 0.22s ease,
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
   box-shadow:
-    0 2px 16px rgb(0 0 0 / 0.18),
-    0 0 0 3px rgb(0 0 0 / 0.08),
-    0 0 20px rgb(0 0 0 / 0.12);
+    0 0 0 1px rgba(255, 255, 255, 0.14),
+    0 4px 24px rgba(255, 255, 255, 0.2),
+    0 12px 44px rgba(255, 255, 255, 0.08);
+  animation: stickyPulse 3.2s ease-in-out infinite;
+}
+
+/* Shimmer sweep */
+.ctaBtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.055) 50%,
+    transparent 100%
+  );
+  animation: shimmer 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0%   { left: -80%; }
+  55%  { left: 120%; }
+  100% { left: 120%; }
+}
+
+@keyframes stickyPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 0   rgba(255, 255, 255, 0),
+      0 4px 24px rgba(255, 255, 255, 0.18),
+      0 12px 40px rgba(255, 255, 255, 0.07);
+  }
+  48% {
+    box-shadow:
+      0 0 0 8px rgba(255, 255, 255, 0),
+      0 4px 32px rgba(255, 255, 255, 0.28),
+      0 16px 56px rgba(255, 255, 255, 0.13);
+  }
 }
 
 .ctaBtn:hover {
-  background: #e8e8e8;
-  transform: translateY(-1px);
+  background: #f0f0f0;
+  transform: translateY(-2px);
+  animation: none;
   box-shadow:
-    0 4px 24px rgb(0 0 0 / 0.22),
-    0 0 0 3px rgb(0 0 0 / 0.1),
-    0 0 32px rgb(0 0 0 / 0.16);
+    0 0 0 1px rgba(255, 255, 255, 0.22),
+    0 8px 36px rgba(255, 255, 255, 0.32),
+    0 20px 56px rgba(255, 255, 255, 0.15);
+}
+
+.ctaBtn:active {
+  transform: translateY(0);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 2px 12px rgba(255, 255, 255, 0.12);
 }
 
 .phoneIcon {
@@ -59,8 +117,9 @@
   position: fixed;
   inset: 0;
   z-index: 200;
-  background: rgb(0 0 0 / 0.75);
-  backdrop-filter: blur(4px);
+  background: rgb(0 0 0 / 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 /* ── Modal outer centering wrapper ───────────────────────── */
@@ -85,7 +144,9 @@
   max-height: calc(100vh - 48px);
   display: flex;
   flex-direction: row;
-  box-shadow: 0 24px 80px rgb(0 0 0 / 0.45);
+  box-shadow:
+    0 32px 96px rgb(0 0 0 / 0.5),
+    0 0 0 1px rgba(0, 0, 0, 0.07);
 }
 
 /* ── Team image panel (desktop left column) ───────────────── */
