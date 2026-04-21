@@ -734,7 +734,7 @@
   font-weight: var(--fw-medium);
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  border-radius: 20px;
+  border-radius: 50px;
   border: none;
   cursor: pointer;
   transition: opacity 0.2s ease, transform 0.2s ease;
@@ -753,7 +753,7 @@
   font-weight: var(--fw-medium);
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  border-radius: 20px;
+  border-radius: 50px;
   border: 1px solid rgba(255 255 255 / 0.35);
   text-decoration: none;
   transition: border-color 0.2s ease, background 0.2s ease;
