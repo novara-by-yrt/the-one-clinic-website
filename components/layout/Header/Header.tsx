@@ -40,6 +40,7 @@ const NAV: NavItem[] = [
           { label: 'Private GP Leicester',                                  href: '/treatments/private-gp' },
           { label: 'Joint Injections',                                      href: '/treatments/joint-injections' },
           { label: 'Minor Surgery',                                         href: '/treatments/minor-surgery' },
+          { label: 'Ingrown Toenail Removal',                               href: '/treatments/ingrown-toenail-removal-leicester' },
           { label: 'GP Home Visits Leicester',                              href: '/treatments/gp-home-visits' },
           { label: 'Travel Vaccine & Immunisations',                        href: '/treatments/travel-vaccine' },
           { label: 'Weight Management',                                     href: '/treatments/weight-management' },
