@@ -301,7 +301,7 @@ export default function WeakChinPage() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/images/Weak Jawline.png"
                 alt="Chin and jawline contouring at The One Clinic Leicester"
                 fill
                 className={styles.heroImage}

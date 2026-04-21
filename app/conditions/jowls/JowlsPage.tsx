@@ -309,7 +309,7 @@ export default function JowlsPage() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/images/Jowls_Sagging Skin.png"
                 alt="Lower face showing jowls, treated at The One Clinic Leicester"
                 fill
                 className={styles.heroImage}

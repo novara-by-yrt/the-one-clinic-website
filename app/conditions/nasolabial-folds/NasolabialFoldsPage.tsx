@@ -309,7 +309,7 @@ export default function NasolabialFoldsPage() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor2.jpg"
+                src="/images/Nasolabial Folds.png"
                 alt="Close-up of nasolabial folds treated at The One Clinic Leicester"
                 fill
                 className={styles.heroImage}

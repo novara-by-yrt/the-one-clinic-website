@@ -302,7 +302,7 @@ export default function AbdominalFatPage() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Dermatologist.jpg"
+                src="/images/Abdominal Fat_Belly Fat.png"
                 alt="Abdominal fat treatment at The One Clinic Leicester"
                 fill
                 className={styles.heroImage}

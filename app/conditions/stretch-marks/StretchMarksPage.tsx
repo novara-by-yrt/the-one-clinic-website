@@ -298,7 +298,7 @@ export default function StretchMarksPage() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Dermatologist.jpg"
+                src="/images/Stretch Marks.png"
                 alt="Stretch marks treatment at The One Clinic Leicester"
                 fill
                 className={styles.heroImage}

@@ -309,7 +309,7 @@ export default function RosaceaPage() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Dermatologist.jpg"
+                src="/images/Facial Redness_Rosacea.png"
                 alt="Facial redness and rosacea treated at The One Clinic Leicester"
                 fill
                 className={styles.heroImage}

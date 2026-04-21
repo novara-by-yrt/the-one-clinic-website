@@ -310,7 +310,7 @@ export default function TurkeyNeckPage() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/images/Turkey Neck_Necklines.png"
                 alt="Neck area showing turkey neck, treated at The One Clinic Leicester"
                 fill
                 className={styles.heroImage}

@@ -352,7 +352,7 @@ export default function EyeBagsPage() {
             {/* Right: hero image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor2.jpg"
+                src="/images/Eye Bags.png"
                 alt="Close-up of under-eye area showing eye bags, treated at The One Clinic Leicester"
                 fill
                 className={styles.heroImage}

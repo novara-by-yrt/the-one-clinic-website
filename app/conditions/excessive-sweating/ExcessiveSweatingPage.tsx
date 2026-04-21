@@ -303,7 +303,7 @@ export default function ExcessiveSweatingPage() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Dermatologist.jpg"
+                src="/images/Excessive Sweating.png"
                 alt="Excessive sweating treatment at The One Clinic Leicester"
                 fill
                 className={styles.heroImage}

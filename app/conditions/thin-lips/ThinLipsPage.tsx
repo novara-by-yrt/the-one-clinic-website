@@ -308,7 +308,7 @@ export default function ThinLipsPage() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor2.jpg"
+                src="/images/Thin Lips.png"
                 alt="Lip enhancement treatment at The One Clinic Leicester"
                 fill
                 className={styles.heroImage}
