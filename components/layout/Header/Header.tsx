@@ -268,11 +268,6 @@ export default function Header() {
     }, 150);
   }
 
-  // ── Desktop mega group accordion ──────────────────────────────
-  function toggleDesktopGroup(key: string) {
-    setOpenMegaGroup(prev => prev === key ? null : key);
-  }
-
   // ── Mobile accordion ─────────────────────────────────────────
   function toggleMobile(i: number) {
     setMobileExpanded((prev: Set<number>) => {
@@ -389,7 +384,7 @@ export default function Header() {
                         </AnimatePresence>
                       )}
 
-                      {/* Mega dropdown (Treatments / Conditions) */}
+                      {/* Mega dropdown (Treatments / Conditions) — two-panel */}
                       {item.groups && (
                         <AnimatePresence>
                           {isOpen && (
@@ -405,7 +400,7 @@ export default function Header() {
                               role="region"
                               aria-label={`${item.label} menu`}
                             >
-                              {/* Top strip: category label + view all */}
+                              {/* Top strip */}
                               <div className={styles.megaTop}>
                                 <span className={styles.megaCategoryLabel}>{item.label}</span>
                                 <Link
@@ -420,51 +415,59 @@ export default function Header() {
                                 </Link>
                               </div>
 
-                              {/* Accordion groups */}
+                              {/* Two-panel body */}
                               <div className={styles.megaBody}>
-                                {item.groups.map((grp, gi) => {
-                                  const gKey   = `${i}-${gi}`;
-                                  const grpOpen = openMegaGroup === gKey;
-                                  return (
-                                    <div key={grp.group} className={styles.megaAccordionGroup}>
+                                {/* Left: category list */}
+                                <div className={styles.megaSidebar}>
+                                  {item.groups.map((grp, gi) => {
+                                    const gKey     = `${i}-${gi}`;
+                                    const isActive = openMegaGroup === gKey;
+                                    return (
                                       <button
-                                        className={`${styles.megaGroupBtn} ${grpOpen ? styles.megaGroupBtnOpen : ''}`}
-                                        onClick={() => toggleDesktopGroup(gKey)}
-                                        aria-expanded={grpOpen}
+                                        key={grp.group}
+                                        className={`${styles.megaCategoryBtn} ${isActive ? styles.megaCategoryBtnActive : ''}`}
+                                        onMouseEnter={() => setOpenMegaGroup(gKey)}
+                                        onClick={() => setOpenMegaGroup(gKey)}
+                                        aria-selected={isActive}
                                       >
-                                        <span className={styles.megaGroupLabel}>{grp.group}</span>
-                                        <span className={styles.megaGroupCount}>{grp.items.length}</span>
-                                        <Chevron open={grpOpen} size={9} />
+                                        {grp.group}
                                       </button>
+                                    );
+                                  })}
+                                </div>
 
-                                      <AnimatePresence initial={false}>
-                                        {grpOpen && (
-                                          <motion.div
-                                            initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: 'auto', opacity: 1 }}
-                                            exit={{ height: 0, opacity: 0 }}
-                                            transition={{ duration: 0.24, ease: [0.25, 0.1, 0.25, 1] }}
-                                            style={{ overflow: 'hidden' }}
-                                          >
-                                            <ul className={styles.megaList} role="list">
-                                              {grp.items.map((link) => (
-                                                <li key={link.href}>
-                                                  <Link
-                                                    href={link.href}
-                                                    className={styles.ddItem}
-                                                    onClick={() => setOpenDropdown(null)}
-                                                  >
-                                                    {link.label}
-                                                  </Link>
-                                                </li>
-                                              ))}
-                                            </ul>
-                                          </motion.div>
-                                        )}
-                                      </AnimatePresence>
-                                    </div>
-                                  );
-                                })}
+                                {/* Right: items for active category */}
+                                <div className={styles.megaContent}>
+                                  <AnimatePresence initial={false}>
+                                    {item.groups.map((grp, gi) => {
+                                      const gKey = `${i}-${gi}`;
+                                      if (openMegaGroup !== gKey) return null;
+                                      return (
+                                        <motion.ul
+                                          key={gKey}
+                                          className={styles.megaList}
+                                          role="list"
+                                          initial={{ opacity: 0, x: 8 }}
+                                          animate={{ opacity: 1, x: 0 }}
+                                          exit={{ opacity: 0, x: -4 }}
+                                          transition={{ duration: 0.16, ease: [0.25, 0.1, 0.25, 1] }}
+                                        >
+                                          {grp.items.map((link) => (
+                                            <li key={link.href}>
+                                              <Link
+                                                href={link.href}
+                                                className={styles.ddItem}
+                                                onClick={() => setOpenDropdown(null)}
+                                              >
+                                                {link.label}
+                                              </Link>
+                                            </li>
+                                          ))}
+                                        </motion.ul>
+                                      );
+                                    })}
+                                  </AnimatePresence>
+                                </div>
                               </div>
                             </motion.div>
                           )}

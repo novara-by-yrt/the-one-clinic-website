@@ -148,33 +148,37 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   MEGA DROPDOWN  (Treatments / Conditions — contained card)
+   MEGA DROPDOWN  (Treatments / Conditions — two-panel flyout)
 ═══════════════════════════════════════════════════════════════ */
+
+/* Brand gold accent */
+/* --mega-gold: #c9a43b */
+
 .megaPanel {
   position: absolute;
   top: calc(100% + 10px);
   left: 0;
   z-index: 10;
-  width: 420px;
-  background: #fff;
-  border: 1px solid rgba(0,0,0,0.08);
+  width: 500px;
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 18px;
   box-shadow:
-    0 2px 4px rgba(0,0,0,0.03),
-    0 10px 30px rgba(0,0,0,0.09),
-    0 30px 70px rgba(0,0,0,0.08);
+    0 2px 8px rgba(0,0,0,0.6),
+    0 20px 56px rgba(0,0,0,0.5),
+    0 40px 90px rgba(0,0,0,0.3);
   overflow: hidden;
   transform-origin: top left;
 }
 
-/* Top strip: category label + view all */
+/* Top strip: section label + view all */
 .megaTop {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 13px 16px 11px;
-  border-bottom: 1px solid rgba(0,0,0,0.055);
-  background: rgba(0,0,0,0.015);
+  padding: 12px 16px 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
 }
 
 .megaCategoryLabel {
@@ -182,7 +186,7 @@
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(0,0,0,0.3);
+  color: rgba(255,255,255,0.28);
 }
 
 .megaViewAll {
@@ -191,108 +195,108 @@
   gap: 5px;
   font-size: 0.75rem;
   font-weight: 600;
-  color: rgba(0,0,0,0.55);
+  color: rgba(255,255,255,0.42);
   text-decoration: none;
   transition: color 0.15s ease, gap 0.15s ease;
 }
-.megaViewAll:hover { color: #000; gap: 8px; }
+.megaViewAll:hover { color: #fff; gap: 8px; }
 
-/* Accordion groups body */
+/* ── Two-panel body ─────────────────────────────────────────── */
 .megaBody {
-  padding: 6px 0 6px;
-}
-
-/* Single accordion group */
-.megaAccordionGroup {
-  border-bottom: 1px solid rgba(0,0,0,0.04);
-}
-.megaAccordionGroup:last-child { border-bottom: none; }
-
-/* Group toggle button */
-.megaGroupBtn {
-  width: 100%;
   display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
+  flex-direction: row;
+}
+
+/* Left sidebar: category nav */
+.megaSidebar {
+  flex: 0 0 155px;
+  padding: 8px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: rgba(0,0,0,0.18);
+}
+
+.megaCategoryBtn {
+  width: 100%;
+  text-align: left;
+  padding: 9px 12px 9px 14px;
   background: none;
   border: none;
+  border-radius: 8px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.38);
   cursor: pointer;
-  text-align: left;
-  transition: background 0.15s ease;
   position: relative;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
-/* Left accent line on group button hover */
-.megaGroupBtn::before {
+.megaCategoryBtn::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 20%;
-  height: 60%;
-  width: 2px;
-  background: #000;
+  top: 18%;
+  height: 64%;
+  width: 2.5px;
+  background: #c9a43b;
   border-radius: 2px;
   transform: scaleY(0);
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.megaGroupBtn:hover { background: rgba(0,0,0,0.03); }
-.megaGroupBtn:hover::before,
-.megaGroupBtnOpen::before { transform: scaleY(1); }
-
-/* Open group: clearly distinct from idle/hover */
-.megaGroupBtnOpen {
-  background: rgba(0,0,0,0.07);
-  box-shadow: inset 0 -1px 0 rgba(0,0,0,0.05);
+.megaCategoryBtn:hover {
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.72);
 }
 
-.megaGroupLabel {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(0,0,0,0.42);
-  transition: color 0.15s ease;
+.megaCategoryBtnActive {
+  background: rgba(201,164,59,0.1);
+  color: #c9a43b;
+}
+.megaCategoryBtnActive::before { transform: scaleY(1); }
+
+/* Right panel: items for active category */
+.megaContent {
   flex: 1;
   min-width: 0;
+  padding: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+  position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.1) transparent;
 }
-.megaGroupBtn:hover .megaGroupLabel { color: rgba(0,0,0,0.68); }
-.megaGroupBtnOpen .megaGroupLabel   { color: rgba(0,0,0,0.88); font-weight: 800; }
+.megaContent::-webkit-scrollbar { width: 3px; }
+.megaContent::-webkit-scrollbar-track { background: transparent; }
+.megaContent::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 3px; }
 
-/* Item count badge */
-.megaGroupCount {
-  font-size: 0.625rem;
-  font-weight: 600;
-  color: rgba(0,0,0,0.3);
-  background: rgba(0,0,0,0.06);
-  padding: 1px 6px;
-  border-radius: 20px;
-  flex-shrink: 0;
-  transition: background 0.15s ease, color 0.15s ease;
-}
-.megaGroupBtn:hover .megaGroupCount { background: rgba(0,0,0,0.09); color: rgba(0,0,0,0.5); }
-.megaGroupBtnOpen .megaGroupCount {
-  background: rgba(0,0,0,0.15);
-  color: rgba(0,0,0,0.7);
-}
-
-/* Scrollable item list inside accordion */
+/* Item list */
 .megaList {
   display: flex;
   flex-direction: column;
   gap: 0;
-  max-height: 248px;
-  overflow-y: auto;
-  padding: 4px 8px 10px;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0,0,0,0.1) transparent;
   list-style: none;
+  padding: 0;
   margin: 0;
 }
-.megaList::-webkit-scrollbar { width: 3px; }
-.megaList::-webkit-scrollbar-track { background: transparent; }
-.megaList::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 3px; }
+
+/* ── Override ddItem for dark mega panel ────────────────────── */
+.megaPanel .ddItem {
+  color: rgba(255,255,255,0.52);
+}
+.megaPanel .ddItem::after {
+  background: linear-gradient(90deg, rgba(201,164,59,0.08) 0%, rgba(201,164,59,0.02) 100%);
+}
+.megaPanel .ddItem::before {
+  background: #c9a43b;
+}
+.megaPanel .ddItem:hover {
+  color: rgba(255,255,255,0.9);
+}
 
 /* ── Mega backdrop (subtle dimming) ─────────────────────────── */
 .megaBackdrop {
@@ -626,8 +630,9 @@
 }
 
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .megaList { max-height: 200px; }
-  .megaPanel { width: 380px; }
+  .megaPanel { width: 440px; }
+  .megaSidebar { flex: 0 0 140px; }
+  .megaContent { max-height: 260px; }
 }
 
 /* Full-screen drawer on small phones */
