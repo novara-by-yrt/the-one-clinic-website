@@ -111,18 +111,6 @@ export const TEAM_MEMBERS: TeamMember[] = [
     ],
   },
   {
-    slug: 'sam',
-    name: 'Sam',
-    credentials: '',
-    initials: 'S',
-    image: '/images/Sam.jpg',
-    role: 'Patient Coordinator',
-    bio: [
-      'Sam is a dedicated Patient Coordinator at The One Clinic, ensuring every patient journey runs seamlessly from the first point of contact through to aftercare.',
-      'With a friendly, professional manner, Sam helps patients feel informed and at ease at every step.',
-    ],
-  },
-  {
     slug: 'chloe',
     name: 'Chloe',
     credentials: '',
