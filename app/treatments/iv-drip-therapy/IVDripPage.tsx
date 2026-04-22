@@ -171,7 +171,7 @@ export default function IVDripPage() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/images/IV drip therapy1.png"
                 alt="IV drip therapy at The One Clinic Leicester"
                 fill
                 priority
@@ -235,7 +235,7 @@ export default function IVDripPage() {
 
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Dermatologist.jpg"
+                src="/images/IV drip therapy2.png"
                 alt="IV drip therapy consultation at The One Clinic"
                 fill
                 className={styles.whatIsVideoFrame}
