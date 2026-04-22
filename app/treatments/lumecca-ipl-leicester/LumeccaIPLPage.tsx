@@ -173,7 +173,7 @@ export default function LumeccaIPLPage() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Endolift-Laser_1.jpg"
+                src="/images/LumeccaIPL1.png"
                 alt="Lumecca IPL treatment at The One Clinic Leicester"
                 fill
                 priority
@@ -239,7 +239,7 @@ export default function LumeccaIPLPage() {
 
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/images/LumeccaIPL2.png"
                 alt="Lumecca IPL consultation at The One Clinic"
                 fill
                 className={styles.whatIsVideoFrame}

@@ -170,7 +170,7 @@ export default function LaserSnoringPage() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Endolift-Laser_1.jpg"
+                src="/images/Laser snoring treatment1.png"
                 alt="Laser snoring treatment at The One Clinic Leicester"
                 fill
                 priority
@@ -234,7 +234,7 @@ export default function LaserSnoringPage() {
 
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/images/Laser snoring treatment2.png"
                 alt="Laser snoring treatment consultation at The One Clinic"
                 fill
                 className={styles.whatIsVideoFrame}

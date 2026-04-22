@@ -46,8 +46,6 @@
     Layer 4: ambient shadow
   */
   box-shadow:
-    0 0 0 2px rgba(255, 255, 255, 0.92),
-    0 0 0 3.5px rgba(0, 0, 0, 0.88),
     0 5px 0 2px rgba(0, 0, 0, 0.85),
     0 10px 28px rgba(0, 0, 0, 0.5);
   animation: stickyPulse 3.6s ease-in-out infinite;
@@ -101,10 +99,9 @@
   transform: translateY(-3px) scale(1.025);
   animation: none;
   box-shadow:
-    0 0 0 2px rgba(255, 255, 255, 0.92),
-    0 0 0 3.5px rgba(0, 0, 0, 0.88),
     0 8px 0 2px rgba(0, 0, 0, 0.85),
-    0 18px 40px rgba(0, 0, 0, 0.6);
+    0 18px 40px rgba(0, 0, 0, 0.6),
+    0 0 28px 6px rgba(255, 255, 255, 0.12);
 }
 
 /* Active — button presses down into its extrusion */
@@ -112,8 +109,6 @@
   transform: translateY(3px);
   transition: transform 0.08s ease, box-shadow 0.08s ease;
   box-shadow:
-    0 0 0 2px rgba(255, 255, 255, 0.92),
-    0 0 0 3.5px rgba(0, 0, 0, 0.88),
     0 1px 0 2px rgba(0, 0, 0, 0.85),
     0 4px 12px rgba(0, 0, 0, 0.35);
 }
