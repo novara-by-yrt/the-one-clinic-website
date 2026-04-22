@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import HaemorrhoidRemovalPage from './HaemorrhoidRemovalPage';
 
 export const metadata: Metadata = {
-  title: 'Haemorrhoid Removal Leicester | The One Clinic',
+  title: 'Best Haemorrhoid Leicester | The One Clinic',
   description:
-    'Expert haemorrhoid removal in Leicester performed by GMC-registered doctors. Surgical treatment for grades I–III under local anaesthetic — no hospital stay, same-day procedure.',
+    'Expert haemorrhoid removal in Leicester to relieve pain, bleeding, and discomfort with safe, minor surgical care.',
   keywords: [
     'haemorrhoid removal Leicester',
     'piles treatment Leicester',
@@ -16,9 +16,9 @@ export const metadata: Metadata = {
     'private haemorrhoid treatment Leicester',
   ],
   openGraph: {
-    title: 'Haemorrhoid Removal Leicester | The One Clinic',
+    title: 'Best Haemorrhoid Leicester | The One Clinic',
     description:
-      'Expert haemorrhoid removal in Leicester performed by GMC-registered doctors. Surgical treatment for grades I–III under local anaesthetic — no hospital stay, same-day procedure.',
+      'Expert haemorrhoid removal in Leicester to relieve pain, bleeding, and discomfort with safe, minor surgical care.',
   },
 };
 

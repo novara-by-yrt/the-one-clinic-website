@@ -21,8 +21,8 @@ import styles             from './page.module.css';
 
 const AT_A_GLANCE = [
   {
-    label: 'Procedure Duration',
-    value: '20–45 minutes',
+    label: 'Treatment Duration',
+    value: 'Up to 60 minutes',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
@@ -31,7 +31,7 @@ const AT_A_GLANCE = [
   },
   {
     label: 'Treatment Frequency',
-    value: 'One-off procedure',
+    value: 'Usually 1 time procedure',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
@@ -39,8 +39,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Recovery Time',
-    value: '1–3 days',
+    label: 'Downtime',
+    value: '2–3 weeks',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
@@ -48,8 +48,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Suitable For',
-    value: 'Grades I–III',
+    label: 'Results Longevity',
+    value: 'Generally permanent',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
@@ -57,8 +57,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Treatment Cost',
-    value: 'From £300',
+    label: 'Haemorrhoidectomy Cost',
+    value: 'Starts from £',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
@@ -96,8 +96,8 @@ const PROCEDURE_STEPS = [
 
 const TREATMENT_BENEFITS = [
   {
-    title: 'Permanent Symptom Relief',
-    desc: 'Surgical removal addresses the source of the problem rather than masking symptoms, providing lasting freedom from pain, bleeding, and prolapse.',
+    title: 'Relieves Pain & Discomfort',
+    desc: 'Stops constant irritation, itching, and soreness around the anus.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
@@ -105,17 +105,17 @@ const TREATMENT_BENEFITS = [
     ),
   },
   {
-    title: 'No Hospital Stay Required',
-    desc: 'The procedure is carried out under local anaesthetic at our Leicester clinic. No general anaesthesia, no overnight admission, and no lengthy NHS waiting list.',
+    title: 'Stops Bleeding',
+    desc: 'Gets rid of troublesome bleeding during bowel movements.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M3 21h18"/><path d="M5 21V7l8-4v4"/><path d="M19 21V11l-6-4"/>
+        <path d="M12 2C12 2 5 10 5 15a7 7 0 0 0 14 0c0-5-7-13-7-13z"/>
       </svg>
     ),
   },
   {
-    title: 'Expert Surgical Care',
-    desc: 'All procedures are performed by our GMC-registered doctors, who bring extensive experience in minor surgical techniques and a meticulous approach to patient safety.',
+    title: 'Permanent Solution',
+    desc: 'Provides long-term relief, reducing the chance of recurrence.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -123,8 +123,8 @@ const TREATMENT_BENEFITS = [
     ),
   },
   {
-    title: 'Fast Return to Daily Life',
-    desc: 'Most patients are back to light daily activities within 24 to 48 hours. Our team provides clear guidance to make your recovery as smooth and comfortable as possible.',
+    title: 'Fixes Prolapse',
+    desc: 'Corrects haemorrhoids that bulge or hang out of the anus.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
@@ -132,31 +132,31 @@ const TREATMENT_BENEFITS = [
     ),
   },
   {
-    title: 'Discreet & Compassionate Care',
-    desc: 'We understand this is a sensitive condition. Every patient is treated with complete discretion, dignity, and empathy throughout their consultation and procedure.',
+    title: 'Improves Daily Life',
+    desc: 'Makes sitting, moving, and bowel movements comfortable again.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        <circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/>
       </svg>
     ),
   },
   {
-    title: 'Comprehensive Aftercare Included',
-    desc: 'Every procedure includes a full written aftercare plan, dietary guidance, and a scheduled follow-up appointment to monitor your healing and recovery.',
+    title: 'Emergency Relief',
+    desc: 'Treats severe or thrombosed haemorrhoids quickly.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
       </svg>
     ),
   },
 ];
 
 const ELIGIBILITY = [
-  'Experiencing persistent bright red bleeding during or after bowel movements',
-  'Suffering from pain, itching, or discomfort that affects your day-to-day life',
-  'Have a prolapsed haemorrhoid that does not retract on its own',
-  'Have already tried conservative measures such as dietary changes and topical creams without lasting relief',
-  'Seeking a permanent solution to recurring haemorrhoid symptoms',
+  'Pain or swelling that makes sitting uncomfortable',
+  'Bleeding during bowel movements',
+  'Itching or irritation',
+  'Recurring haemorrhoids',
+  'Hygiene problems',
 ];
 
 const CAUSES = [
@@ -283,8 +283,7 @@ export default function HaemorrhoidRemovalPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Expert in-clinic haemorrhoid removal for lasting relief from pain, bleeding,
-                and discomfort — performed by GMC-registered doctors at The One Clinic.
+                Get expert in-clinic haemorrhoid removal for lasting relief and comfort.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -363,14 +362,11 @@ export default function HaemorrhoidRemovalPage() {
             <motion.div className={styles.whatIsContent} variants={stagger(0.12)}>
               <motion.div className={styles.whatIsTextGroup} variants={fadeUp}>
                 <p className={styles.eyebrowDark}>About This Condition</p>
-                <h2 className={styles.combinedHeading}>What are Haemorrhoids?</h2>
+                <h2 className={styles.combinedHeading}>What is Haemorrhoidectomy?</h2>
                 <p className={styles.combinedDesc}>
-                  Haemorrhoids — commonly known as piles — are swollen veins in the lower
-                  rectum or around the anus. They affect approximately 1 in 3 people in the
-                  UK at some point in their lives, making them one of the most common
-                  colorectal conditions. Symptoms include bright red bleeding, pain, itching,
-                  a feeling of fullness, and in more advanced cases, prolapse of tissue
-                  beyond the anal canal.
+                  Haemorrhoid removal is a medical procedure to treat swollen or painful veins
+                  (haemorrhoids) around the anus. Haemorrhoids can cause pain, bleeding, itching,
+                  and discomfort.
                 </p>
                 <p className={styles.combinedDesc}>
                   When conservative management — such as dietary changes, topical creams, or
@@ -419,7 +415,7 @@ export default function HaemorrhoidRemovalPage() {
           >
             <motion.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Haemorrhoid Removal at a Glance
+              Haemorrhoidectomy at a Glance
             </motion.h2>
           </motion.div>
 
@@ -513,7 +509,7 @@ export default function HaemorrhoidRemovalPage() {
           >
             <motion.p className={styles.eyebrowDark} variants={fadeUp}>What You Gain</motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Benefits of Haemorrhoid Removal
+              Haemorrhoid Removal Benefits
             </motion.h2>
           </motion.div>
 
@@ -558,7 +554,7 @@ export default function HaemorrhoidRemovalPage() {
               Is This Right for You?
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              When to Consider Surgical Removal
+              Why Choose Haemorrhoid Removal Treatment?
             </motion.h2>
           </motion.div>
 
@@ -570,7 +566,7 @@ export default function HaemorrhoidRemovalPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
-              Surgical haemorrhoid removal may be right for you if you are:
+              You may choose haemorrhoidectomy if you have:
             </motion.p>
             <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
               {ELIGIBILITY.map((item) => (
@@ -653,7 +649,7 @@ export default function HaemorrhoidRemovalPage() {
           >
             <motion.p className={styles.eyebrowDark} variants={fadeUp}>The Science</motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              How Does Haemorrhoid Removal Work?
+              How Does a Haemorrhoid Removal Work?
             </motion.h2>
           </motion.div>
 
@@ -665,20 +661,17 @@ export default function HaemorrhoidRemovalPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.howPara} variants={fadeUp}>
-              A haemorrhoidectomy involves the surgical excision of enlarged haemorrhoidal
-              tissue under local anaesthetic. Once the area is completely numb, the
-              haemorrhoid is carefully isolated and removed. The wound may be sutured
-              (closed technique) or left to heal naturally (open technique) depending on
-              which approach is most appropriate for the size, grade, and location of the
-              haemorrhoid.
+              The procedure relieves pain, itching, and bleeding, allowing patients to sit,
+              move, and use the bathroom comfortably. After healing, daily life feels easier,
+              hygiene improves, and long-term relief is restored.
             </motion.p>
             <motion.p className={styles.howPara} variants={fadeUp}>
-              For suitable patients with smaller internal haemorrhoids, rubber band ligation
-              may be recommended as an alternative. A small rubber band is placed around the
-              base of the haemorrhoid, cutting off its blood supply so that the tissue
-              shrinks and separates naturally within a few days. During your consultation,
-              your doctor will determine which procedure is most suitable for your
-              individual case and explain the process in full before treatment begins.
+              A haemorrhoidectomy involves the surgical excision of enlarged haemorrhoidal
+              tissue under local anaesthetic. Once the area is completely numb, the
+              haemorrhoid is carefully isolated and removed. For suitable patients with smaller
+              internal haemorrhoids, rubber band ligation may be offered as an alternative.
+              During your consultation, your doctor will determine which procedure is most
+              suitable for your individual case.
             </motion.p>
           </motion.div>
 
