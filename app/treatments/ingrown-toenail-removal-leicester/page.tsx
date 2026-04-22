@@ -4,7 +4,7 @@ import IngownToenailRemovalPage from './IngownToenailRemovalPage';
 export const metadata: Metadata = {
   title: 'Ingrown Toenail Removal Leicester | The One Clinic',
   description:
-    'Expert ingrown toenail removal in Leicester by GMC-registered doctors. Permanent Partial Nail Avulsion with phenol under local anaesthetic — same-day procedure, fast healing.',
+    'Permanent relief from ingrown toenails in Leicester. Dr Sumit Virmani offers expert minor surgery for immediate pain relief and long-term results.',
   keywords: [
     'ingrown toenail removal Leicester',
     'ingrown toenail treatment Leicester',
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Ingrown Toenail Removal Leicester | The One Clinic',
     description:
-      'Expert ingrown toenail removal in Leicester by GMC-registered doctors. Permanent Partial Nail Avulsion with phenol under local anaesthetic — same-day procedure, fast healing.',
+      'Permanent relief from ingrown toenails in Leicester. Dr Sumit Virmani offers expert minor surgery for immediate pain relief and long-term results.',
   },
 };
 

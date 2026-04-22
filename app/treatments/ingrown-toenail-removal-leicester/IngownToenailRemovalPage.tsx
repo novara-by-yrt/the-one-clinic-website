@@ -152,38 +152,38 @@ const TREATMENT_BENEFITS = [
 ];
 
 const ELIGIBILITY = [
-  'Experiencing chronic ingrown toenail on the great toe (big toe) or other digits',
-  'Suffering from pain, swelling, or infection related to an ingrown nail edge',
-  'Have already tried conservative measures (antibiotic creams, oral antibiotics, proper nail trimming) without lasting resolution',
-  'Willing to follow comprehensive aftercare instructions to ensure proper healing',
-  'Free from active infection at the time of procedure (minor infections can be treated first)',
+  'Suffering from recurring infections',
+  'Unable to wear your favourite shoes due to pain',
+  'Finding that antibiotics or home remedies are ineffective',
+  'Noticing the toe is bleeding or weeping',
+  'Wanting a permanent solution rather than a temporary fix',
 ];
 
 const CAUSES = [
   {
     n: '01',
-    title: 'Improper Nail Trimming',
-    desc: 'Trimming nails too short, cutting them in a curved shape, or cutting down the sides causes the nail edge to grow into the surrounding skin, particularly on the big toe.',
+    title: 'Incorrect Cutting',
+    desc: 'Cutting nails too short or curbing the edges.',
   },
   {
     n: '02',
-    title: 'Tight or Ill-Fitting Footwear',
-    desc: 'Shoes that are too tight, too narrow, or exert pressure on the toes can force the nail edge into the nail fold, leading to inflammation and pain over time.',
+    title: 'Footwear',
+    desc: 'Tight or narrow shoes that press the toes together.',
   },
   {
     n: '03',
-    title: 'Foot Trauma or Injury',
-    desc: 'A direct blow to the toe, dropping something on the foot, or stubbing the toe can damage the nail and cause it to grow inward during healing.',
+    title: 'Trauma',
+    desc: 'Stubbing your toe or dropping something on it.',
   },
   {
     n: '04',
-    title: 'Genetic Predisposition',
-    desc: 'Some people inherit naturally curved nails or nail folds that make them prone to ingrowth. Genetic factors play a significant role in recurrent ingrown toenails.',
+    title: 'Genetics',
+    desc: 'Some people naturally have curved (involuted) nails.',
   },
   {
     n: '05',
-    title: 'Poor Foot Hygiene or Moisture',
-    desc: 'Persistently damp feet, fungal infections, or poor nail health can weaken the nail structure and increase ingrowth risk. Excessive sweating can soften the surrounding skin.',
+    title: 'Sweaty Feet',
+    desc: 'Soft skin makes it easier for the nail to pierce through.',
   },
 ];
 
@@ -279,12 +279,12 @@ export default function IngownToenailRemovalPage() {
               </motion.span>
 
               <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                Ingrown Toenail Removal in Leicester
+                Ingrown Toenail Treatment in Leicester
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Permanent relief from painful ingrown toenails using Partial Nail Avulsion with
-                phenol. Performed by GMC-registered doctors at The One Clinic with 95% success rate.
+                Stop the pain and infection. Get expert, permanent removal of ingrown toenails
+                with our safe, minimally invasive surgical procedures.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -365,19 +365,10 @@ export default function IngownToenailRemovalPage() {
                 <p className={styles.eyebrowDark}>About This Condition</p>
                 <h2 className={styles.combinedHeading}>What is an Ingrown Toenail?</h2>
                 <p className={styles.combinedDesc}>
-                  An ingrown toenail occurs when the edge or corner of a nail grows into the surrounding
-                  skin, causing pain, swelling, redness, and often infection. This condition most commonly
-                  affects the great toe (big toe) and can significantly impact daily activities such as
-                  walking, exercising, and wearing normal footwear. Approximately 1 in 10 people will
-                  experience an ingrown toenail at some point in their lives, making it one of the most
-                  common foot problems seen in primary care.
-                </p>
-                <p className={styles.combinedDesc}>
-                  When conservative treatments — such as proper nail trimming, antibiotics, topical creams,
-                  and wider footwear — fail to resolve the problem, Partial Nail Avulsion (PNA) with phenol
-                  offers a permanent solution. This minor surgical procedure removes the problematic nail edge
-                  and applies phenol to prevent regrowth. At The One Clinic Leicester, our experienced doctors
-                  perform this procedure with precision and care, achieving a 95% cure rate.
+                  An ingrown toenail occurs when the side of your nail grows into the surrounding skin.
+                  It usually happens on the big toe. It pierces the skin like a splinter. This causes pain,
+                  redness, and swelling. If you ignore it, the skin often gets infected. It might bleed or
+                  produce pus. It can make wearing shoes or even walking difficult.
                 </p>
               </motion.div>
 
@@ -550,11 +541,10 @@ export default function IngownToenailRemovalPage() {
           >
             <motion.p className={styles.eyebrowLight} variants={fadeUp}>Suitability</motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Are You a Candidate for Ingrown Toenail Removal?
+              Why Choose Surgical Removal?
             </motion.h2>
             <motion.p className={styles.combinationIntroText} variants={fadeUp}>
-              Most people with painful or recurrent ingrown toenails are suitable candidates. Your doctor
-              will assess your individual case during a consultation.
+              You should consider minor surgery for your toenail if you are:
             </motion.p>
           </motion.div>
 
@@ -573,6 +563,14 @@ export default function IngownToenailRemovalPage() {
                 </motion.li>
               ))}
             </ul>
+            <motion.p className={styles.eligibilityClosing} variants={fadeUp} style={{ marginTop: '24px' }}>
+              Cutting the corner of the nail yourself often makes it worse. Surgery resolves it once and for all.
+            </motion.p>
+            <motion.div variants={fadeUp} style={{ marginTop: '24px' }}>
+              <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
+                Book Your Consultation
+              </BookConsultationButton>
+            </motion.div>
           </motion.div>
         </Container>
       </Section>
@@ -594,7 +592,7 @@ export default function IngownToenailRemovalPage() {
               What Causes Ingrown Toenails?
             </motion.h2>
             <motion.p className={styles.combinationIntroText} variants={fadeUp}>
-              Understanding the root causes helps prevent recurrence and guides aftercare decisions.
+              Several factors can cause this painful condition. We can treat it regardless of the cause:
             </motion.p>
           </motion.div>
 
@@ -633,7 +631,7 @@ export default function IngownToenailRemovalPage() {
           >
             <motion.p className={styles.eyebrowDark} variants={fadeUp}>The Science</motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              How Does Partial Nail Avulsion Work?
+              How Does Treatment Work?
             </motion.h2>
           </motion.div>
 
@@ -648,23 +646,11 @@ export default function IngownToenailRemovalPage() {
             <motion.div className={styles.whatIsContent} variants={stagger(0.12)}>
               <motion.div className={styles.whatIsTextGroup} variants={fadeUp}>
                 <p className={styles.combinedDesc}>
-                  Partial Nail Avulsion (PNA) with phenol is a minor surgical technique that permanently
-                  resolves ingrown toenails by addressing the root cause. Rather than simply trimming the nail
-                  edge (which often regrows), this procedure removes the problematic portion of the nail and
-                  chemically ablates the nail matrix (the tissue that produces new nail).
-                </p>
-                <p className={styles.combinedDesc}>
-                  <strong>The phenol chemical ablation step is crucial:</strong> Phenol (carbolic acid) is a
-                  caustic agent that destroys the germinal cells in the nail matrix responsible for nail
-                  growth. By applying phenol to the nail bed after removal of the ingrown edge, we prevent that
-                  part of the nail from ever regrowing. This is why the cure rate exceeds 95% — the ingrown edge
-                  simply cannot return.
-                </p>
-                <p className={styles.combinedDesc}>
-                  The procedure requires only a local anaesthetic and takes 15 to 30 minutes. Because only a
-                  portion of the nail is removed, your toe maintains normal appearance and function — the
-                  remaining nail still grows normally. The wound heals by secondary intention, typically within
-                  2 to 4 weeks.
+                  The most effective way to treat a recurring ingrown toenail is Partial Nail Avulsion (PNA).
+                  This is a minor surgical procedure. At The One Clinic, we do not just cut the nail. We remove
+                  the offending edge of the nail straight down to the root. We then use a chemical to destroy
+                  the nail matrix (the root). This prevents that specific part of the nail from regrowing,
+                  providing a permanent cure.
                 </p>
               </motion.div>
             </motion.div>
@@ -673,12 +659,95 @@ export default function IngownToenailRemovalPage() {
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
                 src="/images/Doctor1.jpg"
-                alt="Medical illustration of ingrown toenail removal procedure"
+                alt="Ingrown toenail removal procedure illustration at The One Clinic"
                 fill
                 className={styles.whatIsVideoFrame}
                 sizes="(max-width: 900px) 100vw, 50vw"
               />
             </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          SURGICAL ADVANTAGE: TRIPLE ACTION
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
+        <div className={styles.whiteBgWrap} aria-hidden="true">
+          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
+        </div>
+        <Container className={styles.whiteBgContent}>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              The Surgical Advantage: A Triple Action Approach
+            </motion.h2>
+            <motion.p className={styles.combinationIntroText} variants={fadeUp}>
+              We combine medical precision with long-term prevention. We treat the problem at the source,
+              so you do not have to keep suffering.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.treatedBenefitsGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {[
+              {
+                title: 'Pain Relief',
+                items: [
+                  'We use a local anaesthetic ring block.',
+                  'This completely numbs the toe, so the removal is pain-free.',
+                ],
+              },
+              {
+                title: 'Infection Control',
+                items: [
+                  'By removing the nail spike piercing the skin, we allow the wound to heal.',
+                  'We drain any infection present.',
+                ],
+              },
+              {
+                title: 'Permanent Prevention',
+                items: [
+                  'We apply phenol to the nail root.',
+                  'This prevents the nail edge from regrowing, preventing future issues.',
+                ],
+              },
+            ].map((benefit) => (
+              <motion.div key={benefit.title} className={styles.treatedBenefit} variants={fadeUp}>
+                <h3 className={styles.treatedBenefitTitle}>{benefit.title}</h3>
+                <ul className={styles.treatedBenefitDesc} role="list">
+                  {benefit.items.map((item, idx) => (
+                    <li key={idx} style={{ marginBottom: '8px', lineHeight: '1.6', fontSize: '0.95rem' }}>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+            style={{ marginTop: '48px' }}
+          >
+            <motion.p className={styles.combinedDesc} variants={fadeUp}>
+              <strong>Final Results:</strong> The procedure provides immediate pressure relief. The toe heals
+              within a few weeks, looking normal but slightly narrower.
+            </motion.p>
           </motion.div>
         </Container>
       </Section>
