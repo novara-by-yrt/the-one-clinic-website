@@ -157,13 +157,13 @@
   left: 0;
   z-index: 10;
   width: 500px;
-  background: #111;
-  border: 1px solid rgba(255,255,255,0.08);
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
   border-radius: 18px;
   box-shadow:
-    0 2px 8px rgba(0,0,0,0.6),
-    0 20px 56px rgba(0,0,0,0.5),
-    0 40px 90px rgba(0,0,0,0.3);
+    0 2px 8px rgba(0,0,0,0.06),
+    0 20px 56px rgba(0,0,0,0.14),
+    0 40px 90px rgba(0,0,0,0.08);
   overflow: hidden;
   transform-origin: top left;
 }
@@ -174,8 +174,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 12px 16px 10px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  background: rgba(255,255,255,0.02);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  background: rgba(0,0,0,0.02);
 }
 
 .megaCategoryLabel {
@@ -183,7 +183,7 @@
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.28);
+  color: rgba(0,0,0,0.35);
 }
 
 .megaViewAll {
@@ -192,11 +192,11 @@
   gap: 5px;
   font-size: 0.75rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.42);
+  color: rgba(0,0,0,0.45);
   text-decoration: none;
   transition: color 0.15s ease, gap 0.15s ease;
 }
-.megaViewAll:hover { color: #fff; gap: 8px; }
+.megaViewAll:hover { color: #000; gap: 8px; }
 
 /* ── Two-panel body ─────────────────────────────────────────── */
 .megaBody {
@@ -208,11 +208,11 @@
 .megaSidebar {
   flex: 0 0 155px;
   padding: 8px;
-  border-right: 1px solid rgba(255,255,255,0.06);
+  border-right: 1px solid rgba(0,0,0,0.06);
   display: flex;
   flex-direction: column;
   gap: 2px;
-  background: rgba(0,0,0,0.18);
+  background: rgba(0,0,0,0.02);
 }
 
 .megaCategoryBtn {
@@ -226,7 +226,7 @@
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.38);
+  color: rgba(0,0,0,0.4);
   cursor: pointer;
   position: relative;
   transition: background 0.15s ease, color 0.15s ease;
@@ -239,20 +239,20 @@
   top: 18%;
   height: 64%;
   width: 2.5px;
-  background: #fff;
+  background: #000;
   border-radius: 2px;
   transform: scaleY(0);
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .megaCategoryBtn:hover {
-  background: rgba(255,255,255,0.04);
-  color: rgba(255,255,255,0.72);
+  background: rgba(0,0,0,0.04);
+  color: rgba(0,0,0,0.72);
 }
 
 .megaCategoryBtnActive {
-  background: rgba(255,255,255,0.08);
-  color: #fff;
+  background: rgba(0,0,0,0.07);
+  color: #000;
 }
 .megaCategoryBtnActive::before { transform: scaleY(1); }
 
@@ -265,11 +265,11 @@
   overflow-y: auto;
   position: relative;
   scrollbar-width: thin;
-  scrollbar-color: rgba(255,255,255,0.1) transparent;
+  scrollbar-color: rgba(0,0,0,0.12) transparent;
 }
 .megaContent::-webkit-scrollbar { width: 3px; }
 .megaContent::-webkit-scrollbar-track { background: transparent; }
-.megaContent::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 3px; }
+.megaContent::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.14); border-radius: 3px; }
 
 /* Item list */
 .megaList {
@@ -281,18 +281,18 @@
   margin: 0;
 }
 
-/* ── Override ddItem for dark mega panel ────────────────────── */
+/* ── Remove dark overrides — mega panel now uses the same light ddItem ── */
 .megaPanel .ddItem {
-  color: rgba(255,255,255,0.52);
+  color: rgba(0,0,0,0.62);
 }
 .megaPanel .ddItem::after {
-  background: linear-gradient(90deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+  background: linear-gradient(90deg, rgba(0,0,0,0.055) 0%, rgba(0,0,0,0.02) 100%);
 }
 .megaPanel .ddItem::before {
-  background: #fff;
+  background: #000;
 }
 .megaPanel .ddItem:hover {
-  color: rgba(255,255,255,0.9);
+  color: #000;
 }
 
 /* ── Mega backdrop (subtle dimming) ─────────────────────────── */
