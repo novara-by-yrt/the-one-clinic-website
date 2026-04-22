@@ -2,7 +2,6 @@
 
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import Link from 'next/link';
 import Image from 'next/image';
 import Script from 'next/script';
 import Container from '@/components/ui/Container';
@@ -156,11 +155,6 @@ export default function Hero() {
               <Button variant="primary" theme="dark" onClick={() => window.dispatchEvent(new CustomEvent('openCallbackModal'))}>
                 Book a Consultation
               </Button>
-
-              <Link href="#treatments" className={styles.secondaryCta}>
-                Explore Treatments
-                <span className={styles.arrow} aria-hidden="true">→</span>
-              </Link>
             </motion.div>
 
             {/* Trust badges */}
