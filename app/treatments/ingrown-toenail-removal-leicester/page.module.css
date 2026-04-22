@@ -1361,6 +1361,10 @@
 /* ════════════════════════════════════════════════════
    HOW DOES TREATMENT WORK — text + stats grid
 ════════════════════════════════════════════════════ */
+.howWorksSection {
+  background: #0a0a0a !important;
+}
+
 .howWorksGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1377,7 +1381,7 @@
 .howWorksPara {
   font-size: 1.0625rem;
   line-height: 1.8;
-  color: var(--color-text-muted);
+  color: rgba(255 255 255 / 0.7);
   margin: 0;
 }
 
@@ -1392,9 +1396,9 @@
   flex-direction: column;
   gap: 6px;
   padding: var(--space-4) var(--space-5);
-  background: #f7f8fa;
-  border: 1px solid #e8e8e8;
-  border-left: 4px solid #111;
+  background: rgba(255 255 255 / 0.06);
+  border: 1px solid rgba(255 255 255 / 0.12);
+  border-left: 4px solid rgba(255 255 255 / 0.5);
   border-radius: 10px;
 }
 
@@ -1402,14 +1406,14 @@
   font-size: 2rem;
   font-weight: 800;
   letter-spacing: -0.03em;
-  color: #111;
+  color: #fff;
   line-height: 1;
 }
 
 .howWorksStatLabel {
   font-size: 0.9rem;
   line-height: 1.5;
-  color: #666;
+  color: rgba(255 255 255 / 0.55);
 }
 
 /* ════════════════════════════════════════════════════
@@ -1485,9 +1489,23 @@
 ════════════════════════════════════════════════════ */
 .causesGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: var(--space-3);
   margin-top: var(--space-5);
+}
+
+/* Each card spans 2 of the 6 columns → 3 per row */
+.causesGrid > * {
+  grid-column: span 2;
+}
+
+/* Last 2 items: center them in the row (1 empty col left, 1 empty col right) */
+.causesGrid > :nth-child(4) {
+  grid-column: 2 / 4;
+}
+
+.causesGrid > :nth-child(5) {
+  grid-column: 4 / 6;
 }
 
 .causeStep {
@@ -1496,7 +1514,7 @@
   gap: var(--space-2);
   padding: var(--space-4) var(--space-4);
   background: #fff;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #555;
   border-radius: 14px;
   position: relative;
   overflow: hidden;
@@ -1514,7 +1532,7 @@
 }
 
 .causeStep:hover {
-  border-color: #ccc;
+  border-color: #333;
   box-shadow: 0 8px 32px rgba(0 0 0 / 0.1);
   transform: translateY(-3px);
 }
@@ -1528,14 +1546,14 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #999;
+  color: #777;
   margin-bottom: 4px;
 }
 
 .causeTitle {
   font-size: 1.05rem;
   font-weight: 700;
-  color: #1a1a1a;
+  color: #111;
   margin: 0;
   line-height: 1.35;
   letter-spacing: -0.01em;
@@ -1544,7 +1562,7 @@
 .causeDesc {
   font-size: 0.9rem;
   line-height: 1.65;
-  color: #666;
+  color: #333;
   margin: 0;
 }
 
@@ -1793,8 +1811,8 @@
 .resultsAfterCard {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
-  padding: var(--space-5);
+  gap: var(--space-2);
+  padding: var(--space-4);
   background: rgba(255 255 255 / 0.05);
   border: 1px solid rgba(255 255 255 / 0.09);
   border-radius: var(--radius-lg);
@@ -2425,7 +2443,11 @@
   .treatedBenefitsGrid { grid-template-columns: repeat(2, 1fr); }
   .clinicReasonsGrid { grid-template-columns: repeat(2, 1fr); }
   .expertCard { grid-template-columns: 300px 1fr; }
+  /* Reset 6-col centering trick, go to simple 2-col */
   .causesGrid { grid-template-columns: repeat(2, 1fr); }
+  .causesGrid > * { grid-column: span 1; }
+  .causesGrid > :nth-child(4),
+  .causesGrid > :nth-child(5) { grid-column: span 1; }
 }
 
 /* Combined section: collapse to single column on tablet/mobile */
@@ -2523,8 +2545,11 @@
   /* How Does Treatment Work: stack on mobile */
   .howWorksGrid { grid-template-columns: 1fr; gap: var(--space-5); }
 
-  /* Causes: 2-col on mobile */
+  /* Causes: reset 6-col trick, go 2-col */
   .causesGrid { grid-template-columns: repeat(2, 1fr); gap: var(--space-2); }
+  .causesGrid > * { grid-column: span 1; }
+  .causesGrid > :nth-child(4),
+  .causesGrid > :nth-child(5) { grid-column: span 1; }
 
   /* Standalone At a Glance: 2-col on mobile */
   .glanceStandaloneGrid { grid-template-columns: repeat(2, 1fr); }
@@ -2643,6 +2668,9 @@
 
   /* Causes: 1-col on small mobile */
   .causesGrid { grid-template-columns: 1fr; }
+  .causesGrid > * { grid-column: span 1; }
+  .causesGrid > :nth-child(4),
+  .causesGrid > :nth-child(5) { grid-column: span 1; }
 
   /* Advantage cards: 1-col */
   .advantageCard { padding: var(--space-4) var(--space-3); }

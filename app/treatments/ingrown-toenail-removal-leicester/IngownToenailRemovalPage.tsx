@@ -618,7 +618,7 @@ export default function IngownToenailRemovalPage() {
       {/* ════════════════════════════════════════
           10. HOW DOES IT WORK?
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="dark" data-section-theme="dark" className={styles.howWorksSection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -627,8 +627,8 @@ export default function IngownToenailRemovalPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>The Science</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>The Science</motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
               How Does Treatment Work?
             </motion.h2>
           </motion.div>
