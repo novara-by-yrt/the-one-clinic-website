@@ -67,6 +67,13 @@ export const treatments: Treatment[] = [
       'Permanent relief from painful ingrown toenails using Partial Nail Avulsion (PNA) with phenol treatment.',
   },
   {
+    slug: 'haemorrhoid-removal',
+    title: 'Haemorrhoid Removal',
+    category: 'Health & Wellbeing',
+    shortDescription:
+      'Expert surgical haemorrhoid removal under local anaesthetic for grades I–III — no hospital stay, same-day procedure.',
+  },
+  {
     slug: 'gp-home-visits',
     title: 'GP Home Visits Leicester',
     category: 'Health & Wellbeing',
