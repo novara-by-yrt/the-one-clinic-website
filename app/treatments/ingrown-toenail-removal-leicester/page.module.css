@@ -2343,6 +2343,10 @@
   background-color: #f3f3f3 !important;
 }
 
+.sectionGray .combinationIntroText {
+  color: #111;
+}
+
 /* ════════════════════════════════════════════════════
    WHITE TEXTURE BACKGROUND (bg-image-white.png)
    Applied to: At a Glance, Treated Benefits, Before & After
