@@ -111,7 +111,7 @@
   font-weight: var(--fw-medium);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgb(255 255 255 / 0.45);
+  color: rgb(255 255 255 / 0.9);
   line-height: var(--lh-normal);
 }
 
@@ -135,7 +135,7 @@
   font-size: var(--text-body);
   font-weight: var(--fw-regular);
   line-height: 1.65;
-  color: rgb(255 255 255 / 0.5);
+  color: rgb(255 255 255 / 0.85);
   max-width: 480px;
   text-wrap: pretty;
 }
@@ -277,9 +277,9 @@
   .credBadges { justify-content: flex-start; }
 
   /* Brighten low-opacity text so it reads clearly on mobile */
-  .eyebrow        { color: rgb(255 255 255 / 0.65); }
-  .headlineAccent { color: rgb(255 255 255 / 0.80); }
-  .subtext        { color: rgb(255 255 255 / 0.75); max-width: 100%; }
+  .eyebrow        { color: rgb(255 255 255 / 0.9); }
+  .headlineAccent { color: rgb(255 255 255 / 0.85); }
+  .subtext        { color: rgb(255 255 255 / 0.85); max-width: 100%; }
 
   .ctas {
     flex-direction: column;
