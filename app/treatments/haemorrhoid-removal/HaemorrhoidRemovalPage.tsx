@@ -79,18 +79,18 @@ const AT_A_GLANCE = [
 const PROCEDURE_STEPS = [
   {
     num: '01',
-    title: 'Examination & Assessment',
-    desc: 'Your doctor examines and grades the haemorrhoids to determine the most appropriate technique. Your medical history, symptoms, and previous treatments are reviewed in full before any procedure is planned.',
+    title: 'Assessment',
+    desc: 'Haemorrhoids are removed under local anaesthetic. The doctor assesses the severity.',
   },
   {
     num: '02',
-    title: 'Surgical Removal',
-    desc: 'A local anaesthetic is administered to fully numb the area. The haemorrhoidal tissue is then precisely excised or ligated with minimal trauma to surrounding tissue, following established surgical technique.',
+    title: 'Surgical Excision',
+    desc: 'Internal and external haemorrhoids are carefully excised using minor surgery.',
   },
   {
     num: '03',
-    title: 'Recovery & Aftercare',
-    desc: 'You leave the clinic with a sterile dressing and a written aftercare plan. A follow-up appointment is scheduled to monitor healing and address any concerns during your recovery.',
+    title: 'Wound Management',
+    desc: 'Wound is managed for quick healing and comfort.',
   },
 ];
 
@@ -188,54 +188,54 @@ const CAUSES = [
 ];
 
 const CLINIC_REASONS = [
-  { n: '01', text: 'Experienced, GMC-registered doctors performing all procedures with meticulous surgical technique.' },
-  { n: '02', text: 'Local anaesthetic ensuring a completely pain-free experience throughout the procedure.' },
-  { n: '03', text: 'No hospital stay — treated and discharged the same day in a private clinical setting.' },
-  { n: '04', text: 'Discreet, compassionate care in a confidential, comfortable clinical environment.' },
-  { n: '05', text: 'Comprehensive written aftercare plan and follow-up appointment scheduled with every procedure.' },
-  { n: '06', text: 'Convenient Leicester location with flexible appointment times to fit your schedule.' },
+  { n: '01', text: 'All-in-one clinic with medical & aesthetic services.' },
+  { n: '02', text: 'Highly trained, compassionate doctors.' },
+  { n: '03', text: 'Customised treatments based on listening & expertise.' },
+  { n: '04', text: 'State-of-the-art facilities & modern equipment.' },
+  { n: '05', text: 'Strong reputation & excellent reviews.' },
+  { n: '06', text: 'Comprehensive care and referrals with specialists.' },
 ];
 
 const FAQS = [
   {
-    question: 'What is a haemorrhoidectomy and what does it involve?',
+    question: 'Who can benefit from haemorrhoid removal?',
     answer:
-      'A haemorrhoidectomy is a surgical procedure to remove enlarged or problematic haemorrhoids. Under local anaesthetic, the haemorrhoidal tissue is carefully excised using precise surgical technique. The wound may be sutured (closed haemorrhoidectomy) or left to heal naturally (open haemorrhoidectomy) depending on which approach is most suitable for your specific case.',
+      'Anyone suffering from painful, bleeding, or prolapsed haemorrhoids that haven\'t improved with lifestyle changes or non-surgical treatments.',
   },
   {
-    question: 'Will the procedure be painful?',
+    question: 'Is haemorrhoid removal painful?',
     answer:
-      'No. A local anaesthetic ring block is administered before the procedure begins, completely numbing the area. You should feel no pain during treatment, though you may experience mild pressure or sensation. Some post-procedure soreness is normal for a few days, and our team will provide clear pain management guidance and aftercare advice to keep you comfortable during recovery.',
+      'Most patients feel minimal discomfort during the procedure. Post-surgery soreness is common but manageable with pain relief.',
   },
   {
-    question: 'How long does the procedure take?',
+    question: 'How is the procedure done?',
     answer:
-      'The procedure typically takes between 20 and 45 minutes depending on the number and grade of haemorrhoids being treated, plus the technique used. You will be able to leave the clinic shortly after treatment is complete. We recommend arranging transport home to ensure your comfort.',
+      'Haemorrhoids are removed using minor surgery under local anaesthetic. Alternative methods like laser or radiofrequency may be used depending on the condition.',
   },
   {
-    question: 'What aftercare is required following haemorrhoid removal?',
+    question: 'How long does it take to recover?',
     answer:
-      'Following your procedure, you will receive detailed written aftercare instructions. These typically include keeping the area clean and dry, taking warm sitz baths to aid healing, maintaining a high-fibre diet, drinking plenty of water, and avoiding straining. Most patients resume light daily activities within 24 to 48 hours. A follow-up appointment will be arranged to monitor your recovery and address any concerns.',
+      'Recovery after haemorrhoidectomy may take 2-3 weeks, during which you may experience mild soreness, swelling, or occasional bleeding.',
   },
   {
-    question: 'Am I suitable for haemorrhoid removal at The One Clinic?',
+    question: 'Will haemorrhoids come back?',
     answer:
-      'Suitability is assessed during your initial consultation. Most patients with symptomatic Grade I–III haemorrhoids that have not responded to conservative management are good candidates for in-clinic removal. Our doctor will review your medical history, examine the affected area, and discuss which treatment approach is most appropriate for your individual case.',
+      'Removing the haemorrhoids with minor surgery provides long-term relief, but new haemorrhoids can appear if lifestyle factors aren\'t managed.',
   },
   {
-    question: 'Can haemorrhoids return after surgical removal?',
+    question: 'Do I need follow-up appointments?',
     answer:
-      'The recurrence rate following haemorrhoidectomy is low — typically less than 5–10% when proper aftercare is followed. Maintaining a high-fibre diet, staying well-hydrated, and avoiding straining significantly reduces the risk of new haemorrhoids developing. However, some patients may develop haemorrhoids in different areas if the underlying causes (such as constipation) are not addressed.',
+      'Yes, to check healing and ensure complete recovery, your doctor may schedule visits.',
   },
   {
-    question: 'When can I return to work after treatment?',
+    question: 'Can I sit and move normally after haemorrhoid removal surgery?',
     answer:
-      'Most patients can return to light office-based work within 24 to 48 hours. If your job involves heavy lifting, prolonged standing, or sitting, you may need to take longer off — typically one to two weeks. Your doctor will provide specific advice based on your job demands and the procedure performed. A work note can be provided if required.',
+      'Yes, most patients can resume light daily activities quickly, though heavy lifting or straining should be avoided initially.',
   },
   {
-    question: 'Do I need a GP referral to be seen at The One Clinic?',
+    question: 'Are there any risks?',
     answer:
-      'No, you do not need a GP referral to book a consultation at The One Clinic. However, if you would like your GP to be informed of your treatment, we can write to them following your appointment. Simply book your consultation directly with us, and our team will arrange your appointment at a time that suits you.',
+      'Side effects can include temporary pain, bleeding, infection, or rare anal narrowing, which your doctor will explain before treatment.',
   },
 ];
 
@@ -451,11 +451,10 @@ export default function HaemorrhoidRemovalPage() {
           >
             <motion.p className={styles.eyebrowLight} variants={fadeUp}>The Process</motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              What to Expect at Your Appointment
+              Haemorrhoidectomy Procedure
             </motion.h2>
             <motion.p className={styles.combinationIntroText} variants={fadeUp}>
-              From your initial assessment through to discharge, every step is handled with
-              care, precision, and your comfort in mind.
+              The procedure is designed to remove haemorrhoids safely and efficiently under local anaesthetic.
             </motion.p>
           </motion.div>
 
@@ -484,9 +483,9 @@ export default function HaemorrhoidRemovalPage() {
           >
             <p className={styles.finalResultsEyebrow}>After Your Procedure</p>
             <p className={styles.finalResultsText}>
-              You will be able to walk out of the clinic on the day. Most patients
-              experience significant symptom relief immediately, with full healing
-              typically achieved within two to four weeks following the procedure.
+              You will be able to walk out of the clinic on the day with a managed wound plan.
+              Most patients experience immediate symptom relief, with complete healing occurring
+              over 2–3 weeks with proper aftercare.
             </p>
           </motion.div>
         </Container>
@@ -724,7 +723,7 @@ export default function HaemorrhoidRemovalPage() {
               Post-Treatment
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Results, Aftercare &amp; Side Effects
+              Haemorrhoid Removal Results, Aftercare &amp; Side Effects
             </motion.h2>
           </motion.div>
 
@@ -743,41 +742,32 @@ export default function HaemorrhoidRemovalPage() {
                     <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
                   </svg>
                 </span>
-                <h3 className={styles.resultsAfterCardTitle}>When Will You See Results?</h3>
+                <h3 className={styles.resultsAfterCardTitle}>How Long Does it Take to See Results after Haemorrhoidectomy?</h3>
               </div>
               <p className={styles.resultsAfterCardBody}>
-                Symptom relief is often experienced immediately as the problematic tissue is
-                removed. Swelling and discomfort gradually reduce over the first one to two
-                weeks. Full healing of the surgical wound typically takes two to four weeks
-                depending on the technique used and your body's healing response.
-              </p>
-              <div className={styles.resultsAfterCardSpacer} />
-              <p className={styles.resultsAfterCardNote}>
-                Long-term results are excellent, with a recurrence rate of less than
-                5–10% when proper aftercare is followed and underlying causes are addressed.
+                Most patients notice relief immediately from pain and discomfort. Complete healing and improvement usually take 2–3 weeks.
               </p>
             </motion.div>
 
-            {/* Card 2: Side Effects */}
+            {/* Card 2: How Long Do Results Last */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+                    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
                   </svg>
                 </span>
-                <h3 className={styles.resultsAfterCardTitle}>Side Effects</h3>
+                <h3 className={styles.resultsAfterCardTitle}>How Long Do Haemorrhoid Removal Results Last?</h3>
               </div>
               <p className={styles.resultsAfterCardBody}>
-                Haemorrhoid removal is generally very safe. Most patients experience only
-                mild, temporary effects in the immediate post-procedure period:
+                Haemorrhoidectomy provides long-term, often permanent relief. Proper care and lifestyle adjustments help prevent new haemorrhoids.
               </p>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Mild to moderate soreness for 2–5 days',
-                  'Slight swelling or bruising around the treated area',
-                  'Light bleeding or mucus discharge initially',
-                  'Discomfort during bowel movements for a few days',
+                  'Mild pain or soreness',
+                  'Bleeding or swelling at the site',
+                  'Temporary difficulty with bowel movements',
+                  'There is a rare risk of infection or anal narrowing',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
                     <span className={styles.resultsAfterDot} aria-hidden="true" />
@@ -785,14 +775,9 @@ export default function HaemorrhoidRemovalPage() {
                   </li>
                 ))}
               </ul>
-              <div className={styles.resultsAfterCardSpacer} />
-              <p className={styles.resultsAfterCardNote}>
-                Serious complications are rare when procedures are performed by trained,
-                experienced doctors. Our team provides clear guidance to minimise discomfort.
-              </p>
             </motion.div>
 
-            {/* Card 3: Aftercare Tips */}
+            {/* Card 4: Aftercare Tips */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -804,12 +789,12 @@ export default function HaemorrhoidRemovalPage() {
               </div>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Keep the area clean and dry; follow hygiene guidance provided',
-                  'Take warm sitz baths (shallow warm baths) 2–3 times daily',
-                  'Maintain a high-fibre diet with adequate water intake',
-                  'Avoid straining during bowel movements — never force',
-                  'Take pain relief as recommended by your doctor',
-                  'Attend your scheduled follow-up appointment',
+                  'Keep the area clean and dry.',
+                  'Use sitz baths to soothe discomfort.',
+                  'Eat a high-fibre diet to ease bowel movements.',
+                  'Avoid heavy lifting or straining.',
+                  'Follow all doctor instructions for wound care.',
+                  'You need to attend follow-up visits to ensure proper healing.',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
                     <span className={styles.resultsAfterDot} aria-hidden="true" />
@@ -844,11 +829,10 @@ export default function HaemorrhoidRemovalPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
-              Get Lasting Relief<br />from Haemorrhoids
+              Sit &amp; Move Comfortably<br />After Haemorrhoid Removal!
             </motion.h2>
             <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
-              Book your consultation with our expert doctors and take the first step towards
-              a pain-free, comfortable life.
+              Let our experts help you achieve the haemorrhoidectomy results that you want.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
@@ -874,15 +858,13 @@ export default function HaemorrhoidRemovalPage() {
             <motion.div className={styles.clinicIntroLeft} variants={fadeUp}>
               <p className={styles.eyebrowDark}>Expert Treatment</p>
               <h2 className={styles.combinedHeading}>
-                Best Haemorrhoid<br />Treatment Leicester
+                Best Haemorrhoid Removal<br />Leicester Experience
               </h2>
             </motion.div>
             <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
-              Experience expert haemorrhoid removal in Leicester at The One Clinic. Our
-              experienced, GMC-registered doctors deliver safe, effective surgical treatment
-              under local anaesthetic with no hospital stay. We combine clinical expertise
-              with compassionate, discreet care to help you find lasting relief and regain
-              your comfort and confidence.
+              At The One Clinic, we provide the best haemorrhoid removal Leicester experience
+              with gentle, personalised care. Our experts ensure minimal discomfort, fast recovery,
+              and lasting relief, helping patients return to comfortable daily life.
             </motion.p>
           </motion.div>
         </Container>
@@ -901,15 +883,14 @@ export default function HaemorrhoidRemovalPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
-              Haemorrhoid Removal Cost at The One Clinic
+              Haemorrhoid Removal Cost Leicester
             </motion.p>
             <motion.p className={styles.costBannerPrice} variants={fadeUp}>
-              From £300
+              Starts from £____
             </motion.p>
             <motion.p className={styles.costBannerNote} variants={fadeUp}>
-              Pricing depends on the procedure type, number of haemorrhoids, and complexity
-              of your case. A personalised quote will be provided following your initial
-              consultation with our doctor.
+              At The One Clinic, the final price depends on your personalised treatment plan
+              and will be discussed during your consultation with our expert.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
@@ -936,7 +917,7 @@ export default function HaemorrhoidRemovalPage() {
               Why Us
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Why Choose The One Clinic for Haemorrhoid Removal
+              Why Choose The One Clinic For Haemorrhoidectomy in Leicester
             </motion.h2>
           </motion.div>
 
@@ -1002,16 +983,15 @@ export default function HaemorrhoidRemovalPage() {
 
               <motion.p className={styles.expertCardBio} variants={fadeUp}>
                 Dr Sumit Virmani is the co-founder of The One Clinic and brings over 15 years
-                of medical expertise, with a decade as a trusted local GP. With advanced skills
-                in minor surgery and a keen eye for detail, Dr Virmani is passionate about
-                patient care and delivering outstanding results.
+                of medical expertise, with a decade as a trusted local GP. He specialises in
+                haemorrhoidectomy and minor surgical procedures with a meticulous approach to
+                patient safety and comfort.
               </motion.p>
 
               <motion.p className={styles.expertCardBio} variants={fadeUp}>
-                His specialisation in minor surgical procedures including haemorrhoid removal
-                combined with his compassionate approach ensures every patient receives safe,
-                effective, and dignified care. Dr Virmani continues to combine his ongoing GP
-                practice with expert surgical treatment at The One Clinic.
+                His expertise in haemorrhoid removal combined with compassionate care ensures
+                every patient receives safe, effective treatment. Dr Virmani continues to combine
+                his ongoing GP practice with expert surgical treatment at The One Clinic.
               </motion.p>
             </motion.div>
           </motion.div>
