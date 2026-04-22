@@ -5,11 +5,15 @@ import Image              from 'next/image';
 import { motion }         from 'framer-motion';
 import Section            from '@/components/ui/Section';
 import Container          from '@/components/ui/Container';
+import Accordion          from '@/components/ui/Accordion';
 import BookConsultationButton from '@/components/ui/BookConsultationButton';
 import TrustBadges        from '@/components/ui/TrustBadges';
 import Breadcrumb         from '@/components/ui/Breadcrumb';
+import LeadForm           from '@/components/sections/LeadForm';
+import MeetTheExperts     from '@/components/sections/MeetTheExperts';
 import Testimonials       from '@/components/sections/Testimonials';
 import TrustStrip         from '@/components/sections/TrustStrip';
+import FinalCTA           from '@/components/sections/FinalCTA';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles             from './page.module.css';
 
@@ -190,6 +194,49 @@ const CLINIC_REASONS = [
   { n: '04', text: 'Phenol application technique proven to provide 95% permanent cure rate.' },
   { n: '05', text: 'Comprehensive aftercare plan, dressing supplies, and follow-up appointment included.' },
   { n: '06', text: 'Convenient Leicester location with same-day appointments available.' },
+];
+
+const FAQS = [
+  {
+    question: 'What is Partial Nail Avulsion (PNA)?',
+    answer:
+      'Partial Nail Avulsion is a minor surgical procedure where the problematic edge of the ingrown toenail is removed. The nail root (matrix) is then treated with phenol, a chemical that destroys the tissue responsible for nail growth in that area. This prevents the ingrown edge from ever regrowing, resulting in a 95% cure rate. Only the affected portion is removed, so your toe maintains normal appearance and function.',
+  },
+  {
+    question: 'Will the procedure be painful?',
+    answer:
+      'No. A local anaesthetic ring block is administered to the toe before the procedure, completely numbing the entire toe. You will feel no pain during treatment — only sensations of pressure or minor vibration. Some mild discomfort is normal for a few days post-procedure, and your doctor will provide clear pain management advice and aftercare guidance to keep you as comfortable as possible.',
+  },
+  {
+    question: 'How long does the procedure take?',
+    answer:
+      'The Partial Nail Avulsion procedure typically takes between 15 and 30 minutes from start to finish. After the procedure is complete, you will be able to leave the clinic almost immediately. Most patients are able to walk normally straight away, though we recommend arranging transport home to ensure your comfort.',
+  },
+  {
+    question: 'What is the recovery time after ingrown toenail removal?',
+    answer:
+      'You can resume light activities immediately. Most people experience relief as soon as the anaesthetic wears off. The wound typically heals within 2 to 4 weeks depending on your body\'s healing response. Light exercise and walking can resume within days, and you can return to sport and gym activities once the wound has fully healed (usually 3–4 weeks). Your doctor will provide specific guidance based on your activities.',
+  },
+  {
+    question: 'What aftercare is required following ingrown toenail removal?',
+    answer:
+      'Following your procedure, you will receive detailed written aftercare instructions. These typically include keeping the wound clean and dry, regular dressing changes as advised, keeping weight off the toe initially, avoiding prolonged standing or tight footwear, soaking the foot in warm salt water daily, maintaining proper toenail trimming to prevent recurrence, and attending your follow-up appointment to monitor healing and check for any signs of infection.',
+  },
+  {
+    question: 'Can an ingrown toenail return after PNA treatment?',
+    answer:
+      'The recurrence rate following Partial Nail Avulsion with phenol is extremely low — typically less than 5% when proper aftercare is followed. Because phenol permanently destroys the germinal tissue that produces nail growth, that edge of the nail simply cannot return. However, the other side of the nail could potentially develop an ingrown edge in the future if predisposing factors (poor trimming, tight shoes, trauma) are not avoided. Proper nail trimming and footwear are key to prevention.',
+  },
+  {
+    question: 'When can I return to sport and exercise?',
+    answer:
+      'Light walking can resume immediately. Most patients can return to light exercise and activities within 2–3 days. However, you should avoid high-impact activities, running, and gym work until the wound has fully healed — typically 3 to 4 weeks. Your doctor will provide specific advice based on your sporting activities and the healing progress observed at your follow-up appointment.',
+  },
+  {
+    question: 'Do I need a GP referral to book an appointment at The One Clinic?',
+    answer:
+      'No, you do not need a GP referral to book a consultation at The One Clinic. However, if you would like your GP to be informed of your treatment, we can send them a letter following your appointment. You can book your consultation directly with us online or by phone, and our team will arrange an appointment at a time that suits your schedule.',
+  },
 ];
 
 /* ── Page component ─────────────────────────────────────────────── */
@@ -635,6 +682,390 @@ export default function IngownToenailRemovalPage() {
           </motion.div>
         </Container>
       </Section>
+
+      {/* ════════════════════════════════════════
+          11. RESULTS, AFTERCARE & SIDE EFFECTS
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Post-Treatment
+            </motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Results, Aftercare &amp; Side Effects
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.resultsAfterGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {/* Card 1: When Will You See Results? */}
+            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+              <div className={styles.resultsAfterCardHead}>
+                <span className={styles.resultsAfterCardIcon} aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
+                  </svg>
+                </span>
+                <h3 className={styles.resultsAfterCardTitle}>When Will You See Results?</h3>
+              </div>
+              <p className={styles.resultsAfterCardBody}>
+                Pain relief is often experienced immediately as the ingrown edge is removed. Swelling,
+                redness, and inflammation gradually subside over the first one to two weeks. The wound
+                itself heals by secondary intention, which typically takes 2 to 4 weeks depending on
+                your body's healing response and adherence to aftercare instructions.
+              </p>
+              <div className={styles.resultsAfterCardSpacer} />
+              <p className={styles.resultsAfterCardNote}>
+                Long-term results are excellent, with a 95% permanent cure rate. The ingrown edge
+                will not return because phenol has permanently destroyed the tissue that produces nail
+                in that area.
+              </p>
+            </motion.div>
+
+            {/* Card 2: Side Effects */}
+            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+              <div className={styles.resultsAfterCardHead}>
+                <span className={styles.resultsAfterCardIcon} aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+                  </svg>
+                </span>
+                <h3 className={styles.resultsAfterCardTitle}>Side Effects</h3>
+              </div>
+              <p className={styles.resultsAfterCardBody}>
+                Ingrown toenail removal is a very safe procedure. Most patients experience only mild,
+                temporary effects in the post-procedure period:
+              </p>
+              <ul className={styles.resultsAfterCardList} role="list">
+                {[
+                  'Mild to moderate soreness for 3–5 days',
+                  'Slight swelling or bruising around the treated area',
+                  'Mild bleeding or clear drainage initially when dressing is changed',
+                  'Temporary discomfort when walking initially',
+                  'Minimal drainage or exudate from the wound during healing',
+                ].map((item) => (
+                  <li key={item} className={styles.resultsAfterCardListItem}>
+                    <span className={styles.resultsAfterDot} aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div className={styles.resultsAfterCardSpacer} />
+              <p className={styles.resultsAfterCardNote}>
+                Serious complications are rare. Infection is prevented through sterile technique and
+                proper aftercare. Your doctor will provide clear guidance to minimise discomfort.
+              </p>
+            </motion.div>
+
+            {/* Card 3: Aftercare Tips */}
+            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+              <div className={styles.resultsAfterCardHead}>
+                <span className={styles.resultsAfterCardIcon} aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                  </svg>
+                </span>
+                <h3 className={styles.resultsAfterCardTitle}>Aftercare Tips</h3>
+              </div>
+              <ul className={styles.resultsAfterCardList} role="list">
+                {[
+                  'Keep dressing clean and dry; change daily or as instructed',
+                  'Soak foot in warm salt water 2–3 times daily to aid healing',
+                  'Wear loose, open-toed footwear or sandals during healing',
+                  'Keep weight off the toe initially; elevate when possible',
+                  'Trim remaining toenail straight across, never down the sides',
+                  'Attend follow-up appointment to monitor healing and prevent recurrence',
+                ].map((item) => (
+                  <li key={item} className={styles.resultsAfterCardListItem}>
+                    <span className={styles.resultsAfterDot} aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          12. CTA BANNER
+      ════════════════════════════════════════ */}
+      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book ingrown toenail removal consultation">
+        <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
+          <Image
+            src="/images/Background-logo.png"
+            alt=""
+            fill
+            className={styles.ctaBannerLogo}
+            sizes="100vw"
+          />
+        </div>
+        <Container>
+          <motion.div
+            className={styles.ctaBannerContent}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
+              Get Permanent Relief<br />from Ingrown Toenails
+            </motion.h2>
+            <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
+              Book your consultation with our expert doctors and take the first step towards
+              pain-free feet and normal activity.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={styles.ctaBannerBtn}>
+                Book Consultation
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
+
+      {/* ════════════════════════════════════════
+          13. BEST INGROWN TOENAIL TREATMENT LEICESTER
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light">
+        <Container>
+          <motion.div
+            className={styles.clinicIntroBody}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.div className={styles.clinicIntroLeft} variants={fadeUp}>
+              <p className={styles.eyebrowDark}>Expert Treatment</p>
+              <h2 className={styles.combinedHeading}>
+                Best Ingrown Toenail<br />Removal Leicester
+              </h2>
+            </motion.div>
+            <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
+              Experience expert ingrown toenail removal at The One Clinic in Leicester. Our
+              experienced, GMC-registered doctors deliver safe, effective Partial Nail Avulsion
+              under local anaesthetic with a proven 95% cure rate. We combine clinical expertise
+              with compassionate care to help you achieve permanent relief and return to normal
+              activities without pain or recurrence.
+            </motion.p>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          14. COST BANNER
+      ════════════════════════════════════════ */}
+      <section className={styles.costBanner} data-section-theme="dark" aria-label="Ingrown toenail removal cost Leicester">
+        <Container>
+          <motion.div
+            className={styles.costBannerInner}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
+              Ingrown Toenail Removal Cost at The One Clinic
+            </motion.p>
+            <motion.p className={styles.costBannerPrice} variants={fadeUp}>
+              From £350
+            </motion.p>
+            <motion.p className={styles.costBannerNote} variants={fadeUp}>
+              Our fee covers the consultation, procedure, local anaesthetic, phenol application,
+              sterile dressing, and follow-up appointment. A personalised quote will be provided
+              following your initial consultation with our doctor.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={styles.ctaBannerBtn}>
+                Book A Consultation
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
+
+      {/* ════════════════════════════════════════
+          15. WHY CHOOSE THE ONE CLINIC
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Why Us
+            </motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Why Choose The One Clinic for Ingrown Toenail Removal
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.clinicReasonsGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {CLINIC_REASONS.map((r) => (
+              <motion.div
+                key={r.n}
+                className={styles.clinicReasonCard}
+                variants={fadeUp}
+                whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
+              >
+                <span className={styles.clinicReasonNumber}>{r.n}</span>
+                <p className={styles.clinicReasonText}>{r.text}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          16. MEET THE EXPERT
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
+        <Container>
+          <motion.div
+            className={styles.expertCard}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {/* Left: full-bleed photo panel */}
+            <motion.div className={styles.expertCardPhotoPanel} variants={fadeUp}>
+              <Image
+                src="/images/imgi_20_team-thumb-VIRMANI.jpg"
+                alt="Dr Sumit Virmani, Co-Founder, The One Clinic"
+                fill
+                className={styles.expertCardPhoto}
+                sizes="(max-width: 768px) 100vw, 420px"
+              />
+            </motion.div>
+
+            {/* Right: content */}
+            <motion.div className={styles.expertCardContent} variants={stagger(0.08)}>
+              <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+                Meet The Expert
+              </motion.p>
+              <motion.h2 className={styles.expertCardName} variants={fadeUp}>
+                Dr Sumit Virmani
+              </motion.h2>
+
+              <motion.div className={styles.expertCardBadges} variants={fadeUp}>
+                {['MBBS', 'MRCGP', 'Co-Founder'].map((credential) => (
+                  <span key={credential} className={styles.expertCardBadge}>{credential}</span>
+                ))}
+              </motion.div>
+
+              <motion.p className={styles.expertCardBio} variants={fadeUp}>
+                Dr Sumit Virmani is the co-founder of The One Clinic and brings over 15 years
+                of medical expertise, with a decade as a trusted local GP. With advanced training
+                in minor surgical procedures and a meticulous approach to technique, Dr Virmani
+                specialises in minor foot surgery including ingrown toenail removal using the
+                latest PNA methodology.
+              </motion.p>
+
+              <motion.p className={styles.expertCardBio} variants={fadeUp}>
+                His expertise in Partial Nail Avulsion combined with a compassionate, patient-centred
+                approach ensures every patient receives safe, effective treatment with a 95% cure rate.
+                Dr Virmani continues to combine his ongoing GP practice with expert surgical treatment
+                at The One Clinic.
+              </motion.p>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          17. MEET THE EXPERTS
+      ════════════════════════════════════════ */}
+      <MeetTheExperts />
+
+      {/* ════════════════════════════════════════
+          18. FAQ
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Frequently Asked Questions
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.faqBody}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <Accordion items={showAllFaqs ? FAQS : FAQS.slice(0, 4)} theme="dark" />
+
+            {FAQS.length > 4 && (
+              <div className={styles.faqToggleWrap}>
+                <button
+                  className={styles.faqToggleBtn}
+                  onClick={() => setShowAllFaqs((v) => !v)}
+                  aria-expanded={showAllFaqs}
+                >
+                  {showAllFaqs ? (
+                    <>
+                      Show Less
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M4 10l4-4 4 4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </>
+                  ) : (
+                    <>
+                      Show More
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </>
+                  )}
+                </button>
+              </div>
+            )}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          19. BOOKING FORM
+      ════════════════════════════════════════ */}
+      <LeadForm />
+
+      {/* ════════════════════════════════════════
+          20. FINAL CTA
+      ════════════════════════════════════════ */}
+      <FinalCTA />
     </>
   );
 }
