@@ -762,6 +762,18 @@ export default function HaemorrhoidRemovalPage() {
               <p className={styles.resultsAfterCardBody}>
                 Haemorrhoidectomy provides long-term, often permanent relief. Proper care and lifestyle adjustments help prevent new haemorrhoids.
               </p>
+            </motion.div>
+
+            {/* Card 3: Haemorrhoidectomy Side Effects */}
+            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+              <div className={styles.resultsAfterCardHead}>
+                <span className={styles.resultsAfterCardIcon} aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 2v20m10-10H2"/><circle cx="12" cy="12" r="10"/>
+                  </svg>
+                </span>
+                <h3 className={styles.resultsAfterCardTitle}>Haemorrhoidectomy Side Effects</h3>
+              </div>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
                   'Mild pain or soreness',
