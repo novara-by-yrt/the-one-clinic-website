@@ -1367,6 +1367,68 @@
   gap: var(--space-3);
 }
 
+.treatedBenefit {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0 0 0 / 0.06);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.treatedBenefit:hover {
+  border-color: #d0d0d0;
+  box-shadow: 0 8px 24px rgba(0 0 0 / 0.12);
+  transform: translateY(-2px);
+}
+
+.treatedBenefitIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #f0f4ff 0%, #e8ecff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5b7aff;
+  flex-shrink: 0;
+  margin-bottom: var(--space-1);
+}
+
+.treatedBenefit:hover .treatedBenefitIcon {
+  background: linear-gradient(135deg, #e8ecff 0%, #dfe4ff 100%);
+}
+
+.treatedBenefit .treatedBenefitTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #1a1a1a;
+  margin: 0;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.treatedBenefit:hover .treatedBenefitTitle {
+  color: #5b7aff;
+}
+
+.treatedBenefit .treatedBenefitDesc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #666;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.treatedBenefit:hover .treatedBenefitDesc {
+  color: #333;
+}
+
 .treatedBenefitCard {
   display: flex;
   flex-direction: column;
@@ -2304,6 +2366,10 @@
 
   /* Treated benefits: 1-col */
   .treatedBenefitsGrid { grid-template-columns: 1fr; }
+  .treatedBenefit { padding: var(--space-3); }
+  .treatedBenefitIcon { width: 40px; height: 40px; }
+  .treatedBenefitTitle { font-size: 1rem; }
+  .treatedBenefitDesc { font-size: 0.9rem; }
 
   /* Clinic reasons: 1-col */
   .clinicReasonsGrid { grid-template-columns: 1fr; }
