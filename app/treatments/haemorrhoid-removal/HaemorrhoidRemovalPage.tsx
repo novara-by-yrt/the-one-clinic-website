@@ -58,7 +58,7 @@ const AT_A_GLANCE = [
   },
   {
     label: 'Haemorrhoidectomy Cost',
-    value: 'Starts from £',
+    value: 'Contact us to inquire about the cost.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
@@ -369,8 +369,8 @@ export default function HaemorrhoidRemovalPage() {
                   and discomfort.
                 </p>
                 <p className={styles.combinedDesc}>
-                  When conservative management — such as dietary changes, topical creams, or
-                  sitz baths — fails to provide lasting relief, surgical removal offers a
+                  When conservative management, such as dietary changes, topical creams, or
+                  sitz baths, fails to provide lasting relief, surgical removal offers a
                   definitive solution. At The One Clinic Leicester, our doctors assess your
                   case thoroughly and recommend the most appropriate procedure for your grade
                   of haemorrhoid and individual circumstances.
@@ -438,7 +438,7 @@ export default function HaemorrhoidRemovalPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          6. THE PROCEDURE — THREE STEPS
+          6. THE PROCEDURE, THREE STEPS
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -762,6 +762,18 @@ export default function HaemorrhoidRemovalPage() {
               <p className={styles.resultsAfterCardBody}>
                 Haemorrhoidectomy provides long-term, often permanent relief. Proper care and lifestyle adjustments help prevent new haemorrhoids.
               </p>
+            </motion.div>
+
+            {/* Card 3: Haemorrhoidectomy Side Effects */}
+            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+              <div className={styles.resultsAfterCardHead}>
+                <span className={styles.resultsAfterCardIcon} aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 2v20m10-10H2"/><circle cx="12" cy="12" r="10"/>
+                  </svg>
+                </span>
+                <h3 className={styles.resultsAfterCardTitle}>Haemorrhoidectomy Side Effects</h3>
+              </div>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
                   'Mild pain or soreness',
@@ -886,7 +898,7 @@ export default function HaemorrhoidRemovalPage() {
               Haemorrhoid Removal Cost Leicester
             </motion.p>
             <motion.p className={styles.costBannerPrice} variants={fadeUp}>
-              Starts from £____
+              Contact us to inquire about the cost.
             </motion.p>
             <motion.p className={styles.costBannerNote} variants={fadeUp}>
               At The One Clinic, the final price depends on your personalised treatment plan

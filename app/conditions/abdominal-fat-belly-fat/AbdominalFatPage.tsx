@@ -19,7 +19,7 @@ import styles from './page.module.css';
 const CAUSES = [
   {
     title: 'Diet & Nutrition',
-    desc: 'A diet high in processed foods, refined sugars, and excess calories leads to fat storage — particularly in the abdominal region. Visceral fat accumulates around the organs when calorie intake consistently exceeds expenditure.',
+    desc: 'A diet high in processed foods, refined sugars, and excess calories leads to fat storage, particularly in the abdominal region. Visceral fat accumulates around the organs when calorie intake consistently exceeds expenditure.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
@@ -73,7 +73,7 @@ const CAUSES = [
   },
   {
     title: 'Stress & Poor Sleep',
-    desc: 'Chronic stress elevates cortisol, which drives fat storage in the abdominal region. Poor sleep disrupts hunger hormones — increasing appetite and cravings — making weight management significantly harder.',
+    desc: 'Chronic stress elevates cortisol, which drives fat storage in the abdominal region. Poor sleep disrupts hunger hormones, increasing appetite and cravings, making weight management significantly harder.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
@@ -96,12 +96,12 @@ const TREATMENTS = [
   },
   {
     title: 'Morpheus8',
-    desc:  'Radiofrequency microneedling remodels subcutaneous fat and tightens lax abdominal skin simultaneously — improving both body contour and skin texture for a firmer, smoother result.',
+    desc:  'Radiofrequency microneedling remodels subcutaneous fat and tightens lax abdominal skin simultaneously, improving both body contour and skin texture for a firmer, smoother result.',
     href:  '/treatments/morpheus8',
   },
   {
     title: 'Weight Management',
-    desc:  'Our medically supervised weight management programme provides personalised support, dietary guidance, and clinical interventions to reduce overall body fat — including stubborn abdominal fat.',
+    desc:  'Our medically supervised weight management programme provides personalised support, dietary guidance, and clinical interventions to reduce overall body fat, including stubborn abdominal fat.',
     href:  '/treatments/weight-management',
   },
 ];
@@ -170,7 +170,7 @@ const FAQS = [
   {
     question: 'Is treatment suitable if I have loose skin as well as fat?',
     answer:
-      'Yes. If you have both abdominal fat and skin laxity, Morpheus8 is an excellent option as it addresses both simultaneously — reducing fat while tightening and remodelling the overlying skin. Your doctor will assess your individual concerns and recommend the most appropriate approach.',
+      'Yes. If you have both abdominal fat and skin laxity, Morpheus8 is an excellent option as it addresses both simultaneously, reducing fat while tightening and remodelling the overlying skin. Your doctor will assess your individual concerns and recommend the most appropriate approach.',
   },
   {
     question: 'What is the recovery time?',
@@ -260,7 +260,7 @@ export default function AbdominalFatPage() {
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
                 Reduce stubborn abdominal fat with advanced body contouring treatments
-                tailored to your body — for a slimmer, more defined midsection.
+                tailored to your body, for a slimmer, more defined midsection.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -336,7 +336,7 @@ export default function AbdominalFatPage() {
                 What Is Abdominal Fat?
               </motion.h2>
               <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Abdominal fat — commonly referred to as belly fat — refers to excess fat
+                Abdominal fat, commonly referred to as belly fat, refers to excess fat
                 stored around the midsection. It encompasses both subcutaneous fat (the soft,
                 pinchable layer beneath the skin) and visceral fat (stored deeper around the
                 internal organs). Both types can be resistant to diet and exercise alone.
@@ -388,7 +388,7 @@ export default function AbdominalFatPage() {
               {
                 num: '02',
                 title: 'Visceral Fat',
-                desc: 'Deeper fat surrounding the internal organs. Less visible but associated with metabolic health risks — responds primarily to diet, exercise, and medical weight management.',
+                desc: 'Deeper fat surrounding the internal organs. Less visible but associated with metabolic health risks, responds primarily to diet, exercise, and medical weight management.',
               },
               {
                 num: '03',
@@ -428,7 +428,7 @@ export default function AbdominalFatPage() {
             </motion.h2>
             <motion.p className={styles.sectionSubtext} variants={fadeUp}>
               Abdominal fat accumulates through a combination of lifestyle, hormonal,
-              and genetic factors — many of which are resistant to diet and exercise alone.
+              and genetic factors, many of which are resistant to diet and exercise alone.
             </motion.p>
           </motion.div>
 

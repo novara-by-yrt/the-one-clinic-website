@@ -50,7 +50,7 @@ const CAUSES = [
   },
   {
     title: 'Lifestyle Factors',
-    desc: 'A sedentary lifestyle, poor diet high in fat and sugar, dehydration, and smoking all contribute to poor circulation, increased fat cell expansion, and reduced skin elasticity — all of which worsen cellulite.',
+    desc: 'A sedentary lifestyle, poor diet high in fat and sugar, dehydration, and smoking all contribute to poor circulation, increased fat cell expansion, and reduced skin elasticity, all of which worsen cellulite.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
@@ -72,7 +72,7 @@ const CAUSES = [
   },
   {
     title: 'Body Fat Distribution',
-    desc: 'Higher overall body fat increases the pressure on connective tissue bands, making cellulite more prominent. However, cellulite is not exclusive to higher weight — slim individuals can also develop it due to structural factors.',
+    desc: 'Higher overall body fat increases the pressure on connective tissue bands, making cellulite more prominent. However, cellulite is not exclusive to higher weight, slim individuals can also develop it due to structural factors.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -109,7 +109,7 @@ const TREATMENTS = [
 
 /* ── Risk factors ─────────────────────────────────────────────── */
 const RISK_FACTORS = [
-  'Women — oestrogen plays a central role in cellulite development and is far more common in women than men.',
+  'Women, oestrogen plays a central role in cellulite development and is far more common in women than men.',
   'Those with a family history of cellulite or poor connective tissue structure.',
   'Adults over 35 as skin elasticity decreases and collagen production slows.',
   'Individuals with sedentary lifestyles or diets high in processed foods and sugar.',
@@ -156,7 +156,7 @@ const FAQS = [
   {
     question: 'What causes cellulite and why is it more common in women?',
     answer:
-      'Cellulite is caused by fat cells pushing through weakened bands of connective tissue (fibrous septae) beneath the skin, creating a dimpled texture. It is far more common in women because oestrogen influences fat distribution, connective tissue structure, and circulation in ways that predispose women to cellulite — particularly on the thighs, buttocks, and abdomen. Up to 90% of women experience cellulite at some point in their lives.',
+      'Cellulite is caused by fat cells pushing through weakened bands of connective tissue (fibrous septae) beneath the skin, creating a dimpled texture. It is far more common in women because oestrogen influences fat distribution, connective tissue structure, and circulation in ways that predispose women to cellulite, particularly on the thighs, buttocks, and abdomen. Up to 90% of women experience cellulite at some point in their lives.',
   },
   {
     question: 'Can cellulite be completely removed?',
@@ -261,7 +261,7 @@ export default function CellulitePage() {
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
                 Reduce the appearance of cellulite with advanced body treatments
-                that target the root cause — for smoother, firmer, more confident skin.
+                that target the root cause, for smoother, firmer, more confident skin.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -338,7 +338,7 @@ export default function CellulitePage() {
               </motion.h2>
               <motion.p className={styles.overviewPara} variants={fadeUp}>
                 Cellulite is a common condition characterised by a dimpled, uneven skin
-                texture — often described as an orange-peel appearance. It occurs when
+                texture, often described as an orange-peel appearance. It occurs when
                 fat cells beneath the skin push through weakened bands of connective
                 tissue, creating the characteristic lumpy surface most visible on the
                 thighs, buttocks, and abdomen.

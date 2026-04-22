@@ -36,7 +36,7 @@ const CAUSES = [
   },
   {
     title: 'Hormonal Changes',
-    desc: 'Hormonal fluctuations during pregnancy, the menopause, or from contraceptive use can trigger melasma — areas of deeper, patterned pigmentation on the face.',
+    desc: 'Hormonal fluctuations during pregnancy, the menopause, or from contraceptive use can trigger melasma, areas of deeper, patterned pigmentation on the face.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
@@ -45,7 +45,7 @@ const CAUSES = [
   },
   {
     title: 'Post-Inflammatory',
-    desc: 'Skin trauma such as acne, eczema, cuts, or cosmetic procedures can leave behind dark marks as the skin heals — known as post-inflammatory hyperpigmentation.',
+    desc: 'Skin trauma such as acne, eczema, cuts, or cosmetic procedures can leave behind dark marks as the skin heals, known as post-inflammatory hyperpigmentation.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -160,12 +160,12 @@ const FAQS = [
   {
     question: 'What causes pigmentation on the skin?',
     answer:
-      'Pigmentation is caused by an overproduction or irregular distribution of melanin — the pigment that gives skin its colour. Common causes include sun exposure, hormonal changes (such as pregnancy or the menopause), post-inflammatory responses from acne or skin trauma, ageing, and genetic predisposition. Identifying the underlying cause helps determine the most effective treatment.',
+      'Pigmentation is caused by an overproduction or irregular distribution of melanin, the pigment that gives skin its colour. Common causes include sun exposure, hormonal changes (such as pregnancy or the menopause), post-inflammatory responses from acne or skin trauma, ageing, and genetic predisposition. Identifying the underlying cause helps determine the most effective treatment.',
   },
   {
     question: 'Can pigmentation be permanently removed?',
     answer:
-      'Many forms of pigmentation can be significantly reduced or cleared with the right treatment. Laser therapy and chemical peels are particularly effective for sun damage, age spots, and post-inflammatory marks. However, some pigmentation — particularly melasma — can recur without ongoing sun protection and maintenance. Our doctors will advise on the most appropriate approach for your skin.',
+      'Many forms of pigmentation can be significantly reduced or cleared with the right treatment. Laser therapy and chemical peels are particularly effective for sun damage, age spots, and post-inflammatory marks. However, some pigmentation, particularly melasma, can recur without ongoing sun protection and maintenance. Our doctors will advise on the most appropriate approach for your skin.',
   },
   {
     question: 'How long do results last?',
@@ -342,7 +342,7 @@ export default function PigmentationPage() {
               </motion.h2>
               <motion.p className={styles.overviewPara} variants={fadeUp}>
                 Skin pigmentation refers to uneven colouration caused by an overproduction
-                or irregular distribution of melanin — the natural pigment responsible for
+                or irregular distribution of melanin, the natural pigment responsible for
                 skin colour. It can present as dark spots, patches, freckles, or a generally
                 uneven complexion, and may affect the face, hands, neck, or body.
               </motion.p>
@@ -388,7 +388,7 @@ export default function PigmentationPage() {
               {
                 num: '01',
                 title: 'Melasma',
-                desc: 'Larger, symmetrical patches of deeper pigmentation — often brown or grey — typically triggered by hormones and sun exposure.',
+                desc: 'Larger, symmetrical patches of deeper pigmentation, often brown or grey, typically triggered by hormones and sun exposure.',
               },
               {
                 num: '02',

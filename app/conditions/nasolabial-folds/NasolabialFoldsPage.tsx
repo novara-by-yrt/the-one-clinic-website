@@ -343,7 +343,7 @@ export default function NasolabialFoldsPage() {
                 What Are Nasolabial Folds?
               </motion.h2>
               <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Nasolabial folds — commonly known as smile lines or laugh lines — are the
+                Nasolabial folds, commonly known as smile lines or laugh lines, are the
                 two creases that run from either side of the nose down to the corners of
                 the mouth. They are a natural part of facial anatomy and become more
                 prominent as the skin loses volume and elasticity with age.

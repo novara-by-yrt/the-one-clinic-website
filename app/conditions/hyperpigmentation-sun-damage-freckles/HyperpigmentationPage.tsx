@@ -19,7 +19,7 @@ import styles from './page.module.css';
 const CAUSES = [
   {
     title: 'Sun Exposure',
-    desc: 'UV radiation stimulates excess melanin production, leading to sunspots, freckles, and broader areas of uneven darkening — particularly on the face, hands, shoulders, and décolletage.',
+    desc: 'UV radiation stimulates excess melanin production, leading to sunspots, freckles, and broader areas of uneven darkening, particularly on the face, hands, shoulders, and décolletage.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="5"/>
@@ -36,7 +36,7 @@ const CAUSES = [
   },
   {
     title: 'Hormonal Changes',
-    desc: 'Pregnancy, the menopause, and hormonal contraceptives can trigger melasma — symmetrical patches of deeper pigmentation on the cheeks, forehead, and upper lip.',
+    desc: 'Pregnancy, the menopause, and hormonal contraceptives can trigger melasma, symmetrical patches of deeper pigmentation on the cheeks, forehead, and upper lip.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
@@ -106,7 +106,7 @@ const TREATMENTS = [
   },
   {
     title: 'Polynucleotides',
-    desc:  'Stimulates deep skin regeneration, improving overall skin quality and tone — reducing post-inflammatory marks and supporting a healthier, more even complexion over time.',
+    desc:  'Stimulates deep skin regeneration, improving overall skin quality and tone, reducing post-inflammatory marks and supporting a healthier, more even complexion over time.',
     href:  '/treatments/polynucleotides-leicester',
   },
 ];
@@ -160,7 +160,7 @@ const FAQS = [
   {
     question: 'What is the difference between hyperpigmentation, sun damage, and freckles?',
     answer:
-      'Hyperpigmentation is an umbrella term for any darkening of the skin caused by excess melanin. Sun damage refers specifically to discolouration caused by UV exposure — including sunspots and age spots. Freckles are small, concentrated deposits of melanin, often genetically inherited but intensified by sun exposure. All three share the same underlying mechanism and respond well to similar treatments.',
+      'Hyperpigmentation is an umbrella term for any darkening of the skin caused by excess melanin. Sun damage refers specifically to discolouration caused by UV exposure, including sunspots and age spots. Freckles are small, concentrated deposits of melanin, often genetically inherited but intensified by sun exposure. All three share the same underlying mechanism and respond well to similar treatments.',
   },
   {
     question: 'Can hyperpigmentation be permanently treated?',
@@ -342,7 +342,7 @@ export default function HyperpigmentationPage() {
               </motion.h2>
               <motion.p className={styles.overviewPara} variants={fadeUp}>
                 Hyperpigmentation is the darkening of areas of skin caused by an excess
-                production of melanin — the pigment responsible for skin colour. It
+                production of melanin, the pigment responsible for skin colour. It
                 encompasses a broad range of concerns including sun damage, age spots,
                 freckles, melasma, and post-inflammatory marks, and can affect the face,
                 hands, neck, or body.
@@ -399,7 +399,7 @@ export default function HyperpigmentationPage() {
               {
                 num: '03',
                 title: 'Post-Inflammatory Marks',
-                desc: 'Dark spots left behind after skin inflammation — acne, eczema, or injury — as the healing skin produces excess melanin in the affected area.',
+                desc: 'Dark spots left behind after skin inflammation, acne, eczema, or injury, as the healing skin produces excess melanin in the affected area.',
               },
             ].map((type) => (
               <motion.div key={type.num} className={styles.typeCard} variants={fadeUp}>

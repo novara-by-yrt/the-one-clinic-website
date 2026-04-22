@@ -386,7 +386,7 @@ export default function Header() {
                         </AnimatePresence>
                       )}
 
-                      {/* Mega dropdown (Treatments / Conditions) — two-panel */}
+                      {/* Mega dropdown (Treatments / Conditions), two-panel */}
                       {item.groups && (
                         <AnimatePresence>
                           {isOpen && (

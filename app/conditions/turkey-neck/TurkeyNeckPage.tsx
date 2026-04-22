@@ -163,7 +163,7 @@ const FAQS = [
   {
     question: 'What causes turkey neck?',
     answer:
-      'Turkey neck is primarily caused by the natural ageing process, as collagen and elastin break down and the skin loses its ability to stay lifted. Contributing factors include genetics, significant weight loss, prolonged sun exposure, smoking, and repeated downward head movements from prolonged screen use — often referred to as tech neck.',
+      'Turkey neck is primarily caused by the natural ageing process, as collagen and elastin break down and the skin loses its ability to stay lifted. Contributing factors include genetics, significant weight loss, prolonged sun exposure, smoking, and repeated downward head movements from prolonged screen use, often referred to as tech neck.',
   },
   {
     question: 'Can turkey neck be treated without surgery?',
@@ -347,10 +347,10 @@ export default function TurkeyNeckPage() {
                 Turkey neck refers to the loose, sagging skin and horizontal creases that
                 develop on the front of the neck as we age. The skin becomes lax, the
                 underlying muscles weaken, and the neck loses the smooth, taut appearance
-                of youth — often creating a wattled or wrinkled look.
+                of youth, often creating a wattled or wrinkled look.
               </motion.p>
               <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Necklines — the horizontal creases that run across the neck — are also a
+                Necklines, the horizontal creases that run across the neck, are also a
                 common concern, increasingly associated with prolonged screen use. Both
                 conditions can be significantly improved with safe, non-surgical treatments
                 tailored to your skin and goals.

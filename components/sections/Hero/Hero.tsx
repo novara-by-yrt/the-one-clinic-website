@@ -2,7 +2,6 @@
 
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import Link from 'next/link';
 import Image from 'next/image';
 import Script from 'next/script';
 import Container from '@/components/ui/Container';
@@ -121,9 +120,8 @@ export default function Hero() {
               variants={FADE_UP}
               transition={TRANSITION_SMOOTH}
             >
-              A modern medical and aesthetics clinic offering advanced
-              treatments, weight management, and holistic healthcare
-              under one roof.
+              Advanced medical, aesthetic and wellness care, 
+              all under one roof.
             </motion.p>
 
             {/* Credential badges */}
@@ -157,11 +155,6 @@ export default function Hero() {
               <Button variant="primary" theme="dark" onClick={() => window.dispatchEvent(new CustomEvent('openCallbackModal'))}>
                 Book a Consultation
               </Button>
-
-              <Link href="#treatments" className={styles.secondaryCta}>
-                Explore Treatments
-                <span className={styles.arrow} aria-hidden="true">→</span>
-              </Link>
             </motion.div>
 
             {/* Trust badges */}

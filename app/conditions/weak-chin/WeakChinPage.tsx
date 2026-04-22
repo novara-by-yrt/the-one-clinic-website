@@ -85,7 +85,7 @@ const CAUSES = [
 const TREATMENTS = [
   {
     title: 'Dermal Fillers',
-    desc:  'Hyaluronic acid filler is precisely placed along the chin and jawline to add projection, improve symmetry, and create a sharper, more defined lower face profile — without surgery.',
+    desc:  'Hyaluronic acid filler is precisely placed along the chin and jawline to add projection, improve symmetry, and create a sharper, more defined lower face profile, without surgery.',
     href:  '/treatments/dermal-fillers',
   },
   {
@@ -154,7 +154,7 @@ const FAQS = [
   {
     question: 'What causes a weak chin or jawline?',
     answer:
-      'A weak chin or jawline is most often caused by genetics — the underlying bone structure determines how projected and defined the lower face appears. Ageing also plays a role, as bone resorption and collagen loss reduce definition over time. Volume loss, weight changes, skin laxity, and facial asymmetry can all contribute to a softer-looking lower face.',
+      'A weak chin or jawline is most often caused by genetics, the underlying bone structure determines how projected and defined the lower face appears. Ageing also plays a role, as bone resorption and collagen loss reduce definition over time. Volume loss, weight changes, skin laxity, and facial asymmetry can all contribute to a softer-looking lower face.',
   },
   {
     question: 'Can a weak chin be treated without surgery?',

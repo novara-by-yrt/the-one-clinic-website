@@ -59,12 +59,12 @@ export default function PatientExperiencePage() {
       </section>
 
       {/* ════════════════════════════════════════
-          HOW IT WORKS — PROCESS STEPS
+          HOW IT WORKS, PROCESS STEPS
       ════════════════════════════════════════ */}
       <Process />
 
       {/* ════════════════════════════════════════
-          HEAR FROM OUR PATIENTS — VIDEO TESTIMONIALS
+          HEAR FROM OUR PATIENTS, VIDEO TESTIMONIALS
       ════════════════════════════════════════ */}
       <TestimonialVideos />
 
@@ -84,12 +84,12 @@ export default function PatientExperiencePage() {
       <MeetTheExperts />
 
       {/* ════════════════════════════════════════
-          REAL TRANSFORMATIONS — BEFORE & AFTER
+          REAL TRANSFORMATIONS, BEFORE & AFTER
       ════════════════════════════════════════ */}
       <CaseStudies />
 
       {/* ════════════════════════════════════════
-          START YOUR JOURNEY TODAY — LEAD FORM
+          START YOUR JOURNEY TODAY, LEAD FORM
       ════════════════════════════════════════ */}
       <div id="contact">
         <LeadForm />

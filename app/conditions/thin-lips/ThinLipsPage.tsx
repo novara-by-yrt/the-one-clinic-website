@@ -92,7 +92,7 @@ const CAUSES = [
 const TREATMENTS = [
   {
     title: 'Dermal Fillers',
-    desc:  'Hyaluronic acid lip filler is carefully placed to restore volume, define the lip border, and improve overall shape — all while maintaining a natural, balanced appearance.',
+    desc:  'Hyaluronic acid lip filler is carefully placed to restore volume, define the lip border, and improve overall shape, all while maintaining a natural, balanced appearance.',
     href:  '/treatments/dermal-fillers',
   },
   {
@@ -342,7 +342,7 @@ export default function ThinLipsPage() {
                 What Are Thin Lips?
               </motion.h2>
               <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Thin lips refer to lips that lack volume, projection, or definition — whether
+                Thin lips refer to lips that lack volume, projection, or definition, whether
                 due to genetics, the natural ageing process, or lifestyle factors. They may
                 appear flat, uneven, or poorly defined at the borders, and can affect the
                 overall balance and harmony of the face.

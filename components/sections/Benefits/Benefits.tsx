@@ -1,10 +1,11 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
+import Button from '@/components/ui/Button';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './Benefits.module.css';
 
@@ -31,58 +32,21 @@ const BENEFITS = [
   },
 ];
 
-const SLIDES = [
-  { src: '/images/imgi_78_GTR_0328-1-1.jpg', alt: 'The One Clinic, Clinical care' },
-  { src: '/images/Doctor2.jpg', alt: 'The One Clinic, Doctor 2' },
-  { src: '/images/Doctor1.jpg', alt: 'The One Clinic, Doctor 1' },
+const IMAGES = [
+  { src: '/images/imgi_78_GTR_0328-1-1.jpg', alt: 'The One Clinic team' },
+  { src: '/images/Doctor2.jpg',               alt: 'The One Clinic doctor' },
+  { src: '/images/Doctor1.jpg',               alt: 'The One Clinic doctor' },
 ];
 
-const INTERVAL = 3000;
-const SEQ_STEP  = 700; // ms each item stays highlighted
-const SEQ_DELAY = 350; // ms before sequence starts
-
 export default function Benefits() {
-  const [active,  setActive]  = useState(0);
-  const [seqIdx,  setSeqIdx]  = useState(-1);
-
-  const itemsRef = useRef<HTMLDivElement>(null);
-  const inView   = useInView(itemsRef, { once: true, amount: 0.4 });
-
-  // Slideshow auto-advance
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActive((i) => (i + 1) % SLIDES.length);
-    }, INTERVAL);
-    return () => clearInterval(timer);
-  }, []);
-
-  // One-shot scroll sequence
-  useEffect(() => {
-    if (!inView) return;
-
-    let idx = 0;
-    let handle: ReturnType<typeof setTimeout>;
-
-    function next() {
-      setSeqIdx(idx);
-      idx++;
-      if (idx < BENEFITS.length) {
-        handle = setTimeout(next, SEQ_STEP);
-      } else {
-        handle = setTimeout(() => setSeqIdx(-1), SEQ_STEP);
-      }
-    }
-
-    handle = setTimeout(next, SEQ_DELAY);
-    return () => clearTimeout(handle);
-  }, [inView]);
+  const [expanded, setExpanded] = useState<number | null>(null);
 
   return (
     <Section variant="light" data-section-theme="light" className={styles.section}>
       <Container>
         <div className={styles.layout}>
 
-          {/* ── Left: header + benefit items ────────────────── */}
+          {/* ── Left: text col ──────────────────────────────── */}
           <motion.div
             className={styles.textCol}
             variants={stagger(0.08)}
@@ -91,30 +55,68 @@ export default function Benefits() {
             viewport={VIEWPORT}
           >
             <motion.div className={styles.header} variants={fadeUp}>
-              <h2 className={styles.heading}>Why Choose The One Clinic?</h2>
+              <p className={styles.eyebrow}>Why Choose Us</p>
+              <h2 className={styles.heading}>
+                Carefully considered.<br />
+                <em className={styles.headingAccent}>Genuinely</em> yours.
+              </h2>
+              <p className={styles.subtext}>
+                Every patient is met with genuine attention and a step-by-step plan built around their health, goals and lifestyle. Here&rsquo;s what sets us apart.
+              </p>
             </motion.div>
 
-            <div className={styles.items} ref={itemsRef}>
+            {/* ── Accordion items ──────────────────────────── */}
+            <div className={styles.items}>
               {BENEFITS.map((b, i) => (
-                <motion.div
-                  key={b.number}
-                  className={`${styles.item} ${i === seqIdx ? styles.highlighted : ''}`}
-                  initial={{ opacity: 0, y: 28 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-50px 0px' }}
-                  transition={{ duration: 0.75, ease: [0.25, 0.1, 0.25, 1], delay: i * 0.14 }}
-                >
-                  <div className={styles.itemTop}>
-                    <div className={styles.number} aria-hidden="true">{b.number}</div>
-                    <h3 className={styles.title}>{b.title}</h3>
-                  </div>
-                  <p className={styles.desc}>{b.description}</p>
+                <motion.div key={b.number} className={styles.itemWrap} variants={fadeUp}>
+                  <button
+                    className={styles.item}
+                    onClick={() => setExpanded(expanded === i ? null : i)}
+                    aria-expanded={expanded === i}
+                  >
+                    <div className={styles.itemMain}>
+                      <span className={styles.number}>{b.number}</span>
+                      <span className={styles.title}>{b.title}</span>
+                    </div>
+                    <svg
+                      className={`${styles.chevron} ${expanded === i ? styles.chevronOpen : ''}`}
+                      width="18" height="18" viewBox="0 0 18 18" fill="none"
+                      aria-hidden="true"
+                    >
+                      <path d="M4.5 6.75L9 11.25L13.5 6.75" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {expanded === i && (
+                      <motion.div
+                        className={styles.desc}
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.28, ease: [0.25, 0.1, 0.25, 1] }}
+                      >
+                        <p className={styles.descText}>{b.description}</p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </motion.div>
               ))}
             </div>
+
+            {/* ── CTAs ─────────────────────────────────────── */}
+            <motion.div className={styles.ctas} variants={fadeUp}>
+              <Button
+                variant="primary"
+                theme="light"
+                onClick={() => window.dispatchEvent(new CustomEvent('openCallbackModal'))}
+              >
+                Book a Consultation
+              </Button>
+            </motion.div>
           </motion.div>
 
-          {/* ── Right: auto-scrolling doctor image slideshow ─ */}
+          {/* ── Right: image collage ─────────────────────────── */}
           <motion.div
             className={styles.imageCol}
             initial={{ opacity: 0, x: 60 }}
@@ -122,38 +124,36 @@ export default function Benefits() {
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.85, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            <div className={styles.imageWrap}>
-              <AnimatePresence mode="sync">
-                <motion.div
-                  key={active}
-                  className={styles.slide}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.8, ease: 'easeInOut' }}
-                >
+            <div className={styles.collage}>
+              <div className={styles.collageLarge}>
+                <Image
+                  src={IMAGES[0].src}
+                  alt={IMAGES[0].alt}
+                  fill
+                  className={styles.collageImg}
+                  sizes="(max-width: 900px) 100vw, 30vw"
+                  priority
+                />
+              </div>
+              <div className={styles.collageStack}>
+                <div className={styles.collageSmall}>
                   <Image
-                    src={SLIDES[active].src}
-                    alt={SLIDES[active].alt}
+                    src={IMAGES[1].src}
+                    alt={IMAGES[1].alt}
                     fill
-                    className={styles.image}
-                    sizes="(max-width: 900px) 100vw, 50vw"
-                    priority={active === 0}
+                    className={styles.collageImg}
+                    sizes="(max-width: 900px) 50vw, 20vw"
                   />
-                </motion.div>
-              </AnimatePresence>
-
-              <div className={styles.dots} role="tablist" aria-label="Doctor image slideshow">
-                {SLIDES.map((_, i) => (
-                  <button
-                    key={i}
-                    className={`${styles.dot} ${i === active ? styles.dotActive : ''}`}
-                    onClick={() => setActive(i)}
-                    role="tab"
-                    aria-selected={i === active}
-                    aria-label={`Show image ${i + 1} of ${SLIDES.length}`}
+                </div>
+                <div className={styles.collageSmall}>
+                  <Image
+                    src={IMAGES[2].src}
+                    alt={IMAGES[2].alt}
+                    fill
+                    className={styles.collageImg}
+                    sizes="(max-width: 900px) 50vw, 20vw"
                   />
-                ))}
+                </div>
               </div>
             </div>
           </motion.div>
