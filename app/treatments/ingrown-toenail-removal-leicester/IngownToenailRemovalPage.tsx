@@ -21,8 +21,8 @@ import styles             from './page.module.css';
 
 const AT_A_GLANCE = [
   {
-    label: 'Procedure Duration',
-    value: '15–30 minutes',
+    label: 'Treatment Duration',
+    value: '45–60 minutes (Includes numbing time)',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
@@ -39,8 +39,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Recovery Time',
-    value: '2–4 weeks',
+    label: 'Downtime',
+    value: '1–2 days',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
@@ -48,8 +48,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Anaesthetic',
-    value: 'Local block',
+    label: 'Results Longevity',
+    value: 'Permanent',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
@@ -57,8 +57,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Success Rate',
-    value: '95% permanent',
+    label: 'Cost',
+    value: '£____',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
@@ -67,7 +67,7 @@ const AT_A_GLANCE = [
   },
   {
     label: 'Appointment Type',
-    value: 'In-clinic',
+    value: 'In-clinic (Minor Surgery)',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M3 21h18"/><path d="M5 21V7l8-4v4"/><path d="M19 21V11l-6-4"/><path d="M9 21v-4h6v4"/>
@@ -79,25 +79,25 @@ const AT_A_GLANCE = [
 const PROCEDURE_STEPS = [
   {
     num: '01',
-    title: 'Assessment & Preparation',
-    desc: 'Your doctor examines the affected toe and discusses your symptom history. A local anaesthetic ring block is administered to the toe, ensuring complete numbness before the procedure begins.',
+    title: 'Local Anaesthetic',
+    desc: 'We start by injecting a local anaesthetic into the base of the toe. This is called a ring block. It stings for a moment, then the whole toe goes numb.',
   },
   {
     num: '02',
-    title: 'Partial Nail Avulsion (PNA)',
-    desc: 'The affected portion of the nail is carefully removed. Phenol is applied to the nail root (matrix) to destroy germinal tissue and prevent regrowth of that edge of the nail. This is the key to permanent results.',
+    title: 'Nail Removal',
+    desc: 'Once numb, our experts carefully lift and remove the side of the nail that is cutting into the skin. We then apply a chemical solution to the root to kill the nail cells in that corner.',
   },
   {
     num: '03',
-    title: 'Wound Care & Discharge',
-    desc: 'The area is cleaned, dressed with a sterile dressing, and aftercare instructions provided. You leave the clinic with clear guidance on maintaining the wound and monitoring for infection during healing.',
+    title: 'Dressing & Discharge',
+    desc: 'We dress the toe with a sterile bandage. You feel no pain during the surgery.',
   },
 ];
 
 const TREATMENT_BENEFITS = [
   {
-    title: 'Permanent Solution',
-    desc: 'Partial Nail Avulsion with phenol destroys the ingrown edge permanently. With a 95% success rate, this is a definitive solution, not a temporary fix or palliative treatment.',
+    title: 'Immediate Relief',
+    desc: 'The pain from the nail spike stops as soon as the anaesthetic wears off.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
@@ -105,8 +105,8 @@ const TREATMENT_BENEFITS = [
     ),
   },
   {
-    title: 'Quick & Simple Procedure',
-    desc: 'The entire treatment takes just 15 to 30 minutes. You walk in, receive local anaesthetic, have the procedure, and walk out — all within an hour from arrival to discharge.',
+    title: 'High Cure Rate',
+    desc: 'Using phenolisation helps ensure the ingrown section rarely regrows.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
@@ -114,8 +114,8 @@ const TREATMENT_BENEFITS = [
     ),
   },
   {
-    title: 'Pain-Free Procedure',
-    desc: 'The local anaesthetic ring block numbs the entire toe. You feel no pain during treatment — only mild pressure or vibration. Any post-procedure discomfort is minimal and easily managed.',
+    title: 'Cosmetic Result',
+    desc: 'We only remove the side of the nail. The rest of the nail stays intact.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -123,8 +123,8 @@ const TREATMENT_BENEFITS = [
     ),
   },
   {
-    title: 'Expert Surgical Care',
-    desc: 'All procedures are performed by experienced GMC-registered doctors who specialise in minor foot surgery. Every patient receives meticulous care and attention to sterile technique.',
+    title: 'Quick Recovery',
+    desc: 'You can walk immediately afterwards (wearing open-toed shoes).',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M3 21h18"/><path d="M5 21V7l8-4v4"/><path d="M19 21V11l-6-4"/>
@@ -132,8 +132,8 @@ const TREATMENT_BENEFITS = [
     ),
   },
   {
-    title: 'Return to Normal Activity',
-    desc: 'Most patients walk normally immediately after treatment. Light exercise resumes within days, and you can return to sport and gym activities within 3 to 4 weeks once healing is complete.',
+    title: 'Medical Safety',
+    desc: 'Performed by a doctor in a sterile environment, reducing infection risk.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
@@ -141,8 +141,8 @@ const TREATMENT_BENEFITS = [
     ),
   },
   {
-    title: 'Comprehensive Aftercare',
-    desc: 'You receive detailed written aftercare instructions, guidance on dressing changes, signs of infection to watch for, and a follow-up appointment to ensure proper healing.',
+    title: 'No More Antibiotics',
+    desc: 'By removing the cause (an ingrown nail), the infection resolves naturally.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
@@ -188,54 +188,59 @@ const CAUSES = [
 ];
 
 const CLINIC_REASONS = [
-  { n: '01', text: 'Experienced GMC-registered doctors trained in minor foot surgery and PNA technique.' },
-  { n: '02', text: 'Local anaesthetic ring block ensuring a completely pain-free procedure and recovery.' },
-  { n: '03', text: 'Sterile, professional surgical environment with strict infection-control measures.' },
-  { n: '04', text: 'Phenol application technique proven to provide 95% permanent cure rate.' },
-  { n: '05', text: 'Comprehensive aftercare plan, dressing supplies, and follow-up appointment included.' },
-  { n: '06', text: 'Convenient Leicester location with same-day appointments available.' },
+  { n: '01', text: 'Expert doctors with minor surgery qualifications.' },
+  { n: '02', text: 'Usage of proper local anaesthetic blocks.' },
+  { n: '03', text: 'Permanent solution using phenolisation.' },
+  { n: '04', text: 'No long waiting lists - quick relief.' },
+  { n: '05', text: 'Sterile, clinical environment (better than a salon).' },
+  { n: '06', text: 'Honest advice and transparent pricing.' },
 ];
 
 const FAQS = [
   {
-    question: 'What is Partial Nail Avulsion (PNA)?',
+    question: 'Does the injection hurt?',
     answer:
-      'Partial Nail Avulsion is a minor surgical procedure where the problematic edge of the ingrown toenail is removed. The nail root (matrix) is then treated with phenol, a chemical that destroys the tissue responsible for nail growth in that area. This prevents the ingrown edge from ever regrowing, resulting in a 95% cure rate. Only the affected portion is removed, so your toe maintains normal appearance and function.',
+      'The injection into the toe can sting for a few seconds. However, it works very quickly. Within minutes, the toe is completely numb, and you will not feel the surgery at all.',
   },
   {
-    question: 'Will the procedure be painful?',
+    question: 'Can I walk afterwards?',
     answer:
-      'No. A local anaesthetic ring block is administered to the toe before the procedure, completely numbing the entire toe. You will feel no pain during treatment — only sensations of pressure or minor vibration. Some mild discomfort is normal for a few days post-procedure, and your doctor will provide clear pain management advice and aftercare guidance to keep you as comfortable as possible.',
+      'Yes. You can walk out of the clinic. However, your toe will be numb for a few hours, and you will have a bulky dressing on. We recommend bringing open-toed sandals to wear home.',
   },
   {
-    question: 'How long does the procedure take?',
+    question: 'Will I lose the whole nail?',
     answer:
-      'The Partial Nail Avulsion procedure typically takes between 15 and 30 minutes from start to finish. After the procedure is complete, you will be able to leave the clinic almost immediately. Most patients are able to walk normally straight away, though we recommend arranging transport home to ensure your comfort.',
+      'Usually, no. We perform a Partial Nail Avulsion (PNA). We only remove the side strip that is ingrown. The rest of the nail stays. It will just look slightly narrower.',
   },
   {
-    question: 'What is the recovery time after ingrown toenail removal?',
+    question: 'Can I drive home?',
     answer:
-      'You can resume light activities immediately. Most people experience relief as soon as the anaesthetic wears off. The wound typically heals within 2 to 4 weeks depending on your body\'s healing response. Light exercise and walking can resume within days, and you can return to sport and gym activities once the wound has fully healed (usually 3–4 weeks). Your doctor will provide specific guidance based on your activities.',
+      'It is better not to. Your foot will be numb, which can affect your control of the pedals. Please arrange a lift or use a taxi.',
   },
   {
-    question: 'What aftercare is required following ingrown toenail removal?',
+    question: 'Do I need antibiotics?',
     answer:
-      'Following your procedure, you will receive detailed written aftercare instructions. These typically include keeping the wound clean and dry, regular dressing changes as advised, keeping weight off the toe initially, avoiding prolonged standing or tight footwear, soaking the foot in warm salt water daily, maintaining proper toenail trimming to prevent recurrence, and attending your follow-up appointment to monitor healing and check for any signs of infection.',
+      'Not always. Removing the nail spike usually allows the infection to drain and heal. If the infection is severe, Dr Virmani may prescribe antibiotics.',
   },
   {
-    question: 'Can an ingrown toenail return after PNA treatment?',
+    question: 'How long will it take for me to wear normal shoes?',
     answer:
-      'The recurrence rate following Partial Nail Avulsion with phenol is extremely low — typically less than 5% when proper aftercare is followed. Because phenol permanently destroys the germinal tissue that produces nail growth, that edge of the nail simply cannot return. However, the other side of the nail could potentially develop an ingrown edge in the future if predisposing factors (poor trimming, tight shoes, trauma) are not avoided. Proper nail trimming and footwear are key to prevention.',
+      'You can usually wear wide, comfortable shoes after a few days. Avoid tight-fitting shoes or high heels for at least two weeks while the wound heals.',
   },
   {
-    question: 'When can I return to sport and exercise?',
+    question: 'Why not consult a chiropodist?',
     answer:
-      'Light walking can resume immediately. Most patients can return to light exercise and activities within 2–3 days. However, you should avoid high-impact activities, running, and gym work until the wound has fully healed — typically 3 to 4 weeks. Your doctor will provide specific advice based on your sporting activities and the healing progress observed at your follow-up appointment.',
+      'Many chiropodists are excellent. However, at The One Clinic, we are medical doctors. We can use stronger anaesthetics and perform the surgical chemical ablation (phenolisation) to ensure a permanent cure.',
   },
   {
-    question: 'Do I need a GP referral to book an appointment at The One Clinic?',
+    question: 'Will it grow back?',
     answer:
-      'No, you do not need a GP referral to book a consultation at The One Clinic. However, if you would like your GP to be informed of your treatment, we can send them a letter following your appointment. You can book your consultation directly with us online or by phone, and our team will arrange an appointment at a time that suits your schedule.',
+      'Without chemical treatment, the nail often grows back. We use phenol to kill the root in the corner. This means the recurrence rate is very low (less than 5%).',
+  },
+  {
+    question: 'Can you do both feet at once?',
+    answer:
+      'Yes. If you have ingrown nails on both big toes, we can treat them in a single appointment to save you time.',
   },
 ];
 
@@ -410,7 +415,7 @@ export default function IngownToenailRemovalPage() {
           >
             <motion.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Ingrown Toenail Removal at a Glance
+              Toenail Surgery At A Glance
             </motion.h2>
           </motion.div>
 
@@ -446,12 +451,8 @@ export default function IngownToenailRemovalPage() {
           >
             <motion.p className={styles.eyebrowLight} variants={fadeUp}>The Process</motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              What to Expect at Your Appointment
+              Ingrown Toenail Removal Procedure
             </motion.h2>
-            <motion.p className={styles.combinationIntroText} variants={fadeUp}>
-              From your initial assessment through to discharge, every step is handled with
-              care, precision, and your comfort in mind.
-            </motion.p>
           </motion.div>
 
           <motion.div
@@ -505,7 +506,7 @@ export default function IngownToenailRemovalPage() {
           >
             <motion.p className={styles.eyebrowDark} variants={fadeUp}>Why Choose This Treatment</motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Benefits of Ingrown Toenail Removal
+              Ingrown Toenail Removal Treatment Benefits
             </motion.h2>
           </motion.div>
 
@@ -768,7 +769,7 @@ export default function IngownToenailRemovalPage() {
               Post-Treatment
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Results, Aftercare &amp; Side Effects
+              Ingrown Toenail Removal Results, Aftercare &amp; Side Effects
             </motion.h2>
           </motion.div>
 
@@ -787,13 +788,11 @@ export default function IngownToenailRemovalPage() {
                     <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
                   </svg>
                 </span>
-                <h3 className={styles.resultsAfterCardTitle}>When Will You See Results?</h3>
+                <h3 className={styles.resultsAfterCardTitle}>When Will You See The Results?</h3>
               </div>
               <p className={styles.resultsAfterCardBody}>
-                Pain relief is often experienced immediately as the ingrown edge is removed. Swelling,
-                redness, and inflammation gradually subside over the first one to two weeks. The wound
-                itself heals by secondary intention, which typically takes 2 to 4 weeks depending on
-                your body's healing response and adherence to aftercare instructions.
+                You will feel relief straightaway. The wound takes about 2 to 4 weeks to heal completely.
+                During this time, you will need to change the dressing regularly.
               </p>
               <div className={styles.resultsAfterCardSpacer} />
               <p className={styles.resultsAfterCardNote}>
@@ -803,7 +802,23 @@ export default function IngownToenailRemovalPage() {
               </p>
             </motion.div>
 
-            {/* Card 2: Side Effects */}
+            {/* Card 2: Is The Removal Permanent */}
+            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+              <div className={styles.resultsAfterCardHead}>
+                <span className={styles.resultsAfterCardIcon} aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                  </svg>
+                </span>
+                <h3 className={styles.resultsAfterCardTitle}>Is The Removal Permanent?</h3>
+              </div>
+              <p className={styles.resultsAfterCardBody}>
+                Yes. Because we use chemical cauterisation (phenol) on the root, the risk of the nail
+                growing back into the skin is very low (less than 5%).
+              </p>
+            </motion.div>
+
+            {/* Card 3: Potential Side Effects */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -811,19 +826,17 @@ export default function IngownToenailRemovalPage() {
                     <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
                   </svg>
                 </span>
-                <h3 className={styles.resultsAfterCardTitle}>Side Effects</h3>
+                <h3 className={styles.resultsAfterCardTitle}>Potential Side Effects</h3>
               </div>
               <p className={styles.resultsAfterCardBody}>
-                Ingrown toenail removal is a very safe procedure. Most patients experience only mild,
-                temporary effects in the post-procedure period:
+                Toenail surgery is very safe. Common, temporary side effects include:
               </p>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Mild to moderate soreness for 3–5 days',
-                  'Slight swelling or bruising around the treated area',
-                  'Mild bleeding or clear drainage initially when dressing is changed',
-                  'Temporary discomfort when walking initially',
-                  'Minimal drainage or exudate from the wound during healing',
+                  'Soreness once the anaesthetic wears off (paracetamol helps).',
+                  'Weeping from the wound (this is normal as it heals).',
+                  'Mild swelling.',
+                  'Infection (rare if you follow aftercare instructions).',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
                     <span className={styles.resultsAfterDot} aria-hidden="true" />
@@ -833,8 +846,7 @@ export default function IngownToenailRemovalPage() {
               </ul>
               <div className={styles.resultsAfterCardSpacer} />
               <p className={styles.resultsAfterCardNote}>
-                Serious complications are rare. Infection is prevented through sterile technique and
-                proper aftercare. Your doctor will provide clear guidance to minimise discomfort.
+                We provide full aftercare instructions to manage healing at home.
               </p>
             </motion.div>
 
@@ -890,11 +902,10 @@ export default function IngownToenailRemovalPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
-              Get Permanent Relief<br />from Ingrown Toenails
+              Step Into Comfort<br />Again
             </motion.h2>
             <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
-              Book your consultation with our expert doctors and take the first step towards
-              pain-free feet and normal activity.
+              Do not limp around in pain any longer. Let our experts sort it out for you.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
@@ -918,17 +929,16 @@ export default function IngownToenailRemovalPage() {
             viewport={VIEWPORT}
           >
             <motion.div className={styles.clinicIntroLeft} variants={fadeUp}>
-              <p className={styles.eyebrowDark}>Expert Treatment</p>
+              <p className={styles.eyebrowDark}>Expert Care</p>
               <h2 className={styles.combinedHeading}>
-                Best Ingrown Toenail<br />Removal Leicester
+                Best Minor Surgery<br />Experience in Leicester
               </h2>
             </motion.div>
             <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
-              Experience expert ingrown toenail removal at The One Clinic in Leicester. Our
-              experienced, GMC-registered doctors deliver safe, effective Partial Nail Avulsion
-              under local anaesthetic with a proven 95% cure rate. We combine clinical expertise
-              with compassionate care to help you achieve permanent relief and return to normal
-              activities without pain or recurrence.
+              Experience the best medical care at The One Clinic. We are not just a beauty clinic;
+              we are a medical facility. We provide a sterile, safe environment to sort out painful
+              problems like ingrown toenails permanently. You get expert doctor-led care without the
+              long NHS waiting times.
             </motion.p>
           </motion.div>
         </Container>
@@ -953,9 +963,8 @@ export default function IngownToenailRemovalPage() {
               From £350
             </motion.p>
             <motion.p className={styles.costBannerNote} variants={fadeUp}>
-              Our fee covers the consultation, procedure, local anaesthetic, phenol application,
-              sterile dressing, and follow-up appointment. A personalised quote will be provided
-              following your initial consultation with our doctor.
+              This price includes the surgery, the chemical treatment, and the dressings. We will
+              confirm the exact cost for one or both toes during your consultation.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
@@ -982,7 +991,7 @@ export default function IngownToenailRemovalPage() {
               Why Us
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Why Choose The One Clinic for Ingrown Toenail Removal
+              Why Choose The One Clinic For Ingrown Toenail Removal
             </motion.h2>
           </motion.div>
 
