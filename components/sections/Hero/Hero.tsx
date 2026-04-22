@@ -121,9 +121,8 @@ export default function Hero() {
               variants={FADE_UP}
               transition={TRANSITION_SMOOTH}
             >
-              A modern medical and aesthetics clinic offering advanced
-              treatments, weight management, and holistic healthcare
-              under one roof.
+              Advanced medical, aesthetic and wellness care —
+              all under one roof.
             </motion.p>
 
             {/* Credential badges */}
