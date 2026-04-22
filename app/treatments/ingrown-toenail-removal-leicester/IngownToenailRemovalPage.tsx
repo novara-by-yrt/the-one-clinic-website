@@ -618,11 +618,8 @@ export default function IngownToenailRemovalPage() {
       {/* ════════════════════════════════════════
           10. HOW DOES IT WORK?
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
-        <div className={styles.whiteBgWrap} aria-hidden="true">
-          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
-        </div>
-        <Container className={styles.whiteBgContent}>
+      <Section variant="light" data-section-theme="light">
+        <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
@@ -637,34 +634,38 @@ export default function IngownToenailRemovalPage() {
           </motion.div>
 
           <motion.div
-            className={styles.whatIsGrid}
+            className={styles.howWorksGrid}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
             {/* Left: explanation */}
-            <motion.div className={styles.whatIsContent} variants={stagger(0.12)}>
-              <motion.div className={styles.whatIsTextGroup} variants={fadeUp}>
-                <p className={styles.combinedDesc}>
-                  The most effective way to treat a recurring ingrown toenail is Partial Nail Avulsion (PNA).
-                  This is a minor surgical procedure. At The One Clinic, we do not just cut the nail. We remove
-                  the offending edge of the nail straight down to the root. We then use a chemical to destroy
-                  the nail matrix (the root). This prevents that specific part of the nail from regrowing,
-                  providing a permanent cure.
-                </p>
-              </motion.div>
+            <motion.div className={styles.howWorksText} variants={fadeUp}>
+              <p className={styles.howWorksPara}>
+                The most effective way to treat a recurring ingrown toenail is Partial Nail Avulsion (PNA).
+                This is a minor surgical procedure performed under local anaesthetic.
+              </p>
+              <p className={styles.howWorksPara}>
+                At The One Clinic, we do not just cut the nail. We remove the offending edge straight down
+                to the root. We then apply a chemical (phenol) to destroy the nail matrix — the tissue that
+                grows that specific section of nail. This prevents regrowth in that area, providing a
+                permanent cure.
+              </p>
             </motion.div>
 
-            {/* Right: image */}
-            <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
-              <Image
-                src="/images/Doctor1.jpg"
-                alt="Ingrown toenail removal procedure illustration at The One Clinic"
-                fill
-                className={styles.whatIsVideoFrame}
-                sizes="(max-width: 900px) 100vw, 50vw"
-              />
+            {/* Right: key facts */}
+            <motion.div className={styles.howWorksStats} variants={stagger(0.1)}>
+              {[
+                { stat: '95%', label: 'Permanent cure rate with phenolisation' },
+                { stat: '~45 min', label: 'Total procedure time including numbing' },
+                { stat: 'Same day', label: 'Walk out of the clinic after treatment' },
+              ].map((item) => (
+                <motion.div key={item.stat} className={styles.howWorksStat} variants={fadeUp}>
+                  <span className={styles.howWorksStatNum}>{item.stat}</span>
+                  <span className={styles.howWorksStatLabel}>{item.label}</span>
+                </motion.div>
+              ))}
             </motion.div>
           </motion.div>
         </Container>
@@ -703,6 +704,7 @@ export default function IngownToenailRemovalPage() {
           >
             {[
               {
+                num: '01',
                 title: 'Pain Relief',
                 items: [
                   'We use a local anaesthetic ring block.',
@@ -710,6 +712,7 @@ export default function IngownToenailRemovalPage() {
                 ],
               },
               {
+                num: '02',
                 title: 'Infection Control',
                 items: [
                   'By removing the nail spike piercing the skin, we allow the wound to heal.',
@@ -717,6 +720,7 @@ export default function IngownToenailRemovalPage() {
                 ],
               },
               {
+                num: '03',
                 title: 'Permanent Prevention',
                 items: [
                   'We apply phenol to the nail root.',
@@ -724,11 +728,13 @@ export default function IngownToenailRemovalPage() {
                 ],
               },
             ].map((benefit) => (
-              <motion.div key={benefit.title} className={styles.treatedBenefit} variants={fadeUp}>
-                <h3 className={styles.treatedBenefitTitle}>{benefit.title}</h3>
-                <ul className={styles.treatedBenefitDesc} role="list">
+              <motion.div key={benefit.title} className={styles.advantageCard} variants={fadeUp}>
+                <span className={styles.advantageCardNum}>{benefit.num}</span>
+                <h3 className={styles.advantageCardTitle}>{benefit.title}</h3>
+                <ul className={styles.advantageCardList} role="list">
                   {benefit.items.map((item, idx) => (
-                    <li key={idx} style={{ marginBottom: '8px', lineHeight: '1.6', fontSize: '0.95rem' }}>
+                    <li key={idx} className={styles.advantageCardItem}>
+                      <span className={styles.advantageCardDot} aria-hidden="true" />
                       {item}
                     </li>
                   ))}

@@ -1359,6 +1359,270 @@
 }
 
 /* ════════════════════════════════════════════════════
+   HOW DOES TREATMENT WORK — text + stats grid
+════════════════════════════════════════════════════ */
+.howWorksGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--space-6), 6vw, 80px);
+  align-items: start;
+}
+
+.howWorksText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.howWorksPara {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.howWorksStats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.howWorksStat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: var(--space-4) var(--space-5);
+  background: #f7f8fa;
+  border: 1px solid #e8e8e8;
+  border-left: 4px solid #111;
+  border-radius: 10px;
+}
+
+.howWorksStatNum {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #111;
+  line-height: 1;
+}
+
+.howWorksStatLabel {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #666;
+}
+
+/* ════════════════════════════════════════════════════
+   ELIGIBILITY CHECKLIST
+════════════════════════════════════════════════════ */
+.eligibilityChecklistWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.eligibilityChecklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.eligibilityItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  color: #111827;
+  line-height: 1.5;
+  padding: var(--space-3) var(--space-4);
+  background: #fff;
+  border: 1px solid rgba(0 0 0 / 0.08);
+  border-radius: 12px;
+  transition: all 0.25s ease;
+}
+
+.eligibilityItem:hover {
+  background: #111;
+  border-color: #111;
+  color: #fff;
+  transform: translateX(6px);
+  box-shadow: 0 8px 28px rgba(0 0 0 / 0.35);
+}
+
+.eligibilityCheckmark {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  border-radius: 50%;
+  background: #f0faf4;
+  border: 1.5px solid #22c55e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #16a34a;
+  font-size: 0.85rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+
+.eligibilityItem:hover .eligibilityCheckmark {
+  background: rgba(255 255 255 / 0.15);
+  border-color: rgba(255 255 255 / 0.4);
+  color: #fff;
+}
+
+/* ════════════════════════════════════════════════════
+   CAUSES GRID
+════════════════════════════════════════════════════ */
+.causesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.causeStep {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-4);
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.causeStep::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #111 0%, #555 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.causeStep:hover {
+  border-color: #ccc;
+  box-shadow: 0 8px 32px rgba(0 0 0 / 0.1);
+  transform: translateY(-3px);
+}
+
+.causeStep:hover::before {
+  opacity: 1;
+}
+
+.causeNum {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 4px;
+}
+
+.causeTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.causeDesc {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: #666;
+  margin: 0;
+}
+
+/* ════════════════════════════════════════════════════
+   SURGICAL ADVANTAGE CARDS
+════════════════════════════════════════════════════ */
+.advantageCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-4);
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0 0 0 / 0.06);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.advantageCard:hover {
+  border-color: #ccc;
+  box-shadow: 0 10px 32px rgba(0 0 0 / 0.12);
+  transform: translateY(-3px);
+}
+
+.advantageCardNum {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #f0f0f0;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #555;
+  flex-shrink: 0;
+}
+
+.advantageCardTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #111;
+  margin: 0;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+}
+
+.advantageCardList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.advantageCardItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.advantageCardDot {
+  width: 7px;
+  height: 7px;
+  min-width: 7px;
+  border-radius: 50%;
+  background: #111;
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+/* ════════════════════════════════════════════════════
    TREATED BENEFITS (6-card grid)
 ════════════════════════════════════════════════════ */
 .treatedBenefitsGrid {
@@ -1521,8 +1785,8 @@
 ════════════════════════════════════════════════════ */
 .resultsAfterGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-3);
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
   align-items: stretch;
 }
 
@@ -2159,9 +2423,9 @@
   .howCoversList { grid-template-columns: repeat(2, 1fr); }
   .techCardsGrid { grid-template-columns: 1fr 1fr; }
   .treatedBenefitsGrid { grid-template-columns: repeat(2, 1fr); }
-  .resultsAfterGrid { grid-template-columns: 1fr 1fr; }
   .clinicReasonsGrid { grid-template-columns: repeat(2, 1fr); }
   .expertCard { grid-template-columns: 300px 1fr; }
+  .causesGrid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* Combined section: collapse to single column on tablet/mobile */
@@ -2255,6 +2519,12 @@
   .whatIsGrid { grid-template-columns: 1fr; gap: var(--space-5); }
   .whatIsImageWrap { aspect-ratio: 4 / 3; }
   .whatIsVideoWrap { aspect-ratio: 4 / 3; }
+
+  /* How Does Treatment Work: stack on mobile */
+  .howWorksGrid { grid-template-columns: 1fr; gap: var(--space-5); }
+
+  /* Causes: 2-col on mobile */
+  .causesGrid { grid-template-columns: repeat(2, 1fr); gap: var(--space-2); }
 
   /* Standalone At a Glance: 2-col on mobile */
   .glanceStandaloneGrid { grid-template-columns: repeat(2, 1fr); }
@@ -2370,6 +2640,15 @@
   .treatedBenefitIcon { width: 40px; height: 40px; }
   .treatedBenefitTitle { font-size: 1rem; }
   .treatedBenefitDesc { font-size: 0.9rem; }
+
+  /* Causes: 1-col on small mobile */
+  .causesGrid { grid-template-columns: 1fr; }
+
+  /* Advantage cards: 1-col */
+  .advantageCard { padding: var(--space-4) var(--space-3); }
+
+  /* Results: 1-col */
+  .resultsAfterGrid { grid-template-columns: 1fr; }
 
   /* Clinic reasons: 1-col */
   .clinicReasonsGrid { grid-template-columns: 1fr; }
