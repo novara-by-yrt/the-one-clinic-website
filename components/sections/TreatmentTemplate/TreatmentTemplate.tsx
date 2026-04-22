@@ -22,7 +22,7 @@ export default function TreatmentTemplate({ treatment }: Props) {
   const { title, category, shortDescription, description, benefits, process, faq } = treatment;
 
   // Split description into paragraphs on \n\n
-  const paragraphs = description.split('\n\n').filter(Boolean);
+  const paragraphs = description ? description.split('\n\n').filter(Boolean) : [];
 
   return (
     <>
@@ -128,7 +128,7 @@ export default function TreatmentTemplate({ treatment }: Props) {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {benefits.map((benefit) => (
+            {benefits?.map((benefit) => (
               <motion.div key={benefit.title} variants={fadeUp}>
                 <Card theme="dark" className={styles.benefitCard}>
                   <h3 className={styles.benefitTitle}>{benefit.title}</h3>
@@ -166,7 +166,7 @@ export default function TreatmentTemplate({ treatment }: Props) {
             viewport={VIEWPORT}
             aria-label="Treatment process steps"
           >
-            {process.map((step) => (
+            {process?.map((step) => (
               <motion.li key={step.number} className={styles.processStep} variants={fadeUp}>
                 <span className={styles.stepNum} aria-hidden="true">
                   {step.number}
