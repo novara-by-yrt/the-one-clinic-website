@@ -1,33 +1,6 @@
-/* ── Section padding override (more compact) ─────────────────────── */
+/* ── Section ─────────────────────────────────────────────────────── */
 .section {
-  padding-block: var(--space-6);
-}
-
-@media (max-width: 1024px) {
-  .section { padding-block: var(--space-5); }
-}
-
-/* ── Header ──────────────────────────────────────────────────────── */
-.header {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  margin-bottom: var(--space-4);
-}
-
-.eyebrow {
-  font-size: var(--text-small);
-  font-weight: var(--fw-medium);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
-
-.heading {
-  font-size: var(--text-h2);
-  font-weight: var(--fw-bold);
-  letter-spacing: -0.02em;
-  color: var(--color-text-dark);
+  padding-block: var(--space-8);
 }
 
 /* ── Two-column layout ───────────────────────────────────────────── */
@@ -35,76 +8,92 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-8);
-  align-items: stretch;
+  align-items: center;
 }
 
-/* ── Left: text + items ──────────────────────────────────────────── */
+/* ── Left: text col ──────────────────────────────────────────────── */
 .textCol {
   display: flex;
   flex-direction: column;
   gap: var(--space-5);
 }
 
+/* ── Header block ────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.heading {
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: var(--color-text-dark);
+}
+
+.headingAccent {
+  font-style: italic;
+  font-weight: var(--fw-bold);
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.subtext {
+  font-size: var(--text-body);
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  max-width: 460px;
+}
+
+/* ── Accordion ───────────────────────────────────────────────────── */
 .items {
   display: flex;
   flex-direction: column;
-  gap: 0;
-}
-
-.item {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
-  padding: var(--space-3) var(--space-2);
-  margin-inline: calc(-1 * var(--space-2));
   border-top: 1px solid var(--color-border-light);
-  border-radius: 10px;
-  cursor: default;
-  transition:
-    background 0.25s ease,
-    border-color 0.25s ease;
 }
 
-.item:last-child {
+.itemWrap {
   border-bottom: 1px solid var(--color-border-light);
 }
 
-.item:hover,
-.item.highlighted {
-  background: rgba(0, 0, 0, 0.035);
-}
-
-.itemTop {
+.item {
+  width: 100%;
   display: flex;
   align-items: center;
-  gap: 14px;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: opacity 0.18s ease;
 }
 
-/* ── Number circle ──────────────────────────────────────────────── */
+.item:hover { opacity: 0.72; }
+
+.itemMain {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
 .number {
-  width: 38px;
-  height: 38px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  border: 2px solid rgba(0, 0, 0, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--color-text-muted);
-  transition:
-    background 0.25s ease,
-    border-color 0.25s ease,
-    color 0.25s ease;
-}
-
-.item:hover .number,
-.item.highlighted .number {
-  background: #000;
-  border-color: #000;
-  color: #fff;
+  letter-spacing: 0.08em;
+  color: rgba(0, 0, 0, 0.3);
+  min-width: 22px;
+  flex-shrink: 0;
 }
 
 .title {
@@ -112,114 +101,109 @@
   font-weight: var(--fw-bold);
   color: var(--color-text-dark);
   letter-spacing: -0.01em;
-  transition: color 0.25s ease;
 }
 
-.item:hover .title,
-.item.highlighted .title {
+.chevron {
+  color: rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+  transition: transform 0.25s ease, color 0.2s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
   color: #000;
 }
 
 .desc {
+  overflow: hidden;
+}
+
+.descText {
   font-size: var(--text-small);
   color: var(--color-text-muted);
   line-height: var(--lh-normal);
-  padding-left: 52px; /* 38px circle + 14px gap */
-  transition: color 0.25s ease;
+  padding: 0 0 18px 40px;
 }
 
-.item:hover .desc,
-.item.highlighted .desc {
-  color: rgba(0, 0, 0, 0.65);
+/* ── CTA row ─────────────────────────────────────────────────────── */
+.ctas {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
 }
 
-/* ── Right: image slideshow ──────────────────────────────────────── */
+/* ── Right: image collage ────────────────────────────────────────── */
 .imageCol {
-  position: sticky;
-  top: calc(64px + var(--space-5));
-  /* Stretch to match text column height */
-  align-self: stretch;
+  height: 100%;
+}
+
+.collage {
+  display: flex;
+  gap: 12px;
+  height: 540px;
+}
+
+.collageLarge {
+  flex: 1.05;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #e8e8e8;
+}
+
+.collageStack {
+  flex: 1;
   display: flex;
   flex-direction: column;
+  gap: 12px;
 }
 
-.imageWrap {
-  position: relative;
-  width: 100%;
+.collageSmall {
   flex: 1;
-  min-height: 300px;
-  border-radius: 0.75rem;
+  position: relative;
+  border-radius: 20px;
   overflow: hidden;
-  background: #0a0a0a;
-  /* Contain ensures full image is always visible */
+  background: #e8e8e8;
 }
 
-/* Each slide fills the wrapper absolutely so they crossfade */
-.slide {
-  position: absolute;
-  inset: 0;
-}
-
-.image {
+.collageImg {
   object-fit: cover;
   object-position: center top;
 }
 
-/* ── Pagination dots ─────────────────────────────────────────────── */
-.dots {
-  position: absolute;
-  bottom: var(--space-4);
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  z-index: 2;
+/* ═══════════════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .layout { gap: var(--space-6); }
+  .collage { height: 480px; }
 }
 
-.dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.45);
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  transition: background 0.25s ease, transform 0.25s ease;
-}
-
-.dot:hover {
-  background: rgba(255, 255, 255, 0.75);
-}
-
-.dotActive {
-  background: var(--color-white);
-  transform: scale(1.35);
-}
-
-.dot:focus-visible {
-  outline: 2px solid white;
-  outline-offset: 3px;
-  border-radius: 50%;
-}
-
-/* ── Responsive ──────────────────────────────────────────────────── */
 @media (max-width: 900px) {
+  .section { padding-block: var(--space-6); }
+
   .layout {
     grid-template-columns: 1fr;
-    gap: var(--space-7);
+    gap: var(--space-6);
   }
 
-  .imageCol {
-    position: static;
+  /* Image on top on mobile/tablet */
+  .imageCol { order: -1; }
+
+  .collage {
+    height: 380px;
   }
 
-  .imageWrap {
-    aspect-ratio: 3 / 4;
-    min-height: unset;
-  }
+  .subtext { max-width: 100%; }
+}
 
-  .heading {
-    font-size: var(--text-h3);
-  }
+@media (max-width: 580px) {
+  .collage { height: 300px; }
+
+  /* Hide second column of collage on small screens */
+  .collageStack { display: none; }
+  .collageLarge { flex: 1; border-radius: 16px; }
+
+  .descText { padding-left: 28px; }
 }
