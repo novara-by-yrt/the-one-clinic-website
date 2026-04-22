@@ -19,7 +19,7 @@ import styles from './page.module.css';
 const CAUSES = [
   {
     title: 'Genetics & Fat Distribution',
-    desc: 'Genetics largely determine where the body preferentially stores fat. Some people are predisposed to accumulating fat in specific zones — such as the upper arms, bra line, or inner thighs — regardless of overall body weight or diet.',
+    desc: 'Genetics largely determine where the body preferentially stores fat. Some people are predisposed to accumulating fat in specific zones, such as the upper arms, bra line, or inner thighs, regardless of overall body weight or diet.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M6 3c0 4.5 6 4.5 6 9s-6 4.5-6 9"/>
@@ -40,7 +40,7 @@ const CAUSES = [
   },
   {
     title: 'Ageing & Muscle Loss',
-    desc: 'As muscle mass naturally declines with age, fat fills the space previously occupied by muscle — particularly in the upper arms and thighs. Slower metabolism compounds this effect, making stubborn fat increasingly difficult to shift.',
+    desc: 'As muscle mass naturally declines with age, fat fills the space previously occupied by muscle, particularly in the upper arms and thighs. Slower metabolism compounds this effect, making stubborn fat increasingly difficult to shift.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -50,7 +50,7 @@ const CAUSES = [
   },
   {
     title: 'Diet & Lifestyle',
-    desc: 'A calorie surplus — even a modest one sustained over time — leads to progressive fat accumulation in the body\'s preferred storage zones. Sedentary habits reduce caloric expenditure and allow these deposits to become increasingly established.',
+    desc: 'A calorie surplus, even a modest one sustained over time, leads to progressive fat accumulation in the body\'s preferred storage zones. Sedentary habits reduce caloric expenditure and allow these deposits to become increasingly established.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
@@ -63,7 +63,7 @@ const CAUSES = [
   },
   {
     title: 'Weight Fluctuation',
-    desc: 'Repeated cycles of weight gain and loss can cause fat to accumulate unevenly in certain areas. Once fat cells expand in a localised zone, they are notoriously resistant to dietary changes — even after overall weight loss.',
+    desc: 'Repeated cycles of weight gain and loss can cause fat to accumulate unevenly in certain areas. Once fat cells expand in a localised zone, they are notoriously resistant to dietary changes, even after overall weight loss.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <line x1="12" y1="1" x2="12" y2="23"/>
@@ -73,7 +73,7 @@ const CAUSES = [
   },
   {
     title: 'Poor Posture & Inactivity',
-    desc: 'Prolonged sitting and poor posture reduce circulation to the back, thighs, and arms — contributing to fat accumulation and reduced muscle tone in these areas. Targeted activity is often insufficient to address localised deposits alone.',
+    desc: 'Prolonged sitting and poor posture reduce circulation to the back, thighs, and arms, contributing to fat accumulation and reduced muscle tone in these areas. Targeted activity is often insufficient to address localised deposits alone.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -86,22 +86,22 @@ const CAUSES = [
 const TREATMENTS = [
   {
     title: 'Body Contouring',
-    desc:  'Non-surgical body contouring precisely targets and reduces stubborn fat deposits on the arms, bra line, back, and thighs — sculpting a smoother, more proportionate body shape without surgery or downtime.',
+    desc:  'Non-surgical body contouring precisely targets and reduces stubborn fat deposits on the arms, bra line, back, and thighs, sculpting a smoother, more proportionate body shape without surgery or downtime.',
     href:  '/treatments/body-contouring',
   },
   {
     title: 'Liposuction',
-    desc:  'Surgical liposuction permanently removes unwanted fat from targeted areas including the upper arms, flanks, bra line, back, and thighs — delivering dramatic, long-lasting contouring results.',
+    desc:  'Surgical liposuction permanently removes unwanted fat from targeted areas including the upper arms, flanks, bra line, back, and thighs, delivering dramatic, long-lasting contouring results.',
     href:  '/treatments/liposuction-leicester',
   },
   {
     title: 'Morpheus8',
-    desc:  'Radiofrequency microneedling simultaneously remodels subcutaneous fat and tightens overlying skin — particularly effective on the arms and thighs where skin laxity often accompanies fat deposits.',
+    desc:  'Radiofrequency microneedling simultaneously remodels subcutaneous fat and tightens overlying skin, particularly effective on the arms and thighs where skin laxity often accompanies fat deposits.',
     href:  '/treatments/morpheus8',
   },
   {
     title: 'Endolift',
-    desc:  'Minimally invasive laser treatment targets localised fat and tightens lax skin in a single procedure — ideal for the upper arms, back, and bra area with minimal recovery time.',
+    desc:  'Minimally invasive laser treatment targets localised fat and tightens lax skin in a single procedure, ideal for the upper arms, back, and bra area with minimal recovery time.',
     href:  '/treatments/endolift',
   },
 ];
@@ -155,7 +155,7 @@ const FAQS = [
   {
     question: 'Why do I have stubborn fat on my arms, back, or thighs despite exercising?',
     answer:
-      'Spot reduction through exercise is largely a myth — the body burns fat systemically rather than from specific zones on demand. Genetics, hormones, and age determine where fat is stored and how readily it is released. This means localised fat deposits on the arms, bra line, back, and thighs can persist even when overall body composition improves. Professional body contouring treatments are specifically designed to address these resistant areas.',
+      'Spot reduction through exercise is largely a myth, the body burns fat systemically rather than from specific zones on demand. Genetics, hormones, and age determine where fat is stored and how readily it is released. This means localised fat deposits on the arms, bra line, back, and thighs can persist even when overall body composition improves. Professional body contouring treatments are specifically designed to address these resistant areas.',
   },
   {
     question: 'Can body contouring permanently remove fat in these areas?',
@@ -337,7 +337,7 @@ export default function ExcessBodyFatPage() {
               </motion.h2>
               <motion.p className={styles.overviewPara} variants={fadeUp}>
                 Excess body fat refers to stubborn fat deposits that accumulate in
-                specific zones — including the upper arms, bra line, back, and inner
+                specific zones, including the upper arms, bra line, back, and inner
                 or outer thighs. These areas are notoriously resistant to diet and
                 exercise due to the way the body regulates localised fat storage through
                 genetics, hormones, and age.
@@ -346,7 +346,7 @@ export default function ExcessBodyFatPage() {
                 Even at a healthy weight, many people carry disproportionate fat in
                 these zones, affecting how clothes fit and body confidence. With the
                 right professional treatments, these stubborn deposits can be
-                significantly reduced — restoring a more balanced, sculpted silhouette.
+                significantly reduced, restoring a more balanced, sculpted silhouette.
               </motion.p>
             </div>
           </motion.div>
@@ -384,7 +384,7 @@ export default function ExcessBodyFatPage() {
               {
                 num: '01',
                 title: 'Arm Fat',
-                desc: 'Excess fat on the upper arms — often called "bingo wings" — is among the most common complaints, particularly in women over 40 as muscle mass declines and skin loses elasticity.',
+                desc: 'Excess fat on the upper arms, often called "bingo wings", is among the most common complaints, particularly in women over 40 as muscle mass declines and skin loses elasticity.',
               },
               {
                 num: '02',
@@ -394,7 +394,7 @@ export default function ExcessBodyFatPage() {
               {
                 num: '03',
                 title: 'Thigh Fat',
-                desc: 'Inner and outer thigh fat — including saddlebags — is strongly influenced by genetics and hormones. Often one of the last areas to respond to diet and exercise, and a popular target for body contouring.',
+                desc: 'Inner and outer thigh fat, including saddlebags, is strongly influenced by genetics and hormones. Often one of the last areas to respond to diet and exercise, and a popular target for body contouring.',
               },
             ].map((type) => (
               <motion.div key={type.num} className={styles.typeCard} variants={fadeUp}>
@@ -480,7 +480,7 @@ export default function ExcessBodyFatPage() {
               </motion.h2>
               <motion.p className={styles.riskIntro} variants={fadeUp}>
                 Localised fat accumulation is influenced by factors largely beyond
-                lifestyle control — making professional treatment the most effective solution.
+                lifestyle control, making professional treatment the most effective solution.
               </motion.p>
             </motion.div>
 

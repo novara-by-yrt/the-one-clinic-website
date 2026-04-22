@@ -19,7 +19,7 @@ import styles from './page.module.css';
 const CAUSES = [
   {
     title: 'Primary Hyperhidrosis',
-    desc: 'The most common form — caused by overactive sweat glands with no underlying medical reason. It typically affects specific areas such as the underarms, palms, feet, and face, and often begins in adolescence.',
+    desc: 'The most common form, caused by overactive sweat glands with no underlying medical reason. It typically affects specific areas such as the underarms, palms, feet, and face, and often begins in adolescence.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -40,7 +40,7 @@ const CAUSES = [
   },
   {
     title: 'Anxiety & Stress',
-    desc: 'The nervous system triggers sweat production in response to emotional stress, anxiety, or nervousness. For those with hyperhidrosis, this response is greatly amplified — creating a cycle where anxiety about sweating worsens the condition.',
+    desc: 'The nervous system triggers sweat production in response to emotional stress, anxiety, or nervousness. For those with hyperhidrosis, this response is greatly amplified, creating a cycle where anxiety about sweating worsens the condition.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
@@ -87,12 +87,12 @@ const CAUSES = [
 const TREATMENTS = [
   {
     title: 'Wrinkle Relaxing Injections',
-    desc:  'Botulinum toxin injections are the most effective treatment for hyperhidrosis. Injected into the skin of the underarms, palms, or feet, they block the nerve signals that stimulate sweat glands — dramatically reducing sweating for 6 to 12 months.',
+    desc:  'Botulinum toxin injections are the most effective treatment for hyperhidrosis. Injected into the skin of the underarms, palms, or feet, they block the nerve signals that stimulate sweat glands, dramatically reducing sweating for 6 to 12 months.',
     href:  '/treatments/wrinkle-relaxing-injections',
   },
   {
     title: 'Profhilo',
-    desc:  'Bio-remodelling with Profhilo supports improved skin quality and hydration balance — complementing hyperhidrosis management by improving overall skin condition in affected areas.',
+    desc:  'Bio-remodelling with Profhilo supports improved skin quality and hydration balance, complementing hyperhidrosis management by improving overall skin condition in affected areas.',
     href:  '/treatments/profhilo',
   },
   {
@@ -102,7 +102,7 @@ const TREATMENTS = [
   },
   {
     title: 'Private GP Consultation',
-    desc:  'A thorough GP consultation to assess your sweating, rule out secondary causes, and create a personalised management plan — combining medical and aesthetic treatment options where appropriate.',
+    desc:  'A thorough GP consultation to assess your sweating, rule out secondary causes, and create a personalised management plan, combining medical and aesthetic treatment options where appropriate.',
     href:  '/treatments/private-gp',
   },
 ];
@@ -110,7 +110,7 @@ const TREATMENTS = [
 /* ── Risk factors ─────────────────────────────────────────────── */
 const RISK_FACTORS = [
   'Those with a family history of hyperhidrosis or overactive sweat glands.',
-  'Adolescents and young adults — primary hyperhidrosis often begins at puberty.',
+  'Adolescents and young adults, primary hyperhidrosis often begins at puberty.',
   'Women experiencing the menopause, pregnancy, or significant hormonal changes.',
   'Individuals with high anxiety levels or stress-related conditions.',
   'Those with obesity, thyroid disorders, or diabetes.',
@@ -127,7 +127,7 @@ const RESULTS_TIMELINE = [
   {
     phase: '2 Weeks',
     title: 'Full Results',
-    desc:  'Significant reduction in sweating — often up to 80 to 90% improvement.',
+    desc:  'Significant reduction in sweating, often up to 80 to 90% improvement.',
   },
   {
     phase: '4 to 6 Months',
@@ -261,7 +261,7 @@ export default function ExcessiveSweatingPage() {
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
                 Regain confidence with effective, clinically proven treatments for
-                hyperhidrosis — providing lasting relief from excessive, uncontrollable sweating.
+                hyperhidrosis, providing lasting relief from excessive, uncontrollable sweating.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -337,7 +337,7 @@ export default function ExcessiveSweatingPage() {
                 What Is Excessive Sweating?
               </motion.h2>
               <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Excessive sweating — medically known as hyperhidrosis — is a condition
+                Excessive sweating, medically known as hyperhidrosis, is a condition
                 where the body produces far more sweat than is needed to regulate
                 temperature. It can affect specific areas such as the underarms, palms,
                 feet, and face, or occur across the body, and is often unrelated to heat
@@ -385,7 +385,7 @@ export default function ExcessiveSweatingPage() {
               {
                 num: '01',
                 title: 'Focal (Primary)',
-                desc: 'Affects specific areas — typically the underarms, palms, feet, or face. No underlying medical cause. Often hereditary and begins in adolescence or early adulthood.',
+                desc: 'Affects specific areas, typically the underarms, palms, feet, or face. No underlying medical cause. Often hereditary and begins in adolescence or early adulthood.',
               },
               {
                 num: '02',

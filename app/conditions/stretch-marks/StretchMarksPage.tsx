@@ -48,7 +48,7 @@ const CAUSES = [
   },
   {
     title: 'Hormonal Changes',
-    desc: 'Elevated cortisol — whether from stress, steroid use, or hormonal conditions — reduces the skin\'s collagen production and elasticity, making it more susceptible to tearing and forming stretch marks.',
+    desc: 'Elevated cortisol, whether from stress, steroid use, or hormonal conditions, reduces the skin\'s collagen production and elasticity, making it more susceptible to tearing and forming stretch marks.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
@@ -69,7 +69,7 @@ const CAUSES = [
   },
   {
     title: 'Muscle Building',
-    desc: 'Rapid muscle growth from intensive weight training can stretch the skin beyond its natural elasticity — particularly on the shoulders, upper arms, and chest — leading to stretch marks in athletes.',
+    desc: 'Rapid muscle growth from intensive weight training can stretch the skin beyond its natural elasticity, particularly on the shoulders, upper arms, and chest, leading to stretch marks in athletes.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -104,7 +104,7 @@ const TREATMENTS = [
 
 /* ── Risk factors ─────────────────────────────────────────────── */
 const RISK_FACTORS = [
-  'Adolescents during puberty growth spurts — particularly on the thighs, hips, and back.',
+  'Adolescents during puberty growth spurts, particularly on the thighs, hips, and back.',
   'Women during or after pregnancy, especially with multiple or large pregnancies.',
   'Those who have experienced rapid or significant weight gain or loss.',
   'Individuals using long-term corticosteroid medication or topical steroids.',
@@ -151,7 +151,7 @@ const FAQS = [
   {
     question: 'Can stretch marks be completely removed?',
     answer:
-      'Stretch marks are a form of scar tissue and cannot be completely erased. However, professional treatments can significantly reduce their appearance — fading discolouration, improving skin texture, and minimising depth. Newer, red or purple stretch marks tend to respond better to treatment than older, white or silver ones. Our doctors will assess your marks and recommend the most effective approach.',
+      'Stretch marks are a form of scar tissue and cannot be completely erased. However, professional treatments can significantly reduce their appearance, fading discolouration, improving skin texture, and minimising depth. Newer, red or purple stretch marks tend to respond better to treatment than older, white or silver ones. Our doctors will assess your marks and recommend the most effective approach.',
   },
   {
     question: 'What is the difference between red and white stretch marks?',
@@ -333,7 +333,7 @@ export default function StretchMarksPage() {
               </motion.h2>
               <motion.p className={styles.overviewPara} variants={fadeUp}>
                 Stretch marks (striae) are bands of scar tissue that form when the skin
-                is stretched beyond its natural elasticity — causing the collagen and
+                is stretched beyond its natural elasticity, causing the collagen and
                 elastin fibres within the dermis to tear. They typically appear as
                 streaks or lines on the abdomen, thighs, hips, breasts, upper arms,
                 and lower back.
@@ -342,7 +342,7 @@ export default function StretchMarksPage() {
                 Fresh stretch marks are often red, pink, or purple and may feel slightly
                 raised or itchy. Over time they fade to white or silver and become more
                 embedded in the skin. While harmless, they can cause significant
-                self-consciousness — and with the right treatment, their appearance
+                self-consciousness, and with the right treatment, their appearance
                 can be substantially reduced.
               </motion.p>
             </div>
@@ -386,7 +386,7 @@ export default function StretchMarksPage() {
               {
                 num: '02',
                 title: 'White & Silver (Striae Albae)',
-                desc: 'Older, established stretch marks where blood vessels have receded. Flat and pale — representing mature scar tissue. Can still be significantly improved with treatment.',
+                desc: 'Older, established stretch marks where blood vessels have receded. Flat and pale, representing mature scar tissue. Can still be significantly improved with treatment.',
               },
               {
                 num: '03',
@@ -426,7 +426,7 @@ export default function StretchMarksPage() {
             </motion.h2>
             <motion.p className={styles.sectionSubtext} variants={fadeUp}>
               Stretch marks form whenever the skin is stretched faster than it can
-              adapt — tearing the underlying collagen and elastin fibres.
+              adapt, tearing the underlying collagen and elastin fibres.
             </motion.p>
           </motion.div>
 
@@ -571,7 +571,7 @@ export default function StretchMarksPage() {
               Results &amp; Expectations
             </motion.h2>
             <motion.p className={styles.sectionSubtext} variants={fadeUp}>
-              Stretch mark treatment works progressively — results develop over several
+              Stretch mark treatment works progressively, results develop over several
               months as collagen remodelling takes effect.
             </motion.p>
           </motion.div>

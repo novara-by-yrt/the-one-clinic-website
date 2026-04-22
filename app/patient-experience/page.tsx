@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Patient Experience | The One Clinic Leicester',
     description:
-      'Every patient at The One Clinic receives a bespoke journey — from consultation to results. Discover what to expect when you visit us in Leicester.',
+      'Every patient at The One Clinic receives a bespoke journey, from consultation to results. Discover what to expect when you visit us in Leicester.',
   },
 };
 

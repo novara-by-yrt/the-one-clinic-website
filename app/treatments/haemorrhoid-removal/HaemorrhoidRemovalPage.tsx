@@ -369,8 +369,8 @@ export default function HaemorrhoidRemovalPage() {
                   and discomfort.
                 </p>
                 <p className={styles.combinedDesc}>
-                  When conservative management — such as dietary changes, topical creams, or
-                  sitz baths — fails to provide lasting relief, surgical removal offers a
+                  When conservative management, such as dietary changes, topical creams, or
+                  sitz baths, fails to provide lasting relief, surgical removal offers a
                   definitive solution. At The One Clinic Leicester, our doctors assess your
                   case thoroughly and recommend the most appropriate procedure for your grade
                   of haemorrhoid and individual circumstances.
@@ -438,7 +438,7 @@ export default function HaemorrhoidRemovalPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          6. THE PROCEDURE — THREE STEPS
+          6. THE PROCEDURE, THREE STEPS
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>

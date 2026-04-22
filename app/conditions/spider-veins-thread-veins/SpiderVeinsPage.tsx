@@ -41,7 +41,7 @@ const CAUSES = [
   },
   {
     title: 'Sun Damage',
-    desc: 'Prolonged UV exposure breaks down collagen and weakens the skin barrier, causing superficial blood vessels to dilate and become permanently visible — particularly on the nose and cheeks.',
+    desc: 'Prolonged UV exposure breaks down collagen and weakens the skin barrier, causing superficial blood vessels to dilate and become permanently visible, particularly on the nose and cheeks.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="5"/>
@@ -99,7 +99,7 @@ const TREATMENTS = [
   },
   {
     title: 'Chemical Peel',
-    desc:  'Exfoliating peels improve overall skin texture, tone, and clarity — helping to reduce surface redness associated with thread veins and restore a more even complexion.',
+    desc:  'Exfoliating peels improve overall skin texture, tone, and clarity, helping to reduce surface redness associated with thread veins and restore a more even complexion.',
     href:  '/treatments/chemical-peels',
   },
   {
@@ -124,7 +124,7 @@ const RESULTS_TIMELINE = [
   {
     phase: 'Immediately',
     title: 'Temporary Redness',
-    desc:  'Mild redness or warmth at the treatment site — a normal, short-lived response.',
+    desc:  'Mild redness or warmth at the treatment site, a normal, short-lived response.',
   },
   {
     phase: '2 to 4 Weeks',
@@ -158,7 +158,7 @@ const FAQS = [
   {
     question: 'What are spider veins and thread veins?',
     answer:
-      'Spider veins and thread veins are small, dilated blood vessels that become visible through the skin. They typically appear as fine red, purple, or blue lines — often in a web-like or branching pattern — on the face, nose, cheeks, or legs. They are generally harmless but can be cosmetically bothersome.',
+      'Spider veins and thread veins are small, dilated blood vessels that become visible through the skin. They typically appear as fine red, purple, or blue lines, often in a web-like or branching pattern, on the face, nose, cheeks, or legs. They are generally harmless but can be cosmetically bothersome.',
   },
   {
     question: 'Can thread veins be permanently removed?',
@@ -173,7 +173,7 @@ const FAQS = [
   {
     question: 'Is the treatment painful?',
     answer:
-      'Most patients describe IPL and laser treatment as a mild snapping or warming sensation — similar to a light elastic band against the skin. The treatment is well tolerated, and no anaesthesia is typically required. Any discomfort is brief and subsides quickly.',
+      'Most patients describe IPL and laser treatment as a mild snapping or warming sensation, similar to a light elastic band against the skin. The treatment is well tolerated, and no anaesthesia is typically required. Any discomfort is brief and subsides quickly.',
   },
   {
     question: 'What is the recovery time?',
@@ -341,7 +341,7 @@ export default function SpiderVeinsPage() {
               <motion.p className={styles.overviewPara} variants={fadeUp}>
                 Spider veins and thread veins are small, dilated blood vessels that become
                 visible just beneath the skin surface. They typically appear as fine red,
-                purple, or blue lines — often forming a web-like or branching pattern —
+                purple, or blue lines, often forming a web-like or branching pattern, 
                 most commonly on the face, nose, cheeks, and legs.
               </motion.p>
               <motion.p className={styles.overviewPara} variants={fadeUp}>
@@ -385,7 +385,7 @@ export default function SpiderVeinsPage() {
               {
                 num: '01',
                 title: 'Spider Veins',
-                desc: 'Fine, web-like clusters of red or purple vessels — typically appearing on the face and legs. Named for their spider-like branching pattern.',
+                desc: 'Fine, web-like clusters of red or purple vessels, typically appearing on the face and legs. Named for their spider-like branching pattern.',
               },
               {
                 num: '02',

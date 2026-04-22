@@ -438,7 +438,7 @@ export default function IngownToenailRemovalPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          6. THE PROCEDURE — THREE STEPS
+          6. THE PROCEDURE, THREE STEPS
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -648,7 +648,7 @@ export default function IngownToenailRemovalPage() {
               </p>
               <p className={styles.howWorksPara}>
                 At The One Clinic, we do not just cut the nail. We remove the offending edge straight down
-                to the root. We then apply a chemical (phenol) to destroy the nail matrix — the tissue that
+                to the root. We then apply a chemical (phenol) to destroy the nail matrix, the tissue that
                 grows that specific section of nail. This prevents regrowth in that area, providing a
                 permanent cure.
               </p>

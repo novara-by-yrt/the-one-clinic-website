@@ -120,7 +120,7 @@ export default function Hero() {
               variants={FADE_UP}
               transition={TRANSITION_SMOOTH}
             >
-              Advanced medical, aesthetic and wellness care —
+              Advanced medical, aesthetic and wellness care, 
               all under one roof.
             </motion.p>
 
