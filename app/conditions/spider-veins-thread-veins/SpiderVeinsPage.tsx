@@ -305,7 +305,7 @@ export default function SpiderVeinsPage() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Dermatologist.jpg"
+                src="/images/Spider Veins.png"
                 alt="Spider veins and thread veins treatment at The One Clinic Leicester"
                 fill
                 className={styles.heroImage}

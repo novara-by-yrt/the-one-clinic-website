@@ -307,7 +307,7 @@ export default function HyperpigmentationPage() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Dermatologist.jpg"
+                src="/images/Hyperpigmentation.png"
                 alt="Hyperpigmentation and sun damage treatment at The One Clinic Leicester"
                 fill
                 className={styles.heroImage}

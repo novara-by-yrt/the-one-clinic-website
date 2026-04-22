@@ -302,7 +302,7 @@ export default function ExcessBodyFatPage() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Dermatologist.jpg"
+                src="/images/Excess Body Fat_Arm_Bra_Back_Thigh Fat.png"
                 alt="Excess body fat treatment at The One Clinic Leicester"
                 fill
                 className={styles.heroImage}

@@ -13,12 +13,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px;
+  height: 72px;
   gap: var(--space-3);
   transition: height 0.3s ease;
 }
 
-.header[data-scrolled='true'] .inner { height: 64px; }
+.header[data-scrolled='true'] .inner { height: 60px; }
 
 /* ═══════════════════════════════════════════════════════════════
    LOGO
@@ -28,7 +28,7 @@
 .logoImg {
   display: block;
   width: auto;
-  height: 36px;
+  height: 34px;
   object-fit: contain;
   transition: filter 0.3s ease;
 }
@@ -44,7 +44,7 @@
 .navList {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 0;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -61,7 +61,7 @@
   font-weight: var(--fw-medium);
   letter-spacing: 0.01em;
   white-space: nowrap;
-  padding: 8px 12px;
+  padding: 7px 11px;
   border-radius: 8px;
   border: none;
   background: none;
@@ -72,36 +72,51 @@
 }
 
 /* Theme colours */
-.header[data-theme='light'] .navLink { color: rgba(0,0,0,0.72); }
-.header[data-theme='dark']  .navLink { color: rgba(255,255,255,0.82); }
+.header[data-theme='light'] .navLink { color: rgba(0,0,0,0.68); }
+.header[data-theme='dark']  .navLink { color: rgba(255,255,255,0.78); }
 
-/* Hover state */
+/* Hover pill */
 .header[data-theme='light'] .navLink:hover { background: rgba(0,0,0,0.05); color: #000; }
-.header[data-theme='dark']  .navLink:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.header[data-theme='dark']  .navLink:hover { background: rgba(255,255,255,0.09); color: #fff; }
 
-/* Active (dropdown open) state */
-.header[data-theme='light'] .navLinkActive { background: rgba(0,0,0,0.06); color: #000; }
-.header[data-theme='dark']  .navLinkActive { background: rgba(255,255,255,0.1); color: #fff; }
+/* Active (dropdown open) state — stronger highlight + bottom indicator */
+.header[data-theme='light'] .navLinkActive {
+  background: rgba(0,0,0,0.09);
+  color: #000;
+  box-shadow: inset 0 -2px 0 rgba(0,0,0,0.65);
+}
+.header[data-theme='dark'] .navLinkActive {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  box-shadow: inset 0 -2px 0 rgba(255,255,255,0.75);
+}
 
 /* ── Animated underline ─────────────────────────────────────── */
-.navLinkText { position: relative; }
+.navLinkText {
+  position: relative;
+  padding-bottom: 1px;
+}
 
 .navLinkText::after {
   content: '';
   position: absolute;
   bottom: -2px;
-  left: 0;
+  left: 50%;
   width: 0;
   height: 1.5px;
   border-radius: 1px;
-  transition: width 0.22s ease;
+  transition: width 0.22s ease, left 0.22s ease;
 }
 
 .header[data-theme='light'] .navLinkText::after { background: #000; }
 .header[data-theme='dark']  .navLinkText::after { background: #fff; }
 
+/* Grow from center on hover/active */
 .navLink:hover .navLinkText::after,
-.navLinkActive .navLinkText::after { width: 100%; }
+.navLinkActive .navLinkText::after {
+  width: 100%;
+  left: 0;
+}
 
 /* ═══════════════════════════════════════════════════════════════
    SIMPLE DROPDOWN  (About Our Clinic)
@@ -113,13 +128,13 @@
   z-index: 10;
   background: #fff;
   border: 1px solid rgba(0,0,0,0.07);
-  border-radius: 14px;
+  border-radius: 16px;
   box-shadow:
     0 2px 4px rgba(0,0,0,0.04),
-    0 14px 44px rgba(0,0,0,0.13),
+    0 12px 40px rgba(0,0,0,0.12),
     0 0 0 1px rgba(0,0,0,0.02);
   overflow: hidden;
-  min-width: 220px;
+  min-width: 210px;
   transform-origin: top left;
 }
 
@@ -127,120 +142,166 @@
   padding: 8px;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
   list-style: none;
   margin: 0;
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   MEGA PANEL  (Treatments / Conditions — full-width)
+   MEGA DROPDOWN  (Treatments / Conditions — two-panel flyout)
 ═══════════════════════════════════════════════════════════════ */
+
 .megaPanel {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 10px);
   left: 0;
-  right: 0;
-  z-index: 9;
-  background: #fff;
-  border-top: 1px solid rgba(0,0,0,0.05);
+  z-index: 10;
+  width: 500px;
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
   box-shadow:
-    0 8px 24px rgba(0,0,0,0.07),
-    0 32px 64px rgba(0,0,0,0.09);
-  transform-origin: top center;
+    0 2px 8px rgba(0,0,0,0.6),
+    0 20px 56px rgba(0,0,0,0.5),
+    0 40px 90px rgba(0,0,0,0.3);
+  overflow: hidden;
+  transform-origin: top left;
 }
 
-.megaInner {
-  padding: 26px 0 32px;
-}
-
-/* Category label + view-all row */
-.megaHeader {
+/* Top strip: section label + view all */
+.megaTop {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding: 12px 16px 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
 }
 
 .megaCategoryLabel {
-  font-size: 0.6875rem;
+  font-size: 0.625rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(0,0,0,0.28);
+  color: rgba(255,255,255,0.28);
 }
 
 .megaViewAll {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.8125rem;
+  gap: 5px;
+  font-size: 0.75rem;
   font-weight: 600;
-  color: #000;
+  color: rgba(255,255,255,0.42);
   text-decoration: none;
-  transition: gap 0.18s ease, opacity 0.15s ease;
+  transition: color 0.15s ease, gap 0.15s ease;
 }
-.megaViewAll:hover { gap: 10px; opacity: 0.55; }
+.megaViewAll:hover { color: #fff; gap: 8px; }
 
-/* Columns grid */
-.megaGrid {
-  display: grid;
-  grid-template-columns: repeat(var(--cols, 2), 1fr);
-  gap: 0 36px;
-}
-
-.megaCol { min-width: 0; }
-
-/* Group title row */
-.megaGroupTitle {
+/* ── Two-panel body ─────────────────────────────────────────── */
+.megaBody {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  flex-direction: row;
+}
+
+/* Left sidebar: category nav */
+.megaSidebar {
+  flex: 0 0 155px;
+  padding: 8px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: rgba(0,0,0,0.18);
+}
+
+.megaCategoryBtn {
+  width: 100%;
+  text-align: left;
+  padding: 9px 12px 9px 14px;
+  background: none;
+  border: none;
+  border-radius: 8px;
   font-size: 0.6875rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: rgba(0,0,0,0.38);
-  margin: 0 0 8px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgba(0,0,0,0.06);
+  color: rgba(255,255,255,0.38);
+  cursor: pointer;
+  position: relative;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
-.megaGroupDot {
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #000;
-  opacity: 0.45;
-  flex-shrink: 0;
+.megaCategoryBtn::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 18%;
+  height: 64%;
+  width: 2.5px;
+  background: #fff;
+  border-radius: 2px;
+  transform: scaleY(0);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Scrollable item list */
+.megaCategoryBtn:hover {
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.72);
+}
+
+.megaCategoryBtnActive {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+}
+.megaCategoryBtnActive::before { transform: scaleY(1); }
+
+/* Right panel: items for active category */
+.megaContent {
+  flex: 1;
+  min-width: 0;
+  padding: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+  position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.1) transparent;
+}
+.megaContent::-webkit-scrollbar { width: 3px; }
+.megaContent::-webkit-scrollbar-track { background: transparent; }
+.megaContent::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 3px; }
+
+/* Item list */
 .megaList {
   display: flex;
   flex-direction: column;
-  gap: 1px;
-  max-height: 360px;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0,0,0,0.1) transparent;
+  gap: 0;
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
-.megaList::-webkit-scrollbar { width: 4px; }
-.megaList::-webkit-scrollbar-track { background: transparent; }
-.megaList::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 4px; }
 
-/* ── Mega backdrop ──────────────────────────────────────────── */
+/* ── Override ddItem for dark mega panel ────────────────────── */
+.megaPanel .ddItem {
+  color: rgba(255,255,255,0.52);
+}
+.megaPanel .ddItem::after {
+  background: linear-gradient(90deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+}
+.megaPanel .ddItem::before {
+  background: #fff;
+}
+.megaPanel .ddItem:hover {
+  color: rgba(255,255,255,0.9);
+}
+
+/* ── Mega backdrop (subtle dimming) ─────────────────────────── */
 .megaBackdrop {
   display: none;
   position: fixed;
   inset: 0;
   z-index: calc(var(--z-sticky) - 1);
-  background: rgba(0,0,0,0.18);
+  background: rgba(0,0,0,0.08);
 }
 
 @media (min-width: 1025px) {
@@ -248,25 +309,36 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   SHARED DROPDOWN ITEM
+   SHARED DROPDOWN ITEM  (used in simple & mega)
 ═══════════════════════════════════════════════════════════════ */
 .ddItem {
   position: relative;
   display: block;
   font-size: 0.8125rem;
   font-weight: 450;
-  color: rgba(0,0,0,0.68);
+  color: rgba(0,0,0,0.62);
   padding: 7px 10px 7px 14px;
-  border-radius: 7px;
+  border-radius: 8px;
   text-decoration: none;
-  transition:
-    background 0.15s ease,
-    color      0.15s ease,
-    padding-left 0.18s ease;
   overflow: hidden;
+  transition:
+    color      0.15s ease,
+    padding-left 0.2s ease;
 }
 
-/* Left accent bar — springs in on hover */
+/* Gradient background highlight — sweeps in from left */
+.ddItem::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,0.055) 0%, rgba(0,0,0,0.02) 100%);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Left accent bar — springs up */
 .ddItem::before {
   content: '';
   position: absolute;
@@ -278,13 +350,14 @@
   border-radius: 2px;
   transform: scaleY(0);
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 1;
 }
 
 .ddItem:hover {
-  background: rgba(0,0,0,0.05);
   color: #000;
   padding-left: 18px;
 }
+.ddItem:hover::after  { opacity: 1; }
 .ddItem:hover::before { transform: scaleY(1); }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -550,11 +623,13 @@
   .desktopNav, .ctaLink { display: none; }
   .menuBtn               { display: flex; }
   .inner                 { height: 64px; }
-  .header[data-scrolled='true'] .inner { height: 60px; }
+  .header[data-scrolled='true'] .inner { height: 58px; }
 }
 
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .megaList { max-height: 300px; }
+  .megaPanel { width: 440px; }
+  .megaSidebar { flex: 0 0 140px; }
+  .megaContent { max-height: 260px; }
 }
 
 /* Full-screen drawer on small phones */

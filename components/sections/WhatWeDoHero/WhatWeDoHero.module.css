@@ -92,7 +92,7 @@
   font-weight: var(--fw-medium);
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  border-radius: 20px;
+  border-radius: 50px;
   text-decoration: none;
   transition:
     transform var(--duration-fast) var(--ease-out),
@@ -115,7 +115,7 @@
   font-weight: var(--fw-medium);
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  border-radius: 20px;
+  border-radius: 50px;
   border: 1px solid rgb(255 255 255 / 0.5);
   text-decoration: none;
   backdrop-filter: blur(4px);

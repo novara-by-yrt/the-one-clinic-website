@@ -307,7 +307,7 @@ export default function PigmentationPage() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Dermatologist.jpg"
+                src="/images/Pigmentation.png"
                 alt="Pigmentation treatment at The One Clinic Leicester"
                 fill
                 className={styles.heroImage}

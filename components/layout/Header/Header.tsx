@@ -40,6 +40,8 @@ const NAV: NavItem[] = [
           { label: 'Private GP Leicester',                                  href: '/treatments/private-gp' },
           { label: 'Joint Injections',                                      href: '/treatments/joint-injections' },
           { label: 'Minor Surgery',                                         href: '/treatments/minor-surgery' },
+          { label: 'Ingrown Toenail Removal',                               href: '/treatments/ingrown-toenail-removal-leicester' },
+          { label: 'Haemorrhoid Removal',                                   href: '/treatments/haemorrhoid-removal' },
           { label: 'GP Home Visits Leicester',                              href: '/treatments/gp-home-visits' },
           { label: 'Travel Vaccine & Immunisations',                        href: '/treatments/travel-vaccine' },
           { label: 'Weight Management',                                     href: '/treatments/weight-management' },
@@ -142,10 +144,10 @@ const simpleDropVars = {
 const simpleDropTrans = { duration: 0.2, ease: [0.25, 0.1, 0.25, 1] as const };
 
 const megaVars = {
-  closed: { opacity: 0, y: -10, pointerEvents: 'none' as const },
-  open:   { opacity: 1, y: 0,   pointerEvents: 'auto' as const },
+  closed: { opacity: 0, y: -8, scale: 0.97, pointerEvents: 'none' as const },
+  open:   { opacity: 1, y: 0,  scale: 1,    pointerEvents: 'auto' as const },
 };
-const megaTrans = { duration: 0.26, ease: [0.25, 0.1, 0.25, 1] as const };
+const megaTrans = { duration: 0.22, ease: [0.22, 1, 0.36, 1] as const };
 
 const backdropVars = {
   closed: { opacity: 0 },
@@ -183,6 +185,7 @@ export default function Header() {
   const [sectionTheme, setSectionTheme] = useState<Theme>('dark');
   const [menuOpen, setMenuOpen]         = useState(false);
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
+  const [openMegaGroup, setOpenMegaGroup] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded]           = useState<Set<number>>(new Set());
   const [mobileGroupExpanded, setMobileGroupExpanded] = useState<Set<string>>(new Set());
 
@@ -234,6 +237,7 @@ export default function Header() {
     function handleClickOut(e: MouseEvent) {
       if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
         setOpenDropdown(null);
+        setOpenMegaGroup(null);
       }
     }
     document.addEventListener('mousedown', handleClickOut);
@@ -249,10 +253,21 @@ export default function Header() {
   // ── Hover helpers ─────────────────────────────────────────────
   function openDd(i: number) {
     if (closeTimer.current) clearTimeout(closeTimer.current);
+    if (openDropdown !== i) {
+      const item = NAV[i];
+      if (item.groups?.length) {
+        setOpenMegaGroup(`${i}-0`);
+      } else {
+        setOpenMegaGroup(null);
+      }
+    }
     setOpenDropdown(i);
   }
   function closeDd() {
-    closeTimer.current = setTimeout(() => setOpenDropdown(null), 150);
+    closeTimer.current = setTimeout(() => {
+      setOpenDropdown(null);
+      setOpenMegaGroup(null);
+    }, 150);
   }
 
   // ── Mobile accordion ─────────────────────────────────────────
@@ -277,7 +292,6 @@ export default function Header() {
   const borderColor = !scrolled ? 'rgba(0,0,0,0)'
     : sectionTheme === 'dark'   ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.1)';
 
-  // True if any mega-menu is open (used for semi-transparent backdrop)
   const anyMegaOpen = openDropdown !== null && !!NAV[openDropdown]?.groups;
 
   return (
@@ -371,6 +385,96 @@ export default function Header() {
                           )}
                         </AnimatePresence>
                       )}
+
+                      {/* Mega dropdown (Treatments / Conditions) — two-panel */}
+                      {item.groups && (
+                        <AnimatePresence>
+                          {isOpen && (
+                            <motion.div
+                              className={styles.megaPanel}
+                              variants={megaVars}
+                              initial="closed"
+                              animate="open"
+                              exit="closed"
+                              transition={megaTrans}
+                              onMouseEnter={() => openDd(i)}
+                              onMouseLeave={() => closeDd()}
+                              role="region"
+                              aria-label={`${item.label} menu`}
+                            >
+                              {/* Top strip */}
+                              <div className={styles.megaTop}>
+                                <span className={styles.megaCategoryLabel}>{item.label}</span>
+                                <Link
+                                  href={item.href}
+                                  className={styles.megaViewAll}
+                                  onClick={() => setOpenDropdown(null)}
+                                >
+                                  View all
+                                  <svg width="12" height="12" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+                                    <path d="M2.5 6.5h8M7.5 3l3.5 3.5L7.5 10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                                  </svg>
+                                </Link>
+                              </div>
+
+                              {/* Two-panel body */}
+                              <div className={styles.megaBody}>
+                                {/* Left: category list */}
+                                <div className={styles.megaSidebar}>
+                                  {item.groups.map((grp, gi) => {
+                                    const gKey     = `${i}-${gi}`;
+                                    const isActive = openMegaGroup === gKey;
+                                    return (
+                                      <button
+                                        key={grp.group}
+                                        className={`${styles.megaCategoryBtn} ${isActive ? styles.megaCategoryBtnActive : ''}`}
+                                        onMouseEnter={() => setOpenMegaGroup(gKey)}
+                                        onClick={() => setOpenMegaGroup(gKey)}
+                                        aria-selected={isActive}
+                                      >
+                                        {grp.group}
+                                      </button>
+                                    );
+                                  })}
+                                </div>
+
+                                {/* Right: items for active category */}
+                                <div className={styles.megaContent}>
+                                  <AnimatePresence initial={false}>
+                                    {item.groups.map((grp, gi) => {
+                                      const gKey = `${i}-${gi}`;
+                                      if (openMegaGroup !== gKey) return null;
+                                      return (
+                                        <motion.ul
+                                          key={gKey}
+                                          className={styles.megaList}
+                                          role="list"
+                                          initial={{ opacity: 0, x: 8 }}
+                                          animate={{ opacity: 1, x: 0 }}
+                                          exit={{ opacity: 0, x: -4 }}
+                                          transition={{ duration: 0.16, ease: [0.25, 0.1, 0.25, 1] }}
+                                        >
+                                          {grp.items.map((link) => (
+                                            <li key={link.href}>
+                                              <Link
+                                                href={link.href}
+                                                className={styles.ddItem}
+                                                onClick={() => setOpenDropdown(null)}
+                                              >
+                                                {link.label}
+                                              </Link>
+                                            </li>
+                                          ))}
+                                        </motion.ul>
+                                      );
+                                    })}
+                                  </AnimatePresence>
+                                </div>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      )}
                     </li>
                   );
                 })}
@@ -413,79 +517,6 @@ export default function Header() {
 
           </div>
         </Container>
-
-        {/* ── Mega menu panels — rendered at header level for full-width ── */}
-        {NAV.map((item, i) => {
-          if (!item.groups) return null;
-          const isOpen = openDropdown === i;
-          return (
-            <AnimatePresence key={item.label}>
-              {isOpen && (
-                <motion.div
-                  className={styles.megaPanel}
-                  variants={megaVars}
-                  initial="closed"
-                  animate="open"
-                  exit="closed"
-                  transition={megaTrans}
-                  onMouseEnter={() => openDd(i)}
-                  onMouseLeave={() => closeDd()}
-                  role="region"
-                  aria-label={`${item.label} menu`}
-                >
-                  <Container>
-                    <div className={styles.megaInner}>
-
-                      {/* Header row: category label + view-all */}
-                      <div className={styles.megaHeader}>
-                        <span className={styles.megaCategoryLabel}>{item.label}</span>
-                        <Link
-                          href={item.href}
-                          className={styles.megaViewAll}
-                          onClick={() => setOpenDropdown(null)}
-                        >
-                          View all {item.label}
-                          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
-                            <path d="M2.5 6.5h8M7.5 3l3.5 3.5L7.5 10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
-                        </Link>
-                      </div>
-
-                      {/* Group columns */}
-                      <div
-                        className={styles.megaGrid}
-                        style={{ '--cols': item.groups.length } as React.CSSProperties}
-                      >
-                        {item.groups.map((grp) => (
-                          <div key={grp.group} className={styles.megaCol}>
-                            <p className={styles.megaGroupTitle}>
-                              <span className={styles.megaGroupDot} aria-hidden="true" />
-                              {grp.group}
-                            </p>
-                            <ul className={styles.megaList} role="list">
-                              {grp.items.map((link) => (
-                                <li key={link.href}>
-                                  <Link
-                                    href={link.href}
-                                    className={styles.ddItem}
-                                    onClick={() => setOpenDropdown(null)}
-                                  >
-                                    {link.label}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
-                      </div>
-
-                    </div>
-                  </Container>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          );
-        })}
       </motion.header>
 
       {/* ── Mega menu backdrop (desktop only) ────────────────── */}
@@ -498,7 +529,7 @@ export default function Header() {
             animate="open"
             exit="closed"
             transition={{ duration: 0.22 }}
-            onClick={() => setOpenDropdown(null)}
+            onClick={() => { setOpenDropdown(null); setOpenMegaGroup(null); }}
             aria-hidden="true"
           />
         )}

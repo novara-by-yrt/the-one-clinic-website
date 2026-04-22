@@ -49,12 +49,38 @@
   max-width: 480px;
 }
 
-/* ── Grid section ─────────────────────────── */
-.grid {
+/* ── Category group ───────────────────────── */
+.group {
   background-color: var(--color-bg-light);
-  padding-block: var(--space-8);
+  padding-block: var(--space-7);
 }
 
+.groupAlt {
+  background-color: #f9f9f9;
+}
+
+.groupHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.groupTitle {
+  font-size: clamp(1.25rem, 2.5vw, var(--text-h3));
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+  color: var(--color-text-dark);
+  white-space: nowrap;
+}
+
+.groupRule {
+  flex: 1;
+  height: 1px;
+  background: var(--color-border-light);
+}
+
+/* ── Cards grid ───────────────────────────── */
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -75,16 +101,9 @@
   gap: var(--space-2);
 }
 
-.cardCategory {
-  font-size: 11px;
-  font-weight: var(--fw-medium);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
 
 .cardTitle {
-  font-size: var(--text-h3);
+  font-size: 1.125rem;
   font-weight: var(--fw-bold);
   letter-spacing: -0.02em;
   color: var(--color-text-dark);

@@ -303,7 +303,7 @@ export default function CellulitePage() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Dermatologist.jpg"
+                src="/images/Cellulite.png"
                 alt="Cellulite treatment at The One Clinic Leicester"
                 fill
                 className={styles.heroImage}
