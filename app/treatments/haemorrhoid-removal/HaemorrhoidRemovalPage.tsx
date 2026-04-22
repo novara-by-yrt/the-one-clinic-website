@@ -1,9 +1,11 @@
 'use client';
 
+import { useState } from 'react';
 import Image              from 'next/image';
 import { motion }         from 'framer-motion';
 import Section            from '@/components/ui/Section';
 import Container          from '@/components/ui/Container';
+import Accordion          from '@/components/ui/Accordion';
 import BookConsultationButton from '@/components/ui/BookConsultationButton';
 import TrustBadges        from '@/components/ui/TrustBadges';
 import Breadcrumb         from '@/components/ui/Breadcrumb';
@@ -185,8 +187,62 @@ const CAUSES = [
   },
 ];
 
+const CLINIC_REASONS = [
+  { n: '01', text: 'Experienced, GMC-registered doctors performing all procedures with meticulous surgical technique.' },
+  { n: '02', text: 'Local anaesthetic ensuring a completely pain-free experience throughout the procedure.' },
+  { n: '03', text: 'No hospital stay — treated and discharged the same day in a private clinical setting.' },
+  { n: '04', text: 'Discreet, compassionate care in a confidential, comfortable clinical environment.' },
+  { n: '05', text: 'Comprehensive written aftercare plan and follow-up appointment scheduled with every procedure.' },
+  { n: '06', text: 'Convenient Leicester location with flexible appointment times to fit your schedule.' },
+];
+
+const FAQS = [
+  {
+    question: 'What is a haemorrhoidectomy and what does it involve?',
+    answer:
+      'A haemorrhoidectomy is a surgical procedure to remove enlarged or problematic haemorrhoids. Under local anaesthetic, the haemorrhoidal tissue is carefully excised using precise surgical technique. The wound may be sutured (closed haemorrhoidectomy) or left to heal naturally (open haemorrhoidectomy) depending on which approach is most suitable for your specific case.',
+  },
+  {
+    question: 'Will the procedure be painful?',
+    answer:
+      'No. A local anaesthetic ring block is administered before the procedure begins, completely numbing the area. You should feel no pain during treatment, though you may experience mild pressure or sensation. Some post-procedure soreness is normal for a few days, and our team will provide clear pain management guidance and aftercare advice to keep you comfortable during recovery.',
+  },
+  {
+    question: 'How long does the procedure take?',
+    answer:
+      'The procedure typically takes between 20 and 45 minutes depending on the number and grade of haemorrhoids being treated, plus the technique used. You will be able to leave the clinic shortly after treatment is complete. We recommend arranging transport home to ensure your comfort.',
+  },
+  {
+    question: 'What aftercare is required following haemorrhoid removal?',
+    answer:
+      'Following your procedure, you will receive detailed written aftercare instructions. These typically include keeping the area clean and dry, taking warm sitz baths to aid healing, maintaining a high-fibre diet, drinking plenty of water, and avoiding straining. Most patients resume light daily activities within 24 to 48 hours. A follow-up appointment will be arranged to monitor your recovery and address any concerns.',
+  },
+  {
+    question: 'Am I suitable for haemorrhoid removal at The One Clinic?',
+    answer:
+      'Suitability is assessed during your initial consultation. Most patients with symptomatic Grade I–III haemorrhoids that have not responded to conservative management are good candidates for in-clinic removal. Our doctor will review your medical history, examine the affected area, and discuss which treatment approach is most appropriate for your individual case.',
+  },
+  {
+    question: 'Can haemorrhoids return after surgical removal?',
+    answer:
+      'The recurrence rate following haemorrhoidectomy is low — typically less than 5–10% when proper aftercare is followed. Maintaining a high-fibre diet, staying well-hydrated, and avoiding straining significantly reduces the risk of new haemorrhoids developing. However, some patients may develop haemorrhoids in different areas if the underlying causes (such as constipation) are not addressed.',
+  },
+  {
+    question: 'When can I return to work after treatment?',
+    answer:
+      'Most patients can return to light office-based work within 24 to 48 hours. If your job involves heavy lifting, prolonged standing, or sitting, you may need to take longer off — typically one to two weeks. Your doctor will provide specific advice based on your job demands and the procedure performed. A work note can be provided if required.',
+  },
+  {
+    question: 'Do I need a GP referral to be seen at The One Clinic?',
+    answer:
+      'No, you do not need a GP referral to book a consultation at The One Clinic. However, if you would like your GP to be informed of your treatment, we can write to them following your appointment. Simply book your consultation directly with us, and our team will arrange your appointment at a time that suits you.',
+  },
+];
+
 /* ── Page component ─────────────────────────────────────────────── */
 export default function HaemorrhoidRemovalPage() {
+  const [showAllFaqs, setShowAllFaqs] = useState(false);
+
   return (
     <>
       {/* ════════════════════════════════════════
@@ -660,12 +716,384 @@ export default function HaemorrhoidRemovalPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          — SECOND HALF COMING NEXT —
-          (Results/Aftercare, CTA, Clinic Intro,
-           Cost, Why Choose, Expert, FAQ)
+          11. RESULTS, AFTERCARE & SIDE EFFECTS
       ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Post-Treatment
+            </motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Results, Aftercare &amp; Side Effects
+            </motion.h2>
+          </motion.div>
 
+          <motion.div
+            className={styles.resultsAfterGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {/* Card 1: When Will You See Results? */}
+            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+              <div className={styles.resultsAfterCardHead}>
+                <span className={styles.resultsAfterCardIcon} aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
+                  </svg>
+                </span>
+                <h3 className={styles.resultsAfterCardTitle}>When Will You See Results?</h3>
+              </div>
+              <p className={styles.resultsAfterCardBody}>
+                Symptom relief is often experienced immediately as the problematic tissue is
+                removed. Swelling and discomfort gradually reduce over the first one to two
+                weeks. Full healing of the surgical wound typically takes two to four weeks
+                depending on the technique used and your body's healing response.
+              </p>
+              <div className={styles.resultsAfterCardSpacer} />
+              <p className={styles.resultsAfterCardNote}>
+                Long-term results are excellent, with a recurrence rate of less than
+                5–10% when proper aftercare is followed and underlying causes are addressed.
+              </p>
+            </motion.div>
+
+            {/* Card 2: Side Effects */}
+            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+              <div className={styles.resultsAfterCardHead}>
+                <span className={styles.resultsAfterCardIcon} aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+                  </svg>
+                </span>
+                <h3 className={styles.resultsAfterCardTitle}>Side Effects</h3>
+              </div>
+              <p className={styles.resultsAfterCardBody}>
+                Haemorrhoid removal is generally very safe. Most patients experience only
+                mild, temporary effects in the immediate post-procedure period:
+              </p>
+              <ul className={styles.resultsAfterCardList} role="list">
+                {[
+                  'Mild to moderate soreness for 2–5 days',
+                  'Slight swelling or bruising around the treated area',
+                  'Light bleeding or mucus discharge initially',
+                  'Discomfort during bowel movements for a few days',
+                ].map((item) => (
+                  <li key={item} className={styles.resultsAfterCardListItem}>
+                    <span className={styles.resultsAfterDot} aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div className={styles.resultsAfterCardSpacer} />
+              <p className={styles.resultsAfterCardNote}>
+                Serious complications are rare when procedures are performed by trained,
+                experienced doctors. Our team provides clear guidance to minimise discomfort.
+              </p>
+            </motion.div>
+
+            {/* Card 3: Aftercare Tips */}
+            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+              <div className={styles.resultsAfterCardHead}>
+                <span className={styles.resultsAfterCardIcon} aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                  </svg>
+                </span>
+                <h3 className={styles.resultsAfterCardTitle}>Aftercare Tips</h3>
+              </div>
+              <ul className={styles.resultsAfterCardList} role="list">
+                {[
+                  'Keep the area clean and dry; follow hygiene guidance provided',
+                  'Take warm sitz baths (shallow warm baths) 2–3 times daily',
+                  'Maintain a high-fibre diet with adequate water intake',
+                  'Avoid straining during bowel movements — never force',
+                  'Take pain relief as recommended by your doctor',
+                  'Attend your scheduled follow-up appointment',
+                ].map((item) => (
+                  <li key={item} className={styles.resultsAfterCardListItem}>
+                    <span className={styles.resultsAfterDot} aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          12. CTA BANNER
+      ════════════════════════════════════════ */}
+      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book haemorrhoid removal consultation">
+        <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
+          <Image
+            src="/images/Background-logo.png"
+            alt=""
+            fill
+            className={styles.ctaBannerLogo}
+            sizes="100vw"
+          />
+        </div>
+        <Container>
+          <motion.div
+            className={styles.ctaBannerContent}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
+              Get Lasting Relief<br />from Haemorrhoids
+            </motion.h2>
+            <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
+              Book your consultation with our expert doctors and take the first step towards
+              a pain-free, comfortable life.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={styles.ctaBannerBtn}>
+                Book Consultation
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
+
+      {/* ════════════════════════════════════════
+          13. BEST HAEMORRHOID TREATMENT LEICESTER
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light">
+        <Container>
+          <motion.div
+            className={styles.clinicIntroBody}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.div className={styles.clinicIntroLeft} variants={fadeUp}>
+              <p className={styles.eyebrowDark}>Expert Treatment</p>
+              <h2 className={styles.combinedHeading}>
+                Best Haemorrhoid<br />Treatment Leicester
+              </h2>
+            </motion.div>
+            <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
+              Experience expert haemorrhoid removal in Leicester at The One Clinic. Our
+              experienced, GMC-registered doctors deliver safe, effective surgical treatment
+              under local anaesthetic with no hospital stay. We combine clinical expertise
+              with compassionate, discreet care to help you find lasting relief and regain
+              your comfort and confidence.
+            </motion.p>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          14. COST BANNER
+      ════════════════════════════════════════ */}
+      <section className={styles.costBanner} data-section-theme="dark" aria-label="Haemorrhoid removal cost Leicester">
+        <Container>
+          <motion.div
+            className={styles.costBannerInner}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
+              Haemorrhoid Removal Cost at The One Clinic
+            </motion.p>
+            <motion.p className={styles.costBannerPrice} variants={fadeUp}>
+              From £300
+            </motion.p>
+            <motion.p className={styles.costBannerNote} variants={fadeUp}>
+              Pricing depends on the procedure type, number of haemorrhoids, and complexity
+              of your case. A personalised quote will be provided following your initial
+              consultation with our doctor.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={styles.ctaBannerBtn}>
+                Book A Consultation
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
+
+      {/* ════════════════════════════════════════
+          15. WHY CHOOSE THE ONE CLINIC
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Why Us
+            </motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Why Choose The One Clinic for Haemorrhoid Removal
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.clinicReasonsGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {CLINIC_REASONS.map((r) => (
+              <motion.div
+                key={r.n}
+                className={styles.clinicReasonCard}
+                variants={fadeUp}
+                whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
+              >
+                <span className={styles.clinicReasonNumber}>{r.n}</span>
+                <p className={styles.clinicReasonText}>{r.text}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          16. MEET THE EXPERT
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
+        <Container>
+          <motion.div
+            className={styles.expertCard}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {/* Left: full-bleed photo panel */}
+            <motion.div className={styles.expertCardPhotoPanel} variants={fadeUp}>
+              <Image
+                src="/images/imgi_20_team-thumb-VIRMANI.jpg"
+                alt="Dr Sumit Virmani, Co-Founder, The One Clinic"
+                fill
+                className={styles.expertCardPhoto}
+                sizes="(max-width: 768px) 100vw, 420px"
+              />
+            </motion.div>
+
+            {/* Right: content */}
+            <motion.div className={styles.expertCardContent} variants={stagger(0.08)}>
+              <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+                Meet The Expert
+              </motion.p>
+              <motion.h2 className={styles.expertCardName} variants={fadeUp}>
+                Dr Sumit Virmani
+              </motion.h2>
+
+              <motion.div className={styles.expertCardBadges} variants={fadeUp}>
+                {['MBBS', 'MRCGP', 'Co-Founder'].map((credential) => (
+                  <span key={credential} className={styles.expertCardBadge}>{credential}</span>
+                ))}
+              </motion.div>
+
+              <motion.p className={styles.expertCardBio} variants={fadeUp}>
+                Dr Sumit Virmani is the co-founder of The One Clinic and brings over 15 years
+                of medical expertise, with a decade as a trusted local GP. With advanced skills
+                in minor surgery and a keen eye for detail, Dr Virmani is passionate about
+                patient care and delivering outstanding results.
+              </motion.p>
+
+              <motion.p className={styles.expertCardBio} variants={fadeUp}>
+                His specialisation in minor surgical procedures including haemorrhoid removal
+                combined with his compassionate approach ensures every patient receives safe,
+                effective, and dignified care. Dr Virmani continues to combine his ongoing GP
+                practice with expert surgical treatment at The One Clinic.
+              </motion.p>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          17. MEET THE EXPERTS
+      ════════════════════════════════════════ */}
+      <MeetTheExperts />
+
+      {/* ════════════════════════════════════════
+          18. FAQ
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Frequently Asked Questions
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.faqBody}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <Accordion items={showAllFaqs ? FAQS : FAQS.slice(0, 4)} theme="dark" />
+
+            {FAQS.length > 4 && (
+              <div className={styles.faqToggleWrap}>
+                <button
+                  className={styles.faqToggleBtn}
+                  onClick={() => setShowAllFaqs((v) => !v)}
+                  aria-expanded={showAllFaqs}
+                >
+                  {showAllFaqs ? (
+                    <>
+                      Show Less
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M4 10l4-4 4 4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </>
+                  ) : (
+                    <>
+                      Show More
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </>
+                  )}
+                </button>
+              </div>
+            )}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          19. BOOKING FORM
+      ════════════════════════════════════════ */}
       <LeadForm />
+
+      {/* ════════════════════════════════════════
+          20. FINAL CTA
+      ════════════════════════════════════════ */}
       <FinalCTA />
     </>
   );
