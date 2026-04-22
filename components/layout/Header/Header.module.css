@@ -18,7 +18,7 @@
   transition: height 0.3s ease;
 }
 
-.header[data-scrolled='true'] .inner { height: 60px; }
+.header[data-scrolled='true'] .inner { height: 66px; }
 
 /* ═══════════════════════════════════════════════════════════════
    LOGO
@@ -368,7 +368,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  padding: 9px 20px;
+  padding: 12px 22px;
   font-size: 0.8125rem;
   font-weight: var(--fw-medium);
   letter-spacing: 0.04em;
@@ -623,7 +623,7 @@
   .desktopNav, .ctaLink { display: none; }
   .menuBtn               { display: flex; }
   .inner                 { height: 64px; }
-  .header[data-scrolled='true'] .inner { height: 58px; }
+  .header[data-scrolled='true'] .inner { height: 60px; }
 }
 
 @media (min-width: 1025px) and (max-width: 1280px) {
