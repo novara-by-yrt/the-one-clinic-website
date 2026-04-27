@@ -1,20 +1,27 @@
-/* Page-level stage that establishes perspective for the 3D scroll reveals. */
+/* ── Perspective stage — establishes the 3D context for all panels ── */
 .stage {
-  perspective: 1000px;
-  perspective-origin: 50% 30%;
-  /* Allow children to render their full 3D space without clipping shadows. */
-  transform-style: preserve-3d;
+  perspective: 1400px;
+  perspective-origin: 50% 25%;
+  /* No transform-style: preserve-3d here — panels don't need nested 3D.
+     perspective alone is sufficient for translateZ on direct children. */
 }
 
-/* Subtle, consistent backdrop sitting behind every section.
-   Most sections paint their own background opaquely, so this is mainly
-   visible at section seams and during scroll-in transitions where the
-   incoming section is briefly translucent. */
+/* ── Fixed backdrop — warm cream gradient visible around panel edges ── */
 .backdrop {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background:
-    radial-gradient(120% 80% at 50% 0%, #f5f3ef 0%, #ebe7df 55%, #e2ddd2 100%);
   pointer-events: none;
+
+  /*
+   * Layered radial + linear gradients.
+   * Warm ivory at top-left catches the "light source".
+   * Cool stone at bottom-right adds depth.
+   * Centre transitions through a clean, airy cream.
+   */
+  background:
+    radial-gradient(ellipse 90% 55% at 18% 4%,  #F4F0E8 0%, transparent 62%),
+    radial-gradient(ellipse 65% 42% at 80% 94%, #EDE8DF 0%, transparent 58%),
+    radial-gradient(ellipse 50% 50% at 50% 50%, #F6F4F0 0%, transparent 100%),
+    linear-gradient(158deg, #FAF8F5 0%, #F1EDE5 42%, #E9E3D8 100%);
 }
