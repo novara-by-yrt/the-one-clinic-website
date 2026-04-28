@@ -7,6 +7,8 @@ import Container from '@/components/ui/Container';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './LeadForm.module.css';
 
+const SLIDE_EASE = [0.25, 0.1, 0.25, 1] as const;
+
 const MAPS_URL  = 'https://www.google.com/maps/search/?api=1&query=36+De+Montfort+St,+Leicester+LE1+7GS,+United+Kingdom';
 const EMBED_URL = 'https://maps.google.com/maps?q=36+De+Montfort+St,+Leicester+LE1+7GS,+United+Kingdom&output=embed';
 
@@ -34,10 +36,16 @@ export default function LeadForm() {
           </motion.div>
 
           {/* ── Side-by-side: Map (left) | Form (right) ─────── */}
-          <motion.div className={styles.sideGrid} variants={fadeUp}>
+          <div className={styles.sideGrid}>
 
             {/* Left: Google Map */}
-            <div className={styles.mapSide}>
+            <motion.div
+              className={styles.mapSide}
+              initial={{ opacity: 0, x: -48 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={VIEWPORT}
+              transition={{ duration: 0.85, ease: SLIDE_EASE }}
+            >
               <iframe
                 src={EMBED_URL}
                 title="The One Clinic location"
@@ -61,10 +69,16 @@ export default function LeadForm() {
                   Open in Google Maps
                 </span>
               </a>
-            </div>
+            </motion.div>
 
             {/* Right: Form iframe */}
-            <div className={styles.formSide}>
+            <motion.div
+              className={styles.formSide}
+              initial={{ opacity: 0, x: 48 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={VIEWPORT}
+              transition={{ duration: 0.85, ease: SLIDE_EASE, delay: 0.1 }}
+            >
               <iframe
                 src="https://link.leadpipeline.ai/widget/form/Az3D8kxDVBz2diDQJ3uY"
                 style={{ width: '100%', height: '509px', border: 'none', display: 'block', flex: '1 0 auto' }}
@@ -82,9 +96,9 @@ export default function LeadForm() {
                 data-form-id="Az3D8kxDVBz2diDQJ3uY"
                 title="Book Consultation"
               />
-            </div>
+            </motion.div>
 
-          </motion.div>
+          </div>
         </motion.div>
       </Container>
     </Section>
