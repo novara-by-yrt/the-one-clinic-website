@@ -1,4 +1,4 @@
-import Hero             from '@/components/sections/Hero';
+import BrandHero          from '@/components/brand/BrandHero';
 import LogoCarousel     from '@/components/sections/LogoCarousel';
 import BrandVideoSection from '@/components/brand/BrandVideoSection';
 import TrustStrip       from '@/components/sections/TrustStrip';
@@ -15,7 +15,7 @@ import FinalCTA         from '@/components/sections/FinalCTA';
 export default function BrandPage() {
   return (
     <>
-      <Hero />
+      <BrandHero />
       <LogoCarousel />
       <BrandVideoSection />
       <TrustStrip />

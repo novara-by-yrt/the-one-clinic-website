@@ -1,0 +1,468 @@
+/* ══════════════════════════════════════════════════════
+   HERO — full-screen cinematic dark canvas
+══════════════════════════════════════════════════════ */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  background-color: #060608;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ── Fallback bg image ────────────────────────────────────────── */
+.heroBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.heroBgImg {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ── Background video (same proven technique as original) ─────── */
+.videoBg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.videoSizer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: calc(100vw * 9 / 16);
+  min-height: 100svh;
+  min-width: calc(100svh * 16 / 9);
+  pointer-events: none;
+}
+
+.videoIframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* ══════════════════════════════════════════════════════
+   OVERLAY LAYERS — cinematic depth treatment
+══════════════════════════════════════════════════════ */
+
+/* Layer 1 — Left-biased gradient: panel side is dark, right breathes */
+.overlayGradient {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(
+      108deg,
+      rgba(0, 0, 0, 0.86) 0%,
+      rgba(0, 0, 0, 0.72) 28%,
+      rgba(0, 0, 0, 0.42) 50%,
+      rgba(0, 0, 0, 0.18) 68%,
+      rgba(0, 0, 0, 0.08) 100%
+    );
+  pointer-events: none;
+}
+
+/* Layer 2 — Edge vignette: darkens all four corners cinematically */
+.overlayVignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    radial-gradient(
+      ellipse 85% 75% at 50% 50%,
+      transparent 35%,
+      rgba(0, 0, 0, 0.48) 100%
+    );
+  pointer-events: none;
+}
+
+/* Layer 3 — Warm spotlight glow behind the content panel */
+.overlaySpotlight {
+  position: absolute;
+  z-index: 2;
+  top: -10%;
+  left: -8%;
+  width: 65%;
+  height: 120%;
+  background: radial-gradient(
+    ellipse at 35% 50%,
+    rgba(100, 75, 55, 0.2) 0%,
+    rgba(80, 60, 45, 0.08) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════════════════════
+   CONTENT WRAPPER
+══════════════════════════════════════════════════════ */
+.contentWrapper {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  padding-top: 88px; /* fixed header offset */
+  padding-bottom: 40px;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.layout {
+  display: flex;
+  align-items: center;
+  padding-block: clamp(28px, 5vw, 60px);
+}
+
+/* ══════════════════════════════════════════════════════
+   FLOATING GLASS PANEL
+══════════════════════════════════════════════════════ */
+.panel {
+  position: relative;
+  background: rgba(8, 8, 10, 0.52);
+  backdrop-filter: blur(36px) saturate(1.5) brightness(0.95);
+  -webkit-backdrop-filter: blur(36px) saturate(1.5) brightness(0.95);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 28px;
+  padding: clamp(36px, 4.5vw, 56px) clamp(32px, 4vw, 56px) clamp(32px, 4vw, 48px);
+  max-width: 580px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(18px, 2.5vw, 26px);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 48px 120px rgba(0, 0, 0, 0.55),
+    0 16px 40px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  overflow: visible;
+}
+
+/* Subtle top-edge inner glow — premium highlight */
+.panelGlow {
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.22) 30%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0.22) 70%,
+    transparent 100%
+  );
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════════════════════
+   TYPOGRAPHY
+══════════════════════════════════════════════════════ */
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
+  margin: 0;
+  line-height: 1;
+}
+
+.headline {
+  font-size: clamp(2.75rem, 5.2vw, 5rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.0;
+  color: #ffffff;
+  margin: 0;
+}
+
+.headlineAccent {
+  font-style: italic;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.48);
+}
+
+.subtext {
+  font-size: clamp(0.9375rem, 1.2vw, 1.0625rem);
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.72;
+  margin: 0;
+  max-width: 420px;
+}
+
+/* ══════════════════════════════════════════════════════
+   CTA BUTTON — premium white pill with glow
+══════════════════════════════════════════════════════ */
+.ctaRow {
+  display: flex;
+  align-items: center;
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 36px;
+  background: #ffffff;
+  color: #080810;
+  border: none;
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease;
+  box-shadow:
+    0 4px 24px rgba(255, 255, 255, 0.18),
+    0 1px 4px rgba(0, 0, 0, 0.2);
+  user-select: none;
+}
+
+.ctaBtn:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 10px 40px rgba(255, 255, 255, 0.32),
+    0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.ctaBtn:active {
+  transform: translateY(1px);
+  box-shadow:
+    0 2px 12px rgba(255, 255, 255, 0.15),
+    0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.ctaArrow {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  flex-shrink: 0;
+}
+
+.ctaBtn:hover .ctaArrow {
+  transform: translateX(3px);
+}
+
+/* ══════════════════════════════════════════════════════
+   DIVIDER
+══════════════════════════════════════════════════════ */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.06) 100%
+  );
+  border-radius: 1px;
+}
+
+/* ══════════════════════════════════════════════════════
+   TRUST PILLS — compact glassmorphic micro-cards
+══════════════════════════════════════════════════════ */
+.trustRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.trustPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 14px 8px 10px;
+  background: rgba(255, 255, 255, 0.055);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  transition: background 0.25s ease, border-color 0.25s ease;
+  cursor: default;
+  user-select: none;
+}
+
+.trustPill:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.trustIcon {
+  flex-shrink: 0;
+  display: block;
+}
+
+/* Circular icon container for check/star icons */
+.trustIconCircle {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.trustText {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.trustVal {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+.trustSub {
+  font-size: 0.6875rem;
+  color: rgba(255, 255, 255, 0.42);
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+/* ══════════════════════════════════════════════════════
+   SCROLL INDICATOR
+══════════════════════════════════════════════════════ */
+.scrollIndicator {
+  position: absolute;
+  bottom: clamp(20px, 3vw, 36px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 3;
+}
+
+.scrollLine {
+  display: block;
+  width: 1px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.25);
+  transform-origin: top;
+}
+
+.scrollLabel {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════════ */
+
+/* Large tablet — panel narrows slightly */
+@media (max-width: 1100px) {
+  .panel {
+    max-width: 520px;
+  }
+
+  .headline {
+    font-size: clamp(2.5rem, 5.5vw, 4rem);
+  }
+}
+
+/* Tablet — overlay more prominent, panel adjusts */
+@media (max-width: 860px) {
+  .overlayGradient {
+    background: linear-gradient(
+      108deg,
+      rgba(0, 0, 0, 0.88) 0%,
+      rgba(0, 0, 0, 0.78) 40%,
+      rgba(0, 0, 0, 0.55) 65%,
+      rgba(0, 0, 0, 0.28) 100%
+    );
+  }
+
+  .panel {
+    max-width: 100%;
+  }
+
+  .headline {
+    font-size: clamp(2.5rem, 6.5vw, 3.5rem);
+  }
+
+  .trustRow {
+    gap: 6px;
+  }
+
+  .trustSub {
+    display: none;
+  }
+
+  .trustPill {
+    padding: 7px 12px 7px 8px;
+    gap: 7px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .contentWrapper {
+    padding-top: 72px;
+    padding-bottom: 28px;
+  }
+
+  .panel {
+    border-radius: 22px;
+  }
+
+  .overlayGradient {
+    background: rgba(0, 0, 0, 0.78);
+  }
+
+  .headline {
+    font-size: clamp(2.25rem, 9.5vw, 3rem);
+    line-height: 1.02;
+  }
+
+  .subtext {
+    max-width: 100%;
+  }
+
+  .ctaBtn {
+    width: 100%;
+    justify-content: center;
+    padding: 15px 28px;
+  }
+
+  .ctaRow {
+    width: 100%;
+  }
+
+  .trustRow {
+    gap: 6px;
+  }
+
+  .scrollIndicator {
+    display: none;
+  }
+}
+
+/* Very small mobile */
+@media (max-width: 380px) {
+  .trustPill:nth-child(n+3) {
+    display: none;
+  }
+}
