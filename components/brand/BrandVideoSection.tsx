@@ -51,8 +51,9 @@ export default function BrandVideoSection() {
 
           <motion.h2 className={styles.heading} variants={fadeUp}>
             The One Clinic<br />
-            <em className={styles.headingEm}>Where Expertise</em><br />
-            Meets Care
+            <em className={styles.headingEm}>Where Expertise</em>
+            <br className={styles.brMobile} />
+            {' '}Meets Care
           </motion.h2>
 
           <motion.div className={styles.rule} variants={fadeUp} aria-hidden="true" />
