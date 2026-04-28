@@ -7,7 +7,13 @@
   /* Extra bottom padding so sticky CTA bar doesn't cover footer */
   padding-bottom: calc(48px + 68px);
   position: relative;
+  z-index: 1;
   overflow: hidden;
+
+  /* Curved top corners — pulls up over the section above so the
+     corner cutouts reveal that section's background, not the body bg */
+  border-radius: 22px 22px 0 0;
+  margin-top: -22px;
 }
 
 /* ═══════════════════════════════════════════
