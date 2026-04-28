@@ -101,7 +101,7 @@ export default function StickyCallbackCTA() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
+              transition={{ duration: 0.35, ease: 'easeOut' }}
               onClick={handleClose}
               aria-hidden="true"
             />
@@ -113,10 +113,10 @@ export default function StickyCallbackCTA() {
                 role="dialog"
                 aria-modal="true"
                 aria-label="Request a call back"
-                initial={{ opacity: 0, y: 32 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 32 }}
-                transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+                initial={{ opacity: 0, y: 20, scale: 0.97 }}
+                animate={{ opacity: 1, y: 0,  scale: 1    }}
+                exit={{ opacity: 0,    y: 20, scale: 0.97 }}
+                transition={{ duration: 0.48, ease: [0.22, 1, 0.36, 1] }}
               >
                 {/* Team image, desktop only */}
                 <div className={styles.modalImage} aria-hidden="true">
