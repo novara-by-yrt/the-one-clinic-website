@@ -107,23 +107,6 @@ const JOURNEY_STEPS = [
   },
 ];
 
-const TECH_CARDS = [
-  {
-    eyebrow: '01',
-    title: 'Profhilo',
-    desc: 'A fine laser fibre guided beneath the skin surface precisely melts localised fat and contracts collagen fibres simultaneously, lifting and tightening from within without any surgical incision.',
-  },
-  {
-    eyebrow: '02',
-    title: 'LipoLift',
-    desc: 'Combined with Ecojet, a gentle water-assisted system, LipoLift precisely emulsifies and removes small fat deposits with minimal trauma to surrounding tissue, sculpting the contour without a scalpel.',
-  },
-  {
-    eyebrow: '03',
-    title: 'BioLift',
-    desc: 'Bio-stimulating injectables, including Profhilo or polynucleotides, replenish lost volume and deeply hydrate the dermis, amplifying and prolonging the lifting and tightening effects.',
-  },
-];
 
 const ELIGIBILITY = [
   'Improves skin firmness and elasticity for a naturally lifted appearance',
@@ -219,64 +202,49 @@ const CONDITIONS_BODY = [
 ];
 
 const CLINIC_REASONS = [
-  { n: '01', text: 'All-in-one clinic with medical & aesthetic services.' },
-  { n: '02', text: 'Highly trained, compassionate doctors.' },
-  { n: '03', text: 'Customised treatments based on listening & expertise.' },
-  { n: '04', text: 'State-of-the-art facilities & modern equipment.' },
-  { n: '05', text: 'Strong reputation & excellent reviews.' },
-  { n: '06', text: 'Comprehensive care and referrals with specialists.' },
+  { n: '01', title: 'Expert Doctors', text: 'A team of skilled and caring medical professionals leads your treatment.' },
+  { n: '02', title: 'Personalised Care', text: 'We tailor every experience to meet each patient\'s unique needs.' },
+  { n: '03', title: 'Advanced Technology', text: 'We equip our state-of-the-art medical aesthetics clinic with modern, innovative technology.' },
+  { n: '04', title: 'Trusted Reputation', text: 'We help our patients feel confident and happy with themselves.' },
+  { n: '05', title: 'Full Support', text: 'We take a comprehensive approach to your care, ensuring every aspect is carefully considered.' },
+  { n: '06', title: 'Safe & Hygienic Environment', text: 'We strictly adhere to safety and hygiene standards to ensure every treatment takes place in a clean, secure environment.' },
 ];
 
 const FAQS = [
   {
-    question: 'Am I suitable for Profhilo treatment?',
+    question: 'Who should consider Profhilo treatment?',
     answer:
-      'Profhilo is ideal for those with mild to moderate sagging, loose skin, or signs of ageing who want a non-surgical, minimally invasive lift on the face, neck, or jawline. A consultation with our experts will confirm if it\'s right for you.',
+      'Profhilo is ideal for men and women experiencing dull, dry, or slightly lax skin who want a lovely, natural structural improvement without changing their facial features.',
   },
   {
-    question: 'Is this treatment safe?',
+    question: 'Is it painful?',
     answer:
-      'Yes. Performed by trained professionals, Profhilo targets deeper skin layers safely with minimal discomfort and downtime. A thorough consultation ensures it suits your skin and health.',
+      'Most clients find it highly tolerable. The precise BAP technique requires only ten injection points, and we can use a topical anaesthetic cream to make you as comfortable as possible.',
   },
   {
-    question: 'Does Profhilo really work?',
+    question: 'How is Profhilo treatment performed?',
     answer:
-      'Yes. Profhilo lifts, tightens, and contours skin by melting small fat pockets and stimulating collagen, giving natural, long-lasting results.',
+      'Profhilo treatment requires an injection under the skin\'s surface at precisely 10 locations on the face. It is a quick process, lasting between 15 and 20 minutes.',
   },
   {
-    question: 'How long do Profhilo results last?',
+    question: 'How long does it take to recover?',
     answer:
-      'Results typically last 2 to 3 years, depending on your skin, age, and lifestyle. A good skincare routine helps maintain the effects for longer.',
+      'Downtime is minimal. You may notice small bumps or mild redness at the injection sites, which usually settle within 24 to 48 hours.',
   },
   {
-    question: 'What does a Profhilo do?',
+    question: 'How long do the results last?',
     answer:
-      'It removes small fat deposits, tightens sagging skin, and boosts collagen, leaving skin firmer, smoother, and naturally contoured.',
+      'A complete treatment with two sessions will produce great, luminous results that will last for about six months.',
   },
   {
-    question: 'How painful is a Profhilo?',
+    question: 'Are there any risks?',
     answer:
-      'Most patients feel only mild pressure or warmth. Local anaesthesia ensures the procedure is comfortable, and any minor soreness usually settles quickly.',
+      'As this procedure utilises highly purified hyaluronic acid, it is extremely safe. The only side effects that can be observed temporarily are redness, swelling, or bruising.',
   },
   {
-    question: 'How many Profhilo sessions will I need?',
+    question: 'Do I need follow-ups?',
     answer:
-      '1 to 2 sessions are usually enough. Your doctor will create a personalised plan based on your skin and goals. Some may see results in a single session, others may benefit from a second.',
-  },
-  {
-    question: 'What can I expect after Profhilo?',
-    answer:
-      'You may notice temporary swelling, redness, or warmth for a few days. Most people resume normal activities quickly. Following your aftercare advice helps recovery and results.',
-  },
-  {
-    question: 'How does Profhilo compare to other treatments?',
-    answer:
-      'Profhilo deeply hydrates and stimulates collagen production, while fillers mainly add volume. They work differently but can be combined for optimal results.',
-  },
-  {
-    question: 'What does Profhilo cost in Leicester?',
-    answer:
-      'At The One Clinic, Profhilo starts from £200 per session. Prices vary depending on the area treated. A consultation will provide an exact quote based on your individual needs.',
+      'Yes, to achieve the absolute best outcome, you must have a second session four weeks after the first. A top-up maintenance session is usually recommended every six months thereafter.',
   },
 ];
 
@@ -432,7 +400,7 @@ export default function ProfhiloPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/endolift-work.jpg"
+                src="/images/profhilo-work.jpg"
                 alt="Profhilo treatment in progress at The One Clinic"
                 fill
                 priority
@@ -452,7 +420,7 @@ export default function ProfhiloPage() {
       <Testimonials />
 
       {/* ════════════════════════════════════════
-          3A. WHAT IS ENDOLIFT?
+          3A. WHAT IS PROFHILO?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
@@ -542,69 +510,7 @@ export default function ProfhiloPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          NEW: ENDOLIFT COMBINATION
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Our Approach
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              A Triple Action for Sculpted Skin
-            </motion.h2>
-            <motion.p className={styles.combinationIntroText} variants={fadeUp}>
-              At The One Clinic, our Profhilo Combination combines three technologies, ideal for
-              those who want to lift, tighten, and contour their face or body safely.
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            className={styles.techCardsGrid}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {TECH_CARDS.map((card) => (
-              <motion.div
-                key={card.title}
-                className={styles.techCard}
-                variants={fadeUp}
-                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
-              >
-                <span className={styles.techCardEyebrow}>{card.eyebrow}</span>
-                <h3 className={styles.techCardTitle}>{card.title}</h3>
-                <p className={styles.techCardDesc}>{card.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          <motion.div
-            className={styles.finalResultsBanner}
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <p className={styles.finalResultsEyebrow}>Final Results</p>
-            <p className={styles.finalResultsText}>
-              When combined, Profhilo, LipoLift, and BioLift deliver complete skin renewal,
-              addressing laxity, fat deposits, and volume loss in a single programme for a
-              naturally sculpted, youthful outcome.
-            </p>
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          4. TREATMENT JOURNEY
+          4. PROFHILO PROCEDURE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
@@ -696,7 +602,7 @@ export default function ProfhiloPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          5. WHY CHOOSE ENDOLIFT LASER
+          5. WHY CHOOSE PROFHILO
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -750,7 +656,7 @@ export default function ProfhiloPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          6. HOW DOES ENDOLIFT WORK
+          6. HOW DOES PROFHILO WORK
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
@@ -1036,10 +942,11 @@ export default function ProfhiloPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
-              Turn The Clock Backwards,<br />Your Profhilo Treatment Awaits!
+              Uncover Your Natural Beauty<br />and Radiance!
             </motion.h2>
             <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
-              Let our experts create your personalised Profhilo plan!
+              Give your skin the deep hydration and structural renewal it truly deserves. Let our
+              expert doctors at The One Clinic help you achieve a beautifully luminous complexion.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
@@ -1069,8 +976,8 @@ export default function ProfhiloPage() {
               What Areas Can Be Treated With Profhilo?
             </motion.h2>
             <motion.p className={styles.conditionsIntro} variants={fadeUp}>
-              Profhilo is our treatment of choice to tackle skin sagging and stubborn fat cells
-              on various face and body areas.
+              Profhilo is suitable for treating a range of face and body areas, delivering
+              deep hydration and bio-remodelling results across the skin.
             </motion.p>
           </motion.div>
 
@@ -1117,7 +1024,7 @@ export default function ProfhiloPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          NEW: BEST ENDOLIFT LEICESTER EXPERIENCE
+          NEW: BEST PROFHILO LEICESTER EXPERIENCE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
@@ -1205,7 +1112,7 @@ export default function ProfhiloPage() {
               Why Us
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Why Choose The One Clinic For Profhilo
+              Why Choose The One Clinic in Leicester
             </motion.h2>
           </motion.div>
 
@@ -1224,6 +1131,7 @@ export default function ProfhiloPage() {
                 whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
               >
                 <span className={styles.clinicReasonNumber}>{r.n}</span>
+                <h3 className={styles.clinicReasonTitle}>{r.title}</h3>
                 <p className={styles.clinicReasonText}>{r.text}</p>
               </motion.div>
             ))}
