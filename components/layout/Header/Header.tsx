@@ -148,11 +148,21 @@ const megaVars = {
   closed: { opacity: 0, y: -8, scale: 0.97, pointerEvents: 'none' as const },
   open:   { opacity: 1, y: 0,  scale: 1,    pointerEvents: 'auto' as const },
 };
-const megaTrans = { duration: 0.22, ease: [0.22, 1, 0.36, 1] as const };
+const megaTrans = { duration: 0.28, ease: [0.22, 1, 0.36, 1] as const };
 
 const backdropVars = {
   closed: { opacity: 0 },
   open:   { opacity: 1 },
+};
+
+/* Staggered list animation for mega menu items */
+const megaListVars = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.018, delayChildren: 0.03 } },
+};
+const megaItemVars = {
+  hidden: { opacity: 0, y: 5 },
+  show:   { opacity: 1, y: 0, transition: { duration: 0.18, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -408,7 +418,7 @@ export default function Header() {
                         </AnimatePresence>
                       )}
 
-                      {/* Mega dropdown (Treatments / Conditions), two-panel */}
+                      {/* Mega dropdown — premium 3-panel glass experience */}
                       {item.groups && (
                         <AnimatePresence>
                           {isOpen && (
@@ -439,9 +449,10 @@ export default function Header() {
                                 </Link>
                               </div>
 
-                              {/* Two-panel body */}
+                              {/* Three-panel body */}
                               <div className={styles.megaBody}>
-                                {/* Left: category list */}
+
+                                {/* LEFT — Editorial category navigation */}
                                 <div className={styles.megaSidebar}>
                                   {item.groups.map((grp, gi) => {
                                     const gKey     = `${i}-${gi}`;
@@ -454,15 +465,18 @@ export default function Header() {
                                         onClick={() => setOpenMegaGroup(gKey)}
                                         aria-selected={isActive}
                                       >
-                                        {grp.group}
+                                        <span>{grp.group}</span>
+                                        <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden="true" className={styles.megaCatChevron}>
+                                          <path d="M2 1.5l3 2.5-3 2.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                        </svg>
                                       </button>
                                     );
                                   })}
                                 </div>
 
-                                {/* Right: items for active category */}
+                                {/* CENTER — Treatment links with stagger reveal */}
                                 <div className={styles.megaContent}>
-                                  <AnimatePresence initial={false}>
+                                  <AnimatePresence mode="wait" initial={false}>
                                     {item.groups.map((grp, gi) => {
                                       const gKey = `${i}-${gi}`;
                                       if (openMegaGroup !== gKey) return null;
@@ -471,13 +485,13 @@ export default function Header() {
                                           key={gKey}
                                           className={styles.megaList}
                                           role="list"
-                                          initial={{ opacity: 0, x: 8 }}
-                                          animate={{ opacity: 1, x: 0 }}
-                                          exit={{ opacity: 0, x: -4 }}
-                                          transition={{ duration: 0.16, ease: [0.25, 0.1, 0.25, 1] }}
+                                          variants={megaListVars}
+                                          initial="hidden"
+                                          animate="show"
+                                          exit={{ opacity: 0, transition: { duration: 0.08 } }}
                                         >
                                           {grp.items.map((link) => (
-                                            <li key={link.href}>
+                                            <motion.li key={link.href} variants={megaItemVars}>
                                               <Link
                                                 href={link.href}
                                                 className={styles.ddItem}
@@ -485,13 +499,36 @@ export default function Header() {
                                               >
                                                 {link.label}
                                               </Link>
-                                            </li>
+                                            </motion.li>
                                           ))}
                                         </motion.ul>
                                       );
                                     })}
                                   </AnimatePresence>
                                 </div>
+
+                                {/* RIGHT — Featured preview panel */}
+                                <div className={styles.megaFeatured}>
+                                  <Image
+                                    src="/images/imgi_78_GTR_0328-1-1.jpg"
+                                    alt=""
+                                    fill
+                                    className={styles.megaFeaturedImg}
+                                    sizes="210px"
+                                  />
+                                  <div className={styles.megaFeaturedOverlay} aria-hidden="true" />
+                                  <div className={styles.megaFeaturedContent}>
+                                    <span className={styles.megaFeaturedChip}>Doctor-Led Care</span>
+                                    <p className={styles.megaFeaturedTitle}>Advanced Medical &amp; Aesthetic Care</p>
+                                    <button
+                                      className={styles.megaFeaturedCta}
+                                      onClick={() => { setOpenDropdown(null); window.dispatchEvent(new CustomEvent('openCallbackModal')); }}
+                                    >
+                                      Book a Consultation
+                                    </button>
+                                  </div>
+                                </div>
+
                               </div>
                             </motion.div>
                           )}
