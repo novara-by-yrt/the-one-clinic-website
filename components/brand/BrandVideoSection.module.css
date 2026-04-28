@@ -4,7 +4,7 @@
 .section {
   position: relative;
   background: #040408 !important;
-  padding-block: clamp(90px, 13vw, 160px);
+  padding-block: clamp(52px, 7vw, 88px);
   overflow: hidden;
 }
 
@@ -49,13 +49,13 @@
 ══════════════════════════════════════════════════════ */
 .header {
   text-align: center;
-  max-width: 600px;
+  max-width: 560px;
   margin-inline: auto;
-  margin-bottom: clamp(64px, 9vw, 112px);
+  margin-bottom: clamp(36px, 5vw, 56px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-2);
 }
 
 .eyebrow {
@@ -68,10 +68,10 @@
 }
 
 .heading {
-  font-size: clamp(2.5rem, 5.5vw, 5rem);
+  font-size: clamp(1.75rem, 3.2vw, 2.75rem);
   font-weight: 800;
-  letter-spacing: -0.045em;
-  line-height: 1.0;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
   color: #fff;
   margin: 0;
 }
@@ -83,7 +83,7 @@
 }
 
 .rule {
-  width: 32px;
+  width: 28px;
   height: 1.5px;
   background: rgba(255, 255, 255, 0.18);
   border-radius: 1px;
@@ -93,8 +93,8 @@
 .subtext {
   font-size: var(--text-body);
   color: rgba(255, 255, 255, 0.42);
-  line-height: 1.78;
-  max-width: 440px;
+  line-height: 1.7;
+  max-width: 420px;
   margin: 0;
 }
 
@@ -289,12 +289,12 @@
 /* Mobile — single column, remove offset */
 @media (max-width: 640px) {
   .section {
-    padding-block: clamp(64px, 12vw, 96px);
+    padding-block: clamp(44px, 9vw, 64px);
   }
 
   .grid {
     grid-template-columns: 1fr;
-    gap: clamp(24px, 6vw, 40px);
+    gap: clamp(20px, 5vw, 32px);
   }
 
   .videoCardOffset {
@@ -302,11 +302,11 @@
   }
 
   .heading {
-    font-size: clamp(2.25rem, 9vw, 3rem);
+    font-size: clamp(1.625rem, 7vw, 2.25rem);
   }
 
   .header {
-    margin-bottom: clamp(48px, 8vw, 72px);
+    margin-bottom: clamp(28px, 6vw, 44px);
   }
 
   .videoCard:hover {
