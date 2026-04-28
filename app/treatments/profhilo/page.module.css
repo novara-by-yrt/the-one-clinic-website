@@ -1176,7 +1176,7 @@
   background-image: url('/images/Background%20image2.jpg');
   background-size: cover;
   background-position: center top;
-  padding-block: clamp(80px, 10vw, 140px);
+  padding-block: clamp(56px, 6vw, 96px);
   overflow: hidden;
 }
 
@@ -1201,7 +1201,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: clamp(var(--space-5), 4vw, var(--space-8));
+  gap: clamp(var(--space-4), 2.5vw, var(--space-6));
 }
 
 .costBannerHeader {
