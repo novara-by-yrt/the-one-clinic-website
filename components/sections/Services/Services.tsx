@@ -212,7 +212,7 @@ const TREATMENTS: Treatment[] = [
     category: 'Medical Aesthetics',
     desc: 'Premium skin booster with hyaluronic acid and vitamins to reduce dark circles and stimulate collagen.',
     href: '/treatments/nctf-135-ha',
-    image: '/images/Profhilo (2).jpg',
+    image: '/NCTF 135 HA.jpg',
     bg: 'linear-gradient(160deg,#0d1520 0%,#142038 100%)',
   },
   {

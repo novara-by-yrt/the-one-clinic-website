@@ -358,7 +358,7 @@ export default function NCTF135Page() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Profhilo (2).jpg"
+                src="/NCTF 135 HA.jpg"
                 alt="NCTF 135 HA skin booster treatment at The One Clinic Leicester"
                 fill
                 priority
