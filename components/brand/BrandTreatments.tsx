@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './BrandTreatments.module.css';
 
-const SPEED = 0.45;
+const SPEED = 0.22;
 
 const SLIDES = [
   { src: '/images/Health Screening.jpg',       title: 'Health Screening',   href: '/treatments/health-screening' },
