@@ -158,25 +158,20 @@ export default function MeetTheExperts() {
                 </div>
               )}
 
-              {/* Dark gradient scrim so glass panel reads clearly */}
-              <div className={styles.scrim} aria-hidden="true" />
+              {/* Bottom-weighted dark overlay */}
+              <div className={styles.overlay} aria-hidden="true" />
 
-              {/* Frosted glass info panel */}
-              <div className={styles.glassPanel}>
-                <p className={styles.cardName}>{member.name}</p>
+              {/* Content anchored to bottom-left */}
+              <div className={styles.cardContent}>
+                <p className={styles.cardRole}>{member.role}</p>
+                <h3 className={styles.cardName}>{member.name}</h3>
                 {member.credentials && (
                   <p className={styles.cardCredentials}>{member.credentials}</p>
                 )}
-                <p className={styles.cardRole}>{member.role}</p>
-              </div>
-
-              {/* Arrow chip, top right */}
-              <div className={styles.arrowChip} aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M2 12L12 2M12 2H5M12 2v7"
-                    stroke="currentColor" strokeWidth="1.8"
-                    strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                <div className={styles.exploreRow}>
+                  <span className={styles.exploreLine} aria-hidden="true" />
+                  <span className={styles.exploreLabel}>View Profile</span>
+                </div>
               </div>
             </Link>
           ))}
