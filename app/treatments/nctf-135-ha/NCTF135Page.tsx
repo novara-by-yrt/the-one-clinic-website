@@ -21,7 +21,7 @@ import styles from './page.module.css';
 const AT_A_GLANCE = [
   {
     label: 'Treatment Duration',
-    value: '30 to 45 minutes',
+    value: '30–45 minutes',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -31,7 +31,7 @@ const AT_A_GLANCE = [
   },
   {
     label: 'Treatment Frequency',
-    value: '2 sessions spaced four weeks apart',
+    value: 'Two sessions (Nurse) + One session Filler (Doctor)',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="1 4 1 10 7 10"/>
@@ -41,7 +41,7 @@ const AT_A_GLANCE = [
   },
   {
     label: 'Downtime',
-    value: 'Minimal',
+    value: '1–2 days',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
@@ -51,7 +51,7 @@ const AT_A_GLANCE = [
   },
   {
     label: 'Results Longevity',
-    value: 'Typically, around six months',
+    value: 'Long-term restoration',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
@@ -60,8 +60,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'NCTF 135 HA Cost',
-    value: 'Starts from £200',
+    label: 'Cost',
+    value: 'Starts From £200',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <line x1="12" y1="1" x2="12" y2="23"/>
@@ -108,17 +108,16 @@ const JOURNEY_STEPS = [
 
 
 const ELIGIBILITY = [
-  'Improves skin firmness and elasticity for a naturally lifted appearance',
-  'Deeply hydrates dry or dehydrated skin from within',
-  'Enhances your natural features without changing your appearance',
-  'Reduces the appearance of fine lines and improves overall skin texture',
-  'Complements other treatments such as anti-wrinkle injections or dermal fillers',
+  'Troubled by persistent dark circles around your eyes',
+  'Keen to thicken your skin and boost collagen',
+  'In search of laser-like results without high costs',
+  'Eager to avoid long NHS wait lists',
 ];
 
 const TREATED_BENEFITS = [
   {
-    title: 'Deep Hydration',
-    desc: 'Ensures your skin feels plumper, softer, and consistently moisturised from the inside out.',
+    title: 'Targeted Hydration',
+    desc: 'Hyaluronic acid plumps the skin. It restores lost moisture for a visibly softer, fuller complexion.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 2C6.5 9 4 13.5 4 16a8 8 0 0 0 16 0c0-2.5-2.5-7-8-14z"/>
@@ -126,8 +125,8 @@ const TREATED_BENEFITS = [
     ),
   },
   {
-    title: 'Enhanced Firmness',
-    desc: 'Rebuilds the skin\'s internal scaffolding, making it feel bouncier and noticeably tighter.',
+    title: 'Collagen Stimulation',
+    desc: 'The vitamins encourage collagen growth. This thickens the skin structure for lasting firmness.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
@@ -136,18 +135,8 @@ const TREATED_BENEFITS = [
     ),
   },
   {
-    title: 'Minimal Downtime',
-    desc: 'A highly tolerable procedure allowing you to get back to your day straightaway.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-        <polyline points="22 4 12 14.01 9 11.01"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'Natural Luminosity',
-    desc: 'Breathes new life into tired skin, giving you a refreshed and brilliant glow.',
+    title: 'Dark Circle Removal',
+    desc: 'Active ingredients depigment the treated area. This brightens the delicate skin around the eyes.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="5"/>
@@ -162,42 +151,18 @@ const TREATED_BENEFITS = [
       </svg>
     ),
   },
-  {
-    title: 'Softened Fine Lines',
-    desc: 'It reduces fine lines and crepey skin while keeping your look natural.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-        <circle cx="12" cy="12" r="3"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'Improved Skin Texture',
-    desc: 'Refines uneven skin, making it feel smoother, softer, and more even to the touch.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-      </svg>
-    ),
-  },
 ];
 
 const CONDITIONS_FACE = [
-  'Chin & Jawline',
-  'Nasolabial Folds',
-  'Smile & Laughter Lines',
-  'Lower Eyelids',
-  'Neck & Décolletage',
+  'Delicate under-eye area',
+  'Dark circles',
+  'Tear troughs (with filler)',
+  'Full face',
 ];
 
 const CONDITIONS_BODY = [
-  'Stomach',
-  'Arms',
-  'Inner Thighs',
-  'Ankles',
-  'Knees',
-  'Buttock Area',
+  'Neck',
+  'Hands',
 ];
 
 const CLINIC_REASONS = [
@@ -211,39 +176,39 @@ const CLINIC_REASONS = [
 
 const FAQS = [
   {
-    question: 'Who should consider NCTF 135 HA treatment?',
+    question: 'What is NCTF 135 HA used for?',
     answer:
-      'NCTF 135 HA is ideal for men and women experiencing dull, dry, or slightly lax skin who want a lovely, natural structural improvement without changing their facial features.',
+      'NCTF 135 HA is a skin booster primarily used to reduce dark circles, thicken the delicate under-eye skin, and stimulate collagen production. It is also used for overall skin hydration and rejuvenation of the face, neck, and hands.',
   },
   {
-    question: 'Is it painful?',
+    question: 'Is NCTF 135 HA painful?',
     answer:
-      'Most clients find it highly tolerable. The precise BAP technique requires only ten injection points, and we can use a topical anaesthetic cream to make you as comfortable as possible.',
+      'Most patients find the treatment very tolerable. We can apply a topical anaesthetic cream to maximise your comfort before the injections.',
   },
   {
-    question: 'How is NCTF 135 HA treatment performed?',
+    question: 'How many sessions will I need?',
     answer:
-      'NCTF 135 HA treatment requires an injection under the skin\'s surface at precisely 10 locations on the face. It is a quick process, lasting between 15 and 20 minutes.',
+      'A typical course involves two nurse-administered booster sessions, often combined with one doctor-administered filler session targeting the tear troughs for optimal results.',
   },
   {
-    question: 'How long does it take to recover?',
+    question: 'How long is the downtime?',
     answer:
-      'Downtime is minimal. You may notice small bumps or mild redness at the injection sites, which usually settle within 24 to 48 hours.',
+      'Expect 1 to 2 days of mild redness or small injection site bumps. Most patients return to normal activities very quickly after treatment.',
   },
   {
-    question: 'How long do the results last?',
+    question: 'How long do results last?',
     answer:
-      'A complete treatment with two sessions will produce great, luminous results that will last for about six months.',
+      'Results from NCTF 135 HA are long-lasting with maintenance sessions. Your doctor will advise on the best schedule to sustain your results.',
   },
   {
-    question: 'Are there any risks?',
+    question: 'Is NCTF 135 HA safe?',
     answer:
-      'As this procedure utilises highly purified hyaluronic acid, it is extremely safe. The only side effects that can be observed temporarily are redness, swelling, or bruising.',
+      'Yes. NCTF 135 HA uses highly purified hyaluronic acid combined with vitamins and active ingredients. When administered by our trained medical team, it is extremely safe.',
   },
   {
-    question: 'Do I need follow-ups?',
+    question: 'How does NCTF 135 HA compare to laser treatments?',
     answer:
-      'Yes, to achieve the absolute best outcome, you must have a second session four weeks after the first. A top-up maintenance session is usually recommended every six months thereafter.',
+      'NCTF 135 HA provides clinical benefits equal to laser treatments for dark circles and skin rejuvenation, at a lower cost and without the associated downtime of laser procedures.',
   },
 ];
 
@@ -271,14 +236,14 @@ const EXPERTS = [
 ];
 
 const RELATED = [
-  { title: 'Morpheus8',                   href: '/treatments/morpheus8',         desc: 'Fractional radiofrequency skin remodelling for face and body.' },
+  { title: 'Profhilo',                    href: '/treatments/profhilo',          desc: 'Ultra-pure hyaluronic acid bio-remodelling for deep hydration and natural glow.' },
   { title: 'Dermal Fillers',              href: '/treatments/dermal-fillers',    desc: 'Restore volume and structure to the face with precision filler.' },
-  { title: 'Deep Laser Resurfacing',      href: '/treatments/laser-resurfacing', desc: 'Comprehensive skin renewal targeting texture, tone, and laxity.' },
   { title: 'Non Surgical Blepharoplasty', href: '/treatments/blepharoplasty',    desc: 'Eye area rejuvenation without surgery or scarring.' },
+  { title: 'Morpheus8',                   href: '/treatments/morpheus8',         desc: 'Fractional radiofrequency skin remodelling for face and body.' },
 ];
 
 /* ── Page component ───────────────────────────────────────────── */
-export default function NCTF 135 HAPage() {
+export default function NCTF135Page() {
   const [showAllFaqs, setShowAllFaqs] = useState(false);
   const [expertIndex, setExpertIndex] = useState(0);
 
@@ -319,13 +284,12 @@ export default function NCTF 135 HAPage() {
               </motion.span>
 
               <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                NCTF 135 HA in Leicester
+                NCTF 135 HA Skin Booster in Leicester
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Experience visibly healthier, more radiant skin with expert NCTF 135 HA treatments.
-                This revolutionary bio-remodelling procedure offers deep hydration and structural
-                rejuvenation for a lovely, natural glow without altering your features.
+                Safe, precise, and effective skin boosters to thicken skin and erase dark circles
+                without long wait lists.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -370,8 +334,8 @@ export default function NCTF 135 HAPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/NCTF 135 HA (2).jpg"
-                alt="NCTF 135 HA treatment in progress at The One Clinic"
+                src="/images/Profhilo (2).jpg"
+                alt="NCTF 135 HA skin booster treatment at The One Clinic Leicester"
                 fill
                 priority
                 className={styles.heroImage}
@@ -407,12 +371,9 @@ export default function NCTF 135 HAPage() {
                 <p className={styles.eyebrowDark}>About This Treatment</p>
                 <h2 className={styles.combinedHeading}>What is NCTF 135 HA?</h2>
                 <p className={styles.combinedDesc}>
-                  NCTF 135 HA is an innovative injectable skin treatment formulated with one of the
-                  highest concentrations of ultra-pure hyaluronic acid available. Rather than acting
-                  as a traditional dermal filler to add volume, it works as a bio-remodelling agent.
-                  It is specifically designed to treat dull, dry, and ageing skin by providing
-                  intense, deep hydration and naturally stimulating the production of collagen and
-                  elastin from within.
+                  NCTF, or NCTF 135 HA, is a highly advanced skin booster. It features a potent
+                  blend of hyaluronic acid, vitamins, and active ingredients to depigment the skin.
+                  It is exceptionally effective to rejuvenate the delicate eye area.
                 </p>
               </motion.div>
               <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
@@ -535,11 +496,15 @@ export default function NCTF 135 HAPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-              What You Gain
+              Our Approach
             </motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              NCTF 135 HA Benefits
+              The Skin Booster Advantage
             </motion.h2>
+            <motion.p className={styles.combinationIntroText} variants={fadeUp}>
+              At The One Clinic, we combine medical safety with aesthetic care. We understand that
+              you desire refreshed eyes.
+            </motion.p>
           </motion.div>
 
           <motion.div
@@ -564,11 +529,25 @@ export default function NCTF 135 HAPage() {
               </motion.div>
             ))}
           </motion.div>
+
+          <motion.div
+            className={styles.finalResultsBanner}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <p className={styles.finalResultsEyebrow}>Final Results</p>
+            <p className={styles.finalResultsText}>
+              This approach delivers laser-like benefits. You receive premium results without
+              high costs.
+            </p>
+          </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          5. WHY CHOOSE PROFHILO
+          5. WHY CHOOSE NCTF 135 HA
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -595,7 +574,7 @@ export default function NCTF 135 HAPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
-              You might find NCTF 135 HA to be a brilliant choice, it:
+              You should choose this treatment if you are:
             </motion.p>
             <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
               {ELIGIBILITY.map((item) => (
@@ -610,7 +589,7 @@ export default function NCTF 135 HAPage() {
               ))}
             </motion.ul>
             <motion.p className={styles.eligibilityClosing} variants={fadeUp}>
-              If NCTF 135 HA sounds like it could be right for you, book a consultation with our team to find out more.
+              NCTF offers a targeted, medical-grade skin boost. It gives you peace of mind that experts handle your care.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
@@ -647,12 +626,13 @@ export default function NCTF 135 HAPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.howPara} variants={fadeUp}>
-              Once injected, NCTF 135 HA spreads evenly beneath the skin rather than remaining in one
-              spot. It works deep within the skin to activate your body&apos;s natural healing process.
-              It helps boost collagen and elastin, which improves the skin&apos;s structure.
+              We inject the formula deep into the skin. It improves overall skin quality. It
+              stimulates natural collagen production and increases skin thickness.
             </motion.p>
             <motion.p className={styles.howPara} variants={fadeUp}>
-              As a result, your skin becomes firmer, tighter, well-hydrated, and naturally glowing.
+              It contains active ingredients that depigment the skin, making it highly effective at
+              removing dark circles around the delicate eye area. It provides clinical benefits equal
+              to laser treatments.
             </motion.p>
           </motion.div>
 
@@ -663,15 +643,15 @@ export default function NCTF 135 HAPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.howCoversLabel} variants={fadeUp}>NCTF 135 HA Addresses</motion.p>
+            <motion.p className={styles.howCoversLabel} variants={fadeUp}>Commonly Treated Areas</motion.p>
             <motion.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
               {[
-                'Face & jowls',
-                'Neck & jawline',
-                'Double chin',
-                'Upper arms',
-                'Abdomen',
-                'Thighs & knees',
+                'Under-eye area',
+                'Dark circles',
+                'Full face',
+                'Neck',
+                'Hands',
+                'Tear troughs',
               ].map((item) => (
                 <motion.li key={item} className={styles.howCoversItem} variants={fadeUp}>
                   <span className={styles.howCoversCheck} aria-hidden="true">
@@ -817,11 +797,11 @@ export default function NCTF 135 HAPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
-              Uncover Your Natural Beauty<br />and Radiance!
+              Prioritise Your Health Today!
             </motion.h2>
             <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
-              Give your skin the deep hydration and structural renewal it truly deserves. Let our
-              expert doctors at The One Clinic help you achieve a beautifully luminous complexion.
+              Expert NCTF 135 HA skin boosters at The One Clinic, Leicester. Erase dark circles and
+              restore skin thickness with a safe, medical-grade treatment — no long wait lists.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
@@ -848,11 +828,10 @@ export default function NCTF 135 HAPage() {
               Treatable Areas
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              What Areas Can Be Treated With NCTF 135 HA?
+              What Areas Can Be Treated?
             </motion.h2>
             <motion.p className={styles.conditionsIntro} variants={fadeUp}>
-              NCTF 135 HA is suitable for treating a range of face and body areas, delivering
-              deep hydration and bio-remodelling results across the skin.
+              We commonly treat these areas with NCTF 135 HA skin boosters.
             </motion.p>
           </motion.div>
 
@@ -955,11 +934,10 @@ export default function NCTF 135 HAPage() {
               variants={stagger(0.08)}
             >
               {[
-                { label: 'NCTF 135 HA Face',                      price: '£200' },
-                { label: 'NCTF 135 HA Face + Neck',               price: '£300' },
-                { label: 'NCTF 135 HA Face + Neck + Décolletage', price: '£375' },
-                { label: 'NCTF 135 HA Face (course of 2)',         price: '£250 / session' },
-                { label: 'NCTF 135 HA Body',                       price: '£600' },
+                { label: 'Under-eye / Dark Circles',               price: 'From £200' },
+                { label: 'Full Face',                              price: 'From £250' },
+                { label: 'Face + Neck',                            price: 'From £350' },
+                { label: 'Hands',                                  price: 'From £200' },
               ].map((item) => (
                 <motion.li key={item.label} className={styles.costPriceCard} variants={fadeUp}>
                   <span className={styles.costPriceLabel}>{item.label}</span>
