@@ -68,6 +68,7 @@ const NAV: NavItem[] = [
           { label: 'Body Contouring',                           href: '/treatments/body-contouring' },
           { label: 'Endolift Laser',                            href: '/treatments/endolift' },
           { label: 'Profhilo',                                  href: '/treatments/profhilo' },
+          { label: 'NCTF 135 HA',                               href: '/treatments/nctf-135-ha' },
           { label: 'Skincare, Alumier MD',                      href: '/treatments/skincare-alumier-md' },
           { label: 'Skin Lesion Removal Leicester',             href: '/treatments/skin-lesion' },
           { label: 'BCC Removal Leicester',                     href: '/treatments/basal-cell-carcinoma-bcc-removal-leicester' },
