@@ -67,6 +67,7 @@ const NAV: NavItem[] = [
           { label: 'Skin Analysis, Life Viz 3D Camera',         href: '/treatments/skin-analysis' },
           { label: 'Body Contouring',                           href: '/treatments/body-contouring' },
           { label: 'Endolift Laser',                            href: '/treatments/endolift' },
+          { label: 'Profhilo',                                  href: '/treatments/profhilo' },
           { label: 'Skincare, Alumier MD',                      href: '/treatments/skincare-alumier-md' },
           { label: 'Skin Lesion Removal Leicester',             href: '/treatments/skin-lesion' },
           { label: 'BCC Removal Leicester',                     href: '/treatments/basal-cell-carcinoma-bcc-removal-leicester' },
