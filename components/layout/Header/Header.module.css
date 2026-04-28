@@ -227,7 +227,7 @@
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.36);
 }
 
 .megaViewAll {
@@ -236,11 +236,11 @@
   gap: 5px;
   font-size: 0.75rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.38);
+  color: rgba(255, 255, 255, 0.48);
   text-decoration: none;
   transition: color 0.2s ease, gap 0.2s ease;
 }
-.megaViewAll:hover { color: rgba(255,255,255,0.85); gap: 8px; }
+.megaViewAll:hover { color: rgba(255,255,255,0.9); gap: 8px; }
 
 /* Three-panel body */
 .megaBody {
@@ -255,11 +255,29 @@
 .megaSidebar {
   flex: 0 0 170px;
   padding: 14px 10px;
-  border-right: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   flex-direction: column;
   gap: 3px;
   background: rgba(0, 0, 0, 0.22);
+  position: relative;
+}
+
+/* Gradient fade separator — sidebar → content */
+.megaSidebar::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 8%;
+  height: 84%;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.1) 25%,
+    rgba(255, 255, 255, 0.1) 75%,
+    transparent
+  );
+  pointer-events: none;
 }
 
 .megaCategoryBtn {
@@ -276,44 +294,47 @@
   font-size: 0.8125rem;
   font-weight: 550;
   letter-spacing: 0.01em;
-  color: rgba(255, 255, 255, 0.42);
+  color: rgba(255, 255, 255, 0.60);
   cursor: pointer;
   position: relative;
-  transition: background 0.22s ease, color 0.22s ease;
+  transition: background 0.22s ease, color 0.22s ease, transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .megaCategoryBtn:hover {
-  background: rgba(255, 255, 255, 0.07);
-  color: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.92);
+  transform: translateX(3px);
 }
 
 .megaCategoryBtnActive {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.11);
   color: #ffffff;
+  transform: translateX(3px);
 }
 
 .megaCategoryBtnActive::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 20%;
-  height: 60%;
+  top: 18%;
+  height: 64%;
   width: 2px;
-  background: rgba(255, 255, 255, 0.55);
+  background: linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(255,255,255,0.7), rgba(255,255,255,0.2));
   border-radius: 2px;
+  box-shadow: 0 0 6px rgba(255,255,255,0.3);
 }
 
 .megaCatChevron {
   flex-shrink: 0;
-  opacity: 0.3;
+  opacity: 0.35;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 .megaCategoryBtnActive .megaCatChevron {
-  opacity: 0.7;
+  opacity: 0.75;
   transform: translateX(2px);
 }
 .megaCategoryBtn:hover .megaCatChevron {
-  opacity: 0.5;
+  opacity: 0.55;
 }
 
 /* CENTER — Treatment links */
@@ -325,7 +346,24 @@
   position: relative;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
-  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Gradient fade separator — content → featured */
+.megaContent::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 8%;
+  height: 84%;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.09) 25%,
+    rgba(255, 255, 255, 0.09) 75%,
+    transparent
+  );
+  pointer-events: none;
 }
 .megaContent::-webkit-scrollbar { width: 3px; }
 .megaContent::-webkit-scrollbar-track { background: transparent; }
@@ -342,15 +380,15 @@
 
 /* Dark ddItem overrides for mega panel */
 .megaPanel .ddItem {
-  color: rgba(255, 255, 255, 0.5);
-  padding: 8px 12px 8px 14px;
+  color: rgba(255, 255, 255, 0.64);
+  padding: 9px 12px 9px 14px;
   border-radius: 8px;
   font-size: 0.8125rem;
-  transition: color 0.2s ease, padding-left 0.2s cubic-bezier(0.22, 1, 0.36, 1), background 0.2s ease;
+  transition: color 0.2s ease, padding-left 0.22s cubic-bezier(0.22, 1, 0.36, 1), background 0.2s ease, text-shadow 0.2s ease;
 }
 .megaPanel .ddItem::before { background: rgba(255, 255, 255, 0.6); width: 1.5px; }
 .megaPanel .ddItem::after  { background: linear-gradient(90deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02)); }
-.megaPanel .ddItem:hover   { color: #fff; padding-left: 18px; }
+.megaPanel .ddItem:hover   { color: #fff; padding-left: 18px; text-shadow: 0 0 18px rgba(255,255,255,0.22); }
 
 /* RIGHT — Featured preview panel */
 .megaFeatured {
@@ -369,9 +407,9 @@
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(5, 5, 14, 0.08) 0%,
-    rgba(5, 5, 14, 0.48) 48%,
-    rgba(5, 5, 14, 0.92) 100%
+    rgba(5, 5, 14, 0.14) 0%,
+    rgba(5, 5, 14, 0.54) 42%,
+    rgba(5, 5, 14, 0.96) 100%
   );
 }
 
@@ -417,8 +455,8 @@
   align-items: center;
   justify-content: center;
   padding: 8px 14px;
-  background: rgba(255, 255, 255, 0.13);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: 50px;
   font-size: 0.625rem;
   font-weight: 700;
@@ -426,14 +464,16 @@
   text-transform: uppercase;
   color: #fff;
   cursor: pointer;
-  transition: background 0.22s ease, border-color 0.22s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: background 0.22s ease, border-color 0.22s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.18);
 }
 .megaFeaturedCta:hover {
-  background: rgba(255, 255, 255, 0.22);
-  border-color: rgba(255, 255, 255, 0.34);
+  background: rgba(255, 255, 255, 0.26);
+  border-color: rgba(255, 255, 255, 0.42);
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.22);
 }
 
 /* Mega backdrop */
