@@ -169,17 +169,6 @@ export default function BrandProcess() {
 
               {/* ── Floating glass label chips ───────────── */}
               <motion.div
-                className={`${styles.floatChip} ${styles.floatChipDoctor}`}
-                initial={{ opacity: 0, x: -18 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={VIEWPORT}
-                transition={{ duration: 0.65, ease: EASE, delay: 0.58 }}
-              >
-                <span className={styles.chipDot} aria-hidden="true" />
-                Doctor-Led Care
-              </motion.div>
-
-              <motion.div
                 className={`${styles.floatChip} ${styles.floatChipJourney}`}
                 initial={{ opacity: 0, x: 18 }}
                 whileInView={{ opacity: 1, x: 0 }}

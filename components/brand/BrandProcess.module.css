@@ -193,13 +193,8 @@
   pointer-events: none;
 }
 
-.floatChipDoctor {
-  top: 40%;
-  left: -16%;
-}
-
 .floatChipJourney {
-  bottom: 26%;
+  bottom: 36%;
   right: -4%;
 }
 
@@ -215,7 +210,7 @@
 /* ── Active step label pill ──────────────────────────── */
 .stepLabel {
   position: absolute;
-  bottom: 14%;
+  bottom: 7%;
   left: 6%;
   display: inline-flex;
   align-items: center;
@@ -443,13 +438,6 @@
    RESPONSIVE
 ══════════════════════════════════════════════════════ */
 
-/* Large tablet — keep chips just inside frame */
-@media (max-width: 1100px) {
-  .floatChipDoctor {
-    left: -10%;
-  }
-}
-
 /* Tablet: stack */
 @media (max-width: 900px) {
   .layout {
@@ -477,12 +465,8 @@
     top: 10%;
   }
 
-  .floatChipDoctor {
-    display: none;
-  }
-
   .floatChipJourney {
-    bottom: 22%;
+    bottom: 32%;
     right: 2%;
   }
 }
