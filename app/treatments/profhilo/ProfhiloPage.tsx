@@ -938,29 +938,41 @@ export default function ProfhiloPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
-              Profhilo Cost in Leicester
-            </motion.p>
-            <motion.p className={styles.costBannerPrice} variants={fadeUp}>
-              Profhilo Cost Starts From £200
-            </motion.p>
-            <motion.ul className={styles.costBannerList} role="list" variants={stagger(0.08)}>
+            {/* Header */}
+            <motion.div className={styles.costBannerHeader} variants={stagger(0.1)}>
+              <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
+                Profhilo Cost in Leicester
+              </motion.p>
+              <motion.h2 className={styles.costBannerPrice} variants={fadeUp}>
+                Starts From <span className={styles.costBannerHighlight}>£200</span>
+              </motion.h2>
+            </motion.div>
+
+            {/* Price cards grid */}
+            <motion.ul
+              className={styles.costBannerGrid}
+              role="list"
+              variants={stagger(0.08)}
+            >
               {[
-                'Profhilo Face — £200',
-                'Profhilo Face + Neck — £300',
-                'Profhilo Face + Neck + Décolletage — £375',
-                'Profhilo Face (course of 2) — £250 per session',
-                'Profhilo Body — £600',
+                { label: 'Profhilo Face',                      price: '£200' },
+                { label: 'Profhilo Face + Neck',               price: '£300' },
+                { label: 'Profhilo Face + Neck + Décolletage', price: '£375' },
+                { label: 'Profhilo Face (course of 2)',         price: '£250 / session' },
+                { label: 'Profhilo Body',                       price: '£600' },
               ].map((item) => (
-                <motion.li key={item} className={styles.costBannerListItem} variants={fadeUp}>
-                  <span className={styles.resultsAfterDot} aria-hidden="true" />
-                  {item}
+                <motion.li key={item.label} className={styles.costPriceCard} variants={fadeUp}>
+                  <span className={styles.costPriceLabel}>{item.label}</span>
+                  <span className={styles.costPriceDivider} aria-hidden="true" />
+                  <span className={styles.costPriceAmount}>{item.price}</span>
                 </motion.li>
               ))}
             </motion.ul>
+
+            {/* Footer note + CTA */}
             <motion.p className={styles.costBannerNote} variants={fadeUp}>
-              We list all prices as a guide, and we clearly discuss the exact cost of your
-              Profhilo treatment after a thorough consultation.
+              Prices listed are a guide only. Your exact cost will be discussed during a
+              thorough consultation with our expert.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
