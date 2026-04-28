@@ -79,6 +79,7 @@
 ══════════════════════════════════════════════════════ */
 .imageCol {
   position: relative;
+  overflow: hidden;
 }
 
 .canvas {
@@ -97,8 +98,8 @@
   overflow: hidden;
   z-index: 1;
   box-shadow:
-    0 40px 100px rgba(0, 0, 0, 0.13),
-    0 10px 32px rgba(0, 0, 0, 0.08);
+    0 24px 56px rgba(0, 0, 0, 0.12),
+    0 6px 18px rgba(0, 0, 0, 0.07);
 }
 
 .imgGrad {
@@ -157,27 +158,20 @@
   white-space: nowrap;
 }
 
-/* Card 1 — Doctor-Led, upper-left of canvas */
+/* Card 1 — Doctor-Led, top-left corner (outside the main image) */
 .card1 {
-  top: 28px;
-  left: 12px;
+  top: 20px;
+  left: 10px;
 }
 
-/* Card 2 — 500+ stat, bottom-right of main image */
+/* Card 2 — 500+ stat, bottom-right corner of the composition */
 .card2 {
-  bottom: 48px;
-  right: 16px;
+  bottom: 20px;
+  right: 20px;
   flex-direction: column;
   align-items: flex-start;
   gap: 3px;
   padding: 18px 22px;
-}
-
-/* Card 3 — Personalised, right side mid-height */
-.card3 {
-  top: 45%;
-  right: 16px;
-  transform: translateY(-50%);
 }
 
 .cardIcon {
@@ -219,7 +213,7 @@
    RESPONSIVE
 ══════════════════════════════════════════════════════ */
 
-/* Large tablet — hide card3 to reduce crowding */
+/* Large tablet */
 @media (max-width: 1100px) {
   .canvas {
     height: clamp(360px, 52vw, 580px);
@@ -227,10 +221,6 @@
 
   .imgMain {
     width: 86%;
-  }
-
-  .card3 {
-    display: none;
   }
 }
 
@@ -268,10 +258,6 @@
     height: 50%;
     border-radius: 18px;
     border-width: 4px;
-  }
-
-  .card3 {
-    display: none;
   }
 
   .subtext {

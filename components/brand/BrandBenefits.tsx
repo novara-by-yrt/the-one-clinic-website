@@ -132,27 +132,6 @@ export default function BrandBenefits() {
                 <p className={styles.cardSub}>Patients treated</p>
               </motion.div>
 
-              {/* ── Float card 3: Personalised (mid-right) ── */}
-              <motion.div
-                className={`${styles.card} ${styles.card3}`}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={VIEWPORT}
-                transition={{ duration: 0.6, ease: EASE, delay: 0.51 }}
-                whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              >
-                <span className={styles.cardIcon} aria-hidden="true">
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                    <circle cx="7" cy="7" r="5.25" stroke="currentColor" strokeWidth="1.5"/>
-                    <path d="M7 4.5v2.5l1.5 1.5" stroke="currentColor"
-                      strokeWidth="1.5" strokeLinecap="round"/>
-                  </svg>
-                </span>
-                <div>
-                  <p className={styles.cardTitle}>Personalised Plans</p>
-                  <p className={styles.cardSub}>Built around you</p>
-                </div>
-              </motion.div>
 
             </div>
           </motion.div>
