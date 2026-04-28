@@ -5,7 +5,7 @@ import TrustStrip       from '@/components/sections/TrustStrip';
 import BrandTreatments  from '@/components/brand/BrandTreatments';
 import BrandBenefits    from '@/components/brand/BrandBenefits';
 import Testimonials     from '@/components/sections/Testimonials';
-import Process          from '@/components/sections/Process';
+import BrandProcess     from '@/components/brand/BrandProcess';
 import TestimonialVideos from '@/components/sections/TestimonialVideos';
 import MeetTheExperts   from '@/components/sections/MeetTheExperts';
 import CaseStudies      from '@/components/sections/CaseStudies';
@@ -22,7 +22,7 @@ export default function BrandPage() {
       <BrandTreatments />
       <BrandBenefits />
       <Testimonials />
-      <Process />
+      <BrandProcess />
       <TestimonialVideos />
       <MeetTheExperts />
       <CaseStudies />

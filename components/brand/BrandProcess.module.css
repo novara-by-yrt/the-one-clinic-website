@@ -1,0 +1,404 @@
+/* ══════════════════════════════════════════════════════
+   BRAND PROCESS — Premium journey section (light bg)
+══════════════════════════════════════════════════════ */
+.section {
+  background: #f8f7f5 !important;
+  padding-block: clamp(80px, 10vw, 140px);
+}
+
+/* ── Two-column layout ──────────────────────────────── */
+.layout {
+  display: grid;
+  grid-template-columns: 47fr 53fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: center;
+}
+
+/* ══════════════════════════════════════════════════════
+   LEFT — Media canvas
+══════════════════════════════════════════════════════ */
+.mediaCol {
+  position: relative;
+}
+
+.mediaCanvas {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  max-height: 640px;
+  user-select: none;
+}
+
+/* ── Main dominant image ─────────────────────────────── */
+.imgMain {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow:
+    0 32px 80px rgba(0, 0, 0, 0.18),
+    0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.imgFill {
+  position: absolute;
+  inset: 0;
+}
+
+.imgCover {
+  object-fit: cover;
+  object-position: center;
+}
+
+.imgGrad {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 0, 0, 0.32) 100%
+  );
+  pointer-events: none;
+}
+
+/* ── Secondary stacked preview image ────────────────── */
+.imgSecondary {
+  position: absolute;
+  bottom: -6%;
+  right: -8%;
+  width: 42%;
+  aspect-ratio: 3 / 4;
+  border-radius: 18px;
+  overflow: hidden;
+  z-index: 2;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.22),
+    0 6px 18px rgba(0, 0, 0, 0.12),
+    0 0 0 3px rgba(255, 255, 255, 0.9);
+}
+
+/* ── Floating stat card ──────────────────────────────── */
+.floatStat {
+  position: absolute;
+  top: 14%;
+  left: -7%;
+  background: rgba(8, 8, 10, 0.78);
+  backdrop-filter: blur(24px) saturate(1.6);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 14px 20px;
+  z-index: 4;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.floatNum {
+  font-size: 1.625rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1;
+}
+
+.floatLabel {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.52);
+  margin: 0;
+}
+
+/* ── Active step label pill ──────────────────────────── */
+.stepLabel {
+  position: absolute;
+  bottom: 12%;
+  left: 5%;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(8, 8, 10, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  padding: 7px 14px 7px 10px;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.stepLabelDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #3b82f6;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.7);
+}
+
+.stepLabelText {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.88);
+  white-space: nowrap;
+}
+
+/* ── Pagination dots ─────────────────────────────────── */
+.dots {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  display: flex;
+  gap: 6px;
+  z-index: 4;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.dot:hover {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.dotActive {
+  background: #ffffff;
+  transform: scale(1.25);
+}
+
+/* ══════════════════════════════════════════════════════
+   RIGHT — Text column
+══════════════════════════════════════════════════════ */
+.textCol {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 4.5vw, 52px);
+}
+
+/* ── Header block ────────────────────────────────────── */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(8, 8, 10, 0.38);
+  margin: 0;
+}
+
+.heading {
+  font-size: clamp(2rem, 3.4vw, 2.9rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.06;
+  color: #080810;
+  margin: 0;
+}
+
+.subtext {
+  font-size: clamp(0.9375rem, 1.1vw, 1rem);
+  color: rgba(8, 8, 10, 0.58);
+  line-height: 1.72;
+  margin: 0;
+  max-width: 440px;
+}
+
+/* ══════════════════════════════════════════════════════
+   VERTICAL TIMELINE
+══════════════════════════════════════════════════════ */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+
+.stepItem {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+  cursor: default;
+  position: relative;
+}
+
+/* ── Left gutter: circle + connector ────────────────── */
+.stepLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 44px;
+}
+
+.stepCircle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(8, 8, 10, 0.14);
+  background: #f8f7f5; /* matches section bg — sits over connector */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: rgba(8, 8, 10, 0.4);
+  flex-shrink: 0;
+  z-index: 1;
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.isActive .stepCircle {
+  background: #080810;
+  border-color: #080810;
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(8, 8, 10, 0.22);
+}
+
+.connector {
+  flex: 1;
+  width: 1.5px;
+  background: rgba(8, 8, 10, 0.1);
+  min-height: 24px;
+}
+
+/* ── Right: glass card ───────────────────────────────── */
+.stepCard {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid rgba(8, 8, 10, 0.07);
+  border-radius: 18px;
+  padding: clamp(16px, 2vw, 22px) clamp(18px, 2.5vw, 26px);
+  margin-bottom: 16px;
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.isActive .stepCard {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(8, 8, 10, 0.13);
+  box-shadow:
+    0 8px 36px rgba(8, 8, 10, 0.09),
+    0 2px 8px rgba(8, 8, 10, 0.05);
+  transform: translateX(4px);
+}
+
+.stepTitle {
+  font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #080810;
+  margin: 0 0 6px;
+  line-height: 1.3;
+}
+
+.stepDesc {
+  font-size: clamp(0.8125rem, 0.9vw, 0.9375rem);
+  color: rgba(8, 8, 10, 0.58);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════════ */
+
+/* Tablet: stack vertically */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: clamp(32px, 6vw, 56px);
+  }
+
+  .mediaCanvas {
+    aspect-ratio: 16 / 9;
+    max-height: 420px;
+  }
+
+  .imgMain {
+    border-radius: 20px;
+  }
+
+  .imgSecondary {
+    width: 36%;
+    bottom: -5%;
+    right: -4%;
+  }
+
+  .floatStat {
+    left: 4%;
+    top: 10%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 580px) {
+  .mediaCanvas {
+    aspect-ratio: 4 / 3;
+    max-height: 300px;
+  }
+
+  .imgSecondary {
+    display: none;
+  }
+
+  .floatStat {
+    top: auto;
+    bottom: 8%;
+    left: 5%;
+  }
+
+  .stepCard {
+    margin-bottom: 12px;
+  }
+
+  .stepLabel {
+    bottom: auto;
+    top: 8%;
+    left: 5%;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 420px) {
+  .mediaCanvas {
+    aspect-ratio: 3 / 2;
+  }
+
+  .floatStat {
+    display: none;
+  }
+}
