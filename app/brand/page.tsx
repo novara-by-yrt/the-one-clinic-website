@@ -2,7 +2,7 @@ import Hero             from '@/components/sections/Hero';
 import LogoCarousel     from '@/components/sections/LogoCarousel';
 import VideoSection     from '@/components/sections/VideoSection';
 import TrustStrip       from '@/components/sections/TrustStrip';
-import Services         from '@/components/sections/Services';
+import BrandTreatments  from '@/components/brand/BrandTreatments';
 import Benefits         from '@/components/sections/Benefits';
 import Testimonials     from '@/components/sections/Testimonials';
 import Process          from '@/components/sections/Process';
@@ -19,7 +19,7 @@ export default function BrandPage() {
       <LogoCarousel />
       <VideoSection />
       <TrustStrip />
-      <Services />
+      <BrandTreatments />
       <Benefits />
       <Testimonials />
       <Process />
@@ -31,3 +31,4 @@ export default function BrandPage() {
     </>
   );
 }
+
