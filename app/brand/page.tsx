@@ -1,6 +1,6 @@
 import Hero             from '@/components/sections/Hero';
 import LogoCarousel     from '@/components/sections/LogoCarousel';
-import VideoSection     from '@/components/sections/VideoSection';
+import BrandVideoSection from '@/components/brand/BrandVideoSection';
 import TrustStrip       from '@/components/sections/TrustStrip';
 import BrandTreatments  from '@/components/brand/BrandTreatments';
 import BrandBenefits    from '@/components/brand/BrandBenefits';
@@ -17,7 +17,7 @@ export default function BrandPage() {
     <>
       <Hero />
       <LogoCarousel />
-      <VideoSection />
+      <BrandVideoSection />
       <TrustStrip />
       <BrandTreatments />
       <BrandBenefits />
