@@ -164,7 +164,7 @@ export default function BrandHero() {
                   </div>
                   <div className={styles.trustStars}>
                     {Array.from({ length: 5 }).map((_, i) => (
-                      <svg key={i} width="11" height="11" viewBox="0 0 24 24" aria-hidden="true">
+                      <svg key={i} width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
                         <path fill="#FBBC04" d="M12 2l2.582 7.952H22.9l-6.832 4.962 2.608 8.024L12 18.012l-6.676 4.926 2.608-8.024L1.1 9.952H9.418z"/>
                       </svg>
                     ))}
@@ -185,7 +185,7 @@ export default function BrandHero() {
                   </div>
                   <div className={styles.trustStars}>
                     {Array.from({ length: 5 }).map((_, i) => (
-                      <svg key={i} width="11" height="11" viewBox="0 0 24 24" aria-hidden="true">
+                      <svg key={i} width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
                         <path fill="#00B67A" d="M12 2l2.582 7.952H22.9l-6.832 4.962 2.608 8.024L12 18.012l-6.676 4.926 2.608-8.024L1.1 9.952H9.418z"/>
                       </svg>
                     ))}

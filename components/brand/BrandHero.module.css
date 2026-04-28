@@ -275,20 +275,21 @@
 .trustRow {
   display: inline-flex;
   align-items: stretch;
+  align-self: flex-start;
   background: rgba(255, 255, 255, 0.07);
   border: 1px solid rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255,255,255,0.08);
 }
 
 .trustBadge {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  padding: 11px 16px;
+  gap: 6px;
+  padding: 13px 18px;
 }
 
 .trustBadgeHeader {
@@ -312,7 +313,7 @@
 
 .trustStars {
   display: flex;
-  gap: 2px;
+  gap: 3px;
   align-items: center;
 }
 
@@ -325,7 +326,7 @@
 }
 
 .trustScore {
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 700;
   color: #ffffff;
   letter-spacing: -0.02em;
@@ -347,7 +348,7 @@
 
 .trustSep {
   width: 1px;
-  margin-block: 10px;
+  margin-block: 12px;
   background: rgba(255, 255, 255, 0.1);
   flex-shrink: 0;
 }
