@@ -127,28 +127,6 @@ export default function Hero({ showVideo = true }: { showVideo?: boolean }) {
               all under one roof.
             </motion.p>
 
-            {/* Credential badges */}
-            <motion.div
-              className={styles.credBadges}
-              variants={FADE_UP}
-              transition={TRANSITION_SMOOTH}
-            >
-              <span className={styles.credBadge}>
-                <svg className={styles.credCheck} viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <circle cx="8" cy="8" r="7.25" stroke="currentColor" strokeWidth="1.25" strokeOpacity="0.5"/>
-                  <path d="M5 8.25l2 2 4-4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                Led by highly trained doctors
-              </span>
-              <span className={styles.credBadge}>
-                <svg className={styles.credCheck} viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <circle cx="8" cy="8" r="7.25" stroke="currentColor" strokeWidth="1.25" strokeOpacity="0.5"/>
-                  <path d="M5 8.25l2 2 4-4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                Comprehensive medical &amp; aesthetic care
-              </span>
-            </motion.div>
-
             {/* CTAs */}
             <motion.div
               className={styles.ctas}
