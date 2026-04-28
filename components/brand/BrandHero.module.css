@@ -270,32 +270,31 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   TRUST PILLS — compact glassmorphic micro-cards
+   TRUST BADGES — compact Google + Trustpilot panel
 ══════════════════════════════════════════════════════ */
 .trustRow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.trustPill {
   display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  padding: 8px 14px 8px 10px;
-  background: rgba(255, 255, 255, 0.055);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  align-items: stretch;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-radius: 12px;
-  transition: background 0.25s ease, border-color 0.25s ease;
-  cursor: default;
-  user-select: none;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.28);
 }
 
-.trustPill:hover {
-  background: rgba(255, 255, 255, 0.09);
-  border-color: rgba(255, 255, 255, 0.18);
+.trustBadge {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 11px 16px;
+}
+
+.trustBadgeHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .trustIcon {
@@ -303,38 +302,54 @@
   display: block;
 }
 
-/* Circular icon container for check/star icons */
-.trustIconCircle {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
+.trustPlatform {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.trustStars {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.trustSummary {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  color: rgba(255, 255, 255, 0.8);
+  gap: 4px;
+  line-height: 1;
+  margin: 0;
 }
 
-.trustText {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-}
-
-.trustVal {
+.trustScore {
   font-size: 0.8125rem;
   font-weight: 700;
   color: #ffffff;
-  letter-spacing: -0.01em;
-  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
-.trustSub {
+.trustDot {
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  flex-shrink: 0;
+}
+
+.trustCount {
   font-size: 0.6875rem;
-  color: rgba(255, 255, 255, 0.42);
-  line-height: 1.1;
-  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.trustSep {
+  width: 1px;
+  margin-block: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
 }
 
 /* ══════════════════════════════════════════════════════
@@ -403,18 +418,6 @@
     font-size: clamp(2.5rem, 6.5vw, 3.5rem);
   }
 
-  .trustRow {
-    gap: 6px;
-  }
-
-  .trustSub {
-    display: none;
-  }
-
-  .trustPill {
-    padding: 7px 12px 7px 8px;
-    gap: 7px;
-  }
 }
 
 /* Mobile */
@@ -451,18 +454,7 @@
     width: 100%;
   }
 
-  .trustRow {
-    gap: 6px;
-  }
-
   .scrollIndicator {
-    display: none;
-  }
-}
-
-/* Very small mobile */
-@media (max-width: 380px) {
-  .trustPill:nth-child(n+3) {
     display: none;
   }
 }

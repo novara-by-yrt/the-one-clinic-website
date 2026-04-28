@@ -48,25 +48,6 @@ function TrustpilotIcon() {
   );
 }
 
-function CheckIcon() {
-  return (
-    <span className={styles.trustIconCircle} aria-hidden="true">
-      <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-        <path d="M2 5l2 2 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    </span>
-  );
-}
-
-function StarIcon() {
-  return (
-    <span className={styles.trustIconCircle} aria-hidden="true">
-      <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
-        <path d="M13 2L15 8H21L16.5 12L18 18L13 14.5L8 18L9.5 12L5 8H11L13 2Z" fill="currentColor"/>
-      </svg>
-    </span>
-  );
-}
 
 /* ── Component ─────────────────────────────────────────────────── */
 export default function BrandHero() {
@@ -174,38 +155,46 @@ export default function BrandHero() {
               {/* Divider */}
               <motion.div className={styles.divider} variants={CHILD} aria-hidden="true" />
 
-              {/* Trust pills */}
+              {/* Trust badges — Google + Trustpilot only */}
               <motion.div className={styles.trustRow} variants={CHILD} role="region" aria-label="Trust indicators">
-                <div className={styles.trustPill}>
-                  <GoogleIcon />
-                  <div className={styles.trustText}>
-                    <span className={styles.trustVal}>5.0</span>
-                    <span className={styles.trustSub}>Google · 120+ reviews</span>
+                <div className={styles.trustBadge}>
+                  <div className={styles.trustBadgeHeader}>
+                    <GoogleIcon />
+                    <span className={styles.trustPlatform}>Google</span>
                   </div>
+                  <div className={styles.trustStars}>
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <svg key={i} width="11" height="11" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill="#FBBC04" d="M12 2l2.582 7.952H22.9l-6.832 4.962 2.608 8.024L12 18.012l-6.676 4.926 2.608-8.024L1.1 9.952H9.418z"/>
+                      </svg>
+                    ))}
+                  </div>
+                  <p className={styles.trustSummary}>
+                    <strong className={styles.trustScore}>5.0</strong>
+                    <span className={styles.trustDot} aria-hidden="true" />
+                    <span className={styles.trustCount}>120+ reviews</span>
+                  </p>
                 </div>
 
-                <div className={styles.trustPill}>
-                  <TrustpilotIcon />
-                  <div className={styles.trustText}>
-                    <span className={styles.trustVal}>4.7</span>
-                    <span className={styles.trustSub}>Trustpilot · 140+</span>
-                  </div>
-                </div>
+                <div className={styles.trustSep} aria-hidden="true" />
 
-                <div className={styles.trustPill}>
-                  <CheckIcon />
-                  <div className={styles.trustText}>
-                    <span className={styles.trustVal}>Doctor-Led</span>
-                    <span className={styles.trustSub}>Every treatment</span>
+                <div className={styles.trustBadge}>
+                  <div className={styles.trustBadgeHeader}>
+                    <TrustpilotIcon />
+                    <span className={styles.trustPlatform}>Trustpilot</span>
                   </div>
-                </div>
-
-                <div className={styles.trustPill}>
-                  <StarIcon />
-                  <div className={styles.trustText}>
-                    <span className={styles.trustVal}>Advanced</span>
-                    <span className={styles.trustSub}>Technology</span>
+                  <div className={styles.trustStars}>
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <svg key={i} width="11" height="11" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill="#00B67A" d="M12 2l2.582 7.952H22.9l-6.832 4.962 2.608 8.024L12 18.012l-6.676 4.926 2.608-8.024L1.1 9.952H9.418z"/>
+                      </svg>
+                    ))}
                   </div>
+                  <p className={styles.trustSummary}>
+                    <strong className={styles.trustScore}>4.7</strong>
+                    <span className={styles.trustDot} aria-hidden="true" />
+                    <span className={styles.trustCount}>140+ reviews</span>
+                  </p>
                 </div>
               </motion.div>
 
