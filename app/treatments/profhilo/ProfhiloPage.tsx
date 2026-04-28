@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Script from 'next/script';
 import { motion } from 'framer-motion';
 import Section            from '@/components/ui/Section';
 import Container          from '@/components/ui/Container';
@@ -452,19 +451,15 @@ export default function ProfhiloPage() {
               </motion.div>
             </motion.div>
 
-            {/* Right: Wistia video */}
+            {/* Right: video placeholder */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
-              <Script src="https://fast.wistia.net/player.js" strategy="lazyOnload" />
-              <iframe
-                src="https://fast.wistia.net/embed/iframe/2u0e7sshum?web_component=true&seo=true"
-                title="Profhilo service page Video"
-                allow="autoplay; fullscreen"
-                allowFullScreen
-                frameBorder="0"
-                scrolling="no"
-                className={styles.whatIsVideoFrame}
-                name="wistia_embed"
-              />
+              <div className={styles.videoPlaceholder} aria-label="Video coming soon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/>
+                </svg>
+                <p>Video coming soon</p>
+              </div>
             </motion.div>
           </motion.div>
         </Container>
