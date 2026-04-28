@@ -86,23 +86,23 @@ const AT_A_GLANCE = [
 const JOURNEY_STEPS = [
   {
     n: '01',
-    title: 'Consultation & Assessment',
-    desc: 'Our doctor assesses your skin, understands your concerns, and creates a personalised treatment plan tailored to your unique needs and goals.',
+    title: 'Tear-Trough Filler (Doctor)',
+    desc: 'Our doctor or surgeon injects the tear-trough filler first. This provides immediate volume to hollow areas under the eyes.',
   },
   {
     n: '02',
-    title: 'Preparation',
-    desc: 'We cleanse the treatment area and may apply a topical anaesthetic cream to ensure your comfort throughout the procedure.',
+    title: 'NCTF Skin-Booster Session One (Nurse)',
+    desc: 'Our clinic nurse administers the first NCTF skin-booster session. This begins addressing the skin\'s structural quality and helps clear dark circles.',
   },
   {
     n: '03',
-    title: 'BAP Technique Injections',
-    desc: 'Using the BAP (Bio Aesthetic Points) technique, precise injections are placed at key points on the face or neck for optimal distribution.',
+    title: 'NCTF Skin-Booster Session Two (Nurse)',
+    desc: 'The second booster session deepens the collagen stimulation and depigmentation effect. You remain fully awake and feel minimal discomfort throughout.',
   },
   {
     n: '04',
-    title: 'Post-Treatment',
-    desc: 'The product spreads naturally under the skin. You may experience mild redness that quickly settles, allowing you to resume your routine safely.',
+    title: 'Recovery',
+    desc: 'Surface skin heals in 1 to 2 days. You can return to normal light activities straight away. Full aftercare instructions are provided at your appointment.',
   },
 ];
 
@@ -116,17 +116,21 @@ const ELIGIBILITY = [
 
 const TREATED_BENEFITS = [
   {
-    title: 'Targeted Hydration',
-    desc: 'Hyaluronic acid plumps the skin. It restores lost moisture for a visibly softer, fuller complexion.',
+    title: 'Removes Dark Circles',
+    desc: 'Active ingredients depigment the skin perfectly to visibly clear dark circles around the eyes.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 2C6.5 9 4 13.5 4 16a8 8 0 0 0 16 0c0-2.5-2.5-7-8-14z"/>
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
       </svg>
     ),
   },
   {
-    title: 'Collagen Stimulation',
-    desc: 'The vitamins encourage collagen growth. This thickens the skin structure for lasting firmness.',
+    title: 'Thickens Skin',
+    desc: 'Stimulates robust collagen production to increase skin thickness and structural resilience.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
@@ -135,19 +139,39 @@ const TREATED_BENEFITS = [
     ),
   },
   {
-    title: 'Dark Circle Removal',
-    desc: 'Active ingredients depigment the treated area. This brightens the delicate skin around the eyes.',
+    title: 'Laser-Like Benefits',
+    desc: 'Results equal to laser treatments at a significantly lower cost and with minimal downtime.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="5"/>
-        <line x1="12" y1="1" x2="12" y2="3"/>
-        <line x1="12" y1="21" x2="12" y2="23"/>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-        <line x1="1" y1="12" x2="3" y2="12"/>
-        <line x1="21" y1="12" x2="23" y2="12"/>
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Quick Access',
+    desc: 'Skip the waiting lists. Get seen and treated within days — no long NHS delays.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Expert Care',
+    desc: 'A doctor handles the tear-trough filler. A skilled nurse administers the skin boosters.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Restores Volume',
+    desc: 'Tear-trough filler addresses hollow areas instantly for a refreshed, well-rested appearance.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 2C6.5 9 4 13.5 4 16a8 8 0 0 0 16 0c0-2.5-2.5-7-8-14z"/>
       </svg>
     ),
   },
@@ -166,49 +190,49 @@ const CONDITIONS_BODY = [
 ];
 
 const CLINIC_REASONS = [
-  { n: '01', title: 'Expert Doctors', text: 'A team of skilled and caring medical professionals leads your treatment.' },
-  { n: '02', title: 'Personalised Care', text: 'We tailor every experience to meet each patient\'s unique needs.' },
-  { n: '03', title: 'Advanced Technology', text: 'We equip our state-of-the-art medical aesthetics clinic with modern, innovative technology.' },
-  { n: '04', title: 'Trusted Reputation', text: 'We help our patients feel confident and happy with themselves.' },
-  { n: '05', title: 'Full Support', text: 'We take a comprehensive approach to your care, ensuring every aspect is carefully considered.' },
-  { n: '06', title: 'Safe & Hygienic Environment', text: 'We strictly adhere to safety and hygiene standards to ensure every treatment takes place in a clean, secure environment.' },
+  { n: '01', title: 'Expert Doctors for Filler', text: 'Our doctor administers tear-trough filler with precision and medical expertise.' },
+  { n: '02', title: 'Skilled Nurses for Boosters', text: 'Our trained clinic nurses administer your NCTF skin-booster sessions safely.' },
+  { n: '03', title: 'Laser-Like Results', text: 'You receive clinical results equal to laser treatments — at a fraction of the cost.' },
+  { n: '04', title: 'No Long Wait Lists', text: 'Skip NHS delays. We offer quick appointments so you get seen and treated within days.' },
+  { n: '05', title: 'Sterile Clinical Environment', text: 'All treatments take place in a state-of-the-art, fully sterile clinical setting.' },
+  { n: '06', title: 'Honest & Transparent', text: 'We give clear answers and provide a fixed quote at your consultation — no surprises.' },
 ];
 
 const FAQS = [
   {
-    question: 'What is NCTF 135 HA used for?',
+    question: 'What makes NCTF different?',
     answer:
-      'NCTF 135 HA is a skin booster primarily used to reduce dark circles, thicken the delicate under-eye skin, and stimulate collagen production. It is also used for overall skin hydration and rejuvenation of the face, neck, and hands.',
+      'It blends hyaluronic acid, vitamins, and active ingredients to depigment the skin. It takes away dark circles effectively.',
   },
   {
-    question: 'Is NCTF 135 HA painful?',
+    question: 'Who administers the treatment?',
     answer:
-      'Most patients find the treatment very tolerable. We can apply a topical anaesthetic cream to maximise your comfort before the injections.',
+      'A doctor injects the tear-trough filler. Our clinic nurse administers the two NCTF sessions.',
   },
   {
-    question: 'How many sessions will I need?',
+    question: 'Does the procedure hurt?',
     answer:
-      'A typical course involves two nurse-administered booster sessions, often combined with one doctor-administered filler session targeting the tear troughs for optimal results.',
+      'No. We use an anaesthetic cream. You will feel a small scratch. After that, you feel no pain.',
   },
   {
-    question: 'How long is the downtime?',
+    question: 'How does it compare to a laser?',
     answer:
-      'Expect 1 to 2 days of mild redness or small injection site bumps. Most patients return to normal activities very quickly after treatment.',
+      'The clinical benefits are equivalent to those of laser treatments. However, NCTF does not have the high costs.',
   },
   {
-    question: 'How long do results last?',
+    question: 'How long does it take to recover?',
     answer:
-      'Results from NCTF 135 HA are long-lasting with maintenance sessions. Your doctor will advise on the best schedule to sustain your results.',
+      'The surface skin heals in about 1 to 2 days. You can return to normal light activities straightaway.',
   },
   {
-    question: 'Is NCTF 135 HA safe?',
+    question: 'Do I need a referral from my GP?',
     answer:
-      'Yes. NCTF 135 HA uses highly purified hyaluronic acid combined with vitamins and active ingredients. When administered by our trained medical team, it is extremely safe.',
+      'No. You can book directly with us. Our doctor will perform the necessary assessment.',
   },
   {
-    question: 'How does NCTF 135 HA compare to laser treatments?',
+    question: 'Can I drive home afterwards?',
     answer:
-      'NCTF 135 HA provides clinical benefits equal to laser treatments for dark circles and skin rejuvenation, at a lower cost and without the associated downtime of laser procedures.',
+      'Yes. We use local anaesthetic, not sedation. You are fully alert. You can drive and return to normal light activities straightaway.',
   },
 ];
 
@@ -354,7 +378,7 @@ export default function NCTF135Page() {
       <Testimonials />
 
       {/* ════════════════════════════════════════
-          3A. WHAT IS PROFHILO?
+          3A. WHAT IS NCTF 135 HA?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
@@ -437,7 +461,7 @@ export default function NCTF135Page() {
       </Section>
 
       {/* ════════════════════════════════════════
-          4. PROFHILO PROCEDURE
+          4. NCTF 135 HA PROCEDURE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
@@ -496,15 +520,11 @@ export default function NCTF135Page() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-              Our Approach
+              What You Gain
             </motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              The Skin Booster Advantage
+              NCTF Treatment Benefits
             </motion.h2>
-            <motion.p className={styles.combinationIntroText} variants={fadeUp}>
-              At The One Clinic, we combine medical safety with aesthetic care. We understand that
-              you desire refreshed eyes.
-            </motion.p>
           </motion.div>
 
           <motion.div
@@ -601,7 +621,7 @@ export default function NCTF135Page() {
       </Section>
 
       {/* ════════════════════════════════════════
-          6. HOW DOES PROFHILO WORK
+          6. HOW DOES NCTF 135 HA WORK
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
@@ -703,18 +723,16 @@ export default function NCTF135Page() {
                     <polyline points="17 6 23 6 23 12"/>
                   </svg>
                 </span>
-                <h3 className={styles.resultsAfterCardTitle}>How Long to See Results?</h3>
+                <h3 className={styles.resultsAfterCardTitle}>When Will You See The Results?</h3>
               </div>
               <p className={styles.resultsAfterCardBody}>
-                Most patients notice initial improvements in hydration and plumpness within a couple
-                of weeks of their first session. The full bio-remodelling benefits become
-                significantly more pronounced after completing the second session.
+                You will notice hydration quite soon. Skin thickness improves over a few weeks.
+                The dark circles fade as collagen builds.
               </p>
               <div className={styles.resultsAfterCardSpacer} />
               <p className={styles.resultsAfterCardNote}>
-                The results achieved from a complete two-session course typically last for
-                approximately six months, after which a single maintenance session is advised to
-                sustain the outcomes.
+                Is The Restoration Permanent? NCTF 135 HA delivers long-term restoration. Results
+                build gradually and last with maintenance sessions as recommended by your clinician.
               </p>
             </motion.div>
 
@@ -728,14 +746,13 @@ export default function NCTF135Page() {
                     <line x1="12" y1="16" x2="12.01" y2="16"/>
                   </svg>
                 </span>
-                <h3 className={styles.resultsAfterCardTitle}>Side Effects</h3>
+                <h3 className={styles.resultsAfterCardTitle}>Potential Side Effects</h3>
               </div>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Redness at the injection site',
-                  'Small, temporary bumps at the injection site that naturally settle',
-                  'Occasional slight bruising',
-                  'Itching or irritation',
+                  'Mild soreness at the injection site',
+                  'Puffiness or small marks that settle quickly',
+                  'Minor redness which fades within hours',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
                     <span className={styles.resultsAfterDot} aria-hidden="true" />
@@ -743,6 +760,10 @@ export default function NCTF135Page() {
                   </li>
                 ))}
               </ul>
+              <div className={styles.resultsAfterCardSpacer} />
+              <p className={styles.resultsAfterCardNote}>
+                We provide full aftercare instructions to manage these simply at home.
+              </p>
             </motion.div>
 
             {/* Card 3, Aftercare */}
@@ -758,10 +779,10 @@ export default function NCTF135Page() {
               </div>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Make sure the treated area stays clean, and try not to touch or rub your face unless necessary',
-                  'Avoid strenuous sport, heavy exercise, and saunas for at least 24 hours',
-                  'Do not apply makeup for at least 12 hours post-treatment',
-                  'Attend your essential second session four weeks after the first to ensure maximum collagen stimulation',
+                  'Keep the treated area dry for 24 hours after your session',
+                  'Avoid heavy gym sessions or intense exercise for 1–2 days',
+                  'Keep the skin clean and do not rub or press on the area',
+                  'Apply SPF 50 sunscreen daily to protect and maintain your results',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
                     <span className={styles.resultsAfterDot} aria-hidden="true" />
@@ -797,11 +818,10 @@ export default function NCTF135Page() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
-              Prioritise Your Health Today!
+              Take Control of Your Skin Health Today!
             </motion.h2>
             <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
-              Expert NCTF 135 HA skin boosters at The One Clinic, Leicester. Erase dark circles and
-              restore skin thickness with a safe, medical-grade treatment — no long wait lists.
+              Do not wait and worry. Let our experts sort it out for you.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
@@ -878,7 +898,7 @@ export default function NCTF135Page() {
       </Section>
 
       {/* ════════════════════════════════════════
-          NEW: BEST PROFHILO LEICESTER EXPERIENCE
+          NEW: BEST NCTF LEICESTER EXPERIENCE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
@@ -896,10 +916,9 @@ export default function NCTF135Page() {
               </h2>
             </motion.div>
             <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
-              The One Clinic provides the best NCTF 135 HA experience in Leicester, offering modern
-              equipment in a relaxing, luxurious environment. Our highly trained, caring doctors
-              apply their extensive knowledge and expertise to recommend tailored aesthetic
-              solutions, ensuring you achieve natural, confidence-boosting results.
+              Experience the best medical care at The One Clinic. We bridge the gap between a GP
+              practice and a specialist clinic. You get the medical safety you need with the
+              aesthetic results you desire. We provide a calm environment and clear answers.
             </motion.p>
           </motion.div>
         </Container>
@@ -938,6 +957,7 @@ export default function NCTF135Page() {
                 { label: 'Full Face',                              price: 'From £250' },
                 { label: 'Face + Neck',                            price: 'From £350' },
                 { label: 'Hands',                                  price: 'From £200' },
+                { label: 'Package of 3',                           price: '£425' },
               ].map((item) => (
                 <motion.li key={item.label} className={styles.costPriceCard} variants={fadeUp}>
                   <span className={styles.costPriceLabel}>{item.label}</span>
@@ -977,7 +997,7 @@ export default function NCTF135Page() {
               Why Us
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Why Choose The One Clinic in Leicester
+              Why Choose The One Clinic For NCTF
             </motion.h2>
           </motion.div>
 
