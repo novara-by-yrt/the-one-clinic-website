@@ -87,23 +87,23 @@ const AT_A_GLANCE = [
 const JOURNEY_STEPS = [
   {
     n: '01',
-    title: 'Initial Consultation & Assessment',
-    desc: 'A thorough review of your skin laxity, fat deposits, and target areas, allowing your doctor to create a personalised Profhilo treatment plan.',
+    title: 'Consultation & Assessment',
+    desc: 'Our doctor assesses your skin, understands your concerns, and creates a personalised treatment plan tailored to your unique needs and goals.',
   },
   {
     n: '02',
-    title: 'Treatment Preparation',
-    desc: 'The treatment area is cleansed and a local anaesthetic is applied to ensure your comfort. Tiny entry points are mapped on the skin.',
+    title: 'Preparation',
+    desc: 'We cleanse the treatment area and may apply a topical anaesthetic cream to ensure your comfort throughout the procedure.',
   },
   {
     n: '03',
-    title: 'Laser Fibre Treatment',
-    desc: 'A fine optical fibre is gently guided under the skin. Laser energy precisely targets localised fat and stimulates collagen contraction to lift and contour.',
+    title: 'BAP Technique Injections',
+    desc: 'Using the BAP (Bio Aesthetic Points) technique, precise injections are placed at key points on the face or neck for optimal distribution.',
   },
   {
     n: '04',
-    title: 'Recovery & Ongoing Results',
-    desc: 'Minimal downtime of 1 to 2 days. Skin improvements develop progressively over 3 to 6 months as new collagen matures and remodels.',
+    title: 'Post-Treatment',
+    desc: 'The product spreads naturally under the skin. You may experience mild redness that quickly settles, allowing you to resume your routine safely.',
   },
 ];
 
@@ -135,17 +135,17 @@ const ELIGIBILITY = [
 
 const TREATED_BENEFITS = [
   {
-    title: 'Non-Surgical Facelift',
-    desc: 'Lifts and tightens skin without cuts, stitches, or scars, delivering a rejuvenated appearance with none of the surgical risks.',
+    title: 'Deep Hydration',
+    desc: 'Ensures your skin feels plumper, softer, and consistently moisturised from the inside out.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <path d="M12 2C6.5 9 4 13.5 4 16a8 8 0 0 0 16 0c0-2.5-2.5-7-8-14z"/>
       </svg>
     ),
   },
   {
-    title: 'Visible Tightening',
-    desc: 'Skin appears firmer immediately after treatment, with continued improvement developing progressively over the following months.',
+    title: 'Enhanced Firmness',
+    desc: 'Rebuilds the skin\'s internal scaffolding, making it feel bouncier and noticeably tighter.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
@@ -154,29 +154,35 @@ const TREATED_BENEFITS = [
     ),
   },
   {
-    title: 'Collagen Boost',
-    desc: 'Stimulates the natural production of new collagen and elastin for long-lasting firmness, improved skin texture, and enhanced elasticity.',
+    title: 'Minimal Downtime',
+    desc: 'A highly tolerable procedure allowing you to get back to your day straightaway.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12"/>
-        <path d="M12 6v6l4 2"/>
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+        <polyline points="22 4 12 14.01 9 11.01"/>
       </svg>
     ),
   },
   {
-    title: 'Fat Reduction',
-    desc: 'Precisely melts small, stubborn fat deposits to smooth and contour areas such as the double chin, love handles, or inner thighs.',
+    title: 'Natural Luminosity',
+    desc: 'Breathes new life into tired skin, giving you a refreshed and brilliant glow.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="10"/>
-        <circle cx="12" cy="12" r="4"/>
-        <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/>
+        <line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/>
+        <line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
       </svg>
     ),
   },
   {
-    title: 'Natural, Precise Results',
-    desc: 'Targets even delicate areas, such as under the eyes, safely and with remarkable precision for a refreshed, natural-looking outcome.',
+    title: 'Softened Fine Lines',
+    desc: 'It reduces fine lines and crepey skin while keeping your look natural.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
@@ -185,12 +191,11 @@ const TREATED_BENEFITS = [
     ),
   },
   {
-    title: 'Minimal Downtime',
-    desc: 'Quick recovery with most patients returning to daily activities within 1 to 2 days. Ideal for those with busy schedules.',
+    title: 'Improved Skin Texture',
+    desc: 'Refines uneven skin, making it feel smoother, softer, and more even to the touch.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-        <polyline points="22 4 12 14.01 9 11.01"/>
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
       </svg>
     ),
   },
@@ -269,9 +274,9 @@ const FAQS = [
       'Profhilo deeply hydrates and stimulates collagen production, while fillers mainly add volume. They work differently but can be combined for optimal results.',
   },
   {
-    question: 'What does Profhilo cost in the UK?',
+    question: 'What does Profhilo cost in Leicester?',
     answer:
-      'Prices vary by area and treatment size. At The One Clinic, Profhilo starts from £1,500 per session. A consultation will provide an exact quote based on your individual needs.',
+      'At The One Clinic, Profhilo starts from £200 per session. Prices vary depending on the area treated. A consultation will provide an exact quote based on your individual needs.',
   },
 ];
 
@@ -614,7 +619,7 @@ export default function ProfhiloPage() {
               What to Expect
             </motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Your Treatment Journey
+              Profhilo Procedure
             </motion.h2>
           </motion.div>
 
@@ -661,7 +666,7 @@ export default function ProfhiloPage() {
               What You Gain
             </motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Profhilo Treated Benefits
+              Profhilo Benefits
             </motion.h2>
           </motion.div>
 
@@ -846,17 +851,18 @@ export default function ProfhiloPage() {
                     <polyline points="17 6 23 6 23 12"/>
                   </svg>
                 </span>
-                <h3 className={styles.resultsAfterCardTitle}>When Will You See Results?</h3>
+                <h3 className={styles.resultsAfterCardTitle}>How Long to See Results?</h3>
               </div>
               <p className={styles.resultsAfterCardBody}>
-                Some visible tightening appears within 4 to 8 weeks as new collagen begins to form.
-                Skin continues to improve over 3 to 6 months, with final results typically visible at
-                around 6 to 9 months.
+                Most patients notice initial improvements in hydration and plumpness within a couple
+                of weeks of their first session. The full bio-remodelling benefits become
+                significantly more pronounced after completing the second session.
               </p>
               <div className={styles.resultsAfterCardSpacer} />
               <p className={styles.resultsAfterCardNote}>
-                Results are long-lasting, often 2 to 3 years, depending on age, skin condition,
-                and lifestyle. A good skincare routine helps maintain the effect.
+                The results achieved from a complete two-session course typically last for
+                approximately six months, after which a single maintenance session is advised to
+                sustain the outcomes.
               </p>
             </motion.div>
 
@@ -872,15 +878,12 @@ export default function ProfhiloPage() {
                 </span>
                 <h3 className={styles.resultsAfterCardTitle}>Side Effects</h3>
               </div>
-              <p className={styles.resultsAfterCardBody}>
-                Profhilo is minimally invasive and generally very safe. Most patients experience
-                only mild, temporary effects:
-              </p>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Slight redness or warmth in the treated area',
-                  'Mild swelling or tenderness',
-                  'Minor bruising in some cases',
+                  'Redness at the injection site',
+                  'Small, temporary bumps at the injection site that naturally settle',
+                  'Occasional slight bruising',
+                  'Itching or irritation',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
                     <span className={styles.resultsAfterDot} aria-hidden="true" />
@@ -888,11 +891,6 @@ export default function ProfhiloPage() {
                   </li>
                 ))}
               </ul>
-              <div className={styles.resultsAfterCardSpacer} />
-              <p className={styles.resultsAfterCardNote}>
-                These usually fade within a few days. The risk of serious complications is
-                extremely low when performed by a trained doctor.
-              </p>
             </motion.div>
 
             {/* Card 3, Aftercare */}
@@ -908,10 +906,10 @@ export default function ProfhiloPage() {
               </div>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Avoid heat, saunas, and intense exercise for 48 hours',
-                  'Keep skin well-hydrated and clean',
-                  'Do not touch or rub the treated areas',
-                  'Follow any specific advice from your doctor for best results',
+                  'Make sure the treated area stays clean, and try not to touch or rub your face unless necessary',
+                  'Avoid strenuous sport, heavy exercise, and saunas for at least 24 hours',
+                  'Do not apply makeup for at least 12 hours post-treatment',
+                  'Attend your essential second session four weeks after the first to ensure maximum collagen stimulation',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
                     <span className={styles.resultsAfterDot} aria-hidden="true" />
@@ -1137,10 +1135,10 @@ export default function ProfhiloPage() {
               </h2>
             </motion.div>
             <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
-              Experience the best Profhilo in Leicester at our clinic. Our expert doctors deliver
-              safe, non-surgical skin-lifting and contouring treatments for the face, neck, and body.
-              Enjoy natural, long-lasting results with minimal downtime and personalised care
-              tailored to you.
+              The One Clinic provides the best Profhilo experience in Leicester, offering modern
+              equipment in a relaxing, luxurious environment. Our highly trained, caring doctors
+              apply their extensive knowledge and expertise to recommend tailored aesthetic
+              solutions, ensuring you achieve natural, confidence-boosting results.
             </motion.p>
           </motion.div>
         </Container>
@@ -1159,14 +1157,28 @@ export default function ProfhiloPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
-              Profhilo Cost at The One Clinic
+              Profhilo Cost in Leicester
             </motion.p>
             <motion.p className={styles.costBannerPrice} variants={fadeUp}>
-              Profhilo Cost Starts From £1,500
+              Profhilo Cost Starts From £200
             </motion.p>
+            <motion.ul className={styles.costBannerList} role="list" variants={stagger(0.08)}>
+              {[
+                'Profhilo Face — £200',
+                'Profhilo Face + Neck — £300',
+                'Profhilo Face + Neck + Décolletage — £375',
+                'Profhilo Face (course of 2) — £250 per session',
+                'Profhilo Body — £600',
+              ].map((item) => (
+                <motion.li key={item} className={styles.costBannerListItem} variants={fadeUp}>
+                  <span className={styles.resultsAfterDot} aria-hidden="true" />
+                  {item}
+                </motion.li>
+              ))}
+            </motion.ul>
             <motion.p className={styles.costBannerNote} variants={fadeUp}>
-              The final price depends on your personalised treatment plan and will be discussed
-              during your consultation with our expert.
+              We list all prices as a guide, and we clearly discuss the exact cost of your
+              Profhilo treatment after a thorough consultation.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
