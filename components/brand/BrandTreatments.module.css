@@ -21,9 +21,7 @@
   object-position: center 30%;
 }
 
-/* Dual gradient overlay:
-   — heavy left column so the glass panel is always legible
-   — strong bottom band so the thumbnail strip is readable */
+/* Dual gradient overlay */
 .overlay {
   position: absolute;
   inset: 0;
@@ -31,20 +29,20 @@
   background:
     linear-gradient(
       to right,
-      rgba(0, 0, 0, 0.90) 0%,
-      rgba(0, 0, 0, 0.65) 48%,
-      rgba(0, 0, 0, 0.20) 100%
+      rgba(0, 0, 0, 0.92) 0%,
+      rgba(0, 0, 0, 0.70) 45%,
+      rgba(0, 0, 0, 0.25) 100%
     ),
     linear-gradient(
       to top,
-      rgba(0, 0, 0, 0.88) 0%,
-      rgba(0, 0, 0, 0.55) 28%,
-      transparent 55%
+      rgba(0, 0, 0, 0.80) 0%,
+      rgba(0, 0, 0, 0.40) 30%,
+      transparent 60%
     );
 }
 
 /* ══════════════════════════════════════════════════════
-   INNER LAYOUT — flex row on desktop, fills section height
+   INNER — flex row: left panel | right strip
 ══════════════════════════════════════════════════════ */
 .inner {
   position: relative;
@@ -53,7 +51,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: clamp(var(--space-4), 4vw, var(--space-6));
+  gap: clamp(32px, 4vw, 60px);
   padding-block: var(--space-7);
   padding-inline: clamp(var(--container-padding), 5vw, 80px);
   max-width: var(--container-width);
@@ -63,19 +61,11 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   MAIN AREA — holds left glass panel
-══════════════════════════════════════════════════════ */
-.mainArea {
-  flex: none;
-  display: flex;
-  align-items: center;
-}
-
-/* ══════════════════════════════════════════════════════
    LEFT GLASS PANEL
 ══════════════════════════════════════════════════════ */
 .leftPanel {
-  width: min(460px, 100%);
+  flex-shrink: 0;
+  width: clamp(280px, 38%, 460px);
   padding: 44px 40px;
   background: rgba(0, 0, 0, 0.58);
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -97,7 +87,7 @@
 }
 
 .heading {
-  font-size: clamp(2.25rem, 4.2vw, 3.5rem);
+  font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   color: #ffffff;
@@ -144,19 +134,14 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   RIGHT AREA — thumbnail strip, vertically centred
+   RIGHT COLUMN — thumbnail strip, vertically centred
 ══════════════════════════════════════════════════════ */
-.bottomArea {
+.rightCol {
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-top: 0;
-}
-
-.stripWrapper {
-  width: 100%;
-  max-width: 780px;
+  gap: 12px;
 }
 
 /* "Treatments ————" label row */
@@ -164,7 +149,6 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-bottom: 12px;
 }
 
 .stripLabel {
@@ -184,30 +168,25 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   TICKER (auto-scrolling strip)
+   TICKER (JS-driven auto-scroll)
 ══════════════════════════════════════════════════════ */
 .tickerOuter {
+  width: 100%;
   overflow: hidden;
   border-radius: 10px;
-  /* Fade edges for a clean look */
-  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
-}
-
-@keyframes ticker {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
 }
 
 .tickerTrack {
   display: flex;
   gap: 10px;
-  width: max-content;
-  animation: ticker 62s linear infinite;
+  will-change: transform;
+  cursor: grab;
 }
 
-.tickerTrack:hover {
-  animation-play-state: paused;
+.tickerTrack:active {
+  cursor: grabbing;
 }
 
 /* ══════════════════════════════════════════════════════
@@ -278,10 +257,11 @@
 @media (max-width: 1024px) {
   .leftPanel {
     padding: 36px 32px;
+    width: clamp(260px, 42%, 420px);
   }
 }
 
-/* Mobile landscape / small tablet */
+/* Mobile landscape / small tablet — stack vertically */
 @media (max-width: 768px) {
   .section {
     min-height: auto;
@@ -289,13 +269,9 @@
 
   .inner {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     padding-block: var(--space-5) var(--space-4);
     gap: var(--space-4);
-  }
-
-  .mainArea {
-    width: 100%;
   }
 
   .leftPanel {
@@ -305,13 +281,8 @@
     -webkit-backdrop-filter: blur(16px);
   }
 
-  .bottomArea {
+  .rightCol {
     width: 100%;
-  }
-
-  .stripWrapper {
-    width: 100%;
-    max-width: none;
   }
 
   .thumb {
