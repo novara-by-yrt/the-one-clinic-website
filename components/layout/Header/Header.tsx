@@ -4,7 +4,6 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import Container from '@/components/ui/Container';
 import styles from './Header.module.css';
 
 // ── Types ────────────────────────────────────────────────────────
@@ -156,6 +155,32 @@ const backdropVars = {
   open:   { opacity: 1 },
 };
 
+const EASE = [0.22, 1, 0.36, 1] as const;
+const PILL_TRANSITION = { duration: 0.55, ease: EASE };
+
+// ── Pill animation values ─────────────────────────────────────────
+function getPillAnimate(scrolled: boolean, sectionTheme: Theme) {
+  if (!scrolled) {
+    return {
+      width: '100%',
+      borderRadius: 0,
+      marginTop: 0,
+      background: 'rgba(0,0,0,0)',
+      boxShadow: '0px 0px 0px 0px rgba(0,0,0,0), 0px 0px 0px 0px rgba(0,0,0,0), inset 0px 0px 0px 0px rgba(0,0,0,0)',
+    };
+  }
+  const isLight = sectionTheme === 'dark';
+  return {
+    width: '92%',
+    borderRadius: 60,
+    marginTop: 14,
+    background: isLight ? 'rgba(255,255,255,0.86)' : 'rgba(8,8,10,0.84)',
+    boxShadow: isLight
+      ? '0px 12px 56px rgba(0,0,0,0.1), 0px 3px 10px rgba(0,0,0,0.07), inset 0px 0px 0px 1px rgba(0,0,0,0.055)'
+      : '0px 12px 56px rgba(0,0,0,0.42), 0px 3px 10px rgba(0,0,0,0.26), inset 0px 0px 0px 1px rgba(255,255,255,0.07)',
+  };
+}
+
 // ── Chevron ──────────────────────────────────────────────────────
 function Chevron({ open, size = 10 }: { open: boolean; size?: number }) {
   return (
@@ -193,7 +218,7 @@ export default function Header() {
 
   const observerRef = useRef<IntersectionObserver | null>(null);
   const closeTimer  = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const headerRef   = useRef<HTMLElement>(null);
+  const pillRef     = useRef<HTMLDivElement>(null);
 
   const headerTheme: Theme = sectionTheme === 'dark' ? 'light' : 'dark';
   const theme: Theme       = !scrolled ? 'dark' : headerTheme;
@@ -237,7 +262,7 @@ export default function Header() {
   useEffect(() => {
     if (openDropdown === null) return;
     function handleClickOut(e: MouseEvent) {
-      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
+      if (pillRef.current && !pillRef.current.contains(e.target as Node)) {
         setOpenDropdown(null);
         setOpenMegaGroup(null);
       }
@@ -288,27 +313,22 @@ export default function Header() {
     });
   }
 
-  // ── Animated header colours ───────────────────────────────────
-  const bgColor     = !scrolled ? 'rgba(0,0,0,0)'
-    : sectionTheme === 'dark'   ? '#FFFFFF' : '#0a0a0a';
-  const borderColor = !scrolled ? 'rgba(0,0,0,0)'
-    : sectionTheme === 'dark'   ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.1)';
-
+  const pillAnimate = getPillAnimate(scrolled, sectionTheme);
   const anyMegaOpen = openDropdown !== null && !!NAV[openDropdown]?.groups;
 
   return (
     <>
-      {/* ── Header bar ───────────────────────────────────────── */}
-      <motion.header
-        ref={headerRef as never}
-        className={styles.header}
-        role="banner"
-        data-theme={theme}
-        data-scrolled={scrolled}
-        animate={{ backgroundColor: bgColor, borderBottomColor: borderColor }}
-        transition={{ duration: 0.3, ease: 'easeOut' }}
-      >
-        <Container>
+      {/* ── Header outer shell ────────────────────────────────– */}
+      <header className={styles.headerOuter} role="banner">
+        {/* Morphing pill ────────────────────────────────────── */}
+        <motion.div
+          ref={pillRef}
+          className={styles.pill}
+          data-theme={theme}
+          data-scrolled={scrolled}
+          animate={pillAnimate}
+          transition={PILL_TRANSITION}
+        >
           <div className={styles.inner}>
 
             {/* Logo */}
@@ -518,8 +538,8 @@ export default function Header() {
             </button>
 
           </div>
-        </Container>
-      </motion.header>
+        </motion.div>
+      </header>
 
       {/* ── Mega menu backdrop (desktop only) ────────────────── */}
       <AnimatePresence>
