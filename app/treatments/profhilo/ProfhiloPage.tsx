@@ -974,7 +974,7 @@ export default function ProfhiloPage() {
               Prices listed are a guide only. Your exact cost will be discussed during a
               thorough consultation with our expert.
             </motion.p>
-            <motion.div variants={fadeUp}>
+            <motion.div className={styles.costCtaWrapper} variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
                 Book A Consultation
               </BookConsultationButton>

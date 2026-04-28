@@ -241,6 +241,8 @@
 
   .newsletterText {
     padding-bottom: 0;
+    text-align: center;
+    align-items: center;
   }
 
   .inner {

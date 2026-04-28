@@ -1298,7 +1298,13 @@
   line-height: 1.72;
   color: rgba(255 255 255 / 0.40);
   max-width: 480px;
-  margin: 0;
+  margin: 0 auto;
+}
+
+.costCtaWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 /* ════════════════════════════════════════════════════
@@ -2298,14 +2304,15 @@
   .whatIsGrid { grid-template-columns: 1fr; gap: var(--space-5); }
   .whatIsImageWrap { aspect-ratio: 4 / 3; }
   .whatIsVideoWrap { aspect-ratio: 4 / 3; }
+  .whatIsTextGroup { text-align: center; }
 
   /* Standalone At a Glance: 2-col on mobile */
   .glanceStandaloneGrid { grid-template-columns: repeat(2, 1fr); }
 
   /* Clinic intro: stack */
   .clinicIntroBody { grid-template-columns: 1fr; }
-  .clinicIntroLeft { padding-right: 0; border-right: none; padding-bottom: var(--space-4); border-bottom: 1px solid rgba(0 0 0 / 0.08); }
-  .clinicIntroDesc { padding-left: 0; padding-top: var(--space-1); }
+  .clinicIntroLeft { padding-right: 0; border-right: none; padding-bottom: var(--space-4); border-bottom: 1px solid rgba(0 0 0 / 0.08); text-align: center; align-items: center; }
+  .clinicIntroDesc { padding-left: 0; padding-top: var(--space-1); text-align: center; }
 
   /* Why Choose The One Clinic: 1-col */
   .clinicReasonsGrid { grid-template-columns: 1fr 1fr; }
