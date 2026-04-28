@@ -3,7 +3,7 @@ import LogoCarousel     from '@/components/sections/LogoCarousel';
 import VideoSection     from '@/components/sections/VideoSection';
 import TrustStrip       from '@/components/sections/TrustStrip';
 import BrandTreatments  from '@/components/brand/BrandTreatments';
-import Benefits         from '@/components/sections/Benefits';
+import BrandBenefits    from '@/components/brand/BrandBenefits';
 import Testimonials     from '@/components/sections/Testimonials';
 import Process          from '@/components/sections/Process';
 import TestimonialVideos from '@/components/sections/TestimonialVideos';
@@ -20,7 +20,7 @@ export default function BrandPage() {
       <VideoSection />
       <TrustStrip />
       <BrandTreatments />
-      <Benefits />
+      <BrandBenefits />
       <Testimonials />
       <Process />
       <TestimonialVideos />
@@ -31,4 +31,3 @@ export default function BrandPage() {
     </>
   );
 }
-
