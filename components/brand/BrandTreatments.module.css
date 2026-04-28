@@ -142,6 +142,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  padding-top: clamp(60px, 12vh, 140px);
 }
 
 /* "Treatments ————" label row */
@@ -195,8 +196,8 @@
 .thumb {
   position: relative;
   flex-shrink: 0;
-  width: 150px;
-  height: 200px;
+  width: 170px;
+  height: 227px;
   border-radius: 10px;
   overflow: hidden;
   text-decoration: none;
@@ -283,11 +284,12 @@
 
   .rightCol {
     width: 100%;
+    padding-top: 0;
   }
 
   .thumb {
-    width: 125px;
-    height: 167px;
+    width: 138px;
+    height: 184px;
   }
 }
 
@@ -305,8 +307,8 @@
   }
 
   .thumb {
-    width: 108px;
-    height: 144px;
+    width: 120px;
+    height: 160px;
   }
 
   .thumbTitle {
