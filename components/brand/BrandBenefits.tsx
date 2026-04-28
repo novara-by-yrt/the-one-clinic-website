@@ -66,22 +66,24 @@ export default function BrandBenefits() {
             viewport={VIEWPORT}
             transition={{ duration: 0.95, ease: EASE }}
           >
-            <div className={styles.canvas}>
+            <div className={styles.canvasWrap}>
 
-              {/* ── Dominant hero image ───────────── */}
-              <div className={styles.imgMain}>
-                <Image
-                  src="/images/imgi_78_GTR_0328-1-1.jpg"
-                  alt="The One Clinic team"
-                  fill
-                  className={styles.img}
-                  sizes="(max-width: 900px) 100vw, 55vw"
-                  priority
-                />
-                <div className={styles.imgGrad} />
+              {/* ── Clipped canvas: hero image only ───── */}
+              <div className={styles.canvas}>
+                <div className={styles.imgMain}>
+                  <Image
+                    src="/images/imgi_78_GTR_0328-1-1.jpg"
+                    alt="The One Clinic team"
+                    fill
+                    className={styles.img}
+                    sizes="(max-width: 900px) 100vw, 55vw"
+                    priority
+                  />
+                  <div className={styles.imgGrad} />
+                </div>
               </div>
 
-              {/* ── Secondary framed image ─────────── */}
+              {/* ── Secondary framed image (outside canvas — shadow preserved) ── */}
               <motion.div
                 className={styles.imgSecondary}
                 initial={{ opacity: 0, y: 40 }}
@@ -131,7 +133,6 @@ export default function BrandBenefits() {
                 <p className={styles.cardBigNum}>500+</p>
                 <p className={styles.cardSub}>Patients treated</p>
               </motion.div>
-
 
             </div>
           </motion.div>
