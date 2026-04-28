@@ -44,16 +44,17 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   INNER LAYOUT — flex column, fills the section height
+   INNER LAYOUT — flex row on desktop, fills section height
 ══════════════════════════════════════════════════════ */
 .inner {
   position: relative;
   z-index: 2;
   flex: 1;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-block: var(--space-7) var(--space-5);
+  flex-direction: row;
+  align-items: center;
+  gap: clamp(var(--space-4), 4vw, var(--space-6));
+  padding-block: var(--space-7);
   padding-inline: clamp(var(--container-padding), 5vw, 80px);
   max-width: var(--container-width);
   margin-inline: auto;
@@ -65,7 +66,7 @@
    MAIN AREA — holds left glass panel
 ══════════════════════════════════════════════════════ */
 .mainArea {
-  flex: 1;
+  flex: none;
   display: flex;
   align-items: center;
 }
@@ -74,7 +75,7 @@
    LEFT GLASS PANEL
 ══════════════════════════════════════════════════════ */
 .leftPanel {
-  width: min(460px, 55%);
+  width: min(460px, 100%);
   padding: 44px 40px;
   background: rgba(0, 0, 0, 0.58);
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -143,16 +144,18 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   BOTTOM AREA — thumbnail strip, right-aligned
+   RIGHT AREA — thumbnail strip, vertically centred
 ══════════════════════════════════════════════════════ */
 .bottomArea {
+  flex: 1;
   display: flex;
-  justify-content: flex-end;
-  padding-top: var(--space-5);
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 0;
 }
 
 .stripWrapper {
-  width: 62%;
+  width: 100%;
   max-width: 780px;
 }
 
@@ -274,12 +277,7 @@
 /* Tablet */
 @media (max-width: 1024px) {
   .leftPanel {
-    width: min(440px, 65%);
     padding: 36px 32px;
-  }
-
-  .stripWrapper {
-    width: 70%;
   }
 }
 
@@ -290,13 +288,14 @@
   }
 
   .inner {
+    flex-direction: column;
+    align-items: flex-start;
     padding-block: var(--space-5) var(--space-4);
     gap: var(--space-4);
-    justify-content: flex-start;
   }
 
   .mainArea {
-    flex: none;
+    width: 100%;
   }
 
   .leftPanel {
@@ -307,12 +306,12 @@
   }
 
   .bottomArea {
-    justify-content: flex-start;
-    padding-top: 0;
+    width: 100%;
   }
 
   .stripWrapper {
     width: 100%;
+    max-width: none;
   }
 
   .thumb {

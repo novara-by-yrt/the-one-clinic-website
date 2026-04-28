@@ -69,7 +69,7 @@ export default function BrandTreatments() {
               treatment is tailored to your individual goals by our qualified
               doctors, combining clinical expertise with the latest technology.
               Whether you seek aesthetic enhancement, health optimisation, or
-              preventative care — we have a solution designed just for you.
+              preventative care, we have a solution designed just for you.
             </motion.p>
 
             <motion.div variants={fadeUp}>
