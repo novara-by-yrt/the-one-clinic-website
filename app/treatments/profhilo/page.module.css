@@ -1176,7 +1176,7 @@
   background-image: url('/images/Background%20image2.jpg');
   background-size: cover;
   background-position: center top;
-  padding-block: clamp(var(--space-10), 10vw, 120px);
+  padding-block: clamp(80px, 10vw, 140px);
   overflow: hidden;
 }
 
