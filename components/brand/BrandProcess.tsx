@@ -95,8 +95,15 @@ export default function BrandProcess() {
           >
             <div className={styles.mediaCanvas}>
 
+              {/* ── Atmospheric warm halo behind composition ─ */}
+              <div className={styles.mediaHalo} aria-hidden="true" />
+
               {/* ── Main dominant image ──────────────────── */}
-              <div className={styles.imgMain}>
+              <motion.div
+                className={styles.imgMain}
+                whileHover={{ scale: 1.025 }}
+                transition={{ duration: 0.8, ease: EASE }}
+              >
                 <AnimatePresence mode="sync">
                   <motion.div
                     key={activeSlide}
@@ -117,7 +124,7 @@ export default function BrandProcess() {
                   </motion.div>
                 </AnimatePresence>
                 <div className={styles.imgGrad} aria-hidden="true" />
-              </div>
+              </motion.div>
 
               {/* ── Secondary stacked preview image ──────── */}
               <motion.div
@@ -158,6 +165,29 @@ export default function BrandProcess() {
               >
                 <p className={styles.floatNum}>500+</p>
                 <p className={styles.floatLabel}>Patients treated</p>
+              </motion.div>
+
+              {/* ── Floating glass label chips ───────────── */}
+              <motion.div
+                className={`${styles.floatChip} ${styles.floatChipDoctor}`}
+                initial={{ opacity: 0, x: -18 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={VIEWPORT}
+                transition={{ duration: 0.65, ease: EASE, delay: 0.58 }}
+              >
+                <span className={styles.chipDot} aria-hidden="true" />
+                Doctor-Led Care
+              </motion.div>
+
+              <motion.div
+                className={`${styles.floatChip} ${styles.floatChipJourney}`}
+                initial={{ opacity: 0, x: 18 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={VIEWPORT}
+                transition={{ duration: 0.65, ease: EASE, delay: 0.72 }}
+              >
+                <span className={styles.chipDot} aria-hidden="true" />
+                Personalised Journey
               </motion.div>
 
               {/* ── Active step label ─────────────────────── */}
