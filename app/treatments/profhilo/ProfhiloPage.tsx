@@ -32,7 +32,7 @@ const AT_A_GLANCE = [
   },
   {
     label: 'Treatment Frequency',
-    value: 'Every 1 to 2 years',
+    value: '2 sessions spaced four weeks apart',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="1 4 1 10 7 10"/>
@@ -42,7 +42,7 @@ const AT_A_GLANCE = [
   },
   {
     label: 'Downtime',
-    value: '1 to 3 days',
+    value: 'Minimal',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
@@ -52,7 +52,7 @@ const AT_A_GLANCE = [
   },
   {
     label: 'Results Longevity',
-    value: '2 to 3 years or more',
+    value: 'Typically, around six months',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
@@ -61,8 +61,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Treatment Cost',
-    value: 'From £1,500',
+    label: 'Profhilo Cost',
+    value: 'Starts from £200',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <line x1="12" y1="1" x2="12" y2="23"/>
@@ -126,11 +126,11 @@ const TECH_CARDS = [
 ];
 
 const ELIGIBILITY = [
-  'Not ready for surgery but want visible, long-lasting results',
-  'Struggling with sagging skin on the face, neck, or body',
-  'Looking to reduce jowls or define the jawline without an operation',
-  'Wanting skin tightening on the arms, abdomen, or thighs',
-  'Hoping for natural, gradual improvement with minimal downtime',
+  'Improves skin firmness and elasticity for a naturally lifted appearance',
+  'Deeply hydrates dry or dehydrated skin from within',
+  'Enhances your natural features without changing your appearance',
+  'Reduces the appearance of fine lines and improves overall skin texture',
+  'Complements other treatments such as anti-wrinkle injections or dermal fillers',
 ];
 
 const TREATED_BENEFITS = [
@@ -380,8 +380,9 @@ export default function ProfhiloPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Reveal firmer, smoother, and contoured skin in just one Profhilo session,
-                with minimal downtime.
+                Experience visibly healthier, more radiant skin with expert Profhilo treatments.
+                This revolutionary bio-remodelling procedure offers deep hydration and structural
+                rejuvenation for a lovely, natural glow without altering your features.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -463,10 +464,12 @@ export default function ProfhiloPage() {
                 <p className={styles.eyebrowDark}>About This Treatment</p>
                 <h2 className={styles.combinedHeading}>What is Profhilo?</h2>
                 <p className={styles.combinedDesc}>
-                  Profhilo is a minimally invasive laser treatment that lifts, tightens, and contours
-                  the skin, all without surgery. This treatment encourages collagen production,
-                  helping remodel the skin on your face, neck, jawline, and even your arms, abdomen,
-                  or thighs.
+                  Profhilo is an innovative injectable skin treatment formulated with one of the
+                  highest concentrations of ultra-pure hyaluronic acid available. Rather than acting
+                  as a traditional dermal filler to add volume, it works as a bio-remodelling agent.
+                  It is specifically designed to treat dull, dry, and ageing skin by providing
+                  intense, deep hydration and naturally stimulating the production of collagen and
+                  elastin from within.
                 </p>
               </motion.div>
               <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
@@ -703,7 +706,7 @@ export default function ProfhiloPage() {
               Is This Right for You?
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Why Choose an Profhilo?
+              Why Choose Profhilo?
             </motion.h2>
           </motion.div>
 
@@ -715,7 +718,7 @@ export default function ProfhiloPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
-              You can choose Profhilo skin tightening if you are:
+              You might find Profhilo to be a brilliant choice, it:
             </motion.p>
             <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
               {ELIGIBILITY.map((item) => (
@@ -730,7 +733,7 @@ export default function ProfhiloPage() {
               ))}
             </motion.ul>
             <motion.p className={styles.eligibilityClosing} variants={fadeUp}>
-              If any of these sound familiar, Profhilo skin tightening could be the right solution for you.
+              If Profhilo sounds like it could be right for you, book a consultation with our team to find out more.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
@@ -767,16 +770,12 @@ export default function ProfhiloPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.howPara} variants={fadeUp}>
-              Profhilo uses advanced laser technology: a very thin laser fibre that is gently
-              inserted under the skin in targeted areas. The laser energy selectively melts small
-              fat deposits and stimulates the surrounding connective tissue to contract, tightening
-              and reshaping the skin from within.
+              Once injected, Profhilo spreads evenly beneath the skin rather than remaining in one
+              spot. It works deep within the skin to activate your body&apos;s natural healing process.
+              It helps boost collagen and elastin, which improves the skin&apos;s structure.
             </motion.p>
             <motion.p className={styles.howPara} variants={fadeUp}>
-              This controlled thermal stimulus activates the body&apos;s natural fibroblasts to produce
-              new collagen and elastin, progressively remodelling the skin. Results become visible
-              over weeks to months as collagen matures, with many patients reporting continued
-              improvement for up to six months following treatment.
+              As a result, your skin becomes firmer, tighter, well-hydrated, and naturally glowing.
             </motion.p>
           </motion.div>
 
