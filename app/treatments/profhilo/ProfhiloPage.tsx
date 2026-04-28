@@ -370,7 +370,7 @@ export default function ProfhiloPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/profhilo-work.jpg"
+                src="/images/Profhilo (2).jpg"
                 alt="Profhilo treatment in progress at The One Clinic"
                 fill
                 priority

@@ -200,6 +200,14 @@ const TREATMENTS: Treatment[] = [
     bg: 'linear-gradient(160deg,#100d17 0%,#1e1633 100%)',
   },
   {
+    title: 'Profhilo',
+    category: 'Medical Aesthetics',
+    desc: 'Deep hydration and bio-remodelling with ultra-pure hyaluronic acid for a natural, luminous glow.',
+    href: '/treatments/profhilo',
+    image: '/images/Profhilo (2).jpg',
+    bg: 'linear-gradient(160deg,#0d1520 0%,#142038 100%)',
+  },
+  {
     title: 'Skincare, Alumier MD',
     category: 'Medical Aesthetics',
     desc: 'Medical-grade skincare products tailored to your skin type and treatment goals.',
