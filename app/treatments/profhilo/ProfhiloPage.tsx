@@ -795,44 +795,6 @@ export default function ProfhiloPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          NEW: CTA BANNER
-      ════════════════════════════════════════ */}
-      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book Profhilo consultation">
-        {/* Watermark logo */}
-        <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
-          <Image
-            src="/images/Background-logo.png"
-            alt=""
-            fill
-            className={styles.ctaBannerLogo}
-            sizes="100vw"
-          />
-        </div>
-        <Container>
-          <motion.div
-            className={styles.ctaBannerContent}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
-              Uncover Your Natural Beauty<br />and Radiance!
-            </motion.h2>
-            <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
-              Give your skin the deep hydration and structural renewal it truly deserves. Let our
-              expert doctors at The One Clinic help you achieve a beautifully luminous complexion.
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBannerBtn}>
-                Book Consultation
-              </BookConsultationButton>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
-
-      {/* ════════════════════════════════════════
           7. TREATABLE AREAS
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark" className={styles.conditionsSection}>
@@ -1173,6 +1135,44 @@ export default function ProfhiloPage() {
           </motion.div>
         </Container>
       </Section>
+
+      {/* ════════════════════════════════════════
+          CTA BANNER
+      ════════════════════════════════════════ */}
+      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book Profhilo consultation">
+        {/* Watermark logo */}
+        <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
+          <Image
+            src="/images/Background-logo.png"
+            alt=""
+            fill
+            className={styles.ctaBannerLogo}
+            sizes="100vw"
+          />
+        </div>
+        <Container>
+          <motion.div
+            className={styles.ctaBannerContent}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
+              Uncover Your Natural Beauty<br />and Radiance!
+            </motion.h2>
+            <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
+              Give your skin the deep hydration and structural renewal it truly deserves. Let our
+              expert doctors at The One Clinic help you achieve a beautifully luminous complexion.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={styles.ctaBannerBtn}>
+                Book Consultation
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
 
       {/* ════════════════════════════════════════
           10. BOOKING FORM
