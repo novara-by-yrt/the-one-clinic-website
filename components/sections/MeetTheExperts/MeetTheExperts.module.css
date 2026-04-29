@@ -1,79 +1,83 @@
 /* ══════════════════════════════════════════════════════════
-   MEET THE EXPERTS — Premium editorial split layout
+   SECTION
 ══════════════════════════════════════════════════════════ */
-
 .section {
   background: #ffffff;
-  /* Reduced padding to absorb the larger inner elements */
-  padding-block: clamp(48px, 7vw, 88px);
+  padding-block: clamp(56px, 7vw, 96px);
   overflow: hidden;
-}
-
-/* ── Outer wrapper ── */
-.wrapper {
   display: flex;
-  align-items: stretch;
-  gap: clamp(20px, 3.5vw, 56px);
-  /* Wider canvas to give the larger elements breathing room */
-  max-width: 1380px;
-  margin-inline: auto;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(36px, 5vw, 56px);
   padding-inline: clamp(20px, 5vw, 72px);
 }
 
 /* ══════════════════════════════════════════════════════════
-   LEFT: vertical editorial label
+   CENTERED HEADER
 ══════════════════════════════════════════════════════════ */
-
-.labelCol {
-  flex-shrink: 0;
+.header {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  text-align: center;
+  gap: 14px;
+  max-width: 600px;
 }
 
-.vertLabel {
-  writing-mode: vertical-rl;
-  text-orientation: sideways;
-  transform: rotate(180deg);
-  /* Larger, more dominant editorial label */
-  font-size: clamp(2.5rem, 5.2vw, 5.25rem);
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: rgba(13, 21, 32, 0.38);
+  margin: 0;
+}
+
+.heading {
+  font-size: clamp(2rem, 4vw, 3.25rem);
   font-weight: 800;
   letter-spacing: -0.035em;
   color: #0d1520;
-  white-space: nowrap;
-  user-select: none;
+  line-height: 1.05;
+  margin: 0;
+}
+
+.subtext {
+  font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
+  line-height: 1.7;
+  color: rgba(13, 21, 32, 0.50);
+  margin: 0;
 }
 
 /* ══════════════════════════════════════════════════════════
-   MAIN GRID: portrait (col 1) | info (col 2)
-            + thumbnail nav (row 2, spans both cols)
+   MAIN CARD — portrait left | info right
 ══════════════════════════════════════════════════════════ */
-
-.mainGrid {
-  flex: 1;
-  min-width: 0;
+.card {
   display: grid;
-  /* Wider portrait column for visual dominance */
-  grid-template-columns: minmax(0, 380px) 1fr;
-  grid-template-rows: 1fr auto;
-  column-gap: clamp(28px, 4.5vw, 64px);
-  /* Tighter row gap to compensate for taller portrait */
-  row-gap: clamp(16px, 2.2vw, 26px);
+  grid-template-columns: minmax(0, 360px) 1fr;
+  gap: clamp(28px, 4.5vw, 64px);
+  width: 100%;
+  max-width: 1200px;
+  align-items: start;
+  background: #f8f8f6;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    0 12px 48px rgba(0, 0, 0, 0.07);
 }
 
 /* ── Portrait column ── */
 .portraitCol {
   grid-column: 1;
-  grid-row: 1;
+  position: relative;
 }
 
 .portraitFrame {
   position: relative;
-  /* 4:5 ratio (instead of 3:4) — taller width with less excess height */
-  aspect-ratio: 4 / 5;
-  border-radius: 18px;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
-  background: #e8e8ed;
+  background: #e4e4e8;
 }
 
 .portraitInner {
@@ -92,65 +96,104 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 4.5rem;
+  font-size: 5rem;
   font-weight: 800;
-  color: rgba(0, 0, 0, 0.18);
+  color: rgba(0, 0, 0, 0.12);
   letter-spacing: -0.025em;
+}
+
+.portraitGrad {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 35%;
+  background: linear-gradient(to top, rgba(13, 21, 32, 0.38) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.counterBadge {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  z-index: 2;
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.90);
+  letter-spacing: 0.05em;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+
+.counterSep {
+  font-weight: 400;
+  opacity: 0.55;
+  font-size: 0.75rem;
+  margin-inline: 1px;
+}
+
+.counterTotal {
+  font-weight: 400;
+  opacity: 0.55;
 }
 
 /* ── Info column ── */
 .infoCol {
   grid-column: 2;
-  grid-row: 1;
   display: flex;
   align-items: flex-start;
+  padding: clamp(28px, 3.5vw, 48px) clamp(24px, 3vw, 40px) clamp(28px, 3.5vw, 48px) 0;
 }
 
 .infoPanel {
   display: flex;
   flex-direction: column;
-  /* Slightly tighter gap so the larger type fits the same vertical envelope */
-  gap: clamp(8px, 1.2vw, 16px);
-  padding-top: clamp(8px, 2vw, 24px);
-  max-width: 520px;
-}
-
-.counter {
-  font-size: clamp(1.0625rem, 1.4vw, 1.375rem);
-  font-weight: 400;
-  color: rgba(0, 0, 0, 0.36);
-  margin: 0;
+  gap: clamp(10px, 1.4vw, 16px);
+  width: 100%;
 }
 
 .expertName {
-  /* Significantly larger, more impactful name */
-  font-size: clamp(1.875rem, 3.4vw, 3.25rem);
+  font-size: clamp(1.625rem, 3vw, 2.75rem);
   font-weight: 800;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
   color: #0d1520;
-  line-height: 1.04;
+  line-height: 1.06;
   margin: 0;
   text-transform: uppercase;
 }
 
 .credentials {
-  font-size: 0.9375rem;
-  color: rgba(0, 0, 0, 0.40);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(13, 21, 32, 0.38);
+  letter-spacing: 0.04em;
   margin: 0;
-  letter-spacing: 0.03em;
 }
 
 .role {
-  font-size: 1rem;
-  font-weight: 500;
-  color: rgba(0, 0, 0, 0.55);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: rgba(13, 21, 32, 0.60);
   margin: 0;
 }
 
+.divider {
+  width: 36px;
+  height: 2px;
+  background: #0d1520;
+  border-radius: 2px;
+  opacity: 0.15;
+  margin-block: 2px;
+  flex-shrink: 0;
+}
+
 .bio {
-  font-size: clamp(0.9375rem, 1.05vw, 1.0625rem);
-  line-height: 1.72;
-  color: rgba(0, 0, 0, 0.55);
+  font-size: clamp(0.9375rem, 1.05vw, 1rem);
+  line-height: 1.75;
+  color: rgba(13, 21, 32, 0.55);
   margin: 0;
   display: -webkit-box;
   -webkit-line-clamp: 5;
@@ -162,72 +205,104 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  padding: 11px 24px;
+  background: #0d1520;
+  color: #ffffff;
+  border-radius: 50px;
   font-size: 0.8125rem;
   font-weight: 700;
-  letter-spacing: 0.10em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #0d1520;
   text-decoration: none;
-  margin-top: 8px;
   width: fit-content;
-  transition: opacity 0.2s ease, gap 0.25s ease;
+  margin-top: 8px;
+  transition:
+    background 0.25s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease;
+  box-shadow: 0 4px 18px rgba(13, 21, 32, 0.18);
 }
 
 .cta:hover {
-  opacity: 0.55;
-  gap: 14px;
+  background: #1c2d42;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(13, 21, 32, 0.28);
 }
 
 .cta:focus-visible {
   outline: 2px solid #0d1520;
   outline-offset: 3px;
-  border-radius: 3px;
+  border-radius: 50px;
 }
 
 /* ══════════════════════════════════════════════════════════
-   NAVIGATION ROW — spans both grid columns via subgrid
+   NAV ROW — ← arrow | thumbnails | → arrow
 ══════════════════════════════════════════════════════════ */
-
 .navRow {
-  grid-column: 1 / 3;
-  grid-row: 2;
-  display: grid;
-  grid-template-columns: subgrid;
-  align-items: center;
-}
-
-/* Prev thumb + dot — under portrait column */
-.prevArea {
   display: flex;
   align-items: center;
-  gap: clamp(12px, 1.6vw, 22px);
+  gap: clamp(14px, 2.5vw, 28px);
+  width: 100%;
+  max-width: 1200px;
 }
 
-.dot {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.13);
+.navArrow {
   flex-shrink: 0;
-  margin-left: auto;
-}
-
-/* Next thumbnails — under info column */
-.nextArea {
   display: flex;
   align-items: center;
-  gap: clamp(10px, 1.4vw, 18px);
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px solid rgba(13, 21, 32, 0.14);
+  color: #0d1520;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+  transition:
+    background 0.22s ease,
+    border-color 0.22s ease,
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.22s ease;
 }
 
-/* ── Thumbnail button ── */
+.navArrow:hover {
+  background: #0d1520;
+  border-color: #0d1520;
+  color: #ffffff;
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(13, 21, 32, 0.22);
+}
+
+.navArrow:active {
+  transform: scale(0.95);
+}
+
+.navArrow:focus-visible {
+  outline: 2px solid #0d1520;
+  outline-offset: 3px;
+}
+
+.thumbStrip {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(10px, 1.8vw, 20px);
+  overflow: hidden;
+}
+
 .thumbBtn {
+  flex: 1;
+  min-width: 0;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
-  flex-shrink: 0;
-  display: block;
-  opacity: 0.68;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.52;
   transition:
     opacity 0.25s ease,
     transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
@@ -235,23 +310,23 @@
 
 .thumbBtn:hover {
   opacity: 1;
-  transform: translateY(-3px);
+  transform: translateY(-4px);
 }
 
 .thumbBtn:focus-visible {
-  outline: 2px solid rgba(0, 0, 0, 0.5);
+  outline: 2px solid #0d1520;
   outline-offset: 3px;
   border-radius: 12px;
 }
 
 .thumbWrap {
   position: relative;
-  /* Larger thumbnails — proportional to the bigger main portrait */
-  width: clamp(92px, 11vw, 132px);
-  aspect-ratio: 4 / 5;
-  border-radius: 12px;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 14px;
   overflow: hidden;
-  background: #e8e8ed;
+  background: #e4e4e8;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
 }
 
 .thumbImg {
@@ -265,84 +340,71 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 800;
-  color: rgba(0, 0, 0, 0.20);
+  color: rgba(0, 0, 0, 0.22);
+}
+
+.thumbName {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(13, 21, 32, 0.50);
+  text-align: center;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 /* ══════════════════════════════════════════════════════════
    RESPONSIVE
 ══════════════════════════════════════════════════════════ */
 
-@media (max-width: 1100px) {
-  .mainGrid {
-    grid-template-columns: minmax(0, 320px) 1fr;
-    column-gap: clamp(24px, 3.5vw, 48px);
-  }
-
-  .vertLabel {
-    font-size: clamp(2.25rem, 4.5vw, 4.25rem);
+@media (max-width: 1024px) {
+  .card {
+    grid-template-columns: minmax(0, 300px) 1fr;
   }
 }
 
-@media (max-width: 860px) {
-  .mainGrid {
-    grid-template-columns: minmax(0, 280px) 1fr;
+@media (max-width: 768px) {
+  .card {
+    grid-template-columns: minmax(0, 260px) 1fr;
+    gap: clamp(16px, 3vw, 28px);
   }
 
   .expertName {
-    font-size: clamp(1.625rem, 3.6vw, 2.5rem);
-  }
-
-  .portraitFrame {
-    border-radius: 14px;
-  }
-
-  .thumbWrap {
-    border-radius: 10px;
-    width: clamp(82px, 11vw, 110px);
+    font-size: clamp(1.375rem, 4vw, 2rem);
   }
 }
 
-/* Mobile: stack portrait above info, flat flex thumbnail row */
 @media (max-width: 580px) {
   .section {
-    padding-block: clamp(44px, 8vw, 72px);
+    padding-inline: 0;
+    gap: clamp(24px, 5vw, 36px);
   }
 
-  .wrapper {
-    gap: 14px;
-    padding-inline: clamp(18px, 5vw, 32px);
+  .header {
+    padding-inline: 20px;
   }
 
-  .vertLabel {
-    font-size: 1.875rem;
-  }
-
-  .mainGrid {
+  .card {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
-    row-gap: 22px;
-  }
-
-  .portraitCol {
-    grid-column: 1;
-    grid-row: 1;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+    gap: 0;
   }
 
   .portraitFrame {
-    aspect-ratio: 4 / 5;
-    max-height: 58svh;
+    aspect-ratio: 3 / 4;
+    max-height: 55svh;
+    border-radius: 0;
   }
 
   .infoCol {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  .infoPanel {
-    padding-top: 0;
-    gap: 10px;
+    padding: 20px 20px 0;
   }
 
   .expertName {
@@ -354,39 +416,26 @@
   }
 
   .navRow {
-    grid-column: 1;
-    grid-row: 3;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .prevArea {
+    padding-inline: 16px;
     gap: 12px;
   }
 
-  .dot {
-    margin-left: 0;
-    width: 16px;
-    height: 16px;
+  .navArrow {
+    width: 40px;
+    height: 40px;
   }
 
   .thumbWrap {
-    width: 76px;
     border-radius: 10px;
+  }
+
+  .thumbName {
+    display: none;
   }
 }
 
 @media (max-width: 400px) {
-  .labelCol {
-    display: none;
-  }
-
-  .wrapper {
-    padding-inline: 16px;
-  }
-
-  .thumbWrap {
-    width: 64px;
+  .thumbStrip {
+    gap: 8px;
   }
 }
