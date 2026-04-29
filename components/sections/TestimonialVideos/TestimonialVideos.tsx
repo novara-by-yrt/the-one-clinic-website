@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Script from 'next/script';
 import Section from '@/components/ui/Section';
@@ -9,41 +9,22 @@ import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './TestimonialVideos.module.css';
 
 const VIDEOS = [
-  { id: 'idcb1vywka', title: 'Customer Testimonial' },
-  { id: 'onscmatqmy', title: 'Customer Testimonial, Oxana' },
-  { id: 'fm142sxmlw', title: 'Customer Testimonial, Mahanoor' },
+  { id: 'idcb1vywka', label: 'Treatment Experience' },
+  { id: 'onscmatqmy', label: 'Patient Story' },
 ];
 
-
 export default function TestimonialVideos() {
-  const [active, setActive]       = useState(0);
-  const [direction, setDirection] = useState(1);
-  const touchStartX               = useRef(0);
-  const touchStartY               = useRef(0);
+  const [playing, setPlaying] = useState<Set<string>>(new Set());
 
-  function go(next: number) {
-    const n = (next + VIDEOS.length) % VIDEOS.length;
-    setDirection(next >= active ? 1 : -1);
-    setActive(n);
-  }
-
-  function onTouchStart(e: React.TouchEvent) {
-    touchStartX.current = e.touches[0].clientX;
-    touchStartY.current = e.touches[0].clientY;
-  }
-
-  function onTouchEnd(e: React.TouchEvent) {
-    const dx = e.changedTouches[0].clientX - touchStartX.current;
-    const dy = Math.abs(e.changedTouches[0].clientY - touchStartY.current);
-    if (Math.abs(dx) > 44 && Math.abs(dx) > dy) go(active + (dx < 0 ? 1 : -1));
+  function play(id: string) {
+    setPlaying((prev) => new Set([...prev, id]));
   }
 
   return (
-    <Section variant="dark" data-section-theme="dark" className={styles.section}>
+    <Section variant="light" data-section-theme="light" className={styles.section}>
       <Script src="https://fast.wistia.net/player.js" strategy="lazyOnload" />
 
       <Container>
-        {/* ── Header ─────────────────────────────────────────── */}
         <motion.div
           className={styles.header}
           variants={stagger(0.15)}
@@ -58,7 +39,6 @@ export default function TestimonialVideos() {
           </motion.p>
         </motion.div>
 
-        {/* ── Desktop: 3-column grid ─────────────────────────── */}
         <motion.div
           className={styles.grid}
           variants={stagger(0.12)}
@@ -67,85 +47,40 @@ export default function TestimonialVideos() {
           viewport={VIEWPORT}
         >
           {VIDEOS.map((v) => (
-            <motion.div key={v.id} className={styles.videoCard} variants={fadeUp}>
+            <motion.div key={v.id} className={styles.card} variants={fadeUp}>
               <div className={styles.videoWrap}>
                 <iframe
-                  src={`https://fast.wistia.net/embed/iframe/${v.id}?web_component=true&seo=true`}
-                  title={v.title}
+                  src={`https://fast.wistia.net/embed/iframe/${v.id}?web_component=true&seo=true${playing.has(v.id) ? '&autoPlay=true' : ''}`}
+                  title={v.label}
                   allow="autoplay; fullscreen"
                   allowFullScreen
                   frameBorder="0"
                   scrolling="no"
                   className={styles.iframe}
                 />
+
+                {/* Play overlay — shown until user clicks to play */}
+                {!playing.has(v.id) && (
+                  <div
+                    className={styles.overlay}
+                    onClick={() => play(v.id)}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`Play ${v.label}`}
+                    onKeyDown={(e) => e.key === 'Enter' && play(v.id)}
+                  >
+                    <div className={styles.playBtn} aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                        <path d="M6 4.5L15.5 10 6 15.5V4.5Z" fill="currentColor"/>
+                      </svg>
+                    </div>
+                    <p className={styles.videoLabel}>{v.label}</p>
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}
         </motion.div>
-
-        {/* ── Mobile: slideshow with arrows + dots ───────────── */}
-        <div className={styles.mobileSlideshow}>
-          {/* Arrows + slide track */}
-          <div className={styles.mobileTrackRow}>
-            <button
-              className={styles.mobileArrow}
-              onClick={() => go(active - 1)}
-              aria-label="Previous video"
-            >
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <polyline points="11,3 5,9 11,15" stroke="currentColor" strokeWidth="2"
-                  strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-
-            <div
-              className={styles.mobileTrack}
-              onTouchStart={onTouchStart}
-              onTouchEnd={onTouchEnd}
-            >
-              <div className={styles.mobileSlide}>
-                <div className={styles.videoWrapMobile}>
-                  <iframe
-                    key={active}
-                    src={`https://fast.wistia.net/embed/iframe/${VIDEOS[active].id}?web_component=true&seo=true`}
-                    title={VIDEOS[active].title}
-                    allow="autoplay; fullscreen"
-                    allowFullScreen
-                    frameBorder="0"
-                    scrolling="no"
-                    className={styles.iframe}
-                  />
-                </div>
-              </div>
-            </div>
-
-            <button
-              className={styles.mobileArrow}
-              onClick={() => go(active + 1)}
-              aria-label="Next video"
-            >
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <polyline points="7,3 13,9 7,15" stroke="currentColor" strokeWidth="2"
-                  strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-          </div>
-
-          {/* Pagination dots */}
-          <div className={styles.mobileDots} role="tablist" aria-label="Patient testimonial videos">
-            {VIDEOS.map((_, i) => (
-              <button
-                key={i}
-                className={`${styles.mobileDot} ${i === active ? styles.mobileDotActive : ''}`}
-                onClick={() => go(i)}
-                role="tab"
-                aria-selected={i === active}
-                aria-label={`Video ${i + 1} of ${VIDEOS.length}`}
-              />
-            ))}
-          </div>
-        </div>
-
       </Container>
     </Section>
   );

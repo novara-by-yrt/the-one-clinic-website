@@ -1,7 +1,6 @@
-/* ── Section — pure black bg ─────────────────────────────────────── */
+/* ── Section — light background ─────────────────────────────────── */
 .section {
-  background-color: #000;
-  border-top: none;
+  background: #f9f7f4;
 }
 
 /* ── Header ──────────────────────────────────────────────────────── */
@@ -19,59 +18,54 @@
   font-weight: var(--fw-medium);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgb(255 255 255 / 0.38);
+  color: rgba(0, 0, 0, 0.38);
 }
 
 .heading {
   font-size: clamp(1.75rem, 4vw, var(--text-h2));
   font-weight: var(--fw-bold);
   letter-spacing: -0.02em;
-  color: var(--color-text-light);
+  color: var(--color-text);
   line-height: var(--lh-tight);
 }
 
 .subtext {
   font-size: var(--text-body);
-  color: rgb(255 255 255 / 0.5);
+  color: rgba(0, 0, 0, 0.5);
   max-width: 400px;
 }
 
-/* ── Desktop grid: 3 portrait columns ───────────────────────────── */
+/* ── Two-column grid ─────────────────────────────────────────────── */
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4);
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(16px, 3vw, 32px);
 }
 
-/* ── Each card ───────────────────────────────────────────────────── */
-.videoCard {
-  border-radius: 1rem;
+/* ── Card ────────────────────────────────────────────────────────── */
+.card {
+  border-radius: 16px;
   overflow: hidden;
-  /* Subtle glow border for premium feel */
-  border: 1px solid rgb(255 255 255 / 0.1);
-  background: #0d0d0d;
   box-shadow:
-    0 0 0 1px rgb(255 255 255 / 0.04),
-    0 24px 64px rgb(0 0 0 / 0.5);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    0 4px 24px rgba(0, 0, 0, 0.08),
+    0 1px 4px rgba(0, 0, 0, 0.05);
+  background: #000;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
 }
 
-.videoCard:hover {
+.card:hover {
   transform: translateY(-4px);
-  border-color: rgb(255 255 255 / 0.2);
   box-shadow:
-    0 0 0 1px rgb(255 255 255 / 0.08),
-    0 32px 80px rgb(0 0 0 / 0.65);
+    0 12px 40px rgba(0, 0, 0, 0.14),
+    0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-/* ── Portrait 9:16 aspect ratio ─────────────────────────────────── */
+/* ── 16:9 video wrapper ──────────────────────────────────────────── */
 .videoWrap {
   position: relative;
   width: 100%;
-  /* 9:16 = padding-top 177.78% */
-  padding-top: 177.78%;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
-  border-radius: 1rem;
 }
 
 .iframe {
@@ -83,105 +77,75 @@
   display: block;
 }
 
-/* ── Mobile slideshow (hidden on desktop) ────────────────────────── */
-.mobileSlideshow { display: none; }
+/* ── Play overlay ────────────────────────────────────────────────── */
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.22) 0%,
+    rgba(0, 0, 0, 0.48) 100%
+  );
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.overlay:hover {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.30) 0%,
+    rgba(0, 0, 0, 0.60) 100%
+  );
+}
+
+/* Glass circle play button */
+.playBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  color: #ffffff;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), background 0.25s ease;
+}
+
+.overlay:hover .playBtn {
+  transform: scale(1.10);
+  background: rgba(255, 255, 255, 0.32);
+}
+
+/* Text label below play button */
+.videoLabel {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
 
 /* ── Responsive ──────────────────────────────────────────────────── */
-@media (max-width: 1024px) {
-  .grid { gap: var(--space-3); }
-}
-
-@media (max-width: 768px) {
-  /* Hide desktop grid, show mobile slideshow */
-  .grid            { display: none; }
-  .mobileSlideshow { display: block; }
-
-  .header { margin-bottom: var(--space-5); }
-
-  /* Arrow + track row */
-  .mobileTrackRow {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
   }
 
-  /* Arrow buttons */
-  .mobileArrow {
-    flex-shrink: 0;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgb(255 255 255 / 0.08);
-    border: 1px solid rgb(255 255 255 / 0.15);
-    color: rgba(255, 255, 255, 0.75);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background 0.2s ease, border-color 0.2s ease;
-  }
-
-  .mobileArrow:hover {
-    background: rgb(255 255 255 / 0.15);
-    border-color: rgb(255 255 255 / 0.35);
-    color: #fff;
-  }
-
-  /* Slide track */
-  .mobileTrack {
-    flex: 1;
-    position: relative;
-    border-radius: 1rem;
-    border: 1px solid rgb(255 255 255 / 0.1);
-    background: #0d0d0d;
-    /* overflow: hidden intentionally omitted — combining overflow:hidden +
-       border-radius on an iframe parent blocks touch events on iOS Safari */
-  }
-
-  /* Slide wrapper */
-  .mobileSlide {
-    width: 100%;
-  }
-
-  /* Portrait 9:16 video — aspect-ratio avoids overflow:hidden on iframe parent */
-  .videoWrapMobile {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 9 / 16;
-  }
-
-  /* Pagination dots */
-  .mobileDots {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    margin-top: var(--space-3);
-  }
-
-  .mobileDot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: rgb(255 255 255 / 0.25);
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    transition: background 0.25s ease, transform 0.25s ease;
-  }
-
-  .mobileDot:hover {
-    background: rgb(255 255 255 / 0.55);
-  }
-
-  .mobileDotActive {
-    background: #fff;
-    transform: scale(1.35);
-  }
-}
-
-@media (max-width: 480px) {
-  .videoCard {
-    flex: 0 0 86vw;
+  .header {
+    margin-bottom: var(--space-5);
   }
 }
