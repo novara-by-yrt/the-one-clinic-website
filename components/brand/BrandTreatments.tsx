@@ -1,13 +1,16 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectCoverflow, Autoplay, Navigation } from 'swiper/modules';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './BrandTreatments.module.css';
 
-const SPEED = 0.22;
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/navigation';
 
 const SLIDES = [
   { src: '/images/Health Screening.jpg',       title: 'Health Screening',   href: '/treatments/health-screening' },
@@ -27,26 +30,6 @@ const SLIDES = [
 ];
 
 export default function BrandTreatments() {
-  const trackRef   = useRef<HTMLDivElement>(null);
-  const posRef     = useRef(0);
-  const rafRef     = useRef<number>(0);
-  const pausedRef  = useRef(false);
-
-  useEffect(() => {
-    function tick() {
-      const track = trackRef.current;
-      if (track && !pausedRef.current) {
-        posRef.current -= SPEED;
-        const halfWidth = track.scrollWidth / 2;
-        if (posRef.current <= -halfWidth) posRef.current += halfWidth;
-        track.style.transform = `translateX(${posRef.current}px)`;
-      }
-      rafRef.current = requestAnimationFrame(tick);
-    }
-    rafRef.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafRef.current);
-  }, []);
-
   return (
     <section className={styles.section} id="treatments">
       {/* Background image */}
@@ -64,10 +47,14 @@ export default function BrandTreatments() {
       {/* Overlay */}
       <div className={styles.overlay} aria-hidden="true" />
 
-      {/* Content row */}
+      {/* Atmospheric depth glows */}
+      <div className={styles.glow1} aria-hidden="true" />
+      <div className={styles.glow2} aria-hidden="true" />
+
+      {/* Content */}
       <div className={styles.inner}>
 
-        {/* ── Left: glass info panel ────────────────────── */}
+        {/* ── Left: glass info panel ── */}
         <motion.div
           className={styles.leftPanel}
           variants={stagger(0.1)}
@@ -90,8 +77,6 @@ export default function BrandTreatments() {
             our expert team delivers exceptional care under one roof. Every
             treatment is tailored to your individual goals by our qualified
             doctors, combining clinical expertise with the latest technology.
-            Whether you seek aesthetic enhancement, health optimisation, or
-            preventative care, we have a solution designed just for you.
           </motion.p>
 
           <motion.div variants={fadeUp}>
@@ -105,42 +90,69 @@ export default function BrandTreatments() {
           </motion.div>
         </motion.div>
 
-        {/* ── Right: treatment thumbnail strip ─────────── */}
-        <div className={styles.rightCol}>
-          <div className={styles.stripHeader}>
-            <span className={styles.stripLabel}>Treatments</span>
-            <span className={styles.stripLine} aria-hidden="true" />
-          </div>
-
-          <div className={styles.tickerOuter}>
-            <div
-              ref={trackRef}
-              className={styles.tickerTrack}
-              aria-label="Treatment photo strip"
-              onMouseEnter={() => { pausedRef.current = true; }}
-              onMouseLeave={() => { pausedRef.current = false; }}
-            >
-              {[...SLIDES, ...SLIDES].map((slide, i) => (
-                <Link
-                  key={i}
-                  href={slide.href}
-                  className={styles.thumb}
-                  tabIndex={i >= SLIDES.length ? -1 : 0}
-                  aria-hidden={i >= SLIDES.length ? true : undefined}
-                >
+        {/* ── Right: 3D coverflow carousel ── */}
+        <div className={styles.carouselWrap}>
+          <Swiper
+            modules={[EffectCoverflow, Autoplay, Navigation]}
+            effect="coverflow"
+            grabCursor
+            centeredSlides
+            loop
+            slidesPerView="auto"
+            autoplay={{ delay: 2800, disableOnInteraction: false, pauseOnMouseEnter: true }}
+            navigation={{ nextEl: `.${styles.navNext}`, prevEl: `.${styles.navPrev}` }}
+            coverflowEffect={{
+              rotate: 32,
+              stretch: 0,
+              depth: 280,
+              modifier: 1,
+              scale: 0.82,
+              slideShadows: true,
+            }}
+            className={styles.swiper}
+          >
+            {SLIDES.map((slide, i) => (
+              <SwiperSlide key={i} className={styles.slide}>
+                <Link href={slide.href} className={styles.card} draggable={false}>
+                  {/* Image */}
                   <Image
                     src={slide.src}
                     alt={slide.title}
                     fill
-                    className={styles.thumbImg}
-                    sizes="160px"
+                    className={styles.cardImg}
+                    sizes="(max-width: 768px) 180px, 220px"
                     draggable={false}
                   />
-                  <div className={styles.thumbOverlay} aria-hidden="true" />
-                  <span className={styles.thumbTitle}>{slide.title}</span>
+
+                  {/* Cinematic gradient overlay */}
+                  <div className={styles.cardOverlay} aria-hidden="true" />
+
+                  {/* Active-card warm glow ring */}
+                  <div className={styles.cardGlow} aria-hidden="true" />
+
+                  {/* Title */}
+                  <div className={styles.cardContent}>
+                    <span className={styles.cardTitle}>{slide.title}</span>
+                  </div>
                 </Link>
-              ))}
-            </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          {/* Custom nav buttons */}
+          <div className={styles.navRow} aria-hidden="true">
+            <button className={styles.navPrev} aria-label="Previous treatment">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M10 3L5 8L10 13" stroke="currentColor" strokeWidth="1.75"
+                  strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+            <button className={styles.navNext} aria-label="Next treatment">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M6 3L11 8L6 13" stroke="currentColor" strokeWidth="1.75"
+                  strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
           </div>
         </div>
 

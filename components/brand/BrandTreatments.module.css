@@ -3,7 +3,7 @@
 ══════════════════════════════════════════════════════ */
 .section {
   position: relative;
-  min-height: 88vh;
+  min-height: 92vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -29,20 +29,52 @@
   background:
     linear-gradient(
       to right,
-      rgba(0, 0, 0, 0.92) 0%,
-      rgba(0, 0, 0, 0.70) 45%,
-      rgba(0, 0, 0, 0.25) 100%
+      rgba(0, 0, 0, 0.95) 0%,
+      rgba(0, 0, 0, 0.80) 40%,
+      rgba(0, 0, 0, 0.45) 70%,
+      rgba(0, 0, 0, 0.28) 100%
     ),
     linear-gradient(
       to top,
-      rgba(0, 0, 0, 0.80) 0%,
+      rgba(0, 0, 0, 0.85) 0%,
       rgba(0, 0, 0, 0.40) 30%,
-      transparent 60%
+      transparent 65%
     );
 }
 
+/* Atmospheric depth glows */
+.glow1 {
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 55%;
+  height: 90%;
+  background: radial-gradient(
+    ellipse at 30% 50%,
+    rgba(120, 90, 60, 0.08) 0%,
+    transparent 65%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.glow2 {
+  position: absolute;
+  bottom: -15%;
+  right: 5%;
+  width: 55%;
+  height: 80%;
+  background: radial-gradient(
+    ellipse at 70% 60%,
+    rgba(50, 65, 120, 0.07) 0%,
+    transparent 65%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
 /* ══════════════════════════════════════════════════════
-   INNER — flex row: left panel | right strip
+   INNER LAYOUT
 ══════════════════════════════════════════════════════ */
 .inner {
   position: relative;
@@ -51,9 +83,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: clamp(32px, 4vw, 60px);
+  gap: clamp(24px, 3vw, 48px);
   padding-block: var(--space-7);
-  padding-inline: clamp(var(--container-padding), 5vw, 80px);
+  padding-inline: clamp(var(--container-padding), 4vw, 72px);
   max-width: var(--container-width);
   margin-inline: auto;
   width: 100%;
@@ -61,20 +93,24 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   LEFT GLASS PANEL
+   LEFT GLASS PANEL (unchanged content, refined styling)
 ══════════════════════════════════════════════════════ */
 .leftPanel {
   flex-shrink: 0;
-  width: clamp(280px, 38%, 460px);
-  padding: 44px 40px;
-  background: rgba(0, 0, 0, 0.58);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 18px;
-  backdrop-filter: blur(22px) saturate(1.2);
-  -webkit-backdrop-filter: blur(22px) saturate(1.2);
+  width: clamp(280px, 36%, 440px);
+  padding: clamp(32px, 3.5vw, 52px) clamp(28px, 3vw, 44px);
+  background: rgba(6, 6, 10, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 22px;
+  backdrop-filter: blur(28px) saturate(1.25);
+  -webkit-backdrop-filter: blur(28px) saturate(1.25);
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 32px 80px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .eyebrow {
@@ -82,23 +118,23 @@
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.48);
+  color: rgba(255, 255, 255, 0.45);
   margin: 0;
 }
 
 .heading {
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(2rem, 3.8vw, 3.5rem);
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
   color: #ffffff;
-  line-height: 1.06;
+  line-height: 1.05;
   margin: 0;
 }
 
 .rule {
-  width: 44px;
+  width: 40px;
   height: 2px;
-  background: rgba(255, 255, 255, 0.38);
+  background: linear-gradient(90deg, rgba(255,255,255,0.5), rgba(255,255,255,0.15));
   border-radius: 1px;
   flex-shrink: 0;
 }
@@ -106,7 +142,7 @@
 .desc {
   font-size: 0.9375rem;
   line-height: 1.78;
-  color: rgba(255, 255, 255, 0.68);
+  color: rgba(255, 255, 255, 0.62);
   margin: 0;
 }
 
@@ -123,151 +159,230 @@
   letter-spacing: 0.04em;
   text-decoration: none;
   margin-top: var(--space-1);
-  box-shadow: 0 2px 16px rgb(255 255 255 / 0.14);
-  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 16px rgba(255, 255, 255, 0.14);
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .cta:hover {
   background: rgba(255, 255, 255, 0.88);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 24px rgb(255 255 255 / 0.22);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(255, 255, 255, 0.24);
 }
 
 /* ══════════════════════════════════════════════════════
-   RIGHT COLUMN — thumbnail strip, vertically centred
+   COVERFLOW CAROUSEL WRAPPER
 ══════════════════════════════════════════════════════ */
-.rightCol {
+.carouselWrap {
   flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding-top: clamp(60px, 12vh, 140px);
-}
-
-/* "Treatments ————" label row */
-.stripHeader {
-  display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 28px;
+  /* Allow carousel to visually overflow edges */
+  overflow: visible;
 }
 
-.stripLabel {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.65);
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.stripLine {
-  flex: 1;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.22);
-}
-
-/* ══════════════════════════════════════════════════════
-   TICKER (JS-driven auto-scroll)
-══════════════════════════════════════════════════════ */
-.tickerOuter {
+/* ── Swiper container ──────────────────────────────── */
+.swiper {
   width: 100%;
-  overflow: hidden;
-  border-radius: 10px;
-  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  /* Extra vertical room for the 3D depth shift */
+  padding-block: 40px 24px !important;
+  overflow: visible !important;
 }
 
-.tickerTrack {
-  display: flex;
-  gap: 10px;
-  will-change: transform;
-  cursor: grab;
+/* ── Individual slide ──────────────────────────────── */
+.slide {
+  width: 210px !important;
+  height: 300px !important;
+  border-radius: 18px;
+  /* Remove Swiper's default opacity manipulation */
+  opacity: 1 !important;
 }
 
-.tickerTrack:active {
-  cursor: grabbing;
-}
-
-/* ══════════════════════════════════════════════════════
-   INDIVIDUAL THUMBNAIL
-══════════════════════════════════════════════════════ */
-.thumb {
+/* ── Card inside slide ─────────────────────────────── */
+.card {
   position: relative;
-  flex-shrink: 0;
-  width: 170px;
-  height: 227px;
-  border-radius: 10px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
   overflow: hidden;
   text-decoration: none;
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  /* Non-active card: dimmed + desaturated */
+  filter: brightness(0.58) saturate(0.25);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.55),
+    0 4px 12px rgba(0, 0, 0, 0.38);
+  transition:
+    filter 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.55s ease;
+  will-change: filter, box-shadow;
 }
 
-.thumbImg {
+/* Active center card — full color, elevated, glowing */
+.slide:global(.swiper-slide-active) .card {
+  filter: brightness(1) saturate(1);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 40px 100px rgba(0, 0, 0, 0.70),
+    0 12px 32px rgba(0, 0, 0, 0.50),
+    0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 0 70px -8px rgba(180, 145, 95, 0.35);
+}
+
+/* Adjacent cards — slightly less dimmed */
+.slide:global(.swiper-slide-prev) .card,
+.slide:global(.swiper-slide-next) .card {
+  filter: brightness(0.72) saturate(0.45);
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.60),
+    0 6px 16px rgba(0, 0, 0, 0.42);
+}
+
+/* Image fills card */
+.cardImg {
   object-fit: cover;
   object-position: center top;
-  transition: transform 0.55s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.thumb:hover .thumbImg {
-  transform: scale(1.08);
+.slide:global(.swiper-slide-active) .card:hover .cardImg {
+  transform: scale(1.06);
 }
 
-.thumbOverlay {
+/* Cinematic gradient */
+.cardOverlay {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.72) 0%,
-    rgba(0, 0, 0, 0.10) 55%,
+    rgba(0, 0, 0, 0.88) 0%,
+    rgba(0, 0, 0, 0.32) 40%,
+    rgba(0, 0, 0, 0.05) 75%,
     transparent 100%
   );
-  transition: background 0.3s ease;
+  transition: opacity 0.4s ease;
 }
 
-.thumb:hover .thumbOverlay {
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.84) 0%,
-    rgba(0, 0, 0, 0.22) 60%,
-    transparent 100%
-  );
-}
-
-.thumbTitle {
+/* Warm glow ring — only visible on active card */
+.cardGlow {
   position: absolute;
-  bottom: 7px;
-  left: 9px;
-  right: 9px;
-  font-size: 0.625rem;
+  inset: -1px;
+  z-index: 2;
+  border-radius: 18px;
+  background: transparent;
+  opacity: 0;
+  transition: opacity 0.55s ease;
+  pointer-events: none;
+  box-shadow: inset 0 0 40px rgba(180, 145, 90, 0.14);
+}
+
+.slide:global(.swiper-slide-active) .cardGlow {
+  opacity: 1;
+}
+
+/* Title label */
+.cardContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  padding: 14px 14px 16px;
+}
+
+.cardTitle {
+  display: block;
+  font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.90);
+  color: rgba(255, 255, 255, 0.92);
   line-height: 1.3;
-  z-index: 1;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Show title only on active card */
+.slide:global(.swiper-slide-active) .cardTitle {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Navigation buttons ────────────────────────────── */
+.navRow {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.navPrev,
+.navNext {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.navPrev:hover,
+.navNext:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+.navPrev:active,
+.navNext:active {
+  transform: scale(0.96);
+}
+
+/* Override Swiper's default disabled state */
+.navPrev:global(.swiper-button-disabled),
+.navNext:global(.swiper-button-disabled) {
+  opacity: 0.3;
+  pointer-events: none;
 }
 
 /* ══════════════════════════════════════════════════════
    RESPONSIVE
 ══════════════════════════════════════════════════════ */
 
-/* Tablet */
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
+  .slide {
+    width: 190px !important;
+    height: 272px !important;
+  }
+
   .leftPanel {
-    padding: 36px 32px;
-    width: clamp(260px, 42%, 420px);
+    width: clamp(260px, 38%, 400px);
   }
 }
 
-/* Mobile landscape / small tablet — stack vertically */
-@media (max-width: 768px) {
-  .section {
-    min-height: auto;
-  }
-
+@media (max-width: 860px) {
   .inner {
     flex-direction: column;
     align-items: stretch;
@@ -277,24 +392,28 @@
 
   .leftPanel {
     width: 100%;
-    padding: 28px 24px;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
   }
 
-  .rightCol {
+  .carouselWrap {
     width: 100%;
-    padding-top: 0;
   }
 
-  .thumb {
-    width: 138px;
-    height: 184px;
+  .slide {
+    width: 180px !important;
+    height: 256px !important;
+  }
+
+  /* Reduce depth effect on tablet */
+  .swiper {
+    padding-block: 30px 16px !important;
   }
 }
 
-/* Mobile portrait */
 @media (max-width: 480px) {
+  .section {
+    min-height: auto;
+  }
+
   .inner {
     padding-block: var(--space-4) var(--space-3);
     gap: var(--space-3);
@@ -303,15 +422,26 @@
   .leftPanel {
     padding: 24px 20px;
     gap: var(--space-2);
+    border-radius: 16px;
+  }
+
+  .slide {
+    width: 158px !important;
+    height: 228px !important;
     border-radius: 14px;
   }
 
-  .thumb {
-    width: 120px;
-    height: 160px;
+  .card {
+    border-radius: 14px;
   }
 
-  .thumbTitle {
-    font-size: 0.5625rem;
+  .cardGlow {
+    border-radius: 14px;
+  }
+
+  .navPrev,
+  .navNext {
+    width: 40px;
+    height: 40px;
   }
 }
