@@ -70,7 +70,7 @@ export default function BrandHero() {
       {/* ── Fallback background image ─────────────────────────── */}
       <div className={styles.heroBg} aria-hidden="true">
         <Image
-          src="/images/Black background image.jpg"
+          src="/images/Hero Section Background Image.png"
           alt=""
           fill
           priority
