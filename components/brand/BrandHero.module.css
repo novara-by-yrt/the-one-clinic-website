@@ -23,33 +23,6 @@
   object-position: center;
 }
 
-/* ── Background video (same proven technique as original) ─────── */
-.videoBg {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.videoSizer {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100vw;
-  height: calc(100vw * 9 / 16);
-  min-height: 100svh;
-  min-width: calc(100svh * 16 / 9);
-  pointer-events: none;
-}
-
-.videoIframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  display: block;
-}
-
 /* ══════════════════════════════════════════════════════
    OVERLAY LAYERS — cinematic depth treatment
 ══════════════════════════════════════════════════════ */

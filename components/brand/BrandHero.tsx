@@ -3,7 +3,6 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
-import Script from 'next/script';
 import Container from '@/components/ui/Container';
 import styles from './BrandHero.module.css';
 
@@ -79,21 +78,6 @@ export default function BrandHero() {
         />
       </div>
 
-      {/* ── Wistia background video ───────────────────────────── */}
-      <div className={styles.videoBg} aria-hidden="true">
-        <div className={styles.videoSizer}>
-          <iframe
-            src="https://fast.wistia.net/embed/iframe/2ny75uwy3d?web_component=true&seo=false&autoPlay=true&silentAutoPlay=true&muted=true&loop=true&endVideoBehavior=loop&controlsVisibleOnLoad=false&playbar=false&fullscreenButton=false&volumeControl=false&settingsControl=false&playButton=false&playsinline=true"
-            title=""
-            allow="autoplay; fullscreen"
-            allowFullScreen
-            frameBorder="0"
-            scrolling="no"
-            className={styles.videoIframe}
-          />
-        </div>
-      </div>
-      <Script src="https://fast.wistia.net/player.js" strategy="lazyOnload" />
 
       {/* ── Layered cinematic overlays ────────────────────────── */}
       {/* Left-biased gradient — keeps panel readable, lets video breathe on right */}
