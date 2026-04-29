@@ -7,56 +7,68 @@ import Container from '@/components/ui/Container';
 import styles from './BrandHero.module.css';
 
 /* ─────────────────────────────────────────────────────────────
-   CINEMATIC EASING
-   Ultra-smooth exponential ease-out — starts with near-zero
-   velocity, then decelerates into a graceful stop.
-   Creates the "luxury settle" feeling found on premium sites.
+   CINEMATIC EASING — extra-slow exponential decel.
+   Almost no starting velocity, glides into a full stop.
 ───────────────────────────────────────────────────────────── */
-const EC   = [0.12, 1, 0.22, 1] as const;  // cinematic
-const EC_R = [0.25, 0.1, 0.25, 1] as const; // reduced-motion fallback
+const EC   = [0.16, 1, 0.30, 1] as const;
+const EC_R = [0.25, 0.1, 0.25, 1] as const;
 
-/* ─────────────────────────────────────────────────────────────
-   PROP GENERATORS
-   Returns inline initial / animate / transition objects so we
-   avoid Framer Motion's function-variant typing friction.
-───────────────────────────────────────────────────────────── */
-
-/** Secondary text: x-slide left + subtle 3 px blur clear */
+/* ─── Secondary text — large left-side travel + soft blur ── */
 function cineText(delay: number, prefersReduced: boolean | null) {
   if (prefersReduced) {
     return {
       initial: { opacity: 0 },
       animate: { opacity: 1 },
-      transition: { duration: 0.45, ease: EC_R, delay: delay * 0.2 },
+      transition: { duration: 0.5, ease: EC_R, delay: delay * 0.2 },
     };
   }
   return {
-    initial: { opacity: 0, x: -24, filter: 'blur(3px)' },
-    animate: { opacity: 1, x: 0,  filter: 'blur(0px)' },
+    initial: { opacity: 0, x: -180, filter: 'blur(4px)' },
+    animate: { opacity: 1, x: 0,    filter: 'blur(0px)' },
     transition: {
-      opacity: { duration: 0.90, ease: EC, delay },
-      x:       { duration: 1.05, ease: EC, delay },
-      filter:  { duration: 0.75, ease: EC, delay },
+      opacity: { duration: 1.40, ease: EC, delay },
+      x:       { duration: 1.70, ease: EC, delay },
+      filter:  { duration: 1.00, ease: EC, delay },
     },
   };
 }
 
-/** Headline lines: wider x-travel + strong 8 px blur for cinematic drama */
+/* ─── Headline lines — much wider travel + stronger blur ─── */
 function cineH1(delay: number, prefersReduced: boolean | null) {
   if (prefersReduced) {
     return {
       initial: { opacity: 0 },
       animate: { opacity: 1 },
-      transition: { duration: 0.45, ease: EC_R, delay: delay * 0.2 },
+      transition: { duration: 0.5, ease: EC_R, delay: delay * 0.2 },
     };
   }
   return {
-    initial: { opacity: 0, x: -40, filter: 'blur(8px)' },
-    animate: { opacity: 1, x: 0,  filter: 'blur(0px)' },
+    initial: { opacity: 0, x: -260, filter: 'blur(10px)' },
+    animate: { opacity: 1, x: 0,    filter: 'blur(0px)' },
     transition: {
-      opacity: { duration: 1.00, ease: EC, delay },
-      x:       { duration: 1.18, ease: EC, delay },
-      filter:  { duration: 0.88, ease: EC, delay },
+      opacity: { duration: 1.55, ease: EC, delay },
+      x:       { duration: 1.95, ease: EC, delay },
+      filter:  { duration: 1.20, ease: EC, delay },
+    },
+  };
+}
+
+/* ─── Trust badges — gentle rise + fade, no x-travel ─────── */
+function cineBadge(delay: number, prefersReduced: boolean | null) {
+  if (prefersReduced) {
+    return {
+      initial: { opacity: 0 },
+      animate: { opacity: 1 },
+      transition: { duration: 0.5, ease: EC_R, delay: delay * 0.2 },
+    };
+  }
+  return {
+    initial: { opacity: 0, y: 18, filter: 'blur(3px)' },
+    animate: { opacity: 1, y: 0,  filter: 'blur(0px)' },
+    transition: {
+      opacity: { duration: 1.10, ease: EC, delay },
+      y:       { duration: 1.20, ease: EC, delay },
+      filter:  { duration: 0.85, ease: EC, delay },
     },
   };
 }
@@ -112,7 +124,7 @@ export default function BrandHero() {
         />
       </div>
 
-      {/* ── Cinematic overlay layers ──────────────────────── */}
+      {/* ── Cinematic overlay layers ─────────────────────── */}
       <div className={styles.overlayGradient}  aria-hidden="true" />
       <div className={styles.overlayVignette}  aria-hidden="true" />
       <div className={styles.overlaySpotlight} aria-hidden="true" />
@@ -125,59 +137,52 @@ export default function BrandHero() {
         <Container>
           <div className={styles.layout}>
 
-            {/* ═══ Panel — glass appears first, then text reveals cascade in ═══ */}
-            <motion.div
-              className={styles.panel}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.65, ease: 'easeOut' }}
-            >
-              {/* Top-edge glow highlight */}
-              <div className={styles.panelGlow} aria-hidden="true" />
+            {/* Open content column — no glass panel */}
+            <div className={styles.content}>
 
-              {/* ── Eyebrow: delay 0.12 s ── */}
+              {/* ── Eyebrow ── */}
               <motion.p
                 className={styles.eyebrow}
-                {...cineText(0.12, prefersReduced)}
+                {...cineText(0.15, prefersReduced)}
               >
                 Medical &amp; Aesthetic Care, Leicester
               </motion.p>
 
-              {/* ── Headline — three lines staggered 140 ms apart ── */}
+              {/* ── Headline — three lines, ultra-slow stagger ── */}
               <h1 className={styles.headline}>
                 <motion.span
                   className={styles.headlineLine}
-                  {...cineH1(0.28, prefersReduced)}
+                  {...cineH1(0.30, prefersReduced)}
                 >
                   Where
                 </motion.span>
                 <motion.span
                   className={styles.headlineLine}
-                  {...cineH1(0.42, prefersReduced)}
+                  {...cineH1(0.52, prefersReduced)}
                 >
                   Expertise
                 </motion.span>
                 <motion.span
-                  className={styles.headlineLine}
-                  {...cineH1(0.56, prefersReduced)}
+                  className={`${styles.headlineLine} ${styles.headlineLineAccent}`}
+                  {...cineH1(0.74, prefersReduced)}
                 >
                   <em className={styles.headlineAccent}>Meets Care</em>
                 </motion.span>
               </h1>
 
-              {/* ── Subtext: delay 0.70 s ── */}
+              {/* ── Subtext ── */}
               <motion.p
                 className={styles.subtext}
-                {...cineText(0.70, prefersReduced)}
+                {...cineText(1.00, prefersReduced)}
               >
                 Advanced medical, aesthetic and wellness care,
                 all under one roof.
               </motion.p>
 
-              {/* ── CTA button: delay 0.84 s ── */}
+              {/* ── CTA button ── */}
               <motion.div
                 className={styles.ctaRow}
-                {...cineText(0.84, prefersReduced)}
+                {...cineText(1.20, prefersReduced)}
               >
                 <button
                   className={styles.ctaBtn}
@@ -197,30 +202,21 @@ export default function BrandHero() {
                 </button>
               </motion.div>
 
-              {/* ── Divider — opacity-only, no x or blur ── */}
-              <motion.div
-                className={styles.divider}
-                aria-hidden="true"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.85, ease: 'easeOut', delay: 0.92 }}
-              />
+              {/* ── Trust strip — 4 badges in a row ── */}
+              <div className={styles.trustRow} role="region" aria-label="Trust indicators">
 
-              {/* ── Trust badges: delay 1.0 s ── */}
-              <motion.div
-                className={styles.trustRow}
-                {...cineText(1.0, prefersReduced)}
-                role="region"
-                aria-label="Trust indicators"
-              >
-                <div className={styles.trustBadge}>
+                {/* Google Reviews */}
+                <motion.div
+                  className={styles.trustBadge}
+                  {...cineBadge(1.40, prefersReduced)}
+                >
                   <div className={styles.trustBadgeHeader}>
                     <GoogleIcon />
                     <span className={styles.trustPlatform}>Google</span>
                   </div>
                   <div className={styles.trustStars}>
                     {Array.from({ length: 5 }).map((_, i) => (
-                      <svg key={i} width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+                      <svg key={i} width="13" height="13" viewBox="0 0 24 24" aria-hidden="true">
                         <path fill="#FBBC04" d="M12 2l2.582 7.952H22.9l-6.832 4.962 2.608 8.024L12 18.012l-6.676 4.926 2.608-8.024L1.1 9.952H9.418z"/>
                       </svg>
                     ))}
@@ -230,18 +226,20 @@ export default function BrandHero() {
                     <span className={styles.trustDot} aria-hidden="true" />
                     <span className={styles.trustCount}>120+ reviews</span>
                   </p>
-                </div>
+                </motion.div>
 
-                <div className={styles.trustSep} aria-hidden="true" />
-
-                <div className={styles.trustBadge}>
+                {/* Trustpilot */}
+                <motion.div
+                  className={styles.trustBadge}
+                  {...cineBadge(1.55, prefersReduced)}
+                >
                   <div className={styles.trustBadgeHeader}>
                     <TrustpilotIcon />
                     <span className={styles.trustPlatform}>Trustpilot</span>
                   </div>
                   <div className={styles.trustStars}>
                     {Array.from({ length: 5 }).map((_, i) => (
-                      <svg key={i} width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+                      <svg key={i} width="13" height="13" viewBox="0 0 24 24" aria-hidden="true">
                         <path fill="#00B67A" d="M12 2l2.582 7.952H22.9l-6.832 4.962 2.608 8.024L12 18.012l-6.676 4.926 2.608-8.024L1.1 9.952H9.418z"/>
                       </svg>
                     ))}
@@ -251,10 +249,45 @@ export default function BrandHero() {
                     <span className={styles.trustDot} aria-hidden="true" />
                     <span className={styles.trustCount}>140+ reviews</span>
                   </p>
-                </div>
-              </motion.div>
+                </motion.div>
 
-            </motion.div>
+                {/* AM Awards 2025 Finalist */}
+                <motion.div
+                  className={`${styles.trustBadge} ${styles.trustBadgeImage}`}
+                  {...cineBadge(1.70, prefersReduced)}
+                >
+                  <div className={styles.trustImageWrap}>
+                    <Image
+                      src="/images/imgi_86_AM_Awards_2025-black_FINALIST-1024x704.png"
+                      alt="Aesthetic Medicine Awards 2025 Finalist"
+                      width={200}
+                      height={138}
+                      className={styles.trustImage}
+                    />
+                  </div>
+                  <p className={styles.trustAwardLabel}>Awards 2025 Finalist</p>
+                </motion.div>
+
+                {/* CQC Registered */}
+                <motion.div
+                  className={`${styles.trustBadge} ${styles.trustBadgeImage}`}
+                  {...cineBadge(1.85, prefersReduced)}
+                >
+                  <div className={styles.trustImageWrap}>
+                    <Image
+                      src="/images/imgi_39_cqc-logo.png"
+                      alt="Care Quality Commission Regulated"
+                      width={200}
+                      height={104}
+                      className={styles.trustImage}
+                    />
+                  </div>
+                  <p className={styles.trustAwardLabel}>CQC Regulated</p>
+                </motion.div>
+
+              </div>
+
+            </div>
           </div>
         </Container>
       </motion.div>
@@ -265,7 +298,7 @@ export default function BrandHero() {
         aria-hidden="true"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.9, duration: 0.9 }}
+        transition={{ delay: 2.4, duration: 0.9 }}
       >
         <motion.span
           className={styles.scrollLine}
