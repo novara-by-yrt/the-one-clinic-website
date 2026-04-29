@@ -403,8 +403,12 @@
 /* Mobile */
 @media (max-width: 640px) {
   .contentWrapper {
-    padding-top: 72px;
-    padding-bottom: 28px;
+    padding-top: clamp(60px, 9svh, 72px);
+    padding-bottom: clamp(12px, 2.5svh, 24px);
+  }
+
+  .layout {
+    padding-block: clamp(8px, 2svh, 20px);
   }
 
   .panel {
