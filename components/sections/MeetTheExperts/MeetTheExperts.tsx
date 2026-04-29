@@ -1,219 +1,208 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import Section from '@/components/ui/Section';
-import Container from '@/components/ui/Container';
-import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { TEAM_MEMBERS } from '@/data/team';
 import styles from './MeetTheExperts.module.css';
 
-const SPEED     = 0.28;
-const CARD_W    = 340;
-const GAP       = 28;
-const CARD_STEP = CARD_W + GAP;
+const TOTAL = TEAM_MEMBERS.length;
 
-function expertiseBadge(role: string): string {
-  const r = role.toLowerCase();
-  if (r.includes('laser') || r.includes('surgeon')) return 'Laser Specialist';
-  if (r.includes('founder'))                         return 'Doctor-Led';
-  if (r.includes('psychiatr'))                       return 'Psychiatry';
-  if (r.includes('general practitioner'))            return 'GP Care';
-  if (r.includes('nurse'))                           return 'Clinical Care';
-  if (r.includes('patient care'))                    return 'Patient Care';
-  return 'Expert Care';
-}
+const PORTRAIT_VARIANTS = {
+  enter: (dir: number) => ({ x: dir * 48, opacity: 0, scale: 0.97 }),
+  center: { x: 0, opacity: 1, scale: 1 },
+  exit: (dir: number) => ({ x: dir * -32, opacity: 0, scale: 0.98 }),
+};
 
 export default function MeetTheExperts() {
-  const trackRef     = useRef<HTMLDivElement>(null);
-  const posRef       = useRef(0);
-  const rafRef       = useRef<number>(0);
-  const pausedRef    = useRef(false);
-  const draggingRef  = useRef(false);
-  const dragStartX   = useRef(0);
-  const dragStartPos = useRef(0);
+  const [active, setActive] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const touchStartX = useRef(0);
+  const touchStartY = useRef(0);
 
-  useEffect(() => {
-    function tick() {
-      const track = trackRef.current;
-      if (track && !draggingRef.current && !pausedRef.current) {
-        posRef.current -= SPEED;
-        const half = track.scrollWidth / 2;
-        if (posRef.current <= -half) posRef.current += half;
-        track.style.transform = `translateX(${posRef.current}px)`;
-      }
-      rafRef.current = requestAnimationFrame(tick);
-    }
-    rafRef.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafRef.current);
+  const goTo = useCallback((index: number) => {
+    if (index === active) return;
+    setDirection(index > active ? 1 : -1);
+    setActive(index);
+  }, [active]);
+
+  const prev = useCallback(() => {
+    setDirection(-1);
+    setActive(i => (i - 1 + TOTAL) % TOTAL);
   }, []);
 
-  function onPointerDown(e: React.PointerEvent) {
-    draggingRef.current  = true;
-    dragStartX.current   = e.clientX;
-    dragStartPos.current = posRef.current;
-    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+  const next = useCallback(() => {
+    setDirection(1);
+    setActive(i => (i + 1) % TOTAL);
+  }, []);
+
+  function onTouchStart(e: React.TouchEvent) {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
   }
 
-  function onPointerMove(e: React.PointerEvent) {
-    if (!draggingRef.current || !trackRef.current) return;
-    const delta = e.clientX - dragStartX.current;
-    const half  = trackRef.current.scrollWidth / 2;
-    let   next  = dragStartPos.current + delta;
-    while (next <= -half) next += half;
-    while (next > 0)      next -= half;
-    posRef.current = next;
-    trackRef.current.style.transform = `translateX(${next}px)`;
+  function onTouchEnd(e: React.TouchEvent) {
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    const dy = e.changedTouches[0].clientY - touchStartY.current;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 44) {
+      if (dx < 0) next(); else prev();
+    }
   }
 
-  function onPointerUp() { draggingRef.current = false; }
-
-  function scrollBy(amount: number) {
-    const track = trackRef.current;
-    if (!track) return;
-    const half = track.scrollWidth / 2;
-    let   next = posRef.current + amount;
-    while (next <= -half) next += half;
-    while (next > 0)      next -= half;
-    posRef.current = next;
-    track.style.transform = `translateX(${next}px)`;
-  }
+  const member = TEAM_MEMBERS[active];
 
   return (
-    <Section variant="dark" data-section-theme="dark" className={styles.section}>
-      {/* Atmospheric depth layers */}
+    <section
+      className={styles.section}
+      data-section-theme="dark"
+      aria-label="Meet the Experts"
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
+    >
       <div className={styles.glow1} aria-hidden="true" />
       <div className={styles.glow2} aria-hidden="true" />
 
-      {/* Header */}
-      <Container className={styles.headerWrap}>
-        <motion.div
-          className={styles.header}
-          variants={stagger(0.12)}
-          initial="hidden"
-          whileInView="show"
-          viewport={VIEWPORT}
-        >
-          <motion.p className={styles.eyebrow} variants={fadeUp}>Our Team</motion.p>
-          <motion.h2 className={styles.heading} variants={fadeUp}>Meet the Experts</motion.h2>
-          <motion.p className={styles.subtext} variants={fadeUp}>
-            The One Clinic is led by experienced, qualified doctors committed to your safety and results.
-          </motion.p>
-        </motion.div>
-      </Container>
+      {/* ── Split showcase layout ── */}
+      <div className={styles.showcase}>
 
-      {/* Carousel */}
-      <div
-        className={styles.carouselOuter}
-        onMouseEnter={() => { pausedRef.current = true; }}
-        onMouseLeave={() => { pausedRef.current = false; }}
-      >
-        <div className={styles.fadeLeft}  aria-hidden="true" />
-        <div className={styles.fadeRight} aria-hidden="true" />
+        {/* LEFT: editorial vertical marker */}
+        <div className={styles.leftCol} aria-hidden="true">
+          <span className={styles.vertLabel}>Meet the Experts</span>
+          <div className={styles.progressBar}>
+            <div
+              className={styles.progressFill}
+              style={{ height: `${((active + 1) / TOTAL) * 100}%` }}
+            />
+          </div>
+          <div className={styles.counter}>
+            <span className={styles.counterCurrent}>{String(active + 1).padStart(2, '0')}</span>
+            <span className={styles.counterSep}>/</span>
+            <span className={styles.counterTotal}>{String(TOTAL).padStart(2, '0')}</span>
+          </div>
+        </div>
 
-        <div
-          ref={trackRef}
-          className={styles.track}
-          onPointerDown={onPointerDown}
-          onPointerMove={onPointerMove}
-          onPointerUp={onPointerUp}
-          onPointerLeave={onPointerUp}
-          aria-label="Meet the experts carousel"
-        >
-          {[...TEAM_MEMBERS, ...TEAM_MEMBERS].map((m, i) => (
-            <Link
-              key={i}
-              href={m.profileUrl ?? `/our-team/${m.slug}`}
-              className={`${styles.card} ${i % 2 === 1 ? styles.cardShift : ''}`}
-              aria-hidden={i >= TEAM_MEMBERS.length ? true : undefined}
-              tabIndex={i >= TEAM_MEMBERS.length ? -1 : 0}
-              draggable={false}
+        {/* CENTER: large dominant portrait */}
+        <div className={styles.centerCol}>
+          <div className={styles.portraitFrame}>
+            <AnimatePresence custom={direction} initial={false}>
+              <motion.div
+                key={active}
+                className={styles.portraitInner}
+                custom={direction}
+                variants={PORTRAIT_VARIANTS}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1] }}
+              >
+                {member.image ? (
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className={styles.portrait}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1100px) 45vw, 520px"
+                    priority
+                  />
+                ) : (
+                  <div className={styles.initials} aria-hidden="true">
+                    {member.initials}
+                  </div>
+                )}
+                <div className={styles.portraitOverlay} aria-hidden="true" />
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+
+        {/* RIGHT: name, role, bio, navigation */}
+        <div className={styles.rightCol}>
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={active}
+              className={styles.infoPanel}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.46, ease: [0.22, 1, 0.36, 1] }}
             >
-              {/* Portrait */}
+              <p className={styles.eyebrow}>Our Team</p>
+              <h2 className={styles.expertName}>{member.name}</h2>
+              {member.credentials && (
+                <p className={styles.credentials}>{member.credentials}</p>
+              )}
+              <p className={styles.role}>{member.role}</p>
+              <div className={styles.rule} aria-hidden="true" />
+              <p className={styles.bio}>{member.bio[0]}</p>
+              <Link
+                href={member.profileUrl ?? `/our-team/${member.slug}`}
+                className={styles.cta}
+              >
+                View Profile
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6"
+                    strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Nav arrows */}
+          <div className={styles.navRow}>
+            <button
+              className={styles.navBtn}
+              onClick={prev}
+              aria-label="Previous expert"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M10 3L5 8L10 13" stroke="currentColor" strokeWidth="1.75"
+                  strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+            <button
+              className={styles.navBtn}
+              onClick={next}
+              aria-label="Next expert"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M6 3L11 8L6 13" stroke="currentColor" strokeWidth="1.75"
+                  strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      {/* ── Thumbnail navigation strip ── */}
+      <div className={styles.thumbNav} role="tablist" aria-label="Team member navigation">
+        {TEAM_MEMBERS.map((m, i) => (
+          <button
+            key={m.slug}
+            className={`${styles.thumb} ${i === active ? styles.thumbActive : ''}`}
+            onClick={() => goTo(i)}
+            role="tab"
+            aria-selected={i === active}
+            aria-label={m.name}
+          >
+            <div className={styles.thumbImgWrap}>
               {m.image ? (
                 <Image
                   src={m.image}
-                  alt={m.name}
+                  alt=""
                   fill
-                  className={styles.photo}
-                  sizes="(max-width: 768px) 260px, 340px"
-                  draggable={false}
+                  className={styles.thumbImg}
+                  sizes="72px"
                 />
               ) : (
-                <div className={styles.initials} aria-hidden="true">{m.initials}</div>
+                <span className={styles.thumbInitials}>{m.initials}</span>
               )}
-
-              {/* Atmospheric portrait lighting */}
-              <div className={styles.photoHalo} aria-hidden="true" />
-
-              {/* Cinematic overlay */}
-              <div className={styles.overlay} aria-hidden="true" />
-
-              {/* Base content — always visible, fades on hover */}
-              <div className={styles.base}>
-                <p className={styles.baseRole}>{m.role}</p>
-                <h3 className={styles.baseName}>{m.name}</h3>
-                <div className={styles.baseArrow} aria-hidden="true">
-                  <span className={styles.arrowLine} />
-                  <span className={styles.arrowLabel}>View Profile</span>
-                </div>
-              </div>
-
-              {/* Glass hover panel — slides up from bottom */}
-              <div className={styles.glass}>
-                <span className={styles.chip}>
-                  <span className={styles.chipDot} aria-hidden="true" />
-                  {expertiseBadge(m.role)}
-                </span>
-                <h3 className={styles.glassName}>{m.name}</h3>
-                <p className={styles.glassRole}>{m.role}</p>
-                {m.credentials && <p className={styles.glassCreds}>{m.credentials}</p>}
-                <span className={styles.glassCta}>
-                  View Profile
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                    <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" strokeWidth="1.5"
-                      strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
+            </div>
+            <span className={styles.thumbName}>{m.name.split(' ').pop()}</span>
+          </button>
+        ))}
       </div>
-
-      {/* Navigation */}
-      <Container className={styles.navWrap}>
-        <motion.div
-          className={styles.navRow}
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={VIEWPORT}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
-        >
-          <button
-            className={styles.navBtn}
-            onClick={() => scrollBy(CARD_STEP)}
-            aria-label="Previous team members"
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M10 3L5 8L10 13" stroke="currentColor" strokeWidth="1.75"
-                strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
-          <button
-            className={styles.navBtn}
-            onClick={() => scrollBy(-CARD_STEP)}
-            aria-label="Next team members"
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M6 3L11 8L6 13" stroke="currentColor" strokeWidth="1.75"
-                strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
-        </motion.div>
-      </Container>
-    </Section>
+    </section>
   );
 }
