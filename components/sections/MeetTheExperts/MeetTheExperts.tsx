@@ -8,11 +8,12 @@ import { TEAM_MEMBERS } from '@/data/team';
 import styles from './MeetTheExperts.module.css';
 
 const TOTAL = TEAM_MEMBERS.length;
+const NEXT_COUNT = 3;
 
 const PORTRAIT_VARIANTS = {
-  enter: (dir: number) => ({ x: dir * 48, opacity: 0, scale: 0.97 }),
-  center: { x: 0, opacity: 1, scale: 1 },
-  exit: (dir: number) => ({ x: dir * -32, opacity: 0, scale: 0.98 }),
+  enter: (dir: number) => ({ x: dir * 40, opacity: 0 }),
+  center: { x: 0, opacity: 1 },
+  exit: (dir: number) => ({ x: dir * -24, opacity: 0 }),
 };
 
 export default function MeetTheExperts() {
@@ -51,157 +52,144 @@ export default function MeetTheExperts() {
   }
 
   const member = TEAM_MEMBERS[active];
+  const prevMember = TEAM_MEMBERS[(active - 1 + TOTAL) % TOTAL];
+  const nextMembers = Array.from({ length: NEXT_COUNT }, (_, i) =>
+    TEAM_MEMBERS[(active + i + 1) % TOTAL]
+  );
 
   return (
     <section
       className={styles.section}
-      data-section-theme="dark"
       aria-label="Meet the Experts"
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
     >
-      <div className={styles.glow1} aria-hidden="true" />
-      <div className={styles.glow2} aria-hidden="true" />
+      <div className={styles.wrapper}>
 
-      {/* ── Split showcase layout ── */}
-      <div className={styles.showcase}>
-
-        {/* LEFT: editorial vertical marker */}
-        <div className={styles.leftCol} aria-hidden="true">
-          <span className={styles.vertLabel}>Meet the Experts</span>
-          <div className={styles.progressBar}>
-            <div
-              className={styles.progressFill}
-              style={{ height: `${((active + 1) / TOTAL) * 100}%` }}
-            />
-          </div>
-          <div className={styles.counter}>
-            <span className={styles.counterCurrent}>{String(active + 1).padStart(2, '0')}</span>
-            <span className={styles.counterSep}>/</span>
-            <span className={styles.counterTotal}>{String(TOTAL).padStart(2, '0')}</span>
-          </div>
+        {/* Vertical editorial label */}
+        <div className={styles.labelCol} aria-hidden="true">
+          <span className={styles.vertLabel}>Our Team</span>
         </div>
 
-        {/* CENTER: large dominant portrait */}
-        <div className={styles.centerCol}>
-          <div className={styles.portraitFrame}>
-            <AnimatePresence custom={direction} initial={false}>
+        {/* 2-column portrait | info grid with thumbnail row below */}
+        <div className={styles.mainGrid}>
+
+          {/* Portrait */}
+          <div className={styles.portraitCol}>
+            <div className={styles.portraitFrame}>
+              <AnimatePresence custom={direction} initial={false}>
+                <motion.div
+                  key={active}
+                  className={styles.portraitInner}
+                  custom={direction}
+                  variants={PORTRAIT_VARIANTS}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  {member.image ? (
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className={styles.portrait}
+                      sizes="(max-width: 580px) 90vw, 300px"
+                      priority
+                    />
+                  ) : (
+                    <div className={styles.initials}>{member.initials}</div>
+                  )}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+
+          {/* Info */}
+          <div className={styles.infoCol} aria-live="polite">
+            <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={active}
-                className={styles.portraitInner}
-                custom={direction}
-                variants={PORTRAIT_VARIANTS}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1] }}
+                className={styles.infoPanel}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
               >
-                {member.image ? (
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className={styles.portrait}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1100px) 45vw, 520px"
-                    priority
-                  />
-                ) : (
-                  <div className={styles.initials} aria-hidden="true">
-                    {member.initials}
-                  </div>
+                <p className={styles.counter}>#{active + 1}</p>
+                <h2 className={styles.expertName}>{member.name}</h2>
+                {member.credentials && (
+                  <p className={styles.credentials}>{member.credentials}</p>
                 )}
-                <div className={styles.portraitOverlay} aria-hidden="true" />
+                <p className={styles.role}>{member.role}</p>
+                <p className={styles.bio}>{member.bio[0]}</p>
+                <Link
+                  href={member.profileUrl ?? `/our-team/${member.slug}`}
+                  className={styles.cta}
+                >
+                  View Profile
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6"
+                      strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </Link>
               </motion.div>
             </AnimatePresence>
           </div>
-        </div>
 
-        {/* RIGHT: name, role, bio, navigation */}
-        <div className={styles.rightCol}>
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={active}
-              className={styles.infoPanel}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.46, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <p className={styles.eyebrow}>Our Team</p>
-              <h2 className={styles.expertName}>{member.name}</h2>
-              {member.credentials && (
-                <p className={styles.credentials}>{member.credentials}</p>
-              )}
-              <p className={styles.role}>{member.role}</p>
-              <div className={styles.rule} aria-hidden="true" />
-              <p className={styles.bio}>{member.bio[0]}</p>
-              <Link
-                href={member.profileUrl ?? `/our-team/${member.slug}`}
-                className={styles.cta}
-              >
-                View Profile
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6"
-                    strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </Link>
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Nav arrows */}
+          {/* Thumbnail nav row: prev + dot left, next thumbs right */}
           <div className={styles.navRow}>
-            <button
-              className={styles.navBtn}
-              onClick={prev}
-              aria-label="Previous expert"
-            >
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M10 3L5 8L10 13" stroke="currentColor" strokeWidth="1.75"
-                  strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-            <button
-              className={styles.navBtn}
-              onClick={next}
-              aria-label="Next expert"
-            >
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M6 3L11 8L6 13" stroke="currentColor" strokeWidth="1.75"
-                  strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
+
+            <div className={styles.prevArea}>
+              <button
+                className={styles.thumbBtn}
+                onClick={prev}
+                aria-label={`Previous: ${prevMember.name}`}
+              >
+                <div className={styles.thumbWrap}>
+                  {prevMember.image ? (
+                    <Image
+                      src={prevMember.image}
+                      alt={prevMember.name}
+                      fill
+                      className={styles.thumbImg}
+                      sizes="110px"
+                    />
+                  ) : (
+                    <span className={styles.thumbInitials}>{prevMember.initials}</span>
+                  )}
+                </div>
+              </button>
+              <div className={styles.dot} aria-hidden="true" />
+            </div>
+
+            <div className={styles.nextArea}>
+              {nextMembers.map((m, i) => (
+                <button
+                  key={m.slug}
+                  className={styles.thumbBtn}
+                  onClick={() => goTo((active + i + 1) % TOTAL)}
+                  aria-label={`View ${m.name}`}
+                >
+                  <div className={styles.thumbWrap}>
+                    {m.image ? (
+                      <Image
+                        src={m.image}
+                        alt={m.name}
+                        fill
+                        className={styles.thumbImg}
+                        sizes="110px"
+                      />
+                    ) : (
+                      <span className={styles.thumbInitials}>{m.initials}</span>
+                    )}
+                  </div>
+                </button>
+              ))}
+            </div>
+
           </div>
         </div>
-
-      </div>
-
-      {/* ── Thumbnail navigation strip ── */}
-      <div className={styles.thumbNav} role="tablist" aria-label="Team member navigation">
-        {TEAM_MEMBERS.map((m, i) => (
-          <button
-            key={m.slug}
-            className={`${styles.thumb} ${i === active ? styles.thumbActive : ''}`}
-            onClick={() => goTo(i)}
-            role="tab"
-            aria-selected={i === active}
-            aria-label={m.name}
-          >
-            <div className={styles.thumbImgWrap}>
-              {m.image ? (
-                <Image
-                  src={m.image}
-                  alt=""
-                  fill
-                  className={styles.thumbImg}
-                  sizes="72px"
-                />
-              ) : (
-                <span className={styles.thumbInitials}>{m.initials}</span>
-              )}
-            </div>
-            <span className={styles.thumbName}>{m.name.split(' ').pop()}</span>
-          </button>
-        ))}
       </div>
     </section>
   );
