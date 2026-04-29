@@ -34,14 +34,13 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   INNER LAYOUT
+   INNER LAYOUT — 3-column: left nav | logo | right group
 ═══════════════════════════════════════════════════════════════ */
 .inner {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   height: 80px;
-  gap: 8px;
   padding: 0 clamp(20px, 4vw, 48px);
   transition: height 0.55s cubic-bezier(0.22, 1, 0.36, 1), padding 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -52,36 +51,52 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   LOGO
+   LOGO — center column
 ═══════════════════════════════════════════════════════════════ */
 .logo {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-shrink: 0;
 }
 
 .logoImg {
   display: block;
   width: auto;
-  height: 36px;
+  height: 38px;
   object-fit: contain;
   transition: height 0.55s cubic-bezier(0.22, 1, 0.36, 1), filter 0.55s ease;
 }
 
 .pill[data-scrolled='true'] .logoImg {
-  height: 28px;
+  height: 34px;
 }
 
 .pill[data-theme='light'] .logoImg { filter: brightness(0); }
 .pill[data-theme='dark']  .logoImg { filter: brightness(0) invert(1); }
 
 /* ═══════════════════════════════════════════════════════════════
-   DESKTOP NAV
+   LEFT NAV — first column, flush left
 ═══════════════════════════════════════════════════════════════ */
-.desktopNav {
+.leftNav {
   display: flex;
   align-items: center;
-  flex: 1;
+  justify-content: flex-start;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RIGHT GROUP — third column, flush right
+═══════════════════════════════════════════════════════════════ */
+.rightGroup {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2px;
+}
+
+.rightNav {
+  display: flex;
+  align-items: center;
 }
 
 .navList {
@@ -554,7 +569,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  padding: 11px 26px;
+  padding: 11px;
   font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -823,11 +838,34 @@
 /* ═══════════════════════════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════════════════════════ */
+/* Medium screens — compress nav items to prevent overflow */
+@media (min-width: 1025px) and (max-width: 1320px) {
+  .navLink {
+    padding: 7px 9px;
+    font-size: 0.75rem;
+    letter-spacing: 0.015em;
+  }
+  .ctaLink {
+    padding: 10px;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+  }
+  .rightGroup { gap: 0; }
+}
+
 @media (max-width: 1024px) {
-  .desktopNav, .ctaLink { display: none; }
-  .menuBtn               { display: flex; }
-  .inner                 { height: 64px; }
+  .leftNav, .rightNav, .ctaLink { display: none; }
+  .menuBtn  { display: flex; }
+  .inner    { height: 64px; }
   .pill[data-scrolled='true'] .inner { height: 56px; }
+  /* Revert to simple flex so logo + hamburger align naturally */
+  .inner {
+    display: flex;
+    justify-content: space-between;
+  }
+  .rightGroup {
+    gap: 8px;
+  }
 }
 
 @media (min-width: 1025px) and (max-width: 1280px) {
