@@ -23,6 +23,12 @@
   object-position: center;
 }
 
+@media (max-width: 640px) {
+  .heroBgImg {
+    object-position: 30% center;
+  }
+}
+
 /* ══════════════════════════════════════════════════════
    OVERLAY LAYERS — cinematic depth treatment
 ══════════════════════════════════════════════════════ */
