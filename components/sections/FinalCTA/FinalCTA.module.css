@@ -1,77 +1,149 @@
+/* ── Section — dusty rose background ───────────────────────────── */
 .section {
-  position: relative;
-  overflow: hidden;
+  background: #b8717a;
+  padding-block: clamp(48px, 7vw, 88px);
 }
 
-/* ── Background image + overlay ─────────────────────────────────── */
-.bgWrap {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.bgImage {
-  object-fit: cover;
-}
-
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.62);
-}
-
-/* ── Content sits above the bg ──────────────────────────────────── */
+/* ── Container — centres the card ───────────────────────────────── */
 .container {
-  position: relative;
-  z-index: 1;
+  display: flex;
+  justify-content: center;
 }
 
-.content {
+/* ── White inner card ────────────────────────────────────────────── */
+.card {
+  background: #ffffff;
+  border-radius: 28px;
+  padding: clamp(40px, 6vw, 64px) clamp(32px, 7vw, 96px);
+  width: 100%;
+  max-width: 900px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: var(--space-3);
-  max-width: 520px;
-  margin-left: auto;
-  margin-right: auto;
+  gap: clamp(18px, 2.5vw, 26px);
 }
 
-.eyebrow {
-  font-size: var(--text-small);
-  font-weight: var(--fw-medium);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgb(255 255 255 / 0.55);
-}
-
+/* ── Heading — italic serif ──────────────────────────────────────── */
 .heading {
-  font-size: clamp(2.5rem, 6vw, var(--text-h1));
-  font-weight: var(--fw-bold);
-  line-height: var(--lh-tight);
-  letter-spacing: -0.03em;
-  color: var(--color-text-light);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.875rem, 4.5vw, 3.25rem);
+  letter-spacing: -0.01em;
+  line-height: 1.18;
+  color: #1c1c24;
+  margin: 0;
 }
 
-.headingAccent {
-  color: rgb(255 255 255 / 0.65);
+/* ── Gold separator rule ─────────────────────────────────────────── */
+.rule {
+  width: clamp(60px, 10vw, 100px);
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+  border: none;
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-block: -4px;
 }
 
+/* ── Body copy ───────────────────────────────────────────────────── */
 .subtext {
-  font-size: var(--text-body);
-  color: rgb(255 255 255 / 0.7);
-  max-width: 380px;
+  font-size: clamp(0.9375rem, 1.15vw, 1.0625rem);
+  line-height: 1.7;
+  color: rgba(28, 28, 36, 0.58);
+  max-width: 520px;
+  margin: 0;
 }
 
-.cta {
-  margin-top: var(--space-2);
+/* ── Button row ──────────────────────────────────────────────────── */
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 4px;
 }
 
-@media (max-width: 768px) {
-  .content {
-    max-width: 100%;
+/* Primary — filled rose ─────────────────────────────────────────── */
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 32px;
+  background: #b8717a;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease;
+  box-shadow: 0 4px 18px rgba(184, 113, 122, 0.38);
+  white-space: nowrap;
+}
+
+.btnPrimary:hover {
+  background: #a35f68;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(184, 113, 122, 0.48);
+}
+
+.btnPrimary:active {
+  transform: translateY(0);
+}
+
+/* Secondary — outline ───────────────────────────────────────────── */
+.btnOutline {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 32px;
+  background: transparent;
+  color: #1c1c24;
+  border: 1.5px solid rgba(28, 28, 36, 0.30);
+  border-radius: 50px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  white-space: nowrap;
+}
+
+.btnOutline:hover {
+  border-color: rgba(28, 28, 36, 0.60);
+  background: rgba(28, 28, 36, 0.04);
+  transform: translateY(-2px);
+}
+
+.btnOutline:active {
+  transform: translateY(0);
+}
+
+/* ── Responsive ──────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .card {
+    border-radius: 20px;
+    gap: 18px;
   }
 
-  .subtext { max-width: 100%; }
-  .cta > * { width: 100%; }
+  .buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .btnPrimary,
+  .btnOutline {
+    width: 100%;
+    justify-content: center;
+  }
 }
