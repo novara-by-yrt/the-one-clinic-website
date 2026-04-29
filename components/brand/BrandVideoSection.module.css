@@ -110,7 +110,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(20px, 3.5vw, 52px);
-  align-items: start;
+  align-items: stretch;
 }
 
 /* ══════════════════════════════════════════════════════

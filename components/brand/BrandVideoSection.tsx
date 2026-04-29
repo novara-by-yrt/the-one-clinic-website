@@ -68,7 +68,7 @@ export default function BrandVideoSection() {
           {VIDEOS.map((video, i) => (
             <motion.div
               key={video.id}
-              className={`${styles.videoCard} ${i === 1 ? styles.videoCardOffset : ''}`}
+              className={styles.videoCard}
               initial={{ opacity: 0, y: 56 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={VIEWPORT}
