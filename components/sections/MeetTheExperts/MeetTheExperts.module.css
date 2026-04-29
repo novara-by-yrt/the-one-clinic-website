@@ -4,7 +4,8 @@
 
 .section {
   background: #ffffff;
-  padding-block: clamp(60px, 9vw, 108px);
+  /* Reduced padding to absorb the larger inner elements */
+  padding-block: clamp(48px, 7vw, 88px);
   overflow: hidden;
 }
 
@@ -12,8 +13,9 @@
 .wrapper {
   display: flex;
   align-items: stretch;
-  gap: clamp(16px, 3vw, 48px);
-  max-width: 1280px;
+  gap: clamp(20px, 3.5vw, 56px);
+  /* Wider canvas to give the larger elements breathing room */
+  max-width: 1380px;
   margin-inline: auto;
   padding-inline: clamp(20px, 5vw, 72px);
 }
@@ -33,9 +35,10 @@
   writing-mode: vertical-rl;
   text-orientation: sideways;
   transform: rotate(180deg);
-  font-size: clamp(1.875rem, 3.8vw, 3.75rem);
+  /* Larger, more dominant editorial label */
+  font-size: clamp(2.5rem, 5.2vw, 5.25rem);
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
   color: #0d1520;
   white-space: nowrap;
   user-select: none;
@@ -50,10 +53,12 @@
   flex: 1;
   min-width: 0;
   display: grid;
-  grid-template-columns: minmax(0, 290px) 1fr;
+  /* Wider portrait column for visual dominance */
+  grid-template-columns: minmax(0, 380px) 1fr;
   grid-template-rows: 1fr auto;
-  column-gap: clamp(20px, 4vw, 52px);
-  row-gap: clamp(20px, 3vw, 32px);
+  column-gap: clamp(28px, 4.5vw, 64px);
+  /* Tighter row gap to compensate for taller portrait */
+  row-gap: clamp(16px, 2.2vw, 26px);
 }
 
 /* ── Portrait column ── */
@@ -64,8 +69,9 @@
 
 .portraitFrame {
   position: relative;
-  aspect-ratio: 3 / 4;
-  border-radius: 14px;
+  /* 4:5 ratio (instead of 3:4) — taller width with less excess height */
+  aspect-ratio: 4 / 5;
+  border-radius: 18px;
   overflow: hidden;
   background: #e8e8ed;
 }
@@ -86,7 +92,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3.5rem;
+  font-size: 4.5rem;
   font-weight: 800;
   color: rgba(0, 0, 0, 0.18);
   letter-spacing: -0.025em;
@@ -103,49 +109,51 @@
 .infoPanel {
   display: flex;
   flex-direction: column;
-  gap: clamp(7px, 1.1vw, 13px);
-  padding-top: clamp(4px, 1.5vw, 16px);
-  max-width: 420px;
+  /* Slightly tighter gap so the larger type fits the same vertical envelope */
+  gap: clamp(8px, 1.2vw, 16px);
+  padding-top: clamp(8px, 2vw, 24px);
+  max-width: 520px;
 }
 
 .counter {
-  font-size: clamp(0.9375rem, 1.2vw, 1.125rem);
+  font-size: clamp(1.0625rem, 1.4vw, 1.375rem);
   font-weight: 400;
   color: rgba(0, 0, 0, 0.36);
   margin: 0;
 }
 
 .expertName {
-  font-size: clamp(1.375rem, 2.4vw, 2.375rem);
+  /* Significantly larger, more impactful name */
+  font-size: clamp(1.875rem, 3.4vw, 3.25rem);
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   color: #0d1520;
-  line-height: 1.08;
+  line-height: 1.04;
   margin: 0;
   text-transform: uppercase;
 }
 
 .credentials {
-  font-size: 0.8125rem;
-  color: rgba(0, 0, 0, 0.36);
+  font-size: 0.9375rem;
+  color: rgba(0, 0, 0, 0.40);
   margin: 0;
   letter-spacing: 0.03em;
 }
 
 .role {
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 500;
-  color: rgba(0, 0, 0, 0.50);
+  color: rgba(0, 0, 0, 0.55);
   margin: 0;
 }
 
 .bio {
-  font-size: clamp(0.875rem, 1vw, 0.9375rem);
+  font-size: clamp(0.9375rem, 1.05vw, 1.0625rem);
   line-height: 1.72;
-  color: rgba(0, 0, 0, 0.52);
+  color: rgba(0, 0, 0, 0.55);
   margin: 0;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -153,21 +161,21 @@
 .cta {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.75rem;
+  gap: 10px;
+  font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.10em;
   text-transform: uppercase;
   color: #0d1520;
   text-decoration: none;
-  margin-top: 6px;
+  margin-top: 8px;
   width: fit-content;
   transition: opacity 0.2s ease, gap 0.25s ease;
 }
 
 .cta:hover {
   opacity: 0.55;
-  gap: 12px;
+  gap: 14px;
 }
 
 .cta:focus-visible {
@@ -192,12 +200,12 @@
 .prevArea {
   display: flex;
   align-items: center;
-  gap: clamp(10px, 1.5vw, 18px);
+  gap: clamp(12px, 1.6vw, 22px);
 }
 
 .dot {
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.13);
   flex-shrink: 0;
@@ -208,7 +216,7 @@
 .nextArea {
   display: flex;
   align-items: center;
-  gap: clamp(8px, 1.2vw, 14px);
+  gap: clamp(10px, 1.4vw, 18px);
 }
 
 /* ── Thumbnail button ── */
@@ -233,14 +241,15 @@
 .thumbBtn:focus-visible {
   outline: 2px solid rgba(0, 0, 0, 0.5);
   outline-offset: 3px;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 .thumbWrap {
   position: relative;
-  width: clamp(72px, 9vw, 105px);
-  aspect-ratio: 3 / 4;
-  border-radius: 10px;
+  /* Larger thumbnails — proportional to the bigger main portrait */
+  width: clamp(92px, 11vw, 132px);
+  aspect-ratio: 4 / 5;
+  border-radius: 12px;
   overflow: hidden;
   background: #e8e8ed;
 }
@@ -256,7 +265,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 800;
   color: rgba(0, 0, 0, 0.20);
 }
@@ -265,31 +274,55 @@
    RESPONSIVE
 ══════════════════════════════════════════════════════════ */
 
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .mainGrid {
-    grid-template-columns: minmax(0, 240px) 1fr;
+    grid-template-columns: minmax(0, 320px) 1fr;
+    column-gap: clamp(24px, 3.5vw, 48px);
+  }
+
+  .vertLabel {
+    font-size: clamp(2.25rem, 4.5vw, 4.25rem);
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 860px) {
   .mainGrid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 280px) 1fr;
+  }
+
+  .expertName {
+    font-size: clamp(1.625rem, 3.6vw, 2.5rem);
   }
 
   .portraitFrame {
-    border-radius: 12px;
+    border-radius: 14px;
   }
 
   .thumbWrap {
-    border-radius: 8px;
+    border-radius: 10px;
+    width: clamp(82px, 11vw, 110px);
   }
 }
 
 /* Mobile: stack portrait above info, flat flex thumbnail row */
 @media (max-width: 580px) {
+  .section {
+    padding-block: clamp(44px, 8vw, 72px);
+  }
+
+  .wrapper {
+    gap: 14px;
+    padding-inline: clamp(18px, 5vw, 32px);
+  }
+
+  .vertLabel {
+    font-size: 1.875rem;
+  }
+
   .mainGrid {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto;
+    row-gap: 22px;
   }
 
   .portraitCol {
@@ -299,7 +332,7 @@
 
   .portraitFrame {
     aspect-ratio: 4 / 5;
-    max-height: 55svh;
+    max-height: 58svh;
   }
 
   .infoCol {
@@ -309,6 +342,15 @@
 
   .infoPanel {
     padding-top: 0;
+    gap: 10px;
+  }
+
+  .expertName {
+    font-size: clamp(1.5rem, 7vw, 2.25rem);
+  }
+
+  .bio {
+    -webkit-line-clamp: 4;
   }
 
   .navRow {
@@ -320,18 +362,18 @@
   }
 
   .prevArea {
-    gap: 10px;
+    gap: 12px;
   }
 
   .dot {
     margin-left: 0;
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
   }
 
   .thumbWrap {
-    width: 62px;
-    border-radius: 8px;
+    width: 76px;
+    border-radius: 10px;
   }
 }
 
@@ -345,6 +387,6 @@
   }
 
   .thumbWrap {
-    width: 52px;
+    width: 64px;
   }
 }
