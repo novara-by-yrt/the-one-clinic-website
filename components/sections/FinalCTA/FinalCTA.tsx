@@ -17,16 +17,19 @@ export default function FinalCTA() {
           whileInView="show"
           viewport={VIEWPORT}
         >
+          <motion.p className={styles.eyebrow} variants={fadeUp}>
+            Take the First Step
+          </motion.p>
+
           <motion.h2 className={styles.heading} variants={fadeUp}>
-            Begin your wellness journey today
+            Ready to Feel Your Best?
           </motion.h2>
 
           <motion.div className={styles.rule} variants={fadeUp} aria-hidden="true" />
 
           <motion.p className={styles.subtext} variants={fadeUp}>
-            Book a relaxed, honest consultation with our team. We take the time
-            to understand your goals and only advise what will genuinely help you
-            look and feel your best.
+            Our team is here to help. Book your consultation today and take
+            control of your health and confidence.
           </motion.p>
 
           <motion.div className={styles.buttons} variants={fadeUp}>
@@ -34,7 +37,7 @@ export default function FinalCTA() {
               className={styles.btnPrimary}
               onClick={() => window.dispatchEvent(new CustomEvent('openCallbackModal'))}
             >
-              Book a Consultation
+              Book Your Consultation
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8"
                   strokeLinecap="round" strokeLinejoin="round"/>
