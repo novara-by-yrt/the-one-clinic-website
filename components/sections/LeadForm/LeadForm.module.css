@@ -1,63 +1,134 @@
-/* ── Outer stack ─────────────────────────────────────────────────── */
-.inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-6);
-  width: 100%;
+/* ══════════════════════════════════════════════════════
+   SECTION — brand dark canvas
+══════════════════════════════════════════════════════ */
+.section {
+  background: #0a0c10 !important;
+  padding-block: clamp(52px, 7vw, 88px);
 }
 
-/* ── Header ──────────────────────────────────────────────────────── */
-.header {
-  text-align: center;
+/* ══════════════════════════════════════════════════════
+   OUTER SPLIT GRID
+══════════════════════════════════════════════════════ */
+.splitGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+
+/* ══════════════════════════════════════════════════════
+   LEFT — Form column
+══════════════════════════════════════════════════════ */
+.formCol {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--space-2);
-  max-width: 560px;
 }
 
 .eyebrow {
-  font-size: var(--text-small);
-  font-weight: var(--fw-medium);
-  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.36);
+  margin: 0 0 10px;
 }
 
 .heading {
-  font-size: clamp(1.75rem, 4vw, var(--text-h2));
-  font-weight: var(--fw-bold);
-  letter-spacing: -0.02em;
-  color: var(--color-text-dark);
-  line-height: 1.1;
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  line-height: 1.08;
+  margin: 0 0 clamp(20px, 3vw, 32px);
+}
+
+/* Wrapper constrains the iframe height */
+.formWrap {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* ══════════════════════════════════════════════════════
+   RIGHT — Info + Map column
+══════════════════════════════════════════════════════ */
+.infoCol {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 3.5vw, 36px);
+  padding-top: 8px;
+}
+
+.infoDesc {
+  font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
+  line-height: 1.72;
+  color: rgba(255, 255, 255, 0.52);
   margin: 0;
 }
 
-.subtext {
-  color: var(--color-text-muted);
-  line-height: var(--lh-normal);
-  max-width: 420px;
-  margin: 0;
-}
-
-/* ── Side-by-side grid: map (left) | form (right) ──────────────── */
-.sideGrid {
+/* ── 2×2 contact grid ──────────────────────────────── */
+.contactGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
-  width: 100%;
-  align-items: stretch;
-  min-height: 520px;
+  gap: clamp(12px, 2vw, 20px);
 }
 
-/* ── Map side (left) ─────────────────────────────────────────────── */
-.mapSide {
+.contactItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: clamp(16px, 2vw, 22px);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  text-decoration: none;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.contactItem:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-3px);
+}
+
+.contactIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.70);
+  flex-shrink: 0;
+}
+
+.contactLabel {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.contactValue {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.46);
+  line-height: 1.4;
+}
+
+/* ── Map embed ─────────────────────────────────────── */
+.mapWrap {
   position: relative;
-  border-radius: 0.75rem;
+  border-radius: 14px;
   overflow: hidden;
-  border: 1px solid var(--color-border-light);
-  box-shadow: 0 4px 24px rgb(0 0 0 / 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  aspect-ratio: 16 / 7;
 }
 
 .mapIframe {
@@ -69,21 +140,20 @@
   display: block;
 }
 
-/* Open in Google Maps overlay */
 .mapOverlay {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  padding: var(--space-3);
+  padding: 14px;
   text-decoration: none;
-  background: linear-gradient(to top, rgb(0 0 0 / 0.2) 0%, transparent 40%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.22) 0%, transparent 45%);
   transition: background 0.2s ease;
 }
 
 .mapOverlay:hover {
-  background: linear-gradient(to top, rgb(0 0 0 / 0.32) 0%, transparent 50%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.36) 0%, transparent 55%);
 }
 
 .mapCta {
@@ -91,55 +161,59 @@
   align-items: center;
   gap: 6px;
   padding: 6px 12px;
-  background: var(--color-white);
+  background: rgba(255, 255, 255, 0.92);
   border-radius: 50px;
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  color: var(--color-text-dark);
-  box-shadow: 0 2px 8px rgb(0 0 0 / 0.15);
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  color: #0a0c10;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .mapOverlay:hover .mapCta {
-  box-shadow: 0 4px 16px rgb(0 0 0 / 0.2);
   transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
-/* ── Form side (right) ───────────────────────────────────────────── */
-.formSide {
-  border-radius: 1rem;
-  overflow: hidden;
-  border: 1px solid var(--color-border-light);
-  box-shadow: 0 4px 32px rgb(0 0 0 / 0.07);
-  background: #fff;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  /* The 20px top+bottom padding adds 40px; total box height = 509 + 40px = 549px
-     which the map fills via align-items: stretch on the parent grid */
-}
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════════ */
 
-/* ── Responsive ─────────────────────────────────────────────────── */
-
-/* Tablet: stack vertically */
+/* Tablet: single column */
 @media (max-width: 860px) {
-  .sideGrid {
+  .splitGrid {
     grid-template-columns: 1fr;
-    min-height: unset;
+    gap: clamp(36px, 6vw, 56px);
   }
 
-  .mapSide {
-    aspect-ratio: 16 / 7;
-    position: relative;
-  }
-
-  .formSide {
-    min-height: 480px;
+  .infoCol {
+    padding-top: 0;
   }
 }
 
-@media (max-width: 480px) {
-  .mapSide {
+@media (max-width: 580px) {
+  .contactGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .contactItem {
+    padding: 14px;
+    gap: 6px;
+  }
+
+  .contactIcon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .mapWrap {
     aspect-ratio: 4 / 3;
+  }
+}
+
+@media (max-width: 400px) {
+  .contactGrid {
+    grid-template-columns: 1fr;
   }
 }

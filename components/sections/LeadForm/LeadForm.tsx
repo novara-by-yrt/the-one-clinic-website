@@ -9,79 +9,97 @@ import styles from './LeadForm.module.css';
 
 const SLIDE_EASE = [0.25, 0.1, 0.25, 1] as const;
 
-const MAPS_URL  = 'https://www.google.com/maps/search/?api=1&query=36+De+Montfort+St,+Leicester+LE1+7GS,+United+Kingdom';
+const MAPS_URL  = 'https://www.google.com/maps/place/The+One+Clinic+-+Leicester/@52.6272773,-1.1274381,17z';
 const EMBED_URL = 'https://maps.google.com/maps?q=36+De+Montfort+St,+Leicester+LE1+7GS,+United+Kingdom&output=embed';
+
+function PhoneIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 .01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
+    </svg>
+  );
+}
+
+function EmailIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="2" y="4" width="20" height="16" rx="2"/>
+      <path d="M22 7l-10 7L2 7"/>
+    </svg>
+  );
+}
+
+function WhatsAppIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>
+    </svg>
+  );
+}
+
+function LocationIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/>
+      <circle cx="12" cy="10" r="3"/>
+    </svg>
+  );
+}
+
+const CONTACT_ITEMS = [
+  {
+    icon: <PhoneIcon />,
+    label: 'Phone Number',
+    value: '07481 342 374',
+    href: 'tel:07481342374',
+  },
+  {
+    icon: <EmailIcon />,
+    label: 'Email Address',
+    value: 'info@the-oneclinic.net',
+    href: 'mailto:info@the-oneclinic.net',
+  },
+  {
+    icon: <WhatsAppIcon />,
+    label: 'WhatsApp',
+    value: '07481 342 374',
+    href: 'https://wa.me/447481342374',
+  },
+  {
+    icon: <LocationIcon />,
+    label: 'Our Clinic',
+    value: '36 DeMontfort Street, Leicester LE1 7GS',
+    href: MAPS_URL,
+  },
+];
 
 export default function LeadForm() {
   return (
-    <Section variant="light" data-section-theme="light" id="contact">
+    <Section variant="dark" data-section-theme="dark" className={styles.section} id="contact">
       <Script src="https://link.leadpipeline.ai/js/form_embed.js" strategy="lazyOnload" />
 
       <Container>
-        <motion.div
-          className={styles.inner}
-          variants={stagger(0.12)}
-          initial="hidden"
-          whileInView="show"
-          viewport={VIEWPORT}
-        >
-          {/* ── Header ──────────────────────────────────────── */}
-          <motion.div className={styles.header} variants={fadeUp}>
-            <p className={styles.eyebrow}>Get Started</p>
-            <h2 className={styles.heading}>Start Your Journey Today</h2>
-            <p className={styles.subtext}>
-              Book a consultation with our expert team and discover
-              the right treatment for you.
-            </p>
-          </motion.div>
+        <div className={styles.splitGrid}>
 
-          {/* ── Side-by-side: Map (left) | Form (right) ─────── */}
-          <div className={styles.sideGrid}>
+          {/* ── LEFT: Form column ───────────────────────── */}
+          <motion.div
+            className={styles.formCol}
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={VIEWPORT}
+            transition={{ duration: 0.85, ease: SLIDE_EASE }}
+          >
+            <p className={styles.eyebrow}>Contact Us</p>
+            <h2 className={styles.heading}>Get In Touch</h2>
 
-            {/* Left: Google Map */}
-            <motion.div
-              className={styles.mapSide}
-              initial={{ opacity: 0, x: -48 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={VIEWPORT}
-              transition={{ duration: 0.85, ease: SLIDE_EASE }}
-            >
-              <iframe
-                src={EMBED_URL}
-                title="The One Clinic location"
-                className={styles.mapIframe}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                aria-label="Map showing clinic location"
-              />
-              {/* Open in Google Maps overlay */}
-              <a
-                href={MAPS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.mapOverlay}
-                aria-label="Open in Google Maps"
-              >
-                <span className={styles.mapCta}>
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                    <path d="M2 2h10M12 2v10M2 12L12 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                  </svg>
-                  Open in Google Maps
-                </span>
-              </a>
-            </motion.div>
-
-            {/* Right: Form iframe */}
-            <motion.div
-              className={styles.formSide}
-              initial={{ opacity: 0, x: 48 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={VIEWPORT}
-              transition={{ duration: 0.85, ease: SLIDE_EASE, delay: 0.1 }}
-            >
+            <div className={styles.formWrap}>
               <iframe
                 src="https://link.leadpipeline.ai/widget/form/Az3D8kxDVBz2diDQJ3uY"
-                style={{ width: '100%', height: '509px', border: 'none', display: 'block', flex: '1 0 auto' }}
+                style={{ width: '100%', height: '509px', border: 'none', display: 'block' }}
                 id="inline-Az3D8kxDVBz2diDQJ3uY"
                 data-layout="{'id':'INLINE'}"
                 data-trigger-type="alwaysShow"
@@ -96,10 +114,75 @@ export default function LeadForm() {
                 data-form-id="Az3D8kxDVBz2diDQJ3uY"
                 title="Book Consultation"
               />
+            </div>
+          </motion.div>
+
+          {/* ── RIGHT: Info + Map column ─────────────────── */}
+          <motion.div
+            className={styles.infoCol}
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={VIEWPORT}
+            transition={{ duration: 0.85, ease: SLIDE_EASE, delay: 0.12 }}
+          >
+            <p className={styles.infoDesc}>
+              We're here to help. Whether you have a question about a treatment,
+              want to book a consultation, or simply want to get in touch — our
+              team will get back to you promptly.
+            </p>
+
+            {/* Contact info 2×2 grid */}
+            <motion.div
+              className={styles.contactGrid}
+              variants={stagger(0.1)}
+              initial="hidden"
+              whileInView="show"
+              viewport={VIEWPORT}
+            >
+              {CONTACT_ITEMS.map((item) => (
+                <motion.a
+                  key={item.label}
+                  href={item.href}
+                  className={styles.contactItem}
+                  variants={fadeUp}
+                  target={item.href.startsWith('http') ? '_blank' : undefined}
+                  rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                >
+                  <div className={styles.contactIcon}>{item.icon}</div>
+                  <span className={styles.contactLabel}>{item.label}</span>
+                  <span className={styles.contactValue}>{item.value}</span>
+                </motion.a>
+              ))}
             </motion.div>
 
-          </div>
-        </motion.div>
+            {/* Map embed */}
+            <div className={styles.mapWrap}>
+              <iframe
+                src={EMBED_URL}
+                title="The One Clinic location"
+                className={styles.mapIframe}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                aria-label="Map showing clinic location"
+              />
+              <a
+                href={MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.mapOverlay}
+                aria-label="Open in Google Maps"
+              >
+                <span className={styles.mapCta}>
+                  <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M2 2h10M12 2v10M2 12L12 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
+                  Open in Google Maps
+                </span>
+              </a>
+            </div>
+          </motion.div>
+
+        </div>
       </Container>
     </Section>
   );
