@@ -1,33 +1,67 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import styles from './BrandHero.module.css';
 
-const EASE = [0.22, 1, 0.36, 1] as const;
+/* ─────────────────────────────────────────────────────────────
+   CINEMATIC EASING
+   Ultra-smooth exponential ease-out — starts with near-zero
+   velocity, then decelerates into a graceful stop.
+   Creates the "luxury settle" feeling found on premium sites.
+───────────────────────────────────────────────────────────── */
+const EC   = [0.12, 1, 0.22, 1] as const;  // cinematic
+const EC_R = [0.25, 0.1, 0.25, 1] as const; // reduced-motion fallback
 
-const PANEL_VARIANTS = {
-  hidden: { opacity: 0, y: 32 },
-  show: {
-    opacity: 1,
-    y: 0,
+/* ─────────────────────────────────────────────────────────────
+   PROP GENERATORS
+   Returns inline initial / animate / transition objects so we
+   avoid Framer Motion's function-variant typing friction.
+───────────────────────────────────────────────────────────── */
+
+/** Secondary text: x-slide left + subtle 3 px blur clear */
+function cineText(delay: number, prefersReduced: boolean | null) {
+  if (prefersReduced) {
+    return {
+      initial: { opacity: 0 },
+      animate: { opacity: 1 },
+      transition: { duration: 0.45, ease: EC_R, delay: delay * 0.2 },
+    };
+  }
+  return {
+    initial: { opacity: 0, x: -24, filter: 'blur(3px)' },
+    animate: { opacity: 1, x: 0,  filter: 'blur(0px)' },
     transition: {
-      duration: 0.95,
-      ease: EASE,
-      staggerChildren: 0.11,
-      delayChildren: 0.2,
+      opacity: { duration: 0.90, ease: EC, delay },
+      x:       { duration: 1.05, ease: EC, delay },
+      filter:  { duration: 0.75, ease: EC, delay },
     },
-  },
-};
+  };
+}
 
-const CHILD = {
-  hidden: { opacity: 0, y: 18 },
-  show:   { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
-};
+/** Headline lines: wider x-travel + strong 8 px blur for cinematic drama */
+function cineH1(delay: number, prefersReduced: boolean | null) {
+  if (prefersReduced) {
+    return {
+      initial: { opacity: 0 },
+      animate: { opacity: 1 },
+      transition: { duration: 0.45, ease: EC_R, delay: delay * 0.2 },
+    };
+  }
+  return {
+    initial: { opacity: 0, x: -40, filter: 'blur(8px)' },
+    animate: { opacity: 1, x: 0,  filter: 'blur(0px)' },
+    transition: {
+      opacity: { duration: 1.00, ease: EC, delay },
+      x:       { duration: 1.18, ease: EC, delay },
+      filter:  { duration: 0.88, ease: EC, delay },
+    },
+  };
+}
 
-/* ── Inline SVG icons ──────────────────────────────────────────── */
+/* ── Inline SVG icons ─────────────────────────────────────── */
 function GoogleIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" className={styles.trustIcon}>
@@ -47,10 +81,10 @@ function TrustpilotIcon() {
   );
 }
 
-
-/* ── Component ─────────────────────────────────────────────────── */
+/* ── Component ────────────────────────────────────────────── */
 export default function BrandHero() {
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef     = useRef<HTMLElement>(null);
+  const prefersReduced = useReducedMotion();
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -66,7 +100,7 @@ export default function BrandHero() {
       aria-label="Hero"
       data-section-theme="dark"
     >
-      {/* ── Fallback background image ─────────────────────────── */}
+      {/* ── Background image ─────────────────────────────── */}
       <div className={styles.heroBg} aria-hidden="true">
         <Image
           src="/images/Hero Section Background Image.png"
@@ -78,16 +112,12 @@ export default function BrandHero() {
         />
       </div>
 
-
-      {/* ── Layered cinematic overlays ────────────────────────── */}
-      {/* Left-biased gradient — keeps panel readable, lets video breathe on right */}
+      {/* ── Cinematic overlay layers ──────────────────────── */}
       <div className={styles.overlayGradient}  aria-hidden="true" />
-      {/* Edge vignette — darkens corners for cinematic depth */}
       <div className={styles.overlayVignette}  aria-hidden="true" />
-      {/* Soft warm spotlight behind the panel area */}
       <div className={styles.overlaySpotlight} aria-hidden="true" />
 
-      {/* ── Animated content ─────────────────────────────────── */}
+      {/* ── Scroll-parallax content wrapper ──────────────── */}
       <motion.div
         className={styles.contentWrapper}
         style={{ y: contentY, opacity }}
@@ -95,52 +125,94 @@ export default function BrandHero() {
         <Container>
           <div className={styles.layout}>
 
-            {/* ══ Floating glass panel ══════════════════════════ */}
+            {/* ═══ Panel — glass appears first, then text reveals cascade in ═══ */}
             <motion.div
               className={styles.panel}
-              variants={PANEL_VARIANTS}
-              initial="hidden"
-              animate="show"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.65, ease: 'easeOut' }}
             >
-              {/* Inner glow highlight */}
+              {/* Top-edge glow highlight */}
               <div className={styles.panelGlow} aria-hidden="true" />
 
-              {/* Eyebrow */}
-              <motion.p className={styles.eyebrow} variants={CHILD}>
+              {/* ── Eyebrow: delay 0.12 s ── */}
+              <motion.p
+                className={styles.eyebrow}
+                {...cineText(0.12, prefersReduced)}
+              >
                 Medical &amp; Aesthetic Care, Leicester
               </motion.p>
 
-              {/* Headline */}
-              <motion.h1 className={styles.headline} variants={CHILD}>
-                Where<br />
-                Expertise<br />
-                <em className={styles.headlineAccent}>Meets Care</em>
-              </motion.h1>
+              {/* ── Headline — three lines staggered 140 ms apart ── */}
+              <h1 className={styles.headline}>
+                <motion.span
+                  className={styles.headlineLine}
+                  {...cineH1(0.28, prefersReduced)}
+                >
+                  Where
+                </motion.span>
+                <motion.span
+                  className={styles.headlineLine}
+                  {...cineH1(0.42, prefersReduced)}
+                >
+                  Expertise
+                </motion.span>
+                <motion.span
+                  className={styles.headlineLine}
+                  {...cineH1(0.56, prefersReduced)}
+                >
+                  <em className={styles.headlineAccent}>Meets Care</em>
+                </motion.span>
+              </h1>
 
-              {/* Subtext */}
-              <motion.p className={styles.subtext} variants={CHILD}>
+              {/* ── Subtext: delay 0.70 s ── */}
+              <motion.p
+                className={styles.subtext}
+                {...cineText(0.70, prefersReduced)}
+              >
                 Advanced medical, aesthetic and wellness care,
                 all under one roof.
               </motion.p>
 
-              {/* CTA */}
-              <motion.div className={styles.ctaRow} variants={CHILD}>
+              {/* ── CTA button: delay 0.84 s ── */}
+              <motion.div
+                className={styles.ctaRow}
+                {...cineText(0.84, prefersReduced)}
+              >
                 <button
                   className={styles.ctaBtn}
                   onClick={() => window.dispatchEvent(new CustomEvent('openCallbackModal'))}
                 >
                   Book a Consultation
-                  <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true" className={styles.ctaArrow}>
-                    <path d="M2.5 7.5h10M8 3l4.5 4.5L8 12" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
+                  <svg
+                    width="15" height="15" viewBox="0 0 15 15" fill="none"
+                    aria-hidden="true" className={styles.ctaArrow}
+                  >
+                    <path
+                      d="M2.5 7.5h10M8 3l4.5 4.5L8 12"
+                      stroke="currentColor" strokeWidth="1.7"
+                      strokeLinecap="round" strokeLinejoin="round"
+                    />
                   </svg>
                 </button>
               </motion.div>
 
-              {/* Divider */}
-              <motion.div className={styles.divider} variants={CHILD} aria-hidden="true" />
+              {/* ── Divider — opacity-only, no x or blur ── */}
+              <motion.div
+                className={styles.divider}
+                aria-hidden="true"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.85, ease: 'easeOut', delay: 0.92 }}
+              />
 
-              {/* Trust badges — Google + Trustpilot only */}
-              <motion.div className={styles.trustRow} variants={CHILD} role="region" aria-label="Trust indicators">
+              {/* ── Trust badges: delay 1.0 s ── */}
+              <motion.div
+                className={styles.trustRow}
+                {...cineText(1.0, prefersReduced)}
+                role="region"
+                aria-label="Trust indicators"
+              >
                 <div className={styles.trustBadge}>
                   <div className={styles.trustBadgeHeader}>
                     <GoogleIcon />
@@ -187,13 +259,13 @@ export default function BrandHero() {
         </Container>
       </motion.div>
 
-      {/* ── Scroll indicator ────────────────────────────────── */}
+      {/* ── Scroll indicator ─────────────────────────────── */}
       <motion.div
         className={styles.scrollIndicator}
         aria-hidden="true"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.6, duration: 0.9 }}
+        transition={{ delay: 1.9, duration: 0.9 }}
       >
         <motion.span
           className={styles.scrollLine}

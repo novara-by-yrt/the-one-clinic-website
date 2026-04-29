@@ -166,6 +166,11 @@
   margin: 0;
 }
 
+/* Each headline line is a block-level motion.span */
+.headlineLine {
+  display: block;
+}
+
 .headlineAccent {
   font-style: italic;
   font-weight: 800;
