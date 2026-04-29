@@ -97,14 +97,14 @@ export default function BrandTreatments() {
             centeredSlides
             loop
             slidesPerView="auto"
-            autoplay={{ delay: 2800, disableOnInteraction: false, pauseOnMouseEnter: true }}
+            autoplay={{ delay: 3400, disableOnInteraction: false, pauseOnMouseEnter: true }}
             navigation={{ nextEl: `.${styles.navNext}`, prevEl: `.${styles.navPrev}` }}
             coverflowEffect={{
-              rotate: 32,
-              stretch: 0,
-              depth: 280,
+              rotate: 20,
+              stretch: -8,
+              depth: 160,
               modifier: 1,
-              scale: 0.82,
+              scale: 0.88,
               slideShadows: true,
             }}
             className={styles.swiper}
