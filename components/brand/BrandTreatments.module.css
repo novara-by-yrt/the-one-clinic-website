@@ -392,10 +392,15 @@
 
   .leftPanel {
     width: 100%;
+    position: relative;
+    z-index: 3;
   }
 
   .carouselWrap {
     width: 100%;
+    /* Clip 3D bleed so rotated cards don't overlap the text panel above */
+    overflow: hidden;
+    border-radius: 12px;
   }
 
   .slide {
@@ -403,9 +408,10 @@
     height: 256px !important;
   }
 
-  /* Reduce depth effect on tablet */
   .swiper {
-    padding-block: 30px 16px !important;
+    /* Reduce vertical padding so cards stay within the clipped wrapper */
+    padding-block: 20px 16px !important;
+    overflow: hidden !important;
   }
 }
 

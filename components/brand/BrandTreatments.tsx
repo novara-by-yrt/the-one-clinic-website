@@ -73,10 +73,8 @@ export default function BrandTreatments() {
           <motion.div className={styles.rule} variants={fadeUp} aria-hidden="true" />
 
           <motion.p className={styles.desc} variants={fadeUp}>
-            From advanced medical aesthetics to comprehensive health screenings,
-            our expert team delivers exceptional care under one roof. Every
-            treatment is tailored to your individual goals by our qualified
-            doctors, combining clinical expertise with the latest technology.
+            Advanced aesthetic and health treatments, all under one roof —
+            tailored to your goals by our qualified doctors.
           </motion.p>
 
           <motion.div variants={fadeUp}>
