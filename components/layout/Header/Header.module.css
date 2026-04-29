@@ -47,7 +47,7 @@
 
 .pill[data-scrolled='true'] .inner {
   height: 60px;
-  padding: 0 clamp(16px, 2.5vw, 32px);
+  padding: 0 11px;
 }
 
 /* ═══════════════════════════════════════════════════════════════
