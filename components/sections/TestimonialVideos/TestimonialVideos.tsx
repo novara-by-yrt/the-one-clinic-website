@@ -66,7 +66,7 @@ export default function TestimonialVideos() {
                     onClick={() => play(v.id)}
                     role="button"
                     tabIndex={0}
-                    aria-label={`Play ${v.label}`}
+                    aria-label={`Play video`}
                     onKeyDown={(e) => e.key === 'Enter' && play(v.id)}
                   >
                     <div className={styles.playBtn} aria-hidden="true">
@@ -74,7 +74,6 @@ export default function TestimonialVideos() {
                         <path d="M6 4.5L15.5 10 6 15.5V4.5Z" fill="currentColor"/>
                       </svg>
                     </div>
-                    <p className={styles.videoLabel}>{v.label}</p>
                   </div>
                 )}
               </div>
