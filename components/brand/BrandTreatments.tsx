@@ -2,9 +2,11 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Autoplay, Navigation } from 'swiper/modules';
+import type { Swiper as SwiperType } from 'swiper';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './BrandTreatments.module.css';
 
@@ -30,6 +32,9 @@ const SLIDES = [
 ];
 
 export default function BrandTreatments() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const swiperRef = useRef<SwiperType | null>(null);
+
   return (
     <section className={styles.section} id="treatments">
       {/* Background image */}
@@ -44,17 +49,15 @@ export default function BrandTreatments() {
         />
       </div>
 
-      {/* Overlay */}
-      <div className={styles.overlay} aria-hidden="true" />
-
-      {/* Atmospheric depth glows */}
-      <div className={styles.glow1} aria-hidden="true" />
-      <div className={styles.glow2} aria-hidden="true" />
+      {/* Overlay layers */}
+      <div className={styles.overlay}  aria-hidden="true" />
+      <div className={styles.glow1}    aria-hidden="true" />
+      <div className={styles.glow2}    aria-hidden="true" />
 
       {/* Content */}
       <div className={styles.inner}>
 
-        {/* ── Left: glass info panel ── */}
+        {/* ── Left: open editorial panel ── */}
         <motion.div
           className={styles.leftPanel}
           variants={stagger(0.1)}
@@ -62,12 +65,19 @@ export default function BrandTreatments() {
           whileInView="show"
           viewport={VIEWPORT}
         >
+          {/* Treatment count badge */}
+          <motion.div className={styles.countBadge} variants={fadeUp}>
+            <span className={styles.countDot} aria-hidden="true" />
+            {SLIDES.length} Treatments
+          </motion.div>
+
           <motion.p className={styles.eyebrow} variants={fadeUp}>
             Medical Aesthetics &amp; Health Care
           </motion.p>
 
           <motion.h2 className={styles.heading} variants={fadeUp}>
-            Our Popular<br />Treatments
+            Our Popular<br />
+            <em className={styles.headingAccent}>Treatments</em>
           </motion.h2>
 
           <motion.div className={styles.rule} variants={fadeUp} aria-hidden="true" />
@@ -86,6 +96,43 @@ export default function BrandTreatments() {
               </svg>
             </Link>
           </motion.div>
+
+          {/* Nav arrows — live in the panel on desktop */}
+          <motion.div className={styles.navRow} variants={fadeUp} aria-label="Carousel controls">
+            <button
+              className={`${styles.navBtn} ${styles.navPrev}`}
+              onClick={() => swiperRef.current?.slidePrev()}
+              aria-label="Previous treatment"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M10 3L5 8L10 13" stroke="currentColor" strokeWidth="1.75"
+                  strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+
+            {/* Progress track */}
+            <div className={styles.progressTrack} aria-hidden="true">
+              <div
+                className={styles.progressFill}
+                style={{ width: `${((activeIndex + 1) / SLIDES.length) * 100}%` }}
+              />
+            </div>
+
+            <button
+              className={`${styles.navBtn} ${styles.navNext}`}
+              onClick={() => swiperRef.current?.slideNext()}
+              aria-label="Next treatment"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M6 3L11 8L6 13" stroke="currentColor" strokeWidth="1.75"
+                  strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+
+            <span className={styles.slideCount} aria-live="polite">
+              {String(activeIndex + 1).padStart(2, '0')} / {String(SLIDES.length).padStart(2, '0')}
+            </span>
+          </motion.div>
         </motion.div>
 
         {/* ── Right: 3D coverflow carousel ── */}
@@ -95,40 +142,34 @@ export default function BrandTreatments() {
             effect="coverflow"
             grabCursor
             centeredSlides
-            loop
+            loop={false}
             slidesPerView="auto"
             autoplay={{ delay: 3400, disableOnInteraction: false, pauseOnMouseEnter: true }}
-            navigation={{ nextEl: `.${styles.navNext}`, prevEl: `.${styles.navPrev}` }}
             coverflowEffect={{
-              rotate: 20,
-              stretch: -8,
-              depth: 160,
+              rotate: 22,
+              stretch: -10,
+              depth: 180,
               modifier: 1,
-              scale: 0.88,
+              scale: 0.86,
               slideShadows: true,
             }}
             className={styles.swiper}
+            onSwiper={(swiper) => { swiperRef.current = swiper; }}
+            onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
           >
             {SLIDES.map((slide, i) => (
               <SwiperSlide key={i} className={styles.slide}>
                 <Link href={slide.href} className={styles.card} draggable={false}>
-                  {/* Image */}
                   <Image
                     src={slide.src}
                     alt={slide.title}
                     fill
                     className={styles.cardImg}
-                    sizes="(max-width: 768px) 180px, 220px"
+                    sizes="(max-width: 768px) 180px, 230px"
                     draggable={false}
                   />
-
-                  {/* Cinematic gradient overlay */}
                   <div className={styles.cardOverlay} aria-hidden="true" />
-
-                  {/* Active-card warm glow ring */}
-                  <div className={styles.cardGlow} aria-hidden="true" />
-
-                  {/* Title */}
+                  <div className={styles.cardGlow}    aria-hidden="true" />
                   <div className={styles.cardContent}>
                     <span className={styles.cardTitle}>{slide.title}</span>
                   </div>
@@ -136,22 +177,6 @@ export default function BrandTreatments() {
               </SwiperSlide>
             ))}
           </Swiper>
-
-          {/* Custom nav buttons */}
-          <div className={styles.navRow} aria-hidden="true">
-            <button className={styles.navPrev} aria-label="Previous treatment">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M10 3L5 8L10 13" stroke="currentColor" strokeWidth="1.75"
-                  strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-            <button className={styles.navNext} aria-label="Next treatment">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M6 3L11 8L6 13" stroke="currentColor" strokeWidth="1.75"
-                  strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-          </div>
         </div>
 
       </div>
