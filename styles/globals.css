@@ -34,7 +34,7 @@ body {
   font-weight: var(--fw-regular);
   line-height: var(--lh-normal);
   color: var(--color-text-dark);
-  background-color: #0d0d12;
+  background-color: #000000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;

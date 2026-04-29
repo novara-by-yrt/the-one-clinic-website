@@ -3,14 +3,6 @@
   position: relative;
   z-index: 2;
   padding-bottom: var(--footer-height, 700px);
-  /* Rounded bottom corners visually "card" off from the footer */
-  border-radius: 0 0 28px 28px;
-  /* Use overflow:clip (not hidden) so position:sticky children still work */
-  overflow: clip;
-  /* Bottom shadow creates depth separation over the footer surface */
-  box-shadow:
-    0 20px 80px rgba(0, 0, 0, 0.28),
-    0 6px 24px rgba(0, 0, 0, 0.18);
 }
 
 /* Fixed footer layer — always at bottom, revealed as content scrolls up */
@@ -24,8 +16,3 @@
   will-change: transform, opacity;
 }
 
-@media (max-width: 768px) {
-  .content {
-    border-radius: 0 0 20px 20px;
-  }
-}
