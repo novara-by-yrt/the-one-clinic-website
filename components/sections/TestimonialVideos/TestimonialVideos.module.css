@@ -1,7 +1,8 @@
-/* ── Section — pure black bg ─────────────────────────────────────── */
+/* ── Section — brand dark ───────────────────────────────────────── */
 .section {
-  background-color: #000;
+  background-color: #0d1520;
   border-top: none;
+  padding-block: clamp(64px, 8vw, 104px);
 }
 
 /* ── Header ──────────────────────────────────────────────────────── */
@@ -10,30 +11,34 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-2);
-  margin-bottom: var(--space-6);
+  gap: 12px;
+  margin-bottom: clamp(36px, 5vw, 56px);
 }
 
 .eyebrow {
-  font-size: var(--text-small);
-  font-weight: var(--fw-medium);
-  letter-spacing: 0.12em;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.20em;
   text-transform: uppercase;
-  color: rgb(255 255 255 / 0.38);
+  color: rgba(255, 255, 255, 0.38);
+  margin: 0;
 }
 
 .heading {
-  font-size: clamp(1.75rem, 4vw, var(--text-h2));
-  font-weight: var(--fw-bold);
-  letter-spacing: -0.02em;
-  color: var(--color-text-light);
-  line-height: var(--lh-tight);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  color: #ffffff;
+  line-height: 1.06;
+  margin: 0;
 }
 
 .subtext {
-  font-size: var(--text-body);
-  color: rgb(255 255 255 / 0.5);
-  max-width: 400px;
+  font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 480px;
+  margin: 0;
 }
 
 /* ── Desktop grid: 3 portrait columns ───────────────────────────── */

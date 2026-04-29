@@ -3,7 +3,7 @@
 ══════════════════════════════════════════════════════════ */
 .section {
   background: #ffffff;
-  padding-block: clamp(56px, 7vw, 96px);
+  padding-block: clamp(64px, 8vw, 104px);
   overflow: hidden;
   display: flex;
   flex-direction: column;

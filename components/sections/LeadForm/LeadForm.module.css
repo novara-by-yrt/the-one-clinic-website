@@ -2,8 +2,8 @@
    SECTION — brand dark canvas
 ══════════════════════════════════════════════════════ */
 .section {
-  background: #0a0c10 !important;
-  padding-block: clamp(52px, 7vw, 88px);
+  background: #0d1520 !important;
+  padding-block: clamp(64px, 8vw, 104px);
 }
 
 /* ══════════════════════════════════════════════════════
@@ -25,20 +25,20 @@
 }
 
 .eyebrow {
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.20em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.36);
+  color: rgba(255, 255, 255, 0.38);
   margin: 0 0 10px;
 }
 
 .heading {
-  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-size: clamp(2rem, 4vw, 3.25rem);
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
   color: #ffffff;
-  line-height: 1.08;
+  line-height: 1.06;
   margin: 0 0 clamp(20px, 3vw, 32px);
 }
 

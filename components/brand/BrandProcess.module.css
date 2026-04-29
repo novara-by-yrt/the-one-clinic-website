@@ -8,7 +8,7 @@
     #f5f1ec 50%,
     #ede7df 100%
   ) !important;
-  padding-block: clamp(80px, 10vw, 140px);
+  padding-block: clamp(64px, 8vw, 104px);
   position: relative;
 }
 
@@ -299,11 +299,11 @@
 }
 
 .heading {
-  font-size: clamp(2.4rem, 3.8vw, 3.5rem);
+  font-size: clamp(2rem, 4vw, 3.25rem);
   font-weight: 800;
-  letter-spacing: -0.048em;
-  line-height: 1.0;
-  color: #080810;
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+  color: #0d1520;
   margin: 0;
 }
 

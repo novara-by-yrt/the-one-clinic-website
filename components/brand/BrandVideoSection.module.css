@@ -3,8 +3,8 @@
 ══════════════════════════════════════════════════════ */
 .section {
   position: relative;
-  background: #040408 !important;
-  padding-block: clamp(52px, 7vw, 88px);
+  background: #0d1520 !important;
+  padding-block: clamp(64px, 8vw, 104px);
   overflow: hidden;
 }
 
@@ -61,17 +61,17 @@
 .eyebrow {
   font-size: 0.6875rem;
   font-weight: 700;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.20em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.38);
   margin: 0;
 }
 
 .heading {
-  font-size: clamp(1.75rem, 3.2vw, 2.75rem);
+  font-size: clamp(2rem, 4vw, 3.25rem);
   font-weight: 800;
   letter-spacing: -0.035em;
-  line-height: 1.08;
+  line-height: 1.06;
   color: #fff;
   margin: 0;
 }
