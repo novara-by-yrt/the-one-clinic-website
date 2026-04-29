@@ -93,11 +93,12 @@ export default function LeadForm() {
             viewport={VIEWPORT}
             transition={{ duration: 0.85, ease: SLIDE_EASE }}
           >
-            <p className={styles.eyebrow}>Contact Us</p>
-            <h2 className={styles.heading}>Get In Touch</h2>
+            <div className={styles.formCard}>
+              <p className={styles.eyebrow}>Contact Us</p>
+              <h2 className={styles.heading}>Get In Touch</h2>
 
-            <div className={styles.formWrap}>
-              <iframe
+              <div className={styles.formWrap}>
+                <iframe
                 src="https://link.leadpipeline.ai/widget/form/Az3D8kxDVBz2diDQJ3uY"
                 style={{ width: '100%', height: '509px', border: 'none', display: 'block' }}
                 id="inline-Az3D8kxDVBz2diDQJ3uY"
@@ -114,6 +115,7 @@ export default function LeadForm() {
                 data-form-id="Az3D8kxDVBz2diDQJ3uY"
                 title="Book Consultation"
               />
+              </div>
             </div>
           </motion.div>
 

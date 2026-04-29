@@ -12,16 +12,26 @@
 .splitGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(32px, 5vw, 72px);
-  align-items: start;
+  gap: clamp(24px, 4vw, 48px);
+  align-items: stretch;
 }
 
 /* ══════════════════════════════════════════════════════
-   LEFT — Form column
+   LEFT — Form column (stretches full height)
 ══════════════════════════════════════════════════════ */
 .formCol {
   display: flex;
   flex-direction: column;
+}
+
+/* White card wrapping eyebrow + heading + iframe */
+.formCard {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: clamp(24px, 3.5vw, 40px);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .eyebrow {
@@ -29,7 +39,7 @@
   font-weight: 700;
   letter-spacing: 0.20em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.38);
+  color: rgba(13, 21, 32, 0.38);
   margin: 0 0 10px;
 }
 
@@ -37,16 +47,13 @@
   font-size: clamp(2rem, 4vw, 3.25rem);
   font-weight: 800;
   letter-spacing: -0.035em;
-  color: #ffffff;
+  color: #0d1520;
   line-height: 1.06;
-  margin: 0 0 clamp(20px, 3vw, 32px);
+  margin: 0 0 clamp(16px, 2.5vw, 28px);
 }
 
-/* Wrapper constrains the iframe height */
+/* iframe sits flush inside the white card */
 .formWrap {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
   overflow: hidden;
 }
 
@@ -56,14 +63,13 @@
 .infoCol {
   display: flex;
   flex-direction: column;
-  gap: clamp(24px, 3.5vw, 36px);
-  padding-top: 8px;
+  gap: clamp(12px, 1.8vw, 18px);
 }
 
 .infoDesc {
-  font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
-  line-height: 1.72;
-  color: rgba(255, 255, 255, 0.52);
+  font-size: clamp(0.875rem, 1vw, 0.9375rem);
+  line-height: 1.70;
+  color: rgba(255, 255, 255, 0.50);
   margin: 0;
 }
 
@@ -71,15 +77,15 @@
 .contactGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(12px, 2vw, 20px);
+  gap: clamp(8px, 1.2vw, 14px);
 }
 
 .contactItem {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
-  padding: clamp(16px, 2vw, 22px);
+  gap: 6px;
+  padding: clamp(12px, 1.5vw, 16px);
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 14px;
@@ -100,8 +106,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.14);
   color: rgba(255, 255, 255, 0.70);
@@ -109,7 +115,7 @@
 }
 
 .contactLabel {
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.01em;
   color: #ffffff;
@@ -117,18 +123,19 @@
 }
 
 .contactValue {
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.46);
   line-height: 1.4;
 }
 
-/* ── Map embed ─────────────────────────────────────── */
+/* ── Map embed — fills remaining height ─────────────── */
 .mapWrap {
   position: relative;
   border-radius: 14px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  aspect-ratio: 16 / 7;
+  flex: 1;
+  min-height: 140px;
 }
 
 .mapIframe {
@@ -183,28 +190,31 @@
 @media (max-width: 860px) {
   .splitGrid {
     grid-template-columns: 1fr;
-    gap: clamp(36px, 6vw, 56px);
+    align-items: start;
+    gap: clamp(28px, 5vw, 48px);
   }
 
-  .infoCol {
-    padding-top: 0;
+  .mapWrap {
+    flex: unset;
+    aspect-ratio: 16 / 7;
+    min-height: unset;
   }
 }
 
 @media (max-width: 580px) {
   .contactGrid {
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: 8px;
   }
 
   .contactItem {
-    padding: 14px;
-    gap: 6px;
+    padding: 12px;
+    gap: 5px;
   }
 
   .contactIcon {
-    width: 36px;
-    height: 36px;
+    width: 30px;
+    height: 30px;
   }
 
   .mapWrap {
