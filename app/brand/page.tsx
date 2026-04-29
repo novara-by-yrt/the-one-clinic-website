@@ -1,4 +1,5 @@
 import BrandHero          from '@/components/brand/BrandHero';
+import BrandVideoSection  from '@/components/brand/BrandVideoSection';
 import LogoCarousel      from '@/components/sections/LogoCarousel';
 import TestimonialVideos from '@/components/sections/TestimonialVideos';
 import BrandTreatments   from '@/components/brand/BrandTreatments';
@@ -14,6 +15,7 @@ export default function BrandPage() {
   return (
     <>
       <BrandHero />
+      <BrandVideoSection />
       <LogoCarousel />
       <TestimonialVideos />
       <BrandTreatments />

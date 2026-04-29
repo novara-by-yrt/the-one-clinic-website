@@ -95,13 +95,6 @@ export default function BrandVideoSection() {
                 <div className={styles.videoGrad} aria-hidden="true" />
               </div>
 
-              {/* ── Card footer ──────────────────────────── */}
-              <div className={styles.cardFooter}>
-                <div className={styles.footerRule} aria-hidden="true" />
-                <h3 className={styles.cardTitle}>{video.title}</h3>
-                <p className={styles.cardDesc}>{video.desc}</p>
-              </div>
-
               {/* ── Hover radial glow ────────────────────── */}
               <div className={styles.cardGlow} aria-hidden="true" />
             </motion.div>
