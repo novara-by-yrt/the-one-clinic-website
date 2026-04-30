@@ -80,6 +80,7 @@ export default function CaseStudies() {
             grabCursor
             centeredSlides
             loop
+            loopAdditionalSlides={SLIDES.length}
             slidesPerView="auto"
             autoplay={{ delay: 3400, disableOnInteraction: false, pauseOnMouseEnter: true }}
             navigation={{ nextEl: `.${styles.navNext}`, prevEl: `.${styles.navPrev}` }}

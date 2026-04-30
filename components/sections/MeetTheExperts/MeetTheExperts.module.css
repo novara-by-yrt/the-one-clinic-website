@@ -340,12 +340,12 @@
 
 .thumbWrap {
   position: relative;
-  width: 62px;
+  width: 96px;
   aspect-ratio: 3 / 4;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
   background: #e4e4e8;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
 }
 
 .thumbImg {
@@ -436,7 +436,7 @@
   }
 
   .thumbWrap {
-    width: 52px;
+    width: 72px;
   }
 }
 
@@ -500,7 +500,7 @@
   }
 
   .thumbWrap {
-    width: 44px;
+    width: 60px;
   }
 
   .thumbName {
