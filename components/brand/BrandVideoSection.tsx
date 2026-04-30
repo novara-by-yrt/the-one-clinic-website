@@ -46,20 +46,19 @@ export default function BrandVideoSection() {
           viewport={VIEWPORT}
         >
           <motion.p className={styles.eyebrow} variants={fadeUp}>
-            Watch &amp; Learn
+            See It For Yourself
           </motion.p>
 
           <motion.h2 className={styles.heading} variants={fadeUp}>
-            The One Clinic<br />
-            <em className={styles.headingEm}>Where Expertise</em>
-            <br className={styles.brMobile} />
-            {' '}Meets Care
+            Our Story &amp;<br />
+            <em className={styles.headingEm}>Real Patient</em>
+            {' '}Results
           </motion.h2>
 
           <motion.div className={styles.rule} variants={fadeUp} aria-hidden="true" />
 
           <motion.p className={styles.subtext} variants={fadeUp}>
-            Experience our holistic approach and the real transformations our clients experience.
+            Hear directly from our founder and the patients whose lives we've helped transform.
           </motion.p>
         </motion.div>
 
