@@ -38,9 +38,9 @@ export default function CaseStudies() {
 
       <div className={styles.inner}>
 
-        {/* ── Left glass panel ── */}
+        {/* ── Centered header ───────────────────────────── */}
         <motion.div
-          className={styles.leftPanel}
+          className={styles.header}
           variants={stagger(0.1)}
           initial="hidden"
           whileInView="show"
@@ -51,14 +51,14 @@ export default function CaseStudies() {
           </motion.p>
 
           <motion.h2 className={styles.heading} variants={fadeUp}>
-            Real<br />Transformations
+            Real Transformations
           </motion.h2>
 
           <motion.div className={styles.rule} variants={fadeUp} aria-hidden="true" />
 
           <motion.p className={styles.desc} variants={fadeUp}>
-            Helping patients achieve confidence and long-term results, one
-            personalised treatment at a time.
+            Helping patients achieve confidence and long-term results,
+            one personalised treatment at a time.
           </motion.p>
 
           <motion.div variants={fadeUp}>
@@ -72,7 +72,7 @@ export default function CaseStudies() {
           </motion.div>
         </motion.div>
 
-        {/* ── Right coverflow carousel ── */}
+        {/* ── Full-width coverflow carousel ─────────────── */}
         <div className={styles.carouselWrap}>
           <Swiper
             modules={[EffectCoverflow, Autoplay, Navigation]}
@@ -84,11 +84,11 @@ export default function CaseStudies() {
             autoplay={{ delay: 3400, disableOnInteraction: false, pauseOnMouseEnter: true }}
             navigation={{ nextEl: `.${styles.navNext}`, prevEl: `.${styles.navPrev}` }}
             coverflowEffect={{
-              rotate: 20,
-              stretch: -8,
-              depth: 160,
+              rotate: 22,
+              stretch: -10,
+              depth: 180,
               modifier: 1,
-              scale: 0.88,
+              scale: 0.86,
               slideShadows: true,
             }}
             className={styles.swiper}
@@ -101,7 +101,7 @@ export default function CaseStudies() {
                     alt={slide.alt}
                     fill
                     className={styles.cardImg}
-                    sizes="(max-width: 768px) 180px, 220px"
+                    sizes="(max-width: 640px) 220px, (max-width: 1024px) 300px, 340px"
                     draggable={false}
                   />
                   <div className={styles.cardOverlay} aria-hidden="true" />
@@ -115,16 +115,16 @@ export default function CaseStudies() {
           </Swiper>
 
           {/* Nav buttons */}
-          <div className={styles.navRow} aria-hidden="true">
+          <div className={styles.navRow}>
             <button className={styles.navPrev} aria-label="Previous result">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M10 3L5 8L10 13" stroke="currentColor" strokeWidth="1.75"
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M11 3.5L5.5 9L11 14.5" stroke="currentColor" strokeWidth="1.8"
                   strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
             <button className={styles.navNext} aria-label="Next result">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M6 3L11 8L6 13" stroke="currentColor" strokeWidth="1.75"
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M7 3.5L12.5 9L7 14.5" stroke="currentColor" strokeWidth="1.8"
                   strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
