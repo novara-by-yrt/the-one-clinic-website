@@ -2,23 +2,27 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Navigation } from 'swiper/modules';
+import { EffectCoverflow } from 'swiper/modules';
+import type { Swiper as SwiperType } from 'swiper';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './CaseStudies.module.css';
 
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
-import 'swiper/css/navigation';
 
 const SLIDES = [
-  { src: '/images/Before and after 1.png', title: 'Lumecca Laser',      alt: 'Lumecca Laser before and after' },
-  { src: '/images/Before and after 2.png', title: 'Endolift',           alt: 'Endolift before and after' },
-  { src: '/images/Before and after 3.png', title: 'Laser Mole Removal', alt: 'Laser Mole Removal before and after' },
+  { src: '/images/Before and after 1.png',                           title: 'Lumecca Laser',      alt: 'Lumecca Laser before and after' },
+  { src: '/images/Before and after 2.png',                           title: 'Endolift',           alt: 'Endolift before and after' },
+  { src: '/images/Home page Endolift before-and-after image..png',   title: 'Endolift',           alt: 'Endolift before and after treatment' },
+  { src: '/images/Before and after 3.png',                           title: 'Laser Mole Removal', alt: 'Laser Mole Removal before and after' },
 ];
 
 export default function CaseStudies() {
+  const swiperRef = useRef<SwiperType | null>(null);
+
   return (
     <section className={styles.section} id="results">
       {/* Background */}
@@ -75,7 +79,7 @@ export default function CaseStudies() {
         {/* ── Full-width coverflow carousel ─────────────── */}
         <div className={styles.carouselWrap}>
           <Swiper
-            modules={[EffectCoverflow, Navigation]}
+            modules={[EffectCoverflow]}
             effect="coverflow"
             initialSlide={1}
             grabCursor
@@ -83,7 +87,7 @@ export default function CaseStudies() {
             loop
             loopAdditionalSlides={SLIDES.length}
             slidesPerView="auto"
-            navigation={{ nextEl: `.${styles.navNext}`, prevEl: `.${styles.navPrev}` }}
+            onSwiper={(swiper) => { swiperRef.current = swiper; }}
             coverflowEffect={{
               rotate: 22,
               stretch: -10,
@@ -115,15 +119,23 @@ export default function CaseStudies() {
             ))}
           </Swiper>
 
-          {/* Nav buttons */}
+          {/* Nav buttons — manual handlers so loop is always infinite */}
           <div className={styles.navRow}>
-            <button className={styles.navPrev} aria-label="Previous result">
+            <button
+              className={styles.navPrev}
+              aria-label="Previous result"
+              onClick={() => swiperRef.current?.slidePrev()}
+            >
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <path d="M11 3.5L5.5 9L11 14.5" stroke="currentColor" strokeWidth="1.8"
                   strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
-            <button className={styles.navNext} aria-label="Next result">
+            <button
+              className={styles.navNext}
+              aria-label="Next result"
+              onClick={() => swiperRef.current?.slideNext()}
+            >
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <path d="M7 3.5L12.5 9L7 14.5" stroke="currentColor" strokeWidth="1.8"
                   strokeLinecap="round" strokeLinejoin="round"/>

@@ -353,11 +353,6 @@
   transform: scale(0.95);
 }
 
-.navPrev:global(.swiper-button-disabled),
-.navNext:global(.swiper-button-disabled) {
-  opacity: 0.25;
-  pointer-events: none;
-}
 
 /* ══════════════════════════════════════════════════════
    RESPONSIVE
