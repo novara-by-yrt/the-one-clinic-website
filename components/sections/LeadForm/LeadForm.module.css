@@ -128,6 +128,69 @@
   line-height: 1.4;
 }
 
+/* ── Social media card ─────────────────────────────── */
+.socialCard {
+  cursor: default;
+  gap: 10px;
+}
+
+.socialCard:hover {
+  transform: none;
+}
+
+.socialLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  padding: 6px 8px;
+  border-radius: 8px;
+  margin-inline: -8px;
+  transition: background 0.2s ease;
+}
+
+.socialLink:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.socialIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.70);
+  flex-shrink: 0;
+}
+
+.socialMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.socialName {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.socialHandle {
+  font-size: 0.6875rem;
+  color: rgba(255, 255, 255, 0.40);
+  line-height: 1;
+}
+
 /* ── Map embed — fills remaining height ─────────────── */
 .mapWrap {
   position: relative;

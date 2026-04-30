@@ -31,21 +31,32 @@ function EmailIcon() {
   );
 }
 
-function WhatsAppIcon() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>
-    </svg>
-  );
-}
-
 function LocationIcon() {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/>
       <circle cx="12" cy="10" r="3"/>
+    </svg>
+  );
+}
+
+function InstagramIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+      <circle cx="12" cy="12" r="4"/>
+      <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+    </svg>
+  );
+}
+
+function FacebookIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
     </svg>
   );
 }
@@ -64,16 +75,25 @@ const CONTACT_ITEMS = [
     href: 'mailto:info@the-oneclinic.net',
   },
   {
-    icon: <WhatsAppIcon />,
-    label: 'WhatsApp',
-    value: '07481 342 374',
-    href: 'https://wa.me/447481342374',
-  },
-  {
     icon: <LocationIcon />,
     label: 'Our Clinic',
     value: '36 DeMontfort Street, Leicester LE1 7GS',
     href: MAPS_URL,
+  },
+];
+
+const SOCIAL_LINKS = [
+  {
+    icon: <InstagramIcon />,
+    label: 'Instagram',
+    handle: '@theoneclinic.uk',
+    href: 'https://www.instagram.com/theoneclinic.uk/',
+  },
+  {
+    icon: <FacebookIcon />,
+    label: 'Facebook',
+    handle: 'theoneclinic.uk',
+    href: 'https://www.facebook.com/theoneclinic.uk',
   },
 ];
 
@@ -128,12 +148,12 @@ export default function LeadForm() {
             transition={{ duration: 0.85, ease: SLIDE_EASE, delay: 0.12 }}
           >
             <p className={styles.infoDesc}>
-              We're here to help. Whether you have a question about a treatment,
-              want to book a consultation, or simply want to get in touch — our
-              team will get back to you promptly.
+              Reach us by phone, email, or visit us at the clinic. You can also
+              follow us on social media for the latest treatments, patient results,
+              and wellness tips from our team.
             </p>
 
-            {/* Contact info 2×2 grid */}
+            {/* Contact info grid */}
             <motion.div
               className={styles.contactGrid}
               variants={stagger(0.1)}
@@ -141,6 +161,7 @@ export default function LeadForm() {
               whileInView="show"
               viewport={VIEWPORT}
             >
+              {/* Standard contact cards */}
               {CONTACT_ITEMS.map((item) => (
                 <motion.a
                   key={item.label}
@@ -155,6 +176,29 @@ export default function LeadForm() {
                   <span className={styles.contactValue}>{item.value}</span>
                 </motion.a>
               ))}
+
+              {/* Social media card */}
+              <motion.div className={`${styles.contactItem} ${styles.socialCard}`} variants={fadeUp}>
+                <span className={styles.contactLabel}>Follow Us</span>
+                <div className={styles.socialLinks}>
+                  {SOCIAL_LINKS.map((s) => (
+                    <a
+                      key={s.label}
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.socialLink}
+                      aria-label={`The One Clinic on ${s.label}`}
+                    >
+                      <div className={styles.socialIcon}>{s.icon}</div>
+                      <div className={styles.socialMeta}>
+                        <span className={styles.socialName}>{s.label}</span>
+                        <span className={styles.socialHandle}>{s.handle}</span>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </motion.div>
             </motion.div>
 
             {/* Map embed */}
