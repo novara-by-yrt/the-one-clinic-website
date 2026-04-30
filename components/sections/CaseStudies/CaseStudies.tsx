@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Autoplay, Navigation } from 'swiper/modules';
+import { EffectCoverflow, Navigation } from 'swiper/modules';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './CaseStudies.module.css';
 
@@ -75,14 +75,13 @@ export default function CaseStudies() {
         {/* ── Full-width coverflow carousel ─────────────── */}
         <div className={styles.carouselWrap}>
           <Swiper
-            modules={[EffectCoverflow, Autoplay, Navigation]}
+            modules={[EffectCoverflow, Navigation]}
             effect="coverflow"
             grabCursor
             centeredSlides
             loop
             loopAdditionalSlides={SLIDES.length}
             slidesPerView="auto"
-            autoplay={{ delay: 3400, disableOnInteraction: false, pauseOnMouseEnter: true }}
             navigation={{ nextEl: `.${styles.navNext}`, prevEl: `.${styles.navPrev}` }}
             coverflowEffect={{
               rotate: 22,

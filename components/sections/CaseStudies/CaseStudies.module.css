@@ -198,6 +198,7 @@
   height: 100%;
   border-radius: 22px;
   overflow: hidden;
+  background: #0d0d0d;
   filter: brightness(0.72) saturate(0.55);
   border: 1px solid rgba(255, 255, 255, 0.07);
   box-shadow:
@@ -241,13 +242,8 @@
 }
 
 .cardImg {
-  object-fit: cover;
-  object-position: center top;
-  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.slide:global(.swiper-slide-active) .card:hover .cardImg {
-  transform: scale(1.04);
+  object-fit: contain;
+  object-position: center center;
 }
 
 .cardOverlay {
