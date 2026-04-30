@@ -69,7 +69,6 @@
   display: flex;
   align-items: center;
   width: max-content;
-  gap: clamp(32px, 5vw, 64px);
   user-select: none;
   -webkit-user-select: none;
   animation: logoScroll 28s linear infinite;
@@ -80,11 +79,15 @@
 }
 
 /* ── Individual logo slot ───────────────────────────────────────── */
+/* padding-right (not gap) so each slot owns its trailing space —
+   this makes both halves of the duplicated track exactly equal width,
+   which is required for a seamless translateX(-50%) loop. */
 .logoWrap {
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-right: clamp(32px, 5vw, 64px);
 }
 
 .logoWrap img {
@@ -98,8 +101,8 @@
     padding-block: 12px !important;
   }
 
-  .track {
-    gap: clamp(24px, 5vw, 40px);
+  .logoWrap {
+    padding-right: clamp(24px, 5vw, 40px);
   }
 
   .labelLine {
