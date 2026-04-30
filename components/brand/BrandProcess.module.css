@@ -316,121 +316,85 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   VERTICAL TIMELINE
+   EDITORIAL PILLAR CARDS
 ══════════════════════════════════════════════════════ */
-.timeline {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.pillars {
   display: flex;
   flex-direction: column;
+  gap: 14px;
+}
+
+.pillarItem {
+  position: relative;
+  display: flex;
   gap: 0;
-  position: relative;
-}
-
-.stepItem {
-  display: flex;
-  gap: 20px;
-  align-items: stretch;
   cursor: default;
-  position: relative;
 }
 
-/* ── Left gutter: circle + connector ────────────────── */
-.stepLeft {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Left accent bar */
+.pillarAccent {
+  width: 3px;
+  border-radius: 2px;
+  background: rgba(8, 8, 10, 0.08);
   flex-shrink: 0;
-  width: 46px;
+  margin-right: 20px;
+  transition: background 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.stepCircle {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(8, 8, 10, 0.1);
-  background: linear-gradient(145deg, #f7f4f0 0%, #eee9e1 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: rgba(8, 8, 10, 0.36);
-  flex-shrink: 0;
-  z-index: 1;
-  box-shadow:
-    0 2px 10px rgba(0, 0, 0, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.85);
-  transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+.isActive .pillarAccent {
+  background: linear-gradient(to bottom, #b87c45, #d4975e);
+  box-shadow: 0 0 12px rgba(184, 124, 69, 0.38);
 }
 
-.isActive .stepCircle {
-  background: linear-gradient(145deg, #1e1e30 0%, #080810 100%);
-  border-color: transparent;
-  color: #ffffff;
-  box-shadow:
-    0 12px 40px rgba(8, 8, 10, 0.3),
-    0 4px 12px rgba(8, 8, 10, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-/* Elegant gradient connector */
-.connector {
+.pillarCard {
   flex: 1;
-  width: 2px;
-  background: linear-gradient(
-    to bottom,
-    rgba(8, 8, 10, 0.18) 0%,
-    rgba(8, 8, 10, 0.09) 55%,
-    rgba(8, 8, 10, 0.02) 100%
-  );
-  min-height: 28px;
-  border-radius: 1px;
-  margin-block: 1px;
-}
-
-/* ── Right: premium floating panel ──────────────────── */
-.stepCard {
-  flex: 1;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.55);
   backdrop-filter: blur(28px) saturate(1.6);
   -webkit-backdrop-filter: blur(28px) saturate(1.6);
-  border: 1px solid rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.9);
   border-radius: 20px;
-  padding: clamp(16px, 2vw, 22px) clamp(18px, 2.5vw, 26px);
-  margin-bottom: 16px;
+  padding: clamp(18px, 2.2vw, 26px) clamp(20px, 2.5vw, 28px);
   box-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.052),
-    0 1px 5px rgba(0, 0, 0, 0.035),
+    0 4px 20px rgba(0, 0, 0, 0.046),
+    0 1px 4px rgba(0, 0, 0, 0.032),
     inset 0 1px 0 rgba(255, 255, 255, 1);
   transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.isActive .stepCard {
-  background: rgba(255, 255, 255, 0.94);
+.isActive .pillarCard {
+  background: rgba(255, 255, 255, 0.96);
   border-color: rgba(255, 255, 255, 1);
   box-shadow:
-    0 24px 68px rgba(0, 0, 0, 0.12),
-    0 8px 24px rgba(0, 0, 0, 0.07),
+    0 20px 56px rgba(0, 0, 0, 0.11),
+    0 6px 20px rgba(0, 0, 0, 0.065),
     inset 0 1px 0 rgba(255, 255, 255, 1);
-  transform: translateX(8px) translateY(-2px);
+  transform: translateX(6px) translateY(-2px);
 }
 
-.stepTitle {
-  font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
+.pillarTag {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(184, 124, 69, 0.9);
+  margin: 0 0 8px;
+}
+
+.pillarHeading {
+  font-size: clamp(0.9375rem, 1.15vw, 1.0625rem);
   font-weight: 700;
   letter-spacing: -0.025em;
   color: #080810;
-  margin: 0 0 7px;
-  line-height: 1.25;
+  margin: 0 0 9px;
+  line-height: 1.28;
 }
 
-.stepDesc {
+.pillarBody {
   font-size: clamp(0.8125rem, 0.9vw, 0.9375rem);
-  color: rgba(8, 8, 10, 0.5);
-  line-height: 1.72;
+  color: rgba(8, 8, 10, 0.52);
+  line-height: 1.74;
   margin: 0;
 }
 
@@ -492,14 +456,14 @@
     display: none;
   }
 
-  .stepCard {
-    margin-bottom: 12px;
-  }
-
   .stepLabel {
     bottom: auto;
     top: 8%;
     left: 5%;
+  }
+
+  .pillarAccent {
+    margin-right: 14px;
   }
 }
 

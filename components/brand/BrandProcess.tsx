@@ -8,26 +8,16 @@ import Container from '@/components/ui/Container';
 import { fadeUp, VIEWPORT } from '@/lib/motion';
 import styles from './BrandProcess.module.css';
 
-const STEPS = [
+const PILLARS = [
   {
-    number: '01',
-    title:       'Consultation',
-    description: 'A private, no-obligation consultation with a qualified doctor to discuss your health, concerns, and goals.',
+    tag:     'Our Mission',
+    heading: 'A Fresh Perspective on Aesthetics & Well-being',
+    body:    'We bring an honest, open approach to aesthetic medicine and health in Leicester — working closely with every patient to help them achieve their goals. Our mission is to empower you to become the version of yourself you are truly happy with.',
   },
   {
-    number: '02',
-    title:       'Assessment',
-    description: 'A thorough clinical assessment to understand your full medical picture and identify the right approach.',
-  },
-  {
-    number: '03',
-    title:       'Personalised Treatment Plan',
-    description: 'A plan built specifically for you, combining the right treatments, timeline, and support for your needs.',
-  },
-  {
-    number: '04',
-    title:       'Ongoing Care & Results',
-    description: 'Regular check-ins, progress reviews, and ongoing clinical support to ensure lasting, meaningful results.',
+    tag:     'Our Clinic',
+    heading: 'A Space Built Entirely Around You',
+    body:    'Step into our state-of-the-art clinic and discover modern medical equipment within a relaxing, luxurious setting. Every visit is a bespoke experience centred on your needs — delivering innovative treatments using the most advanced techniques available.',
   },
 ];
 
@@ -46,33 +36,30 @@ const HEADER_VARIANTS = {
 };
 
 export default function BrandProcess() {
-  const [hoveredStep, setHoveredStep] = useState<number | null>(null);
-  const [autoSlide,   setAutoSlide]   = useState(0);
-  const [seqIdx,      setSeqIdx]      = useState(-1);
+  const [hoveredPillar, setHoveredPillar] = useState<number | null>(null);
+  const [autoSlide,     setAutoSlide]     = useState(0);
+  const [seqIdx,        setSeqIdx]        = useState(-1);
 
-  const stepsRef = useRef<HTMLOListElement>(null);
-  const inView   = useInView(stepsRef, { once: true, amount: 0.25 });
+  const pillarsRef = useRef<HTMLDivElement>(null);
+  const inView     = useInView(pillarsRef, { once: true, amount: 0.25 });
 
-  /* Active image: step hover overrides auto-advance */
-  const activeSlide  = hoveredStep !== null ? hoveredStep % SLIDES.length : autoSlide;
+  const activeSlide  = hoveredPillar !== null ? hoveredPillar % SLIDES.length : autoSlide;
   const previewSlide = (activeSlide + 1) % SLIDES.length;
 
-  /* Auto-advance (paused while a step is hovered) */
   useEffect(() => {
-    if (hoveredStep !== null) return;
+    if (hoveredPillar !== null) return;
     const t = setInterval(() => setAutoSlide(i => (i + 1) % SLIDES.length), INTERVAL);
     return () => clearInterval(t);
-  }, [hoveredStep]);
+  }, [hoveredPillar]);
 
-  /* One-shot entrance sequence on scroll-in */
   useEffect(() => {
     if (!inView) return;
     let idx = 0;
     let handle: ReturnType<typeof setTimeout>;
     function next() {
       setSeqIdx(idx++);
-      if (idx < STEPS.length) handle = setTimeout(next, 620);
-      else handle = setTimeout(() => setSeqIdx(-1), 620);
+      if (idx < PILLARS.length) handle = setTimeout(next, 680);
+      else handle = setTimeout(() => setSeqIdx(-1), 680);
     }
     handle = setTimeout(next, 300);
     return () => clearTimeout(handle);
@@ -95,10 +82,9 @@ export default function BrandProcess() {
           >
             <div className={styles.mediaCanvas}>
 
-              {/* ── Atmospheric warm halo behind composition ─ */}
               <div className={styles.mediaHalo} aria-hidden="true" />
 
-              {/* ── Main dominant image ──────────────────── */}
+              {/* Main dominant image */}
               <motion.div
                 className={styles.imgMain}
                 whileHover={{ scale: 1.025 }}
@@ -126,7 +112,7 @@ export default function BrandProcess() {
                 <div className={styles.imgGrad} aria-hidden="true" />
               </motion.div>
 
-              {/* ── Secondary stacked preview image ──────── */}
+              {/* Secondary preview image */}
               <motion.div
                 className={styles.imgSecondary}
                 initial={{ opacity: 0, y: 28 }}
@@ -154,7 +140,7 @@ export default function BrandProcess() {
                 </AnimatePresence>
               </motion.div>
 
-              {/* ── Floating stat card ───────────────────── */}
+              {/* Floating stat card */}
               <motion.div
                 className={styles.floatStat}
                 initial={{ opacity: 0, y: 18 }}
@@ -167,7 +153,7 @@ export default function BrandProcess() {
                 <p className={styles.floatLabel}>Patients treated</p>
               </motion.div>
 
-              {/* ── Floating glass label chips ───────────── */}
+              {/* Floating chip */}
               <motion.div
                 className={`${styles.floatChip} ${styles.floatChipJourney}`}
                 initial={{ opacity: 0, x: 18 }}
@@ -176,13 +162,13 @@ export default function BrandProcess() {
                 transition={{ duration: 0.65, ease: EASE, delay: 0.72 }}
               >
                 <span className={styles.chipDot} aria-hidden="true" />
-                Personalised Journey
+                Doctor-Led Care
               </motion.div>
 
-              {/* ── Active step label ─────────────────────── */}
+              {/* Active pillar label */}
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={hoveredStep ?? 'idle'}
+                  key={hoveredPillar ?? 'idle'}
                   className={styles.stepLabel}
                   initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -191,12 +177,12 @@ export default function BrandProcess() {
                 >
                   <span className={styles.stepLabelDot} aria-hidden="true" />
                   <span className={styles.stepLabelText}>
-                    {hoveredStep !== null ? STEPS[hoveredStep].title : 'Our Process'}
+                    {hoveredPillar !== null ? PILLARS[hoveredPillar].tag : 'The One Clinic'}
                   </span>
                 </motion.div>
               </AnimatePresence>
 
-              {/* ── Pagination dots ───────────────────────── */}
+              {/* Pagination dots */}
               <div className={styles.dots} role="tablist" aria-label="Clinic image slideshow">
                 {SLIDES.map((_, i) => (
                   <button
@@ -214,7 +200,7 @@ export default function BrandProcess() {
           </motion.div>
 
           {/* ══════════════════════════════════════════════
-              RIGHT — Header + vertical timeline
+              RIGHT — Header + two editorial pillars
           ══════════════════════════════════════════════ */}
           <div className={styles.textCol}>
 
@@ -226,52 +212,41 @@ export default function BrandProcess() {
               whileInView="show"
               viewport={VIEWPORT}
             >
-              <motion.p className={styles.eyebrow} variants={fadeUp}>The Journey</motion.p>
-              <motion.h2 className={styles.heading} variants={fadeUp}>How It Works</motion.h2>
+              <motion.p className={styles.eyebrow} variants={fadeUp}>About Us</motion.p>
+              <motion.h2 className={styles.heading} variants={fadeUp}>Our Philosophy</motion.h2>
               <motion.p className={styles.subtext} variants={fadeUp}>
-                From your first visit to long-term results, here&apos;s what to expect
-                when you choose The One Clinic.
+                One Clinic Leicester — where a fresh approach to aesthetics meets
+                genuine, lasting care for every patient.
               </motion.p>
             </motion.div>
 
-            {/* Vertical timeline */}
-            <ol
-              className={styles.timeline}
-              ref={stepsRef}
-              aria-label="Treatment process steps"
-            >
-              {STEPS.map((step, i) => {
-                const isActive = hoveredStep === i ||
-                  (hoveredStep === null && seqIdx === i);
+            {/* Editorial pillar cards */}
+            <div className={styles.pillars} ref={pillarsRef}>
+              {PILLARS.map((pillar, i) => {
+                const isActive = hoveredPillar === i ||
+                  (hoveredPillar === null && seqIdx === i);
 
                 return (
-                  <motion.li
-                    key={step.number}
-                    className={`${styles.stepItem} ${isActive ? styles.isActive : ''}`}
+                  <motion.div
+                    key={pillar.tag}
+                    className={`${styles.pillarItem} ${isActive ? styles.isActive : ''}`}
                     initial={{ opacity: 0, x: 30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: '-40px 0px' }}
-                    transition={{ duration: 0.7, ease: EASE, delay: i * 0.11 }}
-                    onMouseEnter={() => setHoveredStep(i)}
-                    onMouseLeave={() => setHoveredStep(null)}
+                    transition={{ duration: 0.7, ease: EASE, delay: i * 0.15 }}
+                    onMouseEnter={() => setHoveredPillar(i)}
+                    onMouseLeave={() => setHoveredPillar(null)}
                   >
-                    {/* ── Left: circle + connector line ──── */}
-                    <div className={styles.stepLeft} aria-hidden="true">
-                      <div className={styles.stepCircle}>{step.number}</div>
-                      {i < STEPS.length - 1 && (
-                        <div className={styles.connector} />
-                      )}
+                    <div className={styles.pillarAccent} aria-hidden="true" />
+                    <div className={styles.pillarCard}>
+                      <span className={styles.pillarTag}>{pillar.tag}</span>
+                      <h3 className={styles.pillarHeading}>{pillar.heading}</h3>
+                      <p className={styles.pillarBody}>{pillar.body}</p>
                     </div>
-
-                    {/* ── Right: glass card ─────────────── */}
-                    <div className={styles.stepCard}>
-                      <h3 className={styles.stepTitle}>{step.title}</h3>
-                      <p className={styles.stepDesc}>{step.description}</p>
-                    </div>
-                  </motion.li>
+                  </motion.div>
                 );
               })}
-            </ol>
+            </div>
 
           </div>
         </div>
