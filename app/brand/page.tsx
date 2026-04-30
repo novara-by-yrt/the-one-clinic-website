@@ -1,10 +1,10 @@
 import BrandHero          from '@/components/brand/BrandHero';
 import BrandVideoSection  from '@/components/brand/BrandVideoSection';
 import LogoCarousel      from '@/components/sections/LogoCarousel';
-import TestimonialVideos from '@/components/sections/TestimonialVideos';
 import BrandTreatments   from '@/components/brand/BrandTreatments';
-import Testimonials      from '@/components/sections/Testimonials';
 import BrandProcess      from '@/components/brand/BrandProcess';
+import Testimonials      from '@/components/sections/Testimonials';
+import TestimonialVideos from '@/components/sections/TestimonialVideos';
 import MeetTheExperts    from '@/components/sections/MeetTheExperts';
 import CaseStudies       from '@/components/sections/CaseStudies';
 import LeadForm          from '@/components/sections/LeadForm';
@@ -16,10 +16,10 @@ export default function BrandPage() {
       <BrandHero />
       <LogoCarousel />
       <BrandVideoSection />
-      <TestimonialVideos />
       <BrandTreatments />
-      <Testimonials />
       <BrandProcess />
+      <Testimonials />
+      <TestimonialVideos />
       <MeetTheExperts />
       <CaseStudies />
       <LeadForm />
