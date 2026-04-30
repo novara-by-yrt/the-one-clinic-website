@@ -10,7 +10,26 @@ import styles from './LeadForm.module.css';
 const SLIDE_EASE = [0.25, 0.1, 0.25, 1] as const;
 
 const MAPS_URL  = 'https://www.google.com/maps/place/The+One+Clinic+-+Leicester/@52.6272773,-1.1274381,17z';
-const EMBED_URL = 'https://maps.google.com/maps?q=36+De+Montfort+St,+Leicester+LE1+7GS,+United+Kingdom&output=embed';
+const EMBED_URL = 'https://maps.google.com/maps?q=52.6272773,-1.1274381&output=embed';
+
+function PhoneIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.03 1.17 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/>
+    </svg>
+  );
+}
+
+function EmailIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="2" y="4" width="20" height="16" rx="2"/>
+      <path d="M2 7l10 7 10-7"/>
+    </svg>
+  );
+}
 
 function InstagramIcon() {
   return (
@@ -33,8 +52,8 @@ function FacebookIcon() {
 }
 
 const CONTACT_ITEMS = [
-  { value: '07481 342 374',        href: 'tel:07481342374' },
-  { value: 'info@the-oneclinic.net', href: 'mailto:info@the-oneclinic.net' },
+  { icon: <PhoneIcon />, value: '07481 342 374',          href: 'tel:07481342374' },
+  { icon: <EmailIcon />, value: 'info@the-oneclinic.net', href: 'mailto:info@the-oneclinic.net' },
 ];
 
 const HOURS = [
@@ -122,7 +141,7 @@ export default function LeadForm() {
               whileInView="show"
               viewport={VIEWPORT}
             >
-              {/* Phone + Email — no icons, value is the title */}
+              {/* Phone + Email */}
               {CONTACT_ITEMS.map((item) => (
                 <motion.a
                   key={item.value}
@@ -130,6 +149,7 @@ export default function LeadForm() {
                   className={styles.contactItem}
                   variants={fadeUp}
                 >
+                  <div className={styles.contactIconWrap}>{item.icon}</div>
                   <span className={styles.contactValue}>{item.value}</span>
                 </motion.a>
               ))}
