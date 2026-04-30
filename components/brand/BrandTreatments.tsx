@@ -142,7 +142,7 @@ export default function BrandTreatments() {
             effect="coverflow"
             grabCursor
             centeredSlides
-            loop={false}
+            loop
             slidesPerView="auto"
             autoplay={{ delay: 3400, disableOnInteraction: false, pauseOnMouseEnter: true }}
             coverflowEffect={{
@@ -155,7 +155,7 @@ export default function BrandTreatments() {
             }}
             className={styles.swiper}
             onSwiper={(swiper) => { swiperRef.current = swiper; }}
-            onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+            onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
           >
             {SLIDES.map((slide, i) => (
               <SwiperSlide key={i} className={styles.slide}>
