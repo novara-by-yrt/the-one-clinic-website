@@ -77,7 +77,7 @@ const CONTACT_ITEMS = [
   {
     icon: <LocationIcon />,
     label: 'Our Clinic',
-    value: '36 DeMontfort Street, Leicester LE1 7GS',
+    value: '36 DeMontfort St, Leicester',
     href: MAPS_URL,
   },
 ];

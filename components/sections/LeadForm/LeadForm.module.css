@@ -131,7 +131,7 @@
 /* ── Social media card ─────────────────────────────── */
 .socialCard {
   cursor: default;
-  gap: 10px;
+  gap: 6px;
 }
 
 .socialCard:hover {
@@ -141,18 +141,18 @@
 .socialLinks {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
   width: 100%;
 }
 
 .socialLink {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   text-decoration: none;
-  padding: 6px 8px;
-  border-radius: 8px;
-  margin-inline: -8px;
+  padding: 3px 6px;
+  border-radius: 7px;
+  margin-inline: -6px;
   transition: background 0.2s ease;
 }
 
@@ -164,8 +164,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.14);
   color: rgba(255, 255, 255, 0.70);
@@ -186,7 +186,7 @@
 }
 
 .socialHandle {
-  font-size: 0.6875rem;
+  font-size: 0.625rem;
   color: rgba(255, 255, 255, 0.40);
   line-height: 1;
 }
