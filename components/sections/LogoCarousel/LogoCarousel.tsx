@@ -8,6 +8,7 @@ import styles from './LogoCarousel.module.css';
 const LOGOS = [
   { src: '/images/imgi_34_Hydra.png',                               alt: 'Hydra',                  w: 400,  h: 160 },
   { src: '/images/imgi_35_Untitled-3-5-e1749493207346.png',         alt: 'The One Clinic',          w: 400,  h: 280 },
+  { src: '/images/imgi_39_cqc-logo.png',                            alt: 'Care Quality Commission', w: 300,  h: 150 },
   { src: '/images/imgi_78_endolift-768x474.webp',                   alt: 'Endolift',                w: 768,  h: 474 },
   { src: '/images/imgi_86_AM_Awards_2025-black_FINALIST-1024x704.png', alt: 'AM Awards 2025 Finalist', w: 1024, h: 704 },
   { src: '/images/imgi_96_Logo-InMode2-1536x630.png',               alt: 'InMode',                  w: 1536, h: 630 },
