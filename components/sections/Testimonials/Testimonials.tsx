@@ -293,20 +293,6 @@ export default function Testimonials() {
 
         {/* ── Patient video stories ─────────────────────── */}
         <div className={styles.patientsSection}>
-          <motion.div
-            className={styles.patientsHeader}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.patientsEyebrow} variants={fadeUp}>Patient Stories</motion.p>
-            <motion.h3 className={styles.patientsHeading} variants={fadeUp}>Hear From Our Patients</motion.h3>
-            <motion.p className={styles.patientsSubtext} variants={fadeUp}>
-              Real people, real results, in their own words.
-            </motion.p>
-          </motion.div>
-
           {/* Desktop: 3-column portrait grid */}
           <motion.div
             className={styles.videosGrid}
