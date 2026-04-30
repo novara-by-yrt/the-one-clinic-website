@@ -45,14 +45,14 @@
   align-items: center;
   gap: 7px;
   padding: 8px 18px;
-  background: rgba(184, 124, 69, 0.14);
-  border: 1px solid rgba(184, 124, 69, 0.32);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 50px;
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #d4975e;
+  color: rgba(255, 255, 255, 0.75);
 }
 
 /* ── Heading ────────────────────────────── */
@@ -66,7 +66,8 @@
 }
 
 .headingAccent {
-  color: #d4975e;
+  color: rgba(255, 255, 255, 0.55);
+  font-style: italic;
 }
 
 .subtext {
@@ -131,7 +132,7 @@
   font-family: Georgia, 'Times New Roman', serif;
   font-size: 5.5rem;
   line-height: 1;
-  color: rgba(184, 124, 69, 0.20);
+  color: rgba(255, 255, 255, 0.10);
   pointer-events: none;
   user-select: none;
   letter-spacing: -0.02em;
@@ -275,7 +276,7 @@
 }
 
 .dotActive {
-  background: #d4975e;
+  background: #ffffff;
   width: 24px;
   border-radius: 100px;
 }
@@ -319,9 +320,8 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #d4975e;
+  background: rgba(255, 255, 255, 0.55);
   flex-shrink: 0;
-  box-shadow: 0 0 6px rgba(212, 151, 94, 0.65);
 }
 
 .videoInner {
