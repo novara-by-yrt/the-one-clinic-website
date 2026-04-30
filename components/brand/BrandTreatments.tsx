@@ -25,7 +25,7 @@ const SLIDES = [
   { src: '/images/Medical Insurance Exam.jpg',  title: 'Medical Insurance',  href: '/treatments/medical-insurance' },
   { src: '/images/Dermatologist.jpg',           title: 'Dermatologist',      href: '/treatments/dermatologist' },
   { src: "/images/Men's Health.jpg",            title: "Men's Health",       href: '/treatments/mens-health' },
-  { src: "/images/Women's Health.jpg",          title: "Women's Health",     href: '/treatments/womens-health' },
+  { src: "/images/Women's Heath img.png",        title: "Women's Health",     href: '/treatments/womens-health' },
   { src: '/images/Menopause & HRT.jpg',         title: 'Menopause & HRT',    href: '/treatments/menopause-hrt' },
   { src: '/images/Profhilo (2).jpg',            title: 'Profhilo',           href: '/treatments/profhilo' },
   { src: '/NCTF 135 HA.jpg',                    title: 'NCTF 135 HA',        href: '/treatments/nctf-135-ha' },
