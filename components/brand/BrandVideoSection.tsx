@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Script from 'next/script';
 import { motion } from 'framer-motion';
 import Section from '@/components/ui/Section';
@@ -20,7 +21,29 @@ const VIDEOS = [
   },
 ];
 
+declare global {
+  interface Window {
+    _wq: Array<{ id: string; onReady: (v: unknown) => void }>;
+  }
+}
+
 export default function BrandVideoSection() {
+  const [played, setPlayed] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    window._wq = window._wq || [];
+    VIDEOS.forEach(({ id }) => {
+      window._wq.push({
+        id,
+        onReady: (video: any) => {
+          video.bind('play', () => {
+            setPlayed(prev => new Set([...prev, id]));
+          });
+        },
+      });
+    });
+  }, []);
+
   return (
     <Section variant="dark" data-section-theme="dark" className={styles.section}>
       <Script src="https://fast.wistia.net/player.js" strategy="lazyOnload" />
@@ -66,8 +89,11 @@ export default function BrandVideoSection() {
               viewport={VIEWPORT}
               transition={{ duration: 0.8, delay: i * 0.15, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              {/* Floating label chip */}
-              <div className={styles.labelChip}>
+              {/* Floating label chip — fades out when video starts playing */}
+              <div
+                className={`${styles.labelChip} ${played.has(video.id) ? styles.labelChipHidden : ''}`}
+                aria-hidden={played.has(video.id) ? true : undefined}
+              >
                 <span className={styles.labelDot} aria-hidden="true" />
                 {video.label}
               </div>

@@ -123,7 +123,7 @@ const SLIDE = {
 const TRANSITION = { duration: 0.42, ease: [0.25, 0.1, 0.25, 1] as const };
 
 /* ── Component ──────────────────────────────────────────────── */
-export default function Testimonials() {
+export default function Testimonials({ showVideos = false }: { showVideos?: boolean }) {
   /* Reviews carousel */
   const [page, setPage] = useState(0);
   const [dir,  setDir]  = useState(1);
@@ -291,8 +291,8 @@ export default function Testimonials() {
           ))}
         </div>
 
-        {/* ── Patient video stories ─────────────────────── */}
-        <div className={styles.patientsSection}>
+        {/* ── Patient video stories — home/brand page only ── */}
+        {showVideos && <div className={styles.patientsSection}>
           {/* Desktop: 3-column portrait grid */}
           <motion.div
             className={styles.videosGrid}
@@ -376,7 +376,7 @@ export default function Testimonials() {
               ))}
             </div>
           </div>
-        </div>
+        </div>}
 
       </Container>
     </Section>

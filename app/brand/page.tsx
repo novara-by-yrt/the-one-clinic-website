@@ -17,7 +17,7 @@ export default function BrandPage() {
       <BrandVideoSection />
       <BrandTreatments />
       <BrandProcess />
-      <Testimonials />
+      <Testimonials showVideos />
       <MeetTheExperts />
       <CaseStudies />
       <LeadForm />
