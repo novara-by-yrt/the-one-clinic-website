@@ -180,41 +180,6 @@ export default function BrandTreatments() {
               </motion.div>
             </AnimatePresence>
 
-            {/* Nav row */}
-            <div className={styles.navRow} aria-label="Carousel controls">
-              <button
-                className={styles.navBtn}
-                onClick={() => swiperRef.current?.slidePrev()}
-                aria-label="Previous treatment"
-              >
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M10 3L5 8L10 13" stroke="currentColor" strokeWidth="1.75"
-                    strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </button>
-
-              <div className={styles.progressTrack} aria-hidden="true">
-                <div
-                  className={styles.progressFill}
-                  style={{ width: `${((activeIndex + 1) / SLIDES.length) * 100}%` }}
-                />
-              </div>
-
-              <button
-                className={styles.navBtn}
-                onClick={() => swiperRef.current?.slideNext()}
-                aria-label="Next treatment"
-              >
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M6 3L11 8L6 13" stroke="currentColor" strokeWidth="1.75"
-                    strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </button>
-
-              <span className={styles.slideCount} aria-live="polite">
-                {String(activeIndex + 1).padStart(2, '0')} / {String(SLIDES.length).padStart(2, '0')}
-              </span>
-            </div>
 
             <Link href="/treatments" className={styles.exploreLink}>
               Explore All Treatments
