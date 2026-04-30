@@ -187,8 +187,9 @@
 }
 
 .floatChipJourney {
-  bottom: 36%;
-  right: -4%;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .chipDot {
@@ -420,8 +421,9 @@
   }
 
   .floatChipJourney {
-    bottom: 32%;
-    right: 2%;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 

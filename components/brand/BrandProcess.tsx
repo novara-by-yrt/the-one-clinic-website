@@ -162,7 +162,7 @@ export default function BrandProcess() {
                 transition={{ duration: 0.65, ease: EASE, delay: 0.72 }}
               >
                 <span className={styles.chipDot} aria-hidden="true" />
-                Doctor-Led Care
+                Expert-led Care
               </motion.div>
 
               {/* Active pillar label */}
@@ -182,19 +182,6 @@ export default function BrandProcess() {
                 </motion.div>
               </AnimatePresence>
 
-              {/* Pagination dots */}
-              <div className={styles.dots} role="tablist" aria-label="Clinic image slideshow">
-                {SLIDES.map((_, i) => (
-                  <button
-                    key={i}
-                    className={`${styles.dot} ${i === activeSlide ? styles.dotActive : ''}`}
-                    onClick={() => setAutoSlide(i)}
-                    role="tab"
-                    aria-selected={i === activeSlide}
-                    aria-label={`Image ${i + 1} of ${SLIDES.length}`}
-                  />
-                ))}
-              </div>
 
             </div>
           </motion.div>
