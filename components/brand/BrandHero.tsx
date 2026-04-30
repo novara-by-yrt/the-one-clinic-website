@@ -265,7 +265,6 @@ export default function BrandHero() {
                       className={styles.trustImage}
                     />
                   </div>
-                  <p className={styles.trustAwardLabel}>Awards 2025 Finalist</p>
                 </motion.div>
 
                 {/* CQC Registered */}
@@ -282,7 +281,6 @@ export default function BrandHero() {
                       className={styles.trustImage}
                     />
                   </div>
-                  <p className={styles.trustAwardLabel}>CQC Regulated</p>
                 </motion.div>
 
               </div>

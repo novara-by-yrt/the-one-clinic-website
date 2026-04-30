@@ -306,7 +306,7 @@
 
 .trustImageWrap {
   width: 100%;
-  height: 38px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -460,11 +460,7 @@
   }
 
   .trustImageWrap {
-    height: 32px;
-  }
-
-  .trustAwardLabel {
-    font-size: 0.5625rem;
+    height: 40px;
   }
 
   .scrollIndicator {
@@ -483,6 +479,6 @@
   }
 
   .trustImageWrap {
-    height: 28px;
+    height: 34px;
   }
 }
