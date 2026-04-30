@@ -4,11 +4,11 @@
 .section {
   position: relative;
   background: #0d1520 !important;
-  padding-block: clamp(64px, 8vw, 104px);
+  padding-block: clamp(52px, 7vw, 88px);
   overflow: hidden;
 }
 
-/* ── Ambient background glows ─────────────────────────────────── */
+/* ── Ambient glows ────────────────────────────────────────────── */
 .glowLeft {
   position: absolute;
   top: 10%;
@@ -17,7 +17,7 @@
   height: 70%;
   background: radial-gradient(
     ellipse at center,
-    rgba(110, 80, 55, 0.14) 0%,
+    rgba(80, 100, 140, 0.10) 0%,
     transparent 68%
   );
   pointer-events: none;
@@ -32,7 +32,7 @@
   height: 70%;
   background: radial-gradient(
     ellipse at center,
-    rgba(50, 65, 110, 0.11) 0%,
+    rgba(50, 65, 110, 0.08) 0%,
     transparent 68%
   );
   pointer-events: none;
@@ -45,19 +45,30 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   HEADER — editorial, large, centered
+   SPLIT LAYOUT — video left / text right
 ══════════════════════════════════════════════════════ */
-.header {
-  text-align: center;
-  max-width: 680px;
-  margin-inline: auto;
-  margin-bottom: clamp(36px, 5vw, 56px);
-  display: flex;
-  flex-direction: column;
+.splitLayout {
+  display: grid;
+  grid-template-columns: 56fr 44fr;
+  gap: clamp(36px, 5vw, 72px);
   align-items: center;
-  gap: var(--space-2);
 }
 
+/* ── Video column ─────────────────────────────────────────────── */
+.videoCol {
+  position: relative;
+}
+
+/* ── Text column ──────────────────────────────────────────────── */
+.textCol {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 1.8vw, 20px);
+}
+
+/* ══════════════════════════════════════════════════════
+   TYPOGRAPHY
+══════════════════════════════════════════════════════ */
 .eyebrow {
   font-size: 0.6875rem;
   font-weight: 700;
@@ -68,18 +79,12 @@
 }
 
 .heading {
-  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-size: clamp(2rem, 3.8vw, 3.25rem);
   font-weight: 800;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.04em;
   line-height: 1.06;
   color: #fff;
   margin: 0;
-}
-
-.headingEm {
-  font-style: italic;
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.35);
 }
 
 .rule {
@@ -90,41 +95,58 @@
   flex-shrink: 0;
 }
 
-/* Hidden on desktop, becomes a line-break on mobile */
-.brMobile {
-  display: none;
-}
-
 .subtext {
-  font-size: var(--text-body);
-  color: rgba(255, 255, 255, 0.42);
-  line-height: 1.7;
-  max-width: 420px;
+  font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
+  color: rgba(255, 255, 255, 0.48);
+  line-height: 1.72;
   margin: 0;
 }
 
-/* ══════════════════════════════════════════════════════
-   SINGLE CENTRED VIDEO CONTAINER
-══════════════════════════════════════════════════════ */
-/* (no grid needed — single card is centred via margin-inline: auto) */
+/* ── Attribute chips ──────────────────────────────────────────── */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.chipDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  flex-shrink: 0;
+}
 
 /* ══════════════════════════════════════════════════════
-   VIDEO CARD — glassmorphic dark container
+   VIDEO CARD
 ══════════════════════════════════════════════════════ */
 .videoCard {
   position: relative;
-  max-width: 900px;
-  margin-inline: auto;
   background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(28px) saturate(1.5);
-  -webkit-backdrop-filter: blur(28px) saturate(1.5);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 24px;
+  border-radius: 22px;
   overflow: hidden;
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.03),
-    0 48px 96px rgba(0, 0, 0, 0.6),
-    0 16px 36px rgba(0, 0, 0, 0.32);
+    0 40px 80px rgba(0, 0, 0, 0.55),
+    0 12px 32px rgba(0, 0, 0, 0.28);
   transition:
     transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
     box-shadow 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
@@ -133,36 +155,36 @@
 }
 
 .videoCard:hover {
-  transform: translateY(-10px);
-  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-8px);
+  border-color: rgba(255, 255, 255, 0.14);
   box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.08),
-    0 72px 140px rgba(0, 0, 0, 0.7),
-    0 28px 60px rgba(0, 0, 0, 0.42);
+    0 0 0 1px rgba(255, 255, 255, 0.07),
+    0 60px 120px rgba(0, 0, 0, 0.65),
+    0 24px 52px rgba(0, 0, 0, 0.38);
 }
 
 /* ── Floating label chip ──────────────────────────────────────── */
 .labelChip {
   position: absolute;
-  top: 18px;
-  left: 18px;
+  top: 16px;
+  left: 16px;
   z-index: 3;
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 7px 16px 7px 12px;
-  background: rgba(255, 255, 255, 0.07);
+  padding: 6px 14px 6px 10px;
+  background: rgba(255, 255, 255, 0.09);
   backdrop-filter: blur(20px) saturate(1.4);
   -webkit-backdrop-filter: blur(20px) saturate(1.4);
-  border: 1px solid rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 100px;
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.70);
   white-space: nowrap;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
 }
 
 .labelDot {
@@ -178,11 +200,6 @@
   position: relative;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  transition: transform 0.55s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-.videoCard:hover .videoWrapper {
-  transform: scale(1.02);
 }
 
 .embed {
@@ -192,54 +209,6 @@
   height: 100%;
   border: none;
   display: block;
-}
-
-/* Gradient: video fades into the card footer area */
-.videoGrad {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 55%;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(4, 4, 8, 0.65) 100%
-  );
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* ── Card footer ─────────────────────────────────────────────── */
-.cardFooter {
-  padding: 22px 28px 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.footerRule {
-  width: 28px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 1px;
-  margin-bottom: 2px;
-}
-
-.cardTitle {
-  font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: #fff;
-  margin: 0;
-  line-height: 1.25;
-}
-
-.cardDesc {
-  font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.44);
-  line-height: 1.68;
-  margin: 0;
 }
 
 /* ── Hover glow overlay ──────────────────────────────────────── */
@@ -254,7 +223,7 @@
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.5s ease;
-  z-index: 0;
+  z-index: 2;
 }
 
 .videoCard:hover .cardGlow {
@@ -265,34 +234,43 @@
    RESPONSIVE
 ══════════════════════════════════════════════════════ */
 
+/* Tablet: stack — video on top, text below */
 @media (max-width: 860px) {
-  .cardFooter {
-    padding: 18px 22px 24px;
+  .splitLayout {
+    grid-template-columns: 1fr;
+    gap: clamp(28px, 5vw, 44px);
+  }
+
+  .videoCol {
+    order: 1;
+  }
+
+  .textCol {
+    order: 2;
+    text-align: center;
+    align-items: center;
+  }
+
+  .chips {
+    justify-content: center;
   }
 }
 
+/* Mobile */
 @media (max-width: 640px) {
   .section {
-    padding-block: clamp(44px, 9vw, 64px);
-  }
-
-  .brMobile {
-    display: inline;
+    padding-block: clamp(40px, 9vw, 60px);
   }
 
   .heading {
-    font-size: clamp(1.625rem, 7vw, 2.25rem);
-  }
-
-  .header {
-    margin-bottom: clamp(28px, 6vw, 44px);
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
   }
 
   .videoCard {
-    border-radius: 18px;
+    border-radius: 16px;
   }
 
   .videoCard:hover {
-    transform: translateY(-6px);
+    transform: translateY(-4px);
   }
 }
