@@ -1,19 +1,36 @@
 /* ── Section shell ─────────────────────────────────────────────── */
 .section {
-  padding-block: 20px !important;
+  padding-block: 16px !important;
   overflow: hidden;
-  border-top: 1px solid var(--color-border-light);
-  border-bottom: 1px solid var(--color-border-light);
+  border-top: 1px solid rgba(13, 21, 32, 0.07);
+  border-bottom: 1px solid rgba(13, 21, 32, 0.07);
 }
 
-.label {
-  text-align: center;
-  font-size: 0.6875rem;
+/* ── Label row — flanked by thin rules ─────────────────────────── */
+.labelRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 12px;
+  padding-inline: clamp(20px, 5vw, 60px);
+}
+
+.labelLine {
+  flex: 0 0 auto;
+  width: clamp(32px, 5vw, 72px);
+  height: 1px;
+  background: rgba(13, 21, 32, 0.12);
+  border-radius: 1px;
+}
+
+.labelText {
+  font-size: 0.5625rem;
   font-weight: 700;
-  letter-spacing: 0.20em;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: rgba(13, 21, 32, 0.50);
-  margin-bottom: 14px;
+  color: rgba(13, 21, 32, 0.32);
+  white-space: nowrap;
 }
 
 /* ── Viewport with left/right fade masks ───────────────────────── */
@@ -46,7 +63,7 @@
   display: flex;
   align-items: center;
   width: max-content;
-  gap: var(--space-10);
+  gap: clamp(32px, 5vw, 64px);
   will-change: transform;
   touch-action: pan-y;
   user-select: none;
@@ -59,7 +76,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-inline: var(--space-3);
+  opacity: 0.65;
+  transition: opacity 0.25s ease;
+}
+
+.logoWrap:hover {
+  opacity: 1;
 }
 
 .logoWrap img {
@@ -70,11 +92,15 @@
 /* ── Responsive ─────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .section {
-    padding-block: 14px !important;
+    padding-block: 12px !important;
   }
 
   .track {
-    gap: var(--space-4);
+    gap: clamp(24px, 5vw, 40px);
+  }
+
+  .labelLine {
+    width: 28px;
   }
 
   .viewport {

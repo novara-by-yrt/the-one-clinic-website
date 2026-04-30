@@ -71,7 +71,11 @@ export default function LogoCarousel() {
 
   return (
     <Section variant="light" data-section-theme="light" className={styles.section}>
-      <p className={styles.label}>Accreditations &amp; Partners</p>
+      <div className={styles.labelRow} aria-label="Accreditations and partners">
+        <span className={styles.labelLine} aria-hidden="true" />
+        <span className={styles.labelText}>Recognised &amp; Certified</span>
+        <span className={styles.labelLine} aria-hidden="true" />
+      </div>
 
       {/* Fade masks on the edges */}
       <div
@@ -100,7 +104,7 @@ export default function LogoCarousel() {
                 width={logo.w}
                 height={logo.h}
                 draggable={false}
-                style={{ height: '72px', width: 'auto', objectFit: 'contain' }}
+                style={{ height: '44px', width: 'auto', objectFit: 'contain' }}
               />
             </div>
           ))}
