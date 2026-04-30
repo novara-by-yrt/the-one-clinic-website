@@ -12,7 +12,7 @@
 
 /* ── Dark inner card ─────────────────────────────────────────────── */
 .card {
-  background: #0d1520;
+  background: #161616;
   border-radius: 24px;
   padding: clamp(28px, 4vw, 48px) clamp(24px, 6vw, 80px);
   width: 100%;
@@ -83,7 +83,7 @@
   gap: 10px;
   padding: 13px 28px;
   background: #ffffff;
-  color: #0d1520;
+  color: #161616;
   border: none;
   border-radius: 50px;
   font-size: 0.9375rem;
