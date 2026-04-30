@@ -102,30 +102,59 @@
   transform: translateY(-3px);
 }
 
-.contactIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  color: rgba(255, 255, 255, 0.70);
-  flex-shrink: 0;
-}
-
 .contactLabel {
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   font-weight: 700;
-  letter-spacing: 0.01em;
-  color: #ffffff;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
   line-height: 1;
 }
 
 .contactValue {
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.46);
-  line-height: 1.4;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+/* ── Opening hours card ────────────────────────────── */
+.hoursCard {
+  gap: 8px;
+  cursor: default;
+}
+
+.hoursCard:hover {
+  transform: none;
+}
+
+.hoursGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.hoursRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.hoursDay {
+  font-size: 0.6875rem;
+  color: rgba(255, 255, 255, 0.50);
+  line-height: 1;
+}
+
+.hoursTime {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.82);
+  white-space: nowrap;
+  line-height: 1;
 }
 
 /* ── Social media card ─────────────────────────────── */
@@ -273,11 +302,6 @@
   .contactItem {
     padding: 12px;
     gap: 5px;
-  }
-
-  .contactIcon {
-    width: 30px;
-    height: 30px;
   }
 
   .mapWrap {

@@ -12,35 +12,6 @@ const SLIDE_EASE = [0.25, 0.1, 0.25, 1] as const;
 const MAPS_URL  = 'https://www.google.com/maps/place/The+One+Clinic+-+Leicester/@52.6272773,-1.1274381,17z';
 const EMBED_URL = 'https://maps.google.com/maps?q=36+De+Montfort+St,+Leicester+LE1+7GS,+United+Kingdom&output=embed';
 
-function PhoneIcon() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 .01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
-    </svg>
-  );
-}
-
-function EmailIcon() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect x="2" y="4" width="20" height="16" rx="2"/>
-      <path d="M22 7l-10 7L2 7"/>
-    </svg>
-  );
-}
-
-function LocationIcon() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/>
-      <circle cx="12" cy="10" r="3"/>
-    </svg>
-  );
-}
-
 function InstagramIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -62,24 +33,14 @@ function FacebookIcon() {
 }
 
 const CONTACT_ITEMS = [
-  {
-    icon: <PhoneIcon />,
-    label: 'Phone Number',
-    value: '07481 342 374',
-    href: 'tel:07481342374',
-  },
-  {
-    icon: <EmailIcon />,
-    label: 'Email Address',
-    value: 'info@the-oneclinic.net',
-    href: 'mailto:info@the-oneclinic.net',
-  },
-  {
-    icon: <LocationIcon />,
-    label: 'Our Clinic',
-    value: '36 DeMontfort St, Leicester',
-    href: MAPS_URL,
-  },
+  { value: '07481 342 374',        href: 'tel:07481342374' },
+  { value: 'info@the-oneclinic.net', href: 'mailto:info@the-oneclinic.net' },
+];
+
+const HOURS = [
+  { days: 'Monday – Friday', time: '09:00 – 18:00' },
+  { days: 'Saturday',        time: '09:00 – 16:00' },
+  { days: 'Sunday',          time: '09:00 – 18:00' },
 ];
 
 const SOCIAL_LINKS = [
@@ -161,21 +122,30 @@ export default function LeadForm() {
               whileInView="show"
               viewport={VIEWPORT}
             >
-              {/* Standard contact cards */}
+              {/* Phone + Email — no icons, value is the title */}
               {CONTACT_ITEMS.map((item) => (
                 <motion.a
-                  key={item.label}
+                  key={item.value}
                   href={item.href}
                   className={styles.contactItem}
                   variants={fadeUp}
-                  target={item.href.startsWith('http') ? '_blank' : undefined}
-                  rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 >
-                  <div className={styles.contactIcon}>{item.icon}</div>
-                  <span className={styles.contactLabel}>{item.label}</span>
                   <span className={styles.contactValue}>{item.value}</span>
                 </motion.a>
               ))}
+
+              {/* Opening hours card */}
+              <motion.div className={`${styles.contactItem} ${styles.hoursCard}`} variants={fadeUp}>
+                <span className={styles.contactLabel}>Opening Hours</span>
+                <div className={styles.hoursGrid}>
+                  {HOURS.map((h) => (
+                    <div key={h.days} className={styles.hoursRow}>
+                      <span className={styles.hoursDay}>{h.days}</span>
+                      <span className={styles.hoursTime}>{h.time}</span>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
 
               {/* Social media card */}
               <motion.div className={`${styles.contactItem} ${styles.socialCard}`} variants={fadeUp}>
