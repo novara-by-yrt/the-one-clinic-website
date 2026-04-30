@@ -153,18 +153,6 @@ export default function BrandProcess() {
                 <p className={styles.floatLabel}>Patients treated</p>
               </motion.div>
 
-              {/* Floating chip */}
-              <motion.div
-                className={`${styles.floatChip} ${styles.floatChipJourney}`}
-                initial={{ opacity: 0, x: 18 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={VIEWPORT}
-                transition={{ duration: 0.65, ease: EASE, delay: 0.72 }}
-              >
-                <span className={styles.chipDot} aria-hidden="true" />
-                Expert-led Care
-              </motion.div>
-
               {/* Active pillar label */}
               <AnimatePresence mode="wait">
                 <motion.div
