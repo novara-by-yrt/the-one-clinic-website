@@ -58,16 +58,25 @@
   cursor: grabbing;
 }
 
+/* ── Infinite scroll keyframes ──────────────────────────────────── */
+@keyframes logoScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
 /* ── Scrolling track ────────────────────────────────────────────── */
 .track {
   display: flex;
   align-items: center;
   width: max-content;
   gap: clamp(32px, 5vw, 64px);
-  will-change: transform;
-  touch-action: pan-y;
   user-select: none;
   -webkit-user-select: none;
+  animation: logoScroll 28s linear infinite;
+}
+
+.viewport:hover .track {
+  animation-play-state: paused;
 }
 
 /* ── Individual logo slot ───────────────────────────────────────── */

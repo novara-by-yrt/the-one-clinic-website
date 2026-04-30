@@ -267,6 +267,21 @@ export default function BrandHero() {
                   </div>
                 </motion.div>
 
+                {/* The One Clinic */}
+                <motion.div
+                  className={`${styles.trustBadge} ${styles.trustBadgeImage}`}
+                  {...cineBadge(1.85, prefersReduced)}
+                >
+                  <div className={styles.trustImageWrap}>
+                    <Image
+                      src="/images/imgi_35_Untitled-3-5-e1749493207346.png"
+                      alt="The One Clinic"
+                      width={400}
+                      height={280}
+                      className={styles.trustImage}
+                    />
+                  </div>
+                </motion.div>
 
               </div>
 
