@@ -1,6 +1,6 @@
 /* ── Section shell ─────────────────────────────────────────────── */
 .section {
-  padding-block: var(--space-6) !important;
+  padding-block: 20px !important;
   overflow: hidden;
   border-top: 1px solid var(--color-border-light);
   border-bottom: 1px solid var(--color-border-light);
@@ -13,7 +13,7 @@
   letter-spacing: 0.20em;
   text-transform: uppercase;
   color: rgba(13, 21, 32, 0.50);
-  margin-bottom: var(--space-5);
+  margin-bottom: 14px;
 }
 
 /* ── Viewport with left/right fade masks ───────────────────────── */
@@ -70,7 +70,7 @@
 /* ── Responsive ─────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .section {
-    padding-block: var(--space-5) !important;
+    padding-block: 14px !important;
   }
 
   .track {
