@@ -9,23 +9,6 @@ import styles from './BrandVideoSection.module.css';
 
 const EASE = [0.25, 0.1, 0.25, 1] as const;
 
-const VIDEOS = [
-  {
-    id:         'hu75ttgmlm',
-    label:      'Our Story',
-    title:      'About The One Clinic',
-    desc:       'Meet the team and discover how we combine medical expertise with personalised care.',
-    embedTitle: 'TOC - Intro Video (LP)',
-  },
-  {
-    id:         't8y82cnp5e',
-    label:      'Testimonials',
-    title:      'Patient Stories',
-    desc:       'Hear directly from patients whose health and confidence were transformed by our care.',
-    embedTitle: 'Testimonials Compilation - TOC Video',
-  },
-];
-
 export default function BrandVideoSection() {
   return (
     <Section variant="dark" data-section-theme="dark" className={styles.section}>
@@ -50,55 +33,49 @@ export default function BrandVideoSection() {
           </motion.p>
 
           <motion.h2 className={styles.heading} variants={fadeUp}>
-            Our Story &amp;<br />
-            <em className={styles.headingEm}>Real Patient</em>
-            {' '}Results
+            Our Story
           </motion.h2>
 
           <motion.div className={styles.rule} variants={fadeUp} aria-hidden="true" />
 
           <motion.p className={styles.subtext} variants={fadeUp}>
-            Hear directly from our founder and the patients whose lives we've helped transform.
+            Meet our founder and discover how The One Clinic combines medical expertise
+            with genuine, personalised care.
           </motion.p>
         </motion.div>
 
-        {/* ══ Video grid ══════════════════════════════════ */}
-        <div className={styles.grid}>
-          {VIDEOS.map((video, i) => (
-            <motion.div
-              key={video.id}
-              className={styles.videoCard}
-              initial={{ opacity: 0, y: 56 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={VIEWPORT}
-              transition={{ duration: 0.85, ease: EASE, delay: i * 0.2 }}
-            >
-              {/* ── Floating label chip ──────────────────── */}
-              <div className={styles.labelChip}>
-                <span className={styles.labelDot} aria-hidden="true" />
-                {video.label}
-              </div>
+        {/* ══ Single centred video ════════════════════════ */}
+        <motion.div
+          className={styles.videoCard}
+          initial={{ opacity: 0, y: 56 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={VIEWPORT}
+          transition={{ duration: 0.85, ease: EASE }}
+        >
+          {/* ── Floating label chip ──────────────────────── */}
+          <div className={styles.labelChip}>
+            <span className={styles.labelDot} aria-hidden="true" />
+            Our Story
+          </div>
 
-              {/* ── 16:9 video embed ─────────────────────── */}
-              <div className={styles.videoWrapper}>
-                <iframe
-                  src={`https://fast.wistia.net/embed/iframe/${video.id}?web_component=true&seo=true`}
-                  title={video.embedTitle}
-                  allow="autoplay; fullscreen"
-                  allowTransparency
-                  frameBorder="0"
-                  scrolling="no"
-                  className={styles.embed}
-                  name="wistia_embed"
-                />
-                <div className={styles.videoGrad} aria-hidden="true" />
-              </div>
+          {/* ── 16:9 video embed ─────────────────────────── */}
+          <div className={styles.videoWrapper}>
+            <iframe
+              src="https://fast.wistia.net/embed/iframe/hu75ttgmlm?web_component=true&seo=true"
+              title="TOC - Intro Video (LP)"
+              allow="autoplay; fullscreen"
+              allowTransparency
+              frameBorder="0"
+              scrolling="no"
+              className={styles.embed}
+              name="wistia_embed"
+            />
+            <div className={styles.videoGrad} aria-hidden="true" />
+          </div>
 
-              {/* ── Hover radial glow ────────────────────── */}
-              <div className={styles.cardGlow} aria-hidden="true" />
-            </motion.div>
-          ))}
-        </div>
+          {/* ── Hover radial glow ──────────────────────────── */}
+          <div className={styles.cardGlow} aria-hidden="true" />
+        </motion.div>
 
       </Container>
     </Section>

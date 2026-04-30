@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Script from 'next/script';
 import { motion, AnimatePresence } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
@@ -76,7 +77,7 @@ const REVIEWS = [
   },
 ];
 
-const PER_PAGE = 4;
+const PER_PAGE = 3;
 
 /* ── Icons ──────────────────────────────────────────────────── */
 function GoogleG() {
@@ -92,16 +93,17 @@ function GoogleG() {
 
 function StarIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" className={styles.starSvg}>
+    <svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true" className={styles.starSvg}>
       <path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.49L10 14.25l-4.94 2.6.94-5.49-4-3.9 5.53-.8z"/>
     </svg>
   );
 }
 
-function VerifiedBadge() {
+function TrophyIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 20 20" aria-label="Verified review" className={styles.verifiedSvg}>
-      <path d="M10 0C4.48 0 0 4.48 0 10s4.48 10 10 10 10-4.48 10-10S15.52 0 10 0zm-2 14.5l-4-4 1.41-1.41L8 11.67l6.59-6.59L16 6.5l-8 8z"/>
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
+      <path d="M17 3H7v2h10V3zM7 19h10l-2 2H9l-2-2z"/>
     </svg>
   );
 }
@@ -113,6 +115,7 @@ const SLIDE = {
   exit:   (d: number) => ({ x: d > 0 ? -60 : 60, opacity: 0 }),
 };
 const TRANSITION = { duration: 0.42, ease: [0.25, 0.1, 0.25, 1] as const };
+const EASE = [0.25, 0.1, 0.25, 1] as const;
 
 /* ── Component ──────────────────────────────────────────────── */
 export default function Testimonials() {
@@ -137,6 +140,8 @@ export default function Testimonials() {
 
   return (
     <Section variant="dark" data-section-theme="dark" className={styles.section}>
+      <Script src="https://fast.wistia.net/player.js" strategy="lazyOnload" />
+
       {/* Background image */}
       <div className={styles.bgWrap} aria-hidden="true">
         <Image
@@ -147,34 +152,33 @@ export default function Testimonials() {
           sizes="100vw"
         />
       </div>
+
       <Container className={styles.contentLayer}>
 
-        {/* ── Rating header ─────────────────────────────── */}
+        {/* ── Header ────────────────────────────────────── */}
         <motion.div
-          className={styles.ratingHeader}
-          variants={stagger(0.1)}
+          className={styles.header}
+          variants={stagger(0.12)}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <motion.p className={styles.excellentText} variants={fadeUp}>
-            Excellent
-          </motion.p>
-          <motion.div className={styles.headerStars} variants={fadeUp} aria-label="5 out of 5 stars">
-            {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
+          <motion.div className={styles.chipRow} variants={fadeUp}>
+            <span className={styles.chip}>
+              <TrophyIcon />
+              Loved by Thousands
+            </span>
           </motion.div>
-          <motion.p className={styles.basedOn} variants={fadeUp}>
-            Based on <strong>120+</strong> reviews
+
+          <motion.h2 className={styles.heading} variants={fadeUp}>
+            What Our<br />
+            <span className={styles.headingAccent}>Customers Say</span>
+          </motion.h2>
+
+          <motion.p className={styles.subtext} variants={fadeUp}>
+            Don&apos;t just take our word for it. Here&apos;s what real patients have
+            to say about their experience at The One Clinic.
           </motion.p>
-          <motion.div variants={fadeUp}>
-            <Image
-              src="/images/Google-logo.png"
-              alt="Google Reviews"
-              width={88}
-              height={30}
-              className={styles.googleWordmark}
-            />
-          </motion.div>
         </motion.div>
 
         {/* ── Carousel ──────────────────────────────────── */}
@@ -216,8 +220,19 @@ export default function Testimonials() {
               >
                 {visible.map((r) => (
                   <div key={r.name} className={styles.card}>
-                    {/* Card header row */}
-                    <div className={styles.cardHeader}>
+                    {/* Decorative quote mark */}
+                    <span className={styles.quoteIcon} aria-hidden="true">&ldquo;</span>
+
+                    {/* Stars */}
+                    <div className={styles.starsRow} aria-label="5 out of 5 stars">
+                      {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
+                    </div>
+
+                    {/* Review text */}
+                    <p className={styles.reviewText}>{r.review}</p>
+
+                    {/* Card footer */}
+                    <div className={styles.cardFooter}>
                       <div
                         className={styles.avatar}
                         style={{ background: r.avatarBg }}
@@ -229,23 +244,8 @@ export default function Testimonials() {
                         <p className={styles.authorName}>{r.name}</p>
                         <p className={styles.timeAgo}>{r.timeAgo}</p>
                       </div>
-                      <div className={styles.googleG}>
-                        <GoogleG />
-                      </div>
+                      <div className={styles.googleG}><GoogleG /></div>
                     </div>
-
-                    {/* Stars + verified badge */}
-                    <div className={styles.starsRow} aria-label="5 out of 5 stars, verified review">
-                      {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
-                      <VerifiedBadge />
-                    </div>
-
-                    {/* Review text */}
-                    <p className={styles.reviewText}>{r.review}</p>
-
-                    <button className={styles.readMore} type="button">
-                      Read more
-                    </button>
                   </div>
                 ))}
               </motion.div>
@@ -263,6 +263,45 @@ export default function Testimonials() {
                 strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
+        </motion.div>
+
+        {/* ── Pagination dots ───────────────────────────── */}
+        <div className={styles.dots} role="tablist" aria-label="Review pages">
+          {[...Array(totalPages)].map((_, i) => (
+            <button
+              key={i}
+              className={`${styles.dot} ${i === page ? styles.dotActive : ''}`}
+              onClick={() => goTo(i, i > page ? 1 : -1)}
+              role="tab"
+              aria-selected={i === page}
+              aria-label={`Page ${i + 1} of ${totalPages}`}
+            />
+          ))}
+        </div>
+
+        {/* ── Testimonials video ────────────────────────── */}
+        <motion.div
+          className={styles.videoWrap}
+          initial={{ opacity: 0, y: 48 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={VIEWPORT}
+          transition={{ duration: 0.9, ease: EASE }}
+        >
+          <div className={styles.videoLabelChip}>
+            <span className={styles.videoLabelDot} aria-hidden="true" />
+            Patient Stories
+          </div>
+          <div className={styles.videoInner}>
+            <iframe
+              src="https://fast.wistia.net/embed/iframe/t8y82cnp5e?web_component=true&seo=true"
+              title="Patient Testimonials — The One Clinic"
+              allow="autoplay; fullscreen"
+              allowFullScreen
+              frameBorder="0"
+              scrolling="no"
+              className={styles.videoEmbed}
+            />
+          </div>
         </motion.div>
 
       </Container>

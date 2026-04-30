@@ -104,20 +104,17 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   GRID — asymmetric offset, two equal columns
+   SINGLE CENTRED VIDEO CONTAINER
 ══════════════════════════════════════════════════════ */
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(20px, 3.5vw, 52px);
-  align-items: stretch;
-}
+/* (no grid needed — single card is centred via margin-inline: auto) */
 
 /* ══════════════════════════════════════════════════════
    VIDEO CARD — glassmorphic dark container
 ══════════════════════════════════════════════════════ */
 .videoCard {
   position: relative;
+  max-width: 900px;
+  margin-inline: auto;
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(28px) saturate(1.5);
   -webkit-backdrop-filter: blur(28px) saturate(1.5);
@@ -136,17 +133,12 @@
 }
 
 .videoCard:hover {
-  transform: translateY(-14px);
+  transform: translateY(-10px);
   border-color: rgba(255, 255, 255, 0.16);
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.08),
     0 72px 140px rgba(0, 0, 0, 0.7),
     0 28px 60px rgba(0, 0, 0, 0.42);
-}
-
-/* Second card: offset down for visual depth rhythm */
-.videoCardOffset {
-  margin-top: clamp(48px, 7vw, 88px);
 }
 
 /* ── Floating label chip ──────────────────────────────────────── */
@@ -273,25 +265,12 @@
    RESPONSIVE
 ══════════════════════════════════════════════════════ */
 
-/* Large tablet — reduce offset */
-@media (max-width: 1024px) {
-  .videoCardOffset {
-    margin-top: clamp(32px, 5vw, 56px);
-  }
-}
-
-/* Tablet — keep 2 columns, tighten offset */
 @media (max-width: 860px) {
-  .videoCardOffset {
-    margin-top: clamp(16px, 3vw, 32px);
-  }
-
   .cardFooter {
     padding: 18px 22px 24px;
   }
 }
 
-/* Mobile — single column, remove offset */
 @media (max-width: 640px) {
   .section {
     padding-block: clamp(44px, 9vw, 64px);
@@ -299,15 +278,6 @@
 
   .brMobile {
     display: inline;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-    gap: clamp(20px, 5vw, 32px);
-  }
-
-  .videoCardOffset {
-    margin-top: 0;
   }
 
   .heading {
@@ -318,7 +288,11 @@
     margin-bottom: clamp(28px, 6vw, 44px);
   }
 
+  .videoCard {
+    border-radius: 18px;
+  }
+
   .videoCard:hover {
-    transform: translateY(-8px);
+    transform: translateY(-6px);
   }
 }
