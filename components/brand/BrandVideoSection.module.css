@@ -3,7 +3,7 @@
 ══════════════════════════════════════════════════════ */
 .section {
   position: relative;
-  background: #0d1520 !important;
+  background: #161616 !important;
   padding-block: clamp(52px, 7vw, 96px);
   overflow: hidden;
 }
