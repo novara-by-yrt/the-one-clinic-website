@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useRef } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Autoplay, Navigation } from 'swiper/modules';
@@ -25,15 +25,53 @@ const SLIDES = [
   { src: '/images/Medical Insurance Exam.jpg',  title: 'Medical Insurance',  href: '/treatments/medical-insurance' },
   { src: '/images/Dermatologist.jpg',           title: 'Dermatologist',      href: '/treatments/dermatologist' },
   { src: "/images/Men's Health.jpg",            title: "Men's Health",       href: '/treatments/mens-health' },
-  { src: "/images/Women's Heath img.png",        title: "Women's Health",     href: '/treatments/womens-health' },
+  { src: "/images/Women's Heath img.png",       title: "Women's Health",     href: '/treatments/womens-health' },
   { src: '/images/Menopause & HRT.jpg',         title: 'Menopause & HRT',    href: '/treatments/menopause-hrt' },
   { src: '/images/Profhilo (2).jpg',            title: 'Profhilo',           href: '/treatments/profhilo' },
   { src: '/NCTF 135 HA.jpg',                    title: 'NCTF 135 HA',        href: '/treatments/nctf-135-ha' },
 ];
 
+/* ── Arc effect helpers ────────────────────────────────────────────
+   Per-slide: compute translateY arc + progressive filter degradation
+   based on Swiper's `slide.progress` (0 = active, ±N = Nth away).
+─────────────────────────────────────────────────────────────────── */
+type ArcSlide = HTMLElement & { progress?: number };
+
+function applyArcEffects(swiper: SwiperType, duration?: number) {
+  swiper.slides.forEach((slideEl) => {
+    const slide = slideEl as ArcSlide;
+    const prog  = slide.progress ?? 0;
+    const abs   = Math.abs(prog);
+
+    /* Quadratic arc — active card at apex, sides drop progressively */
+    const arcY       = abs * abs * 48;
+    const blur       = Math.min(abs * 2.6, 7);
+    const brightness = Math.max(1.06 - abs * 0.44, 0.24);
+    const saturate   = Math.max(1.08 - abs * 0.78, 0.10);
+    const opacity    = Math.max(1.00 - abs * 0.28, 0.20);
+
+    const card = slide.querySelector('[data-arc-card]') as HTMLElement | null;
+    if (!card) return;
+
+    /* Mirror Swiper's transition duration so arc animation stays in sync */
+    if (duration !== undefined) {
+      card.style.transitionDuration = `${duration}ms`;
+    }
+    card.style.transform  = `translateY(${arcY}px)`;
+    card.style.filter     = `brightness(${brightness}) saturate(${saturate}) blur(${blur}px)`;
+    card.style.opacity    = String(opacity);
+  });
+}
+
+/* ── Component ─────────────────────────────────────────────────── */
 export default function BrandTreatments() {
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef<SwiperType | null>(null);
+
+  const handleProgress      = useCallback((s: SwiperType) => applyArcEffects(s), []);
+  const handleSetTransition = useCallback(
+    (s: SwiperType, d: number) => applyArcEffects(s, d), []
+  );
 
   return (
     <section className={styles.section} id="treatments">
@@ -50,14 +88,14 @@ export default function BrandTreatments() {
       </div>
 
       {/* Overlay layers */}
-      <div className={styles.overlay}  aria-hidden="true" />
-      <div className={styles.glow1}    aria-hidden="true" />
-      <div className={styles.glow2}    aria-hidden="true" />
+      <div className={styles.overlay} aria-hidden="true" />
+      <div className={styles.glow1}   aria-hidden="true" />
+      <div className={styles.glow2}   aria-hidden="true" />
 
       {/* Content */}
       <div className={styles.inner}>
 
-        {/* ── Left: open editorial panel ── */}
+        {/* ── Left: editorial panel ── */}
         <motion.div
           className={styles.leftPanel}
           variants={stagger(0.1)}
@@ -65,7 +103,6 @@ export default function BrandTreatments() {
           whileInView="show"
           viewport={VIEWPORT}
         >
-          {/* Treatment count badge */}
           <motion.div className={styles.countBadge} variants={fadeUp}>
             <span className={styles.countDot} aria-hidden="true" />
             {SLIDES.length} Treatments
@@ -97,7 +134,7 @@ export default function BrandTreatments() {
             </Link>
           </motion.div>
 
-          {/* Nav arrows — live in the panel on desktop */}
+          {/* Nav + progress */}
           <motion.div className={styles.navRow} variants={fadeUp} aria-label="Carousel controls">
             <button
               className={`${styles.navBtn} ${styles.navPrev}`}
@@ -110,7 +147,6 @@ export default function BrandTreatments() {
               </svg>
             </button>
 
-            {/* Progress track */}
             <div className={styles.progressTrack} aria-hidden="true">
               <div
                 className={styles.progressFill}
@@ -135,7 +171,7 @@ export default function BrandTreatments() {
           </motion.div>
         </motion.div>
 
-        {/* ── Right: 3D coverflow carousel ── */}
+        {/* ── Right: cinematic semi-circle arc carousel ── */}
         <div className={styles.carouselWrap}>
           <Swiper
             modules={[EffectCoverflow, Autoplay, Navigation]}
@@ -144,22 +180,40 @@ export default function BrandTreatments() {
             centeredSlides
             loop
             slidesPerView="auto"
+            watchSlidesProgress
+            speed={700}
             autoplay={{ delay: 3400, disableOnInteraction: false, pauseOnMouseEnter: true }}
             coverflowEffect={{
-              rotate: 22,
-              stretch: -10,
-              depth: 180,
-              modifier: 1,
-              scale: 0.86,
+              rotate:       44,
+              stretch:       4,
+              depth:       280,
+              modifier:     1.0,
+              scale:        0.80,
               slideShadows: true,
             }}
             className={styles.swiper}
-            onSwiper={(swiper) => { swiperRef.current = swiper; }}
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+              /* Initialise arc on mount with zero duration (no flash) */
+              applyArcEffects(swiper, 0);
+            }}
+            onProgress={handleProgress}
+            onSetTransition={handleSetTransition}
             onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
           >
             {SLIDES.map((slide, i) => (
               <SwiperSlide key={i} className={styles.slide}>
-                <Link href={slide.href} className={styles.card} draggable={false}>
+                {/*
+                  data-arc-card: selector hook for applyArcEffects().
+                  JS drives: transform translateY, filter, opacity.
+                  CSS drives: box-shadow, border, cardGlow (active state).
+                */}
+                <Link
+                  href={slide.href}
+                  className={styles.card}
+                  data-arc-card=""
+                  draggable={false}
+                >
                   <Image
                     src={slide.src}
                     alt={slide.title}
