@@ -14,8 +14,8 @@ export default function BrandPage() {
   return (
     <>
       <BrandHero />
-      <BrandVideoSection />
       <LogoCarousel />
+      <BrandVideoSection />
       <TestimonialVideos />
       <BrandTreatments />
       <Testimonials />
