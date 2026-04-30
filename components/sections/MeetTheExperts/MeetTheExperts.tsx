@@ -63,15 +63,14 @@ export default function MeetTheExperts() {
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
     >
-      <div className={styles.wrapper}>
+      {/* ── Centered section header ────────────────────────────── */}
+      <div className={styles.header}>
+        <p className={styles.eyebrow}>Our Clinical Team</p>
+        <h2 className={styles.heading}>Meet the Experts</h2>
+      </div>
 
-        {/* ── Vertical editorial label ───────────────────────────── */}
-        <div className={styles.labelCol} aria-hidden="true">
-          <span className={styles.vertLabel}>Our Team</span>
-        </div>
-
-        {/* ── Main grid: [portrait] [info] / [nav row] ────────────── */}
-        <div className={styles.mainGrid}>
+      {/* ── Main grid: [portrait] [info] / [nav row] ────────────── */}
+      <div className={styles.mainGrid}>
 
           {/* Portrait */}
           <div className={styles.portraitCol}>
@@ -121,7 +120,6 @@ export default function MeetTheExperts() {
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
               >
-                <p className={styles.eyebrow}>Our Clinical Team</p>
                 <h2 className={styles.expertName}>{member.name}</h2>
                 {member.credentials && (
                   <p className={styles.credentials}>{member.credentials}</p>
@@ -211,10 +209,9 @@ export default function MeetTheExperts() {
           </div>
           {/* end navRow */}
 
-        </div>
-        {/* end mainGrid */}
-
       </div>
+      {/* end mainGrid */}
+
     </section>
   );
 }
