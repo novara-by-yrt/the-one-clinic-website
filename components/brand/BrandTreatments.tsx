@@ -36,7 +36,7 @@ const SLIDES = [
     src:   '/images/Minor Surgery.jpg',
     title: 'Minor Surgery',
     href:  '/treatments/minor-surgery',
-    desc:  'Minor surgical procedures performed safely in our clinic. From mole removal to lipoma excision — handled with precision and expert care.',
+    desc:  'Minor surgical procedures performed safely in our clinic. From mole removal to lipoma excision, handled with precision and expert care.',
   },
   {
     src:   '/images/GP Home Visits.jpg',
@@ -66,7 +66,7 @@ const SLIDES = [
     src:   '/images/Dermatologist.jpg',
     title: 'Dermatologist',
     href:  '/treatments/dermatologist',
-    desc:  'Expert dermatology consultations for all skin concerns. From acne and eczema to advanced aesthetic skin treatments — all under one roof.',
+    desc:  'Expert dermatology consultations for all skin concerns. From acne and eczema to advanced aesthetic skin treatments, all under one roof.',
   },
   {
     src:   "/images/Men's Health.jpg",
@@ -78,7 +78,7 @@ const SLIDES = [
     src:   "/images/Women's Heath img.png",
     title: "Women's Health",
     href:  '/treatments/womens-health',
-    desc:  "Holistic women's health services covering hormonal balance, reproductive health, and aesthetic wellness — all delivered with compassion.",
+    desc:  "Holistic women's health services covering hormonal balance, reproductive health, and aesthetic wellness, all delivered with compassion.",
   },
   {
     src:   '/images/Menopause & HRT.jpg',
@@ -148,7 +148,7 @@ export default function BrandTreatments() {
           </motion.h2>
 
           <motion.p className={styles.sectionDesc} variants={fadeUp}>
-            Advanced aesthetic and health treatments, all under one roof —
+            Advanced aesthetic and health treatments, all under one roof,
             tailored to your goals by our qualified doctors.
           </motion.p>
         </motion.div>

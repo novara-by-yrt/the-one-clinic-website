@@ -12,12 +12,12 @@ const PILLARS = [
   {
     tag:     'Our Mission',
     heading: 'A Fresh Perspective on Aesthetics & Well-being',
-    body:    'We bring an honest, open approach to aesthetic medicine and health in Leicester — working closely with every patient to help them achieve their goals. Our mission is to empower you to become the version of yourself you are truly happy with.',
+    body:    'We bring an honest, open approach to aesthetic medicine and health in Leicester, working closely with every patient to help them achieve their goals. Our mission is to empower you to become the version of yourself you are truly happy with.',
   },
   {
     tag:     'Our Clinic',
     heading: 'A Space Built Entirely Around You',
-    body:    'Step into our state-of-the-art clinic and discover modern medical equipment within a relaxing, luxurious setting. Every visit is a bespoke experience centred on your needs — delivering innovative treatments using the most advanced techniques available.',
+    body:    'Step into our state-of-the-art clinic and discover modern medical equipment within a relaxing, luxurious setting. Every visit is a bespoke experience centred on your needs, delivering innovative treatments using the most advanced techniques available.',
   },
 ];
 
@@ -215,7 +215,7 @@ export default function BrandProcess() {
               <motion.p className={styles.eyebrow} variants={fadeUp}>About Us</motion.p>
               <motion.h2 className={styles.heading} variants={fadeUp}>Our Philosophy</motion.h2>
               <motion.p className={styles.subtext} variants={fadeUp}>
-                One Clinic Leicester — where a fresh approach to aesthetics meets
+                One Clinic Leicester, where a fresh approach to aesthetics meets
                 genuine, lasting care for every patient.
               </motion.p>
             </motion.div>
