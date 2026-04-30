@@ -4,7 +4,6 @@ import LogoCarousel      from '@/components/sections/LogoCarousel';
 import BrandTreatments   from '@/components/brand/BrandTreatments';
 import BrandProcess      from '@/components/brand/BrandProcess';
 import Testimonials      from '@/components/sections/Testimonials';
-import TestimonialVideos from '@/components/sections/TestimonialVideos';
 import MeetTheExperts    from '@/components/sections/MeetTheExperts';
 import CaseStudies       from '@/components/sections/CaseStudies';
 import LeadForm          from '@/components/sections/LeadForm';
@@ -19,7 +18,6 @@ export default function BrandPage() {
       <BrandTreatments />
       <BrandProcess />
       <Testimonials />
-      <TestimonialVideos />
       <MeetTheExperts />
       <CaseStudies />
       <LeadForm />

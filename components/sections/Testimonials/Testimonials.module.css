@@ -34,7 +34,6 @@
   text-align: center;
 }
 
-/* ── "Loved by Thousands" chip ─────────── */
 .chipRow {
   display: flex;
   justify-content: center;
@@ -55,7 +54,6 @@
   color: rgba(255, 255, 255, 0.75);
 }
 
-/* ── Heading ────────────────────────────── */
 .heading {
   font-size: clamp(2rem, 4.5vw, 3.5rem);
   font-weight: 800;
@@ -87,14 +85,12 @@
   gap: var(--space-3);
 }
 
-/* ── Cards viewport ─────────────────────── */
 .viewport {
   flex: 1;
   min-width: 0;
   overflow: hidden;
 }
 
-/* ── 3-column cards grid ─────────────────  */
 .cardsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -102,7 +98,7 @@
 }
 
 /* ══════════════════════════════════════════
-   INDIVIDUAL CARD — dark editorial style
+   INDIVIDUAL CARD
 ══════════════════════════════════════════ */
 .card {
   position: relative;
@@ -124,7 +120,6 @@
   border-color: rgba(255, 255, 255, 0.18);
 }
 
-/* ── Large decorative quote mark ────────── */
 .quoteIcon {
   position: absolute;
   top: 14px;
@@ -138,7 +133,6 @@
   letter-spacing: -0.02em;
 }
 
-/* ── Stars ──────────────────────────────── */
 .starsRow {
   display: flex;
   align-items: center;
@@ -150,7 +144,6 @@
   flex-shrink: 0;
 }
 
-/* ── Review text ─────────────────────────  */
 .reviewText {
   font-size: 0.9375rem;
   line-height: 1.68;
@@ -163,7 +156,6 @@
   margin: 0;
 }
 
-/* ── Card footer ─────────────────────────  */
 .cardFooter {
   display: flex;
   align-items: center;
@@ -288,75 +280,111 @@
 }
 
 /* ══════════════════════════════════════════
-   TESTIMONIALS VIDEO
+   PATIENT VIDEO STORIES
 ══════════════════════════════════════════ */
-.videoWrap {
-  position: relative;
-  margin-top: clamp(48px, 7vw, 72px);
-  max-width: 900px;
-  margin-inline: auto;
+.patientsSection {
+  margin-top: clamp(52px, 7vw, 80px);
 }
 
-.videoLabelChip {
-  display: inline-flex;
+.patientsHeader {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
-  padding: 7px 16px 7px 12px;
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(20px) saturate(1.4);
-  -webkit-backdrop-filter: blur(20px) saturate(1.4);
-  border: 1px solid rgba(255, 255, 255, 0.13);
-  border-radius: 100px;
+  text-align: center;
+  gap: clamp(10px, 1.4vw, 14px);
+  margin-bottom: clamp(32px, 4.5vw, 52px);
+}
+
+.patientsEyebrow {
   font-size: 0.6875rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.20em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.65);
-  white-space: nowrap;
-  margin-bottom: 16px;
+  color: rgba(255, 255, 255, 0.38);
+  margin: 0;
 }
 
-.videoLabelDot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.55);
-  flex-shrink: 0;
+.patientsHeading {
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  color: #ffffff;
+  line-height: 1.06;
+  margin: 0;
 }
 
-.videoInner {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  border-radius: 20px;
+.patientsSubtext {
+  font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.52);
+  max-width: 440px;
+  margin: 0;
+}
+
+/* Desktop: 3-column portrait grid */
+.videosGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2.5vw, 28px);
+}
+
+.videoCard {
+  border-radius: 16px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #0d0d0d;
   box-shadow:
-    0 40px 100px rgba(0, 0, 0, 0.6),
-    0 12px 36px rgba(0, 0, 0, 0.35);
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 24px 64px rgba(0, 0, 0, 0.5);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 }
 
-.videoEmbed {
+.videoCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 32px 80px rgba(0, 0, 0, 0.65);
+}
+
+/* Portrait 9:16 */
+.videoPortrait {
+  position: relative;
+  width: 100%;
+  padding-top: 177.78%;
+  overflow: hidden;
+}
+
+.iframe {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  border: none;
+  border: 0;
   display: block;
 }
+
+/* Mobile slideshow (hidden on desktop) */
+.mobileSlideshow { display: none; }
 
 /* ══════════════════════════════════════════
    RESPONSIVE
 ══════════════════════════════════════════ */
 
-/* Tablet: 2-column grid */
 @media (max-width: 1024px) {
   .cardsGrid {
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
   }
+
+  .videosGrid {
+    gap: clamp(12px, 2vw, 20px);
+  }
 }
 
-/* Small tablet */
 @media (max-width: 680px) {
   .carouselRow {
     gap: var(--space-2);
@@ -367,28 +395,87 @@
     height: 38px;
   }
 
-  .videoWrap {
-    max-width: 100%;
+  /* Hide desktop video grid, show mobile slideshow */
+  .videosGrid      { display: none; }
+  .mobileSlideshow { display: block; }
+
+  .mobileTrackRow {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
   }
 
-  .videoInner {
+  .mobileArrow {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .mobileArrow:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.35);
+    color: #fff;
+  }
+
+  .mobileTrack {
+    flex: 1;
+    position: relative;
     border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #0d0d0d;
+    overflow: hidden;
+  }
+
+  .videoPortraitMobile {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+  }
+
+  .mobileDots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: var(--space-3);
+  }
+
+  .mobileDot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+
+  .mobileDotActive {
+    background: #fff;
+    transform: scale(1.35);
   }
 }
 
-/* Mobile: single column */
 @media (max-width: 480px) {
   .cardsGrid {
     grid-template-columns: 1fr;
     gap: 12px;
   }
 
-  /* Show only first card per page on narrow mobile */
   .card:not(:first-child) {
     display: none;
   }
 
-  /* Full review text on mobile */
   .reviewText {
     display: block;
     -webkit-line-clamp: unset;
