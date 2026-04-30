@@ -138,11 +138,6 @@ export default function BrandTreatments() {
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <motion.div className={styles.countBadge} variants={fadeUp}>
-            <span className={styles.countDot} aria-hidden="true" />
-            {SLIDES.length} Treatments
-          </motion.div>
-
           <motion.p className={styles.eyebrow} variants={fadeUp}>
             Medical Aesthetics &amp; Health Care
           </motion.p>
@@ -172,7 +167,6 @@ export default function BrandTreatments() {
                 animate="show"
                 exit="exit"
               >
-                <p className={styles.treatmentLabel}>Now Viewing</p>
                 <h3 className={styles.treatmentName}>{active.title}</h3>
                 <div className={styles.rule} aria-hidden="true" />
                 <p className={styles.treatmentDesc}>{active.desc}</p>
@@ -240,6 +234,7 @@ export default function BrandTreatments() {
               centeredSlides
               loop
               slidesPerView="auto"
+              slideToClickedSlide
               autoplay={{ delay: 10000, disableOnInteraction: false, pauseOnMouseEnter: true }}
               coverflowEffect={{
                 rotate:       22,
@@ -255,7 +250,7 @@ export default function BrandTreatments() {
             >
               {SLIDES.map((slide, i) => (
                 <SwiperSlide key={i} className={styles.slide}>
-                  <Link href={slide.href} className={styles.card} draggable={false}>
+                  <div className={styles.card} aria-label={slide.title}>
                     <Image
                       src={slide.src}
                       alt={slide.title}
@@ -269,7 +264,7 @@ export default function BrandTreatments() {
                     <div className={styles.cardContent}>
                       <span className={styles.cardTitle}>{slide.title}</span>
                     </div>
-                  </Link>
+                  </div>
                 </SwiperSlide>
               ))}
             </Swiper>
