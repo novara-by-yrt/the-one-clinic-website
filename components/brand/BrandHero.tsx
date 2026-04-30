@@ -267,21 +267,6 @@ export default function BrandHero() {
                   </div>
                 </motion.div>
 
-                {/* CQC Registered */}
-                <motion.div
-                  className={`${styles.trustBadge} ${styles.trustBadgeImage}`}
-                  {...cineBadge(1.85, prefersReduced)}
-                >
-                  <div className={styles.trustImageWrap}>
-                    <Image
-                      src="/images/imgi_39_cqc-logo.png"
-                      alt="Care Quality Commission Regulated"
-                      width={200}
-                      height={104}
-                      className={styles.trustImage}
-                    />
-                  </div>
-                </motion.div>
 
               </div>
 
