@@ -4,7 +4,7 @@
 .section {
   position: relative;
   background: #0d1520 !important;
-  padding-block: clamp(52px, 7vw, 88px);
+  padding-block: clamp(52px, 7vw, 96px);
   overflow: hidden;
 }
 
@@ -42,33 +42,22 @@
 .inner {
   position: relative;
   z-index: 1;
-}
-
-/* ══════════════════════════════════════════════════════
-   SPLIT LAYOUT — video left / text right
-══════════════════════════════════════════════════════ */
-.splitLayout {
-  display: grid;
-  grid-template-columns: 56fr 44fr;
-  gap: clamp(36px, 5vw, 72px);
-  align-items: center;
-}
-
-/* ── Video column ─────────────────────────────────────────────── */
-.videoCol {
-  position: relative;
-}
-
-/* ── Text column ──────────────────────────────────────────────── */
-.textCol {
   display: flex;
   flex-direction: column;
-  gap: clamp(14px, 1.8vw, 20px);
+  gap: clamp(36px, 5vw, 60px);
 }
 
 /* ══════════════════════════════════════════════════════
-   TYPOGRAPHY
+   HEADER — centered
 ══════════════════════════════════════════════════════ */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(12px, 1.6vw, 18px);
+}
+
 .eyebrow {
   font-size: 0.6875rem;
   font-weight: 700;
@@ -79,12 +68,18 @@
 }
 
 .heading {
-  font-size: clamp(2rem, 3.8vw, 3.25rem);
+  font-size: clamp(2.25rem, 4.2vw, 4rem);
   font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1.06;
   color: #fff;
   margin: 0;
+}
+
+.headingAccent {
+  font-style: italic;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.50);
 }
 
 .rule {
@@ -100,38 +95,16 @@
   color: rgba(255, 255, 255, 0.48);
   line-height: 1.72;
   margin: 0;
+  max-width: 520px;
 }
 
-/* ── Attribute chips ──────────────────────────────────────────── */
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 4px;
-}
-
-.chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 50px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-.chipDot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
-  flex-shrink: 0;
+/* ══════════════════════════════════════════════════════
+   VIDEO GRID — two columns
+══════════════════════════════════════════════════════ */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(20px, 3vw, 36px);
 }
 
 /* ══════════════════════════════════════════════════════
@@ -233,37 +206,15 @@
 /* ══════════════════════════════════════════════════════
    RESPONSIVE
 ══════════════════════════════════════════════════════ */
-
-/* Tablet: stack — video on top, text below */
-@media (max-width: 860px) {
-  .splitLayout {
+@media (max-width: 768px) {
+  .grid {
     grid-template-columns: 1fr;
-    gap: clamp(28px, 5vw, 44px);
-  }
-
-  .videoCol {
-    order: 1;
-  }
-
-  .textCol {
-    order: 2;
-    text-align: center;
-    align-items: center;
-  }
-
-  .chips {
-    justify-content: center;
   }
 }
 
-/* Mobile */
 @media (max-width: 640px) {
   .section {
     padding-block: clamp(40px, 9vw, 60px);
-  }
-
-  .heading {
-    font-size: clamp(1.75rem, 7vw, 2.5rem);
   }
 
   .videoCard {
