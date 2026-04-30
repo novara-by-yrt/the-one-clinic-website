@@ -5,13 +5,11 @@ import Link from 'next/link';
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './CaseStudies.module.css';
 
 import 'swiper/css';
-import 'swiper/css/effect-coverflow';
 
 const SLIDES = [
   { src: '/images/Before and after 1.png',                           title: 'Lumecca Laser',      alt: 'Lumecca Laser before and after' },
@@ -76,29 +74,19 @@ export default function CaseStudies() {
           </motion.div>
         </motion.div>
 
-        {/* ── Full-width coverflow carousel ─────────────── */}
+        {/* ── Carousel ──────────────────────────────────── */}
         <div className={styles.carouselWrap}>
           <Swiper
-            modules={[EffectCoverflow]}
-            effect="coverflow"
-            initialSlide={1}
             grabCursor
             centeredSlides
             loop
+            initialSlide={1}
+            speed={620}
             breakpoints={{
-              0:   { slidesPerView: 1 },
-              768: { slidesPerView: 3 },
+              0:   { slidesPerView: 1, spaceBetween: 14 },
+              640: { slidesPerView: 3, spaceBetween: 20 },
             }}
-            spaceBetween={16}
             onSwiper={(swiper) => { swiperRef.current = swiper; }}
-            coverflowEffect={{
-              rotate: 22,
-              stretch: -10,
-              depth: 180,
-              modifier: 1,
-              scale: 0.86,
-              slideShadows: true,
-            }}
             className={styles.swiper}
           >
             {SLIDES.map((slide, i) => (
@@ -109,11 +97,11 @@ export default function CaseStudies() {
                     alt={slide.alt}
                     fill
                     className={styles.cardImg}
-                    sizes="(max-width: 640px) 220px, (max-width: 1024px) 300px, 340px"
+                    sizes="(max-width: 639px) 92vw, (max-width: 1024px) 30vw, 360px"
                     draggable={false}
                   />
                   <div className={styles.cardOverlay} aria-hidden="true" />
-                  <div className={styles.cardGlow} aria-hidden="true" />
+                  <div className={styles.cardGlow}    aria-hidden="true" />
                   <div className={styles.cardContent}>
                     <span className={styles.cardTitle}>{slide.title}</span>
                   </div>
@@ -122,17 +110,12 @@ export default function CaseStudies() {
             ))}
           </Swiper>
 
-          {/* Nav buttons — manual handlers so loop is always infinite */}
+          {/* Nav buttons */}
           <div className={styles.navRow}>
             <button
-              className={styles.navPrev}
+              className={styles.navBtn}
               aria-label="Previous result"
-              onClick={() => {
-                if (!swiperRef.current) return;
-                swiperRef.current.slideToLoop(
-                  (swiperRef.current.realIndex - 1 + SLIDES.length) % SLIDES.length
-                );
-              }}
+              onClick={() => swiperRef.current?.slidePrev()}
             >
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <path d="M11 3.5L5.5 9L11 14.5" stroke="currentColor" strokeWidth="1.8"
@@ -140,14 +123,9 @@ export default function CaseStudies() {
               </svg>
             </button>
             <button
-              className={styles.navNext}
+              className={styles.navBtn}
               aria-label="Next result"
-              onClick={() => {
-                if (!swiperRef.current) return;
-                swiperRef.current.slideToLoop(
-                  (swiperRef.current.realIndex + 1) % SLIDES.length
-                );
-              }}
+              onClick={() => swiperRef.current?.slideNext()}
             >
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <path d="M7 3.5L12.5 9L7 14.5" stroke="currentColor" strokeWidth="1.8"
