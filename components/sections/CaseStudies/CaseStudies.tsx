@@ -77,6 +77,7 @@ export default function CaseStudies() {
           <Swiper
             modules={[EffectCoverflow, Navigation]}
             effect="coverflow"
+            initialSlide={1}
             grabCursor
             centeredSlides
             loop
