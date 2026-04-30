@@ -85,8 +85,11 @@ export default function CaseStudies() {
             grabCursor
             centeredSlides
             loop
-            loopAdditionalSlides={SLIDES.length}
-            slidesPerView="auto"
+            breakpoints={{
+              0:   { slidesPerView: 1 },
+              768: { slidesPerView: 3 },
+            }}
+            spaceBetween={16}
             onSwiper={(swiper) => { swiperRef.current = swiper; }}
             coverflowEffect={{
               rotate: 22,
@@ -124,7 +127,12 @@ export default function CaseStudies() {
             <button
               className={styles.navPrev}
               aria-label="Previous result"
-              onClick={() => swiperRef.current?.slidePrev()}
+              onClick={() => {
+                if (!swiperRef.current) return;
+                swiperRef.current.slideToLoop(
+                  (swiperRef.current.realIndex - 1 + SLIDES.length) % SLIDES.length
+                );
+              }}
             >
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <path d="M11 3.5L5.5 9L11 14.5" stroke="currentColor" strokeWidth="1.8"
@@ -134,7 +142,12 @@ export default function CaseStudies() {
             <button
               className={styles.navNext}
               aria-label="Next result"
-              onClick={() => swiperRef.current?.slideNext()}
+              onClick={() => {
+                if (!swiperRef.current) return;
+                swiperRef.current.slideToLoop(
+                  (swiperRef.current.realIndex + 1) % SLIDES.length
+                );
+              }}
             >
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <path d="M7 3.5L12.5 9L7 14.5" stroke="currentColor" strokeWidth="1.8"

@@ -182,9 +182,8 @@
   overflow: visible !important;
 }
 
-/* ── Slide — larger portrait cards ── */
+/* ── Slide — width controlled by Swiper breakpoints ── */
 .slide {
-  width: 320px !important;
   height: 460px !important;
   border-radius: 22px;
   opacity: 1 !important;
@@ -359,14 +358,12 @@
 ══════════════════════════════════════════════════════ */
 @media (max-width: 1200px) {
   .slide {
-    width: 290px !important;
     height: 418px !important;
   }
 }
 
 @media (max-width: 1024px) {
   .slide {
-    width: 260px !important;
     height: 375px !important;
   }
 }
@@ -393,8 +390,8 @@
     padding-block: 28px 18px !important;
   }
 
+  /* 3-slide layout — keep same heights, no width override needed */
   .slide {
-    width: 230px !important;
     height: 332px !important;
     border-radius: 18px;
   }
@@ -412,19 +409,19 @@
   }
 }
 
+/* Mobile — 1 slide full-width */
 @media (max-width: 480px) {
   .slide {
-    width: 196px !important;
-    height: 284px !important;
-    border-radius: 14px;
+    height: 400px !important;
+    border-radius: 16px;
   }
 
   .card {
-    border-radius: 14px;
+    border-radius: 16px;
   }
 
   .cardGlow {
-    border-radius: 14px;
+    border-radius: 16px;
   }
 
   .navPrev,
@@ -440,7 +437,6 @@
 
 @media (max-width: 360px) {
   .slide {
-    width: 172px !important;
-    height: 250px !important;
+    height: 340px !important;
   }
 }
