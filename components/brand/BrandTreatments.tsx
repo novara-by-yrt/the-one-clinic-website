@@ -146,7 +146,6 @@ export default function BrandTreatments() {
               grabCursor
               centeredSlides
               loop
-              loopedSlides={SLIDES.length}
               slidesPerView="auto"
               slideToClickedSlide
               autoplay={{ delay: 10000, disableOnInteraction: false, pauseOnMouseEnter: true }}

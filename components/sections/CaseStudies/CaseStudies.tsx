@@ -73,7 +73,6 @@ export default function CaseStudies() {
             grabCursor
             centeredSlides
             loop
-            loopedSlides={4}
             initialSlide={1}
             speed={680}
             breakpoints={{
