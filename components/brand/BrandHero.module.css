@@ -21,6 +21,12 @@
 .heroBgImg {
   object-fit: cover;
   object-position: center;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.heroBgImgActive {
+  opacity: 1;
 }
 
 @media (max-width: 640px) {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
 import Container from '@/components/ui/Container';
@@ -93,10 +93,23 @@ function TrustpilotIcon() {
   );
 }
 
+const BG_IMAGES = [
+  '/images/Hero Section Background Image 3.png',
+  '/images/Hero Section Background Image 2.png',
+];
+
 /* ── Component ────────────────────────────────────────────── */
 export default function BrandHero() {
   const sectionRef     = useRef<HTMLElement>(null);
   const prefersReduced = useReducedMotion();
+  const [bgIndex, setBgIndex] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setBgIndex(prev => (prev + 1) % BG_IMAGES.length);
+    }, 4000);
+    return () => clearInterval(id);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -112,16 +125,19 @@ export default function BrandHero() {
       aria-label="Hero"
       data-section-theme="dark"
     >
-      {/* ── Background image ─────────────────────────────── */}
+      {/* ── Background slideshow ─────────────────────────── */}
       <div className={styles.heroBg} aria-hidden="true">
-        <Image
-          src="/images/Hero Section Background Image.png"
-          alt=""
-          fill
-          priority
-          className={styles.heroBgImg}
-          sizes="100vw"
-        />
+        {BG_IMAGES.map((src, i) => (
+          <Image
+            key={src}
+            src={src}
+            alt=""
+            fill
+            priority={i === 0}
+            className={`${styles.heroBgImg} ${bgIndex === i ? styles.heroBgImgActive : ''}`}
+            sizes="100vw"
+          />
+        ))}
       </div>
 
       {/* ── Cinematic overlay layers ─────────────────────── */}
