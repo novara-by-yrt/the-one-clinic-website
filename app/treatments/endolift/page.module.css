@@ -826,8 +826,6 @@
 .faqBgImg {
   object-fit: cover;
   object-position: center;
-  filter: brightness(0.28) saturate(0.5);
-  transform: scale(1.04);
 }
 
 .faqOverlay {
@@ -836,9 +834,9 @@
   z-index: 1;
   background: linear-gradient(
     to bottom,
-    rgba(4, 4, 8, 0.82) 0%,
-    rgba(4, 4, 8, 0.60) 50%,
-    rgba(4, 4, 8, 0.82) 100%
+    rgba(4, 4, 8, 0.55) 0%,
+    rgba(4, 4, 8, 0.38) 50%,
+    rgba(4, 4, 8, 0.55) 100%
   );
   pointer-events: none;
 }

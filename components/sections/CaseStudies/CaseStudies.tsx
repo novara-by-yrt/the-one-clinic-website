@@ -65,16 +65,6 @@ export default function CaseStudies() {
             Helping patients achieve confidence and long-term results,
             one personalised treatment at a time.
           </motion.p>
-
-          <motion.div variants={fadeUp}>
-            <Link href="/results" className={styles.cta}>
-              View More Results
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6"
-                  strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </Link>
-          </motion.div>
         </motion.div>
 
         {/* ── Carousel ──────────────────────────────────── */}
@@ -137,6 +127,17 @@ export default function CaseStudies() {
               </svg>
             </button>
           </div>
+        </div>
+
+        {/* ── View More CTA ─────────────────────────────── */}
+        <div className={styles.ctaWrap}>
+          <Link href="/results" className={styles.cta}>
+            View More Results
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6"
+                strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </Link>
         </div>
 
       </div>
