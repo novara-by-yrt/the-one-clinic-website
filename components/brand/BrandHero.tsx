@@ -94,8 +94,9 @@ function TrustpilotIcon() {
 }
 
 const BG_IMAGES = [
-  '/images/Hero Section Background Image 3.png',
+  '/images/Hero Section Background Image.png',
   '/images/Hero Section Background Image 2.png',
+  '/images/Hero Section Background Image 3.png',
 ];
 
 /* ── Component ────────────────────────────────────────────── */
