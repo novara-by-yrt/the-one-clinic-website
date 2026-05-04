@@ -128,15 +128,20 @@ export default function BrandHero() {
       {/* ── Background slideshow ─────────────────────────── */}
       <div className={styles.heroBg} aria-hidden="true">
         {BG_IMAGES.map((src, i) => (
-          <Image
+          <div
             key={src}
-            src={src}
-            alt=""
-            fill
-            priority={i === 0}
-            className={`${styles.heroBgImg} ${bgIndex === i ? styles.heroBgImgActive : ''}`}
-            sizes="100vw"
-          />
+            className={styles.heroBgSlide}
+            style={{ opacity: bgIndex === i ? 1 : 0 }}
+          >
+            <Image
+              src={src}
+              alt=""
+              fill
+              priority={i === 0}
+              className={styles.heroBgImg}
+              sizes="100vw"
+            />
+          </div>
         ))}
       </div>
 

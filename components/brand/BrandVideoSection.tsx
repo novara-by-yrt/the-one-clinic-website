@@ -62,9 +62,12 @@ export default function BrandVideoSection() {
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <motion.p className={styles.eyebrow} variants={fadeUp}>
-            See It For Yourself
-          </motion.p>
+          <motion.div variants={fadeUp}>
+            <span className={styles.chip}>
+              <span className={styles.chipDot} aria-hidden="true" />
+              See It For Yourself
+            </span>
+          </motion.div>
 
           <motion.h2 className={styles.heading} variants={fadeUp}>
             Our Story &amp;<br />

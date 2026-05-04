@@ -90,9 +90,12 @@ export default function BrandTreatments() {
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <motion.p className={styles.eyebrow} variants={fadeUp}>
-            Medical Aesthetics &amp; Health Care
-          </motion.p>
+          <motion.div variants={fadeUp}>
+            <span className={styles.chip}>
+              <span className={styles.chipDot} aria-hidden="true" />
+              Medical Aesthetics &amp; Health Care
+            </span>
+          </motion.div>
 
           <motion.h2 className={styles.heading} variants={fadeUp}>
             Our Popular{' '}
@@ -143,6 +146,7 @@ export default function BrandTreatments() {
               grabCursor
               centeredSlides
               loop
+              loopedSlides={SLIDES.length}
               slidesPerView="auto"
               slideToClickedSlide
               autoplay={{ delay: 10000, disableOnInteraction: false, pauseOnMouseEnter: true }}
@@ -178,6 +182,30 @@ export default function BrandTreatments() {
                 </SwiperSlide>
               ))}
             </Swiper>
+
+            {/* Nav arrows */}
+            <div className={styles.navRow}>
+              <button
+                className={styles.navBtn}
+                aria-label="Previous treatment"
+                onClick={() => swiperRef.current?.slidePrev()}
+              >
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M11 3.5L5.5 9L11 14.5" stroke="currentColor" strokeWidth="1.8"
+                    strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+              <button
+                className={styles.navBtn}
+                aria-label="Next treatment"
+                onClick={() => swiperRef.current?.slideNext()}
+              >
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M7 3.5L12.5 9L7 14.5" stroke="currentColor" strokeWidth="1.8"
+                    strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+            </div>
           </div>
 
         </div>

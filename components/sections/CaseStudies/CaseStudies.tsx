@@ -48,9 +48,12 @@ export default function CaseStudies() {
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <motion.p className={styles.eyebrow} variants={fadeUp}>
-            Patient Outcomes
-          </motion.p>
+          <motion.div variants={fadeUp}>
+            <span className={styles.chip}>
+              <span className={styles.chipDot} aria-hidden="true" />
+              Patient Outcomes
+            </span>
+          </motion.div>
 
           <motion.h2 className={styles.heading} variants={fadeUp}>
             Real Transformations
@@ -80,11 +83,12 @@ export default function CaseStudies() {
             grabCursor
             centeredSlides
             loop
+            loopedSlides={4}
             initialSlide={1}
-            speed={620}
+            speed={680}
             breakpoints={{
-              0:   { slidesPerView: 1, spaceBetween: 14 },
-              640: { slidesPerView: 3, spaceBetween: 20 },
+              0:   { slidesPerView: 1, spaceBetween: 16 },
+              640: { slidesPerView: 3, spaceBetween: 32 },
             }}
             onSwiper={(swiper) => { swiperRef.current = swiper; }}
             className={styles.swiper}

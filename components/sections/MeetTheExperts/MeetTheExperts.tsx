@@ -60,12 +60,16 @@ export default function MeetTheExperts() {
     <section
       className={styles.section}
       aria-label="Meet the Experts"
+      data-section-theme="light"
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
     >
       {/* ── Centered section header ────────────────────────────── */}
       <div className={styles.header}>
-        <p className={styles.eyebrow}>Our Clinical Team</p>
+        <span className={styles.chip}>
+          <span className={styles.chipDot} aria-hidden="true" />
+          Our Clinical Team
+        </span>
         <h2 className={styles.heading}>Meet the Experts</h2>
       </div>
 

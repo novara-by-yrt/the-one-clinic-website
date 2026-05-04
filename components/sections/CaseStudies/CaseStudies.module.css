@@ -90,19 +90,33 @@
   padding-inline: clamp(20px, 5vw, 48px);
 }
 
-.eyebrow {
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 16px;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50px;
   font-size: 0.6875rem;
   font-weight: 700;
-  letter-spacing: 0.20em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.38);
-  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.chipDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
 }
 
 .heading {
-  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
   font-weight: 800;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.04em;
   color: #ffffff;
   line-height: 1.06;
   margin: 0;
@@ -210,9 +224,9 @@
     0 8px 24px rgba(0, 0, 0, 0.40),
     0 2px 6px rgba(0, 0, 0, 0.28);
 
-  /* Default state — dimmed, scaled-down, dropped */
-  filter: brightness(0.58) saturate(0.42);
-  transform: scale(0.88) translateY(12px);
+  /* Default state — heavily dimmed and shrunk */
+  filter: brightness(0.32) saturate(0.25);
+  transform: scale(0.62) translateY(24px);
 
   transition:
     filter  0.55s cubic-bezier(0.22, 1, 0.36, 1),
@@ -222,24 +236,24 @@
   will-change: filter, transform, box-shadow;
 }
 
-/* ── Adjacent slides ── */
+/* ── Adjacent slides — noticeably smaller ── */
 .slide:global(.swiper-slide-prev) .card,
 .slide:global(.swiper-slide-next) .card,
 .slide:global(.swiper-slide-duplicate-prev) .card,
 .slide:global(.swiper-slide-duplicate-next) .card {
-  filter: brightness(0.75) saturate(0.68);
-  transform: scale(0.92) translateY(7px);
-  border-color: rgba(255, 255, 255, 0.09);
+  filter: brightness(0.62) saturate(0.50);
+  transform: scale(0.74) translateY(16px);
+  border-color: rgba(255, 255, 255, 0.08);
   box-shadow:
     0 16px 48px rgba(0, 0, 0, 0.50),
     0 4px 12px rgba(0, 0, 0, 0.30);
 }
 
-/* ── Active slide — full spotlight ── */
+/* ── Active slide — dominant center spotlight ── */
 .slide:global(.swiper-slide-active) .card,
 .slide:global(.swiper-slide-duplicate-active) .card {
   filter: brightness(1.04) saturate(1.06);
-  transform: scale(1) translateY(-10px);
+  transform: scale(1) translateY(-14px);
   border-color: rgba(255, 255, 255, 0.16);
   box-shadow:
     0 44px 90px rgba(0, 0, 0, 0.68),
@@ -250,7 +264,7 @@
 
 .slide:global(.swiper-slide-active) .card:hover,
 .slide:global(.swiper-slide-duplicate-active) .card:hover {
-  transform: scale(1) translateY(-15px);
+  transform: scale(1) translateY(-20px);
   box-shadow:
     0 52px 110px rgba(0, 0, 0, 0.74),
     0 20px 48px rgba(0, 0, 0, 0.52),
@@ -439,8 +453,10 @@
     border-radius: 18px;
   }
 
-  /* Single visible card always shows as active-styled */
-  .card {
+  /* Single visible card always shows as active-styled on mobile */
+  .card,
+  .slide:global(.swiper-slide-prev) .card,
+  .slide:global(.swiper-slide-next) .card {
     filter: brightness(1.00) saturate(1.00);
     transform: scale(1) translateY(0);
     border-color: rgba(255, 255, 255, 0.12);

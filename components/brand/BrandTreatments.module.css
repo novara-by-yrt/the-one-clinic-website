@@ -127,17 +127,31 @@
   flex-shrink: 0;
 }
 
-.eyebrow {
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 16px;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50px;
   font-size: 0.6875rem;
   font-weight: 700;
-  letter-spacing: 0.20em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.38);
-  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.chipDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
 }
 
 .heading {
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
   font-weight: 800;
   letter-spacing: -0.04em;
   color: #ffffff;
@@ -252,11 +266,13 @@
     0 0 0 1px rgba(255, 255, 255, 0.10) inset;
 }
 
-/* Nav row */
+/* Nav row — centred below carousel */
 .navRow {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  gap: 16px;
+  padding-top: 20px;
 }
 
 .navBtn {
@@ -613,10 +629,6 @@
     padding-block: clamp(36px, 6vw, 52px) clamp(48px, 7vw, 68px);
     padding-inline: 18px;
     gap: 24px;
-  }
-
-  .heading {
-    font-size: clamp(2.25rem, 9.5vw, 3rem);
   }
 
   .sectionDesc {

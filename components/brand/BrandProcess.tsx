@@ -187,7 +187,12 @@ export default function BrandProcess() {
               whileInView="show"
               viewport={VIEWPORT}
             >
-              <motion.p className={styles.eyebrow} variants={fadeUp}>About Us</motion.p>
+              <motion.div variants={fadeUp}>
+                <span className={styles.chip}>
+                  <span className={styles.chipDot} aria-hidden="true" />
+                  About Us
+                </span>
+              </motion.div>
               <motion.h2 className={styles.heading} variants={fadeUp}>Our Philosophy</motion.h2>
               <motion.p className={styles.subtext} variants={fadeUp}>
                 One Clinic Leicester, where a fresh approach to aesthetics meets
