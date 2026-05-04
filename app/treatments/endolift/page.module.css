@@ -817,9 +817,39 @@
 /* ════════════════════════════════════════════════════
    FAQ
 ════════════════════════════════════════════════════ */
+.faqSection {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(64px, 8vw, 104px);
+}
+
+.faqBgImg {
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.28) saturate(0.5);
+  transform: scale(1.04);
+}
+
+.faqOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(4, 4, 8, 0.82) 0%,
+    rgba(4, 4, 8, 0.60) 50%,
+    rgba(4, 4, 8, 0.82) 100%
+  );
+  pointer-events: none;
+}
+
+.faqInner {
+  position: relative;
+  z-index: 2;
+}
+
 .faqBody {
   max-width: 740px;
-  margin: 0 auto;
 }
 
 .faqToggleWrap {
