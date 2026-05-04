@@ -267,10 +267,26 @@ export default function BrandHero() {
                   </p>
                 </motion.div>
 
-                {/* AM Awards 2025 Finalist */}
+                {/* Aesthetics Awards Highly Commended 2025 */}
                 <motion.div
                   className={`${styles.trustBadge} ${styles.trustBadgeImage}`}
                   {...cineBadge(1.70, prefersReduced)}
+                >
+                  <div className={styles.trustImageWrap}>
+                    <Image
+                      src="/images/imgi_35_Untitled-3-5-e1749493207346.png"
+                      alt="Aesthetics Awards Highly Commended 2025"
+                      width={400}
+                      height={280}
+                      className={styles.trustImage}
+                    />
+                  </div>
+                </motion.div>
+
+                {/* AM Awards 2025 Finalist */}
+                <motion.div
+                  className={`${styles.trustBadge} ${styles.trustBadgeImage}`}
+                  {...cineBadge(1.85, prefersReduced)}
                 >
                   <div className={styles.trustImageWrap}>
                     <Image
@@ -278,22 +294,6 @@ export default function BrandHero() {
                       alt="Aesthetic Medicine Awards 2025 Finalist"
                       width={200}
                       height={138}
-                      className={styles.trustImage}
-                    />
-                  </div>
-                </motion.div>
-
-                {/* The One Clinic */}
-                <motion.div
-                  className={`${styles.trustBadge} ${styles.trustBadgeImage}`}
-                  {...cineBadge(1.85, prefersReduced)}
-                >
-                  <div className={styles.trustImageWrap}>
-                    <Image
-                      src="/images/imgi_35_Untitled-3-5-e1749493207346.png"
-                      alt="The One Clinic"
-                      width={400}
-                      height={280}
                       className={styles.trustImage}
                     />
                   </div>

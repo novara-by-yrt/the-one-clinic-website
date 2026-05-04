@@ -133,13 +133,6 @@ export default function BrandTreatments() {
             </AnimatePresence>
 
 
-            <Link href="/treatments" className={styles.exploreLink}>
-              Explore All Treatments
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6"
-                  strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </Link>
           </div>
 
           {/* ── Right: 3D coverflow carousel ── */}
@@ -187,6 +180,17 @@ export default function BrandTreatments() {
             </Swiper>
           </div>
 
+        </div>
+
+        {/* ══ Bottom CTA ══ */}
+        <div className={styles.exploreBtnWrap}>
+          <Link href="/treatments" className={styles.exploreBtn}>
+            Explore All Treatments
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+              <path d="M2.5 7.5h10M8 3l4.5 4.5L8 12" stroke="currentColor" strokeWidth="1.7"
+                strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </Link>
         </div>
 
       </div>

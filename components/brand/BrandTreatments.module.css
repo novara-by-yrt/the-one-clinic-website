@@ -311,22 +311,42 @@
   font-variant-numeric: tabular-nums;
 }
 
-.exploreLink {
+.exploreBtnWrap {
+  display: flex;
+  justify-content: center;
+  padding-top: clamp(8px, 1.5vw, 16px);
+}
+
+.exploreBtn {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 1rem;
+  padding: 16px 38px;
+  background: #ffffff;
+  color: #080810;
+  border-radius: 50px;
+  font-size: 0.875rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
-  color: #ffffff;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   text-decoration: none;
-  transition: opacity 0.22s ease, transform 0.22s ease;
-  width: fit-content;
+  box-shadow:
+    0 4px 28px rgba(255, 255, 255, 0.22),
+    0 1px 4px rgba(0, 0, 0, 0.25);
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease;
 }
 
-.exploreLink:hover {
-  opacity: 0.75;
-  transform: translateX(3px);
+.exploreBtn:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 12px 44px rgba(255, 255, 255, 0.36),
+    0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.exploreBtn:active {
+  transform: translateY(1px);
 }
 
 /* ══════════════════════════════════════════════════════
@@ -566,10 +586,6 @@
     justify-content: center;
     max-width: 320px;
     width: 100%;
-  }
-
-  .exploreLink {
-    margin: 0 auto;
   }
 
   .cta {
