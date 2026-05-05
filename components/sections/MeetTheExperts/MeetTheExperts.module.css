@@ -130,7 +130,13 @@
 ══════════════════════════════════════════════════════════ */
 .cardImg {
   object-fit: cover;
-  object-position: top center;
+  object-position: top center; /* active card: show full portrait from top */
+}
+
+/* Side + next thumbnails: center on face area, not just top of head */
+.sideCardInner .cardImg,
+.nextThumbInner .cardImg {
+  object-position: center 12%;
 }
 
 .cardInitials {
@@ -162,44 +168,43 @@
   display: flex;
   flex-direction: column;
   height: clamp(380px, 54vw, 540px);
-  gap: clamp(12px, 1.6vw, 22px);
-  padding-left: clamp(8px, 1.2vw, 16px);
+  gap: clamp(14px, 1.8vw, 24px);
+  padding-left: clamp(16px, 2.4vw, 36px);
 }
 
 /* ── Info area (fills the upper space) ── */
 .infoArea {
   flex: 1;
   min-height: 0;
-  overflow: hidden;
+  overflow: visible;
   display: flex;
   align-items: flex-start;
-  padding-top: clamp(8px, 1.2vw, 16px);
+  padding-top: clamp(12px, 1.8vw, 24px);
 }
 
 .infoPanel {
   display: flex;
   flex-direction: column;
-  gap: clamp(6px, 0.8vw, 10px);
+  gap: clamp(8px, 1vw, 13px);
   width: 100%;
 }
 
 .counter {
-  font-size: clamp(1.25rem, 2.2vw, 1.875rem);
+  font-size: clamp(1.125rem, 2vw, 1.625rem);
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   color: rgba(13, 21, 32, 0.16);
   line-height: 1;
-  margin: 0 0 2px;
+  margin: 0;
 }
 
 .expertName {
-  font-size: clamp(1.375rem, 2.6vw, 2.125rem);
+  font-size: clamp(1.25rem, 2.4vw, 2rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   color: #0d1520;
-  line-height: 1.06;
+  line-height: 1.08;
   margin: 0;
-  text-transform: uppercase;
 }
 
 .credentials {
@@ -223,7 +228,7 @@
   background: #0d1520;
   border-radius: 2px;
   opacity: 0.13;
-  margin-block: 4px;
+  margin-block: 2px;
   flex-shrink: 0;
 }
 
@@ -242,7 +247,7 @@
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  padding: 12px 24px;
+  padding: 13px 26px;
   background: #0d1520;
   color: #ffffff;
   border-radius: 50px;
@@ -252,7 +257,7 @@
   text-transform: uppercase;
   text-decoration: none;
   width: fit-content;
-  margin-top: 6px;
+  margin-top: 4px;
   transition:
     background 0.25s ease,
     transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
@@ -275,7 +280,7 @@
 /* ── Two next thumbnails — same size as prev card, side by side ── */
 .nextRow {
   display: flex;
-  gap: clamp(8px, 1.2vw, 14px);
+  gap: clamp(10px, 1.4vw, 16px);
   flex: 0 0 auto;
 }
 
@@ -349,56 +354,65 @@
    RESPONSIVE
 ══════════════════════════════════════════════════════════ */
 
-/* Narrow desktop */
-@media (max-width: 1024px) {
+/* Narrow desktop / large tablet landscape */
+@media (max-width: 1100px) {
   .stage {
     grid-template-columns:
-      clamp(86px, 10vw, 120px)
-      clamp(210px, 30vw, 300px)
+      clamp(90px, 10vw, 130px)
+      clamp(200px, 28vw, 300px)
       minmax(180px, 1fr);
-    gap: clamp(10px, 1.3vw, 16px);
+    gap: clamp(10px, 1.4vw, 18px);
+    padding-inline: clamp(20px, 4vw, 52px);
+  }
+
+  .rightCol {
+    padding-left: clamp(12px, 2vw, 28px);
   }
 }
 
-/* Tablet — hide prev card, shrink heights */
+/* Tablet portrait — hide prev card, 2-column layout */
 @media (max-width: 768px) {
   .stage {
     grid-template-columns:
-      clamp(200px, 48vw, 300px)
-      minmax(160px, 1fr);
-    gap: clamp(12px, 2vw, 20px);
+      clamp(190px, 46vw, 280px)   /* active */
+      minmax(150px, 1fr);          /* right col */
+    gap: clamp(14px, 2.5vw, 24px);
+    padding-inline: clamp(16px, 4vw, 36px);
   }
 
   .sideCard { display: none; }
 
   .activeCard {
-    height: clamp(300px, 56vw, 440px);
+    height: clamp(320px, 58vw, 460px);
   }
 
   .rightCol {
-    height: clamp(300px, 56vw, 440px);
-    padding-left: clamp(4px, 1vw, 12px);
+    height: clamp(320px, 58vw, 460px);
+    padding-left: clamp(10px, 2vw, 20px);
+    gap: clamp(12px, 2vw, 20px);
   }
 
   .nextThumb {
-    height: clamp(130px, 22vw, 190px);
+    height: clamp(140px, 24vw, 200px);
   }
+
+  .bio { -webkit-line-clamp: 3; }
 }
 
-/* Mobile — stack active card + info + mini thumb row */
+/* Mobile — fully stacked */
 @media (max-width: 540px) {
   .stage {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    cursor: grab;
+    gap: 20px;
+    padding-inline: clamp(16px, 5vw, 28px);
   }
 
   .sideCard { display: none; }
 
   .activeCard {
-    height: clamp(300px, 78vw, 420px);
-    border-radius: 16px;
+    height: clamp(340px, 82vw, 460px);
+    border-radius: 18px;
     width: 100%;
   }
 
@@ -406,25 +420,28 @@
     display: flex;
     flex-direction: column;
     height: auto;
-    gap: 16px;
+    gap: 20px;
     padding-left: 0;
   }
 
   .infoArea {
     flex: none;
     overflow: visible;
-    padding-top: 4px;
+    padding-top: 0;
+  }
+
+  .infoPanel {
+    gap: 10px;
   }
 
   .bio { -webkit-line-clamp: 4; }
 
-  .expertName { text-transform: none; }
-
   .nextRow {
-    gap: 10px;
+    gap: 12px;
   }
 
+  /* Taller thumbnails on mobile so faces aren't cropped */
   .nextThumb {
-    height: clamp(110px, 28vw, 160px);
+    height: clamp(160px, 42vw, 220px);
   }
 }
