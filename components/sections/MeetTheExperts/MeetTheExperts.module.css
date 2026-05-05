@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(40px, 5.5vw, 64px);
+  gap: clamp(32px, 4.5vw, 52px);
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -56,126 +56,78 @@
 }
 
 /* ══════════════════════════════════════════════════════════
-   STAGE — filmstrip left, info right
+   STAGE — 3-column grid, all bottom-aligned
+   [prev small] | [active large] | [info top + next bottom]
 ══════════════════════════════════════════════════════════ */
 .stage {
   display: grid;
-  grid-template-columns: 1fr minmax(260px, 400px);
+  grid-template-columns:
+    clamp(100px, 12vw, 148px)       /* prev card */
+    clamp(240px, 28vw, 340px)       /* active card */
+    clamp(220px, 30vw, 380px);      /* right col */
   align-items: end;
-  gap: clamp(24px, 5vw, 80px);
+  gap: clamp(10px, 1.4vw, 18px);
   width: 100%;
-  max-width: 1320px;
-  padding-inline: clamp(20px, 5vw, 72px);
+  max-width: 1120px;
+  padding-inline: clamp(20px, 5vw, 64px);
   box-sizing: border-box;
+  user-select: none;
+  cursor: grab;
 }
+
+.stage:active { cursor: grabbing; }
 
 /* ══════════════════════════════════════════════════════════
-   CAROUSEL COLUMN
+   PREV CARD — small, bottom-aligned
 ══════════════════════════════════════════════════════════ */
-.carouselCol {
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(16px, 2vw, 24px);
-}
-
-/* Edge-fade mask */
-.carouselWrap {
-  width: 100%;
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 7%,
-    black 93%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 7%,
-    black 93%,
-    transparent 100%
-  );
-}
-
-/* ── Swiper ── */
-.swiper {
-  width: 100%;
-  /* height = max card height; non-active cards shrink within this space */
-  height: clamp(320px, 48vw, 500px) !important;
-  overflow: visible !important;
-}
-
-/* Bottom-align every slide inside the wrapper */
-.swiper :global(.swiper-wrapper) {
-  align-items: flex-end;
-}
-
-/* ══════════════════════════════════════════════════════════
-   SLIDE — variable width, full container height
-══════════════════════════════════════════════════════════ */
-.slide {
-  /* non-active: narrow */
-  width: clamp(90px, 11vw, 140px) !important;
-  height: 100% !important;
-  display: flex !important;
-  align-items: flex-end;
+.sideCard {
+  display: block;
+  border: none;
+  padding: 0;
+  background: none;
   cursor: pointer;
-  /* smooth width transition when active changes */
-  transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  position: relative;
+  /* ~43% of active card height */
+  height: clamp(160px, 24vw, 220px);
+  border-radius: clamp(10px, 1.2vw, 14px);
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
-/* active: wider */
-.slide:global(.swiper-slide-active),
-.slide:global(.swiper-slide-duplicate-active) {
-  width: clamp(200px, 25vw, 300px) !important;
+.sideCardInner {
+  position: absolute;
+  inset: 0;
 }
 
 /* ══════════════════════════════════════════════════════════
-   CARD — grows from bottom, CSS spotlight
+   ACTIVE CARD — tall, prominent
 ══════════════════════════════════════════════════════════ */
-.card {
-  width: 100%;
-  /* start at ~half height — anchored at bottom via parent flex-end */
-  height: 48%;
+.activeCard {
   position: relative;
+  height: clamp(360px, 52vw, 520px);
+  border-radius: clamp(14px, 1.6vw, 20px);
   overflow: hidden;
-  border-radius: 14px;
   background: #dcdce4;
-
-  /* default: heavily dimmed */
-  filter: brightness(0.28) saturate(0.10);
-
-  transition:
-    height   0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    filter   0.45s ease,
-    border-radius 0.35s ease,
-    box-shadow    0.45s ease;
-  will-change: height, filter;
-}
-
-/* adjacent — mid brightness + 2/3 height */
-.slide:global(.swiper-slide-prev) .card,
-.slide:global(.swiper-slide-next) .card,
-.slide:global(.swiper-slide-duplicate-prev) .card,
-.slide:global(.swiper-slide-duplicate-next) .card {
-  height: 66%;
-  filter: brightness(0.58) saturate(0.35);
-}
-
-/* active — full height, full colour */
-.slide:global(.swiper-slide-active) .card,
-.slide:global(.swiper-slide-duplicate-active) .card {
-  height: 100%;
-  filter: brightness(1) saturate(1);
-  border-radius: 18px;
   box-shadow:
-    0 24px 64px rgba(0, 0, 0, 0.20),
-    0 8px 20px rgba(0, 0, 0, 0.12);
+    0 20px 56px rgba(0, 0, 0, 0.18),
+    0 6px 16px rgba(0, 0, 0, 0.10);
 }
 
-/* Portrait anchored at top so face is always visible */
+.activeInner {
+  position: absolute;
+  inset: 0;
+}
+
+.activeOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.28) 0%, transparent 40%);
+}
+
+/* ══════════════════════════════════════════════════════════
+   SHARED IMAGE + INITIALS
+══════════════════════════════════════════════════════════ */
 .cardImg {
   object-fit: cover;
   object-position: top center;
@@ -187,27 +139,164 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 800;
   color: rgba(0, 0, 0, 0.14);
   letter-spacing: -0.025em;
 }
 
-/* Subtle bottom gradient */
-.cardOverlay {
+/* Dim overlay for side cards */
+.sideDim {
   position: absolute;
   inset: 0;
-  z-index: 1;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.30) 0%, transparent 45%);
+  background: rgba(255, 255, 255, 0.38);
+  backdrop-filter: grayscale(0.6);
+  -webkit-backdrop-filter: grayscale(0.6);
 }
 
 /* ══════════════════════════════════════════════════════════
-   NAV ROW — arrows below filmstrip
+   RIGHT COLUMN — info (top) + next thumb (bottom)
+   Same total height as active card
+══════════════════════════════════════════════════════════ */
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  height: clamp(360px, 52vw, 520px);
+  gap: clamp(10px, 1.4vw, 18px);
+}
+
+/* ── Info area (takes remaining upper space) ── */
+.infoArea {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+}
+
+.infoPanel {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.6vw, 8px);
+  width: 100%;
+}
+
+.counter {
+  font-size: clamp(1.25rem, 2.2vw, 1.875rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: rgba(13, 21, 32, 0.16);
+  line-height: 1;
+  margin: 0;
+}
+
+.expertName {
+  font-size: clamp(1.25rem, 2.4vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #0d1520;
+  line-height: 1.08;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.credentials {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(13, 21, 32, 0.38);
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.role {
+  font-size: clamp(0.8125rem, 0.95vw, 0.9375rem);
+  font-weight: 600;
+  color: rgba(13, 21, 32, 0.55);
+  margin: 0;
+}
+
+.divider {
+  width: 28px;
+  height: 2px;
+  background: #0d1520;
+  border-radius: 2px;
+  opacity: 0.13;
+  margin-block: 2px;
+  flex-shrink: 0;
+}
+
+.bio {
+  font-size: clamp(0.8125rem, 0.95vw, 0.9375rem);
+  line-height: 1.72;
+  color: rgba(13, 21, 32, 0.52);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 22px;
+  background: #0d1520;
+  color: #ffffff;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  width: fit-content;
+  margin-top: 6px;
+  transition:
+    background 0.25s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease;
+  box-shadow: 0 4px 16px rgba(13, 21, 32, 0.18);
+}
+
+.cta:hover {
+  background: #1c2d42;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(13, 21, 32, 0.26);
+}
+
+.cta:focus-visible {
+  outline: 2px solid #0d1520;
+  outline-offset: 3px;
+  border-radius: 50px;
+}
+
+/* ── Next card thumbnail (lower portion of right col) ── */
+.nextThumb {
+  display: block;
+  border: none;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  position: relative;
+  /* ~43% of active height — mirrors the prev card */
+  flex: 0 0 clamp(160px, 24vw, 220px);
+  border-radius: clamp(10px, 1.2vw, 14px);
+  overflow: hidden;
+}
+
+.nextThumbInner {
+  position: absolute;
+  inset: 0;
+}
+
+/* ══════════════════════════════════════════════════════════
+   NAV ROW — centered below entire slideshow
 ══════════════════════════════════════════════════════════ */
 .navRow {
   display: flex;
   gap: 10px;
-  padding-inline: clamp(4px, 1.5vw, 16px);
+  justify-content: center;
+  align-items: center;
 }
 
 .navBtn {
@@ -248,178 +337,91 @@
 }
 
 /* ══════════════════════════════════════════════════════════
-   INFO COLUMN — right side, bottom-aligned
-══════════════════════════════════════════════════════════ */
-.infoCol {
-  display: flex;
-  align-items: flex-end;
-  /* lift info so it sits above the arrows, aligned with active card body */
-  padding-bottom: clamp(56px, 7vw, 72px);
-}
-
-.infoPanel {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(5px, 0.7vw, 9px);
-  width: 100%;
-}
-
-/* Large counter "#01" — matches reference screenshot */
-.counter {
-  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: rgba(13, 21, 32, 0.18);
-  line-height: 1;
-  margin: 0 0 2px;
-}
-
-.expertName {
-  font-size: clamp(1.5rem, 2.8vw, 2.5rem);
-  font-weight: 800;
-  letter-spacing: -0.035em;
-  color: #0d1520;
-  line-height: 1.06;
-  margin: 0;
-  text-transform: uppercase;
-}
-
-.credentials {
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: rgba(13, 21, 32, 0.38);
-  letter-spacing: 0.04em;
-  margin: 0;
-}
-
-.role {
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: rgba(13, 21, 32, 0.55);
-  margin: 0;
-}
-
-.divider {
-  width: 32px;
-  height: 2px;
-  background: #0d1520;
-  border-radius: 2px;
-  opacity: 0.13;
-  margin-block: 3px;
-  flex-shrink: 0;
-}
-
-.bio {
-  font-size: clamp(0.875rem, 1vw, 0.9375rem);
-  line-height: 1.76;
-  color: rgba(13, 21, 32, 0.52);
-  margin: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 26px;
-  background: #0d1520;
-  color: #ffffff;
-  border-radius: 50px;
-  font-size: 0.8125rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  text-decoration: none;
-  width: fit-content;
-  margin-top: 8px;
-  transition:
-    background 0.25s ease,
-    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.25s ease;
-  box-shadow: 0 4px 18px rgba(13, 21, 32, 0.18);
-}
-
-.cta:hover {
-  background: #1c2d42;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(13, 21, 32, 0.28);
-}
-
-.cta:focus-visible {
-  outline: 2px solid #0d1520;
-  outline-offset: 3px;
-  border-radius: 50px;
-}
-
-/* ══════════════════════════════════════════════════════════
    RESPONSIVE
 ══════════════════════════════════════════════════════════ */
+
+/* Narrow desktop / tablet-landscape */
 @media (max-width: 960px) {
   .stage {
-    grid-template-columns: 1fr minmax(220px, 320px);
-    gap: clamp(20px, 3vw, 40px);
-  }
-
-  .infoCol {
-    padding-bottom: clamp(48px, 6vw, 64px);
+    grid-template-columns:
+      clamp(80px, 11vw, 120px)
+      clamp(200px, 30vw, 300px)
+      minmax(180px, 1fr);
+    gap: clamp(8px, 1.2vw, 14px);
   }
 }
 
-/* Tablet and below: stack vertically */
-@media (max-width: 768px) {
+/* Tablet portrait — drop prev card, stack info below */
+@media (max-width: 720px) {
+  .stage {
+    grid-template-columns:
+      clamp(200px, 52vw, 300px)  /* active */
+      minmax(160px, 1fr);        /* right col */
+    align-items: end;
+  }
+
+  /* hide the prev card on smaller screens */
+  .sideCard { display: none; }
+
+  .activeCard {
+    height: clamp(300px, 58vw, 440px);
+  }
+
+  .rightCol {
+    height: clamp(300px, 58vw, 440px);
+  }
+}
+
+/* Mobile — full stack */
+@media (max-width: 540px) {
   .stage {
     grid-template-columns: 1fr;
     align-items: stretch;
-    gap: 28px;
+    gap: 0;
   }
 
-  .infoCol {
-    padding-bottom: 0;
-    align-items: flex-start;
-    padding-inline: clamp(4px, 2vw, 16px);
+  .sideCard   { display: none; }
+  .rightCol   { display: none; }
+
+  .activeCard {
+    height: clamp(300px, 80vw, 440px);
+    border-radius: 16px;
+  }
+
+  /* show a simple info strip below the card on mobile */
+  .section {
+    gap: clamp(24px, 4vw, 36px);
+  }
+}
+
+/* Mobile info strip — shown only when rightCol is hidden */
+@media (max-width: 540px) {
+  /* Re-show info inline after stage by making rightCol visible as a row below */
+  .stage {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .rightCol {
+    display: flex;
+    height: auto;
+    gap: 0;
+    padding-top: 20px;
+  }
+
+  .nextThumb { display: none; }
+
+  .infoArea {
+    flex: 1;
+    overflow: visible;
+  }
+
+  .bio {
+    -webkit-line-clamp: 4;
   }
 
   .expertName {
     text-transform: none;
-  }
-
-  .carouselWrap {
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent 0%,
-      black 4%,
-      black 96%,
-      transparent 100%
-    );
-    mask-image: linear-gradient(
-      to right,
-      transparent 0%,
-      black 4%,
-      black 96%,
-      transparent 100%
-    );
-  }
-}
-
-@media (max-width: 540px) {
-  .swiper {
-    height: clamp(260px, 62vw, 380px) !important;
-  }
-
-  .slide {
-    width: clamp(72px, 20vw, 110px) !important;
-  }
-
-  .slide:global(.swiper-slide-active),
-  .slide:global(.swiper-slide-duplicate-active) {
-    width: clamp(150px, 38vw, 210px) !important;
-  }
-
-  .navBtn {
-    width: 40px;
-    height: 40px;
   }
 }
