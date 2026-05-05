@@ -12,6 +12,10 @@ const LOGOS = [
   { src: '/images/imgi_96_Logo-InMode2-1536x630.png',                  alt: 'InMode',                  w: 1536, h: 630 },
 ];
 
+// 6 copies — half the track (3 sets) is always wider than any standard screen
+const TRACK_COPIES = 6;
+const TRACK_LOGOS = Array.from({ length: TRACK_COPIES }, () => LOGOS).flat();
+
 export default function LogoCarousel() {
   return (
     <Section variant="light" data-section-theme="light" className={styles.section}>
@@ -26,7 +30,7 @@ export default function LogoCarousel() {
           className={styles.track}
           aria-label="Accreditations and partner logos"
         >
-          {[...LOGOS, ...LOGOS].map((logo, i) => (
+          {TRACK_LOGOS.map((logo, i) => (
             <div
               key={i}
               className={styles.logoWrap}
@@ -38,7 +42,7 @@ export default function LogoCarousel() {
                 width={logo.w}
                 height={logo.h}
                 draggable={false}
-                style={{ height: '44px', width: 'auto', objectFit: 'contain' }}
+                className={styles.logoImg}
               />
             </div>
           ))}

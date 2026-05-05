@@ -1,6 +1,6 @@
 /* ── Section shell ─────────────────────────────────────────────── */
 .section {
-  padding-block: 16px !important;
+  padding-block: 28px !important;
   overflow: hidden;
   border-top: 1px solid rgba(13, 21, 32, 0.07);
   border-bottom: 1px solid rgba(13, 21, 32, 0.07);
@@ -11,25 +11,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  margin-bottom: 12px;
+  gap: 16px;
+  margin-bottom: 18px;
   padding-inline: clamp(20px, 5vw, 60px);
 }
 
 .labelLine {
   flex: 0 0 auto;
-  width: clamp(32px, 5vw, 72px);
+  width: clamp(36px, 5vw, 80px);
   height: 1px;
   background: rgba(13, 21, 32, 0.12);
   border-radius: 1px;
 }
 
 .labelText {
-  font-size: 0.5625rem;
+  font-size: 0.6875rem;
   font-weight: 700;
-  letter-spacing: 0.26em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(13, 21, 32, 0.32);
+  color: rgba(13, 21, 32, 0.38);
   white-space: nowrap;
 }
 
@@ -40,22 +40,17 @@
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
-    black 10%,
-    black 90%,
+    black 8%,
+    black 92%,
     transparent 100%
   );
   mask-image: linear-gradient(
     to right,
     transparent 0%,
-    black 10%,
-    black 90%,
+    black 8%,
+    black 92%,
     transparent 100%
   );
-  cursor: grab;
-}
-
-.viewport:active {
-  cursor: grabbing;
 }
 
 /* ── Infinite scroll keyframes ──────────────────────────────────── */
@@ -71,7 +66,8 @@
   width: max-content;
   user-select: none;
   -webkit-user-select: none;
-  animation: logoScroll 28s linear infinite;
+  /* 6 copies → -50% moves by 3 sets; duration tuned for smooth pace */
+  animation: logoScroll 42s linear infinite;
 }
 
 .viewport:hover .track {
@@ -79,18 +75,19 @@
 }
 
 /* ── Individual logo slot ───────────────────────────────────────── */
-/* padding-right (not gap) so each slot owns its trailing space —
-   this makes both halves of the duplicated track exactly equal width,
-   which is required for a seamless translateX(-50%) loop. */
 .logoWrap {
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-right: clamp(32px, 5vw, 64px);
+  padding-right: clamp(44px, 5.5vw, 88px);
 }
 
-.logoWrap img {
+/* ── Logo image — height driven by CSS, width auto-scales ──────── */
+.logoImg {
+  height: 58px !important;
+  width: auto !important;
+  object-fit: contain;
   pointer-events: none;
   -webkit-user-drag: none;
 }
@@ -98,11 +95,19 @@
 /* ── Responsive ─────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .section {
-    padding-block: 12px !important;
+    padding-block: 22px !important;
+  }
+
+  .labelRow {
+    margin-bottom: 14px;
   }
 
   .logoWrap {
-    padding-right: clamp(24px, 5vw, 40px);
+    padding-right: clamp(32px, 5vw, 56px);
+  }
+
+  .logoImg {
+    height: 46px !important;
   }
 
   .labelLine {
@@ -113,16 +118,26 @@
     -webkit-mask-image: linear-gradient(
       to right,
       transparent 0%,
-      black 6%,
-      black 94%,
+      black 5%,
+      black 95%,
       transparent 100%
     );
     mask-image: linear-gradient(
       to right,
       transparent 0%,
-      black 6%,
-      black 94%,
+      black 5%,
+      black 95%,
       transparent 100%
     );
+  }
+}
+
+@media (max-width: 480px) {
+  .logoImg {
+    height: 38px !important;
+  }
+
+  .logoWrap {
+    padding-right: clamp(24px, 6vw, 44px);
   }
 }
