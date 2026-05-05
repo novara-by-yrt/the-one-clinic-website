@@ -13,7 +13,7 @@ import styles from './BrandTreatments.module.css';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 
-const SLIDES = [
+const SLIDES_BASE = [
   {
     src:   '/images/Endolift-Laser_1.jpg',
     title: 'Endolift',
@@ -52,6 +52,10 @@ const SLIDES = [
   },
 ];
 
+const TOTAL = SLIDES_BASE.length;
+// Duplicate so coverflow loop has enough slides to fill both sides
+const SLIDES = [...SLIDES_BASE, ...SLIDES_BASE];
+
 const INFO_VARIANTS = {
   hidden: { opacity: 0, y: 14 },
   show:   { opacity: 1, y: 0,  transition: { duration: 0.38, ease: [0.22, 1, 0.36, 1] as const } },
@@ -61,7 +65,7 @@ const INFO_VARIANTS = {
 export default function BrandTreatments() {
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef<SwiperType | null>(null);
-  const active = SLIDES[activeIndex] ?? SLIDES[0];
+  const active = SLIDES_BASE[activeIndex % TOTAL] ?? SLIDES_BASE[0];
 
   return (
     <section className={styles.section} id="treatments">
@@ -159,7 +163,7 @@ export default function BrandTreatments() {
               }}
               className={styles.swiper}
               onSwiper={(swiper) => { swiperRef.current = swiper; }}
-              onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+              onSlideChange={(swiper) => setActiveIndex(swiper.realIndex % TOTAL)}
             >
               {SLIDES.map((slide, i) => (
                 <SwiperSlide key={i} className={styles.slide}>
