@@ -209,7 +209,7 @@
 /* ── Swiper ─────────────────────────────────────────── */
 .swiper {
   width: 100%;
-  padding-block: 40px 24px !important;
+  padding-block: 56px 32px !important;
   overflow: visible !important;
 }
 
@@ -241,8 +241,8 @@
     0 2px 6px rgba(0, 0, 0, 0.28);
 
   /* Far / non-adjacent slides — nearly invisible */
-  filter: brightness(0.22) saturate(0.15);
-  transform: scale(0.72) translateY(20px);
+  filter: brightness(0.18) saturate(0.10);
+  transform: scale(0.52) translateY(32px);
 
   transition:
     filter   0.65s cubic-bezier(0.16, 1, 0.30, 1),
@@ -252,35 +252,35 @@
   will-change: filter, transform;
 }
 
-/* ── Adjacent slides — clearly visible but subordinate ── */
+/* ── Adjacent slides — receded, clearly smaller to sell depth ── */
 .slide:global(.swiper-slide-prev) .card,
 .slide:global(.swiper-slide-next) .card,
 .slide:global(.swiper-slide-duplicate-prev) .card,
 .slide:global(.swiper-slide-duplicate-next) .card {
-  filter: brightness(0.58) saturate(0.50);
-  transform: scale(0.82) translateY(12px);
-  border-color: rgba(255, 255, 255, 0.08);
+  filter: brightness(0.46) saturate(0.38);
+  transform: scale(0.62) translateY(28px);
+  border-color: rgba(255, 255, 255, 0.06);
   box-shadow:
-    0 16px 40px rgba(0, 0, 0, 0.48),
-    0 4px 12px rgba(0, 0, 0, 0.28);
+    0 10px 28px rgba(0, 0, 0, 0.44),
+    0 3px 8px rgba(0, 0, 0, 0.26);
 }
 
-/* ── Active slide — full spotlight ── */
+/* ── Active slide — full spotlight, pushed forward ── */
 .slide:global(.swiper-slide-active) .card,
 .slide:global(.swiper-slide-duplicate-active) .card {
   filter: brightness(1.04) saturate(1.06);
-  transform: scale(1.0) translateY(-12px);
-  border-color: rgba(255, 255, 255, 0.16);
+  transform: scale(1.0) translateY(-20px);
+  border-color: rgba(255, 255, 255, 0.18);
   box-shadow:
-    0 44px 90px rgba(0, 0, 0, 0.68),
-    0 16px 38px rgba(0, 0, 0, 0.46),
-    0 0 0 1px rgba(255, 255, 255, 0.10),
-    0 0 64px -8px rgba(175, 140, 90, 0.28);
+    0 56px 110px rgba(0, 0, 0, 0.72),
+    0 24px 52px rgba(0, 0, 0, 0.52),
+    0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 0 80px -6px rgba(175, 140, 90, 0.34);
 }
 
 .slide:global(.swiper-slide-active) .card:hover,
 .slide:global(.swiper-slide-duplicate-active) .card:hover {
-  transform: scale(1.0) translateY(-18px);
+  transform: scale(1.0) translateY(-28px);
 }
 
 /* ── Image ── */
@@ -421,7 +421,7 @@
   .card, .cardGlow { border-radius: 16px; }
   .slide:global(.swiper-slide-active) .card,
   .slide:global(.swiper-slide-duplicate-active) .card {
-    transform: scale(1.0) translateY(-6px);
+    transform: scale(1.0) translateY(-10px);
   }
 }
 
