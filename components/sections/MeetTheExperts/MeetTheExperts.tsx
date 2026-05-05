@@ -10,9 +10,9 @@ import styles from './MeetTheExperts.module.css';
 const TOTAL = TEAM_MEMBERS.length;
 
 const CARD_VARIANTS = {
-  enter:  (d: number) => ({ x: d * 56, opacity: 0 }),
-  center: { x: 0, opacity: 1 },
-  exit:   (d: number) => ({ x: d * -36, opacity: 0 }),
+  enter:  (d: number) => ({ x: d * 40, opacity: 0, filter: 'blur(4px)' }),
+  center: { x: 0, opacity: 1, filter: 'blur(0px)' },
+  exit:   (d: number) => ({ x: d * -24, opacity: 0, filter: 'blur(2px)' }),
 };
 
 const INFO_VARIANTS = {
@@ -148,7 +148,7 @@ export default function MeetTheExperts() {
               initial="enter"
               animate="center"
               exit="exit"
-              transition={{ duration: 0.48, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.55, ease: [0.16, 1, 0.30, 1] }}
             >
               {member.image ? (
                 <Image src={member.image} alt={member.name} fill
@@ -177,9 +177,6 @@ export default function MeetTheExperts() {
                 animate="show"
                 exit="exit"
               >
-                <p className={styles.counter}>
-                  #{String(active + 1).padStart(2, '0')}
-                </p>
                 <h2 className={styles.expertName}>{member.name}</h2>
                 {member.credentials && (
                   <p className={styles.credentials}>{member.credentials}</p>

@@ -176,30 +176,22 @@
 .infoArea {
   flex: 1;
   min-height: 0;
-  overflow: visible;
+  overflow: clip;
   display: flex;
   align-items: flex-start;
-  padding-top: clamp(12px, 1.8vw, 24px);
+  padding-top: clamp(8px, 1.4vw, 18px);
 }
 
 .infoPanel {
   display: flex;
   flex-direction: column;
-  gap: clamp(8px, 1vw, 13px);
+  gap: clamp(6px, 0.8vw, 10px);
   width: 100%;
-}
-
-.counter {
-  font-size: clamp(1.125rem, 2vw, 1.625rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: rgba(13, 21, 32, 0.16);
-  line-height: 1;
-  margin: 0;
+  overflow: clip;
 }
 
 .expertName {
-  font-size: clamp(1.25rem, 2.4vw, 2rem);
+  font-size: clamp(1.125rem, 2vw, 1.625rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   color: #0d1520;
@@ -233,12 +225,12 @@
 }
 
 .bio {
-  font-size: clamp(0.875rem, 1vw, 0.9375rem);
-  line-height: 1.74;
+  font-size: clamp(0.8125rem, 0.9vw, 0.875rem);
+  line-height: 1.65;
   color: rgba(13, 21, 32, 0.52);
   margin: 0;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -246,18 +238,18 @@
 .cta {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  padding: 13px 26px;
+  gap: 8px;
+  padding: 10px 22px;
   background: #0d1520;
   color: #ffffff;
   border-radius: 50px;
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   text-decoration: none;
   width: fit-content;
-  margin-top: 4px;
+  margin-top: 2px;
   transition:
     background 0.25s ease,
     transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
@@ -396,7 +388,7 @@
     height: clamp(140px, 24vw, 200px);
   }
 
-  .bio { -webkit-line-clamp: 3; }
+  .bio { -webkit-line-clamp: 2; }
 }
 
 /* Mobile — fully stacked */
@@ -426,15 +418,15 @@
 
   .infoArea {
     flex: none;
-    overflow: visible;
+    overflow: clip;
     padding-top: 0;
   }
 
   .infoPanel {
-    gap: 10px;
+    gap: 8px;
   }
 
-  .bio { -webkit-line-clamp: 4; }
+  .bio { -webkit-line-clamp: 3; }
 
   .nextRow {
     gap: 12px;
