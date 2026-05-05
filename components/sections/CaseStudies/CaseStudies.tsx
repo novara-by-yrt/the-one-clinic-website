@@ -11,12 +11,15 @@ import styles from './CaseStudies.module.css';
 
 import 'swiper/css';
 
-const SLIDES = [
+const SLIDES_BASE = [
   { src: '/images/Before and after 1.png',                           title: 'Lumecca Laser',      alt: 'Lumecca Laser before and after' },
   { src: '/images/Before and after 2.png',                           title: 'Endolift',           alt: 'Endolift before and after' },
   { src: '/images/Home page Endolift before-and-after image..png',   title: 'Endolift',           alt: 'Endolift before and after treatment' },
   { src: '/images/Before and after 3.png',                           title: 'Laser Mole Removal', alt: 'Laser Mole Removal before and after' },
 ];
+
+// Duplicate so Swiper loop has enough slides for slidesPerView: 3
+const SLIDES = [...SLIDES_BASE, ...SLIDES_BASE];
 
 export default function CaseStudies() {
   const swiperRef = useRef<SwiperType | null>(null);
@@ -69,41 +72,44 @@ export default function CaseStudies() {
 
         {/* ── Carousel ──────────────────────────────────── */}
         <div className={styles.carouselWrap}>
-          <Swiper
-            grabCursor
-            centeredSlides
-            loop
-            initialSlide={1}
-            speed={680}
-            breakpoints={{
-              0:   { slidesPerView: 1, spaceBetween: 16 },
-              640: { slidesPerView: 3, spaceBetween: 32 },
-            }}
-            onSwiper={(swiper) => { swiperRef.current = swiper; }}
-            className={styles.swiper}
-          >
-            {SLIDES.map((slide, i) => (
-              <SwiperSlide key={i} className={styles.slide}>
-                <div className={styles.card}>
-                  <Image
-                    src={slide.src}
-                    alt={slide.alt}
-                    fill
-                    className={styles.cardImg}
-                    sizes="(max-width: 639px) 92vw, (max-width: 1024px) 30vw, 360px"
-                    draggable={false}
-                  />
-                  <div className={styles.cardOverlay} aria-hidden="true" />
-                  <div className={styles.cardGlow}    aria-hidden="true" />
-                  <div className={styles.cardContent}>
-                    <span className={styles.cardTitle}>{slide.title}</span>
-                  </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
 
-          {/* Nav buttons */}
+          {/* Mask wrapper — only clips the slide track, not the nav row */}
+          <div className={styles.swiperMask}>
+            <Swiper
+              grabCursor
+              centeredSlides
+              loop
+              speed={700}
+              breakpoints={{
+                0:   { slidesPerView: 1, spaceBetween: 20 },
+                640: { slidesPerView: 3, spaceBetween: 26 },
+              }}
+              onSwiper={(swiper) => { swiperRef.current = swiper; }}
+              className={styles.swiper}
+            >
+              {SLIDES.map((slide, i) => (
+                <SwiperSlide key={i} className={styles.slide}>
+                  <div className={styles.card}>
+                    <Image
+                      src={slide.src}
+                      alt={slide.alt}
+                      fill
+                      className={styles.cardImg}
+                      sizes="(max-width: 639px) 92vw, (max-width: 1024px) 30vw, 380px"
+                      draggable={false}
+                    />
+                    <div className={styles.cardOverlay} aria-hidden="true" />
+                    <div className={styles.cardGlow}    aria-hidden="true" />
+                    <div className={styles.cardContent}>
+                      <span className={styles.cardTitle}>{slide.title}</span>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+
+          {/* Arrow controls — outside the mask, always fully visible */}
           <div className={styles.navRow}>
             <button
               className={styles.navBtn}

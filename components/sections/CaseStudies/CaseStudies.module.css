@@ -138,6 +138,9 @@
   margin: 0;
 }
 
+/* ══════════════════════════════════════════════════════
+   CTA
+══════════════════════════════════════════════════════ */
 .cta {
   display: inline-flex;
   align-items: center;
@@ -174,26 +177,31 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   CAROUSEL WRAPPER — edge fade masks
+   CAROUSEL WRAPPER
 ══════════════════════════════════════════════════════ */
 .carouselWrap {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 28px;
+  gap: 32px;
+}
+
+/* Mask wraps only the slide track — arrows stay fully visible */
+.swiperMask {
+  width: 100%;
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
-    black 6%,
-    black 94%,
+    black 5%,
+    black 95%,
     transparent 100%
   );
   mask-image: linear-gradient(
     to right,
     transparent 0%,
-    black 6%,
-    black 94%,
+    black 5%,
+    black 95%,
     transparent 100%
   );
 }
@@ -201,7 +209,7 @@
 /* ── Swiper ─────────────────────────────────────────── */
 .swiper {
   width: 100%;
-  padding-block: 48px 28px !important;
+  padding-block: 40px 24px !important;
   overflow: visible !important;
 }
 
@@ -209,16 +217,16 @@
    SLIDE
 ══════════════════════════════════════════════════════ */
 .slide {
-  height: 460px !important;
+  height: 480px !important;
   border-radius: 20px;
   opacity: 1 !important;
 }
 
 /* ══════════════════════════════════════════════════════
-   CARD — CSS-driven spotlight effect
-   Default: dimmed + scaled-down (non-visible loop clones)
-   Prev/Next: partially lit
-   Active: full spotlight + elevated
+   CARD
+   Default: invisible (far-off slides in loop)
+   Prev/Next: dimmed, slightly smaller
+   Active: full spotlight, elevated
 ══════════════════════════════════════════════════════ */
 .card {
   position: relative;
@@ -232,36 +240,36 @@
     0 8px 24px rgba(0, 0, 0, 0.40),
     0 2px 6px rgba(0, 0, 0, 0.28);
 
-  /* Default state — heavily dimmed and shrunk */
-  filter: brightness(0.32) saturate(0.25);
-  transform: scale(0.62) translateY(24px);
+  /* Far / non-adjacent slides — nearly invisible */
+  filter: brightness(0.22) saturate(0.15);
+  transform: scale(0.72) translateY(20px);
 
   transition:
-    filter  0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.55s ease;
-  will-change: filter, transform, box-shadow;
+    filter   0.65s cubic-bezier(0.16, 1, 0.30, 1),
+    transform 0.65s cubic-bezier(0.16, 1, 0.30, 1),
+    box-shadow 0.65s cubic-bezier(0.16, 1, 0.30, 1),
+    border-color 0.65s ease;
+  will-change: filter, transform;
 }
 
-/* ── Adjacent slides — noticeably smaller ── */
+/* ── Adjacent slides — clearly visible but subordinate ── */
 .slide:global(.swiper-slide-prev) .card,
 .slide:global(.swiper-slide-next) .card,
 .slide:global(.swiper-slide-duplicate-prev) .card,
 .slide:global(.swiper-slide-duplicate-next) .card {
-  filter: brightness(0.62) saturate(0.50);
-  transform: scale(0.74) translateY(16px);
+  filter: brightness(0.58) saturate(0.50);
+  transform: scale(0.82) translateY(12px);
   border-color: rgba(255, 255, 255, 0.08);
   box-shadow:
-    0 16px 48px rgba(0, 0, 0, 0.50),
-    0 4px 12px rgba(0, 0, 0, 0.30);
+    0 16px 40px rgba(0, 0, 0, 0.48),
+    0 4px 12px rgba(0, 0, 0, 0.28);
 }
 
-/* ── Active slide — dominant center spotlight ── */
+/* ── Active slide — full spotlight ── */
 .slide:global(.swiper-slide-active) .card,
 .slide:global(.swiper-slide-duplicate-active) .card {
   filter: brightness(1.04) saturate(1.06);
-  transform: scale(1) translateY(-14px);
+  transform: scale(1.0) translateY(-12px);
   border-color: rgba(255, 255, 255, 0.16);
   box-shadow:
     0 44px 90px rgba(0, 0, 0, 0.68),
@@ -272,12 +280,7 @@
 
 .slide:global(.swiper-slide-active) .card:hover,
 .slide:global(.swiper-slide-duplicate-active) .card:hover {
-  transform: scale(1) translateY(-20px);
-  box-shadow:
-    0 52px 110px rgba(0, 0, 0, 0.74),
-    0 20px 48px rgba(0, 0, 0, 0.52),
-    0 0 0 1px rgba(255, 255, 255, 0.14),
-    0 0 80px -4px rgba(175, 140, 90, 0.38);
+  transform: scale(1.0) translateY(-18px);
 }
 
 /* ── Image ── */
@@ -294,7 +297,7 @@
   background: linear-gradient(
     to top,
     rgba(0, 0, 0, 0.85) 0%,
-    rgba(0, 0, 0, 0.22) 36%,
+    rgba(0, 0, 0, 0.20) 36%,
     transparent 65%
   );
 }
@@ -308,7 +311,7 @@
   opacity: 0;
   pointer-events: none;
   box-shadow: inset 0 0 56px rgba(175, 140, 80, 0.12);
-  transition: opacity 0.55s ease;
+  transition: opacity 0.65s ease;
 }
 
 .slide:global(.swiper-slide-active) .cardGlow,
@@ -365,11 +368,11 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  color: rgba(255, 255, 255, 0.68);
+  color: rgba(255, 255, 255, 0.72);
   cursor: pointer;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.09),
@@ -383,8 +386,8 @@
 }
 
 .navBtn:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.30);
   color: #ffffff;
   transform: scale(1.10);
   box-shadow:
@@ -400,93 +403,62 @@
    RESPONSIVE
 ══════════════════════════════════════════════════════ */
 @media (max-width: 1200px) {
-  .slide {
-    height: 420px !important;
-  }
+  .slide { height: 440px !important; }
 }
 
 @media (max-width: 1024px) {
-  .slide {
-    height: 380px !important;
-  }
+  .slide { height: 400px !important; }
 }
 
 @media (max-width: 768px) {
   .swiper {
-    padding-block: 32px 20px !important;
+    padding-block: 28px 16px !important;
   }
-
   .slide {
-    height: 340px !important;
+    height: 360px !important;
     border-radius: 16px;
   }
-
-  .card,
-  .cardGlow {
-    border-radius: 16px;
-  }
-
+  .card, .cardGlow { border-radius: 16px; }
   .slide:global(.swiper-slide-active) .card,
   .slide:global(.swiper-slide-duplicate-active) .card {
-    transform: scale(1) translateY(-6px);
-  }
-
-  .carouselWrap {
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent 0%,
-      black 4%,
-      black 96%,
-      transparent 100%
-    );
-    mask-image: linear-gradient(
-      to right,
-      transparent 0%,
-      black 4%,
-      black 96%,
-      transparent 100%
-    );
+    transform: scale(1.0) translateY(-6px);
   }
 }
 
-/* Mobile — single full-width card */
+/* Mobile — single full-width card, always fully lit */
 @media (max-width: 639px) {
+  .swiperMask {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
   .slide {
-    height: 420px !important;
+    height: 440px !important;
     border-radius: 18px;
   }
+  .card, .cardGlow { border-radius: 18px; }
 
-  .card,
-  .cardGlow {
-    border-radius: 18px;
-  }
-
-  /* Single visible card always shows as active-styled on mobile */
+  /* All cards look active-bright on mobile (only 1 visible at a time) */
   .card,
   .slide:global(.swiper-slide-prev) .card,
-  .slide:global(.swiper-slide-next) .card {
-    filter: brightness(1.00) saturate(1.00);
-    transform: scale(1) translateY(0);
+  .slide:global(.swiper-slide-next) .card,
+  .slide:global(.swiper-slide-duplicate-prev) .card,
+  .slide:global(.swiper-slide-duplicate-next) .card {
+    filter: brightness(1.0) saturate(1.0);
+    transform: scale(1.0) translateY(0);
     border-color: rgba(255, 255, 255, 0.12);
   }
 
   .swiper {
-    padding-block: 16px 12px !important;
+    padding-block: 12px 8px !important;
   }
 
   .navBtn {
     width: 44px;
     height: 44px;
   }
-
-  .carouselWrap {
-    -webkit-mask-image: none;
-    mask-image: none;
-  }
 }
 
 @media (max-width: 400px) {
-  .slide {
-    height: 360px !important;
-  }
+  .slide { height: 380px !important; }
 }
