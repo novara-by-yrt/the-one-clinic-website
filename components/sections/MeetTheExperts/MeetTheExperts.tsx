@@ -82,9 +82,10 @@ export default function MeetTheExperts() {
     if (Math.abs(dx) > 44) dx < 0 ? next() : prev();
   }
 
-  const member     = TEAM_MEMBERS[active];
-  const prevMember = TEAM_MEMBERS[(active - 1 + TOTAL) % TOTAL];
-  const nextMember = TEAM_MEMBERS[(active + 1) % TOTAL];
+  const member      = TEAM_MEMBERS[active];
+  const prevMember  = TEAM_MEMBERS[(active - 1 + TOTAL) % TOTAL];
+  const nextMember  = TEAM_MEMBERS[(active + 1) % TOTAL];
+  const nextMember2 = TEAM_MEMBERS[(active + 2) % TOTAL];
 
   return (
     <section
@@ -200,31 +201,36 @@ export default function MeetTheExperts() {
             </AnimatePresence>
           </div>
 
-          {/* Next card thumbnail — lower portion */}
-          <button
-            className={styles.nextThumb}
-            onClick={next}
-            aria-label={`View ${nextMember.name}`}
-          >
-            <AnimatePresence mode="popLayout" initial={false}>
-              <motion.div
-                key={nextMember.slug}
-                className={styles.nextThumbInner}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.30 }}
+          {/* Two next card thumbnails — lower portion, side by side */}
+          <div className={styles.nextRow}>
+            {[nextMember, nextMember2].map((m, i) => (
+              <button
+                key={m.slug + i}
+                className={styles.nextThumb}
+                onClick={() => goTo((active + i + 1) % TOTAL)}
+                aria-label={`View ${m.name}`}
               >
-                {nextMember.image ? (
-                  <Image src={nextMember.image} alt={nextMember.name} fill
-                    className={styles.cardImg} sizes="160px" draggable={false} />
-                ) : (
-                  <div className={styles.cardInitials}>{nextMember.initials}</div>
-                )}
-                <div className={styles.sideDim} aria-hidden="true" />
-              </motion.div>
-            </AnimatePresence>
-          </button>
+                <AnimatePresence mode="popLayout" initial={false}>
+                  <motion.div
+                    key={m.slug}
+                    className={styles.nextThumbInner}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.30 }}
+                  >
+                    {m.image ? (
+                      <Image src={m.image} alt={m.name} fill
+                        className={styles.cardImg} sizes="160px" draggable={false} />
+                    ) : (
+                      <div className={styles.cardInitials}>{m.initials}</div>
+                    )}
+                    <div className={styles.sideDim} aria-hidden="true" />
+                  </motion.div>
+                </AnimatePresence>
+              </button>
+            ))}
+          </div>
 
         </div>
       </div>
