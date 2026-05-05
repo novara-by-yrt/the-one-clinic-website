@@ -66,8 +66,8 @@
   width: max-content;
   user-select: none;
   -webkit-user-select: none;
-  /* 6 copies → -50% moves by 3 sets; duration tuned for smooth pace */
-  animation: logoScroll 42s linear infinite;
+  /* 6 copies → -50% moves by 3 sets; duration tuned for slow, premium pace */
+  animation: logoScroll 65s linear infinite;
 }
 
 .viewport:hover .track {
