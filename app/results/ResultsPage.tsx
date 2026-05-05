@@ -10,9 +10,14 @@ import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
 
 const IMAGES = [
-  { src: '/images/Before and after 1.png', alt: 'Lumecca Laser before and after',      title: 'Lumecca Laser' },
-  { src: '/images/Before and after 2.png', alt: 'Endolift before and after',            title: 'Endolift' },
-  { src: '/images/Before and after 3.png', alt: 'Laser Mole Removal before and after', title: 'Laser Mole Removal' },
+  { src: '/images/Endolift Before & After 1.jpg',     alt: 'Endolift before and after results',          title: 'Endolift' },
+  { src: '/images/Endolift Before & After 8.jpg',     alt: 'Endolift treatment before and after',        title: 'Endolift' },
+  { src: '/images/Lumecca Before & After 2.jpg',      alt: 'Lumecca laser before and after results',     title: 'Lumecca Laser' },
+  { src: '/images/Morpheus8 Before & After 2.jpg',    alt: 'Morpheus 8 before and after results',        title: 'Morpheus 8' },
+  { src: '/images/Lip Filler  Before & After.jpg',    alt: 'Lip filler before and after results',        title: 'Lip Filler' },
+  { src: '/images/Pigmentation Before & After 2.jpg', alt: 'Pigmentation treatment before and after',    title: 'Pigmentation Treatment' },
+  { src: '/images/Mole Removal Before & After.jpg',   alt: 'Mole removal before and after results',      title: 'Mole Removal' },
+  { src: '/images/ACNE Before & After.jpg',           alt: 'Acne treatment before and after results',    title: 'Acne Treatment' },
 ];
 
 // ── Mobile slideshow ─────────────────────────────────────────────
@@ -151,7 +156,7 @@ export default function ResultsPage() {
                     alt={img.alt}
                     fill
                     className={styles.cardImage}
-                    sizes="(max-width: 768px) 0vw, (max-width: 1024px) 50vw, 33vw"
+                    sizes="(max-width: 768px) 0vw, (max-width: 1024px) 50vw, 25vw"
                   />
                 </div>
               </motion.div>
