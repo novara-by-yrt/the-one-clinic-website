@@ -296,6 +296,41 @@
 }
 
 /* ══════════════════════════════════════════════════════════
+   MOBILE OVERLAY ARROWS — hidden on desktop, shown on mobile
+══════════════════════════════════════════════════════════ */
+.mobileNavPrev,
+.mobileNavNext {
+  display: none; /* hidden above 540px */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.88);
+  border: none;
+  color: #0d1520;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.18),
+    0 1px 4px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: background 0.2s ease, transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mobileNavPrev:active,
+.mobileNavNext:active {
+  transform: translateY(-50%) scale(0.92);
+}
+
+.mobileNavPrev { left: 12px; }
+.mobileNavNext { right: 12px; }
+
+/* ══════════════════════════════════════════════════════════
    NAV ROW — centered below entire slideshow
 ══════════════════════════════════════════════════════════ */
 .navRow {
@@ -401,6 +436,15 @@
   }
 
   .sideCard { display: none; }
+
+  /* Hide bottom nav row, use side arrows on card instead */
+  .navRow { display: none; }
+
+  /* Show the overlay arrows */
+  .mobileNavPrev,
+  .mobileNavNext {
+    display: flex;
+  }
 
   .activeCard {
     height: clamp(340px, 82vw, 460px);

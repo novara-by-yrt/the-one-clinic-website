@@ -161,6 +161,20 @@ export default function MeetTheExperts() {
               <div className={styles.activeOverlay} aria-hidden="true" />
             </motion.div>
           </AnimatePresence>
+
+          {/* Mobile-only side arrows — overlaid on card */}
+          <button className={styles.mobileNavPrev} onClick={prev} aria-label="Previous team member">
+            <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
+              <path d="M11 3.5L5.5 9L11 14.5" stroke="currentColor" strokeWidth="2"
+                strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+          <button className={styles.mobileNavNext} onClick={next} aria-label="Next team member">
+            <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
+              <path d="M7 3.5L12.5 9L7 14.5" stroke="currentColor" strokeWidth="2"
+                strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
         </div>
 
         {/* ── Right column: info (top) + next thumb (bottom) ── */}
