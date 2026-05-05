@@ -4,7 +4,6 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import Container from '@/components/ui/Container';
 import styles from './Header.module.css';
 
 // ── Types ────────────────────────────────────────────────────────
@@ -67,6 +66,8 @@ const NAV: NavItem[] = [
           { label: 'Skin Analysis, Life Viz 3D Camera',         href: '/treatments/skin-analysis' },
           { label: 'Body Contouring',                           href: '/treatments/body-contouring' },
           { label: 'Endolift Laser',                            href: '/treatments/endolift' },
+          { label: 'Profhilo',                                  href: '/treatments/profhilo' },
+          { label: 'NCTF 135 HA',                               href: '/treatments/nctf-135-ha' },
           { label: 'Skincare, Alumier MD',                      href: '/treatments/skincare-alumier-md' },
           { label: 'Skin Lesion Removal Leicester',             href: '/treatments/skin-lesion' },
           { label: 'BCC Removal Leicester',                     href: '/treatments/basal-cell-carcinoma-bcc-removal-leicester' },
@@ -133,6 +134,10 @@ const NAV: NavItem[] = [
   { label: 'Contact Us',         href: '/contact' },
 ];
 
+// Left and right nav splits
+const LEFT_NAV  = NAV.slice(0, 4);  // About, Treatments, Conditions, Membership
+const RIGHT_NAV = NAV.slice(4);     // Patient Experience, Contact Us
+
 // ── Motion variants ──────────────────────────────────────────────
 const menuVariants   = { closed: { opacity: 0, x: '100%' }, open: { opacity: 1, x: 0 } };
 const menuTransition = { duration: 0.38, ease: [0.32, 0.72, 0, 1] as const };
@@ -147,12 +152,47 @@ const megaVars = {
   closed: { opacity: 0, y: -8, scale: 0.97, pointerEvents: 'none' as const },
   open:   { opacity: 1, y: 0,  scale: 1,    pointerEvents: 'auto' as const },
 };
-const megaTrans = { duration: 0.22, ease: [0.22, 1, 0.36, 1] as const };
+const megaTrans = { duration: 0.28, ease: [0.22, 1, 0.36, 1] as const };
 
 const backdropVars = {
   closed: { opacity: 0 },
   open:   { opacity: 1 },
 };
+
+const megaListVars = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.018, delayChildren: 0.03 } },
+};
+const megaItemVars = {
+  hidden: { opacity: 0, y: 5 },
+  show:   { opacity: 1, y: 0, transition: { duration: 0.18, ease: [0.22, 1, 0.36, 1] as const } },
+};
+
+const EASE = [0.22, 1, 0.36, 1] as const;
+const PILL_TRANSITION = { duration: 0.55, ease: EASE };
+
+// ── Pill animation values ─────────────────────────────────────────
+function getPillAnimate(scrolled: boolean, sectionTheme: Theme) {
+  if (!scrolled) {
+    return {
+      width: '100%',
+      borderRadius: 0,
+      marginTop: 0,
+      background: 'rgba(0,0,0,0)',
+      boxShadow: '0px 0px 0px 0px rgba(0,0,0,0), 0px 0px 0px 0px rgba(0,0,0,0), inset 0px 0px 0px 0px rgba(0,0,0,0)',
+    };
+  }
+  const isLight = sectionTheme === 'dark';
+  return {
+    width: '92%',
+    borderRadius: 60,
+    marginTop: 14,
+    background: isLight ? 'rgba(255,255,255,0.86)' : 'rgba(8,8,10,0.84)',
+    boxShadow: isLight
+      ? '0px 12px 56px rgba(0,0,0,0.1), 0px 3px 10px rgba(0,0,0,0.07), inset 0px 0px 0px 1px rgba(0,0,0,0.055)'
+      : '0px 12px 56px rgba(0,0,0,0.42), 0px 3px 10px rgba(0,0,0,0.26), inset 0px 0px 0px 1px rgba(255,255,255,0.07)',
+  };
+}
 
 // ── Chevron ──────────────────────────────────────────────────────
 function Chevron({ open, size = 10 }: { open: boolean; size?: number }) {
@@ -191,7 +231,7 @@ export default function Header() {
 
   const observerRef = useRef<IntersectionObserver | null>(null);
   const closeTimer  = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const headerRef   = useRef<HTMLElement>(null);
+  const pillRef     = useRef<HTMLDivElement>(null);
 
   const headerTheme: Theme = sectionTheme === 'dark' ? 'light' : 'dark';
   const theme: Theme       = !scrolled ? 'dark' : headerTheme;
@@ -235,7 +275,7 @@ export default function Header() {
   useEffect(() => {
     if (openDropdown === null) return;
     function handleClickOut(e: MouseEvent) {
-      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
+      if (pillRef.current && !pillRef.current.contains(e.target as Node)) {
         setOpenDropdown(null);
         setOpenMegaGroup(null);
       }
@@ -286,30 +326,212 @@ export default function Header() {
     });
   }
 
-  // ── Animated header colours ───────────────────────────────────
-  const bgColor     = !scrolled ? 'rgba(0,0,0,0)'
-    : sectionTheme === 'dark'   ? '#FFFFFF' : '#0a0a0a';
-  const borderColor = !scrolled ? 'rgba(0,0,0,0)'
-    : sectionTheme === 'dark'   ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.1)';
+  // ── Nav item renderer (shared by left and right nav) ─────────
+  function renderNavItem(item: NavItem, i: number) {
+    const hasDropdown = !!(item.simple || item.groups);
+    const isOpen      = openDropdown === i;
 
+    return (
+      <li
+        key={item.label}
+        className={styles.navItem}
+        onMouseEnter={() => hasDropdown && openDd(i)}
+        onMouseLeave={() => hasDropdown && closeDd()}
+      >
+        <button
+          className={`${styles.navLink} ${isOpen ? styles.navLinkActive : ''}`}
+          aria-expanded={hasDropdown ? isOpen : undefined}
+          onClick={() => {
+            if (!hasDropdown) {
+              if (item.href.startsWith('http')) {
+                window.open(item.href, '_blank', 'noopener,noreferrer');
+              } else {
+                window.location.href = item.href;
+              }
+            } else {
+              setOpenDropdown(isOpen ? null : i);
+            }
+          }}
+        >
+          <span className={styles.navLinkText}>{item.label}</span>
+          {hasDropdown && <Chevron open={isOpen} />}
+        </button>
+
+        {/* Simple dropdown */}
+        {item.simple && (
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                className={styles.simpleDropdown}
+                variants={simpleDropVars}
+                initial="closed"
+                animate="open"
+                exit="closed"
+                transition={simpleDropTrans}
+                onMouseEnter={() => openDd(i)}
+                onMouseLeave={() => closeDd()}
+              >
+                <ul className={styles.simpleList} role="list">
+                  {item.simple.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className={styles.ddItem}
+                        onClick={() => setOpenDropdown(null)}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        )}
+
+        {/* Mega dropdown */}
+        {item.groups && (
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                className={styles.megaPanel}
+                variants={megaVars}
+                initial="closed"
+                animate="open"
+                exit="closed"
+                transition={megaTrans}
+                onMouseEnter={() => openDd(i)}
+                onMouseLeave={() => closeDd()}
+                role="region"
+                aria-label={`${item.label} menu`}
+              >
+                {/* Top strip */}
+                <div className={styles.megaTop}>
+                  <span className={styles.megaCategoryLabel}>{item.label}</span>
+                  <Link
+                    href={item.href}
+                    className={styles.megaViewAll}
+                    onClick={() => setOpenDropdown(null)}
+                  >
+                    View all
+                    <svg width="12" height="12" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+                      <path d="M2.5 6.5h8M7.5 3l3.5 3.5L7.5 10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </Link>
+                </div>
+
+                {/* Three-panel body */}
+                <div className={styles.megaBody}>
+                  {/* LEFT — Editorial category navigation */}
+                  <div className={styles.megaSidebar}>
+                    {item.groups.map((grp, gi) => {
+                      const gKey     = `${i}-${gi}`;
+                      const isActive = openMegaGroup === gKey;
+                      return (
+                        <button
+                          key={grp.group}
+                          className={`${styles.megaCategoryBtn} ${isActive ? styles.megaCategoryBtnActive : ''}`}
+                          onMouseEnter={() => setOpenMegaGroup(gKey)}
+                          onClick={() => setOpenMegaGroup(gKey)}
+                          aria-selected={isActive}
+                        >
+                          <span>{grp.group}</span>
+                          <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden="true" className={styles.megaCatChevron}>
+                            <path d="M2 1.5l3 2.5-3 2.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {/* CENTER — Treatment links */}
+                  <div className={styles.megaContent}>
+                    <AnimatePresence mode="wait" initial={false}>
+                      {item.groups.map((grp, gi) => {
+                        const gKey = `${i}-${gi}`;
+                        if (openMegaGroup !== gKey) return null;
+                        return (
+                          <motion.ul
+                            key={gKey}
+                            className={styles.megaList}
+                            role="list"
+                            variants={megaListVars}
+                            initial="hidden"
+                            animate="show"
+                            exit={{ opacity: 0, transition: { duration: 0.08 } }}
+                          >
+                            {grp.items.map((link) => (
+                              <motion.li key={link.href} variants={megaItemVars}>
+                                <Link
+                                  href={link.href}
+                                  className={styles.ddItem}
+                                  onClick={() => setOpenDropdown(null)}
+                                >
+                                  {link.label}
+                                </Link>
+                              </motion.li>
+                            ))}
+                          </motion.ul>
+                        );
+                      })}
+                    </AnimatePresence>
+                  </div>
+
+                  {/* RIGHT — Featured preview panel */}
+                  <div className={styles.megaFeatured}>
+                    <Image
+                      src="/images/imgi_78_GTR_0328-1-1.jpg"
+                      alt=""
+                      fill
+                      className={styles.megaFeaturedImg}
+                      sizes="210px"
+                    />
+                    <div className={styles.megaFeaturedOverlay} aria-hidden="true" />
+                    <div className={styles.megaFeaturedContent}>
+                      <span className={styles.megaFeaturedChip}>Doctor-Led Care</span>
+                      <p className={styles.megaFeaturedTitle}>Advanced Medical &amp; Aesthetic Care</p>
+                      <button
+                        className={styles.megaFeaturedCta}
+                        onClick={() => { setOpenDropdown(null); window.dispatchEvent(new CustomEvent('openCallbackModal')); }}
+                      >
+                        Book a Consultation
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        )}
+      </li>
+    );
+  }
+
+  const pillAnimate = getPillAnimate(scrolled, sectionTheme);
   const anyMegaOpen = openDropdown !== null && !!NAV[openDropdown]?.groups;
 
   return (
     <>
-      {/* ── Header bar ───────────────────────────────────────── */}
-      <motion.header
-        ref={headerRef as never}
-        className={styles.header}
-        role="banner"
-        data-theme={theme}
-        data-scrolled={scrolled}
-        animate={{ backgroundColor: bgColor, borderBottomColor: borderColor }}
-        transition={{ duration: 0.3, ease: 'easeOut' }}
-      >
-        <Container>
+      {/* ── Header outer shell ────────────────────────────────── */}
+      <header className={styles.headerOuter} role="banner">
+        <motion.div
+          ref={pillRef}
+          className={styles.pill}
+          data-theme={theme}
+          data-scrolled={scrolled}
+          animate={pillAnimate}
+          transition={PILL_TRANSITION}
+        >
           <div className={styles.inner}>
 
-            {/* Logo */}
+            {/* LEFT NAV — About, Treatments, Conditions, Membership */}
+            <nav className={styles.leftNav} aria-label="Main navigation">
+              <ul className={styles.navList} role="list">
+                {LEFT_NAV.map((item, idx) => renderNavItem(item, idx))}
+              </ul>
+            </nav>
+
+            {/* CENTER — Logo */}
             <Link href="/" className={styles.logo} aria-label="The One Clinic, home">
               <Image
                 src="/images/LOGO.png"
@@ -321,205 +543,52 @@ export default function Header() {
               />
             </Link>
 
-            {/* Desktop nav */}
-            <nav className={styles.desktopNav} aria-label="Main navigation">
-              <ul className={styles.navList} role="list">
-                {NAV.map((item, i) => {
-                  const hasDropdown = !!(item.simple || item.groups);
-                  const isOpen      = openDropdown === i;
+            {/* RIGHT GROUP — Patient Experience, Contact Us, CTA, Hamburger */}
+            <div className={styles.rightGroup}>
+              <nav className={styles.rightNav} aria-label="Secondary navigation">
+                <ul className={styles.navList} role="list">
+                  {RIGHT_NAV.map((item, idx) => renderNavItem(item, idx + LEFT_NAV.length))}
+                </ul>
+              </nav>
 
-                  return (
-                    <li
-                      key={item.label}
-                      className={styles.navItem}
-                      onMouseEnter={() => hasDropdown && openDd(i)}
-                      onMouseLeave={() => hasDropdown && closeDd()}
-                    >
-                      <button
-                        className={`${styles.navLink} ${isOpen ? styles.navLinkActive : ''}`}
-                        aria-expanded={hasDropdown ? isOpen : undefined}
-                        onClick={() => {
-                          if (!hasDropdown) {
-                            if (item.href.startsWith('http')) {
-                              window.open(item.href, '_blank', 'noopener,noreferrer');
-                            } else {
-                              window.location.href = item.href;
-                            }
-                          } else {
-                            setOpenDropdown(isOpen ? null : i);
-                          }
-                        }}
-                      >
-                        <span className={styles.navLinkText}>{item.label}</span>
-                        {hasDropdown && <Chevron open={isOpen} />}
-                      </button>
+              <button
+                className={styles.ctaLink}
+                onClick={() => window.dispatchEvent(new CustomEvent('openCallbackModal'))}
+                aria-label="Book a consultation"
+              >
+                Book a Consultation
+              </button>
 
-                      {/* Simple dropdown (About Our Clinic) */}
-                      {item.simple && (
-                        <AnimatePresence>
-                          {isOpen && (
-                            <motion.div
-                              className={styles.simpleDropdown}
-                              variants={simpleDropVars}
-                              initial="closed"
-                              animate="open"
-                              exit="closed"
-                              transition={simpleDropTrans}
-                              onMouseEnter={() => openDd(i)}
-                              onMouseLeave={() => closeDd()}
-                            >
-                              <ul className={styles.simpleList} role="list">
-                                {item.simple.map((link) => (
-                                  <li key={link.href}>
-                                    <Link
-                                      href={link.href}
-                                      className={styles.ddItem}
-                                      onClick={() => setOpenDropdown(null)}
-                                    >
-                                      {link.label}
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      )}
-
-                      {/* Mega dropdown (Treatments / Conditions), two-panel */}
-                      {item.groups && (
-                        <AnimatePresence>
-                          {isOpen && (
-                            <motion.div
-                              className={styles.megaPanel}
-                              variants={megaVars}
-                              initial="closed"
-                              animate="open"
-                              exit="closed"
-                              transition={megaTrans}
-                              onMouseEnter={() => openDd(i)}
-                              onMouseLeave={() => closeDd()}
-                              role="region"
-                              aria-label={`${item.label} menu`}
-                            >
-                              {/* Top strip */}
-                              <div className={styles.megaTop}>
-                                <span className={styles.megaCategoryLabel}>{item.label}</span>
-                                <Link
-                                  href={item.href}
-                                  className={styles.megaViewAll}
-                                  onClick={() => setOpenDropdown(null)}
-                                >
-                                  View all
-                                  <svg width="12" height="12" viewBox="0 0 13 13" fill="none" aria-hidden="true">
-                                    <path d="M2.5 6.5h8M7.5 3l3.5 3.5L7.5 10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                                  </svg>
-                                </Link>
-                              </div>
-
-                              {/* Two-panel body */}
-                              <div className={styles.megaBody}>
-                                {/* Left: category list */}
-                                <div className={styles.megaSidebar}>
-                                  {item.groups.map((grp, gi) => {
-                                    const gKey     = `${i}-${gi}`;
-                                    const isActive = openMegaGroup === gKey;
-                                    return (
-                                      <button
-                                        key={grp.group}
-                                        className={`${styles.megaCategoryBtn} ${isActive ? styles.megaCategoryBtnActive : ''}`}
-                                        onMouseEnter={() => setOpenMegaGroup(gKey)}
-                                        onClick={() => setOpenMegaGroup(gKey)}
-                                        aria-selected={isActive}
-                                      >
-                                        {grp.group}
-                                      </button>
-                                    );
-                                  })}
-                                </div>
-
-                                {/* Right: items for active category */}
-                                <div className={styles.megaContent}>
-                                  <AnimatePresence initial={false}>
-                                    {item.groups.map((grp, gi) => {
-                                      const gKey = `${i}-${gi}`;
-                                      if (openMegaGroup !== gKey) return null;
-                                      return (
-                                        <motion.ul
-                                          key={gKey}
-                                          className={styles.megaList}
-                                          role="list"
-                                          initial={{ opacity: 0, x: 8 }}
-                                          animate={{ opacity: 1, x: 0 }}
-                                          exit={{ opacity: 0, x: -4 }}
-                                          transition={{ duration: 0.16, ease: [0.25, 0.1, 0.25, 1] }}
-                                        >
-                                          {grp.items.map((link) => (
-                                            <li key={link.href}>
-                                              <Link
-                                                href={link.href}
-                                                className={styles.ddItem}
-                                                onClick={() => setOpenDropdown(null)}
-                                              >
-                                                {link.label}
-                                              </Link>
-                                            </li>
-                                          ))}
-                                        </motion.ul>
-                                      );
-                                    })}
-                                  </AnimatePresence>
-                                </div>
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-            </nav>
-
-            {/* Desktop CTA */}
-            <button
-              className={styles.ctaLink}
-              onClick={() => window.dispatchEvent(new CustomEvent('openCallbackModal'))}
-              aria-label="Book a consultation"
-            >
-              Book a Consultation
-            </button>
-
-            {/* Hamburger */}
-            <button
-              className={styles.menuBtn}
-              onClick={() => setMenuOpen((o: boolean) => !o)}
-              aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-              aria-expanded={menuOpen}
-              aria-controls="mobile-menu"
-            >
-              <motion.span
-                className={styles.bar}
-                animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
-                transition={{ duration: 0.25 }}
-              />
-              <motion.span
-                className={styles.bar}
-                animate={menuOpen ? { opacity: 0, scaleX: 0.2 } : { opacity: 1, scaleX: 1 }}
-                transition={{ duration: 0.2 }}
-              />
-              <motion.span
-                className={styles.bar}
-                animate={menuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
-                transition={{ duration: 0.25 }}
-              />
-            </button>
+              <button
+                className={styles.menuBtn}
+                onClick={() => setMenuOpen((o: boolean) => !o)}
+                aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+                aria-expanded={menuOpen}
+                aria-controls="mobile-menu"
+              >
+                <motion.span
+                  className={styles.bar}
+                  animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
+                  transition={{ duration: 0.25 }}
+                />
+                <motion.span
+                  className={styles.bar}
+                  animate={menuOpen ? { opacity: 0, scaleX: 0.2 } : { opacity: 1, scaleX: 1 }}
+                  transition={{ duration: 0.2 }}
+                />
+                <motion.span
+                  className={styles.bar}
+                  animate={menuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
+                  transition={{ duration: 0.25 }}
+                />
+              </button>
+            </div>
 
           </div>
-        </Container>
-      </motion.header>
+        </motion.div>
+      </header>
 
-      {/* ── Mega menu backdrop (desktop only) ────────────────── */}
+      {/* ── Mega menu backdrop ───────────────────────────────── */}
       <AnimatePresence>
         {anyMegaOpen && (
           <motion.div
@@ -539,7 +608,6 @@ export default function Header() {
       <AnimatePresence>
         {menuOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               className={styles.mobileBackdrop}
               initial={{ opacity: 0 }}
@@ -550,7 +618,6 @@ export default function Header() {
               aria-hidden="true"
             />
 
-            {/* Drawer */}
             <motion.div
               id="mobile-menu"
               className={styles.mobileMenu}
@@ -563,7 +630,6 @@ export default function Header() {
               exit="closed"
               transition={menuTransition}
             >
-              {/* Drawer header */}
               <div className={styles.mobileMenuHeader}>
                 <Link href="/" className={styles.mobileLogo} onClick={closeMenu} aria-label="The One Clinic, home">
                   <Image
@@ -582,7 +648,6 @@ export default function Header() {
                 </button>
               </div>
 
-              {/* Nav */}
               <nav aria-label="Mobile navigation" className={styles.mobileNav}>
                 <ul className={styles.mobileNavList} role="list">
                   {NAV.map((item, i) => {
@@ -622,7 +687,6 @@ export default function Header() {
                               exit={{ height: 0, opacity: 0 }}
                               transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
                             >
-                              {/* Simple flat list */}
                               {item.simple && (
                                 <ul className={styles.mobileSubList} role="list">
                                   {item.simple.map((link) => (
@@ -635,7 +699,6 @@ export default function Header() {
                                 </ul>
                               )}
 
-                              {/* Grouped (Treatments / Conditions) */}
                               {item.groups && (
                                 <div className={styles.mobileGroups}>
                                   {item.groups.map((grp) => {
@@ -685,7 +748,6 @@ export default function Header() {
                 </ul>
               </nav>
 
-              {/* CTA */}
               <div className={styles.mobileCta}>
                 <button
                   className={styles.mobileCtaLink}

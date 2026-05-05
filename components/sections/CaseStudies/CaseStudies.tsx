@@ -1,128 +1,32 @@
 'use client';
 
-import { useState, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import Section from '@/components/ui/Section';
-import Container from '@/components/ui/Container';
+import { useRef } from 'react';
+import { motion } from 'framer-motion';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import type { Swiper as SwiperType } from 'swiper';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './CaseStudies.module.css';
 
-const IMAGES = [
-  { src: '/images/Before and after 1.png', alt: 'Lumecca Laser before and after',       title: 'Lumecca Laser' },
-  { src: '/images/Before and after 2.png', alt: 'Endolift before and after',             title: 'Endolift' },
-  { src: '/images/Before and after 3.png', alt: 'Laser Mole Removal before and after',  title: 'Laser Mole Removal' },
+import 'swiper/css';
+
+const SLIDES_BASE = [
+  { src: '/images/Before and after 1.png',                           title: 'Lumecca Laser',      alt: 'Lumecca Laser before and after' },
+  { src: '/images/Before and after 2.png',                           title: 'Endolift',           alt: 'Endolift before and after' },
+  { src: '/images/Home page Endolift before-and-after image..png',   title: 'Endolift',           alt: 'Endolift before and after treatment' },
+  { src: '/images/Before and after 3.png',                           title: 'Laser Mole Removal', alt: 'Laser Mole Removal before and after' },
 ];
 
-// ── Mobile slideshow ─────────────────────────────────────────────
-function MobileSlideshow() {
-  const [active, setActive]       = useState(0);
-  const [direction, setDirection] = useState(1);
-  const touchStartX               = useRef(0);
-  const touchStartY               = useRef(0);
+// Duplicate so Swiper loop has enough slides for slidesPerView: 3
+const SLIDES = [...SLIDES_BASE, ...SLIDES_BASE];
 
-  function go(next: number) {
-    setDirection(next > active ? 1 : -1);
-    setActive((next + IMAGES.length) % IMAGES.length);
-  }
-
-  function onTouchStart(e: React.TouchEvent) {
-    touchStartX.current = e.touches[0].clientX;
-    touchStartY.current = e.touches[0].clientY;
-  }
-
-  function onTouchEnd(e: React.TouchEvent) {
-    const dx = e.changedTouches[0].clientX - touchStartX.current;
-    const dy = Math.abs(e.changedTouches[0].clientY - touchStartY.current);
-    if (Math.abs(dx) > 44 && Math.abs(dx) > dy) {
-      go(active + (dx < 0 ? 1 : -1));
-    }
-  }
-
-  const variants = {
-    enter:  (dir: number) => ({ x: dir > 0 ? '100%' : '-100%', opacity: 0 }),
-    center: { x: '0%', opacity: 1 },
-    exit:   (dir: number) => ({ x: dir > 0 ? '-100%' : '100%', opacity: 0 }),
-  };
-
-  return (
-    <div className={styles.slideshow}>
-      {/* Treatment title, above the image */}
-      <p className={styles.imageTitle}>{IMAGES[active].title}</p>
-
-      {/* Track + arrows wrapped so arrows position relative to the image */}
-      <div className={styles.slideshowInner}>
-        <div
-          className={styles.slideshowTrack}
-          onTouchStart={onTouchStart}
-          onTouchEnd={onTouchEnd}
-        >
-          <AnimatePresence custom={direction} mode="popLayout" initial={false}>
-            <motion.div
-              key={active}
-              className={styles.slide}
-              custom={direction}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.38, ease: [0.25, 0.1, 0.25, 1] }}
-            >
-              <Image
-                src={IMAGES[active].src}
-                alt={IMAGES[active].alt}
-                fill
-                className={styles.slideImage}
-                sizes="100vw"
-              />
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* Arrow buttons */}
-        <button
-          className={`${styles.arrow} ${styles.arrowPrev}`}
-          onClick={() => go(active - 1)}
-          aria-label="Previous image"
-        >
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <polyline points="11,3 5,9 11,15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
-        <button
-          className={`${styles.arrow} ${styles.arrowNext}`}
-          onClick={() => go(active + 1)}
-          aria-label="Next image"
-        >
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <polyline points="7,3 13,9 7,15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
-      </div>
-
-      {/* Pagination dots */}
-      <div className={styles.dots} role="tablist" aria-label="Before and after results">
-        {IMAGES.map((_, i) => (
-          <button
-            key={i}
-            className={`${styles.dot} ${i === active ? styles.dotActive : ''}`}
-            onClick={() => go(i)}
-            role="tab"
-            aria-selected={i === active}
-            aria-label={`Image ${i + 1} of ${IMAGES.length}`}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-// ── Main component ───────────────────────────────────────────────
 export default function CaseStudies() {
+  const swiperRef = useRef<SwiperType | null>(null);
+
   return (
-    <Section id="results" variant="dark" data-section-theme="dark" className={styles.section}>
-      {/* Background image */}
+    <section className={styles.section} id="results">
+      {/* Background */}
       <div className={styles.bgWrap} aria-hidden="true">
         <Image
           src="/images/Black background image.jpg"
@@ -132,72 +36,116 @@ export default function CaseStudies() {
           sizes="100vw"
         />
       </div>
-      <Container className={styles.contentLayer}>
+
+      <div className={styles.overlay} aria-hidden="true" />
+      <div className={styles.glow1} aria-hidden="true" />
+      <div className={styles.glow2} aria-hidden="true" />
+
+      <div className={styles.inner}>
+
+        {/* ── Centered header ───────────────────────────── */}
         <motion.div
           className={styles.header}
-          variants={stagger()}
+          variants={stagger(0.1)}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <motion.p className={styles.eyebrow} variants={fadeUp}>
-            Patient Outcomes
-          </motion.p>
+          <motion.div variants={fadeUp}>
+            <span className={styles.chip}>
+              <span className={styles.chipDot} aria-hidden="true" />
+              Patient Outcomes
+            </span>
+          </motion.div>
+
           <motion.h2 className={styles.heading} variants={fadeUp}>
             Real Transformations
           </motion.h2>
-          <motion.p className={styles.subtext} variants={fadeUp}>
-            Helping patients achieve confidence and long-term results, one
-            personalised treatment at a time.
+
+          <motion.div className={styles.rule} variants={fadeUp} aria-hidden="true" />
+
+          <motion.p className={styles.desc} variants={fadeUp}>
+            Helping patients achieve confidence and long-term results,
+            one personalised treatment at a time.
           </motion.p>
         </motion.div>
 
-        {/* Desktop: 3-column grid */}
-        <motion.div
-          className={styles.grid}
-          variants={stagger(0.12)}
-          initial="hidden"
-          whileInView="show"
-          viewport={VIEWPORT}
-        >
-          {IMAGES.map((img, i) => (
-            <motion.div key={i} className={styles.imageCardWrap} variants={fadeUp}>
-              <p className={styles.imageTitle}>{img.title}</p>
-              <div className={styles.imageCard}>
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  className={styles.cardImage}
-                  sizes="(max-width: 768px) 0vw, (max-width: 1024px) 50vw, 33vw"
-                />
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+        {/* ── Carousel ──────────────────────────────────── */}
+        <div className={styles.carouselWrap}>
 
-        {/* Mobile: slideshow */}
-        <div className={styles.mobileOnly}>
-          <MobileSlideshow />
+          {/* Mask wrapper — only clips the slide track, not the nav row */}
+          <div className={styles.swiperMask}>
+            <Swiper
+              grabCursor
+              centeredSlides
+              loop
+              speed={700}
+              breakpoints={{
+                0:   { slidesPerView: 1, spaceBetween: 20 },
+                640: { slidesPerView: 3, spaceBetween: 26 },
+              }}
+              onSwiper={(swiper) => { swiperRef.current = swiper; }}
+              className={styles.swiper}
+            >
+              {SLIDES.map((slide, i) => (
+                <SwiperSlide key={i} className={styles.slide}>
+                  <div className={styles.card}>
+                    <Image
+                      src={slide.src}
+                      alt={slide.alt}
+                      fill
+                      className={styles.cardImg}
+                      sizes="(max-width: 639px) 92vw, (max-width: 1024px) 30vw, 380px"
+                      draggable={false}
+                    />
+                    <div className={styles.cardOverlay} aria-hidden="true" />
+                    <div className={styles.cardGlow}    aria-hidden="true" />
+                    <div className={styles.cardContent}>
+                      <span className={styles.cardTitle}>{slide.title}</span>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+
+          {/* Arrow controls — outside the mask, always fully visible */}
+          <div className={styles.navRow}>
+            <button
+              className={styles.navBtn}
+              aria-label="Previous result"
+              onClick={() => swiperRef.current?.slidePrev()}
+            >
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M11 3.5L5.5 9L11 14.5" stroke="currentColor" strokeWidth="1.8"
+                  strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+            <button
+              className={styles.navBtn}
+              aria-label="Next result"
+              onClick={() => swiperRef.current?.slideNext()}
+            >
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M7 3.5L12.5 9L7 14.5" stroke="currentColor" strokeWidth="1.8"
+                  strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+          </div>
         </div>
 
-        {/* View more CTA */}
-        <motion.div
-          className={styles.viewMoreRow}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-        >
-          <Link href="/results" className={styles.viewMoreBtn}>
+        {/* ── View More CTA ─────────────────────────────── */}
+        <div className={styles.ctaWrap}>
+          <Link href="/results" className={styles.cta}>
             View More Results
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6"
                 strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </Link>
-        </motion.div>
-      </Container>
-    </Section>
+        </div>
+
+      </div>
+    </section>
   );
 }

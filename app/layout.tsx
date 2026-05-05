@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import LayoutShell from '@/components/layout/LayoutShell';
 import StickyCallbackCTA from '@/components/ui/StickyCallbackCTA';
 import '@/styles/globals.css';
 
@@ -76,10 +77,11 @@ export default function RootLayout({
 
         <div className="site-wrapper">
           <Header />
-          <main id="main-content" tabIndex={-1}>
-            {children}
-          </main>
-          <Footer />
+          <LayoutShell footer={<Footer />}>
+            <main id="main-content" tabIndex={-1}>
+              {children}
+            </main>
+          </LayoutShell>
           <StickyCallbackCTA />
         </div>
       </body>

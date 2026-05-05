@@ -1,0 +1,19 @@
+/* Content sits above the fixed footer */
+.content {
+  position: relative;
+  z-index: 2;
+  padding-bottom: var(--footer-height, 700px);
+}
+
+/* Fixed footer layer — always at bottom, revealed as content scrolls up */
+.footerFixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  transform-origin: bottom center;
+  will-change: transform, opacity;
+  background: #ffffff;
+}
+

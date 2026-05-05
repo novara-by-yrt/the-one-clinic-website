@@ -2,12 +2,58 @@
    FOOTER SHELL
 ═══════════════════════════════════════════ */
 .footer {
-  background: #000;
+  background: linear-gradient(180deg, #0d0d12 0%, #080809 60%, #060607 100%);
   color: #fff;
   /* Extra bottom padding so sticky CTA bar doesn't cover footer */
   padding-bottom: calc(48px + 68px);
   position: relative;
   overflow: hidden;
+
+  /* Curved top corners */
+  border-radius: 32px 32px 0 0;
+
+  /* Top edge — makes the rounded corners clearly visible against the dark page */
+  box-shadow:
+    0 -1px 0 rgba(255, 255, 255, 0.18),
+    0 -12px 48px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.09);
+}
+
+/* Premium top-edge highlight line */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.14) 25%,
+    rgba(255, 255, 255, 0.22) 50%,
+    rgba(255, 255, 255, 0.14) 75%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Atmospheric depth glow at the top of the footer */
+.footer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(120, 100, 80, 0.07) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* ═══════════════════════════════════════════
@@ -235,6 +281,8 @@
 
   .newsletterText {
     padding-bottom: 0;
+    text-align: center;
+    align-items: center;
   }
 
   .inner {

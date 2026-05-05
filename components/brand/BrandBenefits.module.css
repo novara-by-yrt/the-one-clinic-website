@@ -1,0 +1,352 @@
+/* ══════════════════════════════════════════════════════
+   SECTION — subtle warm off-white, premium feel
+══════════════════════════════════════════════════════ */
+.section {
+  background: #f8f7f5 !important;
+  padding-block: clamp(64px, 8vw, 104px);
+  overflow: hidden;
+}
+
+/* ══════════════════════════════════════════════════════
+   ASYMMETRIC GRID — 42 / 58
+══════════════════════════════════════════════════════ */
+.layout {
+  display: grid;
+  grid-template-columns: 42fr 58fr;
+  gap: clamp(40px, 5vw, 80px);
+  align-items: center;
+}
+
+/* ══════════════════════════════════════════════════════
+   LEFT: EDITORIAL TEXT COLUMN
+══════════════════════════════════════════════════════ */
+.textCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: rgba(13, 21, 32, 0.50);
+  margin: 0;
+}
+
+/* Editorial heading — aligned to brand scale */
+.heading {
+  font-size: clamp(2.25rem, 4.4vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+  color: #0d1520;
+  margin: 0;
+  hyphens: none;
+  word-break: normal;
+}
+
+.headingEm {
+  font-style: italic;
+  font-weight: 800;
+  color: rgba(0, 0, 0, 0.32);
+}
+
+.headingDark {
+  font-weight: 800;
+  color: var(--color-text-dark);
+}
+
+.rule {
+  width: 36px;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+
+.subtext {
+  font-size: var(--text-body);
+  color: var(--color-text-muted);
+  line-height: 1.75;
+  max-width: 360px;
+  margin: 0;
+}
+
+/* ══════════════════════════════════════════════════════
+   RIGHT: LAYERED IMAGE COMPOSITION
+══════════════════════════════════════════════════════ */
+.imageCol {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Wrapper that carries the decorative frame pseudo-elements */
+.canvasWrap {
+  position: relative;
+}
+
+/* Decorative frame ring — visible border outline over the full composition */
+.canvasWrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  border: 2px solid rgba(255, 255, 255, 0.78);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.07);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Clipped canvas: clips the hero image into a unified rounded frame */
+.canvas {
+  position: relative;
+  height: clamp(400px, 56vw, 680px);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow:
+    0 40px 100px rgba(0, 0, 0, 0.16),
+    0 10px 28px rgba(0, 0, 0, 0.09);
+}
+
+/* Dominant hero image — full-bleed, canvas border-radius clips it */
+.imgMain {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.imgGrad {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    160deg,
+    transparent 40%,
+    rgba(0, 0, 0, 0.24) 100%
+  );
+}
+
+/* Secondary — lower-left, white-framed, elevated */
+.imgSecondary {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 42%;
+  height: 52%;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 5px solid #ffffff;
+  box-shadow:
+    0 32px 72px rgba(0, 0, 0, 0.16),
+    0 8px 20px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.img {
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* ══════════════════════════════════════════════════════
+   FLOATING GLASS CARDS — shared base
+══════════════════════════════════════════════════════ */
+.card {
+  position: absolute;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 16px;
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.1),
+    0 4px 12px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  cursor: default;
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* Card 1 — Doctor-Led, top-left corner (outside the main image) */
+.card1 {
+  top: 20px;
+  left: 10px;
+}
+
+/* Card 2 — 500+ stat, bottom-right corner of the composition */
+.card2 {
+  bottom: 20px;
+  right: 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  padding: 18px 22px;
+}
+
+.cardIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.055);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-text-dark);
+}
+
+.cardTitle {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text-dark);
+  margin: 0;
+}
+
+.cardSub {
+  font-size: 0.6875rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.cardBigNum {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  color: var(--color-text-dark);
+  margin: 0;
+  line-height: 1;
+}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════════ */
+
+/* Large tablet */
+@media (max-width: 1100px) {
+  .canvas {
+    height: clamp(360px, 52vw, 580px);
+  }
+}
+
+/* Tablet / mobile — single column, image on top */
+@media (max-width: 900px) {
+  .section {
+    padding-block: var(--space-7);
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .imageCol {
+    order: -1;
+  }
+
+  .canvas {
+    height: clamp(300px, 65vw, 480px);
+  }
+
+  .heading {
+    font-size: clamp(2.75rem, 7vw, 4rem);
+  }
+
+  .canvas {
+    border-radius: 22px;
+  }
+
+  .canvasWrap::after {
+    border-radius: 22px;
+  }
+
+  .imgSecondary {
+    width: 44%;
+    height: 50%;
+    border-radius: 18px;
+    border-width: 4px;
+  }
+
+  .subtext {
+    max-width: 100%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 580px) {
+  .canvas {
+    height: clamp(280px, 82vw, 380px);
+  }
+
+  .heading {
+    font-size: clamp(2.5rem, 9vw, 3.25rem);
+  }
+
+  .canvas {
+    border-radius: 18px;
+  }
+
+  .canvasWrap::after {
+    border-radius: 18px;
+  }
+
+  .imgSecondary {
+    width: 46%;
+    height: 46%;
+    border-radius: 14px;
+    border-width: 3px;
+  }
+
+  .card {
+    padding: 10px 13px;
+    border-radius: 12px;
+    gap: 8px;
+  }
+
+  .card1 {
+    top: 14px;
+    left: 6px;
+  }
+
+  .card2 {
+    bottom: 22px;
+    right: 10px;
+    padding: 12px 16px;
+  }
+
+  .cardIcon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .cardBigNum {
+    font-size: 1.375rem;
+  }
+
+  .cardTitle {
+    font-size: 0.75rem;
+  }
+
+  .cardSub {
+    font-size: 0.625rem;
+  }
+}
+
+/* Very small — hide cards to keep composition clean */
+@media (max-width: 420px) {
+  .card {
+    display: none;
+  }
+
+  .imgSecondary {
+    height: 44%;
+  }
+}

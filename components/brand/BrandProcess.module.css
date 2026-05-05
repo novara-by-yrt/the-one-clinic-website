@@ -1,0 +1,485 @@
+/* ══════════════════════════════════════════════════════
+   BRAND PROCESS — Luxury editorial journey section
+══════════════════════════════════════════════════════ */
+.section {
+  background: #f5f5f7 !important;
+  padding-block: clamp(64px, 8vw, 104px);
+  position: relative;
+}
+
+/* Subtle neutral spotlight behind the image column */
+.section::before {
+  content: '';
+  position: absolute;
+  top: -15%;
+  left: -6%;
+  width: 62%;
+  height: 130%;
+  background: radial-gradient(
+    ellipse at 30% 50%,
+    rgba(13, 21, 32, 0.04) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Two-column layout ──────────────────────────────── */
+.layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 47fr 53fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: center;
+}
+
+/* ══════════════════════════════════════════════════════
+   LEFT — Media canvas
+══════════════════════════════════════════════════════ */
+.mediaCol {
+  position: relative;
+}
+
+.mediaCanvas {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  max-height: 640px;
+  user-select: none;
+}
+
+/* ── Subtle neutral halo behind composition */
+.mediaHalo {
+  position: absolute;
+  inset: -30%;
+  background: radial-gradient(
+    ellipse at 52% 48%,
+    rgba(13, 21, 32, 0.06) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Main dominant image ─────────────────────────────── */
+.imgMain {
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow:
+    0 52px 120px rgba(0, 0, 0, 0.24),
+    0 20px 48px rgba(0, 0, 0, 0.14),
+    0 6px 16px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.6s ease;
+}
+
+.imgMain:hover {
+  box-shadow:
+    0 60px 140px rgba(0, 0, 0, 0.28),
+    0 24px 56px rgba(0, 0, 0, 0.16),
+    0 8px 20px rgba(0, 0, 0, 0.09);
+}
+
+.imgFill {
+  position: absolute;
+  inset: 0;
+}
+
+.imgCover {
+  object-fit: cover;
+  object-position: center;
+}
+
+.imgGrad {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 38%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  pointer-events: none;
+}
+
+/* ── Secondary stacked preview image ────────────────── */
+.imgSecondary {
+  position: absolute;
+  bottom: -10%;
+  right: -10%;
+  width: 46%;
+  aspect-ratio: 3 / 4;
+  border-radius: 22px;
+  overflow: hidden;
+  z-index: 2;
+  box-shadow:
+    0 32px 80px rgba(0, 0, 0, 0.28),
+    0 10px 28px rgba(0, 0, 0, 0.16),
+    0 0 0 4px rgba(255, 255, 255, 0.96),
+    0 0 0 5px rgba(0, 0, 0, 0.04);
+}
+
+/* ── Floating dark stat card ─────────────────────────── */
+.floatStat {
+  position: absolute;
+  top: 12%;
+  left: -8%;
+  background: rgba(6, 6, 9, 0.86);
+  backdrop-filter: blur(32px) saturate(1.8);
+  -webkit-backdrop-filter: blur(32px) saturate(1.8);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 16px;
+  padding: 16px 22px;
+  z-index: 4;
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.32),
+    0 8px 20px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.floatNum {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.046em;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1;
+}
+
+.floatLabel {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.48);
+  margin: 0;
+}
+
+/* ── Floating light glass chips ──────────────────────── */
+.floatChip {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(24px) saturate(1.6);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  border: 1px solid rgba(255, 255, 255, 0.96);
+  border-radius: 50px;
+  padding: 8px 15px 8px 11px;
+  z-index: 5;
+  box-shadow:
+    0 10px 36px rgba(0, 0, 0, 0.11),
+    0 2px 7px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  color: rgba(8, 8, 10, 0.74);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.floatChipJourney {
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.chipDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #0d1520;
+  flex-shrink: 0;
+}
+
+/* ── Active step label pill ──────────────────────────── */
+.stepLabel {
+  position: absolute;
+  bottom: 7%;
+  left: 6%;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(5, 5, 8, 0.78);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  padding: 7px 14px 7px 11px;
+  z-index: 4;
+  pointer-events: none;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.22);
+}
+
+.stepLabelDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  flex-shrink: 0;
+}
+
+.stepLabelText {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.015em;
+  color: rgba(255, 255, 255, 0.88);
+  white-space: nowrap;
+}
+
+/* ── Pagination dots ─────────────────────────────────── */
+.dots {
+  position: absolute;
+  bottom: 6%;
+  right: 6%;
+  display: flex;
+  gap: 6px;
+  z-index: 4;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s ease, transform 0.25s ease;
+}
+
+.dot:hover {
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.dotActive {
+  background: #ffffff;
+  transform: scale(1.35);
+}
+
+/* ══════════════════════════════════════════════════════
+   RIGHT — Text column
+══════════════════════════════════════════════════════ */
+.textCol {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 4vw, 46px);
+}
+
+/* ── Header block ────────────────────────────────────── */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 16px;
+  background: rgba(13, 21, 32, 0.06);
+  border: 1px solid rgba(13, 21, 32, 0.15);
+  border-radius: 50px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(13, 21, 32, 0.55);
+}
+
+.chipDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.heading {
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.04;
+  color: #0d1520;
+  margin: 0;
+}
+
+.subtext {
+  font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
+  color: rgba(8, 8, 10, 0.5);
+  line-height: 1.76;
+  margin: 0;
+  max-width: 420px;
+}
+
+/* ══════════════════════════════════════════════════════
+   EDITORIAL PILLAR CARDS
+══════════════════════════════════════════════════════ */
+.pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pillarItem {
+  position: relative;
+  display: flex;
+  gap: 0;
+  cursor: default;
+}
+
+/* Left accent bar */
+.pillarAccent {
+  width: 3px;
+  border-radius: 2px;
+  background: rgba(8, 8, 10, 0.08);
+  flex-shrink: 0;
+  margin-right: 20px;
+  transition: background 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.isActive .pillarAccent {
+  background: #0d1520;
+}
+
+.pillarCard {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(28px) saturate(1.6);
+  -webkit-backdrop-filter: blur(28px) saturate(1.6);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  padding: clamp(18px, 2.2vw, 26px) clamp(20px, 2.5vw, 28px);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.046),
+    0 1px 4px rgba(0, 0, 0, 0.032),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.isActive .pillarCard {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(255, 255, 255, 1);
+  box-shadow:
+    0 20px 56px rgba(0, 0, 0, 0.11),
+    0 6px 20px rgba(0, 0, 0, 0.065),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  transform: translateX(6px) translateY(-2px);
+}
+
+.pillarTag {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(13, 21, 32, 0.45);
+  margin: 0 0 8px;
+}
+
+.pillarHeading {
+  font-size: clamp(0.9375rem, 1.15vw, 1.0625rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: #080810;
+  margin: 0 0 9px;
+  line-height: 1.28;
+}
+
+.pillarBody {
+  font-size: clamp(0.8125rem, 0.9vw, 0.9375rem);
+  color: rgba(8, 8, 10, 0.52);
+  line-height: 1.74;
+  margin: 0;
+}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════════ */
+
+/* Tablet: stack */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: clamp(32px, 6vw, 56px);
+  }
+
+  .mediaCanvas {
+    aspect-ratio: 16 / 9;
+    max-height: 420px;
+  }
+
+  .imgMain {
+    border-radius: 22px;
+  }
+
+  .imgSecondary {
+    width: 38%;
+    bottom: -6%;
+    right: -4%;
+  }
+
+  .floatStat {
+    left: 4%;
+    top: 10%;
+  }
+
+  .floatChipJourney {
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* Mobile */
+@media (max-width: 580px) {
+  .mediaCanvas {
+    aspect-ratio: 4 / 3;
+    max-height: 300px;
+  }
+
+  .imgSecondary {
+    display: none;
+  }
+
+  .floatStat {
+    top: auto;
+    bottom: 8%;
+    left: 5%;
+  }
+
+  .floatChipJourney {
+    display: none;
+  }
+
+  .stepLabel {
+    bottom: auto;
+    top: 8%;
+    left: 5%;
+  }
+
+  .pillarAccent {
+    margin-right: 14px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 420px) {
+  .mediaCanvas {
+    aspect-ratio: 3 / 2;
+  }
+
+  .floatStat {
+    display: none;
+  }
+}

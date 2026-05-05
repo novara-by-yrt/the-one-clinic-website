@@ -14,7 +14,6 @@ const VIDEOS = [
   { id: 'fm142sxmlw', title: 'Customer Testimonial, Mahanoor' },
 ];
 
-
 export default function TestimonialVideos() {
   const [active, setActive]       = useState(0);
   const [direction, setDirection] = useState(1);
@@ -43,7 +42,6 @@ export default function TestimonialVideos() {
       <Script src="https://fast.wistia.net/player.js" strategy="lazyOnload" />
 
       <Container>
-        {/* ── Header ─────────────────────────────────────────── */}
         <motion.div
           className={styles.header}
           variants={stagger(0.15)}
@@ -58,7 +56,7 @@ export default function TestimonialVideos() {
           </motion.p>
         </motion.div>
 
-        {/* ── Desktop: 3-column grid ─────────────────────────── */}
+        {/* Desktop: 3-column portrait grid */}
         <motion.div
           className={styles.grid}
           variants={stagger(0.12)}
@@ -83,9 +81,8 @@ export default function TestimonialVideos() {
           ))}
         </motion.div>
 
-        {/* ── Mobile: slideshow with arrows + dots ───────────── */}
+        {/* Mobile: slideshow with arrows + dots */}
         <div className={styles.mobileSlideshow}>
-          {/* Arrows + slide track */}
           <div className={styles.mobileTrackRow}>
             <button
               className={styles.mobileArrow}
@@ -131,7 +128,6 @@ export default function TestimonialVideos() {
             </button>
           </div>
 
-          {/* Pagination dots */}
           <div className={styles.mobileDots} role="tablist" aria-label="Patient testimonial videos">
             {VIDEOS.map((_, i) => (
               <button

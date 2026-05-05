@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Image from 'next/image';
+import Script from 'next/script';
 import { motion, AnimatePresence } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
@@ -76,7 +77,13 @@ const REVIEWS = [
   },
 ];
 
-const PER_PAGE = 4;
+const PATIENT_VIDEOS = [
+  { id: 'idcb1vywka', title: 'Customer Testimonial' },
+  { id: 'onscmatqmy', title: 'Customer Testimonial, Oxana' },
+  { id: 'fm142sxmlw', title: 'Customer Testimonial, Mahanoor' },
+];
+
+const PER_PAGE = 3;
 
 /* ── Icons ──────────────────────────────────────────────────── */
 function GoogleG() {
@@ -92,16 +99,17 @@ function GoogleG() {
 
 function StarIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" className={styles.starSvg}>
+    <svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true" className={styles.starSvg}>
       <path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.49L10 14.25l-4.94 2.6.94-5.49-4-3.9 5.53-.8z"/>
     </svg>
   );
 }
 
-function VerifiedBadge() {
+function TrophyIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 20 20" aria-label="Verified review" className={styles.verifiedSvg}>
-      <path d="M10 0C4.48 0 0 4.48 0 10s4.48 10 10 10 10-4.48 10-10S15.52 0 10 0zm-2 14.5l-4-4 1.41-1.41L8 11.67l6.59-6.59L16 6.5l-8 8z"/>
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
+      <path d="M17 3H7v2h10V3zM7 19h10l-2 2H9l-2-2z"/>
     </svg>
   );
 }
@@ -115,9 +123,15 @@ const SLIDE = {
 const TRANSITION = { duration: 0.42, ease: [0.25, 0.1, 0.25, 1] as const };
 
 /* ── Component ──────────────────────────────────────────────── */
-export default function Testimonials() {
+export default function Testimonials({ showVideos = false }: { showVideos?: boolean }) {
+  /* Reviews carousel */
   const [page, setPage] = useState(0);
   const [dir,  setDir]  = useState(1);
+
+  /* Patient video mobile slideshow */
+  const [videoActive, setVideoActive] = useState(0);
+  const videoTouchX = useRef(0);
+  const videoTouchY = useRef(0);
 
   const totalPages = Math.ceil(REVIEWS.length / PER_PAGE);
   const visible    = REVIEWS.slice(page * PER_PAGE, (page + 1) * PER_PAGE);
@@ -135,8 +149,25 @@ export default function Testimonials() {
     if (delta >  50) goTo((page - 1 + totalPages) % totalPages, -1);
   }
 
+  function goVideo(next: number) {
+    setVideoActive((next + PATIENT_VIDEOS.length) % PATIENT_VIDEOS.length);
+  }
+
+  function onVideoTouchStart(e: React.TouchEvent) {
+    videoTouchX.current = e.touches[0].clientX;
+    videoTouchY.current = e.touches[0].clientY;
+  }
+
+  function onVideoTouchEnd(e: React.TouchEvent) {
+    const dx = e.changedTouches[0].clientX - videoTouchX.current;
+    const dy = Math.abs(e.changedTouches[0].clientY - videoTouchY.current);
+    if (Math.abs(dx) > 44 && Math.abs(dx) > dy) goVideo(videoActive + (dx < 0 ? 1 : -1));
+  }
+
   return (
     <Section variant="dark" data-section-theme="dark" className={styles.section}>
+      <Script src="https://fast.wistia.net/player.js" strategy="lazyOnload" />
+
       {/* Background image */}
       <div className={styles.bgWrap} aria-hidden="true">
         <Image
@@ -147,37 +178,36 @@ export default function Testimonials() {
           sizes="100vw"
         />
       </div>
+
       <Container className={styles.contentLayer}>
 
-        {/* ── Rating header ─────────────────────────────── */}
+        {/* ── Header ────────────────────────────────────── */}
         <motion.div
-          className={styles.ratingHeader}
-          variants={stagger(0.1)}
+          className={styles.header}
+          variants={stagger(0.12)}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <motion.p className={styles.excellentText} variants={fadeUp}>
-            Excellent
-          </motion.p>
-          <motion.div className={styles.headerStars} variants={fadeUp} aria-label="5 out of 5 stars">
-            {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
+          <motion.div className={styles.chipRow} variants={fadeUp}>
+            <span className={styles.chip}>
+              <TrophyIcon />
+              Loved by Thousands
+            </span>
           </motion.div>
-          <motion.p className={styles.basedOn} variants={fadeUp}>
-            Based on <strong>120+</strong> reviews
+
+          <motion.h2 className={styles.heading} variants={fadeUp}>
+            What Our<br />
+            <span className={styles.headingAccent}>Customers Say</span>
+          </motion.h2>
+
+          <motion.p className={styles.subtext} variants={fadeUp}>
+            Don&apos;t just take our word for it. Here&apos;s what real patients have
+            to say about their experience at The One Clinic.
           </motion.p>
-          <motion.div variants={fadeUp}>
-            <Image
-              src="/images/Google-logo.png"
-              alt="Google Reviews"
-              width={88}
-              height={30}
-              className={styles.googleWordmark}
-            />
-          </motion.div>
         </motion.div>
 
-        {/* ── Carousel ──────────────────────────────────── */}
+        {/* ── Reviews carousel ──────────────────────────── */}
         <motion.div
           className={styles.carouselRow}
           variants={fadeUp}
@@ -185,7 +215,6 @@ export default function Testimonials() {
           whileInView="show"
           viewport={VIEWPORT}
         >
-          {/* Prev arrow */}
           <button
             className={styles.arrowBtn}
             onClick={() => goTo((page - 1 + totalPages) % totalPages, -1)}
@@ -197,7 +226,6 @@ export default function Testimonials() {
             </svg>
           </button>
 
-          {/* Cards viewport */}
           <div
             className={styles.viewport}
             onTouchStart={onTouchStart}
@@ -216,43 +244,27 @@ export default function Testimonials() {
               >
                 {visible.map((r) => (
                   <div key={r.name} className={styles.card}>
-                    {/* Card header row */}
-                    <div className={styles.cardHeader}>
-                      <div
-                        className={styles.avatar}
-                        style={{ background: r.avatarBg }}
-                        aria-hidden="true"
-                      >
+                    <span className={styles.quoteIcon} aria-hidden="true">&ldquo;</span>
+                    <div className={styles.starsRow} aria-label="5 out of 5 stars">
+                      {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
+                    </div>
+                    <p className={styles.reviewText}>{r.review}</p>
+                    <div className={styles.cardFooter}>
+                      <div className={styles.avatar} style={{ background: r.avatarBg }} aria-hidden="true">
                         {r.initial}
                       </div>
                       <div className={styles.authorInfo}>
                         <p className={styles.authorName}>{r.name}</p>
                         <p className={styles.timeAgo}>{r.timeAgo}</p>
                       </div>
-                      <div className={styles.googleG}>
-                        <GoogleG />
-                      </div>
+                      <div className={styles.googleG}><GoogleG /></div>
                     </div>
-
-                    {/* Stars + verified badge */}
-                    <div className={styles.starsRow} aria-label="5 out of 5 stars, verified review">
-                      {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
-                      <VerifiedBadge />
-                    </div>
-
-                    {/* Review text */}
-                    <p className={styles.reviewText}>{r.review}</p>
-
-                    <button className={styles.readMore} type="button">
-                      Read more
-                    </button>
                   </div>
                 ))}
               </motion.div>
             </AnimatePresence>
           </div>
 
-          {/* Next arrow */}
           <button
             className={styles.arrowBtn}
             onClick={() => goTo((page + 1) % totalPages, 1)}
@@ -264,6 +276,107 @@ export default function Testimonials() {
             </svg>
           </button>
         </motion.div>
+
+        {/* ── Pagination dots ───────────────────────────── */}
+        <div className={styles.dots} role="tablist" aria-label="Review pages">
+          {[...Array(totalPages)].map((_, i) => (
+            <button
+              key={i}
+              className={`${styles.dot} ${i === page ? styles.dotActive : ''}`}
+              onClick={() => goTo(i, i > page ? 1 : -1)}
+              role="tab"
+              aria-selected={i === page}
+              aria-label={`Page ${i + 1} of ${totalPages}`}
+            />
+          ))}
+        </div>
+
+        {/* ── Patient video stories — home/brand page only ── */}
+        {showVideos && <div className={styles.patientsSection}>
+          {/* Desktop: 3-column portrait grid */}
+          <motion.div
+            className={styles.videosGrid}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {PATIENT_VIDEOS.map((v) => (
+              <motion.div key={v.id} className={styles.videoCard} variants={fadeUp}>
+                <div className={styles.videoPortrait}>
+                  <iframe
+                    src={`https://fast.wistia.net/embed/iframe/${v.id}?web_component=true&seo=true`}
+                    title={v.title}
+                    allow="autoplay; fullscreen"
+                    allowFullScreen
+                    frameBorder="0"
+                    scrolling="no"
+                    className={styles.iframe}
+                  />
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Mobile: slideshow */}
+          <div className={styles.mobileSlideshow}>
+            <div className={styles.mobileTrackRow}>
+              <button
+                className={styles.mobileArrow}
+                onClick={() => goVideo(videoActive - 1)}
+                aria-label="Previous video"
+              >
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <polyline points="11,3 5,9 11,15" stroke="currentColor" strokeWidth="2"
+                    strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+
+              <div
+                className={styles.mobileTrack}
+                onTouchStart={onVideoTouchStart}
+                onTouchEnd={onVideoTouchEnd}
+              >
+                <div className={styles.videoPortraitMobile}>
+                  <iframe
+                    key={videoActive}
+                    src={`https://fast.wistia.net/embed/iframe/${PATIENT_VIDEOS[videoActive].id}?web_component=true&seo=true`}
+                    title={PATIENT_VIDEOS[videoActive].title}
+                    allow="autoplay; fullscreen"
+                    allowFullScreen
+                    frameBorder="0"
+                    scrolling="no"
+                    className={styles.iframe}
+                  />
+                </div>
+              </div>
+
+              <button
+                className={styles.mobileArrow}
+                onClick={() => goVideo(videoActive + 1)}
+                aria-label="Next video"
+              >
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <polyline points="7,3 13,9 7,15" stroke="currentColor" strokeWidth="2"
+                    strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+            </div>
+
+            <div className={styles.mobileDots} role="tablist" aria-label="Patient testimonial videos">
+              {PATIENT_VIDEOS.map((_, i) => (
+                <button
+                  key={i}
+                  className={`${styles.mobileDot} ${i === videoActive ? styles.mobileDotActive : ''}`}
+                  onClick={() => goVideo(i)}
+                  role="tab"
+                  aria-selected={i === videoActive}
+                  aria-label={`Video ${i + 1} of ${PATIENT_VIDEOS.length}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>}
 
       </Container>
     </Section>

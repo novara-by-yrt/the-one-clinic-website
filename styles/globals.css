@@ -1,6 +1,14 @@
 @import './variables.css';
 
 /* ═══════════════════════════════════════════════════════════════
+   FOOTER HEIGHT CUSTOM PROPERTY
+   Updated at runtime by LayoutShell via ResizeObserver
+═══════════════════════════════════════════════════════════════ */
+:root {
+  --footer-height: 700px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
    RESET
 ═══════════════════════════════════════════════════════════════ */
 *,
@@ -26,7 +34,7 @@ body {
   font-weight: var(--fw-regular);
   line-height: var(--lh-normal);
   color: var(--color-text-dark);
-  background-color: var(--color-bg-light);
+  background-color: #000000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;

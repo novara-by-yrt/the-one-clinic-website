@@ -1,7 +1,10 @@
-/* ── Section: needs position:relative for bg image ─────────────── */
+/* ══════════════════════════════════════════════════════
+   SECTION
+══════════════════════════════════════════════════════ */
 .section {
   position: relative;
   overflow: hidden;
+  padding-block: clamp(64px, 8vw, 104px);
 }
 
 .bgWrap {
@@ -13,226 +16,449 @@
 .bgImg {
   object-fit: cover;
   object-position: center;
+  filter: blur(4px) brightness(0.22) saturate(0.5);
+  transform: scale(1.04);
 }
 
-.contentLayer {
-  position: relative;
+.overlay {
+  position: absolute;
+  inset: 0;
   z-index: 1;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(4, 4, 8, 0.92) 0%,
+      rgba(4, 4, 8, 0.72) 30%,
+      rgba(4, 4, 8, 0.72) 70%,
+      rgba(4, 4, 8, 0.92) 100%
+    );
 }
 
-/* ── Header ─────────────────────────────────────────────────────── */
-.header {
-  text-align: center;
-  max-width: 560px;
-  margin-inline: auto;
-  margin-bottom: var(--space-5);
+.glow1 {
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 55%;
+  height: 80%;
+  background: radial-gradient(
+    ellipse at 30% 40%,
+    rgba(160, 120, 75, 0.09) 0%,
+    transparent 65%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.glow2 {
+  position: absolute;
+  bottom: -10%;
+  right: -5%;
+  width: 55%;
+  height: 75%;
+  background: radial-gradient(
+    ellipse at 70% 65%,
+    rgba(45, 60, 110, 0.08) 0%,
+    transparent 60%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════════════════════
+   INNER
+══════════════════════════════════════════════════════ */
+.inner {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  align-items: center;
+  gap: clamp(40px, 5.5vw, 64px);
+  width: 100%;
 }
 
-.eyebrow {
-  font-size: var(--text-small);
-  font-weight: var(--fw-medium);
-  letter-spacing: 0.1em;
+/* ══════════════════════════════════════════════════════
+   HEADER
+══════════════════════════════════════════════════════ */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(10px, 1.4vw, 16px);
+  max-width: 640px;
+  padding-inline: clamp(20px, 5vw, 48px);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 16px;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgb(255 255 255 / 0.35);
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.chipDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
 }
 
 .heading {
-  font-size: var(--text-h2);
-  font-weight: var(--fw-bold);
-  letter-spacing: -0.02em;
-  color: var(--color-text-light);
-}
-
-.subtext {
-  color: rgb(255 255 255 / 0.5);
-}
-
-/* ── Desktop 3-column grid ──────────────────────────────────────── */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-3);
-}
-
-/* Wrapper holding title + image card in a column */
-.imageCardWrap {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-/* ── Treatment title label (above the image) ────────────────────── */
-.imageTitle {
-  font-size: 0.8125rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.75);
-  text-align: center;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  line-height: 1.06;
   margin: 0;
 }
 
-.imageCard {
-  position: relative;
-  width: 100%;
-  /* Height auto-derives from the image's natural aspect ratio */
-  aspect-ratio: auto;
-  border-radius: 0.75rem;
-  overflow: hidden;
-  background: #111;
-}
-
-/* Make next/image fill the card and show full image (contain, not cover) */
-.cardImage {
-  object-fit: contain !important;
-  /* next/image with fill needs position:relative on parent and explicit height */
-}
-
-/*
- * Because next/image fill gives the img position:absolute, we need to give the
- * card a real height. We size it to the image's natural ratio by making the img
- * itself define the height via an invisible spacer trick: set padding-bottom to
- * give the card enough room. The before-after images are roughly square.
- * We use padding-top on the card wrapper instead of aspect-ratio so the full
- * image is always visible. Adjust the % if the images have a different ratio.
- */
-.imageCard::before {
-  content: '';
-  display: block;
-  padding-top: 100%; /* 1:1 — adjust if images are taller/shorter */
-}
-
-/* ── Mobile only visibility ─────────────────────────────────────── */
-.mobileOnly {
-  display: none;
-}
-
-/* ── Mobile slideshow ───────────────────────────────────────────── */
-.slideshow {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-/* Inner wrapper so arrows are positioned relative to the track only */
-.slideshowInner {
-  position: relative;
-}
-
-.slideshowTrack {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  border-radius: 0.75rem;
-  background: #111;
-  touch-action: pan-y;
-}
-
-.slide {
-  position: absolute;
-  inset: 0;
-}
-
-.slideImage {
-  object-fit: contain !important;
-}
-
-/* Arrow buttons */
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
+.rule {
   width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  height: 1.5px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.50), rgba(255,255,255,0.10));
+  border-radius: 1px;
+  flex-shrink: 0;
+  margin-block: 2px;
 }
 
-.arrow:hover {
-  background: rgba(0, 0, 0, 0.8);
-  border-color: rgba(255, 255, 255, 0.35);
+.desc {
+  font-size: clamp(0.9375rem, 1.1vw, 1rem);
+  line-height: 1.72;
+  color: rgba(255, 255, 255, 0.52);
+  margin: 0;
 }
 
-.arrowPrev { left: var(--space-2); }
-.arrowNext { right: var(--space-2); }
-
-/* Pagination dots */
-.dots {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  margin-top: var(--space-3);
-}
-
-.dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  transition: background 0.25s ease, transform 0.25s ease;
-}
-
-.dot:hover {
-  background: rgba(255, 255, 255, 0.65);
-}
-
-.dotActive {
-  background: white;
-  transform: scale(1.35);
-}
-
-/* ── View More button ───────────────────────────────────────────── */
-.viewMoreRow {
-  display: flex;
-  justify-content: center;
-  padding-top: var(--space-5);
-}
-
-.viewMoreBtn {
+/* ══════════════════════════════════════════════════════
+   CTA
+══════════════════════════════════════════════════════ */
+.cta {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 13px 32px;
+  padding: 13px 28px;
   background: #ffffff;
-  color: #000000;
-  border-radius: 20px;
-  font-size: 0.9375rem;
+  color: #060608;
+  border-radius: 50px;
+  font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-decoration: none;
-  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 2px 24px rgb(255 255 255 / 0.12);
+  width: fit-content;
+  margin-top: 4px;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.12);
+  transition:
+    background 0.25s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease;
 }
 
-.viewMoreBtn:hover {
-  background: rgba(255, 255, 255, 0.88);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 32px rgb(255 255 255 / 0.18);
+.cta:hover {
+  background: rgba(255, 255, 255, 0.90);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.22);
 }
 
-/* ── Responsive ─────────────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════
+   CTA WRAP
+══════════════════════════════════════════════════════ */
+.ctaWrap {
+  display: flex;
+  justify-content: center;
+}
+
+/* ══════════════════════════════════════════════════════
+   CAROUSEL WRAPPER
+══════════════════════════════════════════════════════ */
+.carouselWrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+/* Mask wraps only the slide track — arrows stay fully visible */
+.swiperMask {
+  width: 100%;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 5%,
+    black 95%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 5%,
+    black 95%,
+    transparent 100%
+  );
+}
+
+/* ── Swiper ─────────────────────────────────────────── */
+.swiper {
+  width: 100%;
+  padding-block: 56px 32px !important;
+  overflow: visible !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   SLIDE
+══════════════════════════════════════════════════════ */
+.slide {
+  height: 480px !important;
+  border-radius: 20px;
+  opacity: 1 !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   CARD
+   Default: invisible (far-off slides in loop)
+   Prev/Next: dimmed, slightly smaller
+   Active: full spotlight, elevated
+══════════════════════════════════════════════════════ */
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #0d0d0d;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.40),
+    0 2px 6px rgba(0, 0, 0, 0.28);
+
+  /* Far / non-adjacent slides — nearly invisible */
+  filter: brightness(0.18) saturate(0.10);
+  transform: scale(0.52) translateY(32px);
+
+  transition:
+    filter   0.65s cubic-bezier(0.16, 1, 0.30, 1),
+    transform 0.65s cubic-bezier(0.16, 1, 0.30, 1),
+    box-shadow 0.65s cubic-bezier(0.16, 1, 0.30, 1),
+    border-color 0.65s ease;
+  will-change: filter, transform;
+}
+
+/* ── Adjacent slides — receded, clearly smaller to sell depth ── */
+.slide:global(.swiper-slide-prev) .card,
+.slide:global(.swiper-slide-next) .card,
+.slide:global(.swiper-slide-duplicate-prev) .card,
+.slide:global(.swiper-slide-duplicate-next) .card {
+  filter: brightness(0.46) saturate(0.38);
+  transform: scale(0.62) translateY(28px);
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.44),
+    0 3px 8px rgba(0, 0, 0, 0.26);
+}
+
+/* ── Active slide — full spotlight, pushed forward ── */
+.slide:global(.swiper-slide-active) .card,
+.slide:global(.swiper-slide-duplicate-active) .card {
+  filter: brightness(1.04) saturate(1.06);
+  transform: scale(1.0) translateY(-20px);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 56px 110px rgba(0, 0, 0, 0.72),
+    0 24px 52px rgba(0, 0, 0, 0.52),
+    0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 0 80px -6px rgba(175, 140, 90, 0.34);
+}
+
+.slide:global(.swiper-slide-active) .card:hover,
+.slide:global(.swiper-slide-duplicate-active) .card:hover {
+  transform: scale(1.0) translateY(-28px);
+}
+
+/* ── Image ── */
+.cardImg {
+  object-fit: contain;
+  object-position: center center;
+}
+
+/* ── Bottom gradient ── */
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.20) 36%,
+    transparent 65%
+  );
+}
+
+/* ── Warm inner glow on active ── */
+.cardGlow {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: 20px;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 56px rgba(175, 140, 80, 0.12);
+  transition: opacity 0.65s ease;
+}
+
+.slide:global(.swiper-slide-active) .cardGlow,
+.slide:global(.swiper-slide-duplicate-active) .cardGlow {
+  opacity: 1;
+}
+
+/* ── Treatment label ── */
+.cardContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  padding: 18px 20px 22px;
+}
+
+.cardTitle {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.90);
+  line-height: 1.3;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.70);
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity  0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.slide:global(.swiper-slide-active) .cardTitle,
+.slide:global(.swiper-slide-duplicate-active) .cardTitle {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ══════════════════════════════════════════════════════
+   NAV BUTTONS
+══════════════════════════════════════════════════════ */
+.navRow {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+.navBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: rgba(255, 255, 255, 0.72);
+  cursor: pointer;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.09),
+    0 4px 16px rgba(0, 0, 0, 0.28);
+  transition:
+    background 0.22s ease,
+    border-color 0.22s ease,
+    color 0.22s ease,
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.22s ease;
+}
+
+.navBtn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.30);
+  color: #ffffff;
+  transform: scale(1.10);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 6px 24px rgba(0, 0, 0, 0.38);
+}
+
+.navBtn:active {
+  transform: scale(0.94);
+}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════════ */
+@media (max-width: 1200px) {
+  .slide { height: 440px !important; }
+}
+
 @media (max-width: 1024px) {
-  .grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-2); }
+  .slide { height: 400px !important; }
 }
 
 @media (max-width: 768px) {
-  /* Hide desktop grid, show mobile slideshow */
-  .grid     { display: none; }
-  .mobileOnly { display: block; }
+  .swiper {
+    padding-block: 28px 16px !important;
+  }
+  .slide {
+    height: 360px !important;
+    border-radius: 16px;
+  }
+  .card, .cardGlow { border-radius: 16px; }
+  .slide:global(.swiper-slide-active) .card,
+  .slide:global(.swiper-slide-duplicate-active) .card {
+    transform: scale(1.0) translateY(-10px);
+  }
+}
+
+/* Mobile — single full-width card, always fully lit */
+@media (max-width: 639px) {
+  .swiperMask {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .slide {
+    height: 440px !important;
+    border-radius: 18px;
+  }
+  .card, .cardGlow { border-radius: 18px; }
+
+  /* All cards look active-bright on mobile (only 1 visible at a time) */
+  .card,
+  .slide:global(.swiper-slide-prev) .card,
+  .slide:global(.swiper-slide-next) .card,
+  .slide:global(.swiper-slide-duplicate-prev) .card,
+  .slide:global(.swiper-slide-duplicate-next) .card {
+    filter: brightness(1.0) saturate(1.0);
+    transform: scale(1.0) translateY(0);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .swiper {
+    padding-block: 12px 8px !important;
+  }
+
+  .navBtn {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (max-width: 400px) {
+  .slide { height: 380px !important; }
 }

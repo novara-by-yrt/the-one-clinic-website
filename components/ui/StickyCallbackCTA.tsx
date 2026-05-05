@@ -7,18 +7,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import styles from './StickyCallbackCTA.module.css';
 
 /* ── Timing constants ──────────────────────────────────────────── */
-const FIRST_DELAY  = 15_000;   // 15 s , first auto-show after page load
-const SECOND_DELAY = 120_000;  // 2 min, second auto-show after first close
+const FIRST_DELAY = 15_000; // 15 s, auto-show once after first page load
 
 /* ── localStorage helpers ──────────────────────────────────────── */
 /**
  * Popup phase stored in localStorage:
- *   '0', never auto-triggered
- *   '1', auto-triggered once (open or closed), waiting for 2nd trigger
- *   '2', both auto-triggers used; never show automatically again
+ *   '0'  never auto-triggered
+ *   '1'  auto-triggered once; never show automatically again
  */
-const KEY_PHASE     = 'toc_popup_phase';
-const KEY_CLOSED_AT = 'toc_popup_closed_at'; // Unix ms timestamp
+const KEY_PHASE = 'toc_popup_phase';
 
 function lsGet(key: string): string | null {
   try { return localStorage.getItem(key); } catch { return null; }
@@ -30,91 +27,28 @@ function lsSet(key: string, val: string): void {
 /* ── Component ─────────────────────────────────────────────────── */
 export default function StickyCallbackCTA() {
   const [open, setOpen] = useState(false);
+  const isAutoRef = useRef(false);
 
-  /**
-   * Tracks whether the currently-open popup was triggered automatically.
-   * false → opened by the sticky button or global event (manual).
-   * Only auto-opens advance the popup phase.
-   */
-  const isAutoRef   = useRef(false);
-  /** Cleanup fn for the second-trigger (2-min timer + exit-intent listener). */
-  const cleanup2Ref = useRef<() => void>(() => {});
-
-  /* ── Arm the second trigger (called after first auto-close) ──── */
-  const armSecondTrigger = useCallback((closedAt: number) => {
-    cleanup2Ref.current(); // cancel any previous instance
-
-    const remaining = Math.max(0, SECOND_DELAY - (Date.now() - closedAt));
-    let fired = false;
-
-    function onLeave(e: MouseEvent) { if (e.clientY <= 0) fire(); }
-
-    function fire() {
-      if (fired) return;
-      fired = true;
-      clearTimeout(timer);
-      document.removeEventListener('mouseleave', onLeave);
-      cleanup2Ref.current = () => {};
-      lsSet(KEY_PHASE, '2');
-      isAutoRef.current = true;
-      setOpen(true);
-    }
-
-    const timer = setTimeout(fire, remaining);
-    document.addEventListener('mouseleave', onLeave);
-
-    cleanup2Ref.current = () => {
-      clearTimeout(timer);
-      document.removeEventListener('mouseleave', onLeave);
-    };
-  }, []);
-
-  /* ── One-time mount setup, runs once (component lives in root layout) */
+  /* ── One-time mount setup ─────────────────────────────────────── */
   useEffect(() => {
     const phase = Number(lsGet(KEY_PHASE) ?? '0');
-    if (phase >= 2) return; // done forever
+    if (phase >= 1) return; // already triggered once, never again
 
-    if (phase === 0) {
-      // First-ever visit: show after 15 s.
-      // Write phase=1 + a tentative timestamp immediately so a hard refresh
-      // during the 15-s wait doesn't re-trigger the same stage.
-      let cancelled = false;
-      const t = setTimeout(() => {
-        if (cancelled) return;
-        lsSet(KEY_PHASE, '1');
-        lsSet(KEY_CLOSED_AT, String(Date.now()));
-        isAutoRef.current = true;
-        setOpen(true);
-      }, FIRST_DELAY);
-      return () => { cancelled = true; clearTimeout(t); };
-    }
-
-    // phase === 1: first trigger already fired (open or closed on a previous load).
-    // Resume the second trigger from the stored timestamp.
-    const closedAt = Number(lsGet(KEY_CLOSED_AT) ?? String(Date.now()));
-    armSecondTrigger(closedAt);
-    return () => cleanup2Ref.current();
-  }, [armSecondTrigger]);
+    let cancelled = false;
+    const t = setTimeout(() => {
+      if (cancelled) return;
+      lsSet(KEY_PHASE, '1');
+      isAutoRef.current = true;
+      setOpen(true);
+    }, FIRST_DELAY);
+    return () => { cancelled = true; clearTimeout(t); };
+  }, []);
 
   /* ── Unified close / dismiss handler ─────────────────────────── */
   const handleClose = useCallback(() => {
-    const wasAuto = isAutoRef.current;
     isAutoRef.current = false;
     setOpen(false);
-
-    if (!wasAuto) return; // manual open, don't advance phase
-
-    const phase = Number(lsGet(KEY_PHASE) ?? '0');
-
-    if (phase === 1) {
-      // First auto-show just dismissed → update timestamp and arm 2nd trigger
-      const now = Date.now();
-      lsSet(KEY_CLOSED_AT, String(now));
-      armSecondTrigger(now);
-    }
-    // phase === 2: second auto-show dismissed, cleanup2Ref is already a no-op
-    cleanup2Ref.current();
-  }, [armSecondTrigger]);
+  }, []);
 
   /* ── Prevent body scroll while modal is open ──────────────────── */
   useEffect(() => {
@@ -167,7 +101,7 @@ export default function StickyCallbackCTA() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
+              transition={{ duration: 0.35, ease: 'easeOut' }}
               onClick={handleClose}
               aria-hidden="true"
             />
@@ -179,10 +113,10 @@ export default function StickyCallbackCTA() {
                 role="dialog"
                 aria-modal="true"
                 aria-label="Request a call back"
-                initial={{ opacity: 0, y: 32 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 32 }}
-                transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+                initial={{ opacity: 0, y: 20, scale: 0.97 }}
+                animate={{ opacity: 1, y: 0,  scale: 1    }}
+                exit={{ opacity: 0,    y: 20, scale: 0.97 }}
+                transition={{ duration: 0.48, ease: [0.22, 1, 0.36, 1] }}
               >
                 {/* Team image, desktop only */}
                 <div className={styles.modalImage} aria-hidden="true">

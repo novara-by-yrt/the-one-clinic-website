@@ -1,29 +1,23 @@
-import Hero             from '@/components/sections/Hero';
-import LogoCarousel     from '@/components/sections/LogoCarousel';
-import VideoSection     from '@/components/sections/VideoSection';
-import TrustStrip       from '@/components/sections/TrustStrip';
-import Services         from '@/components/sections/Services';
-import Benefits         from '@/components/sections/Benefits';
-import Testimonials     from '@/components/sections/Testimonials';
-import Process          from '@/components/sections/Process';
-import TestimonialVideos from '@/components/sections/TestimonialVideos';
-import MeetTheExperts   from '@/components/sections/MeetTheExperts';
-import CaseStudies      from '@/components/sections/CaseStudies';
-import LeadForm         from '@/components/sections/LeadForm';
-import FinalCTA         from '@/components/sections/FinalCTA';
+import BrandHero         from '@/components/brand/BrandHero';
+import BrandVideoSection from '@/components/brand/BrandVideoSection';
+import LogoCarousel      from '@/components/sections/LogoCarousel';
+import BrandTreatments   from '@/components/brand/BrandTreatments';
+import BrandProcess      from '@/components/brand/BrandProcess';
+import Testimonials      from '@/components/sections/Testimonials';
+import MeetTheExperts    from '@/components/sections/MeetTheExperts';
+import CaseStudies       from '@/components/sections/CaseStudies';
+import LeadForm          from '@/components/sections/LeadForm';
+import FinalCTA          from '@/components/sections/FinalCTA';
 
 export default function Home() {
   return (
     <>
-      <Hero />
+      <BrandHero />
       <LogoCarousel />
-      <VideoSection />
-      <TrustStrip />
-      <Services />
-      <Benefits />
-      <Testimonials />
-      <Process />
-      <TestimonialVideos />
+      <BrandVideoSection />
+      <BrandTreatments />
+      <BrandProcess />
+      <Testimonials showVideos />
       <MeetTheExperts />
       <CaseStudies />
       <LeadForm />

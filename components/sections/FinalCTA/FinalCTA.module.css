@@ -1,77 +1,160 @@
+/* ── Section — white background ──────────────────────────────────── */
 .section {
-  position: relative;
-  overflow: hidden;
+  background: #ffffff;
+  padding-block: clamp(32px, 4.5vw, 56px);
 }
 
-/* ── Background image + overlay ─────────────────────────────────── */
-.bgWrap {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.bgImage {
-  object-fit: cover;
-}
-
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.62);
-}
-
-/* ── Content sits above the bg ──────────────────────────────────── */
+/* ── Container — centres the card ───────────────────────────────── */
 .container {
-  position: relative;
-  z-index: 1;
+  display: flex;
+  justify-content: center;
 }
 
-.content {
+/* ── Dark inner card ─────────────────────────────────────────────── */
+.card {
+  background: #161616;
+  border-radius: 24px;
+  padding: clamp(28px, 4vw, 48px) clamp(24px, 6vw, 80px);
+  width: 100%;
+  max-width: 860px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: var(--space-3);
-  max-width: 520px;
-  margin-left: auto;
-  margin-right: auto;
+  gap: clamp(12px, 1.6vw, 18px);
+  box-shadow: 0 24px 64px rgba(13, 21, 32, 0.18), 0 4px 16px rgba(13, 21, 32, 0.10);
 }
 
+/* ── Eyebrow ─────────────────────────────────────────────────────── */
 .eyebrow {
-  font-size: var(--text-small);
-  font-weight: var(--fw-medium);
-  letter-spacing: 0.1em;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.20em;
   text-transform: uppercase;
-  color: rgb(255 255 255 / 0.55);
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0;
 }
 
+/* ── Heading — italic serif ──────────────────────────────────────── */
 .heading {
-  font-size: clamp(2.5rem, 6vw, var(--text-h1));
-  font-weight: var(--fw-bold);
-  line-height: var(--lh-tight);
-  letter-spacing: -0.03em;
-  color: var(--color-text-light);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.625rem, 3.5vw, 2.75rem);
+  letter-spacing: -0.01em;
+  line-height: 1.18;
+  color: #ffffff;
+  margin: 0;
 }
 
-.headingAccent {
-  color: rgb(255 255 255 / 0.65);
+/* ── Separator rule ──────────────────────────────────────────────── */
+.rule {
+  width: 64px;
+  height: 1.5px;
+  background: rgba(255, 255, 255, 0.18);
+  border: none;
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-block: 2px;
 }
 
+/* ── Body copy ───────────────────────────────────────────────────── */
 .subtext {
-  font-size: var(--text-body);
-  color: rgb(255 255 255 / 0.7);
-  max-width: 380px;
+  font-size: clamp(0.9375rem, 1.1vw, 1rem);
+  line-height: 1.68;
+  color: rgba(255, 255, 255, 0.52);
+  max-width: 480px;
+  margin: 0;
 }
 
-.cta {
-  margin-top: var(--space-2);
+/* ── Button row ──────────────────────────────────────────────────── */
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 6px;
 }
 
-@media (max-width: 768px) {
-  .content {
-    max-width: 100%;
+/* Primary — white fill ──────────────────────────────────────────── */
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 28px;
+  background: #ffffff;
+  color: #161616;
+  border: none;
+  border-radius: 50px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+}
+
+.btnPrimary:hover {
+  background: rgba(255, 255, 255, 0.90);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+
+.btnPrimary:active {
+  transform: translateY(0);
+}
+
+/* Secondary — outline ───────────────────────────────────────────── */
+.btnOutline {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 28px;
+  background: transparent;
+  color: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.30);
+  border-radius: 50px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  white-space: nowrap;
+}
+
+.btnOutline:hover {
+  border-color: rgba(255, 255, 255, 0.60);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+.btnOutline:active {
+  transform: translateY(0);
+}
+
+/* ── Responsive ──────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .card {
+    border-radius: 18px;
+    gap: 14px;
   }
 
-  .subtext { max-width: 100%; }
-  .cta > * { width: 100%; }
+  .buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .btnPrimary,
+  .btnOutline {
+    width: 100%;
+    justify-content: center;
+  }
 }

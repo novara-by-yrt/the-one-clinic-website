@@ -1,0 +1,27 @@
+/* ── Perspective stage — establishes the 3D context for all panels ── */
+.stage {
+  perspective: 1400px;
+  perspective-origin: 50% 25%;
+  /* No transform-style: preserve-3d here — panels don't need nested 3D.
+     perspective alone is sufficient for translateZ on direct children. */
+}
+
+/* ── Fixed backdrop — warm cream gradient visible around panel edges ── */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  /*
+   * Layered radial + linear gradients.
+   * Warm ivory at top-left catches the "light source".
+   * Cool stone at bottom-right adds depth.
+   * Centre transitions through a clean, airy cream.
+   */
+  background:
+    radial-gradient(ellipse 90% 55% at 18% 4%,  #F4F0E8 0%, transparent 62%),
+    radial-gradient(ellipse 65% 42% at 80% 94%, #EDE8DF 0%, transparent 58%),
+    radial-gradient(ellipse 50% 50% at 50% 50%, #F6F4F0 0%, transparent 100%),
+    linear-gradient(158deg, #FAF8F5 0%, #F1EDE5 42%, #E9E3D8 100%);
+}

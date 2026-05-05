@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
-import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
+import { fadeUp, fadeRight, staggerLeft, VIEWPORT } from '@/lib/motion';
 import styles from './Benefits.module.css';
 
 const BENEFITS = [
@@ -49,7 +49,7 @@ export default function Benefits() {
           {/* ── Left: text col ──────────────────────────────── */}
           <motion.div
             className={styles.textCol}
-            variants={stagger(0.08)}
+            variants={staggerLeft(0.08)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
@@ -119,10 +119,10 @@ export default function Benefits() {
           {/* ── Right: image collage ─────────────────────────── */}
           <motion.div
             className={styles.imageCol}
-            initial={{ opacity: 0, x: 60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.85, ease: [0.25, 0.1, 0.25, 1] }}
+            variants={fadeRight}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
           >
             <div className={styles.collage}>
               <div className={styles.collageLarge}>

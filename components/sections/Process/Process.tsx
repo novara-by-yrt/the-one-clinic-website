@@ -5,7 +5,7 @@ import { motion, AnimatePresence, useInView } from 'framer-motion';
 import Image from 'next/image';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
-import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
+import { fadeUp, fadeLeft, staggerRight, VIEWPORT } from '@/lib/motion';
 import styles from './Process.module.css';
 
 const STEPS = [
@@ -85,10 +85,10 @@ export default function Process() {
           {/* ── Left: image slideshow ──────────────────────── */}
           <motion.div
             className={styles.imageCol}
-            initial={{ opacity: 0, x: -60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.85, ease: [0.25, 0.1, 0.25, 1] }}
+            variants={fadeLeft}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
           >
             <div className={styles.imageWrap}>
               <AnimatePresence mode="sync">
@@ -130,7 +130,7 @@ export default function Process() {
           {/* ── Right: header + steps ──────────────────────── */}
           <motion.div
             className={styles.textCol}
-            variants={stagger(0.08)}
+            variants={staggerRight(0.08)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}

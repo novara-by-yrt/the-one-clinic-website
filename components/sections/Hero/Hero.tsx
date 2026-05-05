@@ -33,7 +33,7 @@ const CONTAINER_VARIANTS = {
 const TRANSITION_SMOOTH = { duration: 0.7, ease: [0.25, 0.1, 0.25, 1] as const };
 
 // ── Component ───────────────────────────────────────────────────
-export default function Hero() {
+export default function Hero({ showVideo = true }: { showVideo?: boolean }) {
   const sectionRef = useRef<HTMLElement>(null);
 
   // Subtle parallax on scroll: content drifts up slightly as user scrolls
@@ -64,26 +64,29 @@ export default function Hero() {
       </div>
 
       {/* ── Wistia background video ─────────────────────────── */}
-      <div className={styles.videoBg} aria-hidden="true">
-        <div className={styles.videoSizer}>
-          <iframe
-            src="https://fast.wistia.net/embed/iframe/2ny75uwy3d?web_component=true&seo=false&autoPlay=true&silentAutoPlay=true&muted=true&loop=true&endVideoBehavior=loop&controlsVisibleOnLoad=false&playbar=false&fullscreenButton=false&volumeControl=false&settingsControl=false&playButton=false&playsinline=true"
-            title=""
-            allow="autoplay; fullscreen"
-            allowFullScreen
-            frameBorder="0"
-            scrolling="no"
-            className={styles.videoIframe}
-          />
-        </div>
-      </div>
+      {showVideo && (
+        <>
+          <div className={styles.videoBg} aria-hidden="true">
+            <div className={styles.videoSizer}>
+              <iframe
+                src="https://fast.wistia.net/embed/iframe/2ny75uwy3d?web_component=true&seo=false&autoPlay=true&silentAutoPlay=true&muted=true&loop=true&endVideoBehavior=loop&controlsVisibleOnLoad=false&playbar=false&fullscreenButton=false&volumeControl=false&settingsControl=false&playButton=false&playsinline=true"
+                title=""
+                allow="autoplay; fullscreen"
+                allowFullScreen
+                frameBorder="0"
+                scrolling="no"
+                className={styles.videoIframe}
+              />
+            </div>
+          </div>
+          <Script src="https://fast.wistia.net/player.js" strategy="lazyOnload" />
+        </>
+      )}
       {/* ── Dark overlay so text stays readable ─────────────── */}
       <div className={styles.videoOverlay} aria-hidden="true" />
 
       {/* ── Subtle grid background texture ─────────────────── */}
       <div className={styles.gridOverlay} aria-hidden="true" />
-
-      <Script src="https://fast.wistia.net/player.js" strategy="lazyOnload" />
 
       {/* ── Animated content wrapper ────────────────────────── */}
       <motion.div className={styles.contentWrapper} style={{ y: contentY, opacity }}>
@@ -123,28 +126,6 @@ export default function Hero() {
               Advanced medical, aesthetic and wellness care, 
               all under one roof.
             </motion.p>
-
-            {/* Credential badges */}
-            <motion.div
-              className={styles.credBadges}
-              variants={FADE_UP}
-              transition={TRANSITION_SMOOTH}
-            >
-              <span className={styles.credBadge}>
-                <svg className={styles.credCheck} viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <circle cx="8" cy="8" r="7.25" stroke="currentColor" strokeWidth="1.25" strokeOpacity="0.5"/>
-                  <path d="M5 8.25l2 2 4-4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                Led by highly trained doctors
-              </span>
-              <span className={styles.credBadge}>
-                <svg className={styles.credCheck} viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <circle cx="8" cy="8" r="7.25" stroke="currentColor" strokeWidth="1.25" strokeOpacity="0.5"/>
-                  <path d="M5 8.25l2 2 4-4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                Comprehensive medical &amp; aesthetic care
-              </span>
-            </motion.div>
 
             {/* CTAs */}
             <motion.div

@@ -1,63 +1,246 @@
-/* ── Outer stack ─────────────────────────────────────────────────── */
-.inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-6);
-  width: 100%;
+/* ══════════════════════════════════════════════════════
+   SECTION — brand dark canvas
+══════════════════════════════════════════════════════ */
+.section {
+  background: #161616 !important;
+  padding-block: clamp(64px, 8vw, 104px);
 }
 
-/* ── Header ──────────────────────────────────────────────────────── */
-.header {
-  text-align: center;
+/* ══════════════════════════════════════════════════════
+   OUTER SPLIT GRID
+══════════════════════════════════════════════════════ */
+.splitGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 4vw, 48px);
+  align-items: stretch;
+}
+
+/* ══════════════════════════════════════════════════════
+   LEFT — Form column (stretches full height)
+══════════════════════════════════════════════════════ */
+.formCol {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--space-2);
-  max-width: 560px;
+}
+
+/* White card wrapping eyebrow + heading + iframe */
+.formCard {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: clamp(24px, 3.5vw, 40px);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .eyebrow {
-  font-size: var(--text-small);
-  font-weight: var(--fw-medium);
-  letter-spacing: 0.1em;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.20em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: rgba(13, 21, 32, 0.38);
+  margin: 0 0 10px;
 }
 
 .heading {
-  font-size: clamp(1.75rem, 4vw, var(--text-h2));
-  font-weight: var(--fw-bold);
-  letter-spacing: -0.02em;
-  color: var(--color-text-dark);
-  line-height: 1.1;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  color: #0d1520;
+  line-height: 1.06;
+  margin: 0 0 clamp(16px, 2.5vw, 28px);
+}
+
+/* iframe sits flush inside the white card */
+.formWrap {
+  overflow: hidden;
+}
+
+/* ══════════════════════════════════════════════════════
+   RIGHT — Info + Map column
+══════════════════════════════════════════════════════ */
+.infoCol {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 1.8vw, 18px);
+}
+
+.infoDesc {
+  font-size: clamp(0.875rem, 1vw, 0.9375rem);
+  line-height: 1.70;
+  color: rgba(255, 255, 255, 0.50);
   margin: 0;
 }
 
-.subtext {
-  color: var(--color-text-muted);
-  line-height: var(--lh-normal);
-  max-width: 420px;
-  margin: 0;
-}
-
-/* ── Side-by-side grid: map (left) | form (right) ──────────────── */
-.sideGrid {
+/* ── 2×2 contact grid ──────────────────────────────── */
+.contactGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
-  width: 100%;
-  align-items: stretch;
-  min-height: 520px;
+  gap: clamp(8px, 1.2vw, 14px);
 }
 
-/* ── Map side (left) ─────────────────────────────────────────────── */
-.mapSide {
+.contactItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: clamp(12px, 1.5vw, 16px);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  text-decoration: none;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.contactItem:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-3px);
+}
+
+.contactLabel {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
+  line-height: 1;
+}
+
+.contactIconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.68);
+  flex-shrink: 0;
+  margin-bottom: 2px;
+}
+
+.contactValue {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+/* ── Opening hours card ────────────────────────────── */
+.hoursCard {
+  gap: 8px;
+  cursor: default;
+}
+
+.hoursCard:hover {
+  transform: none;
+}
+
+.hoursGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.hoursRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.hoursDay {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.2;
+}
+
+.hoursTime {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.88);
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+/* ── Social media card ─────────────────────────────── */
+.socialCard {
+  cursor: default;
+  gap: 6px;
+}
+
+.socialCard:hover {
+  transform: none;
+}
+
+.socialLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  padding: 3px 6px;
+  border-radius: 7px;
+  margin-inline: -6px;
+  transition: background 0.2s ease;
+}
+
+.socialLink:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.socialIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.70);
+  flex-shrink: 0;
+}
+
+.socialMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.socialName {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.socialHandle {
+  font-size: 0.625rem;
+  color: rgba(255, 255, 255, 0.40);
+  line-height: 1;
+}
+
+/* ── Map embed — fills remaining height ─────────────── */
+.mapWrap {
   position: relative;
-  border-radius: 0.75rem;
+  border-radius: 14px;
   overflow: hidden;
-  border: 1px solid var(--color-border-light);
-  box-shadow: 0 4px 24px rgb(0 0 0 / 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  flex: 1;
+  min-height: 140px;
 }
 
 .mapIframe {
@@ -69,21 +252,20 @@
   display: block;
 }
 
-/* Open in Google Maps overlay */
 .mapOverlay {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  padding: var(--space-3);
+  padding: 14px;
   text-decoration: none;
-  background: linear-gradient(to top, rgb(0 0 0 / 0.2) 0%, transparent 40%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.22) 0%, transparent 45%);
   transition: background 0.2s ease;
 }
 
 .mapOverlay:hover {
-  background: linear-gradient(to top, rgb(0 0 0 / 0.32) 0%, transparent 50%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.36) 0%, transparent 55%);
 }
 
 .mapCta {
@@ -91,55 +273,57 @@
   align-items: center;
   gap: 6px;
   padding: 6px 12px;
-  background: var(--color-white);
-  border-radius: 20px;
-  font-size: 0.8125rem;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 50px;
+  font-size: 0.75rem;
   font-weight: 600;
-  color: var(--color-text-dark);
-  box-shadow: 0 2px 8px rgb(0 0 0 / 0.15);
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  color: #0a0c10;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .mapOverlay:hover .mapCta {
-  box-shadow: 0 4px 16px rgb(0 0 0 / 0.2);
   transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
-/* ── Form side (right) ───────────────────────────────────────────── */
-.formSide {
-  border-radius: 1rem;
-  overflow: hidden;
-  border: 1px solid var(--color-border-light);
-  box-shadow: 0 4px 32px rgb(0 0 0 / 0.07);
-  background: #fff;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  /* The 20px top+bottom padding adds 40px; total box height = 509 + 40px = 549px
-     which the map fills via align-items: stretch on the parent grid */
-}
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════════ */
 
-/* ── Responsive ─────────────────────────────────────────────────── */
-
-/* Tablet: stack vertically */
+/* Tablet: single column */
 @media (max-width: 860px) {
-  .sideGrid {
+  .splitGrid {
     grid-template-columns: 1fr;
+    align-items: start;
+    gap: clamp(28px, 5vw, 48px);
+  }
+
+  .mapWrap {
+    flex: unset;
+    aspect-ratio: 16 / 7;
     min-height: unset;
   }
+}
 
-  .mapSide {
-    aspect-ratio: 16 / 7;
-    position: relative;
+@media (max-width: 580px) {
+  .contactGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
   }
 
-  .formSide {
-    min-height: 480px;
+  .contactItem {
+    padding: 12px;
+    gap: 5px;
+  }
+
+  .mapWrap {
+    aspect-ratio: 4 / 3;
   }
 }
 
-@media (max-width: 480px) {
-  .mapSide {
-    aspect-ratio: 4 / 3;
+@media (max-width: 400px) {
+  .contactGrid {
+    grid-template-columns: 1fr;
   }
 }

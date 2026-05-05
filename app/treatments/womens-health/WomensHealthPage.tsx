@@ -176,7 +176,7 @@ export default function WomensHealthPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Women's Health.jpg"
+                src="/images/Women's Heath img.png"
                 alt="Women's health consultation at The One Clinic Leicester"
                 fill
                 priority
