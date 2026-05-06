@@ -10,6 +10,7 @@ import BookConsultationButton from '@/components/ui/BookConsultationButton';
 import TrustBadges        from '@/components/ui/TrustBadges';
 import Breadcrumb         from '@/components/ui/Breadcrumb';
 import LeadForm           from '@/components/sections/LeadForm';
+import MeetTheExperts     from '@/components/sections/MeetTheExperts';
 import Testimonials       from '@/components/sections/Testimonials';
 import TrustStrip         from '@/components/sections/TrustStrip';
 import FinalCTA           from '@/components/sections/FinalCTA';
@@ -542,7 +543,43 @@ export default function IngownToenailRemovalPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          7. WHY CHOOSE SURGICAL REMOVAL?
+          7. WALK COMFORTABLY AGAIN!
+      ════════════════════════════════════════ */}
+      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Walk comfortably again">
+        <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
+          <Image
+            src="/images/Background-logo.png"
+            alt=""
+            fill
+            className={styles.ctaBannerLogo}
+            sizes="100vw"
+          />
+        </div>
+        <Container>
+          <motion.div
+            className={styles.ctaBannerContent}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
+              Walk Comfortably<br />Again!
+            </motion.h2>
+            <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
+              Our triple-action surgical approach means you leave the clinic pain-free and on the road to a permanent cure — often in a single appointment.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={styles.ctaBannerBtn}>
+                Book Consultation
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
+
+      {/* ════════════════════════════════════════
+          8. WHY CHOOSE SURGICAL REMOVAL?
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -914,7 +951,38 @@ export default function IngownToenailRemovalPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          14. MEET THE EXPERT: DR SUMIT VIRMANI
+          14. COST BANNER
+      ════════════════════════════════════════ */}
+      <section className={styles.costBanner} data-section-theme="dark" aria-label="Ingrown toenail removal cost Leicester">
+        <Container>
+          <motion.div
+            className={styles.costBannerInner}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
+              Ingrown Toenail Removal Cost at The One Clinic
+            </motion.p>
+            <motion.p className={styles.costBannerPrice} variants={fadeUp}>
+              From £350
+            </motion.p>
+            <motion.p className={styles.costBannerNote} variants={fadeUp}>
+              This price includes the surgery, the chemical treatment, and the dressings. We will
+              confirm the exact cost for one or both toes during your consultation.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={styles.ctaBannerBtn}>
+                Book A Consultation
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
+
+      {/* ════════════════════════════════════════
+          15. MEET THE EXPERT: DR SUMIT VIRMANI
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
@@ -971,7 +1039,12 @@ export default function IngownToenailRemovalPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          15. WHY CHOOSE THE ONE CLINIC
+          16. MEET THE EXPERTS (FULL TEAM)
+      ════════════════════════════════════════ */}
+      <MeetTheExperts />
+
+      {/* ════════════════════════════════════════
+          17. WHY CHOOSE THE ONE CLINIC
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
