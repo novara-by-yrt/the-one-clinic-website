@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import Script from 'next/script';
 import { motion } from 'framer-motion';
 import Section from '@/components/ui/Section';
@@ -9,16 +9,8 @@ import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './BrandVideoSection.module.css';
 
 const VIDEOS = [
-  {
-    id:    'hu75ttgmlm',
-    label: 'Our Story',
-    title: 'TOC - Intro Video (LP)',
-  },
-  {
-    id:    't8y82cnp5e',
-    label: 'Testimonials',
-    title: 'TOC - Patient Stories',
-  },
+  { id: 'hu75ttgmlm', title: 'TOC - Intro Video (LP)' },
+  { id: 't8y82cnp5e', title: 'TOC - Patient Stories' },
 ];
 
 declare global {
@@ -28,20 +20,8 @@ declare global {
 }
 
 export default function BrandVideoSection() {
-  const [played, setPlayed] = useState<Set<string>>(new Set());
-
   useEffect(() => {
     window._wq = window._wq || [];
-    VIDEOS.forEach(({ id }) => {
-      window._wq.push({
-        id,
-        onReady: (video: any) => {
-          video.bind('play', () => {
-            setPlayed(prev => new Set([...prev, id]));
-          });
-        },
-      });
-    });
   }, []);
 
   return (
@@ -92,15 +72,6 @@ export default function BrandVideoSection() {
               viewport={VIEWPORT}
               transition={{ duration: 0.8, delay: i * 0.15, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              {/* Floating label chip — fades out when video starts playing */}
-              <div
-                className={`${styles.labelChip} ${played.has(video.id) ? styles.labelChipHidden : ''}`}
-                aria-hidden={played.has(video.id) ? true : undefined}
-              >
-                <span className={styles.labelDot} aria-hidden="true" />
-                {video.label}
-              </div>
-
               {/* 16:9 embed */}
               <div className={styles.videoWrapper}>
                 <iframe
