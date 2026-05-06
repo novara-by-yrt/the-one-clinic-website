@@ -10,7 +10,6 @@ import BookConsultationButton from '@/components/ui/BookConsultationButton';
 import TrustBadges        from '@/components/ui/TrustBadges';
 import Breadcrumb         from '@/components/ui/Breadcrumb';
 import LeadForm           from '@/components/sections/LeadForm';
-import MeetTheExperts     from '@/components/sections/MeetTheExperts';
 import Testimonials       from '@/components/sections/Testimonials';
 import TrustStrip         from '@/components/sections/TrustStrip';
 import FinalCTA           from '@/components/sections/FinalCTA';
@@ -399,224 +398,7 @@ export default function IngownToenailRemovalPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          5. AT A GLANCE
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
-        <div className={styles.whiteBgWrap} aria-hidden="true">
-          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
-        </div>
-        <Container className={styles.whiteBgContent}>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Toenail Surgery At A Glance
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.glanceStandaloneGrid}
-            variants={stagger(0.08)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {AT_A_GLANCE.map((item) => (
-              <motion.div key={item.label} className={styles.glanceCard} variants={fadeUp}>
-                <span className={styles.glanceIcon}>{item.icon}</span>
-                <span className={styles.glanceLabel}>{item.label}</span>
-                <span className={styles.glanceValue}>{item.value}</span>
-              </motion.div>
-            ))}
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          6. THE PROCEDURE, THREE STEPS
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>The Process</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Ingrown Toenail Removal Procedure
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.techCardsGrid}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {PROCEDURE_STEPS.map((step) => (
-              <motion.div key={step.num} className={styles.techCard} variants={fadeUp}>
-                <span className={styles.techCardEyebrow}>{step.num}</span>
-                <h3 className={styles.techCardTitle}>{step.title}</h3>
-                <p className={styles.techCardDesc}>{step.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          <motion.div
-            className={styles.finalResultsBanner}
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <p className={styles.finalResultsEyebrow}>After Your Procedure</p>
-            <p className={styles.finalResultsText}>
-              You will walk out the same day and can return to normal activities immediately. Most
-              patients experience relief from pain as soon as the anaesthetic wears off. Complete
-              healing of the wound occurs within 2 to 4 weeks, after which you can resume all
-              sport and gym activities.
-            </p>
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          7. TREATMENT BENEFITS
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
-        <div className={styles.whiteBgWrap} aria-hidden="true">
-          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
-        </div>
-        <Container className={styles.whiteBgContent}>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Why Choose This Treatment</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Ingrown Toenail Removal Treatment Benefits
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.treatedBenefitsGrid}
-            variants={stagger(0.08)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {TREATMENT_BENEFITS.map((benefit) => (
-              <motion.div key={benefit.title} className={styles.treatedBenefit} variants={fadeUp}>
-                <span className={styles.treatedBenefitIcon}>{benefit.icon}</span>
-                <h3 className={styles.treatedBenefitTitle}>{benefit.title}</h3>
-                <p className={styles.treatedBenefitDesc}>{benefit.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          8. ELIGIBILITY
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Suitability</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Why Choose Surgical Removal?
-            </motion.h2>
-            <motion.p className={styles.combinationIntroText} variants={fadeUp}>
-              You should consider minor surgery for your toenail if you are:
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            className={styles.eligibilityChecklistWrap}
-            variants={stagger(0.08)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <ul className={styles.eligibilityChecklist} role="list">
-              {ELIGIBILITY.map((item, idx) => (
-                <motion.li key={idx} className={styles.eligibilityItem} variants={fadeUp}>
-                  <span className={styles.eligibilityCheckmark} aria-hidden="true">✓</span>
-                  <span>{item}</span>
-                </motion.li>
-              ))}
-            </ul>
-            <motion.p className={styles.eligibilityClosing} variants={fadeUp} style={{ marginTop: '24px' }}>
-              Cutting the corner of the nail yourself often makes it worse. Surgery resolves it once and for all.
-            </motion.p>
-            <motion.div variants={fadeUp} style={{ marginTop: '24px' }}>
-              <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
-                Book Your Consultation
-              </BookConsultationButton>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          9. CAUSES
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Background</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              What Causes Ingrown Toenails?
-            </motion.h2>
-            <motion.p className={styles.combinationIntroText} variants={fadeUp}>
-              Several factors can cause this painful condition. We can treat it regardless of the cause:
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            className={styles.causesGrid}
-            variants={stagger(0.08)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {CAUSES.map((cause) => (
-              <motion.div key={cause.n} className={styles.causeStep} variants={fadeUp}>
-                <span className={styles.causeNum}>{cause.n}</span>
-                <h3 className={styles.causeTitle}>{cause.title}</h3>
-                <p className={styles.causeDesc}>{cause.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          10. HOW DOES IT WORK?
+          5. HOW DOES IT WORK?
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark" className={styles.howWorksSection}>
         <Container>
@@ -672,7 +454,7 @@ export default function IngownToenailRemovalPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          SURGICAL ADVANTAGE: TRIPLE ACTION
+          6. SURGICAL ADVANTAGE: TRIPLE ACTION
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
         <div className={styles.whiteBgWrap} aria-hidden="true">
@@ -760,7 +542,224 @@ export default function IngownToenailRemovalPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          11. RESULTS, AFTERCARE & SIDE EFFECTS
+          7. WHY CHOOSE SURGICAL REMOVAL?
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Suitability</motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Why Choose Surgical Removal?
+            </motion.h2>
+            <motion.p className={styles.combinationIntroText} variants={fadeUp}>
+              You should consider minor surgery for your toenail if you are:
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.eligibilityChecklistWrap}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <ul className={styles.eligibilityChecklist} role="list">
+              {ELIGIBILITY.map((item, idx) => (
+                <motion.li key={idx} className={styles.eligibilityItem} variants={fadeUp}>
+                  <span className={styles.eligibilityCheckmark} aria-hidden="true">✓</span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </ul>
+            <motion.p className={styles.eligibilityClosing} variants={fadeUp} style={{ marginTop: '24px' }}>
+              Cutting the corner of the nail yourself often makes it worse. Surgery resolves it once and for all.
+            </motion.p>
+            <motion.div variants={fadeUp} style={{ marginTop: '24px' }}>
+              <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
+                Book Your Consultation
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          8. WHAT CAUSES INGROWN TOENAILS?
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Background</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              What Causes Ingrown Toenails?
+            </motion.h2>
+            <motion.p className={styles.combinationIntroText} variants={fadeUp}>
+              Several factors can cause this painful condition. We can treat it regardless of the cause:
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.causesGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {CAUSES.map((cause) => (
+              <motion.div key={cause.n} className={styles.causeStep} variants={fadeUp}>
+                <span className={styles.causeNum}>{cause.n}</span>
+                <h3 className={styles.causeTitle}>{cause.title}</h3>
+                <p className={styles.causeDesc}>{cause.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          9. TOENAIL SURGERY AT A GLANCE
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
+        <div className={styles.whiteBgWrap} aria-hidden="true">
+          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
+        </div>
+        <Container className={styles.whiteBgContent}>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Toenail Surgery At A Glance
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.glanceStandaloneGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {AT_A_GLANCE.map((item) => (
+              <motion.div key={item.label} className={styles.glanceCard} variants={fadeUp}>
+                <span className={styles.glanceIcon}>{item.icon}</span>
+                <span className={styles.glanceLabel}>{item.label}</span>
+                <span className={styles.glanceValue}>{item.value}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          10. TREATMENT BENEFITS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
+        <div className={styles.whiteBgWrap} aria-hidden="true">
+          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
+        </div>
+        <Container className={styles.whiteBgContent}>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Why Choose This Treatment</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Ingrown Toenail Removal Treatment Benefits
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.treatedBenefitsGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {TREATMENT_BENEFITS.map((benefit) => (
+              <motion.div key={benefit.title} className={styles.treatedBenefit} variants={fadeUp}>
+                <span className={styles.treatedBenefitIcon}>{benefit.icon}</span>
+                <h3 className={styles.treatedBenefitTitle}>{benefit.title}</h3>
+                <p className={styles.treatedBenefitDesc}>{benefit.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          11. INGROWN TOENAIL REMOVAL PROCEDURE
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>The Process</motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Ingrown Toenail Removal Procedure
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.techCardsGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {PROCEDURE_STEPS.map((step) => (
+              <motion.div key={step.num} className={styles.techCard} variants={fadeUp}>
+                <span className={styles.techCardEyebrow}>{step.num}</span>
+                <h3 className={styles.techCardTitle}>{step.title}</h3>
+                <p className={styles.techCardDesc}>{step.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            className={styles.finalResultsBanner}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <p className={styles.finalResultsEyebrow}>After Your Procedure</p>
+            <p className={styles.finalResultsText}>
+              You will walk out the same day and can return to normal activities immediately. Most
+              patients experience relief from pain as soon as the anaesthetic wears off. Complete
+              healing of the wound occurs within 2 to 4 weeks, after which you can resume all
+              sport and gym activities.
+            </p>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          12. RESULTS, AFTERCARE & SIDE EFFECTS
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -856,7 +855,7 @@ export default function IngownToenailRemovalPage() {
               </p>
             </motion.div>
 
-            {/* Card 3: Aftercare Tips */}
+            {/* Card 4: Aftercare Tips */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -887,43 +886,7 @@ export default function IngownToenailRemovalPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          12. CTA BANNER
-      ════════════════════════════════════════ */}
-      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book ingrown toenail removal consultation">
-        <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
-          <Image
-            src="/images/Background-logo.png"
-            alt=""
-            fill
-            className={styles.ctaBannerLogo}
-            sizes="100vw"
-          />
-        </div>
-        <Container>
-          <motion.div
-            className={styles.ctaBannerContent}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
-              Step Into Comfort<br />Again
-            </motion.h2>
-            <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
-              Do not limp around in pain any longer. Let our experts sort it out for you.
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBannerBtn}>
-                Book Consultation
-              </BookConsultationButton>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
-
-      {/* ════════════════════════════════════════
-          13. BEST INGROWN TOENAIL TREATMENT LEICESTER
+          13. BEST MINOR SURGERY EXPERIENCE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
@@ -951,80 +914,7 @@ export default function IngownToenailRemovalPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          14. COST BANNER
-      ════════════════════════════════════════ */}
-      <section className={styles.costBanner} data-section-theme="dark" aria-label="Ingrown toenail removal cost Leicester">
-        <Container>
-          <motion.div
-            className={styles.costBannerInner}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
-              Ingrown Toenail Removal Cost at The One Clinic
-            </motion.p>
-            <motion.p className={styles.costBannerPrice} variants={fadeUp}>
-              From £350
-            </motion.p>
-            <motion.p className={styles.costBannerNote} variants={fadeUp}>
-              This price includes the surgery, the chemical treatment, and the dressings. We will
-              confirm the exact cost for one or both toes during your consultation.
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBannerBtn}>
-                Book A Consultation
-              </BookConsultationButton>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
-
-      {/* ════════════════════════════════════════
-          15. WHY CHOOSE THE ONE CLINIC
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Why Us
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Why Choose The One Clinic For Ingrown Toenail Removal
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.clinicReasonsGrid}
-            variants={stagger(0.08)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {CLINIC_REASONS.map((r) => (
-              <motion.div
-                key={r.n}
-                className={styles.clinicReasonCard}
-                variants={fadeUp}
-                whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
-              >
-                <span className={styles.clinicReasonNumber}>{r.n}</span>
-                <p className={styles.clinicReasonText}>{r.text}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          16. MEET THE EXPERT
+          14. MEET THE EXPERT: DR SUMIT VIRMANI
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
@@ -1081,12 +971,85 @@ export default function IngownToenailRemovalPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          17. MEET THE EXPERTS
+          15. WHY CHOOSE THE ONE CLINIC
       ════════════════════════════════════════ */}
-      <MeetTheExperts />
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Why Us
+            </motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Why Choose The One Clinic For Ingrown Toenail Removal
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.clinicReasonsGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {CLINIC_REASONS.map((r) => (
+              <motion.div
+                key={r.n}
+                className={styles.clinicReasonCard}
+                variants={fadeUp}
+                whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
+              >
+                <span className={styles.clinicReasonNumber}>{r.n}</span>
+                <p className={styles.clinicReasonText}>{r.text}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
 
       {/* ════════════════════════════════════════
-          18. FAQ
+          16. STEP INTO COMFORT AGAIN
+      ════════════════════════════════════════ */}
+      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book ingrown toenail removal consultation">
+        <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
+          <Image
+            src="/images/Background-logo.png"
+            alt=""
+            fill
+            className={styles.ctaBannerLogo}
+            sizes="100vw"
+          />
+        </div>
+        <Container>
+          <motion.div
+            className={styles.ctaBannerContent}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
+              Step Into Comfort<br />Again
+            </motion.h2>
+            <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
+              Do not limp around in pain any longer. Let our experts sort it out for you.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={styles.ctaBannerBtn}>
+                Book Consultation
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
+
+      {/* ════════════════════════════════════════
+          17. FAQ
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
