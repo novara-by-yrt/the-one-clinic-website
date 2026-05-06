@@ -22,9 +22,10 @@ const PILLARS = [
 ];
 
 const SLIDES = [
-  { src: '/images/location1.jpg', alt: 'The One Clinic, Leicester' },
-  { src: '/images/location2.jpg', alt: 'The One Clinic, interior' },
-  { src: '/images/location3.jpg', alt: 'The One Clinic, treatment room' },
+  { src: '/images/website-img2.png', alt: 'The One Clinic, Leicester' },
+  { src: '/images/website-img1.png', alt: 'The One Clinic, interior' },
+  { src: '/images/website-img3.png', alt: 'The One Clinic, treatment' },
+  { src: '/images/website-img4.png', alt: 'The One Clinic, care' },
 ];
 
 const EASE     = [0.25, 0.1, 0.25, 1] as const;

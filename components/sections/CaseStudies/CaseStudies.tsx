@@ -12,10 +12,14 @@ import styles from './CaseStudies.module.css';
 import 'swiper/css';
 
 const SLIDES_BASE = [
-  { src: '/images/Before and after 1.png',                           title: 'Lumecca Laser',      alt: 'Lumecca Laser before and after' },
-  { src: '/images/Before and after 2.png',                           title: 'Endolift',           alt: 'Endolift before and after' },
-  { src: '/images/Home page Endolift before-and-after image..png',   title: 'Endolift',           alt: 'Endolift before and after treatment' },
-  { src: '/images/Before and after 3.png',                           title: 'Laser Mole Removal', alt: 'Laser Mole Removal before and after' },
+  { src: '/images/Endolift Before & After 1.jpg',     title: 'Endolift',               alt: 'Endolift before and after results' },
+  { src: '/images/Endolift Before & After 8.jpg',     title: 'Endolift',               alt: 'Endolift treatment before and after' },
+  { src: '/images/Lumecca Before & After 2.jpg',      title: 'Lumecca Laser',          alt: 'Lumecca laser before and after results' },
+  { src: '/images/Morpheus8 Before & After 2.jpg',    title: 'Morpheus 8',             alt: 'Morpheus 8 before and after results' },
+  { src: '/images/Lip Filler  Before & After.jpg',    title: 'Lip Filler',             alt: 'Lip filler before and after results' },
+  { src: '/images/Pigmentation Before & After 2.jpg', title: 'Pigmentation Treatment', alt: 'Pigmentation treatment before and after' },
+  { src: '/images/Mole Removal Before & After.jpg',   title: 'Mole Removal',           alt: 'Mole removal before and after results' },
+  { src: '/images/ACNE Before & After.jpg',           title: 'Acne Treatment',         alt: 'Acne treatment before and after results' },
 ];
 
 // Duplicate so Swiper loop has enough slides for slidesPerView: 3
@@ -95,7 +99,7 @@ export default function CaseStudies() {
                       alt={slide.alt}
                       fill
                       className={styles.cardImg}
-                      sizes="(max-width: 639px) 92vw, (max-width: 1024px) 30vw, 380px"
+                      sizes="(max-width: 639px) 92vw, (max-width: 1024px) 32vw, 500px"
                       draggable={false}
                     />
                     <div className={styles.cardOverlay} aria-hidden="true" />
