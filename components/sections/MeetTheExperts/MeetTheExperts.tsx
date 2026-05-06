@@ -25,6 +25,7 @@ export default function MeetTheExperts() {
   const [active, setActive]       = useState(0);
   const [direction, setDirection] = useState(1);
   const autoRef    = useRef<ReturnType<typeof setInterval> | undefined>(undefined);
+  const sectionRef = useRef<HTMLElement>(null);
   const touchStartX = useRef(0);
   const touchStartY = useRef(0);
   const dragStartX  = useRef(0);
@@ -39,7 +40,21 @@ export default function MeetTheExperts() {
     }, 5000);
   }, []);
 
-  useEffect(() => { startAuto(); return () => clearInterval(autoRef.current); }, [startAuto]);
+  const stopAuto = useCallback(() => {
+    clearInterval(autoRef.current);
+  }, []);
+
+  /* Start autoplay only when section enters the viewport */
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { entry.isIntersecting ? startAuto() : stopAuto(); },
+      { threshold: 0.25 },
+    );
+    observer.observe(el);
+    return () => { observer.disconnect(); clearInterval(autoRef.current); };
+  }, [startAuto, stopAuto]);
 
   /* ── navigation ─────────────────────────────────────────────── */
   const prev = useCallback(() => {
@@ -89,6 +104,7 @@ export default function MeetTheExperts() {
 
   return (
     <section
+      ref={sectionRef}
       className={styles.section}
       aria-label="Meet the Experts"
       data-section-theme="light"

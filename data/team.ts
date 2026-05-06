@@ -39,6 +39,18 @@ export const TEAM_MEMBERS: TeamMember[] = [
     ],
   },
   {
+    slug: 'mr-thangasamy-sankar',
+    name: 'Mr Thangasamy Sankar',
+    credentials: 'FRCS',
+    initials: 'TS',
+    image: '/images/Mr. Thangasamy Sankar.jpg',
+    role: 'Consultant Plastic Surgeon & Laser Specialist',
+    bio: [
+      'Mr Thangasamy Sankar is a highly skilled Consultant Plastic Surgeon holding the prestigious FRCS qualification, with specialist expertise in both surgical aesthetics and laser treatments.',
+      'His surgical precision and in-depth knowledge of laser technology make him an invaluable member of The One Clinic team, offering patients access to world-class interventional care.',
+    ],
+  },
+  {
     slug: 'dr-mahesh-kodivalasa',
     name: 'Dr Mahesh Kodivalasa',
     credentials: '',
@@ -84,18 +96,6 @@ export const TEAM_MEMBERS: TeamMember[] = [
     bio: [
       'Dr Ralph Mitchell is a dedicated member of The One Clinic\'s medical team, bringing clinical expertise and a compassionate approach to every consultation.',
       'He is committed to delivering personalised, high-quality care across a range of medical and aesthetic services.',
-    ],
-  },
-  {
-    slug: 'mr-thangasamy-sankar',
-    name: 'Mr Thangasamy Sankar',
-    credentials: 'FRCS',
-    initials: 'TS',
-    image: '/images/Mr. Thangasamy Sankar.jpg',
-    role: 'Consultant Plastic Surgeon & Laser Specialist',
-    bio: [
-      'Mr Thangasamy Sankar is a highly skilled Consultant Plastic Surgeon holding the prestigious FRCS qualification, with specialist expertise in both surgical aesthetics and laser treatments.',
-      'His surgical precision and in-depth knowledge of laser technology make him an invaluable member of The One Clinic team, offering patients access to world-class interventional care.',
     ],
   },
   {
