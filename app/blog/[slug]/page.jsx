@@ -3,8 +3,7 @@ import { notFound } from 'next/navigation';
 import { posts, getPostBySlug, formatDate, formatAuthor } from '@/lib/blogData';
 import BookCta from './BookCta';
 import CallbackTrigger from '@/components/blog/CallbackTrigger';
-import DoctorCTA1 from '@/components/blog/DoctorCTA1';
-import DoctorCTA2 from '@/components/blog/DoctorCTA2';
+import ContentWithCTAs from './ContentWithCTAs';
 
 export async function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }));
@@ -91,19 +90,10 @@ export default async function BlogDetailPage({ params }) {
           {/* Left column - Content */}
           <article>
             {hasContent ? (
-              <div
-                className="prose prose-neutral prose-lg max-w-none
-                  prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:text-neutral-900
-                  prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
-                  prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
-                  prose-h4:text-lg prose-h4:mt-6 prose-h4:mb-2
-                  prose-p:text-neutral-700 prose-p:leading-relaxed prose-p:my-4
-                  prose-a:text-neutral-900 prose-a:underline prose-a:underline-offset-2 hover:prose-a:text-neutral-600
-                  prose-ul:my-4 prose-ul:space-y-1
-                  prose-li:text-neutral-700
-                  prose-strong:text-neutral-900 prose-strong:font-bold"
-                dangerouslySetInnerHTML={{ __html: html }}
-              />
+              <>
+                {/* Split content and insert CTAs in the middle */}
+                <ContentWithCTAs html={html} />
+              </>
             ) : (
               <div className="text-center py-20">
                 <p className="text-neutral-400 text-base mb-6">
@@ -121,14 +111,6 @@ export default async function BlogDetailPage({ params }) {
                   </svg>
                 </a>
               </div>
-            )}
-
-            {/* Doctor CTAs - inserted in middle of content */}
-            {hasContent && (
-              <>
-                <DoctorCTA1 />
-                <DoctorCTA2 />
-              </>
             )}
 
             {/* CTA card */}
