@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { posts, getPostBySlug, formatDate, formatAuthor } from '@/lib/blogData';
 import BookCta from './BookCta';
-import RequestCallbackForm from '@/components/blog/RequestCallbackForm';
+import CallbackTrigger from '@/components/blog/CallbackTrigger';
 
 export async function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }));
@@ -142,18 +142,14 @@ export default async function BlogDetailPage({ params }) {
             {/* Right column - Sticky form (hidden on mobile/tablet) */}
             <div className="hidden lg:block">
               <div className="sticky" style={{ top: '2rem' }}>
-                <div className="bg-[#0a0a0a] rounded-lg p-6">
-                  <RequestCallbackForm />
-                </div>
+                <CallbackTrigger />
               </div>
             </div>
           </div>
 
           {/* Mobile/Tablet: Form below content */}
           <div className="lg:hidden mt-12 pt-12 border-t border-neutral-100">
-            <div className="bg-[#0a0a0a] rounded-lg p-6 mb-8">
-              <RequestCallbackForm />
-            </div>
+            <CallbackTrigger />
           </div>
         </div>
       ) : (
