@@ -34,3 +34,34 @@
 .skip-link:focus {
   top: 0;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE IMAGES
+   Blog and article images scale properly on all devices
+═══════════════════════════════════════════════════════════════ */
+article img {
+  max-width: 100%;
+  height: auto !important;
+  display: block;
+  margin: 1.5rem auto;
+  border-radius: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  article img {
+    width: 100%;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  article img {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 1025px) {
+  article img {
+    max-width: 100%;
+  }
+}
