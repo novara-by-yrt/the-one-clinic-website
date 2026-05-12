@@ -96,8 +96,8 @@ export default async function BlogDetailPage({ params }) {
               </>
             ) : (
               <div className="text-center py-20">
-                <p className="text-neutral-400 text-base mb-6">
-                  The full article is available on our website.
+                <p className="text-neutral-600 text-base mb-6">
+                  This article content is not yet available. Please visit the original article to read the full content.
                 </p>
                 <a
                   href={post.source_url}
