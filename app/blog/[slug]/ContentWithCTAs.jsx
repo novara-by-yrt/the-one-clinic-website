@@ -3,54 +3,43 @@
 import DoctorCTA1 from '@/components/blog/DoctorCTA1';
 import DoctorCTA2 from '@/components/blog/DoctorCTA2';
 
-function splitHtmlAtMiddle(html) {
-  // Find all h2 and h3 tags to split at a section boundary
-  const headingRegex = /<h2[^>]*>.*?<\/h2>/gi;
-  const headings = [];
+function splitHtmlForCTAs(html) {
+  // Find all h2 tags to position CTAs strategically
+  const h2Regex = /<h2[^>]*>.*?<\/h2>/gi;
+  const h2Matches = [];
   let match;
 
-  while ((match = headingRegex.exec(html)) !== null) {
-    headings.push({
+  while ((match = h2Regex.exec(html)) !== null) {
+    h2Matches.push({
       text: match[0],
       index: match.index,
       endIndex: match.index + match[0].length,
     });
   }
 
-  // If we have at least 2 headings, split after the first heading + some content
-  if (headings.length >= 2) {
-    // Split after the second heading for better content flow
-    const splitPoint = headings[1].endIndex;
-    return {
-      firstPart: html.substring(0, splitPoint),
-      secondPart: html.substring(splitPoint),
-    };
+  let doctorCTA1Point = null;
+  let doctorCTA2Point = null;
+
+  // Place DoctorCTA1 before the first h2 heading (after intro)
+  if (h2Matches.length > 0) {
+    doctorCTA1Point = h2Matches[0].index;
+  } else {
+    // Fallback: split roughly in the middle
+    doctorCTA1Point = Math.floor(html.length / 2);
   }
 
-  // Fallback: split roughly in the middle by character count
-  const middlePoint = Math.floor(html.length / 2);
+  // Place DoctorCTA2 near the end (before last 10% of content)
+  doctorCTA2Point = Math.floor(html.length * 0.85);
 
-  // Find the nearest closing tag after the middle point
-  const nearbyContent = html.substring(middlePoint - 100, middlePoint + 100);
-  const closingTagMatch = nearbyContent.match(/<\/p>|<\/li>|<\/h[1-6]>/);
-
-  if (closingTagMatch) {
-    const adjustedSplitPoint = middlePoint - 100 + nearbyContent.indexOf(closingTagMatch[0]) + closingTagMatch[0].length;
-    return {
-      firstPart: html.substring(0, adjustedSplitPoint),
-      secondPart: html.substring(adjustedSplitPoint),
-    };
-  }
-
-  // Fallback to simple middle split
   return {
-    firstPart: html.substring(0, middlePoint),
-    secondPart: html.substring(middlePoint),
+    firstPart: html.substring(0, doctorCTA1Point),
+    middlePart: html.substring(doctorCTA1Point, doctorCTA2Point),
+    lastPart: html.substring(doctorCTA2Point),
   };
 }
 
 export default function ContentWithCTAs({ html }) {
-  const { firstPart, secondPart } = splitHtmlAtMiddle(html);
+  const { firstPart, middlePart, lastPart } = splitHtmlForCTAs(html);
 
   const proseClasses = `prose prose-neutral prose-lg max-w-none
     prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:text-neutral-900
@@ -65,15 +54,20 @@ export default function ContentWithCTAs({ html }) {
 
   return (
     <>
-      {/* First part of article */}
+      {/* First part of article (intro + first section) */}
       <div className={proseClasses} dangerouslySetInnerHTML={{ __html: firstPart }} />
 
-      {/* Doctor CTAs in the middle */}
+      {/* DoctorCTA1 - above first major section */}
       <DoctorCTA1 />
+
+      {/* Middle part of article */}
+      <div className={proseClasses} dangerouslySetInnerHTML={{ __html: middlePart }} />
+
+      {/* DoctorCTA2 - near the end (before FAQ/conclusion) */}
       <DoctorCTA2 />
 
-      {/* Second part of article */}
-      <div className={proseClasses} dangerouslySetInnerHTML={{ __html: secondPart }} />
+      {/* Last part of article */}
+      <div className={proseClasses} dangerouslySetInnerHTML={{ __html: lastPart }} />
     </>
   );
 }
