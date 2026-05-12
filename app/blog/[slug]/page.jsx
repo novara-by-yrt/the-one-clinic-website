@@ -141,7 +141,7 @@ export default async function BlogDetailPage({ params }) {
 
             {/* Right column - Sticky form (hidden on mobile/tablet) */}
             <div className="hidden lg:block">
-              <div className="sticky" style={{ top: '2rem' }}>
+              <div className="sticky" style={{ top: '6rem' }}>
                 <CallbackTrigger />
               </div>
             </div>
@@ -149,7 +149,9 @@ export default async function BlogDetailPage({ params }) {
 
           {/* Mobile/Tablet: Form below content */}
           <div className="lg:hidden mt-12 pt-12 border-t border-neutral-100">
-            <CallbackTrigger />
+            <div className="mb-8">
+              <CallbackTrigger />
+            </div>
           </div>
         </div>
       ) : (
