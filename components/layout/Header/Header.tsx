@@ -131,6 +131,7 @@ const NAV: NavItem[] = [
   },
   { label: 'Membership',         href: 'https://theoneclinic.eu.zenoti.com/webstoreNew/sales/membership/4fbea838-3725-4392-a22a-3b301fbd0229' },
   { label: 'Patient Experience', href: '/patient-experience' },
+  { label: 'Blog',               href: '/blog' },
   { label: 'Contact Us',         href: '/contact' },
 ];
 
