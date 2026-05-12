@@ -82,131 +82,77 @@ export default async function BlogDetailPage({ params }) {
       {/* Divider */}
       <div className="h-px bg-neutral-100" />
 
-      {/* Article body - Two column layout for specific blogs on desktop */}
-      {post.slug === 'how-long-do-endolift-results-last' ? (
-        <div className="max-w-7xl mx-auto px-4 py-14">
-          {/* Desktop: Two-column grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.35fr] gap-8 lg:gap-12">
-            {/* Left column - Content */}
-            <article>
-              {hasContent ? (
-                <div
-                  className="prose prose-neutral prose-lg max-w-none
-                    prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:text-neutral-900
-                    prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
-                    prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
-                    prose-h4:text-lg prose-h4:mt-6 prose-h4:mb-2
-                    prose-p:text-neutral-700 prose-p:leading-relaxed prose-p:my-4
-                    prose-a:text-neutral-900 prose-a:underline prose-a:underline-offset-2 hover:prose-a:text-neutral-600
-                    prose-ul:my-4 prose-ul:space-y-1
-                    prose-li:text-neutral-700
-                    prose-strong:text-neutral-900 prose-strong:font-bold"
-                  dangerouslySetInnerHTML={{ __html: html }}
-                />
-              ) : (
-                <div className="text-center py-20">
-                  <p className="text-neutral-400 text-base mb-6">
-                    The full article is available on our website.
-                  </p>
-                  <a
-                    href={post.source_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-neutral-900 border border-neutral-200 rounded-full px-6 py-3 hover:bg-neutral-900 hover:text-white hover:border-neutral-900 transition-colors duration-200"
-                  >
-                    Read on original site
-                    <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                      <path d="M2 2h10M12 2v10M2 12L12 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                    </svg>
-                  </a>
-                </div>
-              )}
-
-              {/* CTA card */}
-              {hasContent && <BookCta />}
-
-              {/* Back link */}
-              <div className="mt-12 pt-8 border-t border-neutral-100">
-                <Link
-                  href="/blog"
-                  className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-neutral-500 hover:text-neutral-900 transition-colors"
+      {/* Article body - Two column layout for all blogs on desktop */}
+      <div className="max-w-7xl mx-auto px-4 py-14">
+        {/* Desktop: Two-column grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.35fr] gap-8 lg:gap-12">
+          {/* Left column - Content */}
+          <article>
+            {hasContent ? (
+              <div
+                className="prose prose-neutral prose-lg max-w-none
+                  prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:text-neutral-900
+                  prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
+                  prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+                  prose-h4:text-lg prose-h4:mt-6 prose-h4:mb-2
+                  prose-p:text-neutral-700 prose-p:leading-relaxed prose-p:my-4
+                  prose-a:text-neutral-900 prose-a:underline prose-a:underline-offset-2 hover:prose-a:text-neutral-600
+                  prose-ul:my-4 prose-ul:space-y-1
+                  prose-li:text-neutral-700
+                  prose-strong:text-neutral-900 prose-strong:font-bold"
+                dangerouslySetInnerHTML={{ __html: html }}
+              />
+            ) : (
+              <div className="text-center py-20">
+                <p className="text-neutral-400 text-base mb-6">
+                  The full article is available on our website.
+                </p>
+                <a
+                  href={post.source_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-neutral-900 border border-neutral-200 rounded-full px-6 py-3 hover:bg-neutral-900 hover:text-white hover:border-neutral-900 transition-colors duration-200"
                 >
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                    <path d="M9 2L4 7l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  Read on original site
+                  <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M2 2h10M12 2v10M2 12L12 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
                   </svg>
-                  Back to all articles
-                </Link>
+                </a>
               </div>
-            </article>
+            )}
 
-            {/* Right column - Sticky form (hidden on mobile/tablet) */}
-            <div className="hidden lg:block">
-              <div className="sticky" style={{ top: '6rem' }}>
-                <CallbackTrigger />
-              </div>
+            {/* CTA card */}
+            {hasContent && <BookCta />}
+
+            {/* Back link */}
+            <div className="mt-12 pt-8 border-t border-neutral-100">
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-neutral-500 hover:text-neutral-900 transition-colors"
+              >
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path d="M9 2L4 7l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                Back to all articles
+              </Link>
             </div>
-          </div>
+          </article>
 
-          {/* Mobile/Tablet: Form below content */}
-          <div className="lg:hidden mt-12 pt-12 border-t border-neutral-100">
-            <div className="mb-8">
+          {/* Right column - Sticky form (hidden on mobile/tablet) */}
+          <div className="hidden lg:block">
+            <div className="sticky" style={{ top: '6rem' }}>
               <CallbackTrigger />
             </div>
           </div>
         </div>
-      ) : (
-        /* Default single column layout for other blogs */
-        <article className="max-w-3xl mx-auto px-4 py-14">
-          {hasContent ? (
-            <div
-              className="prose prose-neutral prose-lg max-w-none
-                prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:text-neutral-900
-                prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
-                prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
-                prose-h4:text-lg prose-h4:mt-6 prose-h4:mb-2
-                prose-p:text-neutral-700 prose-p:leading-relaxed prose-p:my-4
-                prose-a:text-neutral-900 prose-a:underline prose-a:underline-offset-2 hover:prose-a:text-neutral-600
-                prose-ul:my-4 prose-ul:space-y-1
-                prose-li:text-neutral-700
-                prose-strong:text-neutral-900 prose-strong:font-bold"
-              dangerouslySetInnerHTML={{ __html: html }}
-            />
-          ) : (
-            <div className="text-center py-20">
-              <p className="text-neutral-400 text-base mb-6">
-                The full article is available on our website.
-              </p>
-              <a
-                href={post.source_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-neutral-900 border border-neutral-200 rounded-full px-6 py-3 hover:bg-neutral-900 hover:text-white hover:border-neutral-900 transition-colors duration-200"
-              >
-                Read on original site
-                <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                  <path d="M2 2h10M12 2v10M2 12L12 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                </svg>
-              </a>
-            </div>
-          )}
 
-          {/* CTA card */}
-          {hasContent && <BookCta />}
-
-          {/* Back link */}
-          <div className="mt-12 pt-8 border-t border-neutral-100">
-            <Link
-              href="/blog"
-              className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-neutral-500 hover:text-neutral-900 transition-colors"
-            >
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path d="M9 2L4 7l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              Back to all articles
-            </Link>
+        {/* Mobile/Tablet: Form below content */}
+        <div className="lg:hidden mt-12 pt-12 border-t border-neutral-100">
+          <div className="mb-8">
+            <CallbackTrigger />
           </div>
-        </article>
-      )}
+        </div>
+      </div>
     </main>
   );
 }
