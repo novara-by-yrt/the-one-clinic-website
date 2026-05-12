@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import { posts, getPostBySlug, formatDate, formatAuthor } from '@/lib/blogData';
 import BookCta from './BookCta';
 import CallbackTrigger from '@/components/blog/CallbackTrigger';
+import DoctorCTA1 from '@/components/blog/DoctorCTA1';
+import DoctorCTA2 from '@/components/blog/DoctorCTA2';
 
 export async function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }));
@@ -119,6 +121,14 @@ export default async function BlogDetailPage({ params }) {
                   </svg>
                 </a>
               </div>
+            )}
+
+            {/* Doctor CTAs - inserted in middle of content */}
+            {hasContent && (
+              <>
+                <DoctorCTA1 />
+                <DoctorCTA2 />
+              </>
             )}
 
             {/* CTA card */}
