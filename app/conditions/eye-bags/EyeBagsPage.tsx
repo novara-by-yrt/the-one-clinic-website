@@ -366,10 +366,11 @@ export default function EyeBagsPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          2. WHAT ARE EYE BAGS?
+          2. WHAT ARE EYE BAGS & TYPES (Combined)
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="light" data-section-theme="light" className={styles.overviewTypesSection}>
         <Container>
+          {/* Overview content */}
           <motion.div
             className={styles.overviewGrid}
             variants={stagger(0.12)}
@@ -393,36 +394,27 @@ export default function EyeBagsPage() {
               </motion.p>
             </div>
           </motion.div>
-        </Container>
-      </Section>
 
-      {/* ════════════════════════════════════════
-          3. TYPES OF EYE BAGS
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
+          {/* Divider */}
+          <div className={styles.overviewDivider} />
+
+          {/* Types content */}
           <motion.div
-            className={styles.sectionHeaderCentre}
+            className={styles.typesWrapper}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Classification
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Types OF Eye Bags
-            </motion.h2>
-          </motion.div>
+            <div className={styles.typesHeader}>
+              <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+                Classification
+              </motion.p>
+              <motion.h2 className={styles.headingDark} variants={fadeUp}>
+                Types of Eye Bags
+              </motion.h2>
+            </div>
 
-          <motion.div
-            className={styles.typesContent}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
             <motion.p className={styles.typesIntro} variants={fadeUp}>
               The three main types of under-eye bags are:
             </motion.p>
@@ -431,10 +423,10 @@ export default function EyeBagsPage() {
               {EYE_BAG_TYPES.map((type) => (
                 <motion.div
                   key={type.num}
-                  className={styles.typeCard}
+                  className={styles.typeCardLight}
                   variants={fadeUp}
                 >
-                  <span className={styles.typeNum} aria-hidden="true">
+                  <span className={styles.typeNumLight} aria-hidden="true">
                     {type.num}
                   </span>
                   <div className={styles.typeCardBody}>
