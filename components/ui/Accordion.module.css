@@ -47,12 +47,43 @@
   border-color: rgb(0 0 0 / 0.15);
   box-shadow: 0 4px 24px rgb(0 0 0 / 0.08);
   transform: none;
+  position: relative;
+}
+
+.accordion.light .item.open::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--color-text-dark);
+  animation: lineExpandOpen 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
 }
 
 .accordion.dark .item.open {
   border-color: rgb(255 255 255 / 0.28);
   background: rgb(255 255 255 / 0.16);
   transform: none;
+  position: relative;
+}
+
+.accordion.dark .item.open::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: rgb(255 255 255 / 0.6);
+  animation: lineExpandOpen 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+@keyframes lineExpandOpen {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 /* ── Heading reset ────────────────────────────────────────────── */

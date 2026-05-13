@@ -1228,16 +1228,6 @@ export default function EndoliftPage() {
           9. FAQ
       ════════════════════════════════════════ */}
       <section className={styles.faqSection} data-section-theme="dark">
-        <Image
-          src="/images/Background image1.jpg"
-          alt=""
-          fill
-          className={styles.faqBgImg}
-          sizes="100vw"
-          aria-hidden="true"
-        />
-        <div className={styles.faqOverlay} aria-hidden="true" />
-
         <div className={styles.faqInner}>
           <Container>
             <motion.div
