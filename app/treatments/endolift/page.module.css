@@ -893,22 +893,23 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 11px 28px;
-  background: rgba(255 255 255 / 0.07);
-  border: 1px solid rgba(255 255 255 / 0.14);
+  padding: 12px 32px;
+  background: #000;
+  border: 2px solid #000;
   border-radius: 100px;
-  color: rgba(255 255 255 / 0.82);
+  color: #fff;
   font-size: 0.9375rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 .faqToggleBtn:hover {
-  background: rgba(255 255 255 / 0.12);
-  border-color: rgba(255 255 255 / 0.25);
+  background: #1a1a1a;
+  border-color: #1a1a1a;
   color: #fff;
+  transform: translateY(-2px);
 }
 
 /* Center align FAQ section header */
