@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(var(--space-4), 3.5vw, var(--space-6));
-  align-items: start;
+  align-items: stretch;
 }
 
 /* ── Left: image column ─────────────────────────────────── */
