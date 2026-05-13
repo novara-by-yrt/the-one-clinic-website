@@ -653,9 +653,6 @@ export default function EndoliftPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-              What You Gain
-            </motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
               Endolift Treated Benefits
             </motion.h2>
@@ -752,7 +749,6 @@ export default function EndoliftPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>The Science</motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
               How Does Endolift Work?
             </motion.h2>
