@@ -56,9 +56,12 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 2px;
-  background: var(--color-text-dark);
-  animation: lineExpandOpen 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-text-dark), transparent);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2), inset 0 0 8px rgba(0, 0, 0, 0.1);
+  animation: lineSlideIn 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  opacity: 0;
 }
 
 .accordion.dark .item.open {
@@ -73,17 +76,25 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 2px;
-  background: #fff;
-  animation: lineExpandOpen 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #fff, transparent);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.6), inset 0 0 8px rgba(255, 255, 255, 0.3);
+  animation: lineSlideIn 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  opacity: 0;
 }
 
-@keyframes lineExpandOpen {
-  from {
-    width: 0;
+@keyframes lineSlideIn {
+  0% {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
   }
-  to {
-    width: 100%;
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
   }
 }
 
