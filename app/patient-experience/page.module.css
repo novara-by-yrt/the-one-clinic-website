@@ -50,6 +50,10 @@
   z-index: 3;
   max-width: 720px;
   text-align: center;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .heroEyebrow {
@@ -66,34 +70,7 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgb(255 255 255 / 0.75);
-  margin: 0 auto 20px;
-}
-
-.heroEyebrow::before {
-  content: '';
-  display: block;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: currentColor;
-  flex-shrink: 0;
-}
-
-.heroTitle {
-  font-size: clamp(2.5rem, 5.5vw, 4rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: #fff;
-  margin: 0 0 24px;
-  line-height: 1.05;
-  text-shadow:
-    0 2px 4px rgb(0 0 0 / 0.4),
-    0 8px 24px rgb(0 0 0 / 0.3),
-    0 16px 48px rgb(0 0 0 / 0.2);
-}
-
-.heroTitleAccent {
-  color: rgb(255 255 255 / 0.55);
+  margin: 0 0 20px;
 }
 
 .heroDesc {
@@ -105,6 +82,8 @@
   text-shadow:
     0 1px 4px rgb(0 0 0 / 0.3),
     0 4px 12px rgb(0 0 0 / 0.2);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .heroCtas {
@@ -112,6 +91,7 @@
   gap: 12px;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
 }
 
 .heroCtaPrimary {
