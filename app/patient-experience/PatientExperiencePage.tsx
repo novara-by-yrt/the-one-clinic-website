@@ -33,13 +33,8 @@ export default function PatientExperiencePage() {
             initial="hidden"
             animate="show"
           >
-            <motion.span className={styles.heroEyebrow} variants={fadeUp}>
-              Patient Experience
-            </motion.span>
-
             <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-              The One Clinic<br />
-              <span className={styles.heroTitleAccent}>Patient Experience</span>
+              The One Clinic <span className={styles.heroTitleAccent}>Patient Experience</span>
             </motion.h1>
 
             <motion.p className={styles.heroDesc} variants={fadeUp}>
