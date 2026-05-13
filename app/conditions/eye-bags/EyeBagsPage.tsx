@@ -814,7 +814,7 @@ export default function EyeBagsPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <Accordion items={FAQS} theme="light" />
+            <Accordion items={FAQS} theme="dark" />
           </motion.div>
 
           <div className={styles.faqToggleWrap}>
@@ -880,41 +880,7 @@ export default function EyeBagsPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          14. COST BANNER
-      ════════════════════════════════════════ */}
-      <section
-        className={styles.costBand}
-        data-section-theme="dark"
-        aria-label="Eye bags treatment cost"
-      >
-        <Container>
-          <motion.div
-            className={styles.costBandInner}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.costBandEyebrow} variants={fadeUp}>
-              Pricing
-            </motion.p>
-            <motion.h2 className={styles.costBandHeading} variants={fadeUp}>
-              Eye Bags Treatment Cost
-            </motion.h2>
-            <motion.p className={styles.costBandNote} variants={fadeUp}>
-              Contact us to enquire
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBtnPrimary}>
-                Book A Consultation
-              </BookConsultationButton>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
-
-      {/* ════════════════════════════════════════
-          8. LEAD FORM
+          13. LEAD FORM
       ════════════════════════════════════════ */}
       <div id="contact">
         <LeadForm />
