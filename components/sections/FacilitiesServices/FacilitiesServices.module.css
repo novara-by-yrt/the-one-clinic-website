@@ -2,7 +2,7 @@
   text-align: center;
   max-width: 640px;
   margin-inline: auto;
-  margin-bottom: clamp(var(--space-6), 5vw, var(--space-8));
+  margin-bottom: clamp(var(--space-4), 3.5vw, var(--space-6));
   display: flex;
   flex-direction: column;
   gap: clamp(var(--space-2), 1.5vw, var(--space-3));
@@ -56,8 +56,8 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(var(--space-4), 3vw, var(--space-5));
-  margin-bottom: clamp(var(--space-6), 5vw, var(--space-8));
+  gap: clamp(var(--space-3), 2.5vw, var(--space-4));
+  margin-bottom: clamp(var(--space-4), 3.5vw, var(--space-6));
   align-items: stretch;
 }
 
