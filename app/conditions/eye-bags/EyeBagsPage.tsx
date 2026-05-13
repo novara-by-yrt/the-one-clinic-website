@@ -693,7 +693,7 @@ export default function EyeBagsPage() {
       {/* ════════════════════════════════════════
           9. RESULTS & EXPECTATIONS
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="light" data-section-theme="light" className={styles.resultsSection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
