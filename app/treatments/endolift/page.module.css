@@ -973,6 +973,17 @@
   margin-right: auto;
 }
 
+/* Override text colors for FAQ section on gray background */
+.faqSection .eyebrowLight {
+  background: #000;
+  border-color: #000;
+  color: #fff;
+}
+
+.faqSection .headingLight {
+  color: #000;
+}
+
 /* ════════════════════════════════════════════════════
    RELATED TREATMENTS
 ════════════════════════════════════════════════════ */
