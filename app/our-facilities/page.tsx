@@ -19,13 +19,13 @@ export default function OurFacilitiesPage() {
   return (
     <>
       <FacilitiesHero />
+      <VideoSection />
+      <Testimonials />
       <FacilitiesIntro />
       <ArrivalExperience />
       <FacilityStats />
       <TechSafety />
       <FacilitiesServices />
-      <VideoSection />
-      <Testimonials />
       <LeadForm />
     </>
   );
