@@ -48,6 +48,7 @@
   box-shadow: 0 4px 24px rgb(0 0 0 / 0.08);
   transform: none;
   position: relative;
+  background: var(--color-white);
 }
 
 .accordion.light .item.open::after {
@@ -61,8 +62,8 @@
 }
 
 .accordion.dark .item.open {
-  border-color: rgb(255 255 255 / 0.28);
-  background: rgb(255 255 255 / 0.16);
+  border-color: #000;
+  background: #000;
   transform: none;
   position: relative;
 }
@@ -73,7 +74,7 @@
   bottom: 0;
   left: 0;
   height: 2px;
-  background: rgb(255 255 255 / 0.6);
+  background: #fff;
   animation: lineExpandOpen 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
 }
 
