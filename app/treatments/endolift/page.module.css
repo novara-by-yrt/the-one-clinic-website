@@ -883,60 +883,6 @@
   margin-right: auto;
 }
 
-/* Override accordion styling for FAQ section */
-.faqBody :global(.accordion.dark .item) {
-  background: #000;
-  border-color: #000;
-}
-
-.faqBody :global(.accordion.dark .item:hover) {
-  background: #1a1a1a;
-  border-color: #1a1a1a;
-}
-
-.faqBody :global(.accordion.dark .item.open) {
-  background: #000;
-  border-color: #000;
-  border-bottom: 2px solid #666;
-}
-
-.faqBody :global(.accordion.dark .question) {
-  color: #fff;
-}
-
-.faqBody :global(.accordion.dark .open .question) {
-  color: #fff;
-}
-
-.faqBody :global(.accordion.dark .number) {
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.faqBody :global(.accordion.dark .open .number) {
-  color: #fff;
-}
-
-.faqBody :global(.accordion.dark .answer) {
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.faqBody :global(.accordion.dark .icon) {
-  border-color: rgba(255, 255, 255, 0.3);
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.faqBody :global(.accordion.dark .item:hover .icon) {
-  border-color: rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-}
-
-.faqBody :global(.accordion.dark .open .icon) {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(255, 255, 255, 0.9);
-  color: #1a1a1a;
-}
-
 .faqToggleWrap {
   display: flex;
   justify-content: center;
