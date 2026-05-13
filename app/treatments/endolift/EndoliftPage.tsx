@@ -1117,7 +1117,7 @@ export default function EndoliftPage() {
       {/* ════════════════════════════════════════
           NEW: BEST ENDOLIFT LEICESTER EXPERIENCE
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="light" data-section-theme="light" className={styles.clinicIntroSection}>
         <Container>
           <motion.div
             className={styles.clinicIntroBody}
