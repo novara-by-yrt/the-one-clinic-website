@@ -63,13 +63,13 @@
 .logoImg {
   display: block;
   width: auto;
-  height: 48px;
+  height: 58px;
   object-fit: contain;
   transition: height 0.55s cubic-bezier(0.22, 1, 0.36, 1), filter 0.55s ease;
 }
 
 .pill[data-scrolled='true'] .logoImg {
-  height: 40px;
+  height: 48px;
 }
 
 .pill[data-theme='light'] .logoImg { filter: brightness(0); }
