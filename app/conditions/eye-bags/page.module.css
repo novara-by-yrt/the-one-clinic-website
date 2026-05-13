@@ -321,85 +321,70 @@
   line-height: 1.15;
 }
 
-/* 3-column grid for type cards */
+/* Vertical stack of horizontal rows for type cards */
 .combinedCards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4);
-}
-
-/* Type cards in combined section - redesigned */
-.typeCardCombined {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
-  padding: clamp(var(--space-4), 3vw, var(--space-5));
-  background: #fff;
-  border: 1px solid rgba(0 0 0 / 0.08);
-  border-radius: 20px;
-  box-shadow:
-    0 2px 4px rgba(0 0 0 / 0.04),
-    0 8px 16px rgba(0 0 0 / 0.08);
-  position: relative;
-  overflow: hidden;
-  transition: all 300ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* Top accent bar */
-.typeCardCombined::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(to right, rgba(0 0 0 / 0.08), rgba(0 0 0 / 0.04));
-  transition: opacity 300ms ease;
-}
-
-.typeCardCombined:hover {
-  background: #fff;
-  border-color: rgba(0 0 0 / 0.12);
-  transform: translateY(-6px);
-  box-shadow:
-    0 4px 8px rgba(0 0 0 / 0.06),
-    0 16px 32px rgba(0 0 0 / 0.12);
-}
-
-.typeCardCombined:hover::before {
-  opacity: 1;
-}
-
-/* Card header with number and title */
-.typeCardHeader {
-  display: flex;
-  align-items: flex-start;
   gap: var(--space-2);
 }
 
+/* Type cards - horizontal row design (like riskItem) */
+.typeCardCombined {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: #f8f8f8;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.typeCardCombined:hover {
+  background: #f0f0f0;
+  border-color: rgba(0 0 0 / 0.12);
+  transform: translateX(2px);
+}
+
+/* Number badge - black circle like riskCheck */
 .typeNumCombined {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
   font-size: 0.75rem;
   font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(0 0 0 / 0.2);
-  line-height: 1.2;
+  letter-spacing: 0.04em;
   flex-shrink: 0;
-  padding-top: 2px;
+}
+
+/* Content beside the badge */
+.typeCardHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
 }
 
 .typeTitleCombined {
-  font-size: clamp(1rem, 1.6vw, 1.125rem);
+  font-size: 1rem;
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
   color: var(--color-text-dark);
   margin: 0;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
 .typeDescCombined {
-  font-size: 0.9375rem;
-  line-height: 1.6;
+  font-size: 0.875rem;
+  line-height: 1.55;
   color: rgba(0 0 0 / 0.6);
   margin: 0;
 }
@@ -1377,11 +1362,6 @@
     font-size: clamp(1.25rem, 3vw, 1.5rem);
   }
 
-  .combinedCards {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-3);
-  }
-
   /* Types: stack cards single column */
   .typesCardsRow {
     grid-template-columns: 1fr;
@@ -1472,17 +1452,9 @@
     padding: var(--space-3);
   }
 
-  /* Keep 2 columns for cards on tablets */
-  .combinedCards {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 @media (max-width: 640px) {
-  .combinedCards {
-    grid-template-columns: 1fr;
-  }
-
   .causesGrid {
     grid-template-columns: 1fr;
     gap: clamp(var(--space-3), 3vw, var(--space-4));

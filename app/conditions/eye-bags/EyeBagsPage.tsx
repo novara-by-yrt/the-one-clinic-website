@@ -433,13 +433,13 @@ export default function EyeBagsPage() {
                     className={styles.typeCardCombined}
                     variants={fadeUp}
                   >
+                    <span className={styles.typeNumCombined} aria-hidden="true">
+                      {type.num}
+                    </span>
                     <div className={styles.typeCardHeader}>
-                      <span className={styles.typeNumCombined} aria-hidden="true">
-                        {type.num}
-                      </span>
                       <h3 className={styles.typeTitleCombined}>{type.title}</h3>
+                      <p className={styles.typeDescCombined}>{type.desc}</p>
                     </div>
-                    <p className={styles.typeDescCombined}>{type.desc}</p>
                   </motion.div>
                 ))}
               </motion.div>
