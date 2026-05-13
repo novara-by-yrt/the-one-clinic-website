@@ -3,84 +3,23 @@
   background: #f5f5f5;
 }
 
-/* ── Two-column layout ───────────────────────────────── */
-.layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(var(--space-6), 6vw, var(--space-9));
-  align-items: center;
-}
-
-/* ── Left: image ─────────────────────────────────────── */
-.imageCol {
-  position: relative;
-}
-
-.imageWrap {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  border-radius: 24px;
-  overflow: hidden;
-  background: #d0d0d0;
-  box-shadow: 0 24px 64px rgba(0 0 0 / 0.14);
-}
-
-.image {
-  object-fit: cover;
-  object-position: center;
-  transition: transform 0.7s ease;
-}
-
-.imageWrap:hover .image {
-  transform: scale(1.04);
-}
-
-/* Floating badge */
-.badge {
-  position: absolute;
-  bottom: 24px;
-  left: 24px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255 255 255 / 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255 255 255 / 0.7);
-  border-radius: 100px;
-  padding: 10px 20px;
-  box-shadow: 0 4px 24px rgba(0 0 0 / 0.12);
-}
-
-.badgeDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #22c55e;
-  flex-shrink: 0;
-  box-shadow: 0 0 0 3px rgba(34 197 94 / 0.2);
-}
-
-.badgeText {
-  font-size: 0.8125rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: #0a0a0a;
-}
-
-/* ── Right: content ──────────────────────────────────── */
-.contentCol {
+/* ── Wrapper ─────────────────────────────────────────── */
+.wrapper {
   display: flex;
   flex-direction: column;
   gap: clamp(var(--space-5), 4vw, var(--space-6));
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-/* Header */
+/* ── Header ──────────────────────────────────────────── */
 .header {
   display: flex;
   flex-direction: column;
   gap: clamp(var(--space-2), 1.5vw, var(--space-3));
+  align-items: center;
+  text-align: center;
 }
 
 .eyebrow {
@@ -110,141 +49,112 @@
 }
 
 .heading {
-  font-size: clamp(2rem, 3.8vw, 2.75rem);
+  font-size: clamp(1.875rem, 3.5vw, 2.5rem);
   font-weight: var(--fw-bold);
   letter-spacing: -0.025em;
   color: var(--color-text-dark);
-  line-height: 1.18;
+  line-height: 1.2;
 }
 
 .subtext {
-  font-size: 1rem;
+  font-size: 0.9375rem;
   color: rgba(0 0 0 / 0.62);
-  line-height: 1.72;
-  max-width: 420px;
+  line-height: 1.7;
+  max-width: 500px;
 }
 
-/* ── Numbered items list ─────────────────────────────── */
-.items {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.item {
+/* ── Items grid ──────────────────────────────────────── */
+.itemsGrid {
   display: grid;
-  grid-template-columns: 44px 1fr;
-  gap: 0 var(--space-4);
-  padding-bottom: clamp(var(--space-4), 3vw, var(--space-5));
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(var(--space-3), 2.5vw, var(--space-4));
+  width: 100%;
 }
 
-.item:last-child {
-  padding-bottom: 0;
-}
-
-/* Left spine: number + connector line */
-.itemLeft {
+.itemCard {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
-  padding-top: 2px;
+  gap: clamp(var(--space-2), 1.5vw, var(--space-3));
+  padding: clamp(var(--space-3), 2.5vw, var(--space-4));
+  border: 1px solid rgba(0 0 0 / 0.07);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0 0 0 / 0.04);
+  cursor: default;
+  transition: all 0.25s ease;
+  text-align: center;
 }
 
-.itemNumber {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: #0a0a0a;
-  color: #fff;
-  font-size: 0.6875rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.item:hover .itemNumber {
-  transform: scale(1.1);
-  box-shadow: 0 4px 16px rgba(0 0 0 / 0.18);
-}
-
-.connector {
-  flex: 1;
-  width: 1.5px;
-  background: linear-gradient(to bottom, rgba(0 0 0 / 0.18), rgba(0 0 0 / 0.04));
-  margin-top: 8px;
-}
-
-/* Right: icon + title + description */
-.itemBody {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding-bottom: clamp(var(--space-4), 3vw, var(--space-5));
-}
-
-.item:last-child .itemBody {
-  padding-bottom: 0;
-}
-
-.itemHead {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.itemCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0 0 0 / 0.1);
+  border-color: rgba(0 0 0 / 0.12);
 }
 
 .itemIcon {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(0 0 0 / 0.5);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(0 0 0 / 0.02);
+  border: 1.5px solid rgba(0 0 0 / 0.1);
+  color: rgba(0 0 0 / 0.6);
   flex-shrink: 0;
-  transition: color 0.25s ease;
+  transition: all 0.25s ease;
 }
 
-.item:hover .itemIcon {
-  color: #0a0a0a;
+.itemCard:hover .itemIcon {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #fff;
 }
 
 .itemTitle {
-  font-size: 1.0625rem;
+  font-size: clamp(0.9375rem, 2vw, 1.0625rem);
   font-weight: 700;
   letter-spacing: -0.015em;
   color: var(--color-text-dark);
   line-height: 1.3;
-  transition: color 0.25s ease;
 }
 
 .itemDesc {
-  font-size: 0.9rem;
-  line-height: 1.68;
+  font-size: 0.875rem;
+  line-height: 1.6;
   color: rgba(0 0 0 / 0.58);
-  padding-left: 30px;
 }
 
 /* ── Responsive ──────────────────────────────────────── */
-@media (max-width: 900px) {
-  .layout {
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
-  }
-
-  .imageWrap {
-    aspect-ratio: 16 / 9;
-    max-height: 380px;
-  }
-
-  .subtext {
-    max-width: 100%;
+@media (max-width: 1100px) {
+  .itemsGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 480px) {
-  .imageWrap {
-    aspect-ratio: 4 / 3;
+@media (max-width: 768px) {
+  .wrapper {
+    max-width: 100%;
+  }
+
+  .itemsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+
+  .itemCard {
+    padding: var(--space-3);
+  }
+}
+
+@media (max-width: 640px) {
+  .itemsGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .heading {
+    font-size: 1.5rem;
   }
 }

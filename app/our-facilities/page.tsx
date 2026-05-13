@@ -7,6 +7,7 @@ import TechSafety from '@/components/sections/TechSafety';
 import FacilitiesServices from '@/components/sections/FacilitiesServices';
 import VideoSection from '@/components/sections/VideoSection';
 import Testimonials from '@/components/sections/Testimonials';
+import FinalCTA from '@/components/sections/FinalCTA';
 import LeadForm from '@/components/sections/LeadForm';
 
 export const metadata: Metadata = {
@@ -26,6 +27,7 @@ export default function OurFacilitiesPage() {
       <FacilityStats />
       <TechSafety />
       <FacilitiesServices />
+      <FinalCTA />
       <LeadForm />
     </>
   );

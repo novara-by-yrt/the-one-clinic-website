@@ -2,7 +2,7 @@
 .layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(var(--space-5), 5vw, var(--space-7));
+  gap: clamp(var(--space-4), 3.5vw, var(--space-6));
   align-items: center;
 }
 
@@ -12,7 +12,7 @@
 .imageWrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   border-radius: 20px;
   overflow: hidden;
   background: #0a0a0a;
@@ -74,13 +74,13 @@
 .textCol {
   display: flex;
   flex-direction: column;
-  gap: clamp(var(--space-4), 3.5vw, var(--space-5));
+  gap: clamp(var(--space-3), 2.5vw, var(--space-4));
 }
 
 .header {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: clamp(var(--space-1), 1vw, var(--space-2));
 }
 
 .eyebrow {
@@ -110,7 +110,7 @@
 }
 
 .heading {
-  font-size: clamp(1.875rem, 3.5vw, 2.5rem);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
   font-weight: var(--fw-bold);
   letter-spacing: -0.025em;
   color: var(--color-text-dark);
@@ -127,7 +127,7 @@
 .statsGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: clamp(var(--space-2), 2vw, var(--space-3));
+  gap: var(--space-2);
 }
 
 .stat {
@@ -135,7 +135,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 4px;
-  padding: clamp(var(--space-3), 2.5vw, var(--space-4));
+  padding: clamp(var(--space-2), 1.5vw, var(--space-3));
   border: 1px solid rgba(0 0 0 / 0.07);
   border-radius: 14px;
   background: #fff;
@@ -151,7 +151,7 @@
 }
 
 .statValue {
-  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
   font-weight: 800;
   letter-spacing: -0.05em;
   color: var(--color-text-dark);
@@ -169,8 +169,8 @@
 .accessBar {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
-  padding: clamp(var(--space-3), 2.5vw, var(--space-4));
+  gap: var(--space-2);
+  padding: clamp(var(--space-2), 1.5vw, var(--space-3));
   border: 1px solid rgba(0 0 0 / 0.07);
   border-radius: 14px;
   background: #fff;
@@ -188,7 +188,7 @@
 .accessList {
   display: flex;
   flex-wrap: wrap;
-  gap: clamp(var(--space-3), 3vw, var(--space-4));
+  gap: clamp(var(--space-2), 2vw, var(--space-3));
   list-style: none;
   padding: 0;
   margin: 0;
