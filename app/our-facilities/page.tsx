@@ -27,8 +27,8 @@ export default function OurFacilitiesPage() {
       <FacilityStats />
       <TechSafety />
       <FacilitiesServices />
-      <FinalCTA />
       <LeadForm />
+      <FinalCTA />
     </>
   );
 }
