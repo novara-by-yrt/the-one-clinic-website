@@ -440,11 +440,6 @@ export default function EndoliftPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          2. PATIENT REVIEWS
-      ════════════════════════════════════════ */}
-      <Testimonials />
-
-      {/* ════════════════════════════════════════
           3A. WHAT IS ENDOLIFT?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
@@ -1010,6 +1005,11 @@ export default function EndoliftPage() {
           </div>
         </Container>
       </Section>
+
+      {/* ════════════════════════════════════════
+          2. PATIENT REVIEWS
+      ════════════════════════════════════════ */}
+      <Testimonials />
 
       {/* ════════════════════════════════════════
           NEW: CTA BANNER
