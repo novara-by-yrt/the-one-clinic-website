@@ -8,10 +8,10 @@
   text-align: center;
   max-width: 680px;
   margin-inline: auto;
-  margin-bottom: clamp(var(--space-5), 4vw, var(--space-7));
+  margin-bottom: clamp(var(--space-3), 2.5vw, var(--space-5));
   display: flex;
   flex-direction: column;
-  gap: clamp(var(--space-2), 1.5vw, var(--space-3));
+  gap: clamp(var(--space-1), 1vw, var(--space-2));
 }
 
 .eyebrow {
@@ -43,7 +43,7 @@
 }
 
 .heading {
-  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
   font-weight: var(--fw-bold);
   letter-spacing: -0.025em;
   color: #fff;
@@ -52,16 +52,16 @@
 
 .subtext {
   color: rgba(255 255 255 / 0.65);
-  line-height: 1.72;
-  font-size: 1rem;
+  line-height: 1.6;
+  font-size: 0.9375rem;
 }
 
 /* ── Services grid ──────────────────────────────────────── */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(var(--space-3), 2.5vw, var(--space-4));
-  margin-bottom: clamp(var(--space-5), 4vw, var(--space-7));
+  gap: clamp(var(--space-2), 2vw, var(--space-3));
+  margin-bottom: clamp(var(--space-3), 2.5vw, var(--space-5));
   align-items: stretch;
 }
 
@@ -69,8 +69,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
-  padding: clamp(var(--space-5), 4vw, var(--space-6));
+  gap: clamp(var(--space-2), 1.5vw, var(--space-3));
+  padding: clamp(var(--space-3), 2.5vw, var(--space-4));
   border: 1px solid rgba(255 255 255 / 0.08);
   border-radius: 20px;
   background: rgba(255 255 255 / 0.03);
@@ -139,7 +139,7 @@
 }
 
 .cardTitle {
-  font-size: 1.1875rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: #fff;
@@ -147,8 +147,8 @@
 }
 
 .cardDesc {
-  font-size: 0.9375rem;
-  line-height: 1.72;
+  font-size: 0.875rem;
+  line-height: 1.6;
   color: rgba(255 255 255 / 0.6);
   flex: 1;
 }
@@ -157,7 +157,7 @@
 .teamTrust {
   border: 1px solid rgba(255 255 255 / 0.1);
   border-radius: 20px;
-  padding: clamp(var(--space-5), 5vw, var(--space-7));
+  padding: clamp(var(--space-3), 3vw, var(--space-5));
   background: rgba(255 255 255 / 0.04);
   display: flex;
   align-items: center;
@@ -178,15 +178,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(var(--space-3), 3vw, var(--space-5));
+  gap: clamp(var(--space-2), 2vw, var(--space-3));
   text-align: center;
   max-width: 720px;
   position: relative;
 }
 
 .trustQuote {
-  font-size: clamp(1.0625rem, 2.2vw, 1.25rem);
-  line-height: 1.72;
+  font-size: clamp(0.9375rem, 1.8vw, 1.0625rem);
+  line-height: 1.6;
   color: rgba(255 255 255 / 0.85);
   font-weight: 500;
   font-style: italic;
