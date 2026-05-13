@@ -1189,9 +1189,6 @@ export default function EndoliftPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Why Us
-            </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
               Why Choose The One Clinic For Endolift Laser
             </motion.h2>
