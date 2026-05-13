@@ -409,24 +409,16 @@ export default function EyeBagsPage() {
 
             {/* Right column: Types */}
             <div className={styles.combinedRight}>
-              <motion.p
-                className={styles.combinedRightLabel}
+              <motion.div
+                className={styles.typesRightHeader}
                 initial="hidden"
                 whileInView="show"
                 variants={fadeUp}
                 viewport={VIEWPORT}
               >
-                Classification
-              </motion.p>
-              <motion.p
-                className={styles.typesIntroRight}
-                initial="hidden"
-                whileInView="show"
-                variants={fadeUp}
-                viewport={VIEWPORT}
-              >
-                The three main types:
-              </motion.p>
+                <p className={styles.combinedRightLabel}>Classification</p>
+                <h3 className={styles.typesRightHeading}>Types of Eye Bags</h3>
+              </motion.div>
 
               <motion.div
                 className={styles.combinedCards}
@@ -441,13 +433,13 @@ export default function EyeBagsPage() {
                     className={styles.typeCardCombined}
                     variants={fadeUp}
                   >
-                    <span className={styles.typeNumCombined} aria-hidden="true">
-                      {type.num}
-                    </span>
-                    <div className={styles.typeCardBody}>
+                    <div className={styles.typeCardHeader}>
+                      <span className={styles.typeNumCombined} aria-hidden="true">
+                        {type.num}
+                      </span>
                       <h3 className={styles.typeTitleCombined}>{type.title}</h3>
-                      <p className={styles.typeDescCombined}>{type.desc}</p>
                     </div>
+                    <p className={styles.typeDescCombined}>{type.desc}</p>
                   </motion.div>
                 ))}
               </motion.div>

@@ -295,85 +295,112 @@
   justify-content: center;
 }
 
+/* Types section header */
+.typesRightHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: var(--space-5);
+}
+
 .combinedRightLabel {
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-text-muted);
-  margin: 0 0 8px;
+  margin: 0;
 }
 
-.typesIntroRight {
-  font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
-  line-height: 1.6;
-  color: rgba(0 0 0 / 0.64);
-  margin: 0 0 24px;
+.typesRightHeading {
+  font-size: clamp(1.375rem, 2.5vw, 1.625rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text-dark);
+  margin: 0;
+  line-height: 1.15;
 }
 
 /* 3-column grid for type cards */
 .combinedCards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-3);
+  gap: var(--space-4);
 }
 
-/* Type cards in combined section */
+/* Type cards in combined section - redesigned */
 .typeCardCombined {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: clamp(var(--space-3), 2vw, var(--space-4));
-  background: #f8f9fa;
-  border: 1px solid rgba(0 0 0 / 0.06);
-  border-radius: 16px;
+  gap: var(--space-3);
+  padding: clamp(var(--space-4), 3vw, var(--space-5));
+  background: #fff;
+  border: 1px solid rgba(0 0 0 / 0.08);
+  border-radius: 20px;
+  box-shadow:
+    0 2px 4px rgba(0 0 0 / 0.04),
+    0 8px 16px rgba(0 0 0 / 0.08);
   position: relative;
   overflow: hidden;
   transition: all 300ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Top accent bar */
 .typeCardCombined::before {
   content: '';
   position: absolute;
-  top: 0; left: 12px; right: 12px; height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(0 0 0 / 0.04) 40%,
-    rgba(0 0 0 / 0.04) 60%,
-    transparent
-  );
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, rgba(0 0 0 / 0.08), rgba(0 0 0 / 0.04));
+  transition: opacity 300ms ease;
 }
 
 .typeCardCombined:hover {
-  background: #f0f2f5;
+  background: #fff;
   border-color: rgba(0 0 0 / 0.12);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0 0 0 / 0.08);
+  transform: translateY(-6px);
+  box-shadow:
+    0 4px 8px rgba(0 0 0 / 0.06),
+    0 16px 32px rgba(0 0 0 / 0.12);
+}
+
+.typeCardCombined:hover::before {
+  opacity: 1;
+}
+
+/* Card header with number and title */
+.typeCardHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
 }
 
 .typeNumCombined {
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 800;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(0 0 0 / 0.25);
-  line-height: 1;
+  color: rgba(0 0 0 / 0.2);
+  line-height: 1.2;
+  flex-shrink: 0;
+  padding-top: 2px;
 }
 
 .typeTitleCombined {
-  font-size: clamp(0.9375rem, 1.5vw, 1rem);
+  font-size: clamp(1rem, 1.6vw, 1.125rem);
   font-weight: 800;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
   color: var(--color-text-dark);
   margin: 0;
-  line-height: 1.25;
+  line-height: 1.2;
 }
 
 .typeDescCombined {
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   line-height: 1.6;
-  color: rgba(0 0 0 / 0.64);
+  color: rgba(0 0 0 / 0.6);
   margin: 0;
 }
 
@@ -1285,8 +1312,13 @@
     padding-top: var(--space-4);
   }
 
+  .typesRightHeading {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+  }
+
   .combinedCards {
     grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
   }
 
   /* Types: stack cards single column */
