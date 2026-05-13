@@ -370,73 +370,89 @@ export default function EyeBagsPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.overviewTypesSection}>
         <Container>
-          {/* Overview content */}
-          <motion.div
-            className={styles.overviewGrid}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.div className={styles.overviewLabel} variants={fadeUp}>
-              <p className={styles.eyebrowDark}>About This Condition</p>
-            </motion.div>
-
-            <div className={styles.overviewBody}>
-              <motion.h2 className={styles.overviewHeading} variants={fadeUp}>
-                What are Eye Bags?
-              </motion.h2>
-              <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Under-eye bags are mild puffiness or swelling under the eyes.
-                They appear when the muscles and tissues supporting the eyelids
-                weaken with age. Fat can move downwards, and fluid may build up,
-                making the eyes look tired.
-              </motion.p>
+          <div className={styles.combinedBody}>
+            {/* Left column: Overview */}
+            <div className={styles.combinedLeft}>
+              <div className={styles.combinedLeftTop}>
+                <motion.p
+                  className={styles.eyebrowDark}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  About This Condition
+                </motion.p>
+                <motion.h2
+                  className={styles.combinedHeading}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  What are Eye Bags?
+                </motion.h2>
+                <motion.p
+                  className={styles.combinedDesc}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  Under-eye bags are mild puffiness or swelling under the eyes.
+                  They appear when the muscles and tissues supporting the eyelids
+                  weaken with age. Fat can move downwards, and fluid may build up,
+                  making the eyes look tired.
+                </motion.p>
+              </div>
             </div>
-          </motion.div>
 
-          {/* Divider */}
-          <div className={styles.overviewDivider} />
-
-          {/* Types content */}
-          <motion.div
-            className={styles.typesWrapper}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <div className={styles.typesHeader}>
-              <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+            {/* Right column: Types */}
+            <div className={styles.combinedRight}>
+              <motion.p
+                className={styles.combinedRightLabel}
+                initial="hidden"
+                whileInView="show"
+                variants={fadeUp}
+                viewport={VIEWPORT}
+              >
                 Classification
               </motion.p>
-              <motion.h2 className={styles.headingDark} variants={fadeUp}>
-                Types of Eye Bags
-              </motion.h2>
-            </div>
+              <motion.p
+                className={styles.typesIntroRight}
+                initial="hidden"
+                whileInView="show"
+                variants={fadeUp}
+                viewport={VIEWPORT}
+              >
+                The three main types:
+              </motion.p>
 
-            <motion.p className={styles.typesIntro} variants={fadeUp}>
-              The three main types of under-eye bags are:
-            </motion.p>
-
-            <div className={styles.typesCardsRow}>
-              {EYE_BAG_TYPES.map((type) => (
-                <motion.div
-                  key={type.num}
-                  className={styles.typeCardLight}
-                  variants={fadeUp}
-                >
-                  <span className={styles.typeNumLight} aria-hidden="true">
-                    {type.num}
-                  </span>
-                  <div className={styles.typeCardBody}>
-                    <h3 className={styles.typeTitle}>{type.title}</h3>
-                    <p className={styles.typeDesc}>{type.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
+              <motion.div
+                className={styles.combinedCards}
+                variants={stagger(0.1)}
+                initial="hidden"
+                whileInView="show"
+                viewport={VIEWPORT}
+              >
+                {EYE_BAG_TYPES.map((type) => (
+                  <motion.div
+                    key={type.num}
+                    className={styles.typeCardCombined}
+                    variants={fadeUp}
+                  >
+                    <span className={styles.typeNumCombined} aria-hidden="true">
+                      {type.num}
+                    </span>
+                    <div className={styles.typeCardBody}>
+                      <h3 className={styles.typeTitleCombined}>{type.title}</h3>
+                      <p className={styles.typeDescCombined}>{type.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
             </div>
-          </motion.div>
+          </div>
         </Container>
       </Section>
 

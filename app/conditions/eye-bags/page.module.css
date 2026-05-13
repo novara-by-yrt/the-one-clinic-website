@@ -246,61 +246,135 @@
   background: #fff !important;
 }
 
-.overviewGrid {
+/* 2-column combined layout */
+.combinedBody {
   display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: var(--space-6);
-  align-items: start;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: stretch;
 }
 
-.overviewLabel {
-  padding-top: 6px;
-}
-
-.overviewBody {
+/* Left column: Overview content */
+.combinedLeft {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  padding-right: clamp(var(--space-7), 6vw, 88px);
+  border-right: 1px solid rgba(0 0 0 / 0.07);
+  justify-content: center;
 }
 
-.overviewHeading {
-  font-size: clamp(1.5rem, 3vw, var(--text-h2));
-  font-weight: var(--fw-bold);
+.combinedLeftTop {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.combinedHeading {
+  font-size: clamp(1.75rem, 3.5vw, var(--text-h2));
+  font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--color-text-dark);
-  line-height: var(--lh-tight);
-  margin: 0;
+  line-height: 1.15;
+  margin: 0 0 16px;
 }
 
-.overviewPara {
-  font-size: var(--text-body);
+.combinedDesc {
+  font-size: 1rem;
   line-height: 1.75;
   color: var(--color-text-muted);
   margin: 0;
+  max-width: 480px;
 }
 
-/* Divider between sections */
-.overviewDivider {
-  height: 1px;
-  background: rgba(0 0 0 / 0.08);
-  margin: var(--space-8) 0;
-}
-
-/* Types section wrapper */
-.typesWrapper {
+/* Right column: Types cards */
+.combinedRight {
   display: flex;
   flex-direction: column;
-  gap: var(--space-5);
+  gap: var(--space-3);
+  padding-left: clamp(var(--space-7), 6vw, 88px);
+  justify-content: center;
 }
 
-.typesHeader {
+.combinedRightLabel {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0 0 8px;
+}
+
+.typesIntroRight {
+  font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
+  line-height: 1.6;
+  color: rgba(0 0 0 / 0.64);
+  margin: 0 0 24px;
+}
+
+/* 3-column grid for type cards */
+.combinedCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+/* Type cards in combined section */
+.typeCardCombined {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: 12px;
+  padding: clamp(var(--space-3), 2vw, var(--space-4));
+  background: #f8f9fa;
+  border: 1px solid rgba(0 0 0 / 0.06);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: all 300ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.typesHeader .headingDark {
-  margin: 0 0 16px;
+.typeCardCombined::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 12px; right: 12px; height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(0 0 0 / 0.04) 40%,
+    rgba(0 0 0 / 0.04) 60%,
+    transparent
+  );
+}
+
+.typeCardCombined:hover {
+  background: #f0f2f5;
+  border-color: rgba(0 0 0 / 0.12);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0 0 0 / 0.08);
+}
+
+.typeNumCombined {
+  font-size: 0.625rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(0 0 0 / 0.25);
+  line-height: 1;
+}
+
+.typeTitleCombined {
+  font-size: clamp(0.9375rem, 1.5vw, 1rem);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  color: var(--color-text-dark);
+  margin: 0;
+  line-height: 1.25;
+}
+
+.typeDescCombined {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: rgba(0 0 0 / 0.64);
+  margin: 0;
 }
 
 /* ════════════════════════════════════════════════════
@@ -312,13 +386,6 @@
   gap: var(--space-4);
 }
 
-.typesIntro {
-  font-size: clamp(0.9375rem, 1.6vw, 1.0625rem);
-  line-height: 1.7;
-  color: rgba(0 0 0 / 0.6);
-  text-align: left;
-  margin: 0;
-}
 
 .typesCardsRow {
   display: grid;
@@ -391,70 +458,6 @@
   margin: 0;
 }
 
-/* Light variant type cards (for combined overview section) */
-.typeCardLight {
-  display: flex;
-  align-items: flex-start;
-  gap: clamp(var(--space-2), 2vw, var(--space-3));
-  padding: clamp(var(--space-3), 2.5vw, var(--space-4));
-  background: #f8f9fa;
-  border: 1px solid rgba(0 0 0 / 0.06);
-  border-radius: 16px;
-  position: relative;
-  overflow: hidden;
-  transition: all 300ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.typeCardLight::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 16px; right: 16px; height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(0 0 0 / 0.04) 40%,
-    rgba(0 0 0 / 0.04) 60%,
-    transparent
-  );
-}
-
-.typeCardLight:hover {
-  background: #f0f2f5;
-  border-color: rgba(0 0 0 / 0.12);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0 0 0 / 0.08);
-}
-
-.typeNumLight {
-  font-size: 0.625rem;
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  color: rgba(0 0 0 / 0.25);
-  flex-shrink: 0;
-  padding-top: 3px;
-}
-
-.typeCardLight .typeCardBody {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.typeCardLight .typeTitle {
-  font-size: clamp(1rem, 1.8vw, 1.125rem);
-  font-weight: var(--fw-bold);
-  letter-spacing: -0.015em;
-  color: var(--color-text-dark);
-  margin: 0;
-  line-height: 1.25;
-}
-
-.typeCardLight .typeDesc {
-  font-size: var(--text-small);
-  line-height: 1.65;
-  color: rgba(0 0 0 / 0.64);
-  margin: 0;
-}
 
 /* ════════════════════════════════════════════════════
    EYE BAGS CAUSES
@@ -1247,7 +1250,7 @@
    RESPONSIVE
 ════════════════════════════════════════════════════ */
 
-/* Tablet — stack hero image below text; types image scales  */
+/* Tablet — stack combined layout vertically */
 @media (max-width: 900px) {
   .heroInner {
     grid-template-columns: 1fr;
@@ -1264,18 +1267,31 @@
     width: 100%;
   }
 
+  /* Combined layout: stack vertically */
+  .combinedBody {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .combinedLeft {
+    padding-right: 0;
+    padding-bottom: var(--space-4);
+    border-right: none;
+    border-bottom: 1px solid rgba(0 0 0 / 0.07);
+  }
+
+  .combinedRight {
+    padding-left: 0;
+    padding-top: var(--space-4);
+  }
+
+  .combinedCards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   /* Types: stack cards single column */
   .typesCardsRow {
     grid-template-columns: 1fr;
-  }
-
-  .overviewGrid {
-    grid-template-columns: 1fr;
-    gap: clamp(var(--space-3), 3vw, var(--space-4));
-  }
-
-  .overviewDivider {
-    margin: var(--space-6) 0;
   }
 
   .causesGrid {
@@ -1364,6 +1380,10 @@
 }
 
 @media (max-width: 640px) {
+  .combinedCards {
+    grid-template-columns: 1fr;
+  }
+
   .causesGrid {
     grid-template-columns: 1fr;
     gap: clamp(var(--space-3), 3vw, var(--space-4));
