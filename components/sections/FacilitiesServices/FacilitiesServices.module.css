@@ -1,8 +1,14 @@
+/* ── Section — dark canvas ──────────────────────────────── */
+.section {
+  background: #0a0a0a;
+}
+
+/* ── Header ─────────────────────────────────────────────── */
 .header {
   text-align: center;
-  max-width: 640px;
+  max-width: 680px;
   margin-inline: auto;
-  margin-bottom: clamp(var(--space-4), 3.5vw, var(--space-6));
+  margin-bottom: clamp(var(--space-5), 4vw, var(--space-7));
   display: flex;
   flex-direction: column;
   gap: clamp(var(--space-2), 1.5vw, var(--space-3));
@@ -14,15 +20,15 @@
   justify-content: center;
   gap: 7px;
   margin-inline: auto;
-  background: rgba(0 0 0 / 0.05);
-  border: 1px solid rgba(0 0 0 / 0.1);
+  background: rgba(255 255 255 / 0.08);
+  border: 1px solid rgba(255 255 255 / 0.15);
   border-radius: 100px;
-  padding: 6px 16px;
-  font-size: var(--text-small);
-  font-weight: var(--fw-medium);
-  letter-spacing: 0.1em;
+  padding: 7px 18px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(0 0 0 / 0.6);
+  color: rgba(255 255 255 / 0.6);
   width: fit-content;
 }
 
@@ -33,50 +39,64 @@
   height: 5px;
   border-radius: 50%;
   background: currentColor;
-  opacity: 0.65;
   flex-shrink: 0;
 }
 
 .heading {
-  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-size: clamp(2rem, 4vw, 2.75rem);
   font-weight: var(--fw-bold);
-  letter-spacing: -0.02em;
-  color: var(--color-text-dark);
-  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: #fff;
+  line-height: 1.18;
 }
 
 .subtext {
-  color: rgba(0 0 0 / 0.7);
-  line-height: 1.7;
+  color: rgba(255 255 255 / 0.65);
+  line-height: 1.72;
   font-size: 1rem;
-  font-weight: 400;
 }
 
-/* ── Services grid ── */
+/* ── Services grid ──────────────────────────────────────── */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: clamp(var(--space-3), 2.5vw, var(--space-4));
-  margin-bottom: clamp(var(--space-4), 3.5vw, var(--space-6));
+  margin-bottom: clamp(var(--space-5), 4vw, var(--space-7));
   align-items: stretch;
 }
 
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
   padding: clamp(var(--space-5), 4vw, var(--space-6));
-  border: 1px solid rgba(0 0 0 / 0.08);
-  border-radius: var(--radius-lg);
-  background: #fff;
-  min-height: 320px;
-  transition: all 0.25s ease;
+  border: 1px solid rgba(255 255 255 / 0.08);
+  border-radius: 20px;
+  background: rgba(255 255 255 / 0.03);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255 255 255 / 0.04) 0%, transparent 55%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .card:hover {
-  border-color: rgba(0 0 0 / 0.15);
-  box-shadow: 0 12px 40px rgba(0 0 0 / 0.1);
+  border-color: rgba(255 255 255 / 0.2);
+  background: rgba(255 255 255 / 0.06);
   transform: translateY(-6px);
+}
+
+.card:hover::before {
+  opacity: 1;
 }
 
 .cardTop {
@@ -86,69 +106,89 @@
 }
 
 .number {
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.1em;
-  color: rgba(0 0 0 / 0.5);
-  transition: color 0.25s ease;
+  color: rgba(255 255 255 / 0.3);
+  transition: color 0.3s ease;
 }
 
 .card:hover .number {
-  color: var(--color-text-dark);
+  color: rgba(255 255 255 / 0.7);
 }
 
 .arrow {
-  font-size: 1.25rem;
-  color: rgba(0 0 0 / 0.5);
-  transition: all 0.25s ease;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(255 255 255 / 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255 255 255 / 0.4);
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
 .card:hover .arrow {
-  color: var(--color-text-dark);
-  transform: translate(4px, -4px);
+  background: #fff;
+  border-color: #fff;
+  color: #0a0a0a;
+  transform: translate(2px, -2px);
 }
 
 .cardTitle {
   font-size: 1.1875rem;
-  font-weight: 650;
-  letter-spacing: -0.01em;
-  color: var(--color-text-dark);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
   line-height: 1.3;
 }
 
 .cardDesc {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: rgba(0 0 0 / 0.7);
+  font-size: 0.9375rem;
+  line-height: 1.72;
+  color: rgba(255 255 255 / 0.6);
   flex: 1;
 }
 
-/* ── Team trust block ── */
+/* ── Team trust block ───────────────────────────────────── */
 .teamTrust {
-  border: 1px solid rgba(0 0 0 / 0.08);
-  border-radius: var(--radius-lg);
-  padding: clamp(var(--space-6), 5vw, var(--space-8));
-  background: rgba(0 0 0 / 0.02);
+  border: 1px solid rgba(255 255 255 / 0.1);
+  border-radius: 20px;
+  padding: clamp(var(--space-5), 5vw, var(--space-7));
+  background: rgba(255 255 255 / 0.04);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 20px rgba(0 0 0 / 0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.teamTrust::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255 255 255 / 0.04) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .trustContent {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(var(--space-3), 3vw, var(--space-4));
+  gap: clamp(var(--space-3), 3vw, var(--space-5));
   text-align: center;
-  max-width: 700px;
+  max-width: 720px;
+  position: relative;
 }
 
 .trustQuote {
-  font-size: clamp(1.0625rem, 2.5vw, 1.25rem);
-  line-height: 1.7;
-  color: var(--color-text-dark);
-  font-weight: 600;
+  font-size: clamp(1.0625rem, 2.2vw, 1.25rem);
+  line-height: 1.72;
+  color: rgba(255 255 255 / 0.85);
+  font-weight: 500;
   font-style: italic;
 }
 
@@ -156,19 +196,22 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 0.85rem;
-  font-weight: var(--fw-medium);
-  letter-spacing: 0.08em;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-text-dark);
+  color: #fff;
   text-decoration: none;
-  border-bottom: 2px solid rgba(0 0 0 / 0.3);
-  padding-bottom: 6px;
-  transition: all 0.25s ease;
+  padding: 12px 28px;
+  border: 1.5px solid rgba(255 255 255 / 0.25);
+  border-radius: 100px;
+  transition: all 0.28s ease;
 }
 
 .trustCta:hover {
-  border-color: var(--color-text-dark);
+  background: #fff;
+  color: #0a0a0a;
+  border-color: #fff;
   gap: 16px;
 }
 
@@ -180,30 +223,16 @@
   transform: translateX(4px);
 }
 
-/* ── Responsive ── */
+/* ── Responsive ─────────────────────────────────────────── */
 @media (max-width: 1024px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .card {
-    min-height: auto;
-  }
-}
-
 @media (max-width: 640px) {
   .grid {
     grid-template-columns: 1fr;
-  }
-
-  .card {
-    padding: var(--space-5);
   }
 
   .teamTrust {

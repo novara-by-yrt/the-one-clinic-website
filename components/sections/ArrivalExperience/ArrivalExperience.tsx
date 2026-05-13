@@ -58,7 +58,7 @@ const CARDS = [
 
 export default function ArrivalExperience() {
   return (
-    <Section variant="light" data-section-theme="light">
+    <Section variant="light" data-section-theme="light" className={styles.section}>
       <Container>
         {/* Header */}
         <motion.div

@@ -42,7 +42,7 @@ const SERVICES = [
 
 export default function FacilitiesServices() {
   return (
-    <Section variant="light" data-section-theme="light">
+    <Section variant="dark" data-section-theme="dark" className={styles.section}>
       <Container>
         {/* Header */}
         <motion.div
@@ -77,7 +77,11 @@ export default function FacilitiesServices() {
             <motion.div key={s.number} className={styles.card} variants={fadeUp}>
               <div className={styles.cardTop}>
                 <span className={styles.number}>{s.number}</span>
-                <span className={styles.arrow} aria-hidden="true">↗</span>
+                <span className={styles.arrow} aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M2.5 11.5L11.5 2.5M11.5 2.5H5M11.5 2.5V9" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </span>
               </div>
               <h3 className={styles.cardTitle}>{s.title}</h3>
               <p className={styles.cardDesc}>{s.description}</p>
