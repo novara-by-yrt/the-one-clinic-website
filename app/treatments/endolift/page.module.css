@@ -577,6 +577,10 @@
 /* ════════════════════════════════════════════════════
    TREATMENT JOURNEY  —  vertical timeline
 ════════════════════════════════════════════════════ */
+.journeySection {
+  background-color: #f5f5f5;
+}
+
 .journeyList {
   list-style: none;
   padding: 0;

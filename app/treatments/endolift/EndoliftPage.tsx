@@ -597,7 +597,7 @@ export default function EndoliftPage() {
       {/* ════════════════════════════════════════
           4. TREATMENT JOURNEY
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="light" data-section-theme="light" className={styles.journeySection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
