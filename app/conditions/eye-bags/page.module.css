@@ -1343,19 +1343,26 @@
   /* Combined layout: stack vertically */
   .combinedBody {
     grid-template-columns: 1fr;
-    gap: var(--space-6);
+    gap: var(--space-3);
   }
 
   .combinedLeft {
     padding-right: 0;
-    padding-bottom: var(--space-4);
+    padding-bottom: var(--space-3);
     border-right: none;
     border-bottom: 1px solid rgba(0 0 0 / 0.07);
+    justify-content: flex-start;
   }
 
   .combinedRight {
     padding-left: 0;
-    padding-top: var(--space-4);
+    padding-top: var(--space-2);
+    justify-content: flex-start;
+    gap: var(--space-2);
+  }
+
+  .typesRightHeader {
+    margin-bottom: var(--space-2);
   }
 
   .typesRightHeading {
