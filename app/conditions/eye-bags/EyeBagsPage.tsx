@@ -750,7 +750,7 @@ export default function EyeBagsPage() {
       {/* ════════════════════════════════════════
           11. WHY CHOOSE THE ONE CLINIC
       ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
+      <Section variant="light" data-section-theme="light" className={styles.whySection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -759,10 +759,10 @@ export default function EyeBagsPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
               Why Us
             </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
               Why Choose The One Clinic For Eye Bags Treatment
             </motion.h2>
           </motion.div>
@@ -792,8 +792,8 @@ export default function EyeBagsPage() {
       {/* ════════════════════════════════════════
           12. FAQ
       ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
+      <Section variant="light" data-section-theme="light" className={styles.faqSection}>
+        <Container className={styles.faqInner}>
           <motion.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
@@ -801,8 +801,8 @@ export default function EyeBagsPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>FAQ</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
               Frequently Asked Questions
             </motion.h2>
           </motion.div>
@@ -814,8 +814,17 @@ export default function EyeBagsPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <Accordion items={FAQS} theme="dark" />
+            <Accordion items={FAQS} theme="light" />
           </motion.div>
+
+          <div className={styles.faqToggleWrap}>
+            <button className={styles.faqToggleBtn}>
+              View All Questions
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+          </div>
         </Container>
       </Section>
 
