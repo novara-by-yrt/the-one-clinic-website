@@ -61,7 +61,7 @@ const AT_A_GLANCE = [
   },
   {
     label: 'Downtime',
-    value: 'Minimal — same day',
+    value: 'Minimal, same day',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
@@ -119,7 +119,7 @@ const BENEFITS = [
   },
   {
     title: 'Natural-Looking Finish',
-    desc: 'When administered by an experienced clinician, results look completely natural. The goal is always to preserve facial expression while softening lines — never a frozen appearance.',
+    desc: 'When administered by an experienced clinician, results look completely natural. The goal is always to preserve facial expression while softening lines, never a frozen appearance.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -209,12 +209,12 @@ const FAQS = [
   {
     question: 'What are wrinkle relaxing injections?',
     answer:
-      'Wrinkle relaxing injections use a purified protein (botulinum toxin) to temporarily relax the muscles responsible for dynamic wrinkles — lines caused by facial expression such as frowning, squinting, and raising the eyebrows. Treatment smooths these lines while preserving natural facial movement.',
+      'Wrinkle relaxing injections use a purified protein (botulinum toxin) to temporarily relax the muscles responsible for dynamic wrinkles (lines caused by facial expression such as frowning, squinting, and raising the eyebrows). Treatment smooths these lines while preserving natural facial movement.',
   },
   {
     question: 'Which areas can be treated?',
     answer:
-      'The most commonly treated areas are the forehead lines, frown lines (between the brows), and crow\'s feet (around the eyes). Other areas including bunny lines, lip lines, chin dimpling, neck bands, jaw slimming, and excessive sweating can also be addressed — all discussed at your consultation.',
+      'The most commonly treated areas are the forehead lines, frown lines (between the brows), and crow\'s feet (around the eyes). Other areas including bunny lines, lip lines, chin dimpling, neck bands, jaw slimming, and excessive sweating can also be addressed, all discussed at your consultation.',
   },
   {
     question: 'How long do results last?',
@@ -373,7 +373,7 @@ export default function WrinkleRelaxingPage() {
                 <p className={styles.combinedDesc}>
                   Wrinkle relaxing injections use a purified botulinum toxin to gently relax the
                   facial muscles that cause dynamic expression lines. The result is smoother skin
-                  across the forehead, between the brows, and around the eyes — with a natural,
+                  across the forehead, between the brows, and around the eyes, with a natural
                   rested appearance that never looks overdone. At The One Clinic, every treatment
                   is precisely tailored to your facial anatomy by our expert doctors.
                 </p>

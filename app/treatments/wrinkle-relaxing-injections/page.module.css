@@ -509,6 +509,11 @@
   padding-top: var(--space-7);
 }
 
+/* In the What Is section the checklist is removed so tighten the gap */
+.whatIsContent .combinedCtaWrapper {
+  padding-top: var(--space-4);
+}
+
 .combinedCta {
   display: inline-flex;
   align-items: center;
