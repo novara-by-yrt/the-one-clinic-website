@@ -252,19 +252,57 @@
    SHARED TYPOGRAPHY
 ════════════════════════════════════════════════════ */
 .eyebrowDark {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(0 0 0 / 0.05);
+  border: 1px solid rgba(0 0 0 / 0.10);
+  border-radius: 100px;
+  padding: 5px 14px;
   font-size: var(--text-small);
   font-weight: var(--fw-medium);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-text-muted);
+  margin: 0;
+}
+
+.eyebrowDark::before {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.5;
+  flex-shrink: 0;
 }
 
 .eyebrowLight {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255 255 255 / 0.07);
+  border: 1px solid rgba(255 255 255 / 0.16);
+  border-radius: 100px;
+  padding: 5px 14px;
   font-size: var(--text-small);
   font-weight: var(--fw-medium);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255 255 255 / 0.35);
+  color: rgba(255 255 255 / 0.6);
+  margin: 0;
+}
+
+.eyebrowLight::before {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.65;
+  flex-shrink: 0;
 }
 
 .headingDark {
@@ -291,18 +329,18 @@
 .sectionHeader {
   display: flex;
   flex-direction: column;
-  gap: var(--space-1);
+  gap: var(--space-2);
   max-width: 560px;
-  margin-bottom: var(--space-5);
+  margin-bottom: clamp(var(--space-5), 4vw, var(--space-7));
 }
 
 .sectionHeaderCentre {
   display: flex;
   flex-direction: column;
-  gap: var(--space-1);
+  gap: var(--space-2);
   align-items: center;
   text-align: center;
-  margin-bottom: var(--space-5);
+  margin-bottom: clamp(var(--space-5), 4vw, var(--space-7));
 }
 
 /* ════════════════════════════════════════════════════
@@ -366,6 +404,7 @@
   border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
+  min-height: 190px;
   transition: transform 0.28s ease, box-shadow 0.28s ease;
 }
 
@@ -538,6 +577,10 @@
 /* ════════════════════════════════════════════════════
    TREATMENT JOURNEY  —  vertical timeline
 ════════════════════════════════════════════════════ */
+.journeySection {
+  background-color: #f5f5f5;
+}
+
 .journeyList {
   list-style: none;
   padding: 0;
@@ -817,6 +860,35 @@
 /* ════════════════════════════════════════════════════
    FAQ
 ════════════════════════════════════════════════════ */
+.faqSection {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(64px, 8vw, 104px);
+  background-color: #f5f5f5;
+}
+
+.faqInner {
+  position: relative;
+  z-index: 2;
+}
+
+.faqSection .sectionHeader {
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.faqSection .eyebrowLight {
+  background: #000;
+  border-color: #000;
+  color: #fff;
+}
+
+.faqSection .headingLight {
+  color: #000;
+}
+
 .faqBody {
   max-width: 740px;
   margin: 0 auto;
@@ -832,22 +904,21 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 11px 28px;
-  background: rgba(255 255 255 / 0.07);
-  border: 1px solid rgba(255 255 255 / 0.14);
+  padding: 12px 32px;
+  background: #000;
+  border: 2px solid #000;
   border-radius: 100px;
-  color: rgba(255 255 255 / 0.82);
+  color: #fff;
   font-size: 0.9375rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .faqToggleBtn:hover {
-  background: rgba(255 255 255 / 0.12);
-  border-color: rgba(255 255 255 / 0.25);
-  color: #fff;
+  background: #1a1a1a;
+  transform: translateY(-2px);
 }
 
 /* ════════════════════════════════════════════════════
@@ -1121,28 +1192,40 @@
 }
 
 /* ════════════════════════════════════════════════════
-   CLINIC INTRO (Best Endolift Leicester)
+   CLINIC INTRO
 ════════════════════════════════════════════════════ */
+.clinicIntroSection {
+  padding-block: clamp(var(--space-4), 3vw, var(--space-6)) !important;
+}
+
 .clinicIntroBody {
+  background: #1a1a1a;
+  border: 1px solid rgba(255 255 255 / 0.1);
+  border-radius: 16px;
+  padding: clamp(var(--space-4), 3vw, var(--space-5));
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0;
+  gap: clamp(var(--space-4), 3.5vw, var(--space-5));
   align-items: center;
+  box-shadow: 0 4px 16px rgba(0 0 0 / 0.3);
+  transition: all 0.3s ease;
+}
+
+.clinicIntroBody:hover {
+  box-shadow: 0 12px 32px rgba(0 0 0 / 0.4);
+  transform: translateY(-4px);
 }
 
 .clinicIntroLeft {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
-  padding-right: clamp(var(--space-6), 6vw, 80px);
-  border-right: 1px solid rgba(0 0 0 / 0.07);
 }
 
 .clinicIntroDesc {
-  padding-left: clamp(var(--space-6), 6vw, 80px);
   font-size: 1.0625rem;
   line-height: 1.82;
-  color: var(--color-text-muted);
+  color: rgba(255 255 255 / 0.6);
   margin: 0;
 }
 
@@ -2186,10 +2269,10 @@
   /* Standalone At a Glance: 2-col on mobile */
   .glanceStandaloneGrid { grid-template-columns: repeat(2, 1fr); }
 
-  /* Clinic intro: stack */
+  /* Clinic intro: stack on mobile */
   .clinicIntroBody { grid-template-columns: 1fr; }
-  .clinicIntroLeft { padding-right: 0; border-right: none; padding-bottom: var(--space-4); border-bottom: 1px solid rgba(0 0 0 / 0.08); }
-  .clinicIntroDesc { padding-left: 0; padding-top: var(--space-1); }
+  .clinicIntroLeft { padding-bottom: var(--space-4); border-bottom: 1px solid rgba(255 255 255 / 0.1); }
+  .clinicIntroDesc { padding-top: var(--space-1); }
 
   /* Why Choose The One Clinic: 1-col */
   .clinicReasonsGrid { grid-template-columns: 1fr 1fr; }
