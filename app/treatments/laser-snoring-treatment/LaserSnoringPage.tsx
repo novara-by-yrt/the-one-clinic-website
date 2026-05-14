@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Section                from '@/components/ui/Section';
@@ -15,19 +17,11 @@ import FinalCTA               from '@/components/sections/FinalCTA';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
 
-const BENEFITS = [
+/* ── Static data ──────────────────────────────────────────────── */
+const AT_A_GLANCE = [
   {
-    title: 'Non-Surgical & Comfortable',
-    desc: 'Laser snoring treatment is a quick, minimally invasive procedure requiring no general anaesthetic. Most patients tolerate the treatment well with minimal discomfort.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'Fast Treatment, Minimal Downtime',
-    desc: 'The procedure typically takes under 30 minutes and most patients return to their daily routine immediately, making it ideal for busy schedules.',
+    label: 'Treatment Duration',
+    value: '20 to 30 minutes',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -36,8 +30,105 @@ const BENEFITS = [
     ),
   },
   {
-    title: 'Improves Sleep Quality',
-    desc: 'By tightening the soft palate tissue, laser treatment reduces the vibration that causes snoring, helping both you and your partner enjoy better, uninterrupted sleep.',
+    label: 'Sessions Recommended',
+    value: '1 to 3 sessions',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="1 4 1 10 7 10"/>
+        <path d="M3.51 15a9 9 0 1 0 .49-3.1"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'First Results',
+    value: 'Immediate to 2 weeks',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+        <polyline points="17 6 23 6 23 12"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Full Results Timeline',
+    value: '2 to 3 months',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+        <path d="M9 12l2 2 4-4"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Downtime Required',
+    value: 'None',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+        <line x1="16" y1="2" x2="16" y2="6"/>
+        <line x1="8" y1="2" x2="8" y2="6"/>
+        <line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Treatment Investment',
+    value: 'From £300',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <line x1="12" y1="1" x2="12" y2="23"/>
+        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+      </svg>
+    ),
+  },
+];
+
+const JOURNEY_STEPS = [
+  {
+    n: '01',
+    title: 'Comprehensive Sleep Assessment and Consultation',
+    desc: 'Your journey begins with a detailed consultation where we assess your snoring severity, sleep quality impact, medical history, and any underlying sleep apnoea concerns. We evaluate your palatal anatomy using advanced visualisation techniques and discuss whether laser snoring treatment is the right solution for you. A personalised treatment plan is created based on your specific needs.',
+  },
+  {
+    n: '02',
+    title: 'Precise Preparation and Anaesthetic Application',
+    desc: 'Your throat is gently cleansed and inspected. A topical anaesthetic spray is applied to the soft palate and surrounding tissues, ensuring complete comfort during treatment. The laser parameters are calibrated specifically for your palatal anatomy. You remain fully conscious and comfortable throughout, able to communicate with our clinical team.',
+  },
+  {
+    n: '03',
+    title: 'Laser Energy Delivery and Tissue Tightening',
+    desc: 'Our advanced laser delivers precisely controlled energy to the soft palate and uvula tissues. The laser gently heats the collagen fibres, causing them to contract and tighten. Simultaneously, the procedure stimulates collagen remodelling, which continues long after treatment. Most patients feel only a gentle warmth with no pain or significant discomfort.',
+  },
+  {
+    n: '04',
+    title: 'Recovery, Aftercare and Progressive Results',
+    desc: 'Recovery is immediate with zero downtime. You can return to work, activities, and normal eating immediately, though soft foods are recommended for the first few days. Results begin within days, with continued improvement over 2 to 3 months as collagen remodelling occurs. Some patients notice dramatic snoring reduction after a single session, while others benefit from 2 to 3 sessions for optimal longevity.',
+  },
+];
+
+const BENEFITS = [
+  {
+    title: 'Non-Surgical Solution Without General Anaesthesia',
+    desc: 'Treat snoring safely without invasive surgery, scars, or general anaesthesia. The procedure is gentle, performed under local topical anaesthetic only, making it dramatically safer and more comfortable than surgical alternatives like UPPP or LAUP.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Immediate Treatment with Zero Downtime',
+    desc: 'The entire procedure takes just 20 to 30 minutes with absolutely no downtime or recovery period. You can return to work, eat normally, exercise, and live your life immediately. No restrictions, no complications, no time away from your daily routine.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Dramatically Improves Sleep Quality for Everyone',
+    desc: 'By reducing or eliminating snoring, you and your partner enjoy uninterrupted, restorative sleep. Better sleep quality leads to improved daytime energy, enhanced focus, better mood, and stronger relationships. Many patients report sleeping better than they have in years.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
@@ -45,336 +136,585 @@ const BENEFITS = [
     ),
   },
   {
-    title: 'Expert-Led Treatment',
-    desc: 'Our experienced clinical team carry out a thorough assessment before treatment to ensure laser snoring therapy is the right solution for your individual needs.',
+    title: 'Precise Laser Technology Targets Root Cause',
+    desc: 'The laser precisely tightens the soft palate and uvula—the exact tissues causing the vibration that produces snoring. This targeted approach addresses the anatomical root cause of snoring rather than masking symptoms, delivering lasting results.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-        <circle cx="9" cy="7" r="4"/>
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        <path d="M12 2L2 7V12C2 16.5 6.5 21 12 21C17.5 21 22 16.5 22 12V7L12 2Z"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Minimal Discomfort with Topical Anaesthetic Only',
+    desc: 'Treatment is remarkably comfortable with only a topical anaesthetic spray applied to the tissues. Most patients experience only mild warmth, no pain, and no significant post-treatment soreness. This is a comfortable, patient-friendly alternative to painful surgical procedures.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+        <path d="M4.5 20.118a7.5 7.5 0 0115 0"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Long-Lasting Results with Proven Efficacy',
+    desc: 'Clinical studies show laser snoring treatment delivers sustained snoring reduction lasting months to years. The collagen remodelling continues long after treatment, progressively improving results. Many patients enjoy snoring-free sleep for 1 to 3 years or longer after a single session.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+        <polyline points="17 6 23 6 23 12"/>
       </svg>
     ),
   },
 ];
 
-const OVERVIEW_POINTS = [
-  'Non-surgical laser procedure targeting the soft palate',
-  'Reduces tissue vibration, the primary cause of snoring',
-  'Minimal downtime with no general anaesthetic required',
-  'No GP referral needed, book directly with our team',
+const ELIGIBILITY = [
+  'Adults experiencing regular snoring affecting sleep quality or relationships, regardless of sleep apnoea status',
+  'Those seeking a non-surgical alternative to invasive procedures like palatoplasty or UPPP surgery',
+  'Individuals with good overall health and realistic expectations about snoring reduction outcomes',
+  'Not suitable for untreated obstructive sleep apnoea, though our team can discuss management options',
+  'Willing to attend follow-up if additional sessions are recommended for optimal, long-lasting results',
 ];
 
-const FAQS = [
+const RESULTS_AND_AFTERCARE = [
+  'Most patients notice immediate snoring reduction within the first week, with continued improvement over 8 weeks',
+  'Sleep quality improvements are often reported within days as snoring decreases and sleep becomes uninterrupted',
+  'Full collagen remodelling and maximum results develop over 8 to 12 weeks as tissue tightening continues progressively',
+  'Soft foods and cool drinks recommended for the first 24 to 48 hours; normal diet resumable immediately',
+  'Avoid smoking, alcohol, and hot foods for 48 hours to optimise healing and maintain treatment effectiveness',
+  'Light activity and exercise can be resumed immediately; no restrictions on normal daily activities',
+  'Results typically last 1 to 3 years, with some patients enjoying snoring-free sleep indefinitely',
+  'Maintenance sessions or touch-up treatments can extend results for those seeking long-term snoring prevention',
+];
+
+const CLINIC_REASONS = [
+  'Expert clinical team with advanced training in laser snoring treatment and sleep medicine',
+  'State-of-the-art laser technology specifically calibrated for precise palatal tissue tightening',
+  'Personalised assessment protocol evaluating snoring severity and underlying sleep issues',
+  'Comfortable, minimally invasive approach with topical anaesthetic and zero surgical recovery',
+  'Flexible treatment scheduling with options for single sessions or multi-session protocols',
+  'Comprehensive aftercare guidance and support ensuring optimal results and patient satisfaction',
+];
+
+const FAQ = [
   {
-    question: 'How does laser snoring treatment work?',
-    answer:
-      'Laser snoring treatment uses a precisely targeted laser to gently tighten the soft palate and uvula tissue. This reduces the tissue laxity that causes vibration during sleep, which is the main source of snoring. The treatment stimulates collagen remodelling, producing a firmer palate over subsequent weeks.',
+    q: 'How does laser snoring treatment actually reduce or eliminate snoring?',
+    a: 'Snoring occurs when tissues in the soft palate and uvula vibrate during sleep as air passes through. Our laser delivers precise heat energy to tighten these tissues, reducing laxity and vibration. Simultaneously, collagen remodelling is stimulated, which continues tightening tissues for weeks and months after treatment, progressively improving snoring reduction.',
   },
   {
-    question: 'How many sessions will I need?',
-    answer:
-      'Most patients see a noticeable improvement after a single session, though a course of 2 to 3 treatments is often recommended for optimal and longer-lasting results. Your clinician will advise the most appropriate protocol at your consultation.',
+    q: 'How many laser snoring treatment sessions will I need?',
+    a: 'Most patients see significant snoring improvement after a single 20 to 30-minute session. However, some benefit from 2 to 3 sessions spaced 4 to 6 weeks apart for optimal, longer-lasting results. Your clinician will recommend the ideal protocol during your consultation based on snoring severity and anatomical factors.',
   },
   {
-    question: 'Is laser snoring treatment painful?',
-    answer:
-      'The procedure is well-tolerated by the vast majority of patients. A mild numbing spray is applied beforehand to maximise comfort. Most people experience only a slight warm sensation during treatment and minimal soreness in the days that follow.',
+    q: 'Is laser snoring treatment painful? What will I feel?',
+    a: 'No, treatment is very comfortable. A topical anaesthetic spray is applied beforehand, numbing the soft palate completely. During treatment, you feel only gentle warmth with no pain. Post-treatment discomfort is minimal, with most patients experiencing only mild throat soreness for a day or two, easily managed with paracetamol if needed.',
   },
   {
-    question: 'Do I need a referral for laser snoring treatment?',
-    answer:
-      'No referral is required. You can book directly with The One Clinic. A full assessment is carried out to determine whether laser snoring treatment is the right option for you, taking into account the severity of your snoring and any relevant medical history.',
+    q: 'Is there any downtime or recovery period after treatment?',
+    a: 'Absolutely no downtime. You can return to work, exercise, and all normal activities immediately. Soft foods are recommended for the first 24-48 hours, but you can eat normal diet straight away. No restrictions on activity, no work missed, no life disruption. It\'s one of the most convenient treatments available.',
+  },
+  {
+    q: 'Will laser snoring treatment help my sleep apnoea?',
+    a: 'Laser snoring treatment addresses simple snoring by tightening the soft palate. For obstructive sleep apnoea (OSA), consultation with a sleep specialist is important. While some mild OSA patients may benefit from laser treatment, moderate to severe OSA typically requires dedicated OSA management. Our team can discuss your specific situation.',
+  },
+  {
+    q: 'How long do laser snoring treatment results last?',
+    a: 'Results are long-lasting, with most patients enjoying significant snoring reduction for 1 to 3 years or longer. Some patients remain snoring-free indefinitely after a single session. Results gradually diminish over time as natural tissue relaxation occurs, but additional maintenance sessions can extend the benefit further.',
+  },
+  {
+    q: 'Can I combine laser snoring treatment with other therapies?',
+    a: 'Yes. Some patients combine laser treatment with positional sleep devices, nasal treatments, or weight management for enhanced results. Our team can discuss complementary approaches that work synergistically. However, most patients find laser treatment alone provides excellent snoring reduction.',
+  },
+  {
+    q: 'Do I need a doctor referral to have laser snoring treatment?',
+    a: 'No referral is needed. You can book directly with us. However, if you have concerns about sleep apnoea or other sleep disorders, we can discuss whether pre-treatment sleep evaluation is advisable. Our team provides comprehensive assessment to ensure laser snoring treatment is the right choice for you.',
+  },
+  {
+    q: 'What makes laser snoring treatment better than other options like surgery or CPAP?',
+    a: 'Laser treatment offers the best of all worlds: non-surgical approach like CPAP, but without masks or nightly equipment; faster and less invasive than surgical options; minimal discomfort unlike painful surgical procedures; zero downtime unlike month-long surgical recovery; and excellent, lasting results. It\'s the modern, comfortable solution to snoring.',
+  },
+];
+
+const RELATED_TREATMENTS = [
+  {
+    name: 'Sleep Apnoea Management',
+    href: '/treatments/sleep-health',
+    desc: 'Comprehensive assessment and management of obstructive sleep apnoea with expert guidance.',
+  },
+  {
+    name: 'Radiofrequency Nose Treatment',
+    href: '/treatments/radiofrequency-nose',
+    desc: 'Address nasal obstruction contributing to snoring with non-surgical radiofrequency therapy.',
+  },
+  {
+    name: 'Anti-Snoring Devices',
+    href: '/treatments/anti-snoring-devices',
+    desc: 'Custom-fitted positional and mechanical devices complementing laser snoring treatment.',
+  },
+  {
+    name: 'Sleep Health Consultation',
+    href: '/treatments/sleep-consultation',
+    desc: 'Detailed sleep assessment and lifestyle optimisation for better sleep quality.',
   },
 ];
 
 export default function LaserSnoringPage() {
+  const [showAllFaqs, setShowAllFaqs] = useState(false);
+  const displayedFaqs = showAllFaqs ? FAQ : FAQ.slice(0, 4);
+
   return (
     <>
-      {/* ════════════════════════════════════════
-          1. HERO
-      ════════════════════════════════════════ */}
-      <section
-        className={styles.hero}
-        aria-label="Laser Snoring Treatment Leicester, hero"
-        data-section-theme="dark"
-      >
-        <div className={styles.heroBreadcrumb}>
-          <Container>
-            <Breadcrumb
-              theme="dark"
-              items={[
-                { label: 'Treatments', href: '/treatments' },
-                { label: 'Laser Snoring Treatment' },
-              ]}
-            />
-          </Container>
-        </div>
+      <script type="application/ld+json">
+        {JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'MedicalBusiness',
+          name: 'The One Clinic - Laser Snoring Treatment',
+          description: 'Non-surgical laser snoring treatment in Leicester',
+          url: 'https://theoneclinic.co.uk/treatments/laser-snoring-treatment',
+        })}
+      </script>
 
+      <Breadcrumb
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Treatments', href: '/treatments' },
+          { label: 'Laser Snoring Treatment', href: '/treatments/laser-snoring-treatment' },
+        ]}
+      />
+
+      <Section variant="light" className={styles.heroSection}>
         <Container>
           <motion.div
-            className={styles.heroInner}
-            variants={stagger(0.12)}
+            className={styles.heroContent}
             initial="hidden"
-            animate="show"
+            whileInView="visible"
+            viewport={VIEWPORT}
+            variants={stagger}
           >
-            <div className={styles.heroLeft}>
-              <motion.span className={styles.heroCategory} variants={fadeUp}>
-                Laser Treatment
-              </motion.span>
+            <motion.div variants={fadeUp}>
+              <p className={styles.eyebrow}>Laser Snoring Treatment</p>
+              <h1 className={styles.heading}>
+                Sleep Better with Laser Snoring Treatment
+              </h1>
+              <p className={styles.subheading}>
+                A fast, non-surgical solution to eliminate snoring and restore peaceful sleep for you and your partner.
+              </p>
+              <BookConsultationButton />
+            </motion.div>
 
-              <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                Laser Snoring Treatment in Leicester
-              </motion.h1>
+            <motion.div variants={fadeUp} className={styles.heroImage}>
+              <Image
+                src="/images/treatments/laser-snoring-hero.jpg"
+                alt="Laser Snoring Treatment"
+                width={500}
+                height={400}
+                priority
+              />
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
 
-              <motion.p className={styles.heroDesc} variants={fadeUp}>
-                A fast, non-surgical solution to reduce snoring and improve sleep quality, for you and those around you.
-              </motion.p>
+      <Section variant="dark">
+        <Container>
+          <TrustBadges />
+        </Container>
+      </Section>
 
-              <motion.div className={styles.heroCtas} variants={fadeUp}>
-                <BookConsultationButton className={styles.heroCtaPrimary}>
-                  Book Consultation
-                </BookConsultationButton>
+      <Section variant="light">
+        <Container>
+          <motion.div
+            className={styles.whatIsSection}
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT}
+            variants={stagger}
+          >
+            <motion.div variants={fadeUp} className={styles.whatIsContent}>
+              <p className={styles.eyebrowDark}>What Is Laser Snoring Treatment?</p>
+              <h2 className={styles.headingDark}>Advanced Non-Surgical Snoring Reduction</h2>
+              <p>
+                Laser snoring treatment is a remarkable non-surgical procedure that uses precise laser energy to gently tighten the soft palate and uvula—the tissues responsible for the vibration that causes snoring. By reducing tissue laxity and stimulating collagen remodelling, the treatment dramatically reduces or eliminates snoring without incisions, general anaesthesia, or significant downtime.
+              </p>
+              <p>
+                Unlike invasive surgical options, laser snoring treatment is quick, comfortable, and allows you to return to normal activities immediately. Most patients notice dramatic improvement within days to weeks, with continued enhancement over 8 to 12 weeks as collagen remodelling completes. For many, it's life-changing—enabling peaceful, uninterrupted sleep for both patient and partner.
+              </p>
+              <BookConsultationButton />
+            </motion.div>
+            <motion.div variants={fadeUp} className={styles.whatIsImage}>
+              <Image
+                src="/images/treatments/laser-snoring-detail.jpg"
+                alt="Laser Snoring Treatment Process"
+                width={400}
+                height={400}
+              />
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      <Section variant="dark">
+        <Container>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT}
+            variants={stagger}
+          >
+            <motion.div variants={fadeUp} className={styles.sectionHeader}>
+              <p className={styles.eyebrow}>At a Glance</p>
+              <h2 className={styles.heading}>Laser Snoring Treatment in Numbers</h2>
+            </motion.div>
+
+            <motion.div
+              className={styles.glanceGrid}
+              variants={stagger}
+            >
+              {AT_A_GLANCE.map((item, i) => (
+                <motion.div
+                  key={i}
+                  className={styles.glanceCard}
+                  variants={fadeUp}
+                  whileHover={{
+                    scale: 1.02,
+                    transition: { type: 'spring', stiffness: 400 },
+                  }}
+                >
+                  <div className={styles.glanceIcon}>{item.icon}</div>
+                  <p className={styles.glanceLabel}>{item.label}</p>
+                  <p className={styles.glanceValue}>{item.value}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      <Section variant="light">
+        <Container>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT}
+            variants={stagger}
+          >
+            <motion.div variants={fadeUp} className={styles.sectionHeader}>
+              <p className={styles.eyebrowDark}>Your Treatment Journey</p>
+              <h2 className={styles.headingDark}>From Consultation to Snoring-Free Sleep</h2>
+            </motion.div>
+
+            <motion.div
+              className={styles.journeySection}
+              variants={stagger}
+            >
+              {JOURNEY_STEPS.map((step) => (
+                <motion.div
+                  key={step.n}
+                  className={styles.journeyStep}
+                  variants={fadeUp}
+                >
+                  <div className={styles.journeyNumber}>{step.n}</div>
+                  <div className={styles.journeyContent}>
+                    <h3 className={styles.journeyTitle}>{step.title}</h3>
+                    <p className={styles.journeyDesc}>{step.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      <Section variant="dark">
+        <Container>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT}
+            variants={stagger}
+          >
+            <motion.div variants={fadeUp} className={styles.sectionHeader}>
+              <p className={styles.eyebrow}>Key Benefits</p>
+              <h2 className={styles.heading}>Why Patients Choose Laser Snoring Treatment</h2>
+            </motion.div>
+
+            <motion.div
+              className={styles.benefitsGrid}
+              variants={stagger}
+            >
+              {BENEFITS.map((benefit, i) => (
+                <motion.div
+                  key={i}
+                  className={styles.benefitCard}
+                  variants={fadeUp}
+                  whileHover={{
+                    scale: 1.02,
+                    transition: { type: 'spring', stiffness: 400 },
+                  }}
+                >
+                  <div className={styles.benefitIcon}>{benefit.icon}</div>
+                  <h3 className={styles.benefitTitle}>{benefit.title}</h3>
+                  <p className={styles.benefitDesc}>{benefit.desc}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      <Section variant="light">
+        <Container>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT}
+            variants={stagger}
+          >
+            <motion.div variants={fadeUp} className={styles.sectionHeader}>
+              <p className={styles.eyebrowDark}>Eligibility and Suitability</p>
+              <h2 className={styles.headingDark}>Are You a Good Candidate?</h2>
+            </motion.div>
+
+            <motion.div variants={stagger} className={styles.textGrid}>
+              {ELIGIBILITY.map((item, i) => (
+                <motion.div key={i} variants={fadeUp} className={styles.textItem}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  <p>{item}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      <Section variant="light">
+        <Container>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT}
+            variants={stagger}
+          >
+            <motion.div variants={fadeUp} className={styles.sectionHeader}>
+              <p className={styles.eyebrowDark}>Results and Aftercare</p>
+              <h2 className={styles.headingDark}>What to Expect After Treatment</h2>
+            </motion.div>
+
+            <motion.div variants={stagger} className={styles.textGrid}>
+              {RESULTS_AND_AFTERCARE.map((item, i) => (
+                <motion.div key={i} variants={fadeUp} className={styles.textItem}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <path d="M12 5v14m7-7H5"/>
+                  </svg>
+                  <p>{item}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      <Section variant="light">
+        <Container>
+          <Testimonials />
+        </Container>
+      </Section>
+
+      <Section variant="dark" className={styles.ctaBannerSection}>
+        <Container>
+          <motion.div
+            className={styles.ctaBanner}
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT}
+            variants={stagger}
+          >
+            <motion.div variants={fadeUp} className={styles.ctaBannerContent}>
+              <h2 className={styles.heading}>Ready to Sleep Better Tonight?</h2>
+              <p className={styles.subheading}>
+                Book your free consultation today to discuss laser snoring treatment with our expert team.
+              </p>
+              <BookConsultationButton />
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      <Section variant="light">
+        <Container>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT}
+            variants={stagger}
+          >
+            <motion.div variants={fadeUp} className={styles.sectionHeader}>
+              <p className={styles.eyebrowDark}>Our Clinic</p>
+              <h2 className={styles.headingDark}>Why The One Clinic for Laser Snoring Treatment</h2>
+            </motion.div>
+
+            <div className={styles.clinicIntroSection}>
+              <motion.div
+                className={styles.clinicIntroLeft}
+                initial="hidden"
+                whileInView="visible"
+                viewport={VIEWPORT}
+                variants={stagger}
+              >
+                <motion.div variants={fadeUp}>
+                  <p className={styles.eyebrowDark}>Sleep Medicine Excellence</p>
+                  <h3 className={styles.headingDark}>Specialising in Non-Surgical Snoring Solutions</h3>
+                </motion.div>
+
+                <motion.div variants={stagger}>
+                  {CLINIC_REASONS.map((reason, i) => (
+                    <motion.div key={i} variants={fadeUp} className={styles.clinicReason}>
+                      <span className={styles.reasonNumber}>
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <p>{reason}</p>
+                    </motion.div>
+                  ))}
+                </motion.div>
               </motion.div>
 
-              <motion.div variants={fadeUp}>
-                <TrustBadges theme="dark" />
-              </motion.div>
-
-              <motion.div className={styles.heroTrust} variants={fadeUp}>
-                <span className={styles.heroTrustItem}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
-                    <path d="M4.5 20.118a7.5 7.5 0 0115 0"/>
-                    <path d="M18.5 15v5M16 17.5h5"/>
-                  </svg>
-                  Expert clinical team
-                </span>
-                <span className={styles.heroTrustDivider} aria-hidden="true" />
-                <span className={styles.heroTrustItem}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10"/>
-                    <polyline points="12 6 12 12 16 14"/>
-                  </svg>
-                  Same-day appointments available
-                </span>
-                <span className={styles.heroTrustDivider} aria-hidden="true" />
-                <span className={styles.heroTrustItem}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
-                  </svg>
-                  Trusted by patients across Leicester
-                </span>
+              <motion.div
+                className={styles.clinicIntroRight}
+                variants={fadeUp}
+              >
+                <Image
+                  src="/images/treatments/clinic-laser-snoring.jpg"
+                  alt="The One Clinic Laser Snoring Treatment Facility"
+                  width={400}
+                  height={500}
+                  quality={90}
+                />
               </motion.div>
             </div>
-
-            <motion.div className={styles.heroImageWrap} variants={fadeUp}>
-              <Image
-                src="/images/Laser snoring treatment1.png"
-                alt="Laser snoring treatment at The One Clinic Leicester"
-                fill
-                priority
-                className={styles.heroImage}
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <div className={styles.heroImageFade} aria-hidden="true" />
-            </motion.div>
           </motion.div>
         </Container>
-      </section>
+      </Section>
 
-      {/* ════════════════════════════════════════
-          2. GOOGLE REVIEWS
-      ════════════════════════════════════════ */}
-      <Testimonials />
-
-      {/* ════════════════════════════════════════
-          3. WHAT IS LASER SNORING TREATMENT?
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
+      <Section variant="dark" className={styles.costBannerSection}>
         <Container>
           <motion.div
-            className={styles.whatIsGrid}
-            variants={stagger(0.12)}
+            className={styles.costBanner}
             initial="hidden"
-            whileInView="show"
+            whileInView="visible"
             viewport={VIEWPORT}
+            variants={stagger}
           >
-            <motion.div className={styles.whatIsContent} variants={stagger(0.12)}>
-              <motion.div className={styles.whatIsTextGroup} variants={fadeUp}>
-                <p className={styles.eyebrowDark}>About This Treatment</p>
-                <h2 className={styles.combinedHeading}>What is Laser Snoring Treatment?</h2>
-                <p className={styles.combinedDesc}>
-                  Laser snoring treatment is a non-surgical procedure that uses targeted laser
-                  energy to gently tighten the tissues of the soft palate. This reduces the
-                  vibration that occurs during sleep, the primary cause of snoring, without
-                  the need for surgery, anaesthetic, or significant downtime.
-                </p>
-              </motion.div>
-
-              <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
-                {OVERVIEW_POINTS.map((point) => (
-                  <motion.li key={point} className={styles.eligibilityItem} variants={fadeUp}>
-                    <span className={styles.eligibilityCheck} aria-hidden="true">
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </span>
-                    <span>{point}</span>
-                  </motion.li>
-                ))}
-              </motion.ul>
-
-              <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
-                <BookConsultationButton className={styles.combinedCta}>
-                  Book Your Consultation
-                </BookConsultationButton>
-              </motion.div>
-            </motion.div>
-
-            <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
-              <Image
-                src="/images/Laser snoring treatment2.png"
-                alt="Laser snoring treatment consultation at The One Clinic"
-                fill
-                className={styles.whatIsVideoFrame}
-                sizes="(max-width: 900px) 100vw, 50vw"
-              />
+            <motion.div variants={fadeUp} className={styles.costBannerContent}>
+              <p className={styles.eyebrow}>Transparent Pricing</p>
+              <h2 className={styles.heading}>Laser Snoring Treatment Investment</h2>
+              <p className={styles.costText}>
+                Laser snoring treatment costs from £300 per session. Most patients benefit from a single session, though some choose 2 to 3 sessions spaced 4 to 6 weeks apart for extended longevity. We offer flexible payment plans and can discuss package pricing during your consultation for exceptional value on multi-session protocols.
+              </p>
+              <BookConsultationButton />
             </motion.div>
           </motion.div>
         </Container>
       </Section>
 
-      {/* ════════════════════════════════════════
-          4. BENEFITS
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
-        <div className={styles.whiteBgWrap} aria-hidden="true">
-          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
-        </div>
-        <Container className={styles.whiteBgContent}>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Why Choose Laser Treatment</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              The Benefits of Laser Snoring Treatment
-            </motion.h2>
-          </motion.div>
+      <Section variant="light">
+        <Container>
+          <MeetTheExperts />
+        </Container>
+      </Section>
 
+      <Section variant="dark">
+        <Container>
           <motion.div
-            className={styles.treatedBenefitsGrid}
-            variants={stagger(0.08)}
             initial="hidden"
-            whileInView="show"
+            whileInView="visible"
             viewport={VIEWPORT}
+            variants={stagger}
           >
-            {BENEFITS.map((b) => (
+            <motion.div variants={fadeUp} className={styles.sectionHeaderCentre}>
+              <p className={styles.eyebrow}>Common Questions</p>
+              <h2 className={styles.heading}>Laser Snoring Treatment FAQs</h2>
+            </motion.div>
+
+            <motion.div
+              className={styles.faqList}
+              variants={stagger}
+            >
+              {displayedFaqs.map((faq, i) => (
+                <motion.div key={i} variants={fadeUp}>
+                  <Accordion question={faq.q} answer={faq.a} />
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {!showAllFaqs && FAQ.length > 4 && (
               <motion.div
-                key={b.title}
-                className={styles.treatedBenefitCard}
                 variants={fadeUp}
-                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
+                className={styles.showMoreContainer}
               >
-                <span className={styles.treatedBenefitIconWrap} aria-hidden="true">{b.icon}</span>
-                <h3 className={styles.treatedBenefitTitle}>{b.title}</h3>
-                <p className={styles.treatedBenefitDesc}>{b.desc}</p>
+                <button
+                  onClick={() => setShowAllFaqs(true)}
+                  className={styles.showMoreButton}
+                >
+                  See All FAQs
+                </button>
               </motion.div>
-            ))}
+            )}
           </motion.div>
         </Container>
       </Section>
 
-      {/* ════════════════════════════════════════
-          5. CTA BANNER
-      ════════════════════════════════════════ */}
-      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book laser snoring treatment">
-        <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
-          <Image src="/images/Background-logo.png" alt="" fill className={styles.ctaBannerLogo} sizes="100vw" />
-        </div>
+      <Section variant="light">
         <Container>
-          <motion.div
-            className={styles.ctaBannerContent}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
-              Sleep Better.<br />Starting Tonight.
-            </motion.h2>
-            <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
-              Book a laser snoring treatment consultation with our expert team in Leicester.
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBannerBtn}>Book Consultation</BookConsultationButton>
-            </motion.div>
-          </motion.div>
+          <LeadForm />
         </Container>
-      </section>
+      </Section>
 
-      {/* ════════════════════════════════════════
-          6. COST BANNER
-      ════════════════════════════════════════ */}
-      <section className={styles.costBanner} data-section-theme="dark" aria-label="Laser snoring treatment cost">
+      <Section variant="light">
         <Container>
           <motion.div
-            className={styles.costBannerInner}
-            variants={stagger(0.12)}
             initial="hidden"
-            whileInView="show"
+            whileInView="visible"
             viewport={VIEWPORT}
+            variants={stagger}
           >
-            <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>Laser Snoring Treatment Pricing at The One Clinic</motion.p>
-            <motion.p className={styles.costBannerPrice} variants={fadeUp}>From £300</motion.p>
-            <motion.p className={styles.costBannerNote} variants={fadeUp}>
-              Pricing varies depending on the number of sessions recommended. Full details at your consultation.
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBannerBtn}>Book A Consultation</BookConsultationButton>
+            <motion.div variants={fadeUp} className={styles.sectionHeader}>
+              <p className={styles.eyebrowDark}>Related Treatments</p>
+              <h2 className={styles.headingDark}>Complementary Sleep Solutions</h2>
             </motion.div>
-          </motion.div>
-        </Container>
-      </section>
 
-      {/* ════════════════════════════════════════
-          7. MEET THE EXPERTS
-      ════════════════════════════════════════ */}
-      <MeetTheExperts />
-
-      {/* ════════════════════════════════════════
-          8. FAQ
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>Frequently Asked Questions</motion.h2>
-          </motion.div>
-          <motion.div
-            className={styles.faqBody}
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <Accordion items={FAQS} theme="dark" />
+            <motion.div
+              className={styles.relatedGrid}
+              variants={stagger}
+            >
+              {RELATED_TREATMENTS.map((treatment, i) => (
+                <motion.div
+                  key={i}
+                  variants={fadeUp}
+                  whileHover={{
+                    scale: 1.02,
+                    transition: { type: 'spring', stiffness: 400 },
+                  }}
+                >
+                  <Link
+                    href={treatment.href}
+                    className={styles.relatedCard}
+                  >
+                    <h3>{treatment.name}</h3>
+                    <p>{treatment.desc}</p>
+                    <span className={styles.relatedArrow}>Learn More →</span>
+                  </Link>
+                </motion.div>
+              ))}
+            </motion.div>
           </motion.div>
         </Container>
       </Section>
 
-      <LeadForm />
-      <FinalCTA />
+      <Section variant="light">
+        <Container>
+          <FinalCTA />
+        </Container>
+      </Section>
     </>
   );
 }
