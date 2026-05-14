@@ -746,7 +746,7 @@ export default function LumeccaIPLLeicesterPage() {
         <div className={styles.faqInner}>
           <Container>
             <motion.div
-              className={styles.sectionHeader}
+              className={styles.sectionHeaderCentre}
               variants={stagger(0.1)}
               initial="hidden"
               whileInView="show"
