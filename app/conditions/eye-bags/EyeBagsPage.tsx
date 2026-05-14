@@ -510,36 +510,49 @@ export default function EyeBagsPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {/* Left: heading + intro */}
-            <motion.div className={styles.riskLeft} variants={stagger(0.1)}>
-              <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-                Risk Factors
-              </motion.p>
-              <motion.h2 className={styles.riskHeading} variants={fadeUp}>
-                Who Is More Likely to Develop Bags Under Eyes?
-              </motion.h2>
-              <motion.p className={styles.riskIntro} variants={fadeUp}>
-                The following individuals may be more at risk of developing eye bags.
-              </motion.p>
+            {/* Left: image */}
+            <motion.div className={styles.riskImageWrap} variants={fadeUp}>
+              <Image
+                src="/images/Eye Bags.png"
+                alt="Person showing eye bags under eyes"
+                fill
+                className={styles.riskImage}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className={styles.riskImageOverlay} aria-hidden="true" />
             </motion.div>
 
-            {/* Right: checklist */}
-            <motion.ul
-              className={styles.riskList}
-              role="list"
-              variants={stagger(0.08)}
-            >
-              {RISK_FACTORS.map((item) => (
-                <motion.li key={item} className={styles.riskItem} variants={fadeUp}>
-                  <span className={styles.riskCheck} aria-hidden="true">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
-                  <span>{item}</span>
-                </motion.li>
-              ))}
-            </motion.ul>
+            {/* Right: heading + intro + checklist */}
+            <motion.div className={styles.riskRight} variants={stagger(0.1)}>
+              <div className={styles.riskRightInner}>
+                <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+                  Risk Factors
+                </motion.p>
+                <motion.h2 className={styles.riskHeading} variants={fadeUp}>
+                  Who Is More Likely to Develop Bags Under Eyes?
+                </motion.h2>
+                <motion.p className={styles.riskIntro} variants={fadeUp}>
+                  The following individuals may be more at risk of developing eye bags.
+                </motion.p>
+
+                <motion.ul
+                  className={styles.riskList}
+                  role="list"
+                  variants={stagger(0.08)}
+                >
+                  {RISK_FACTORS.map((item) => (
+                    <motion.li key={item} className={styles.riskItem} variants={fadeUp}>
+                      <span className={styles.riskCheck} aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                          <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </span>
+                      <span>{item}</span>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </div>
+            </motion.div>
           </motion.div>
         </Container>
       </Section>
