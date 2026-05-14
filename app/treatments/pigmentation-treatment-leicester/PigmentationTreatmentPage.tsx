@@ -653,8 +653,8 @@ export default function PigmentationTreatmentPage() {
             viewport={VIEWPORT}
           >
             <motion.div className={styles.clinicIntroLeft} variants={fadeUp}>
-              <p className={styles.eyebrowLight}>Pigmentation Treatment</p>
-              <h2 className={styles.headingLight}>
+              <p className={styles.eyebrowDark}>Pigmentation Treatment</p>
+              <h2 className={styles.headingDark}>
                 Best Pigmentation Treatment<br />in Leicester
               </h2>
             </motion.div>
@@ -745,60 +745,41 @@ export default function PigmentationTreatmentPage() {
       {/* ════════════════════════════════════════
           13. FAQ
       ════════════════════════════════════════ */}
-      <section className={styles.faqSection} data-section-theme="light">
-        <div className={styles.faqInner}>
-          <Container>
-            <motion.div
-              className={styles.sectionHeaderCentre}
-              variants={stagger(0.1)}
-              initial="hidden"
-              whileInView="show"
-              viewport={VIEWPORT}
-            >
-              <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
-              <motion.h2 className={styles.headingLight} variants={fadeUp}>
-                Frequently Asked Questions
-              </motion.h2>
-            </motion.div>
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Frequently Asked Questions
+            </motion.h2>
+          </motion.div>
 
-            <motion.div
-              className={styles.faqBody}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="show"
-              viewport={VIEWPORT}
-            >
-              <Accordion items={showAllFaqs ? FAQS : FAQS.slice(0, 5)} theme="dark" />
-
-              {FAQS.length > 5 && (
-                <div className={styles.faqToggleWrap}>
-                  <button
-                    className={styles.faqToggleBtn}
-                    onClick={() => setShowAllFaqs((v) => !v)}
-                    aria-expanded={showAllFaqs}
-                  >
-                    {showAllFaqs ? (
-                      <>
-                        Show Less
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                          <path d="M4 10l4-4 4 4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </>
-                    ) : (
-                      <>
-                        Show More
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                          <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </>
-                    )}
-                  </button>
-                </div>
-              )}
-            </motion.div>
-          </Container>
-        </div>
-      </section>
+          <motion.div
+            className={styles.faqBody}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <Accordion items={showAllFaqs ? FAQS : FAQS.slice(0, 5)} theme="dark" />
+            {!showAllFaqs && FAQS.length > 5 && (
+              <motion.button
+                onClick={() => setShowAllFaqs(true)}
+                className={styles.faqToggle}
+                variants={fadeUp}
+              >
+                Show All FAQs
+              </motion.button>
+            )}
+          </motion.div>
+        </Container>
+      </Section>
 
       {/* ════════════════════════════════════════
           14. BOOKING FORM
