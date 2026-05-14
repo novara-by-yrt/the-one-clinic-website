@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import Image              from 'next/image';
-import { motion }         from 'framer-motion';
+import Link from 'next/link';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 import Section            from '@/components/ui/Section';
 import Container          from '@/components/ui/Container';
 import Accordion          from '@/components/ui/Accordion';
@@ -12,29 +13,28 @@ import Breadcrumb         from '@/components/ui/Breadcrumb';
 import LeadForm           from '@/components/sections/LeadForm';
 import MeetTheExperts     from '@/components/sections/MeetTheExperts';
 import Testimonials       from '@/components/sections/Testimonials';
-import TrustStrip         from '@/components/sections/TrustStrip';
 import FinalCTA           from '@/components/sections/FinalCTA';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
-import styles             from './page.module.css';
+import styles from './page.module.css';
 
-/* ── Static data ───────────────────────────────────────────────── */
-
+/* ── Static data ──────────────────────────────────────────────── */
 const AT_A_GLANCE = [
   {
-    label: 'Treatment Duration',
+    label: 'Procedure Time',
     value: 'Up to 60 minutes',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14"/>
       </svg>
     ),
   },
   {
-    label: 'Treatment Frequency',
-    value: 'Usually 1 time procedure',
+    label: 'Anaesthetic',
+    value: 'Local anaesthetic',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
       </svg>
     ),
   },
@@ -43,70 +43,99 @@ const AT_A_GLANCE = [
     value: '2–3 weeks',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+        <line x1="16" y1="2" x2="16" y2="6"/>
+        <line x1="8" y1="2" x2="8" y2="6"/>
+        <line x1="3" y1="10" x2="21" y2="10"/>
       </svg>
     ),
   },
   {
-    label: 'Results Longevity',
-    value: 'Generally permanent',
+    label: 'Results',
+    value: 'Permanent',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+        <polyline points="17 6 23 6 23 12"/>
       </svg>
     ),
   },
   {
-    label: 'Haemorrhoidectomy Cost',
-    value: 'Contact us to inquire about the cost.',
+    label: 'Procedure Type',
+    value: 'Minor surgery',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
       </svg>
     ),
   },
   {
-    label: 'Appointment Type',
-    value: 'In-clinic',
+    label: 'Cost',
+    value: 'Contact us',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M3 21h18"/><path d="M5 21V7l8-4v4"/><path d="M19 21V11l-6-4"/><path d="M9 21v-4h6v4"/>
+        <line x1="12" y1="1" x2="12" y2="23"/>
+        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
       </svg>
     ),
   },
 ];
 
-const PROCEDURE_STEPS = [
+const APPROACH_STEPS = [
   {
-    num: '01',
-    title: 'Assessment',
-    desc: 'Haemorrhoids are removed under local anaesthetic. The doctor assesses the severity.',
+    eyebrow: '01',
+    title: 'Clinical Assessment',
+    desc: 'A thorough review of your haemorrhoid grade, symptoms, and medical history. Your doctor will confirm suitability for surgical excision and explain all available options.',
   },
   {
-    num: '02',
+    eyebrow: '02',
     title: 'Surgical Excision',
-    desc: 'Internal and external haemorrhoids are carefully excised using minor surgery.',
+    desc: 'Under local anaesthetic, the haemorrhoidal tissue is carefully isolated and excised. The procedure is precise and designed to minimise trauma to surrounding tissue.',
   },
   {
-    num: '03',
-    title: 'Wound Management',
-    desc: 'Wound is managed for quick healing and comfort.',
+    eyebrow: '03',
+    title: 'Wound Management & Aftercare',
+    desc: 'The wound is dressed and managed for optimal healing. You leave the clinic the same day with a clear aftercare plan and scheduled follow-up appointments.',
+  },
+];
+
+const JOURNEY_STEPS = [
+  {
+    n: '01',
+    title: 'Consultation',
+    desc: 'A detailed assessment of your haemorrhoids, symptoms, and overall health. Your doctor discusses the procedure, expected outcomes, and answers all your questions.',
+  },
+  {
+    n: '02',
+    title: 'Pre-op Assessment',
+    desc: 'Any necessary pre-operative checks are completed. You receive clear instructions on how to prepare for procedure day, including dietary and medication guidance.',
+  },
+  {
+    n: '03',
+    title: 'Procedure Day',
+    desc: 'The haemorrhoidectomy is performed under local anaesthetic in our clinic. Most procedures take up to 60 minutes and you go home the same day.',
+  },
+  {
+    n: '04',
+    title: 'Recovery & Review',
+    desc: 'Full recovery typically takes 3–6 weeks. Your doctor schedules follow-up visits to monitor healing, manage any discomfort, and confirm successful outcomes.',
   },
 ];
 
 const TREATMENT_BENEFITS = [
   {
     title: 'Relieves Pain & Discomfort',
-    desc: 'Stops constant irritation, itching, and soreness around the anus.',
+    desc: 'Stops constant irritation, itching, and soreness caused by enlarged haemorrhoids.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+        <polyline points="22 4 12 14.01 9 11.01"/>
       </svg>
     ),
   },
   {
     title: 'Stops Bleeding',
-    desc: 'Gets rid of troublesome bleeding during bowel movements.',
+    desc: 'Eliminates troublesome rectal bleeding that occurs during or after bowel movements.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 2C12 2 5 10 5 15a7 7 0 0 0 14 0c0-5-7-13-7-13z"/>
@@ -115,7 +144,7 @@ const TREATMENT_BENEFITS = [
   },
   {
     title: 'Permanent Solution',
-    desc: 'Provides long-term relief, reducing the chance of recurrence.',
+    desc: 'Surgical removal provides long-term, often permanent relief by excising the problem tissue entirely.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -123,68 +152,101 @@ const TREATMENT_BENEFITS = [
     ),
   },
   {
-    title: 'Fixes Prolapse',
-    desc: 'Corrects haemorrhoids that bulge or hang out of the anus.',
+    title: 'Quick Procedure',
+    desc: 'Most haemorrhoidectomies take under 60 minutes, and patients return home the same day.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14"/>
       </svg>
     ),
   },
   {
-    title: 'Improves Daily Life',
-    desc: 'Makes sitting, moving, and bowel movements comfortable again.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'Emergency Relief',
-    desc: 'Treats severe or thrombosed haemorrhoids quickly.',
+    title: 'Local Anaesthetic',
+    desc: 'Performed under local anaesthetic, avoiding the risks and recovery associated with general anaesthesia.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
       </svg>
     ),
   },
+  {
+    title: 'Improved Quality of Life',
+    desc: 'Makes sitting, walking, and bowel movements comfortable again, restoring confidence and everyday wellbeing.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+        <line x1="9" y1="9" x2="9.01" y2="9"/>
+        <line x1="15" y1="9" x2="15.01" y2="9"/>
+      </svg>
+    ),
+  },
 ];
 
-const ELIGIBILITY = [
-  'Pain or swelling that makes sitting uncomfortable',
-  'Bleeding during bowel movements',
-  'Itching or irritation',
-  'Recurring haemorrhoids',
-  'Hygiene problems',
+const ELIGIBILITY_SUITABLE = [
+  'Adults with Grade II–IV haemorrhoids causing persistent symptoms',
+  'Patients who have tried conservative treatment without lasting relief',
+  'Those experiencing regular rectal bleeding, prolapse, or significant pain',
+  'Anyone whose haemorrhoids are affecting daily comfort and quality of life',
+  'Patients seeking a definitive, long-term solution',
 ];
 
-const CAUSES = [
+const ELIGIBILITY_NOT_SUITABLE = [
+  'Pregnancy (surgery deferred until after delivery)',
+  'Patients on blood thinners without specialist review',
+  'Severe heart or liver disease (may require specialist clearance)',
+  'Grade I haemorrhoids responsive to dietary and lifestyle changes',
+];
+
+const CONDITIONS_WE_TREAT = [
   {
-    n: '01',
-    title: 'Chronic Constipation & Straining',
-    desc: 'Repeated straining during bowel movements increases pressure in the veins of the lower rectum, causing them to swell and form haemorrhoids over time.',
+    title: 'Anal Skin Tags',
+    desc: 'Small, harmless flaps of skin around the anus that can cause irritation, hygiene issues, or discomfort. Removed in a quick in-clinic procedure.',
   },
   {
-    n: '02',
-    title: 'Low-Fibre Diet',
-    desc: 'A diet lacking in fibre produces hard, difficult-to-pass stools. This leads to straining, which is a primary driver of haemorrhoid development and worsening.',
+    title: 'Anal Fissures',
+    desc: 'Small tears in the lining of the anus causing sharp pain and bleeding during bowel movements. Treated with minimally invasive techniques.',
   },
   {
-    n: '03',
-    title: 'Prolonged Sitting',
-    desc: 'Spending long periods seated, particularly on the toilet, places sustained pressure on the rectal veins and can contribute to the formation of haemorrhoids.',
+    title: 'Perianal Warts',
+    desc: 'Warts caused by HPV appearing around the anal area. Safely removed under local anaesthetic with minimal discomfort.',
   },
   {
-    n: '04',
-    title: 'Pregnancy & Childbirth',
-    desc: 'The growing uterus during pregnancy increases pressure on the pelvic veins. Straining during labour further elevates the risk of developing haemorrhoids.',
+    title: 'Pilonidal Cyst',
+    desc: 'A cyst or abscess near the tailbone that can become painful and infected. Surgically excised for lasting resolution.',
   },
   {
-    n: '05',
-    title: 'Ageing',
-    desc: 'The connective tissue supporting the veins of the rectum and anus weakens naturally with age, making haemorrhoids more likely to develop or prolapse.',
+    title: 'Lipoma',
+    desc: 'Benign fatty lumps beneath the skin. Removed surgically under local anaesthetic with a neat, minimal scar.',
   },
+  {
+    title: 'Ingrown Toenail',
+    desc: 'A toenail growing into surrounding skin, causing pain, swelling, and infection. Treated with a minor procedure under local anaesthetic.',
+  },
+  {
+    title: 'Minor Skin Lesions',
+    desc: 'Cysts, moles, warts, and other benign lesions assessed and removed safely by our experienced doctors.',
+  },
+];
+
+const HAEMORRHOID_TYPES = [
+  'Internal Grade I',
+  'Internal Grade II',
+  'Internal Grade III',
+  'Internal Grade IV',
+  'External Haemorrhoids',
+  'Mixed (Internal & External)',
+  'Thrombosed Haemorrhoids',
+];
+
+const SYMPTOMS_ADDRESSED = [
+  'Rectal bleeding',
+  'Pain & discomfort',
+  'Itching & irritation',
+  'Prolapse',
+  'Mucus discharge',
+  'Perianal swelling',
 ];
 
 const CLINIC_REASONS = [
@@ -198,48 +260,45 @@ const CLINIC_REASONS = [
 
 const FAQS = [
   {
-    question: 'Who can benefit from haemorrhoid removal?',
+    question: 'Who is suitable for haemorrhoid removal surgery?',
     answer:
-      'Anyone suffering from painful, bleeding, or prolapsed haemorrhoids that haven\'t improved with lifestyle changes or non-surgical treatments.',
+      'Haemorrhoid removal is recommended for adults with Grade II–IV haemorrhoids causing significant pain, bleeding, or prolapse that have not improved with conservative management. Our doctors will assess your suitability during a full consultation.',
   },
   {
-    question: 'Is haemorrhoid removal painful?',
+    question: 'Is the haemorrhoidectomy procedure painful?',
     answer:
-      'Most patients feel minimal discomfort during the procedure. Post-surgery soreness is common but manageable with pain relief.',
+      'The procedure is performed under local anaesthetic, so you should feel little to no pain during surgery. Post-operative soreness is common but is well managed with prescribed pain relief and aftercare advice from our team.',
   },
   {
-    question: 'How is the procedure done?',
+    question: 'How long does recovery take after haemorrhoid removal?',
     answer:
-      'Haemorrhoids are removed using minor surgery under local anaesthetic. Alternative methods like laser or radiofrequency may be used depending on the condition.',
+      'Most patients experience mild soreness and swelling for 1–2 weeks following the procedure. Full recovery, including complete wound healing, typically takes 3–6 weeks. Most people can return to light daily activities within a few days.',
   },
   {
-    question: 'How long does it take to recover?',
+    question: 'Will haemorrhoids come back after surgery?',
     answer:
-      'Recovery after haemorrhoidectomy may take 2-3 weeks, during which you may experience mild soreness, swelling, or occasional bleeding.',
+      'Surgical excision provides long-term, often permanent, relief for the treated haemorrhoids. However, new haemorrhoids can develop if underlying risk factors — such as a low-fibre diet, straining, or prolonged sitting — are not addressed.',
   },
   {
-    question: 'Will haemorrhoids come back?',
+    question: 'What should I do to prepare for haemorrhoid removal?',
     answer:
-      'Removing the haemorrhoids with minor surgery provides long-term relief, but new haemorrhoids can appear if lifestyle factors aren\'t managed.',
+      'You will receive detailed pre-operative instructions at your assessment appointment. Generally, you should inform us of any medications you take, follow any dietary guidance provided, and arrange transport home on procedure day.',
   },
   {
-    question: 'Do I need follow-up appointments?',
+    question: 'Are there alternatives to surgical haemorrhoid removal?',
     answer:
-      'Yes, to check healing and ensure complete recovery, your doctor may schedule visits.',
-  },
-  {
-    question: 'Can I sit and move normally after haemorrhoid removal surgery?',
-    answer:
-      'Yes, most patients can resume light daily activities quickly, though heavy lifting or straining should be avoided initially.',
-  },
-  {
-    question: 'Are there any risks?',
-    answer:
-      'Side effects can include temporary pain, bleeding, infection, or rare anal narrowing, which your doctor will explain before treatment.',
+      'Yes. For smaller or lower-grade haemorrhoids, rubber band ligation or phenol injection sclerotherapy may be appropriate alternatives. Your doctor will discuss all suitable options during your consultation and recommend the best approach for your individual case.',
   },
 ];
 
-/* ── Page component ─────────────────────────────────────────────── */
+const RELATED = [
+  { title: 'Minor Surgery',           href: '/treatments/minor-surgery',           desc: 'Expert in-clinic minor surgical procedures performed under local anaesthetic.' },
+  { title: 'Ingrown Toenail Removal', href: '/treatments/ingrown-toenail-removal', desc: 'Permanent relief from painful ingrown toenails with a straightforward procedure.' },
+  { title: 'Skin Lesion Removal',     href: '/treatments/skin-lesion-removal',     desc: 'Safe removal of cysts, moles, warts, and other benign skin lesions.' },
+  { title: 'Dermatologist',           href: '/treatments/dermatologist',           desc: 'Expert dermatology consultations and skin condition treatments.' },
+];
+
+/* ── Page component ───────────────────────────────────────────── */
 export default function HaemorrhoidRemovalPage() {
   const [showAllFaqs, setShowAllFaqs] = useState(false);
 
@@ -250,9 +309,10 @@ export default function HaemorrhoidRemovalPage() {
       ════════════════════════════════════════ */}
       <section
         className={styles.hero}
-        aria-label="Haemorrhoid removal Leicester, hero"
+        aria-label="Haemorrhoid Removal Leicester, hero"
         data-section-theme="dark"
       >
+        {/* Breadcrumb, pinned to top of hero */}
         <div className={styles.heroBreadcrumb}>
           <Container>
             <Breadcrumb
@@ -275,47 +335,56 @@ export default function HaemorrhoidRemovalPage() {
             {/* Left: text */}
             <div className={styles.heroLeft}>
               <motion.span className={styles.heroCategory} variants={fadeUp}>
-                Health &amp; Wellbeing
+                Minor Surgery
               </motion.span>
 
               <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                Haemorrhoid Removal in Leicester
+                Haemorrhoid Removal Leicester
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Get expert in-clinic haemorrhoid removal for lasting relief and comfort.
+                Fast, effective and permanent relief from haemorrhoids — performed under
+                local anaesthetic by our expert doctors.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
                 <BookConsultationButton className={styles.heroCtaPrimary}>
-                  Book a Consultation
+                  Book Appointment
                 </BookConsultationButton>
               </motion.div>
 
+              {/* Review badges */}
               <motion.div variants={fadeUp}>
                 <TrustBadges theme="dark" />
               </motion.div>
 
+              {/* Trust items */}
               <motion.div className={styles.heroTrust} variants={fadeUp}>
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+                    <path d="M4.5 20.118a7.5 7.5 0 0115 0"/>
+                    <path d="M18.5 15v5M16 17.5h5"/>
                   </svg>
-                  GMC-registered doctors
+                  Led by GMC-registered doctors
                 </span>
                 <span className={styles.heroTrustDivider} aria-hidden="true" />
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M3 21h18"/><path d="M5 21V7l8-4v4"/><path d="M19 21V11l-6-4"/>
+                    <path d="M3 21h18"/>
+                    <path d="M5 21V7l8-4v4"/>
+                    <path d="M19 21V11l-6-4"/>
+                    <path d="M9 21v-4h6v4"/>
                   </svg>
                   No hospital stay required
                 </span>
                 <span className={styles.heroTrustDivider} aria-hidden="true" />
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                    <circle cx="12" cy="12" r="9.5"/>
+                    <path d="M12 7.5v9M7.5 12h9"/>
                   </svg>
-                  Same-day procedures available
+                  Comprehensive medical &amp; surgical care
                 </span>
               </motion.div>
             </div>
@@ -323,13 +392,14 @@ export default function HaemorrhoidRemovalPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Minor Surgery.jpg"
+                src="/images/Haemorrhoid Removal.jpg"
                 alt="Haemorrhoid removal procedure at The One Clinic Leicester"
                 fill
                 priority
                 className={styles.heroImage}
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
+              {/* Subtle bottom-fade to blend with section */}
               <div className={styles.heroImageFade} aria-hidden="true" />
             </motion.div>
           </motion.div>
@@ -337,17 +407,7 @@ export default function HaemorrhoidRemovalPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          2. PATIENT REVIEWS
-      ════════════════════════════════════════ */}
-      <Testimonials />
-
-      {/* ════════════════════════════════════════
-          3. AWARDS & ACHIEVEMENTS
-      ════════════════════════════════════════ */}
-      <TrustStrip />
-
-      {/* ════════════════════════════════════════
-          4. WHAT IS HAEMORRHOID REMOVAL?
+          2. WHAT IS HAEMORRHOID REMOVAL?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
@@ -358,25 +418,24 @@ export default function HaemorrhoidRemovalPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {/* Left: text + CTA */}
+            {/* Left: text */}
             <motion.div className={styles.whatIsContent} variants={stagger(0.12)}>
               <motion.div className={styles.whatIsTextGroup} variants={fadeUp}>
-                <p className={styles.eyebrowDark}>About This Condition</p>
-                <h2 className={styles.combinedHeading}>What is Haemorrhoidectomy?</h2>
+                <p className={styles.eyebrowDark}>About This Treatment</p>
+                <h2 className={styles.combinedHeading}>What is Haemorrhoid Removal?</h2>
                 <p className={styles.combinedDesc}>
-                  Haemorrhoid removal is a medical procedure to treat swollen or painful veins
-                  (haemorrhoids) around the anus. Haemorrhoids can cause pain, bleeding, itching,
-                  and discomfort.
+                  Haemorrhoids are swollen veins in the rectum or anus that can cause pain,
+                  bleeding, itching, and significant discomfort. When conservative measures such
+                  as dietary changes, topical creams, or sitz baths fail to provide lasting relief,
+                  surgical removal offers a definitive solution.
                 </p>
                 <p className={styles.combinedDesc}>
-                  When conservative management, such as dietary changes, topical creams, or
-                  sitz baths, fails to provide lasting relief, surgical removal offers a
-                  definitive solution. At The One Clinic Leicester, our doctors assess your
-                  case thoroughly and recommend the most appropriate procedure for your grade
-                  of haemorrhoid and individual circumstances.
+                  A haemorrhoidectomy involves the careful surgical excision of enlarged
+                  haemorrhoidal tissue under local anaesthetic. At The One Clinic Leicester,
+                  our experienced doctors assess your case thoroughly and recommend the most
+                  appropriate procedure for your grade of haemorrhoid and individual circumstances.
                 </p>
               </motion.div>
-
               <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
                 <BookConsultationButton className={styles.combinedCta}>
                   Book Your Consultation
@@ -388,7 +447,7 @@ export default function HaemorrhoidRemovalPage() {
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
                 src="/images/Doctor1.jpg"
-                alt="Doctor at The One Clinic Leicester consulting a patient"
+                alt="Doctor at The One Clinic Leicester consulting a patient about haemorrhoid removal"
                 fill
                 className={styles.whatIsVideoFrame}
                 sizes="(max-width: 900px) 100vw, 50vw"
@@ -399,7 +458,7 @@ export default function HaemorrhoidRemovalPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          5. AT A GLANCE
+          3. AT A GLANCE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
         <div className={styles.whiteBgWrap} aria-hidden="true">
@@ -415,7 +474,7 @@ export default function HaemorrhoidRemovalPage() {
           >
             <motion.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Haemorrhoidectomy at a Glance
+              Haemorrhoid Removal at a Glance
             </motion.h2>
           </motion.div>
 
@@ -438,7 +497,7 @@ export default function HaemorrhoidRemovalPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          6. THE PROCEDURE, THREE STEPS
+          4. OUR APPROACH
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -449,12 +508,16 @@ export default function HaemorrhoidRemovalPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>The Process</motion.p>
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Our Approach
+            </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Haemorrhoidectomy Procedure
+              Our Haemorrhoid Removal Approach
             </motion.h2>
             <motion.p className={styles.combinationIntroText} variants={fadeUp}>
-              The procedure is designed to remove haemorrhoids safely and efficiently under local anaesthetic.
+              At The One Clinic, we follow a structured three-step approach to ensure every
+              patient receives safe, precise, and effective haemorrhoid removal with
+              optimal healing outcomes.
             </motion.p>
           </motion.div>
 
@@ -465,11 +528,16 @@ export default function HaemorrhoidRemovalPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {PROCEDURE_STEPS.map((step) => (
-              <motion.div key={step.num} className={styles.techCard} variants={fadeUp}>
-                <span className={styles.techCardEyebrow}>{step.num}</span>
-                <h3 className={styles.techCardTitle}>{step.title}</h3>
-                <p className={styles.techCardDesc}>{step.desc}</p>
+            {APPROACH_STEPS.map((card) => (
+              <motion.div
+                key={card.title}
+                className={styles.techCard}
+                variants={fadeUp}
+                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
+              >
+                <span className={styles.techCardEyebrow}>{card.eyebrow}</span>
+                <h3 className={styles.techCardTitle}>{card.title}</h3>
+                <p className={styles.techCardDesc}>{card.desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -483,16 +551,60 @@ export default function HaemorrhoidRemovalPage() {
           >
             <p className={styles.finalResultsEyebrow}>After Your Procedure</p>
             <p className={styles.finalResultsText}>
-              You will be able to walk out of the clinic on the day with a managed wound plan.
-              Most patients experience immediate symptom relief, with complete healing occurring
-              over 2–3 weeks with proper aftercare.
+              You leave the clinic the same day with a managed wound plan and clear aftercare
+              instructions. Most patients experience immediate symptom relief, with complete
+              healing occurring over 3–6 weeks with proper aftercare and follow-up support.
             </p>
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          7. TREATMENT BENEFITS
+          5. TREATMENT JOURNEY
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.journeySection}>
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              What to Expect
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Your Treatment Journey
+            </motion.h2>
+          </motion.div>
+
+          <motion.ol
+            className={styles.journeyList}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+            aria-label="Haemorrhoid removal treatment journey steps"
+          >
+            {JOURNEY_STEPS.map((step) => (
+              <motion.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
+                <div className={styles.stepLeft}>
+                  <div className={styles.stepNumCircle} aria-hidden="true">{step.n}</div>
+                  <div className={styles.stepConnector} aria-hidden="true" />
+                </div>
+                <div className={styles.stepBody}>
+                  <h3 className={styles.stepTitle}>{step.title}</h3>
+                  <p className={styles.stepDesc}>{step.desc}</p>
+                </div>
+              </motion.li>
+            ))}
+          </motion.ol>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          6. BENEFITS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
         <div className={styles.whiteBgWrap} aria-hidden="true">
@@ -506,7 +618,6 @@ export default function HaemorrhoidRemovalPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>What You Gain</motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
               Haemorrhoid Removal Benefits
             </motion.h2>
@@ -538,7 +649,7 @@ export default function HaemorrhoidRemovalPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. IS THIS RIGHT FOR YOU?
+          7. ELIGIBILITY
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -553,7 +664,7 @@ export default function HaemorrhoidRemovalPage() {
               Is This Right for You?
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Why Choose Haemorrhoid Removal Treatment?
+              Who is Suitable for Haemorrhoid Removal?
             </motion.h2>
           </motion.div>
 
@@ -565,10 +676,10 @@ export default function HaemorrhoidRemovalPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
-              You may choose haemorrhoidectomy if you have:
+              Haemorrhoid removal is typically suitable for:
             </motion.p>
             <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
-              {ELIGIBILITY.map((item) => (
+              {ELIGIBILITY_SUITABLE.map((item) => (
                 <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
                   <span className={styles.eligibilityCheck} aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -579,9 +690,27 @@ export default function HaemorrhoidRemovalPage() {
                 </motion.li>
               ))}
             </motion.ul>
+
+            <motion.p className={styles.eligibilityIntro} variants={fadeUp} style={{ marginTop: '2rem' }}>
+              Surgery may not be immediately suitable if you have:
+            </motion.p>
+            <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
+              {ELIGIBILITY_NOT_SUITABLE.map((item) => (
+                <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
+                  <span className={styles.eligibilityCheck} aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <line x1="2" y1="2" x2="12" y2="12" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
+                      <line x1="12" y1="2" x2="2" y2="12" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+
             <motion.p className={styles.eligibilityClosing} variants={fadeUp}>
-              If any of the above apply to you, book a consultation and our doctor will
-              assess whether surgical removal is the right course of action for your case.
+              If you are unsure whether you are suitable, book a consultation and our doctor
+              will assess your case in full and recommend the most appropriate treatment.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
@@ -593,49 +722,7 @@ export default function HaemorrhoidRemovalPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          9. WHAT CAUSES HAEMORRHOIDS?
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Understanding the Causes</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              What Causes Haemorrhoids?
-            </motion.h2>
-          </motion.div>
-
-          <motion.ol
-            className={styles.journeyList}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-            aria-label="Common causes of haemorrhoids"
-          >
-            {CAUSES.map((cause) => (
-              <motion.li key={cause.n} className={styles.journeyStep} variants={fadeUp}>
-                <div className={styles.stepLeft}>
-                  <div className={styles.stepNumCircle} aria-hidden="true">{cause.n}</div>
-                  <div className={styles.stepConnector} aria-hidden="true" />
-                </div>
-                <div className={styles.stepBody}>
-                  <h3 className={styles.stepTitle}>{cause.title}</h3>
-                  <p className={styles.stepDesc}>{cause.desc}</p>
-                </div>
-              </motion.li>
-            ))}
-          </motion.ol>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          10. HOW DOES THE PROCEDURE WORK?
+          8. HOW DOES IT WORK (THE SCIENCE)
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
@@ -646,9 +733,8 @@ export default function HaemorrhoidRemovalPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>The Science</motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              How Does a Haemorrhoid Removal Work?
+              How Does Haemorrhoid Removal Work?
             </motion.h2>
           </motion.div>
 
@@ -660,17 +746,17 @@ export default function HaemorrhoidRemovalPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.howPara} variants={fadeUp}>
-              The procedure relieves pain, itching, and bleeding, allowing patients to sit,
-              move, and use the bathroom comfortably. After healing, daily life feels easier,
-              hygiene improves, and long-term relief is restored.
+              A haemorrhoidectomy surgically excises the enlarged vascular tissue responsible
+              for your symptoms. Under local anaesthetic, the targeted haemorrhoid is carefully
+              isolated and removed. The surrounding tissue is preserved to maintain normal
+              anal function, and the wound is managed to promote swift, clean healing.
             </motion.p>
             <motion.p className={styles.howPara} variants={fadeUp}>
-              A haemorrhoidectomy involves the surgical excision of enlarged haemorrhoidal
-              tissue under local anaesthetic. Once the area is completely numb, the
-              haemorrhoid is carefully isolated and removed. For suitable patients with smaller
-              internal haemorrhoids, rubber band ligation may be offered as an alternative.
-              During your consultation, your doctor will determine which procedure is most
-              suitable for your individual case.
+              For suitable patients with lower-grade haemorrhoids, alternatives such as
+              rubber band ligation or phenol injection sclerotherapy may be offered.
+              Unlike creams or suppositories that only mask symptoms, surgical excision removes
+              the root cause, delivering definitive and long-lasting results. During your
+              consultation, your doctor will determine which approach is best for your individual case.
             </motion.p>
           </motion.div>
 
@@ -681,17 +767,15 @@ export default function HaemorrhoidRemovalPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.howCoversLabel} variants={fadeUp}>
-              Procedures Offered at The One Clinic
-            </motion.p>
+            <motion.p className={styles.howCoversLabel} variants={fadeUp}>Procedures Offered at The One Clinic</motion.p>
             <motion.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
               {[
                 'Haemorrhoidectomy (surgical excision)',
                 'Rubber band ligation',
-                'Grade I internal haemorrhoids',
-                'Grade II internal haemorrhoids',
-                'Grade III haemorrhoids',
+                'Phenol injection sclerotherapy',
+                'Grade II–IV internal haemorrhoids',
                 'External haemorrhoids (selected cases)',
+                'Thrombosed haemorrhoids',
               ].map((item) => (
                 <motion.li key={item} className={styles.howCoversItem} variants={fadeUp}>
                   <span className={styles.howCoversCheck} aria-hidden="true">
@@ -708,7 +792,7 @@ export default function HaemorrhoidRemovalPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          11. RESULTS, AFTERCARE & SIDE EFFECTS
+          9. RESULTS, AFTERCARE & SIDE EFFECTS
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -723,7 +807,7 @@ export default function HaemorrhoidRemovalPage() {
               Post-Treatment
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Haemorrhoid Removal Results, Aftercare &amp; Side Effects
+              Results, Aftercare &amp; Side Effects
             </motion.h2>
           </motion.div>
 
@@ -734,52 +818,50 @@ export default function HaemorrhoidRemovalPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {/* Card 1: When Will You See Results? */}
+            {/* Card 1: What to Expect */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                    <polyline points="17 6 23 6 23 12"/>
                   </svg>
                 </span>
-                <h3 className={styles.resultsAfterCardTitle}>How Long Does it Take to See Results after Haemorrhoidectomy?</h3>
+                <h3 className={styles.resultsAfterCardTitle}>What to Expect After Surgery</h3>
               </div>
               <p className={styles.resultsAfterCardBody}>
-                Most patients notice relief immediately from pain and discomfort. Complete healing and improvement usually take 2–3 weeks.
+                Most patients notice immediate relief from prolapse and the most severe
+                symptoms. Mild soreness and swelling are normal for the first 1–2 weeks.
+                Complete wound healing and full comfort typically return within 3–6 weeks.
+              </p>
+              <div className={styles.resultsAfterCardSpacer} />
+              <p className={styles.resultsAfterCardNote}>
+                Results are long-lasting and often permanent. Maintaining a high-fibre diet,
+                staying hydrated, and avoiding straining helps prevent future haemorrhoids.
               </p>
             </motion.div>
 
-            {/* Card 2: How Long Do Results Last */}
+            {/* Card 2: Side Effects */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="8" x2="12" y2="12"/>
+                    <line x1="12" y1="16" x2="12.01" y2="16"/>
                   </svg>
                 </span>
-                <h3 className={styles.resultsAfterCardTitle}>How Long Do Haemorrhoid Removal Results Last?</h3>
+                <h3 className={styles.resultsAfterCardTitle}>Possible Side Effects</h3>
               </div>
               <p className={styles.resultsAfterCardBody}>
-                Haemorrhoidectomy provides long-term, often permanent relief. Proper care and lifestyle adjustments help prevent new haemorrhoids.
+                Haemorrhoidectomy is a safe, well-established procedure. Most patients
+                experience only temporary and manageable effects:
               </p>
-            </motion.div>
-
-            {/* Card 3: Haemorrhoidectomy Side Effects */}
-            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
-              <div className={styles.resultsAfterCardHead}>
-                <span className={styles.resultsAfterCardIcon} aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 2v20m10-10H2"/><circle cx="12" cy="12" r="10"/>
-                  </svg>
-                </span>
-                <h3 className={styles.resultsAfterCardTitle}>Haemorrhoidectomy Side Effects</h3>
-              </div>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Mild pain or soreness',
-                  'Bleeding or swelling at the site',
-                  'Temporary difficulty with bowel movements',
-                  'There is a rare risk of infection or anal narrowing',
+                  'Mild pain or soreness at the wound site',
+                  'Some swelling and minor bleeding initially',
+                  'Temporary difficulty or discomfort with bowel movements',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
                     <span className={styles.resultsAfterDot} aria-hidden="true" />
@@ -787,26 +869,31 @@ export default function HaemorrhoidRemovalPage() {
                   </li>
                 ))}
               </ul>
+              <div className={styles.resultsAfterCardSpacer} />
+              <p className={styles.resultsAfterCardNote}>
+                Rare complications such as infection or anal narrowing will be fully explained
+                during your pre-operative consultation. Our team provides close follow-up care.
+              </p>
             </motion.div>
 
-            {/* Card 4: Aftercare Tips */}
+            {/* Card 3: Aftercare */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
                   </svg>
                 </span>
                 <h3 className={styles.resultsAfterCardTitle}>Aftercare Tips</h3>
               </div>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Keep the area clean and dry.',
-                  'Use sitz baths to soothe discomfort.',
-                  'Eat a high-fibre diet to ease bowel movements.',
-                  'Avoid heavy lifting or straining.',
-                  'Follow all doctor instructions for wound care.',
-                  'You need to attend follow-up visits to ensure proper healing.',
+                  'Keep the area clean and dry at all times',
+                  'Use sitz baths to soothe discomfort after bowel movements',
+                  'Eat a high-fibre diet to ease and soften bowel movements',
+                  'Avoid heavy lifting, straining, or strenuous exercise',
+                  'Attend all scheduled follow-up appointments for wound checks',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
                     <span className={styles.resultsAfterDot} aria-hidden="true" />
@@ -820,9 +907,64 @@ export default function HaemorrhoidRemovalPage() {
       </Section>
 
       {/* ════════════════════════════════════════
+          10. OTHER CONDITIONS WE TREAT
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
+        <div className={styles.whiteBgWrap} aria-hidden="true">
+          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
+        </div>
+        <Container className={styles.whiteBgContent}>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Related Procedures
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Other Conditions We Treat
+            </motion.h2>
+            <motion.p className={styles.beforeAfterSubheading} variants={fadeUp}>
+              Our minor surgery team treats a range of perianal and skin conditions alongside
+              haemorrhoid removal.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.treatedBenefitsGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {CONDITIONS_WE_TREAT.map((c) => (
+              <motion.div
+                key={c.title}
+                className={styles.treatedBenefitCard}
+                variants={fadeUp}
+                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
+              >
+                <h3 className={styles.treatedBenefitTitle}>{c.title}</h3>
+                <p className={styles.treatedBenefitDesc}>{c.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          11. PATIENT REVIEWS
+      ════════════════════════════════════════ */}
+      <Testimonials />
+
+      {/* ════════════════════════════════════════
           12. CTA BANNER
       ════════════════════════════════════════ */}
       <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book haemorrhoid removal consultation">
+        {/* Watermark logo */}
         <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
           <Image
             src="/images/Background-logo.png"
@@ -841,10 +983,10 @@ export default function HaemorrhoidRemovalPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
-              Sit &amp; Move Comfortably<br />After Haemorrhoid Removal!
+              Stop Suffering.<br />Get Permanent Relief.
             </motion.h2>
             <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
-              Let our experts help you achieve the haemorrhoidectomy results that you want.
+              Let our experts create your personalised haemorrhoid removal plan!
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
@@ -856,9 +998,75 @@ export default function HaemorrhoidRemovalPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          13. BEST HAEMORRHOID TREATMENT LEICESTER
+          13. TREATMENT AREAS
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="dark" data-section-theme="dark" className={styles.conditionsSection}>
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Treatment Areas
+            </motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Haemorrhoid Types &amp; Symptoms Addressed
+            </motion.h2>
+            <motion.p className={styles.conditionsIntro} variants={fadeUp}>
+              Our haemorrhoid removal service covers all common haemorrhoid types and
+              the full range of associated symptoms.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.areasColumns}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.div
+              className={styles.areasGroup}
+              variants={fadeUp}
+              whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
+            >
+              <p className={styles.areasGroupLabel}>Haemorrhoid Types</p>
+              <ul className={styles.areasGroupList} role="list">
+                {HAEMORRHOID_TYPES.map((area) => (
+                  <li key={area} className={styles.areasGroupItem}>
+                    <span className={styles.areasItemDot} aria-hidden="true" />
+                    {area}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div
+              className={styles.areasGroup}
+              variants={fadeUp}
+              whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
+            >
+              <p className={styles.areasGroupLabel}>Symptoms Addressed</p>
+              <ul className={styles.areasGroupList} role="list">
+                {SYMPTOMS_ADDRESSED.map((area) => (
+                  <li key={area} className={styles.areasGroupItem}>
+                    <span className={styles.areasItemDot} aria-hidden="true" />
+                    {area}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          14. BEST LEICESTER EXPERIENCE
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.clinicIntroSection}>
         <Container>
           <motion.div
             className={styles.clinicIntroBody}
@@ -868,22 +1076,23 @@ export default function HaemorrhoidRemovalPage() {
             viewport={VIEWPORT}
           >
             <motion.div className={styles.clinicIntroLeft} variants={fadeUp}>
-              <p className={styles.eyebrowDark}>Expert Treatment</p>
+              <p className={styles.eyebrowDark}>Haemorrhoid Removal</p>
               <h2 className={styles.combinedHeading}>
                 Best Haemorrhoid Removal<br />Leicester Experience
               </h2>
             </motion.div>
             <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
-              At The One Clinic, we provide the best haemorrhoid removal Leicester experience
-              with gentle, personalised care. Our experts ensure minimal discomfort, fast recovery,
-              and lasting relief, helping patients return to comfortable daily life.
+              Experience the best haemorrhoid removal in Leicester at The One Clinic. Our
+              expert doctors deliver safe, minimally invasive surgical treatment with
+              compassionate, personalised care. Enjoy fast, lasting relief and a smooth
+              recovery with dedicated follow-up support every step of the way.
             </motion.p>
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          14. COST BANNER
+          15. COST BANNER
       ════════════════════════════════════════ */}
       <section className={styles.costBanner} data-section-theme="dark" aria-label="Haemorrhoid removal cost Leicester">
         <Container>
@@ -895,14 +1104,15 @@ export default function HaemorrhoidRemovalPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
-              Haemorrhoid Removal Cost Leicester
+              Haemorrhoid Removal Cost at The One Clinic
             </motion.p>
             <motion.p className={styles.costBannerPrice} variants={fadeUp}>
-              Contact us to inquire about the cost.
+              Contact Us for Pricing — Tailored to Your Assessment
             </motion.p>
             <motion.p className={styles.costBannerNote} variants={fadeUp}>
-              At The One Clinic, the final price depends on your personalised treatment plan
-              and will be discussed during your consultation with our expert.
+              The final price depends on your individual assessment and personalised
+              treatment plan. Pricing will be discussed in full during your consultation
+              with our expert.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
@@ -914,7 +1124,7 @@ export default function HaemorrhoidRemovalPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          15. WHY CHOOSE THE ONE CLINIC
+          16. WHY CHOOSE THE ONE CLINIC
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -925,11 +1135,8 @@ export default function HaemorrhoidRemovalPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Why Us
-            </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Why Choose The One Clinic For Haemorrhoidectomy in Leicester
+              Why Choose The One Clinic For Haemorrhoid Removal
             </motion.h2>
           </motion.div>
 
@@ -956,61 +1163,6 @@ export default function HaemorrhoidRemovalPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          16. MEET THE EXPERT
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
-        <Container>
-          <motion.div
-            className={styles.expertCard}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {/* Left: full-bleed photo panel */}
-            <motion.div className={styles.expertCardPhotoPanel} variants={fadeUp}>
-              <Image
-                src="/images/imgi_20_team-thumb-VIRMANI.jpg"
-                alt="Dr Sumit Virmani, Co-Founder, The One Clinic"
-                fill
-                className={styles.expertCardPhoto}
-                sizes="(max-width: 768px) 100vw, 420px"
-              />
-            </motion.div>
-
-            {/* Right: content */}
-            <motion.div className={styles.expertCardContent} variants={stagger(0.08)}>
-              <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-                Meet The Expert
-              </motion.p>
-              <motion.h2 className={styles.expertCardName} variants={fadeUp}>
-                Dr Sumit Virmani
-              </motion.h2>
-
-              <motion.div className={styles.expertCardBadges} variants={fadeUp}>
-                {['MBBS', 'MRCGP', 'Co-Founder'].map((credential) => (
-                  <span key={credential} className={styles.expertCardBadge}>{credential}</span>
-                ))}
-              </motion.div>
-
-              <motion.p className={styles.expertCardBio} variants={fadeUp}>
-                Dr Sumit Virmani is the co-founder of The One Clinic and brings over 15 years
-                of medical expertise, with a decade as a trusted local GP. He specialises in
-                haemorrhoidectomy and minor surgical procedures with a meticulous approach to
-                patient safety and comfort.
-              </motion.p>
-
-              <motion.p className={styles.expertCardBio} variants={fadeUp}>
-                His expertise in haemorrhoid removal combined with compassionate care ensures
-                every patient receives safe, effective treatment. Dr Virmani continues to combine
-                his ongoing GP practice with expert surgical treatment at The One Clinic.
-              </motion.p>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
           17. MEET THE EXPERTS
       ════════════════════════════════════════ */}
       <MeetTheExperts />
@@ -1018,7 +1170,70 @@ export default function HaemorrhoidRemovalPage() {
       {/* ════════════════════════════════════════
           18. FAQ
       ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
+      <section className={styles.faqSection} data-section-theme="dark">
+        <div className={styles.faqInner}>
+          <Container>
+            <motion.div
+              className={styles.sectionHeaderCentre}
+              variants={stagger(0.1)}
+              initial="hidden"
+              whileInView="show"
+              viewport={VIEWPORT}
+            >
+              <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
+              <motion.h2 className={styles.headingLight} variants={fadeUp}>
+                Frequently Asked Questions
+              </motion.h2>
+            </motion.div>
+
+            <motion.div
+              className={styles.faqBody}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={VIEWPORT}
+            >
+              <Accordion items={showAllFaqs ? FAQS : FAQS.slice(0, 5)} theme="dark" />
+
+              {FAQS.length > 5 && (
+                <div className={styles.faqToggleWrap}>
+                  <button
+                    className={styles.faqToggleBtn}
+                    onClick={() => setShowAllFaqs((v) => !v)}
+                    aria-expanded={showAllFaqs}
+                  >
+                    {showAllFaqs ? (
+                      <>
+                        Show Less
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                          <path d="M4 10l4-4 4 4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </>
+                    ) : (
+                      <>
+                        Show More
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                          <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </>
+                    )}
+                  </button>
+                </div>
+              )}
+            </motion.div>
+          </Container>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════
+          19. BOOKING FORM
+      ════════════════════════════════════════ */}
+      <LeadForm />
+
+      {/* ════════════════════════════════════════
+          20. RELATED TREATMENTS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -1027,57 +1242,42 @@ export default function HaemorrhoidRemovalPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Frequently Asked Questions
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Explore More
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Related Treatments
             </motion.h2>
           </motion.div>
 
           <motion.div
-            className={styles.faqBody}
-            variants={fadeUp}
+            className={styles.relatedGrid}
+            variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <Accordion items={showAllFaqs ? FAQS : FAQS.slice(0, 4)} theme="dark" />
-
-            {FAQS.length > 4 && (
-              <div className={styles.faqToggleWrap}>
-                <button
-                  className={styles.faqToggleBtn}
-                  onClick={() => setShowAllFaqs((v) => !v)}
-                  aria-expanded={showAllFaqs}
-                >
-                  {showAllFaqs ? (
-                    <>
-                      Show Less
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                        <path d="M4 10l4-4 4 4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </>
-                  ) : (
-                    <>
-                      Show More
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                        <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </>
-                  )}
-                </button>
-              </div>
-            )}
+            {RELATED.map((r) => (
+              <motion.div key={r.title} variants={fadeUp}>
+                <Link href={r.href} className={styles.relatedCard}>
+                  <h3 className={styles.relatedTitle}>{r.title}</h3>
+                  <p className={styles.relatedDesc}>{r.desc}</p>
+                  <span className={styles.relatedArrow} aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M3 8h10M9 4l4 4-4 4"
+                        stroke="currentColor" strokeWidth="1.5"
+                        strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                </Link>
+              </motion.div>
+            ))}
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          19. BOOKING FORM
-      ════════════════════════════════════════ */}
-      <LeadForm />
-
-      {/* ════════════════════════════════════════
-          20. FINAL CTA
+          FINAL CTA
       ════════════════════════════════════════ */}
       <FinalCTA />
     </>
