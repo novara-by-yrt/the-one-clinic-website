@@ -172,13 +172,6 @@ const BENEFITS = [
   },
 ];
 
-const OVERVIEW_POINTS = [
-  'Smooths forehead lines, frown lines, and crow\'s feet',
-  'Results last 3 to 4 months, with longer duration over repeat treatments',
-  'Personalised dosing for a natural, refreshed result',
-  'No waiting lists and no GP referral required',
-];
-
 const ELIGIBILITY = [
   'Noticing forehead lines, frown lines, or crow\'s feet that bother you',
   'Wanting a refreshed, more rested look without surgery',
@@ -385,19 +378,6 @@ export default function WrinkleRelaxingPage() {
                   is precisely tailored to your facial anatomy by our expert doctors.
                 </p>
               </motion.div>
-
-              <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
-                {OVERVIEW_POINTS.map((point) => (
-                  <motion.li key={point} className={styles.eligibilityItem} variants={fadeUp}>
-                    <span className={styles.eligibilityCheck} aria-hidden="true">
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </span>
-                    <span>{point}</span>
-                  </motion.li>
-                ))}
-              </motion.ul>
 
               <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
                 <BookConsultationButton className={styles.combinedCta}>
