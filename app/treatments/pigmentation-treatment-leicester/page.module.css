@@ -11,7 +11,7 @@
   padding-top: 80px;
 }
 
-/* Breadcrumb strip — sits just below the fixed header */
+/* Breadcrumb strip - sits just below the fixed header */
 .heroBreadcrumb {
   position: absolute;
   top: 88px;
@@ -68,7 +68,7 @@
   pointer-events: none;
 }
 
-/* ── Right-side card ─────────────────────────────────────── */
+/* __ Right-side card _____________________________________ */
 .heroCard {
   background: rgba(255 255 255 / 0.95);
   border-radius: 20px;
@@ -104,7 +104,7 @@
   margin: 0;
 }
 
-/* ── Review badges ───────────────────────────────────────── */
+/* __ Review badges ______________________________________ */
 .reviewBadges {
   display: flex;
   gap: 10px;
@@ -424,7 +424,7 @@
    COMBINED: WHAT IS + AT A GLANCE
 ════════════════════════════════════════════════════ */
 
-/* Outer 2-column grid — both sides stretch to equal height */
+/* Outer 2-column grid - both sides stretch to equal height */
 .combinedBody {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -432,7 +432,7 @@
   align-items: stretch;
 }
 
-/* ── Left column ─────────────────────────────────── */
+/* __ Left column ______________________________ */
 .combinedLeft {
   display: flex;
   flex-direction: column;
@@ -493,7 +493,7 @@
   box-shadow: 0 4px 24px rgb(0 0 0 / 0.25);
 }
 
-/* White variant — for dark section CTAs (e.g. Why Choose Endolift Laser) */
+/* White variant - for dark section CTAs (e.g. Why Choose Endolift Laser) */
 .ctaWhiteInvert {
   background: #fff !important;
   color: #111 !important;
@@ -503,7 +503,7 @@
   opacity: 0.88 !important;
 }
 
-/* ── Right column ────────────────────────────────── */
+/* __ Right column ______________________________ */
 .combinedRight {
   display: flex;
   flex-direction: column;
@@ -511,7 +511,7 @@
   padding-left: clamp(var(--space-7), 6vw, 88px);
 }
 
-/* "At a Glance" label — visually mirrors eyebrow on the left */
+/* "At a Glance" label - visually mirrors eyebrow on the left */
 .combinedRightLabel {
   font-size: 0.6875rem;
   font-weight: 700;
@@ -521,7 +521,7 @@
   margin: 0;
 }
 
-/* 2×2 card grid — fills the remaining height of the right column */
+/* 2x2 card grid - fills the remaining height of the right column */
 .combinedCards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -536,7 +536,7 @@
 }
 
 /* ════════════════════════════════════════════════════
-   TREATMENT JOURNEY  —  vertical timeline
+   TREATMENT JOURNEY  -  vertical timeline
 ════════════════════════════════════════════════════ */
 .journeyList {
   list-style: none;
@@ -773,7 +773,7 @@
    TREATABLE CONDITIONS
 ════════════════════════════════════════════════════ */
 .conditionsSection {
-  /* dark section — no override needed */
+  /* dark section - no override needed */
 }
 
 .conditionsList {
@@ -959,7 +959,7 @@
   object-fit: cover;
 }
 
-/* Wistia video embed — square ratio matching original image slot */
+/* Wistia video embed - square ratio matching original image slot */
 .whatIsVideoWrap {
   position: relative;
   border-radius: var(--radius-lg);
@@ -981,7 +981,7 @@
 }
 
 /* ════════════════════════════════════════════════════
-   AT A GLANCE — STANDALONE FULL-WIDTH GRID
+   AT A GLANCE - STANDALONE FULL-WIDTH GRID
 ════════════════════════════════════════════════════ */
 .glanceStandaloneGrid {
   display: grid;
@@ -1016,7 +1016,7 @@
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  /* Natural image ratio is 280×170 ≈ 5:3; use 5/3 so cover never crops */
+  /* Natural image ratio is 280x170 = 5:3; use 5/3 so cover never crops */
   aspect-ratio: 5 / 3;
   background: #f0f0f0;
   box-shadow: 0 4px 20px rgba(0 0 0 / 0.08);
@@ -1086,7 +1086,7 @@
 }
 
 /* ════════════════════════════════════════════════════
-   CTA BANNER — LOGO WATERMARK
+   CTA BANNER - LOGO WATERMARK
 ════════════════════════════════════════════════════ */
 .ctaBannerLogoWrap {
   position: absolute;
@@ -1284,7 +1284,7 @@
 }
 
 /* ════════════════════════════════════════════════════
-   EXPERT CARD — DR VIRMANI (premium dark)
+   EXPERT CARD - DR VIRMANI (premium dark)
 ════════════════════════════════════════════════════ */
 .expertCard {
   display: grid;
@@ -1573,7 +1573,7 @@
 }
 
 /* ════════════════════════════════════════════════════
-   TREATABLE AREAS — 2-COLUMN CATEGORIES (DARK)
+   TREATABLE AREAS - 2-COLUMN CATEGORIES (DARK)
 ════════════════════════════════════════════════════ */
 .conditionsIntro {
   font-size: 1.0625rem;
@@ -2124,7 +2124,7 @@
     padding-top: clamp(52px, 7vw, 80px);
     padding-bottom: clamp(52px, 7vw, 80px);
   }
-  /* Portrait image — 3/4 aspect ratio */
+  /* Portrait image - 3/4 aspect ratio */
   .heroImageWrap {
     min-height: unset;
     aspect-ratio: 3 / 4;
@@ -2163,7 +2163,7 @@
 
   .overviewLabel { padding-top: 0; }
 
-  /* ── Benefits: center all content on mobile ── */
+  /* __ Benefits: center all content on mobile __ */
   .benefitsGrid { grid-template-columns: 1fr; }
 
   .benefitCard {
@@ -2196,7 +2196,7 @@
 
   /* Expert card: stack photo above content on mobile */
   .expertCard { grid-template-columns: 1fr; min-height: auto; }
-  /* Use aspect-ratio so photo scales with width — never a flat crop strip */
+  /* Use aspect-ratio so photo scales with width - never a flat crop strip */
   .expertCardPhotoPanel { min-height: unset; aspect-ratio: 4 / 3; }
   .expertCardContent { padding: var(--space-4); }
 
@@ -2218,7 +2218,7 @@
   /* Areas columns: stack */
   .areasColumns { grid-template-columns: 1fr; gap: var(--space-3); }
 
-  /* ── Treatment Journey: compact on mobile ── */
+  /* __ Treatment Journey: compact on mobile __ */
   .journeyStep {
     grid-template-columns: 48px 1fr;
     gap: var(--space-3);
@@ -2232,44 +2232,44 @@
   .headingDark,
   .headingLight { font-size: clamp(1.5rem, 5vw, var(--text-h2)); }
 
-  /* ── Fix: expert card content padding was too large (64px/48px) ── */
+  /* __ Fix: expert card content padding was too large (64px/48px) __ */
   .expertCardContent { padding: var(--space-4) var(--space-4); }
 
-  /* ── Fix: CTA banner heading clamp minimum was ~17px ── */
+  /* __ Fix: CTA banner heading clamp minimum was approx 17px __ */
   .ctaBannerHeading { font-size: clamp(1.5rem, 7vw, 3.75rem); }
 
-  /* ── Reduce paddings for all dark cards ── */
+  /* __ Reduce paddings for all dark cards __ */
   .techCard                { padding: var(--space-4); }
   .resultsAfterCard        { padding: var(--space-4); }
   .areasGroup              { padding: var(--space-4); }
   .clinicReasonCard        { padding: var(--space-4) var(--space-3); }
 
-  /* ── CTA spacing ── */
+  /* __ CTA spacing __ */
   .combinedCtaWrapper { padding-top: var(--space-4); }
 
-  /* ── Full-width CTA buttons ── */
+  /* __ Full-width CTA buttons __ */
   .combinedCta  { width: 100%; justify-content: center; }
   .ctaBannerBtn { width: 100%; max-width: 360px; align-self: center; }
 
-  /* ── Tighten section-header bottom margin ── */
+  /* __ Tighten section-header bottom margin __ */
   .sectionHeaderCentre { margin-bottom: var(--space-4); }
 
-  /* ── Glance card: reduce padding in 2-col layout ── */
+  /* __ Glance card: reduce padding in 2-col layout __ */
   .glanceCard { padding: var(--space-4) var(--space-3); }
 
-  /* ── Treated-benefits grid: tighter gap ── */
+  /* __ Treated-benefits grid: tighter gap __ */
   .treatedBenefitsGrid { gap: var(--space-2); }
 
-  /* ── Clinic reasons: 1-col on mobile ── */
+  /* __ Clinic reasons: 1-col on mobile __ */
   .clinicReasonsGrid { grid-template-columns: 1fr; gap: var(--space-2); }
 
-  /* ── Journey list: remove fixed max-width so it fills width ── */
+  /* __ Journey list: remove fixed max-width so it fills width __ */
   .journeyList { max-width: 100%; }
 
-  /* ── What-is section: full-width CTA ── */
+  /* __ What-is section: full-width CTA __ */
   .whatIsContent .combinedCta { width: 100%; }
 
-  /* ── Eligibility wrap: full width ── */
+  /* __ Eligibility wrap: full width __ */
   .eligibilityWrap { max-width: 100%; }
 }
 
@@ -2300,38 +2300,38 @@
   /* Standalone At a Glance: 1-col */
   .glanceStandaloneGrid { grid-template-columns: 1fr; }
 
-  /* ── Expert card: tighter content padding on small phones ── */
+  /* __ Expert card: tighter content padding on small phones __ */
   .expertCardContent { padding: var(--space-3) var(--space-3); }
 
-  /* ── Further reduce card paddings on small phones ── */
+  /* __ Further reduce card paddings on small phones __ */
   .techCard         { padding: var(--space-3); }
   .resultsAfterCard { padding: var(--space-3); }
   .areasGroup       { padding: var(--space-3); }
   .clinicReasonCard { padding: var(--space-3); }
 
-  /* ── Eligibility items: slightly compact ── */
+  /* __ Eligibility items: slightly compact __ */
   .eligibilityItem  { font-size: 1rem; padding: var(--space-2) var(--space-3); }
   .eligibilityCheck { width: 24px; height: 24px; min-width: 24px; }
 
-  /* ── How covers wrap: less internal padding ── */
+  /* __ How covers wrap: less internal padding __ */
   .howCoversWrap { padding: var(--space-3); }
 
-  /* ── CTA buttons ── */
+  /* __ CTA buttons __ */
   .ctaBannerBtn { max-width: 100%; }
   .combinedCta  { padding: 12px 24px; }
 
-  /* ── Glance card padding ── */
+  /* __ Glance card padding __ */
   .glanceCard { padding: var(--space-3); }
 
-  /* ── finalResults banner ── */
+  /* __ finalResults banner __ */
   .finalResultsBanner { padding: var(--space-4) var(--space-3); }
 
-  /* ── Areas group items ── */
+  /* __ Areas group items __ */
   .areasGroupItem { font-size: 0.9375rem; }
 }
 
 /* ══════════════════════════════════════════════════
-   SMALL PHONES  ≤ 400px
+   SMALL PHONES  less than or equal 400px
 ══════════════════════════════════════════════════ */
 @media (max-width: 400px) {
   /* Hero inner: tighter vertical padding */
@@ -2345,7 +2345,7 @@
   /* Glance standalone: tighter gap */
   .glanceStandaloneGrid { gap: var(--space-2); }
 
-  /* Expert card content: tightest padding at ≤400px */
+  /* Expert card content: tightest padding at less than or equal 400px */
   .expertCardContent { padding: var(--space-3) var(--space-2); }
 
   /* Slideshow arrow buttons */
