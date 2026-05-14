@@ -203,42 +203,42 @@ const CLINIC_REASONS = [
   'Commitment to natural-looking rejuvenation enhancing beauty without obvious change',
 ];
 
-const FAQ = [
+const FAQS = [
   {
-    q: 'What exactly is NCTF 135HA and how does it work?',
-    a: 'NCTF 135HA is a pharmaceutical-grade skin biorevitalisation formula containing amino acids, vitamins, minerals, hyaluronic acid, and coenzymes. When injected into the mid-dermis, it stimulates fibroblasts to produce collagen and elastin, improves skin hydration and oxygenation, and contains depigmenting agents that reduce dark circles. It works with your body\'s natural repair mechanisms to improve skin quality at the cellular level.',
+    question: 'What exactly is NCTF 135HA and how does it work?',
+    answer: 'NCTF 135HA is a pharmaceutical-grade skin biorevitalisation formula containing amino acids, vitamins, minerals, hyaluronic acid, and coenzymes. When injected into the mid-dermis, it stimulates fibroblasts to produce collagen and elastin, improves skin hydration and oxygenation, and contains depigmenting agents that reduce dark circles. It works with your body\'s natural repair mechanisms to improve skin quality at the cellular level.',
   },
   {
-    q: 'How many NCTF 135HA treatment sessions will I need?',
-    a: 'A course of 2 to 3 sessions spaced 2 to 4 weeks apart is typically recommended for optimal results. Many patients see excellent improvement after a single session, but multiple sessions create more dramatic, longer-lasting results. Your clinician will recommend the ideal protocol based on your skin concerns and goals.',
+    question: 'How many NCTF 135HA treatment sessions will I need?',
+    answer: 'A course of 2 to 3 sessions spaced 2 to 4 weeks apart is typically recommended for optimal results. Many patients see excellent improvement after a single session, but multiple sessions create more dramatic, longer-lasting results. Your clinician will recommend the ideal protocol based on your skin concerns and goals.',
   },
   {
-    q: 'Is NCTF 135HA treatment painful or uncomfortable?',
-    a: 'No, the procedure is very comfortable. A topical numbing cream is applied beforehand, completely numbing the treatment area. Most patients experience only minimal sensation during the 30 to 45-minute injection procedure. Post-treatment discomfort is minimal, with mild redness and swelling typically resolving within 24 hours.',
+    question: 'Is NCTF 135HA treatment painful or uncomfortable?',
+    answer: 'No, the procedure is very comfortable. A topical numbing cream is applied beforehand, completely numbing the treatment area. Most patients experience only minimal sensation during the 30 to 45-minute injection procedure. Post-treatment discomfort is minimal, with mild redness and swelling typically resolving within 24 hours.',
   },
   {
-    q: 'When will I see results and how long do they last?',
-    a: 'Initial results appear within 1 to 2 weeks as the treatment takes effect. Continued improvement develops over 6 to 8 weeks as collagen production increases. Results typically last 3 to 6 months, with maintenance treatments every 6 to 12 months extending benefits indefinitely. Some patients enjoy 12+ months of results.',
+    question: 'When will I see results and how long do they last?',
+    answer: 'Initial results appear within 1 to 2 weeks as the treatment takes effect. Continued improvement develops over 6 to 8 weeks as collagen production increases. Results typically last 3 to 6 months, with maintenance treatments every 6 to 12 months extending benefits indefinitely. Some patients enjoy 12+ months of results.',
   },
   {
-    q: 'How does NCTF 135HA specifically eliminate dark circles?',
-    a: 'NCTF 135HA eliminates dark circles through multiple mechanisms: the formula contains depigmenting agents that reduce melanin and darkness; improved skin thickness masks vascular visibility; enhanced hydration plumps tissues, reducing hollow appearance; and improved blood flow and oxygenation brightens the area. The combination delivers dramatic dark circle reduction.',
+    question: 'How does NCTF 135HA specifically eliminate dark circles?',
+    answer: 'NCTF 135HA eliminates dark circles through multiple mechanisms: the formula contains depigmenting agents that reduce melanin and darkness; improved skin thickness masks vascular visibility; enhanced hydration plumps tissues, reducing hollow appearance; and improved blood flow and oxygenation brightens the area. The combination delivers dramatic dark circle reduction.',
   },
   {
-    q: 'What is the difference between NCTF 135HA and other skin boosters?',
-    a: 'NCTF 135HA is considered one of the most comprehensive biorevitalisation formulas available, containing 59 active ingredients including vitamins, minerals, amino acids, nucleic acids, and coenzymes. It offers superior collagen stimulation, depigmentation, and hydration compared to simpler formulas. It delivers more dramatic results than many competitor products.',
+    question: 'What is the difference between NCTF 135HA and other skin boosters?',
+    answer: 'NCTF 135HA is considered one of the most comprehensive biorevitalisation formulas available, containing 59 active ingredients including vitamins, minerals, amino acids, nucleic acids, and coenzymes. It offers superior collagen stimulation, depigmentation, and hydration compared to simpler formulas. It delivers more dramatic results than many competitor products.',
   },
   {
-    q: 'Can I combine NCTF 135HA with other treatments?',
-    a: 'Yes. Many patients combine NCTF 135HA with dermal fillers for tear-troughs, Profhilo for hydration enhancement, laser treatments for additional skin rejuvenation, or anti-wrinkle injections for expression lines. Treatments can be combined or staggered strategically. Our team discusses combination approaches during your consultation.',
+    question: 'Can I combine NCTF 135HA with other treatments?',
+    answer: 'Yes. Many patients combine NCTF 135HA with dermal fillers for tear-troughs, Profhilo for hydration enhancement, laser treatments for additional skin rejuvenation, or anti-wrinkle injections for expression lines. Treatments can be combined or staggered strategically. Our team discusses combination approaches during your consultation.',
   },
   {
-    q: 'Is there any downtime or activity restrictions after NCTF 135HA?',
-    a: 'Minimal downtime is required, with most patients returning to normal activities the next day. You should avoid heavy exercise and excessive sweating for 24 to 48 hours. Sun exposure should be minimised, and SPF 30+ applied daily. Light activities can resume immediately, making it perfect for busy lifestyles.',
+    question: 'Is there any downtime or activity restrictions after NCTF 135HA?',
+    answer: 'Minimal downtime is required, with most patients returning to normal activities the next day. You should avoid heavy exercise and excessive sweating for 24 to 48 hours. Sun exposure should be minimised, and SPF 30+ applied daily. Light activities can resume immediately, making it perfect for busy lifestyles.',
   },
   {
-    q: 'Do I need a doctor referral for NCTF 135HA treatment?',
-    a: 'No referral is needed. You can book directly with us. A comprehensive pre-treatment consultation is conducted to assess your skin, discuss goals, and determine your suitability. If you have specific medical concerns, we can discuss those during your consultation, but no GP referral is required.',
+    question: 'Do I need a doctor referral for NCTF 135HA treatment?',
+    answer: 'No referral is needed. You can book directly with us. A comprehensive pre-treatment consultation is conducted to assess your skin, discuss goals, and determine your suitability. If you have specific medical concerns, we can discuss those during your consultation, but no GP referral is required.',
   },
 ];
 
@@ -267,7 +267,7 @@ const RELATED_TREATMENTS = [
 
 export default function NCTF135Page() {
   const [showAllFaqs, setShowAllFaqs] = useState(false);
-  const displayedFaqs = showAllFaqs ? FAQ : FAQ.slice(0, 4);
+  const displayedFaqs = showAllFaqs ? FAQS : FAQS.slice(0, 4);
 
   return (
     <>
@@ -296,7 +296,7 @@ export default function NCTF135Page() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp}>
               <p className={styles.eyebrow}>NCTF 135HA Skin Biorevitalisation</p>
@@ -306,7 +306,7 @@ export default function NCTF135Page() {
               <p className={styles.subheading}>
                 Advanced biorevitalisation treatment that dramatically improves skin quality, eliminates dark circles, and restores youthful luminosity.
               </p>
-              <BookConsultationButton />
+              <BookConsultationButton>Book Consultation</BookConsultationButton>
             </motion.div>
 
             <motion.div variants={fadeUp} className={styles.heroImage}>
@@ -335,7 +335,7 @@ export default function NCTF135Page() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.whatIsContent}>
               <p className={styles.eyebrowDark}>What Is NCTF 135HA?</p>
@@ -346,7 +346,7 @@ export default function NCTF135Page() {
               <p>
                 The treatment is particularly renowned for eliminating dark circles while simultaneously improving overall skin quality, texture, elasticity, and luminosity. With minimal downtime and results comparable to laser treatments but at significantly lower cost, NCTF 135HA has become the gold-standard skin biorevitalisation treatment worldwide.
               </p>
-              <BookConsultationButton />
+              <BookConsultationButton>Book Consultation</BookConsultationButton>
             </motion.div>
             <motion.div variants={fadeUp} className={styles.whatIsImage}>
               <Image
@@ -366,7 +366,7 @@ export default function NCTF135Page() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrow}>At a Glance</p>
@@ -375,7 +375,7 @@ export default function NCTF135Page() {
 
             <motion.div
               className={styles.glanceGrid}
-              variants={stagger}
+              variants={stagger()}
             >
               {AT_A_GLANCE.map((item, i) => (
                 <motion.div
@@ -403,7 +403,7 @@ export default function NCTF135Page() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Your Treatment Journey</p>
@@ -412,7 +412,7 @@ export default function NCTF135Page() {
 
             <motion.div
               className={styles.journeySection}
-              variants={stagger}
+              variants={stagger()}
             >
               {JOURNEY_STEPS.map((step) => (
                 <motion.div
@@ -438,7 +438,7 @@ export default function NCTF135Page() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrow}>Key Benefits</p>
@@ -447,7 +447,7 @@ export default function NCTF135Page() {
 
             <motion.div
               className={styles.benefitsGrid}
-              variants={stagger}
+              variants={stagger()}
             >
               {BENEFITS.map((benefit, i) => (
                 <motion.div
@@ -475,14 +475,14 @@ export default function NCTF135Page() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Eligibility and Suitability</p>
               <h2 className={styles.headingDark}>Are You a Good Candidate?</h2>
             </motion.div>
 
-            <motion.div variants={stagger} className={styles.textGrid}>
+            <motion.div variants={stagger()} className={styles.textGrid}>
               {ELIGIBILITY.map((item, i) => (
                 <motion.div key={i} variants={fadeUp} className={styles.textItem}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -502,14 +502,14 @@ export default function NCTF135Page() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Skin Concerns Addressed</p>
               <h2 className={styles.headingDark}>Conditions NCTF 135HA Treats</h2>
             </motion.div>
 
-            <motion.div variants={stagger} className={styles.textGrid}>
+            <motion.div variants={stagger()} className={styles.textGrid}>
               {SKIN_CONCERNS.map((concern, i) => (
                 <motion.div key={i} variants={fadeUp} className={styles.textItem}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -529,14 +529,14 @@ export default function NCTF135Page() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Results and Aftercare</p>
               <h2 className={styles.headingDark}>What to Expect After Treatment</h2>
             </motion.div>
 
-            <motion.div variants={stagger} className={styles.textGrid}>
+            <motion.div variants={stagger()} className={styles.textGrid}>
               {RESULTS_AND_AFTERCARE.map((item, i) => (
                 <motion.div key={i} variants={fadeUp} className={styles.textItem}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -563,14 +563,14 @@ export default function NCTF135Page() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.ctaBannerContent}>
               <h2 className={styles.heading}>Transform Your Skin with NCTF 135HA</h2>
               <p className={styles.subheading}>
                 Book your comprehensive skin consultation today to see how NCTF 135HA can restore your skin\'s youthful quality and luminosity.
               </p>
-              <BookConsultationButton />
+              <BookConsultationButton>Book Consultation</BookConsultationButton>
             </motion.div>
           </motion.div>
         </Container>
@@ -582,7 +582,7 @@ export default function NCTF135Page() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Our Clinic</p>
@@ -595,14 +595,14 @@ export default function NCTF135Page() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={VIEWPORT}
-                variants={stagger}
+                variants={stagger()}
               >
                 <motion.div variants={fadeUp}>
                   <p className={styles.eyebrowDark}>Skin Biorevitalisation Expertise</p>
                   <h3 className={styles.headingDark}>Specialising in Advanced Skin Rejuvenation</h3>
                 </motion.div>
 
-                <motion.div variants={stagger}>
+                <motion.div variants={stagger()}>
                   {CLINIC_REASONS.map((reason, i) => (
                     <motion.div key={i} variants={fadeUp} className={styles.clinicReason}>
                       <span className={styles.reasonNumber}>
@@ -638,7 +638,7 @@ export default function NCTF135Page() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.costBannerContent}>
               <p className={styles.eyebrow}>Transparent Pricing</p>
@@ -646,7 +646,7 @@ export default function NCTF135Page() {
               <p className={styles.costText}>
                 NCTF 135HA treatment costs from £200 per session. Most patients benefit from a course of 2 to 3 sessions spaced 2 to 4 weeks apart for optimal results. We offer flexible payment plans and comprehensive package pricing for multi-session courses, providing exceptional value for laser-equivalent results at significantly lower cost.
               </p>
-              <BookConsultationButton />
+              <BookConsultationButton>Book Consultation</BookConsultationButton>
             </motion.div>
           </motion.div>
         </Container>
@@ -664,7 +664,7 @@ export default function NCTF135Page() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeaderCentre}>
               <p className={styles.eyebrow}>Common Questions</p>
@@ -673,16 +673,12 @@ export default function NCTF135Page() {
 
             <motion.div
               className={styles.faqList}
-              variants={stagger}
+              variants={stagger()}
             >
-              {displayedFaqs.map((faq, i) => (
-                <motion.div key={i} variants={fadeUp}>
-                  <Accordion question={faq.q} answer={faq.a} />
-                </motion.div>
-              ))}
+              <Accordion items={displayedFaqs} theme="dark" />
             </motion.div>
 
-            {!showAllFaqs && FAQ.length > 4 && (
+            {!showAllFaqs && FAQS.length > 4 && (
               <motion.div
                 variants={fadeUp}
                 className={styles.showMoreContainer}
@@ -711,7 +707,7 @@ export default function NCTF135Page() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Related Treatments</p>
@@ -720,7 +716,7 @@ export default function NCTF135Page() {
 
             <motion.div
               className={styles.relatedGrid}
-              variants={stagger}
+              variants={stagger()}
             >
               {RELATED_TREATMENTS.map((treatment, i) => (
                 <motion.div

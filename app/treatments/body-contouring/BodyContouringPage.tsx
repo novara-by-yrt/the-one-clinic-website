@@ -102,7 +102,7 @@ const JOURNEY_STEPS = [
   {
     n: '04',
     title: 'Recovery, Aftercare and Progressive Results',
-    desc: 'Recovery is straightforward with minimal disruption to your routine. Post-treatment, you can return to normal activities immediately, including exercise. Our team provides detailed aftercare instructions to optimise results. As your body naturally eliminates targeted fat cells and new collagen matures over the following weeks and months, you'll notice progressive body contouring improvements that continue for 3 to 6 months.',
+    desc: 'Recovery is straightforward with minimal disruption to your routine. Post-treatment, you can return to normal activities immediately, including exercise. Our team provides detailed aftercare instructions to optimise results. As your body naturally eliminates targeted fat cells and new collagen matures over the following weeks and months, you\'ll notice progressive body contouring improvements that continue for 3 to 6 months.',
   },
 ];
 
@@ -202,42 +202,42 @@ const CLINIC_REASONS = [
   'Cutting-edge technology combined with artistic eye for body balance, proportion and aesthetic harmony',
 ];
 
-const FAQ = [
+const FAQS = [
   {
-    q: 'How does non-surgical body contouring actually reduce fat cells?',
-    a: 'Our advanced technologies use targeted energy—including radiofrequency, focused ultrasound, or laser energy—to disrupt fat cell membranes from within. This causes the fat cells to break down and be naturally eliminated by your body\'s lymphatic system over the following weeks. Simultaneously, the energy stimulates collagen production, providing skin tightening benefits that create definition and contour.',
+    question: 'How does non-surgical body contouring actually reduce fat cells?',
+    answer: 'Our advanced technologies use targeted energy—including radiofrequency, focused ultrasound, or laser energy—to disrupt fat cell membranes from within. This causes the fat cells to break down and be naturally eliminated by your body\'s lymphatic system over the following weeks. Simultaneously, the energy stimulates collagen production, providing skin tightening benefits that create definition and contour.',
   },
   {
-    q: 'How many body contouring sessions will I need to see results?',
-    a: 'Most patients require 4 to 8 sessions spaced 2 to 3 weeks apart, though this varies based on the size of the treatment area, the amount of fat to be reduced, and your individual response to treatment. Your personalised treatment plan will be discussed during your initial consultation. Initial visible improvements appear within 2 to 4 weeks, with full results continuing to develop for up to 6 months.',
+    question: 'How many body contouring sessions will I need to see results?',
+    answer: 'Most patients require 4 to 8 sessions spaced 2 to 3 weeks apart, though this varies based on the size of the treatment area, the amount of fat to be reduced, and your individual response to treatment. Your personalised treatment plan will be discussed during your initial consultation. Initial visible improvements appear within 2 to 4 weeks, with full results continuing to develop for up to 6 months.',
   },
   {
-    q: 'Will I have downtime after body contouring treatment?',
-    a: 'No, there is essentially no downtime. You can return to work, exercise, and all normal activities immediately after treatment. Some patients experience mild redness or warmth in the treated area, which typically subsides within hours. This is one of the key advantages of non-surgical body contouring—you get results without missing work or life.',
+    question: 'Will I have downtime after body contouring treatment?',
+    answer: 'No, there is essentially no downtime. You can return to work, exercise, and all normal activities immediately after treatment. Some patients experience mild redness or warmth in the treated area, which typically subsides within hours. This is one of the key advantages of non-surgical body contouring—you get results without missing work or life.',
   },
   {
-    q: 'Is body contouring treatment safe? Are there any side effects?',
-    a: 'Yes, our clinically proven technologies are safe and FDA-approved. Side effects are minimal and temporary, typically limited to mild redness, slight warmth, or minimal swelling that resolves within hours to days. Serious complications are extremely rare when performed by certified practitioners using proper protocols. During your consultation, we discuss your medical history to ensure safety.',
+    question: 'Is body contouring treatment safe? Are there any side effects?',
+    answer: 'Yes, our clinically proven technologies are safe and FDA-approved. Side effects are minimal and temporary, typically limited to mild redness, slight warmth, or minimal swelling that resolves within hours to days. Serious complications are extremely rare when performed by certified practitioners using proper protocols. During your consultation, we discuss your medical history to ensure safety.',
   },
   {
-    q: 'Can body contouring replace surgery like liposuction or a tummy tuck?',
-    a: 'For most patients seeking subtle to moderate body refinement and fat reduction, non-surgical body contouring delivers excellent results without surgical risks or recovery time. It\'s ideal for those with good skin elasticity and localised fat deposits. However, patients with significant loose skin or very large volume excess may benefit from surgical consultation. We\'ll discuss what\'s realistic for your goals during your consultation.',
+    question: 'Can body contouring replace surgery like liposuction or a tummy tuck?',
+    answer: 'For most patients seeking subtle to moderate body refinement and fat reduction, non-surgical body contouring delivers excellent results without surgical risks or recovery time. It\'s ideal for those with good skin elasticity and localised fat deposits. However, patients with significant loose skin or very large volume excess may benefit from surgical consultation. We\'ll discuss what\'s realistic for your goals during your consultation.',
   },
   {
-    q: 'How long do body contouring results last?',
-    a: 'Results are long-lasting when you maintain a stable weight and healthy lifestyle. Treated fat cells are permanently eliminated and don\'t regenerate. However, the remaining fat cells can enlarge if you gain significant weight. With proper maintenance and occasional touch-up treatments as desired, your sculpted results can be maintained indefinitely.',
+    question: 'How long do body contouring results last?',
+    answer: 'Results are long-lasting when you maintain a stable weight and healthy lifestyle. Treated fat cells are permanently eliminated and don\'t regenerate. However, the remaining fat cells can enlarge if you gain significant weight. With proper maintenance and occasional touch-up treatments as desired, your sculpted results can be maintained indefinitely.',
   },
   {
-    q: 'What\'s the difference between targeting different body areas like abs, thighs, and arms?',
-    a: 'While the core technology remains the same, treatment parameters are adjusted based on tissue thickness, fat density, and skin characteristics of each area. Upper arms require different settings than abdominal fat; thighs require different treatment than submental areas. Our experts customise each session to the specific anatomy and goals of each treatment zone.',
+    question: 'What\'s the difference between targeting different body areas like abs, thighs, and arms?',
+    answer: 'While the core technology remains the same, treatment parameters are adjusted based on tissue thickness, fat density, and skin characteristics of each area. Upper arms require different settings than abdominal fat; thighs require different treatment than submental areas. Our experts customise each session to the specific anatomy and goals of each treatment zone.',
   },
   {
-    q: 'Can I combine body contouring with other treatments?',
-    a: 'Absolutely. Many patients combine body contouring with skin tightening treatments, collagen-stimulating injectables like Profhilo, radiofrequency microneedling, or skin rejuvenation treatments to enhance overall body aesthetics. Our team can discuss combination approaches that synergise results. Typically, treatments are spaced appropriately for safety and optimal outcomes.',
+    question: 'Can I combine body contouring with other treatments?',
+    answer: 'Absolutely. Many patients combine body contouring with skin tightening treatments, collagen-stimulating injectables like Profhilo, radiofrequency microneedling, or skin rejuvenation treatments to enhance overall body aesthetics. Our team can discuss combination approaches that synergise results. Typically, treatments are spaced appropriately for safety and optimal outcomes.',
   },
   {
-    q: 'What should I expect at my body contouring consultation?',
-    a: 'We discuss your aesthetic goals, examine your body composition and target areas, review your medical history, and explain the technology we\'ll use. We show before-and-after photos of similar cases, discuss realistic expectations, outline a customised treatment plan with timing and investment, and answer all your questions. You\'ll leave with a clear understanding of your journey to your ideal body shape.',
+    question: 'What should I expect at my body contouring consultation?',
+    answer: 'We discuss your aesthetic goals, examine your body composition and target areas, review your medical history, and explain the technology we\'ll use. We show before-and-after photos of similar cases, discuss realistic expectations, outline a customised treatment plan with timing and investment, and answer all your questions. You\'ll leave with a clear understanding of your journey to your ideal body shape.',
   },
 ];
 
@@ -266,7 +266,7 @@ const RELATED_TREATMENTS = [
 
 export default function BodyContouringPage() {
   const [showAllFaqs, setShowAllFaqs] = useState(false);
-  const displayedFaqs = showAllFaqs ? FAQ : FAQ.slice(0, 4);
+  const displayedFaqs = showAllFaqs ? FAQS : FAQS.slice(0, 4);
 
   return (
     <>
@@ -295,7 +295,7 @@ export default function BodyContouringPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp}>
               <p className={styles.eyebrow}>Body Contouring</p>
@@ -305,7 +305,7 @@ export default function BodyContouringPage() {
               <p className={styles.subheading}>
                 Advanced fat reduction and skin tightening technologies that deliver dramatic body transformation without surgery, downtime, or recovery.
               </p>
-              <BookConsultationButton />
+              <BookConsultationButton>Book Consultation</BookConsultationButton>
             </motion.div>
 
             <motion.div variants={fadeUp} className={styles.heroImage}>
@@ -334,7 +334,7 @@ export default function BodyContouringPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.whatIsContent}>
               <p className={styles.eyebrowDark}>What Is Body Contouring?</p>
@@ -345,7 +345,7 @@ export default function BodyContouringPage() {
               <p>
                 Unlike traditional liposuction, non-surgical body contouring requires no downtime, no scars, and no recovery period. You can return to normal activities immediately, making it ideal for busy professionals and active individuals. Results develop progressively over weeks and months, with full transformation typically visible within 3 to 6 months.
               </p>
-              <BookConsultationButton />
+              <BookConsultationButton>Book Consultation</BookConsultationButton>
             </motion.div>
             <motion.div variants={fadeUp} className={styles.whatIsImage}>
               <Image
@@ -365,7 +365,7 @@ export default function BodyContouringPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrow}>At a Glance</p>
@@ -374,7 +374,7 @@ export default function BodyContouringPage() {
 
             <motion.div
               className={styles.glanceGrid}
-              variants={stagger}
+              variants={stagger()}
             >
               {AT_A_GLANCE.map((item, i) => (
                 <motion.div
@@ -402,7 +402,7 @@ export default function BodyContouringPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Your Treatment Journey</p>
@@ -411,7 +411,7 @@ export default function BodyContouringPage() {
 
             <motion.div
               className={styles.journeySection}
-              variants={stagger}
+              variants={stagger()}
             >
               {JOURNEY_STEPS.map((step) => (
                 <motion.div
@@ -437,7 +437,7 @@ export default function BodyContouringPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrow}>Key Benefits</p>
@@ -446,7 +446,7 @@ export default function BodyContouringPage() {
 
             <motion.div
               className={styles.benefitsGrid}
-              variants={stagger}
+              variants={stagger()}
             >
               {BENEFITS.map((benefit, i) => (
                 <motion.div
@@ -474,14 +474,14 @@ export default function BodyContouringPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Eligibility and Suitability</p>
               <h2 className={styles.headingDark}>Are You a Good Candidate?</h2>
             </motion.div>
 
-            <motion.div variants={stagger} className={styles.textGrid}>
+            <motion.div variants={stagger()} className={styles.textGrid}>
               {ELIGIBILITY.map((item, i) => (
                 <motion.div key={i} variants={fadeUp} className={styles.textItem}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -501,14 +501,14 @@ export default function BodyContouringPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Treatable Concerns</p>
               <h2 className={styles.headingDark}>Stubborn Fat We Can Address</h2>
             </motion.div>
 
-            <motion.div variants={stagger} className={styles.textGrid}>
+            <motion.div variants={stagger()} className={styles.textGrid}>
               {TREATABLE_CONCERNS.map((concern, i) => (
                 <motion.div key={i} variants={fadeUp} className={styles.textItem}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -528,14 +528,14 @@ export default function BodyContouringPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Treatable Areas</p>
               <h2 className={styles.headingDark}>Body Regions We Can Sculpt</h2>
             </motion.div>
 
-            <motion.div variants={stagger} className={styles.textGrid}>
+            <motion.div variants={stagger()} className={styles.textGrid}>
               {TREATABLE_AREAS.map((area, i) => (
                 <motion.div key={i} variants={fadeUp} className={styles.textItem}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -562,14 +562,14 @@ export default function BodyContouringPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.ctaBannerContent}>
               <h2 className={styles.heading}>Ready to Transform Your Body?</h2>
               <p className={styles.subheading}>
                 Book your free consultation today to discuss your body contouring goals with our expert team.
               </p>
-              <BookConsultationButton />
+              <BookConsultationButton>Book Consultation</BookConsultationButton>
             </motion.div>
           </motion.div>
         </Container>
@@ -581,7 +581,7 @@ export default function BodyContouringPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Our Clinic</p>
@@ -594,14 +594,14 @@ export default function BodyContouringPage() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={VIEWPORT}
-                variants={stagger}
+                variants={stagger()}
               >
                 <motion.div variants={fadeUp}>
                   <p className={styles.eyebrowDark}>Excellence in Body Aesthetics</p>
                   <h3 className={styles.headingDark}>Specialising in Non-Surgical Body Transformation</h3>
                 </motion.div>
 
-                <motion.div variants={stagger}>
+                <motion.div variants={stagger()}>
                   {CLINIC_REASONS.map((reason, i) => (
                     <motion.div key={i} variants={fadeUp} className={styles.clinicReason}>
                       <span className={styles.reasonNumber}>
@@ -637,7 +637,7 @@ export default function BodyContouringPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.costBannerContent}>
               <p className={styles.eyebrow}>Transparent Pricing</p>
@@ -645,7 +645,7 @@ export default function BodyContouringPage() {
               <p className={styles.costText}>
                 Body contouring treatment costs start from £150 per session, depending on the area being treated and the extent of fat reduction desired. Most patients invest in 4 to 8 sessions for optimal results. We offer flexible payment plans and can discuss package pricing during your consultation to provide exceptional value.
               </p>
-              <BookConsultationButton />
+              <BookConsultationButton>Book Consultation</BookConsultationButton>
             </motion.div>
           </motion.div>
         </Container>
@@ -663,7 +663,7 @@ export default function BodyContouringPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeaderCentre}>
               <p className={styles.eyebrow}>Common Questions</p>
@@ -672,16 +672,12 @@ export default function BodyContouringPage() {
 
             <motion.div
               className={styles.faqList}
-              variants={stagger}
+              variants={stagger()}
             >
-              {displayedFaqs.map((faq, i) => (
-                <motion.div key={i} variants={fadeUp}>
-                  <Accordion question={faq.q} answer={faq.a} />
-                </motion.div>
-              ))}
+              <Accordion items={displayedFaqs} theme="dark" />
             </motion.div>
 
-            {!showAllFaqs && FAQ.length > 4 && (
+            {!showAllFaqs && FAQS.length > 4 && (
               <motion.div
                 variants={fadeUp}
                 className={styles.showMoreContainer}
@@ -710,7 +706,7 @@ export default function BodyContouringPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Related Treatments</p>
@@ -719,7 +715,7 @@ export default function BodyContouringPage() {
 
             <motion.div
               className={styles.relatedGrid}
-              variants={stagger}
+              variants={stagger()}
             >
               {RELATED_TREATMENTS.map((treatment, i) => (
                 <motion.div

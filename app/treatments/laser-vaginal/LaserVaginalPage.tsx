@@ -205,42 +205,42 @@ const CLINIC_REASONS = [
   'Detailed aftercare guidance and follow-up support ensuring optimal satisfaction and results',
 ];
 
-const FAQ = [
+const FAQS = [
   {
-    q: 'How does laser vaginal rejuvenation work and what does it treat?',
-    a: 'Laser vaginal rejuvenation uses controlled laser energy to heat and stimulate collagen production in vaginal tissues. This tightens the vaginal wall and introitus, improves elasticity, enhances blood flow and sensation, and addresses vaginal laxity, dryness, reduced sensation, and mild stress incontinence. The treatment triggers the body\'s natural collagen remodelling, which continues for weeks and months after treatment.',
+    question: 'How does laser vaginal rejuvenation work and what does it treat?',
+    answer: 'Laser vaginal rejuvenation uses controlled laser energy to heat and stimulate collagen production in vaginal tissues. This tightens the vaginal wall and introitus, improves elasticity, enhances blood flow and sensation, and addresses vaginal laxity, dryness, reduced sensation, and mild stress incontinence. The treatment triggers the body\'s natural collagen remodelling, which continues for weeks and months after treatment.',
   },
   {
-    q: 'How many sessions will I need for optimal results?',
-    a: 'Most women see excellent results after a single session. However, a course of 2 to 3 sessions spaced 4 to 6 weeks apart is often recommended for maximum and longest-lasting results. Your clinician will recommend the ideal protocol based on your specific concerns and goals during your consultation.',
+    question: 'How many sessions will I need for optimal results?',
+    answer: 'Most women see excellent results after a single session. However, a course of 2 to 3 sessions spaced 4 to 6 weeks apart is often recommended for maximum and longest-lasting results. Your clinician will recommend the ideal protocol based on your specific concerns and goals during your consultation.',
   },
   {
-    q: 'Is laser vaginal rejuvenation painful or uncomfortable?',
-    a: 'No, the procedure is very comfortable. A topical anaesthetic cream is applied beforehand, completely numbing the treatment area. Most women feel only mild warmth during the 15 to 30-minute procedure. Post-treatment discomfort is minimal, with most women experiencing only mild sensitivity for a day or two, easily managed with paracetamol if needed.',
+    question: 'Is laser vaginal rejuvenation painful or uncomfortable?',
+    answer: 'No, the procedure is very comfortable. A topical anaesthetic cream is applied beforehand, completely numbing the treatment area. Most women feel only mild warmth during the 15 to 30-minute procedure. Post-treatment discomfort is minimal, with most women experiencing only mild sensitivity for a day or two, easily managed with paracetamol if needed.',
   },
   {
-    q: 'When can I resume sexual activity after treatment?',
-    a: 'Sexual activity can safely resume after 3 to 5 days following treatment. This brief abstinence allows tissues to optimally heal while continuing the collagen-stimulation benefits of the procedure. Many women report that sexual activity enhances their results and increases sensation during this crucial healing phase.',
+    question: 'When can I resume sexual activity after treatment?',
+    answer: 'Sexual activity can safely resume after 3 to 5 days following treatment. This brief abstinence allows tissues to optimally heal while continuing the collagen-stimulation benefits of the procedure. Many women report that sexual activity enhances their results and increases sensation during this crucial healing phase.',
   },
   {
-    q: 'Will laser vaginal rejuvenation help with stress urinary incontinence?',
-    a: 'Yes, laser vaginal rejuvenation can significantly improve mild stress urinary incontinence by tightening tissues around the urethra and bladder neck, improving muscle tone and control. For moderate to severe incontinence, your clinician may recommend combined approaches or additional assessment. All concerns are discussed during your detailed consultation.',
+    question: 'Will laser vaginal rejuvenation help with stress urinary incontinence?',
+    answer: 'Yes, laser vaginal rejuvenation can significantly improve mild stress urinary incontinence by tightening tissues around the urethra and bladder neck, improving muscle tone and control. For moderate to severe incontinence, your clinician may recommend combined approaches or additional assessment. All concerns are discussed during your detailed consultation.',
   },
   {
-    q: 'How long do results from laser vaginal rejuvenation last?',
-    a: 'Results can last 1 to 2 years or even longer, with some women enjoying benefits for multiple years. Results gradually diminish as natural tissue relaxation occurs over time. Maintenance or touch-up sessions can extend results indefinitely for those wanting permanent ongoing benefits.',
+    question: 'How long do results from laser vaginal rejuvenation last?',
+    answer: 'Results can last 1 to 2 years or even longer, with some women enjoying benefits for multiple years. Results gradually diminish as natural tissue relaxation occurs over time. Maintenance or touch-up sessions can extend results indefinitely for those wanting permanent ongoing benefits.',
   },
   {
-    q: 'Can laser vaginal rejuvenation address menopausal dryness and discomfort?',
-    a: 'Absolutely. Laser vaginal rejuvenation is highly effective for menopausal dryness, discomfort, and reduced elasticity caused by hormonal changes. The improved blood flow and collagen production address multiple menopausal changes simultaneously, dramatically improving comfort, sensation, and intimate function.',
+    question: 'Can laser vaginal rejuvenation address menopausal dryness and discomfort?',
+    answer: 'Absolutely. Laser vaginal rejuvenation is highly effective for menopausal dryness, discomfort, and reduced elasticity caused by hormonal changes. The improved blood flow and collagen production address multiple menopausal changes simultaneously, dramatically improving comfort, sensation, and intimate function.',
   },
   {
-    q: 'Is there any downtime or activity restrictions after treatment?',
-    a: 'Minimal downtime is required. You can return to work and normal activities immediately. Light exercise can be resumed after 24 hours. The only restriction is 3 to 5 days abstinence from sexual activity and 5 to 7 days avoiding tampons, douches, and swimming. Most women experience no disruption to their routine.',
+    question: 'Is there any downtime or activity restrictions after treatment?',
+    answer: 'Minimal downtime is required. You can return to work and normal activities immediately. Light exercise can be resumed after 24 hours. The only restriction is 3 to 5 days abstinence from sexual activity and 5 to 7 days avoiding tampons, douches, and swimming. Most women experience no disruption to their routine.',
   },
   {
-    q: 'Do I need a GP referral for laser vaginal rejuvenation?',
-    a: 'No referral is needed. You can book directly and confidentially with us. A comprehensive pre-treatment consultation is conducted to assess your suitability and discuss your goals. If you have specific medical concerns, we can discuss whether consultation with your GP is advisable, but it\'s not required to proceed.',
+    question: 'Do I need a GP referral for laser vaginal rejuvenation?',
+    answer: 'No referral is needed. You can book directly and confidentially with us. A comprehensive pre-treatment consultation is conducted to assess your suitability and discuss your goals. If you have specific medical concerns, we can discuss whether consultation with your GP is advisable, but it\'s not required to proceed.',
   },
 ];
 
@@ -269,7 +269,7 @@ const RELATED_TREATMENTS = [
 
 export default function LaserVaginalPage() {
   const [showAllFaqs, setShowAllFaqs] = useState(false);
-  const displayedFaqs = showAllFaqs ? FAQ : FAQ.slice(0, 4);
+  const displayedFaqs = showAllFaqs ? FAQS : FAQS.slice(0, 4);
 
   return (
     <>
@@ -298,7 +298,7 @@ export default function LaserVaginalPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp}>
               <p className={styles.eyebrow}>Laser Vaginal Rejuvenation</p>
@@ -308,7 +308,7 @@ export default function LaserVaginalPage() {
               <p className={styles.subheading}>
                 Advanced non-surgical laser treatment for vaginal rejuvenation, tightening, and intimate wellness.
               </p>
-              <BookConsultationButton />
+              <BookConsultationButton>Book Consultation</BookConsultationButton>
             </motion.div>
 
             <motion.div variants={fadeUp} className={styles.heroImage}>
@@ -337,7 +337,7 @@ export default function LaserVaginalPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.whatIsContent}>
               <p className={styles.eyebrowDark}>What Is Laser Vaginal Rejuvenation?</p>
@@ -348,7 +348,7 @@ export default function LaserVaginalPage() {
               <p>
                 Unlike invasive surgical alternatives, laser vaginal rejuvenation requires no incisions, no general anaesthesia, and no significant downtime. Most women return to normal activities immediately and resume sexual activity after just 3 to 5 days. Results develop progressively over 6 to 8 weeks as collagen remodels, delivering dramatic improvements in comfort, sensation, tightness, and confidence.
               </p>
-              <BookConsultationButton />
+              <BookConsultationButton>Book Consultation</BookConsultationButton>
             </motion.div>
             <motion.div variants={fadeUp} className={styles.whatIsImage}>
               <Image
@@ -368,7 +368,7 @@ export default function LaserVaginalPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrow}>At a Glance</p>
@@ -377,7 +377,7 @@ export default function LaserVaginalPage() {
 
             <motion.div
               className={styles.glanceGrid}
-              variants={stagger}
+              variants={stagger()}
             >
               {AT_A_GLANCE.map((item, i) => (
                 <motion.div
@@ -405,7 +405,7 @@ export default function LaserVaginalPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Your Treatment Journey</p>
@@ -414,7 +414,7 @@ export default function LaserVaginalPage() {
 
             <motion.div
               className={styles.journeySection}
-              variants={stagger}
+              variants={stagger()}
             >
               {JOURNEY_STEPS.map((step) => (
                 <motion.div
@@ -440,7 +440,7 @@ export default function LaserVaginalPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrow}>Key Benefits</p>
@@ -449,7 +449,7 @@ export default function LaserVaginalPage() {
 
             <motion.div
               className={styles.benefitsGrid}
-              variants={stagger}
+              variants={stagger()}
             >
               {BENEFITS.map((benefit, i) => (
                 <motion.div
@@ -477,14 +477,14 @@ export default function LaserVaginalPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Eligibility and Suitability</p>
               <h2 className={styles.headingDark}>Are You a Good Candidate?</h2>
             </motion.div>
 
-            <motion.div variants={stagger} className={styles.textGrid}>
+            <motion.div variants={stagger()} className={styles.textGrid}>
               {ELIGIBILITY.map((item, i) => (
                 <motion.div key={i} variants={fadeUp} className={styles.textItem}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -504,14 +504,14 @@ export default function LaserVaginalPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Treatable Conditions</p>
               <h2 className={styles.headingDark}>Intimate Health Concerns We Address</h2>
             </motion.div>
 
-            <motion.div variants={stagger} className={styles.textGrid}>
+            <motion.div variants={stagger()} className={styles.textGrid}>
               {TREATABLE_CONDITIONS.map((condition, i) => (
                 <motion.div key={i} variants={fadeUp} className={styles.textItem}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -531,14 +531,14 @@ export default function LaserVaginalPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Results and Aftercare</p>
               <h2 className={styles.headingDark}>What to Expect After Treatment</h2>
             </motion.div>
 
-            <motion.div variants={stagger} className={styles.textGrid}>
+            <motion.div variants={stagger()} className={styles.textGrid}>
               {RESULTS_AND_AFTERCARE.map((item, i) => (
                 <motion.div key={i} variants={fadeUp} className={styles.textItem}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -565,14 +565,14 @@ export default function LaserVaginalPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.ctaBannerContent}>
               <h2 className={styles.heading}>Restore Your Intimate Comfort and Confidence</h2>
               <p className={styles.subheading}>
                 Book your confidential consultation today to discuss your intimate health goals with our compassionate team.
               </p>
-              <BookConsultationButton />
+              <BookConsultationButton>Book Consultation</BookConsultationButton>
             </motion.div>
           </motion.div>
         </Container>
@@ -584,7 +584,7 @@ export default function LaserVaginalPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Our Clinic</p>
@@ -597,14 +597,14 @@ export default function LaserVaginalPage() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={VIEWPORT}
-                variants={stagger}
+                variants={stagger()}
               >
                 <motion.div variants={fadeUp}>
                   <p className={styles.eyebrowDark}>Women's Intimate Health Expertise</p>
                   <h3 className={styles.headingDark}>Specialising in Confidential, Compassionate Care</h3>
                 </motion.div>
 
-                <motion.div variants={stagger}>
+                <motion.div variants={stagger()}>
                   {CLINIC_REASONS.map((reason, i) => (
                     <motion.div key={i} variants={fadeUp} className={styles.clinicReason}>
                       <span className={styles.reasonNumber}>
@@ -640,7 +640,7 @@ export default function LaserVaginalPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.costBannerContent}>
               <p className={styles.eyebrow}>Transparent Pricing</p>
@@ -648,7 +648,7 @@ export default function LaserVaginalPage() {
               <p className={styles.costText}>
                 Laser vaginal rejuvenation treatment costs from £250 per session. Most women see excellent results after a single session, though a course of 2 to 3 sessions spaced 4 to 6 weeks apart is often recommended for maximum durability. We offer flexible payment plans and can discuss package pricing during your consultation for exceptional value.
               </p>
-              <BookConsultationButton />
+              <BookConsultationButton>Book Consultation</BookConsultationButton>
             </motion.div>
           </motion.div>
         </Container>
@@ -666,7 +666,7 @@ export default function LaserVaginalPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeaderCentre}>
               <p className={styles.eyebrow}>Common Questions</p>
@@ -675,16 +675,12 @@ export default function LaserVaginalPage() {
 
             <motion.div
               className={styles.faqList}
-              variants={stagger}
+              variants={stagger()}
             >
-              {displayedFaqs.map((faq, i) => (
-                <motion.div key={i} variants={fadeUp}>
-                  <Accordion question={faq.q} answer={faq.a} />
-                </motion.div>
-              ))}
+              <Accordion items={displayedFaqs} theme="dark" />
             </motion.div>
 
-            {!showAllFaqs && FAQ.length > 4 && (
+            {!showAllFaqs && FAQS.length > 4 && (
               <motion.div
                 variants={fadeUp}
                 className={styles.showMoreContainer}
@@ -713,7 +709,7 @@ export default function LaserVaginalPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Related Treatments</p>
@@ -722,7 +718,7 @@ export default function LaserVaginalPage() {
 
             <motion.div
               className={styles.relatedGrid}
-              variants={stagger}
+              variants={stagger()}
             >
               {RELATED_TREATMENTS.map((treatment, i) => (
                 <motion.div

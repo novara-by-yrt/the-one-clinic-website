@@ -194,42 +194,42 @@ const CLINIC_REASONS = [
   'Comprehensive aftercare guidance and support ensuring optimal results and patient satisfaction',
 ];
 
-const FAQ = [
+const FAQS = [
   {
-    q: 'How does laser snoring treatment actually reduce or eliminate snoring?',
-    a: 'Snoring occurs when tissues in the soft palate and uvula vibrate during sleep as air passes through. Our laser delivers precise heat energy to tighten these tissues, reducing laxity and vibration. Simultaneously, collagen remodelling is stimulated, which continues tightening tissues for weeks and months after treatment, progressively improving snoring reduction.',
+    question: 'How does laser snoring treatment actually reduce or eliminate snoring?',
+    answer: 'Snoring occurs when tissues in the soft palate and uvula vibrate during sleep as air passes through. Our laser delivers precise heat energy to tighten these tissues, reducing laxity and vibration. Simultaneously, collagen remodelling is stimulated, which continues tightening tissues for weeks and months after treatment, progressively improving snoring reduction.',
   },
   {
-    q: 'How many laser snoring treatment sessions will I need?',
-    a: 'Most patients see significant snoring improvement after a single 20 to 30-minute session. However, some benefit from 2 to 3 sessions spaced 4 to 6 weeks apart for optimal, longer-lasting results. Your clinician will recommend the ideal protocol during your consultation based on snoring severity and anatomical factors.',
+    question: 'How many laser snoring treatment sessions will I need?',
+    answer: 'Most patients see significant snoring improvement after a single 20 to 30-minute session. However, some benefit from 2 to 3 sessions spaced 4 to 6 weeks apart for optimal, longer-lasting results. Your clinician will recommend the ideal protocol during your consultation based on snoring severity and anatomical factors.',
   },
   {
-    q: 'Is laser snoring treatment painful? What will I feel?',
-    a: 'No, treatment is very comfortable. A topical anaesthetic spray is applied beforehand, numbing the soft palate completely. During treatment, you feel only gentle warmth with no pain. Post-treatment discomfort is minimal, with most patients experiencing only mild throat soreness for a day or two, easily managed with paracetamol if needed.',
+    question: 'Is laser snoring treatment painful? What will I feel?',
+    answer: 'No, treatment is very comfortable. A topical anaesthetic spray is applied beforehand, numbing the soft palate completely. During treatment, you feel only gentle warmth with no pain. Post-treatment discomfort is minimal, with most patients experiencing only mild throat soreness for a day or two, easily managed with paracetamol if needed.',
   },
   {
-    q: 'Is there any downtime or recovery period after treatment?',
-    a: 'Absolutely no downtime. You can return to work, exercise, and all normal activities immediately. Soft foods are recommended for the first 24-48 hours, but you can eat normal diet straight away. No restrictions on activity, no work missed, no life disruption. It\'s one of the most convenient treatments available.',
+    question: 'Is there any downtime or recovery period after treatment?',
+    answer: 'Absolutely no downtime. You can return to work, exercise, and all normal activities immediately. Soft foods are recommended for the first 24-48 hours, but you can eat normal diet straight away. No restrictions on activity, no work missed, no life disruption. It\'s one of the most convenient treatments available.',
   },
   {
-    q: 'Will laser snoring treatment help my sleep apnoea?',
-    a: 'Laser snoring treatment addresses simple snoring by tightening the soft palate. For obstructive sleep apnoea (OSA), consultation with a sleep specialist is important. While some mild OSA patients may benefit from laser treatment, moderate to severe OSA typically requires dedicated OSA management. Our team can discuss your specific situation.',
+    question: 'Will laser snoring treatment help my sleep apnoea?',
+    answer: 'Laser snoring treatment addresses simple snoring by tightening the soft palate. For obstructive sleep apnoea (OSA), consultation with a sleep specialist is important. While some mild OSA patients may benefit from laser treatment, moderate to severe OSA typically requires dedicated OSA management. Our team can discuss your specific situation.',
   },
   {
-    q: 'How long do laser snoring treatment results last?',
-    a: 'Results are long-lasting, with most patients enjoying significant snoring reduction for 1 to 3 years or longer. Some patients remain snoring-free indefinitely after a single session. Results gradually diminish over time as natural tissue relaxation occurs, but additional maintenance sessions can extend the benefit further.',
+    question: 'How long do laser snoring treatment results last?',
+    answer: 'Results are long-lasting, with most patients enjoying significant snoring reduction for 1 to 3 years or longer. Some patients remain snoring-free indefinitely after a single session. Results gradually diminish over time as natural tissue relaxation occurs, but additional maintenance sessions can extend the benefit further.',
   },
   {
-    q: 'Can I combine laser snoring treatment with other therapies?',
-    a: 'Yes. Some patients combine laser treatment with positional sleep devices, nasal treatments, or weight management for enhanced results. Our team can discuss complementary approaches that work synergistically. However, most patients find laser treatment alone provides excellent snoring reduction.',
+    question: 'Can I combine laser snoring treatment with other therapies?',
+    answer: 'Yes. Some patients combine laser treatment with positional sleep devices, nasal treatments, or weight management for enhanced results. Our team can discuss complementary approaches that work synergistically. However, most patients find laser treatment alone provides excellent snoring reduction.',
   },
   {
-    q: 'Do I need a doctor referral to have laser snoring treatment?',
-    a: 'No referral is needed. You can book directly with us. However, if you have concerns about sleep apnoea or other sleep disorders, we can discuss whether pre-treatment sleep evaluation is advisable. Our team provides comprehensive assessment to ensure laser snoring treatment is the right choice for you.',
+    question: 'Do I need a doctor referral to have laser snoring treatment?',
+    answer: 'No referral is needed. You can book directly with us. However, if you have concerns about sleep apnoea or other sleep disorders, we can discuss whether pre-treatment sleep evaluation is advisable. Our team provides comprehensive assessment to ensure laser snoring treatment is the right choice for you.',
   },
   {
-    q: 'What makes laser snoring treatment better than other options like surgery or CPAP?',
-    a: 'Laser treatment offers the best of all worlds: non-surgical approach like CPAP, but without masks or nightly equipment; faster and less invasive than surgical options; minimal discomfort unlike painful surgical procedures; zero downtime unlike month-long surgical recovery; and excellent, lasting results. It\'s the modern, comfortable solution to snoring.',
+    question: 'What makes laser snoring treatment better than other options like surgery or CPAP?',
+    answer: 'Laser treatment offers the best of all worlds: non-surgical approach like CPAP, but without masks or nightly equipment; faster and less invasive than surgical options; minimal discomfort unlike painful surgical procedures; zero downtime unlike month-long surgical recovery; and excellent, lasting results. It\'s the modern, comfortable solution to snoring.',
   },
 ];
 
@@ -258,7 +258,7 @@ const RELATED_TREATMENTS = [
 
 export default function LaserSnoringPage() {
   const [showAllFaqs, setShowAllFaqs] = useState(false);
-  const displayedFaqs = showAllFaqs ? FAQ : FAQ.slice(0, 4);
+  const displayedFaqs = showAllFaqs ? FAQS : FAQS.slice(0, 4);
 
   return (
     <>
@@ -287,7 +287,7 @@ export default function LaserSnoringPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp}>
               <p className={styles.eyebrow}>Laser Snoring Treatment</p>
@@ -297,7 +297,7 @@ export default function LaserSnoringPage() {
               <p className={styles.subheading}>
                 A fast, non-surgical solution to eliminate snoring and restore peaceful sleep for you and your partner.
               </p>
-              <BookConsultationButton />
+              <BookConsultationButton>Book Consultation</BookConsultationButton>
             </motion.div>
 
             <motion.div variants={fadeUp} className={styles.heroImage}>
@@ -326,7 +326,7 @@ export default function LaserSnoringPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.whatIsContent}>
               <p className={styles.eyebrowDark}>What Is Laser Snoring Treatment?</p>
@@ -337,7 +337,7 @@ export default function LaserSnoringPage() {
               <p>
                 Unlike invasive surgical options, laser snoring treatment is quick, comfortable, and allows you to return to normal activities immediately. Most patients notice dramatic improvement within days to weeks, with continued enhancement over 8 to 12 weeks as collagen remodelling completes. For many, it's life-changing—enabling peaceful, uninterrupted sleep for both patient and partner.
               </p>
-              <BookConsultationButton />
+              <BookConsultationButton>Book Consultation</BookConsultationButton>
             </motion.div>
             <motion.div variants={fadeUp} className={styles.whatIsImage}>
               <Image
@@ -357,7 +357,7 @@ export default function LaserSnoringPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrow}>At a Glance</p>
@@ -366,7 +366,7 @@ export default function LaserSnoringPage() {
 
             <motion.div
               className={styles.glanceGrid}
-              variants={stagger}
+              variants={stagger()}
             >
               {AT_A_GLANCE.map((item, i) => (
                 <motion.div
@@ -394,7 +394,7 @@ export default function LaserSnoringPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Your Treatment Journey</p>
@@ -403,7 +403,7 @@ export default function LaserSnoringPage() {
 
             <motion.div
               className={styles.journeySection}
-              variants={stagger}
+              variants={stagger()}
             >
               {JOURNEY_STEPS.map((step) => (
                 <motion.div
@@ -429,7 +429,7 @@ export default function LaserSnoringPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrow}>Key Benefits</p>
@@ -438,7 +438,7 @@ export default function LaserSnoringPage() {
 
             <motion.div
               className={styles.benefitsGrid}
-              variants={stagger}
+              variants={stagger()}
             >
               {BENEFITS.map((benefit, i) => (
                 <motion.div
@@ -466,14 +466,14 @@ export default function LaserSnoringPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Eligibility and Suitability</p>
               <h2 className={styles.headingDark}>Are You a Good Candidate?</h2>
             </motion.div>
 
-            <motion.div variants={stagger} className={styles.textGrid}>
+            <motion.div variants={stagger()} className={styles.textGrid}>
               {ELIGIBILITY.map((item, i) => (
                 <motion.div key={i} variants={fadeUp} className={styles.textItem}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -493,14 +493,14 @@ export default function LaserSnoringPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Results and Aftercare</p>
               <h2 className={styles.headingDark}>What to Expect After Treatment</h2>
             </motion.div>
 
-            <motion.div variants={stagger} className={styles.textGrid}>
+            <motion.div variants={stagger()} className={styles.textGrid}>
               {RESULTS_AND_AFTERCARE.map((item, i) => (
                 <motion.div key={i} variants={fadeUp} className={styles.textItem}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -527,14 +527,14 @@ export default function LaserSnoringPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.ctaBannerContent}>
               <h2 className={styles.heading}>Ready to Sleep Better Tonight?</h2>
               <p className={styles.subheading}>
                 Book your free consultation today to discuss laser snoring treatment with our expert team.
               </p>
-              <BookConsultationButton />
+              <BookConsultationButton>Book Consultation</BookConsultationButton>
             </motion.div>
           </motion.div>
         </Container>
@@ -546,7 +546,7 @@ export default function LaserSnoringPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Our Clinic</p>
@@ -559,14 +559,14 @@ export default function LaserSnoringPage() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={VIEWPORT}
-                variants={stagger}
+                variants={stagger()}
               >
                 <motion.div variants={fadeUp}>
                   <p className={styles.eyebrowDark}>Sleep Medicine Excellence</p>
                   <h3 className={styles.headingDark}>Specialising in Non-Surgical Snoring Solutions</h3>
                 </motion.div>
 
-                <motion.div variants={stagger}>
+                <motion.div variants={stagger()}>
                   {CLINIC_REASONS.map((reason, i) => (
                     <motion.div key={i} variants={fadeUp} className={styles.clinicReason}>
                       <span className={styles.reasonNumber}>
@@ -602,7 +602,7 @@ export default function LaserSnoringPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.costBannerContent}>
               <p className={styles.eyebrow}>Transparent Pricing</p>
@@ -610,7 +610,7 @@ export default function LaserSnoringPage() {
               <p className={styles.costText}>
                 Laser snoring treatment costs from £300 per session. Most patients benefit from a single session, though some choose 2 to 3 sessions spaced 4 to 6 weeks apart for extended longevity. We offer flexible payment plans and can discuss package pricing during your consultation for exceptional value on multi-session protocols.
               </p>
-              <BookConsultationButton />
+              <BookConsultationButton>Book Consultation</BookConsultationButton>
             </motion.div>
           </motion.div>
         </Container>
@@ -628,7 +628,7 @@ export default function LaserSnoringPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeaderCentre}>
               <p className={styles.eyebrow}>Common Questions</p>
@@ -637,16 +637,12 @@ export default function LaserSnoringPage() {
 
             <motion.div
               className={styles.faqList}
-              variants={stagger}
+              variants={stagger()}
             >
-              {displayedFaqs.map((faq, i) => (
-                <motion.div key={i} variants={fadeUp}>
-                  <Accordion question={faq.q} answer={faq.a} />
-                </motion.div>
-              ))}
+              <Accordion items={displayedFaqs} theme="dark" />
             </motion.div>
 
-            {!showAllFaqs && FAQ.length > 4 && (
+            {!showAllFaqs && FAQS.length > 4 && (
               <motion.div
                 variants={fadeUp}
                 className={styles.showMoreContainer}
@@ -675,7 +671,7 @@ export default function LaserSnoringPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Related Treatments</p>
@@ -684,7 +680,7 @@ export default function LaserSnoringPage() {
 
             <motion.div
               className={styles.relatedGrid}
-              variants={stagger}
+              variants={stagger()}
             >
               {RELATED_TREATMENTS.map((treatment, i) => (
                 <motion.div

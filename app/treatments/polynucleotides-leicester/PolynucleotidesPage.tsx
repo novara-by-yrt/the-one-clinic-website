@@ -205,42 +205,42 @@ const CLINIC_REASONS = [
   'Commitment to natural rejuvenation enhancing beauty with authentic appearance',
 ];
 
-const FAQ = [
+const FAQS = [
   {
-    q: 'What are polynucleotides and how do they work?',
-    a: 'Polynucleotides (PDRN—polydeoxyribonucleotide) are long-chain DNA molecules derived from salmon or trout sperm, purified to pharmaceutical grade. When injected into the skin, they act as biological signals that activate fibroblasts and trigger robust collagen and elastin production. This bio-stimulation works with your body\'s natural healing mechanisms, promoting cellular regeneration and tissue repair at the deepest level.',
+    question: 'What are polynucleotides and how do they work?',
+    answer: 'Polynucleotides (PDRN—polydeoxyribonucleotide) are long-chain DNA molecules derived from salmon or trout sperm, purified to pharmaceutical grade. When injected into the skin, they act as biological signals that activate fibroblasts and trigger robust collagen and elastin production. This bio-stimulation works with your body\'s natural healing mechanisms, promoting cellular regeneration and tissue repair at the deepest level.',
   },
   {
-    q: 'How many polynucleotide treatment sessions will I need?',
-    a: 'A course of 3 to 4 sessions spaced 2 to 4 weeks apart is typically recommended for optimal results. This sequential approach builds collagen progressively, delivering dramatic transformation. Many patients then enjoy 3 to 6-month maintenance treatments to sustain results. Your clinician will customise the protocol based on your specific skin concerns and goals.',
+    question: 'How many polynucleotide treatment sessions will I need?',
+    answer: 'A course of 3 to 4 sessions spaced 2 to 4 weeks apart is typically recommended for optimal results. This sequential approach builds collagen progressively, delivering dramatic transformation. Many patients then enjoy 3 to 6-month maintenance treatments to sustain results. Your clinician will customise the protocol based on your specific skin concerns and goals.',
   },
   {
-    q: 'Is polynucleotide treatment painful or uncomfortable?',
-    a: 'No, the procedure is very comfortable. A topical numbing cream is applied beforehand, completely numbing the treatment area. Most patients experience only minimal sensation during the 30 to 45-minute treatment. Post-treatment discomfort is minimal, with mild redness or swelling typically resolving within 24 hours.',
+    question: 'Is polynucleotide treatment painful or uncomfortable?',
+    answer: 'No, the procedure is very comfortable. A topical numbing cream is applied beforehand, completely numbing the treatment area. Most patients experience only minimal sensation during the 30 to 45-minute treatment. Post-treatment discomfort is minimal, with mild redness or swelling typically resolving within 24 hours.',
   },
   {
-    q: 'When will I see results from polynucleotide treatment?',
-    a: 'Initial results appear within 2 to 3 weeks as cellular regeneration begins. Continued improvement develops over 6 to 8 weeks as collagen production deepens progressively. Optimal results are evident at 8 weeks, with some continued enhancement possible for several months. Results typically last 3 to 6 months, making maintenance sessions every 3 to 6 months ideal.',
+    question: 'When will I see results from polynucleotide treatment?',
+    answer: 'Initial results appear within 2 to 3 weeks as cellular regeneration begins. Continued improvement develops over 6 to 8 weeks as collagen production deepens progressively. Optimal results are evident at 8 weeks, with some continued enhancement possible for several months. Results typically last 3 to 6 months, making maintenance sessions every 3 to 6 months ideal.',
   },
   {
-    q: 'What areas can be treated with polynucleotides?',
-    a: 'Polynucleotides can be used on the face, neck, décolletage, hands, and delicate under-eye areas. They are particularly effective for treating poor skin quality, crepey texture, fine lines, and loss of elasticity on areas where conventional treatments have limited effectiveness. This versatility allows comprehensive rejuvenation of multiple body zones.',
+    question: 'What areas can be treated with polynucleotides?',
+    answer: 'Polynucleotides can be used on the face, neck, décolletage, hands, and delicate under-eye areas. They are particularly effective for treating poor skin quality, crepey texture, fine lines, and loss of elasticity on areas where conventional treatments have limited effectiveness. This versatility allows comprehensive rejuvenation of multiple body zones.',
   },
   {
-    q: 'How do polynucleotides compare to other skin rejuvenation treatments?',
-    a: 'Polynucleotides are superior for bio-stimulation compared to basic hydrating treatments, but different from laser procedures which use energy rather than cellular signalling. They work similarly to other regenerative treatments like Profhilo but with stronger collagen-stimulating properties. Many patients combine polynucleotides with other treatments for synergistic benefits.',
+    question: 'How do polynucleotides compare to other skin rejuvenation treatments?',
+    answer: 'Polynucleotides are superior for bio-stimulation compared to basic hydrating treatments, but different from laser procedures which use energy rather than cellular signalling. They work similarly to other regenerative treatments like Profhilo but with stronger collagen-stimulating properties. Many patients combine polynucleotides with other treatments for synergistic benefits.',
   },
   {
-    q: 'Can I combine polynucleotide treatment with other procedures?',
-    a: 'Absolutely. Many patients combine polynucleotides with Profhilo for enhanced hydration, dermal fillers for volume restoration, anti-wrinkle injections for expression lines, or laser treatments for additional skin refinement. Treatments can be staggered strategically for cumulative results. Our team discusses optimal combination approaches during your consultation.',
+    question: 'Can I combine polynucleotide treatment with other procedures?',
+    answer: 'Absolutely. Many patients combine polynucleotides with Profhilo for enhanced hydration, dermal fillers for volume restoration, anti-wrinkle injections for expression lines, or laser treatments for additional skin refinement. Treatments can be staggered strategically for cumulative results. Our team discusses optimal combination approaches during your consultation.',
   },
   {
-    q: 'Is there any downtime after polynucleotide treatment?',
-    a: 'Minimal to no downtime is required. You can return to work and normal activities immediately. Mild redness or swelling typically resolves within 24 hours. Light exercise can resume after 24 hours. The only recommendation is avoiding heavy sweating for 24 hours and sun exposure for several days. It\'s perfect for busy lifestyles.',
+    question: 'Is there any downtime after polynucleotide treatment?',
+    answer: 'Minimal to no downtime is required. You can return to work and normal activities immediately. Mild redness or swelling typically resolves within 24 hours. Light exercise can resume after 24 hours. The only recommendation is avoiding heavy sweating for 24 hours and sun exposure for several days. It\'s perfect for busy lifestyles.',
   },
   {
-    q: 'Do I need a doctor referral for polynucleotide treatment?',
-    a: 'No referral is needed. You can book directly with us. A comprehensive pre-treatment consultation is conducted to assess your skin, discuss goals, and determine your suitability for treatment. If you have specific medical concerns, we can discuss those during your consultation, but no GP referral is required.',
+    question: 'Do I need a doctor referral for polynucleotide treatment?',
+    answer: 'No referral is needed. You can book directly with us. A comprehensive pre-treatment consultation is conducted to assess your skin, discuss goals, and determine your suitability for treatment. If you have specific medical concerns, we can discuss those during your consultation, but no GP referral is required.',
   },
 ];
 
@@ -269,7 +269,7 @@ const RELATED_TREATMENTS = [
 
 export default function PolynucleotidesPage() {
   const [showAllFaqs, setShowAllFaqs] = useState(false);
-  const displayedFaqs = showAllFaqs ? FAQ : FAQ.slice(0, 4);
+  const displayedFaqs = showAllFaqs ? FAQS : FAQS.slice(0, 4);
 
   return (
     <>
@@ -298,7 +298,7 @@ export default function PolynucleotidesPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp}>
               <p className={styles.eyebrow}>Polynucleotide Regenerative Medicine</p>
@@ -308,7 +308,7 @@ export default function PolynucleotidesPage() {
               <p className={styles.subheading}>
                 Bio-stimulating treatment that triggers your body\'s natural collagen production for authentic, comprehensive skin regeneration.
               </p>
-              <BookConsultationButton />
+              <BookConsultationButton>Book Consultation</BookConsultationButton>
             </motion.div>
 
             <motion.div variants={fadeUp} className={styles.heroImage}>
@@ -337,7 +337,7 @@ export default function PolynucleotidesPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.whatIsContent}>
               <p className={styles.eyebrowDark}>What Are Polynucleotides?</p>
@@ -348,7 +348,7 @@ export default function PolynucleotidesPage() {
               <p>
                 Unlike treatments that add volume or mask signs of ageing, polynucleotides address the root cause—declining collagen production—by stimulating your own cells to regenerate. Results develop gradually over weeks and months as collagen production deepens, creating authentic, natural-looking rejuvenation with improved skin quality, elasticity, hydration, and luminosity across all treated areas.
               </p>
-              <BookConsultationButton />
+              <BookConsultationButton>Book Consultation</BookConsultationButton>
             </motion.div>
             <motion.div variants={fadeUp} className={styles.whatIsImage}>
               <Image
@@ -368,7 +368,7 @@ export default function PolynucleotidesPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrow}>At a Glance</p>
@@ -377,7 +377,7 @@ export default function PolynucleotidesPage() {
 
             <motion.div
               className={styles.glanceGrid}
-              variants={stagger}
+              variants={stagger()}
             >
               {AT_A_GLANCE.map((item, i) => (
                 <motion.div
@@ -405,7 +405,7 @@ export default function PolynucleotidesPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Your Treatment Journey</p>
@@ -414,7 +414,7 @@ export default function PolynucleotidesPage() {
 
             <motion.div
               className={styles.journeySection}
-              variants={stagger}
+              variants={stagger()}
             >
               {JOURNEY_STEPS.map((step) => (
                 <motion.div
@@ -440,7 +440,7 @@ export default function PolynucleotidesPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrow}>Key Benefits</p>
@@ -449,7 +449,7 @@ export default function PolynucleotidesPage() {
 
             <motion.div
               className={styles.benefitsGrid}
-              variants={stagger}
+              variants={stagger()}
             >
               {BENEFITS.map((benefit, i) => (
                 <motion.div
@@ -477,14 +477,14 @@ export default function PolynucleotidesPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Eligibility and Suitability</p>
               <h2 className={styles.headingDark}>Are You a Good Candidate?</h2>
             </motion.div>
 
-            <motion.div variants={stagger} className={styles.textGrid}>
+            <motion.div variants={stagger()} className={styles.textGrid}>
               {ELIGIBILITY.map((item, i) => (
                 <motion.div key={i} variants={fadeUp} className={styles.textItem}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -504,14 +504,14 @@ export default function PolynucleotidesPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Treatable Skin Conditions</p>
               <h2 className={styles.headingDark}>Skin Concerns Polynucleotides Address</h2>
             </motion.div>
 
-            <motion.div variants={stagger} className={styles.textGrid}>
+            <motion.div variants={stagger()} className={styles.textGrid}>
               {SKIN_CONDITIONS.map((condition, i) => (
                 <motion.div key={i} variants={fadeUp} className={styles.textItem}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -531,14 +531,14 @@ export default function PolynucleotidesPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Results and Aftercare</p>
               <h2 className={styles.headingDark}>What to Expect After Treatment</h2>
             </motion.div>
 
-            <motion.div variants={stagger} className={styles.textGrid}>
+            <motion.div variants={stagger()} className={styles.textGrid}>
               {RESULTS_AND_AFTERCARE.map((item, i) => (
                 <motion.div key={i} variants={fadeUp} className={styles.textItem}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -565,14 +565,14 @@ export default function PolynucleotidesPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.ctaBannerContent}>
               <h2 className={styles.heading}>Trigger Your Skin\'s Natural Regeneration</h2>
               <p className={styles.subheading}>
                 Book your comprehensive skin consultation today to discover how polynucleotides can transform your skin quality from within.
               </p>
-              <BookConsultationButton />
+              <BookConsultationButton>Book Consultation</BookConsultationButton>
             </motion.div>
           </motion.div>
         </Container>
@@ -584,7 +584,7 @@ export default function PolynucleotidesPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Our Clinic</p>
@@ -597,14 +597,14 @@ export default function PolynucleotidesPage() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={VIEWPORT}
-                variants={stagger}
+                variants={stagger()}
               >
                 <motion.div variants={fadeUp}>
                   <p className={styles.eyebrowDark}>Regenerative Medicine Expertise</p>
                   <h3 className={styles.headingDark}>Specialising in Bio-Stimulating Skin Rejuvenation</h3>
                 </motion.div>
 
-                <motion.div variants={stagger}>
+                <motion.div variants={stagger()}>
                   {CLINIC_REASONS.map((reason, i) => (
                     <motion.div key={i} variants={fadeUp} className={styles.clinicReason}>
                       <span className={styles.reasonNumber}>
@@ -640,7 +640,7 @@ export default function PolynucleotidesPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.costBannerContent}>
               <p className={styles.eyebrow}>Transparent Pricing</p>
@@ -648,7 +648,7 @@ export default function PolynucleotidesPage() {
               <p className={styles.costText}>
                 Polynucleotide treatment costs from £180 per session. A course of 3 to 4 sessions spaced 2 to 4 weeks apart is typically recommended for optimal results. Maintenance treatments every 3 to 6 months extend benefits indefinitely. We offer flexible payment plans and comprehensive package pricing for complete courses at exceptional value.
               </p>
-              <BookConsultationButton />
+              <BookConsultationButton>Book Consultation</BookConsultationButton>
             </motion.div>
           </motion.div>
         </Container>
@@ -666,7 +666,7 @@ export default function PolynucleotidesPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeaderCentre}>
               <p className={styles.eyebrow}>Common Questions</p>
@@ -675,16 +675,12 @@ export default function PolynucleotidesPage() {
 
             <motion.div
               className={styles.faqList}
-              variants={stagger}
+              variants={stagger()}
             >
-              {displayedFaqs.map((faq, i) => (
-                <motion.div key={i} variants={fadeUp}>
-                  <Accordion question={faq.q} answer={faq.a} />
-                </motion.div>
-              ))}
+              <Accordion items={displayedFaqs} theme="dark" />
             </motion.div>
 
-            {!showAllFaqs && FAQ.length > 4 && (
+            {!showAllFaqs && FAQS.length > 4 && (
               <motion.div
                 variants={fadeUp}
                 className={styles.showMoreContainer}
@@ -713,7 +709,7 @@ export default function PolynucleotidesPage() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            variants={stagger}
+            variants={stagger()}
           >
             <motion.div variants={fadeUp} className={styles.sectionHeader}>
               <p className={styles.eyebrowDark}>Related Treatments</p>
@@ -722,7 +718,7 @@ export default function PolynucleotidesPage() {
 
             <motion.div
               className={styles.relatedGrid}
-              variants={stagger}
+              variants={stagger()}
             >
               {RELATED_TREATMENTS.map((treatment, i) => (
                 <motion.div
