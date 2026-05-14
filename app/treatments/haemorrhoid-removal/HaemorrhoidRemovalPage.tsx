@@ -392,7 +392,7 @@ export default function HaemorrhoidRemovalPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Haemorrhoid Removal.jpg"
+                src="/images/Minor Surgery.jpg"
                 alt="Haemorrhoid removal procedure at The One Clinic Leicester"
                 fill
                 priority

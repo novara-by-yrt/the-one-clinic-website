@@ -389,7 +389,7 @@ export default function IngownToenailRemovalPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Ingrown Toenail.jpg"
+                src="/images/Minor Surgery.jpg"
                 alt="Ingrown toenail removal procedure at The One Clinic Leicester"
                 fill
                 priority
