@@ -20,7 +20,7 @@ import styles from './page.module.css';
 /* ── Static data ──────────────────────────────────────────────── */
 const AT_A_GLANCE = [
   {
-    label: 'Treatment Time',
+    label: 'Treatment Duration',
     value: 'Under 30 minutes',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -30,7 +30,7 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Sessions Needed',
+    label: 'Sessions Recommended',
     value: '1 to 3 sessions',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -86,30 +86,30 @@ const AT_A_GLANCE = [
 const JOURNEY_STEPS = [
   {
     n: '01',
-    title: 'Consultation and Eye Area Assessment',
-    desc: 'Our clinical team assesses the periorbital area, discussing your concerns around upper and lower eyelid laxity, puffiness, and skin texture. A personalised treatment plan is created.',
+    title: 'Comprehensive Eye Area Assessment',
+    desc: 'Our clinical team carries out a detailed evaluation of your upper and lower eyelids, assessing skin laxity, puffiness, and the specific areas of concern. We discuss your goals and create a bespoke Cool Bleph treatment plan tailored to your needs.',
   },
   {
     n: '02',
-    title: 'Treatment Area Preparation',
-    desc: 'The eye area is thoroughly cleansed. Protective eye shields are applied to ensure safety. The treatment handpiece is calibrated to the appropriate settings for your skin type.',
+    title: 'Protective Preparation & Numbing',
+    desc: 'The delicate eye area is carefully cleansed. Protective eye shields are fitted to ensure absolute safety. A topical numbing agent is applied to ensure your complete comfort throughout the procedure.',
   },
   {
     n: '03',
-    title: 'Cool Bleph Energy Treatment',
-    desc: 'The Cool Bleph device delivers precisely controlled energy to the eyelid area, stimulating collagen and tightening periorbital skin. The full procedure takes under 30 minutes.',
+    title: 'Precision Cool Bleph Energy Delivery',
+    desc: 'Advanced energy technology is precisely applied to the periorbital region, carefully stimulating collagen contraction and remodelling in the upper and lower eyelid areas. The treatment is gentle, comfortable, and typically takes under 30 minutes.',
   },
   {
     n: '04',
-    title: 'Post-Treatment Care and Guidance',
-    desc: 'Aftercare instructions are provided to optimise your results. You can return to normal activities immediately. Collagen remodelling continues for weeks, with improvements becoming increasingly visible.',
+    title: 'Immediate Aftercare & Results Progression',
+    desc: 'Soothing post-treatment serums are applied. You receive detailed aftercare instructions to optimise your results. Many patients see immediate skin tightening, with continued improvement developing progressively over 4 to 8 weeks.',
   },
 ];
 
 const BENEFITS = [
   {
-    title: 'No Surgery, No Scars',
-    desc: 'Cool Bleph delivers eyelid rejuvenation without a single incision. No general anaesthetic, no scarring, and no surgical risk.',
+    title: 'Non-Surgical Eyelid Rejuvenation',
+    desc: 'Achieve the results of a surgical blepharoplasty without incisions, anaesthesia, or downtime. Lift and tighten the upper and lower eyelids safely and comfortably with advanced energy technology.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -117,8 +117,8 @@ const BENEFITS = [
     ),
   },
   {
-    title: 'Zero Downtime',
-    desc: 'Return to your normal day immediately after treatment. No swelling, bruising, or recovery period, perfect for busy lifestyles.',
+    title: 'Zero Downtime Recovery',
+    desc: 'Return to your normal day immediately after treatment. No swelling, bruising, or recovery period. Perfect for professionals and those with busy schedules who want dramatic eye rejuvenation without interrupting their routine.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -127,8 +127,8 @@ const BENEFITS = [
     ),
   },
   {
-    title: 'Natural-Looking Results',
-    desc: 'Tighter, more refreshed eyes that look naturally younger, not operated on. Friends will notice you look well-rested, not treated.',
+    title: 'Natural-Looking, Refreshed Eyes',
+    desc: 'Achieve a naturally rejuvenated appearance where friends notice you look well-rested, not treated. Subtle, progressive improvements create a refreshed, youthful eye area without looking overdone or artificial.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
@@ -139,20 +139,18 @@ const BENEFITS = [
     ),
   },
   {
-    title: 'Fast, Comfortable Treatment',
-    desc: 'The entire Cool Bleph procedure takes under 30 minutes. Most patients find it comfortable and well-tolerated throughout.',
+    title: 'Reduces Upper & Lower Eyelid Laxity',
+    desc: 'Targets both upper eyelid hooding and lower eyelid looseness simultaneously. Tightens and lifts sagging skin while reducing the appearance of under-eye puffiness and bags for a more alert, youthful expression.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-        <circle cx="9" cy="7" r="4"/>
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+        <circle cx="12" cy="12" r="3"/>
       </svg>
     ),
   },
   {
-    title: 'Stimulates Long-Lasting Collagen',
-    desc: 'Energy delivery to the periorbital area triggers natural collagen production, improving skin firmness and elasticity for lasting rejuvenation.',
+    title: 'Stimulates Collagen & Elastin Production',
+    desc: 'The treatment triggers the skin\'s natural healing response, promoting new collagen and elastin formation for progressive skin tightening and improved periorbital texture that continues developing over weeks and months.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
@@ -161,8 +159,8 @@ const BENEFITS = [
     ),
   },
   {
-    title: 'Expert-Led Treatment',
-    desc: 'Performed by clinicians with specialist training in periorbital aesthetics, ensuring precise, safe treatment with consistently outstanding outcomes.',
+    title: 'Expert Periorbital Aesthetics',
+    desc: 'Performed by clinicians with specialist training in delicate eye area treatments. Precision application ensures exceptional safety and results, with particular attention to the sensitive skin surrounding the eyes.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
@@ -173,81 +171,91 @@ const BENEFITS = [
 ];
 
 const ELIGIBILITY = [
-  'Adults concerned about upper or lower eyelid laxity and sagging',
-  'Those seeking non-surgical alternatives to surgical blepharoplasty',
-  'Individuals with under-eye puffiness or periorbital skin texture concerns',
-  'Patients in good general health with no active eye conditions',
-  'Anyone wanting immediate results with no surgery or downtime',
+  'Adults with upper eyelid hooding or sagging affecting their appearance',
+  'Those with lower eyelid puffiness or under-eye bags and laxity',
+  'Patients seeking a non-surgical alternative to surgical blepharoplasty',
+  'Anyone concerned about periorbital wrinkles and fine lines around the eyes',
+  'Individuals in good general health wanting immediate, zero-downtime results',
 ];
 
 const TREATABLE_CONCERNS = [
-  'Upper eyelid skin laxity and hooding',
-  'Lower eyelid puffiness and bags',
-  'Periorbital skin looseness and crepiness',
-  'Fine lines and wrinkles around the eyes',
-  'Overall tired or aged appearance of the eye area',
+  'Upper eyelid sagging and hooding',
+  'Lower eyelid laxity and looseness',
+  'Under-eye puffiness and bags',
+  'Periorbital fine lines and wrinkles',
+  'Overall tired or aged appearance of the eye region',
 ];
 
 const TREATABLE_AREAS = [
   'Upper eyelids',
   'Lower eyelids',
-  'Under-eye area',
-  'Periorbital skin',
-  'Crow\'s feet zone',
+  'Under-eye area (tear trough)',
+  'Outer corners of eyes (crow\'s feet region)',
+  'Brow area',
 ];
 
 const CLINIC_REASONS = [
-  'Specialist clinical team with periorbital aesthetic expertise',
-  'Latest Cool Bleph technology for optimal results',
-  'Personalised treatment plans tailored to your eye area concerns',
-  'Zero downtime with immediate return to normal activities',
-  'Safe, proven non-surgical approach',
-  'Same-day appointments and flexible scheduling',
+  { n: '01', text: 'Specialist clinical team with advanced periorbital aesthetic training.' },
+  { n: '02', text: 'Latest FDA-approved Cool Bleph technology for optimal results.' },
+  { n: '03', text: 'Comprehensive eye area assessment and personalised treatment planning.' },
+  { n: '04', text: 'Zero downtime with immediate return to normal activities.' },
+  { n: '05', text: 'Safe, proven non-surgical approach for all skin types.' },
+  { n: '06', text: 'Same-day appointments and flexible scheduling for busy lifestyles.' },
 ];
 
 const FAQS = [
   {
-    question: 'What is Cool Bleph?',
+    question: 'What is Cool Bleph and how does it work?',
     answer:
-      'Cool Bleph is a non-surgical eyelid rejuvenation treatment that uses advanced energy technology to tighten and refresh the periorbital area. It targets upper and lower eyelid laxity, under-eye bags, and periorbital skin texture with no incisions and no downtime.',
+      'Cool Bleph is an advanced non-surgical eyelid rejuvenation treatment that uses precision-controlled energy technology to tighten and lift the periorbital skin. It targets the upper and lower eyelid areas, reducing laxity, puffiness, and fine lines while stimulating natural collagen production. The treatment delivers energy at precise depths to achieve skin tightening without any incisions or downtime.',
   },
   {
-    question: 'How does Cool Bleph work?',
+    question: 'Is Cool Bleph safe for the delicate eye area?',
     answer:
-      'Cool Bleph delivers controlled energy to the periorbital skin, stimulating collagen production and tightening the delicate eyelid tissue. This remodelling process continues for weeks after treatment, resulting in firmer, more youthful-looking eyes.',
+      'Yes. Cool Bleph is specifically designed for the delicate periorbital region and is performed by clinicians with specialist training in eye area treatments. The technology includes built-in safety features and protective mechanisms. Protective eye shields are used during treatment to ensure absolute safety of the eyes themselves.',
   },
   {
-    question: 'How many sessions will I need?',
+    question: 'How much downtime will I experience?',
     answer:
-      'Most patients achieve excellent results after a single session. A course of 2 to 3 treatments spaced a few weeks apart may be recommended for more advanced laxity. A personalised plan is created at your consultation.',
+      'Cool Bleph requires zero downtime. You can return to your normal daily activities, including work, immediately after treatment. You may apply makeup right away if desired. Some patients experience very mild, temporary redness that settles within hours. No swelling, bruising, or recovery period is typical.',
   },
   {
-    question: 'Is Cool Bleph painful?',
+    question: 'When will I see results from Cool Bleph?',
     answer:
-      'Cool Bleph is generally well-tolerated and comfortable. Most patients report only a mild warming sensation. No anaesthetic is required and the session is complete in under 30 minutes.',
+      'Many patients notice immediate skin tightening and a more refreshed appearance right after their first session. Results continue to improve progressively over 4 to 8 weeks as collagen remodelling occurs. Full benefits typically develop by 2 to 3 months, with continued subtle improvement over subsequent months.',
   },
   {
-    question: 'What is the downtime after Cool Bleph?',
+    question: 'How many Cool Bleph sessions will I need?',
     answer:
-      'There is no downtime. You can return to your normal activities immediately after treatment. Some patients may experience very mild, temporary redness around the eye area which subsides quickly.',
+      'Most patients see excellent results after a single session. Many are completely satisfied with one treatment. For those with more advanced periorbital laxity or who want more dramatic lifting, a course of 2 to 3 treatments spaced 4 to 6 weeks apart may be recommended. Your clinician will create a personalised plan at your consultation.',
   },
   {
-    question: 'When will I see results?',
+    question: 'Is Cool Bleph suitable for all skin types and ages?',
     answer:
-      'Many patients notice immediate improvements in skin firmness and appearance. Full results from collagen remodelling continue to develop over 4 to 8 weeks following treatment.',
+      'Cool Bleph is safe and effective for a wide range of skin types and tones. The treatment can be customised to your specific skin characteristics. Ideal candidates are typically adults with mild to moderate eyelid laxity, though our team will assess your individual situation during your consultation to ensure it\'s the right treatment for you.',
   },
   {
-    question: 'Do I need a referral for Cool Bleph?',
+    question: 'How does Cool Bleph compare to surgical blepharoplasty?',
     answer:
-      'No referral is needed. You can book directly with The One Clinic. A thorough consultation and assessment is carried out before treatment to confirm suitability and create a personalised plan.',
+      'Cool Bleph offers non-surgical eyelid rejuvenation without incisions, anaesthesia, or downtime. Surgical blepharoplasty removes excess skin surgically but involves recovery time and scarring risk. Cool Bleph is ideal for those with mild to moderate concerns who want immediate results without surgery. For severe eyelid laxity, surgery may be more appropriate.',
+  },
+  {
+    question: 'Can Cool Bleph be combined with other treatments?',
+    answer:
+      'Yes. Cool Bleph works beautifully alongside other treatments such as dermal fillers for volume restoration, anti-wrinkle injections for dynamic lines, or other facial rejuvenation treatments. Many patients combine Cool Bleph with treatments for surrounding facial areas to achieve comprehensive facial rejuvenation. Your clinician can recommend optimal combination approaches.',
+  },
+  {
+    question: 'How long do Cool Bleph results last?',
+    answer:
+      'Cool Bleph results typically last 1 to 2 years, with many patients maintaining excellent results for longer. The duration depends on your age, skin quality, lifestyle, and sun exposure. Maintenance treatments every 1 to 2 years can sustain your results long-term. Proper skincare and sun protection help extend the longevity of your outcome.',
   },
 ];
 
 const RELATED = [
-  { label: 'Non-Surgical Blepharoplasty', href: '/treatments/non-surgical-blepharoplasty-leicester' },
-  { label: 'Endolift', href: '/treatments/endolift' },
-  { label: 'Profhilo', href: '/treatments/profhilo' },
-  { label: 'Morpheus8', href: '/treatments/morpheus8' },
+  { title: 'Non-Surgical Blepharoplasty',       href: '/treatments/non-surgical-blepharoplasty-leicester', desc: 'Advanced eye rejuvenation without surgery or downtime.' },
+  { title: 'Endolift Laser',                    href: '/treatments/endolift',                           desc: 'Non-surgical skin lifting and tightening for face and body.' },
+  { title: 'Morpheus8',                         href: '/treatments/morpheus8',                          desc: 'Fractional radiofrequency for comprehensive skin remodelling.' },
+  { title: 'Profhilo',                          href: '/treatments/profhilo',                           desc: 'Bio-stimulating treatment for deep hydration and rejuvenation.' },
 ];
 
 export default function CoolBlephPage() {
@@ -292,7 +300,7 @@ export default function CoolBlephPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Non-surgical eyelid rejuvenation that lifts, tightens, and refreshes the eye area. No surgery, no downtime.
+                Non-surgical eyelid rejuvenation with zero downtime. Lift, tighten, and refresh the eye area for a naturally refreshed, youthful appearance.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -312,7 +320,7 @@ export default function CoolBlephPage() {
                     <path d="M4.5 20.118a7.5 7.5 0 0115 0"/>
                     <path d="M18.5 15v5M16 17.5h5"/>
                   </svg>
-                  Expert clinical team
+                  Expert periorbital specialists
                 </span>
                 <span className={styles.heroTrustDivider} aria-hidden="true" />
                 <span className={styles.heroTrustItem}>
@@ -364,10 +372,7 @@ export default function CoolBlephPage() {
                 <p className={styles.eyebrowDark}>About This Treatment</p>
                 <h2 className={styles.combinedHeading}>What is Cool Bleph?</h2>
                 <p className={styles.combinedDesc}>
-                  Cool Bleph is a cutting-edge non-surgical treatment designed to rejuvenate the
-                  delicate skin around the eyes. Using advanced energy technology, it tightens
-                  loose upper and lower eyelid skin, reduces puffiness, and stimulates collagen,
-                  delivering a naturally refreshed appearance without surgery or recovery time.
+                  Cool Bleph is an advanced, non-surgical eyelid rejuvenation treatment designed to lift, tighten, and refresh the delicate periorbital area. Using precision energy technology, it addresses upper eyelid hooding, lower eyelid laxity, under-eye puffiness, and fine lines without any incisions, anaesthesia, or downtime. The treatment stimulates the skin\'s natural collagen production, delivering progressive, natural-looking results that develop over weeks following your session.
                 </p>
               </motion.div>
 
@@ -406,14 +411,14 @@ export default function CoolBlephPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>At a Glance</motion.p>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Cool Bleph Overview
+              Cool Bleph Treatment at a Glance
             </motion.h2>
           </motion.div>
 
           <motion.div
-            className={styles.glanceGrid}
+            className={styles.glanceStandaloneGrid}
             variants={stagger(0.08)}
             initial="hidden"
             whileInView="show"
@@ -421,9 +426,9 @@ export default function CoolBlephPage() {
           >
             {AT_A_GLANCE.map((item) => (
               <motion.div key={item.label} className={styles.glanceCard} variants={fadeUp}>
-                <div className={styles.glanceIconWrap} aria-hidden="true">{item.icon}</div>
-                <p className={styles.glanceLabel}>{item.label}</p>
-                <p className={styles.glanceValue}>{item.value}</p>
+                <span className={styles.glanceIcon}>{item.icon}</span>
+                <span className={styles.glanceLabel}>{item.label}</span>
+                <span className={styles.glanceValue}>{item.value}</span>
               </motion.div>
             ))}
           </motion.div>
@@ -431,7 +436,7 @@ export default function CoolBlephPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          4. THE JOURNEY
+          4. TREATMENT JOURNEY
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -442,29 +447,31 @@ export default function CoolBlephPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Your Journey</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              The Cool Bleph Journey
-            </motion.h2>
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>What to Expect</motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>Your Cool Bleph Journey</motion.h2>
           </motion.div>
 
-          <motion.div
-            className={styles.journeySection}
+          <motion.ol
+            className={styles.journeyList}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
+            aria-label="Cool Bleph treatment journey steps"
           >
             {JOURNEY_STEPS.map((step) => (
-              <motion.div key={step.n} className={styles.journeyCard} variants={fadeUp}>
-                <div className={styles.journeyCardInner}>
-                  <span className={styles.journeyNumber}>{step.n}</span>
-                  <h3 className={styles.journeyTitle}>{step.title}</h3>
-                  <p className={styles.journeyDesc}>{step.desc}</p>
+              <motion.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
+                <div className={styles.stepLeft}>
+                  <div className={styles.stepNumCircle} aria-hidden="true">{step.n}</div>
+                  <div className={styles.stepConnector} aria-hidden="true" />
                 </div>
-              </motion.div>
+                <div className={styles.stepBody}>
+                  <h3 className={styles.stepTitle}>{step.title}</h3>
+                  <p className={styles.stepDesc}>{step.desc}</p>
+                </div>
+              </motion.li>
             ))}
-          </motion.div>
+          </motion.ol>
         </Container>
       </Section>
 
@@ -524,73 +531,96 @@ export default function CoolBlephPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Eligibility</motion.p>
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Is This Right for You?</motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Are You a Good Candidate?
+              Who Is a Good Candidate?
             </motion.h2>
           </motion.div>
 
           <motion.div
-            className={styles.eligibilityGrid}
-            variants={stagger(0.08)}
+            className={styles.eligibilityWrap}
+            variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {ELIGIBILITY.map((item) => (
-              <motion.div key={item} className={styles.eligibilityCard} variants={fadeUp}>
-                <span className={styles.eligibilityCheck} aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <polyline points="2,10 7,15 18,4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </span>
-                <p className={styles.eligibilityText}>{item}</p>
-              </motion.div>
-            ))}
+            <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
+              Cool Bleph is ideal for you if you are:
+            </motion.p>
+            <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
+              {ELIGIBILITY.map((item) => (
+                <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
+                  <span className={styles.eligibilityCheck} aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          7. RESULTS & AFTERCARE
+          7. TREATABLE AREAS
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
+      <Section variant="dark" data-section-theme="dark">
         <Container>
           <motion.div
-            className={styles.resultsGrid}
-            variants={stagger(0.12)}
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div className={styles.resultsContent} variants={stagger(0.12)}>
-              <motion.div className={styles.resultsTextGroup} variants={fadeUp}>
-                <p className={styles.eyebrowDark}>Results and Aftercare</p>
-                <h2 className={styles.combinedHeading}>What to Expect After Treatment</h2>
-                <p className={styles.combinedDesc}>
-                  Cool Bleph requires no recovery time. You can resume all normal activities
-                  immediately after your session. Immediate improvements in skin firmness are
-                  often visible, with continued enhancement over 4 to 8 weeks as collagen
-                  production increases. Following your clinician's aftercare guidance, including
-                  gentle eye care and SPF protection, ensures the best possible long-term results.
-                </p>
-              </motion.div>
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Treatment Focus</motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              What Can We Treat?
+            </motion.h2>
+            <motion.p className={styles.conditionsIntro} variants={fadeUp}>
+              Cool Bleph addresses a range of periorbital concerns across the upper and lower eye regions.
+            </motion.p>
+          </motion.div>
 
-              <motion.div className={styles.resultsCtaWrapper} variants={fadeUp}>
-                <BookConsultationButton className={styles.resultsCtaButton}>
-                  Schedule Your Treatment
-                </BookConsultationButton>
-              </motion.div>
+          <motion.div
+            className={styles.areasColumns}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.div
+              className={styles.areasGroup}
+              variants={fadeUp}
+              whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
+            >
+              <p className={styles.areasGroupLabel}>Concerns Treated</p>
+              <ul className={styles.areasGroupList} role="list">
+                {TREATABLE_CONCERNS.map((item) => (
+                  <li key={item} className={styles.areasGroupItem}>
+                    <span className={styles.areasItemDot} aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </motion.div>
 
-            <motion.div className={styles.resultsImageWrap} variants={fadeUp}>
-              <Image
-                src="/images/Dermatologist.jpg"
-                alt="Cool Bleph results at The One Clinic"
-                fill
-                className={styles.resultsImageFrame}
-                sizes="(max-width: 900px) 100vw, 50vw"
-              />
+            <motion.div
+              className={styles.areasGroup}
+              variants={fadeUp}
+              whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
+            >
+              <p className={styles.areasGroupLabel}>Treatment Areas</p>
+              <ul className={styles.areasGroupList} role="list">
+                {TREATABLE_AREAS.map((item) => (
+                  <li key={item} className={styles.areasGroupItem}>
+                    <span className={styles.areasItemDot} aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           </motion.div>
         </Container>
@@ -617,7 +647,7 @@ export default function CoolBlephPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
-              Fresher Eyes,<br />No Surgery Needed.
+              Fresher, More Alert Eyes.<br />Without Surgery.
             </motion.h2>
             <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
               Book a Cool Bleph consultation with our expert team in Leicester.
@@ -630,88 +660,32 @@ export default function CoolBlephPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          10. TREATABLE AREAS
+          10. CLINIC INTRO
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
-        <div className={styles.whiteBgWrap} aria-hidden="true">
-          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
-        </div>
-        <Container className={styles.whiteBgContent}>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Treatment Areas</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Treatable Concerns and Areas
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.treatedConcernsGrid}
-            variants={stagger(0.08)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {[...TREATABLE_CONCERNS, ...TREATABLE_AREAS].map((item) => (
-              <motion.div key={item} className={styles.treatedConcernCard} variants={fadeUp}>
-                <h3 className={styles.treatedConcernTitle}>{item}</h3>
-              </motion.div>
-            ))}
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          11. CLINIC INTRO
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
+      <Section variant="light" data-section-theme="light" className={styles.clinicIntroSection}>
         <Container>
           <motion.div
-            className={styles.clinicIntroGrid}
+            className={styles.clinicIntroBody}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div className={styles.clinicIntroImageWrap} variants={fadeUp}>
-              <Image
-                src="/images/Doctor1.jpg"
-                alt="The One Clinic Leicester team"
-                fill
-                className={styles.clinicIntroImage}
-                sizes="(max-width: 900px) 100vw, 50vw"
-              />
+            <motion.div className={styles.clinicIntroLeft} variants={fadeUp}>
+              <p className={styles.eyebrowDark}>About Our Clinic</p>
+              <h2 className={styles.headingDark}>
+                Leading Eye Rejuvenation<br />in Leicester
+              </h2>
             </motion.div>
-
-            <motion.div className={styles.clinicIntroContent} variants={stagger(0.12)}>
-              <motion.div className={styles.clinicIntroTextGroup} variants={fadeUp}>
-                <p className={styles.eyebrowDark}>About Our Clinic</p>
-                <h2 className={styles.combinedHeading}>Leading Eye Rejuvenation in Leicester</h2>
-                <p className={styles.clinicIntroBody}>
-                  The One Clinic brings together specialist expertise and advanced technology
-                  to deliver outstanding Cool Bleph results. Our clinical team is dedicated to
-                  refreshing and rejuvenating the eye area with precision, care, and a commitment
-                  to natural-looking outcomes.
-                </p>
-              </motion.div>
-
-              <motion.div className={styles.clinicIntroCtaWrapper} variants={fadeUp}>
-                <BookConsultationButton className={styles.clinicIntroCtaButton}>
-                  Meet Our Team
-                </BookConsultationButton>
-              </motion.div>
-            </motion.div>
+            <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
+              The One Clinic brings together specialist clinical expertise with advanced Cool Bleph technology to deliver outstanding periorbital rejuvenation results. Our team is dedicated to creating naturally refreshed, youthful-looking eyes with safe, precise treatments and comprehensive patient care.
+            </motion.p>
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          12. COST BANNER
+          11. COST BANNER
       ════════════════════════════════════════ */}
       <section className={styles.costBanner} data-section-theme="dark" aria-label="Cool Bleph cost">
         <Container>
@@ -725,7 +699,7 @@ export default function CoolBlephPage() {
             <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>Cool Bleph Pricing at The One Clinic</motion.p>
             <motion.p className={styles.costBannerPrice} variants={fadeUp}>From £250</motion.p>
             <motion.p className={styles.costBannerNote} variants={fadeUp}>
-              Pricing varies by treatment area and number of sessions. Full details provided at your consultation.
+              Pricing varies by treatment area and number of sessions required. Full details provided at your consultation.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>Book A Consultation</BookConsultationButton>
@@ -735,13 +709,10 @@ export default function CoolBlephPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          13. WHY CHOOSE
+          12. WHY CHOOSE THE ONE CLINIC
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
-        <div className={styles.whiteBgWrap} aria-hidden="true">
-          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
-        </div>
-        <Container className={styles.whiteBgContent}>
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
@@ -749,22 +720,27 @@ export default function CoolBlephPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Why Choose Us</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Why Choose The One Clinic?
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Why Choose The One Clinic For Cool Bleph
             </motion.h2>
           </motion.div>
 
           <motion.div
-            className={styles.whyChooseGrid}
+            className={styles.clinicReasonsGrid}
             variants={stagger(0.08)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {CLINIC_REASONS.map((reason) => (
-              <motion.div key={reason} className={styles.whyChooseCard} variants={fadeUp}>
-                <p className={styles.whyChooseText}>{reason}</p>
+            {CLINIC_REASONS.map((r) => (
+              <motion.div
+                key={r.n}
+                className={styles.clinicReasonCard}
+                variants={fadeUp}
+                whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
+              >
+                <span className={styles.clinicReasonNumber}>{r.n}</span>
+                <p className={styles.clinicReasonText}>{r.text}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -772,12 +748,12 @@ export default function CoolBlephPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          14. MEET THE EXPERTS
+          13. MEET THE EXPERTS
       ════════════════════════════════════════ */}
       <MeetTheExperts />
 
       {/* ════════════════════════════════════════
-          15. FAQ
+          14. FAQ
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -799,32 +775,46 @@ export default function CoolBlephPage() {
             viewport={VIEWPORT}
           >
             <Accordion items={showAllFaqs ? FAQS : FAQS.slice(0, 5)} theme="dark" />
-            {!showAllFaqs && FAQS.length > 5 && (
-              <motion.button
-                onClick={() => setShowAllFaqs(true)}
-                className={styles.faqToggle}
-                variants={fadeUp}
-              >
-                Show All FAQs
-              </motion.button>
+
+            {FAQS.length > 5 && (
+              <div className={styles.faqToggleWrap}>
+                <button
+                  className={styles.faqToggleBtn}
+                  onClick={() => setShowAllFaqs((v) => !v)}
+                  aria-expanded={showAllFaqs}
+                >
+                  {showAllFaqs ? (
+                    <>
+                      Show Less
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M4 10l4-4 4 4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </>
+                  ) : (
+                    <>
+                      Show More
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </>
+                  )}
+                </button>
+              </div>
             )}
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          16. LEAD FORM
+          15. LEAD FORM
       ════════════════════════════════════════ */}
       <LeadForm />
 
       {/* ════════════════════════════════════════
-          17. RELATED TREATMENTS
+          16. RELATED TREATMENTS
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
-        <div className={styles.whiteBgWrap} aria-hidden="true">
-          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
-        </div>
-        <Container className={styles.whiteBgContent}>
+      <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
+        <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
@@ -832,32 +822,38 @@ export default function CoolBlephPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Related Treatments</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Explore Our Other Treatments
-            </motion.h2>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Explore More</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>Related Treatments</motion.h2>
           </motion.div>
 
           <motion.div
             className={styles.relatedGrid}
-            variants={stagger(0.08)}
+            variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {RELATED.map((item) => (
-              <Link key={item.href} href={item.href}>
-                <motion.div className={styles.relatedCard} variants={fadeUp} whileHover={{ y: -4 }}>
-                  <h3 className={styles.relatedTitle}>{item.label}</h3>
-                </motion.div>
-              </Link>
+            {RELATED.map((r) => (
+              <motion.div key={r.title} variants={fadeUp}>
+                <Link href={r.href} className={styles.relatedCard}>
+                  <h3 className={styles.relatedTitle}>{r.title}</h3>
+                  <p className={styles.relatedDesc}>{r.desc}</p>
+                  <span className={styles.relatedArrow} aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M3 8h10M9 4l4 4-4 4"
+                        stroke="currentColor" strokeWidth="1.5"
+                        strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                </Link>
+              </motion.div>
             ))}
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          18. FINAL CTA
+          17. FINAL CTA
       ════════════════════════════════════════ */}
       <FinalCTA />
     </>
