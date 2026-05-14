@@ -399,7 +399,7 @@ export default function BodyContouringPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Body Contouring.jpg"
+                src="/images/Liposuction1.png"
                 alt="Body contouring treatment at The One Clinic Leicester"
                 fill
                 priority
@@ -448,7 +448,7 @@ export default function BodyContouringPage() {
             {/* Right: image */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Body Contouring.jpg"
+                src="/images/Doctor1.jpg"
                 alt="Body contouring treatment in progress at The One Clinic"
                 fill
                 className={styles.whatIsVideoFrame}
