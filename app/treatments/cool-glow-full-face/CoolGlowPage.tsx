@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Section                from '@/components/ui/Section';
@@ -15,6 +17,95 @@ import FinalCTA               from '@/components/sections/FinalCTA';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
 
+/* ── Static data ──────────────────────────────────────────────── */
+const AT_A_GLANCE = [
+  {
+    label: 'Treatment Time',
+    value: '30 to 45 minutes',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Sessions Needed',
+    value: '1 to 6 sessions',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="1 4 1 10 7 10"/>
+        <path d="M3.51 15a9 9 0 1 0 .49-3.1"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'First Results',
+    value: 'Immediately visible',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+        <polyline points="17 6 23 6 23 12"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Full Results',
+    value: '4 to 6 weeks (course)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+        <path d="M9 12l2 2 4-4"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Downtime',
+    value: 'None',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+        <line x1="16" y1="2" x2="16" y2="6"/>
+        <line x1="8" y1="2" x2="8" y2="6"/>
+        <line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Treatment Cost',
+    value: 'From £80',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <line x1="12" y1="1" x2="12" y2="23"/>
+        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+      </svg>
+    ),
+  },
+];
+
+const JOURNEY_STEPS = [
+  {
+    n: '01',
+    title: 'Skin Consultation and Assessment',
+    desc: 'Our clinical team assesses your skin type, tone, and concerns. We discuss your goals and confirm the COOL Glow Peel is the right treatment, tailoring the formula to your specific skin needs.',
+  },
+  {
+    n: '02',
+    title: 'Skin Preparation',
+    desc: 'The face is thoroughly cleansed to remove makeup, oils, and impurities. A pre-treatment preparation may be applied to optimise the peel performance and ensure an even result.',
+  },
+  {
+    n: '03',
+    title: 'COOL Glow Peel Application',
+    desc: 'The peel solution is applied evenly across the full face. You may experience a gentle tingling sensation. The treatment takes 30 to 45 minutes and is comfortable throughout.',
+  },
+  {
+    n: '04',
+    title: 'Neutralisation and Post-Treatment Care',
+    desc: 'The peel is neutralised and removed. A soothing post-treatment serum and SPF are applied. Aftercare instructions are provided and you can return to normal activities immediately.',
+  },
+];
+
 const BENEFITS = [
   {
     title: 'Instant Radiance',
@@ -28,7 +119,7 @@ const BENEFITS = [
   },
   {
     title: 'Zero Downtime',
-    desc: 'Unlike deeper chemical peels, the COOL Glow Peel is formulated for a comfortable experience with no significant peeling or recovery period, making it the perfect lunchtime treatment.',
+    desc: 'Unlike deeper chemical peels, the COOL Glow Peel has no significant peeling or recovery period, making it the perfect lunchtime treatment for busy lifestyles.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -37,7 +128,7 @@ const BENEFITS = [
   },
   {
     title: 'Targets Multiple Concerns',
-    desc: 'The COOL Glow Peel addresses dullness, uneven skin tone, mild pigmentation, fine lines, and enlarged pores, delivering a comprehensive complexion refresh in a single session.',
+    desc: 'Addresses dullness, uneven skin tone, mild pigmentation, fine lines, and enlarged pores, delivering a comprehensive complexion refresh in a single session.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
@@ -49,7 +140,7 @@ const BENEFITS = [
   },
   {
     title: 'Safe for All Skin Types',
-    desc: 'The COOL Glow Peel\'s advanced formulation is designed to be well tolerated across all skin types, including sensitive skin, administered by our trained clinical team for maximum safety.',
+    desc: 'The advanced formulation is designed to be well tolerated across all skin types, including sensitive and reactive skin, administered by our trained clinical team.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -59,13 +150,59 @@ const BENEFITS = [
       </svg>
     ),
   },
+  {
+    title: 'Stimulates Skin Renewal',
+    desc: 'The peel removes dulling surface cells and stimulates healthy cell turnover, progressively improving skin quality, clarity, and luminosity with each session.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+        <polyline points="17 6 23 6 23 12"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Expert-Led Treatment',
+    desc: 'Delivered by our experienced clinical team, who assess your skin and tailor the treatment to achieve the best possible result for your complexion.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+        <path d="M9 12l2 2 4-4"/>
+      </svg>
+    ),
+  },
 ];
 
-const OVERVIEW_POINTS = [
-  'Brightens, smooths, and refreshes the full face in a single session',
-  'No significant downtime, return to normal activities immediately',
-  'Improves skin tone, texture, and radiance',
-  'No waiting lists and no GP referral required',
+const ELIGIBILITY = [
+  'Adults seeking an instant skin refresh and radiance boost',
+  'Those with dull, uneven, or tired-looking complexion',
+  'Patients with mild pigmentation, enlarged pores, or fine lines',
+  'Anyone wanting a low-risk treatment with no recovery time',
+  'Those looking for a pre-event skin treatment with immediate glow',
+];
+
+const TREATABLE_CONCERNS = [
+  'Dull and tired-looking skin',
+  'Uneven skin tone and texture',
+  'Mild pigmentation and sun spots',
+  'Enlarged pores',
+  'Fine lines and early signs of ageing',
+];
+
+const TREATABLE_AREAS = [
+  'Full face',
+  'Forehead and temples',
+  'Cheeks and nose',
+  'Chin and jawline',
+  'Neck and décolletage',
+];
+
+const CLINIC_REASONS = [
+  'Expert clinical team with advanced skincare certifications',
+  'Professional-grade COOL Glow Peel formulations',
+  'Personalised skin assessment before every treatment',
+  'Immediate results with zero downtime',
+  'Safe and suitable for all skin types',
+  'Same-day appointments and flexible scheduling',
 ];
 
 const FAQS = [
@@ -85,13 +222,37 @@ const FAQS = [
       'Many patients are delighted with results after a single session, particularly as a pre-event skin refresh. For ongoing improvement in skin quality, a course of 4 to 6 treatments spaced 2 to 4 weeks apart is recommended. Your clinician will advise based on your skin goals.',
   },
   {
+    question: 'What does the treatment feel like?',
+    answer:
+      'The COOL Glow Peel is comfortable and well-tolerated. Most patients experience a mild tingling sensation during application that quickly subsides. There is no pain, and the session is complete in 30 to 45 minutes.',
+  },
+  {
+    question: 'Is there any downtime after the COOL Glow Peel?',
+    answer:
+      'No. The COOL Glow Peel is designed as a zero-downtime treatment. You can return to normal activities immediately, including wearing makeup. Some patients may notice very mild, temporary redness that settles within a few hours.',
+  },
+  {
+    question: 'How quickly will I see results?',
+    answer:
+      'Results are visible immediately after treatment. Skin appears brighter, smoother, and more radiant right away. With a course of treatments, continued improvement in skin tone, texture, and clarity develops over several weeks.',
+  },
+  {
     question: 'Do I need a referral for the COOL Glow Peel?',
     answer:
       'No referral is needed. You can book directly with The One Clinic. A brief skin assessment is included before treatment to confirm the COOL Glow Peel is the right option for your skin type and concerns.',
   },
 ];
 
+const RELATED = [
+  { label: 'Chemical Peels', href: '/treatments/chemical-peels' },
+  { label: 'HydraFacial', href: '/treatments/hydrafacial' },
+  { label: 'Laser Resurfacing', href: '/treatments/laser-resurfacing' },
+  { label: 'Lumecca IPL', href: '/treatments/lumecca-ipl' },
+];
+
 export default function CoolGlowPage() {
+  const [showAllFaqs, setShowAllFaqs] = useState(false);
+
   return (
     <>
       {/* ════════════════════════════════════════
@@ -187,12 +348,7 @@ export default function CoolGlowPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          2. GOOGLE REVIEWS
-      ════════════════════════════════════════ */}
-      <Testimonials />
-
-      {/* ════════════════════════════════════════
-          3. WHAT IS COOL GLOW PEEL?
+          2. WHAT IS COOL GLOW PEEL?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
@@ -216,21 +372,8 @@ export default function CoolGlowPage() {
                 </p>
               </motion.div>
 
-              <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
-                {OVERVIEW_POINTS.map((point) => (
-                  <motion.li key={point} className={styles.eligibilityItem} variants={fadeUp}>
-                    <span className={styles.eligibilityCheck} aria-hidden="true">
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </span>
-                    <span>{point}</span>
-                  </motion.li>
-                ))}
-              </motion.ul>
-
-              <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
-                <BookConsultationButton className={styles.combinedCta}>
+              <motion.div className={styles.whatIsCtaWrapper} variants={fadeUp}>
+                <BookConsultationButton className={styles.whatIsCtaButton}>
                   Book Your Consultation
                 </BookConsultationButton>
               </motion.div>
@@ -250,7 +393,84 @@ export default function CoolGlowPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          4. BENEFITS
+          3. AT A GLANCE
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
+        <div className={styles.whiteBgWrap} aria-hidden="true">
+          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
+        </div>
+        <Container className={styles.whiteBgContent}>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>At a Glance</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              COOL Glow Peel Overview
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.glanceGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {AT_A_GLANCE.map((item) => (
+              <motion.div key={item.label} className={styles.glanceCard} variants={fadeUp}>
+                <div className={styles.glanceIconWrap} aria-hidden="true">{item.icon}</div>
+                <p className={styles.glanceLabel}>{item.label}</p>
+                <p className={styles.glanceValue}>{item.value}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          4. THE JOURNEY
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Your Journey</motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              The COOL Glow Peel Journey
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.journeySection}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {JOURNEY_STEPS.map((step) => (
+              <motion.div key={step.n} className={styles.journeyCard} variants={fadeUp}>
+                <div className={styles.journeyCardInner}>
+                  <span className={styles.journeyNumber}>{step.n}</span>
+                  <h3 className={styles.journeyTitle}>{step.title}</h3>
+                  <p className={styles.journeyDesc}>{step.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          5. BENEFITS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
         <div className={styles.whiteBgWrap} aria-hidden="true">
@@ -294,7 +514,96 @@ export default function CoolGlowPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          5. CTA BANNER
+          6. ELIGIBILITY
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Eligibility</motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Are You a Good Candidate?
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.eligibilityGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {ELIGIBILITY.map((item) => (
+              <motion.div key={item} className={styles.eligibilityCard} variants={fadeUp}>
+                <span className={styles.eligibilityCheck} aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <polyline points="2,10 7,15 18,4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </span>
+                <p className={styles.eligibilityText}>{item}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          7. RESULTS & AFTERCARE
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
+        <Container>
+          <motion.div
+            className={styles.resultsGrid}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.div className={styles.resultsContent} variants={stagger(0.12)}>
+              <motion.div className={styles.resultsTextGroup} variants={fadeUp}>
+                <p className={styles.eyebrowDark}>Results and Aftercare</p>
+                <h2 className={styles.combinedHeading}>What to Expect After Treatment</h2>
+                <p className={styles.combinedDesc}>
+                  The COOL Glow Peel requires no downtime. You can return to all normal activities
+                  immediately, including wearing makeup. Skin will appear brighter and more radiant
+                  right away. Some patients experience very mild, temporary redness that settles
+                  within hours. Following your clinician's aftercare guidance, including daily SPF
+                  and a gentle skincare routine, will maintain and enhance your results.
+                </p>
+              </motion.div>
+
+              <motion.div className={styles.resultsCtaWrapper} variants={fadeUp}>
+                <BookConsultationButton className={styles.resultsCtaButton}>
+                  Schedule Your Treatment
+                </BookConsultationButton>
+              </motion.div>
+            </motion.div>
+
+            <motion.div className={styles.resultsImageWrap} variants={fadeUp}>
+              <Image
+                src="/images/Dermatologist.jpg"
+                alt="COOL Glow Peel results at The One Clinic"
+                fill
+                className={styles.resultsImageFrame}
+                sizes="(max-width: 900px) 100vw, 50vw"
+              />
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          8. TESTIMONIALS
+      ════════════════════════════════════════ */}
+      <Testimonials />
+
+      {/* ════════════════════════════════════════
+          9. CTA BANNER
       ════════════════════════════════════════ */}
       <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book COOL Glow Peel">
         <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
@@ -322,7 +631,88 @@ export default function CoolGlowPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          6. COST BANNER
+          10. TREATABLE AREAS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
+        <div className={styles.whiteBgWrap} aria-hidden="true">
+          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
+        </div>
+        <Container className={styles.whiteBgContent}>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Treatment Areas</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Treatable Concerns and Areas
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.treatedConcernsGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {[...TREATABLE_CONCERNS, ...TREATABLE_AREAS].map((item) => (
+              <motion.div key={item} className={styles.treatedConcernCard} variants={fadeUp}>
+                <h3 className={styles.treatedConcernTitle}>{item}</h3>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          11. CLINIC INTRO
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
+        <Container>
+          <motion.div
+            className={styles.clinicIntroGrid}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.div className={styles.clinicIntroImageWrap} variants={fadeUp}>
+              <Image
+                src="/images/Doctor1.jpg"
+                alt="The One Clinic Leicester team"
+                fill
+                className={styles.clinicIntroImage}
+                sizes="(max-width: 900px) 100vw, 50vw"
+              />
+            </motion.div>
+
+            <motion.div className={styles.clinicIntroContent} variants={stagger(0.12)}>
+              <motion.div className={styles.clinicIntroTextGroup} variants={fadeUp}>
+                <p className={styles.eyebrowDark}>About Our Clinic</p>
+                <h2 className={styles.combinedHeading}>Leading Skin Treatments in Leicester</h2>
+                <p className={styles.clinicIntroBody}>
+                  The One Clinic brings together specialist clinical expertise and professional-grade
+                  skincare to deliver outstanding COOL Glow Peel results. Our team is committed to
+                  helping you achieve radiant, healthy skin with safe, effective treatments and
+                  personalised care.
+                </p>
+              </motion.div>
+
+              <motion.div className={styles.clinicIntroCtaWrapper} variants={fadeUp}>
+                <BookConsultationButton className={styles.clinicIntroCtaButton}>
+                  Meet Our Team
+                </BookConsultationButton>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          12. COST BANNER
       ════════════════════════════════════════ */}
       <section className={styles.costBanner} data-section-theme="dark" aria-label="COOL Glow Peel cost">
         <Container>
@@ -346,12 +736,49 @@ export default function CoolGlowPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          7. MEET THE EXPERTS
+          13. WHY CHOOSE
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
+        <div className={styles.whiteBgWrap} aria-hidden="true">
+          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
+        </div>
+        <Container className={styles.whiteBgContent}>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Why Choose Us</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Why Choose The One Clinic?
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.whyChooseGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {CLINIC_REASONS.map((reason) => (
+              <motion.div key={reason} className={styles.whyChooseCard} variants={fadeUp}>
+                <p className={styles.whyChooseText}>{reason}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          14. MEET THE EXPERTS
       ════════════════════════════════════════ */}
       <MeetTheExperts />
 
       {/* ════════════════════════════════════════
-          8. FAQ
+          15. FAQ
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -372,12 +799,67 @@ export default function CoolGlowPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <Accordion items={FAQS} theme="dark" />
+            <Accordion items={showAllFaqs ? FAQS : FAQS.slice(0, 5)} theme="dark" />
+            {!showAllFaqs && FAQS.length > 5 && (
+              <motion.button
+                onClick={() => setShowAllFaqs(true)}
+                className={styles.faqToggle}
+                variants={fadeUp}
+              >
+                Show All FAQs
+              </motion.button>
+            )}
           </motion.div>
         </Container>
       </Section>
 
+      {/* ════════════════════════════════════════
+          16. LEAD FORM
+      ════════════════════════════════════════ */}
       <LeadForm />
+
+      {/* ════════════════════════════════════════
+          17. RELATED TREATMENTS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
+        <div className={styles.whiteBgWrap} aria-hidden="true">
+          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
+        </div>
+        <Container className={styles.whiteBgContent}>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Related Treatments</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Explore Our Other Treatments
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.relatedGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {RELATED.map((item) => (
+              <Link key={item.href} href={item.href}>
+                <motion.div className={styles.relatedCard} variants={fadeUp} whileHover={{ y: -4 }}>
+                  <h3 className={styles.relatedTitle}>{item.label}</h3>
+                </motion.div>
+              </Link>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          18. FINAL CTA
+      ════════════════════════════════════════ */}
       <FinalCTA />
     </>
   );
