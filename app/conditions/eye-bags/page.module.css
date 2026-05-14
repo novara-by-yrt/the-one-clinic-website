@@ -808,18 +808,61 @@
 .riskGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(var(--space-6), 6vw, 80px);
-  align-items: start;
+  gap: 0;
+  align-items: stretch;
+  min-height: 560px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 40px rgba(0 0 0 / 0.08);
 }
 
-.riskLeft {
+/* ── Left: image panel ── */
+.riskImageWrap {
+  position: relative;
+  overflow: hidden;
+  min-height: 480px;
+}
+
+.riskImage {
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.riskImageWrap:hover .riskImage {
+  transform: scale(1.03);
+}
+
+.riskImageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0 0 0 / 0.08) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+/* ── Right: content panel ── */
+.riskRight {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-left: 1px solid var(--color-border-light);
+}
+
+.riskRightInner {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
+  padding: clamp(var(--space-5), 5vw, 64px) clamp(var(--space-5), 4vw, 56px);
+  height: 100%;
+  justify-content: center;
 }
 
 .riskHeading {
-  font-size: clamp(1.5rem, 3vw, var(--text-h2));
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
   font-weight: var(--fw-bold);
   letter-spacing: -0.02em;
   color: var(--color-text-dark);
@@ -840,27 +883,29 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: 10px;
+  margin-top: var(--space-1);
 }
 
 .riskItem {
   display: flex;
   align-items: center;
   gap: 14px;
-  font-size: 1rem;
+  font-size: 0.9375rem;
   font-weight: var(--fw-medium);
   color: var(--color-text-dark);
-  padding: 14px 18px;
+  padding: 13px 18px;
   background: #f8f8f8;
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-lg);
+  border: 1px solid rgba(0 0 0 / 0.06);
+  border-radius: 12px;
   letter-spacing: -0.01em;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
 .riskItem:hover {
   background: #f0f0f0;
   border-color: rgba(0 0 0 / 0.12);
+  transform: translateX(4px);
 }
 
 .riskCheck {
@@ -1386,7 +1431,25 @@
 
   .riskGrid {
     grid-template-columns: 1fr;
-    gap: clamp(var(--space-4), 4vw, var(--space-6));
+    border-radius: 16px;
+    min-height: unset;
+  }
+
+  .riskImageWrap {
+    min-height: 260px;
+  }
+
+  .riskRight {
+    border-left: none;
+    border-top: 1px solid var(--color-border-light);
+  }
+
+  .riskRightInner {
+    padding: clamp(var(--space-4), 5vw, var(--space-5));
+  }
+
+  .riskItem:hover {
+    transform: none;
   }
 
   .diagnoseGrid {

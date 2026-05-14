@@ -1,6 +1,6 @@
-/* ── Section ─────────────────────────────────────────── */
+/* ── Section — black canvas ──────────────────────────── */
 .section {
-  background: #f5f5f5;
+  background: #0a0a0a;
 }
 
 /* ── Wrapper ─────────────────────────────────────────── */
@@ -27,15 +27,15 @@
   align-items: center;
   gap: 7px;
   width: fit-content;
-  background: rgba(0 0 0 / 0.06);
-  border: 1px solid rgba(0 0 0 / 0.12);
+  background: rgba(255 255 255 / 0.08);
+  border: 1px solid rgba(255 255 255 / 0.15);
   border-radius: 100px;
   padding: 6px 16px;
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(0 0 0 / 0.55);
+  color: rgba(255 255 255 / 0.55);
 }
 
 .eyebrow::before {
@@ -52,13 +52,13 @@
   font-size: clamp(1.875rem, 3.5vw, 2.5rem);
   font-weight: var(--fw-bold);
   letter-spacing: -0.025em;
-  color: var(--color-text-dark);
+  color: #ffffff;
   line-height: 1.2;
 }
 
 .subtext {
   font-size: 0.9375rem;
-  color: rgba(0 0 0 / 0.62);
+  color: rgba(255 255 255 / 0.65);
   line-height: 1.7;
   max-width: 500px;
 }
@@ -77,10 +77,9 @@
   align-items: center;
   gap: clamp(var(--space-2), 1.5vw, var(--space-3));
   padding: clamp(var(--space-3), 2.5vw, var(--space-4));
-  border: 1px solid rgba(0 0 0 / 0.07);
+  border: 1px solid rgba(255 255 255 / 0.08);
   border-radius: 14px;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0 0 0 / 0.04);
+  background: rgba(255 255 255 / 0.04);
   cursor: default;
   transition: all 0.25s ease;
   text-align: center;
@@ -88,8 +87,9 @@
 
 .itemCard:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 28px rgba(0 0 0 / 0.1);
-  border-color: rgba(0 0 0 / 0.12);
+  background: rgba(255 255 255 / 0.08);
+  border-color: rgba(255 255 255 / 0.18);
+  box-shadow: 0 12px 36px rgba(0 0 0 / 0.4);
 }
 
 .itemIcon {
@@ -99,31 +99,31 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: rgba(0 0 0 / 0.02);
-  border: 1.5px solid rgba(0 0 0 / 0.1);
-  color: rgba(0 0 0 / 0.6);
+  background: rgba(255 255 255 / 0.06);
+  border: 1.5px solid rgba(255 255 255 / 0.15);
+  color: rgba(255 255 255 / 0.7);
   flex-shrink: 0;
   transition: all 0.25s ease;
 }
 
 .itemCard:hover .itemIcon {
-  background: #0a0a0a;
-  border-color: #0a0a0a;
-  color: #fff;
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #0a0a0a;
 }
 
 .itemTitle {
   font-size: clamp(0.9375rem, 2vw, 1.0625rem);
   font-weight: 700;
   letter-spacing: -0.015em;
-  color: var(--color-text-dark);
+  color: #ffffff;
   line-height: 1.3;
 }
 
 .itemDesc {
   font-size: 0.875rem;
   line-height: 1.6;
-  color: rgba(0 0 0 / 0.58);
+  color: rgba(255 255 255 / 0.6);
 }
 
 /* ── Responsive ──────────────────────────────────────── */
@@ -156,5 +156,9 @@
 
   .heading {
     font-size: 1.5rem;
+  }
+
+  .itemCard:hover {
+    transform: none;
   }
 }

@@ -55,7 +55,7 @@ const ITEMS = [
 
 export default function ArrivalExperience() {
   return (
-    <Section variant="light" data-section-theme="light" className={styles.section}>
+    <Section variant="dark" data-section-theme="dark" className={styles.section}>
       <Container>
         <motion.div
           className={styles.wrapper}

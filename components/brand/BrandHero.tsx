@@ -191,6 +191,14 @@ export default function BrandHero() {
                 </motion.span>
               </h1>
 
+              {/* ── Tagline — eye-catching ── */}
+              <motion.p
+                className={styles.tagline}
+                {...cineText(0.90, prefersReduced)}
+              >
+                Empowering Happy Patients
+              </motion.p>
+
               {/* ── Subtext ── */}
               <motion.p
                 className={styles.subtext}

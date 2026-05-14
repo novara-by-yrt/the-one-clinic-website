@@ -42,7 +42,7 @@ const SERVICES = [
 
 export default function FacilitiesServices() {
   return (
-    <Section variant="dark" data-section-theme="dark" className={styles.section}>
+    <Section variant="light" data-section-theme="light" className={styles.section}>
       <Container>
         {/* Header */}
         <motion.div

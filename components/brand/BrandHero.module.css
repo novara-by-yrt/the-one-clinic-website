@@ -157,6 +157,16 @@
   color: rgba(255, 255, 255, 0.55);
 }
 
+.tagline {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  line-height: 1.3;
+  margin: 4px 0;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+}
+
 .subtext {
   font-size: clamp(1rem, 1.25vw, 1.125rem);
   color: rgba(255, 255, 255, 0.78);
@@ -438,6 +448,11 @@
   .headline {
     font-size: clamp(1.875rem, 8vw, 2.75rem);
     line-height: 1.0;
+  }
+
+  .tagline {
+    font-size: clamp(1.125rem, 5vw, 1.375rem);
+    letter-spacing: 0.03em;
   }
 
   .subtext {
