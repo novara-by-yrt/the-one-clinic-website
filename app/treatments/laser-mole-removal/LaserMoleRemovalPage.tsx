@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Section                from '@/components/ui/Section';
@@ -15,10 +17,99 @@ import FinalCTA               from '@/components/sections/FinalCTA';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
 
+/* ── Static data ──────────────────────────────────────────────── */
+const AT_A_GLANCE = [
+  {
+    label: 'Treatment Time',
+    value: 'Under 30 minutes per mole',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Sessions Needed',
+    value: 'Single procedure',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="1 4 1 10 7 10"/>
+        <path d="M3.51 15a9 9 0 1 0 .49-3.1"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'First Results',
+    value: '1 to 2 weeks',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+        <polyline points="17 6 23 6 23 12"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Full Results',
+    value: '4 to 8 weeks',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+        <path d="M9 12l2 2 4-4"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Downtime',
+    value: 'Minimal',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+        <line x1="16" y1="2" x2="16" y2="6"/>
+        <line x1="8" y1="2" x2="8" y2="6"/>
+        <line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Treatment Cost',
+    value: 'From £150',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <line x1="12" y1="1" x2="12" y2="23"/>
+        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+      </svg>
+    ),
+  },
+];
+
+const JOURNEY_STEPS = [
+  {
+    n: '01',
+    title: 'Mole Consultation and Assessment',
+    desc: 'Our doctor carefully examines the mole and assesses whether it is suitable for laser removal. Any mole with suspicious features will be referred for further investigation rather than treated immediately.',
+  },
+  {
+    n: '02',
+    title: 'Numbing and Preparation',
+    desc: 'A topical numbing cream is applied to the mole area, followed by local anaesthetic injection if needed. The surrounding skin is protected to ensure the laser targets only the mole.',
+  },
+  {
+    n: '03',
+    title: 'Laser Treatment',
+    desc: 'The laser is carefully directed at the mole in short pulses, breaking down the pigmented cells. The procedure is quick, usually taking just a few minutes per mole.',
+  },
+  {
+    n: '04',
+    title: 'Aftercare and Healing',
+    desc: 'A protective dressing is applied and detailed aftercare instructions provided. The mole gradually fades over 4 to 8 weeks as the treated tissue is absorbed by the body.',
+  },
+];
+
 const BENEFITS = [
   {
-    title: 'Precise & Targeted',
-    desc: 'Laser energy is directed precisely at the mole tissue, leaving the surrounding skin undisturbed and minimising the risk of scarring.',
+    title: 'Precise and Targeted',
+    desc: 'Laser energy is directed precisely at the mole tissue, leaving surrounding skin undisturbed and minimising the risk of scarring.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -48,7 +139,7 @@ const BENEFITS = [
     ),
   },
   {
-    title: 'Safe & Medically Assessed',
+    title: 'Safe and Medically Assessed',
     desc: 'Every mole is clinically assessed by a doctor before treatment. Suspicious lesions are referred for appropriate investigation before any removal.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -59,13 +150,59 @@ const BENEFITS = [
       </svg>
     ),
   },
+  {
+    title: 'Single Session Treatment',
+    desc: 'Most moles are successfully removed in a single treatment appointment with no need for repeated visits or complex treatment plans.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+        <polyline points="22 4 12 14.01 9 11.01"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'No Stitches or Surgery Required',
+    desc: 'Non-invasive laser treatment means no surgical incisions, no stitches, and no surgical recovery period. Minimal downtime allows you to return to normal activities immediately.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+        <circle cx="12" cy="12" r="3"/>
+      </svg>
+    ),
+  },
 ];
 
-const OVERVIEW_POINTS = [
-  'Removes raised, flat, and pigmented moles with laser precision',
-  'Clinical assessment carried out before every procedure',
-  'Minimal downtime, most patients resume normal activity same day',
-  'No waiting lists and no GP referral required',
+const ELIGIBILITY = [
+  'Have a raised, flat, or pigmented mole you want removed',
+  'Want a non-surgical removal option with minimal scarring',
+  'Mole has been medically assessed as benign',
+  'Looking for fast treatment with minimal downtime',
+  'Seeking expert-led care from qualified medical professionals',
+];
+
+const TREATABLE_CONCERNS = [
+  'Raised and Pigmented Moles',
+  'Flat Moles',
+  'Darkened Moles',
+  'Bothersome Moles (cosmetic concern)',
+  'Multiple Moles on Same Area',
+];
+
+const TREATABLE_AREAS = [
+  'Face and Scalp',
+  'Neck and Chest',
+  'Back and Shoulders',
+  'Arms and Legs',
+  'Any Body Area',
+];
+
+const CLINIC_REASONS = [
+  { n: '01', text: 'All-in-one clinic with medical and aesthetic services.' },
+  { n: '02', text: 'Highly trained, compassionate GMC-registered doctors.' },
+  { n: '03', text: 'Customised treatments based on listening and expertise.' },
+  { n: '04', text: 'State-of-the-art facilities and modern equipment.' },
+  { n: '05', text: 'Strong reputation and excellent patient reviews.' },
+  { n: '06', text: 'Comprehensive care and referrals with specialists.' },
 ];
 
 const FAQS = [
@@ -80,6 +217,21 @@ const FAQS = [
       'Yes, when carried out by trained medical professionals. At The One Clinic, every mole is assessed by a doctor before treatment to confirm it is benign and suitable for laser removal. Any mole showing features of concern will be referred for further investigation prior to treatment.',
   },
   {
+    question: 'How long does the procedure take?',
+    answer:
+      'Most moles are treated in under 30 minutes, with the actual laser treatment often taking just a few minutes per mole. The time varies depending on the size and number of moles being treated.',
+  },
+  {
+    question: 'Will there be a scar after laser mole removal?',
+    answer:
+      'Laser removal causes significantly less scarring than surgical excision. The laser creates a very clean wound with minimal tissue damage, allowing the skin to heal naturally with very little visible scarring in most cases.',
+  },
+  {
+    question: 'Can all moles be removed with laser?',
+    answer:
+      'Most moles can be treated with laser, but some very deep moles or those with certain characteristics may be better suited to other removal methods. Our doctors assess each mole individually to recommend the best approach.',
+  },
+  {
     question: 'How quickly can I get an appointment?',
     answer:
       'Same-day and next-day appointments are often available. Contact The One Clinic and our team will book you in at the earliest convenient time.',
@@ -91,7 +243,17 @@ const FAQS = [
   },
 ];
 
+const RELATED = [
+  { title: 'Mole Removal Leicester',           href: '/treatments/mole-removal-leicester',          desc: 'Surgical mole removal for complete elimination.' },
+  { title: 'Skin Tag Removal Leicester',       href: '/treatments/skin-tags-removal-leicester',     desc: 'Safe removal of skin tags and benign growths.' },
+  { title: 'Skin Lesion Removal Leicester',    href: '/treatments/skin-lesion',                     desc: 'Professional removal of various skin lesions.' },
+  { title: 'Dermatologist Leicester',          href: '/treatments/dermatologist',                   desc: 'Expert dermatology assessment and treatment.' },
+];
+
+/* ── Page component ───────────────────────────────────────────── */
 export default function LaserMoleRemovalPage() {
+  const [showAllFaqs, setShowAllFaqs] = useState(false);
+
   return (
     <>
       {/* ════════════════════════════════════════
@@ -127,11 +289,12 @@ export default function LaserMoleRemovalPage() {
               </motion.span>
 
               <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                Laser Mole Removal in Leicester
+                Laser Mole Removal<br />in Leicester
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Precise, safe laser mole removal by our expert clinical team. Minimal scarring, fast results, no surgery required.
+                Precise, safe laser mole removal by our expert clinical team. Minimal
+                scarring, fast results, no surgery or stitches required.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -147,19 +310,12 @@ export default function LaserMoleRemovalPage() {
               <motion.div className={styles.heroTrust} variants={fadeUp}>
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
-                    <path d="M4.5 20.118a7.5 7.5 0 0115 0"/>
-                    <path d="M18.5 15v5M16 17.5h5"/>
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                   </svg>
-                  GMC-registered doctors
-                </span>
-                <span className={styles.heroTrustDivider} aria-hidden="true" />
-                <span className={styles.heroTrustItem}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10"/>
-                    <polyline points="12 6 12 12 16 14"/>
-                  </svg>
-                  Same-day appointments available
+                  Expert clinical team
                 </span>
                 <span className={styles.heroTrustDivider} aria-hidden="true" />
                 <span className={styles.heroTrustItem}>
@@ -167,6 +323,14 @@ export default function LaserMoleRemovalPage() {
                     <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
                   </svg>
                   Trusted by patients across Leicester
+                </span>
+                <span className={styles.heroTrustDivider} aria-hidden="true" />
+                <span className={styles.heroTrustItem}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                  No referral required
                 </span>
               </motion.div>
             </div>
@@ -187,12 +351,7 @@ export default function LaserMoleRemovalPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          2. GOOGLE REVIEWS
-      ════════════════════════════════════════ */}
-      <Testimonials />
-
-      {/* ════════════════════════════════════════
-          3. WHAT IS LASER MOLE REMOVAL?
+          2. WHAT IS LASER MOLE REMOVAL?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
@@ -215,19 +374,6 @@ export default function LaserMoleRemovalPage() {
                 </p>
               </motion.div>
 
-              <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
-                {OVERVIEW_POINTS.map((point) => (
-                  <motion.li key={point} className={styles.eligibilityItem} variants={fadeUp}>
-                    <span className={styles.eligibilityCheck} aria-hidden="true">
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </span>
-                    <span>{point}</span>
-                  </motion.li>
-                ))}
-              </motion.ul>
-
               <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
                 <BookConsultationButton className={styles.combinedCta}>
                   Book Your Consultation
@@ -235,12 +381,12 @@ export default function LaserMoleRemovalPage() {
               </motion.div>
             </motion.div>
 
-            <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
+            <motion.div className={styles.whatIsImageWrap} variants={fadeUp}>
               <Image
                 src="/images/Laser Mole Removal2.png"
                 alt="Laser mole removal consultation at The One Clinic"
                 fill
-                className={styles.whatIsVideoFrame}
+                className={styles.whatIsImage}
                 sizes="(max-width: 900px) 100vw, 50vw"
               />
             </motion.div>
@@ -249,7 +395,86 @@ export default function LaserMoleRemovalPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          4. BENEFITS
+          3. AT A GLANCE
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
+        <div className={styles.whiteBgWrap} aria-hidden="true">
+          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
+        </div>
+        <Container className={styles.whiteBgContent}>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Laser Mole Removal at a Glance
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.glanceStandaloneGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {AT_A_GLANCE.map((item) => (
+              <motion.div key={item.label} className={styles.glanceCard} variants={fadeUp}>
+                <span className={styles.glanceIcon}>{item.icon}</span>
+                <span className={styles.glanceLabel}>{item.label}</span>
+                <span className={styles.glanceValue}>{item.value}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          4. TREATMENT JOURNEY
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.journeySection}>
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>What to Expect</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>Your Treatment Journey</motion.h2>
+          </motion.div>
+
+          <motion.ol
+            className={styles.journeyList}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+            aria-label="Laser mole removal treatment journey steps"
+          >
+            {JOURNEY_STEPS.map((step) => (
+              <motion.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
+                <div className={styles.stepLeft}>
+                  <div className={styles.stepNumCircle} aria-hidden="true">{step.n}</div>
+                  <div className={styles.stepConnector} aria-hidden="true" />
+                </div>
+                <div className={styles.stepBody}>
+                  <h3 className={styles.stepTitle}>{step.title}</h3>
+                  <p className={styles.stepDesc}>{step.desc}</p>
+                </div>
+              </motion.li>
+            ))}
+          </motion.ol>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          5. BENEFITS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
         <div className={styles.whiteBgWrap} aria-hidden="true">
@@ -293,7 +518,171 @@ export default function LaserMoleRemovalPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          5. CTA BANNER
+          6. ELIGIBILITY
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Is This Right for You?</motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Who Is a Good Candidate?
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.eligibilityWrap}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
+              Laser mole removal may be right for you if you are:
+            </motion.p>
+            <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
+              {ELIGIBILITY.map((item) => (
+                <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
+                  <span className={styles.eligibilityCheck} aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+            <motion.p className={styles.eligibilityClosing} variants={fadeUp}>
+              Book a consultation and our team will assess your mole and confirm whether laser removal is the right treatment for you.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
+                Book Your Consultation
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          7. RESULTS, AFTERCARE & SIDE EFFECTS
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Post-Treatment</motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Results, Aftercare and Side Effects
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.resultsAfterGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+              <div className={styles.resultsAfterCardHead}>
+                <span className={styles.resultsAfterCardIcon} aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                    <polyline points="17 6 23 6 23 12"/>
+                  </svg>
+                </span>
+                <h3 className={styles.resultsAfterCardTitle}>When Will You See Results?</h3>
+              </div>
+              <p className={styles.resultsAfterCardBody}>
+                The mole begins to lighten within 1 to 2 weeks as the treated tissue is
+                reabsorbed by the body. Continued improvement occurs over 4 to 8 weeks as
+                the skin heals and the mole area fades completely.
+              </p>
+              <div className={styles.resultsAfterCardSpacer} />
+              <p className={styles.resultsAfterCardNote}>
+                Most moles are completely removed after a single treatment session with
+                minimal visible scarring.
+              </p>
+            </motion.div>
+
+            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+              <div className={styles.resultsAfterCardHead}>
+                <span className={styles.resultsAfterCardIcon} aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="8" x2="12" y2="12"/>
+                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                  </svg>
+                </span>
+                <h3 className={styles.resultsAfterCardTitle}>Side Effects</h3>
+              </div>
+              <ul className={styles.resultsAfterCardList} role="list">
+                {[
+                  'Mild redness and swelling around the treated mole',
+                  'Temporary scabbing or crusting as the area heals',
+                  'Slight discomfort similar to a minor burn sensation',
+                  'Possible temporary darkening before the mole fades',
+                ].map((item) => (
+                  <li key={item} className={styles.resultsAfterCardListItem}>
+                    <span className={styles.resultsAfterDot} aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div className={styles.resultsAfterCardSpacer} />
+              <p className={styles.resultsAfterCardNote}>
+                Side effects are typically mild and resolve within 1 to 2 weeks as the
+                area heals.
+              </p>
+            </motion.div>
+
+            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+              <div className={styles.resultsAfterCardHead}>
+                <span className={styles.resultsAfterCardIcon} aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                  </svg>
+                </span>
+                <h3 className={styles.resultsAfterCardTitle}>Aftercare Tips</h3>
+              </div>
+              <ul className={styles.resultsAfterCardList} role="list">
+                {[
+                  'Keep the treated area clean and dry for the first 24 hours',
+                  'Apply antibiotic ointment as directed by your clinician',
+                  'Avoid picking or scratching at any scabs that form',
+                  'Protect the area from direct sun exposure for 4 weeks',
+                  'Avoid swimming and strenuous exercise for 1 to 2 weeks',
+                ].map((item) => (
+                  <li key={item} className={styles.resultsAfterCardListItem}>
+                    <span className={styles.resultsAfterDot} aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          8. PATIENT REVIEWS
+      ════════════════════════════════════════ */}
+      <Testimonials />
+
+      {/* ════════════════════════════════════════
+          9. CTA BANNER
       ════════════════════════════════════════ */}
       <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book laser mole removal">
         <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
@@ -321,7 +710,99 @@ export default function LaserMoleRemovalPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          6. COST BANNER
+          10. TREATABLE AREAS
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark" className={styles.conditionsSection}>
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Moles and Skin Concerns</motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              What Can Laser Mole Removal Treat?
+            </motion.h2>
+            <motion.p className={styles.conditionsIntro} variants={fadeUp}>
+              Laser mole removal can address a wide range of mole types and can be applied
+              to moles on virtually any area of the body.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.areasColumns}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.div
+              className={styles.areasGroup}
+              variants={fadeUp}
+              whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
+            >
+              <p className={styles.areasGroupLabel}>Mole Types</p>
+              <ul className={styles.areasGroupList} role="list">
+                {TREATABLE_CONCERNS.map((item) => (
+                  <li key={item} className={styles.areasGroupItem}>
+                    <span className={styles.areasItemDot} aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div
+              className={styles.areasGroup}
+              variants={fadeUp}
+              whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
+            >
+              <p className={styles.areasGroupLabel}>Body Areas</p>
+              <ul className={styles.areasGroupList} role="list">
+                {TREATABLE_AREAS.map((item) => (
+                  <li key={item} className={styles.areasGroupItem}>
+                    <span className={styles.areasItemDot} aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          11. CLINIC INTRO
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.clinicIntroSection}>
+        <Container>
+          <motion.div
+            className={styles.clinicIntroBody}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.div className={styles.clinicIntroLeft} variants={fadeUp}>
+              <p className={styles.eyebrowLight}>Laser Mole Removal</p>
+              <h2 className={styles.headingLight}>
+                Best Mole Removal<br />in Leicester
+              </h2>
+            </motion.div>
+            <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
+              The One Clinic delivers expert laser mole removal in Leicester, combining
+              advanced technology with personalised medical assessment. Our experienced doctors
+              evaluate every mole carefully before treatment to ensure safe, effective removal
+              in a clinical environment you can trust.
+            </motion.p>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          12. COST BANNER
       ════════════════════════════════════════ */}
       <section className={styles.costBanner} data-section-theme="dark" aria-label="Laser mole removal cost">
         <Container>
@@ -345,12 +826,7 @@ export default function LaserMoleRemovalPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          7. MEET THE EXPERTS
-      ════════════════════════════════════════ */}
-      <MeetTheExperts />
-
-      {/* ════════════════════════════════════════
-          8. FAQ
+          13. WHY CHOOSE THE ONE CLINIC
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -361,22 +837,146 @@ export default function LaserMoleRemovalPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>Frequently Asked Questions</motion.h2>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Why Choose The One Clinic For Laser Mole Removal
+            </motion.h2>
           </motion.div>
+
           <motion.div
-            className={styles.faqBody}
-            variants={fadeUp}
+            className={styles.clinicReasonsGrid}
+            variants={stagger(0.08)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <Accordion items={FAQS} theme="dark" />
+            {CLINIC_REASONS.map((r) => (
+              <motion.div
+                key={r.n}
+                className={styles.clinicReasonCard}
+                variants={fadeUp}
+                whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
+              >
+                <span className={styles.clinicReasonNumber}>{r.n}</span>
+                <p className={styles.clinicReasonText}>{r.text}</p>
+              </motion.div>
+            ))}
           </motion.div>
         </Container>
       </Section>
 
+      {/* ════════════════════════════════════════
+          14. MEET THE EXPERTS
+      ════════════════════════════════════════ */}
+      <MeetTheExperts />
+
+      {/* ════════════════════════════════════════
+          15. FAQ
+      ════════════════════════════════════════ */}
+      <section className={styles.faqSection} data-section-theme="light">
+        <div className={styles.faqInner}>
+          <Container>
+            <motion.div
+              className={styles.sectionHeaderCentre}
+              variants={stagger(0.1)}
+              initial="hidden"
+              whileInView="show"
+              viewport={VIEWPORT}
+            >
+              <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
+              <motion.h2 className={styles.headingLight} variants={fadeUp}>
+                Frequently Asked Questions
+              </motion.h2>
+            </motion.div>
+
+            <motion.div
+              className={styles.faqBody}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={VIEWPORT}
+            >
+              <Accordion items={showAllFaqs ? FAQS : FAQS.slice(0, 5)} theme="dark" />
+
+              {FAQS.length > 5 && (
+                <div className={styles.faqToggleWrap}>
+                  <button
+                    className={styles.faqToggleBtn}
+                    onClick={() => setShowAllFaqs((v) => !v)}
+                    aria-expanded={showAllFaqs}
+                  >
+                    {showAllFaqs ? (
+                      <>
+                        Show Less
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                          <path d="M4 10l4-4 4 4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </>
+                    ) : (
+                      <>
+                        Show More
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                          <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </>
+                    )}
+                  </button>
+                </div>
+              )}
+            </motion.div>
+          </Container>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════
+          16. BOOKING FORM
+      ════════════════════════════════════════ */}
       <LeadForm />
+
+      {/* ════════════════════════════════════════
+          17. RELATED TREATMENTS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Explore More</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>Related Treatments</motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.relatedGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {RELATED.map((r) => (
+              <motion.div key={r.title} variants={fadeUp}>
+                <Link href={r.href} className={styles.relatedCard}>
+                  <h3 className={styles.relatedTitle}>{r.title}</h3>
+                  <p className={styles.relatedDesc}>{r.desc}</p>
+                  <span className={styles.relatedArrow} aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M3 8h10M9 4l4 4-4 4"
+                        stroke="currentColor" strokeWidth="1.5"
+                        strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          18. FINAL CTA
+      ════════════════════════════════════════ */}
       <FinalCTA />
     </>
   );
