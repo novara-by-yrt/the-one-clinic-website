@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Section                from '@/components/ui/Section';
@@ -14,6 +16,95 @@ import Testimonials           from '@/components/sections/Testimonials';
 import FinalCTA               from '@/components/sections/FinalCTA';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
+
+/* ── Static data ──────────────────────────────────────────────── */
+const AT_A_GLANCE = [
+  {
+    label: 'Treatment Time',
+    value: '30 to 60 minutes',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Sessions Needed',
+    value: '2 to 4 sessions',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="1 4 1 10 7 10"/>
+        <path d="M3.51 15a9 9 0 1 0 .49-3.1"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'First Results',
+    value: '4 to 6 weeks',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+        <polyline points="17 6 23 6 23 12"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Full Results',
+    value: '3 to 6 months',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+        <path d="M9 12l2 2 4-4"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Downtime',
+    value: 'Minimal',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+        <line x1="16" y1="2" x2="16" y2="6"/>
+        <line x1="8" y1="2" x2="8" y2="6"/>
+        <line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Treatment Cost',
+    value: 'From £200',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <line x1="12" y1="1" x2="12" y2="23"/>
+        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+      </svg>
+    ),
+  },
+];
+
+const JOURNEY_STEPS = [
+  {
+    n: '01',
+    title: 'Consultation and Scar Assessment',
+    desc: 'Our clinical team assesses your scar type, age, depth, and skin tone. A personalised treatment plan is created specifying the technology, settings, and number of sessions required.',
+  },
+  {
+    n: '02',
+    title: 'Treatment Area Preparation',
+    desc: 'The scar area is cleansed thoroughly. A topical preparation may be applied as needed. Protective measures are provided and the treatment device is calibrated to your specific scar profile.',
+  },
+  {
+    n: '03',
+    title: 'Cool Scar Lift Treatment',
+    desc: 'Targeted energy is delivered to the scar tissue, breaking down fibrous bands and stimulating new collagen production. Treatment typically takes 30 to 60 minutes depending on the area.',
+  },
+  {
+    n: '04',
+    title: 'Post-Treatment Care and Monitoring',
+    desc: 'Aftercare instructions are provided to support healing and optimise collagen remodelling. Mild redness may briefly occur. Results continue to improve over months as collagen rebuilds.',
+  },
+];
 
 const BENEFITS = [
   {
@@ -59,13 +150,59 @@ const BENEFITS = [
       </svg>
     ),
   },
+  {
+    title: 'Collagen Stimulation',
+    desc: 'The treatment triggers the body\'s natural healing response, promoting new collagen and elastin formation that progressively improves scar texture and appearance.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+        <polyline points="17 6 23 6 23 12"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Expert-Led Care',
+    desc: 'Delivered by clinicians experienced in scar management, ensuring precise, safe treatment tailored to each individual scar and skin type.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+        <path d="M9 12l2 2 4-4"/>
+      </svg>
+    ),
+  },
 ];
 
-const OVERVIEW_POINTS = [
-  'Softens and flattens raised or tethered scar tissue',
-  'Improves skin texture, tone, and colour around scars',
-  'Stimulates collagen remodelling for lasting improvement',
-  'No surgery, no waiting lists, no referral required',
+const ELIGIBILITY = [
+  'Adults with acne scars, surgical scars, or traumatic scars',
+  'Those with stretch marks seeking non-surgical improvement',
+  'Patients with raised hypertrophic or keloid-prone scars (assessed at consultation)',
+  'Anyone wanting progressive, natural-looking scar improvement',
+  'Individuals in good general health with no active skin infections',
+];
+
+const TREATABLE_CONCERNS = [
+  'Acne scars and post-acne marks',
+  'Surgical and traumatic scars',
+  'Stretch marks',
+  'Hypertrophic and raised scars',
+  'Depressed or tethered scar tissue',
+];
+
+const TREATABLE_AREAS = [
+  'Face and cheeks',
+  'Chest and décolletage',
+  'Abdomen and flanks',
+  'Arms and shoulders',
+  'Legs and thighs',
+];
+
+const CLINIC_REASONS = [
+  'Expert clinical team experienced in scar management',
+  'Advanced energy-based technology for precise treatment',
+  'Personalised plans based on scar type and skin tone',
+  'Minimal downtime with gradual, natural-looking results',
+  'Safe and effective for a wide range of scar types',
+  'Same-day appointments and flexible scheduling',
 ];
 
 const FAQS = [
@@ -85,13 +222,37 @@ const FAQS = [
       'The number of sessions depends on the type, age, and severity of the scar. Many patients see improvement after 2 to 4 treatments spaced a few weeks apart. A bespoke treatment plan will be created for you at your consultation.',
   },
   {
+    question: 'Is Cool Scar Lift painful?',
+    answer:
+      'Most patients find the treatment comfortable and well-tolerated. A mild warming or tingling sensation may be felt during the procedure. No general anaesthetic is required, and sessions are completed in 30 to 60 minutes.',
+  },
+  {
+    question: 'What is the downtime after treatment?',
+    answer:
+      'Downtime is minimal. Most patients can return to normal activities immediately. Some mild redness or sensitivity in the treated area may occur briefly and usually settles within a day or two.',
+  },
+  {
+    question: 'When will I see results?',
+    answer:
+      'Initial improvements may be visible after 4 to 6 weeks, with full results continuing to develop over 3 to 6 months as collagen remodelling progresses. Multiple sessions produce the most significant and lasting improvement.',
+  },
+  {
     question: 'Do I need a referral for Cool Scar Lift?',
     answer:
-      'No referral is needed. You can book directly with The One Clinic. A full consultation and skin assessment is included before any treatment begins.',
+      'No referral is needed. You can book directly with The One Clinic. A full consultation and skin assessment is included before any treatment begins to confirm suitability and create a personalised plan.',
   },
 ];
 
+const RELATED = [
+  { label: 'Laser Resurfacing', href: '/treatments/laser-resurfacing' },
+  { label: 'Morpheus8', href: '/treatments/morpheus8' },
+  { label: 'Chemical Peels', href: '/treatments/chemical-peels' },
+  { label: 'Acne Scar Removal Leicester', href: '/treatments/acne-scar-removal-leicester' },
+];
+
 export default function CoolScarLiftPage() {
+  const [showAllFaqs, setShowAllFaqs] = useState(false);
+
   return (
     <>
       {/* ════════════════════════════════════════
@@ -123,7 +284,7 @@ export default function CoolScarLiftPage() {
           >
             <div className={styles.heroLeft}>
               <motion.span className={styles.heroCategory} variants={fadeUp}>
-                Scar Reduction &amp; Skin Resurfacing
+                Scar Reduction and Skin Resurfacing
               </motion.span>
 
               <motion.h1 className={styles.heroTitle} variants={fadeUp}>
@@ -131,7 +292,7 @@ export default function CoolScarLiftPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Advanced non-surgical scar reduction. Remodel scar tissue, improve skin texture, and restore confidence, no surgery, no downtime.
+                Advanced non-surgical scar reduction. Remodel scar tissue, improve skin texture, and restore confidence without surgery or downtime.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -187,12 +348,7 @@ export default function CoolScarLiftPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          2. GOOGLE REVIEWS
-      ════════════════════════════════════════ */}
-      <Testimonials />
-
-      {/* ════════════════════════════════════════
-          3. WHAT IS COOL SCAR LIFT?
+          2. WHAT IS COOL SCAR LIFT?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
@@ -215,21 +371,8 @@ export default function CoolScarLiftPage() {
                 </p>
               </motion.div>
 
-              <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
-                {OVERVIEW_POINTS.map((point) => (
-                  <motion.li key={point} className={styles.eligibilityItem} variants={fadeUp}>
-                    <span className={styles.eligibilityCheck} aria-hidden="true">
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </span>
-                    <span>{point}</span>
-                  </motion.li>
-                ))}
-              </motion.ul>
-
-              <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
-                <BookConsultationButton className={styles.combinedCta}>
+              <motion.div className={styles.whatIsCtaWrapper} variants={fadeUp}>
+                <BookConsultationButton className={styles.whatIsCtaButton}>
                   Book Your Consultation
                 </BookConsultationButton>
               </motion.div>
@@ -249,7 +392,84 @@ export default function CoolScarLiftPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          4. BENEFITS
+          3. AT A GLANCE
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
+        <div className={styles.whiteBgWrap} aria-hidden="true">
+          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
+        </div>
+        <Container className={styles.whiteBgContent}>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>At a Glance</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Cool Scar Lift Overview
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.glanceGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {AT_A_GLANCE.map((item) => (
+              <motion.div key={item.label} className={styles.glanceCard} variants={fadeUp}>
+                <div className={styles.glanceIconWrap} aria-hidden="true">{item.icon}</div>
+                <p className={styles.glanceLabel}>{item.label}</p>
+                <p className={styles.glanceValue}>{item.value}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          4. THE JOURNEY
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Your Journey</motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              The Cool Scar Lift Journey
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.journeySection}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {JOURNEY_STEPS.map((step) => (
+              <motion.div key={step.n} className={styles.journeyCard} variants={fadeUp}>
+                <div className={styles.journeyCardInner}>
+                  <span className={styles.journeyNumber}>{step.n}</span>
+                  <h3 className={styles.journeyTitle}>{step.title}</h3>
+                  <p className={styles.journeyDesc}>{step.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          5. BENEFITS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
         <div className={styles.whiteBgWrap} aria-hidden="true">
@@ -293,7 +513,96 @@ export default function CoolScarLiftPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          5. CTA BANNER
+          6. ELIGIBILITY
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Eligibility</motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Are You a Good Candidate?
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.eligibilityGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {ELIGIBILITY.map((item) => (
+              <motion.div key={item} className={styles.eligibilityCard} variants={fadeUp}>
+                <span className={styles.eligibilityCheck} aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <polyline points="2,10 7,15 18,4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </span>
+                <p className={styles.eligibilityText}>{item}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          7. RESULTS & AFTERCARE
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
+        <Container>
+          <motion.div
+            className={styles.resultsGrid}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.div className={styles.resultsContent} variants={stagger(0.12)}>
+              <motion.div className={styles.resultsTextGroup} variants={fadeUp}>
+                <p className={styles.eyebrowDark}>Results and Aftercare</p>
+                <h2 className={styles.combinedHeading}>What to Expect After Treatment</h2>
+                <p className={styles.combinedDesc}>
+                  Cool Scar Lift requires minimal downtime. Mild redness or sensitivity may briefly
+                  occur in the treated area and typically settles within 24 to 48 hours. Initial
+                  improvements become visible around 4 to 6 weeks, with full collagen remodelling
+                  results developing over 3 to 6 months. Following your clinician's aftercare
+                  guidance, including sun protection and gentle skincare, maximises your outcome.
+                </p>
+              </motion.div>
+
+              <motion.div className={styles.resultsCtaWrapper} variants={fadeUp}>
+                <BookConsultationButton className={styles.resultsCtaButton}>
+                  Schedule Your Treatment
+                </BookConsultationButton>
+              </motion.div>
+            </motion.div>
+
+            <motion.div className={styles.resultsImageWrap} variants={fadeUp}>
+              <Image
+                src="/images/Minor Surgery.jpg"
+                alt="Cool Scar Lift results at The One Clinic"
+                fill
+                className={styles.resultsImageFrame}
+                sizes="(max-width: 900px) 100vw, 50vw"
+              />
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          8. TESTIMONIALS
+      ════════════════════════════════════════ */}
+      <Testimonials />
+
+      {/* ════════════════════════════════════════
+          9. CTA BANNER
       ════════════════════════════════════════ */}
       <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book Cool Scar Lift consultation">
         <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
@@ -321,7 +630,88 @@ export default function CoolScarLiftPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          6. COST BANNER
+          10. TREATABLE AREAS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
+        <div className={styles.whiteBgWrap} aria-hidden="true">
+          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
+        </div>
+        <Container className={styles.whiteBgContent}>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Treatment Areas</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Treatable Concerns and Areas
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.treatedConcernsGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {[...TREATABLE_CONCERNS, ...TREATABLE_AREAS].map((item) => (
+              <motion.div key={item} className={styles.treatedConcernCard} variants={fadeUp}>
+                <h3 className={styles.treatedConcernTitle}>{item}</h3>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          11. CLINIC INTRO
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
+        <Container>
+          <motion.div
+            className={styles.clinicIntroGrid}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.div className={styles.clinicIntroImageWrap} variants={fadeUp}>
+              <Image
+                src="/images/Doctor1.jpg"
+                alt="The One Clinic Leicester team"
+                fill
+                className={styles.clinicIntroImage}
+                sizes="(max-width: 900px) 100vw, 50vw"
+              />
+            </motion.div>
+
+            <motion.div className={styles.clinicIntroContent} variants={stagger(0.12)}>
+              <motion.div className={styles.clinicIntroTextGroup} variants={fadeUp}>
+                <p className={styles.eyebrowDark}>About Our Clinic</p>
+                <h2 className={styles.combinedHeading}>Leading Scar Treatment in Leicester</h2>
+                <p className={styles.clinicIntroBody}>
+                  The One Clinic combines specialist clinical expertise with advanced technology
+                  to deliver outstanding scar treatment results. Our team is dedicated to helping
+                  patients achieve meaningful, lasting improvements in scar appearance with safe,
+                  evidence-based non-surgical treatments.
+                </p>
+              </motion.div>
+
+              <motion.div className={styles.clinicIntroCtaWrapper} variants={fadeUp}>
+                <BookConsultationButton className={styles.clinicIntroCtaButton}>
+                  Meet Our Team
+                </BookConsultationButton>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          12. COST BANNER
       ════════════════════════════════════════ */}
       <section className={styles.costBanner} data-section-theme="dark" aria-label="Cool Scar Lift cost">
         <Container>
@@ -345,12 +735,49 @@ export default function CoolScarLiftPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          7. MEET THE EXPERTS
+          13. WHY CHOOSE
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
+        <div className={styles.whiteBgWrap} aria-hidden="true">
+          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
+        </div>
+        <Container className={styles.whiteBgContent}>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Why Choose Us</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Why Choose The One Clinic?
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.whyChooseGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {CLINIC_REASONS.map((reason) => (
+              <motion.div key={reason} className={styles.whyChooseCard} variants={fadeUp}>
+                <p className={styles.whyChooseText}>{reason}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          14. MEET THE EXPERTS
       ════════════════════════════════════════ */}
       <MeetTheExperts />
 
       {/* ════════════════════════════════════════
-          8. FAQ
+          15. FAQ
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -371,12 +798,67 @@ export default function CoolScarLiftPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <Accordion items={FAQS} theme="dark" />
+            <Accordion items={showAllFaqs ? FAQS : FAQS.slice(0, 5)} theme="dark" />
+            {!showAllFaqs && FAQS.length > 5 && (
+              <motion.button
+                onClick={() => setShowAllFaqs(true)}
+                className={styles.faqToggle}
+                variants={fadeUp}
+              >
+                Show All FAQs
+              </motion.button>
+            )}
           </motion.div>
         </Container>
       </Section>
 
+      {/* ════════════════════════════════════════
+          16. LEAD FORM
+      ════════════════════════════════════════ */}
       <LeadForm />
+
+      {/* ════════════════════════════════════════
+          17. RELATED TREATMENTS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
+        <div className={styles.whiteBgWrap} aria-hidden="true">
+          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
+        </div>
+        <Container className={styles.whiteBgContent}>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Related Treatments</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Explore Our Other Treatments
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.relatedGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {RELATED.map((item) => (
+              <Link key={item.href} href={item.href}>
+                <motion.div className={styles.relatedCard} variants={fadeUp} whileHover={{ y: -4 }}>
+                  <h3 className={styles.relatedTitle}>{item.label}</h3>
+                </motion.div>
+              </Link>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          18. FINAL CTA
+      ════════════════════════════════════════ */}
       <FinalCTA />
     </>
   );
