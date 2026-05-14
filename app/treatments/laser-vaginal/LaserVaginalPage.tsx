@@ -4,24 +4,24 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import Section                from '@/components/ui/Section';
-import Container              from '@/components/ui/Container';
-import Accordion              from '@/components/ui/Accordion';
+import Section            from '@/components/ui/Section';
+import Container          from '@/components/ui/Container';
+import Accordion          from '@/components/ui/Accordion';
 import BookConsultationButton from '@/components/ui/BookConsultationButton';
-import TrustBadges            from '@/components/ui/TrustBadges';
-import Breadcrumb             from '@/components/ui/Breadcrumb';
-import LeadForm               from '@/components/sections/LeadForm';
-import MeetTheExperts         from '@/components/sections/MeetTheExperts';
-import Testimonials           from '@/components/sections/Testimonials';
-import FinalCTA               from '@/components/sections/FinalCTA';
+import TrustBadges        from '@/components/ui/TrustBadges';
+import Breadcrumb         from '@/components/ui/Breadcrumb';
+import LeadForm           from '@/components/sections/LeadForm';
+import MeetTheExperts     from '@/components/sections/MeetTheExperts';
+import Testimonials       from '@/components/sections/Testimonials';
+import FinalCTA           from '@/components/sections/FinalCTA';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
 
 /* ── Static data ──────────────────────────────────────────────── */
 const AT_A_GLANCE = [
   {
-    label: 'Treatment Duration',
-    value: '15 to 30 minutes',
+    label: 'Session Time',
+    value: '20 to 30 minutes',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -30,28 +30,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Sessions Recommended',
-    value: '1 to 3 sessions',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="1 4 1 10 7 10"/>
-        <path d="M3.51 15a9 9 0 1 0 .49-3.1"/>
-      </svg>
-    ),
-  },
-  {
-    label: 'First Visible Results',
-    value: 'Immediately to 2 weeks',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-        <polyline points="17 6 23 6 23 12"/>
-      </svg>
-    ),
-  },
-  {
-    label: 'Full Results Timeline',
-    value: '6 to 8 weeks',
+    label: 'Downtime',
+    value: 'None',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
@@ -60,20 +40,37 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Downtime Required',
-    value: 'Minimal to none',
+    label: 'Anaesthetic',
+    value: 'None required',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-        <line x1="16" y1="2" x2="16" y2="6"/>
-        <line x1="8" y1="2" x2="8" y2="6"/>
-        <line x1="3" y1="10" x2="21" y2="10"/>
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
       </svg>
     ),
   },
   {
-    label: 'Treatment Investment',
-    value: 'From £250',
+    label: 'Results Onset',
+    value: '2 to 4 weeks',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+        <polyline points="17 6 23 6 23 12"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Sessions Recommended',
+    value: '3 recommended',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="1 4 1 10 7 10"/>
+        <path d="M3.51 15a9 9 0 1 0 .49-3.1"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Treatment Cost',
+    value: 'From £400',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <line x1="12" y1="1" x2="12" y2="23"/>
@@ -86,30 +83,48 @@ const AT_A_GLANCE = [
 const JOURNEY_STEPS = [
   {
     n: '01',
-    title: 'Confidential Consultation and Intimate Health Assessment',
-    desc: 'Your journey begins with a comprehensive, private consultation where we listen to your intimate health concerns. We assess vaginal laxity, dryness, sensation, and specific symptoms related to childbirth, hormonal changes, or ageing. Our compassionate team discusses your goals in complete confidence, ensuring you feel comfortable and respected throughout.',
+    title: 'Intimate Health Assessment & Consultation',
+    desc: 'A comprehensive, private consultation where we listen to your intimate health concerns. We assess vaginal laxity, dryness, sensation, and specific symptoms related to childbirth, hormonal changes, or ageing. Our compassionate team discusses your goals in complete confidence, ensuring you feel comfortable and respected throughout.',
   },
   {
     n: '02',
-    title: 'Treatment Preparation and Topical Anaesthetic Application',
-    desc: 'You are positioned comfortably in a private treatment room. A gentle topical anaesthetic cream is applied to the vaginal area, ensuring complete comfort and sensitivity. The treatment area is assessed to confirm optimal parameters for your individual anatomy, ensuring the most effective and safe treatment possible.',
+    title: 'Laser Treatment Application',
+    desc: 'Precisely controlled fractional laser energy is delivered to vaginal tissues. The non-ablative laser stimulates collagen and elastin production within the vaginal mucosa, thickening the epithelium and improving tissue tone. Most patients feel only mild warmth throughout the 20 to 30-minute procedure with no pain or significant discomfort.',
   },
   {
     n: '03',
-    title: 'Precise Laser Energy Delivery and Tissue Rejuvenation',
-    desc: 'Our advanced laser delivers precisely controlled energy to vaginal tissues, stimulating collagen remodelling and tissue renewal. The procedure gently tightens the vaginal wall and introitus, improves elasticity, and enhances blood flow. Most patients feel only mild warmth with no pain or significant discomfort throughout the 15 to 30-minute procedure.',
+    title: 'Post-Treatment Guidance',
+    desc: 'Following treatment, you receive detailed aftercare instructions tailored to your individual needs. A brief period of sexual abstinence of 5 days is recommended. Results develop progressively over several weeks as collagen remodels. Your clinician will schedule follow-up appointments and discuss the optimal course of sessions for your goals.',
   },
   {
     n: '04',
-    title: 'Recovery, Aftercare and Progressive Intimate Wellness',
-    desc: 'Recovery is remarkable with minimal to no downtime. You can resume normal activities, work, and exercise immediately. Sexual activity is recommended to resume after 3 to 5 days to maximise results. Results develop progressively over 6 to 8 weeks as collagen remodels. Many women notice improved comfort, sensation, and confidence within days, with full transformation evident by 8 weeks.',
+    title: 'Progressive Improvement',
+    desc: 'Improvement continues over 3 sessions spaced 4 to 6 weeks apart. Each session builds on the last, progressively improving vaginal tissue quality, tone, moisture retention, and overall intimate wellness. Many women notice improved comfort, sensation, and confidence from as early as 2 weeks after the first session.',
+  },
+];
+
+const APPROACH_CARDS = [
+  {
+    eyebrow: '01',
+    title: 'Intimate Health Assessment',
+    desc: 'Every treatment begins with a thorough, confidential assessment of your intimate health concerns. We evaluate vaginal laxity, tissue quality, moisture levels, and any symptoms of incontinence or reduced sensation to design your personalised treatment plan.',
+  },
+  {
+    eyebrow: '02',
+    title: 'Laser Treatment Application',
+    desc: 'Our advanced non-ablative fractional laser delivers precisely controlled energy to vaginal mucosa. This stimulates collagen and elastin production, thickens the vaginal epithelium, and improves blood flow—all in a comfortable, discreet clinical setting with no anaesthesia required.',
+  },
+  {
+    eyebrow: '03',
+    title: 'Post-Treatment Guidance',
+    desc: 'Following each session, our team provides detailed aftercare guidance and monitors your progress. We schedule follow-up appointments to assess improvement and ensure you achieve the best possible results from your treatment course.',
   },
 ];
 
 const BENEFITS = [
   {
-    title: 'Non-Surgical Intimate Tightening Without Surgery',
-    desc: 'Achieve vaginal rejuvenation and tightening without invasive surgery, incisions, or recovery periods. The laser safely stimulates your body\'s natural collagen production, delivering natural-looking tightening that looks and feels completely normal and authentic.',
+    title: 'Improves Vaginal Laxity',
+    desc: 'Fractional laser energy stimulates collagen production within the vaginal wall, tightening and firming the tissue for improved tone and sensation.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -117,28 +132,114 @@ const BENEFITS = [
     ),
   },
   {
-    title: 'Addresses Multiple Intimate Health Concerns Simultaneously',
-    desc: 'A single course of laser treatment can dramatically improve vaginal laxity, dryness, reduced sensation, and mild stress urinary incontinence. This multi-benefit approach makes it exceptionally efficient for women experiencing multiple intimate health changes.',
+    title: 'Reduces Dryness',
+    desc: 'Laser energy enhances blood flow and stimulates natural moisture production within vaginal tissues, significantly improving dryness and discomfort associated with menopause or hormonal changes.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Mild Incontinence Support',
+    desc: 'By tightening the tissues around the urethra and bladder neck, laser rejuvenation provides meaningful improvement in mild stress urinary incontinence without surgery or medication.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
-        <polyline points="12 6 12 12 16 14"/>
+        <path d="M9 12l2 2 4-4"/>
       </svg>
     ),
   },
   {
-    title: 'Dramatically Improves Sexual Comfort and Confidence',
-    desc: 'Restored vaginal tightening and improved sensation enhance sexual pleasure and confidence for both partners. Women report increased arousal, stronger sensations, and dramatically improved enjoyment of intimate relationships. This meaningful improvement extends far beyond physical—it restores confidence and intimacy.',
+    title: 'No Downtime',
+    desc: 'Unlike surgical alternatives, laser vaginal rejuvenation requires no recovery period. You can return to work and normal daily activities immediately after each session.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
-        <path d="M4.5 20.118a7.5 7.5 0 0115 0"/>
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+        <polyline points="22 4 12 14.01 9 11.01"/>
       </svg>
     ),
   },
   {
-    title: 'Minimal Downtime with Immediate Return to Normal Life',
-    desc: 'Unlike surgical vaginoplasty requiring weeks of recovery, laser vaginal rejuvenation allows immediate return to work, exercise, and daily activities. Only a brief 3 to 5-day abstinence from sexual activity is recommended. You can resume your full life the very next day.',
+    title: 'Non-Surgical',
+    desc: 'A completely non-invasive approach that delivers genuine clinical results without incisions, anaesthesia, or the risks associated with surgical vaginal rejuvenation procedures.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+        <polyline points="17 6 23 6 23 12"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Discreet & Comfortable',
+    desc: 'Treatments are conducted in a private, comfortable clinical environment by experienced, compassionate practitioners who specialise in women\'s intimate health with the utmost discretion.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+        <circle cx="12" cy="12" r="3"/>
+      </svg>
+    ),
+  },
+];
+
+const ELIGIBILITY_SUITABLE = [
+  'Vaginal laxity following childbirth or ageing',
+  'Menopause-related vaginal dryness or atrophy',
+  'Mild stress urinary incontinence',
+  'Reduced vaginal sensation affecting intimate wellbeing',
+  'Women in good general health seeking non-surgical intimate rejuvenation',
+];
+
+const ELIGIBILITY_NOT_SUITABLE = [
+  'Active vaginal or pelvic infection',
+  'Pregnancy or breastfeeding',
+  'Gynaecological malignancy (confirmed or suspected)',
+  'Prolapse requiring surgical correction',
+  'Severe or complex urinary incontinence requiring specialist management',
+];
+
+const CONDITIONS_TREATED = [
+  {
+    title: 'Vaginal Laxity',
+    desc: 'Fractional laser stimulates collagen remodelling within the vaginal wall, progressively tightening and firming the tissue to restore tone and improve sensation.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Vaginal Dryness & Atrophy',
+    desc: 'Laser energy triggers improved blood flow and epithelial thickening, restoring natural lubrication and significantly reducing discomfort caused by dryness or vaginal atrophy.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Mild Urinary Incontinence',
+    desc: 'By tightening tissues around the urethra, treatment provides meaningful improvement in stress urinary incontinence—that sudden leakage associated with coughing, sneezing, or exercise.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M9 12l2 2 4-4"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Reduced Sensation',
+    desc: 'Improved blood flow and tissue health restore sensitivity and sensation within the vaginal canal, enhancing intimate comfort, pleasure, and overall sexual wellbeing.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+        <circle cx="12" cy="12" r="3"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Post-Childbirth Changes',
+    desc: 'Childbirth can significantly alter vaginal tone and tissue integrity. Laser rejuvenation addresses laxity, elasticity loss, and scarring to help restore pre-pregnancy intimate health.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -149,8 +250,8 @@ const BENEFITS = [
     ),
   },
   {
-    title: 'Addresses Postpartum Changes and Hormonal Effects',
-    desc: 'Whether you\'re experiencing postpartum vaginal laxity, menopausal dryness, or age-related changes, laser rejuvenation addresses the specific challenges women face at every life stage. It\'s particularly effective for women seeking restoration after pregnancy and childbirth.',
+    title: 'Menopausal Symptoms',
+    desc: 'The hormonal changes of menopause cause thinning, dryness, and discomfort in vaginal tissues. Laser treatment effectively addresses these changes, restoring comfort and quality of life.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
@@ -159,596 +260,1066 @@ const BENEFITS = [
     ),
   },
   {
-    title: 'Confidential, Compassionate Care in Safe Environment',
-    desc: 'All consultations and treatments are conducted in complete privacy with our experienced, non-judgmental clinical team. We specialise in intimate health and treat every woman with the utmost respect, sensitivity, and compassion. Your privacy and dignity are our highest priority.',
+    title: 'Vulvar Rejuvenation',
+    desc: 'Treatment can extend to the vulvar area and labia minora, addressing laxity, discolouration, and tissue changes to restore a more youthful, comfortable appearance and function.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12"/>
+        <path d="M12 6v6l4 2"/>
       </svg>
     ),
   },
 ];
 
-const ELIGIBILITY = [
-  'Women seeking improved vaginal tightness, elasticity, and rejuvenation without surgery',
-  'Those experiencing postpartum vaginal laxity or changes following childbirth',
-  'Women affected by menopausal or hormonal changes causing dryness or discomfort',
-  'Those with mild stress urinary incontinence seeking non-surgical improvement',
-  'Any woman in good general health seeking to restore intimacy, comfort, and confidence',
+const AREAS_TREATED = [
+  'Vaginal canal',
+  'Vaginal introitus',
+  'Vulvar area',
+  'Labia minora',
+  'Perineum',
+  'External genitalia',
 ];
 
-const TREATABLE_CONDITIONS = [
-  'Vaginal laxity and looseness affecting sensation and intimacy',
-  'Vaginal dryness and discomfort, particularly post-menopause',
-  'Reduced vaginal sensation and diminished pleasure',
-  'Mild stress urinary incontinence and loss of control',
-  'Post-childbirth tissue changes and elasticity loss',
-];
-
-const RESULTS_AND_AFTERCARE = [
-  'Immediate comfort improvement with many women noticing reduced dryness and improved sensation within days',
-  'Sexual activity can resume after 3 to 5 days for optimal results and continued collagen stimulation',
-  'Continued tightening and elasticity improvement over 6 to 8 weeks as collagen fully remodels',
-  'Optimal results visible by 8 weeks, with full benefits continuing for several months',
-  'Wear cotton underwear and avoid tight clothing for the first 48 hours to allow tissues to settle',
-  'Light spotting or minimal discharge is normal and typically resolves within 3 to 5 days',
-  'Avoid tampons, douches, and swimming pools for 5 to 7 days post-treatment',
-  'Results can last 1 to 2 years or longer; maintenance sessions can extend benefits indefinitely',
+const SYMPTOMS_ADDRESSED = [
+  'Laxity and looseness',
+  'Dryness and atrophy',
+  'Stress incontinence',
+  'Reduced sensitivity',
+  'Discomfort and irritation',
+  'Post-menopause changes',
 ];
 
 const CLINIC_REASONS = [
-  'Expert female and male clinicians specialising in women\'s intimate health with extensive experience',
-  'Advanced FDA-approved laser technology specifically designed for vaginal tissue rejuvenation',
-  'Completely confidential consultation process ensuring privacy and respect throughout',
-  'Compassionate, non-judgmental approach to intimate health concerns',
-  'Comprehensive pre-treatment assessment including medical history and suitability evaluation',
-  'Detailed aftercare guidance and follow-up support ensuring optimal satisfaction and results',
+  { n: '01', text: 'All-in-one clinic with specialist medical and women\'s health expertise.' },
+  { n: '02', text: 'Highly trained, compassionate clinicians experienced in intimate health.' },
+  { n: '03', text: 'Customised treatments based on individual assessment and goals.' },
+  { n: '04', text: 'Advanced non-ablative laser technology delivering proven clinical results.' },
+  { n: '05', text: 'Completely confidential consultations and treatments in a discreet environment.' },
+  { n: '06', text: 'Comprehensive aftercare, follow-up support, and ongoing intimate health guidance.' },
 ];
 
 const FAQS = [
   {
-    question: 'How does laser vaginal rejuvenation work and what does it treat?',
-    answer: 'Laser vaginal rejuvenation uses controlled laser energy to heat and stimulate collagen production in vaginal tissues. This tightens the vaginal wall and introitus, improves elasticity, enhances blood flow and sensation, and addresses vaginal laxity, dryness, reduced sensation, and mild stress incontinence. The treatment triggers the body\'s natural collagen remodelling, which continues for weeks and months after treatment.',
-  },
-  {
-    question: 'How many sessions will I need for optimal results?',
-    answer: 'Most women see excellent results after a single session. However, a course of 2 to 3 sessions spaced 4 to 6 weeks apart is often recommended for maximum and longest-lasting results. Your clinician will recommend the ideal protocol based on your specific concerns and goals during your consultation.',
+    question: 'What is laser vaginal rejuvenation and how does it work?',
+    answer:
+      'Laser vaginal rejuvenation uses non-ablative fractional laser energy delivered to the vaginal mucosa to stimulate collagen and elastin production. This thickens the vaginal epithelium, improves moisture retention, and restores tissue tone. The controlled laser energy triggers the body\'s natural healing response, progressively remodelling tissue over several weeks.',
   },
   {
     question: 'Is laser vaginal rejuvenation painful or uncomfortable?',
-    answer: 'No, the procedure is very comfortable. A topical anaesthetic cream is applied beforehand, completely numbing the treatment area. Most women feel only mild warmth during the 15 to 30-minute procedure. Post-treatment discomfort is minimal, with most women experiencing only mild sensitivity for a day or two, easily managed with paracetamol if needed.',
+    answer:
+      'No. The procedure is performed without anaesthesia and is well tolerated by most women. Patients typically describe mild warmth or a gentle sensation during treatment. Any mild sensitivity following the session usually resolves within 24 to 48 hours without any specific management.',
   },
   {
-    question: 'When can I resume sexual activity after treatment?',
-    answer: 'Sexual activity can safely resume after 3 to 5 days following treatment. This brief abstinence allows tissues to optimally heal while continuing the collagen-stimulation benefits of the procedure. Many women report that sexual activity enhances their results and increases sensation during this crucial healing phase.',
+    question: 'How many sessions are needed and how far apart should they be?',
+    answer:
+      'A course of 3 sessions is recommended for optimal results, each spaced 4 to 6 weeks apart. This allows each treatment to build on the collagen stimulation of the previous session. Some women with mild concerns see significant improvement after just 1 to 2 sessions. Your clinician will tailor the protocol to your individual needs during your consultation.',
   },
   {
-    question: 'Will laser vaginal rejuvenation help with stress urinary incontinence?',
-    answer: 'Yes, laser vaginal rejuvenation can significantly improve mild stress urinary incontinence by tightening tissues around the urethra and bladder neck, improving muscle tone and control. For moderate to severe incontinence, your clinician may recommend combined approaches or additional assessment. All concerns are discussed during your detailed consultation.',
+    question: 'When will I see results from treatment?',
+    answer:
+      'Initial improvements in comfort, moisture, and sensitivity are often noticed within the first 2 to 4 weeks as collagen production begins. Continued improvement builds over each session, with full results typically evident 6 to 8 weeks after the final treatment as the collagen remodelling process completes.',
   },
   {
-    question: 'How long do results from laser vaginal rejuvenation last?',
-    answer: 'Results can last 1 to 2 years or even longer, with some women enjoying benefits for multiple years. Results gradually diminish as natural tissue relaxation occurs over time. Maintenance or touch-up sessions can extend results indefinitely for those wanting permanent ongoing benefits.',
+    question: 'Is there any downtime after laser vaginal rejuvenation?',
+    answer:
+      'There is no significant downtime. You can return to work and normal daily activities immediately after treatment. A brief period of sexual abstinence of 5 days is recommended following each session to allow optimal tissue healing. Tampons, douches, and swimming should be avoided for 5 to 7 days post-treatment.',
   },
   {
-    question: 'Can laser vaginal rejuvenation address menopausal dryness and discomfort?',
-    answer: 'Absolutely. Laser vaginal rejuvenation is highly effective for menopausal dryness, discomfort, and reduced elasticity caused by hormonal changes. The improved blood flow and collagen production address multiple menopausal changes simultaneously, dramatically improving comfort, sensation, and intimate function.',
-  },
-  {
-    question: 'Is there any downtime or activity restrictions after treatment?',
-    answer: 'Minimal downtime is required. You can return to work and normal activities immediately. Light exercise can be resumed after 24 hours. The only restriction is 3 to 5 days abstinence from sexual activity and 5 to 7 days avoiding tampons, douches, and swimming. Most women experience no disruption to their routine.',
-  },
-  {
-    question: 'Do I need a GP referral for laser vaginal rejuvenation?',
-    answer: 'No referral is needed. You can book directly and confidentially with us. A comprehensive pre-treatment consultation is conducted to assess your suitability and discuss your goals. If you have specific medical concerns, we can discuss whether consultation with your GP is advisable, but it\'s not required to proceed.',
+    question: 'Who is suitable for laser vaginal rejuvenation?',
+    answer:
+      'The treatment is suitable for women experiencing vaginal laxity after childbirth, menopause-related dryness or atrophy, mild stress urinary incontinence, or reduced sensation. It is not suitable during pregnancy, with active vaginal infection, or for those with gynaecological malignancy or prolapse requiring surgery. A full medical assessment is conducted before any treatment.',
   },
 ];
 
-const RELATED_TREATMENTS = [
-  {
-    name: 'Profhilo Vaginal',
-    href: '/treatments/profhilo-vaginal',
-    desc: 'Bio-stimulating injectables for intimate dryness and hydration without laser energy.',
-  },
-  {
-    name: 'Vaginal Health Supplements',
-    href: '/treatments/vaginal-health',
-    desc: 'Comprehensive women\'s health and vaginal wellness products and guidance.',
-  },
-  {
-    name: 'Intimate Aesthetic Consultation',
-    href: '/treatments/intimate-aesthetics',
-    desc: 'Personalised assessment and treatment planning for intimate health concerns.',
-  },
-  {
-    name: 'Female Sexual Wellness',
-    href: '/treatments/female-wellness',
-    desc: 'Holistic approach to sexual health, function, and satisfaction.',
-  },
+const RELATED = [
+  { title: "Women's Health",     href: '/treatments/womens-health',    desc: 'Comprehensive care for women\'s health at every life stage.' },
+  { title: 'Menopause & HRT',   href: '/treatments/menopause-hrt',    desc: 'Expert menopause management and hormone replacement therapy.' },
+  { title: 'Health Screening',  href: '/treatments/health-screening', desc: 'Proactive health checks and screening for women\'s wellbeing.' },
+  { title: 'Private GP',        href: '/treatments/private-gp',       desc: 'Confidential GP appointments for all health concerns.' },
 ];
 
+/* ── Page component ───────────────────────────────────────────── */
 export default function LaserVaginalPage() {
   const [showAllFaqs, setShowAllFaqs] = useState(false);
-  const displayedFaqs = showAllFaqs ? FAQS : FAQS.slice(0, 4);
 
   return (
     <>
-      <script type="application/ld+json">
-        {JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'MedicalBusiness',
-          name: 'The One Clinic - Laser Vaginal Rejuvenation',
-          description: 'Non-surgical laser vaginal rejuvenation in Leicester',
-          url: 'https://theoneclinic.co.uk/treatments/laser-vaginal',
-        })}
-      </script>
+      {/* ════════════════════════════════════════
+          1. HERO
+      ════════════════════════════════════════ */}
+      <section
+        className={styles.hero}
+        aria-label="Laser Vaginal Rejuvenation Leicester, hero"
+        data-section-theme="dark"
+      >
+        {/* Breadcrumb, pinned to top of hero */}
+        <div className={styles.heroBreadcrumb}>
+          <Container>
+            <Breadcrumb
+              theme="dark"
+              items={[
+                { label: 'Treatments', href: '/treatments' },
+                { label: 'Laser Vaginal Rejuvenation' },
+              ]}
+            />
+          </Container>
+        </div>
 
-      <Breadcrumb
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'Treatments', href: '/treatments' },
-          { label: 'Laser Vaginal Rejuvenation', href: '/treatments/laser-vaginal' },
-        ]}
-      />
-
-      <Section variant="light" className={styles.heroSection}>
         <Container>
           <motion.div
-            className={styles.heroContent}
+            className={styles.heroInner}
+            variants={stagger(0.12)}
             initial="hidden"
-            whileInView="visible"
-            viewport={VIEWPORT}
-            variants={stagger()}
+            animate="show"
           >
-            <motion.div variants={fadeUp}>
-              <p className={styles.eyebrow}>Laser Vaginal Rejuvenation</p>
-              <h1 className={styles.heading}>
-                Restore Intimate Comfort and Confidence
-              </h1>
-              <p className={styles.subheading}>
-                Advanced non-surgical laser treatment for vaginal rejuvenation, tightening, and intimate wellness.
-              </p>
-              <BookConsultationButton>Book Consultation</BookConsultationButton>
-            </motion.div>
+            {/* Left: text */}
+            <div className={styles.heroLeft}>
+              <motion.span className={styles.heroCategory} variants={fadeUp}>
+                Women&apos;s Health
+              </motion.span>
 
-            <motion.div variants={fadeUp} className={styles.heroImage}>
-              <Image
-                src="/images/treatments/laser-vaginal-hero.jpg"
-                alt="Laser Vaginal Rejuvenation"
-                width={500}
-                height={400}
-                priority
-              />
-            </motion.div>
-          </motion.div>
-        </Container>
-      </Section>
+              <motion.h1 className={styles.heroTitle} variants={fadeUp}>
+                Laser Vaginal Rejuvenation in Leicester
+              </motion.h1>
 
-      <Section variant="dark">
-        <Container>
-          <TrustBadges />
-        </Container>
-      </Section>
+              <motion.p className={styles.heroDesc} variants={fadeUp}>
+                Non-Surgical Intimate Wellness &amp; Vaginal Health Treatment — restore comfort,
+                confidence, and quality of life without surgery or downtime.
+              </motion.p>
 
-      <Section variant="light">
-        <Container>
-          <motion.div
-            className={styles.whatIsSection}
-            initial="hidden"
-            whileInView="visible"
-            viewport={VIEWPORT}
-            variants={stagger()}
-          >
-            <motion.div variants={fadeUp} className={styles.whatIsContent}>
-              <p className={styles.eyebrowDark}>What Is Laser Vaginal Rejuvenation?</p>
-              <h2 className={styles.headingDark}>Advanced Non-Surgical Intimate Health Treatment</h2>
-              <p>
-                Laser vaginal rejuvenation is a remarkable non-surgical procedure that uses precisely controlled laser energy to stimulate collagen production and rejuvenate vaginal tissues. The treatment addresses vaginal laxity, dryness, reduced sensation, and mild stress urinary incontinence—all common challenges women face at different life stages, particularly after childbirth or menopause.
-              </p>
-              <p>
-                Unlike invasive surgical alternatives, laser vaginal rejuvenation requires no incisions, no general anaesthesia, and no significant downtime. Most women return to normal activities immediately and resume sexual activity after just 3 to 5 days. Results develop progressively over 6 to 8 weeks as collagen remodels, delivering dramatic improvements in comfort, sensation, tightness, and confidence.
-              </p>
-              <BookConsultationButton>Book Consultation</BookConsultationButton>
-            </motion.div>
-            <motion.div variants={fadeUp} className={styles.whatIsImage}>
-              <Image
-                src="/images/treatments/laser-vaginal-detail.jpg"
-                alt="Laser Vaginal Rejuvenation Process"
-                width={400}
-                height={400}
-              />
-            </motion.div>
-          </motion.div>
-        </Container>
-      </Section>
-
-      <Section variant="dark">
-        <Container>
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={VIEWPORT}
-            variants={stagger()}
-          >
-            <motion.div variants={fadeUp} className={styles.sectionHeader}>
-              <p className={styles.eyebrow}>At a Glance</p>
-              <h2 className={styles.heading}>Laser Vaginal Rejuvenation in Numbers</h2>
-            </motion.div>
-
-            <motion.div
-              className={styles.glanceGrid}
-              variants={stagger()}
-            >
-              {AT_A_GLANCE.map((item, i) => (
-                <motion.div
-                  key={i}
-                  className={styles.glanceCard}
-                  variants={fadeUp}
-                  whileHover={{
-                    scale: 1.02,
-                    transition: { type: 'spring', stiffness: 400 },
-                  }}
-                >
-                  <div className={styles.glanceIcon}>{item.icon}</div>
-                  <p className={styles.glanceLabel}>{item.label}</p>
-                  <p className={styles.glanceValue}>{item.value}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </Container>
-      </Section>
-
-      <Section variant="light">
-        <Container>
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={VIEWPORT}
-            variants={stagger()}
-          >
-            <motion.div variants={fadeUp} className={styles.sectionHeader}>
-              <p className={styles.eyebrowDark}>Your Treatment Journey</p>
-              <h2 className={styles.headingDark}>From Consultation to Intimate Wellness</h2>
-            </motion.div>
-
-            <motion.div
-              className={styles.journeySection}
-              variants={stagger()}
-            >
-              {JOURNEY_STEPS.map((step) => (
-                <motion.div
-                  key={step.n}
-                  className={styles.journeyStep}
-                  variants={fadeUp}
-                >
-                  <div className={styles.journeyNumber}>{step.n}</div>
-                  <div className={styles.journeyContent}>
-                    <h3 className={styles.journeyTitle}>{step.title}</h3>
-                    <p className={styles.journeyDesc}>{step.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </Container>
-      </Section>
-
-      <Section variant="dark">
-        <Container>
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={VIEWPORT}
-            variants={stagger()}
-          >
-            <motion.div variants={fadeUp} className={styles.sectionHeader}>
-              <p className={styles.eyebrow}>Key Benefits</p>
-              <h2 className={styles.heading}>Why Women Choose Laser Vaginal Rejuvenation</h2>
-            </motion.div>
-
-            <motion.div
-              className={styles.benefitsGrid}
-              variants={stagger()}
-            >
-              {BENEFITS.map((benefit, i) => (
-                <motion.div
-                  key={i}
-                  className={styles.benefitCard}
-                  variants={fadeUp}
-                  whileHover={{
-                    scale: 1.02,
-                    transition: { type: 'spring', stiffness: 400 },
-                  }}
-                >
-                  <div className={styles.benefitIcon}>{benefit.icon}</div>
-                  <h3 className={styles.benefitTitle}>{benefit.title}</h3>
-                  <p className={styles.benefitDesc}>{benefit.desc}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </Container>
-      </Section>
-
-      <Section variant="light">
-        <Container>
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={VIEWPORT}
-            variants={stagger()}
-          >
-            <motion.div variants={fadeUp} className={styles.sectionHeader}>
-              <p className={styles.eyebrowDark}>Eligibility and Suitability</p>
-              <h2 className={styles.headingDark}>Are You a Good Candidate?</h2>
-            </motion.div>
-
-            <motion.div variants={stagger()} className={styles.textGrid}>
-              {ELIGIBILITY.map((item, i) => (
-                <motion.div key={i} variants={fadeUp} className={styles.textItem}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                    <polyline points="20 6 9 17 4 12"/>
-                  </svg>
-                  <p>{item}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </Container>
-      </Section>
-
-      <Section variant="light">
-        <Container>
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={VIEWPORT}
-            variants={stagger()}
-          >
-            <motion.div variants={fadeUp} className={styles.sectionHeader}>
-              <p className={styles.eyebrowDark}>Treatable Conditions</p>
-              <h2 className={styles.headingDark}>Intimate Health Concerns We Address</h2>
-            </motion.div>
-
-            <motion.div variants={stagger()} className={styles.textGrid}>
-              {TREATABLE_CONDITIONS.map((condition, i) => (
-                <motion.div key={i} variants={fadeUp} className={styles.textItem}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                    <path d="M12 5v14m7-7H5"/>
-                  </svg>
-                  <p>{condition}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </Container>
-      </Section>
-
-      <Section variant="light">
-        <Container>
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={VIEWPORT}
-            variants={stagger()}
-          >
-            <motion.div variants={fadeUp} className={styles.sectionHeader}>
-              <p className={styles.eyebrowDark}>Results and Aftercare</p>
-              <h2 className={styles.headingDark}>What to Expect After Treatment</h2>
-            </motion.div>
-
-            <motion.div variants={stagger()} className={styles.textGrid}>
-              {RESULTS_AND_AFTERCARE.map((item, i) => (
-                <motion.div key={i} variants={fadeUp} className={styles.textItem}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                    <circle cx="12" cy="12" r="9"/>
-                  </svg>
-                  <p>{item}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </Container>
-      </Section>
-
-      <Section variant="light">
-        <Container>
-          <Testimonials />
-        </Container>
-      </Section>
-
-      <Section variant="dark" className={styles.ctaBannerSection}>
-        <Container>
-          <motion.div
-            className={styles.ctaBanner}
-            initial="hidden"
-            whileInView="visible"
-            viewport={VIEWPORT}
-            variants={stagger()}
-          >
-            <motion.div variants={fadeUp} className={styles.ctaBannerContent}>
-              <h2 className={styles.heading}>Restore Your Intimate Comfort and Confidence</h2>
-              <p className={styles.subheading}>
-                Book your confidential consultation today to discuss your intimate health goals with our compassionate team.
-              </p>
-              <BookConsultationButton>Book Consultation</BookConsultationButton>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </Section>
-
-      <Section variant="light">
-        <Container>
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={VIEWPORT}
-            variants={stagger()}
-          >
-            <motion.div variants={fadeUp} className={styles.sectionHeader}>
-              <p className={styles.eyebrowDark}>Our Clinic</p>
-              <h2 className={styles.headingDark}>Why The One Clinic for Laser Vaginal Rejuvenation</h2>
-            </motion.div>
-
-            <div className={styles.clinicIntroSection}>
-              <motion.div
-                className={styles.clinicIntroLeft}
-                initial="hidden"
-                whileInView="visible"
-                viewport={VIEWPORT}
-                variants={stagger()}
-              >
-                <motion.div variants={fadeUp}>
-                  <p className={styles.eyebrowDark}>Women's Intimate Health Expertise</p>
-                  <h3 className={styles.headingDark}>Specialising in Confidential, Compassionate Care</h3>
-                </motion.div>
-
-                <motion.div variants={stagger()}>
-                  {CLINIC_REASONS.map((reason, i) => (
-                    <motion.div key={i} variants={fadeUp} className={styles.clinicReason}>
-                      <span className={styles.reasonNumber}>
-                        {String(i + 1).padStart(2, '0')}
-                      </span>
-                      <p>{reason}</p>
-                    </motion.div>
-                  ))}
-                </motion.div>
+              <motion.div className={styles.heroCtas} variants={fadeUp}>
+                <BookConsultationButton className={styles.heroCtaPrimary}>
+                  Book Appointment
+                </BookConsultationButton>
               </motion.div>
 
-              <motion.div
-                className={styles.clinicIntroRight}
-                variants={fadeUp}
-              >
-                <Image
-                  src="/images/treatments/clinic-laser-vaginal.jpg"
-                  alt="The One Clinic Laser Vaginal Rejuvenation Facility"
-                  width={400}
-                  height={500}
-                  quality={90}
-                />
+              {/* Review badges */}
+              <motion.div variants={fadeUp}>
+                <TrustBadges theme="dark" />
+              </motion.div>
+
+              {/* Trust items */}
+              <motion.div className={styles.heroTrust} variants={fadeUp}>
+                <span className={styles.heroTrustItem}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+                    <path d="M4.5 20.118a7.5 7.5 0 0115 0"/>
+                    <path d="M18.5 15v5M16 17.5h5"/>
+                  </svg>
+                  Led by experienced women&apos;s health doctors
+                </span>
+                <span className={styles.heroTrustDivider} aria-hidden="true" />
+                <span className={styles.heroTrustItem}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                  </svg>
+                  Trusted by patients across Leicester
+                </span>
+                <span className={styles.heroTrustDivider} aria-hidden="true" />
+                <span className={styles.heroTrustItem}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9.5"/>
+                    <path d="M12 7.5v9M7.5 12h9"/>
+                  </svg>
+                  Discreet, compassionate &amp; confidential care
+                </span>
               </motion.div>
             </div>
-          </motion.div>
-        </Container>
-      </Section>
 
-      <Section variant="dark" className={styles.costBannerSection}>
-        <Container>
-          <motion.div
-            className={styles.costBanner}
-            initial="hidden"
-            whileInView="visible"
-            viewport={VIEWPORT}
-            variants={stagger()}
-          >
-            <motion.div variants={fadeUp} className={styles.costBannerContent}>
-              <p className={styles.eyebrow}>Transparent Pricing</p>
-              <h2 className={styles.heading}>Laser Vaginal Rejuvenation Investment</h2>
-              <p className={styles.costText}>
-                Laser vaginal rejuvenation treatment costs from £250 per session. Most women see excellent results after a single session, though a course of 2 to 3 sessions spaced 4 to 6 weeks apart is often recommended for maximum durability. We offer flexible payment plans and can discuss package pricing during your consultation for exceptional value.
-              </p>
-              <BookConsultationButton>Book Consultation</BookConsultationButton>
+            {/* Right: image */}
+            <motion.div className={styles.heroImageWrap} variants={fadeUp}>
+              <Image
+                src="/images/Women's Health.jpg"
+                alt="Laser Vaginal Rejuvenation treatment at The One Clinic Leicester"
+                fill
+                priority
+                className={styles.heroImage}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              {/* Subtle bottom-fade to blend with section */}
+              <div className={styles.heroImageFade} aria-hidden="true" />
             </motion.div>
           </motion.div>
         </Container>
-      </Section>
+      </section>
 
-      <Section variant="light">
-        <Container>
-          <MeetTheExperts />
-        </Container>
-      </Section>
-
-      <Section variant="dark">
+      {/* ════════════════════════════════════════
+          2. WHAT IS LASER VAGINAL REJUVENATION?
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
           <motion.div
+            className={styles.whatIsGrid}
+            variants={stagger(0.12)}
             initial="hidden"
-            whileInView="visible"
+            whileInView="show"
             viewport={VIEWPORT}
-            variants={stagger()}
           >
-            <motion.div variants={fadeUp} className={styles.sectionHeaderCentre}>
-              <p className={styles.eyebrow}>Common Questions</p>
-              <h2 className={styles.heading}>Laser Vaginal Rejuvenation FAQs</h2>
-            </motion.div>
-
-            <motion.div
-              className={styles.faqList}
-              variants={stagger()}
-            >
-              <Accordion items={displayedFaqs} theme="dark" />
-            </motion.div>
-
-            {!showAllFaqs && FAQS.length > 4 && (
-              <motion.div
-                variants={fadeUp}
-                className={styles.showMoreContainer}
-              >
-                <button
-                  onClick={() => setShowAllFaqs(true)}
-                  className={styles.showMoreButton}
-                >
-                  See All FAQs
-                </button>
+            {/* Left: text */}
+            <motion.div className={styles.whatIsContent} variants={stagger(0.12)}>
+              <motion.div className={styles.whatIsTextGroup} variants={fadeUp}>
+                <p className={styles.eyebrowDark}>About This Treatment</p>
+                <h2 className={styles.combinedHeading}>What is Laser Vaginal Rejuvenation?</h2>
+                <p className={styles.combinedDesc}>
+                  Laser vaginal rejuvenation is a non-surgical intimate wellness treatment that
+                  uses a non-ablative fractional laser to stimulate collagen and elastin production
+                  within vaginal tissue. The treatment improves vaginal laxity, dryness, mild
+                  incontinence, and reduced sensation — all common concerns women face after
+                  childbirth, menopause, or as part of natural ageing.
+                </p>
+                <p className={styles.combinedDesc}>
+                  Safe, discreet, and requiring no downtime, each 20 to 30-minute session
+                  delivers progressive improvements in tissue tone, moisture retention, and
+                  intimate comfort without surgery, anaesthesia, or recovery time.
+                </p>
               </motion.div>
-            )}
+              <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
+                <BookConsultationButton className={styles.combinedCta}>
+                  Book Your Consultation
+                </BookConsultationButton>
+              </motion.div>
+            </motion.div>
+
+            {/* Right: image panel */}
+            <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
+              <Image
+                src="/images/Doctor1.jpg"
+                alt="Women's health doctor at The One Clinic Leicester"
+                fill
+                className={styles.whatIsVideoFrame}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </motion.div>
           </motion.div>
         </Container>
       </Section>
 
-      <Section variant="light">
-        <Container>
-          <LeadForm />
+      {/* ════════════════════════════════════════
+          3. AT A GLANCE
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
+        <div className={styles.whiteBgWrap} aria-hidden="true">
+          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
+        </div>
+        <Container className={styles.whiteBgContent}>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Laser Vaginal Rejuvenation at a Glance
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.glanceStandaloneGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {AT_A_GLANCE.map((item) => (
+              <motion.div key={item.label} className={styles.glanceCard} variants={fadeUp}>
+                <span className={styles.glanceIcon}>{item.icon}</span>
+                <span className={styles.glanceLabel}>{item.label}</span>
+                <span className={styles.glanceValue}>{item.value}</span>
+              </motion.div>
+            ))}
+          </motion.div>
         </Container>
       </Section>
 
-      <Section variant="light">
+      {/* ════════════════════════════════════════
+          4. OUR APPROACH
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
         <Container>
           <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
             initial="hidden"
-            whileInView="visible"
+            whileInView="show"
             viewport={VIEWPORT}
-            variants={stagger()}
           >
-            <motion.div variants={fadeUp} className={styles.sectionHeader}>
-              <p className={styles.eyebrowDark}>Related Treatments</p>
-              <h2 className={styles.headingDark}>Complementary Women's Health Solutions</h2>
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Our Approach
+            </motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Our Laser Vaginal Approach
+            </motion.h2>
+            <motion.p className={styles.combinationIntroText} variants={fadeUp}>
+              At The One Clinic, we combine clinical expertise with advanced laser technology to
+              deliver truly personalised intimate wellness care. Our approach ensures safety,
+              discretion, and outstanding results in every session.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.techCardsGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {APPROACH_CARDS.map((card) => (
+              <motion.div
+                key={card.title}
+                className={styles.techCard}
+                variants={fadeUp}
+                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
+              >
+                <span className={styles.techCardEyebrow}>{card.eyebrow}</span>
+                <h3 className={styles.techCardTitle}>{card.title}</h3>
+                <p className={styles.techCardDesc}>{card.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            className={styles.finalResultsBanner}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <p className={styles.finalResultsEyebrow}>Combined Results</p>
+            <p className={styles.finalResultsText}>
+              When delivered as a complete treatment course, our laser vaginal rejuvenation
+              programme addresses laxity, dryness, incontinence, and reduced sensation in a
+              single personalised plan — delivering comprehensive intimate wellness with no
+              surgery and no downtime.
+            </p>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          5. TREATMENT JOURNEY
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.journeySection}>
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              What to Expect
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Your Treatment Journey
+            </motion.h2>
+          </motion.div>
+
+          <motion.ol
+            className={styles.journeyList}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+            aria-label="Laser vaginal rejuvenation treatment journey steps"
+          >
+            {JOURNEY_STEPS.map((step) => (
+              <motion.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
+                <div className={styles.stepLeft}>
+                  <div className={styles.stepNumCircle} aria-hidden="true">{step.n}</div>
+                  <div className={styles.stepConnector} aria-hidden="true" />
+                </div>
+                <div className={styles.stepBody}>
+                  <h3 className={styles.stepTitle}>{step.title}</h3>
+                  <p className={styles.stepDesc}>{step.desc}</p>
+                </div>
+              </motion.li>
+            ))}
+          </motion.ol>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          6. BENEFITS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
+        <div className={styles.whiteBgWrap} aria-hidden="true">
+          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
+        </div>
+        <Container className={styles.whiteBgContent}>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Laser Vaginal Rejuvenation Benefits
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.treatedBenefitsGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {BENEFITS.map((b) => (
+              <motion.div
+                key={b.title}
+                className={styles.treatedBenefitCard}
+                variants={fadeUp}
+                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
+              >
+                <span className={styles.treatedBenefitIconWrap} aria-hidden="true">
+                  {b.icon}
+                </span>
+                <h3 className={styles.treatedBenefitTitle}>{b.title}</h3>
+                <p className={styles.treatedBenefitDesc}>{b.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          7. ELIGIBILITY
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Is This Right for You?
+            </motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Who Is Suitable for Laser Vaginal Rejuvenation?
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.eligibilityWrap}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
+              This treatment is suitable for women experiencing:
+            </motion.p>
+            <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
+              {ELIGIBILITY_SUITABLE.map((item) => (
+                <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
+                  <span className={styles.eligibilityCheck} aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+            <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
+              Treatment is not suitable for:
+            </motion.p>
+            <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
+              {ELIGIBILITY_NOT_SUITABLE.map((item) => (
+                <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
+                  <span className={styles.eligibilityCheck} aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <line x1="3" y1="3" x2="11" y2="11" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
+                      <line x1="11" y1="3" x2="3" y2="11" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+            <motion.p className={styles.eligibilityClosing} variants={fadeUp}>
+              A full medical assessment is conducted during your consultation to confirm your suitability before any treatment begins.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
+                Book Your Consultation
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          8. HOW IT WORKS — THE SCIENCE
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.howSection}>
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              How Does Laser Vaginal Rejuvenation Work?
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.howTextGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.howPara} variants={fadeUp}>
+              Laser vaginal rejuvenation uses non-ablative fractional laser energy delivered
+              precisely to the vaginal mucosa. The controlled thermal stimulus penetrates the
+              vaginal epithelium without ablating the surface, triggering a natural healing
+              cascade within the submucosal connective tissue.
+            </motion.p>
+            <motion.p className={styles.howPara} variants={fadeUp}>
+              This controlled thermal response activates fibroblasts to produce new collagen and
+              elastin, progressively thickening the epithelium and improving moisture retention.
+              The result is visibly improved tissue tone, restored natural lubrication, and
+              enhanced sensation — all achieved without surgery or significant downtime.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.howCoversWrap}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.howCoversLabel} variants={fadeUp}>The Science Behind the Treatment</motion.p>
+            <motion.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
+              {[
+                'Non-ablative fractional laser energy',
+                'Stimulates collagen & elastin production',
+                'Thickens vaginal epithelium',
+                'Improves tissue moisture retention',
+                'Enhances blood flow & sensation',
+                'Progressive collagen remodelling over weeks',
+              ].map((item) => (
+                <motion.li key={item} className={styles.howCoversItem} variants={fadeUp}>
+                  <span className={styles.howCoversCheck} aria-hidden="true">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <polyline points="2,6 5,9 10,3" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  {item}
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          9. RESULTS, AFTERCARE & SIDE EFFECTS
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Post-Treatment
+            </motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Results, Aftercare &amp; Side Effects
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.resultsAfterGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {/* Card 1 — Results Timeline */}
+            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+              <div className={styles.resultsAfterCardHead}>
+                <span className={styles.resultsAfterCardIcon} aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                    <polyline points="17 6 23 6 23 12"/>
+                  </svg>
+                </span>
+                <h3 className={styles.resultsAfterCardTitle}>When Will You See Results?</h3>
+              </div>
+              <p className={styles.resultsAfterCardBody}>
+                Initial improvements in comfort and moisture are often noticed within 2 to 4
+                weeks as new collagen begins to form. Tissue continues to improve over the
+                treatment course, with full results typically visible by 6 to 8 weeks after
+                the final session.
+              </p>
+              <div className={styles.resultsAfterCardSpacer} />
+              <p className={styles.resultsAfterCardNote}>
+                Results are progressive and long-lasting. A maintenance session every 12 to
+                18 months can extend the benefits for ongoing intimate wellness.
+              </p>
+            </motion.div>
+
+            {/* Card 2 — Side Effects */}
+            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+              <div className={styles.resultsAfterCardHead}>
+                <span className={styles.resultsAfterCardIcon} aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="8" x2="12" y2="12"/>
+                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                  </svg>
+                </span>
+                <h3 className={styles.resultsAfterCardTitle}>Side Effects</h3>
+              </div>
+              <p className={styles.resultsAfterCardBody}>
+                Laser vaginal rejuvenation is well-tolerated and safe. Most patients experience
+                only mild, temporary effects:
+              </p>
+              <ul className={styles.resultsAfterCardList} role="list">
+                {[
+                  'Mild warmth or slight sensitivity for 24 to 48 hours',
+                  'Minimal discharge in the first few days',
+                  'Mild swelling or tenderness in some cases',
+                ].map((item) => (
+                  <li key={item} className={styles.resultsAfterCardListItem}>
+                    <span className={styles.resultsAfterDot} aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div className={styles.resultsAfterCardSpacer} />
+              <p className={styles.resultsAfterCardNote}>
+                Serious complications are extremely rare. All treatments are performed by
+                experienced clinicians following a thorough pre-treatment assessment.
+              </p>
+            </motion.div>
+
+            {/* Card 3 — Aftercare */}
+            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+              <div className={styles.resultsAfterCardHead}>
+                <span className={styles.resultsAfterCardIcon} aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                  </svg>
+                </span>
+                <h3 className={styles.resultsAfterCardTitle}>Aftercare Tips</h3>
+              </div>
+              <ul className={styles.resultsAfterCardList} role="list">
+                {[
+                  'Abstain from sexual intercourse for 5 days post-treatment',
+                  'Avoid tampons, douches, and swimming for 5 to 7 days',
+                  'Wear comfortable, breathable cotton underwear',
+                  'Follow any specific aftercare instructions from your clinician',
+                ].map((item) => (
+                  <li key={item} className={styles.resultsAfterCardListItem}>
+                    <span className={styles.resultsAfterDot} aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          10. CONDITIONS WE ADDRESS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
+        <div className={styles.whiteBgWrap} aria-hidden="true">
+          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
+        </div>
+        <Container className={styles.whiteBgContent}>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Intimate Wellness
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Conditions We Address
+            </motion.h2>
+            <motion.p className={styles.beforeAfterSubheading} variants={fadeUp}>
+              Laser vaginal rejuvenation at The One Clinic targets the intimate health concerns
+              most commonly experienced by women at every stage of life.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.treatedBenefitsGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {CONDITIONS_TREATED.map((c) => (
+              <motion.div
+                key={c.title}
+                className={styles.treatedBenefitCard}
+                variants={fadeUp}
+                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
+              >
+                <span className={styles.treatedBenefitIconWrap} aria-hidden="true">
+                  {c.icon}
+                </span>
+                <h3 className={styles.treatedBenefitTitle}>{c.title}</h3>
+                <p className={styles.treatedBenefitDesc}>{c.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          11. PATIENT REVIEWS
+      ════════════════════════════════════════ */}
+      <Testimonials />
+
+      {/* ════════════════════════════════════════
+          12. CTA BANNER
+      ════════════════════════════════════════ */}
+      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book laser vaginal rejuvenation consultation">
+        {/* Watermark logo */}
+        <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
+          <Image
+            src="/images/Background-logo.png"
+            alt=""
+            fill
+            className={styles.ctaBannerLogo}
+            sizes="100vw"
+          />
+        </div>
+        <Container>
+          <motion.div
+            className={styles.ctaBannerContent}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
+              Reclaim Your Confidence &amp; Comfort.
+            </motion.h2>
+            <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
+              Let our experts create your personalised laser vaginal rejuvenation plan!
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={styles.ctaBannerBtn}>
+                Book Consultation
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
+
+      {/* ════════════════════════════════════════
+          13. TREATMENT AREAS
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark" className={styles.conditionsSection}>
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Treatment Areas
+            </motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Areas Treated &amp; Symptoms Addressed
+            </motion.h2>
+            <motion.p className={styles.conditionsIntro} variants={fadeUp}>
+              Our laser vaginal rejuvenation treatment can be applied to several intimate areas
+              and effectively targets a wide range of symptoms that affect women&apos;s intimate
+              health and quality of life.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.areasColumns}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.div
+              className={styles.areasGroup}
+              variants={fadeUp}
+              whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
+            >
+              <p className={styles.areasGroupLabel}>Areas Treated</p>
+              <ul className={styles.areasGroupList} role="list">
+                {AREAS_TREATED.map((area) => (
+                  <li key={area} className={styles.areasGroupItem}>
+                    <span className={styles.areasItemDot} aria-hidden="true" />
+                    {area}
+                  </li>
+                ))}
+              </ul>
             </motion.div>
 
             <motion.div
-              className={styles.relatedGrid}
-              variants={stagger()}
+              className={styles.areasGroup}
+              variants={fadeUp}
+              whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
             >
-              {RELATED_TREATMENTS.map((treatment, i) => (
-                <motion.div
-                  key={i}
-                  variants={fadeUp}
-                  whileHover={{
-                    scale: 1.02,
-                    transition: { type: 'spring', stiffness: 400 },
-                  }}
-                >
-                  <Link
-                    href={treatment.href}
-                    className={styles.relatedCard}
-                  >
-                    <h3>{treatment.name}</h3>
-                    <p>{treatment.desc}</p>
-                    <span className={styles.relatedArrow}>Learn More →</span>
-                  </Link>
-                </motion.div>
-              ))}
+              <p className={styles.areasGroupLabel}>Symptoms Addressed</p>
+              <ul className={styles.areasGroupList} role="list">
+                {SYMPTOMS_ADDRESSED.map((symptom) => (
+                  <li key={symptom} className={styles.areasGroupItem}>
+                    <span className={styles.areasItemDot} aria-hidden="true" />
+                    {symptom}
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           </motion.div>
         </Container>
       </Section>
 
-      <Section variant="light">
+      {/* ════════════════════════════════════════
+          14. BEST LEICESTER EXPERIENCE
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.clinicIntroSection}>
         <Container>
-          <FinalCTA />
+          <motion.div
+            className={styles.clinicIntroBody}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.div className={styles.clinicIntroLeft} variants={fadeUp}>
+              <p className={styles.eyebrowDark}>Laser Vaginal Rejuvenation</p>
+              <h2 className={styles.combinedHeading}>
+                Best Laser Vaginal Rejuvenation<br />Leicester Experience
+              </h2>
+            </motion.div>
+            <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
+              Experience the highest standard of laser vaginal rejuvenation in Leicester at The
+              One Clinic. Our specialist women&apos;s health team combines clinical expertise with
+              advanced laser technology to deliver safe, discreet, and highly effective intimate
+              wellness treatments. Every patient receives a fully personalised care plan, designed
+              around their specific concerns and goals, with the utmost respect for their privacy
+              and dignity throughout.
+            </motion.p>
+          </motion.div>
         </Container>
       </Section>
+
+      {/* ════════════════════════════════════════
+          15. COST BANNER
+      ════════════════════════════════════════ */}
+      <section className={styles.costBanner} data-section-theme="dark" aria-label="Laser vaginal rejuvenation cost">
+        <Container>
+          <motion.div
+            className={styles.costBannerInner}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
+              Laser Vaginal Rejuvenation Cost at The One Clinic
+            </motion.p>
+            <motion.p className={styles.costBannerPrice} variants={fadeUp}>
+              Treatment Starts From £400 per Session
+            </motion.p>
+            <motion.p className={styles.costBannerNote} variants={fadeUp}>
+              Course pricing is available for the recommended 3-session programme. The final
+              price depends on your personalised treatment plan and will be discussed during
+              your confidential consultation with our specialist.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={styles.ctaBannerBtn}>
+                Book A Consultation
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
+
+      {/* ════════════════════════════════════════
+          16. WHY CHOOSE THE ONE CLINIC
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Why Choose The One Clinic For Laser Vaginal Rejuvenation
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.clinicReasonsGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {CLINIC_REASONS.map((r) => (
+              <motion.div
+                key={r.n}
+                className={styles.clinicReasonCard}
+                variants={fadeUp}
+                whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
+              >
+                <span className={styles.clinicReasonNumber}>{r.n}</span>
+                <p className={styles.clinicReasonText}>{r.text}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          17. MEET THE EXPERTS
+      ════════════════════════════════════════ */}
+      <MeetTheExperts />
+
+      {/* ════════════════════════════════════════
+          18. FAQ
+      ════════════════════════════════════════ */}
+      <section className={styles.faqSection} data-section-theme="dark">
+        <div className={styles.faqInner}>
+          <Container>
+            <motion.div
+              className={styles.sectionHeaderCentre}
+              variants={stagger(0.1)}
+              initial="hidden"
+              whileInView="show"
+              viewport={VIEWPORT}
+            >
+              <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
+              <motion.h2 className={styles.headingLight} variants={fadeUp}>
+                Frequently Asked Questions
+              </motion.h2>
+            </motion.div>
+
+            <motion.div
+              className={styles.faqBody}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={VIEWPORT}
+            >
+              <Accordion items={showAllFaqs ? FAQS : FAQS.slice(0, 5)} theme="dark" />
+
+              {FAQS.length > 5 && (
+                <div className={styles.faqToggleWrap}>
+                  <button
+                    className={styles.faqToggleBtn}
+                    onClick={() => setShowAllFaqs((v) => !v)}
+                    aria-expanded={showAllFaqs}
+                  >
+                    {showAllFaqs ? (
+                      <>
+                        Show Less
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                          <path d="M4 10l4-4 4 4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </>
+                    ) : (
+                      <>
+                        Show More
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                          <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </>
+                    )}
+                  </button>
+                </div>
+              )}
+            </motion.div>
+          </Container>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════
+          19. BOOKING FORM
+      ════════════════════════════════════════ */}
+      <LeadForm />
+
+      {/* ════════════════════════════════════════
+          20. RELATED TREATMENTS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Explore More
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Related Treatments
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.relatedGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {RELATED.map((r) => (
+              <motion.div key={r.title} variants={fadeUp}>
+                <Link href={r.href} className={styles.relatedCard}>
+                  <h3 className={styles.relatedTitle}>{r.title}</h3>
+                  <p className={styles.relatedDesc}>{r.desc}</p>
+                  <span className={styles.relatedArrow} aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M3 8h10M9 4l4 4-4 4"
+                        stroke="currentColor" strokeWidth="1.5"
+                        strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          21. FINAL CTA
+      ════════════════════════════════════════ */}
+      <FinalCTA />
     </>
   );
 }
