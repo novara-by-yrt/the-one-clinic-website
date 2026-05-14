@@ -252,19 +252,57 @@
    SHARED TYPOGRAPHY
 ════════════════════════════════════════════════════ */
 .eyebrowDark {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(0 0 0 / 0.05);
+  border: 1px solid rgba(0 0 0 / 0.10);
+  border-radius: 100px;
+  padding: 5px 14px;
   font-size: var(--text-small);
   font-weight: var(--fw-medium);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-text-muted);
+  margin: 0;
+}
+
+.eyebrowDark::before {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.5;
+  flex-shrink: 0;
 }
 
 .eyebrowLight {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255 255 255 / 0.07);
+  border: 1px solid rgba(255 255 255 / 0.16);
+  border-radius: 100px;
+  padding: 5px 14px;
   font-size: var(--text-small);
   font-weight: var(--fw-medium);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255 255 255 / 0.35);
+  color: rgba(255 255 255 / 0.6);
+  margin: 0;
+}
+
+.eyebrowLight::before {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.65;
+  flex-shrink: 0;
 }
 
 .headingDark {
@@ -291,18 +329,18 @@
 .sectionHeader {
   display: flex;
   flex-direction: column;
-  gap: var(--space-1);
+  gap: var(--space-2);
   max-width: 560px;
-  margin-bottom: var(--space-5);
+  margin-bottom: clamp(var(--space-5), 3vw, var(--space-6));
 }
 
 .sectionHeaderCentre {
   display: flex;
   flex-direction: column;
-  gap: var(--space-1);
+  gap: var(--space-2);
   align-items: center;
   text-align: center;
-  margin-bottom: var(--space-5);
+  margin-bottom: clamp(var(--space-5), 4vw, var(--space-7));
 }
 
 /* ════════════════════════════════════════════════════
@@ -360,12 +398,13 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: var(--space-5) var(--space-4);
+  padding: var(--space-5) var(--space-5);
   background: #111;
   border: 1px solid rgba(255 255 255 / 0.10);
   border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
+  min-height: 190px;
   transition: transform 0.28s ease, box-shadow 0.28s ease;
 }
 
@@ -409,7 +448,7 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255 255 255 / 0.45);
+  color: rgba(255 255 255 / 0.55);
 }
 
 .glanceValue {
@@ -449,17 +488,17 @@
 }
 
 .combinedHeading {
-  font-size: clamp(2rem, 3.2vw, 2.875rem);
+  font-size: clamp(1.75rem, 3.5vw, var(--text-h2));
   font-weight: var(--fw-bold);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   color: var(--color-text-dark);
-  line-height: 1.08;
+  line-height: 1.15;
   margin: 0;
 }
 
 .combinedDesc {
-  font-size: 1.0625rem;
-  line-height: 1.82;
+  font-size: 1rem;
+  line-height: 1.75;
   color: var(--color-text-muted);
   margin: 0;
   max-width: 480px;
@@ -538,6 +577,10 @@
 /* ════════════════════════════════════════════════════
    TREATMENT JOURNEY  —  vertical timeline
 ════════════════════════════════════════════════════ */
+.journeySection {
+  background-color: #f5f5f5;
+}
+
 .journeyList {
   list-style: none;
   padding: 0;
@@ -619,6 +662,7 @@
   font-weight: var(--fw-bold);
   color: var(--color-text-dark);
   letter-spacing: -0.01em;
+  line-height: 1.3;
   margin: 0;
   transition: color 0.25s ease;
 }
@@ -817,9 +861,30 @@
 /* ════════════════════════════════════════════════════
    FAQ
 ════════════════════════════════════════════════════ */
+.faqSection {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(64px, 8vw, 104px);
+  background-color: #f5f5f5;
+}
+
+.faqBgImg {
+  display: none;
+}
+
+.faqOverlay {
+  display: none;
+}
+
+.faqInner {
+  position: relative;
+  z-index: 2;
+}
+
 .faqBody {
   max-width: 740px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .faqToggleWrap {
@@ -832,22 +897,42 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 11px 28px;
-  background: rgba(255 255 255 / 0.07);
-  border: 1px solid rgba(255 255 255 / 0.14);
+  padding: 12px 32px;
+  background: #000;
+  border: 2px solid #000;
   border-radius: 100px;
-  color: rgba(255 255 255 / 0.82);
+  color: #fff;
   font-size: 0.9375rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 .faqToggleBtn:hover {
-  background: rgba(255 255 255 / 0.12);
-  border-color: rgba(255 255 255 / 0.25);
+  background: #1a1a1a;
+  border-color: #1a1a1a;
   color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Center align FAQ section header */
+.faqSection .sectionHeader {
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Override text colors for FAQ section on gray background */
+.faqSection .eyebrowLight {
+  background: #000;
+  border-color: #000;
+  color: #fff;
+}
+
+.faqSection .headingLight {
+  color: #000;
 }
 
 /* ════════════════════════════════════════════════════
@@ -987,6 +1072,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-3);
+  align-items: stretch;
 }
 
 /* ════════════════════════════════════════════════════
@@ -1123,26 +1209,84 @@
 /* ════════════════════════════════════════════════════
    CLINIC INTRO (Best Endolift Leicester)
 ════════════════════════════════════════════════════ */
+.clinicIntroSection {
+  padding-block: clamp(var(--space-4), 3vw, var(--space-6)) !important;
+}
+
 .clinicIntroBody {
+  background: #1a1a1a;
+  border: 1px solid rgba(255 255 255 / 0.1);
+  border-radius: 16px;
+  padding: clamp(var(--space-4), 3vw, var(--space-5));
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0;
+  gap: clamp(var(--space-4), 3.5vw, var(--space-5));
   align-items: center;
+  box-shadow: 0 4px 16px rgba(0 0 0 / 0.3);
+  transition: all 0.3s ease;
+}
+
+.clinicIntroBody:hover {
+  box-shadow: 0 12px 32px rgba(0 0 0 / 0.4);
+  border-color: rgba(255 255 255 / 0.2);
+  transform: translateY(-4px);
 }
 
 .clinicIntroLeft {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
-  padding-right: clamp(var(--space-6), 6vw, 80px);
-  border-right: 1px solid rgba(0 0 0 / 0.07);
+  gap: clamp(var(--space-2), 1.5vw, var(--space-3));
+}
+
+.clinicIntroBody .clinicIntroLeft p:first-child {
+  background: rgba(255 255 255 / 0.1);
+  border-color: rgba(255 255 255 / 0.2);
+  color: rgba(255 255 255 / 0.85);
+}
+
+.clinicIntroBody .combinedHeading {
+  color: #ffffff;
+}
+
+.clinicIntroBody .clinicIntroDesc {
+  color: rgba(255 255 255 / 0.75);
+}
+
+.clinicIntroLeft p:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  width: fit-content;
+  background: rgba(0 0 0 / 0.06);
+  border: 1px solid rgba(0 0 0 / 0.12);
+  border-radius: 100px;
+  padding: 6px 16px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(0 0 0 / 0.55);
+  margin: 0;
+}
+
+.clinicIntroLeft p:first-child::before {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.clinicIntroLeft h2 {
+  margin: 0;
 }
 
 .clinicIntroDesc {
-  padding-left: clamp(var(--space-6), 6vw, 80px);
-  font-size: 1.0625rem;
-  line-height: 1.82;
-  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: rgba(0 0 0 / 0.62);
   margin: 0;
 }
 
@@ -1200,7 +1344,7 @@
 .costBannerNote {
   font-size: 1rem;
   line-height: 1.72;
-  color: rgba(255 255 255 / 0.48);
+  color: rgba(255 255 255 / 0.62);
   max-width: 520px;
   margin: 0;
 }
@@ -1212,18 +1356,20 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-3);
+  align-items: stretch;
 }
 
 .clinicReasonCard {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
-  padding: var(--space-5) var(--space-4);
+  padding: var(--space-5);
   background: rgba(255 255 255 / 0.04);
   border: 1px solid rgba(255 255 255 / 0.1);
   border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
+  min-height: 160px;
   transition:
     background 0.35s ease,
     border-color 0.35s ease,
@@ -1273,14 +1419,14 @@
 .clinicReasonText {
   font-size: 0.9375rem;
   font-weight: var(--fw-medium);
-  color: rgba(255 255 255 / 0.72);
-  line-height: 1.6;
+  color: rgba(255 255 255 / 0.82);
+  line-height: 1.65;
   margin: 0;
   transition: color 0.35s ease;
 }
 
 .clinicReasonCard:hover .clinicReasonText {
-  color: rgba(255 255 255 / 0.92);
+  color: rgba(255 255 255 / 0.96);
 }
 
 /* ════════════════════════════════════════════════════
@@ -1344,300 +1490,18 @@
 .expertCardBio {
   font-size: 1rem;
   line-height: 1.78;
-  color: rgba(255 255 255 / 0.52);
+  color: rgba(255 255 255 / 0.68);
   margin: 0;
 }
 
 /* CTA sub-text on the banner */
 .ctaBannerSub {
-  font-size: 1.0625rem;
-  line-height: 1.6;
-  color: rgba(255 255 255 / 0.55);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255 255 255 / 0.60);
   margin: 0;
   max-width: 480px;
   text-align: center;
-}
-
-/* ════════════════════════════════════════════════════
-   HOW DOES TREATMENT WORK — text + stats grid
-════════════════════════════════════════════════════ */
-.howWorksSection {
-  background: #0a0a0a !important;
-}
-
-.howWorksGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(var(--space-6), 6vw, 80px);
-  align-items: start;
-}
-
-.howWorksText {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-
-.howWorksPara {
-  font-size: 1.0625rem;
-  line-height: 1.8;
-  color: rgba(255 255 255 / 0.7);
-  margin: 0;
-}
-
-.howWorksStats {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-}
-
-.howWorksStat {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: var(--space-4) var(--space-5);
-  background: rgba(255 255 255 / 0.06);
-  border: 1px solid rgba(255 255 255 / 0.12);
-  border-left: 4px solid rgba(255 255 255 / 0.5);
-  border-radius: 10px;
-}
-
-.howWorksStatNum {
-  font-size: 2rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: #fff;
-  line-height: 1;
-}
-
-.howWorksStatLabel {
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: rgba(255 255 255 / 0.55);
-}
-
-/* ════════════════════════════════════════════════════
-   ELIGIBILITY CHECKLIST
-════════════════════════════════════════════════════ */
-.eligibilityChecklistWrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-4);
-  max-width: 680px;
-  margin: 0 auto;
-}
-
-.eligibilityChecklist {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.eligibilityItem {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  font-size: 1.0625rem;
-  font-weight: 500;
-  color: #111827;
-  line-height: 1.5;
-  padding: var(--space-3) var(--space-4);
-  background: #fff;
-  border: 1px solid rgba(0 0 0 / 0.08);
-  border-radius: 12px;
-  transition: all 0.25s ease;
-}
-
-.eligibilityItem:hover {
-  background: #111;
-  border-color: #111;
-  color: #fff;
-  transform: translateX(6px);
-  box-shadow: 0 8px 28px rgba(0 0 0 / 0.35);
-}
-
-.eligibilityCheckmark {
-  width: 30px;
-  height: 30px;
-  min-width: 30px;
-  border-radius: 50%;
-  background: #f0faf4;
-  border: 1.5px solid #22c55e;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #16a34a;
-  font-size: 0.85rem;
-  font-weight: 700;
-  flex-shrink: 0;
-  transition: all 0.25s ease;
-}
-
-.eligibilityItem:hover .eligibilityCheckmark {
-  background: rgba(255 255 255 / 0.15);
-  border-color: rgba(255 255 255 / 0.4);
-  color: #fff;
-}
-
-/* ════════════════════════════════════════════════════
-   CAUSES GRID
-════════════════════════════════════════════════════ */
-.causesGrid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: var(--space-3);
-  margin-top: var(--space-5);
-}
-
-/* Each card spans 2 of the 6 columns → 3 per row */
-.causesGrid > * {
-  grid-column: span 2;
-}
-
-/* Last 2 items: center them in the row (1 empty col left, 1 empty col right) */
-.causesGrid > :nth-child(4) {
-  grid-column: 2 / 4;
-}
-
-.causesGrid > :nth-child(5) {
-  grid-column: 4 / 6;
-}
-
-.causeStep {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  padding: var(--space-4) var(--space-4);
-  background: #fff;
-  border: 1px solid #555;
-  border-radius: 14px;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.causeStep::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #111 0%, #555 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.causeStep:hover {
-  border-color: #333;
-  box-shadow: 0 8px 32px rgba(0 0 0 / 0.1);
-  transform: translateY(-3px);
-}
-
-.causeStep:hover::before {
-  opacity: 1;
-}
-
-.causeNum {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #777;
-  margin-bottom: 4px;
-}
-
-.causeTitle {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #111;
-  margin: 0;
-  line-height: 1.35;
-  letter-spacing: -0.01em;
-}
-
-.causeDesc {
-  font-size: 0.9rem;
-  line-height: 1.65;
-  color: #333;
-  margin: 0;
-}
-
-/* ════════════════════════════════════════════════════
-   SURGICAL ADVANTAGE CARDS
-════════════════════════════════════════════════════ */
-.advantageCard {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  padding: var(--space-5) var(--space-4);
-  background: #fff;
-  border: 1px solid #e5e5e5;
-  border-radius: 14px;
-  box-shadow: 0 2px 12px rgba(0 0 0 / 0.06);
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.advantageCard:hover {
-  border-color: #ccc;
-  box-shadow: 0 10px 32px rgba(0 0 0 / 0.12);
-  transform: translateY(-3px);
-}
-
-.advantageCardNum {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: #f0f0f0;
-  font-size: 0.8rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  color: #555;
-  flex-shrink: 0;
-}
-
-.advantageCardTitle {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #111;
-  margin: 0;
-  line-height: 1.3;
-  letter-spacing: -0.015em;
-}
-
-.advantageCardList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.advantageCardItem {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #555;
-}
-
-.advantageCardDot {
-  width: 7px;
-  height: 7px;
-  min-width: 7px;
-  border-radius: 50%;
-  background: #111;
-  flex-shrink: 0;
-  margin-top: 7px;
 }
 
 /* ════════════════════════════════════════════════════
@@ -1647,84 +1511,21 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-3);
-}
-
-.treatedBenefit {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  padding: var(--space-4);
-  background: #fff;
-  border: 1px solid #e5e5e5;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0 0 0 / 0.06);
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.treatedBenefit:hover {
-  background: #111;
-  border-color: #111;
-  box-shadow: 0 8px 28px rgba(0 0 0 / 0.3);
-  transform: translateY(-2px);
-}
-
-.treatedBenefitIcon {
-  width: 48px;
-  height: 48px;
-  border-radius: 10px;
-  background: #f3f3f3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #444;
-  flex-shrink: 0;
-  margin-bottom: var(--space-1);
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-.treatedBenefit:hover .treatedBenefitIcon {
-  background: rgba(255 255 255 / 0.12);
-  color: #fff;
-}
-
-.treatedBenefit .treatedBenefitTitle {
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: #1a1a1a;
-  margin: 0;
-  line-height: 1.4;
-  transition: color 0.3s ease;
-}
-
-.treatedBenefit:hover .treatedBenefitTitle {
-  color: #fff;
-}
-
-.treatedBenefit .treatedBenefitDesc {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #666;
-  margin: 0;
-  transition: color 0.3s ease;
-}
-
-.treatedBenefit:hover .treatedBenefitDesc {
-  color: rgba(255 255 255 / 0.7);
+  align-items: stretch;
 }
 
 .treatedBenefitCard {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
-  padding: var(--space-4) var(--space-4);
-  background: #1e1e1e;
-  border: 1px solid rgba(255 255 255 / 0.07);
+  padding: var(--space-5);
+  background: #1a1a1a;
+  border: 1px solid rgba(255 255 255 / 0.09);
   border-radius: var(--radius-lg);
   box-shadow: 0 4px 20px rgba(0 0 0 / 0.22);
   position: relative;
   overflow: hidden;
+  min-height: 220px;
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -1776,10 +1577,10 @@
 }
 
 .treatedBenefitTitle {
-  font-size: 1rem;
+  font-size: 1.0625rem;
   font-weight: var(--fw-bold);
   letter-spacing: -0.01em;
-  color: rgba(255 255 255 / 0.92);
+  color: #fff;
   margin: 0;
   line-height: 1.3;
   transition: color 0.3s ease;
@@ -1790,15 +1591,15 @@
 }
 
 .treatedBenefitDesc {
-  font-size: 0.9rem;
+  font-size: 0.9375rem;
   line-height: 1.68;
-  color: rgba(255 255 255 / 0.48);
+  color: rgba(255 255 255 / 0.65);
   margin: 0;
   transition: color 0.3s ease;
 }
 
 .treatedBenefitCard:hover .treatedBenefitDesc {
-  color: rgba(255 255 255 / 0.78);
+  color: rgba(255 255 255 / 0.88);
 }
 
 /* ════════════════════════════════════════════════════
@@ -1806,16 +1607,16 @@
 ════════════════════════════════════════════════════ */
 .resultsAfterGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-4);
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
   align-items: stretch;
 }
 
 .resultsAfterCard {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
-  padding: var(--space-4);
+  gap: var(--space-3);
+  padding: var(--space-6);
   background: rgba(255 255 255 / 0.05);
   border: 1px solid rgba(255 255 255 / 0.09);
   border-radius: var(--radius-lg);
@@ -1878,17 +1679,17 @@
 .resultsAfterCardBody {
   font-size: 0.9375rem;
   line-height: 1.72;
-  color: rgba(255 255 255 / 0.58);
+  color: rgba(255 255 255 / 0.75);
   margin: 0;
 }
 
 .resultsAfterCardNote {
   font-size: 0.875rem;
   line-height: 1.65;
-  color: rgba(255 255 255 / 0.4);
+  color: rgba(255 255 255 / 0.58);
   margin: 0;
   padding-top: var(--space-2);
-  border-top: 1px solid rgba(255 255 255 / 0.07);
+  border-top: 1px solid rgba(255 255 255 / 0.1);
 }
 
 .resultsAfterCardList {
@@ -1906,7 +1707,7 @@
   gap: 12px;
   font-size: 0.9375rem;
   line-height: 1.6;
-  color: rgba(255 255 255 / 0.68);
+  color: rgba(255 255 255 / 0.82);
 }
 
 .resultsAfterDot {
@@ -1923,12 +1724,12 @@
    TREATABLE AREAS — 2-COLUMN CATEGORIES (DARK)
 ════════════════════════════════════════════════════ */
 .conditionsIntro {
-  font-size: 1.0625rem;
-  line-height: 1.72;
-  color: rgba(255 255 255 / 0.55);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgba(255 255 255 / 0.70);
   max-width: 540px;
   text-align: center;
-  margin: var(--space-1) 0 0;
+  margin: var(--space-2) 0 0;
 }
 
 .areasColumns {
@@ -1991,9 +1792,9 @@
   gap: 14px;
   font-size: 0.9375rem;
   font-weight: var(--fw-medium);
-  color: rgba(255 255 255 / 0.72);
+  color: rgba(255 255 255 / 0.82);
   padding: 12px 0;
-  border-bottom: 1px solid rgba(255 255 255 / 0.07);
+  border-bottom: 1px solid rgba(255 255 255 / 0.08);
   transition: color 0.22s ease, padding-left 0.22s ease;
   cursor: default;
 }
@@ -2031,9 +1832,9 @@
    ENDOLIFT COMBINATION (TRIPLE ACTION)
 ════════════════════════════════════════════════════ */
 .combinationIntroText {
-  font-size: 1.0625rem;
+  font-size: 1rem;
   line-height: 1.75;
-  color: rgba(255 255 255 / 0.55);
+  color: rgba(255 255 255 / 0.70);
   max-width: 560px;
   text-align: center;
   margin: var(--space-2) 0 0;
@@ -2044,17 +1845,19 @@
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-3);
   margin-bottom: var(--space-5);
+  align-items: stretch;
 }
 
 .techCard {
   display: flex;
   flex-direction: column;
-  padding: var(--space-5);
+  padding: var(--space-6) var(--space-5);
   background: #ffffff;
   border: 1px solid rgba(0 0 0 / 0.09);
   border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
+  min-height: 300px;
   box-shadow: 0 2px 20px rgba(0 0 0 / 0.07);
   transition:
     box-shadow 0.35s ease,
@@ -2098,12 +1901,12 @@
 
 /* Thin separator before title */
 .techCardTitle {
-  font-size: 1.375rem;
+  font-size: 1.0625rem;
   font-weight: var(--fw-bold);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   color: #111827;
   margin: 0 0 var(--space-2);
-  line-height: 1.2;
+  line-height: 1.3;
   padding-top: var(--space-3);
   border-top: 1px solid rgba(0 0 0 / 0.07);
 }
@@ -2111,13 +1914,13 @@
 .techCardDesc {
   font-size: 0.9375rem;
   line-height: 1.72;
-  color: #6B7280;
+  color: #4B5563;
   margin: 0;
   transition: color 0.35s ease;
 }
 
 .techCard:hover .techCardDesc {
-  color: #374151;
+  color: #1F2937;
 }
 
 .finalResultsBanner {
@@ -2174,10 +1977,11 @@
 }
 
 .eligibilityIntro {
-  font-size: 1.0625rem;
-  color: rgba(255 255 255 / 0.6);
+  font-size: 1rem;
+  color: rgba(255 255 255 / 0.65);
   margin: 0;
   align-self: flex-start;
+  line-height: 1.6;
 }
 
 .eligibilityList {
@@ -2243,7 +2047,7 @@
 .eligibilityClosing {
   font-size: 1rem;
   line-height: 1.7;
-  color: rgba(255 255 255 / 0.5);
+  color: rgba(255 255 255 / 0.65);
   text-align: center;
   margin: 0;
 }
@@ -2252,12 +2056,12 @@
    BEFORE & AFTER
 ════════════════════════════════════════════════════ */
 .beforeAfterSubheading {
-  font-size: 1.0625rem;
-  line-height: 1.72;
+  font-size: 1rem;
+  line-height: 1.75;
   color: var(--color-text-muted);
   max-width: 520px;
   text-align: center;
-  margin: var(--space-1) 0 0;
+  margin: var(--space-2) 0 0;
 }
 
 .beforeAfterPlaceholder {
@@ -2341,10 +2145,6 @@
 ════════════════════════════════════════════════════ */
 .sectionGray {
   background-color: #f3f3f3 !important;
-}
-
-.sectionGray .combinationIntroText {
-  color: #111;
 }
 
 /* ════════════════════════════════════════════════════
@@ -2448,13 +2248,9 @@
   .howCoversList { grid-template-columns: repeat(2, 1fr); }
   .techCardsGrid { grid-template-columns: 1fr 1fr; }
   .treatedBenefitsGrid { grid-template-columns: repeat(2, 1fr); }
+  .resultsAfterGrid { grid-template-columns: 1fr 1fr; }
   .clinicReasonsGrid { grid-template-columns: repeat(2, 1fr); }
   .expertCard { grid-template-columns: 300px 1fr; }
-  /* Reset 6-col centering trick, go to simple 2-col */
-  .causesGrid { grid-template-columns: repeat(2, 1fr); }
-  .causesGrid > * { grid-column: span 1; }
-  .causesGrid > :nth-child(4),
-  .causesGrid > :nth-child(5) { grid-column: span 1; }
 }
 
 /* Combined section: collapse to single column on tablet/mobile */
@@ -2549,22 +2345,22 @@
   .whatIsImageWrap { aspect-ratio: 4 / 3; }
   .whatIsVideoWrap { aspect-ratio: 4 / 3; }
 
-  /* How Does Treatment Work: stack on mobile */
-  .howWorksGrid { grid-template-columns: 1fr; gap: var(--space-5); }
-
-  /* Causes: reset 6-col trick, go 2-col */
-  .causesGrid { grid-template-columns: repeat(2, 1fr); gap: var(--space-2); }
-  .causesGrid > * { grid-column: span 1; }
-  .causesGrid > :nth-child(4),
-  .causesGrid > :nth-child(5) { grid-column: span 1; }
-
   /* Standalone At a Glance: 2-col on mobile */
   .glanceStandaloneGrid { grid-template-columns: repeat(2, 1fr); }
 
   /* Clinic intro: stack */
-  .clinicIntroBody { grid-template-columns: 1fr; }
-  .clinicIntroLeft { padding-right: 0; border-right: none; padding-bottom: var(--space-4); border-bottom: 1px solid rgba(0 0 0 / 0.08); }
-  .clinicIntroDesc { padding-left: 0; padding-top: var(--space-1); }
+  .clinicIntroBody {
+    grid-template-columns: 1fr;
+    gap: clamp(var(--space-3), 2.5vw, var(--space-4));
+    padding: clamp(var(--space-4), 3vw, var(--space-5));
+  }
+  .clinicIntroLeft {
+    padding-right: 0;
+    border-right: none;
+  }
+  .clinicIntroDesc {
+    padding-left: 0;
+  }
 
   /* Why Choose The One Clinic: 1-col */
   .clinicReasonsGrid { grid-template-columns: 1fr 1fr; }
@@ -2614,10 +2410,12 @@
   .ctaBannerHeading { font-size: clamp(1.5rem, 7vw, 3.75rem); }
 
   /* ── Reduce paddings for all dark cards ── */
-  .techCard                { padding: var(--space-4); }
+  .techCard                { padding: var(--space-4); min-height: auto; }
   .resultsAfterCard        { padding: var(--space-4); }
   .areasGroup              { padding: var(--space-4); }
-  .clinicReasonCard        { padding: var(--space-4) var(--space-3); }
+  .clinicReasonCard        { padding: var(--space-4) var(--space-3); min-height: auto; }
+  .glanceCard              { min-height: auto; }
+  .treatedBenefitCard      { min-height: auto; }
 
   /* ── CTA spacing ── */
   .combinedCtaWrapper { padding-top: var(--space-4); display: none; }
@@ -2668,22 +2466,6 @@
 
   /* Treated benefits: 1-col */
   .treatedBenefitsGrid { grid-template-columns: 1fr; }
-  .treatedBenefit { padding: var(--space-3); }
-  .treatedBenefitIcon { width: 40px; height: 40px; }
-  .treatedBenefitTitle { font-size: 1rem; }
-  .treatedBenefitDesc { font-size: 0.9rem; }
-
-  /* Causes: 1-col on small mobile */
-  .causesGrid { grid-template-columns: 1fr; }
-  .causesGrid > * { grid-column: span 1; }
-  .causesGrid > :nth-child(4),
-  .causesGrid > :nth-child(5) { grid-column: span 1; }
-
-  /* Advantage cards: 1-col */
-  .advantageCard { padding: var(--space-4) var(--space-3); }
-
-  /* Results: 1-col */
-  .resultsAfterGrid { grid-template-columns: 1fr; }
 
   /* Clinic reasons: 1-col */
   .clinicReasonsGrid { grid-template-columns: 1fr; }
