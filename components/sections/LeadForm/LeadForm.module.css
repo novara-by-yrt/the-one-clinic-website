@@ -44,12 +44,12 @@
 }
 
 .heading {
-  font-size: clamp(2rem, 4vw, 3.25rem);
-  font-weight: 800;
-  letter-spacing: -0.035em;
+  font-size: clamp(1.875rem, 3.5vw, 2.75rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
   color: #0d1520;
-  line-height: 1.06;
-  margin: 0 0 clamp(16px, 2.5vw, 28px);
+  line-height: 1.15;
+  margin: 0 0 clamp(16px, 2.5vw, 24px);
 }
 
 /* iframe sits flush inside the white card */

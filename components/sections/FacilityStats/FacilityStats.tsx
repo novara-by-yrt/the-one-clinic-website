@@ -134,7 +134,13 @@ export default function FacilityStats() {
             {/* Stats grid */}
             <motion.div className={styles.statsGrid} variants={stagger(0.07)}>
               {STATS.map((s) => (
-                <motion.div key={s.label} className={styles.stat} variants={fadeUp}>
+                <motion.div
+                  key={s.label}
+                  className={styles.stat}
+                  variants={fadeUp}
+                  whileHover={{ y: -4, boxShadow: '0 10px 28px rgba(0,0,0,0.10)' }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                >
                   <span className={styles.statValue}>{s.value}</span>
                   <span className={styles.statLabel}>{s.label}</span>
                 </motion.div>

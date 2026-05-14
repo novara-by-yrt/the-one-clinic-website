@@ -61,9 +61,6 @@ export default function ContactPage() {
             initial="hidden"
             animate="show"
           >
-            <motion.span className={styles.heroEyebrow} variants={fadeUp}>
-              Contact
-            </motion.span>
             <motion.h1 className={styles.heroTitle} variants={fadeUp}>
               Get in Touch
             </motion.h1>

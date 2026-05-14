@@ -366,85 +366,85 @@ export default function EyeBagsPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          2. WHAT ARE EYE BAGS?
+          2. WHAT ARE EYE BAGS & TYPES (Combined)
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="light" data-section-theme="light" className={styles.overviewTypesSection}>
         <Container>
-          <motion.div
-            className={styles.overviewGrid}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.div className={styles.overviewLabel} variants={fadeUp}>
-              <p className={styles.eyebrowDark}>About This Condition</p>
-            </motion.div>
-
-            <div className={styles.overviewBody}>
-              <motion.h2 className={styles.overviewHeading} variants={fadeUp}>
-                What are Eye Bags?
-              </motion.h2>
-              <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Under-eye bags are mild puffiness or swelling under the eyes.
-                They appear when the muscles and tissues supporting the eyelids
-                weaken with age. Fat can move downwards, and fluid may build up,
-                making the eyes look tired.
-              </motion.p>
-            </div>
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          3. TYPES OF EYE BAGS
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Classification
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Types OF Eye Bags
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.typesContent}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.typesIntro} variants={fadeUp}>
-              The three main types of under-eye bags are:
-            </motion.p>
-
-            <div className={styles.typesCardsRow}>
-              {EYE_BAG_TYPES.map((type) => (
-                <motion.div
-                  key={type.num}
-                  className={styles.typeCard}
+          <div className={styles.combinedBody}>
+            {/* Left column: Overview */}
+            <div className={styles.combinedLeft}>
+              <div className={styles.combinedLeftTop}>
+                <motion.p
+                  className={styles.eyebrowDark}
+                  initial="hidden"
+                  whileInView="show"
                   variants={fadeUp}
+                  viewport={VIEWPORT}
                 >
-                  <span className={styles.typeNum} aria-hidden="true">
-                    {type.num}
-                  </span>
-                  <div className={styles.typeCardBody}>
-                    <h3 className={styles.typeTitle}>{type.title}</h3>
-                    <p className={styles.typeDesc}>{type.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
+                  About This Condition
+                </motion.p>
+                <motion.h2
+                  className={styles.combinedHeading}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  What are Eye Bags?
+                </motion.h2>
+                <motion.p
+                  className={styles.combinedDesc}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  Under-eye bags are mild puffiness or swelling under the eyes.
+                  They appear when the muscles and tissues supporting the eyelids
+                  weaken with age. Fat can move downwards, and fluid may build up,
+                  making the eyes look tired.
+                </motion.p>
+              </div>
             </div>
-          </motion.div>
+
+            {/* Right column: Types */}
+            <div className={styles.combinedRight}>
+              <motion.div
+                className={styles.typesRightHeader}
+                initial="hidden"
+                whileInView="show"
+                variants={fadeUp}
+                viewport={VIEWPORT}
+              >
+                <p className={styles.combinedRightLabel}>Classification</p>
+                <h3 className={styles.typesRightHeading}>Types of Eye Bags</h3>
+              </motion.div>
+
+              <motion.div
+                className={styles.combinedCards}
+                variants={stagger(0.1)}
+                initial="hidden"
+                whileInView="show"
+                viewport={VIEWPORT}
+              >
+                {EYE_BAG_TYPES.map((type) => (
+                  <motion.div
+                    key={type.num}
+                    className={styles.typeCardCombined}
+                    variants={fadeUp}
+                  >
+                    <span className={styles.typeNumCombined} aria-hidden="true">
+                      {type.num}
+                    </span>
+                    <div className={styles.typeCardHeader}>
+                      <h3 className={styles.typeTitleCombined}>{type.title}</h3>
+                      <p className={styles.typeDescCombined}>{type.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
         </Container>
       </Section>
 
@@ -693,7 +693,7 @@ export default function EyeBagsPage() {
       {/* ════════════════════════════════════════
           9. RESULTS & EXPECTATIONS
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="light" data-section-theme="light" className={styles.resultsSection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -750,7 +750,7 @@ export default function EyeBagsPage() {
       {/* ════════════════════════════════════════
           11. WHY CHOOSE THE ONE CLINIC
       ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
+      <Section variant="light" data-section-theme="light" className={styles.whySection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -759,10 +759,10 @@ export default function EyeBagsPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
               Why Us
             </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
               Why Choose The One Clinic For Eye Bags Treatment
             </motion.h2>
           </motion.div>
@@ -792,8 +792,8 @@ export default function EyeBagsPage() {
       {/* ════════════════════════════════════════
           12. FAQ
       ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
+      <Section variant="light" data-section-theme="light" className={styles.faqSection}>
+        <Container className={styles.faqInner}>
           <motion.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
@@ -801,8 +801,8 @@ export default function EyeBagsPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>FAQ</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
               Frequently Asked Questions
             </motion.h2>
           </motion.div>
@@ -816,6 +816,15 @@ export default function EyeBagsPage() {
           >
             <Accordion items={FAQS} theme="dark" />
           </motion.div>
+
+          <div className={styles.faqToggleWrap}>
+            <button className={styles.faqToggleBtn}>
+              View All Questions
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+          </div>
         </Container>
       </Section>
 
@@ -871,41 +880,7 @@ export default function EyeBagsPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          14. COST BANNER
-      ════════════════════════════════════════ */}
-      <section
-        className={styles.costBand}
-        data-section-theme="dark"
-        aria-label="Eye bags treatment cost"
-      >
-        <Container>
-          <motion.div
-            className={styles.costBandInner}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.costBandEyebrow} variants={fadeUp}>
-              Pricing
-            </motion.p>
-            <motion.h2 className={styles.costBandHeading} variants={fadeUp}>
-              Eye Bags Treatment Cost
-            </motion.h2>
-            <motion.p className={styles.costBandNote} variants={fadeUp}>
-              Contact us to enquire
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBtnPrimary}>
-                Book A Consultation
-              </BookConsultationButton>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
-
-      {/* ════════════════════════════════════════
-          8. LEAD FORM
+          13. LEAD FORM
       ════════════════════════════════════════ */}
       <div id="contact">
         <LeadForm />

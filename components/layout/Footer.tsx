@@ -156,6 +156,14 @@ export default function Footer() {
         </div>
 
       </div>
+
+      {/* ══════════════════════════════════════════════
+          CREDIT LINE
+      ══════════════════════════════════════════════ */}
+      <div className={styles.creditLine}>
+        Design, Developed and Managed by <a href="https://mangoeyes.co" target="_blank" rel="noopener noreferrer" className={styles.creditLink}>mangoeyes.co</a>
+      </div>
+
     </footer>
   );
 }

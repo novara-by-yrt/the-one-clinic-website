@@ -1,3 +1,5 @@
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
 @import './variables.css';
 
 /* ═══════════════════════════════════════════════════════════════
@@ -15,228 +17,51 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
-html {
-  font-size: 16px;
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-  /* Prevent horizontal scroll from any overflowing child */
-  overflow-x: hidden;
-}
-
-body {
-  font-family: var(--font-sans);
-  font-size: var(--text-body);
-  font-weight: var(--fw-regular);
-  line-height: var(--lh-normal);
-  color: var(--color-text-dark);
-  background-color: #000000;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-}
-
-img,
-video,
-svg {
-  display: block;
-  max-width: 100%;
-}
-
-ul,
-ol {
-  list-style: none;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button,
-input,
-select,
-textarea {
-  font: inherit;
-  color: inherit;
-}
-
-button {
-  cursor: pointer;
-  background: none;
-  border: none;
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   TYPOGRAPHY
-═══════════════════════════════════════════════════════════════ */
-h1 {
-  font-size: var(--text-h1);
-  font-weight: var(--fw-bold);
-  line-height: var(--lh-tight);
-  letter-spacing: -0.03em;
-}
-
-h2 {
-  font-size: var(--text-h2);
-  font-weight: var(--fw-bold);
-  line-height: var(--lh-tight);
-  letter-spacing: -0.02em;
-}
-
-h3 {
-  font-size: var(--text-h3);
-  font-weight: var(--fw-medium);
-  line-height: var(--lh-tight);
-  letter-spacing: -0.01em;
-}
-
-h4 {
-  font-size: var(--text-body);
-  font-weight: var(--fw-medium);
-  line-height: var(--lh-normal);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-p {
-  font-size: var(--text-body);
-  line-height: var(--lh-normal);
-  color: var(--color-text-muted);
-}
-
-/* ── Tablet (1024px) ─────────────────────── */
-@media (max-width: 1024px) {
-  h1 { font-size: 3rem; }       /* 48px */
-  h2 { font-size: 2.25rem; }    /* 36px */
-  h3 { font-size: 1.5rem; }     /* 24px */
-}
-
-/* ── Mobile (768px) ──────────────────────── */
-@media (max-width: 768px) {
-  h1 { font-size: 2.25rem; }    /* 36px */
-  h2 { font-size: 1.75rem; }    /* 28px */
-  h3 { font-size: 1.25rem; }    /* 20px */
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   FOCUS
-═══════════════════════════════════════════════════════════════ */
-:focus-visible {
-  outline: 2px solid var(--color-black);
-  outline-offset: 3px;
-  border-radius: var(--radius-sm);
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   SECTION THEME SYSTEM (global utility classes)
-═══════════════════════════════════════════════════════════════ */
-.section-light {
-  background-color: var(--color-bg-light);
-  color: var(--color-text-dark);
-  border-top: 1px solid var(--color-border-light);
-}
-
-.section-dark {
-  background-color: var(--color-bg-dark);
-  color: var(--color-text-light);
-  border-top: 1px solid var(--color-border-dark);
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   LAYOUT UTILITIES
-═══════════════════════════════════════════════════════════════ */
-.container {
-  width: 100%;
-  max-width: var(--container-width);
-  margin-inline: auto;
-  padding-inline: var(--container-padding);
-}
-
-.section {
-  padding-block: var(--space-8);
-}
-
-@media (max-width: 1024px) {
-  .section { padding-block: var(--space-6); }
-}
-
-@media (max-width: 768px) {
-  .section { padding-block: var(--space-5); }
-}
-
-.text-center {
-  text-align: center;
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   SITE WRAPPER
-═══════════════════════════════════════════════════════════════ */
-.site-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100dvh;
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   SKIP TO CONTENT
-═══════════════════════════════════════════════════════════════ */
+/* Skip to main content link - hidden off-screen until focused */
 .skip-link {
   position: absolute;
-  top: -100%;
-  left: var(--space-3);
-  z-index: 9999;
-  padding: 12px 20px;
-  background-color: var(--color-black);
-  color: var(--color-white);
-  font-size: var(--text-small);
-  font-weight: var(--fw-medium);
-  border-radius: var(--radius-sm);
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px;
   text-decoration: none;
-  transition: top 0.15s ease;
+  z-index: 100;
 }
 
 .skip-link:focus {
-  top: var(--space-2);
-  outline: 2px solid var(--color-white);
-  outline-offset: 2px;
+  top: 0;
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   ACCESSIBILITY
+   RESPONSIVE IMAGES
+   Blog and article images scale properly on all devices
 ═══════════════════════════════════════════════════════════════ */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+article img {
+  max-width: 100%;
+  height: auto !important;
+  display: block;
+  margin: 1.5rem auto;
+  border-radius: 0.5rem;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   REDUCED MOTION
-   Disables Framer Motion animations for users who prefer it.
-   The `transform` and `opacity` overrides catch motion.div
-   elements before they animate.
-═══════════════════════════════════════════════════════════════ */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+@media (max-width: 640px) {
+  article img {
+    width: 100%;
   }
+}
 
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+@media (min-width: 641px) and (max-width: 1024px) {
+  article img {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 1025px) {
+  article img {
+    max-width: 100%;
   }
 }

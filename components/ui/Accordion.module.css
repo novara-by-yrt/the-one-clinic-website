@@ -32,13 +32,13 @@
 
 /* Dark theme item */
 .accordion.dark .item {
-  border-color: rgb(255 255 255 / 0.14);
-  background: rgb(255 255 255 / 0.10);
+  border-color: #000;
+  background: #000;
 }
 
 .accordion.dark .item:hover {
-  border-color: rgb(255 255 255 / 0.26);
-  background: rgb(255 255 255 / 0.14);
+  border-color: #1a1a1a;
+  background: #1a1a1a;
   transform: translateY(-1px);
 }
 
@@ -47,12 +47,55 @@
   border-color: rgb(0 0 0 / 0.15);
   box-shadow: 0 4px 24px rgb(0 0 0 / 0.08);
   transform: none;
+  position: relative;
+  background: var(--color-white);
+}
+
+.accordion.light .item.open::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, var(--color-text-dark), transparent);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2), inset 0 0 8px rgba(0, 0, 0, 0.1);
+  animation: lineSlideDown 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  opacity: 0;
 }
 
 .accordion.dark .item.open {
-  border-color: rgb(255 255 255 / 0.28);
-  background: rgb(255 255 255 / 0.16);
+  border-color: #000;
+  background: #000;
   transform: none;
+  position: relative;
+}
+
+.accordion.dark .item.open::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #fff, transparent);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.6), inset 0 0 8px rgba(255, 255, 255, 0.3);
+  animation: lineSlideDown 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  opacity: 0;
+}
+
+@keyframes lineSlideDown {
+  0% {
+    opacity: 0;
+    clip-path: inset(100% 0 0 0);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
 }
 
 /* ── Heading reset ────────────────────────────────────────────── */
@@ -101,7 +144,7 @@
 }
 
 .accordion.dark .open .number {
-  color: rgb(255 255 255 / 0.85);
+  color: #fff;
 }
 
 /* ── Question text ────────────────────────────────────────────── */
@@ -118,7 +161,7 @@
 }
 
 .accordion.dark .question {
-  color: rgb(255 255 255 / 0.88);
+  color: #fff;
 }
 
 .accordion.dark .open .question {
@@ -145,8 +188,8 @@
 }
 
 .accordion.dark .icon {
-  border-color: rgb(255 255 255 / 0.12);
-  color: rgb(255 255 255 / 0.6);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .accordion.light .item:hover .icon {
@@ -156,9 +199,9 @@
 }
 
 .accordion.dark .item:hover .icon {
-  border-color: rgb(255 255 255 / 0.3);
-  background: rgb(255 255 255 / 0.06);
-  color: var(--color-text-light);
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
 }
 
 .accordion.light .open .icon {
@@ -214,5 +257,5 @@
 }
 
 .accordion.dark .answer {
-  color: rgb(255 255 255 / 0.72);
+  color: rgba(255, 255, 255, 0.85);
 }

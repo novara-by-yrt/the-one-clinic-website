@@ -320,7 +320,6 @@ export default function EndoliftPage() {
   const [baIndex, setBaIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(2);
   const [showAllFaqs, setShowAllFaqs] = useState(false);
-  const [expertIndex, setExpertIndex] = useState(0);
 
   useEffect(() => {
     const update = () => {
@@ -439,11 +438,6 @@ export default function EndoliftPage() {
           </motion.div>
         </Container>
       </section>
-
-      {/* ════════════════════════════════════════
-          2. PATIENT REVIEWS
-      ════════════════════════════════════════ */}
-      <Testimonials />
 
       {/* ════════════════════════════════════════
           3A. WHAT IS ENDOLIFT?
@@ -598,7 +592,7 @@ export default function EndoliftPage() {
       {/* ════════════════════════════════════════
           4. TREATMENT JOURNEY
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="light" data-section-theme="light" className={styles.journeySection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -654,9 +648,6 @@ export default function EndoliftPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-              What You Gain
-            </motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
               Endolift Treated Benefits
             </motion.h2>
@@ -753,7 +744,6 @@ export default function EndoliftPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>The Science</motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
               How Does Endolift Work?
             </motion.h2>
@@ -1017,6 +1007,11 @@ export default function EndoliftPage() {
       </Section>
 
       {/* ════════════════════════════════════════
+          2. PATIENT REVIEWS
+      ════════════════════════════════════════ */}
+      <Testimonials />
+
+      {/* ════════════════════════════════════════
           NEW: CTA BANNER
       ════════════════════════════════════════ */}
       <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book Endolift consultation">
@@ -1122,7 +1117,7 @@ export default function EndoliftPage() {
       {/* ════════════════════════════════════════
           NEW: BEST ENDOLIFT LEICESTER EXPERIENCE
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="light" data-section-theme="light" className={styles.clinicIntroSection}>
         <Container>
           <motion.div
             className={styles.clinicIntroBody}
@@ -1190,9 +1185,6 @@ export default function EndoliftPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Why Us
-            </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
               Why Choose The One Clinic For Endolift Laser
             </motion.h2>
@@ -1221,93 +1213,6 @@ export default function EndoliftPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          NEW: MEET THE EXPERT (SLIDESHOW)
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
-        <Container>
-          <div className={styles.expertSlideshow}>
-            {/* Card, keyed to re-animate on slide change */}
-            <motion.div
-              key={expertIndex}
-              className={styles.expertCard}
-              variants={stagger(0.1)}
-              initial="hidden"
-              animate="show"
-            >
-              {/* Left: full-bleed photo panel */}
-              <motion.div className={styles.expertCardPhotoPanel} variants={fadeUp}>
-                <Image
-                  src={EXPERTS[expertIndex].image}
-                  alt={EXPERTS[expertIndex].alt}
-                  fill
-                  className={styles.expertCardPhoto}
-                  sizes="(max-width: 768px) 100vw, 420px"
-                />
-              </motion.div>
-
-              {/* Right: content */}
-              <motion.div className={styles.expertCardContent} variants={stagger(0.08)}>
-                <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-                  Meet The Expert
-                </motion.p>
-                <motion.h2 className={styles.expertCardName} variants={fadeUp}>
-                  {EXPERTS[expertIndex].name}
-                </motion.h2>
-
-                <motion.div className={styles.expertCardBadges} variants={fadeUp}>
-                  {EXPERTS[expertIndex].credentials.map((c) => (
-                    <span key={c} className={styles.expertCardBadge}>{c}</span>
-                  ))}
-                </motion.div>
-
-                {EXPERTS[expertIndex].bio.map((para, i) => (
-                  <motion.p key={i} className={styles.expertCardBio} variants={fadeUp}>
-                    {para}
-                  </motion.p>
-                ))}
-              </motion.div>
-            </motion.div>
-
-            {/* Slideshow controls */}
-            <div className={styles.expertSlideControls}>
-              <button
-                className={styles.expertSlideArrow}
-                onClick={() => setExpertIndex((i) => Math.max(0, i - 1))}
-                disabled={expertIndex === 0}
-                aria-label="Previous expert"
-              >
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                  <path d="M12.5 15l-5-5 5-5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </button>
-
-              <div className={styles.expertSlideDots}>
-                {EXPERTS.map((expert, i) => (
-                  <button
-                    key={expert.name}
-                    className={`${styles.expertSlideDot} ${expertIndex === i ? styles.expertSlideDotActive : ''}`}
-                    onClick={() => setExpertIndex(i)}
-                    aria-label={`View ${expert.name}`}
-                  />
-                ))}
-              </div>
-
-              <button
-                className={styles.expertSlideArrow}
-                onClick={() => setExpertIndex((i) => Math.min(EXPERTS.length - 1, i + 1))}
-                disabled={expertIndex === EXPERTS.length - 1}
-                aria-label="Next expert"
-              >
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                  <path d="M7.5 5l5 5-5 5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
           8. MEET THE EXPERTS
       ════════════════════════════════════════ */}
       <MeetTheExperts />
@@ -1316,20 +1221,10 @@ export default function EndoliftPage() {
           9. FAQ
       ════════════════════════════════════════ */}
       <section className={styles.faqSection} data-section-theme="dark">
-        <Image
-          src="/images/Background image1.jpg"
-          alt=""
-          fill
-          className={styles.faqBgImg}
-          sizes="100vw"
-          aria-hidden="true"
-        />
-        <div className={styles.faqOverlay} aria-hidden="true" />
-
         <div className={styles.faqInner}>
           <Container>
             <motion.div
-              className={styles.sectionHeader}
+              className={styles.sectionHeaderCentre}
               variants={stagger(0.1)}
               initial="hidden"
               whileInView="show"
