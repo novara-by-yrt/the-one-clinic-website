@@ -513,7 +513,7 @@ export default function EyeBagsPage() {
             {/* Left: image */}
             <motion.div className={styles.riskImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Eye Bags.png"
+                src="/images/Eye-bags.jpg"
                 alt="Person showing eye bags under eyes"
                 fill
                 className={styles.riskImage}
