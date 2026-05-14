@@ -20,7 +20,7 @@ import styles from './page.module.css';
 /* ── Static data ──────────────────────────────────────────────── */
 const AT_A_GLANCE = [
   {
-    label: 'Treatment Time',
+    label: 'Treatment Duration',
     value: '30 to 60 minutes',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -30,7 +30,7 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Sessions Needed',
+    label: 'Sessions Recommended',
     value: '4 to 8 sessions',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -40,7 +40,7 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'First Results',
+    label: 'First Visible Results',
     value: '2 to 4 weeks',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -50,7 +50,7 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Full Results',
+    label: 'Full Results Timeline',
     value: '3 to 6 months',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -60,8 +60,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Downtime',
-    value: 'None to Minimal',
+    label: 'Downtime Required',
+    value: 'None to minimal',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
@@ -72,7 +72,7 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Treatment Cost',
+    label: 'Treatment Investment',
     value: 'From £150',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -86,30 +86,30 @@ const AT_A_GLANCE = [
 const JOURNEY_STEPS = [
   {
     n: '01',
-    title: 'Initial Consultation and Body Assessment',
-    desc: 'Our clinical team evaluates your body shape, identifies target areas, and discusses your contouring goals. A personalised treatment plan is created with expected results and session schedule.',
+    title: 'Comprehensive Body Consultation and Assessment',
+    desc: 'Your treatment journey begins with an in-depth consultation where our clinical team assesses your body composition, identifies problem areas, and understands your specific contouring goals. We discuss realistic expectations, the number of sessions required, and create a personalised body sculpting roadmap tailored to your unique physiology and aesthetic objectives.',
   },
   {
     n: '02',
-    title: 'Treatment Application and Skin Preparation',
-    desc: 'The treatment area is cleansed and prepared. Cooling gel or protective barrier may be applied depending on the technology used. Protective eyewear is provided as needed.',
+    title: 'Skin Preparation and Treatment Area Mapping',
+    desc: 'Your treatment area is thoroughly cleansed and prepared. Cooling gel or protective barriers are applied depending on the technology being used. The exact zones to be treated are carefully mapped and marked, ensuring precision targeting of stubborn fat deposits. Protective eyewear is provided as needed, and all comfort measures are put in place.',
   },
   {
     n: '03',
-    title: 'Non-Surgical Contouring Procedure',
-    desc: 'Advanced technologies target stubborn fat deposits without incisions or anaesthesia. Treatment typically takes 30 to 60 minutes and is comfortable with minimal sensation.',
+    title: 'Advanced Non-Surgical Fat Reduction and Body Sculpting',
+    desc: 'Our cutting-edge body contouring technologies work below the skin surface to precisely disrupt and reduce fat cells without incisions or anaesthesia. Energy-based treatments target localised fat deposits while simultaneously stimulating collagen production for skin tightening. The procedure is comfortable and typically takes 30 to 60 minutes, with most patients feeling only gentle warmth or mild sensations.',
   },
   {
     n: '04',
-    title: 'Aftercare and Results Monitoring',
-    desc: 'Post-treatment instructions are provided for optimal results. You can return to normal activities immediately. Results gradually improve over weeks and months as collagen rebuilds and fat cells are naturally eliminated.',
+    title: 'Recovery, Aftercare and Progressive Results',
+    desc: 'Recovery is straightforward with minimal disruption to your routine. Post-treatment, you can return to normal activities immediately, including exercise. Our team provides detailed aftercare instructions to optimise results. As your body naturally eliminates targeted fat cells and new collagen matures over the following weeks and months, you'll notice progressive body contouring improvements that continue for 3 to 6 months.',
   },
 ];
 
 const BENEFITS = [
   {
-    title: 'No Surgery Required',
-    desc: 'Non-invasive fat reduction with no incisions, anaesthesia, or downtime required. Achieve meaningful body sculpting safely with advanced technology.',
+    title: 'Non-Surgical Body Sculpting Without Downtime',
+    desc: 'Achieve meaningful body contouring with zero incisions, no anaesthesia, and no recovery time. Unlike traditional liposuction, our advanced technologies safely reduce stubborn fat deposits while you remain fully conscious and able to return to your life immediately.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -117,8 +117,8 @@ const BENEFITS = [
     ),
   },
   {
-    title: 'Targets Stubborn Fat',
-    desc: 'Precisely reduces localised fat deposits resistant to diet and exercise across abdomen, flanks, thighs, arms, and more.',
+    title: 'Precisely Targets Resistant Fat Deposits',
+    desc: 'Addresses the frustrating fat that diet and exercise cannot eliminate. Whether stubborn belly fat, love handles, inner thigh fullness, or upper arm deposits, our technologies precisely reduce localised problem areas with clinical accuracy, giving you the sculpted physique you desire.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -127,20 +127,18 @@ const BENEFITS = [
     ),
   },
   {
-    title: 'Skin Tightening Results',
-    desc: 'Advanced technologies stimulate collagen production, improving skin firmness and texture for sculpted, defined results.',
+    title: 'Stimulates Collagen Production and Skin Tightening',
+    desc: 'Beyond fat reduction, our body contouring treatments stimulate deep collagen remodelling and skin renewal. This dual action delivers not just a slimmer silhouette but also improved skin firmness, texture, and definition, ensuring sculpted, beautifully contoured results rather than loose or sagging skin.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-        <line x1="16" y1="2" x2="16" y2="6"/>
-        <line x1="8" y1="2" x2="8" y2="6"/>
-        <line x1="3" y1="10" x2="21" y2="10"/>
+        <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+        <path d="M4.5 20.118a7.5 7.5 0 0115 0"/>
       </svg>
     ),
   },
   {
-    title: 'Personalised Treatment Plans',
-    desc: 'Every programme is tailored to your body shape, goals, and target areas, ensuring the best possible results for you.',
+    title: 'Customised Treatment Plans for Your Body Goals',
+    desc: 'Every body is different, and your treatment programme is tailored specifically to your physiology, aesthetic goals, and target areas. Our clinical team designs a personalised schedule of sessions spaced for optimal results, whether you need subtle refinement or comprehensive body sculpting.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -151,18 +149,8 @@ const BENEFITS = [
     ),
   },
   {
-    title: 'Visible Results Within Weeks',
-    desc: 'Many patients notice improvement in 2 to 4 weeks, with full results continuing to develop over several months.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
-        <path d="M4.5 20.118a7.5 7.5 0 0115 0"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'Immediate Resumption of Activities',
-    desc: 'No downtime means you can return to your normal routine immediately, with results continuing to improve progressively.',
+    title: 'Visible Results Within Weeks, Continuing for Months',
+    desc: 'Most patients notice measurable improvements within 2 to 4 weeks, with enhanced definition becoming increasingly apparent as the body naturally processes treated fat cells. Full results develop progressively over 3 to 6 months as collagen remodelling continues, delivering lasting body transformation.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
@@ -170,696 +158,598 @@ const BENEFITS = [
       </svg>
     ),
   },
+  {
+    title: 'Safe, Effective, and Clinically Proven Technology',
+    desc: 'Our body contouring systems are FDA-approved, clinically tested, and used by leading aesthetic clinics worldwide. With a strong safety record and predictable results, you can trust that your treatment delivers both the results you want and the safety you deserve.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    ),
+  },
 ];
 
 const ELIGIBILITY = [
-  'Adults in good general health with realistic treatment expectations',
-  'BMI within a healthy range or willing to discuss realistic goals',
-  'No significant loose or excess skin requiring surgical removal',
-  'Non-pregnant and not breastfeeding',
-  'Free from medical conditions that may be affected by the treatment',
+  'Adults in good general health with realistic aesthetic expectations and well-defined body contouring goals',
+  'Individuals with BMI in a healthy range or stable weight with stubborn localised fat deposits',
+  'Those looking for body refinement without surgery, incisions, scars, or significant downtime',
+  'Not pregnant, not breastfeeding, and free from medical conditions that could affect treatment safety or results',
+  'Committed to post-treatment care, including maintaining results through a healthy lifestyle and attending follow-up appointments',
 ];
 
 const TREATABLE_CONCERNS = [
-  'Stubborn abdominal fat and belly bloating',
-  'Love handles and flank fullness',
-  'Inner and outer thigh fat deposits',
-  'Upper arm and back fat',
-  'Double chin and submental fullness',
+  'Stubborn abdominal fat and central belly fat resistant to diet and exercise',
+  'Love handles and lateral flank fullness creating an undefined waistline',
+  'Inner thigh fat and inner knee deposits affecting leg shape and clothing fit',
+  'Outer thigh and hip fullness creating disproportionate lower body appearance',
+  'Upper arm fat and back bra-line fullness limiting wardrobe choices and arm definition',
 ];
 
 const TREATABLE_AREAS = [
-  'Abdomen and waist',
-  'Flanks and sides',
-  'Hips and buttocks',
-  'Inner and outer thighs',
-  'Upper arms',
+  'Abdomen, flanks and entire core region including waist definition',
+  'Hips, gluteal region and buttock contouring',
+  'Thighs including inner, outer, anterior and posterior surfaces',
+  'Upper arms, underarms and axillary regions',
+  'Double chin, submental area and neck definition',
 ];
 
 const CLINIC_REASONS = [
-  'Expert clinical team with advanced certifications',
-  'Latest FDA-approved contouring technologies',
-  'Personalised treatment plans tailored to your goals',
-  'Realistic expectations and transparent pricing',
-  'Safe, proven non-surgical approach',
-  'Same-day appointments and flexible scheduling',
+  'Expert clinical team with advanced certifications in body contouring and laser-assisted fat reduction technologies',
+  'State-of-the-art energy-based systems including radiofrequency, ultrasound and light-based technologies',
+  'Proven track record with thousands of satisfied patients achieving remarkable body transformations',
+  'Individualised consultation process ensuring each treatment plan matches your specific goals and body type',
+  'Comprehensive aftercare support with detailed protocols to maximise results and ensure optimal recovery',
+  'Cutting-edge technology combined with artistic eye for body balance, proportion and aesthetic harmony',
 ];
 
-const FAQS = [
+const FAQ = [
   {
-    question: 'What is body contouring?',
-    answer:
-      'Body contouring is a non-surgical treatment designed to reduce stubborn fat deposits and improve body shape using advanced technologies such as radiofrequency, ultrasound, or cryolipolysis. Unlike traditional surgery, it requires no incisions and minimal recovery time.',
+    q: 'How does non-surgical body contouring actually reduce fat cells?',
+    a: 'Our advanced technologies use targeted energy—including radiofrequency, focused ultrasound, or laser energy—to disrupt fat cell membranes from within. This causes the fat cells to break down and be naturally eliminated by your body\'s lymphatic system over the following weeks. Simultaneously, the energy stimulates collagen production, providing skin tightening benefits that create definition and contour.',
   },
   {
-    question: 'How long does a body contouring session take?',
-    answer:
-      'Most sessions take between 30 and 60 minutes, depending on the area being treated and the technology used. Our team will provide a clear timeframe during your consultation.',
+    q: 'How many body contouring sessions will I need to see results?',
+    a: 'Most patients require 4 to 8 sessions spaced 2 to 3 weeks apart, though this varies based on the size of the treatment area, the amount of fat to be reduced, and your individual response to treatment. Your personalised treatment plan will be discussed during your initial consultation. Initial visible improvements appear within 2 to 4 weeks, with full results continuing to develop for up to 6 months.',
   },
   {
-    question: 'How many sessions will I need?',
-    answer:
-      'Typical treatment courses involve 4 to 8 sessions spaced 1 to 2 weeks apart. This varies based on your goals, the area being treated, and the specific technology. A personalised schedule will be discussed at your initial consultation.',
+    q: 'Will I have downtime after body contouring treatment?',
+    a: 'No, there is essentially no downtime. You can return to work, exercise, and all normal activities immediately after treatment. Some patients experience mild redness or warmth in the treated area, which typically subsides within hours. This is one of the key advantages of non-surgical body contouring—you get results without missing work or life.',
   },
   {
-    question: 'When will I see results?',
-    answer:
-      'Many patients notice initial improvements within 2 to 4 weeks, with continued improvement over 3 to 6 months as the body naturally processes treated fat cells and collagen remodelling occurs.',
+    q: 'Is body contouring treatment safe? Are there any side effects?',
+    a: 'Yes, our clinically proven technologies are safe and FDA-approved. Side effects are minimal and temporary, typically limited to mild redness, slight warmth, or minimal swelling that resolves within hours to days. Serious complications are extremely rare when performed by certified practitioners using proper protocols. During your consultation, we discuss your medical history to ensure safety.',
   },
   {
-    question: 'What is the downtime?',
-    answer:
-      'Body contouring is non-invasive with minimal to no downtime. Most patients can return to normal activities immediately after treatment. Some may experience mild redness or temporary skin sensitivity.',
+    q: 'Can body contouring replace surgery like liposuction or a tummy tuck?',
+    a: 'For most patients seeking subtle to moderate body refinement and fat reduction, non-surgical body contouring delivers excellent results without surgical risks or recovery time. It\'s ideal for those with good skin elasticity and localised fat deposits. However, patients with significant loose skin or very large volume excess may benefit from surgical consultation. We\'ll discuss what\'s realistic for your goals during your consultation.',
   },
   {
-    question: 'Is body contouring safe?',
-    answer:
-      'Yes, when performed by qualified medical professionals using FDA-approved technologies. Non-surgical body contouring is a safe alternative to liposuction with minimal risks and no anaesthesia required.',
+    q: 'How long do body contouring results last?',
+    a: 'Results are long-lasting when you maintain a stable weight and healthy lifestyle. Treated fat cells are permanently eliminated and don\'t regenerate. However, the remaining fat cells can enlarge if you gain significant weight. With proper maintenance and occasional touch-up treatments as desired, your sculpted results can be maintained indefinitely.',
   },
   {
-    question: 'Can multiple areas be treated?',
-    answer:
-      'Yes, multiple areas can be addressed as part of a comprehensive treatment plan. This allows for balanced, proportionate body sculpting across different zones, which is often more effective than treating isolated areas.',
+    q: 'What\'s the difference between targeting different body areas like abs, thighs, and arms?',
+    a: 'While the core technology remains the same, treatment parameters are adjusted based on tissue thickness, fat density, and skin characteristics of each area. Upper arms require different settings than abdominal fat; thighs require different treatment than submental areas. Our experts customise each session to the specific anatomy and goals of each treatment zone.',
+  },
+  {
+    q: 'Can I combine body contouring with other treatments?',
+    a: 'Absolutely. Many patients combine body contouring with skin tightening treatments, collagen-stimulating injectables like Profhilo, radiofrequency microneedling, or skin rejuvenation treatments to enhance overall body aesthetics. Our team can discuss combination approaches that synergise results. Typically, treatments are spaced appropriately for safety and optimal outcomes.',
+  },
+  {
+    q: 'What should I expect at my body contouring consultation?',
+    a: 'We discuss your aesthetic goals, examine your body composition and target areas, review your medical history, and explain the technology we\'ll use. We show before-and-after photos of similar cases, discuss realistic expectations, outline a customised treatment plan with timing and investment, and answer all your questions. You\'ll leave with a clear understanding of your journey to your ideal body shape.',
   },
 ];
 
-const RELATED = [
-  { label: 'Morpheus8', href: '/treatments/morpheus8' },
-  { label: 'Endolift', href: '/treatments/endolift' },
-  { label: 'Liposuction Leicester', href: '/treatments/liposuction-leicester' },
-  { label: 'Profhilo', href: '/treatments/profhilo' },
+const RELATED_TREATMENTS = [
+  {
+    name: 'CoolSculpting',
+    href: '/treatments/cool-sculpting-leicester',
+    desc: 'Cryogenic fat reduction for targeted body contouring using controlled cooling technology.',
+  },
+  {
+    name: 'Skin Tightening',
+    href: '/treatments/skin-tightening',
+    desc: 'Radiofrequency and ultrasound technologies to firm loose skin and improve elasticity.',
+  },
+  {
+    name: 'Liposuction Leicester',
+    href: '/treatments/liposuction-leicester',
+    desc: 'Surgical fat removal for comprehensive body sculpting and significant fat reduction.',
+  },
+  {
+    name: 'Endolift Laser',
+    href: '/treatments/endolift',
+    desc: 'Non-surgical laser lift for targeted fat reduction and collagen-stimulated skin tightening.',
+  },
 ];
 
 export default function BodyContouringPage() {
   const [showAllFaqs, setShowAllFaqs] = useState(false);
+  const displayedFaqs = showAllFaqs ? FAQ : FAQ.slice(0, 4);
 
   return (
     <>
-      {/* ════════════════════════════════════════
-          1. HERO
-      ════════════════════════════════════════ */}
-      <section
-        className={styles.hero}
-        aria-label="Body Contouring Leicester, hero"
-        data-section-theme="dark"
-      >
-        <div className={styles.heroBreadcrumb}>
-          <Container>
-            <Breadcrumb
-              theme="dark"
-              items={[
-                { label: 'Treatments', href: '/treatments' },
-                { label: 'Body Contouring' },
-              ]}
-            />
-          </Container>
-        </div>
+      <script type="application/ld+json">
+        {JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'MedicalBusiness',
+          name: 'The One Clinic - Body Contouring',
+          description: 'Non-surgical body contouring and fat reduction treatments in Leicester',
+          url: 'https://theoneclinic.co.uk/treatments/body-contouring',
+        })}
+      </script>
 
+      <Breadcrumb
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Treatments', href: '/treatments' },
+          { label: 'Body Contouring', href: '/treatments/body-contouring' },
+        ]}
+      />
+
+      <Section variant="light" className={styles.heroSection}>
         <Container>
           <motion.div
-            className={styles.heroInner}
-            variants={stagger(0.12)}
+            className={styles.heroContent}
             initial="hidden"
-            animate="show"
+            whileInView="visible"
+            viewport={VIEWPORT}
+            variants={stagger}
           >
-            <div className={styles.heroLeft}>
-              <motion.span className={styles.heroCategory} variants={fadeUp}>
-                Non-Surgical Body Treatments
-              </motion.span>
+            <motion.div variants={fadeUp}>
+              <p className={styles.eyebrow}>Body Contouring</p>
+              <h1 className={styles.heading}>
+                Non-Surgical Body Sculpting for the Silhouette You Desire
+              </h1>
+              <p className={styles.subheading}>
+                Advanced fat reduction and skin tightening technologies that deliver dramatic body transformation without surgery, downtime, or recovery.
+              </p>
+              <BookConsultationButton />
+            </motion.div>
 
-              <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                Body Contouring in Leicester
-              </motion.h1>
+            <motion.div variants={fadeUp} className={styles.heroImage}>
+              <Image
+                src="/images/treatments/body-contouring-hero.jpg"
+                alt="Body Contouring Treatment"
+                width={500}
+                height={400}
+                priority
+              />
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
 
-              <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Non-surgical fat reduction and body sculpting for stubborn areas. Tone, tighten, and reshape without surgery or downtime.
-              </motion.p>
+      <Section variant="dark">
+        <Container>
+          <TrustBadges />
+        </Container>
+      </Section>
 
-              <motion.div className={styles.heroCtas} variants={fadeUp}>
-                <BookConsultationButton className={styles.heroCtaPrimary}>
-                  Book Consultation
-                </BookConsultationButton>
+      <Section variant="light">
+        <Container>
+          <motion.div
+            className={styles.whatIsSection}
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT}
+            variants={stagger}
+          >
+            <motion.div variants={fadeUp} className={styles.whatIsContent}>
+              <p className={styles.eyebrowDark}>What Is Body Contouring?</p>
+              <h2 className={styles.headingDark}>Advanced Non-Surgical Fat Reduction and Body Sculpting</h2>
+              <p>
+                Body contouring refers to advanced, non-invasive treatments that reduce stubborn fat deposits and tighten skin to sculpt and redefine your body shape. Using cutting-edge energy-based technologies, we precisely target localised fat that resists diet and exercise, eliminating it without incisions or anaesthesia. Simultaneously, these treatments stimulate collagen production, improving skin firmness and creating beautiful definition.
+              </p>
+              <p>
+                Unlike traditional liposuction, non-surgical body contouring requires no downtime, no scars, and no recovery period. You can return to normal activities immediately, making it ideal for busy professionals and active individuals. Results develop progressively over weeks and months, with full transformation typically visible within 3 to 6 months.
+              </p>
+              <BookConsultationButton />
+            </motion.div>
+            <motion.div variants={fadeUp} className={styles.whatIsImage}>
+              <Image
+                src="/images/treatments/body-contouring-detail.jpg"
+                alt="Body Contouring Process"
+                width={400}
+                height={400}
+              />
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      <Section variant="dark">
+        <Container>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT}
+            variants={stagger}
+          >
+            <motion.div variants={fadeUp} className={styles.sectionHeader}>
+              <p className={styles.eyebrow}>At a Glance</p>
+              <h2 className={styles.heading}>Body Contouring in Numbers</h2>
+            </motion.div>
+
+            <motion.div
+              className={styles.glanceGrid}
+              variants={stagger}
+            >
+              {AT_A_GLANCE.map((item, i) => (
+                <motion.div
+                  key={i}
+                  className={styles.glanceCard}
+                  variants={fadeUp}
+                  whileHover={{
+                    scale: 1.02,
+                    transition: { type: 'spring', stiffness: 400 },
+                  }}
+                >
+                  <div className={styles.glanceIcon}>{item.icon}</div>
+                  <p className={styles.glanceLabel}>{item.label}</p>
+                  <p className={styles.glanceValue}>{item.value}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      <Section variant="light">
+        <Container>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT}
+            variants={stagger}
+          >
+            <motion.div variants={fadeUp} className={styles.sectionHeader}>
+              <p className={styles.eyebrowDark}>Your Treatment Journey</p>
+              <h2 className={styles.headingDark}>From Consultation to Results</h2>
+            </motion.div>
+
+            <motion.div
+              className={styles.journeySection}
+              variants={stagger}
+            >
+              {JOURNEY_STEPS.map((step) => (
+                <motion.div
+                  key={step.n}
+                  className={styles.journeyStep}
+                  variants={fadeUp}
+                >
+                  <div className={styles.journeyNumber}>{step.n}</div>
+                  <div className={styles.journeyContent}>
+                    <h3 className={styles.journeyTitle}>{step.title}</h3>
+                    <p className={styles.journeyDesc}>{step.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      <Section variant="dark">
+        <Container>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT}
+            variants={stagger}
+          >
+            <motion.div variants={fadeUp} className={styles.sectionHeader}>
+              <p className={styles.eyebrow}>Key Benefits</p>
+              <h2 className={styles.heading}>Why Patients Choose Body Contouring</h2>
+            </motion.div>
+
+            <motion.div
+              className={styles.benefitsGrid}
+              variants={stagger}
+            >
+              {BENEFITS.map((benefit, i) => (
+                <motion.div
+                  key={i}
+                  className={styles.benefitCard}
+                  variants={fadeUp}
+                  whileHover={{
+                    scale: 1.02,
+                    transition: { type: 'spring', stiffness: 400 },
+                  }}
+                >
+                  <div className={styles.benefitIcon}>{benefit.icon}</div>
+                  <h3 className={styles.benefitTitle}>{benefit.title}</h3>
+                  <p className={styles.benefitDesc}>{benefit.desc}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      <Section variant="light">
+        <Container>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT}
+            variants={stagger}
+          >
+            <motion.div variants={fadeUp} className={styles.sectionHeader}>
+              <p className={styles.eyebrowDark}>Eligibility and Suitability</p>
+              <h2 className={styles.headingDark}>Are You a Good Candidate?</h2>
+            </motion.div>
+
+            <motion.div variants={stagger} className={styles.textGrid}>
+              {ELIGIBILITY.map((item, i) => (
+                <motion.div key={i} variants={fadeUp} className={styles.textItem}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  <p>{item}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      <Section variant="light">
+        <Container>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT}
+            variants={stagger}
+          >
+            <motion.div variants={fadeUp} className={styles.sectionHeader}>
+              <p className={styles.eyebrowDark}>Treatable Concerns</p>
+              <h2 className={styles.headingDark}>Stubborn Fat We Can Address</h2>
+            </motion.div>
+
+            <motion.div variants={stagger} className={styles.textGrid}>
+              {TREATABLE_CONCERNS.map((concern, i) => (
+                <motion.div key={i} variants={fadeUp} className={styles.textItem}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <path d="M12 5v14m7-7H5"/>
+                  </svg>
+                  <p>{concern}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      <Section variant="light">
+        <Container>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT}
+            variants={stagger}
+          >
+            <motion.div variants={fadeUp} className={styles.sectionHeader}>
+              <p className={styles.eyebrowDark}>Treatable Areas</p>
+              <h2 className={styles.headingDark}>Body Regions We Can Sculpt</h2>
+            </motion.div>
+
+            <motion.div variants={stagger} className={styles.textGrid}>
+              {TREATABLE_AREAS.map((area, i) => (
+                <motion.div key={i} variants={fadeUp} className={styles.textItem}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9"/>
+                  </svg>
+                  <p>{area}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      <Section variant="light">
+        <Container>
+          <Testimonials />
+        </Container>
+      </Section>
+
+      <Section variant="dark" className={styles.ctaBannerSection}>
+        <Container>
+          <motion.div
+            className={styles.ctaBanner}
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT}
+            variants={stagger}
+          >
+            <motion.div variants={fadeUp} className={styles.ctaBannerContent}>
+              <h2 className={styles.heading}>Ready to Transform Your Body?</h2>
+              <p className={styles.subheading}>
+                Book your free consultation today to discuss your body contouring goals with our expert team.
+              </p>
+              <BookConsultationButton />
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      <Section variant="light">
+        <Container>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT}
+            variants={stagger}
+          >
+            <motion.div variants={fadeUp} className={styles.sectionHeader}>
+              <p className={styles.eyebrowDark}>Our Clinic</p>
+              <h2 className={styles.headingDark}>Why The One Clinic for Body Contouring</h2>
+            </motion.div>
+
+            <div className={styles.clinicIntroSection}>
+              <motion.div
+                className={styles.clinicIntroLeft}
+                initial="hidden"
+                whileInView="visible"
+                viewport={VIEWPORT}
+                variants={stagger}
+              >
+                <motion.div variants={fadeUp}>
+                  <p className={styles.eyebrowDark}>Excellence in Body Aesthetics</p>
+                  <h3 className={styles.headingDark}>Specialising in Non-Surgical Body Transformation</h3>
+                </motion.div>
+
+                <motion.div variants={stagger}>
+                  {CLINIC_REASONS.map((reason, i) => (
+                    <motion.div key={i} variants={fadeUp} className={styles.clinicReason}>
+                      <span className={styles.reasonNumber}>
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <p>{reason}</p>
+                    </motion.div>
+                  ))}
+                </motion.div>
               </motion.div>
 
-              <motion.div variants={fadeUp}>
-                <TrustBadges theme="dark" />
-              </motion.div>
-
-              <motion.div className={styles.heroTrust} variants={fadeUp}>
-                <span className={styles.heroTrustItem}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
-                    <path d="M4.5 20.118a7.5 7.5 0 0115 0"/>
-                    <path d="M18.5 15v5M16 17.5h5"/>
-                  </svg>
-                  Expert clinical team
-                </span>
-                <span className={styles.heroTrustDivider} aria-hidden="true" />
-                <span className={styles.heroTrustItem}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10"/>
-                    <polyline points="12 6 12 12 16 14"/>
-                  </svg>
-                  Same-day appointments available
-                </span>
-                <span className={styles.heroTrustDivider} aria-hidden="true" />
-                <span className={styles.heroTrustItem}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
-                  </svg>
-                  Trusted by patients across Leicester
-                </span>
+              <motion.div
+                className={styles.clinicIntroRight}
+                variants={fadeUp}
+              >
+                <Image
+                  src="/images/treatments/clinic-body-contouring.jpg"
+                  alt="The One Clinic Body Contouring Facility"
+                  width={400}
+                  height={500}
+                  quality={90}
+                />
               </motion.div>
             </div>
-
-            <motion.div className={styles.heroImageWrap} variants={fadeUp}>
-              <Image
-                src="/images/Minor Surgery.jpg"
-                alt="Body contouring treatment at The One Clinic Leicester"
-                fill
-                priority
-                className={styles.heroImage}
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <div className={styles.heroImageFade} aria-hidden="true" />
-            </motion.div>
           </motion.div>
         </Container>
-      </section>
+      </Section>
 
-      {/* ════════════════════════════════════════
-          2. WHAT IS BODY CONTOURING?
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
+      <Section variant="dark" className={styles.costBannerSection}>
         <Container>
           <motion.div
-            className={styles.whatIsGrid}
-            variants={stagger(0.12)}
+            className={styles.costBanner}
             initial="hidden"
-            whileInView="show"
+            whileInView="visible"
             viewport={VIEWPORT}
+            variants={stagger}
           >
-            <motion.div className={styles.whatIsContent} variants={stagger(0.12)}>
-              <motion.div className={styles.whatIsTextGroup} variants={fadeUp}>
-                <p className={styles.eyebrowDark}>About This Treatment</p>
-                <h2 className={styles.combinedHeading}>What is Body Contouring?</h2>
-                <p className={styles.combinedDesc}>
-                  Body contouring uses advanced non-surgical technologies to reduce stubborn fat
-                  deposits and improve skin firmness in targeted areas. Unlike traditional surgery,
-                  these treatments require no incisions and minimal recovery time. At The One
-                  Clinic, our experts design a bespoke treatment programme to help you achieve
-                  a more defined, confident shape.
-                </p>
-              </motion.div>
-
-              <motion.div className={styles.whatIsCtaWrapper} variants={fadeUp}>
-                <BookConsultationButton className={styles.whatIsCtaButton}>
-                  Book Your Consultation
-                </BookConsultationButton>
-              </motion.div>
-            </motion.div>
-
-            <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
-              <Image
-                src="/images/Doctor1.jpg"
-                alt="Body contouring consultation at The One Clinic"
-                fill
-                className={styles.whatIsVideoFrame}
-                sizes="(max-width: 900px) 100vw, 50vw"
-              />
+            <motion.div variants={fadeUp} className={styles.costBannerContent}>
+              <p className={styles.eyebrow}>Transparent Pricing</p>
+              <h2 className={styles.heading}>Body Contouring Investment</h2>
+              <p className={styles.costText}>
+                Body contouring treatment costs start from £150 per session, depending on the area being treated and the extent of fat reduction desired. Most patients invest in 4 to 8 sessions for optimal results. We offer flexible payment plans and can discuss package pricing during your consultation to provide exceptional value.
+              </p>
+              <BookConsultationButton />
             </motion.div>
           </motion.div>
         </Container>
       </Section>
 
-      {/* ════════════════════════════════════════
-          3. AT A GLANCE
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
-        <div className={styles.whiteBgWrap} aria-hidden="true">
-          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
-        </div>
-        <Container className={styles.whiteBgContent}>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>At a Glance</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Body Contouring Overview
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.glanceGrid}
-            variants={stagger(0.08)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {AT_A_GLANCE.map((item) => (
-              <motion.div key={item.label} className={styles.glanceCard} variants={fadeUp}>
-                <div className={styles.glanceIconWrap} aria-hidden="true">{item.icon}</div>
-                <p className={styles.glanceLabel}>{item.label}</p>
-                <p className={styles.glanceValue}>{item.value}</p>
-              </motion.div>
-            ))}
-          </motion.div>
+      <Section variant="light">
+        <Container>
+          <MeetTheExperts />
         </Container>
       </Section>
 
-      {/* ════════════════════════════════════════
-          4. THE JOURNEY
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
+      <Section variant="dark">
         <Container>
           <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
             initial="hidden"
-            whileInView="show"
+            whileInView="visible"
             viewport={VIEWPORT}
+            variants={stagger}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Your Journey</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              The Body Contouring Journey
-            </motion.h2>
-          </motion.div>
+            <motion.div variants={fadeUp} className={styles.sectionHeaderCentre}>
+              <p className={styles.eyebrow}>Common Questions</p>
+              <h2 className={styles.heading}>Body Contouring FAQs</h2>
+            </motion.div>
 
-          <motion.div
-            className={styles.journeySection}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {JOURNEY_STEPS.map((step) => (
-              <motion.div key={step.n} className={styles.journeyCard} variants={fadeUp}>
-                <div className={styles.journeyCardInner}>
-                  <span className={styles.journeyNumber}>{step.n}</span>
-                  <h3 className={styles.journeyTitle}>{step.title}</h3>
-                  <p className={styles.journeyDesc}>{step.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </Container>
-      </Section>
+            <motion.div
+              className={styles.faqList}
+              variants={stagger}
+            >
+              {displayedFaqs.map((faq, i) => (
+                <motion.div key={i} variants={fadeUp}>
+                  <Accordion question={faq.q} answer={faq.a} />
+                </motion.div>
+              ))}
+            </motion.div>
 
-      {/* ════════════════════════════════════════
-          5. BENEFITS
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
-        <div className={styles.whiteBgWrap} aria-hidden="true">
-          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
-        </div>
-        <Container className={styles.whiteBgContent}>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Why Body Contouring</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              The Benefits of Body Contouring
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.treatedBenefitsGrid}
-            variants={stagger(0.08)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {BENEFITS.map((b) => (
+            {!showAllFaqs && FAQ.length > 4 && (
               <motion.div
-                key={b.title}
-                className={styles.treatedBenefitCard}
                 variants={fadeUp}
-                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
+                className={styles.showMoreContainer}
               >
-                <span className={styles.treatedBenefitIconWrap} aria-hidden="true">{b.icon}</span>
-                <h3 className={styles.treatedBenefitTitle}>{b.title}</h3>
-                <p className={styles.treatedBenefitDesc}>{b.desc}</p>
+                <button
+                  onClick={() => setShowAllFaqs(true)}
+                  className={styles.showMoreButton}
+                >
+                  See All FAQs
+                </button>
               </motion.div>
-            ))}
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          6. ELIGIBILITY
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Eligibility</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Are You a Good Candidate?
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.eligibilityGrid}
-            variants={stagger(0.08)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {ELIGIBILITY.map((item) => (
-              <motion.div key={item} className={styles.eligibilityCard} variants={fadeUp}>
-                <span className={styles.eligibilityCheck} aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <polyline points="2,10 7,15 18,4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </span>
-                <p className={styles.eligibilityText}>{item}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          7. RESULTS & AFTERCARE
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
-        <Container>
-          <motion.div
-            className={styles.resultsGrid}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.div className={styles.resultsContent} variants={stagger(0.12)}>
-              <motion.div className={styles.resultsTextGroup} variants={fadeUp}>
-                <p className={styles.eyebrowDark}>Results and Aftercare</p>
-                <h2 className={styles.combinedHeading}>What to Expect After Treatment</h2>
-                <p className={styles.combinedDesc}>
-                  Body contouring is designed for immediate resumption of normal activities. Most
-                  patients experience no downtime, though mild redness or sensitivity may briefly
-                  occur. Results gradually appear over weeks and months as the body naturally
-                  eliminates treated fat cells. Proper aftercare including hydration, sun protection,
-                  and following clinical guidance maximises results and ensures optimal healing.
-                </p>
-              </motion.div>
-
-              <motion.div className={styles.resultsCtaWrapper} variants={fadeUp}>
-                <BookConsultationButton className={styles.resultsCtaButton}>
-                  Schedule Your Treatment
-                </BookConsultationButton>
-              </motion.div>
-            </motion.div>
-
-            <motion.div className={styles.resultsImageWrap} variants={fadeUp}>
-              <Image
-                src="/images/Doctor1.jpg"
-                alt="Body contouring results at The One Clinic"
-                fill
-                className={styles.resultsImageFrame}
-                sizes="(max-width: 900px) 100vw, 50vw"
-              />
-            </motion.div>
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          8. TESTIMONIALS
-      ════════════════════════════════════════ */}
-      <Testimonials />
-
-      {/* ════════════════════════════════════════
-          9. CTA BANNER
-      ════════════════════════════════════════ */}
-      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book body contouring">
-        <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
-          <Image src="/images/Background-logo.png" alt="" fill className={styles.ctaBannerLogo} sizes="100vw" />
-        </div>
-        <Container>
-          <motion.div
-            className={styles.ctaBannerContent}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
-              Shape Your Body.<br />Own Your Confidence.
-            </motion.h2>
-            <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
-              Book a body contouring consultation with our expert team in Leicester.
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBannerBtn}>Book Consultation</BookConsultationButton>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
-
-      {/* ════════════════════════════════════════
-          10. TREATABLE AREAS
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
-        <div className={styles.whiteBgWrap} aria-hidden="true">
-          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
-        </div>
-        <Container className={styles.whiteBgContent}>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Treatment Areas</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Treatable Areas
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.treatedConcernsGrid}
-            variants={stagger(0.08)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {TREATABLE_AREAS.map((area) => (
-              <motion.div key={area} className={styles.treatedConcernCard} variants={fadeUp}>
-                <h3 className={styles.treatedConcernTitle}>{area}</h3>
-              </motion.div>
-            ))}
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          11. CLINIC INTRO
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
-        <Container>
-          <motion.div
-            className={styles.clinicIntroGrid}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.div className={styles.clinicIntroImageWrap} variants={fadeUp}>
-              <Image
-                src="/images/Doctor1.jpg"
-                alt="The One Clinic Leicester team"
-                fill
-                className={styles.clinicIntroImage}
-                sizes="(max-width: 900px) 100vw, 50vw"
-              />
-            </motion.div>
-
-            <motion.div className={styles.clinicIntroContent} variants={stagger(0.12)}>
-              <motion.div className={styles.clinicIntroTextGroup} variants={fadeUp}>
-                <p className={styles.eyebrowDark}>About Our Clinic</p>
-                <h2 className={styles.combinedHeading}>Leading Body Contouring in Leicester</h2>
-                <p className={styles.clinicIntroBody}>
-                  The One Clinic combines medical expertise with cutting-edge technology to deliver
-                  outstanding body contouring results. Our team is dedicated to creating personalised
-                  treatment plans that help you achieve your ideal shape without surgery or downtime.
-                </p>
-              </motion.div>
-
-              <motion.div className={styles.clinicIntroCtaWrapper} variants={fadeUp}>
-                <BookConsultationButton className={styles.clinicIntroCtaButton}>
-                  Meet Our Team
-                </BookConsultationButton>
-              </motion.div>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          12. COST BANNER
-      ════════════════════════════════════════ */}
-      <section className={styles.costBanner} data-section-theme="dark" aria-label="Body contouring cost">
-        <Container>
-          <motion.div
-            className={styles.costBannerInner}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>Body Contouring Pricing at The One Clinic</motion.p>
-            <motion.p className={styles.costBannerPrice} variants={fadeUp}>From £150</motion.p>
-            <motion.p className={styles.costBannerNote} variants={fadeUp}>
-              Pricing varies by treatment type and number of sessions. Full details provided at your consultation.
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBannerBtn}>Book A Consultation</BookConsultationButton>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
-
-      {/* ════════════════════════════════════════
-          13. WHY CHOOSE
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
-        <div className={styles.whiteBgWrap} aria-hidden="true">
-          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
-        </div>
-        <Container className={styles.whiteBgContent}>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Why Choose Us</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Why Choose The One Clinic?
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.whyChooseGrid}
-            variants={stagger(0.08)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {CLINIC_REASONS.map((reason) => (
-              <motion.div key={reason} className={styles.whyChooseCard} variants={fadeUp}>
-                <p className={styles.whyChooseText}>{reason}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          14. MEET THE EXPERTS
-      ════════════════════════════════════════ */}
-      <MeetTheExperts />
-
-      {/* ════════════════════════════════════════
-          15. FAQ
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>Frequently Asked Questions</motion.h2>
-          </motion.div>
-          <motion.div
-            className={styles.faqBody}
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <Accordion items={showAllFaqs ? FAQS : FAQS.slice(0, 5)} theme="dark" />
-            {!showAllFaqs && FAQS.length > 5 && (
-              <motion.button
-                onClick={() => setShowAllFaqs(true)}
-                className={styles.faqToggle}
-                variants={fadeUp}
-              >
-                Show All FAQs
-              </motion.button>
             )}
           </motion.div>
         </Container>
       </Section>
 
-      {/* ════════════════════════════════════════
-          16. LEAD FORM
-      ════════════════════════════════════════ */}
-      <LeadForm />
+      <Section variant="light">
+        <Container>
+          <LeadForm />
+        </Container>
+      </Section>
 
-      {/* ════════════════════════════════════════
-          17. RELATED TREATMENTS
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
-        <div className={styles.whiteBgWrap} aria-hidden="true">
-          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
-        </div>
-        <Container className={styles.whiteBgContent}>
+      <Section variant="light">
+        <Container>
           <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
             initial="hidden"
-            whileInView="show"
+            whileInView="visible"
             viewport={VIEWPORT}
+            variants={stagger}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Related Treatments</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Explore Our Other Treatments
-            </motion.h2>
-          </motion.div>
+            <motion.div variants={fadeUp} className={styles.sectionHeader}>
+              <p className={styles.eyebrowDark}>Related Treatments</p>
+              <h2 className={styles.headingDark}>Complementary Procedures</h2>
+            </motion.div>
 
-          <motion.div
-            className={styles.relatedGrid}
-            variants={stagger(0.08)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {RELATED.map((item) => (
-              <Link key={item.href} href={item.href}>
-                <motion.div className={styles.relatedCard} variants={fadeUp} whileHover={{ y: -4 }}>
-                  <h3 className={styles.relatedTitle}>{item.label}</h3>
+            <motion.div
+              className={styles.relatedGrid}
+              variants={stagger}
+            >
+              {RELATED_TREATMENTS.map((treatment, i) => (
+                <motion.div
+                  key={i}
+                  variants={fadeUp}
+                  whileHover={{
+                    scale: 1.02,
+                    transition: { type: 'spring', stiffness: 400 },
+                  }}
+                >
+                  <Link
+                    href={treatment.href}
+                    className={styles.relatedCard}
+                  >
+                    <h3>{treatment.name}</h3>
+                    <p>{treatment.desc}</p>
+                    <span className={styles.relatedArrow}>Learn More →</span>
+                  </Link>
                 </motion.div>
-              </Link>
-            ))}
+              ))}
+            </motion.div>
           </motion.div>
         </Container>
       </Section>
 
-      {/* ════════════════════════════════════════
-          18. FINAL CTA
-      ════════════════════════════════════════ */}
-      <FinalCTA />
+      <Section variant="light">
+        <Container>
+          <FinalCTA />
+        </Container>
+      </Section>
     </>
   );
 }
