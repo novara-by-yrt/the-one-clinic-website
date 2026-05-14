@@ -2265,7 +2265,7 @@
 
   /* Clinic intro: stack */
   .clinicIntroBody { grid-template-columns: 1fr; }
-  .clinicIntroLeft { padding-right: 0; border-right: none; padding-bottom: var(--space-4); border-bottom: 1px solid rgba(0 0 0 / 0.08); }
+  .clinicIntroLeft { padding-right: 0; border-right: none; padding-bottom: var(--space-4); border-bottom: 1px solid rgba(255 255 255 / 0.12); }
   .clinicIntroDesc { padding-left: 0; padding-top: var(--space-1); }
 
   /* Why Choose The One Clinic: 1-col */
