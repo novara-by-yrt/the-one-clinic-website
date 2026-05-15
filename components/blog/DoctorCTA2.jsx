@@ -44,13 +44,13 @@ export default function DoctorCTA2() {
           </div>
 
           {/* Image with white border */}
-          <div className="relative h-56 md:h-60 lg:h-72 p-3 md:p-4 flex items-center justify-center order-1 md:order-2">
+          <div className="relative h-56 md:h-60 lg:h-72 px-3 md:px-4 pt-0 pb-3 md:pb-4 flex items-center justify-center order-1 md:order-2">
             <div className="relative w-full h-full border-3 border-white rounded-lg overflow-hidden">
               <Image
                 src="/images/imgi_21_team-thumb-BEDI.jpg"
                 alt="Dr Gunjan Bedi"
                 fill
-                className="object-cover object-center"
+                className="object-contain object-center"
                 priority
               />
             </div>
