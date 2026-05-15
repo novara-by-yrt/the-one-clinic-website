@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import Link  from 'next/link';
 import { motion } from 'framer-motion';
@@ -15,11 +16,30 @@ import Testimonials           from '@/components/sections/Testimonials';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
 
+/* ── Pigmentation types ───────────────────────────────────────── */
+const PIGMENTATION_TYPES = [
+  {
+    num: '01',
+    title: 'Dark Spots / Age Spots',
+    desc: 'Localised brown patches that develop from sun exposure or ageing, typically on the face, hands, and décolletage.',
+  },
+  {
+    num: '02',
+    title: 'Uneven Skin Tone',
+    desc: 'Diffuse discolouration spread across larger areas of the skin, giving an inconsistent, blotchy complexion.',
+  },
+  {
+    num: '03',
+    title: 'Post-Inflammatory Pigmentation',
+    desc: 'Dark marks left behind after acne, injury, or eczema as the skin produces excess melanin during healing.',
+  },
+];
+
 /* ── Causes ───────────────────────────────────────────────────── */
 const CAUSES = [
   {
-    title: 'Sun Exposure',
-    desc: 'UV radiation is the most common trigger for pigmentation. It stimulates melanin production, causing dark spots, freckles, and patches to form on exposed skin.',
+    title: 'UV & Sun Exposure',
+    desc: 'UV radiation is the leading trigger for pigmentation. It stimulates excess melanin production, causing dark spots, freckles, and uneven patches on exposed skin.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="5"/>
@@ -35,17 +55,8 @@ const CAUSES = [
     ),
   },
   {
-    title: 'Hormonal Changes',
-    desc: 'Hormonal fluctuations during pregnancy, the menopause, or from contraceptive use can trigger melasma, areas of deeper, patterned pigmentation on the face.',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'Post-Inflammatory',
-    desc: 'Skin trauma such as acne, eczema, cuts, or cosmetic procedures can leave behind dark marks as the skin heals, known as post-inflammatory hyperpigmentation.',
+    title: 'Post-Acne Scarring',
+    desc: 'Inflammation from acne breakouts can trigger melanin overproduction, leaving persistent dark marks long after the blemish itself has healed.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -55,8 +66,26 @@ const CAUSES = [
     ),
   },
   {
-    title: 'Ageing',
-    desc: 'Age spots and liver spots develop over time as the skin accumulates years of UV exposure and the melanin distribution becomes irregular.',
+    title: 'Hormonal Changes',
+    desc: 'Fluctuations during pregnancy, menopause, or from hormonal contraception can trigger melasma, a pattern of deeper, symmetrical pigmentation on the face.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Skin Inflammation or Injury',
+    desc: 'Any form of skin trauma, including cuts, burns, eczema flares, or cosmetic procedures, can cause post-inflammatory hyperpigmentation as the skin heals.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Ageing & Cell Turnover Slowdown',
+    desc: 'As skin ages and cell renewal slows, melanin distributes less evenly, leading to age spots and a generally dull or patchy complexion.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -66,7 +95,7 @@ const CAUSES = [
   },
   {
     title: 'Genetics',
-    desc: 'A predisposition to freckles, melasma, or uneven skin tone can be inherited, making some skin types more susceptible to pigmentation regardless of sun habits.',
+    desc: 'A predisposition to freckles, melasma, or uneven skin tone can be inherited, making some skin types more susceptible regardless of lifestyle habits.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M6 3c0 4.5 6 4.5 6 9s-6 4.5-6 9"/>
@@ -76,86 +105,9 @@ const CAUSES = [
       </svg>
     ),
   },
-  {
-    title: 'Skin Inflammation',
-    desc: 'Chronic inflammatory conditions such as rosacea or eczema can disrupt normal melanin production, leading to patches of uneven colouration across the skin.',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-      </svg>
-    ),
-  },
 ];
 
-/* ── Treatments ───────────────────────────────────────────────── */
-const TREATMENTS = [
-  {
-    title: 'Laser Treatment',
-    desc:  'Targeted laser energy breaks down excess melanin in the skin, reducing dark spots, sun damage, and uneven pigmentation for a noticeably clearer, more even complexion.',
-    href:  '/treatments/laser-treatment',
-  },
-  {
-    title: 'Chemical Peel',
-    desc:  'Exfoliating peels remove pigmented surface skin cells, stimulate cell renewal, and progressively lighten dark patches and uneven tone across the face and body.',
-    href:  '/treatments/chemical-peel',
-  },
-  {
-    title: 'Polynucleotides',
-    desc:  'Stimulates deep skin regeneration to improve overall skin quality, reduce post-inflammatory marks, and restore a healthier, more even-toned complexion.',
-    href:  '/treatments/polynucleotides',
-  },
-  {
-    title: 'Profhilo',
-    desc:  'Deeply hydrates and bioremodels the skin to improve overall skin health, texture, and radiance, supporting a clearer and more luminous appearance over time.',
-    href:  '/treatments/profhilo',
-  },
-];
-
-/* ── Risk factors ─────────────────────────────────────────────── */
-const RISK_FACTORS = [
-  'People with a history of prolonged or unprotected sun exposure.',
-  'Those with darker skin tones, which are more prone to post-inflammatory pigmentation.',
-  'Women during pregnancy or those taking hormonal contraceptives.',
-  'Individuals with a history of acne, eczema, or inflammatory skin conditions.',
-  'Adults over the age of 40 with cumulative sun damage.',
-  'Those with a family history of melasma or freckling.',
-];
-
-/* ── Results timeline ─────────────────────────────────────────── */
-const RESULTS_TIMELINE = [
-  {
-    phase: 'Immediate',
-    title: 'Clearer Skin',
-    desc:  'Visible improvement in skin tone and brightness following initial treatment.',
-  },
-  {
-    phase: '2 to 4 Weeks',
-    title: 'Fading Marks',
-    desc:  'Dark spots and patches continue to fade as the skin renews itself.',
-  },
-  {
-    phase: '6 to 8 Weeks',
-    title: 'Even Tone',
-    desc:  'More uniform skin tone and improved overall complexion quality visible.',
-  },
-  {
-    phase: 'Long-term',
-    title: 'Maintained Results',
-    desc:  'Sun protection and maintenance treatments sustain a clear, even complexion.',
-  },
-];
-
-/* ── Why choose ───────────────────────────────────────────────── */
-const CLINIC_REASONS = [
-  { n: '01', text: 'All-in-one clinic with medical and aesthetic services.' },
-  { n: '02', text: 'Highly trained, compassionate, GMC-registered doctors.' },
-  { n: '03', text: 'Customised treatment plans based on your skin type and goals.' },
-  { n: '04', text: 'State-of-the-art facilities and modern equipment.' },
-  { n: '05', text: 'Strong reputation with excellent patient reviews.' },
-  { n: '06', text: 'Comprehensive aftercare and follow-up support.' },
-];
-
-/* ── FAQs ─────────────────────────────────────────────────────── */
+/* ── FAQ data ──────────────────────────────────────────────────── */
 const FAQS = [
   {
     question: 'What causes pigmentation on the skin?',
@@ -165,12 +117,12 @@ const FAQS = [
   {
     question: 'Can pigmentation be permanently removed?',
     answer:
-      'Many forms of pigmentation can be significantly reduced or cleared with the right treatment. Laser therapy and chemical peels are particularly effective for sun damage, age spots, and post-inflammatory marks. However, some pigmentation, particularly melasma, can recur without ongoing sun protection and maintenance. Our doctors will advise on the most appropriate approach for your skin.',
+      'Many forms of pigmentation can be significantly reduced or cleared with the right treatment. Laser therapy, IPL, and chemical peels are particularly effective for sun damage, age spots, and post-inflammatory marks. However, some pigmentation, particularly melasma, can recur without ongoing sun protection and maintenance. Our doctors will advise on the most appropriate approach for your skin.',
   },
   {
     question: 'How long do results last?',
     answer:
-      'Results vary depending on the type and depth of pigmentation and the treatment used. Laser treatment can provide long-lasting improvement, often 12 months or more with good sun protection. Chemical peels typically require a course of sessions for best results, with ongoing maintenance recommended. Daily SPF use is essential to prevent recurrence.',
+      'Results vary depending on the type and depth of pigmentation and the treatment used. Lumecca IPL and laser resurfacing can provide long-lasting improvement, often 12 months or more with good sun protection. Chemical peels typically require a course of sessions for best results, with ongoing maintenance recommended. Daily SPF use is essential to prevent recurrence.',
   },
   {
     question: 'Is pigmentation treatment safe for all skin tones?',
@@ -180,51 +132,160 @@ const FAQS = [
   {
     question: 'What is the recovery time?',
     answer:
-      'Recovery varies by treatment. Laser treatment may cause temporary redness, darkening of spots, or mild sensitivity for several days. Chemical peels can result in peeling and flaking over 3 to 7 days depending on the depth. Most patients can resume normal activities within 24 to 48 hours, with results continuing to improve over the following weeks.',
+      'Recovery varies by treatment. Lumecca IPL may cause temporary redness and darkening of spots for several days. Laser resurfacing can result in redness and sensitivity for up to a week. Chemical peels can cause peeling and flaking over 3 to 7 days depending on the depth. Most patients resume normal activities within 24 to 48 hours, with results continuing to improve over the following weeks.',
+  },
+  {
+    question: 'How many sessions will I need?',
+    answer:
+      'The number of sessions required depends on the severity and type of pigmentation. Lumecca IPL typically requires 1 to 3 sessions, while chemical peels and skincare programmes may involve regular treatments over several weeks. During your consultation, our specialists will create a personalised treatment plan tailored to your skin and goals.',
   },
 ];
 
-/* ── Related ──────────────────────────────────────────────────── */
+/* ── Related data ──────────────────────────────────────────────── */
 const RELATED_TREATMENTS = [
   {
-    title: 'Laser Treatment',
-    desc:  'Break down excess melanin and reduce dark spots with targeted laser energy.',
-    href:  '/treatments/laser-treatment',
+    title: 'Lumecca IPL',
+    desc:  'Target dark spots and sun damage with intense pulsed light for a brighter, more even complexion.',
+    href:  '/treatments/lumecca-ipl-leicester',
     tag:   'Medical Aesthetics',
   },
   {
-    title: 'Chemical Peel',
+    title: 'Chemical Peels',
     desc:  'Resurface and brighten pigmented skin with exfoliating, skin-renewing peels.',
-    href:  '/treatments/chemical-peel',
+    href:  '/treatments/chemical-peels',
     tag:   'Medical Aesthetics',
   },
   {
-    title: 'Polynucleotides',
-    desc:  'Stimulate deep skin regeneration to reduce post-inflammatory marks and improve tone.',
-    href:  '/treatments/polynucleotides',
+    title: 'Laser Resurfacing',
+    desc:  'Break down excess melanin and renew the skin surface for a clearer, more uniform tone.',
+    href:  '/treatments/laser-resurfacing',
+    tag:   'Medical Aesthetics',
+  },
+  {
+    title: 'AlumierMD Skincare',
+    desc:  'Clinically formulated skincare to brighten, protect, and maintain clear, even-toned skin.',
+    href:  '/treatments/skincare-alumier-md',
     tag:   'Medical Aesthetics',
   },
 ];
 
 const RELATED_CONDITIONS = [
   {
-    title: 'Hyperpigmentation / Sun Damage',
+    title: 'Hyperpigmentation / Sun Damage / Freckles',
     desc:  'Treat uneven skin tone, sunspots, freckles, and deeper pigmentation concerns.',
-    href:  '/conditions/hyperpigmentation',
+    href:  '/conditions/hyperpigmentation-sun-damage-freckles',
     tag:   'Skin',
   },
   {
-    title: 'Facial Redness / Rosacea',
+    title: 'Rosacea',
     desc:  'Calm persistent facial redness and restore an even, clear complexion.',
     href:  '/conditions/rosacea',
-    tag:   'Face',
+    tag:   'Skin',
   },
+];
+
+/* ── Risk factors ─────────────────────────────────────────────── */
+const RISK_FACTORS = [
+  'Those with frequent sun exposure without SPF protection.',
+  'People with darker skin tones, which are more prone to post-inflammatory pigmentation.',
+  'Women on hormonal contraception or those who are pregnant.',
+  'Acne-prone individuals who experience recurring breakouts.',
+  'Those with a history of eczema or psoriasis.',
+  'People over 40 with accumulated UV damage and slower cell turnover.',
+];
+
+/* ── Diagnose steps ───────────────────────────────────────────── */
+const DIAGNOSE_STEPS = [
+  {
+    num: '01',
+    title: 'Skin Pigmentation Mapping',
+    text: 'A thorough visual assessment of the distribution, depth, and pattern of pigmentation across the face and body.',
+  },
+  {
+    num: '02',
+    title: "Wood's Lamp & Dermatoscopy Analysis",
+    text: 'Advanced diagnostic tools used to determine the depth of pigmentation and identify whether it is epidermal, dermal, or mixed.',
+  },
+  {
+    num: '03',
+    title: 'Medical & Lifestyle History Review',
+    text: 'A detailed discussion of your skin history, hormone use, sun exposure habits, and skincare routine to identify root causes and guide treatment.',
+  },
+];
+
+/* ── Treatments for pigmentation ─────────────────────────────── */
+const TREATMENTS = [
+  {
+    title:  'Lumecca IPL',
+    desc:   'Intense pulsed light targets excess melanin to reduce dark spots, sun damage, and uneven pigmentation for a visibly brighter complexion.',
+    href:   '/treatments/lumecca-ipl-leicester',
+    image:  '/images/BA1.jpg',
+  },
+  {
+    title:  'Chemical Peels',
+    desc:   'Exfoliating peels remove pigmented surface cells and stimulate renewal, progressively lightening dark patches and uneven tone.',
+    href:   '/treatments/chemical-peels',
+    image:  '/images/BA2.jpg',
+  },
+  {
+    title:  'Laser Resurfacing',
+    desc:   'Targeted laser energy breaks down melanin deposits and resurfacing the skin for a clearer, more even complexion.',
+    href:   '/treatments/laser-resurfacing',
+    image:  '/images/BA3.jpg',
+  },
+  {
+    title:  'AlumierMD Skincare',
+    desc:   'Clinically formulated brightening skincare that inhibits melanin production, maintains results, and protects with daily SPF.',
+    href:   '/treatments/skincare-alumier-md',
+    image:  '/images/BA4.jpg',
+  },
+];
+
+/* ── When to call a doctor ────────────────────────────────────── */
+const WHEN_TO_CALL = [
+  'Rapidly changing spots that are growing or darkening quickly.',
+  'Spots with irregular or uneven borders.',
+  'Patches that bleed, crust, or fail to heal.',
+  'New dark patches appearing after the age of 40 without clear cause.',
+];
+
+/* ── Results timeline ─────────────────────────────────────────── */
+const RESULTS_TIMELINE = [
+  {
+    phase: '4 to 6 Weeks',
+    title: 'Treatment Timeline',
+    desc:  'Initial improvements in skin tone begin to appear within 4 to 6 weeks of starting treatment.',
+  },
+  {
+    phase: 'Progressive',
+    title: 'Visible Skin Brightening',
+    desc:  'Dark spots fade and overall skin tone becomes more uniform with each treatment session.',
+  },
+  {
+    phase: 'Ongoing',
+    title: 'SPF & Maintenance Plan',
+    desc:  'A daily SPF routine and periodic maintenance treatments sustain a clear, even complexion long-term.',
+  },
+];
+
+/* ── Why choose The One Clinic ────────────────────────────────── */
+const CLINIC_REASONS = [
+  { n: '01', text: 'All-in-one clinic with medical & aesthetic services.' },
+  { n: '02', text: 'Highly trained, compassionate doctors.' },
+  { n: '03', text: 'Customised treatments based on listening & expertise.' },
+  { n: '04', text: 'State-of-the-art facilities & modern equipment.' },
+  { n: '05', text: 'Strong reputation & excellent reviews.' },
+  { n: '06', text: 'Comprehensive care and referrals with specialists.' },
 ];
 
 /* ════════════════════════════════════════════════════════════════
    PAGE
 ════════════════════════════════════════════════════════════════ */
 export default function PigmentationPage() {
+  const [showAllFaqs, setShowAllFaqs] = useState(false);
+
+  const visibleFaqs = showAllFaqs ? FAQS : FAQS.slice(0, 4);
+
   return (
     <>
       {/* ════════════════════════════════════════
@@ -232,9 +293,10 @@ export default function PigmentationPage() {
       ════════════════════════════════════════ */}
       <section
         className={styles.hero}
-        aria-label="Pigmentation, hero"
+        aria-label="Pigmentation Treatment Leicester, hero"
         data-section-theme="dark"
       >
+        {/* Breadcrumb, pinned below fixed header */}
         <div className={styles.heroBreadcrumb}>
           <Container>
             <Breadcrumb
@@ -254,18 +316,19 @@ export default function PigmentationPage() {
             initial="hidden"
             animate="show"
           >
+            {/* Left: text content */}
             <div className={styles.heroLeft}>
               <motion.span className={styles.heroCategory} variants={fadeUp}>
                 Conditions · Skin
               </motion.span>
 
               <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                Pigmentation
+                Pigmentation Treatment Leicester
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Reduce dark spots and uneven skin tone with personalised,
-                clinically proven treatments for a clearer, more radiant complexion.
+                Treat uneven skin tone, dark spots and discolouration with
+                clinically proven treatments for clearer, more radiant skin.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -274,10 +337,12 @@ export default function PigmentationPage() {
                 </BookConsultationButton>
               </motion.div>
 
+              {/* Trust badges */}
               <motion.div variants={fadeUp}>
                 <TrustBadges theme="dark" />
               </motion.div>
 
+              {/* Trust items */}
               <motion.div className={styles.heroTrust} variants={fadeUp}>
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -305,10 +370,11 @@ export default function PigmentationPage() {
               </motion.div>
             </div>
 
+            {/* Right: hero image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
                 src="/images/Pigmentation.png"
-                alt="Pigmentation treatment at The One Clinic Leicester"
+                alt="Pigmentation treatment at The One Clinic Leicester — clearer, more even skin tone"
                 fill
                 className={styles.heroImage}
                 sizes="(max-width: 900px) 100vw, 50vw"
@@ -321,100 +387,93 @@ export default function PigmentationPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          2. WHAT IS PIGMENTATION?
+          2. WHAT IS PIGMENTATION & TYPES (Combined)
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="light" data-section-theme="light" className={styles.overviewTypesSection}>
         <Container>
-          <motion.div
-            className={styles.overviewGrid}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.div className={styles.overviewLabel} variants={fadeUp}>
-              <p className={styles.eyebrowDark}>About This Condition</p>
-            </motion.div>
-
-            <div className={styles.overviewBody}>
-              <motion.h2 className={styles.overviewHeading} variants={fadeUp}>
-                What Is Pigmentation?
-              </motion.h2>
-              <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Skin pigmentation refers to uneven colouration caused by an overproduction
-                or irregular distribution of melanin, the natural pigment responsible for
-                skin colour. It can present as dark spots, patches, freckles, or a generally
-                uneven complexion, and may affect the face, hands, neck, or body.
-              </motion.p>
-              <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Pigmentation is very common and largely harmless, but it can significantly
-                affect confidence. With the right professional treatment, most forms of
-                pigmentation can be substantially reduced or cleared, revealing clearer,
-                more even-toned skin.
-              </motion.p>
+          <div className={styles.combinedBody}>
+            {/* Left column: Overview */}
+            <div className={styles.combinedLeft}>
+              <div className={styles.combinedLeftTop}>
+                <motion.p
+                  className={styles.eyebrowDark}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  About This Condition
+                </motion.p>
+                <motion.h2
+                  className={styles.combinedHeading}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  What Is Pigmentation?
+                </motion.h2>
+                <motion.p
+                  className={styles.combinedDesc}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  Skin pigmentation refers to uneven colouration caused by an
+                  overproduction or irregular distribution of melanin — the natural
+                  pigment responsible for skin colour. It can appear as dark spots,
+                  blotchy patches, or a generally dull, uneven complexion, and may
+                  affect the face, hands, neck, or body. With the right treatment,
+                  most forms of pigmentation can be substantially reduced or cleared,
+                  revealing clearer, more radiant skin.
+                </motion.p>
+              </div>
             </div>
-          </motion.div>
-        </Container>
-      </Section>
 
-      {/* ════════════════════════════════════════
-          3. TYPES
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              How It Presents
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Types of Pigmentation
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.typesCardsRow}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {[
-              {
-                num: '01',
-                title: 'Melasma',
-                desc: 'Larger, symmetrical patches of deeper pigmentation, often brown or grey, typically triggered by hormones and sun exposure.',
-              },
-              {
-                num: '02',
-                title: 'Sun Damage & Age Spots',
-                desc: 'Flat, defined dark spots that develop over time on areas frequently exposed to UV radiation, such as the face, hands, and décolletage.',
-              },
-              {
-                num: '03',
-                title: 'Post-Inflammatory',
-                desc: 'Dark marks left behind after skin inflammation, acne, eczema, or injury as the skin\'s healing response produces excess melanin.',
-              },
-            ].map((type) => (
-              <motion.div key={type.num} className={styles.typeCard} variants={fadeUp}>
-                <span className={styles.typeNum} aria-hidden="true">{type.num}</span>
-                <div className={styles.typeCardBody}>
-                  <h3 className={styles.typeTitle}>{type.title}</h3>
-                  <p className={styles.typeDesc}>{type.desc}</p>
-                </div>
+            {/* Right column: Types */}
+            <div className={styles.combinedRight}>
+              <motion.div
+                className={styles.typesRightHeader}
+                initial="hidden"
+                whileInView="show"
+                variants={fadeUp}
+                viewport={VIEWPORT}
+              >
+                <p className={styles.combinedRightLabel}>Classification</p>
+                <h3 className={styles.typesRightHeading}>Types of Pigmentation</h3>
               </motion.div>
-            ))}
-          </motion.div>
+
+              <motion.div
+                className={styles.combinedCards}
+                variants={stagger(0.1)}
+                initial="hidden"
+                whileInView="show"
+                viewport={VIEWPORT}
+              >
+                {PIGMENTATION_TYPES.map((type) => (
+                  <motion.div
+                    key={type.num}
+                    className={styles.typeCardCombined}
+                    variants={fadeUp}
+                  >
+                    <span className={styles.typeNumCombined} aria-hidden="true">
+                      {type.num}
+                    </span>
+                    <div className={styles.typeCardHeader}>
+                      <h3 className={styles.typeTitleCombined}>{type.title}</h3>
+                      <p className={styles.typeDescCombined}>{type.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          4. CAUSES
+          4. PIGMENTATION CAUSES
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.causesSection}>
         <Container>
@@ -432,8 +491,8 @@ export default function PigmentationPage() {
               What Causes Pigmentation?
             </motion.h2>
             <motion.p className={styles.sectionSubtext} variants={fadeUp}>
-              Understanding the cause of your pigmentation is essential to choosing
-              the most effective treatment approach.
+              Understanding what contributes to pigmentation helps identify
+              the right treatment approach for long-lasting results.
             </motion.p>
           </motion.div>
 
@@ -464,7 +523,7 @@ export default function PigmentationPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          5. RISK FACTORS
+          5. WHO IS MORE LIKELY?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
@@ -475,40 +534,55 @@ export default function PigmentationPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div className={styles.riskLeft} variants={stagger(0.1)}>
-              <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-                Risk Factors
-              </motion.p>
-              <motion.h2 className={styles.riskHeading} variants={fadeUp}>
-                Who Is More Likely to Develop Pigmentation?
-              </motion.h2>
-              <motion.p className={styles.riskIntro} variants={fadeUp}>
-                Certain skin types, habits, and health factors increase susceptibility to pigmentation.
-              </motion.p>
+            {/* Left: image */}
+            <motion.div className={styles.riskImageWrap} variants={fadeUp}>
+              <Image
+                src="/images/Pigmentation.png"
+                alt="Person with pigmentation on skin — dark spots and uneven skin tone"
+                fill
+                className={styles.riskImage}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className={styles.riskImageOverlay} aria-hidden="true" />
             </motion.div>
 
-            <motion.ul
-              className={styles.riskList}
-              role="list"
-              variants={stagger(0.08)}
-            >
-              {RISK_FACTORS.map((item) => (
-                <motion.li key={item} className={styles.riskItem} variants={fadeUp}>
-                  <span className={styles.riskCheck} aria-hidden="true">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
-                  <span>{item}</span>
-                </motion.li>
-              ))}
-            </motion.ul>
+            {/* Right: heading + intro + checklist */}
+            <motion.div className={styles.riskRight} variants={stagger(0.1)}>
+              <div className={styles.riskRightInner}>
+                <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+                  Risk Factors
+                </motion.p>
+                <motion.h2 className={styles.riskHeading} variants={fadeUp}>
+                  Who Is More Likely to Develop Pigmentation?
+                </motion.h2>
+                <motion.p className={styles.riskIntro} variants={fadeUp}>
+                  The following individuals may be more at risk of developing skin pigmentation.
+                </motion.p>
+
+                <motion.ul
+                  className={styles.riskList}
+                  role="list"
+                  variants={stagger(0.08)}
+                >
+                  {RISK_FACTORS.map((item) => (
+                    <motion.li key={item} className={styles.riskItem} variants={fadeUp}>
+                      <span className={styles.riskCheck} aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                          <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </span>
+                      <span>{item}</span>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </div>
+            </motion.div>
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          6. TREATMENTS
+          6. HOW DO WE DIAGNOSE?
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -520,10 +594,56 @@ export default function PigmentationPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Your Options
+              Our Process
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Treatments for Pigmentation
+              How Do We Diagnose Pigmentation?
+            </motion.h2>
+            <motion.p className={styles.diagnoseIntro} variants={fadeUp}>
+              Our specialists will:
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.diagnoseGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {DIAGNOSE_STEPS.map((step) => (
+              <motion.div
+                key={step.num}
+                className={styles.diagnoseCard}
+                variants={fadeUp}
+              >
+                <span className={styles.diagnoseNum} aria-hidden="true">
+                  {step.num}
+                </span>
+                <p className={styles.diagnoseText}>{step.text}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          7. TREATMENTS FOR PIGMENTATION
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Your Options
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Treatments For Pigmentation
             </motion.h2>
           </motion.div>
 
@@ -559,9 +679,58 @@ export default function PigmentationPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          7. RESULTS & EXPECTATIONS
+          8. WHEN TO CALL A DOCTOR?
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.whenToCallWrap}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {/* Left: heading */}
+            <motion.div className={styles.whenToCallLeft} variants={stagger(0.1)}>
+              <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+                Medical Advice
+              </motion.p>
+              <motion.h2 className={styles.whenToCallHeading} variants={fadeUp}>
+                When to Call a Doctor?
+              </motion.h2>
+              <motion.p className={styles.whenToCallIntro} variants={fadeUp}>
+                Most pigmentation is harmless and only affects appearance. See a
+                doctor if you notice:
+              </motion.p>
+            </motion.div>
+
+            {/* Right: warning list */}
+            <motion.ul
+              className={styles.whenToCallList}
+              role="list"
+              variants={stagger(0.08)}
+            >
+              {WHEN_TO_CALL.map((item) => (
+                <motion.li key={item} className={styles.whenToCallItem} variants={fadeUp}>
+                  <span className={styles.whenToCallIcon} aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="8" x2="12" y2="12"/>
+                      <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          9. RESULTS & EXPECTATIONS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.resultsSection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -577,7 +746,8 @@ export default function PigmentationPage() {
               Results &amp; Expectations
             </motion.h2>
             <motion.p className={styles.sectionSubtext} variants={fadeUp}>
-              After pigmentation treatment, here is what you can typically expect at each stage.
+              After pigmentation treatment, here is what you can typically expect at
+              each stage of your journey.
             </motion.p>
           </motion.div>
 
@@ -605,19 +775,19 @@ export default function PigmentationPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. MEET THE EXPERTS
+          10. MEET THE EXPERTS
       ════════════════════════════════════════ */}
       <MeetTheExperts />
 
       {/* ════════════════════════════════════════
-          9. GOOGLE REVIEWS
+          GOOGLE REVIEWS
       ════════════════════════════════════════ */}
       <Testimonials />
 
       {/* ════════════════════════════════════════
-          10. WHY CHOOSE THE ONE CLINIC
+          11. WHY CHOOSE THE ONE CLINIC
       ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
+      <Section variant="light" data-section-theme="light" className={styles.whySection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -626,8 +796,10 @@ export default function PigmentationPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Why Us</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Why Us
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
               Why Choose The One Clinic For Pigmentation Treatment
             </motion.h2>
           </motion.div>
@@ -655,10 +827,10 @@ export default function PigmentationPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          11. FAQ
+          12. FAQ
       ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
+      <Section variant="light" data-section-theme="light" className={styles.faqSection}>
+        <Container className={styles.faqInner}>
           <motion.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
@@ -666,8 +838,8 @@ export default function PigmentationPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>FAQ</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
               Frequently Asked Questions
             </motion.h2>
           </motion.div>
@@ -679,19 +851,44 @@ export default function PigmentationPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <Accordion items={FAQS} theme="dark" />
+            <Accordion items={visibleFaqs} theme="dark" />
           </motion.div>
+
+          <div className={styles.faqToggleWrap}>
+            <button
+              className={styles.faqToggleBtn}
+              onClick={() => setShowAllFaqs((prev) => !prev)}
+              aria-expanded={showAllFaqs}
+            >
+              {showAllFaqs ? 'View Fewer Questions' : 'View All Questions'}
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+                style={{ transform: showAllFaqs ? 'rotate(180deg)' : undefined }}
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+          </div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          12. CTA BAND
+          13. CONSULTATION CTA
       ════════════════════════════════════════ */}
       <section
         className={styles.ctaBand}
         data-section-theme="dark"
         aria-label="Pigmentation consultation CTA"
       >
+        {/* Background image */}
         <div className={styles.ctaBandBgWrap} aria-hidden="true">
           <Image
             src="/images/Background section image new1.jpg"
@@ -715,11 +912,11 @@ export default function PigmentationPage() {
               Take the First Step
             </motion.p>
             <motion.h2 className={styles.ctaHeading} variants={fadeUp}>
-              Ready for Clearer,{' '}
-              <span className={styles.ctaAccent}>More Even Skin?</span>
+              It&apos;s Time To Reveal{' '}
+              <span className={styles.ctaAccent}>Clearer, Brighter Skin!</span>
             </motion.h2>
             <motion.p className={styles.ctaSubtext} variants={fadeUp}>
-              Speak to our specialists today to find the best treatment for your
+              Talk to our specialists today to find the best treatment for your
               pigmentation and restore a naturally clear, radiant complexion.
             </motion.p>
             <motion.div className={styles.ctaBtns} variants={fadeUp}>
@@ -729,40 +926,6 @@ export default function PigmentationPage() {
               <Link href="#contact" className={styles.ctaBtnSecondary}>
                 Contact Us
               </Link>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
-
-      {/* ════════════════════════════════════════
-          13. COST BAND
-      ════════════════════════════════════════ */}
-      <section
-        className={styles.costBand}
-        data-section-theme="dark"
-        aria-label="Pigmentation treatment cost"
-      >
-        <Container>
-          <motion.div
-            className={styles.costBandInner}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.costBandEyebrow} variants={fadeUp}>
-              Pricing
-            </motion.p>
-            <motion.h2 className={styles.costBandHeading} variants={fadeUp}>
-              Pigmentation Treatment Cost
-            </motion.h2>
-            <motion.p className={styles.costBandNote} variants={fadeUp}>
-              Contact us to enquire
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBtnPrimary}>
-                Book A Consultation
-              </BookConsultationButton>
             </motion.div>
           </motion.div>
         </Container>
@@ -860,6 +1023,7 @@ export default function PigmentationPage() {
           </motion.div>
         </Container>
       </Section>
+
     </>
   );
 }

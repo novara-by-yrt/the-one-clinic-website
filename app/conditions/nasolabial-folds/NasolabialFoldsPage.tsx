@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import Link  from 'next/link';
 import { motion } from 'framer-motion';
@@ -15,10 +16,38 @@ import Testimonials           from '@/components/sections/Testimonials';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
 
+/* ── Nasolabial fold types ────────────────────────────────────── */
+const FOLD_TYPES = [
+  {
+    num: '01',
+    title: 'Static Nasolabial Folds',
+    desc: 'Visible at rest as deep creases running from the nose to the mouth corners, present even without facial movement.',
+  },
+  {
+    num: '02',
+    title: 'Dynamic Nasolabial Folds',
+    desc: 'Appear or deepen with facial expressions such as smiling, laughing, or talking.',
+  },
+  {
+    num: '03',
+    title: 'Deep / Severe Folds',
+    desc: 'Pronounced grooves that cast shadows and significantly affect the overall facial appearance and balance.',
+  },
+];
+
 /* ── Causes ───────────────────────────────────────────────────── */
 const CAUSES = [
   {
-    title: 'Ageing',
+    title: 'Loss of Facial Volume',
+    desc: 'Fat pads in the mid-face deflate over time, pulling skin downwards and accentuating the folds.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Ageing & Collagen Loss',
     desc: 'Collagen and elastin naturally decline with age, reducing skin firmness and causing folds to deepen.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -28,27 +57,30 @@ const CAUSES = [
     ),
   },
   {
-    title: 'Volume Loss',
-    desc: 'Fat pads in the mid-face deflate over time, pulling the skin downwards and accentuating the folds.',
+    title: 'Gravity & Skin Laxity',
+    desc: 'Loss of structural support allows gravity to pull tissue downward, deepening the creases over time.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+        <line x1="12" y1="2" x2="12" y2="22"/>
+        <polyline points="8 18 12 22 16 18"/>
       </svg>
     ),
   },
   {
-    title: 'Skin Laxity',
-    desc: 'Loss of structural support in the skin allows gravity to pull tissue downward, deepening the creases.',
+    title: 'Repeated Facial Movements',
+    desc: 'Years of smiling, talking, and laughing cause repeated muscle contractions that etch lines into the skin.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 2v20M2 12h20"/>
-        <path d="M4.93 4.93l14.14 14.14"/>
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+        <line x1="9" y1="9" x2="9.01" y2="9"/>
+        <line x1="15" y1="9" x2="15.01" y2="9"/>
       </svg>
     ),
   },
   {
     title: 'Sun Damage',
-    desc: 'Prolonged UV exposure breaks down collagen fibres, accelerating the formation of deep lines.',
+    desc: 'Prolonged UV exposure breaks down collagen fibres, accelerating the formation of deep smile lines.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="5"/>
@@ -64,8 +96,8 @@ const CAUSES = [
     ),
   },
   {
-    title: 'Genetics',
-    desc: 'Bone structure, skin type, and hereditary factors influence how pronounced nasolabial folds become.',
+    title: 'Genetics & Bone Structure',
+    desc: 'Hereditary factors, skin type, and bone structure influence how pronounced nasolabial folds become.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M6 3c0 4.5 6 4.5 6 9s-6 4.5-6 9"/>
@@ -75,118 +107,134 @@ const CAUSES = [
       </svg>
     ),
   },
+];
+
+/* ── Risk factors ─────────────────────────────────────────────── */
+const RISK_FACTORS = [
+  'Those over 35 years of age.',
+  'People with thinner faces or less facial fat.',
+  'Individuals with significant or prolonged sun exposure.',
+  'Those who have lost weight rapidly.',
+  'People with a genetic predisposition to deep smile lines.',
+  'Frequent expressers — animated talkers and smilers.',
+];
+
+/* ── Diagnose steps ───────────────────────────────────────────── */
+const DIAGNOSE_STEPS = [
   {
-    title: 'Lifestyle Factors',
-    desc: 'Smoking, dehydration, poor diet, and excessive facial movement can all deepen smile lines over time.',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-        <circle cx="9" cy="7" r="4"/>
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-      </svg>
-    ),
+    num: '01',
+    text: 'Facial Volume & Crease Depth Assessment — evaluating the severity of the folds and underlying volume loss.',
+  },
+  {
+    num: '02',
+    text: 'Dynamic vs Static Fold Analysis — determining whether folds are movement-related or present at rest.',
+  },
+  {
+    num: '03',
+    text: 'Skin Quality & Laxity Review — assessing skin texture, elasticity, and overall condition to guide treatment.',
   },
 ];
 
 /* ── Treatments ───────────────────────────────────────────────── */
 const TREATMENTS = [
   {
-    title: 'Dermal Fillers',
-    desc:  'Hyaluronic acid filler is carefully placed along the nasolabial folds to restore volume, soften the crease, and create a naturally smooth, refreshed appearance.',
-    href:  '/treatments/dermal-fillers',
+    title:  'Dermal Fillers',
+    desc:   'Hyaluronic acid filler is precisely placed along the nasolabial folds to restore volume, soften the crease, and create a naturally smooth, refreshed appearance.',
+    href:   '/treatments/dermal-fillers',
+    image:  '/images/BA1.jpg',
   },
   {
-    title: 'Profhilo',
-    desc:  'A highly concentrated injectable treatment that bioremodels the skin from within, improving hydration, elasticity, and overall skin quality around the nose and mouth.',
-    href:  '/treatments/profhilo',
+    title:  'Endolift Laser',
+    desc:   'A minimally invasive laser treatment that tightens skin and stimulates collagen from within, lifting and firming the mid-face to reduce deep folds.',
+    href:   '/treatments/endolift',
+    image:  '/images/BA2.jpg',
   },
   {
-    title: 'Polynucleotides',
-    desc:  'Stimulates deep collagen and elastin production to rejuvenate the skin, gradually reducing the depth of smile lines for a firmer, more youthful appearance.',
-    href:  '/treatments/polynucleotides',
+    title:  'Morpheus8',
+    desc:   'Combines radiofrequency energy with microneedling to remodel deeper layers of skin, improving texture and reducing the appearance of nasolabial folds.',
+    href:   '/treatments/morpheus8',
+    image:  '/images/BA3.jpg',
   },
   {
-    title: 'Chemical Peel',
-    desc:  'Resurfaces the skin to improve texture, tone, and firmness, helping to soften fine lines and superficial folds around the nasolabial area.',
-    href:  '/treatments/chemical-peel',
+    title:  'Profhilo',
+    desc:   'A highly concentrated injectable that bioremodels the skin from within, improving hydration, elasticity, and overall skin quality around the nose and mouth.',
+    href:   '/treatments/profhilo',
+    image:  '/images/BA4.jpg',
   },
 ];
 
-/* ── Risk factors ─────────────────────────────────────────────── */
-const RISK_FACTORS = [
-  'Adults over the age of 35.',
-  'Those with a family history of deep smile lines.',
-  'People with prolonged or unprotected sun exposure.',
-  'Smokers and former smokers.',
-  'Individuals with naturally thinner or fair skin.',
-  'Those who have experienced significant weight loss.',
+/* ── When to call a doctor ────────────────────────────────────── */
+const WHEN_TO_CALL = [
+  'Deepening folds that are affecting your confidence or quality of life.',
+  'Noticeable asymmetry in the nasolabial folds between each side.',
+  'Associated skin changes such as redness, irritation, or unusual texture.',
+  'Sudden or significant volume loss in the mid-face area.',
 ];
 
 /* ── Results timeline ─────────────────────────────────────────── */
 const RESULTS_TIMELINE = [
   {
     phase: 'Immediate',
-    title: 'Softer Lines',
-    desc:  'Visible reduction in the depth of nasolabial folds straight after treatment.',
+    title: 'Immediate Improvement',
+    desc:  'Visible reduction in the depth of nasolabial folds straight after dermal filler treatment.',
   },
   {
-    phase: '1 to 2 Weeks',
-    title: 'Settled Results',
-    desc:  'Filler integrates fully, with a more natural and balanced appearance.',
-  },
-  {
-    phase: '4 to 8 Weeks',
-    title: 'Skin Renewal',
-    desc:  'Collagen-stimulating treatments show full improvement in skin quality.',
+    phase: '2 to 4 Weeks',
+    title: 'Gradual Collagen Stimulation',
+    desc:  'Collagen-stimulating treatments such as Profhilo and Morpheus8 begin to show progressive improvement.',
   },
   {
     phase: 'Long-term',
-    title: 'Maintained Smoothness',
-    desc:  'Results maintained with periodic top-up treatments as recommended.',
+    title: 'Longevity & Top-ups',
+    desc:  'Results are maintained with periodic top-up treatments, preserving a naturally smooth and refreshed appearance.',
   },
 ];
 
-/* ── Why choose ───────────────────────────────────────────────── */
+/* ── Why choose The One Clinic ────────────────────────────────── */
 const CLINIC_REASONS = [
-  { n: '01', text: 'All-in-one clinic with medical and aesthetic services.' },
-  { n: '02', text: 'Highly trained, compassionate, GMC-registered doctors.' },
-  { n: '03', text: 'Customised treatment plans based on your individual goals.' },
-  { n: '04', text: 'State-of-the-art facilities and modern equipment.' },
-  { n: '05', text: 'Strong reputation with excellent patient reviews.' },
-  { n: '06', text: 'Comprehensive aftercare and follow-up support.' },
+  { n: '01', text: 'All-in-one clinic with medical & aesthetic services.' },
+  { n: '02', text: 'Highly trained, compassionate doctors.' },
+  { n: '03', text: 'Customised treatments based on listening & expertise.' },
+  { n: '04', text: 'State-of-the-art facilities & modern equipment.' },
+  { n: '05', text: 'Strong reputation & excellent reviews.' },
+  { n: '06', text: 'Comprehensive care and referrals with specialists.' },
 ];
 
-/* ── FAQs ─────────────────────────────────────────────────────── */
+/* ── FAQ data ──────────────────────────────────────────────────── */
 const FAQS = [
   {
-    question: 'What causes nasolabial folds?',
+    question: 'What are nasolabial folds?',
     answer:
-      'Nasolabial folds deepen primarily due to the natural ageing process. As collagen and elastin break down, the skin loses its firmness and elasticity. Fat pads in the mid-face also descend over time, pulling the skin downwards. Sun damage, genetics, smoking, and weight loss can all accelerate the process.',
+      'Nasolabial folds, also known as smile lines or laugh lines, are the two creases that run from the sides of the nose down to the corners of the mouth. They are a natural part of facial anatomy, but become more prominent as skin loses volume and elasticity with age.',
+  },
+  {
+    question: 'What causes nasolabial folds to deepen?',
+    answer:
+      'Nasolabial folds deepen primarily due to the natural ageing process. As collagen and elastin break down, the skin loses firmness and elasticity. Fat pads in the mid-face also descend over time, pulling the skin downwards. Sun damage, genetics, smoking, significant weight loss, and repeated facial expressions can all accelerate the process.',
   },
   {
     question: 'Can nasolabial folds be treated without surgery?',
     answer:
-      'Yes. Dermal fillers are the most popular and effective non-surgical option, restoring volume along the crease for an immediate smoothing effect. Profhilo and Polynucleotides work by regenerating the skin from within, while Chemical Peels improve surface texture. Our doctors will recommend the right treatment after a full assessment.',
+      'Yes. Dermal fillers are the most popular and effective non-surgical option, restoring volume along the crease for an immediate smoothing effect. Endolift Laser, Morpheus8, and Profhilo work by stimulating collagen and tightening the skin from within. Our doctors will recommend the right treatment after a full assessment.',
   },
   {
     question: 'How long do results last?',
     answer:
-      'Dermal filler results typically last 12 to 18 months depending on the product used and your individual metabolism. Collagen-stimulating treatments such as Profhilo and Polynucleotides can provide improvements that last 12 months or more. Regular maintenance appointments help to sustain your results over time.',
+      'Dermal filler results typically last 12 to 18 months depending on the product used and your individual metabolism. Collagen-stimulating treatments such as Profhilo and Morpheus8 can provide improvements that last 12 months or more. Regular maintenance appointments help to sustain your results over time.',
   },
   {
-    question: 'Is nasolabial fold treatment safe?',
+    question: 'Is treatment for nasolabial folds safe?',
     answer:
       'Yes. All treatments at The One Clinic are performed by GMC-registered doctors with specialist training in medical aesthetics. We use clinically approved products and follow strict safety protocols. A thorough consultation is always carried out before any treatment is administered.',
   },
   {
-    question: 'What is the recovery time?',
+    question: 'What is the recovery time after treatment?',
     answer:
-      'Most non-surgical treatments have minimal downtime. After dermal filler, patients may experience mild swelling or bruising lasting a few days. Profhilo and Polynucleotides may cause temporary redness at injection sites. You can typically resume normal activities on the same day.',
+      'Most non-surgical treatments have minimal downtime. After dermal filler, patients may experience mild swelling or bruising lasting a few days. Profhilo and Morpheus8 may cause temporary redness or minor swelling at treatment sites. You can typically resume normal activities on the same day or the following day.',
   },
 ];
 
-/* ── Related ──────────────────────────────────────────────────── */
+/* ── Related data ──────────────────────────────────────────────── */
 const RELATED_TREATMENTS = [
   {
     title: 'Dermal Fillers',
@@ -195,22 +243,28 @@ const RELATED_TREATMENTS = [
     tag:   'Medical Aesthetics',
   },
   {
-    title: 'Profhilo',
-    desc:  'Bioremodel and deeply hydrate the skin to restore elasticity and reduce smile lines.',
-    href:  '/treatments/profhilo',
+    title: 'Endolift',
+    desc:  'Minimally invasive laser tightening to lift and firm the mid-face from within.',
+    href:  '/treatments/endolift',
     tag:   'Medical Aesthetics',
   },
   {
-    title: 'Polynucleotides',
-    desc:  'Stimulate collagen production to rejuvenate and firm skin around the nose and mouth.',
-    href:  '/treatments/polynucleotides',
+    title: 'Morpheus8',
+    desc:  'Radiofrequency microneedling to remodel skin and reduce deep smile lines.',
+    href:  '/treatments/morpheus8',
+    tag:   'Medical Aesthetics',
+  },
+  {
+    title: 'Profhilo',
+    desc:  'Bioremodel and deeply hydrate the skin to restore elasticity and soften folds.',
+    href:  '/treatments/profhilo',
     tag:   'Medical Aesthetics',
   },
 ];
 
 const RELATED_CONDITIONS = [
   {
-    title: 'Jowls / Sagging Skin',
+    title: 'Jowls',
     desc:  'Lift and redefine sagging skin along the jawline and lower face.',
     href:  '/conditions/jowls',
     tag:   'Face',
@@ -227,6 +281,10 @@ const RELATED_CONDITIONS = [
    PAGE
 ════════════════════════════════════════════════════════════════ */
 export default function NasolabialFoldsPage() {
+  const [showAllFaqs, setShowAllFaqs] = useState(false);
+
+  const visibleFaqs = showAllFaqs ? FAQS : FAQS.slice(0, 4);
+
   return (
     <>
       {/* ════════════════════════════════════════
@@ -234,9 +292,10 @@ export default function NasolabialFoldsPage() {
       ════════════════════════════════════════ */}
       <section
         className={styles.hero}
-        aria-label="Nasolabial Folds, hero"
+        aria-label="Nasolabial Folds Treatment Leicester, hero"
         data-section-theme="dark"
       >
+        {/* Breadcrumb, pinned below fixed header */}
         <div className={styles.heroBreadcrumb}>
           <Container>
             <Breadcrumb
@@ -256,18 +315,20 @@ export default function NasolabialFoldsPage() {
             initial="hidden"
             animate="show"
           >
+            {/* Left: text content */}
             <div className={styles.heroLeft}>
               <motion.span className={styles.heroCategory} variants={fadeUp}>
                 Conditions · Face
               </motion.span>
 
               <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                Nasolabial Folds
+                Nasolabial Folds Treatment Leicester
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Smooth and soften smile lines with personalised non-surgical
-                treatments designed for natural, lasting results.
+                Soften smile lines and restore a refreshed, youthful appearance
+                with personalised non-surgical treatments designed for natural,
+                lasting results.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -276,10 +337,12 @@ export default function NasolabialFoldsPage() {
                 </BookConsultationButton>
               </motion.div>
 
+              {/* Trust badges */}
               <motion.div variants={fadeUp}>
                 <TrustBadges theme="dark" />
               </motion.div>
 
+              {/* Trust items */}
               <motion.div className={styles.heroTrust} variants={fadeUp}>
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -307,10 +370,11 @@ export default function NasolabialFoldsPage() {
               </motion.div>
             </div>
 
+            {/* Right: hero image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
                 src="/images/Nasolabial Folds.png"
-                alt="Close-up of nasolabial folds treated at The One Clinic Leicester"
+                alt="Close-up showing nasolabial folds (smile lines) treated at The One Clinic Leicester"
                 fill
                 className={styles.heroImage}
                 sizes="(max-width: 900px) 100vw, 50vw"
@@ -323,100 +387,93 @@ export default function NasolabialFoldsPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          2. WHAT ARE NASOLABIAL FOLDS?
+          2. WHAT ARE NASOLABIAL FOLDS & TYPES (Combined)
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="light" data-section-theme="light" className={styles.overviewTypesSection}>
         <Container>
-          <motion.div
-            className={styles.overviewGrid}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.div className={styles.overviewLabel} variants={fadeUp}>
-              <p className={styles.eyebrowDark}>About This Condition</p>
-            </motion.div>
-
-            <div className={styles.overviewBody}>
-              <motion.h2 className={styles.overviewHeading} variants={fadeUp}>
-                What Are Nasolabial Folds?
-              </motion.h2>
-              <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Nasolabial folds, commonly known as smile lines or laugh lines, are the
-                two creases that run from either side of the nose down to the corners of
-                the mouth. They are a natural part of facial anatomy and become more
-                prominent as the skin loses volume and elasticity with age.
-              </motion.p>
-              <motion.p className={styles.overviewPara} variants={fadeUp}>
-                While mild folds are completely normal, deeper or more prominent lines can
-                give the face a tired or aged appearance. Safe, effective non-surgical
-                treatments are available to smooth and soften them without the need
-                for surgery.
-              </motion.p>
+          <div className={styles.combinedBody}>
+            {/* Left column: Overview */}
+            <div className={styles.combinedLeft}>
+              <div className={styles.combinedLeftTop}>
+                <motion.p
+                  className={styles.eyebrowDark}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  About This Condition
+                </motion.p>
+                <motion.h2
+                  className={styles.combinedHeading}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  What are Nasolabial Folds?
+                </motion.h2>
+                <motion.p
+                  className={styles.combinedDesc}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  Nasolabial folds, commonly known as smile lines or laugh lines,
+                  are the two creases that run from either side of the nose down
+                  to the corners of the mouth. They are a natural part of facial
+                  anatomy and become more prominent as the skin loses volume and
+                  elasticity with age. While mild folds are completely normal,
+                  deeper or more pronounced lines can give the face a tired or
+                  aged appearance.
+                </motion.p>
+              </div>
             </div>
-          </motion.div>
-        </Container>
-      </Section>
 
-      {/* ════════════════════════════════════════
-          3. TYPES
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              How They Appear
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Types of Nasolabial Folds
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.typesCardsRow}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {[
-              {
-                num: '01',
-                title: 'Mild Folds',
-                desc: 'Shallow creases visible mainly when smiling. Normal and considered part of natural facial expression.',
-              },
-              {
-                num: '02',
-                title: 'Moderate Folds',
-                desc: 'Lines visible at rest, adding a more defined crease that can make the face appear older or more tired.',
-              },
-              {
-                num: '03',
-                title: 'Deep Folds',
-                desc: 'Pronounced grooves that cast shadows, significantly affecting the overall appearance and balance of the face.',
-              },
-            ].map((type) => (
-              <motion.div key={type.num} className={styles.typeCard} variants={fadeUp}>
-                <span className={styles.typeNum} aria-hidden="true">{type.num}</span>
-                <div className={styles.typeCardBody}>
-                  <h3 className={styles.typeTitle}>{type.title}</h3>
-                  <p className={styles.typeDesc}>{type.desc}</p>
-                </div>
+            {/* Right column: Types */}
+            <div className={styles.combinedRight}>
+              <motion.div
+                className={styles.typesRightHeader}
+                initial="hidden"
+                whileInView="show"
+                variants={fadeUp}
+                viewport={VIEWPORT}
+              >
+                <p className={styles.combinedRightLabel}>Classification</p>
+                <h3 className={styles.typesRightHeading}>Types of Nasolabial Folds</h3>
               </motion.div>
-            ))}
-          </motion.div>
+
+              <motion.div
+                className={styles.combinedCards}
+                variants={stagger(0.1)}
+                initial="hidden"
+                whileInView="show"
+                viewport={VIEWPORT}
+              >
+                {FOLD_TYPES.map((type) => (
+                  <motion.div
+                    key={type.num}
+                    className={styles.typeCardCombined}
+                    variants={fadeUp}
+                  >
+                    <span className={styles.typeNumCombined} aria-hidden="true">
+                      {type.num}
+                    </span>
+                    <div className={styles.typeCardHeader}>
+                      <h3 className={styles.typeTitleCombined}>{type.title}</h3>
+                      <p className={styles.typeDescCombined}>{type.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          4. CAUSES
+          4. NASOLABIAL FOLDS CAUSES
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.causesSection}>
         <Container>
@@ -431,11 +488,11 @@ export default function NasolabialFoldsPage() {
               Root Causes
             </motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              What Causes Nasolabial Folds?
+              Nasolabial Folds Causes
             </motion.h2>
             <motion.p className={styles.sectionSubtext} variants={fadeUp}>
-              Understanding what deepens smile lines helps identify the right
-              treatment approach for lasting results.
+              Understanding what contributes to deepening smile lines helps
+              identify the right treatment approach for long-lasting results.
             </motion.p>
           </motion.div>
 
@@ -466,7 +523,7 @@ export default function NasolabialFoldsPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          5. RISK FACTORS
+          5. WHO IS MORE LIKELY?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
@@ -477,40 +534,55 @@ export default function NasolabialFoldsPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div className={styles.riskLeft} variants={stagger(0.1)}>
-              <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-                Risk Factors
-              </motion.p>
-              <motion.h2 className={styles.riskHeading} variants={fadeUp}>
-                Who Is More Likely to Develop Deep Smile Lines?
-              </motion.h2>
-              <motion.p className={styles.riskIntro} variants={fadeUp}>
-                The following factors may increase the likelihood of developing pronounced nasolabial folds.
-              </motion.p>
+            {/* Left: image */}
+            <motion.div className={styles.riskImageWrap} variants={fadeUp}>
+              <Image
+                src="/images/Nasolabial Folds.png"
+                alt="Person showing nasolabial folds (smile lines) around the nose and mouth"
+                fill
+                className={styles.riskImage}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className={styles.riskImageOverlay} aria-hidden="true" />
             </motion.div>
 
-            <motion.ul
-              className={styles.riskList}
-              role="list"
-              variants={stagger(0.08)}
-            >
-              {RISK_FACTORS.map((item) => (
-                <motion.li key={item} className={styles.riskItem} variants={fadeUp}>
-                  <span className={styles.riskCheck} aria-hidden="true">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
-                  <span>{item}</span>
-                </motion.li>
-              ))}
-            </motion.ul>
+            {/* Right: heading + intro + checklist */}
+            <motion.div className={styles.riskRight} variants={stagger(0.1)}>
+              <div className={styles.riskRightInner}>
+                <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+                  Risk Factors
+                </motion.p>
+                <motion.h2 className={styles.riskHeading} variants={fadeUp}>
+                  Who Is More Likely to Develop Nasolabial Folds?
+                </motion.h2>
+                <motion.p className={styles.riskIntro} variants={fadeUp}>
+                  The following individuals may be more at risk of developing pronounced nasolabial folds.
+                </motion.p>
+
+                <motion.ul
+                  className={styles.riskList}
+                  role="list"
+                  variants={stagger(0.08)}
+                >
+                  {RISK_FACTORS.map((item) => (
+                    <motion.li key={item} className={styles.riskItem} variants={fadeUp}>
+                      <span className={styles.riskCheck} aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                          <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </span>
+                      <span>{item}</span>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </div>
+            </motion.div>
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          6. TREATMENTS
+          6. HOW DO WE DIAGNOSE?
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -522,10 +594,56 @@ export default function NasolabialFoldsPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Your Options
+              Our Process
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Treatments for Nasolabial Folds
+              How Do We Diagnose Nasolabial Folds?
+            </motion.h2>
+            <motion.p className={styles.diagnoseIntro} variants={fadeUp}>
+              Our specialists will:
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.diagnoseGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {DIAGNOSE_STEPS.map((step) => (
+              <motion.div
+                key={step.num}
+                className={styles.diagnoseCard}
+                variants={fadeUp}
+              >
+                <span className={styles.diagnoseNum} aria-hidden="true">
+                  {step.num}
+                </span>
+                <p className={styles.diagnoseText}>{step.text}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          7. TREATMENTS FOR NASOLABIAL FOLDS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Your Options
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Treatments For Nasolabial Folds
             </motion.h2>
           </motion.div>
 
@@ -561,9 +679,58 @@ export default function NasolabialFoldsPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          7. RESULTS & EXPECTATIONS
+          8. WHEN TO CALL A DOCTOR?
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.whenToCallWrap}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {/* Left: heading */}
+            <motion.div className={styles.whenToCallLeft} variants={stagger(0.1)}>
+              <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+                Medical Advice
+              </motion.p>
+              <motion.h2 className={styles.whenToCallHeading} variants={fadeUp}>
+                When to Call a Doctor?
+              </motion.h2>
+              <motion.p className={styles.whenToCallIntro} variants={fadeUp}>
+                Nasolabial folds are usually a cosmetic concern. See a
+                specialist if you notice:
+              </motion.p>
+            </motion.div>
+
+            {/* Right: warning list */}
+            <motion.ul
+              className={styles.whenToCallList}
+              role="list"
+              variants={stagger(0.08)}
+            >
+              {WHEN_TO_CALL.map((item) => (
+                <motion.li key={item} className={styles.whenToCallItem} variants={fadeUp}>
+                  <span className={styles.whenToCallIcon} aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="8" x2="12" y2="12"/>
+                      <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          9. RESULTS & EXPECTATIONS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.resultsSection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -579,7 +746,8 @@ export default function NasolabialFoldsPage() {
               Results &amp; Expectations
             </motion.h2>
             <motion.p className={styles.sectionSubtext} variants={fadeUp}>
-              After treatment for nasolabial folds, here is what you can typically expect.
+              After treatment for nasolabial folds, here is what you can expect
+              at each stage of your results.
             </motion.p>
           </motion.div>
 
@@ -607,19 +775,19 @@ export default function NasolabialFoldsPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. MEET THE EXPERTS
+          10. MEET THE EXPERTS
       ════════════════════════════════════════ */}
       <MeetTheExperts />
 
       {/* ════════════════════════════════════════
-          9. GOOGLE REVIEWS
+          GOOGLE REVIEWS
       ════════════════════════════════════════ */}
       <Testimonials />
 
       {/* ════════════════════════════════════════
-          10. WHY CHOOSE THE ONE CLINIC
+          11. WHY CHOOSE THE ONE CLINIC
       ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
+      <Section variant="light" data-section-theme="light" className={styles.whySection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -628,9 +796,11 @@ export default function NasolabialFoldsPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Why Us</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Why Choose The One Clinic For Nasolabial Fold Treatment
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Why Us
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Why Choose The One Clinic For Nasolabial Folds Treatment
             </motion.h2>
           </motion.div>
 
@@ -657,10 +827,10 @@ export default function NasolabialFoldsPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          11. FAQ
+          12. FAQ
       ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
+      <Section variant="light" data-section-theme="light" className={styles.faqSection}>
+        <Container className={styles.faqInner}>
           <motion.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
@@ -668,8 +838,8 @@ export default function NasolabialFoldsPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>FAQ</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
               Frequently Asked Questions
             </motion.h2>
           </motion.div>
@@ -681,19 +851,32 @@ export default function NasolabialFoldsPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <Accordion items={FAQS} theme="dark" />
+            <Accordion items={visibleFaqs} theme="dark" />
           </motion.div>
+
+          <div className={styles.faqToggleWrap}>
+            <button
+              className={styles.faqToggleBtn}
+              onClick={() => setShowAllFaqs((prev) => !prev)}
+            >
+              {showAllFaqs ? 'Show Fewer Questions' : 'View All Questions'}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <polyline points={showAllFaqs ? '18 15 12 9 6 15' : '6 9 12 15 18 9'} />
+              </svg>
+            </button>
+          </div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          12. CTA BAND
+          13. CONSULTATION CTA
       ════════════════════════════════════════ */}
       <section
         className={styles.ctaBand}
         data-section-theme="dark"
         aria-label="Nasolabial folds consultation CTA"
       >
+        {/* Background image */}
         <div className={styles.ctaBandBgWrap} aria-hidden="true">
           <Image
             src="/images/Background section image new1.jpg"
@@ -717,12 +900,12 @@ export default function NasolabialFoldsPage() {
               Take the First Step
             </motion.p>
             <motion.h2 className={styles.ctaHeading} variants={fadeUp}>
-              Ready to Smooth{' '}
-              <span className={styles.ctaAccent}>Your Smile Lines?</span>
+              It&apos;s Time To Smooth{' '}
+              <span className={styles.ctaAccent}>Your Smile Lines!</span>
             </motion.h2>
             <motion.p className={styles.ctaSubtext} variants={fadeUp}>
-              Speak to our specialists today to find the best treatment for your
-              nasolabial folds and restore a naturally refreshed, youthful look.
+              Talk to our specialists today to find the best treatment for your
+              nasolabial folds and restore a refreshed, youthful look.
             </motion.p>
             <motion.div className={styles.ctaBtns} variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBtnPrimary}>
@@ -731,40 +914,6 @@ export default function NasolabialFoldsPage() {
               <Link href="#contact" className={styles.ctaBtnSecondary}>
                 Contact Us
               </Link>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
-
-      {/* ════════════════════════════════════════
-          13. COST BAND
-      ════════════════════════════════════════ */}
-      <section
-        className={styles.costBand}
-        data-section-theme="dark"
-        aria-label="Nasolabial folds treatment cost"
-      >
-        <Container>
-          <motion.div
-            className={styles.costBandInner}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.costBandEyebrow} variants={fadeUp}>
-              Pricing
-            </motion.p>
-            <motion.h2 className={styles.costBandHeading} variants={fadeUp}>
-              Nasolabial Folds Treatment Cost
-            </motion.h2>
-            <motion.p className={styles.costBandNote} variants={fadeUp}>
-              Contact us to enquire
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBtnPrimary}>
-                Book A Consultation
-              </BookConsultationButton>
             </motion.div>
           </motion.div>
         </Container>
@@ -862,6 +1011,7 @@ export default function NasolabialFoldsPage() {
           </motion.div>
         </Container>
       </Section>
+
     </>
   );
 }
