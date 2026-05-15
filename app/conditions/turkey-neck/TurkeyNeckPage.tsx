@@ -519,7 +519,7 @@ export default function TurkeyNeckPage() {
             {/* Left: image */}
             <motion.div className={styles.riskImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Turkey-neck.jpg"
+                src="/images/Turkey Neck_Necklines.png"
                 alt="Person showing turkey neck area"
                 fill
                 className={styles.riskImage}
