@@ -887,48 +887,14 @@ export default function ThinLipsPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          13. COST BAND
-      ════════════════════════════════════════ */}
-      <section
-        className={styles.costBand}
-        data-section-theme="dark"
-        aria-label="Thin lips treatment cost"
-      >
-        <Container>
-          <motion.div
-            className={styles.costBandInner}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.costBandEyebrow} variants={fadeUp}>
-              Pricing
-            </motion.p>
-            <motion.h2 className={styles.costBandHeading} variants={fadeUp}>
-              Thin Lips Treatment Cost
-            </motion.h2>
-            <motion.p className={styles.costBandNote} variants={fadeUp}>
-              Contact us to enquire
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBtnPrimary}>
-                Book A Consultation
-              </BookConsultationButton>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
-
-      {/* ════════════════════════════════════════
-          14. LEAD FORM
+          13. LEAD FORM
       ════════════════════════════════════════ */}
       <div id="contact">
         <LeadForm />
       </div>
 
       {/* ════════════════════════════════════════
-          15. RELATED TREATMENTS
+          14. RELATED TREATMENTS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
@@ -971,7 +937,7 @@ export default function ThinLipsPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          16. RELATED CONDITIONS
+          15. RELATED CONDITIONS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.relatedConditionsSection}>
         <Container>
