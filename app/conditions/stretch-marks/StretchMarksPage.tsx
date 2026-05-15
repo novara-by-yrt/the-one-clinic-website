@@ -336,97 +336,115 @@ export default function StretchMarksPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          2. WHAT ARE STRETCH MARKS?
+          2. WHAT ARE STRETCH MARKS? & TYPES (Combined)
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="light" data-section-theme="light" className={styles.overviewTypesSection}>
         <Container>
-          <motion.div
-            className={styles.overviewGrid}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.div className={styles.overviewLabel} variants={fadeUp}>
-              <p className={styles.eyebrowDark}>About This Condition</p>
-            </motion.div>
-
-            <div className={styles.overviewBody}>
-              <motion.h2 className={styles.overviewHeading} variants={fadeUp}>
-                What Are Stretch Marks?
-              </motion.h2>
-              <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Stretch marks (striae) are bands of scar tissue that form when the skin
-                is stretched beyond its natural elasticity, causing the collagen and
-                elastin fibres within the dermis to tear. They typically appear as
-                streaks or lines on the abdomen, thighs, hips, breasts, upper arms,
-                and lower back.
-              </motion.p>
-              <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Fresh stretch marks are often red, pink, or purple and may feel slightly
-                raised or itchy. Over time they fade to white or silver and become more
-                embedded in the skin. While harmless, they can cause significant
-                self-consciousness, and with the right treatment, their appearance
-                can be substantially reduced.
-              </motion.p>
+          <div className={styles.combinedBody}>
+            {/* Left column: Overview */}
+            <div className={styles.combinedLeft}>
+              <div className={styles.combinedLeftTop}>
+                <motion.p
+                  className={styles.eyebrowDark}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  About This Condition
+                </motion.p>
+                <motion.h2
+                  className={styles.combinedHeading}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  What are Stretch Marks?
+                </motion.h2>
+                <motion.p
+                  className={styles.combinedDesc}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  Stretch marks (striae) are bands of scar tissue that form when the skin
+                  is stretched beyond its natural elasticity, causing the collagen and
+                  elastin fibres within the dermis to tear. They typically appear as
+                  streaks or lines on the abdomen, thighs, hips, breasts, upper arms,
+                  and lower back.
+                </motion.p>
+                <motion.p
+                  className={styles.combinedDesc}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  Fresh stretch marks are often red, pink, or purple and may feel slightly
+                  raised or itchy. Over time they fade to white or silver and become more
+                  embedded in the skin. While harmless, they can cause significant
+                  self-consciousness, and with the right treatment, their appearance
+                  can be substantially reduced.
+                </motion.p>
+              </div>
             </div>
-          </motion.div>
-        </Container>
-      </Section>
 
-      {/* ════════════════════════════════════════
-          3. TYPES
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              How They Present
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Types of Stretch Marks
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.typesCardsRow}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {[
-              {
-                num: '01',
-                title: 'Red & Purple (Striae Rubrae)',
-                desc: 'Newer stretch marks with active blood vessels beneath. Often slightly raised or itchy. Respond best to treatment due to active skin remodelling.',
-              },
-              {
-                num: '02',
-                title: 'White & Silver (Striae Albae)',
-                desc: 'Older, established stretch marks where blood vessels have receded. Flat and pale, representing mature scar tissue. Can still be significantly improved with treatment.',
-              },
-              {
-                num: '03',
-                title: 'Post-Pregnancy (Striae Gravidarum)',
-                desc: 'Stretch marks formed during pregnancy on the abdomen, breasts, and hips. Very common and often accompanied by skin laxity, which can also be addressed.',
-              },
-            ].map((type) => (
-              <motion.div key={type.num} className={styles.typeCard} variants={fadeUp}>
-                <span className={styles.typeNum} aria-hidden="true">{type.num}</span>
-                <div className={styles.typeCardBody}>
-                  <h3 className={styles.typeTitle}>{type.title}</h3>
-                  <p className={styles.typeDesc}>{type.desc}</p>
-                </div>
+            {/* Right column: Types */}
+            <div className={styles.combinedRight}>
+              <motion.div
+                className={styles.typesRightHeader}
+                initial="hidden"
+                whileInView="show"
+                variants={fadeUp}
+                viewport={VIEWPORT}
+              >
+                <p className={styles.combinedRightLabel}>Classification</p>
+                <h3 className={styles.typesRightHeading}>Types of Stretch Marks</h3>
               </motion.div>
-            ))}
-          </motion.div>
+
+              <motion.div
+                className={styles.combinedCards}
+                variants={stagger(0.1)}
+                initial="hidden"
+                whileInView="show"
+                viewport={VIEWPORT}
+              >
+                {[
+                  {
+                    num: '01',
+                    title: 'Red & Purple (Striae Rubrae)',
+                    desc: 'Newer stretch marks with active blood vessels beneath. Often slightly raised or itchy. Respond best to treatment due to active skin remodelling.',
+                  },
+                  {
+                    num: '02',
+                    title: 'White & Silver (Striae Albae)',
+                    desc: 'Older, established stretch marks where blood vessels have receded. Flat and pale, representing mature scar tissue. Can still be significantly improved.',
+                  },
+                  {
+                    num: '03',
+                    title: 'Post-Pregnancy (Striae Gravidarum)',
+                    desc: 'Stretch marks formed during pregnancy on abdomen, breasts, and hips. Very common and often accompanied by skin laxity that can also be addressed.',
+                  },
+                ].map((type) => (
+                  <motion.div
+                    key={type.num}
+                    className={styles.typeCardCombined}
+                    variants={fadeUp}
+                  >
+                    <span className={styles.typeNumCombined} aria-hidden="true">
+                      {type.num}
+                    </span>
+                    <div className={styles.typeCardHeader}>
+                      <h3 className={styles.typeTitleCombined}>{type.title}</h3>
+                      <p className={styles.typeDescCombined}>{type.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
         </Container>
       </Section>
 
@@ -492,35 +510,50 @@ export default function StretchMarksPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div className={styles.riskLeft} variants={stagger(0.1)}>
-              <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-                Risk Factors
-              </motion.p>
-              <motion.h2 className={styles.riskHeading} variants={fadeUp}>
-                Who Is More Likely to Develop Stretch Marks?
-              </motion.h2>
-              <motion.p className={styles.riskIntro} variants={fadeUp}>
-                Stretch marks are extremely common, but certain life stages and
-                physical changes make them more likely to develop.
-              </motion.p>
+            {/* Left: image */}
+            <motion.div className={styles.riskImageWrap} variants={fadeUp}>
+              <Image
+                src="/images/Stretch Marks.png"
+                alt="Stretch marks on skin showing treatment areas"
+                fill
+                className={styles.riskImage}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className={styles.riskImageOverlay} aria-hidden="true" />
             </motion.div>
 
-            <motion.ul
-              className={styles.riskList}
-              role="list"
-              variants={stagger(0.08)}
-            >
-              {RISK_FACTORS.map((item) => (
-                <motion.li key={item} className={styles.riskItem} variants={fadeUp}>
-                  <span className={styles.riskCheck} aria-hidden="true">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
-                  <span>{item}</span>
-                </motion.li>
-              ))}
-            </motion.ul>
+            {/* Right: heading + intro + checklist */}
+            <motion.div className={styles.riskRight} variants={stagger(0.1)}>
+              <div className={styles.riskRightInner}>
+                <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+                  Risk Factors
+                </motion.p>
+                <motion.h2 className={styles.riskHeading} variants={fadeUp}>
+                  Who Is More Likely to Develop Stretch Marks?
+                </motion.h2>
+                <motion.p className={styles.riskIntro} variants={fadeUp}>
+                  Stretch marks are extremely common, but certain life stages and
+                  physical changes make them more likely to develop.
+                </motion.p>
+
+                <motion.ul
+                  className={styles.riskList}
+                  role="list"
+                  variants={stagger(0.08)}
+                >
+                  {RISK_FACTORS.map((item) => (
+                    <motion.li key={item} className={styles.riskItem} variants={fadeUp}>
+                      <span className={styles.riskCheck} aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                          <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </span>
+                      <span>{item}</span>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </div>
+            </motion.div>
           </motion.div>
         </Container>
       </Section>
