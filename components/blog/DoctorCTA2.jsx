@@ -13,9 +13,9 @@ export default function DoctorCTA2() {
       <Script src="https://link.leadpipeline.ai/js/form_embed.js" strategy="lazyOnload" />
 
       <div className="bg-black rounded-lg overflow-hidden my-6 lg:my-8">
-        <div className="grid grid-cols-1 md:grid-cols-[60%_40%] gap-0 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-[60%_40%] gap-0 items-center">
           {/* Content */}
-          <div className="p-4 md:p-5 lg:p-6 flex flex-col justify-center order-2 md:order-1">
+          <div className="p-4 md:p-5 lg:p-6 md:pr-0 flex flex-col justify-center order-2 md:order-1">
             <h3 className="text-xl md:text-2xl lg:text-3xl font-extrabold mb-2 md:mb-3 text-white leading-tight">
               Take the Next Step in Your Aesthetic or Health Journey!
             </h3>
@@ -43,15 +43,18 @@ export default function DoctorCTA2() {
             </button>
           </div>
 
-          {/* Image */}
-          <div className="relative min-h-[240px] md:min-h-0 overflow-hidden order-1 md:order-2">
-            <Image
-              src="/images/imgi_21_team-thumb-BEDI.jpg"
-              alt="Dr Gunjan Bedi"
-              fill
-              className="object-cover object-top"
-              priority
-            />
+          {/* Image with frame */}
+          <div className="p-4 md:p-5 lg:p-6 order-1 md:order-2">
+            <div className="relative aspect-square w-full rounded-md overflow-hidden bg-white">
+              <Image
+                src="/images/imgi_21_team-thumb-BEDI.jpg"
+                alt="Dr Gunjan Bedi"
+                fill
+                sizes="(max-width: 768px) 100vw, 40vw"
+                className="object-contain object-center"
+                priority
+              />
+            </div>
           </div>
         </div>
       </div>
