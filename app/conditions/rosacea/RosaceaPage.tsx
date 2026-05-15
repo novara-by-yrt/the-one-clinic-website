@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import Link  from 'next/link';
 import { motion } from 'framer-motion';
@@ -15,10 +16,29 @@ import Testimonials           from '@/components/sections/Testimonials';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
 
+/* ── Rosacea types ────────────────────────────────────────────── */
+const ROSACEA_TYPES = [
+  {
+    num: '01',
+    title: 'Erythematotelangiectatic Rosacea',
+    desc: 'Persistent facial redness, flushing, and visible blood vessels, particularly across the cheeks and nose.',
+  },
+  {
+    num: '02',
+    title: 'Papulopustular Rosacea',
+    desc: 'Redness accompanied by acne-like breakouts including papules and pustules, often mistaken for adult acne.',
+  },
+  {
+    num: '03',
+    title: 'Phymatous Rosacea',
+    desc: 'Skin thickening and irregular surface texture, most commonly affecting the nose (rhinophyma) in more advanced cases.',
+  },
+];
+
 /* ── Causes ───────────────────────────────────────────────────── */
 const CAUSES = [
   {
-    title: 'Genetics',
+    title: 'Genetics & Family History',
     desc: 'Rosacea often runs in families. Those with fair skin, light eyes, or a family history are significantly more predisposed to developing the condition.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -30,8 +50,17 @@ const CAUSES = [
     ),
   },
   {
-    title: 'Environmental Triggers',
-    desc: 'Sun exposure, wind, extreme temperatures, and humidity are common external triggers that inflame blood vessels and worsen facial redness.',
+    title: 'Abnormal Immune Response',
+    desc: 'An overactive immune response triggers inflammation in the skin, causing blood vessels to dilate and producing the persistent redness associated with rosacea.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Sun & UV Exposure',
+    desc: 'UV radiation damages blood vessels in the skin and triggers inflammatory responses, worsening facial redness and making rosacea symptoms more persistent.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="5"/>
@@ -47,38 +76,32 @@ const CAUSES = [
     ),
   },
   {
-    title: 'Lifestyle Triggers',
-    desc: 'Spicy foods, alcohol, caffeine, stress, strenuous exercise, and hot drinks can all trigger flushing and flare-ups in people prone to rosacea.',
+    title: 'Environmental Triggers',
+    desc: 'Extreme heat, cold, and wind cause blood vessels to dilate rapidly, leading to flushing and prolonged facial redness in rosacea-prone individuals.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-        <circle cx="9" cy="7" r="4"/>
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        <path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/>
+        <path d="M9.6 4.6A2 2 0 1 1 11 8H2"/>
+        <path d="M12.6 19.4A2 2 0 1 0 14 16H2"/>
       </svg>
     ),
   },
   {
-    title: 'Vascular Dysfunction',
-    desc: 'Abnormal blood vessel responses cause the face to flush more easily and visible red veins and persistent redness to develop across the cheeks and nose.',
+    title: 'Spicy Food & Alcohol',
+    desc: 'Alcohol, spicy foods, caffeine, and hot drinks all trigger vasodilation and flushing, causing visible redness and flare-ups in susceptible individuals.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+        <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+        <line x1="6" y1="1" x2="6" y2="4"/>
+        <line x1="10" y1="1" x2="10" y2="4"/>
+        <line x1="14" y1="1" x2="14" y2="4"/>
       </svg>
     ),
   },
   {
-    title: 'Skin Barrier Damage',
-    desc: 'A compromised skin barrier allows irritants to penetrate more easily, triggering inflammation and prolonged redness, particularly in sensitive skin types.',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'Demodex Mites',
-    desc: 'Higher-than-normal concentrations of microscopic skin mites (Demodex) are associated with rosacea flare-ups and may trigger an inflammatory immune response.',
+    title: 'Certain Skincare Products',
+    desc: 'Harsh cleansers, fragranced products, and alcohol-based formulas compromise the skin barrier, aggravating inflammation and prolonging redness in rosacea-affected skin.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -89,144 +112,182 @@ const CAUSES = [
   },
 ];
 
-/* ── Treatments ───────────────────────────────────────────────── */
-const TREATMENTS = [
-  {
-    title: 'Laser Treatment',
-    desc:  'Targeted laser energy reduces visible redness, broken capillaries, and persistent flushing by selectively treating dilated blood vessels beneath the skin.',
-    href:  '/treatments/laser-treatment',
-  },
-  {
-    title: 'Chemical Peel',
-    desc:  'Gentle resurfacing peels remove damaged surface skin, reduce redness and inflammation, and improve overall skin tone and texture in rosacea-prone skin.',
-    href:  '/treatments/chemical-peel',
-  },
-  {
-    title: 'Polynucleotides',
-    desc:  'Stimulates deep skin regeneration to strengthen the skin barrier, reduce chronic inflammation, and improve the overall resilience of rosacea-affected skin.',
-    href:  '/treatments/polynucleotides',
-  },
-  {
-    title: 'Profhilo',
-    desc:  'Deeply hydrates and bioremodels the skin, improving barrier function and skin quality to reduce sensitivity and the frequency of redness flare-ups.',
-    href:  '/treatments/profhilo',
-  },
-];
-
-/* ── Risk factors ─────────────────────────────────────────────── */
-const RISK_FACTORS = [
-  'Adults between the ages of 30 and 60.',
-  'People with fair or light skin tones.',
-  'Those with a family history of rosacea.',
-  'Individuals with frequent sun exposure.',
-  'People who regularly consume alcohol or spicy foods.',
-  'Those who experience chronic stress or anxiety.',
-];
-
-/* ── Results timeline ─────────────────────────────────────────── */
-const RESULTS_TIMELINE = [
-  {
-    phase: 'Immediate',
-    title: 'Reduced Redness',
-    desc:  'Visible calming of redness and flushing following the first treatment session.',
-  },
-  {
-    phase: '2 to 4 Weeks',
-    title: 'Clearer Skin',
-    desc:  'Skin tone becomes more even as inflammation settles and the skin barrier strengthens.',
-  },
-  {
-    phase: '6 to 8 Weeks',
-    title: 'Full Improvement',
-    desc:  'Optimal reduction in redness, broken veins, and flushing fully apparent.',
-  },
-  {
-    phase: 'Long-term',
-    title: 'Managed Condition',
-    desc:  'Ongoing maintenance treatments and trigger management sustain clearer skin.',
-  },
-];
-
-/* ── Why choose ───────────────────────────────────────────────── */
-const CLINIC_REASONS = [
-  { n: '01', text: 'All-in-one clinic with medical and aesthetic services.' },
-  { n: '02', text: 'Highly trained, compassionate, GMC-registered doctors.' },
-  { n: '03', text: 'Customised treatment plans based on your individual goals.' },
-  { n: '04', text: 'State-of-the-art facilities and modern equipment.' },
-  { n: '05', text: 'Strong reputation with excellent patient reviews.' },
-  { n: '06', text: 'Comprehensive aftercare and follow-up support.' },
-];
-
-/* ── FAQs ─────────────────────────────────────────────────────── */
+/* ── FAQ data ──────────────────────────────────────────────────── */
 const FAQS = [
   {
-    question: 'What causes facial redness and rosacea?',
+    question: 'What is rosacea and what causes it?',
     answer:
-      'Rosacea is a chronic skin condition caused by a combination of genetic predisposition, abnormal vascular responses, and external or lifestyle triggers. Common triggers include sun exposure, alcohol, spicy food, stress, and extreme temperatures. The condition causes persistent facial redness, flushing, and sometimes visible blood vessels.',
+      'Rosacea is a chronic inflammatory skin condition that causes persistent facial redness, flushing, and visible blood vessels. It is caused by a combination of genetic predisposition, abnormal vascular responses, and external or lifestyle triggers such as sun exposure, alcohol, spicy food, stress, and extreme temperatures.',
   },
   {
     question: 'Can rosacea be treated without medication?',
     answer:
-      'Yes. While rosacea cannot be permanently cured, its appearance can be significantly improved without oral or topical medication. Laser treatments target broken capillaries and redness directly. Chemical Peels, Profhilo, and Polynucleotides help to strengthen the skin barrier, reduce inflammation, and improve overall skin tone and resilience.',
+      'Yes. While rosacea cannot be permanently cured, its appearance can be significantly improved without oral or topical medication. Lumecca IPL and laser resurfacing target broken capillaries and redness directly. AlumierMD medical-grade skincare helps to strengthen the skin barrier, reduce inflammation, and improve overall skin tone and resilience.',
   },
   {
-    question: 'How long do results last?',
+    question: 'How many sessions are needed to see results?',
     answer:
-      'Laser treatment can provide significant long-term reduction in redness and visible vessels, with results often lasting 12 months or more. Skin-quality treatments such as Profhilo and Polynucleotides typically last 6 to 12 months. Rosacea is a long-term condition, so periodic maintenance alongside trigger avoidance helps sustain results.',
+      'Most patients notice visible improvement after 1 to 3 Lumecca IPL sessions, though this varies depending on skin type and severity. Laser resurfacing typically requires 2 to 4 sessions for optimal vascular clearance. A personalised treatment plan will be recommended following your initial consultation.',
   },
   {
     question: 'Is rosacea treatment safe for sensitive skin?',
     answer:
-      'Yes. All treatments at The One Clinic are performed by GMC-registered doctors with specialist training in medical aesthetics and skin health. We use clinically appropriate products and adjust treatment parameters to suit sensitive, rosacea-prone skin. A thorough assessment is always carried out before treatment.',
+      'Yes. All treatments at The One Clinic are performed by GMC-registered doctors with specialist training in medical aesthetics and skin health. We use clinically appropriate settings and products carefully adjusted to suit sensitive, rosacea-prone skin. A thorough assessment is always carried out before any treatment begins.',
   },
   {
-    question: 'What is the recovery time?',
+    question: 'What is the recovery time after rosacea treatment?',
     answer:
-      'Recovery varies by treatment. Laser treatment may cause temporary redness, warmth, or mild sensitivity for 24 to 72 hours. Chemical Peels may involve light flaking over several days. Injectable treatments typically have minimal downtime of 24 to 48 hours. You can usually return to daily activities the same day or the day after.',
+      'Recovery varies by treatment. Lumecca IPL may cause temporary redness or warmth for 24 to 72 hours. Laser resurfacing may involve light redness and sensitivity for several days. AlumierMD skincare has no downtime. In most cases you can return to daily activities the same day or the following day.',
+  },
+  {
+    question: 'How long do the results last?',
+    answer:
+      'Lumecca IPL can provide significant long-term reduction in redness and visible vessels, with results often lasting 12 months or more. Results depend on ongoing trigger management and skin maintenance. Periodic top-up sessions alongside a consistent medical-grade skincare routine help sustain optimal results over time.',
   },
 ];
 
-/* ── Related ──────────────────────────────────────────────────── */
+/* ── Related data ──────────────────────────────────────────────── */
 const RELATED_TREATMENTS = [
   {
-    title: 'Laser Treatment',
-    desc:  'Target broken capillaries and persistent facial redness with precise laser energy.',
-    href:  '/treatments/laser-treatment',
+    title: 'Lumecca IPL',
+    desc:  'Target broken capillaries and persistent facial redness with clinically proven intense pulsed light.',
+    href:  '/treatments/lumecca-ipl-leicester',
     tag:   'Medical Aesthetics',
   },
   {
-    title: 'Chemical Peel',
-    desc:  'Resurface and calm rosacea-prone skin to improve tone, texture, and redness.',
-    href:  '/treatments/chemical-peel',
+    title: 'Laser Resurfacing',
+    desc:  'Resurface and calm rosacea-prone skin to improve tone, texture, and vascular redness.',
+    href:  '/treatments/laser-resurfacing',
     tag:   'Medical Aesthetics',
   },
   {
-    title: 'Polynucleotides',
-    desc:  'Stimulate deep skin regeneration to strengthen the barrier and reduce chronic inflammation.',
-    href:  '/treatments/polynucleotides',
+    title: 'AlumierMD Skincare',
+    desc:  'Medical-grade skincare formulated to strengthen the skin barrier and reduce chronic redness.',
+    href:  '/treatments/skincare-alumier-md',
     tag:   'Medical Aesthetics',
+  },
+  {
+    title: 'Private GP Consultation',
+    desc:  'Expert medical assessment and personalised rosacea management from our GMC-registered doctors.',
+    href:  '/treatments/private-gp',
+    tag:   'Medical',
   },
 ];
 
 const RELATED_CONDITIONS = [
   {
-    title: 'Hyperpigmentation',
-    desc:  'Treat uneven skin tone, sun damage, and dark patches with targeted aesthetic treatments.',
-    href:  '/conditions/hyperpigmentation',
+    title: 'Pigmentation',
+    desc:  'Treat uneven skin tone and unwanted pigmentation with targeted aesthetic treatments.',
+    href:  '/conditions/pigmentation',
     tag:   'Skin',
   },
   {
-    title: 'Spider Veins / Thread Veins',
-    desc:  'Reduce the appearance of visible veins on the face and body with proven treatments.',
-    href:  '/conditions/thread-veins',
+    title: 'Hyperpigmentation',
+    desc:  'Reduce sun damage, freckles, and dark patches for a clearer, more even complexion.',
+    href:  '/conditions/hyperpigmentation-sun-damage-freckles',
     tag:   'Skin',
   },
+];
+
+/* ── Risk factors ─────────────────────────────────────────────── */
+const RISK_FACTORS = [
+  'Fair-skinned individuals with light eyes or hair.',
+  'Women aged 30 to 60 years old.',
+  'Those with a family history of rosacea.',
+  'People who flush easily in response to heat or emotion.',
+  'Individuals with Celtic or Northern European heritage.',
+  'Those with chronic or prolonged sun exposure.',
+];
+
+/* ── Diagnose steps ───────────────────────────────────────────── */
+const DIAGNOSE_STEPS = [
+  {
+    num: '01',
+    text: 'Visual Skin & Vascular Assessment — examining the degree of redness, flushing, and visible blood vessels across the face.',
+  },
+  {
+    num: '02',
+    text: 'Trigger Identification & History — reviewing your lifestyle, skincare routine, and known triggers to understand your rosacea pattern.',
+  },
+  {
+    num: '03',
+    text: 'Skin Sensitivity & Redness Grading — assessing skin sensitivity and grading redness severity to guide the most appropriate treatment plan.',
+  },
+];
+
+/* ── Treatments ───────────────────────────────────────────────── */
+const TREATMENTS = [
+  {
+    title:  'Lumecca IPL',
+    desc:   'Clinically proven intense pulsed light that selectively targets haemoglobin to reduce redness, flushing, and visible broken capillaries.',
+    href:   '/treatments/lumecca-ipl-leicester',
+    image:  '/images/BA1.jpg',
+  },
+  {
+    title:  'Laser Resurfacing',
+    desc:   'Targeted laser energy resurfaces the skin and reduces vascular redness, improving overall skin tone and texture.',
+    href:   '/treatments/laser-resurfacing',
+    image:  '/images/BA2.jpg',
+  },
+  {
+    title:  'AlumierMD Skincare',
+    desc:   'Medical-grade skincare products formulated to strengthen the skin barrier, reduce inflammation, and calm rosacea-prone skin.',
+    href:   '/treatments/skincare-alumier-md',
+    image:  '/images/BA3.jpg',
+  },
+  {
+    title:  'Private GP Consultation',
+    desc:   'Comprehensive medical assessment of your rosacea with a personalised management plan from our GMC-registered doctors.',
+    href:   '/treatments/private-gp',
+    image:  '/images/BA4.jpg',
+  },
+];
+
+/* ── When to call a doctor ────────────────────────────────────── */
+const WHEN_TO_CALL = [
+  'Worsening redness that does not respond to treatment or trigger avoidance.',
+  'Eye involvement such as irritation, redness, or sensitivity (ocular rosacea).',
+  'Skin thickening or changes in skin texture, particularly around the nose.',
+  'Rosacea significantly impacting your confidence or daily quality of life.',
+];
+
+/* ── Results timeline ─────────────────────────────────────────── */
+const RESULTS_TIMELINE = [
+  {
+    phase: 'After 1–2 Sessions',
+    title: 'Redness Reduction Timeline',
+    desc:  'Visible calming of facial redness and flushing, with broken capillaries beginning to fade following initial treatments.',
+  },
+  {
+    phase: '4 to 8 Weeks',
+    title: 'Vascular Clearance',
+    desc:  'Visible blood vessels become significantly less prominent as the skin heals and vascular damage is progressively reduced.',
+  },
+  {
+    phase: 'Long-term',
+    title: 'Ongoing Trigger Management',
+    desc:  'Sustained clearer skin achieved through periodic maintenance sessions combined with consistent trigger avoidance and medical-grade skincare.',
+  },
+];
+
+/* ── Why choose The One Clinic ────────────────────────────────── */
+const CLINIC_REASONS = [
+  { n: '01', text: 'All-in-one clinic with medical & aesthetic services.' },
+  { n: '02', text: 'Highly trained, compassionate doctors.' },
+  { n: '03', text: 'Customised treatments based on listening & expertise.' },
+  { n: '04', text: 'State-of-the-art facilities & modern equipment.' },
+  { n: '05', text: 'Strong reputation & excellent reviews.' },
+  { n: '06', text: 'Comprehensive care and referrals with specialists.' },
 ];
 
 /* ════════════════════════════════════════════════════════════════
    PAGE
 ════════════════════════════════════════════════════════════════ */
 export default function RosaceaPage() {
+  const [showAllFaqs, setShowAllFaqs] = useState(false);
+
+  const visibleFaqs = showAllFaqs ? FAQS : FAQS.slice(0, 4);
+
   return (
     <>
       {/* ════════════════════════════════════════
@@ -234,16 +295,17 @@ export default function RosaceaPage() {
       ════════════════════════════════════════ */}
       <section
         className={styles.hero}
-        aria-label="Facial Redness and Rosacea, hero"
+        aria-label="Rosacea Treatment Leicester, hero"
         data-section-theme="dark"
       >
+        {/* Breadcrumb, pinned below fixed header */}
         <div className={styles.heroBreadcrumb}>
           <Container>
             <Breadcrumb
               theme="dark"
               items={[
                 { label: 'Conditions', href: '/conditions' },
-                { label: 'Facial Redness / Rosacea' },
+                { label: 'Rosacea' },
               ]}
             />
           </Container>
@@ -256,18 +318,19 @@ export default function RosaceaPage() {
             initial="hidden"
             animate="show"
           >
+            {/* Left: text content */}
             <div className={styles.heroLeft}>
               <motion.span className={styles.heroCategory} variants={fadeUp}>
-                Conditions · Face
+                Conditions · Skin
               </motion.span>
 
               <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                Facial Redness &amp; Rosacea
+                Rosacea Treatment Leicester
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Calm persistent redness and restore an even, clear complexion
-                with personalised treatments from our GMC-registered doctors.
+                Reduce facial redness, flushing, and visible blood vessels with
+                clinically proven treatments tailored to your skin.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -276,10 +339,12 @@ export default function RosaceaPage() {
                 </BookConsultationButton>
               </motion.div>
 
+              {/* Trust badges */}
               <motion.div variants={fadeUp}>
                 <TrustBadges theme="dark" />
               </motion.div>
 
+              {/* Trust items */}
               <motion.div className={styles.heroTrust} variants={fadeUp}>
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -307,6 +372,7 @@ export default function RosaceaPage() {
               </motion.div>
             </div>
 
+            {/* Right: hero image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
                 src="/images/Facial Redness_Rosacea.png"
@@ -323,99 +389,92 @@ export default function RosaceaPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          2. WHAT IS ROSACEA?
+          2. WHAT IS ROSACEA & TYPES (Combined)
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="light" data-section-theme="light" className={styles.overviewTypesSection}>
         <Container>
-          <motion.div
-            className={styles.overviewGrid}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.div className={styles.overviewLabel} variants={fadeUp}>
-              <p className={styles.eyebrowDark}>About This Condition</p>
-            </motion.div>
-
-            <div className={styles.overviewBody}>
-              <motion.h2 className={styles.overviewHeading} variants={fadeUp}>
-                What Is Facial Redness &amp; Rosacea?
-              </motion.h2>
-              <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Rosacea is a chronic inflammatory skin condition that primarily affects the face,
-                causing persistent redness, flushing, visible blood vessels, and in some cases,
-                small pus-filled bumps. It most commonly affects the cheeks, nose, chin, and
-                forehead, and tends to come and go in cycles.
-              </motion.p>
-              <motion.p className={styles.overviewPara} variants={fadeUp}>
-                While rosacea cannot be permanently cured, its appearance can be significantly
-                managed and improved. With the right combination of professional treatments and
-                lifestyle adjustments, clearer, calmer skin is very achievable.
-              </motion.p>
+          <div className={styles.combinedBody}>
+            {/* Left column: Overview */}
+            <div className={styles.combinedLeft}>
+              <div className={styles.combinedLeftTop}>
+                <motion.p
+                  className={styles.eyebrowDark}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  About This Condition
+                </motion.p>
+                <motion.h2
+                  className={styles.combinedHeading}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  What Is Rosacea?
+                </motion.h2>
+                <motion.p
+                  className={styles.combinedDesc}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  Rosacea is a chronic inflammatory skin condition that primarily
+                  affects the face, causing persistent redness, flushing, and
+                  visible blood vessels. It most commonly affects the cheeks, nose,
+                  chin, and forehead, and tends to come and go in cycles. While it
+                  cannot be permanently cured, its appearance can be significantly
+                  managed with the right professional treatments.
+                </motion.p>
+              </div>
             </div>
-          </motion.div>
-        </Container>
-      </Section>
 
-      {/* ════════════════════════════════════════
-          3. TYPES
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              How It Presents
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Types of Rosacea
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.typesCardsRow}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {[
-              {
-                num: '01',
-                title: 'Erythematotelangiectatic',
-                desc: 'Persistent facial redness, flushing, and visible broken blood vessels, particularly across the cheeks and nose.',
-              },
-              {
-                num: '02',
-                title: 'Papulopustular',
-                desc: 'Redness accompanied by acne-like breakouts including papules and pustules, often confused with adult acne.',
-              },
-              {
-                num: '03',
-                title: 'Phymatous',
-                desc: 'Skin thickening and irregular surface texture, most commonly affecting the nose (rhinophyma) in more advanced cases.',
-              },
-            ].map((type) => (
-              <motion.div key={type.num} className={styles.typeCard} variants={fadeUp}>
-                <span className={styles.typeNum} aria-hidden="true">{type.num}</span>
-                <div className={styles.typeCardBody}>
-                  <h3 className={styles.typeTitle}>{type.title}</h3>
-                  <p className={styles.typeDesc}>{type.desc}</p>
-                </div>
+            {/* Right column: Types */}
+            <div className={styles.combinedRight}>
+              <motion.div
+                className={styles.typesRightHeader}
+                initial="hidden"
+                whileInView="show"
+                variants={fadeUp}
+                viewport={VIEWPORT}
+              >
+                <p className={styles.combinedRightLabel}>Classification</p>
+                <h3 className={styles.typesRightHeading}>Types of Rosacea</h3>
               </motion.div>
-            ))}
-          </motion.div>
+
+              <motion.div
+                className={styles.combinedCards}
+                variants={stagger(0.1)}
+                initial="hidden"
+                whileInView="show"
+                viewport={VIEWPORT}
+              >
+                {ROSACEA_TYPES.map((type) => (
+                  <motion.div
+                    key={type.num}
+                    className={styles.typeCardCombined}
+                    variants={fadeUp}
+                  >
+                    <span className={styles.typeNumCombined} aria-hidden="true">
+                      {type.num}
+                    </span>
+                    <div className={styles.typeCardHeader}>
+                      <h3 className={styles.typeTitleCombined}>{type.title}</h3>
+                      <p className={styles.typeDescCombined}>{type.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          4. CAUSES
+          4. ROSACEA CAUSES
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.causesSection}>
         <Container>
@@ -430,7 +489,7 @@ export default function RosaceaPage() {
               Root Causes
             </motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              What Causes Facial Redness &amp; Rosacea?
+              Rosacea Causes
             </motion.h2>
             <motion.p className={styles.sectionSubtext} variants={fadeUp}>
               Rosacea has multiple contributing factors. Understanding your triggers
@@ -465,7 +524,7 @@ export default function RosaceaPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          5. RISK FACTORS
+          5. WHO IS MORE LIKELY?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
@@ -476,40 +535,55 @@ export default function RosaceaPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div className={styles.riskLeft} variants={stagger(0.1)}>
-              <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-                Risk Factors
-              </motion.p>
-              <motion.h2 className={styles.riskHeading} variants={fadeUp}>
-                Who Is More Likely to Develop Rosacea?
-              </motion.h2>
-              <motion.p className={styles.riskIntro} variants={fadeUp}>
-                Certain characteristics and habits increase the likelihood of developing or worsening rosacea.
-              </motion.p>
+            {/* Left: image */}
+            <motion.div className={styles.riskImageWrap} variants={fadeUp}>
+              <Image
+                src="/images/Facial Redness_Rosacea.png"
+                alt="Person with facial redness and rosacea"
+                fill
+                className={styles.riskImage}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className={styles.riskImageOverlay} aria-hidden="true" />
             </motion.div>
 
-            <motion.ul
-              className={styles.riskList}
-              role="list"
-              variants={stagger(0.08)}
-            >
-              {RISK_FACTORS.map((item) => (
-                <motion.li key={item} className={styles.riskItem} variants={fadeUp}>
-                  <span className={styles.riskCheck} aria-hidden="true">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
-                  <span>{item}</span>
-                </motion.li>
-              ))}
-            </motion.ul>
+            {/* Right: heading + intro + checklist */}
+            <motion.div className={styles.riskRight} variants={stagger(0.1)}>
+              <div className={styles.riskRightInner}>
+                <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+                  Risk Factors
+                </motion.p>
+                <motion.h2 className={styles.riskHeading} variants={fadeUp}>
+                  Who Is More Likely to Develop Rosacea?
+                </motion.h2>
+                <motion.p className={styles.riskIntro} variants={fadeUp}>
+                  The following individuals may be more at risk of developing rosacea.
+                </motion.p>
+
+                <motion.ul
+                  className={styles.riskList}
+                  role="list"
+                  variants={stagger(0.08)}
+                >
+                  {RISK_FACTORS.map((item) => (
+                    <motion.li key={item} className={styles.riskItem} variants={fadeUp}>
+                      <span className={styles.riskCheck} aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                          <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </span>
+                      <span>{item}</span>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </div>
+            </motion.div>
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          6. TREATMENTS
+          6. HOW DO WE DIAGNOSE?
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -521,10 +595,56 @@ export default function RosaceaPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Your Options
+              Our Process
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Treatments for Facial Redness &amp; Rosacea
+              How Do We Diagnose Rosacea?
+            </motion.h2>
+            <motion.p className={styles.diagnoseIntro} variants={fadeUp}>
+              Our specialists will:
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.diagnoseGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {DIAGNOSE_STEPS.map((step) => (
+              <motion.div
+                key={step.num}
+                className={styles.diagnoseCard}
+                variants={fadeUp}
+              >
+                <span className={styles.diagnoseNum} aria-hidden="true">
+                  {step.num}
+                </span>
+                <p className={styles.diagnoseText}>{step.text}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          7. TREATMENTS FOR ROSACEA
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Your Options
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Treatments For Rosacea
             </motion.h2>
           </motion.div>
 
@@ -560,9 +680,57 @@ export default function RosaceaPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          7. RESULTS & EXPECTATIONS
+          8. WHEN TO CALL A DOCTOR?
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.whenToCallWrap}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {/* Left: heading */}
+            <motion.div className={styles.whenToCallLeft} variants={stagger(0.1)}>
+              <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+                Medical Advice
+              </motion.p>
+              <motion.h2 className={styles.whenToCallHeading} variants={fadeUp}>
+                When to Call a Doctor?
+              </motion.h2>
+              <motion.p className={styles.whenToCallIntro} variants={fadeUp}>
+                Rosacea is a manageable condition, but you should seek medical advice if you notice:
+              </motion.p>
+            </motion.div>
+
+            {/* Right: warning list */}
+            <motion.ul
+              className={styles.whenToCallList}
+              role="list"
+              variants={stagger(0.08)}
+            >
+              {WHEN_TO_CALL.map((item) => (
+                <motion.li key={item} className={styles.whenToCallItem} variants={fadeUp}>
+                  <span className={styles.whenToCallIcon} aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="8" x2="12" y2="12"/>
+                      <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          9. RESULTS & EXPECTATIONS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.resultsSection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -578,7 +746,8 @@ export default function RosaceaPage() {
               Results &amp; Expectations
             </motion.h2>
             <motion.p className={styles.sectionSubtext} variants={fadeUp}>
-              After treatment for facial redness and rosacea, here is what you can typically expect.
+              After treatment for rosacea, here is what you can expect at each
+              stage of your skin&apos;s improvement.
             </motion.p>
           </motion.div>
 
@@ -606,19 +775,19 @@ export default function RosaceaPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. MEET THE EXPERTS
+          10. MEET THE EXPERTS
       ════════════════════════════════════════ */}
       <MeetTheExperts />
 
       {/* ════════════════════════════════════════
-          9. GOOGLE REVIEWS
+          GOOGLE REVIEWS
       ════════════════════════════════════════ */}
       <Testimonials />
 
       {/* ════════════════════════════════════════
-          10. WHY CHOOSE THE ONE CLINIC
+          11. WHY CHOOSE THE ONE CLINIC
       ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
+      <Section variant="light" data-section-theme="light" className={styles.whySection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -627,8 +796,10 @@ export default function RosaceaPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Why Us</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Why Us
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
               Why Choose The One Clinic For Rosacea Treatment
             </motion.h2>
           </motion.div>
@@ -656,10 +827,10 @@ export default function RosaceaPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          11. FAQ
+          12. FAQ
       ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
+      <Section variant="light" data-section-theme="light" className={styles.faqSection}>
+        <Container className={styles.faqInner}>
           <motion.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
@@ -667,8 +838,8 @@ export default function RosaceaPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>FAQ</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
               Frequently Asked Questions
             </motion.h2>
           </motion.div>
@@ -680,19 +851,32 @@ export default function RosaceaPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <Accordion items={FAQS} theme="dark" />
+            <Accordion items={visibleFaqs} theme="dark" />
           </motion.div>
+
+          <div className={styles.faqToggleWrap}>
+            <button
+              className={styles.faqToggleBtn}
+              onClick={() => setShowAllFaqs((prev) => !prev)}
+            >
+              {showAllFaqs ? 'Show Fewer Questions' : 'View All Questions'}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <polyline points={showAllFaqs ? '18 15 12 9 6 15' : '6 9 12 15 18 9'} />
+              </svg>
+            </button>
+          </div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          12. CTA BAND
+          13. CONSULTATION CTA
       ════════════════════════════════════════ */}
       <section
         className={styles.ctaBand}
         data-section-theme="dark"
         aria-label="Rosacea consultation CTA"
       >
+        {/* Background image */}
         <div className={styles.ctaBandBgWrap} aria-hidden="true">
           <Image
             src="/images/Background section image new1.jpg"
@@ -720,8 +904,8 @@ export default function RosaceaPage() {
               <span className={styles.ctaAccent}>Clearer Skin?</span>
             </motion.h2>
             <motion.p className={styles.ctaSubtext} variants={fadeUp}>
-              Speak to our specialists today to find the most effective treatment
-              for your rosacea and restore an even, confident complexion.
+              Talk to our specialists today to find the best treatment for your
+              rosacea and restore an even, confident complexion.
             </motion.p>
             <motion.div className={styles.ctaBtns} variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBtnPrimary}>
@@ -730,40 +914,6 @@ export default function RosaceaPage() {
               <Link href="#contact" className={styles.ctaBtnSecondary}>
                 Contact Us
               </Link>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
-
-      {/* ════════════════════════════════════════
-          13. COST BAND
-      ════════════════════════════════════════ */}
-      <section
-        className={styles.costBand}
-        data-section-theme="dark"
-        aria-label="Rosacea treatment cost"
-      >
-        <Container>
-          <motion.div
-            className={styles.costBandInner}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.costBandEyebrow} variants={fadeUp}>
-              Pricing
-            </motion.p>
-            <motion.h2 className={styles.costBandHeading} variants={fadeUp}>
-              Rosacea Treatment Cost
-            </motion.h2>
-            <motion.p className={styles.costBandNote} variants={fadeUp}>
-              Contact us to enquire
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBtnPrimary}>
-                Book A Consultation
-              </BookConsultationButton>
             </motion.div>
           </motion.div>
         </Container>
@@ -861,6 +1011,7 @@ export default function RosaceaPage() {
           </motion.div>
         </Container>
       </Section>
+
     </>
   );
 }
