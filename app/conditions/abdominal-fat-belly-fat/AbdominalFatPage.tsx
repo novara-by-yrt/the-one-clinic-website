@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import Link  from 'next/link';
 import { motion } from 'framer-motion';
@@ -15,11 +16,30 @@ import Testimonials           from '@/components/sections/Testimonials';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
 
+/* ── Abdominal fat types ──────────────────────────────────────── */
+const ABDOMINAL_FAT_TYPES = [
+  {
+    num: '01',
+    title: 'Subcutaneous Fat',
+    desc: 'Soft, pinchable fat stored directly beneath the skin. The most common type of belly fat and the primary target of aesthetic body contouring treatments.',
+  },
+  {
+    num: '02',
+    title: 'Visceral Fat',
+    desc: 'Deeper fat surrounding the internal organs. Less visible but associated with metabolic health risks, including cardiovascular disease and type 2 diabetes.',
+  },
+  {
+    num: '03',
+    title: 'Post-Pregnancy Fat',
+    desc: 'Fat retained in the abdominal area following pregnancy, often accompanied by skin laxity. May persist despite returning to a healthy weight.',
+  },
+];
+
 /* ── Causes ───────────────────────────────────────────────────── */
 const CAUSES = [
   {
-    title: 'Diet & Nutrition',
-    desc: 'A diet high in processed foods, refined sugars, and excess calories leads to fat storage, particularly in the abdominal region. Visceral fat accumulates around the organs when calorie intake consistently exceeds expenditure.',
+    title: 'Poor Diet',
+    desc: 'A diet high in processed foods, refined sugars, and excess calories leads to fat storage, particularly in the abdominal region.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
@@ -32,7 +52,7 @@ const CAUSES = [
   },
   {
     title: 'Sedentary Lifestyle',
-    desc: 'Insufficient physical activity slows metabolism and reduces the body\'s ability to burn stored fat. Prolonged sitting further contributes to fat redistribution towards the abdomen and waist.',
+    desc: 'Insufficient physical activity slows metabolism and reduces the body\'s ability to burn stored fat, contributing to fat redistribution around the abdomen and waist.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -42,7 +62,7 @@ const CAUSES = [
   },
   {
     title: 'Hormonal Changes',
-    desc: 'Declining oestrogen during the menopause shifts fat storage from the hips and thighs to the abdomen. Elevated cortisol from chronic stress also promotes visceral fat accumulation around the midsection.',
+    desc: 'Declining oestrogen during menopause shifts fat storage from the hips and thighs to the abdomen. Elevated cortisol from chronic stress also promotes visceral fat accumulation.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
@@ -50,18 +70,28 @@ const CAUSES = [
     ),
   },
   {
-    title: 'Ageing',
-    desc: 'Metabolism naturally slows with age, making it easier to gain and harder to lose abdominal fat. Muscle mass declines, further reducing the body\'s calorie-burning capacity and altering body composition.',
+    title: 'Poor Sleep',
+    desc: 'Poor sleep disrupts hunger hormones, increasing appetite and cravings for high-calorie foods, making weight management significantly harder over time.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Stress & Cortisol',
+    desc: 'Chronic stress elevates cortisol levels, which directly drives fat storage in the abdominal region and encourages emotional eating behaviours.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
-        <polyline points="12 6 12 12 16 14"/>
+        <line x1="12" y1="8" x2="12" y2="12"/>
+        <line x1="12" y1="16" x2="12.01" y2="16"/>
       </svg>
     ),
   },
   {
     title: 'Genetics',
-    desc: 'Genetic predisposition influences where the body preferentially stores fat. Some individuals are naturally inclined to accumulate fat in the abdominal area regardless of overall body weight.',
+    desc: 'Genetic predisposition influences where the body preferentially stores fat. Some individuals are naturally inclined to accumulate fat in the abdominal area.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M6 3c0 4.5 6 4.5 6 9s-6 4.5-6 9"/>
@@ -71,14 +101,31 @@ const CAUSES = [
       </svg>
     ),
   },
+];
+
+/* ── Risk factors ─────────────────────────────────────────────── */
+const RISK_FACTORS = [
+  'Middle-aged adults as metabolism slows and muscle mass naturally declines.',
+  'Post-menopausal women, when fat distribution shifts from hips to the abdomen.',
+  'Those with sedentary occupations or low levels of physical activity.',
+  'People with high-stress lifestyles or chronic sleep deprivation.',
+  'Individuals with a genetic predisposition to central or abdominal obesity.',
+  'Those who consume a diet high in ultra-processed foods, alcohol, or refined sugars.',
+];
+
+/* ── Diagnose steps ───────────────────────────────────────────── */
+const DIAGNOSE_STEPS = [
   {
-    title: 'Stress & Poor Sleep',
-    desc: 'Chronic stress elevates cortisol, which drives fat storage in the abdominal region. Poor sleep disrupts hunger hormones, increasing appetite and cravings, making weight management significantly harder.',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-      </svg>
-    ),
+    num: '01',
+    text: 'BMI & Body Measurements — assess waist circumference, BMI, and body composition to quantify abdominal fat.',
+  },
+  {
+    num: '02',
+    text: 'Fat Distribution Assessment — determine whether fat is primarily subcutaneous or visceral using clinical evaluation.',
+  },
+  {
+    num: '03',
+    text: 'Lifestyle & Medical History Review — evaluate diet, activity levels, hormonal factors, and any underlying conditions.',
   },
 ];
 
@@ -86,71 +133,68 @@ const CAUSES = [
 const TREATMENTS = [
   {
     title: 'Body Contouring',
-    desc:  'Non-surgical body contouring precisely targets stubborn abdominal fat deposits that are resistant to diet and exercise, sculpting and reshaping the midsection without surgery or downtime.',
+    desc:  'Non-surgical body contouring precisely targets stubborn abdominal fat deposits resistant to diet and exercise, sculpting and reshaping the midsection without surgery or downtime.',
     href:  '/treatments/body-contouring',
+    image: '/images/BA1.jpg',
   },
   {
     title: 'Liposuction',
-    desc:  'Surgical liposuction permanently removes excess fat from the abdomen and flanks, delivering dramatic and long-lasting body reshaping results for those seeking a more significant transformation.',
+    desc:  'Surgical liposuction permanently removes excess fat from the abdomen and flanks, delivering dramatic and long-lasting body reshaping results for a more significant transformation.',
     href:  '/treatments/liposuction-leicester',
-  },
-  {
-    title: 'Morpheus8',
-    desc:  'Radiofrequency microneedling remodels subcutaneous fat and tightens lax abdominal skin simultaneously, improving both body contour and skin texture for a firmer, smoother result.',
-    href:  '/treatments/morpheus8',
+    image: '/images/BA2.jpg',
   },
   {
     title: 'Weight Management',
-    desc:  'Our medically supervised weight management programme provides personalised support, dietary guidance, and clinical interventions to reduce overall body fat, including stubborn abdominal fat.',
+    desc:  'Our medically supervised weight management programme provides personalised support, dietary guidance, and clinical interventions to reduce overall body fat including stubborn abdominal fat.',
     href:  '/treatments/weight-management',
+    image: '/images/BA3.jpg',
+  },
+  {
+    title: 'Cool Sculpting / Body Contouring',
+    desc:  'Advanced fat-freezing and body contouring technology targets and eliminates stubborn fat cells in the abdominal region, delivering a slimmer, more defined midsection.',
+    href:  '/treatments/body-contouring',
+    image: '/images/BA4.jpg',
   },
 ];
 
-/* ── Risk factors ─────────────────────────────────────────────── */
-const RISK_FACTORS = [
-  'Adults over 40 as metabolism slows and muscle mass naturally declines.',
-  'Women going through the menopause, when fat distribution shifts to the abdomen.',
-  'Those with high-stress lifestyles or chronic sleep deprivation.',
-  'Individuals with a sedentary occupation or low levels of physical activity.',
-  'People with a family history of central obesity or metabolic conditions.',
-  'Those who consume a diet high in ultra-processed foods, alcohol, or refined sugars.',
+/* ── When to call a doctor ────────────────────────────────────── */
+const WHEN_TO_CALL = [
+  'Rapid unexplained weight gain around the midsection.',
+  'Difficulty breathing or chest discomfort associated with abdominal swelling.',
+  'Abdominal pain, bloating, or digestive symptoms alongside weight changes.',
+  'Signs of metabolic complications such as increased thirst, fatigue, or elevated blood pressure.',
 ];
 
 /* ── Results timeline ─────────────────────────────────────────── */
 const RESULTS_TIMELINE = [
   {
     phase: '2 to 4 Weeks',
-    title: 'Early Changes',
-    desc:  'Initial reduction in abdominal volume and improved skin tightness begins.',
+    title: 'Timeline',
+    desc:  'Initial reduction in abdominal volume and improved skin tightness begins to become noticeable.',
   },
   {
-    phase: '6 to 8 Weeks',
-    title: 'Visible Contour',
-    desc:  'Noticeably slimmer waistline and improved abdominal definition.',
-  },
-  {
-    phase: '3 Months',
-    title: 'Full Results',
-    desc:  'Optimal fat reduction and skin remodelling results are fully visible.',
+    phase: '6 to 12 Weeks',
+    title: 'Maintenance',
+    desc:  'Continued improvement in contour with optimal results at 3 months, maintained with a balanced lifestyle.',
   },
   {
     phase: 'Long-term',
-    title: 'Maintained Shape',
-    desc:  'A balanced lifestyle sustains the improved contour and body shape.',
+    title: 'Lifestyle Integration',
+    desc:  'Combining treatment results with healthy habits ensures lasting abdominal definition and body confidence.',
   },
 ];
 
-/* ── Why choose ───────────────────────────────────────────────── */
+/* ── Why choose The One Clinic ────────────────────────────────── */
 const CLINIC_REASONS = [
-  { n: '01', text: 'All-in-one clinic with medical and aesthetic services.' },
-  { n: '02', text: 'Highly trained, compassionate, GMC-registered doctors.' },
-  { n: '03', text: 'Customised treatment plans based on your body type and goals.' },
-  { n: '04', text: 'State-of-the-art body contouring and skin tightening technology.' },
-  { n: '05', text: 'Strong reputation with excellent patient reviews.' },
-  { n: '06', text: 'Comprehensive aftercare and follow-up support.' },
+  { n: '01', text: 'All-in-one clinic with medical & aesthetic services.' },
+  { n: '02', text: 'Highly trained, compassionate doctors.' },
+  { n: '03', text: 'Customised treatments based on listening & expertise.' },
+  { n: '04', text: 'State-of-the-art facilities & modern equipment.' },
+  { n: '05', text: 'Strong reputation & excellent reviews.' },
+  { n: '06', text: 'Comprehensive care and referrals with specialists.' },
 ];
 
-/* ── FAQs ─────────────────────────────────────────────────────── */
+/* ── FAQ data ──────────────────────────────────────────────────── */
 const FAQS = [
   {
     question: 'What is the difference between subcutaneous and visceral abdominal fat?',
@@ -165,21 +209,26 @@ const FAQS = [
   {
     question: 'How many sessions will I need?',
     answer:
-      'The number of sessions depends on the treatment chosen and the extent of fat reduction desired. Non-surgical body contouring typically requires a course of 3 to 6 sessions. Morpheus8 achieves significant results in 1 to 3 sessions. Liposuction is a single procedure. Your doctor will outline a personalised plan during your consultation.',
+      'The number of sessions depends on the treatment chosen and the extent of fat reduction desired. Non-surgical body contouring typically requires a course of 3 to 6 sessions. Cool Sculpting achieves significant results across 1 to 3 sessions per area. Liposuction is a single procedure. Your doctor will outline a personalised plan during your consultation.',
   },
   {
     question: 'Is treatment suitable if I have loose skin as well as fat?',
     answer:
-      'Yes. If you have both abdominal fat and skin laxity, Morpheus8 is an excellent option as it addresses both simultaneously, reducing fat while tightening and remodelling the overlying skin. Your doctor will assess your individual concerns and recommend the most appropriate approach.',
+      'Yes. If you have both abdominal fat and skin laxity, body contouring treatments can address both concerns simultaneously, reducing fat while tightening and remodelling the overlying skin. Your doctor will assess your individual concerns and recommend the most appropriate approach.',
   },
   {
-    question: 'What is the recovery time?',
+    question: 'What is the recovery time after abdominal fat treatment?',
     answer:
-      'Recovery varies by treatment. Non-surgical body contouring has no downtime. Morpheus8 may cause redness and mild swelling for 2 to 3 days. Liposuction requires a longer recovery of 1 to 2 weeks, with compression garments worn for 4 to 6 weeks. Your doctor will provide full aftercare guidance for your chosen treatment.',
+      'Recovery varies by treatment. Non-surgical body contouring has no downtime. Cool Sculpting may cause temporary redness and numbness in the treated area. Liposuction requires a longer recovery of 1 to 2 weeks, with compression garments worn for 4 to 6 weeks. Your doctor will provide full aftercare guidance for your chosen treatment.',
+  },
+  {
+    question: 'Can I target belly fat without surgery?',
+    answer:
+      'Yes. Non-surgical options including body contouring and Cool Sculpting effectively reduce subcutaneous abdominal fat without incisions or anaesthesia. Combined with our medically supervised weight management programme, significant and lasting improvements in abdominal contour can be achieved non-surgically.',
   },
 ];
 
-/* ── Related ──────────────────────────────────────────────────── */
+/* ── Related data ──────────────────────────────────────────────── */
 const RELATED_TREATMENTS = [
   {
     title: 'Body Contouring',
@@ -194,9 +243,15 @@ const RELATED_TREATMENTS = [
     tag:   'Body',
   },
   {
-    title: 'Morpheus8',
-    desc:  'Remodel abdominal fat and tighten loose skin with radiofrequency microneedling.',
-    href:  '/treatments/morpheus8',
+    title: 'Weight Management',
+    desc:  'Medically supervised programme to reduce overall body fat and improve metabolic health.',
+    href:  '/treatments/weight-management',
+    tag:   'Body',
+  },
+  {
+    title: 'The Body Confidence Package',
+    desc:  'A comprehensive combination of treatments designed to sculpt, tone, and restore body confidence.',
+    href:  '/treatments/the-body-confidence-package',
     tag:   'Body',
   },
 ];
@@ -211,7 +266,7 @@ const RELATED_CONDITIONS = [
   {
     title: 'Excess Body Fat',
     desc:  'Address unwanted fat on the arms, bra line, back, and thighs.',
-    href:  '/conditions/excess-fat',
+    href:  '/conditions/excess-body-fat-arm-fat-bra-fat-back-fat-thigh-fat',
     tag:   'Body',
   },
 ];
@@ -220,6 +275,10 @@ const RELATED_CONDITIONS = [
    PAGE
 ════════════════════════════════════════════════════════════════ */
 export default function AbdominalFatPage() {
+  const [showAllFaqs, setShowAllFaqs] = useState(false);
+
+  const visibleFaqs = showAllFaqs ? FAQS : FAQS.slice(0, 4);
+
   return (
     <>
       {/* ════════════════════════════════════════
@@ -227,9 +286,10 @@ export default function AbdominalFatPage() {
       ════════════════════════════════════════ */}
       <section
         className={styles.hero}
-        aria-label="Abdominal fat and belly fat treatment, hero"
+        aria-label="Abdominal Fat and Belly Fat Leicester, hero"
         data-section-theme="dark"
       >
+        {/* Breadcrumb, pinned below fixed header */}
         <div className={styles.heroBreadcrumb}>
           <Container>
             <Breadcrumb
@@ -249,13 +309,14 @@ export default function AbdominalFatPage() {
             initial="hidden"
             animate="show"
           >
+            {/* Left: text content */}
             <div className={styles.heroLeft}>
               <motion.span className={styles.heroCategory} variants={fadeUp}>
                 Conditions · Body
               </motion.span>
 
               <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                Abdominal Fat &amp; Belly Fat
+                Abdominal Fat &amp; Belly Fat Leicester
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
@@ -269,10 +330,12 @@ export default function AbdominalFatPage() {
                 </BookConsultationButton>
               </motion.div>
 
+              {/* Trust badges */}
               <motion.div variants={fadeUp}>
                 <TrustBadges theme="dark" />
               </motion.div>
 
+              {/* Trust items */}
               <motion.div className={styles.heroTrust} variants={fadeUp}>
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -300,10 +363,11 @@ export default function AbdominalFatPage() {
               </motion.div>
             </div>
 
+            {/* Right: hero image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
                 src="/images/Abdominal Fat_Belly Fat.png"
-                alt="Abdominal fat treatment at The One Clinic Leicester"
+                alt="Abdominal fat and belly fat treatment at The One Clinic Leicester"
                 fill
                 className={styles.heroImage}
                 sizes="(max-width: 900px) 100vw, 50vw"
@@ -316,100 +380,91 @@ export default function AbdominalFatPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          2. WHAT IS ABDOMINAL FAT?
+          2. WHAT IS ABDOMINAL FAT? & TYPES (Combined)
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="light" data-section-theme="light" className={styles.overviewTypesSection}>
         <Container>
-          <motion.div
-            className={styles.overviewGrid}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.div className={styles.overviewLabel} variants={fadeUp}>
-              <p className={styles.eyebrowDark}>About This Condition</p>
-            </motion.div>
-
-            <div className={styles.overviewBody}>
-              <motion.h2 className={styles.overviewHeading} variants={fadeUp}>
-                What Is Abdominal Fat?
-              </motion.h2>
-              <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Abdominal fat, commonly referred to as belly fat, refers to excess fat
-                stored around the midsection. It encompasses both subcutaneous fat (the soft,
-                pinchable layer beneath the skin) and visceral fat (stored deeper around the
-                internal organs). Both types can be resistant to diet and exercise alone.
-              </motion.p>
-              <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Stubborn abdominal fat is one of the most common body concerns affecting
-                both men and women. With the right combination of professional treatments
-                and lifestyle guidance, significant and lasting improvement in body contour
-                is achievable.
-              </motion.p>
+          <div className={styles.combinedBody}>
+            {/* Left column: Overview */}
+            <div className={styles.combinedLeft}>
+              <div className={styles.combinedLeftTop}>
+                <motion.p
+                  className={styles.eyebrowDark}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  About This Condition
+                </motion.p>
+                <motion.h2
+                  className={styles.combinedHeading}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  What is Abdominal Fat?
+                </motion.h2>
+                <motion.p
+                  className={styles.combinedDesc}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  Abdominal fat, commonly referred to as belly fat, is excess fat stored
+                  around the midsection. It encompasses both subcutaneous fat beneath the
+                  skin and visceral fat around the internal organs. Both types can be
+                  resistant to diet and exercise alone, and are among the most common body
+                  concerns affecting men and women of all ages.
+                </motion.p>
+              </div>
             </div>
-          </motion.div>
-        </Container>
-      </Section>
 
-      {/* ════════════════════════════════════════
-          3. TYPES
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              How It Presents
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Types of Abdominal Fat
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.typesCardsRow}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {[
-              {
-                num: '01',
-                title: 'Subcutaneous Fat',
-                desc: 'Soft, pinchable fat stored directly beneath the skin. The most common type of belly fat and the primary target of aesthetic body contouring treatments.',
-              },
-              {
-                num: '02',
-                title: 'Visceral Fat',
-                desc: 'Deeper fat surrounding the internal organs. Less visible but associated with metabolic health risks, responds primarily to diet, exercise, and medical weight management.',
-              },
-              {
-                num: '03',
-                title: 'Post-Pregnancy Fat',
-                desc: 'Fat retained in the abdominal area following pregnancy, often accompanied by skin laxity and diastasis recti. May persist despite returning to a healthy weight.',
-              },
-            ].map((type) => (
-              <motion.div key={type.num} className={styles.typeCard} variants={fadeUp}>
-                <span className={styles.typeNum} aria-hidden="true">{type.num}</span>
-                <div className={styles.typeCardBody}>
-                  <h3 className={styles.typeTitle}>{type.title}</h3>
-                  <p className={styles.typeDesc}>{type.desc}</p>
-                </div>
+            {/* Right column: Types */}
+            <div className={styles.combinedRight}>
+              <motion.div
+                className={styles.typesRightHeader}
+                initial="hidden"
+                whileInView="show"
+                variants={fadeUp}
+                viewport={VIEWPORT}
+              >
+                <p className={styles.combinedRightLabel}>Classification</p>
+                <h3 className={styles.typesRightHeading}>Types of Abdominal Fat</h3>
               </motion.div>
-            ))}
-          </motion.div>
+
+              <motion.div
+                className={styles.combinedCards}
+                variants={stagger(0.1)}
+                initial="hidden"
+                whileInView="show"
+                viewport={VIEWPORT}
+              >
+                {ABDOMINAL_FAT_TYPES.map((type) => (
+                  <motion.div
+                    key={type.num}
+                    className={styles.typeCardCombined}
+                    variants={fadeUp}
+                  >
+                    <span className={styles.typeNumCombined} aria-hidden="true">
+                      {type.num}
+                    </span>
+                    <div className={styles.typeCardHeader}>
+                      <h3 className={styles.typeTitleCombined}>{type.title}</h3>
+                      <p className={styles.typeDescCombined}>{type.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          4. CAUSES
+          3. CAUSES
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.causesSection}>
         <Container>
@@ -424,11 +479,11 @@ export default function AbdominalFatPage() {
               Root Causes
             </motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              What Causes Abdominal Fat?
+              Abdominal Fat Causes
             </motion.h2>
             <motion.p className={styles.sectionSubtext} variants={fadeUp}>
               Abdominal fat accumulates through a combination of lifestyle, hormonal,
-              and genetic factors, many of which are resistant to diet and exercise alone.
+              and genetic factors — many of which are resistant to diet and exercise alone.
             </motion.p>
           </motion.div>
 
@@ -459,7 +514,7 @@ export default function AbdominalFatPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          5. RISK FACTORS
+          4. WHO IS MORE LIKELY?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
@@ -470,41 +525,56 @@ export default function AbdominalFatPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div className={styles.riskLeft} variants={stagger(0.1)}>
-              <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-                Risk Factors
-              </motion.p>
-              <motion.h2 className={styles.riskHeading} variants={fadeUp}>
-                Who Is More Likely to Develop Abdominal Fat?
-              </motion.h2>
-              <motion.p className={styles.riskIntro} variants={fadeUp}>
-                Several lifestyle, hormonal, and genetic factors increase the likelihood
-                of stubborn fat accumulating around the midsection.
-              </motion.p>
+            {/* Left: image */}
+            <motion.div className={styles.riskImageWrap} variants={fadeUp}>
+              <Image
+                src="/images/Abdominal Fat_Belly Fat.png"
+                alt="Person showing abdominal fat concern treated at The One Clinic Leicester"
+                fill
+                className={styles.riskImage}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className={styles.riskImageOverlay} aria-hidden="true" />
             </motion.div>
 
-            <motion.ul
-              className={styles.riskList}
-              role="list"
-              variants={stagger(0.08)}
-            >
-              {RISK_FACTORS.map((item) => (
-                <motion.li key={item} className={styles.riskItem} variants={fadeUp}>
-                  <span className={styles.riskCheck} aria-hidden="true">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
-                  <span>{item}</span>
-                </motion.li>
-              ))}
-            </motion.ul>
+            {/* Right: heading + intro + checklist */}
+            <motion.div className={styles.riskRight} variants={stagger(0.1)}>
+              <div className={styles.riskRightInner}>
+                <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+                  Risk Factors
+                </motion.p>
+                <motion.h2 className={styles.riskHeading} variants={fadeUp}>
+                  Who Is More Likely to Develop Abdominal Fat?
+                </motion.h2>
+                <motion.p className={styles.riskIntro} variants={fadeUp}>
+                  Several lifestyle, hormonal, and genetic factors increase the likelihood
+                  of stubborn fat accumulating around the midsection.
+                </motion.p>
+
+                <motion.ul
+                  className={styles.riskList}
+                  role="list"
+                  variants={stagger(0.08)}
+                >
+                  {RISK_FACTORS.map((item) => (
+                    <motion.li key={item} className={styles.riskItem} variants={fadeUp}>
+                      <span className={styles.riskCheck} aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                          <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </span>
+                      <span>{item}</span>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </div>
+            </motion.div>
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          6. TREATMENTS
+          5. HOW DO WE DIAGNOSE?
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -516,10 +586,56 @@ export default function AbdominalFatPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Your Options
+              Our Process
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Treatments for Abdominal Fat
+              How Do We Diagnose Abdominal Fat?
+            </motion.h2>
+            <motion.p className={styles.diagnoseIntro} variants={fadeUp}>
+              Our specialists will:
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.diagnoseGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {DIAGNOSE_STEPS.map((step) => (
+              <motion.div
+                key={step.num}
+                className={styles.diagnoseCard}
+                variants={fadeUp}
+              >
+                <span className={styles.diagnoseNum} aria-hidden="true">
+                  {step.num}
+                </span>
+                <p className={styles.diagnoseText}>{step.text}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          6. TREATMENTS FOR ABDOMINAL FAT
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Your Options
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Treatments For Abdominal Fat &amp; Belly Fat
             </motion.h2>
           </motion.div>
 
@@ -555,9 +671,57 @@ export default function AbdominalFatPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          7. RESULTS & EXPECTATIONS
+          7. WHEN TO CALL A DOCTOR?
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.whenToCallWrap}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {/* Left: heading */}
+            <motion.div className={styles.whenToCallLeft} variants={stagger(0.1)}>
+              <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+                Medical Advice
+              </motion.p>
+              <motion.h2 className={styles.whenToCallHeading} variants={fadeUp}>
+                When to Call a Doctor?
+              </motion.h2>
+              <motion.p className={styles.whenToCallIntro} variants={fadeUp}>
+                Abdominal fat is a common concern, but see a doctor if you notice:
+              </motion.p>
+            </motion.div>
+
+            {/* Right: warning list */}
+            <motion.ul
+              className={styles.whenToCallList}
+              role="list"
+              variants={stagger(0.08)}
+            >
+              {WHEN_TO_CALL.map((item) => (
+                <motion.li key={item} className={styles.whenToCallItem} variants={fadeUp}>
+                  <span className={styles.whenToCallIcon} aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="8" x2="12" y2="12"/>
+                      <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          8. RESULTS & EXPECTATIONS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.resultsSection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -573,7 +737,8 @@ export default function AbdominalFatPage() {
               Results &amp; Expectations
             </motion.h2>
             <motion.p className={styles.sectionSubtext} variants={fadeUp}>
-              After treatment, here is what you can typically expect at each stage.
+              After treatment for abdominal fat, here is what you can expect at
+              each stage of your recovery and beyond.
             </motion.p>
           </motion.div>
 
@@ -601,17 +766,7 @@ export default function AbdominalFatPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. MEET THE EXPERTS
-      ════════════════════════════════════════ */}
-      <MeetTheExperts />
-
-      {/* ════════════════════════════════════════
-          9. GOOGLE REVIEWS
-      ════════════════════════════════════════ */}
-      <Testimonials />
-
-      {/* ════════════════════════════════════════
-          10. WHY CHOOSE THE ONE CLINIC
+          9. RELATED TREATMENTS (dark section)
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -622,169 +777,8 @@ export default function AbdominalFatPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Why Us</motion.p>
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Explore</motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Why Choose The One Clinic For Abdominal Fat Treatment
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.whyGrid}
-            variants={stagger(0.08)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {CLINIC_REASONS.map((r) => (
-              <motion.div
-                key={r.n}
-                className={styles.whyCard}
-                variants={fadeUp}
-                whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
-              >
-                <span className={styles.whyNumber}>{r.n}</span>
-                <p className={styles.whyText}>{r.text}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          11. FAQ
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Frequently Asked Questions
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.faqBody}
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <Accordion items={FAQS} theme="dark" />
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          12. CTA BAND
-      ════════════════════════════════════════ */}
-      <section
-        className={styles.ctaBand}
-        data-section-theme="dark"
-        aria-label="Abdominal fat consultation CTA"
-      >
-        <div className={styles.ctaBandBgWrap} aria-hidden="true">
-          <Image
-            src="/images/Background section image new1.jpg"
-            alt=""
-            fill
-            className={styles.ctaBandBgImg}
-            sizes="100vw"
-          />
-          <div className={styles.ctaBandOverlay} />
-        </div>
-
-        <Container>
-          <motion.div
-            className={styles.ctaContent}
-            variants={stagger(0.15)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Take the First Step
-            </motion.p>
-            <motion.h2 className={styles.ctaHeading} variants={fadeUp}>
-              Ready for a Slimmer,{' '}
-              <span className={styles.ctaAccent}>More Defined Midsection?</span>
-            </motion.h2>
-            <motion.p className={styles.ctaSubtext} variants={fadeUp}>
-              Speak to our specialists today to find the most effective treatment
-              for your abdominal fat and restore the body confidence you deserve.
-            </motion.p>
-            <motion.div className={styles.ctaBtns} variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBtnPrimary}>
-                Book a Consultation
-              </BookConsultationButton>
-              <Link href="#contact" className={styles.ctaBtnSecondary}>
-                Contact Us
-              </Link>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
-
-      {/* ════════════════════════════════════════
-          13. COST BAND
-      ════════════════════════════════════════ */}
-      <section
-        className={styles.costBand}
-        data-section-theme="dark"
-        aria-label="Abdominal fat treatment cost"
-      >
-        <Container>
-          <motion.div
-            className={styles.costBandInner}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.costBandEyebrow} variants={fadeUp}>
-              Pricing
-            </motion.p>
-            <motion.h2 className={styles.costBandHeading} variants={fadeUp}>
-              Abdominal Fat Treatment Cost
-            </motion.h2>
-            <motion.p className={styles.costBandNote} variants={fadeUp}>
-              Contact us to enquire
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBtnPrimary}>
-                Book A Consultation
-              </BookConsultationButton>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
-
-      {/* ════════════════════════════════════════
-          14. LEAD FORM
-      ════════════════════════════════════════ */}
-      <div id="contact">
-        <LeadForm />
-      </div>
-
-      {/* ════════════════════════════════════════
-          15. RELATED TREATMENTS
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Explore</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
               Related Treatments
             </motion.h2>
           </motion.div>
@@ -815,7 +809,7 @@ export default function AbdominalFatPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          16. RELATED CONDITIONS
+          10. RELATED CONDITIONS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.relatedConditionsSection}>
         <Container>
@@ -856,6 +850,161 @@ export default function AbdominalFatPage() {
           </motion.div>
         </Container>
       </Section>
+
+      {/* ════════════════════════════════════════
+          11. MEET THE EXPERTS
+      ════════════════════════════════════════ */}
+      <MeetTheExperts />
+
+      {/* ════════════════════════════════════════
+          GOOGLE REVIEWS
+      ════════════════════════════════════════ */}
+      <Testimonials />
+
+      {/* ════════════════════════════════════════
+          12. WHY CHOOSE THE ONE CLINIC
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.whySection}>
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Why Us
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Why Choose The One Clinic For Abdominal Fat Treatment
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.whyGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {CLINIC_REASONS.map((r) => (
+              <motion.div
+                key={r.n}
+                className={styles.whyCard}
+                variants={fadeUp}
+                whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
+              >
+                <span className={styles.whyNumber}>{r.n}</span>
+                <p className={styles.whyText}>{r.text}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          13. FAQ
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.faqSection}>
+        <Container className={styles.faqInner}>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>FAQ</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Frequently Asked Questions
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.faqBody}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <Accordion items={visibleFaqs} theme="dark" />
+          </motion.div>
+
+          {!showAllFaqs && FAQS.length > 4 && (
+            <div className={styles.faqToggleWrap}>
+              <button
+                className={styles.faqToggleBtn}
+                onClick={() => setShowAllFaqs(true)}
+              >
+                View All Questions
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+            </div>
+          )}
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          14. CONSULTATION CTA
+      ════════════════════════════════════════ */}
+      <section
+        className={styles.ctaBand}
+        data-section-theme="dark"
+        aria-label="Abdominal fat consultation CTA"
+      >
+        {/* Background image */}
+        <div className={styles.ctaBandBgWrap} aria-hidden="true">
+          <Image
+            src="/images/Background section image new1.jpg"
+            alt=""
+            fill
+            className={styles.ctaBandBgImg}
+            sizes="100vw"
+          />
+          <div className={styles.ctaBandOverlay} />
+        </div>
+
+        <Container>
+          <motion.div
+            className={styles.ctaContent}
+            variants={stagger(0.15)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Take the First Step
+            </motion.p>
+            <motion.h2 className={styles.ctaHeading} variants={fadeUp}>
+              It&apos;s Time To Tackle{' '}
+              <span className={styles.ctaAccent}>Abdominal Fat!</span>
+            </motion.h2>
+            <motion.p className={styles.ctaSubtext} variants={fadeUp}>
+              Talk to our specialists today to find the best treatment for your
+              body and restore the slim, defined midsection you deserve.
+            </motion.p>
+            <motion.div className={styles.ctaBtns} variants={fadeUp}>
+              <BookConsultationButton className={styles.ctaBtnPrimary}>
+                Book a Consultation
+              </BookConsultationButton>
+              <Link href="#contact" className={styles.ctaBtnSecondary}>
+                Contact Us
+              </Link>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
+
+      {/* ════════════════════════════════════════
+          15. LEAD FORM
+      ════════════════════════════════════════ */}
+      <div id="contact">
+        <LeadForm />
+      </div>
+
     </>
   );
 }
