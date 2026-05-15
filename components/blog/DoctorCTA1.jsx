@@ -13,18 +13,16 @@ export default function DoctorCTA1() {
       <Script src="https://link.leadpipeline.ai/js/form_embed.js" strategy="lazyOnload" />
 
       <div className="bg-black rounded-lg overflow-hidden my-6 lg:my-8">
-        <div className="grid grid-cols-1 md:grid-cols-[40%_60%] gap-0">
-          {/* Image with white border */}
-          <div className="relative h-56 md:h-60 lg:h-72 px-3 md:px-4 pt-0 pb-3 md:pb-4 flex items-center justify-center">
-            <div className="relative w-full h-full border-3 border-white rounded-lg overflow-hidden">
-              <Image
-                src="/images/imgi_20_team-thumb-VIRMANI.jpg"
-                alt="Dr Sumit Virmani"
-                fill
-                className="object-contain object-center"
-                priority
-              />
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-[40%_60%] gap-0 items-stretch">
+          {/* Image */}
+          <div className="relative min-h-[240px] md:min-h-0 overflow-hidden">
+            <Image
+              src="/images/imgi_20_team-thumb-VIRMANI.jpg"
+              alt="Dr Sumit Virmani"
+              fill
+              className="object-cover object-top"
+              priority
+            />
           </div>
 
           {/* Content */}

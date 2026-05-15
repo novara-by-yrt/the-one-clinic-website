@@ -13,7 +13,7 @@ export default function DoctorCTA2() {
       <Script src="https://link.leadpipeline.ai/js/form_embed.js" strategy="lazyOnload" />
 
       <div className="bg-black rounded-lg overflow-hidden my-6 lg:my-8">
-        <div className="grid grid-cols-1 md:grid-cols-[60%_40%] gap-0">
+        <div className="grid grid-cols-1 md:grid-cols-[60%_40%] gap-0 items-stretch">
           {/* Content */}
           <div className="p-4 md:p-5 lg:p-6 flex flex-col justify-center order-2 md:order-1">
             <h3 className="text-xl md:text-2xl lg:text-3xl font-extrabold mb-2 md:mb-3 text-white leading-tight">
@@ -43,17 +43,15 @@ export default function DoctorCTA2() {
             </button>
           </div>
 
-          {/* Image with white border */}
-          <div className="relative h-56 md:h-60 lg:h-72 px-3 md:px-4 pt-0 pb-3 md:pb-4 flex items-center justify-center order-1 md:order-2">
-            <div className="relative w-full h-full border-3 border-white rounded-lg overflow-hidden">
-              <Image
-                src="/images/imgi_21_team-thumb-BEDI.jpg"
-                alt="Dr Gunjan Bedi"
-                fill
-                className="object-contain object-center"
-                priority
-              />
-            </div>
+          {/* Image */}
+          <div className="relative min-h-[240px] md:min-h-0 overflow-hidden order-1 md:order-2">
+            <Image
+              src="/images/imgi_21_team-thumb-BEDI.jpg"
+              alt="Dr Gunjan Bedi"
+              fill
+              className="object-cover object-top"
+              priority
+            />
           </div>
         </div>
       </div>
