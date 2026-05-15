@@ -102,7 +102,7 @@ export default async function BlogDetailPage({ params }) {
           {/* Form Right */}
           {post.featured_image && (
             <div className="hidden lg:block">
-              <div className="sticky" style={{ top: '6rem' }}>
+              <div className="sticky top-24">
                 <CallbackTrigger />
               </div>
             </div>
@@ -157,7 +157,7 @@ export default async function BlogDetailPage({ params }) {
           {/* Right column - Sticky form (hidden on mobile/tablet and if featured image exists) */}
           {!post.featured_image && (
             <div className="hidden lg:block">
-              <div className="sticky" style={{ top: '6rem' }}>
+              <div className="sticky top-24">
                 <CallbackTrigger />
               </div>
             </div>
