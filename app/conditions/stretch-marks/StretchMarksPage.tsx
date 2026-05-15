@@ -803,8 +803,8 @@ export default function StretchMarksPage() {
       {/* ════════════════════════════════════════
           11. FAQ
       ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
+      <Section variant="light" data-section-theme="light" className={styles.faqSection}>
+        <Container className={styles.faqInner}>
           <motion.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
@@ -812,8 +812,8 @@ export default function StretchMarksPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>FAQ</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
               Frequently Asked Questions
             </motion.h2>
           </motion.div>
