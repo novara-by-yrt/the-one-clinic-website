@@ -117,9 +117,9 @@ const DIAGNOSE_STEPS = [
 /* ── Treatments for turkey neck ────────────────────────────────── */
 const TREATMENTS = [
   {
-    title: 'Skin Tightening',
-    desc: 'Advanced energy-based treatments deliver controlled heat to stimulate collagen production, tightening loose neck tissue.',
-    href: '/treatments/skin-tightening',
+    title: 'Endolift',
+    desc: 'Advanced radiofrequency technology delivers controlled heat to stimulate collagen production, tightening loose neck tissue.',
+    href: '/treatments/endolift',
     image: '/images/BA1.jpg',
   },
   {
@@ -131,7 +131,7 @@ const TREATMENTS = [
   {
     title: 'Polynucleotides',
     desc: 'Stimulates collagen and elastin regeneration to deeply rejuvenate and tighten lax neck skin.',
-    href: '/treatments/polynucleotides',
+    href: '/treatments/polynucleotides-leicester',
     image: '/images/BA3.jpg',
   },
   {
@@ -231,9 +231,9 @@ const FAQS = [
 /* ── Related data ──────────────────────────────────────────────── */
 const RELATED_TREATMENTS = [
   {
-    title: 'Skin Tightening',
+    title: 'Endolift',
     desc: 'Stimulate collagen deep within the skin to firm and tighten loose neck tissue.',
-    href: '/treatments/skin-tightening',
+    href: '/treatments/endolift',
     tag: 'Medical Aesthetics',
   },
   {
@@ -245,7 +245,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Polynucleotides',
     desc: 'Stimulate collagen production to rejuvenate and tighten lax, ageing neck skin.',
-    href: '/treatments/polynucleotides',
+    href: '/treatments/polynucleotides-leicester',
     tag: 'Medical Aesthetics',
   },
 ];

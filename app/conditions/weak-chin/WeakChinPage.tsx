@@ -91,9 +91,9 @@ const TREATMENTS = [
     image: '/images/BA1.jpg',
   },
   {
-    title: 'Radiesse',
-    desc: 'Calcium hydroxylapatite stimulates collagen while adding immediate volume to the chin.',
-    href: '/treatments/radiesse',
+    title: 'Endolift',
+    desc: 'Radiofrequency energy stimulates collagen production for enhanced chin definition and skin firmness.',
+    href: '/treatments/endolift',
     image: '/images/BA2.jpg',
   },
   {
@@ -223,9 +223,9 @@ const RELATED_TREATMENTS = [
     tag: 'Medical Aesthetics',
   },
   {
-    title: 'Radiesse',
-    desc: 'Stimulate collagen while adding volume for enhanced chin and jaw definition.',
-    href: '/treatments/radiesse',
+    title: 'Endolift',
+    desc: 'Stimulate collagen production for enhanced chin and jaw definition and firmness.',
+    href: '/treatments/endolift',
     tag: 'Medical Aesthetics',
   },
   {

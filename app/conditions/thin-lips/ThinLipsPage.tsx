@@ -103,12 +103,12 @@ const TREATMENTS = [
   {
     title: 'Polynucleotides',
     desc:  'Stimulates collagen production in and around the lip area to improve skin quality, reduce fine lip lines, and restore a more youthful, healthy appearance.',
-    href:  '/treatments/polynucleotides',
+    href:  '/treatments/polynucleotides-leicester',
   },
   {
     title: 'Chemical Peel',
     desc:  'Resurfaces the skin around the mouth to reduce vertical lip lines, improve tone and texture, and create a smoother, more refined lip area.',
-    href:  '/treatments/chemical-peel',
+    href:  '/treatments/chemical-peels',
   },
 ];
 
@@ -202,7 +202,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Polynucleotides',
     desc:  'Stimulate collagen to rejuvenate the lip area and reduce fine lines around the mouth.',
-    href:  '/treatments/polynucleotides',
+    href:  '/treatments/polynucleotides-leicester',
     tag:   'Medical Aesthetics',
   },
 ];
