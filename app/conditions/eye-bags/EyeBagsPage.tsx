@@ -208,13 +208,13 @@ const TREATMENTS = [
   {
     title:  'Chemical Peel',
     desc:   'Removes dead skin & refreshes the under-eye skin.',
-    href:   '/treatments/chemical-peel',
+    href:   '/treatments/chemical-peels',
     image:  '/images/BA3.jpg',
   },
   {
     title:  'Polynucleotides',
     desc:   'Promotes deep skin regeneration and rejuvenation of the under-eye area.',
-    href:   '/treatments/polynucleotides',
+    href:   '/treatments/polynucleotides-leicester',
     image:  '/images/BA4.jpg',
   },
 ];
