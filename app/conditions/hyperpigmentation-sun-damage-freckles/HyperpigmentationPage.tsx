@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import Link  from 'next/link';
 import { motion } from 'framer-motion';
@@ -15,11 +16,30 @@ import Testimonials           from '@/components/sections/Testimonials';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
 
+/* ── Pigmentation types ───────────────────────────────────────── */
+const PIGMENTATION_TYPES = [
+  {
+    num: '01',
+    title: 'Melasma',
+    desc: 'Hormonally triggered, symmetrical patches of deeper pigmentation typically appearing on the cheeks, forehead, and upper lip.',
+  },
+  {
+    num: '02',
+    title: 'Post-Inflammatory Hyperpigmentation',
+    desc: 'Dark marks left behind after acne, injury or inflammation as the healing skin overproduces melanin in the affected area.',
+  },
+  {
+    num: '03',
+    title: 'Solar Lentigines / Freckles',
+    desc: 'Sun-induced flat spots that develop on exposed skin such as the face, hands, and shoulders from cumulative UV exposure.',
+  },
+];
+
 /* ── Causes ───────────────────────────────────────────────────── */
 const CAUSES = [
   {
     title: 'Sun Exposure',
-    desc: 'UV radiation stimulates excess melanin production, leading to sunspots, freckles, and broader areas of uneven darkening, particularly on the face, hands, shoulders, and décolletage.',
+    desc: 'UV radiation triggers excess melanin overproduction, leading to sunspots, freckles, and broader areas of darkening on exposed skin.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="5"/>
@@ -36,7 +56,7 @@ const CAUSES = [
   },
   {
     title: 'Hormonal Changes',
-    desc: 'Pregnancy, the menopause, and hormonal contraceptives can trigger melasma, symmetrical patches of deeper pigmentation on the cheeks, forehead, and upper lip.',
+    desc: 'Pregnancy, the menopause, and the contraceptive pill can trigger melasma, causing symmetrical patches of deeper pigmentation on the face.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
@@ -44,8 +64,8 @@ const CAUSES = [
     ),
   },
   {
-    title: 'Post-Inflammatory Response',
-    desc: 'Skin trauma from acne, eczema, cuts, or cosmetic procedures triggers excess melanin production during healing, leaving behind persistent dark marks known as post-inflammatory hyperpigmentation (PIH).',
+    title: 'Post-Acne Scarring',
+    desc: 'Skin trauma from acne breakouts triggers excess melanin production during healing, leaving behind persistent dark post-inflammatory marks.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -55,18 +75,17 @@ const CAUSES = [
     ),
   },
   {
-    title: 'Ageing',
-    desc: 'Decades of cumulative UV exposure cause melanin to distribute unevenly, producing age spots and liver spots on sun-exposed areas. Slower cell turnover means these marks persist for longer.',
+    title: 'Skin Trauma or Inflammation',
+    desc: 'Cuts, burns, eczema, and cosmetic procedures all disrupt normal melanin distribution, resulting in patches of uneven discolouration during repair.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="10"/>
-        <polyline points="12 6 12 12 16 14"/>
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
       </svg>
     ),
   },
   {
     title: 'Genetics',
-    desc: 'Some people are genetically predisposed to freckle easily or develop melasma, particularly those with lighter skin tones. Inherited melanocyte sensitivity amplifies pigmentation responses to UV and hormones.',
+    desc: 'Some people are genetically predisposed to freckling or melasma, with inherited melanocyte sensitivity amplifying pigmentation responses to UV and hormones.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M6 3c0 4.5 6 4.5 6 9s-6 4.5-6 9"/>
@@ -77,85 +96,108 @@ const CAUSES = [
     ),
   },
   {
-    title: 'Skin Inflammation',
-    desc: 'Chronic inflammatory conditions such as rosacea or contact dermatitis disrupt the normal melanin distribution process, resulting in patches of uneven discolouration as the skin attempts to repair itself.',
+    title: 'Certain Medications',
+    desc: 'Some antibiotics, anti-seizure drugs, and chemotherapy agents increase photosensitivity, making skin far more prone to developing pigmentation changes.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
       </svg>
     ),
+  },
+];
+
+/* ── Risk factors ─────────────────────────────────────────────── */
+const RISK_FACTORS = [
+  'Those with frequent or prolonged unprotected sun exposure.',
+  'People with darker skin tones who are more prone to post-inflammatory marks.',
+  'Women on hormonal contraception or during pregnancy.',
+  'Those prone to acne, eczema, or inflammatory skin conditions.',
+  'Individuals with a history of skin inflammation or repeated skin trauma.',
+  'People with a family history of melasma or hyperpigmentation.',
+];
+
+/* ── Diagnose steps ───────────────────────────────────────────── */
+const DIAGNOSE_STEPS = [
+  {
+    num: '01',
+    text: 'Wood\'s Lamp Skin Analysis — a specialised UV light that reveals the depth and distribution of pigmentation invisible to the naked eye.',
+  },
+  {
+    num: '02',
+    text: 'Dermatoscopy & Visual Assessment — close examination of pigmented lesions to characterise their pattern, border, and severity.',
+  },
+  {
+    num: '03',
+    text: 'Skin History & Trigger Review — a thorough discussion of your lifestyle, sun habits, hormonal history, and skin concerns to identify root causes.',
   },
 ];
 
 /* ── Treatments ───────────────────────────────────────────────── */
 const TREATMENTS = [
   {
-    title: 'Lumecca IPL',
-    desc:  'Intense Pulsed Light precisely targets excess melanin, breaking down sunspots, freckles, and areas of uneven pigmentation for a noticeably clearer and more even complexion.',
-    href:  '/treatments/lumecca-ipl',
+    title:  'Lumecca IPL',
+    desc:   'Intense Pulsed Light precisely targets excess melanin, breaking down sunspots, freckles, and areas of uneven pigmentation for a noticeably clearer complexion.',
+    href:   '/treatments/lumecca-ipl-leicester',
+    image:  '/images/BA1.jpg',
   },
   {
-    title: 'Laser Resurfacing',
-    desc:  'Targeted laser energy penetrates deeper pigmentation, stimulating cell renewal and collagen production to reduce sun damage, age spots, and uneven skin tone.',
-    href:  '/treatments/laser-resurfacing',
+    title:  'Chemical Peels',
+    desc:   'Exfoliating peels remove pigmented surface skin cells, accelerate cell turnover, and progressively lighten dark patches and uneven discolouration.',
+    href:   '/treatments/chemical-peels',
+    image:  '/images/BA2.jpg',
   },
   {
-    title: 'Chemical Peel',
-    desc:  'Exfoliating peels remove pigmented surface skin cells, accelerate cell turnover, and progressively lighten dark patches and uneven discolouration across the face and body.',
-    href:  '/treatments/chemical-peels',
+    title:  'Laser Resurfacing',
+    desc:   'Targeted laser energy penetrates deeper pigmentation, stimulating cell renewal and collagen production to reduce sun damage and uneven skin tone.',
+    href:   '/treatments/laser-resurfacing',
+    image:  '/images/BA3.jpg',
   },
   {
-    title: 'Polynucleotides',
-    desc:  'Stimulates deep skin regeneration, improving overall skin quality and tone, reducing post-inflammatory marks and supporting a healthier, more even complexion over time.',
-    href:  '/treatments/polynucleotides-leicester',
+    title:  'AlumierMD Skincare',
+    desc:   'Clinically formulated brightening skincare that inhibits melanin production and supports a clearer, more even complexion between clinic treatments.',
+    href:   '/treatments/skincare-alumier-md',
+    image:  '/images/BA4.jpg',
   },
 ];
 
-/* ── Risk factors ─────────────────────────────────────────────── */
-const RISK_FACTORS = [
-  'People with a history of prolonged or unprotected sun exposure.',
-  'Those with lighter skin tones, which produce freckles more readily.',
-  'Women during pregnancy or those using hormonal contraceptives.',
-  'Adults over 40 with accumulated UV damage from years of sun exposure.',
-  'Those with a history of acne, eczema, or inflammatory skin conditions.',
-  'Individuals with a family history of melasma or hyperpigmentation.',
+/* ── When to call a doctor ────────────────────────────────────── */
+const WHEN_TO_CALL = [
+  'Rapidly changing spots that grow in size, colour, or number.',
+  'Asymmetrical growth or irregular, poorly defined borders.',
+  'A pigmented lesion that bleeds, crusts, or fails to heal.',
+  'New significant pigmentation appearing after the age of 40.',
 ];
 
 /* ── Results timeline ─────────────────────────────────────────── */
 const RESULTS_TIMELINE = [
   {
-    phase: 'Immediately',
-    title: 'Brighter Skin',
-    desc:  'Improved skin brightness and clarity visible following initial treatment.',
+    phase: '4 to 8 Weeks',
+    title: 'Treatment Timeline',
+    desc:  'Most patients see meaningful improvement within 4 to 8 weeks across a course of treatment sessions.',
   },
   {
-    phase: '2 to 4 Weeks',
-    title: 'Spots Fading',
-    desc:  'Sunspots and freckles continue to fade as the skin renews itself.',
-  },
-  {
-    phase: '6 to 8 Weeks',
-    title: 'Even Tone',
-    desc:  'Noticeably more uniform skin tone and improved overall complexion.',
+    phase: 'Progressive',
+    title: 'Gradual Fading',
+    desc:  'Sunspots, freckles, and post-inflammatory marks continue to fade as the skin renews and melanin disperses.',
   },
   {
     phase: 'Long-term',
-    title: 'Maintained Results',
-    desc:  'Daily SPF and maintenance treatments sustain a clear, even complexion.',
+    title: 'Maintenance & SPF Protection',
+    desc:  'Daily broad-spectrum SPF and periodic maintenance treatments sustain a clear, even complexion over time.',
   },
 ];
 
-/* ── Why choose ───────────────────────────────────────────────── */
+/* ── Why choose The One Clinic ────────────────────────────────── */
 const CLINIC_REASONS = [
-  { n: '01', text: 'All-in-one clinic with medical and aesthetic services.' },
-  { n: '02', text: 'Highly trained, compassionate, GMC-registered doctors.' },
-  { n: '03', text: 'Customised treatment plans based on your skin type and goals.' },
-  { n: '04', text: 'State-of-the-art facilities and modern equipment.' },
-  { n: '05', text: 'Strong reputation with excellent patient reviews.' },
-  { n: '06', text: 'Comprehensive aftercare and follow-up support.' },
+  { n: '01', text: 'All-in-one clinic with medical & aesthetic services.' },
+  { n: '02', text: 'Highly trained, compassionate doctors.' },
+  { n: '03', text: 'Customised treatments based on listening & expertise.' },
+  { n: '04', text: 'State-of-the-art facilities & modern equipment.' },
+  { n: '05', text: 'Strong reputation & excellent reviews.' },
+  { n: '06', text: 'Comprehensive care and referrals with specialists.' },
 ];
 
-/* ── FAQs ─────────────────────────────────────────────────────── */
+/* ── FAQ data ──────────────────────────────────────────────────── */
 const FAQS = [
   {
     question: 'What is the difference between hyperpigmentation, sun damage, and freckles?',
@@ -165,7 +207,7 @@ const FAQS = [
   {
     question: 'Can hyperpigmentation be permanently treated?',
     answer:
-      'Many forms of hyperpigmentation can be significantly reduced or cleared with the right treatment. IPL and laser are highly effective for sunspots, freckles, and age spots. However, melasma and post-inflammatory pigmentation can recur without ongoing sun protection. Our doctors will advise on the most appropriate plan for your skin type and pigmentation pattern.',
+      'Many forms of hyperpigmentation can be significantly reduced or cleared with the right treatment. IPL and laser are highly effective for sunspots, freckles, and age spots. However, melasma and post-inflammatory pigmentation can recur without ongoing sun protection and maintenance. Our doctors will advise on the most appropriate plan for your skin type and pigmentation pattern.',
   },
   {
     question: 'How many sessions will I need?',
@@ -175,49 +217,60 @@ const FAQS = [
   {
     question: 'Is hyperpigmentation treatment safe for all skin tones?',
     answer:
-      'Yes, with the right treatment selection. Some lasers and IPL devices carry a higher risk of post-inflammatory pigmentation in darker skin tones if used incorrectly. At The One Clinic, our GMC-registered doctors assess your Fitzpatrick skin type and choose treatments that are both safe and effective for your skin.',
+      'Yes, with the right treatment selection. Some lasers and IPL devices carry a higher risk of post-inflammatory pigmentation in darker skin tones if used incorrectly. At The One Clinic, our doctors assess your Fitzpatrick skin type and choose treatments that are both safe and effective for your skin.',
   },
   {
-    question: 'What is the recovery time?',
+    question: 'What is the recovery time after treatment?',
     answer:
       'Recovery varies by treatment. IPL may cause temporary darkening of spots and mild redness for a few days. Chemical peels can result in flaking for 3 to 7 days depending on depth. Most patients return to normal activities the same day or within 24 to 48 hours, with results continuing to improve over the following weeks.',
   },
+  {
+    question: 'How can I prevent hyperpigmentation from returning?',
+    answer:
+      'Daily broad-spectrum SPF 50 is essential to prevent UV-triggered pigmentation returning or worsening. Avoiding peak sun hours, wearing protective clothing, and using clinically formulated brightening skincare such as AlumierMD can significantly extend and maintain your results between clinic treatments.',
+  },
 ];
 
-/* ── Related ──────────────────────────────────────────────────── */
+/* ── Related data ──────────────────────────────────────────────── */
 const RELATED_TREATMENTS = [
   {
     title: 'Lumecca IPL',
-    desc:  'Break down sunspots and freckles with targeted Intense Pulsed Light therapy.',
-    href:  '/treatments/lumecca-ipl',
+    desc:  'Break down sunspots and freckles with targeted Intense Pulsed Light therapy for a clearer complexion.',
+    href:  '/treatments/lumecca-ipl-leicester',
+    tag:   'Medical Aesthetics',
+  },
+  {
+    title: 'Chemical Peels',
+    desc:  'Resurface and brighten pigmented skin with exfoliating, skin-renewing peels tailored to your tone.',
+    href:  '/treatments/chemical-peels',
     tag:   'Medical Aesthetics',
   },
   {
     title: 'Laser Resurfacing',
-    desc:  'Reduce deeper sun damage and uneven tone with precision laser treatment.',
+    desc:  'Reduce deeper sun damage and uneven tone with precision laser treatment and collagen stimulation.',
     href:  '/treatments/laser-resurfacing',
     tag:   'Medical Aesthetics',
   },
   {
-    title: 'Chemical Peel',
-    desc:  'Resurface and brighten pigmented skin with exfoliating, skin-renewing peels.',
-    href:  '/treatments/chemical-peels',
+    title: 'AlumierMD Skincare',
+    desc:  'Clinical-grade brightening skincare that inhibits melanin and sustains your results at home.',
+    href:  '/treatments/skincare-alumier-md',
     tag:   'Medical Aesthetics',
   },
 ];
 
 const RELATED_CONDITIONS = [
   {
-    title: 'Pigmentation',
-    desc:  'Treat dark spots, patches, and uneven skin tone with personalised care.',
-    href:  '/conditions/pigmentation',
+    title: 'Rosacea',
+    desc:  'Calm persistent redness and restore an even, clear complexion with targeted treatment.',
+    href:  '/conditions/rosacea',
     tag:   'Skin',
   },
   {
-    title: 'Facial Redness / Rosacea',
-    desc:  'Calm persistent redness and restore an even, clear complexion.',
-    href:  '/conditions/rosacea',
-    tag:   'Face',
+    title: 'Pigmentation',
+    desc:  'Treat dark spots, patches, and uneven skin tone with personalised, clinically led care.',
+    href:  '/conditions/pigmentation',
+    tag:   'Skin',
   },
 ];
 
@@ -225,6 +278,10 @@ const RELATED_CONDITIONS = [
    PAGE
 ════════════════════════════════════════════════════════════════ */
 export default function HyperpigmentationPage() {
+  const [showAllFaqs, setShowAllFaqs] = useState(false);
+
+  const visibleFaqs = showAllFaqs ? FAQS : FAQS.slice(0, 4);
+
   return (
     <>
       {/* ════════════════════════════════════════
@@ -232,9 +289,10 @@ export default function HyperpigmentationPage() {
       ════════════════════════════════════════ */}
       <section
         className={styles.hero}
-        aria-label="Hyperpigmentation, sun damage and freckles, hero"
+        aria-label="Hyperpigmentation Treatment Leicester, hero"
         data-section-theme="dark"
       >
+        {/* Breadcrumb, pinned below fixed header */}
         <div className={styles.heroBreadcrumb}>
           <Container>
             <Breadcrumb
@@ -254,18 +312,19 @@ export default function HyperpigmentationPage() {
             initial="hidden"
             animate="show"
           >
+            {/* Left: text content */}
             <div className={styles.heroLeft}>
               <motion.span className={styles.heroCategory} variants={fadeUp}>
                 Conditions · Skin
               </motion.span>
 
               <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                Hyperpigmentation, Sun Damage &amp; Freckles
+                Hyperpigmentation Treatment Leicester
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Restore a clear, even-toned complexion with personalised,
-                clinically proven treatments for all forms of skin pigmentation.
+                Treat dark spots, sun damage and freckles for a clearer,
+                even-toned complexion with clinically proven, personalised care.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -274,10 +333,12 @@ export default function HyperpigmentationPage() {
                 </BookConsultationButton>
               </motion.div>
 
+              {/* Trust badges */}
               <motion.div variants={fadeUp}>
                 <TrustBadges theme="dark" />
               </motion.div>
 
+              {/* Trust items */}
               <motion.div className={styles.heroTrust} variants={fadeUp}>
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -305,6 +366,7 @@ export default function HyperpigmentationPage() {
               </motion.div>
             </div>
 
+            {/* Right: hero image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
                 src="/images/Hyperpigmentation.png"
@@ -321,101 +383,103 @@ export default function HyperpigmentationPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          2. WHAT IS HYPERPIGMENTATION?
+          2. WHAT IS HYPERPIGMENTATION & TYPES (Combined)
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="light" data-section-theme="light" className={styles.overviewTypesSection}>
         <Container>
-          <motion.div
-            className={styles.overviewGrid}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.div className={styles.overviewLabel} variants={fadeUp}>
-              <p className={styles.eyebrowDark}>About This Condition</p>
-            </motion.div>
-
-            <div className={styles.overviewBody}>
-              <motion.h2 className={styles.overviewHeading} variants={fadeUp}>
-                What Is Hyperpigmentation?
-              </motion.h2>
-              <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Hyperpigmentation is the darkening of areas of skin caused by an excess
-                production of melanin, the pigment responsible for skin colour. It
-                encompasses a broad range of concerns including sun damage, age spots,
-                freckles, melasma, and post-inflammatory marks, and can affect the face,
-                hands, neck, or body.
-              </motion.p>
-              <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Although largely harmless, these concerns are a common source of
-                self-consciousness. With the right professional treatment, most forms of
-                hyperpigmentation can be significantly reduced or cleared, restoring a
-                clearer and more even complexion.
-              </motion.p>
+          <div className={styles.combinedBody}>
+            {/* Left column: Overview */}
+            <div className={styles.combinedLeft}>
+              <div className={styles.combinedLeftTop}>
+                <motion.p
+                  className={styles.eyebrowDark}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  About This Condition
+                </motion.p>
+                <motion.h2
+                  className={styles.combinedHeading}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  What Is Hyperpigmentation?
+                </motion.h2>
+                <motion.p
+                  className={styles.combinedDesc}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  Hyperpigmentation is the darkening of areas of skin caused by an
+                  excess production of melanin — the pigment responsible for skin
+                  colour. It encompasses a broad range of concerns including sun
+                  damage, age spots, freckles, melasma, and post-inflammatory marks,
+                  and can affect the face, hands, neck, or body.
+                </motion.p>
+                <motion.p
+                  className={styles.combinedDesc}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  Although largely harmless, these concerns are a common source of
+                  self-consciousness. With the right professional treatment, most
+                  forms of hyperpigmentation can be significantly reduced or cleared,
+                  restoring a clearer and more even complexion.
+                </motion.p>
+              </div>
             </div>
-          </motion.div>
-        </Container>
-      </Section>
 
-      {/* ════════════════════════════════════════
-          3. TYPES
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              How It Presents
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Types of Hyperpigmentation
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.typesCardsRow}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {[
-              {
-                num: '01',
-                title: 'Sun Damage & Age Spots',
-                desc: 'Flat, well-defined dark spots that develop on sun-exposed areas such as the face, hands, and shoulders from years of cumulative UV exposure.',
-              },
-              {
-                num: '02',
-                title: 'Freckles & Melasma',
-                desc: 'Small concentrated melanin deposits (freckles) and larger, hormonally triggered patches of deeper pigmentation (melasma) typically appearing on the cheeks and forehead.',
-              },
-              {
-                num: '03',
-                title: 'Post-Inflammatory Marks',
-                desc: 'Dark spots left behind after skin inflammation, acne, eczema, or injury, as the healing skin produces excess melanin in the affected area.',
-              },
-            ].map((type) => (
-              <motion.div key={type.num} className={styles.typeCard} variants={fadeUp}>
-                <span className={styles.typeNum} aria-hidden="true">{type.num}</span>
-                <div className={styles.typeCardBody}>
-                  <h3 className={styles.typeTitle}>{type.title}</h3>
-                  <p className={styles.typeDesc}>{type.desc}</p>
-                </div>
+            {/* Right column: Types */}
+            <div className={styles.combinedRight}>
+              <motion.div
+                className={styles.typesRightHeader}
+                initial="hidden"
+                whileInView="show"
+                variants={fadeUp}
+                viewport={VIEWPORT}
+              >
+                <p className={styles.combinedRightLabel}>Classification</p>
+                <h3 className={styles.typesRightHeading}>Types of Hyperpigmentation</h3>
               </motion.div>
-            ))}
-          </motion.div>
+
+              <motion.div
+                className={styles.combinedCards}
+                variants={stagger(0.1)}
+                initial="hidden"
+                whileInView="show"
+                viewport={VIEWPORT}
+              >
+                {PIGMENTATION_TYPES.map((type) => (
+                  <motion.div
+                    key={type.num}
+                    className={styles.typeCardCombined}
+                    variants={fadeUp}
+                  >
+                    <span className={styles.typeNumCombined} aria-hidden="true">
+                      {type.num}
+                    </span>
+                    <div className={styles.typeCardHeader}>
+                      <h3 className={styles.typeTitleCombined}>{type.title}</h3>
+                      <p className={styles.typeDescCombined}>{type.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          4. CAUSES
+          3. CAUSES
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.causesSection}>
         <Container>
@@ -433,8 +497,8 @@ export default function HyperpigmentationPage() {
               What Causes Hyperpigmentation?
             </motion.h2>
             <motion.p className={styles.sectionSubtext} variants={fadeUp}>
-              Understanding the underlying cause helps determine the most effective
-              treatment approach for your skin.
+              Understanding what contributes to dark spots and uneven skin tone
+              helps identify the right treatment approach for long-lasting results.
             </motion.p>
           </motion.div>
 
@@ -465,7 +529,7 @@ export default function HyperpigmentationPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          5. RISK FACTORS
+          4. WHO IS MORE LIKELY?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
@@ -476,41 +540,56 @@ export default function HyperpigmentationPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div className={styles.riskLeft} variants={stagger(0.1)}>
-              <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-                Risk Factors
-              </motion.p>
-              <motion.h2 className={styles.riskHeading} variants={fadeUp}>
-                Who Is More Likely to Develop Hyperpigmentation?
-              </motion.h2>
-              <motion.p className={styles.riskIntro} variants={fadeUp}>
-                Several skin types, lifestyle habits, and health factors increase
-                susceptibility to hyperpigmentation and sun damage.
-              </motion.p>
+            {/* Left: image */}
+            <motion.div className={styles.riskImageWrap} variants={fadeUp}>
+              <Image
+                src="/images/Hyperpigmentation.png"
+                alt="Person showing hyperpigmentation and sun damage on skin"
+                fill
+                className={styles.riskImage}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className={styles.riskImageOverlay} aria-hidden="true" />
             </motion.div>
 
-            <motion.ul
-              className={styles.riskList}
-              role="list"
-              variants={stagger(0.08)}
-            >
-              {RISK_FACTORS.map((item) => (
-                <motion.li key={item} className={styles.riskItem} variants={fadeUp}>
-                  <span className={styles.riskCheck} aria-hidden="true">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
-                  <span>{item}</span>
-                </motion.li>
-              ))}
-            </motion.ul>
+            {/* Right: heading + intro + checklist */}
+            <motion.div className={styles.riskRight} variants={stagger(0.1)}>
+              <div className={styles.riskRightInner}>
+                <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+                  Risk Factors
+                </motion.p>
+                <motion.h2 className={styles.riskHeading} variants={fadeUp}>
+                  Who Is More Likely to Develop Hyperpigmentation?
+                </motion.h2>
+                <motion.p className={styles.riskIntro} variants={fadeUp}>
+                  Several skin types, lifestyle habits, and health factors increase
+                  susceptibility to hyperpigmentation and sun damage.
+                </motion.p>
+
+                <motion.ul
+                  className={styles.riskList}
+                  role="list"
+                  variants={stagger(0.08)}
+                >
+                  {RISK_FACTORS.map((item) => (
+                    <motion.li key={item} className={styles.riskItem} variants={fadeUp}>
+                      <span className={styles.riskCheck} aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                          <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </span>
+                      <span>{item}</span>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </div>
+            </motion.div>
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          6. TREATMENTS
+          5. HOW DO WE DIAGNOSE?
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -522,10 +601,56 @@ export default function HyperpigmentationPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Your Options
+              Our Process
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Treatments for Hyperpigmentation &amp; Sun Damage
+              How Do We Diagnose Hyperpigmentation?
+            </motion.h2>
+            <motion.p className={styles.diagnoseIntro} variants={fadeUp}>
+              Our specialists use a multi-step assessment to understand your skin:
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.diagnoseGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {DIAGNOSE_STEPS.map((step) => (
+              <motion.div
+                key={step.num}
+                className={styles.diagnoseCard}
+                variants={fadeUp}
+              >
+                <span className={styles.diagnoseNum} aria-hidden="true">
+                  {step.num}
+                </span>
+                <p className={styles.diagnoseText}>{step.text}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          6. TREATMENTS FOR HYPERPIGMENTATION
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Your Options
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Treatments For Hyperpigmentation &amp; Sun Damage
             </motion.h2>
           </motion.div>
 
@@ -561,9 +686,58 @@ export default function HyperpigmentationPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          7. RESULTS & EXPECTATIONS
+          7. WHEN TO CALL A DOCTOR?
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.whenToCallWrap}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {/* Left: heading */}
+            <motion.div className={styles.whenToCallLeft} variants={stagger(0.1)}>
+              <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+                Medical Advice
+              </motion.p>
+              <motion.h2 className={styles.whenToCallHeading} variants={fadeUp}>
+                When to Call a Doctor?
+              </motion.h2>
+              <motion.p className={styles.whenToCallIntro} variants={fadeUp}>
+                Most forms of hyperpigmentation are harmless. However, you should
+                see a doctor if you notice:
+              </motion.p>
+            </motion.div>
+
+            {/* Right: warning list */}
+            <motion.ul
+              className={styles.whenToCallList}
+              role="list"
+              variants={stagger(0.08)}
+            >
+              {WHEN_TO_CALL.map((item) => (
+                <motion.li key={item} className={styles.whenToCallItem} variants={fadeUp}>
+                  <span className={styles.whenToCallIcon} aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="8" x2="12" y2="12"/>
+                      <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          8. RESULTS & EXPECTATIONS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.resultsSection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -579,7 +753,8 @@ export default function HyperpigmentationPage() {
               Results &amp; Expectations
             </motion.h2>
             <motion.p className={styles.sectionSubtext} variants={fadeUp}>
-              After treatment, here is what you can typically expect at each stage.
+              After treatment for hyperpigmentation and sun damage, here is what
+              you can typically expect at each stage.
             </motion.p>
           </motion.div>
 
@@ -607,19 +782,19 @@ export default function HyperpigmentationPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. MEET THE EXPERTS
+          9. MEET THE EXPERTS
       ════════════════════════════════════════ */}
       <MeetTheExperts />
 
       {/* ════════════════════════════════════════
-          9. GOOGLE REVIEWS
+          GOOGLE REVIEWS
       ════════════════════════════════════════ */}
       <Testimonials />
 
       {/* ════════════════════════════════════════
           10. WHY CHOOSE THE ONE CLINIC
       ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
+      <Section variant="light" data-section-theme="light" className={styles.whySection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -628,8 +803,10 @@ export default function HyperpigmentationPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Why Us</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Why Us
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
               Why Choose The One Clinic For Hyperpigmentation Treatment
             </motion.h2>
           </motion.div>
@@ -659,8 +836,8 @@ export default function HyperpigmentationPage() {
       {/* ════════════════════════════════════════
           11. FAQ
       ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
+      <Section variant="light" data-section-theme="light" className={styles.faqSection}>
+        <Container className={styles.faqInner}>
           <motion.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
@@ -668,8 +845,8 @@ export default function HyperpigmentationPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>FAQ</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
               Frequently Asked Questions
             </motion.h2>
           </motion.div>
@@ -681,19 +858,35 @@ export default function HyperpigmentationPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <Accordion items={FAQS} theme="dark" />
+            <Accordion items={visibleFaqs} theme="dark" />
           </motion.div>
+
+          <div className={styles.faqToggleWrap}>
+            <button
+              className={styles.faqToggleBtn}
+              onClick={() => setShowAllFaqs((prev) => !prev)}
+              aria-expanded={showAllFaqs}
+            >
+              {showAllFaqs ? 'Show Fewer Questions' : 'View All Questions'}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"
+                style={{ transform: showAllFaqs ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s ease' }}
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+          </div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          12. CTA BAND
+          12. CONSULTATION CTA
       ════════════════════════════════════════ */}
       <section
         className={styles.ctaBand}
         data-section-theme="dark"
         aria-label="Hyperpigmentation consultation CTA"
       >
+        {/* Background image */}
         <div className={styles.ctaBandBgWrap} aria-hidden="true">
           <Image
             src="/images/Background section image new1.jpg"
@@ -721,8 +914,8 @@ export default function HyperpigmentationPage() {
               <span className={styles.ctaAccent}>More Even Skin?</span>
             </motion.h2>
             <motion.p className={styles.ctaSubtext} variants={fadeUp}>
-              Speak to our specialists today to find the most effective treatment
-              for your pigmentation and restore a naturally clear, radiant complexion.
+              Talk to our specialists today to find the most effective treatment
+              for your pigmentation and restore a naturally radiant complexion.
             </motion.p>
             <motion.div className={styles.ctaBtns} variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBtnPrimary}>
@@ -737,48 +930,14 @@ export default function HyperpigmentationPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          13. COST BAND
-      ════════════════════════════════════════ */}
-      <section
-        className={styles.costBand}
-        data-section-theme="dark"
-        aria-label="Hyperpigmentation treatment cost"
-      >
-        <Container>
-          <motion.div
-            className={styles.costBandInner}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.costBandEyebrow} variants={fadeUp}>
-              Pricing
-            </motion.p>
-            <motion.h2 className={styles.costBandHeading} variants={fadeUp}>
-              Hyperpigmentation Treatment Cost
-            </motion.h2>
-            <motion.p className={styles.costBandNote} variants={fadeUp}>
-              Contact us to enquire
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBtnPrimary}>
-                Book A Consultation
-              </BookConsultationButton>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
-
-      {/* ════════════════════════════════════════
-          14. LEAD FORM
+          13. LEAD FORM
       ════════════════════════════════════════ */}
       <div id="contact">
         <LeadForm />
       </div>
 
       {/* ════════════════════════════════════════
-          15. RELATED TREATMENTS
+          14. RELATED TREATMENTS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
@@ -821,7 +980,7 @@ export default function HyperpigmentationPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          16. RELATED CONDITIONS
+          15. RELATED CONDITIONS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.relatedConditionsSection}>
         <Container>
@@ -862,6 +1021,7 @@ export default function HyperpigmentationPage() {
           </motion.div>
         </Container>
       </Section>
+
     </>
   );
 }
