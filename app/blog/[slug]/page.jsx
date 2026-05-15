@@ -80,6 +80,18 @@ export default async function BlogDetailPage({ params }) {
         </div>
       </section>
 
+      {/* Featured Image */}
+      {post.featured_image && (
+        <div className="w-full h-96 bg-neutral-100 relative overflow-hidden">
+          <img
+            src={post.featured_image}
+            alt={post.title}
+            className="w-full h-full object-cover"
+            loading="eager"
+          />
+        </div>
+      )}
+
       {/* Divider */}
       <div className="h-px bg-neutral-100" />
 
