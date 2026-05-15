@@ -112,6 +112,30 @@ const RISK_FACTORS = [
   'People with a family history of stretch marks or low skin elasticity.',
 ];
 
+/* ── Diagnose steps ───────────────────────────────────────────── */
+const DIAGNOSE_STEPS = [
+  {
+    num: '01',
+    text: 'Examine the stretch marks to assess their age, depth, and extent of involvement.',
+  },
+  {
+    num: '02',
+    text: 'Discuss your medical history, skin type, and the circumstances that led to the stretch marks.',
+  },
+  {
+    num: '03',
+    text: 'Recommend the most suitable treatment options to minimise their appearance.',
+  },
+];
+
+/* ── When to call a doctor ────────────────────────────────────── */
+const WHEN_TO_CALL = [
+  'Stretch marks spreading rapidly or appearing unexpectedly over large areas.',
+  'Pain, itching, or inflammation accompanying the stretch marks.',
+  'Signs of infection such as redness, warmth, or discharge.',
+  'Skin changes or symptoms that concern you or affect your wellbeing.',
+];
+
 /* ── Results timeline ─────────────────────────────────────────── */
 const RESULTS_TIMELINE = [
   {
@@ -553,7 +577,101 @@ export default function StretchMarksPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          7. RESULTS & EXPECTATIONS
+          6. HOW DO WE DIAGNOSE?
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Our Process
+            </motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              How Do We Diagnose Stretch Marks?
+            </motion.h2>
+            <motion.p className={styles.diagnoseIntro} variants={fadeUp}>
+              Our specialists will:
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.diagnoseGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {DIAGNOSE_STEPS.map((step) => (
+              <motion.div
+                key={step.num}
+                className={styles.diagnoseCard}
+                variants={fadeUp}
+              >
+                <span className={styles.diagnoseNum} aria-hidden="true">
+                  {step.num}
+                </span>
+                <p className={styles.diagnoseText}>{step.text}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          7. WHEN TO CALL A DOCTOR?
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.whenToCallWrap}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {/* Left: heading */}
+            <motion.div className={styles.whenToCallLeft} variants={stagger(0.1)}>
+              <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+                Medical Advice
+              </motion.p>
+              <motion.h2 className={styles.whenToCallHeading} variants={fadeUp}>
+                When to Call a Doctor?
+              </motion.h2>
+              <motion.p className={styles.whenToCallIntro} variants={fadeUp}>
+                While stretch marks are not medically dangerous, contact us if you experience:
+              </motion.p>
+            </motion.div>
+
+            {/* Right: warning list */}
+            <motion.ul
+              className={styles.whenToCallList}
+              role="list"
+              variants={stagger(0.08)}
+            >
+              {WHEN_TO_CALL.map((item) => (
+                <motion.li key={item} className={styles.whenToCallItem} variants={fadeUp}>
+                  <span className={styles.whenToCallIcon} aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="8" x2="12" y2="12"/>
+                      <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          8. RESULTS & EXPECTATIONS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>

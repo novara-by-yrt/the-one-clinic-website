@@ -505,7 +505,7 @@ export default function WeakChinPage(): React.ReactElement {
             {/* Left: image */}
             <motion.div className={styles.riskImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Eye-bags.jpg"
+                src="/images/Weak Jawline.png"
                 alt="Person showing weak chin and jawline profile"
                 fill
                 className={styles.riskImage}
