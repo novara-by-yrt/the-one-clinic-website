@@ -80,23 +80,35 @@ export default async function BlogDetailPage({ params }) {
         </div>
       </section>
 
-      {/* Featured Image */}
-      {post.featured_image && (
-        <div className="w-full h-96 bg-neutral-100 relative overflow-hidden">
-          <img
-            src={post.featured_image}
-            alt={post.title}
-            className="w-full h-full object-cover"
-            loading="eager"
-          />
-        </div>
-      )}
-
       {/* Divider */}
       <div className="h-px bg-neutral-100" />
 
       {/* Article body - Two column layout for all blogs on desktop */}
       <div className="max-w-7xl mx-auto px-4 py-14">
+        {/* Featured Image + Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.35fr] gap-8 lg:gap-12 mb-12">
+          {/* Featured Image Left */}
+          {post.featured_image && (
+            <div className="bg-neutral-100 relative overflow-hidden rounded-lg h-80 lg:h-auto">
+              <img
+                src={post.featured_image}
+                alt={post.title}
+                className="w-full h-full object-cover"
+                loading="eager"
+              />
+            </div>
+          )}
+
+          {/* Form Right */}
+          {post.featured_image && (
+            <div className="hidden lg:block">
+              <div className="sticky" style={{ top: '6rem' }}>
+                <CallbackTrigger />
+              </div>
+            </div>
+          )}
+        </div>
+
         {/* Desktop: Two-column grid */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.35fr] gap-8 lg:gap-12">
           {/* Left column - Content */}
@@ -142,12 +154,14 @@ export default async function BlogDetailPage({ params }) {
             </div>
           </article>
 
-          {/* Right column - Sticky form (hidden on mobile/tablet) */}
-          <div className="hidden lg:block">
-            <div className="sticky" style={{ top: '6rem' }}>
-              <CallbackTrigger />
+          {/* Right column - Sticky form (hidden on mobile/tablet and if featured image exists) */}
+          {!post.featured_image && (
+            <div className="hidden lg:block">
+              <div className="sticky" style={{ top: '6rem' }}>
+                <CallbackTrigger />
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* Mobile/Tablet: Form below content */}
