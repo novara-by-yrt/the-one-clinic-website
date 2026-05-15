@@ -1436,7 +1436,13 @@
   }
 
   .riskImageWrap {
-    min-height: 260px;
+    min-height: unset;
+    aspect-ratio: 4 / 3;
+  }
+
+  .riskImage {
+    object-fit: contain;
+    object-position: center;
   }
 
   .riskRight {
@@ -1485,7 +1491,7 @@
 
 @media (max-width: 768px) {
   .hero { padding-top: 64px; overflow-x: hidden; }
-  .heroInner { gap: var(--space-4); padding-top: 48px; padding-bottom: 48px; }
+  .heroInner { gap: var(--space-4); padding-top: 88px; padding-bottom: 48px; }
 
   /* Prevent inline-flex children from causing overflow */
   .heroLeft { max-width: 100%; overflow-x: hidden; }
