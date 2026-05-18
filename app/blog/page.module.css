@@ -73,7 +73,7 @@
 }
 
 .filterTag.active {
-  background: #0066cc;
+  background: #000;
   color: white;
 }
 
@@ -115,7 +115,7 @@
   display: inline-block;
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
-  background: #0066cc;
+  background: #000;
   color: white;
   text-decoration: none;
   font-weight: 500;
@@ -124,7 +124,7 @@
 }
 
 .paginationBtn:hover {
-  background: #0052a3;
+  background: #333;
 }
 
 .pageNumbers {
@@ -153,9 +153,9 @@
 }
 
 .pageNumber.active {
-  background: #0066cc;
+  background: #000;
   color: white;
-  border-color: #0066cc;
+  border-color: #000;
 }
 
 @media (max-width: 768px) {
