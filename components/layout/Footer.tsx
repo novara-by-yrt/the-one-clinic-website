@@ -1,5 +1,9 @@
+'use client';
+
 import Script from 'next/script';
+import { useState } from 'react';
 import { CLINIC_INFO, getMapsSearchUrl } from '@/lib/clinic-info';
+import { clearConsentPreferences } from '@/lib/consent';
 import styles from './Footer.module.css';
 
 /* ── Inline SVGs ──────────────────────────────────────────── */
@@ -31,6 +35,13 @@ function InstagramIcon() {
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const [managingCookies, setManagingCookies] = useState(false);
+
+  const handleManageCookies = () => {
+    clearConsentPreferences();
+    window.dispatchEvent(new CustomEvent('show-consent-banner'));
+    setManagingCookies(true);
+  };
 
   return (
     <footer className={styles.footer} role="contentinfo">
@@ -150,6 +161,14 @@ export default function Footer() {
             <a href="/privacy" className={styles.legalLink}>
               Privacy Policy <CircleArrow />
             </a>
+            <button
+              onClick={handleManageCookies}
+              className={styles.legalLink}
+              type="button"
+              aria-label="Manage cookie preferences"
+            >
+              Manage Cookies <CircleArrow />
+            </button>
             <a href="/sitemap.xml" className={styles.legalLink}>
               Sitemap <CircleArrow />
             </a>

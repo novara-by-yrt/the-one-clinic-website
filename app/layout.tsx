@@ -4,6 +4,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import LayoutShell from '@/components/layout/LayoutShell';
 import StickyCallbackCTA from '@/components/ui/StickyCallbackCTA';
+import CookieConsentBanner from '@/components/ui/CookieConsentBanner/CookieConsentBanner';
 import '@/styles/globals.css';
 
 const inter = localFont({
@@ -83,6 +84,8 @@ export default function RootLayout({
           </LayoutShell>
           <StickyCallbackCTA />
         </div>
+
+        <CookieConsentBanner />
       </body>
     </html>
   );
