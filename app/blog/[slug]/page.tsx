@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import Script from 'next/script';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
 import Breadcrumb from '@/components/ui/Breadcrumb';
@@ -96,18 +97,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       {/* Hero */}
       <section className={styles.hero} data-section-theme="dark" aria-label="Blog post hero">
-        <div className={styles.heroImage}>
-          <Image
-            src={post.heroImage}
-            alt={post.heroImageAlt}
-            fill
-            priority
-            className={styles.heroImageEl}
-            sizes="100vw"
-          />
-          <div className={styles.heroOverlay} aria-hidden="true" />
-        </div>
-
         <Container>
           <div className={styles.heroContent}>
             {/* Breadcrumb */}
@@ -166,6 +155,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </Container>
       </section>
 
+      {/* LeadPipeline Script */}
+      <Script src="https://link.leadpipeline.ai/js/form_embed.js" strategy="lazyOnload" />
+
       {/* Content */}
       <Section variant="light" data-section-theme="light" className={styles.contentSection}>
         <Container>
@@ -208,39 +200,25 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <aside className={styles.sidebar}>
               <div className={styles.sidebarForm}>
                 <h3 className={styles.formTitle}>Request a Call Back</h3>
-                <form className={styles.form}>
-                  <div className={styles.formGroup}>
-                    <label htmlFor="fullName" className={styles.label}>Full Name<span className={styles.required}>*</span></label>
-                    <input type="text" id="fullName" name="fullName" className={styles.input} required />
-                  </div>
-
-                  <div className={styles.formGroup}>
-                    <label htmlFor="phone" className={styles.label}>Phone<span className={styles.required}>*</span></label>
-                    <input type="tel" id="phone" name="phone" className={styles.input} required />
-                  </div>
-
-                  <div className={styles.formGroup}>
-                    <label htmlFor="email" className={styles.label}>Email<span className={styles.required}>*</span></label>
-                    <input type="email" id="email" name="email" className={styles.input} required />
-                  </div>
-
-                  <div className={styles.formGroup}>
-                    <label htmlFor="interested" className={styles.label}>Interested in<span className={styles.required}>*</span></label>
-                    <select id="interested" name="interested" className={styles.select} required>
-                      <option value="">Select a treatment</option>
-                      <option value="Consultation">Consultation</option>
-                      <option value="Treatment">Treatment</option>
-                      <option value="Other">Other</option>
-                    </select>
-                  </div>
-
-                  <div className={styles.formGroup}>
-                    <label htmlFor="message" className={styles.label}>Message</label>
-                    <textarea id="message" name="message" className={styles.textarea} rows={4}></textarea>
-                  </div>
-
-                  <button type="submit" className={styles.submitBtn}>Submit</button>
-                </form>
+                <div className={styles.formWrap}>
+                  <iframe
+                    src="https://link.leadpipeline.ai/widget/form/Az3D8kxDVBz2diDQJ3uY"
+                    style={{ width: '100%', height: '500px', border: 'none', display: 'block' }}
+                    id="inline-Az3D8kxDVBz2diDQJ3uY"
+                    data-layout="{'id':'INLINE'}"
+                    data-trigger-type="alwaysShow"
+                    data-trigger-value=""
+                    data-activation-type="alwaysActivated"
+                    data-activation-value=""
+                    data-deactivation-type="neverDeactivate"
+                    data-deactivation-value=""
+                    data-form-name="Request a Call Back"
+                    data-height="500"
+                    data-layout-iframe-id="inline-Az3D8kxDVBz2diDQJ3uY"
+                    data-form-id="Az3D8kxDVBz2diDQJ3uY"
+                    title="Request a Call Back"
+                  />
+                </div>
               </div>
             </aside>
           </div>
