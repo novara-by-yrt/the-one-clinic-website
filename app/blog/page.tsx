@@ -59,7 +59,7 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
       </section>
 
       {/* Category Filter Section */}
-      <div className={styles.filterWrapper} data-section-theme="light">
+      <Section variant="light" data-section-theme="light">
         <Container>
           <div className={styles.filterSection}>
             <div className={styles.filterLabel}>
@@ -84,7 +84,7 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
             </div>
           </div>
         </Container>
-      </div>
+      </Section>
 
       {/* Blog Grid Section */}
       <Section variant="light" data-section-theme="light">
