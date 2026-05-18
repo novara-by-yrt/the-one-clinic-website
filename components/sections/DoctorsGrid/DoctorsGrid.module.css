@@ -40,7 +40,7 @@
 .card {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--color-border-light);
+  border: 1px solid #d0d5dd;
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: #fff;
@@ -60,14 +60,14 @@
 .photoWrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
-  background: #eef0f2;
+  aspect-ratio: 3 / 4;
+  background: #f5f5f5;
   overflow: hidden;
 }
 
 .photo {
   object-fit: cover;
-  object-position: center 15%;
+  object-position: center center;
   transition: transform var(--duration-slow) var(--ease-out);
 }
 
@@ -196,27 +196,31 @@
 @media (max-width: 640px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 16px;
   }
 
   .photoWrap {
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 3 / 4;
   }
 
   .body {
-    padding: 12px 12px 16px;
-    gap: 10px;
+    padding: 12px 14px 14px;
+    gap: 8px;
   }
 
   .name {
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
   }
 
   .credentials {
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
   }
 
   .cta {
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
+  }
+
+  .header {
+    margin-bottom: var(--space-5);
   }
 }

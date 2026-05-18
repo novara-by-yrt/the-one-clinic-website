@@ -11,7 +11,7 @@ import styles from './DoctorsGrid.module.css';
 
 export default function DoctorsGrid() {
   return (
-    <div style={{ backgroundColor: '#f5f5f5' }}>
+    <div style={{ backgroundColor: '#e8e8e8', paddingTop: '8px', paddingBottom: '8px' }}>
       <Section variant="light" data-section-theme="light">
       <Container>
         {/* Header */}
