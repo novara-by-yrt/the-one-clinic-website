@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
-import { motion } from 'framer-motion';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
 import BlogCard from '@/components/blog/BlogCard';
 import { getAllPosts, getCategories } from '@/lib/blog';
-import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
+import BlogPageContent from './BlogPageContent';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -39,39 +38,26 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
       <section className={styles.hero} data-section-theme="dark">
         <div className={styles.heroBackground} aria-hidden="true" />
         <Container>
-          <motion.div
-            className={styles.heroContent}
-            variants={stagger(0.1)}
-            initial="hidden"
-            animate="show"
-          >
-            <motion.div variants={fadeUp}>
-              <span className={styles.eyebrow}>The One Clinic</span>
-            </motion.div>
-            <motion.h1 className={styles.heroTitle} variants={fadeUp}>
+          <div className={styles.heroContent}>
+            <span className={styles.eyebrow}>The One Clinic</span>
+            <h1 className={styles.heroTitle}>
               Insights & Expert Guidance
-            </motion.h1>
-            <motion.p className={styles.heroDesc} variants={fadeUp}>
+            </h1>
+            <p className={styles.heroDesc}>
               Comprehensive guides, treatment insights, and wellness tips from our team of GMC-registered doctors. Learn from the experts at The One Clinic.
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
         </Container>
       </section>
 
       {/* Category Filter Section */}
       <Section variant="light" data-section-theme="light">
         <Container>
-          <motion.div
-            className={styles.filterSection}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-            variants={stagger(0.05)}
-          >
-            <motion.div variants={fadeUp} className={styles.filterLabel}>
+          <div className={styles.filterSection}>
+            <div className={styles.filterLabel}>
               <span>Filter by Category</span>
-            </motion.div>
-            <motion.div className={styles.filterTags} variants={fadeUp}>
+            </div>
+            <div className={styles.filterTags}>
               <a
                 href="/blog"
                 className={`${styles.filterTag} ${!selectedCategory ? styles.active : ''}`}
@@ -87,38 +73,20 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
                   {cat}
                 </a>
               ))}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </Container>
       </Section>
 
-      {/* Blog Grid Section */}
+      {/* Blog Grid Section - with client-side animations */}
       <Section variant="light" data-section-theme="light">
         <Container>
           {sortedPosts.length === 0 ? (
-            <motion.div
-              className={styles.emptyState}
-              initial="hidden"
-              whileInView="show"
-              viewport={VIEWPORT}
-              variants={fadeUp}
-            >
+            <div className={styles.emptyState}>
               <p>No posts found in this category. Check back soon for new insights!</p>
-            </motion.div>
+            </div>
           ) : (
-            <motion.div
-              className={styles.blogGrid}
-              variants={stagger(0.05)}
-              initial="hidden"
-              whileInView="show"
-              viewport={VIEWPORT}
-            >
-              {sortedPosts.map((post) => (
-                <motion.div key={post.slug} variants={fadeUp}>
-                  <BlogCard post={post} />
-                </motion.div>
-              ))}
-            </motion.div>
+            <BlogPageContent posts={sortedPosts} />
           )}
         </Container>
       </Section>
