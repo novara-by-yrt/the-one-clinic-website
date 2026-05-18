@@ -179,6 +179,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </div>
               )}
 
+              {/* First CTA Section - after image */}
+              <div className={styles.ctaSection}>
+                <DoctorCTA1 />
+              </div>
+
               {/* Post content */}
               <div className={styles.mdxContent}>
                 <div
@@ -196,11 +201,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   ))}
                 </div>
               )}
-
-              {/* First CTA Section */}
-              <div className={styles.ctaSection}>
-                <DoctorCTA1 />
-              </div>
             </article>
 
             {/* Sidebar Form */}

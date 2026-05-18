@@ -30,7 +30,7 @@ export default function DoctorCTA1() {
 
           {/* Content */}
           <div className="p-4 md:p-5 lg:p-6 md:pl-0 flex flex-col justify-center">
-            <h3 className="text-xl md:text-2xl lg:text-3xl font-extrabold mb-2 md:mb-3 text-white leading-tight">
+            <h3 className="text-xl md:text-2xl lg:text-3xl font-extrabold mb-2 md:mb-3 text-white leading-tight" style={{ color: '#ffffff' }}>
               Look and Feel Your Best Every Day!
             </h3>
 

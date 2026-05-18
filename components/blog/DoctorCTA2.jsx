@@ -16,7 +16,7 @@ export default function DoctorCTA2() {
         <div className="grid grid-cols-1 md:grid-cols-[60%_40%] gap-0 items-center">
           {/* Content */}
           <div className="p-4 md:p-5 lg:p-6 md:pr-0 flex flex-col justify-center order-2 md:order-1">
-            <h3 className="text-xl md:text-2xl lg:text-3xl font-extrabold mb-2 md:mb-3 text-white leading-tight">
+            <h3 className="text-xl md:text-2xl lg:text-3xl font-extrabold mb-2 md:mb-3 text-white leading-tight" style={{ color: '#ffffff' }}>
               Take the Next Step in Your Aesthetic or Health Journey!
             </h3>
 
