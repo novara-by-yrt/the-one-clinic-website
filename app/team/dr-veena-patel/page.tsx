@@ -80,7 +80,7 @@ export default function DrVeenaPatelPage() {
             {/* Right, photo */}
             <motion.div className={styles.heroPhoto} variants={fadeUp}>
               <Image
-                src="/images/team-placeholder.jpg"
+                src="/images/Dr. Veena Patel-image.png"
                 alt="Dr Veena Patel"
                 fill
                 priority
