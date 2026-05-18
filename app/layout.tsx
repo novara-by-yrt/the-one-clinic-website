@@ -23,8 +23,10 @@ const inter = localFont({
 });
 
 // ── Global metadata ──────────────────────────────────────────────
+const isPreview = process.env.VERCEL_ENV === 'preview' || process.env.NEXT_PUBLIC_ENV === 'preview';
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://theoneclinic.com'),
+  metadataBase: new URL('https://the-oneclinic.net'),
   title: {
     default: 'The One Clinic, Premium Aesthetic & Wellness',
     template: '%s | The One Clinic',
@@ -56,7 +58,11 @@ export const metadata: Metadata = {
     description:
       'Expert-led aesthetic and wellness treatments tailored to you.',
   },
-  robots: {
+  robots: isPreview ? {
+    index: false,
+    follow: false,
+    nocache: true,
+  } : {
     index: true,
     follow: true,
   },
@@ -69,6 +75,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
+      <head>
+        <link rel="canonical" href="https://the-oneclinic.net" />
+      </head>
       <body>
         {/* Skip-to-content for keyboard users */}
         <a href="#main-content" className="skip-link">

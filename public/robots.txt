@@ -1,0 +1,17 @@
+# Allow indexing on production domain only
+User-agent: *
+Allow: /
+
+# Block all robots from indexing preview subdomains
+User-agent: *
+Disallow: / # This applies to preview.the-oneclinic.net (configured via headers)
+
+# Allow specific bots to access
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap reference (update if you have a sitemap)
+# Sitemap: https://the-oneclinic.net/sitemap.xml
