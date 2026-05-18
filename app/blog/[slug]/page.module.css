@@ -240,7 +240,7 @@
 /* Sidebar */
 .sidebar {
   position: sticky;
-  top: 2rem;
+  top: 6rem;
   height: fit-content;
 }
 
