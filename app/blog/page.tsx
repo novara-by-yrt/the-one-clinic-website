@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
-import BlogCard from '@/components/blog/BlogCard';
 import { getAllPosts, getCategories } from '@/lib/blog';
 import BlogPageContent from './BlogPageContent';
 import styles from './page.module.css';
@@ -11,12 +10,15 @@ export const metadata: Metadata = {
   description: 'Expert insights on aesthetic treatments, skin health, and wellness from our GMC-registered doctors in Leicester.',
 };
 
+const POSTS_PER_PAGE = 6;
+
 interface BlogIndexPageProps {
-  searchParams: Promise<{ category?: string }>;
+  searchParams: Promise<{ page?: string; category?: string }>;
 }
 
 export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps) {
   const params = await searchParams;
+  const currentPage = parseInt(params.page || '1', 10);
   const selectedCategory = params.category || '';
 
   const allPosts = await getAllPosts();
@@ -32,6 +34,12 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
     (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
   );
 
+  // Calculate pagination
+  const totalPages = Math.ceil(sortedPosts.length / POSTS_PER_PAGE);
+  const startIdx = (currentPage - 1) * POSTS_PER_PAGE;
+  const endIdx = startIdx + POSTS_PER_PAGE;
+  const paginatedPosts = sortedPosts.slice(startIdx, endIdx);
+
   return (
     <>
       {/* Hero Section */}
@@ -41,7 +49,7 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
           <div className={styles.heroContent}>
             <span className={styles.eyebrow}>The One Clinic</span>
             <h1 className={styles.heroTitle}>
-              Insights & Expert Guidance
+              Blogs
             </h1>
             <p className={styles.heroDesc}>
               Comprehensive guides, treatment insights, and wellness tips from our team of GMC-registered doctors. Learn from the experts at The One Clinic.
@@ -78,7 +86,7 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
         </Container>
       </Section>
 
-      {/* Blog Grid Section - with client-side animations */}
+      {/* Blog Grid Section */}
       <Section variant="light" data-section-theme="light">
         <Container>
           {sortedPosts.length === 0 ? (
@@ -86,7 +94,28 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
               <p>No posts found in this category. Check back soon for new insights!</p>
             </div>
           ) : (
-            <BlogPageContent posts={sortedPosts} />
+            <>
+              <BlogPageContent posts={paginatedPosts} />
+
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <nav className={styles.pagination} aria-label="Blog pagination">
+                  <div className={styles.pageNumbers}>
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                      <a
+                        key={page}
+                        href={`/blog${selectedCategory ? `?category=${encodeURIComponent(selectedCategory)}&` : '?'}page=${page}`}
+                        className={`${styles.pageNumber} ${page === currentPage ? styles.active : ''}`}
+                        aria-label={`Page ${page}`}
+                        aria-current={page === currentPage ? 'page' : undefined}
+                      >
+                        {page}
+                      </a>
+                    ))}
+                  </div>
+                </nav>
+              )}
+            </>
           )}
         </Container>
       </Section>

@@ -2,7 +2,7 @@
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 8rem var(--container-padding) 6rem;
+  padding: 6rem var(--container-padding) 4rem;
   background: linear-gradient(135deg, #0d0d12 0%, #1a1a2e 100%);
   color: white;
 }
@@ -20,7 +20,7 @@
 .heroContent {
   position: relative;
   z-index: 1;
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto;
   text-align: center;
 }
@@ -32,19 +32,19 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .heroTitle {
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: clamp(3rem, 8vw, 4.5rem);
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.1;
   margin: 0 0 1.5rem;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
 }
 
 .heroDesc {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   color: rgba(255, 255, 255, 0.85);
   line-height: 1.6;
   margin: 0;
@@ -109,9 +109,10 @@
 /* Blog Grid */
 .blogGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2.5rem;
   padding: 2rem 0;
+  margin-bottom: 3rem;
 }
 
 /* Empty State */
@@ -122,22 +123,73 @@
   font-size: 1.125rem;
 }
 
+/* Pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 3rem 0 2rem;
+  flex-wrap: wrap;
+}
+
+.pageNumbers {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.pageNumber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 0.5rem;
+  background: white;
+  color: #1a1a1a;
+  border: 2px solid #e5e5e5;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.pageNumber:hover {
+  border-color: #1a1a1a;
+  background: #f5f5f5;
+}
+
+.pageNumber.active {
+  background: #000;
+  color: white;
+  border-color: #000;
+}
+
+.pageNumber.active:hover {
+  background: #333;
+  border-color: #333;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .hero {
-    padding: 6rem var(--container-padding) 4rem;
+    padding: 5rem var(--container-padding) 3.5rem;
   }
 
   .heroTitle {
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
   }
 
   .heroDesc {
-    font-size: 1.125rem;
+    font-size: 1.0625rem;
   }
 
   .blogGrid {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
   }
 }
@@ -148,11 +200,15 @@
   }
 
   .heroTitle {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .heroDesc {
     font-size: 1rem;
+  }
+
+  .filterSection {
+    padding: 2.5rem 0;
   }
 
   .filterTags {
@@ -165,31 +221,74 @@
   }
 
   .blogGrid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+  }
+
+  .pagination {
+    padding: 2.5rem 0 2rem;
+  }
+
+  .pageNumber {
+    min-width: 36px;
+    height: 36px;
+    font-size: 0.875rem;
   }
 }
 
 @media (max-width: 640px) {
   .hero {
-    padding: 3rem var(--container-padding) 2.5rem;
+    padding: 3.5rem var(--container-padding) 2.5rem;
   }
 
   .heroTitle {
-    font-size: 1.75rem;
+    font-size: 2rem;
+  }
+
+  .heroDesc {
+    font-size: 0.9375rem;
   }
 
   .eyebrow {
     font-size: 0.75rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
   }
 
   .filterSection {
-    padding: 2rem 0;
+    padding: 1.5rem 0;
+  }
+
+  .filterLabel {
+    margin-bottom: 0.75rem;
+  }
+
+  .filterLabel span {
+    font-size: 0.9375rem;
+  }
+
+  .filterTags {
+    gap: 0.5rem;
+  }
+
+  .filterTag {
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
   }
 
   .blogGrid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .pagination {
+    padding: 2rem 0;
+  }
+
+  .pageNumber {
+    min-width: 32px;
+    height: 32px;
+    font-size: 0.8125rem;
+    padding: 0 0.25rem;
   }
 }
