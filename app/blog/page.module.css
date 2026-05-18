@@ -54,11 +54,17 @@
 }
 
 /* Filter Section */
+.filterWrapper {
+  background-color: var(--color-bg-light, #f9f9f9);
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+}
+
 .filterSection {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  padding: 3rem 0;
+  gap: 1rem;
+  padding: 1.5rem 0;
 }
 
 .filterLabel {
@@ -208,7 +214,7 @@
   }
 
   .filterSection {
-    padding: 2.5rem 0;
+    padding: 1.25rem 0;
   }
 
   .filterTags {
@@ -255,11 +261,11 @@
   }
 
   .filterSection {
-    padding: 1.5rem 0;
+    padding: 1rem 0;
   }
 
   .filterLabel {
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
   }
 
   .filterLabel span {
