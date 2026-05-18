@@ -163,48 +163,28 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       {/* Content */}
       <Section variant="light" data-section-theme="light" className={styles.contentSection}>
         <Container>
-          <div className={styles.contentWrapper}>
-            <article className={styles.content}>
-              {/* Featured Image */}
-              {post.heroImage && (
-                <div className={styles.featuredImage}>
-                  <Image
-                    src={post.heroImage}
-                    alt={post.heroImageAlt}
-                    width={800}
-                    height={500}
-                    priority
-                    style={{ width: '100%', height: 'auto' }}
-                  />
-                </div>
-              )}
-
-              {/* First CTA Section - after image */}
-              <div className={styles.ctaSection}>
-                <DoctorCTA1 />
-              </div>
-
-              {/* Post content */}
-              <div className={styles.mdxContent}>
-                <div
-                  dangerouslySetInnerHTML={{ __html: post.content }}
+          <article className={styles.content}>
+            {/* Featured Image */}
+            {post.heroImage && (
+              <div className={styles.featuredImage}>
+                <Image
+                  src={post.heroImage}
+                  alt={post.heroImageAlt}
+                  width={800}
+                  height={500}
+                  priority
+                  style={{ width: '100%', height: 'auto' }}
                 />
               </div>
+            )}
 
-              {/* Tags */}
-              {post.tags.length > 0 && (
-                <div className={styles.tags}>
-                  {post.tags.map((tag) => (
-                    <a key={tag} href={`/blog?tag=${encodeURIComponent(tag)}`} className={styles.tag}>
-                      #{tag}
-                    </a>
-                  ))}
-                </div>
-              )}
-            </article>
+            {/* First CTA Section - after image */}
+            <div className={styles.ctaSection}>
+              <DoctorCTA1 />
+            </div>
 
-            {/* Sidebar Form */}
-            <aside className={styles.sidebar}>
+            {/* Request a Call Back Form - above FAQ */}
+            <div className={styles.formSection}>
               <div className={styles.sidebarForm}>
                 <h3 className={styles.formTitle}>Request a Call Back</h3>
                 <div className={styles.formWrap}>
@@ -227,8 +207,26 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   />
                 </div>
               </div>
-            </aside>
-          </div>
+            </div>
+
+            {/* Post content */}
+            <div className={styles.mdxContent}>
+              <div
+                dangerouslySetInnerHTML={{ __html: post.content }}
+              />
+            </div>
+
+            {/* Tags */}
+            {post.tags.length > 0 && (
+              <div className={styles.tags}>
+                {post.tags.map((tag) => (
+                  <a key={tag} href={`/blog?tag=${encodeURIComponent(tag)}`} className={styles.tag}>
+                    #{tag}
+                  </a>
+                ))}
+              </div>
+            )}
+          </article>
         </Container>
       </Section>
 
