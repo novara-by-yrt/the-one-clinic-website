@@ -204,6 +204,12 @@
   border-top: 2px solid #e5e5e5;
 }
 
+/* CTA Section */
+.ctaSection {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
 .tag {
   display: inline-block;
   padding: 0.5rem 1rem;

@@ -8,6 +8,8 @@ import { getAllPosts, getPostBySlug, getRelatedPosts } from '@/lib/blog';
 import { generateArticleSchema, generateBreadcrumbSchema } from '@/lib/blog-schema';
 import { SITE_URL } from '@/lib/schema/clinic';
 import BlogCard from '@/components/blog/BlogCard';
+import DoctorCTA1 from '@/components/blog/DoctorCTA1';
+import DoctorCTA2 from '@/components/blog/DoctorCTA2';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './page.module.css';
@@ -194,6 +196,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   ))}
                 </div>
               )}
+
+              {/* CTA Sections */}
+              <div className={styles.ctaSection}>
+                <DoctorCTA1 />
+              </div>
+
+              <div className={styles.ctaSection}>
+                <DoctorCTA2 />
+              </div>
             </article>
 
             {/* Sidebar Form */}
