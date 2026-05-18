@@ -168,25 +168,82 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       {/* Content */}
       <Section variant="light" data-section-theme="light" className={styles.contentSection}>
-        <Container className={styles.contentContainer}>
-          <article className={styles.content}>
-            {/* Post content would go here - requires MDX renderer */}
-            <div className={styles.mdxContent}>
-              {/* This is a placeholder - in production you'd use @next/mdx or similar */}
-              <p>Blog post content to be rendered here</p>
-            </div>
+        <Container>
+          <div className={styles.contentWrapper}>
+            <article className={styles.content}>
+              {/* Featured Image */}
+              {post.heroImage && (
+                <div className={styles.featuredImage}>
+                  <Image
+                    src={post.heroImage}
+                    alt={post.heroImageAlt}
+                    width={800}
+                    height={500}
+                    priority
+                    style={{ width: '100%', height: 'auto' }}
+                  />
+                </div>
+              )}
 
-            {/* Tags */}
-            {post.tags.length > 0 && (
-              <div className={styles.tags}>
-                {post.tags.map((tag) => (
-                  <a key={tag} href={`/blog?tag=${encodeURIComponent(tag)}`} className={styles.tag}>
-                    #{tag}
-                  </a>
-                ))}
+              {/* Post content */}
+              <div className={styles.mdxContent}>
+                <div
+                  dangerouslySetInnerHTML={{ __html: post.content }}
+                />
               </div>
-            )}
-          </article>
+
+              {/* Tags */}
+              {post.tags.length > 0 && (
+                <div className={styles.tags}>
+                  {post.tags.map((tag) => (
+                    <a key={tag} href={`/blog?tag=${encodeURIComponent(tag)}`} className={styles.tag}>
+                      #{tag}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </article>
+
+            {/* Sidebar Form */}
+            <aside className={styles.sidebar}>
+              <div className={styles.sidebarForm}>
+                <h3 className={styles.formTitle}>Request a Call Back</h3>
+                <form className={styles.form}>
+                  <div className={styles.formGroup}>
+                    <label htmlFor="fullName" className={styles.label}>Full Name<span className={styles.required}>*</span></label>
+                    <input type="text" id="fullName" name="fullName" className={styles.input} required />
+                  </div>
+
+                  <div className={styles.formGroup}>
+                    <label htmlFor="phone" className={styles.label}>Phone<span className={styles.required}>*</span></label>
+                    <input type="tel" id="phone" name="phone" className={styles.input} required />
+                  </div>
+
+                  <div className={styles.formGroup}>
+                    <label htmlFor="email" className={styles.label}>Email<span className={styles.required}>*</span></label>
+                    <input type="email" id="email" name="email" className={styles.input} required />
+                  </div>
+
+                  <div className={styles.formGroup}>
+                    <label htmlFor="interested" className={styles.label}>Interested in<span className={styles.required}>*</span></label>
+                    <select id="interested" name="interested" className={styles.select} required>
+                      <option value="">Select a treatment</option>
+                      <option value="Consultation">Consultation</option>
+                      <option value="Treatment">Treatment</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+
+                  <div className={styles.formGroup}>
+                    <label htmlFor="message" className={styles.label}>Message</label>
+                    <textarea id="message" name="message" className={styles.textarea} rows={4}></textarea>
+                  </div>
+
+                  <button type="submit" className={styles.submitBtn}>Submit</button>
+                </form>
+              </div>
+            </aside>
+          </div>
         </Container>
       </Section>
 
