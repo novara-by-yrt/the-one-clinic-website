@@ -104,7 +104,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             {/* Breadcrumb */}
             <div>
               <Breadcrumb
-                theme="light"
+                theme="dark"
                 items={[
                   { label: 'Blog', href: '/blog' },
                   { label: post.category, href: `/blog?category=${encodeURIComponent(post.category)}` },
