@@ -7,8 +7,6 @@ import { getAllPosts, getPostBySlug, getRelatedPosts } from '@/lib/blog';
 import { generateArticleSchema, generateBreadcrumbSchema } from '@/lib/blog-schema';
 import { SITE_URL } from '@/lib/schema/clinic';
 import BlogCard from '@/components/blog/BlogCard';
-import { motion } from 'framer-motion';
-import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './page.module.css';
@@ -111,14 +109,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
 
         <Container>
-          <motion.div
-            className={styles.heroContent}
-            variants={stagger(0.1)}
-            initial="hidden"
-            animate="show"
-          >
+          <div className={styles.heroContent}>
             {/* Breadcrumb */}
-            <motion.div variants={fadeUp}>
+            <div>
               <Breadcrumb
                 theme="light"
                 items={[
@@ -127,20 +120,20 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   { label: post.title },
                 ]}
               />
-            </motion.div>
+            </div>
 
             {/* Category badge */}
-            <motion.span className={styles.categoryBadge} variants={fadeUp}>
+            <span className={styles.categoryBadge}>
               {post.category}
-            </motion.span>
+            </span>
 
             {/* Title */}
-            <motion.h1 className={styles.title} variants={fadeUp}>
+            <h1 className={styles.title}>
               {post.title}
-            </motion.h1>
+            </h1>
 
             {/* Meta */}
-            <motion.div className={styles.meta} variants={fadeUp}>
+            <div className={styles.meta}>
               <span className={styles.metaItem}>{post.author}</span>
               <span className={styles.metaDivider}>•</span>
               <span className={styles.metaItem}>{post.readingTime} min read</span>
@@ -154,11 +147,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   <span className={styles.metaItem}>Updated {updateDate}</span>
                 </>
               )}
-            </motion.div>
+            </div>
 
             {/* Medical reviewer */}
             {post.medicalReviewer && post.reviewedAt && (
-              <motion.div className={styles.reviewer} variants={fadeUp}>
+              <div className={styles.reviewer}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                   <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
                 </svg>
@@ -167,9 +160,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   month: 'long',
                   day: 'numeric',
                 })}
-              </motion.div>
+              </div>
             )}
-          </motion.div>
+          </div>
         </Container>
       </section>
 
@@ -201,28 +194,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       {relatedPosts.length > 0 && (
         <Section variant="light" data-section-theme="light" className={styles.relatedSection}>
           <Container>
-            <motion.div
-              variants={stagger(0.1)}
-              initial="hidden"
-              whileInView="show"
-              viewport={VIEWPORT}
-            >
-              <motion.h2 className={styles.relatedTitle} variants={fadeUp}>
+            <div>
+              <h2 className={styles.relatedTitle}>
                 Related Articles
-              </motion.h2>
+              </h2>
 
-              <motion.div
-                className={styles.relatedGrid}
-                variants={stagger(0.1)}
-                initial="hidden"
-                whileInView="show"
-                viewport={VIEWPORT}
-              >
+              <div className={styles.relatedGrid}>
                 {relatedPosts.map((relPost) => (
                   <BlogCard key={relPost.slug} post={relPost} />
                 ))}
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </Container>
         </Section>
       )}

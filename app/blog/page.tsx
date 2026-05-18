@@ -1,11 +1,9 @@
 import type { Metadata } from 'next';
-import { motion } from 'framer-motion';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
 import BlogCard from '@/components/blog/BlogCard';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import { getAllPosts, getCategories, paginate } from '@/lib/blog';
-import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -42,19 +40,14 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
       <section className={styles.hero} data-section-theme="dark" aria-label="Blog, hero">
         <div className={styles.heroGrid} aria-hidden="true" />
         <Container>
-          <motion.div
-            className={styles.heroContent}
-            variants={stagger(0.15)}
-            initial="hidden"
-            animate="show"
-          >
-            <motion.h1 className={styles.heroTitle} variants={fadeUp}>
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>
               The One Clinic Blog
-            </motion.h1>
-            <motion.p className={styles.heroDesc} variants={fadeUp}>
+            </h1>
+            <p className={styles.heroDesc}>
               Expert insights, treatment guides, and wellness tips from our team of GMC-registered doctors.
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
         </Container>
       </section>
 
@@ -69,24 +62,20 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
       <Section variant="light" data-section-theme="light">
         <Container>
           <div className={styles.filterBar}>
-            <motion.a
+            <a
               href="/blog"
               className={`${styles.filterTag} ${!selectedCategory ? styles.active : ''}`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
             >
               All Posts
-            </motion.a>
+            </a>
             {categories.map((cat) => (
-              <motion.a
+              <a
                 key={cat}
                 href={`/blog?category=${encodeURIComponent(cat)}`}
                 className={`${styles.filterTag} ${selectedCategory === cat ? styles.active : ''}`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
               >
                 {cat}
-              </motion.a>
+              </a>
             ))}
           </div>
         </Container>
@@ -97,40 +86,23 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
         <Container>
           {/* Featured post */}
           {featuredPost && currentPage === 1 && (
-            <motion.div
-              className={styles.featuredWrap}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="show"
-              viewport={VIEWPORT}
-            >
+            <div className={styles.featuredWrap}>
               <BlogCard post={featuredPost} variant="featured" />
-            </motion.div>
+            </div>
           )}
 
           {/* Regular posts grid */}
-          <motion.div
-            className={styles.postsGrid}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
+          <div className={styles.postsGrid}>
             {regularPosts.map((post) => (
               <BlogCard key={post.slug} post={post} />
             ))}
-          </motion.div>
+          </div>
 
           {/* Empty state */}
           {posts.length === 0 && (
-            <motion.div
-              className={styles.emptyState}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="show"
-            >
+            <div className={styles.emptyState}>
               <p>No posts found in this category. Check back soon!</p>
-            </motion.div>
+            </div>
           )}
         </Container>
       </Section>
@@ -141,39 +113,33 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
           <Container>
             <nav className={styles.pagination} aria-label="Blog pagination">
               {currentPage > 1 && (
-                <motion.a
+                <a
                   href={`/blog${selectedCategory ? `?category=${encodeURIComponent(selectedCategory)}` : ''}${currentPage > 2 ? `?page=${currentPage - 1}` : ''}`}
                   className={styles.paginationBtn}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
                 >
                   ← Previous
-                </motion.a>
+                </a>
               )}
 
               <div className={styles.pageNumbers}>
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                  <motion.a
+                  <a
                     key={page}
                     href={`/blog${selectedCategory ? `?category=${encodeURIComponent(selectedCategory)}&` : '?'}page=${page}`}
                     className={`${styles.pageNumber} ${page === currentPage ? styles.active : ''}`}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
                   >
                     {page}
-                  </motion.a>
+                  </a>
                 ))}
               </div>
 
               {currentPage < totalPages && (
-                <motion.a
+                <a
                   href={`/blog${selectedCategory ? `?category=${encodeURIComponent(selectedCategory)}&` : '?'}page=${currentPage + 1}`}
                   className={styles.paginationBtn}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
                 >
                   Next →
-                </motion.a>
+                </a>
               )}
             </nav>
           </Container>
