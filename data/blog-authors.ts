@@ -32,4 +32,28 @@ export const blogAuthors: Record<string, BlogAuthor> = {
     role: 'Cosmetic and Aesthetic Surgeon',
     bio: 'Mr Thangasamy Sankar brings surgical expertise in cosmetic procedures.',
   },
+  'Mr Ashish Kelkar': {
+    name: 'Mr Ashish Kelkar',
+    slug: 'mr-ashish-kelkar',
+    role: 'Consultant General and Colorectal Surgeon',
+    bio: 'Mr Ashish Kelkar is an experienced consultant general and colorectal surgeon specialising in colorectal cancer, haemorrhoids, hernias and gallbladder surgery.',
+  },
+  'Dr Veena Patel': {
+    name: 'Dr Veena Patel',
+    slug: 'dr-veena-patel',
+    role: 'Consultant Rheumatologist',
+    bio: 'Dr Veena Patel is a Consultant Rheumatologist with extensive experience in managing rheumatoid arthritis, psoriatic arthritis, and other rheumatological conditions.',
+  },
+  'Professor Prashanth Patel': {
+    name: 'Professor Prashanth Patel',
+    slug: 'professor-prashanth-patel',
+    role: 'Consultant Metabolic Physician & Chemical Pathologist',
+    bio: 'Professor Prashanth Patel is Head of Service for Chemical Pathology and Metabolic Medicine at UHL, specialising in metabolic bone disease and lipid disorders.',
+  },
+  'Mr Randeep S. Aujla': {
+    name: 'Mr Randeep S. Aujla',
+    slug: 'mr-randeep-aujla',
+    role: 'Consultant Orthopaedic Surgeon',
+    bio: 'Mr Randeep Aujla is an internationally fellowship-trained Consultant Orthopaedic Surgeon specialising in knee conditions and sports medicine.',
+  },
 };
