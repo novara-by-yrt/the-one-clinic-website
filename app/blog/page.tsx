@@ -1,23 +1,23 @@
 import type { Metadata } from 'next';
+import { motion } from 'framer-motion';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
 import BlogCard from '@/components/blog/BlogCard';
-import Breadcrumb from '@/components/ui/Breadcrumb';
-import { getAllPosts, getCategories, paginate } from '@/lib/blog';
+import { getAllPosts, getCategories } from '@/lib/blog';
+import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Blog',
-  description: 'Expert insights on aesthetic treatments, skin health, and wellness from The One Clinic in Leicester.',
+  title: 'Blog - The One Clinic',
+  description: 'Expert insights on aesthetic treatments, skin health, and wellness from our GMC-registered doctors in Leicester.',
 };
 
 interface BlogIndexPageProps {
-  searchParams: Promise<{ page?: string; category?: string }>;
+  searchParams: Promise<{ category?: string }>;
 }
 
 export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps) {
   const params = await searchParams;
-  const currentPage = parseInt(params.page || '1', 10);
   const selectedCategory = params.category || '';
 
   const allPosts = await getAllPosts();
@@ -28,123 +28,100 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
     ? allPosts.filter((post) => post.category === selectedCategory)
     : allPosts;
 
-  // Paginate
-  const { items: posts, totalPages } = paginate(filteredPosts, currentPage, 10);
-
-  const featuredPost = filteredPosts[0]; // Most recent
-  const regularPosts = posts.slice(1);
+  // Sort by published date descending
+  const sortedPosts = [...filteredPosts].sort(
+    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  );
 
   return (
     <>
-      {/* Hero */}
-      <section className={styles.hero} data-section-theme="dark" aria-label="Blog, hero">
-        <div className={styles.heroGrid} aria-hidden="true" />
+      {/* Hero Section */}
+      <section className={styles.hero} data-section-theme="dark">
+        <div className={styles.heroBackground} aria-hidden="true" />
         <Container>
-          <div className={styles.heroContent}>
-            <h1 className={styles.heroTitle}>
-              The One Clinic Blog
-            </h1>
-            <p className={styles.heroDesc}>
-              Expert insights, treatment guides, and wellness tips from our team of GMC-registered doctors.
-            </p>
-          </div>
+          <motion.div
+            className={styles.heroContent}
+            variants={stagger(0.1)}
+            initial="hidden"
+            animate="show"
+          >
+            <motion.div variants={fadeUp}>
+              <span className={styles.eyebrow}>The One Clinic</span>
+            </motion.div>
+            <motion.h1 className={styles.heroTitle} variants={fadeUp}>
+              Insights & Expert Guidance
+            </motion.h1>
+            <motion.p className={styles.heroDesc} variants={fadeUp}>
+              Comprehensive guides, treatment insights, and wellness tips from our team of GMC-registered doctors. Learn from the experts at The One Clinic.
+            </motion.p>
+          </motion.div>
         </Container>
       </section>
 
-      {/* Breadcrumb */}
-      <Section variant="light" data-section-theme="light" className={styles.breadcrumbSection}>
-        <Container>
-          <Breadcrumb theme="light" items={[{ label: 'Blog' }]} />
-        </Container>
-      </Section>
-
-      {/* Category Filter */}
+      {/* Category Filter Section */}
       <Section variant="light" data-section-theme="light">
         <Container>
-          <div className={styles.filterBar}>
-            <a
-              href="/blog"
-              className={`${styles.filterTag} ${!selectedCategory ? styles.active : ''}`}
-            >
-              All Posts
-            </a>
-            {categories.map((cat) => (
+          <motion.div
+            className={styles.filterSection}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+            variants={stagger(0.05)}
+          >
+            <motion.div variants={fadeUp} className={styles.filterLabel}>
+              <span>Filter by Category</span>
+            </motion.div>
+            <motion.div className={styles.filterTags} variants={fadeUp}>
               <a
-                key={cat}
-                href={`/blog?category=${encodeURIComponent(cat)}`}
-                className={`${styles.filterTag} ${selectedCategory === cat ? styles.active : ''}`}
+                href="/blog"
+                className={`${styles.filterTag} ${!selectedCategory ? styles.active : ''}`}
               >
-                {cat}
+                All Posts
               </a>
-            ))}
-          </div>
+              {categories.map((cat) => (
+                <a
+                  key={cat}
+                  href={`/blog?category=${encodeURIComponent(cat)}`}
+                  className={`${styles.filterTag} ${selectedCategory === cat ? styles.active : ''}`}
+                >
+                  {cat}
+                </a>
+              ))}
+            </motion.div>
+          </motion.div>
         </Container>
       </Section>
 
-      {/* Posts Grid */}
+      {/* Blog Grid Section */}
       <Section variant="light" data-section-theme="light">
         <Container>
-          {/* Featured post */}
-          {featuredPost && currentPage === 1 && (
-            <div className={styles.featuredWrap}>
-              <BlogCard post={featuredPost} variant="featured" />
-            </div>
-          )}
-
-          {/* Regular posts grid */}
-          <div className={styles.postsGrid}>
-            {regularPosts.map((post) => (
-              <BlogCard key={post.slug} post={post} />
-            ))}
-          </div>
-
-          {/* Empty state */}
-          {posts.length === 0 && (
-            <div className={styles.emptyState}>
-              <p>No posts found in this category. Check back soon!</p>
-            </div>
+          {sortedPosts.length === 0 ? (
+            <motion.div
+              className={styles.emptyState}
+              initial="hidden"
+              whileInView="show"
+              viewport={VIEWPORT}
+              variants={fadeUp}
+            >
+              <p>No posts found in this category. Check back soon for new insights!</p>
+            </motion.div>
+          ) : (
+            <motion.div
+              className={styles.blogGrid}
+              variants={stagger(0.05)}
+              initial="hidden"
+              whileInView="show"
+              viewport={VIEWPORT}
+            >
+              {sortedPosts.map((post) => (
+                <motion.div key={post.slug} variants={fadeUp}>
+                  <BlogCard post={post} />
+                </motion.div>
+              ))}
+            </motion.div>
           )}
         </Container>
       </Section>
-
-      {/* Pagination */}
-      {totalPages > 1 && (
-        <Section variant="light" data-section-theme="light" className={styles.paginationSection}>
-          <Container>
-            <nav className={styles.pagination} aria-label="Blog pagination">
-              {currentPage > 1 && (
-                <a
-                  href={`/blog${selectedCategory ? `?category=${encodeURIComponent(selectedCategory)}` : ''}${currentPage > 2 ? `?page=${currentPage - 1}` : ''}`}
-                  className={styles.paginationBtn}
-                >
-                  ← Previous
-                </a>
-              )}
-
-              <div className={styles.pageNumbers}>
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                  <a
-                    key={page}
-                    href={`/blog${selectedCategory ? `?category=${encodeURIComponent(selectedCategory)}&` : '?'}page=${page}`}
-                    className={`${styles.pageNumber} ${page === currentPage ? styles.active : ''}`}
-                  >
-                    {page}
-                  </a>
-                ))}
-              </div>
-
-              {currentPage < totalPages && (
-                <a
-                  href={`/blog${selectedCategory ? `?category=${encodeURIComponent(selectedCategory)}&` : '?'}page=${currentPage + 1}`}
-                  className={styles.paginationBtn}
-                >
-                  Next →
-                </a>
-              )}
-            </nav>
-          </Container>
-        </Section>
-      )}
     </>
   );
 }
