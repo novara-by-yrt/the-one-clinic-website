@@ -197,13 +197,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </div>
               )}
 
-              {/* CTA Sections */}
+              {/* First CTA Section */}
               <div className={styles.ctaSection}>
                 <DoctorCTA1 />
-              </div>
-
-              <div className={styles.ctaSection}>
-                <DoctorCTA2 />
               </div>
             </article>
 
@@ -254,6 +250,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </Container>
         </Section>
       )}
+
+      {/* Second CTA Section */}
+      <Section variant="light" data-section-theme="light" className={styles.ctaWrapperSection}>
+        <Container>
+          <div className={styles.ctaSection}>
+            <DoctorCTA2 />
+          </div>
+        </Container>
+      </Section>
     </>
   );
 }

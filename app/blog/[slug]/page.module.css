@@ -206,8 +206,13 @@
 
 /* CTA Section */
 .ctaSection {
-  margin-top: 3rem;
-  margin-bottom: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.ctaWrapperSection {
+  padding: 4rem var(--container-padding);
 }
 
 .tag {
