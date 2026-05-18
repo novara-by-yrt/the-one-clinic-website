@@ -1,25 +1,27 @@
+import { CLINIC_INFO } from '@/lib/clinic-info';
+
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://the-oneclinic.net';
 
 export const CLINIC = {
-  name: 'The One Clinic',
+  name: CLINIC_INFO.name,
   url: SITE_URL,
   logo: `${SITE_URL}/images/LOGO.png`,
-  telephone: '+447481342374',
+  telephone: CLINIC_INFO.phone.tel,
   address: {
-    streetAddress: '36 DeMontfort Street',
-    addressLocality: 'Leicester',
-    postalCode: 'LE1 7GS',
-    addressCountry: 'GB',
+    streetAddress: CLINIC_INFO.address.street,
+    addressLocality: CLINIC_INFO.address.locality,
+    postalCode: CLINIC_INFO.address.postalCode,
+    addressCountry: CLINIC_INFO.address.country,
   },
-  geo: { latitude: 52.6272773, longitude: -1.1274381 },
-  openingHours: [
-    { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], open: '09:00', close: '18:00' },
-    { days: ['Saturday'], open: '09:00', close: '16:00' },
-    { days: ['Sunday'],   open: '09:00', close: '18:00' },
-  ],
-  priceRange: '££',
-  sameAs: [
-    'https://www.facebook.com/theoneclinic.uk',
-    'https://www.instagram.com/theoneclinic.uk/',
-  ],
+  geo: { latitude: CLINIC_INFO.geo.lat, longitude: CLINIC_INFO.geo.lng },
+  openingHours: CLINIC_INFO.hours.map(h => ({
+    days: h.day === 'Monday' ? ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+        : h.day === 'Saturday' ? ['Saturday']
+        : h.day === 'Sunday' ? ['Sunday']
+        : [],
+    open: h.open,
+    close: h.close,
+  })).filter((h, i, a) => i === 0 || h.days[0] !== a[i-1].days[0]),
+  priceRange: CLINIC_INFO.priceRange,
+  sameAs: [CLINIC_INFO.social.facebook, CLINIC_INFO.social.instagram],
 } as const;

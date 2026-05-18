@@ -2,30 +2,16 @@
 
 import Script from 'next/script';
 import { motion } from 'framer-motion';
+import { CLINIC_INFO, getMapsEmbedUrl, getMapsSearchUrl } from '@/lib/clinic-info';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
 
-const PHONE = '07481342374';
-const PHONE_DISPLAY = '07481 342374';
-const EMAIL = 'info@the-oneclinic.net';
-const ADDRESS_LINE1 = '36 DeMontfort Street';
-const ADDRESS_LINE2 = 'Leicester LE1 7GS';
-const FACEBOOK = 'https://www.facebook.com/theoneclinic.uk';
-const INSTAGRAM = 'https://www.instagram.com/theoneclinic.uk/';
-const MAPS_EMBED = 'https://maps.google.com/maps?q=36+De+Montfort+St,+Leicester+LE1+7GS,+United+Kingdom&output=embed';
-const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=36+De+Montfort+St,+Leicester+LE1+7GS,+United+Kingdom';
-
-const HOURS = [
-  { day: 'Monday',    hours: '09:00, 18:00' },
-  { day: 'Tuesday',   hours: '09:00, 18:00' },
-  { day: 'Wednesday', hours: '09:00, 18:00' },
-  { day: 'Thursday',  hours: '09:00, 18:00' },
-  { day: 'Friday',    hours: '09:00, 18:00' },
-  { day: 'Saturday',  hours: '09:00, 16:00' },
-  { day: 'Sunday',    hours: '09:00, 18:00' },
-];
+const HOURS = CLINIC_INFO.hours.map(h => ({
+  day: h.day,
+  hours: `${h.open}, ${h.close}`,
+}));
 
 const CATEGORIES = [
   {
@@ -91,27 +77,27 @@ export default function ContactPage() {
               <motion.div className={styles.infoCard} variants={fadeUp}>
                 <h2 className={styles.infoHeading}>Contact Details</h2>
 
-                <a href={`tel:${PHONE}`} className={styles.contactRow}>
+                <a href={`tel:${CLINIC_INFO.phone.tel}`} className={styles.contactRow}>
                   <span className={styles.contactIcon} aria-hidden="true">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
                     </svg>
                   </span>
-                  <span className={styles.contactText}>{PHONE_DISPLAY}</span>
+                  <span className={styles.contactText}>{CLINIC_INFO.phone.display}</span>
                 </a>
 
-                <a href={`mailto:${EMAIL}`} className={styles.contactRow}>
+                <a href={`mailto:${CLINIC_INFO.email}`} className={styles.contactRow}>
                   <span className={styles.contactIcon} aria-hidden="true">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                       <polyline points="22,6 12,13 2,6"/>
                     </svg>
                   </span>
-                  <span className={styles.contactText}>{EMAIL}</span>
+                  <span className={styles.contactText}>{CLINIC_INFO.email}</span>
                 </a>
 
                 <a
-                  href={MAPS_URL}
+                  href={getMapsSearchUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.contactRow}
@@ -123,14 +109,14 @@ export default function ContactPage() {
                     </svg>
                   </span>
                   <span className={styles.contactText}>
-                    {ADDRESS_LINE1}<br />{ADDRESS_LINE2}
+                    {CLINIC_INFO.address.street}<br />{CLINIC_INFO.address.locality} {CLINIC_INFO.address.postalCode}
                   </span>
                 </a>
 
                 {/* Social */}
                 <div className={styles.socialRow}>
                   <a
-                    href={FACEBOOK}
+                    href={CLINIC_INFO.social.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.socialBtn}
@@ -142,7 +128,7 @@ export default function ContactPage() {
                     <span>Facebook</span>
                   </a>
                   <a
-                    href={INSTAGRAM}
+                    href={CLINIC_INFO.social.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.socialBtn}
@@ -238,7 +224,7 @@ export default function ContactPage() {
       <section className={styles.mapSection} aria-label="Clinic location map" data-section-theme="light">
         <div className={styles.mapWrapper}>
           <iframe
-            src={MAPS_EMBED}
+            src={getMapsEmbedUrl()}
             width="100%"
             height="100%"
             style={{ border: 0 }}
@@ -267,7 +253,7 @@ export default function ContactPage() {
               or on foot, we are easy to find.
             </motion.p>
             <motion.a
-              href={MAPS_URL}
+              href={getMapsSearchUrl()}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.directionsBtn}
