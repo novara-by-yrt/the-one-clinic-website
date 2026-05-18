@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import JsonLd from '@/lib/schema/JsonLd';
+import { buildPhysicianSchema } from '@/lib/schema/builders';
 
 export const metadata: Metadata = {
   title: 'Dr Sumit Virmani — Co-Founder & GP',
@@ -18,10 +20,25 @@ export const metadata: Metadata = {
   },
 };
 
+const schema = buildPhysicianSchema({
+  name: 'Dr Sumit Virmani',
+  role: 'Co-Founder & GP',
+  credentials: 'MBBS, MRCGP',
+  image: '/images/imgi_20_team-thumb-VIRMANI.jpg',
+  bio: 'Dr Sumit Virmani is co-founder of The One Clinic. He has extensive experience having worked as a medical doctor for over 15 years, with over 12 of these years working as a local GP. He specialises in minor surgery, skin lesion excision, body contouring, and hair rejuvenation.',
+  medicalSpecialty: 'GeneralPractice',
+  profilePath: '/team/dr-sumit-virmani',
+});
+
 export default function DrSumitVirmaniLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  return (
+    <>
+      <JsonLd schema={schema} />
+      {children}
+    </>
+  );
 }

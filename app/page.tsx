@@ -8,10 +8,13 @@ import MeetTheExperts    from '@/components/sections/MeetTheExperts';
 import CaseStudies       from '@/components/sections/CaseStudies';
 import LeadForm          from '@/components/sections/LeadForm';
 import FinalCTA          from '@/components/sections/FinalCTA';
+import JsonLd            from '@/lib/schema/JsonLd';
+import { buildClinicSchema } from '@/lib/schema/builders';
 
 export default function Home() {
   return (
     <>
+      <JsonLd schema={buildClinicSchema()} />
       <BrandHero />
       <LogoCarousel />
       <BrandVideoSection />
