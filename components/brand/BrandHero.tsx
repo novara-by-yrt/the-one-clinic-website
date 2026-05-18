@@ -187,7 +187,7 @@ export default function BrandHero() {
                   className={`${styles.headlineLine} ${styles.headlineLineAccent}`}
                   {...cineH1(0.74, prefersReduced)}
                 >
-                  <em className={styles.headlineAccent}>Meets Care</em>
+                  <span className={styles.headlineAccent}>Meets Care</span>
                 </motion.span>
               </h1>
 

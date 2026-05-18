@@ -143,8 +143,9 @@ export default function MeetTheExperts() {
               transition={{ duration: 0.30 }}
             >
               {prevMember.image ? (
-                <Image src={prevMember.image} alt={prevMember.name} fill
-                  className={styles.cardImg} sizes="160px" draggable={false} />
+                <Image src={prevMember.image}
+                  alt={`${prevMember.name} — ${prevMember.role} at The One Clinic Leicester`}
+                  fill className={styles.cardImg} sizes="160px" draggable={false} />
               ) : (
                 <div className={styles.cardInitials}>{prevMember.initials}</div>
               )}
@@ -167,8 +168,9 @@ export default function MeetTheExperts() {
               transition={{ duration: 0.55, ease: [0.16, 1, 0.30, 1] }}
             >
               {member.image ? (
-                <Image src={member.image} alt={member.name} fill
-                  className={styles.cardImg}
+                <Image src={member.image}
+                  alt={`${member.name} — ${member.role} at The One Clinic Leicester`}
+                  fill className={styles.cardImg}
                   sizes="(max-width:640px) 55vw, 320px"
                   priority draggable={false} />
               ) : (
@@ -247,8 +249,9 @@ export default function MeetTheExperts() {
                     transition={{ duration: 0.30 }}
                   >
                     {m.image ? (
-                      <Image src={m.image} alt={m.name} fill
-                        className={styles.cardImg} sizes="160px" draggable={false} />
+                      <Image src={m.image}
+                        alt={`${m.name} — ${m.role} at The One Clinic Leicester`}
+                        fill className={styles.cardImg} sizes="160px" draggable={false} />
                     ) : (
                       <div className={styles.cardInitials}>{m.initials}</div>
                     )}
