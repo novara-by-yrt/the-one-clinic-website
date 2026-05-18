@@ -2,9 +2,8 @@ import type { Metadata } from 'next';
 import StretchMarksPage from './StretchMarksPage';
 
 export const metadata: Metadata = {
-  title: 'Stretch Marks Treatment Leicester | Smoother, Clearer Skin | The One Clinic',
-  description:
-    'Learn about stretch marks and effective treatment options. GMC-registered doctors at The One Clinic, Leicester offer personalised treatments to reduce stretch marks and restore smoother skin.',
+  title: 'Stretch Marks Treatment Leicester | Smoother, Clearer Skin',
+  description: 'Learn about stretch marks and effective treatment options. GMC-registered doctors at The One Clinic, Leicester offer personalised treatments to reduce stretc…',
   keywords: [
     'stretch marks treatment Leicester',
     'stretch mark removal Leicester',
@@ -15,7 +14,7 @@ export const metadata: Metadata = {
     'The One Clinic Leicester',
   ],
   openGraph: {
-    title: 'Stretch Marks Treatment Leicester | The One Clinic',
+    title: 'Stretch Marks Treatment Leicester',
     description:
       'Reduce stretch marks and restore smoother, clearer skin with personalised treatments at The One Clinic, Leicester. GMC-registered doctors, proven results.',
   },

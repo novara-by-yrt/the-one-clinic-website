@@ -12,8 +12,7 @@ import LeadForm from '@/components/sections/LeadForm';
 
 export const metadata: Metadata = {
   title: 'Our Facilities',
-  description:
-    'Explore The One Clinic\u2019s purpose-built facilities in Leicester, designed for comfort, equipped with state-of-the-art technology, and staffed by GMC-registered doctors with 45+ years of combined experience.',
+  description: 'Explore The One Clinic\u2019s purpose-built facilities in Leicester, designed for comfort, equipped with state-of-the-art technology, and staffed by GMC-regi…',
 };
 
 export default function OurFacilitiesPage() {

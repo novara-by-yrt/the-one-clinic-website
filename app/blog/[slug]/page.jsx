@@ -13,9 +13,29 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) return {};
+
+  const canonical = `/blog/${slug}`;
+  const rawDesc = post.excerpt || post.content.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+  const description = rawDesc.length > 160 ? rawDesc.slice(0, 157).trimEnd() + '…' : rawDesc;
+  const ogTitle = `${post.title} | The One Clinic`;
+
   return {
-    title: `${post.title} | The One Clinic Blog`,
-    description: post.excerpt || post.content.replace(/<[^>]+>/g, '').slice(0, 160),
+    title: post.title,
+    description,
+    alternates: { canonical },
+    openGraph: {
+      title: ogTitle,
+      description,
+      url: canonical,
+      type: 'article',
+      ...(post.featured_image ? { images: [{ url: post.featured_image }] } : {}),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: ogTitle,
+      description,
+      ...(post.featured_image ? { images: [post.featured_image] } : {}),
+    },
   };
 }
 

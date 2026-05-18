@@ -2,20 +2,17 @@ import type { Metadata } from 'next';
 import PrivateGPPage from './PrivateGPPage';
 
 export const metadata: Metadata = {
-  title: 'Private GP Leicester | Same-Day Appointments | The One Clinic',
-  description:
-    'Private GP appointments in Leicester. Same-day and next-day consultations with GMC-registered doctors. Prescriptions, referrals, and comprehensive medical care at The One Clinic.',
-  keywords: [
-    'Private GP Leicester',
-    'private doctor Leicester',
-    'same day GP appointment Leicester',
-    'private GP appointment',
-    'private medical consultation Leicester',
-    'GMC registered GP Leicester',
-    'private prescription Leicester',
-  ],
+  alternates: { canonical: '/treatments/private-gp' },
+  title: 'Private GP Leicester | Same-Day Appointments',
+  description: 'Private GP appointments in Leicester. Same-day and next-day consultations with GMC-registered doctors. Prescriptions, referrals, and comprehensive medical ca…',
   openGraph: {
-    title: 'Private GP Leicester | The One Clinic',
+    title: 'Private GP Leicester',
+    description:
+      'Book a same-day or next-day private GP appointment in Leicester. Thorough, unhurried consultations with qualified doctors at The One Clinic.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Private GP Leicester',
     description:
       'Book a same-day or next-day private GP appointment in Leicester. Thorough, unhurried consultations with qualified doctors at The One Clinic.',
   },

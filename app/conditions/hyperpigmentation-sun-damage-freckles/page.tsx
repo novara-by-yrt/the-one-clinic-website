@@ -2,9 +2,8 @@ import type { Metadata } from 'next';
 import HyperpigmentationPage from './HyperpigmentationPage';
 
 export const metadata: Metadata = {
-  title: 'Hyperpigmentation, Sun Damage & Freckles Treatment Leicester | The One Clinic',
-  description:
-    'Learn about hyperpigmentation, sun damage and freckles and effective treatment options. GMC-registered doctors at The One Clinic, Leicester offer personalised treatments to even skin tone and restore a clearer complexion.',
+  title: 'Hyperpigmentation, Sun Damage & Freckles Treatment Leicester',
+  description: 'Learn about hyperpigmentation, sun damage and freckles and effective treatment options. GMC-registered doctors at The One Clinic, Leicester offer personalise…',
   keywords: [
     'hyperpigmentation treatment Leicester',
     'sun damage treatment Leicester',
@@ -15,7 +14,7 @@ export const metadata: Metadata = {
     'The One Clinic Leicester',
   ],
   openGraph: {
-    title: 'Hyperpigmentation, Sun Damage & Freckles Treatment Leicester | The One Clinic',
+    title: 'Hyperpigmentation, Sun Damage & Freckles Treatment Leicester',
     description:
       'Treat hyperpigmentation, sun damage and freckles with personalised treatments at The One Clinic, Leicester. GMC-registered doctors, proven results.',
   },

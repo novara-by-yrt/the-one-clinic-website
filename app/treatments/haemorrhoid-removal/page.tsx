@@ -2,21 +2,18 @@ import type { Metadata } from 'next';
 import HaemorrhoidRemovalPage from './HaemorrhoidRemovalPage';
 
 export const metadata: Metadata = {
-  title: 'Best Haemorrhoid Leicester | The One Clinic',
+  alternates: { canonical: '/treatments/haemorrhoid-removal' },
+  title: 'Best Haemorrhoid Leicester',
   description:
     'Expert haemorrhoid removal in Leicester to relieve pain, bleeding, and discomfort with safe, minor surgical care.',
-  keywords: [
-    'haemorrhoid removal Leicester',
-    'piles treatment Leicester',
-    'haemorrhoidectomy Leicester',
-    'rubber band ligation Leicester',
-    'haemorrhoid surgery Leicester',
-    'piles doctor Leicester',
-    'haemorrhoid specialist Leicester',
-    'private haemorrhoid treatment Leicester',
-  ],
   openGraph: {
-    title: 'Best Haemorrhoid Leicester | The One Clinic',
+    title: 'Best Haemorrhoid Leicester',
+    description:
+      'Expert haemorrhoid removal in Leicester to relieve pain, bleeding, and discomfort with safe, minor surgical care.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Best Haemorrhoid Leicester',
     description:
       'Expert haemorrhoid removal in Leicester to relieve pain, bleeding, and discomfort with safe, minor surgical care.',
   },

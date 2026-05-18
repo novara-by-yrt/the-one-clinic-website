@@ -2,9 +2,8 @@ import type { Metadata } from 'next';
 import NasolabialFoldsPage from './NasolabialFoldsPage';
 
 export const metadata: Metadata = {
-  title: 'Nasolabial Folds Treatment Leicester | Smooth Smile Lines | The One Clinic',
-  description:
-    'Learn about nasolabial folds and effective treatment options. GMC-registered doctors at The One Clinic, Leicester offer personalised non-surgical treatments to smooth and soften smile lines.',
+  title: 'Nasolabial Folds Treatment Leicester | Smooth Smile Lines',
+  description: 'Learn about nasolabial folds and effective treatment options. GMC-registered doctors at The One Clinic, Leicester offer personalised non-surgical treatments…',
   keywords: [
     'nasolabial folds treatment Leicester',
     'smile lines treatment Leicester',
@@ -15,7 +14,7 @@ export const metadata: Metadata = {
     'The One Clinic Leicester',
   ],
   openGraph: {
-    title: 'Nasolabial Folds Treatment Leicester | The One Clinic',
+    title: 'Nasolabial Folds Treatment Leicester',
     description:
       'Smooth and soften smile lines with personalised nasolabial fold treatments at The One Clinic, Leicester. GMC-registered doctors, natural results.',
   },

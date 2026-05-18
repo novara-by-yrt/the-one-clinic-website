@@ -7,8 +7,7 @@ import LeadForm        from '@/components/sections/LeadForm';
 
 export const metadata: Metadata = {
   title: 'What We Do',
-  description:
-    'The One Clinic is made up of esteemed medical professionals delivering aesthetic medicine, weight management, and holistic healthcare. One clinic, all your needs.',
+  description: 'The One Clinic is made up of esteemed medical professionals delivering aesthetic medicine, weight management, and holistic healthcare. One clinic, all your n…',
 };
 
 export default function WhatWeDoPage() {

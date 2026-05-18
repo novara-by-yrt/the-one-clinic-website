@@ -2,9 +2,8 @@ import type { Metadata } from 'next';
 import ExcessiveSweatingPage from './ExcessiveSweatingPage';
 
 export const metadata: Metadata = {
-  title: 'Excessive Sweating Treatment Leicester | Hyperhidrosis | The One Clinic',
-  description:
-    'Learn about excessive sweating (hyperhidrosis) and effective treatment options. GMC-registered doctors at The One Clinic, Leicester offer personalised treatments to reduce excessive sweating and restore confidence.',
+  title: 'Excessive Sweating Treatment Leicester | Hyperhidrosis',
+  description: 'Learn about excessive sweating (hyperhidrosis) and effective treatment options. GMC-registered doctors at The One Clinic, Leicester offer personalised treatm…',
   keywords: [
     'excessive sweating treatment Leicester',
     'hyperhidrosis treatment Leicester',
@@ -15,7 +14,7 @@ export const metadata: Metadata = {
     'The One Clinic Leicester',
   ],
   openGraph: {
-    title: 'Excessive Sweating Treatment Leicester | The One Clinic',
+    title: 'Excessive Sweating Treatment Leicester',
     description:
       'Treat excessive sweating (hyperhidrosis) with personalised treatments at The One Clinic, Leicester. GMC-registered doctors, proven results.',
   },

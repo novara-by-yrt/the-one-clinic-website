@@ -2,9 +2,8 @@ import type { Metadata } from 'next';
 import ExcessBodyFatPage from './ExcessBodyFatPage';
 
 export const metadata: Metadata = {
-  title: 'Excess Body Fat Treatment Leicester | Arm, Bra, Back & Thigh Fat | The One Clinic',
-  description:
-    'Learn about excess body fat, including arm, bra, back, and thigh fat, and effective treatment options. GMC-registered doctors at The One Clinic, Leicester offer personalised body contouring to reduce stubborn fat deposits.',
+  title: 'Excess Body Fat Treatment Leicester | Arm, Bra & Back Fat',
+  description: 'Learn about excess body fat, including arm, bra, back, and thigh fat, and effective treatment options. GMC-registered doctors at The One Clinic, Leicester of…',
   keywords: [
     'excess body fat treatment Leicester',
     'arm fat treatment Leicester',
@@ -15,7 +14,7 @@ export const metadata: Metadata = {
     'The One Clinic Leicester',
   ],
   openGraph: {
-    title: 'Excess Body Fat Treatment Leicester | The One Clinic',
+    title: 'Excess Body Fat Treatment Leicester',
     description:
       'Reduce stubborn arm, bra, back, and thigh fat with personalised body contouring at The One Clinic, Leicester. GMC-registered doctors, proven results.',
   },
