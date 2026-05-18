@@ -148,6 +148,10 @@ interface PhysicianOptions {
   bio: string;               // first paragraph of bio
   medicalSpecialty?: string;
   profilePath: string;       // e.g. /team/dr-sumit-virmani
+  gmcNumber?: string;        // e.g. "7765432"
+  specialtyMemberships?: string[]; // e.g. ["BAAPS", "BACD"]
+  linkedinUrl?: string;
+  publications?: Array<{ title: string; url: string; year: number }>;
 }
 
 export function buildPhysicianSchema(opts: PhysicianOptions) {
@@ -161,7 +165,15 @@ export function buildPhysicianSchema(opts: PhysicianOptions) {
       credentialCategory: c,
     }));
 
-  return {
+  // Add specialty memberships as additional credentials
+  if (opts.specialtyMemberships?.length) {
+    credList.push(...opts.specialtyMemberships.map(m => ({
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: m,
+    })));
+  }
+
+  const schema: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'Physician',
     '@id': `${profileUrl}#physician`,
@@ -174,6 +186,8 @@ export function buildPhysicianSchema(opts: PhysicianOptions) {
     }),
     ...(opts.medicalSpecialty && { medicalSpecialty: opts.medicalSpecialty }),
     ...(credList.length > 0 && { hasCredential: credList }),
+    ...(opts.gmcNumber && { identifier: { '@type': 'PropertyValue', propertyID: 'GMC', value: opts.gmcNumber } }),
+    ...(opts.linkedinUrl && { sameAs: opts.linkedinUrl }),
     worksFor: clinicRef,
     memberOf: {
       '@type': 'MedicalOrganization',
@@ -181,6 +195,17 @@ export function buildPhysicianSchema(opts: PhysicianOptions) {
       url: SITE_URL,
     },
   };
+
+  if (opts.publications?.length) {
+    schema.publishedCredential = opts.publications.map(p => ({
+      '@type': 'CreativeWork',
+      name: p.title,
+      url: p.url,
+      datePublished: `${p.year}`,
+    }));
+  }
+
+  return schema;
 }
 
 // ── 6. VideoObject (Wistia) ─────────────────────────────────────

@@ -108,12 +108,35 @@
   gap: 6px;
 }
 
+.nameRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  justify-content: space-between;
+}
+
 .name {
   font-size: 1.0625rem;
   font-weight: 600;
   letter-spacing: -0.01em;
   color: var(--color-text-dark);
   line-height: 1.25;
+  flex: 1;
+}
+
+.gmcBadgeSmall {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: rgb(37 99 235 / 0.1);
+  border: 1px solid rgb(37 99 235 / 0.3);
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #2563eb;
+  flex-shrink: 0;
 }
 
 .credentials {

@@ -8,6 +8,18 @@ export type TeamMember = {
   bio: string[];
   /** Overrides the default /our-team/[slug] URL for the Read More link */
   profileUrl?: string;
+
+  /* ─ E-E-A-T & YMYL medical credentials ─ */
+  /** UK General Medical Council registration number, e.g. "7765432" */
+  gmcNumber?: string;
+  /** Year qualified or began medical practice */
+  yearQualified?: number;
+  /** Professional society memberships, e.g. ["BAAPS", "BACD"] */
+  specialtyMemberships?: string[];
+  /** Published papers, research, or clinical articles */
+  publications?: Array<{ title: string; url: string; year: number }>;
+  /** LinkedIn profile URL for professional social proof */
+  linkedinUrl?: string;
 };
 
 export const TEAM_MEMBERS: TeamMember[] = [

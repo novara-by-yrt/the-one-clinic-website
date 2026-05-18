@@ -69,7 +69,14 @@ export default function DoctorsGrid() {
               {/* Body */}
               <div className={styles.body}>
                 <div className={styles.meta}>
-                  <h3 className={styles.name}>{member.name}</h3>
+                  <div className={styles.nameRow}>
+                    <h3 className={styles.name}>{member.name}</h3>
+                    {member.gmcNumber && (
+                      <div className={styles.gmcBadgeSmall} title={`GMC #${member.gmcNumber}`}>
+                        ✓
+                      </div>
+                    )}
+                  </div>
                   {member.credentials && (
                     <p className={styles.credentials}>{member.credentials}</p>
                   )}
