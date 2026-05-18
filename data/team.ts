@@ -159,3 +159,10 @@ export const TEAM_MEMBERS: TeamMember[] = [
     ],
   },
 ];
+
+/**
+ * Get team member by name
+ */
+export function getTeamMemberByName(name: string): TeamMember | null {
+  return TEAM_MEMBERS.find((member) => member.name === name) || null;
+}
