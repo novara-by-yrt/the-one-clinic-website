@@ -11,7 +11,8 @@ import styles from './DoctorsGrid.module.css';
 
 export default function DoctorsGrid() {
   return (
-    <Section variant="light" data-section-theme="light">
+    <div style={{ backgroundColor: '#f5f5f5' }}>
+      <Section variant="light" data-section-theme="light">
       <Container>
         {/* Header */}
         <motion.div
@@ -91,5 +92,6 @@ export default function DoctorsGrid() {
         </motion.div>
       </Container>
     </Section>
+    </div>
   );
 }
