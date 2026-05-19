@@ -146,8 +146,36 @@ export default function Footer() {
 
         </div>
 
-        {/* Centre: decorative spacer */}
-        <div className={styles.centerZone} aria-hidden="true" />
+        {/* Centre: navigation */}
+        <div className={styles.centerZone}>
+          <nav className={styles.footerNav} aria-label="Footer navigation">
+            <div className={styles.navCol}>
+              <p className={styles.navLabel}>About</p>
+              <ul className={styles.navList}>
+                <li><a href="/our-team">Our Team</a></li>
+                <li><a href="/our-facilities">Our Facilities</a></li>
+                <li><a href="/what-we-do">What We Do</a></li>
+              </ul>
+            </div>
+
+            <div className={styles.navCol}>
+              <p className={styles.navLabel}>Services</p>
+              <ul className={styles.navList}>
+                <li><a href="/treatments">Treatments</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/results">Results</a></li>
+              </ul>
+            </div>
+
+            <div className={styles.navCol}>
+              <p className={styles.navLabel}>Info</p>
+              <ul className={styles.navList}>
+                <li><a href="/contact">Contact Us</a></li>
+                <li><a href="/patient-experience">Patient Experience</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
 
         {/* Right zone: legal */}
         <div className={styles.rightZone}>
@@ -155,7 +183,7 @@ export default function Footer() {
             &copy; THE ONE CLINIC {year}. ALL RIGHTS RESERVED.
           </p>
           <nav className={styles.legalLinks} aria-label="Legal links">
-            <a href="/terms" className={styles.legalLink}>
+            <a href="/terms-conditions" className={styles.legalLink}>
               Terms &amp; Conditions <CircleArrow />
             </a>
             <a href="/privacy" className={styles.legalLink}>

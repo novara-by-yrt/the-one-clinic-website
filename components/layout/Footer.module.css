@@ -216,10 +216,57 @@
   outline-offset: 3px;
 }
 
-/* ── Centre decorative spacer ─────────── */
+/* ── Centre navigation ─────────── */
 .centerZone {
   flex: 1;
   min-width: 0;
+}
+
+.footerNav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.navCol {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.navLabel {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.4);
+  margin: 0;
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.navList a {
+  font-size: 0.9375rem;
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.navList a:hover {
+  opacity: 0.65;
+}
+
+.navList a:focus-visible {
+  outline: 2px solid rgb(255 255 255 / 0.6);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 /* ── Right zone (legal) ───────────────── */
@@ -329,7 +376,16 @@
     gap: var(--space-5);
   }
 
-  .centerZone { display: none; }
+  .centerZone {
+    width: 100%;
+    order: 3;
+    display: block;
+  }
+
+  .footerNav {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
 
   .rightZone {
     align-items: flex-start;
@@ -370,10 +426,22 @@
     width: 100%;
   }
 
+  .centerZone {
+    width: 100%;
+    order: 3;
+    display: block;
+  }
+
+  .footerNav {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
   .rightZone {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-3);
+    width: 100%;
   }
 
   .legalLinks {
