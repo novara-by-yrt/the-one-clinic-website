@@ -112,7 +112,7 @@ const APPROACH_CARDS = [
   {
     eyebrow: '02',
     title: 'Laser Treatment Application',
-    desc: 'Our advanced non-ablative fractional laser delivers precisely controlled energy to vaginal mucosa. This stimulates collagen and elastin production, thickens the vaginal epithelium, and improves blood flow—all in a comfortable, discreet clinical setting with no anaesthesia required.',
+    desc: 'Our advanced non-ablative fractional laser delivers precisely controlled energy to vaginal mucosa. This stimulates collagen and elastin production, thickens the vaginal epithelium, and improves blood flow,all in a comfortable, discreet clinical setting with no anaesthesia required.',
   },
   {
     eyebrow: '03',
@@ -219,7 +219,7 @@ const CONDITIONS_TREATED = [
   },
   {
     title: 'Mild Urinary Incontinence',
-    desc: 'By tightening tissues around the urethra, treatment provides meaningful improvement in stress urinary incontinence—that sudden leakage associated with coughing, sneezing, or exercise.',
+    desc: 'By tightening tissues around the urethra, treatment provides meaningful improvement in stress urinary incontinence,that sudden leakage associated with coughing, sneezing, or exercise.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -383,7 +383,7 @@ export default function LaserVaginalPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Non-Surgical Intimate Wellness &amp; Vaginal Health Treatment — restore comfort,
+                Non-Surgical Intimate Wellness &amp; Vaginal Health Treatment , restore comfort,
                 confidence, and quality of life without surgery or downtime.
               </motion.p>
 
@@ -429,7 +429,7 @@ export default function LaserVaginalPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Women's Health.jpg"
+                src="/images/Menopause & HRT.jpg"
                 alt="Laser Vaginal Rejuvenation treatment at The One Clinic Leicester"
                 fill
                 priority
@@ -464,7 +464,7 @@ export default function LaserVaginalPage() {
                   Laser vaginal rejuvenation is a non-surgical intimate wellness treatment that
                   uses a non-ablative fractional laser to stimulate collagen and elastin production
                   within vaginal tissue. The treatment improves vaginal laxity, dryness, mild
-                  incontinence, and reduced sensation — all common concerns women face after
+                  incontinence, and reduced sensation , all common concerns women face after
                   childbirth, menopause, or as part of natural ageing.
                 </p>
                 <p className={styles.combinedDesc}>
@@ -590,7 +590,7 @@ export default function LaserVaginalPage() {
             <p className={styles.finalResultsText}>
               When delivered as a complete treatment course, our laser vaginal rejuvenation
               programme addresses laxity, dryness, incontinence, and reduced sensation in a
-              single personalised plan — delivering comprehensive intimate wellness with no
+              single personalised plan , delivering comprehensive intimate wellness with no
               surgery and no downtime.
             </p>
           </motion.div>
@@ -757,7 +757,7 @@ export default function LaserVaginalPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. HOW IT WORKS — THE SCIENCE
+          8. HOW IT WORKS , THE SCIENCE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
@@ -790,7 +790,7 @@ export default function LaserVaginalPage() {
               This controlled thermal response activates fibroblasts to produce new collagen and
               elastin, progressively thickening the epithelium and improving moisture retention.
               The result is visibly improved tissue tone, restored natural lubrication, and
-              enhanced sensation — all achieved without surgery or significant downtime.
+              enhanced sensation , all achieved without surgery or significant downtime.
             </motion.p>
           </motion.div>
 
@@ -852,7 +852,7 @@ export default function LaserVaginalPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {/* Card 1 — Results Timeline */}
+            {/* Card 1 , Results Timeline */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -876,7 +876,7 @@ export default function LaserVaginalPage() {
               </p>
             </motion.div>
 
-            {/* Card 2 — Side Effects */}
+            {/* Card 2 , Side Effects */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -911,7 +911,7 @@ export default function LaserVaginalPage() {
               </p>
             </motion.div>
 
-            {/* Card 3 — Aftercare */}
+            {/* Card 3 , Aftercare */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">

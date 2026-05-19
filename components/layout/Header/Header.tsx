@@ -424,7 +424,7 @@ export default function Header() {
 
                 {/* Three-panel body */}
                 <div className={styles.megaBody}>
-                  {/* LEFT — Editorial category navigation */}
+                  {/* LEFT , Editorial category navigation */}
                   <div className={styles.megaSidebar}>
                     {item.groups.map((grp, gi) => {
                       const gKey     = `${i}-${gi}`;
@@ -446,7 +446,7 @@ export default function Header() {
                     })}
                   </div>
 
-                  {/* CENTER — Treatment links */}
+                  {/* CENTER , Treatment links */}
                   <div className={styles.megaContent}>
                     <AnimatePresence mode="wait" initial={false}>
                       {item.groups.map((grp, gi) => {
@@ -479,7 +479,7 @@ export default function Header() {
                     </AnimatePresence>
                   </div>
 
-                  {/* RIGHT — Featured preview panel */}
+                  {/* RIGHT , Featured preview panel */}
                   <div className={styles.megaFeatured}>
                     <Image
                       src="/images/imgi_78_GTR_0328-1-1.jpg"
@@ -526,14 +526,14 @@ export default function Header() {
         >
           <div className={styles.inner}>
 
-            {/* LEFT NAV — About, Treatments, Conditions, Membership */}
+            {/* LEFT NAV , About, Treatments, Conditions, Membership */}
             <nav className={styles.leftNav} aria-label="Main navigation">
               <ul className={styles.navList} role="list">
                 {LEFT_NAV.map((item, idx) => renderNavItem(item, idx))}
               </ul>
             </nav>
 
-            {/* CENTER — Logo */}
+            {/* CENTER , Logo */}
             <Link href="/" className={styles.logo} aria-label="The One Clinic, home">
               <Image
                 src="/images/LOGO.png"
@@ -545,7 +545,7 @@ export default function Header() {
               />
             </Link>
 
-            {/* RIGHT GROUP — Patient Experience, Contact Us, CTA, Hamburger */}
+            {/* RIGHT GROUP , Patient Experience, Contact Us, CTA, Hamburger */}
             <div className={styles.rightGroup}>
               <nav className={styles.rightNav} aria-label="Secondary navigation">
                 <ul className={styles.navList} role="list">

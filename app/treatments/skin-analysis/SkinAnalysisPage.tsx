@@ -444,7 +444,7 @@ export default function SkinAnalysisPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Dermatologist.jpg"
+                src="/images/Skin Analysis Hero.jpg"
                 alt="Life Viz 3D skin analysis at The One Clinic Leicester"
                 fill
                 priority
@@ -492,7 +492,7 @@ export default function SkinAnalysisPage() {
             {/* Right: image panel */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/images/Skin Analysis 1.jpg"
                 alt="Skin analysis consultation at The One Clinic Leicester"
                 fill
                 className={styles.whatIsVideoFrame}
@@ -764,7 +764,7 @@ export default function SkinAnalysisPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. HOW IT WORKS — THE SCIENCE
+          8. HOW IT WORKS , THE SCIENCE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
@@ -936,7 +936,7 @@ export default function SkinAnalysisPage() {
               </p>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'No contact with the skin — fully non-invasive',
+                  'No contact with the skin , fully non-invasive',
                   'No redness, irritation, or sensitivity',
                   'Repeat scans available to track treatment progress',
                 ].map((item) => (

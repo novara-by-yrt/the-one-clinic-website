@@ -58,7 +58,7 @@
   transform: translateY(-4px);
 }
 
-/* Award logo image area — fills the card width */
+/* Award logo image area , fills the card width */
 .awardImgWrap {
   width: 100%;
   display: flex;

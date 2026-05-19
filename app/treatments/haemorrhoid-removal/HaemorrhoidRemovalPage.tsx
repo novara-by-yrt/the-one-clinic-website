@@ -40,7 +40,7 @@ const AT_A_GLANCE = [
   },
   {
     label: 'Downtime',
-    value: '2–3 weeks',
+    value: '2,3 weeks',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
@@ -118,7 +118,7 @@ const JOURNEY_STEPS = [
   {
     n: '04',
     title: 'Recovery & Review',
-    desc: 'Full recovery typically takes 3–6 weeks. Your doctor schedules follow-up visits to monitor healing, manage any discomfort, and confirm successful outcomes.',
+    desc: 'Full recovery typically takes 3,6 weeks. Your doctor schedules follow-up visits to monitor healing, manage any discomfort, and confirm successful outcomes.',
   },
 ];
 
@@ -185,7 +185,7 @@ const TREATMENT_BENEFITS = [
 ];
 
 const ELIGIBILITY_SUITABLE = [
-  'Adults with Grade II–IV haemorrhoids causing persistent symptoms',
+  'Adults with Grade II,IV haemorrhoids causing persistent symptoms',
   'Patients who have tried conservative treatment without lasting relief',
   'Those experiencing regular rectal bleeding, prolapse, or significant pain',
   'Anyone whose haemorrhoids are affecting daily comfort and quality of life',
@@ -262,7 +262,7 @@ const FAQS = [
   {
     question: 'Who is suitable for haemorrhoid removal surgery?',
     answer:
-      'Haemorrhoid removal is recommended for adults with Grade II–IV haemorrhoids causing significant pain, bleeding, or prolapse that have not improved with conservative management. Our doctors will assess your suitability during a full consultation.',
+      'Haemorrhoid removal is recommended for adults with Grade II,IV haemorrhoids causing significant pain, bleeding, or prolapse that have not improved with conservative management. Our doctors will assess your suitability during a full consultation.',
   },
   {
     question: 'Is the haemorrhoidectomy procedure painful?',
@@ -272,12 +272,12 @@ const FAQS = [
   {
     question: 'How long does recovery take after haemorrhoid removal?',
     answer:
-      'Most patients experience mild soreness and swelling for 1–2 weeks following the procedure. Full recovery, including complete wound healing, typically takes 3–6 weeks. Most people can return to light daily activities within a few days.',
+      'Most patients experience mild soreness and swelling for 1,2 weeks following the procedure. Full recovery, including complete wound healing, typically takes 3,6 weeks. Most people can return to light daily activities within a few days.',
   },
   {
     question: 'Will haemorrhoids come back after surgery?',
     answer:
-      'Surgical excision provides long-term, often permanent, relief for the treated haemorrhoids. However, new haemorrhoids can develop if underlying risk factors — such as a low-fibre diet, straining, or prolonged sitting — are not addressed.',
+      'Surgical excision provides long-term, often permanent, relief for the treated haemorrhoids. However, new haemorrhoids can develop if underlying risk factors , such as a low-fibre diet, straining, or prolonged sitting , are not addressed.',
   },
   {
     question: 'What should I do to prepare for haemorrhoid removal?',
@@ -343,7 +343,7 @@ export default function HaemorrhoidRemovalPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Fast, effective and permanent relief from haemorrhoids — performed under
+                Fast, effective and permanent relief from haemorrhoids , performed under
                 local anaesthetic by our expert doctors.
               </motion.p>
 
@@ -553,7 +553,7 @@ export default function HaemorrhoidRemovalPage() {
             <p className={styles.finalResultsText}>
               You leave the clinic the same day with a managed wound plan and clear aftercare
               instructions. Most patients experience immediate symptom relief, with complete
-              healing occurring over 3–6 weeks with proper aftercare and follow-up support.
+              healing occurring over 3,6 weeks with proper aftercare and follow-up support.
             </p>
           </motion.div>
         </Container>
@@ -773,7 +773,7 @@ export default function HaemorrhoidRemovalPage() {
                 'Haemorrhoidectomy (surgical excision)',
                 'Rubber band ligation',
                 'Phenol injection sclerotherapy',
-                'Grade II–IV internal haemorrhoids',
+                'Grade II,IV internal haemorrhoids',
                 'External haemorrhoids (selected cases)',
                 'Thrombosed haemorrhoids',
               ].map((item) => (
@@ -831,8 +831,8 @@ export default function HaemorrhoidRemovalPage() {
               </div>
               <p className={styles.resultsAfterCardBody}>
                 Most patients notice immediate relief from prolapse and the most severe
-                symptoms. Mild soreness and swelling are normal for the first 1–2 weeks.
-                Complete wound healing and full comfort typically return within 3–6 weeks.
+                symptoms. Mild soreness and swelling are normal for the first 1,2 weeks.
+                Complete wound healing and full comfort typically return within 3,6 weeks.
               </p>
               <div className={styles.resultsAfterCardSpacer} />
               <p className={styles.resultsAfterCardNote}>
@@ -1107,7 +1107,7 @@ export default function HaemorrhoidRemovalPage() {
               Haemorrhoid Removal Cost at The One Clinic
             </motion.p>
             <motion.p className={styles.costBannerPrice} variants={fadeUp}>
-              Contact Us for Pricing — Tailored to Your Assessment
+              Contact Us for Pricing , Tailored to Your Assessment
             </motion.p>
             <motion.p className={styles.costBannerNote} variants={fadeUp}>
               The final price depends on your individual assessment and personalised

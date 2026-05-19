@@ -5,7 +5,7 @@
  * Targets [data-brand] so nothing leaks to the rest of the site.
  *
  * Specificity notes:
- *  [data-brand] h2  = (0,1,1) — beats CSS-module class (0,1,0) and
+ *  [data-brand] h2  = (0,1,1) , beats CSS-module class (0,1,0) and
  *  globals.css element rule (0,0,1), so Playfair cascades cleanly
  *  without !important.
  */
@@ -29,7 +29,7 @@ export default function BrandGlobalStyle() {
         color: #4B4B4B;
       }
 
-      /* ── Remove inner section border-top — panel provides
+      /* ── Remove inner section border-top , panel provides
          the visual separation already ──────────────────────── */
       [data-brand] section {
         border-top: none !important;

@@ -266,7 +266,7 @@ const FAQS = [
   {
     question: 'What is exosome therapy?',
     answer:
-      'Exosomes are extracellular vesicles—tiny biological particles naturally produced by cells to carry growth factors, proteins, and genetic information between cells. In aesthetic medicine, laboratory-derived exosomes are applied to the skin to stimulate collagen production, accelerate repair, and improve overall skin quality at a cellular level.',
+      'Exosomes are extracellular vesicles,tiny biological particles naturally produced by cells to carry growth factors, proteins, and genetic information between cells. In aesthetic medicine, laboratory-derived exosomes are applied to the skin to stimulate collagen production, accelerate repair, and improve overall skin quality at a cellular level.',
   },
   {
     question: 'How is exosome therapy delivered?',
@@ -422,7 +422,7 @@ export default function ExosomeTherapyPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/images/Exosome Therapy hero.jpg"
                 alt="Exosome therapy treatment at The One Clinic Leicester"
                 fill
                 priority
@@ -471,7 +471,7 @@ export default function ExosomeTherapyPage() {
             {/* Right: image panels */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/images/Exosome Therapy 1.jpg"
                 alt="Exosome therapy consultation at The One Clinic"
                 fill
                 className={styles.whatIsVideoFrame}

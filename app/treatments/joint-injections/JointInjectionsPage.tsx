@@ -94,7 +94,7 @@ const JOURNEY_STEPS = [
   {
     n: '03',
     title: 'Injection',
-    desc: 'The affected joint is cleaned and, if required, a local anaesthetic is applied. The therapeutic agent — corticosteroid or hyaluronic acid — is injected with precision.',
+    desc: 'The affected joint is cleaned and, if required, a local anaesthetic is applied. The therapeutic agent , corticosteroid or hyaluronic acid , is injected with precision.',
   },
   {
     n: '04',
@@ -133,7 +133,7 @@ const ELIGIBILITY_SUITABLE = [
 const ELIGIBILITY_NOT_SUITABLE = [
   'Active joint infection or septic arthritis',
   'Coagulopathy or anticoagulant therapy (discuss with doctor)',
-  'Uncontrolled diabetes (relative — discuss with clinician)',
+  'Uncontrolled diabetes (relative , discuss with clinician)',
   'Known allergy to the planned injectate',
 ];
 
@@ -425,7 +425,7 @@ export default function JointInjectionsPage() {
                 <p className={styles.eyebrowDark}>About This Treatment</p>
                 <h2 className={styles.combinedHeading}>What are Joint Injections?</h2>
                 <p className={styles.combinedDesc}>
-                  Joint injections deliver therapeutic agents — corticosteroids or hyaluronic acid —
+                  Joint injections deliver therapeutic agents , corticosteroids or hyaluronic acid ,
                   directly into an affected joint to reduce inflammation, relieve pain, and improve
                   mobility. At The One Clinic, our experienced doctors use precise injection
                   techniques to provide targeted, lasting relief for conditions including

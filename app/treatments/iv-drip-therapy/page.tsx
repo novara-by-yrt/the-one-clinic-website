@@ -2,19 +2,18 @@ import type { Metadata } from 'next';
 import IVDripPage from './IVDripPage';
 
 export const metadata: Metadata = {
-  title: 'IV Drip Therapy Leicester | Vitamin Infusions | The One Clinic',
+  alternates: { canonical: '/treatments/iv-drip-therapy' },
+  title: 'IV Drip Therapy Leicester | Vitamin Infusions',
   description:
     'IV drip therapy in Leicester. Premium vitamin and nutrient infusions delivered directly into the bloodstream for rapid results at The One Clinic.',
-  keywords: [
-    'IV drip therapy Leicester',
-    'IV drip Leicester',
-    'vitamin infusion Leicester',
-    'IV vitamin therapy Leicester',
-    'nutrient infusion Leicester',
-    'IV hydration Leicester',
-  ],
   openGraph: {
-    title: 'IV Drip Therapy Leicester | The One Clinic',
+    title: 'IV Drip Therapy Leicester',
+    description:
+      'Expert IV drip therapy in Leicester. Premium vitamin and nutrient infusions for energy, immunity, and recovery at The One Clinic.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'IV Drip Therapy Leicester',
     description:
       'Expert IV drip therapy in Leicester. Premium vitamin and nutrient infusions for energy, immunity, and recovery at The One Clinic.',
   },

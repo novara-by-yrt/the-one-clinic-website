@@ -67,6 +67,59 @@ export default function TeamMemberProfile({ member }: { member: TeamMember }) {
                 {member.credentials && (
                   <p className={styles.credentials}>{member.credentials}</p>
                 )}
+
+                {/* E-E-A-T signals */}
+                <div className={styles.eeatSignals}>
+                  {member.gmcNumber && (
+                    <div className={styles.gmcBadge}>
+                      <span className={styles.gmcLabel}>GMC #</span>
+                      <a
+                        href={`https://www.gmc-uk.org/registration-and-licensing/the-medical-register?query=${member.gmcNumber}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.gmcNumber}
+                        aria-label={`Verify GMC registration ${member.gmcNumber}`}
+                      >
+                        {member.gmcNumber}
+                      </a>
+                    </div>
+                  )}
+
+                  {member.yearQualified && (
+                    <p className={styles.yearQualified}>
+                      Practising since {member.yearQualified}
+                    </p>
+                  )}
+                </div>
+
+                {/* Specialty memberships */}
+                {member.specialtyMemberships?.length ? (
+                  <div className={styles.memberships}>
+                    <p className={styles.membershipsLabel}>Professional Memberships</p>
+                    <div className={styles.membershipsList}>
+                      {member.specialtyMemberships.map((m) => (
+                        <span key={m} className={styles.membershipBadge}>
+                          {m}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+
+                {/* LinkedIn & professional links */}
+                {member.linkedinUrl && (
+                  <div className={styles.socialLinks}>
+                    <a
+                      href={member.linkedinUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.linkedinLink}
+                      aria-label={`${member.name} LinkedIn profile`}
+                    >
+                      LinkedIn Profile →
+                    </a>
+                  </div>
+                )}
               </motion.div>
 
               <motion.div className={styles.bioBlock} variants={fadeUp}>

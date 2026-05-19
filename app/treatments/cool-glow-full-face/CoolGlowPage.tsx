@@ -127,7 +127,7 @@ const APPROACH_CARDS = [
 const TREATED_BENEFITS = [
   {
     title: 'Brighter Complexion',
-    desc: 'Exfoliating acids dissolve dull surface cells to reveal fresher, more radiant skin beneath — delivering an immediate and visible glow after treatment.',
+    desc: 'Exfoliating acids dissolve dull surface cells to reveal fresher, more radiant skin beneath , delivering an immediate and visible glow after treatment.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="5"/>
@@ -342,7 +342,7 @@ const FAQS = [
   {
     question: 'Is there any downtime after the COOL Glow Peel?',
     answer:
-      'Downtime is minimal — typically 1 to 3 days of mild redness and light peeling as the skin renews. By days 5 to 7, skin reveals a noticeably brighter, smoother complexion. Avoid harsh actives, direct sun exposure, and heavy exercise in the first 5 to 7 days post-treatment.',
+      'Downtime is minimal , typically 1 to 3 days of mild redness and light peeling as the skin renews. By days 5 to 7, skin reveals a noticeably brighter, smoother complexion. Avoid harsh actives, direct sun exposure, and heavy exercise in the first 5 to 7 days post-treatment.',
   },
   {
     question: 'What aftercare do I need to follow?',
@@ -403,7 +403,7 @@ export default function CoolGlowPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                A luminous, refreshed complexion — medical-grade skin resurfacing with minimal downtime.
+                A luminous, refreshed complexion , medical-grade skin resurfacing with minimal downtime.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -448,7 +448,7 @@ export default function CoolGlowPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Dermatologist.jpg"
+                src="/Hero Section 2 Chemical Peel.jpg"
                 alt="COOL Glow Peel treatment in progress at The One Clinic Leicester"
                 fill
                 priority
@@ -498,7 +498,7 @@ export default function CoolGlowPage() {
             {/* Right: image panel */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/Chemical Peel.jpg"
                 alt="COOL Glow Peel consultation at The One Clinic Leicester"
                 fill
                 className={styles.whatIsVideoFrame}
@@ -603,7 +603,7 @@ export default function CoolGlowPage() {
             <p className={styles.finalResultsEyebrow}>The Result</p>
             <p className={styles.finalResultsText}>
               When these three steps are combined, the COOL Glow Peel delivers complete skin
-              renewal — addressing dullness, pigmentation, and texture in a single programme
+              renewal , addressing dullness, pigmentation, and texture in a single programme
               for a brighter, smoother, and more even complexion.
             </p>
           </motion.div>
@@ -770,7 +770,7 @@ export default function CoolGlowPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. HOW IT WORKS — THE SCIENCE
+          8. HOW IT WORKS , THE SCIENCE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
@@ -794,9 +794,9 @@ export default function CoolGlowPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.howPara} variants={fadeUp}>
-              The COOL Glow Peel uses a carefully formulated blend of medical-grade acids — including
+              The COOL Glow Peel uses a carefully formulated blend of medical-grade acids , including
               AHAs (such as glycolic and lactic acid), BHAs (such as salicylic acid), and TCA at
-              varying concentrations depending on depth — to break down the bonds between dead skin
+              varying concentrations depending on depth , to break down the bonds between dead skin
               cells and stimulate accelerated cell renewal in the layers beneath.
             </motion.p>
             <motion.p className={styles.howPara} variants={fadeUp}>
@@ -937,7 +937,7 @@ export default function CoolGlowPage() {
               </div>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Avoid direct sun exposure — apply SPF50 daily without fail',
+                  'Avoid direct sun exposure , apply SPF50 daily without fail',
                   'Use only gentle, hydrating skincare for 5 to 7 days',
                   'Do not use retinoids or exfoliating actives for at least 5 to 7 days',
                   'Avoid picking or peeling any flaking skin',

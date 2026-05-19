@@ -1,10 +1,10 @@
-/* ── Section — white background ──────────────────────────────────── */
+/* ── Section , white background ──────────────────────────────────── */
 .section {
   background: #ffffff;
   padding-block: clamp(32px, 4.5vw, 56px);
 }
 
-/* ── Container — centres the card ───────────────────────────────── */
+/* ── Container , centres the card ───────────────────────────────── */
 .container {
   display: flex;
   justify-content: center;
@@ -35,7 +35,7 @@
   margin: 0;
 }
 
-/* ── Heading — italic serif ──────────────────────────────────────── */
+/* ── Heading , italic serif ──────────────────────────────────────── */
 .heading {
   font-family: Georgia, 'Times New Roman', serif;
   font-style: italic;
@@ -76,7 +76,7 @@
   margin-top: 6px;
 }
 
-/* Primary — white fill ──────────────────────────────────────────── */
+/* Primary , white fill ──────────────────────────────────────────── */
 .btnPrimary {
   display: inline-flex;
   align-items: center;
@@ -108,7 +108,7 @@
   transform: translateY(0);
 }
 
-/* Secondary — outline ───────────────────────────────────────────── */
+/* Secondary , outline ───────────────────────────────────────────── */
 .btnOutline {
   display: inline-flex;
   align-items: center;

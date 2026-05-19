@@ -13,9 +13,29 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) return {};
+
+  const canonical = `/blog/${slug}`;
+  const rawDesc = post.excerpt || post.content.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+  const description = rawDesc.length > 160 ? rawDesc.slice(0, 157).trimEnd() + '…' : rawDesc;
+  const ogTitle = `${post.title} | The One Clinic`;
+
   return {
-    title: `${post.title} | The One Clinic Blog`,
-    description: post.excerpt || post.content.replace(/<[^>]+>/g, '').slice(0, 160),
+    title: post.title,
+    description,
+    alternates: { canonical },
+    openGraph: {
+      title: ogTitle,
+      description,
+      url: canonical,
+      type: 'article',
+      ...(post.featured_image ? { images: [{ url: post.featured_image }] } : {}),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: ogTitle,
+      description,
+      ...(post.featured_image ? { images: [post.featured_image] } : {}),
+    },
   };
 }
 
@@ -87,8 +107,20 @@ export default async function BlogDetailPage({ params }) {
       <div className="max-w-7xl mx-auto px-4 py-14">
         {/* Desktop: Two-column grid */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.35fr] gap-8 lg:gap-12">
-          {/* Left column - Content */}
+          {/* Left column - Featured Image + Content */}
           <article>
+            {/* Featured Image */}
+            {post.featured_image && (
+              <div className="mb-8 bg-neutral-100 relative overflow-hidden rounded-lg">
+                <img
+                  src={post.featured_image}
+                  alt={post.title}
+                  className="w-full h-auto object-contain"
+                  loading="eager"
+                />
+              </div>
+            )}
+
             {hasContent ? (
               <>
                 {/* Split content and insert CTAs in the middle */}
@@ -132,7 +164,7 @@ export default async function BlogDetailPage({ params }) {
 
           {/* Right column - Sticky form (hidden on mobile/tablet) */}
           <div className="hidden lg:block">
-            <div className="sticky" style={{ top: '6rem' }}>
+            <div className="sticky top-24">
               <CallbackTrigger />
             </div>
           </div>

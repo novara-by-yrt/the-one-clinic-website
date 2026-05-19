@@ -92,7 +92,7 @@ const JOURNEY_STEPS = [
   {
     n: '02',
     title: 'Scar Assessment',
-    desc: 'Your scar is assessed in detail — its type, depth, age, and texture — to calibrate the treatment precisely. Photographs may be taken for comparison throughout your programme.',
+    desc: 'Your scar is assessed in detail , its type, depth, age, and texture , to calibrate the treatment precisely. Photographs may be taken for comparison throughout your programme.',
   },
   {
     n: '03',
@@ -157,7 +157,7 @@ const TREATED_BENEFITS = [
   },
   {
     title: 'Minimal Downtime vs Surgery',
-    desc: 'A non-surgical procedure requiring only 3 to 5 days of social downtime — a fraction of the recovery associated with surgical scar revision.',
+    desc: 'A non-surgical procedure requiring only 3 to 5 days of social downtime , a fraction of the recovery associated with surgical scar revision.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
@@ -347,7 +347,7 @@ export default function CoolScarLiftPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Advanced Scar Reduction &amp; Skin Resurfacing Technology — remodel scar tissue,
+                Advanced Scar Reduction &amp; Skin Resurfacing Technology , remodel scar tissue,
                 stimulate collagen, and restore smooth, even skin without surgery.
               </motion.p>
 
@@ -393,7 +393,7 @@ export default function CoolScarLiftPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Minor Surgery.jpg"
+                src="/images/Cool Scar Lift hero.jpg"
                 alt="Cool Scar Lift treatment in progress at The One Clinic Leicester"
                 fill
                 priority
@@ -429,7 +429,7 @@ export default function CoolScarLiftPage() {
                   controlled thermal energy with cooling technology to remodel scar tissue,
                   stimulate collagen production, and improve skin texture. By creating precise
                   micro-injury zones in the dermis while protecting the epidermis, it triggers
-                  the skin&apos;s natural repair cascade — gradually replacing fibrous scar tissue
+                  the skin&apos;s natural repair cascade , gradually replacing fibrous scar tissue
                   with healthy, organised collagen. Effective for acne scars, surgical scars,
                   stretch marks, and textural irregularities across face and body.
                 </p>
@@ -444,7 +444,7 @@ export default function CoolScarLiftPage() {
             {/* Right: image */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/images/Cool Scar Lift 1.jpg"
                 alt="Cool Scar Lift consultation at The One Clinic Leicester"
                 fill
                 className={styles.whatIsVideoFrame}
@@ -514,7 +514,7 @@ export default function CoolScarLiftPage() {
             </motion.h2>
             <motion.p className={styles.combinationIntroText} variants={fadeUp}>
               At The One Clinic, our Cool Scar Lift approach combines precision assessment,
-              advanced fractional resurfacing, and targeted aftercare — delivering progressive,
+              advanced fractional resurfacing, and targeted aftercare , delivering progressive,
               lasting improvement for all scar types.
             </motion.p>
           </motion.div>
@@ -550,7 +550,7 @@ export default function CoolScarLiftPage() {
             <p className={styles.finalResultsEyebrow}>Combined Result</p>
             <p className={styles.finalResultsText}>
               When assessment, treatment, and aftercare are combined, Cool Scar Lift delivers
-              comprehensive scar remodelling — addressing texture, depth, colour, and volume
+              comprehensive scar remodelling , addressing texture, depth, colour, and volume
               across multiple scar types in a single personalised programme.
             </p>
           </motion.div>
@@ -751,7 +751,7 @@ export default function CoolScarLiftPage() {
               The integrated cooling system protects the epidermis during treatment, allowing
               effective energy delivery to deeper scar tissue without surface damage. Over
               successive sessions, the fibrous, disorganised collagen within scar tissue is
-              progressively replaced with healthy, structured collagen fibres — smoothing
+              progressively replaced with healthy, structured collagen fibres , smoothing
               texture, reducing depth, and improving colour and appearance.
             </motion.p>
           </motion.div>
@@ -887,7 +887,7 @@ export default function CoolScarLiftPage() {
               </div>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Apply broad-spectrum SPF 50 daily — essential for healing skin',
+                  'Apply broad-spectrum SPF 50 daily , essential for healing skin',
                   'Use gentle, fragrance-free skincare during recovery',
                   'Do not pick, scratch, or exfoliate treated areas',
                   'Avoid direct sun exposure and heat for at least one week',

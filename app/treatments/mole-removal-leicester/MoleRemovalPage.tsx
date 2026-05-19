@@ -333,7 +333,7 @@ export default function MoleRemovalPage() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Endolift-Laser_1.jpg"
+                src="/images/Mole Removal hero.jpg"
                 alt="Mole removal at The One Clinic Leicester"
                 fill
                 priority
@@ -380,7 +380,7 @@ export default function MoleRemovalPage() {
 
             <motion.div className={styles.whatIsImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/images/Mole Removal 1.jpg"
                 alt="Mole removal consultation at The One Clinic"
                 fill
                 className={styles.whatIsImage}

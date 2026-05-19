@@ -2,15 +2,13 @@
 
 import { motion } from 'framer-motion';
 import Script from 'next/script';
+import { CLINIC_INFO, getMapsEmbedUrl, getMapsSearchUrl, getHoursDisplay } from '@/lib/clinic-info';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './LeadForm.module.css';
 
 const SLIDE_EASE = [0.25, 0.1, 0.25, 1] as const;
-
-const MAPS_URL  = 'https://www.google.com/maps/place/The+One+Clinic+-+Leicester/@52.6272773,-1.1274381,17z';
-const EMBED_URL = 'https://maps.google.com/maps?q=52.6272773,-1.1274381&output=embed';
 
 function PhoneIcon() {
   return (
@@ -52,28 +50,24 @@ function FacebookIcon() {
 }
 
 const CONTACT_ITEMS = [
-  { icon: <PhoneIcon />, value: '07481 342 374',          href: 'tel:07481342374' },
-  { icon: <EmailIcon />, value: 'info@the-oneclinic.net', href: 'mailto:info@the-oneclinic.net' },
+  { icon: <PhoneIcon />, value: CLINIC_INFO.phone.display, href: `tel:${CLINIC_INFO.phone.tel}` },
+  { icon: <EmailIcon />, value: CLINIC_INFO.email,        href: `mailto:${CLINIC_INFO.email}` },
 ];
 
-const HOURS = [
-  { days: 'Monday – Friday', time: '09:00 – 18:00' },
-  { days: 'Saturday',        time: '09:00 – 16:00' },
-  { days: 'Sunday',          time: '09:00 – 18:00' },
-];
+const HOURS = getHoursDisplay();
 
 const SOCIAL_LINKS = [
   {
     icon: <InstagramIcon />,
     label: 'Instagram',
     handle: '@theoneclinic.uk',
-    href: 'https://www.instagram.com/theoneclinic.uk/',
+    href: CLINIC_INFO.social.instagram,
   },
   {
     icon: <FacebookIcon />,
     label: 'Facebook',
     handle: 'theoneclinic.uk',
-    href: 'https://www.facebook.com/theoneclinic.uk',
+    href: CLINIC_INFO.social.facebook,
   },
 ];
 
@@ -194,7 +188,7 @@ export default function LeadForm() {
             {/* Map embed */}
             <div className={styles.mapWrap}>
               <iframe
-                src={EMBED_URL}
+                src={getMapsEmbedUrl()}
                 title="The One Clinic location"
                 className={styles.mapIframe}
                 loading="lazy"
@@ -202,7 +196,7 @@ export default function LeadForm() {
                 aria-label="Map showing clinic location"
               />
               <a
-                href={MAPS_URL}
+                href={getMapsSearchUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.mapOverlay}

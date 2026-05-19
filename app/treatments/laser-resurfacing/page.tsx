@@ -2,19 +2,18 @@ import type { Metadata } from 'next';
 import LaserResurfacingPage from './LaserResurfacingPage';
 
 export const metadata: Metadata = {
-  title: 'Deep Laser Resurfacing Leicester | Skin Renewal | The One Clinic',
+  alternates: { canonical: '/treatments/laser-resurfacing' },
+  title: 'Deep Laser Resurfacing Leicester | Skin Renewal',
   description:
     'Deep laser resurfacing in Leicester. Reduce wrinkles, sun damage, acne scars, and uneven skin tone with advanced laser skin renewal at The One Clinic.',
-  keywords: [
-    'deep laser resurfacing Leicester',
-    'laser skin resurfacing Leicester',
-    'fractional laser Leicester',
-    'laser wrinkle treatment Leicester',
-    'acne scar laser treatment Leicester',
-    'skin renewal Leicester',
-  ],
   openGraph: {
-    title: 'Deep Laser Resurfacing Leicester | The One Clinic',
+    title: 'Deep Laser Resurfacing Leicester',
+    description:
+      'Advanced deep laser skin resurfacing in Leicester. Expert treatment for wrinkles, scars, and uneven skin texture at The One Clinic.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Deep Laser Resurfacing Leicester',
     description:
       'Advanced deep laser skin resurfacing in Leicester. Expert treatment for wrinkles, scars, and uneven skin texture at The One Clinic.',
   },

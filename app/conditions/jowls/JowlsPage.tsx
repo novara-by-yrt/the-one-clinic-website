@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import Link  from 'next/link';
 import { motion } from 'framer-motion';
@@ -15,11 +16,30 @@ import Testimonials           from '@/components/sections/Testimonials';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
 
+/* ── Jowl types ───────────────────────────────────────────────── */
+const JOWL_TYPES = [
+  {
+    num: '01',
+    title: 'Mild Jowling',
+    desc: 'Early skin looseness along the jawline with subtle drooping, still maintaining reasonable facial definition.',
+  },
+  {
+    num: '02',
+    title: 'Moderate Jowling',
+    desc: 'Visible sagging below the jaw with noticeable loss of jawline definition and a heavier lower face.',
+  },
+  {
+    num: '03',
+    title: 'Severe Jowling',
+    desc: 'Significant skin laxity with heavy drooping that noticeably affects overall facial contour and symmetry.',
+  },
+];
+
 /* ── Causes ───────────────────────────────────────────────────── */
 const CAUSES = [
   {
-    title: 'Ageing',
-    desc: 'Collagen and elastin production slows with age, causing the skin to lose firmness and sag below the jawline.',
+    title: 'Loss of Collagen & Elastin',
+    desc: 'As collagen and elastin production slows with age, the skin loses its firmness and ability to stay lifted along the jawline.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -28,8 +48,8 @@ const CAUSES = [
     ),
   },
   {
-    title: 'Skin Laxity',
-    desc: 'As structural support in the skin weakens, gravity pulls the tissue downwards, forming the characteristic droop along the jaw.',
+    title: 'Ageing & Gravity',
+    desc: 'Over time, gravity pulls weakened skin tissue downwards, forming the characteristic droop along the jaw and lower face.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 2v20M2 12h20"/>
@@ -38,8 +58,8 @@ const CAUSES = [
     ),
   },
   {
-    title: 'Volume Loss',
-    desc: 'Fat pads in the cheeks gradually descend over time, reducing mid-face volume and collecting along the jawline.',
+    title: 'Weight Loss',
+    desc: 'Significant weight loss can stretch and loosen the skin around the jaw, leaving it less able to retract and stay firm.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
@@ -48,7 +68,7 @@ const CAUSES = [
   },
   {
     title: 'Genetics',
-    desc: 'Bone structure and inherited skin type influence how quickly jowls appear, meaning some people are more prone regardless of lifestyle.',
+    desc: 'Inherited bone structure and skin type influence how quickly jowls develop, meaning some people are more prone regardless of lifestyle.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M6 3c0 4.5 6 4.5 6 9s-6 4.5-6 9"/>
@@ -59,8 +79,8 @@ const CAUSES = [
     ),
   },
   {
-    title: 'Sun Damage',
-    desc: 'Prolonged UV exposure breaks down collagen fibres, accelerating the loss of skin elasticity and tone.',
+    title: 'Sun Damage & UV Exposure',
+    desc: 'Prolonged UV exposure breaks down collagen fibres, accelerating the loss of skin elasticity and tone in the lower face.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="5"/>
@@ -76,8 +96,8 @@ const CAUSES = [
     ),
   },
   {
-    title: 'Weight Changes',
-    desc: 'Significant weight fluctuations can stretch and loosen the skin, leaving it less able to snap back over the jawline.',
+    title: 'Lifestyle Factors',
+    desc: 'Smoking and poor diet deplete antioxidants and impair collagen production, accelerating skin laxity and the formation of jowls.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -89,90 +109,113 @@ const CAUSES = [
   },
 ];
 
-/* ── Treatments ───────────────────────────────────────────────── */
-const TREATMENTS = [
+/* ── Risk factors ─────────────────────────────────────────────── */
+const RISK_FACTORS = [
+  'Those over the age of 40.',
+  'People who have lost significant weight.',
+  'Individuals with naturally thinner or fair skin.',
+  'Those with sun-damaged or UV-exposed skin.',
+  'People with a genetic predisposition to skin laxity.',
+  'Smokers and former smokers.',
+];
+
+/* ── Diagnose steps ───────────────────────────────────────────── */
+const DIAGNOSE_STEPS = [
   {
-    title: 'Dermal Fillers',
-    desc:  'Precision-placed hyaluronic acid filler restores lost volume to the cheeks and jawline, lifting sagging tissue and redefining facial contours without surgery.',
-    href:  '/treatments/dermal-fillers',
+    num: '01',
+    text: 'Facial Skin Laxity Assessment , evaluating the degree of skin looseness and loss of firmness across the lower face.',
   },
   {
-    title: 'Skin Tightening',
-    desc:  'Advanced energy-based treatments stimulate collagen deep within the skin to firm and tighten lax tissue along the jaw and lower face.',
-    href:  '/treatments/skin-tightening',
+    num: '02',
+    text: 'Jawline & Lower Face Analysis , examining the contour, definition, and extent of drooping along the jaw and chin.',
   },
   {
-    title: 'Profhilo',
-    desc:  'A highly concentrated hyaluronic acid treatment that bioremodels the skin from within, improving elasticity and restoring a naturally lifted appearance.',
-    href:  '/treatments/profhilo',
-  },
-  {
-    title: 'Polynucleotides',
-    desc:  'Stimulates collagen and elastin production to deeply rejuvenate and tighten lax skin, improving both texture and firmness around the jaw.',
-    href:  '/treatments/polynucleotides',
+    num: '03',
+    text: 'Medical & Lifestyle History Review , discussing contributing factors such as weight changes, sun exposure, and skincare habits.',
   },
 ];
 
-/* ── Risk factors ─────────────────────────────────────────────── */
-const RISK_FACTORS = [
-  'Adults over the age of 40.',
-  'People with a family history of jowls.',
-  'Those with prolonged sun exposure.',
-  'Smokers and former smokers.',
-  'Individuals who have experienced significant weight loss.',
-  'People with naturally thinner or fair skin.',
+/* ── Treatments ───────────────────────────────────────────────── */
+const TREATMENTS = [
+  {
+    title:  'Endolift Laser',
+    desc:   'A minimally invasive laser treatment that tightens and lifts sagging skin along the jawline and lower face from within.',
+    href:   '/treatments/endolift',
+    image:  '/images/BA1.jpg',
+  },
+  {
+    title:  'Morpheus8',
+    desc:   'Combines microneedling with radiofrequency energy to deeply remodel tissue and firm lax skin around the jaw.',
+    href:   '/treatments/morpheus8',
+    image:  '/images/BA2.jpg',
+  },
+  {
+    title:  'Dermal Fillers',
+    desc:   'Precision-placed hyaluronic acid filler restores lost volume to the cheeks and jawline, lifting and redefining the lower face.',
+    href:   '/treatments/dermal-fillers',
+    image:  '/images/BA3.jpg',
+  },
+  {
+    title:  'Wrinkle Relaxing Injections',
+    desc:   'Strategically placed injections relax the muscles that pull the lower face downwards, softening jowls and improving contour.',
+    href:   '/treatments/wrinkle-relaxing-injections',
+    image:  '/images/BA4.jpg',
+  },
+];
+
+/* ── When to call ─────────────────────────────────────────────── */
+const WHEN_TO_CALL = [
+  'Rapid or sudden changes in skin laxity or facial contour.',
+  'Noticeable asymmetry in the jaw or lower face.',
+  'Pain, tenderness, or discomfort in the jaw area.',
+  'Significant impact on your confidence or quality of life.',
 ];
 
 /* ── Results timeline ─────────────────────────────────────────── */
 const RESULTS_TIMELINE = [
   {
-    phase: 'Immediate',
-    title: 'Defined Jawline',
-    desc:  'Improved facial contour and jawline definition visible straight away.',
+    phase: 'Treatment Timeline',
+    title: 'Personalised Plan',
+    desc:  'Your specialist will outline a tailored treatment timeline based on your individual goals and the severity of jowling.',
   },
   {
-    phase: '2 to 4 Weeks',
-    title: 'Firmer Skin',
-    desc:  'Skin begins to feel firmer as collagen stimulation takes effect.',
+    phase: 'Lifting & Firming Progress',
+    title: 'Visible Improvement',
+    desc:  'Skin begins to feel firmer and more lifted as collagen stimulation and volumising effects take hold over weeks.',
   },
   {
-    phase: '6 to 12 Weeks',
-    title: 'Full Improvement',
-    desc:  'Optimal results visible, with noticeably improved skin quality and lift.',
-  },
-  {
-    phase: 'Long-term',
-    title: 'Maintained Results',
-    desc:  'Regular top-up treatments help sustain your results over time.',
+    phase: 'Long-term Maintenance',
+    title: 'Sustained Results',
+    desc:  'Regular top-up treatments help sustain your lifting and firming results, keeping the jawline defined over time.',
   },
 ];
 
-/* ── Why choose ───────────────────────────────────────────────── */
+/* ── Why choose The One Clinic ────────────────────────────────── */
 const CLINIC_REASONS = [
-  { n: '01', text: 'All-in-one clinic with medical and aesthetic services.' },
-  { n: '02', text: 'Highly trained, compassionate, GMC-registered doctors.' },
-  { n: '03', text: 'Customised treatment plans based on your individual goals.' },
-  { n: '04', text: 'State-of-the-art facilities and modern equipment.' },
-  { n: '05', text: 'Strong reputation with excellent patient reviews.' },
-  { n: '06', text: 'Comprehensive aftercare and follow-up support.' },
+  { n: '01', text: 'All-in-one clinic with medical & aesthetic services.' },
+  { n: '02', text: 'Highly trained, compassionate doctors.' },
+  { n: '03', text: 'Customised treatments based on listening & expertise.' },
+  { n: '04', text: 'State-of-the-art facilities & modern equipment.' },
+  { n: '05', text: 'Strong reputation & excellent reviews.' },
+  { n: '06', text: 'Comprehensive care and referrals with specialists.' },
 ];
 
-/* ── FAQs ─────────────────────────────────────────────────────── */
+/* ── FAQ data ──────────────────────────────────────────────────── */
 const FAQS = [
   {
-    question: 'What causes jowls?',
+    question: 'What causes jowls and sagging skin?',
     answer:
-      'Jowls form as collagen and elastin in the skin break down with age, reducing its ability to stay lifted. Fat pads in the cheeks also descend over time, collecting along the jawline. Genetics, sun damage, weight changes, and lifestyle factors such as smoking can all accelerate the process.',
+      'Jowls form as collagen and elastin in the skin break down with age, reducing its ability to stay lifted. Fat pads in the cheeks gradually descend, collecting along the jawline. Genetics, sun damage, significant weight changes, and lifestyle factors such as smoking can all accelerate the process.',
   },
   {
     question: 'Can jowls be treated without surgery?',
     answer:
-      'Yes. There are several effective non-surgical options available, including dermal fillers to restore volume and lift, skin-tightening treatments to stimulate collagen, Profhilo for bioremodelling, and Polynucleotides for deep skin rejuvenation. Our doctors will recommend the most suitable treatment based on your individual assessment.',
+      'Yes. There are several effective non-surgical options available at The One Clinic, including Endolift laser to tighten skin from within, Morpheus8 to deeply remodel tissue, dermal fillers to restore lost volume and lift, and wrinkle relaxing injections to soften downward-pulling muscles. Our doctors will recommend the most suitable treatment after a thorough assessment.',
   },
   {
-    question: 'How long do results last?',
+    question: 'How long do jowl treatment results last?',
     answer:
-      'Results vary depending on the treatment chosen. Dermal fillers typically last 12 to 18 months, while skin-tightening treatments can provide results for up to 18 to 24 months with appropriate maintenance. Regular top-up appointments help to sustain your results long term.',
+      'Results vary depending on the treatment chosen. Dermal fillers typically last 12 to 18 months, while energy-based treatments such as Endolift and Morpheus8 can provide results for up to 18 to 24 months with appropriate maintenance. Regular top-up appointments help sustain your results long term.',
   },
   {
     question: 'Is jowl treatment safe?',
@@ -180,14 +223,31 @@ const FAQS = [
       'Yes. All treatments at The One Clinic are performed by GMC-registered doctors with specialist training in medical aesthetics. We follow strict clinical protocols to ensure your safety and comfort throughout. A thorough consultation is carried out before any treatment begins.',
   },
   {
-    question: 'What is the recovery time?',
+    question: 'What is the recovery time after jowl treatment?',
     answer:
-      'Most non-surgical jowl treatments have minimal downtime. Dermal filler patients may experience mild swelling or bruising for a few days. Skin-tightening treatments may cause temporary redness or mild discomfort that typically resolves within 24 to 48 hours. You can usually return to normal activities the same day.',
+      'Most non-surgical jowl treatments have minimal downtime. Dermal filler patients may experience mild swelling or bruising for a few days. Energy-based treatments such as Morpheus8 may cause temporary redness or mild discomfort that typically resolves within 24 to 72 hours. You can usually return to normal activities the same day.',
+  },
+  {
+    question: 'At what age do jowls typically appear?',
+    answer:
+      'Jowls can begin to appear as early as the mid-thirties, though they are more commonly noticed from the age of 40 onwards. The rate of development depends on genetics, skin type, lifestyle, and the degree of sun exposure over a lifetime. Early non-surgical intervention can slow progression and restore definition.',
   },
 ];
 
-/* ── Related ──────────────────────────────────────────────────── */
+/* ── Related data ──────────────────────────────────────────────── */
 const RELATED_TREATMENTS = [
+  {
+    title: 'Endolift Laser',
+    desc:  'A minimally invasive laser that lifts and tightens sagging skin along the jaw and lower face from within.',
+    href:  '/treatments/endolift',
+    tag:   'Medical Aesthetics',
+  },
+  {
+    title: 'Morpheus8',
+    desc:  'Microneedling with radiofrequency energy to deeply remodel tissue and firm lax skin around the jawline.',
+    href:  '/treatments/morpheus8',
+    tag:   'Medical Aesthetics',
+  },
   {
     title: 'Dermal Fillers',
     desc:  'Restore volume and redefine the jawline with precision-placed hyaluronic acid filler.',
@@ -195,30 +255,24 @@ const RELATED_TREATMENTS = [
     tag:   'Medical Aesthetics',
   },
   {
-    title: 'Profhilo',
-    desc:  'Bioremodel and deeply hydrate the skin to restore elasticity and a lifted appearance.',
-    href:  '/treatments/profhilo',
-    tag:   'Medical Aesthetics',
-  },
-  {
-    title: 'Polynucleotides',
-    desc:  'Stimulate collagen production to rejuvenate and firm lax skin around the jaw.',
-    href:  '/treatments/polynucleotides',
+    title: 'Wrinkle Relaxing Injections',
+    desc:  'Relax downward-pulling facial muscles to soften jowls and improve lower face contour.',
+    href:  '/treatments/wrinkle-relaxing-injections',
     tag:   'Medical Aesthetics',
   },
 ];
 
 const RELATED_CONDITIONS = [
   {
-    title: 'Eye Bags',
-    desc:  'Reduce puffiness and restore a refreshed, smooth look under the eyes.',
-    href:  '/conditions/eye-bags',
+    title: 'Turkey Neck',
+    desc:  'Tighten and smooth loose skin and horizontal lines along the neck for a more youthful profile.',
+    href:  '/conditions/turkey-neck',
     tag:   'Face',
   },
   {
-    title: 'Turkey Neck / Necklines',
-    desc:  'Tighten and smooth loose skin and horizontal lines along the neck.',
-    href:  '/conditions/turkey-neck',
+    title: 'Nasolabial Folds',
+    desc:  'Soften deep lines running from the nose to the corners of the mouth for a refreshed appearance.',
+    href:  '/conditions/nasolabial-folds',
     tag:   'Face',
   },
 ];
@@ -227,6 +281,10 @@ const RELATED_CONDITIONS = [
    PAGE
 ════════════════════════════════════════════════════════════════ */
 export default function JowlsPage() {
+  const [showAllFaqs, setShowAllFaqs] = useState(false);
+
+  const visibleFaqs = showAllFaqs ? FAQS : FAQS.slice(0, 4);
+
   return (
     <>
       {/* ════════════════════════════════════════
@@ -234,16 +292,17 @@ export default function JowlsPage() {
       ════════════════════════════════════════ */}
       <section
         className={styles.hero}
-        aria-label="Jowls, hero"
+        aria-label="Jowls & Sagging Skin, hero"
         data-section-theme="dark"
       >
+        {/* Breadcrumb, pinned below fixed header */}
         <div className={styles.heroBreadcrumb}>
           <Container>
             <Breadcrumb
               theme="dark"
               items={[
                 { label: 'Conditions', href: '/conditions' },
-                { label: 'Jowls' },
+                { label: 'Jowls & Sagging Skin' },
               ]}
             />
           </Container>
@@ -256,18 +315,19 @@ export default function JowlsPage() {
             initial="hidden"
             animate="show"
           >
+            {/* Left: text content */}
             <div className={styles.heroLeft}>
               <motion.span className={styles.heroCategory} variants={fadeUp}>
                 Conditions · Face
               </motion.span>
 
               <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                Jowls
+                Jowls &amp; Sagging Skin Treatment Leicester
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Lift and redefine your jawline with personalised,
-                non-surgical treatments designed for natural-looking results.
+                Explore non-surgical and surgical solutions to lift and firm
+                the lower face and jawline for a naturally defined, youthful look.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -276,10 +336,12 @@ export default function JowlsPage() {
                 </BookConsultationButton>
               </motion.div>
 
+              {/* Trust badges */}
               <motion.div variants={fadeUp}>
                 <TrustBadges theme="dark" />
               </motion.div>
 
+              {/* Trust items */}
               <motion.div className={styles.heroTrust} variants={fadeUp}>
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -307,10 +369,11 @@ export default function JowlsPage() {
               </motion.div>
             </div>
 
+            {/* Right: hero image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
                 src="/images/Jowls_Sagging Skin.png"
-                alt="Lower face showing jowls, treated at The One Clinic Leicester"
+                alt="Lower face showing jowls and sagging skin, treated at The One Clinic Leicester"
                 fill
                 className={styles.heroImage}
                 sizes="(max-width: 900px) 100vw, 50vw"
@@ -323,99 +386,90 @@ export default function JowlsPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          2. WHAT ARE JOWLS?
+          2. WHAT ARE JOWLS & TYPES (Combined)
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="light" data-section-theme="light" className={styles.overviewTypesSection}>
         <Container>
-          <motion.div
-            className={styles.overviewGrid}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.div className={styles.overviewLabel} variants={fadeUp}>
-              <p className={styles.eyebrowDark}>About This Condition</p>
-            </motion.div>
-
-            <div className={styles.overviewBody}>
-              <motion.h2 className={styles.overviewHeading} variants={fadeUp}>
-                What Are Jowls?
-              </motion.h2>
-              <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Jowls refer to the sagging skin and soft tissue that develops along the lower face
-                and jaw. As collagen and elastin break down with age, the skin loses its ability to
-                stay lifted, causing it to droop below the jawline. This can give the face a heavier,
-                less defined appearance.
-              </motion.p>
-              <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Jowls are one of the most common signs of facial ageing and can affect confidence
-                in how you look. The good news is that there are safe, effective, non-surgical
-                treatments that can significantly improve their appearance without the need for surgery.
-              </motion.p>
+          <div className={styles.combinedBody}>
+            {/* Left column: Overview */}
+            <div className={styles.combinedLeft}>
+              <div className={styles.combinedLeftTop}>
+                <motion.p
+                  className={styles.eyebrowDark}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  About This Condition
+                </motion.p>
+                <motion.h2
+                  className={styles.combinedHeading}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  What are Jowls &amp; Sagging Skin?
+                </motion.h2>
+                <motion.p
+                  className={styles.combinedDesc}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  Jowls refer to the sagging skin and soft tissue that develops along
+                  the lower face and jaw as collagen and elastin break down with age.
+                  The skin loses its ability to stay lifted, causing it to droop below
+                  the jawline and giving the face a heavier, less defined appearance.
+                </motion.p>
+              </div>
             </div>
-          </motion.div>
-        </Container>
-      </Section>
 
-      {/* ════════════════════════════════════════
-          3. TYPES / APPEARANCE
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              How They Appear
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Types of Jowling
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.typesCardsRow}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {[
-              {
-                num: '01',
-                title: 'Mild Jowling',
-                desc: 'Slight skin relaxation along the jawline with minimal sagging. The jaw still has reasonable definition.',
-              },
-              {
-                num: '02',
-                title: 'Moderate Jowling',
-                desc: 'Visible drooping below the jaw creating a less-defined jawline and a heavier lower face.',
-              },
-              {
-                num: '03',
-                title: 'Significant Jowling',
-                desc: 'Pronounced sagging with a notable loss of facial contour and definition along the jaw and chin.',
-              },
-            ].map((type) => (
-              <motion.div key={type.num} className={styles.typeCard} variants={fadeUp}>
-                <span className={styles.typeNum} aria-hidden="true">{type.num}</span>
-                <div className={styles.typeCardBody}>
-                  <h3 className={styles.typeTitle}>{type.title}</h3>
-                  <p className={styles.typeDesc}>{type.desc}</p>
-                </div>
+            {/* Right column: Types */}
+            <div className={styles.combinedRight}>
+              <motion.div
+                className={styles.typesRightHeader}
+                initial="hidden"
+                whileInView="show"
+                variants={fadeUp}
+                viewport={VIEWPORT}
+              >
+                <p className={styles.combinedRightLabel}>Classification</p>
+                <h3 className={styles.typesRightHeading}>Types of Jowling</h3>
               </motion.div>
-            ))}
-          </motion.div>
+
+              <motion.div
+                className={styles.combinedCards}
+                variants={stagger(0.1)}
+                initial="hidden"
+                whileInView="show"
+                viewport={VIEWPORT}
+              >
+                {JOWL_TYPES.map((type) => (
+                  <motion.div
+                    key={type.num}
+                    className={styles.typeCardCombined}
+                    variants={fadeUp}
+                  >
+                    <span className={styles.typeNumCombined} aria-hidden="true">
+                      {type.num}
+                    </span>
+                    <div className={styles.typeCardHeader}>
+                      <h3 className={styles.typeTitleCombined}>{type.title}</h3>
+                      <p className={styles.typeDescCombined}>{type.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          4. CAUSES
+          3. CAUSES
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.causesSection}>
         <Container>
@@ -430,11 +484,11 @@ export default function JowlsPage() {
               Root Causes
             </motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              What Causes Jowls?
+              Jowls &amp; Sagging Skin Causes
             </motion.h2>
             <motion.p className={styles.sectionSubtext} variants={fadeUp}>
-              Understanding what contributes to jowls helps identify the right
-              treatment approach for lasting results.
+              Understanding what contributes to jowls and sagging skin helps
+              identify the right treatment approach for long-lasting results.
             </motion.p>
           </motion.div>
 
@@ -465,7 +519,7 @@ export default function JowlsPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          5. WHO IS MORE LIKELY?
+          4. WHO IS MORE LIKELY?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
@@ -476,40 +530,55 @@ export default function JowlsPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div className={styles.riskLeft} variants={stagger(0.1)}>
-              <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-                Risk Factors
-              </motion.p>
-              <motion.h2 className={styles.riskHeading} variants={fadeUp}>
-                Who Is More Likely to Develop Jowls?
-              </motion.h2>
-              <motion.p className={styles.riskIntro} variants={fadeUp}>
-                The following individuals may be more at risk of developing jowls earlier or more severely.
-              </motion.p>
+            {/* Left: image */}
+            <motion.div className={styles.riskImageWrap} variants={fadeUp}>
+              <Image
+                src="/images/Jowls_Sagging Skin.png"
+                alt="Person showing jowls and sagging skin along the lower face"
+                fill
+                className={styles.riskImage}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className={styles.riskImageOverlay} aria-hidden="true" />
             </motion.div>
 
-            <motion.ul
-              className={styles.riskList}
-              role="list"
-              variants={stagger(0.08)}
-            >
-              {RISK_FACTORS.map((item) => (
-                <motion.li key={item} className={styles.riskItem} variants={fadeUp}>
-                  <span className={styles.riskCheck} aria-hidden="true">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
-                  <span>{item}</span>
-                </motion.li>
-              ))}
-            </motion.ul>
+            {/* Right: heading + intro + checklist */}
+            <motion.div className={styles.riskRight} variants={stagger(0.1)}>
+              <div className={styles.riskRightInner}>
+                <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+                  Risk Factors
+                </motion.p>
+                <motion.h2 className={styles.riskHeading} variants={fadeUp}>
+                  Who Is More Likely to Develop Jowls &amp; Sagging Skin?
+                </motion.h2>
+                <motion.p className={styles.riskIntro} variants={fadeUp}>
+                  The following individuals may be more at risk of developing jowls and sagging skin.
+                </motion.p>
+
+                <motion.ul
+                  className={styles.riskList}
+                  role="list"
+                  variants={stagger(0.08)}
+                >
+                  {RISK_FACTORS.map((item) => (
+                    <motion.li key={item} className={styles.riskItem} variants={fadeUp}>
+                      <span className={styles.riskCheck} aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                          <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </span>
+                      <span>{item}</span>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </div>
+            </motion.div>
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          6. TREATMENTS
+          5. HOW DO WE DIAGNOSE?
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -521,10 +590,56 @@ export default function JowlsPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Your Options
+              Our Process
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Treatments for Jowls
+              How Do We Diagnose Jowls &amp; Sagging Skin?
+            </motion.h2>
+            <motion.p className={styles.diagnoseIntro} variants={fadeUp}>
+              Our specialists will:
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.diagnoseGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {DIAGNOSE_STEPS.map((step) => (
+              <motion.div
+                key={step.num}
+                className={styles.diagnoseCard}
+                variants={fadeUp}
+              >
+                <span className={styles.diagnoseNum} aria-hidden="true">
+                  {step.num}
+                </span>
+                <p className={styles.diagnoseText}>{step.text}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          6. TREATMENTS FOR JOWLS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Your Options
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Treatments For Jowls &amp; Sagging Skin
             </motion.h2>
           </motion.div>
 
@@ -560,9 +675,58 @@ export default function JowlsPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          7. RESULTS & EXPECTATIONS
+          7. WHEN TO CALL A DOCTOR?
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.whenToCallWrap}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {/* Left: heading */}
+            <motion.div className={styles.whenToCallLeft} variants={stagger(0.1)}>
+              <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+                Medical Advice
+              </motion.p>
+              <motion.h2 className={styles.whenToCallHeading} variants={fadeUp}>
+                When to Call a Doctor?
+              </motion.h2>
+              <motion.p className={styles.whenToCallIntro} variants={fadeUp}>
+                Jowls and sagging skin are typically a cosmetic concern, but see a
+                doctor if you notice:
+              </motion.p>
+            </motion.div>
+
+            {/* Right: warning list */}
+            <motion.ul
+              className={styles.whenToCallList}
+              role="list"
+              variants={stagger(0.08)}
+            >
+              {WHEN_TO_CALL.map((item) => (
+                <motion.li key={item} className={styles.whenToCallItem} variants={fadeUp}>
+                  <span className={styles.whenToCallIcon} aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="8" x2="12" y2="12"/>
+                      <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          8. RESULTS & EXPECTATIONS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.resultsSection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -578,7 +742,8 @@ export default function JowlsPage() {
               Results &amp; Expectations
             </motion.h2>
             <motion.p className={styles.sectionSubtext} variants={fadeUp}>
-              After jowl treatment, here is what you can typically expect at each stage.
+              After treatment for jowls and sagging skin, here is what you can
+              expect at each stage of your journey.
             </motion.p>
           </motion.div>
 
@@ -606,19 +771,19 @@ export default function JowlsPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. MEET THE EXPERTS
+          9. MEET THE EXPERTS
       ════════════════════════════════════════ */}
       <MeetTheExperts />
 
       {/* ════════════════════════════════════════
-          9. GOOGLE REVIEWS
+          GOOGLE REVIEWS
       ════════════════════════════════════════ */}
       <Testimonials />
 
       {/* ════════════════════════════════════════
           10. WHY CHOOSE THE ONE CLINIC
       ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
+      <Section variant="light" data-section-theme="light" className={styles.whySection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -627,11 +792,11 @@ export default function JowlsPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
               Why Us
             </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Why Choose The One Clinic For Jowl Treatment
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Why Choose The One Clinic For Jowls &amp; Sagging Skin Treatment
             </motion.h2>
           </motion.div>
 
@@ -660,8 +825,8 @@ export default function JowlsPage() {
       {/* ════════════════════════════════════════
           11. FAQ
       ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
+      <Section variant="light" data-section-theme="light" className={styles.faqSection}>
+        <Container className={styles.faqInner}>
           <motion.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
@@ -669,8 +834,8 @@ export default function JowlsPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>FAQ</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
               Frequently Asked Questions
             </motion.h2>
           </motion.div>
@@ -682,19 +847,34 @@ export default function JowlsPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <Accordion items={FAQS} theme="dark" />
+            <Accordion items={visibleFaqs} theme="dark" />
           </motion.div>
+
+          {!showAllFaqs && FAQS.length > 4 && (
+            <div className={styles.faqToggleWrap}>
+              <button
+                className={styles.faqToggleBtn}
+                onClick={() => setShowAllFaqs(true)}
+              >
+                View All Questions
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+            </div>
+          )}
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          12. CTA BAND
+          12. CONSULTATION CTA
       ════════════════════════════════════════ */}
       <section
         className={styles.ctaBand}
         data-section-theme="dark"
-        aria-label="Jowls consultation CTA"
+        aria-label="Jowls & Sagging Skin consultation CTA"
       >
+        {/* Background image */}
         <div className={styles.ctaBandBgWrap} aria-hidden="true">
           <Image
             src="/images/Background section image new1.jpg"
@@ -718,11 +898,11 @@ export default function JowlsPage() {
               Take the First Step
             </motion.p>
             <motion.h2 className={styles.ctaHeading} variants={fadeUp}>
-              Ready to Lift &amp; Define{' '}
+              Ready to Lift &amp; Firm{' '}
               <span className={styles.ctaAccent}>Your Jawline?</span>
             </motion.h2>
             <motion.p className={styles.ctaSubtext} variants={fadeUp}>
-              Speak to our specialists today to find the best treatment for your
+              Talk to our specialists today to find the best treatment for your
               jowls and restore a naturally defined, youthful appearance.
             </motion.p>
             <motion.div className={styles.ctaBtns} variants={fadeUp}>
@@ -738,50 +918,16 @@ export default function JowlsPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          13. COST BAND
-      ════════════════════════════════════════ */}
-      <section
-        className={styles.costBand}
-        data-section-theme="dark"
-        aria-label="Jowl treatment cost"
-      >
-        <Container>
-          <motion.div
-            className={styles.costBandInner}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.costBandEyebrow} variants={fadeUp}>
-              Pricing
-            </motion.p>
-            <motion.h2 className={styles.costBandHeading} variants={fadeUp}>
-              Jowl Treatment Cost
-            </motion.h2>
-            <motion.p className={styles.costBandNote} variants={fadeUp}>
-              Contact us to enquire
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBtnPrimary}>
-                Book A Consultation
-              </BookConsultationButton>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
-
-      {/* ════════════════════════════════════════
-          14. LEAD FORM
+          13. LEAD FORM
       ════════════════════════════════════════ */}
       <div id="contact">
         <LeadForm />
       </div>
 
       {/* ════════════════════════════════════════
-          15. RELATED TREATMENTS
+          14. RELATED TREATMENTS (dark)
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="dark" data-section-theme="dark">
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -790,8 +936,8 @@ export default function JowlsPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Explore</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Explore</motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
               Related Treatments
             </motion.h2>
           </motion.div>
@@ -822,7 +968,7 @@ export default function JowlsPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          16. RELATED CONDITIONS
+          15. RELATED CONDITIONS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.relatedConditionsSection}>
         <Container>
@@ -863,6 +1009,7 @@ export default function JowlsPage() {
           </motion.div>
         </Container>
       </Section>
+
     </>
   );
 }

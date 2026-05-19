@@ -5,7 +5,7 @@ import { treatments } from '@/data/treatments';
 import { TEAM_MEMBERS } from '@/data/team';
 import { posts } from '@/lib/blogData';
 
-const BASE_URL = 'https://theoneclinic.com';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://the-oneclinic.net';
 
 // Directories to exclude from the static page scan
 const EXCLUDED_DIRS = new Set(['api']);
@@ -15,7 +15,7 @@ const SKIP_PREFIXES = ['_', '.', '('];
 
 /**
  * Walks the app/ directory and collects every route that has a page file.
- * Skips dynamic segments ([slug]) — those come from data sources below.
+ * Skips dynamic segments ([slug]) , those come from data sources below.
  */
 function collectStaticRoutes(dir: string, routeSegment = ''): string[] {
   const routes: string[] = [];

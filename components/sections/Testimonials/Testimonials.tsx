@@ -16,6 +16,7 @@ const REVIEWS = [
     initial: 'A',
     avatarBg: '#4285F4',
     timeAgo: '2 weeks ago',
+    categories: ['weight-management', 'health'],
     review:
       'The weight management programme changed my life. The doctors were supportive every step of the way. I finally have a plan that works for my lifestyle and I have never felt better.',
   },
@@ -24,6 +25,7 @@ const REVIEWS = [
     initial: 'D',
     avatarBg: '#0F9D58',
     timeAgo: '1 month ago',
+    categories: ['health', 'private-gp'],
     review:
       'I came in for help managing a long-term condition and left feeling genuinely heard. The level of care here is unlike any GP I have visited. Exceptional service from start to finish.',
   },
@@ -32,6 +34,7 @@ const REVIEWS = [
     initial: 'P',
     avatarBg: '#9C27B0',
     timeAgo: '1 month ago',
+    categories: ['general'],
     review:
       'From the first call to my follow-up, everything felt seamless and professional. The clinic is calm, the team is brilliant and the results speak for themselves.',
   },
@@ -40,6 +43,7 @@ const REVIEWS = [
     initial: 'J',
     avatarBg: '#E53935',
     timeAgo: '2 months ago',
+    categories: ['general'],
     review:
       'Absolutely brilliant experience from start to finish. Dr Virmani took time to explain everything clearly. I felt completely at ease and the outcome exceeded my expectations.',
   },
@@ -48,6 +52,7 @@ const REVIEWS = [
     initial: 'S',
     avatarBg: '#FF7043',
     timeAgo: '2 months ago',
+    categories: ['aesthetics', 'skin'],
     review:
       'I had my skin treatment here and the results are incredible. The team was professional, friendly and made me feel completely comfortable throughout the entire process.',
   },
@@ -56,6 +61,7 @@ const REVIEWS = [
     initial: 'R',
     avatarBg: '#34A853',
     timeAgo: '3 months ago',
+    categories: ['general'],
     review:
       'Top-class clinic. Everything from reception to the treatment itself was handled with care and precision. Will definitely be returning for follow-up treatments.',
   },
@@ -64,6 +70,7 @@ const REVIEWS = [
     initial: 'N',
     avatarBg: '#1565C0',
     timeAgo: '3 months ago',
+    categories: ['aesthetics'],
     review:
       'Dr Bedi was amazing. She listened to all my concerns and tailored the treatment perfectly. The results are so natural-looking. Highly recommend to anyone considering aesthetics.',
   },
@@ -72,6 +79,7 @@ const REVIEWS = [
     initial: 'M',
     avatarBg: '#F57F17',
     timeAgo: '4 months ago',
+    categories: ['general'],
     review:
       'Outstanding clinic. The facilities are modern and spotless. Staff are welcoming and knowledgeable. I was impressed by the high standard throughout my visit.',
   },
@@ -123,7 +131,23 @@ const SLIDE = {
 const TRANSITION = { duration: 0.42, ease: [0.25, 0.1, 0.25, 1] as const };
 
 /* ── Component ──────────────────────────────────────────────── */
-export default function Testimonials({ showVideos = false }: { showVideos?: boolean }) {
+export default function Testimonials({
+  showVideos = false,
+  filterCategory,
+}: {
+  showVideos?: boolean;
+  filterCategory?: string;
+}) {
+  /* Build filtered review pool when a category is supplied */
+  const pool = filterCategory
+    ? (() => {
+        const matched  = REVIEWS.filter(r => r.categories.includes(filterCategory));
+        const generals = REVIEWS.filter(r => r.categories.includes('general') && !r.categories.includes(filterCategory));
+        const combined = [...matched, ...generals];
+        return combined.length >= PER_PAGE ? combined.slice(0, PER_PAGE) : REVIEWS.slice(0, PER_PAGE);
+      })()
+    : REVIEWS;
+
   /* Reviews carousel */
   const [page, setPage] = useState(0);
   const [dir,  setDir]  = useState(1);
@@ -133,8 +157,8 @@ export default function Testimonials({ showVideos = false }: { showVideos?: bool
   const videoTouchX = useRef(0);
   const videoTouchY = useRef(0);
 
-  const totalPages = Math.ceil(REVIEWS.length / PER_PAGE);
-  const visible    = REVIEWS.slice(page * PER_PAGE, (page + 1) * PER_PAGE);
+  const totalPages = filterCategory ? 1 : Math.ceil(pool.length / PER_PAGE);
+  const visible    = filterCategory ? pool : pool.slice(page * PER_PAGE, (page + 1) * PER_PAGE);
 
   function goTo(next: number, direction: number) {
     setDir(direction);
@@ -291,7 +315,7 @@ export default function Testimonials({ showVideos = false }: { showVideos?: bool
           ))}
         </div>
 
-        {/* ── Patient video stories — home/brand page only ── */}
+        {/* ── Patient video stories , home/brand page only ── */}
         {showVideos && <div className={styles.patientsSection}>
           {/* Desktop: 3-column portrait grid */}
           <motion.div

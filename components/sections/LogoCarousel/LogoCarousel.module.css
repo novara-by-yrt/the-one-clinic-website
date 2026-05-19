@@ -6,7 +6,7 @@
   border-bottom: 1px solid rgba(13, 21, 32, 0.07);
 }
 
-/* ── Label row — flanked by thin rules ─────────────────────────── */
+/* ── Label row , flanked by thin rules ─────────────────────────── */
 .labelRow {
   display: flex;
   align-items: center;
@@ -83,7 +83,7 @@
   padding-right: clamp(44px, 5.5vw, 88px);
 }
 
-/* ── Logo image — height driven by CSS, width auto-scales ──────── */
+/* ── Logo image , height driven by CSS, width auto-scales ──────── */
 .logoImg {
   height: 58px !important;
   width: auto !important;

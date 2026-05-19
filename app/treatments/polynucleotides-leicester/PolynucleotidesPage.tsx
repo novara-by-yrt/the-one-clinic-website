@@ -113,12 +113,12 @@ const JOURNEY_STEPS = [
   {
     n: '03',
     title: 'Injection Sessions',
-    desc: 'Using advanced micro-injection technique, polynucleotides are delivered into the dermis across all target areas. The 30–45-minute procedure is comfortable and requires no general anaesthesia.',
+    desc: 'Using advanced micro-injection technique, polynucleotides are delivered into the dermis across all target areas. The 30,45-minute procedure is comfortable and requires no general anaesthesia.',
   },
   {
     n: '04',
     title: 'Progressive Regeneration',
-    desc: 'Cellular regeneration begins within days. Visible improvement appears at 2–4 weeks, deepening over 8–12 weeks as collagen and elastin production builds. Maintenance sessions every 3–6 months preserve results.',
+    desc: 'Cellular regeneration begins within days. Visible improvement appears at 2,4 weeks, deepening over 8,12 weeks as collagen and elastin production builds. Maintenance sessions every 3,6 months preserve results.',
   },
 ];
 
@@ -163,7 +163,7 @@ const BENEFITS = [
   },
   {
     title: 'Anti-inflammatory Effect',
-    desc: 'PDRN binds to A2 adenosine receptors, modulating inflammation and supporting healing — making polynucleotides ideal for sensitive, reactive, or post-procedure skin.',
+    desc: 'PDRN binds to A2 adenosine receptors, modulating inflammation and supporting healing , making polynucleotides ideal for sensitive, reactive, or post-procedure skin.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -261,7 +261,7 @@ const FAQS = [
   {
     question: 'What are polynucleotides and how do they work?',
     answer:
-      'Polynucleotides (PDRN — polydeoxyribonucleotide) are long-chain DNA fragments derived from salmon or trout, purified to pharmaceutical grade. When injected into the skin, they bind to A2 adenosine receptors and activate fibroblasts, triggering the production of collagen, elastin, and key growth factors such as VEGF and TGF-β. This stimulates genuine tissue regeneration at a cellular level.',
+      'Polynucleotides (PDRN , polydeoxyribonucleotide) are long-chain DNA fragments derived from salmon or trout, purified to pharmaceutical grade. When injected into the skin, they bind to A2 adenosine receptors and activate fibroblasts, triggering the production of collagen, elastin, and key growth factors such as VEGF and TGF-β. This stimulates genuine tissue regeneration at a cellular level.',
   },
   {
     question: 'Am I suitable for polynucleotide treatment?',
@@ -281,7 +281,7 @@ const FAQS = [
   {
     question: 'Is the treatment painful?',
     answer:
-      'The procedure is very comfortable. A topical numbing cream is applied beforehand, and most patients report only minimal sensation during the 30 to 45-minute session. Post-treatment discomfort is mild — some redness or swelling may occur but usually resolves within 24 to 48 hours.',
+      'The procedure is very comfortable. A topical numbing cream is applied beforehand, and most patients report only minimal sensation during the 30 to 45-minute session. Post-treatment discomfort is mild , some redness or swelling may occur but usually resolves within 24 to 48 hours.',
   },
   {
     question: 'How do polynucleotides compare to Profhilo or dermal fillers?',
@@ -342,7 +342,7 @@ export default function PolynucleotidesPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Advanced Skin Regeneration &amp; Deep Tissue Repair with Polynucleotides — naturally restore collagen, elastin, and radiant skin from within.
+                Advanced Skin Regeneration &amp; Deep Tissue Repair with Polynucleotides , naturally restore collagen, elastin, and radiant skin from within.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -419,7 +419,7 @@ export default function PolynucleotidesPage() {
                 <p className={styles.eyebrowDark}>About This Treatment</p>
                 <h2 className={styles.combinedHeading}>What are Polynucleotides?</h2>
                 <p className={styles.combinedDesc}>
-                  Polynucleotides (PDRN) are pharmaceutical-grade DNA fragments derived from purified salmon or trout that act as powerful biological signals within the skin. When injected, they bind to A2 adenosine receptors and activate fibroblasts — the cells responsible for producing collagen and elastin — triggering deep tissue regeneration and repair.
+                  Polynucleotides (PDRN) are pharmaceutical-grade DNA fragments derived from purified salmon or trout that act as powerful biological signals within the skin. When injected, they bind to A2 adenosine receptors and activate fibroblasts , the cells responsible for producing collagen and elastin , triggering deep tissue regeneration and repair.
                 </p>
                 <p className={styles.combinedDesc}>
                   Unlike treatments that simply add volume or hydrate the surface, polynucleotides address the root cause of skin ageing: declining cellular repair capacity. Results develop gradually as your own biology responds, producing naturally rejuvenated skin with superior hydration, firmness, and radiance.
@@ -505,7 +505,7 @@ export default function PolynucleotidesPage() {
               Our Polynucleotides Approach
             </motion.h2>
             <motion.p className={styles.combinationIntroText} variants={fadeUp}>
-              At The One Clinic, our polynucleotides protocol is built on three core pillars — precise assessment, targeted delivery, and progressive regeneration — ensuring every patient achieves genuine, lasting skin improvement.
+              At The One Clinic, our polynucleotides protocol is built on three core pillars , precise assessment, targeted delivery, and progressive regeneration , ensuring every patient achieves genuine, lasting skin improvement.
             </motion.p>
           </motion.div>
 
@@ -539,7 +539,7 @@ export default function PolynucleotidesPage() {
           >
             <p className={styles.finalResultsEyebrow}>The Outcome</p>
             <p className={styles.finalResultsText}>
-              When assessment, injection protocol, and regeneration planning work together, polynucleotides deliver complete skin renewal — addressing cellular decline, dehydration, and collagen loss in a single, progressive treatment programme.
+              When assessment, injection protocol, and regeneration planning work together, polynucleotides deliver complete skin renewal , addressing cellular decline, dehydration, and collagen loss in a single, progressive treatment programme.
             </p>
           </motion.div>
         </Container>
@@ -707,7 +707,7 @@ export default function PolynucleotidesPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. HOW IT WORKS — THE SCIENCE
+          8. HOW IT WORKS , THE SCIENCE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
@@ -796,7 +796,7 @@ export default function PolynucleotidesPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {/* Card 1 — Results Timeline */}
+            {/* Card 1 , Results Timeline */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -816,7 +816,7 @@ export default function PolynucleotidesPage() {
               </p>
             </motion.div>
 
-            {/* Card 2 — Side Effects */}
+            {/* Card 2 , Side Effects */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -834,7 +834,7 @@ export default function PolynucleotidesPage() {
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
                   'Mild redness or warmth at injection sites',
-                  'Minor swelling or tenderness for 24–48 hours',
+                  'Minor swelling or tenderness for 24,48 hours',
                   'Small needle marks that resolve quickly',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
@@ -849,7 +849,7 @@ export default function PolynucleotidesPage() {
               </p>
             </motion.div>
 
-            {/* Card 3 — Aftercare */}
+            {/* Card 3 , Aftercare */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -862,7 +862,7 @@ export default function PolynucleotidesPage() {
               </div>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Avoid heat, saunas, and intense exercise for 24–48 hours',
+                  'Avoid heat, saunas, and intense exercise for 24,48 hours',
                   'Keep skin clean and well-hydrated',
                   'Apply broad-spectrum SPF 30+ daily during healing',
                   'Avoid touching or rubbing treated areas',

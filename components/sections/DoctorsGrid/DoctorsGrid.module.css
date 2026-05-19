@@ -40,7 +40,7 @@
 .card {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--color-border-light);
+  border: 1px solid #d0d5dd;
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--color-bg-light);
@@ -53,7 +53,7 @@
 .card:hover {
   box-shadow: 0 12px 40px rgb(0 0 0 / 0.09);
   transform: translateY(-5px);
-  border-color: rgb(0 0 0 / 0.12);
+  border-color: rgb(0 0 0 / 0.2);
 }
 
 /* ── Photo area ── */
@@ -61,7 +61,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
-  background: #111;
+  background: #f0f0f0;
   overflow: hidden;
 }
 
@@ -81,13 +81,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #111 0%, #1c1c1c 100%);
+  background: linear-gradient(135deg, #e0e0e0 0%, #cccccc 100%);
 }
 
 .initials {
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: var(--fw-bold);
-  color: rgb(255 255 255 / 0.18);
+  color: rgb(0 0 0 / 0.18);
   letter-spacing: 0.05em;
   user-select: none;
 }
@@ -108,12 +108,35 @@
   gap: 6px;
 }
 
+.nameRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  justify-content: space-between;
+}
+
 .name {
   font-size: 1.0625rem;
   font-weight: 600;
   letter-spacing: -0.01em;
   color: var(--color-text-dark);
   line-height: 1.25;
+  flex: 1;
+}
+
+.gmcBadgeSmall {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: rgb(37 99 235 / 0.1);
+  border: 1px solid rgb(37 99 235 / 0.3);
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #2563eb;
+  flex-shrink: 0;
 }
 
 .credentials {
@@ -165,7 +188,18 @@
 @media (max-width: 640px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
-    max-width: unset;
-    margin-inline: unset;
+    gap: var(--space-3);
+  }
+
+  .body {
+    padding: var(--space-3);
+  }
+
+  .name {
+    font-size: 0.9375rem;
+  }
+
+  .credentials {
+    font-size: 0.75rem;
   }
 }

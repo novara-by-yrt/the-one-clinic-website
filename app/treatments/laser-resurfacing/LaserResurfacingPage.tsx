@@ -444,7 +444,7 @@ export default function LaserResurfacingPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Endolift-Laser_1.jpg"
+                src="/images/Deep Laser 1.png"
                 alt="Laser resurfacing treatment in progress at The One Clinic Leicester"
                 fill
                 priority
@@ -494,8 +494,8 @@ export default function LaserResurfacingPage() {
             {/* Right: image */}
             <motion.div className={styles.whatIsImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
-                alt="Laser resurfacing consultation at The One Clinic Leicester"
+                src="/images/Deep Laser 2.png"
+                alt="What is laser resurfacing treatment at The One Clinic"
                 fill
                 className={styles.whatIsImage}
                 sizes="(max-width: 900px) 100vw, 50vw"
@@ -600,7 +600,7 @@ export default function LaserResurfacingPage() {
             <p className={styles.finalResultsEyebrow}>The Outcome</p>
             <p className={styles.finalResultsText}>
               Precise laser assessment, targeted fractional treatment, and guided post-laser
-              recovery combine to deliver smoother, clearer, firmer skin — with results
+              recovery combine to deliver smoother, clearer, firmer skin , with results
               continuing to improve for months as new collagen matures.
             </p>
           </motion.div>
@@ -770,7 +770,7 @@ export default function LaserResurfacingPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. HOW IT WORKS — THE SCIENCE
+          8. HOW IT WORKS , THE SCIENCE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
@@ -801,8 +801,8 @@ export default function LaserResurfacingPage() {
               healthy tissue that accelerate the healing process.
             </motion.p>
             <motion.p className={styles.howPara} variants={fadeUp}>
-              This dual action — ablating damaged surface cells while stimulating the deeper
-              dermis — is what makes fractional laser resurfacing so effective for a wide range
+              This dual action , ablating damaged surface cells while stimulating the deeper
+              dermis , is what makes fractional laser resurfacing so effective for a wide range
               of concerns. The fibroblasts activated by the treatment continue producing fresh
               collagen and elastin for months after the session, with visible improvements
               developing progressively as the new tissue matures.
@@ -867,7 +867,7 @@ export default function LaserResurfacingPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {/* Card 1 — Results Timeline */}
+            {/* Card 1 , Results Timeline */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -890,7 +890,7 @@ export default function LaserResurfacingPage() {
               </p>
             </motion.div>
 
-            {/* Card 2 — Side Effects */}
+            {/* Card 2 , Side Effects */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -926,7 +926,7 @@ export default function LaserResurfacingPage() {
               </p>
             </motion.div>
 
-            {/* Card 3 — Aftercare */}
+            {/* Card 3 , Aftercare */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -939,7 +939,7 @@ export default function LaserResurfacingPage() {
               </div>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Keep skin moisturised — do not pick or scratch peeling skin',
+                  'Keep skin moisturised , do not pick or scratch peeling skin',
                   'Apply SPF 50 every day once the skin has healed',
                   'Avoid direct sun exposure for at least 4 weeks',
                   'Do not use retinoids or active skincare for 2 to 4 weeks',

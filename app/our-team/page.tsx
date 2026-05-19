@@ -8,8 +8,7 @@ import LeadForm from '@/components/sections/LeadForm';
 
 export const metadata: Metadata = {
   title: 'Our Team',
-  description:
-    'Meet the GMC-registered doctors and expert team at The One Clinic, Leicester, with over 45 years of combined experience across general health, dermatology, and medical aesthetics.',
+  description: 'Meet the GMC-registered doctors and expert team at The One Clinic, Leicester, with over 45 years of combined experience across general health, dermatology, a…',
 };
 
 export default function OurTeamPage() {

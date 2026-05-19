@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════
-   HERO — full-screen cinematic dark canvas (no glass panel)
+   HERO , full-screen cinematic dark canvas (no glass panel)
 ══════════════════════════════════════════════════════ */
 .hero {
   position: relative;
@@ -36,10 +36,10 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   OVERLAY LAYERS — strengthened so open text stays readable
+   OVERLAY LAYERS , strengthened so open text stays readable
 ══════════════════════════════════════════════════════ */
 
-/* Layer 1 — Left-biased gradient: darker on text side */
+/* Layer 1 , Left-biased gradient: darker on text side */
 .overlayGradient {
   position: absolute;
   inset: 0;
@@ -56,7 +56,7 @@
   pointer-events: none;
 }
 
-/* Layer 2 — Edge vignette */
+/* Layer 2 , Edge vignette */
 .overlayVignette {
   position: absolute;
   inset: 0;
@@ -70,7 +70,7 @@
   pointer-events: none;
 }
 
-/* Layer 3 — Warm spotlight glow behind the content */
+/* Layer 3 , Warm spotlight glow behind the content */
 .overlaySpotlight {
   position: absolute;
   z-index: 2;
@@ -107,7 +107,7 @@
   padding-block: clamp(28px, 5vw, 60px);
 }
 
-/* ── Open content column — replaces glass panel ── */
+/* ── Open content column , replaces glass panel ── */
 .content {
   max-width: 620px;
   width: 100%;
@@ -117,7 +117,7 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   TYPOGRAPHY — strong shadows for open-canvas readability
+   TYPOGRAPHY , strong shadows for open-canvas readability
 ══════════════════════════════════════════════════════ */
 .eyebrow {
   font-size: 0.75rem;
@@ -231,7 +231,7 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   TRUST STRIP — 4 badges in a row (Google + Trustpilot + 2 awards)
+   TRUST STRIP , 4 badges in a row (Google + Trustpilot + 2 awards)
 ══════════════════════════════════════════════════════ */
 .trustRow {
   display: flex;

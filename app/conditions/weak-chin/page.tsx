@@ -2,9 +2,8 @@ import type { Metadata } from 'next';
 import WeakChinPage from './WeakChinPage';
 
 export const metadata: Metadata = {
-  title: 'Weak Chin & Jawline Treatment Leicester | Define & Contour | The One Clinic',
-  description:
-    'Learn about weak chin and jawline concerns and effective treatment options. GMC-registered doctors at The One Clinic, Leicester offer personalised non-surgical treatments to define and contour the chin and jaw.',
+  title: 'Weak Chin & Jawline Treatment Leicester | Define & Contour',
+  description: 'Learn about weak chin and jawline concerns and effective treatment options. GMC-registered doctors at The One Clinic, Leicester offer personalised non-surgic…',
   keywords: [
     'weak chin treatment Leicester',
     'chin filler Leicester',
@@ -15,7 +14,7 @@ export const metadata: Metadata = {
     'The One Clinic Leicester',
   ],
   openGraph: {
-    title: 'Weak Chin & Jawline Treatment Leicester | The One Clinic',
+    title: 'Weak Chin & Jawline Treatment Leicester',
     description:
       'Define and contour your chin and jawline with personalised non-surgical treatments at The One Clinic, Leicester. GMC-registered doctors, natural results.',
   },

@@ -216,8 +216,8 @@ const SKIN_CONCERNS_TARGETED = [
 ];
 
 const ADDON_BOOSTERS = [
-  'Britenol — for pigmentation and uneven tone',
-  'Dermabuilder — for fine lines and firmness',
+  'Britenol , for pigmentation and uneven tone',
+  'Dermabuilder , for fine lines and firmness',
   'Growth Factor booster for anti-ageing',
   'LED therapy add-on',
   'Lymphatic drainage enhancement',
@@ -405,7 +405,7 @@ export default function HydrafacialPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                The ultimate multi-step facial for cleansed, hydrated, and radiant skin —
+                The ultimate multi-step facial for cleansed, hydrated, and radiant skin ,
                 with zero downtime and instant, visible results.
               </motion.p>
 
@@ -451,7 +451,7 @@ export default function HydrafacialPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/imgi_34_Hydra.png"
+                src="/Hero Section 1 HydraFacial.jpg"
                 alt="HydraFacial treatment at The One Clinic Leicester"
                 fill
                 priority
@@ -502,7 +502,7 @@ export default function HydrafacialPage() {
             {/* Right: image panel */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/HydraFacial (2).jpg"
                 alt="HydraFacial consultation at The One Clinic Leicester"
                 fill
                 className={styles.whatIsVideoFrame}
@@ -571,8 +571,8 @@ export default function HydrafacialPage() {
               A Triple Action for Healthy, Radiant Skin
             </motion.h2>
             <motion.p className={styles.combinationIntroText} variants={fadeUp}>
-              At The One Clinic, our HydraFacial protocol combines three essential steps — cleanse,
-              peel and extract, then hydrate — to deliver a complete skin transformation in a single
+              At The One Clinic, our HydraFacial protocol combines three essential steps , cleanse,
+              peel and extract, then hydrate , to deliver a complete skin transformation in a single
               comfortable session.
             </motion.p>
           </motion.div>
@@ -607,7 +607,7 @@ export default function HydrafacialPage() {
           >
             <p className={styles.finalResultsEyebrow}>The Result</p>
             <p className={styles.finalResultsText}>
-              When combined, these three steps deliver a complete skin renewal — addressing
+              When combined, these three steps deliver a complete skin renewal , addressing
               congestion, dehydration, and dullness in a single programme for a deeply cleansed,
               glowing, and refreshed complexion with zero downtime.
             </p>
@@ -760,7 +760,7 @@ export default function HydrafacialPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. THE SCIENCE — HOW IT WORKS
+          8. THE SCIENCE , HOW IT WORKS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
@@ -793,7 +793,7 @@ export default function HydrafacialPage() {
             <motion.p className={styles.howPara} variants={fadeUp}>
               The treatment also incorporates a lymphatic drainage function to improve circulation
               and reduce puffiness. The combination of extraction and infusion in a single pass
-              makes HydraFacial uniquely effective — addressing congestion and dehydration
+              makes HydraFacial uniquely effective , addressing congestion and dehydration
               simultaneously, without irritation or downtime.
             </motion.p>
           </motion.div>

@@ -12,7 +12,7 @@ const LOGOS = [
   { src: '/images/imgi_96_Logo-InMode2-1536x630.png',                  alt: 'InMode',                  w: 1536, h: 630 },
 ];
 
-// 6 copies — half the track (3 sets) is always wider than any standard screen
+// 6 copies , half the track (3 sets) is always wider than any standard screen
 const TRACK_COPIES = 6;
 const TRACK_LOGOS = Array.from({ length: TRACK_COPIES }, () => LOGOS).flat();
 

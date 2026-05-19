@@ -223,7 +223,7 @@ const TREATMENTS_INCLUDED = [
   {
     eyebrow: '04',
     title: 'IV Drip Therapy',
-    desc: 'A bespoke intravenous nutrient infusion designed to support skin health, energy, and recovery — helping your body respond optimally throughout your treatment programme.',
+    desc: 'A bespoke intravenous nutrient infusion designed to support skin health, energy, and recovery , helping your body respond optimally throughout your treatment programme.',
   },
   {
     eyebrow: '05',
@@ -400,7 +400,7 @@ export default function BodyConfidencePage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Minor Surgery.jpg"
+                src="/Ultimate Body Confidence Package hero.jpg"
                 alt="The Body Confidence Package treatment at The One Clinic Leicester"
                 fill
                 priority
@@ -439,7 +439,7 @@ export default function BodyConfidencePage() {
                 </p>
                 <p className={styles.combinedDesc}>
                   Designed and delivered by our expert clinical team, every package is completely
-                  personalised to your anatomy, goals, and lifestyle — ensuring you receive exactly
+                  personalised to your anatomy, goals, and lifestyle , ensuring you receive exactly
                   the right treatments in exactly the right sequence.
                 </p>
               </motion.div>
@@ -453,7 +453,7 @@ export default function BodyConfidencePage() {
             {/* Right: image */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Minor Surgery.jpg"
+                src="/Ultimate Body Confidence Package.jpg"
                 alt="Body confidence package consultation at The One Clinic Leicester"
                 fill
                 className={styles.whatIsVideoFrame}
@@ -559,7 +559,7 @@ export default function BodyConfidencePage() {
             <p className={styles.finalResultsEyebrow}>The Outcome</p>
             <p className={styles.finalResultsText}>
               When assessment, planning, and delivery come together, patients experience
-              comprehensive body transformation — addressing fat, laxity, and texture in a
+              comprehensive body transformation , addressing fat, laxity, and texture in a
               single guided programme for a naturally confident, lasting result.
             </p>
           </motion.div>
@@ -755,8 +755,8 @@ export default function BodyConfidencePage() {
             <motion.p className={styles.howPara} variants={fadeUp}>
               When individual aesthetic treatments are carefully combined and sequenced, the results
               are significantly greater than what any single treatment could achieve in isolation.
-              Different treatments target distinct biological processes — fat cell disruption, collagen
-              stimulation, skin tightening, and tissue regeneration — and when these processes are
+              Different treatments target distinct biological processes , fat cell disruption, collagen
+              stimulation, skin tightening, and tissue regeneration , and when these processes are
               triggered in sequence, they reinforce and amplify one another.
             </motion.p>
             <motion.p className={styles.howPara} variants={fadeUp}>
@@ -799,7 +799,7 @@ export default function BodyConfidencePage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          9. WHAT TO EXPECT — RESULTS & AFTERCARE
+          9. WHAT TO EXPECT , RESULTS & AFTERCARE
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -839,7 +839,7 @@ export default function BodyConfidencePage() {
               <p className={styles.resultsAfterCardBody}>
                 Results from combination programmes develop progressively over the course of your
                 treatment schedule. Some improvements are visible after the first session, while
-                others — particularly those involving collagen remodelling — continue to develop
+                others , particularly those involving collagen remodelling , continue to develop
                 for several weeks after your final treatment.
               </p>
               <div className={styles.resultsAfterCardSpacer} />

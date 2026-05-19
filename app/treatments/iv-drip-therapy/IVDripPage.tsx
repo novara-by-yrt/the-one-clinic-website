@@ -384,7 +384,7 @@ export default function IVDripPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/IV drip therapy1.png"
+                src="/IV drip hero.jpg"
                 alt="IV drip therapy treatment in progress at The One Clinic Leicester"
                 fill
                 priority
@@ -438,7 +438,7 @@ export default function IVDripPage() {
             {/* Right: image */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/IV drip therapy1.png"
+                src="/IV drip image.jpg"
                 alt="IV drip therapy consultation at The One Clinic Leicester"
                 fill
                 className={styles.whatIsVideoFrame}
@@ -694,7 +694,7 @@ export default function IVDripPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. THE SCIENCE — HOW IT WORKS
+          8. THE SCIENCE , HOW IT WORKS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
@@ -719,7 +719,7 @@ export default function IVDripPage() {
           >
             <motion.p className={styles.howPara} variants={fadeUp}>
               When nutrients are taken orally, they must pass through the digestive system before
-              entering the bloodstream. This process significantly limits absorption — for many
+              entering the bloodstream. This process significantly limits absorption , for many
               vitamins and minerals, only 10 to 50% of the ingested dose ever reaches your cells.
               Factors such as gut health, age, and individual metabolism reduce this further.
             </motion.p>
@@ -832,7 +832,7 @@ export default function IVDripPage() {
                 {[
                   'Mild bruising or soreness at the insertion site',
                   'Slight coolness or tingling sensation during infusion',
-                  'Temporary taste of vitamins — particularly B vitamins',
+                  'Temporary taste of vitamins , particularly B vitamins',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
                     <span className={styles.resultsAfterDot} aria-hidden="true" />
@@ -862,7 +862,7 @@ export default function IVDripPage() {
                 {[
                   'Stay well hydrated throughout the day after your session',
                   'Avoid alcohol for at least 24 hours after treatment',
-                  'Continue with normal activities — no downtime is required',
+                  'Continue with normal activities , no downtime is required',
                   'Follow any specific guidance from your clinician for best results',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>

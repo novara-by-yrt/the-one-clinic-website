@@ -96,7 +96,7 @@ const APPROACH_CARDS = [
   {
     eyebrow: '02',
     title: 'Removal Technique Selection',
-    desc: 'Based on the assessment, we choose the most appropriate method — cryotherapy, surgical excision under local anaesthetic, or electrocautery. Larger or more complex tags benefit from excision, while smaller ones respond well to freezing or heat-based removal.',
+    desc: 'Based on the assessment, we choose the most appropriate method , cryotherapy, surgical excision under local anaesthetic, or electrocautery. Larger or more complex tags benefit from excision, while smaller ones respond well to freezing or heat-based removal.',
   },
   {
     eyebrow: '03',
@@ -202,7 +202,7 @@ const ELIGIBILITY_SUITABLE = [
 ];
 
 const ELIGIBILITY_NOT_SUITABLE = [
-  'Lesions that appear atypical, irregular, or suspicious — these will be referred appropriately',
+  'Lesions that appear atypical, irregular, or suspicious , these will be referred appropriately',
   'Patients with known bleeding disorders without prior medical clearance',
   'Immunosuppressed individuals should discuss suitability with our team before booking',
 ];
@@ -448,14 +448,14 @@ export default function SkinTagsRemovalPage() {
                 <p className={styles.combinedDesc}>
                   Skin tags (acrochordons) are small, benign soft growths that hang off the skin
                   on a thin stalk. They most commonly appear on the neck, armpits, groin, eyelids,
-                  and under the breasts — anywhere skin rubs against skin or clothing. They are
+                  and under the breasts , anywhere skin rubs against skin or clothing. They are
                   entirely harmless, but many people find them cosmetically bothersome or
                   physically irritating when they catch on jewellery or clothing.
                 </p>
                 <p className={styles.combinedDesc}>
                   At The One Clinic, our medical team assesses every lesion before proceeding and
-                  selects the most appropriate removal method — cryotherapy, surgical excision, or
-                  electrocautery — to achieve a clean result with minimal discomfort and downtime.
+                  selects the most appropriate removal method , cryotherapy, surgical excision, or
+                  electrocautery , to achieve a clean result with minimal discomfort and downtime.
                 </p>
               </motion.div>
               <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
@@ -539,7 +539,7 @@ export default function SkinTagsRemovalPage() {
             <motion.p className={styles.combinationIntroText} variants={fadeUp}>
               At The One Clinic, every skin tag removal begins with a proper clinical assessment.
               We select the most appropriate technique for your skin type, tag location, and
-              personal preference — then guide you through healing with clear aftercare support.
+              personal preference , then guide you through healing with clear aftercare support.
             </motion.p>
           </motion.div>
 
@@ -573,8 +573,8 @@ export default function SkinTagsRemovalPage() {
           >
             <p className={styles.finalResultsEyebrow}>The Outcome</p>
             <p className={styles.finalResultsText}>
-              Our structured approach — assess, select the right technique, then support your
-              healing — means you leave the clinic with clear skin and the confidence that each
+              Our structured approach , assess, select the right technique, then support your
+              healing , means you leave the clinic with clear skin and the confidence that each
               tag has been permanently removed by a trained medical professional.
             </p>
           </motion.div>
@@ -743,7 +743,7 @@ export default function SkinTagsRemovalPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. HOW IT WORKS — THE SCIENCE
+          8. HOW IT WORKS , THE SCIENCE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>

@@ -11,7 +11,8 @@ import styles from './DoctorsGrid.module.css';
 
 export default function DoctorsGrid() {
   return (
-    <Section variant="light" data-section-theme="light">
+    <div style={{ backgroundColor: '#e8e8e8', paddingTop: '8px', paddingBottom: '8px' }}>
+      <Section variant="light" data-section-theme="light">
       <Container>
         {/* Header */}
         <motion.div
@@ -69,7 +70,14 @@ export default function DoctorsGrid() {
               {/* Body */}
               <div className={styles.body}>
                 <div className={styles.meta}>
-                  <h3 className={styles.name}>{member.name}</h3>
+                  <div className={styles.nameRow}>
+                    <h3 className={styles.name}>{member.name}</h3>
+                    {member.gmcNumber && (
+                      <div className={styles.gmcBadgeSmall} title={`GMC #${member.gmcNumber}`}>
+                        ✓
+                      </div>
+                    )}
+                  </div>
                   {member.credentials && (
                     <p className={styles.credentials}>{member.credentials}</p>
                   )}
@@ -84,5 +92,6 @@ export default function DoctorsGrid() {
         </motion.div>
       </Container>
     </Section>
+    </div>
   );
 }

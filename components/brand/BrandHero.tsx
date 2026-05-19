@@ -7,13 +7,13 @@ import Container from '@/components/ui/Container';
 import styles from './BrandHero.module.css';
 
 /* ─────────────────────────────────────────────────────────────
-   CINEMATIC EASING — extra-slow exponential decel.
+   CINEMATIC EASING , extra-slow exponential decel.
    Almost no starting velocity, glides into a full stop.
 ───────────────────────────────────────────────────────────── */
 const EC   = [0.16, 1, 0.30, 1] as const;
 const EC_R = [0.25, 0.1, 0.25, 1] as const;
 
-/* ─── Secondary text — large left-side travel + soft blur ── */
+/* ─── Secondary text , large left-side travel + soft blur ── */
 function cineText(delay: number, prefersReduced: boolean | null) {
   if (prefersReduced) {
     return {
@@ -33,7 +33,7 @@ function cineText(delay: number, prefersReduced: boolean | null) {
   };
 }
 
-/* ─── Headline lines — much wider travel + stronger blur ─── */
+/* ─── Headline lines , much wider travel + stronger blur ─── */
 function cineH1(delay: number, prefersReduced: boolean | null) {
   if (prefersReduced) {
     return {
@@ -53,7 +53,7 @@ function cineH1(delay: number, prefersReduced: boolean | null) {
   };
 }
 
-/* ─── Trust badges — gentle rise + fade, no x-travel ─────── */
+/* ─── Trust badges , gentle rise + fade, no x-travel ─────── */
 function cineBadge(delay: number, prefersReduced: boolean | null) {
   if (prefersReduced) {
     return {
@@ -158,7 +158,7 @@ export default function BrandHero() {
         <Container>
           <div className={styles.layout}>
 
-            {/* Open content column — no glass panel */}
+            {/* Open content column , no glass panel */}
             <div className={styles.content}>
 
               {/* ── Eyebrow ── */}
@@ -169,7 +169,7 @@ export default function BrandHero() {
                 Medical &amp; Aesthetic Care, Leicester
               </motion.p>
 
-              {/* ── Headline — three lines, ultra-slow stagger ── */}
+              {/* ── Headline , three lines, ultra-slow stagger ── */}
               <h1 className={styles.headline}>
                 <motion.span
                   className={styles.headlineLine}
@@ -187,11 +187,11 @@ export default function BrandHero() {
                   className={`${styles.headlineLine} ${styles.headlineLineAccent}`}
                   {...cineH1(0.74, prefersReduced)}
                 >
-                  <em className={styles.headlineAccent}>Meets Care</em>
+                  <span className={styles.headlineAccent}>Meets Care</span>
                 </motion.span>
               </h1>
 
-              {/* ── Tagline — eye-catching ── */}
+              {/* ── Tagline , eye-catching ── */}
               <motion.p
                 className={styles.tagline}
                 {...cineText(0.90, prefersReduced)}
@@ -231,7 +231,7 @@ export default function BrandHero() {
                 </button>
               </motion.div>
 
-              {/* ── Trust strip — 4 badges in a row ── */}
+              {/* ── Trust strip , 4 badges in a row ── */}
               <div className={styles.trustRow} role="region" aria-label="Trust indicators">
 
                 {/* Google Reviews */}

@@ -342,7 +342,7 @@ export default function LaserSnoringPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Non-surgical solution to snoring and sleep disruption — no anaesthetic,
+                Non-surgical solution to snoring and sleep disruption , no anaesthetic,
                 no downtime, lasting results.
               </motion.p>
 
@@ -421,7 +421,7 @@ export default function LaserSnoringPage() {
                 <h2 className={styles.combinedHeading}>What is Laser Snoring Treatment?</h2>
                 <p className={styles.combinedDesc}>
                   Laser snoring treatment uses advanced Er:YAG laser energy to gently tighten the
-                  soft palate and uvular tissue — the structures whose vibration during sleep
+                  soft palate and uvular tissue , the structures whose vibration during sleep
                   produces snoring. By stimulating collagen contraction and remodelling, the
                   treatment reduces tissue laxity and narrows the airway opening just enough to
                   eliminate the turbulence that causes snoring.
@@ -549,8 +549,8 @@ export default function LaserSnoringPage() {
           >
             <p className={styles.finalResultsEyebrow}>The Result</p>
             <p className={styles.finalResultsText}>
-              Our structured three-step approach — clinical assessment, laser palate treatment,
-              and ongoing maintenance — delivers progressive, measurable snoring reduction with
+              Our structured three-step approach , clinical assessment, laser palate treatment,
+              and ongoing maintenance , delivers progressive, measurable snoring reduction with
               results that last up to 12 to 14 months from a single course.
             </p>
           </motion.div>
@@ -717,7 +717,7 @@ export default function LaserSnoringPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. HOW IT WORKS — THE SCIENCE
+          8. HOW IT WORKS , THE SCIENCE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
@@ -741,8 +741,8 @@ export default function LaserSnoringPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.howPara} variants={fadeUp}>
-              Snoring occurs when the soft palate and uvula — the soft tissues at the back of the
-              throat — relax and vibrate as air passes through during sleep. Our laser delivers
+              Snoring occurs when the soft palate and uvula , the soft tissues at the back of the
+              throat , relax and vibrate as air passes through during sleep. Our laser delivers
               precise, controlled heat energy to these tissues, causing immediate collagen
               contraction that tightens the structures and reduces their tendency to vibrate.
             </motion.p>
@@ -812,7 +812,7 @@ export default function LaserSnoringPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {/* Card 1 — Results Timeline */}
+            {/* Card 1 , Results Timeline */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -835,7 +835,7 @@ export default function LaserSnoringPage() {
               </p>
             </motion.div>
 
-            {/* Card 2 — Side Effects */}
+            {/* Card 2 , Side Effects */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -869,7 +869,7 @@ export default function LaserSnoringPage() {
               </p>
             </motion.div>
 
-            {/* Card 3 — Aftercare */}
+            {/* Card 3 , Aftercare */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">

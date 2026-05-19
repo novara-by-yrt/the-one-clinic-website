@@ -60,7 +60,7 @@ const AT_A_GLANCE = [
   },
   {
     label: 'Results Timeline',
-    value: '4–12 Weeks',
+    value: '4,12 Weeks',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <line x1="12" y1="1" x2="12" y2="23"/>
@@ -101,7 +101,7 @@ const JOURNEY_STEPS = [
   {
     n: '04',
     title: 'Progressive Results & Support',
-    desc: 'Over 4–12 weeks, your skin improves progressively. We monitor your progress and adjust your regime as needed, providing ongoing professional support throughout your journey.',
+    desc: 'Over 4,12 weeks, your skin improves progressively. We monitor your progress and adjust your regime as needed, providing ongoing professional support throughout your journey.',
   },
 ];
 
@@ -144,7 +144,7 @@ const TREATED_BENEFITS = [
   },
   {
     title: 'Personalised Prescriptions',
-    desc: 'Each regimen is tailored to your skin type and concerns. No one-size-fits-all approach—your products are chosen for your skin\'s unique needs.',
+    desc: 'Each regimen is tailored to your skin type and concerns. No one-size-fits-all approach,your products are chosen for your skin\'s unique needs.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
@@ -214,7 +214,7 @@ const PRODUCT_CATEGORIES = [
   },
   {
     category: 'Sun Care & SPF',
-    desc: 'Essential protection—mandatory when using active ingredients.',
+    desc: 'Essential protection,mandatory when using active ingredients.',
   },
   {
     category: 'Maintenance Products',
@@ -266,7 +266,7 @@ const FAQS = [
   {
     question: 'What is AlumierMD skincare?',
     answer:
-      'AlumierMD is a professional medical-grade skincare line available exclusively through licensed clinics. It contains pharmaceutical-grade active ingredients at clinical concentrations—including retinoids, hydroxy acids, vitamin C, peptides, and growth factors—to deliver measurable clinical results.',
+      'AlumierMD is a professional medical-grade skincare line available exclusively through licensed clinics. It contains pharmaceutical-grade active ingredients at clinical concentrations,including retinoids, hydroxy acids, vitamin C, peptides, and growth factors,to deliver measurable clinical results.',
   },
   {
     question: 'How is AlumierMD different from high-street skincare?',
@@ -286,7 +286,7 @@ const FAQS = [
   {
     question: 'How long before I see results?',
     answer:
-      'Initial improvements often appear within 4 weeks as skin cell turnover accelerates. Most visible results develop by 8–12 weeks. Continued use maintains and enhances results. Consistency is key.',
+      'Initial improvements often appear within 4 weeks as skin cell turnover accelerates. Most visible results develop by 8,12 weeks. Continued use maintains and enhances results. Consistency is key.',
   },
   {
     question: 'Is AlumierMD suitable for sensitive skin?',
@@ -415,7 +415,7 @@ export default function AlumierMDPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/images/AlumierMD Skincare hero.jpg"
                 alt="AlumierMD skincare consultation at The One Clinic Leicester"
                 fill
                 priority
@@ -448,8 +448,8 @@ export default function AlumierMDPage() {
                 <h2 className={styles.combinedHeading}>What is AlumierMD?</h2>
                 <p className={styles.combinedDesc}>
                   AlumierMD is a science-driven medical-grade skincare range available exclusively through licensed clinics.
-                  Each product is formulated with pharmaceutical-grade active ingredients—retinoids, hydroxy acids, vitamins,
-                  peptides, and growth factors—at clinical concentrations. We prescribe a personalised home care regimen based
+                  Each product is formulated with pharmaceutical-grade active ingredients,retinoids, hydroxy acids, vitamins,
+                  peptides, and growth factors,at clinical concentrations. We prescribe a personalised home care regimen based
                   on your skin analysis, ensuring you receive exactly what your skin needs for real, measurable improvement.
                 </p>
               </motion.div>
@@ -463,7 +463,7 @@ export default function AlumierMDPage() {
             {/* Right: image panel */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/images/AlumierMD Skincare 1.jpg"
                 alt="AlumierMD skincare consultation at The One Clinic"
                 fill
                 className={styles.whatIsVideoFrame}
@@ -568,7 +568,7 @@ export default function AlumierMDPage() {
             <p className={styles.finalResultsEyebrow}>Best Results</p>
             <p className={styles.finalResultsText}>
               When combined, our comprehensive analysis, personalised prescription, and progressive regimen
-              deliver transformative results—addressing multiple skin concerns simultaneously for visibly healthier,
+              deliver transformative results,addressing multiple skin concerns simultaneously for visibly healthier,
               clearer, and more radiant skin.
             </p>
           </motion.div>
@@ -750,7 +750,7 @@ export default function AlumierMDPage() {
             <motion.p className={styles.howPara} variants={fadeUp}>
               When applied consistently, these actives regulate cellular renewal, boost collagen and elastin production, reduce
               pigmentation, strengthen the skin barrier, and improve overall skin health. Results develop progressively over weeks
-              and months as your skin adapts and strengthens, with optimal results typically visible at 8–12 weeks of consistent use.
+              and months as your skin adapts and strengthens, with optimal results typically visible at 8,12 weeks of consistent use.
             </motion.p>
           </motion.div>
 

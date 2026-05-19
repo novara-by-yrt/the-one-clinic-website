@@ -342,7 +342,7 @@ export default function DermalFillersPage() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Dermatologist.jpg"
+                src="/Hero Section 1 Dermal Fillers.jpg"
                 alt="Dermal filler treatment at The One Clinic Leicester"
                 fill
                 priority
@@ -388,7 +388,7 @@ export default function DermalFillersPage() {
 
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/Dermal Fillers.jpg"
                 alt="Dermal filler consultation at The One Clinic"
                 fill
                 className={styles.whatIsVideoFrame}

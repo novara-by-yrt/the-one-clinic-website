@@ -205,7 +205,7 @@ const ELIGIBILITY_SUITABLE = [
 ];
 
 const ELIGIBILITY_NOT_SUITABLE = [
-  'Medical emergencies or life-threatening conditions — please call 999 or attend A&E',
+  'Medical emergencies or life-threatening conditions , please call 999 or attend A&E',
   'Situations requiring immediate emergency hospital admission',
 ];
 
@@ -335,7 +335,7 @@ export default function PrivateGPPage() {
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
                 Same-day appointments with experienced private general practitioners.
-                Thorough, unhurried care — on your terms.
+                Thorough, unhurried care , on your terms.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -413,7 +413,7 @@ export default function PrivateGPPage() {
                 <h2 className={styles.combinedHeading}>What is a Private GP Consultation?</h2>
                 <p className={styles.combinedDesc}>
                   A private GP consultation gives you direct, fast access to a fully qualified,
-                  GMC-registered doctor — without the delays or 10-minute slots of the NHS. At
+                  GMC-registered doctor , without the delays or 10-minute slots of the NHS. At
                   The One Clinic, our experienced GPs offer comprehensive, unhurried appointments
                   covering any medical concern. No NHS waiting times. Referrals to specialists,
                   sick notes, prescription requests, and full health assessments are all available
@@ -500,7 +500,7 @@ export default function PrivateGPPage() {
             </motion.h2>
             <motion.p className={styles.combinationIntroText} variants={fadeUp}>
               At The One Clinic, every private GP appointment follows a structured, patient-centred
-              approach — ensuring you leave with clarity, a clear plan, and confidence in your care.
+              approach , ensuring you leave with clarity, a clear plan, and confidence in your care.
             </motion.p>
           </motion.div>
 
@@ -632,7 +632,7 @@ export default function PrivateGPPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          7. ELIGIBILITY — SUITABLE / NOT SUITABLE
+          7. ELIGIBILITY , SUITABLE / NOT SUITABLE
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -738,7 +738,7 @@ export default function PrivateGPPage() {
               Our private GPs offer continuity of care, meaning you can build an ongoing
               relationship with a doctor who knows your history. We also have a broad referral
               network, enabling rapid access to specialists, same-day diagnostic results, and
-              co-ordinated follow-up care — all managed in-house for your convenience.
+              co-ordinated follow-up care , all managed in-house for your convenience.
             </motion.p>
           </motion.div>
 
@@ -1078,7 +1078,7 @@ export default function PrivateGPPage() {
               GMC-registered doctors provide thorough, unhurried consultations in a calm and
               confidential environment. Whether you need a same-day appointment, an ongoing
               care plan, or a specialist referral, we deliver expert medical care with a
-              personal touch — tailored entirely to you.
+              personal touch , tailored entirely to you.
             </motion.p>
           </motion.div>
         </Container>

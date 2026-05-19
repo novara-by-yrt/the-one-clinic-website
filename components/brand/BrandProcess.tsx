@@ -72,7 +72,7 @@ export default function BrandProcess() {
         <div className={styles.layout}>
 
           {/* ══════════════════════════════════════════════
-              LEFT — Layered media canvas
+              LEFT , Layered media canvas
           ══════════════════════════════════════════════ */}
           <motion.div
             className={styles.mediaCol}
@@ -176,7 +176,7 @@ export default function BrandProcess() {
           </motion.div>
 
           {/* ══════════════════════════════════════════════
-              RIGHT — Header + two editorial pillars
+              RIGHT , Header + two editorial pillars
           ══════════════════════════════════════════════ */}
           <div className={styles.textCol}>
 

@@ -1,34 +1,54 @@
 'use client';
 
-import Image from 'next/image';
-import Link  from 'next/link';
-import { motion } from 'framer-motion';
-import Section                from '@/components/ui/Section';
-import Container              from '@/components/ui/Container';
-import Accordion              from '@/components/ui/Accordion';
-import BookConsultationButton from '@/components/ui/BookConsultationButton';
-import TrustBadges            from '@/components/ui/TrustBadges';
-import Breadcrumb             from '@/components/ui/Breadcrumb';
-import LeadForm               from '@/components/sections/LeadForm';
-import MeetTheExperts         from '@/components/sections/MeetTheExperts';
-import Testimonials           from '@/components/sections/Testimonials';
+import { useState }              from 'react';
+import Image                     from 'next/image';
+import Link                      from 'next/link';
+import { motion }                from 'framer-motion';
+import Section                   from '@/components/ui/Section';
+import Container                 from '@/components/ui/Container';
+import Accordion                 from '@/components/ui/Accordion';
+import BookConsultationButton    from '@/components/ui/BookConsultationButton';
+import TrustBadges               from '@/components/ui/TrustBadges';
+import Breadcrumb                from '@/components/ui/Breadcrumb';
+import LeadForm                  from '@/components/sections/LeadForm';
+import MeetTheExperts            from '@/components/sections/MeetTheExperts';
+import Testimonials              from '@/components/sections/Testimonials';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
+
+/* ── Types of hyperhidrosis ───────────────────────────────────── */
+const SWEATING_TYPES = [
+  {
+    num: '01',
+    title: 'Primary Hyperhidrosis',
+    desc: 'No underlying medical cause; overactive sweat glands produce focal sweating of the hands, feet, underarms, and face , often beginning in adolescence.',
+  },
+  {
+    num: '02',
+    title: 'Secondary Hyperhidrosis',
+    desc: 'Caused by an underlying medical condition or medication. Unlike primary hyperhidrosis, sweating tends to be generalised across the body and may appear suddenly.',
+  },
+  {
+    num: '03',
+    title: 'Gustatory Sweating',
+    desc: 'Sweating triggered by eating, particularly spicy or hot foods. It commonly affects the face and scalp and may indicate nerve damage or an underlying condition.',
+  },
+];
 
 /* ── Causes ───────────────────────────────────────────────────── */
 const CAUSES = [
   {
-    title: 'Primary Hyperhidrosis',
-    desc: 'The most common form, caused by overactive sweat glands with no underlying medical reason. It typically affects specific areas such as the underarms, palms, feet, and face, and often begins in adolescence.',
+    title: 'Overactive Sweat Glands',
+    desc: 'In primary hyperhidrosis, the sweat glands are stimulated by the nervous system far beyond what is required to regulate body temperature, producing excessive, uncontrollable sweating.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
       </svg>
     ),
   },
   {
     title: 'Genetics',
-    desc: 'Primary hyperhidrosis often runs in families. A genetic predisposition to overactive sweat gland activity means sufferers may have inherited a heightened sweating response that is disproportionate to temperature or exertion.',
+    desc: 'Primary hyperhidrosis often runs in families. A genetic predisposition to overactive sweat gland activity means sufferers may have inherited a heightened sweating response disproportionate to temperature or exertion.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M6 3c0 4.5 6 4.5 6 9s-6 4.5-6 9"/>
@@ -39,17 +59,8 @@ const CAUSES = [
     ),
   },
   {
-    title: 'Anxiety & Stress',
-    desc: 'The nervous system triggers sweat production in response to emotional stress, anxiety, or nervousness. For those with hyperhidrosis, this response is greatly amplified, creating a cycle where anxiety about sweating worsens the condition.',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-      </svg>
-    ),
-  },
-  {
     title: 'Hormonal Changes',
-    desc: 'Hormonal fluctuations during puberty, pregnancy, and the menopause can trigger or worsen excessive sweating. Hot flushes and night sweats associated with the menopause are a particularly common form of secondary hyperhidrosis.',
+    desc: 'Hormonal fluctuations during puberty, pregnancy, and the menopause can trigger or worsen excessive sweating. Hot flushes and night sweats linked to the menopause are a particularly common presentation.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -58,8 +69,28 @@ const CAUSES = [
     ),
   },
   {
+    title: 'Anxiety & Stress',
+    desc: 'The nervous system triggers sweat production in response to emotional stress or anxiety. For those with hyperhidrosis, this response is greatly amplified, creating a cycle where anxiety about sweating worsens the condition.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Medications',
+    desc: 'Certain medications, including antidepressants, opioids, and some blood pressure drugs, list excessive sweating as a side effect. Reviewing and adjusting medication may help resolve secondary hyperhidrosis.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="12" y1="3" x2="12" y2="21"/>
+      </svg>
+    ),
+  },
+  {
     title: 'Underlying Medical Conditions',
-    desc: 'Secondary hyperhidrosis can be caused by underlying conditions including thyroid disorders, diabetes, infections, or medications. This type tends to cause generalised sweating across the body rather than in localised zones.',
+    desc: 'Secondary hyperhidrosis can be caused by thyroid disorders, diabetes, infections, or nerve damage. This type tends to cause generalised sweating across the body rather than localised zones.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -68,18 +99,34 @@ const CAUSES = [
       </svg>
     ),
   },
+];
+
+/* ── Risk factors ─────────────────────────────────────────────── */
+const RISK_FACTORS = [
+  'Those with a family history of hyperhidrosis or overactive sweat glands.',
+  'People with anxiety disorders or high levels of chronic stress.',
+  'Individuals going through hormonal changes, including puberty, pregnancy, or menopause.',
+  'Those on certain medications known to cause excessive sweating as a side effect.',
+  'People with obesity, which increases heat retention and demand on the body\'s cooling system.',
+  'Those with an overactive nervous system or underlying conditions such as thyroid disorders.',
+];
+
+/* ── Diagnose steps ───────────────────────────────────────────── */
+const DIAGNOSE_STEPS = [
   {
-    title: 'Diet & Lifestyle Triggers',
-    desc: 'Caffeine, spicy foods, alcohol, and obesity can all exacerbate sweating. A high body mass index increases heat retention and places greater demand on the body\'s cooling system, intensifying sweat production.',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
-        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
-        <line x1="6" y1="1" x2="6" y2="4"/>
-        <line x1="10" y1="1" x2="10" y2="4"/>
-        <line x1="14" y1="1" x2="14" y2="4"/>
-      </svg>
-    ),
+    num: '01',
+    title: 'Starch-Iodine Test',
+    text: 'Iodine solution is applied to the skin, followed by starch powder. Where sweating is excessive, the starch turns dark blue, clearly mapping the affected areas.',
+  },
+  {
+    num: '02',
+    title: 'Sweat Rate Measurement',
+    text: 'The amount of sweat produced in a given area is measured to assess the severity of hyperhidrosis and determine the most appropriate treatment approach.',
+  },
+  {
+    num: '03',
+    title: 'Medical History & Trigger Review',
+    text: 'A thorough review of your medical history, medications, and lifestyle triggers helps distinguish primary from secondary hyperhidrosis and guides a tailored treatment plan.',
   },
 ];
 
@@ -87,133 +134,142 @@ const CAUSES = [
 const TREATMENTS = [
   {
     title: 'Wrinkle Relaxing Injections',
-    desc:  'Botulinum toxin injections are the most effective treatment for hyperhidrosis. Injected into the skin of the underarms, palms, or feet, they block the nerve signals that stimulate sweat glands, dramatically reducing sweating for 6 to 12 months.',
-    href:  '/treatments/wrinkle-relaxing-injections',
+    desc: 'Botulinum toxin injections block the nerve signals that stimulate sweat glands, dramatically reducing sweating in the underarms, palms, or feet for 6 to 12 months.',
+    href: '/treatments/wrinkle-relaxing-injections',
+    image: '/images/BA1.jpg',
   },
   {
-    title: 'Profhilo',
-    desc:  'Bio-remodelling with Profhilo supports improved skin quality and hydration balance, complementing hyperhidrosis management by improving overall skin condition in affected areas.',
-    href:  '/treatments/profhilo',
+    title: 'Morpheus8',
+    desc: 'Radiofrequency microneedling that targets sweat glands directly, offering a longer-term reduction in sweating with minimal downtime and lasting skin tightening benefits.',
+    href: '/treatments/morpheus8',
+    image: '/images/BA2.jpg',
   },
   {
-    title: 'Health Screening',
-    desc:  'A comprehensive medical assessment to identify any underlying conditions contributing to excessive sweating, enabling a fully tailored and medically informed treatment approach.',
-    href:  '/treatments/health-screening',
+    title: 'Laser Treatment',
+    desc: 'Laser energy is precisely directed to reduce sweat gland activity, providing a non-surgical option for lasting reduction in excessive sweating.',
+    href: '/treatments/laser-resurfacing',
+    image: '/images/BA3.jpg',
   },
   {
-    title: 'Private GP Consultation',
-    desc:  'A thorough GP consultation to assess your sweating, rule out secondary causes, and create a personalised management plan, combining medical and aesthetic treatment options where appropriate.',
-    href:  '/treatments/private-gp',
+    title: 'Medical Management',
+    desc: 'A Private GP consultation provides a comprehensive assessment, identifies any underlying cause, and creates a personalised hyperhidrosis management plan combining medical and aesthetic options.',
+    href: '/treatments/private-gp',
+    image: '/images/BA4.jpg',
   },
 ];
 
-/* ── Risk factors ─────────────────────────────────────────────── */
-const RISK_FACTORS = [
-  'Those with a family history of hyperhidrosis or overactive sweat glands.',
-  'Adolescents and young adults, primary hyperhidrosis often begins at puberty.',
-  'Women experiencing the menopause, pregnancy, or significant hormonal changes.',
-  'Individuals with high anxiety levels or stress-related conditions.',
-  'Those with obesity, thyroid disorders, or diabetes.',
-  'People whose careers or social situations involve high-pressure environments.',
+/* ── When to call a doctor ────────────────────────────────────── */
+const WHEN_TO_CALL = [
+  'Sweating that is disrupting your daily life, work, or relationships.',
+  'Night sweats that wake you or interfere with sleep regularly.',
+  'A sudden onset of excessive sweating with no clear trigger.',
+  'Sweating accompanied by chest pain, fever, shortness of breath, or unexplained weight loss.',
 ];
 
 /* ── Results timeline ─────────────────────────────────────────── */
 const RESULTS_TIMELINE = [
   {
-    phase: '3 to 5 Days',
-    title: 'Initial Effect',
-    desc:  'Sweating begins to reduce as the treatment starts to take effect.',
+    phase: 'Treatment Onset',
+    title: 'First Effects',
+    desc: 'Initial reduction in sweating begins within 3 to 5 days as the treatment starts to take effect.',
   },
   {
-    phase: '2 Weeks',
-    title: 'Full Results',
-    desc:  'Significant reduction in sweating, often up to 80 to 90% improvement.',
+    phase: 'Duration of Results',
+    title: 'Sustained Relief',
+    desc: 'Most patients enjoy 6 to 12 months of significantly reduced sweating following a single treatment session.',
   },
   {
-    phase: '4 to 6 Months',
-    title: 'Ongoing Relief',
-    desc:  'Consistent dryness maintained throughout the treatment duration.',
-  },
-  {
-    phase: '6 to 12 Months',
-    title: 'Top-Up Treatment',
-    desc:  'A simple repeat treatment sustains results as the effect gradually wears off.',
+    phase: 'Long-term Management',
+    title: 'Ongoing Control',
+    desc: 'Regular top-up treatments and a personalised management plan ensure lasting comfort and confidence.',
   },
 ];
 
-/* ── Why choose ───────────────────────────────────────────────── */
+/* ── Related treatments ───────────────────────────────────────── */
+const RELATED_TREATMENTS = [
+  {
+    title: 'Wrinkle Relaxing Injections',
+    desc: 'Block sweat gland nerve signals and dramatically reduce excessive sweating for months at a time.',
+    href: '/treatments/wrinkle-relaxing-injections',
+    tag: 'Medical Aesthetics',
+  },
+  {
+    title: 'Morpheus8',
+    desc: 'Radiofrequency microneedling targeting sweat glands for longer-term reduction in sweating.',
+    href: '/treatments/morpheus8',
+    tag: 'Medical Aesthetics',
+  },
+  {
+    title: 'Laser Resurfacing',
+    desc: 'Precisely directed laser energy to reduce sweat gland activity with lasting results.',
+    href: '/treatments/laser-resurfacing',
+    tag: 'Medical Aesthetics',
+  },
+  {
+    title: 'Private GP',
+    desc: 'Comprehensive medical assessment and a fully personalised hyperhidrosis management plan.',
+    href: '/treatments/private-gp',
+    tag: 'Medical',
+  },
+];
+
+/* ── Related conditions ───────────────────────────────────────── */
+const RELATED_CONDITIONS = [
+  {
+    title: 'Rosacea',
+    desc: 'Calm facial flushing and persistent redness with targeted, clinically proven treatments.',
+    href: '/conditions/rosacea',
+    tag: 'Face',
+  },
+  {
+    title: 'Pigmentation',
+    desc: 'Treat dark spots and uneven skin tone with our range of clinically proven treatments.',
+    href: '/conditions/pigmentation',
+    tag: 'Skin',
+  },
+];
+
+/* ── Why choose The One Clinic ────────────────────────────────── */
 const CLINIC_REASONS = [
-  { n: '01', text: 'All-in-one clinic with medical and aesthetic services.' },
-  { n: '02', text: 'Highly trained, compassionate, GMC-registered doctors.' },
-  { n: '03', text: 'Personalised plans addressing both symptoms and underlying causes.' },
-  { n: '04', text: 'Safe, proven treatments with high patient satisfaction rates.' },
-  { n: '05', text: 'Strong reputation with excellent patient reviews.' },
-  { n: '06', text: 'Comprehensive aftercare and follow-up support.' },
+  { n: '01', text: 'All-in-one clinic with medical & aesthetic services.' },
+  { n: '02', text: 'Highly trained, compassionate doctors.' },
+  { n: '03', text: 'Customised treatments based on listening & expertise.' },
+  { n: '04', text: 'State-of-the-art facilities & modern equipment.' },
+  { n: '05', text: 'Strong reputation & excellent reviews.' },
+  { n: '06', text: 'Comprehensive care and referrals with specialists.' },
 ];
 
-/* ── FAQs ─────────────────────────────────────────────────────── */
+/* ── FAQ data ──────────────────────────────────────────────────── */
 const FAQS = [
   {
-    question: 'What is hyperhidrosis?',
+    question: 'What is hyperhidrosis and how is it diagnosed?',
     answer:
-      'Hyperhidrosis is a medical condition characterised by excessive sweating that goes beyond what is needed to regulate body temperature. It can be primary (no underlying cause, affecting specific areas such as the underarms, palms, or feet) or secondary (caused by an underlying condition or medication, producing more generalised sweating). It affects approximately 3% of the UK population and can significantly impact quality of life.',
+      'Hyperhidrosis is a medical condition characterised by excessive sweating that goes beyond what is needed to regulate body temperature. It can be primary (no underlying cause, affecting specific areas such as underarms, palms, or feet) or secondary (caused by an underlying condition or medication). Diagnosis involves a physical assessment, a medical history review, and sometimes a starch-iodine test to map the affected areas.',
   },
   {
-    question: 'How effective are botulinum toxin injections for hyperhidrosis?',
+    question: 'How effective are wrinkle relaxing injections for excessive sweating?',
     answer:
       'Botulinum toxin injections are one of the most clinically proven treatments for hyperhidrosis, particularly for underarm sweating. Studies show up to 80 to 90% reduction in sweating. Results typically last 6 to 12 months, after which a simple top-up treatment maintains the effect. Most patients notice a significant difference within 5 to 14 days of treatment.',
   },
   {
-    question: 'Is the treatment painful?',
+    question: 'Is the treatment for hyperhidrosis painful?',
     answer:
       'The injections involve a series of small needle insertions into the skin. Most patients describe the sensation as mild and well-tolerated. Topical anaesthetic cream can be applied beforehand to maximise comfort. The treatment is quick, typically taking 20 to 30 minutes, with no downtime required.',
   },
   {
-    question: 'How long do results last?',
+    question: 'How long do results from hyperhidrosis treatment last?',
     answer:
       'Results from botulinum toxin typically last between 6 and 12 months, depending on the individual and the area treated. Many patients find that with regular treatments the intervals between top-ups can extend over time. Your doctor will advise on the optimal treatment schedule for your situation.',
   },
   {
-    question: 'Are there any side effects?',
+    question: 'Are there any side effects from hyperhidrosis treatments?',
     answer:
-      'Botulinum toxin for hyperhidrosis is very safe when performed by an experienced clinician. Temporary redness, mild bruising, or sensitivity at injection sites can occur and typically resolves within a few days. Compensatory sweating (increased sweating in other areas) is rare but can occasionally occur. A thorough consultation will ensure the treatment is appropriate for you.',
-  },
-];
-
-/* ── Related ──────────────────────────────────────────────────── */
-const RELATED_TREATMENTS = [
-  {
-    title: 'Wrinkle Relaxing Injections',
-    desc:  'Block sweat gland nerve signals and dramatically reduce excessive sweating.',
-    href:  '/treatments/wrinkle-relaxing-injections',
-    tag:   'Medical Aesthetics',
+      'Botulinum toxin for hyperhidrosis is very safe when performed by an experienced clinician. Temporary redness, mild bruising, or sensitivity at injection sites can occur and typically resolves within a few days. Compensatory sweating in other areas is rare but can occasionally occur. A thorough consultation will ensure the treatment is appropriate and safe for you.',
   },
   {
-    title: 'Private GP Consultation',
-    desc:  'Comprehensive medical assessment and personalised hyperhidrosis management plan.',
-    href:  '/treatments/private-gp',
-    tag:   'Medical',
-  },
-  {
-    title: 'Health Screening',
-    desc:  'Identify any underlying conditions contributing to excessive sweating.',
-    href:  '/treatments/health-screening',
-    tag:   'Medical',
-  },
-];
-
-const RELATED_CONDITIONS = [
-  {
-    title: 'Rosacea / Facial Redness',
-    desc:  'Calm facial flushing and persistent redness with targeted medical treatments.',
-    href:  '/conditions/rosacea',
-    tag:   'Face',
-  },
-  {
-    title: 'Pigmentation',
-    desc:  'Treat dark spots and uneven skin tone with clinically proven treatments.',
-    href:  '/conditions/pigmentation',
-    tag:   'Skin',
+    question: 'Can lifestyle changes help reduce excessive sweating?',
+    answer:
+      'Lifestyle adjustments such as wearing breathable fabrics, avoiding spicy foods, alcohol, and caffeine, and managing stress can help reduce sweating in milder cases. However, for those with clinical hyperhidrosis, lifestyle changes alone are rarely sufficient. Professional medical treatments provide far more significant, reliable, and lasting relief.',
   },
 ];
 
@@ -221,6 +277,10 @@ const RELATED_CONDITIONS = [
    PAGE
 ════════════════════════════════════════════════════════════════ */
 export default function ExcessiveSweatingPage() {
+  const [showAllFaqs, setShowAllFaqs] = useState(false);
+
+  const visibleFaqs = showAllFaqs ? FAQS : FAQS.slice(0, 4);
+
   return (
     <>
       {/* ════════════════════════════════════════
@@ -228,9 +288,10 @@ export default function ExcessiveSweatingPage() {
       ════════════════════════════════════════ */}
       <section
         className={styles.hero}
-        aria-label="Excessive sweating treatment, hero"
+        aria-label="Excessive Sweating Treatment Leicester, hero"
         data-section-theme="dark"
       >
+        {/* Breadcrumb, pinned below fixed header */}
         <div className={styles.heroBreadcrumb}>
           <Container>
             <Breadcrumb
@@ -250,18 +311,19 @@ export default function ExcessiveSweatingPage() {
             initial="hidden"
             animate="show"
           >
+            {/* Left: text content */}
             <div className={styles.heroLeft}>
               <motion.span className={styles.heroCategory} variants={fadeUp}>
                 Conditions · Body
               </motion.span>
 
               <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                Excessive Sweating
+                Excessive Sweating Treatment Leicester
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Regain confidence with effective, clinically proven treatments for
-                hyperhidrosis, providing lasting relief from excessive, uncontrollable sweating.
+                Restore your confidence with effective, clinically proven hyperhidrosis
+                treatments that provide lasting relief from excessive, uncontrollable sweating.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -270,10 +332,12 @@ export default function ExcessiveSweatingPage() {
                 </BookConsultationButton>
               </motion.div>
 
+              {/* Trust badges */}
               <motion.div variants={fadeUp}>
                 <TrustBadges theme="dark" />
               </motion.div>
 
+              {/* Trust items */}
               <motion.div className={styles.heroTrust} variants={fadeUp}>
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -301,10 +365,11 @@ export default function ExcessiveSweatingPage() {
               </motion.div>
             </div>
 
+            {/* Right: hero image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
                 src="/images/Excessive Sweating.png"
-                alt="Excessive sweating treatment at The One Clinic Leicester"
+                alt="Excessive sweating (hyperhidrosis) treatment at The One Clinic Leicester"
                 fill
                 className={styles.heroImage}
                 sizes="(max-width: 900px) 100vw, 50vw"
@@ -317,101 +382,92 @@ export default function ExcessiveSweatingPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          2. WHAT IS EXCESSIVE SWEATING?
+          2. OVERVIEW & TYPES (Combined)
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="light" data-section-theme="light" className={styles.overviewTypesSection}>
         <Container>
-          <motion.div
-            className={styles.overviewGrid}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.div className={styles.overviewLabel} variants={fadeUp}>
-              <p className={styles.eyebrowDark}>About This Condition</p>
-            </motion.div>
-
-            <div className={styles.overviewBody}>
-              <motion.h2 className={styles.overviewHeading} variants={fadeUp}>
-                What Is Excessive Sweating?
-              </motion.h2>
-              <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Excessive sweating, medically known as hyperhidrosis, is a condition
-                where the body produces far more sweat than is needed to regulate
-                temperature. It can affect specific areas such as the underarms, palms,
-                feet, and face, or occur across the body, and is often unrelated to heat
-                or physical activity.
-              </motion.p>
-              <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Hyperhidrosis affects millions of people and can have a significant impact
-                on confidence, social interactions, and quality of life. Effective medical
-                treatments are available that can dramatically reduce sweating and restore
-                day-to-day comfort and confidence.
-              </motion.p>
+          <div className={styles.combinedBody}>
+            {/* Left column: Overview */}
+            <div className={styles.combinedLeft}>
+              <div className={styles.combinedLeftTop}>
+                <motion.p
+                  className={styles.eyebrowDark}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  About This Condition
+                </motion.p>
+                <motion.h2
+                  className={styles.combinedHeading}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  What is Excessive Sweating?
+                </motion.h2>
+                <motion.p
+                  className={styles.combinedDesc}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  Excessive sweating, medically known as hyperhidrosis, is a condition
+                  where the body produces far more sweat than is needed to regulate
+                  temperature. It can affect specific areas , such as the underarms,
+                  palms, feet, and face , or occur across the whole body, and is often
+                  completely unrelated to heat or physical activity. Effective treatments
+                  are available to dramatically reduce sweating and restore confidence.
+                </motion.p>
+              </div>
             </div>
-          </motion.div>
-        </Container>
-      </Section>
 
-      {/* ════════════════════════════════════════
-          3. TYPES
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              How It Presents
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Types of Hyperhidrosis
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.typesCardsRow}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {[
-              {
-                num: '01',
-                title: 'Focal (Primary)',
-                desc: 'Affects specific areas, typically the underarms, palms, feet, or face. No underlying medical cause. Often hereditary and begins in adolescence or early adulthood.',
-              },
-              {
-                num: '02',
-                title: 'Generalised (Secondary)',
-                desc: 'Affects the whole body and is usually caused by an underlying medical condition, hormonal change, or medication. Requires medical investigation and management.',
-              },
-              {
-                num: '03',
-                title: 'Craniofacial',
-                desc: 'Excessive sweating affecting the face, head, and scalp. Can be particularly distressing and is often triggered by eating, stress, or warmth.',
-              },
-            ].map((type) => (
-              <motion.div key={type.num} className={styles.typeCard} variants={fadeUp}>
-                <span className={styles.typeNum} aria-hidden="true">{type.num}</span>
-                <div className={styles.typeCardBody}>
-                  <h3 className={styles.typeTitle}>{type.title}</h3>
-                  <p className={styles.typeDesc}>{type.desc}</p>
-                </div>
+            {/* Right column: Types */}
+            <div className={styles.combinedRight}>
+              <motion.div
+                className={styles.typesRightHeader}
+                initial="hidden"
+                whileInView="show"
+                variants={fadeUp}
+                viewport={VIEWPORT}
+              >
+                <p className={styles.combinedRightLabel}>Classification</p>
+                <h3 className={styles.typesRightHeading}>Types of Hyperhidrosis</h3>
               </motion.div>
-            ))}
-          </motion.div>
+
+              <motion.div
+                className={styles.combinedCards}
+                variants={stagger(0.1)}
+                initial="hidden"
+                whileInView="show"
+                viewport={VIEWPORT}
+              >
+                {SWEATING_TYPES.map((type) => (
+                  <motion.div
+                    key={type.num}
+                    className={styles.typeCardCombined}
+                    variants={fadeUp}
+                  >
+                    <span className={styles.typeNumCombined} aria-hidden="true">
+                      {type.num}
+                    </span>
+                    <div className={styles.typeCardHeader}>
+                      <h3 className={styles.typeTitleCombined}>{type.title}</h3>
+                      <p className={styles.typeDescCombined}>{type.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          4. CAUSES
+          3. CAUSES
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.causesSection}>
         <Container>
@@ -426,11 +482,11 @@ export default function ExcessiveSweatingPage() {
               Root Causes
             </motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              What Causes Excessive Sweating?
+              Excessive Sweating Causes
             </motion.h2>
             <motion.p className={styles.sectionSubtext} variants={fadeUp}>
-              Hyperhidrosis can result from overactive sweat glands, genetic factors,
-              hormonal changes, or an underlying medical condition.
+              Understanding what drives hyperhidrosis helps identify the right
+              treatment approach for long-lasting relief and restored confidence.
             </motion.p>
           </motion.div>
 
@@ -461,7 +517,7 @@ export default function ExcessiveSweatingPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          5. RISK FACTORS
+          4. WHO IS MORE LIKELY?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
@@ -472,41 +528,55 @@ export default function ExcessiveSweatingPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div className={styles.riskLeft} variants={stagger(0.1)}>
-              <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-                Risk Factors
-              </motion.p>
-              <motion.h2 className={styles.riskHeading} variants={fadeUp}>
-                Who Is More Likely to Develop Hyperhidrosis?
-              </motion.h2>
-              <motion.p className={styles.riskIntro} variants={fadeUp}>
-                Certain genetic, hormonal, and lifestyle factors increase susceptibility
-                to excessive sweating.
-              </motion.p>
+            {/* Left: image */}
+            <motion.div className={styles.riskImageWrap} variants={fadeUp}>
+              <Image
+                src="/images/Excessive Sweating.png"
+                alt="Person affected by excessive sweating (hyperhidrosis)"
+                fill
+                className={styles.riskImage}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className={styles.riskImageOverlay} aria-hidden="true" />
             </motion.div>
 
-            <motion.ul
-              className={styles.riskList}
-              role="list"
-              variants={stagger(0.08)}
-            >
-              {RISK_FACTORS.map((item) => (
-                <motion.li key={item} className={styles.riskItem} variants={fadeUp}>
-                  <span className={styles.riskCheck} aria-hidden="true">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
-                  <span>{item}</span>
-                </motion.li>
-              ))}
-            </motion.ul>
+            {/* Right: heading + intro + checklist */}
+            <motion.div className={styles.riskRight} variants={stagger(0.1)}>
+              <div className={styles.riskRightInner}>
+                <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+                  Risk Factors
+                </motion.p>
+                <motion.h2 className={styles.riskHeading} variants={fadeUp}>
+                  Who Is More Likely to Develop Excessive Sweating?
+                </motion.h2>
+                <motion.p className={styles.riskIntro} variants={fadeUp}>
+                  The following individuals may be more at risk of developing hyperhidrosis.
+                </motion.p>
+
+                <motion.ul
+                  className={styles.riskList}
+                  role="list"
+                  variants={stagger(0.08)}
+                >
+                  {RISK_FACTORS.map((item) => (
+                    <motion.li key={item} className={styles.riskItem} variants={fadeUp}>
+                      <span className={styles.riskCheck} aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                          <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </span>
+                      <span>{item}</span>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </div>
+            </motion.div>
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          6. TREATMENTS
+          5. HOW DO WE DIAGNOSE?
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -518,10 +588,57 @@ export default function ExcessiveSweatingPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Your Options
+              Our Process
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Treatments for Excessive Sweating
+              How Do We Diagnose Excessive Sweating?
+            </motion.h2>
+            <motion.p className={styles.diagnoseIntro} variants={fadeUp}>
+              Our specialists use the following assessments:
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.diagnoseGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {DIAGNOSE_STEPS.map((step) => (
+              <motion.div
+                key={step.num}
+                className={styles.diagnoseCard}
+                variants={fadeUp}
+              >
+                <span className={styles.diagnoseNum} aria-hidden="true">
+                  {step.num}
+                </span>
+                <p className={styles.diagnoseText}>{step.title}</p>
+                <p className={styles.diagnoseText}>{step.text}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          6. TREATMENTS FOR EXCESSIVE SWEATING
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Your Options
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Treatments For Excessive Sweating
             </motion.h2>
           </motion.div>
 
@@ -557,9 +674,58 @@ export default function ExcessiveSweatingPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          7. RESULTS & EXPECTATIONS
+          7. WHEN TO CALL A DOCTOR?
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.whenToCallWrap}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {/* Left: heading */}
+            <motion.div className={styles.whenToCallLeft} variants={stagger(0.1)}>
+              <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+                Medical Advice
+              </motion.p>
+              <motion.h2 className={styles.whenToCallHeading} variants={fadeUp}>
+                When to Call a Doctor?
+              </motion.h2>
+              <motion.p className={styles.whenToCallIntro} variants={fadeUp}>
+                Excessive sweating is often manageable, but seek medical advice if
+                you notice:
+              </motion.p>
+            </motion.div>
+
+            {/* Right: warning list */}
+            <motion.ul
+              className={styles.whenToCallList}
+              role="list"
+              variants={stagger(0.08)}
+            >
+              {WHEN_TO_CALL.map((item) => (
+                <motion.li key={item} className={styles.whenToCallItem} variants={fadeUp}>
+                  <span className={styles.whenToCallIcon} aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="8" x2="12" y2="12"/>
+                      <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          8. RESULTS & EXPECTATIONS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.resultsSection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -575,7 +741,8 @@ export default function ExcessiveSweatingPage() {
               Results &amp; Expectations
             </motion.h2>
             <motion.p className={styles.sectionSubtext} variants={fadeUp}>
-              After treatment, here is what you can typically expect at each stage.
+              After treatment for excessive sweating, here is what you can expect
+              at each stage of your journey.
             </motion.p>
           </motion.div>
 
@@ -603,19 +770,19 @@ export default function ExcessiveSweatingPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. MEET THE EXPERTS
+          9. MEET THE EXPERTS
       ════════════════════════════════════════ */}
       <MeetTheExperts />
 
       {/* ════════════════════════════════════════
-          9. GOOGLE REVIEWS
+          GOOGLE REVIEWS
       ════════════════════════════════════════ */}
       <Testimonials />
 
       {/* ════════════════════════════════════════
           10. WHY CHOOSE THE ONE CLINIC
       ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
+      <Section variant="light" data-section-theme="light" className={styles.whySection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -624,9 +791,11 @@ export default function ExcessiveSweatingPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Why Us</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Why Choose The One Clinic For Hyperhidrosis Treatment
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Why Us
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Why Choose The One Clinic For Excessive Sweating Treatment
             </motion.h2>
           </motion.div>
 
@@ -655,8 +824,8 @@ export default function ExcessiveSweatingPage() {
       {/* ════════════════════════════════════════
           11. FAQ
       ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
+      <Section variant="light" data-section-theme="light" className={styles.faqSection}>
+        <Container className={styles.faqInner}>
           <motion.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
@@ -664,8 +833,8 @@ export default function ExcessiveSweatingPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>FAQ</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
               Frequently Asked Questions
             </motion.h2>
           </motion.div>
@@ -677,19 +846,43 @@ export default function ExcessiveSweatingPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <Accordion items={FAQS} theme="dark" />
+            <Accordion items={visibleFaqs} theme="dark" />
           </motion.div>
+
+          <div className={styles.faqToggleWrap}>
+            <button
+              className={styles.faqToggleBtn}
+              onClick={() => setShowAllFaqs((prev) => !prev)}
+            >
+              {showAllFaqs ? 'Show Fewer Questions' : 'View All Questions'}
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+                style={{ transform: showAllFaqs ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+          </div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          12. CTA BAND
+          12. CONSULTATION CTA
       ════════════════════════════════════════ */}
       <section
         className={styles.ctaBand}
         data-section-theme="dark"
         aria-label="Excessive sweating consultation CTA"
       >
+        {/* Background image */}
         <div className={styles.ctaBandBgWrap} aria-hidden="true">
           <Image
             src="/images/Background section image new1.jpg"
@@ -713,12 +906,12 @@ export default function ExcessiveSweatingPage() {
               Take the First Step
             </motion.p>
             <motion.h2 className={styles.ctaHeading} variants={fadeUp}>
-              Ready to Feel{' '}
-              <span className={styles.ctaAccent}>Confident Again?</span>
+              It&apos;s Time to Reclaim Your{' '}
+              <span className={styles.ctaAccent}>Confidence!</span>
             </motion.h2>
             <motion.p className={styles.ctaSubtext} variants={fadeUp}>
-              Speak to our specialists today to find the most effective treatment
-              for your hyperhidrosis and reclaim your confidence and comfort.
+              Talk to our specialists today to find the best hyperhidrosis treatment
+              for you and enjoy lasting relief from excessive sweating.
             </motion.p>
             <motion.div className={styles.ctaBtns} variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBtnPrimary}>
@@ -733,50 +926,16 @@ export default function ExcessiveSweatingPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          13. COST BAND
-      ════════════════════════════════════════ */}
-      <section
-        className={styles.costBand}
-        data-section-theme="dark"
-        aria-label="Excessive sweating treatment cost"
-      >
-        <Container>
-          <motion.div
-            className={styles.costBandInner}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.costBandEyebrow} variants={fadeUp}>
-              Pricing
-            </motion.p>
-            <motion.h2 className={styles.costBandHeading} variants={fadeUp}>
-              Hyperhidrosis Treatment Cost
-            </motion.h2>
-            <motion.p className={styles.costBandNote} variants={fadeUp}>
-              Contact us to enquire
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBtnPrimary}>
-                Book A Consultation
-              </BookConsultationButton>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
-
-      {/* ════════════════════════════════════════
-          14. LEAD FORM
+          13. LEAD FORM
       ════════════════════════════════════════ */}
       <div id="contact">
         <LeadForm />
       </div>
 
       {/* ════════════════════════════════════════
-          15. RELATED TREATMENTS
+          14. RELATED TREATMENTS (dark)
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="dark" data-section-theme="dark">
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -785,8 +944,8 @@ export default function ExcessiveSweatingPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Explore</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Explore</motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
               Related Treatments
             </motion.h2>
           </motion.div>
@@ -817,7 +976,7 @@ export default function ExcessiveSweatingPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          16. RELATED CONDITIONS
+          15. RELATED CONDITIONS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.relatedConditionsSection}>
         <Container>

@@ -336,7 +336,7 @@ export default function NonSurgicalBlepharoplastyPage() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Endolift-Laser_1.jpg"
+                src="/images/Non-surgical blepharoplasty hero.jpg"
                 alt="Non-surgical blepharoplasty at The One Clinic Leicester"
                 fill
                 priority
@@ -382,7 +382,7 @@ export default function NonSurgicalBlepharoplastyPage() {
 
             <motion.div className={styles.whatIsImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/images/Non-surgical blepharoplasty 1.jpg"
                 alt="Non-surgical blepharoplasty consultation at The One Clinic"
                 fill
                 className={styles.whatIsImage}

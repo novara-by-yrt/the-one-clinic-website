@@ -439,7 +439,7 @@ export default function MinorSurgeryPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Minor Surgery.jpg"
+                src="/Minor surgery hero.png"
                 alt="Minor surgery procedure at The One Clinic Leicester"
                 fill
                 priority
@@ -493,8 +493,8 @@ export default function MinorSurgeryPage() {
             {/* Right: image panel */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
-                alt="Doctor at The One Clinic performing a minor surgical procedure"
+                src="/images/Minor Surgery 2.png"
+                alt="What is minor surgery treatment at The One Clinic"
                 fill
                 className={styles.whatIsVideoFrame}
                 sizes="(max-width: 900px) 100vw, 50vw"

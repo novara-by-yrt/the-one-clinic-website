@@ -336,7 +336,7 @@ export default function AcneScarRemovalPage() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Endolift-Laser_1.jpg"
+                src="/Acne Scar hero.jpg"
                 alt="Acne scar removal treatment at The One Clinic Leicester"
                 fill
                 priority
@@ -383,7 +383,7 @@ export default function AcneScarRemovalPage() {
 
             <motion.div className={styles.whatIsImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/Acne scar image.jpg"
                 alt="Acne scar removal consultation at The One Clinic"
                 fill
                 className={styles.whatIsImage}

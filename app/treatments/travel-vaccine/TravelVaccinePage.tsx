@@ -119,7 +119,7 @@ const JOURNEY_STEPS = [
   {
     n: '04',
     title: 'Travel with Confidence',
-    desc: 'You leave with your vaccination record, any required certificates, prescriptions, and a personalised travel health summary — fully protected and ready to explore.',
+    desc: 'You leave with your vaccination record, any required certificates, prescriptions, and a personalised travel health summary , fully protected and ready to explore.',
   },
 ];
 
@@ -137,7 +137,7 @@ const BENEFITS = [
   },
   {
     title: 'Full Vaccine Range',
-    desc: 'From typhoid and hepatitis A to yellow fever, rabies, and Japanese encephalitis — we stock and administer a comprehensive range of travel vaccinations without NHS waiting lists.',
+    desc: 'From typhoid and hepatitis A to yellow fever, rabies, and Japanese encephalitis , we stock and administer a comprehensive range of travel vaccinations without NHS waiting lists.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
@@ -234,7 +234,7 @@ const WHAT_TO_EXPECT = [
     ),
     title: 'Your Documents',
     body: 'You leave with your vaccination record, yellow fever certificate (if applicable), malaria prescription, fit-to-fly letter if needed, and a written travel health advice leaflet.',
-    note: 'Keep your yellow fever certificate safe — it is valid for life and may be required at border control.',
+    note: 'Keep your yellow fever certificate safe , it is valid for life and may be required at border control.',
   },
 ];
 
@@ -314,7 +314,7 @@ const FAQS = [
   {
     question: 'How far in advance should I book my travel vaccines?',
     answer:
-      'We recommend booking at least 6 to 8 weeks before departure. Some vaccines require multiple doses spaced over several weeks to be fully effective. However, if you are travelling at short notice, we can still help — some single-dose vaccines can be given right up to the day before travel.',
+      'We recommend booking at least 6 to 8 weeks before departure. Some vaccines require multiple doses spaced over several weeks to be fully effective. However, if you are travelling at short notice, we can still help , some single-dose vaccines can be given right up to the day before travel.',
   },
   {
     question: 'Do I need antimalarials for my trip?',
@@ -687,7 +687,7 @@ export default function TravelVaccinePage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          7. ELIGIBILITY — WHO IS SUITABLE
+          7. ELIGIBILITY , WHO IS SUITABLE
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -730,7 +730,7 @@ export default function TravelVaccinePage() {
             </motion.ul>
             <motion.p className={styles.eligibilityClosing} variants={fadeUp}>
               Certain vaccines may be contraindicated during pregnancy or for
-              immunosuppressed patients — please discuss your individual circumstances
+              immunosuppressed patients , please discuss your individual circumstances
               during your consultation and we will advise accordingly.
             </motion.p>
             <motion.div variants={fadeUp}>
@@ -1057,7 +1057,7 @@ export default function TravelVaccinePage() {
               Travel Vaccine Cost at The One Clinic
             </motion.p>
             <motion.p className={styles.costBannerPrice} variants={fadeUp}>
-              From £50 Per Vaccine — Consultation Included
+              From £50 Per Vaccine , Consultation Included
             </motion.p>
             <motion.p className={styles.costBannerNote} variants={fadeUp}>
               Individual vaccine prices vary. A full cost breakdown is provided during your

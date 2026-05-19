@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { CLINIC_INFO } from '@/lib/clinic-info';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
@@ -44,8 +45,8 @@ export default function FinalCTA() {
               </svg>
             </button>
 
-            <a href="tel:07481342374" className={styles.btnOutline}>
-              Call 07481 342 374
+            <a href={`tel:${CLINIC_INFO.phone.tel}`} className={styles.btnOutline}>
+              Call {CLINIC_INFO.phone.display}
             </a>
           </motion.div>
         </motion.div>

@@ -1,5 +1,5 @@
 /*
- * BrandReveal — floating panel card
+ * BrandReveal , floating panel card
  *
  * Each section is presented as a rounded, elevated card floating on the
  * warm cream backdrop of BrandStage. Sections with dark backgrounds appear
@@ -7,7 +7,7 @@
  * Sections with light backgrounds appear as frosted white cards.
  *
  * Note: overflow:hidden clips section content to the border-radius.
- *       transform-style:preserve-3d is intentionally omitted — it conflicts
+ *       transform-style:preserve-3d is intentionally omitted , it conflicts
  *       with overflow:hidden. The translateZ animation is driven from the
  *       stage's perspective context, not from this element's own 3D plane.
  */
@@ -19,7 +19,7 @@
   border-radius: 22px;
   overflow: hidden;
 
-  /* ── Layered shadow — depth without heaviness ── */
+  /* ── Layered shadow , depth without heaviness ── */
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.75),   /* top catch-light edge */
     0 2px 4px  rgba(0, 0, 0, 0.04),
@@ -51,7 +51,7 @@
   }
 }
 
-/* ── Small mobile — go full-bleed, drop panel chrome ── */
+/* ── Small mobile , go full-bleed, drop panel chrome ── */
 @media (max-width: 480px) {
   .layer {
     margin: 0;

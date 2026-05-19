@@ -103,12 +103,12 @@ const TREATMENTS = [
   {
     title: 'Polynucleotides',
     desc:  'Stimulates collagen production in and around the lip area to improve skin quality, reduce fine lip lines, and restore a more youthful, healthy appearance.',
-    href:  '/treatments/polynucleotides',
+    href:  '/treatments/polynucleotides-leicester',
   },
   {
     title: 'Chemical Peel',
     desc:  'Resurfaces the skin around the mouth to reduce vertical lip lines, improve tone and texture, and create a smoother, more refined lip area.',
-    href:  '/treatments/chemical-peel',
+    href:  '/treatments/chemical-peels',
   },
 ];
 
@@ -120,6 +120,30 @@ const RISK_FACTORS = [
   'Those with prolonged or unprotected sun exposure.',
   'Individuals who have experienced significant weight loss.',
   'People with naturally uneven facial proportions.',
+];
+
+/* ── Diagnose steps ───────────────────────────────────────────── */
+const DIAGNOSE_STEPS = [
+  {
+    num: '01',
+    text: 'Assess your natural lip shape, volume, and proportions in relation to your facial features.',
+  },
+  {
+    num: '02',
+    text: 'Discuss your aesthetic goals, desired lip appearance, and any concerns about symmetry.',
+  },
+  {
+    num: '03',
+    text: 'Recommend the most suitable treatment options to achieve your desired results naturally.',
+  },
+];
+
+/* ── When to call a doctor ────────────────────────────────────── */
+const WHEN_TO_CALL = [
+  'Severe allergic reaction or swelling that doesn\'t subside within a few days.',
+  'Pain, bruising, or bleeding that worsens after treatment.',
+  'Signs of infection such as warmth, redness, or pus around the lips.',
+  'Asymmetry or unsatisfactory results that concern you.',
 ];
 
 /* ── Results timeline ─────────────────────────────────────────── */
@@ -202,7 +226,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Polynucleotides',
     desc:  'Stimulate collagen to rejuvenate the lip area and reduce fine lines around the mouth.',
-    href:  '/treatments/polynucleotides',
+    href:  '/treatments/polynucleotides-leicester',
     tag:   'Medical Aesthetics',
   },
 ];
@@ -322,94 +346,113 @@ export default function ThinLipsPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          2. WHAT ARE THIN LIPS?
+          2. WHAT ARE THIN LIPS? & TYPES (Combined)
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="light" data-section-theme="light" className={styles.overviewTypesSection}>
         <Container>
-          <motion.div
-            className={styles.overviewGrid}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.div className={styles.overviewLabel} variants={fadeUp}>
-              <p className={styles.eyebrowDark}>About This Condition</p>
-            </motion.div>
-
-            <div className={styles.overviewBody}>
-              <motion.h2 className={styles.overviewHeading} variants={fadeUp}>
-                What Are Thin Lips?
-              </motion.h2>
-              <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Thin lips refer to lips that lack volume, projection, or definition, whether
-                due to genetics, the natural ageing process, or lifestyle factors. They may
-                appear flat, uneven, or poorly defined at the borders, and can affect the
-                overall balance and harmony of the face.
-              </motion.p>
-              <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Many people seek treatment not to dramatically change their appearance, but
-                simply to restore a more youthful, balanced look. Safe and effective non-surgical
-                treatments can subtly enhance the lips while keeping results entirely natural.
-              </motion.p>
+          <div className={styles.combinedBody}>
+            {/* Left column: Overview */}
+            <div className={styles.combinedLeft}>
+              <div className={styles.combinedLeftTop}>
+                <motion.p
+                  className={styles.eyebrowDark}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  About This Condition
+                </motion.p>
+                <motion.h2
+                  className={styles.combinedHeading}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  What are Thin Lips?
+                </motion.h2>
+                <motion.p
+                  className={styles.combinedDesc}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  Thin lips refer to lips that lack volume, projection, or definition, whether
+                  due to genetics, the natural ageing process, or lifestyle factors. They may
+                  appear flat, uneven, or poorly defined at the borders, and can affect the
+                  overall balance and harmony of the face.
+                </motion.p>
+                <motion.p
+                  className={styles.combinedDesc}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  Many people seek treatment not to dramatically change their appearance, but
+                  simply to restore a more youthful, balanced look. Safe and effective
+                  non-surgical treatments can subtly enhance the lips while keeping results
+                  entirely natural.
+                </motion.p>
+              </div>
             </div>
-          </motion.div>
-        </Container>
-      </Section>
 
-      {/* ════════════════════════════════════════
-          3. TYPES
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              How It Presents
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Types of Lip Concerns
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.typesCardsRow}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {[
-              {
-                num: '01',
-                title: 'Loss of Volume',
-                desc: 'Lips appear flat and deflated due to reduced collagen and fat, often resulting from ageing or genetics.',
-              },
-              {
-                num: '02',
-                title: 'Poor Definition',
-                desc: 'Blurred or indistinct lip borders make the lips appear shapeless, reducing the overall balance of the face.',
-              },
-              {
-                num: '03',
-                title: 'Lip Asymmetry',
-                desc: 'One side of the upper or lower lip appears noticeably thinner than the other, creating an uneven appearance.',
-              },
-            ].map((type) => (
-              <motion.div key={type.num} className={styles.typeCard} variants={fadeUp}>
-                <span className={styles.typeNum} aria-hidden="true">{type.num}</span>
-                <div className={styles.typeCardBody}>
-                  <h3 className={styles.typeTitle}>{type.title}</h3>
-                  <p className={styles.typeDesc}>{type.desc}</p>
-                </div>
+            {/* Right column: Types */}
+            <div className={styles.combinedRight}>
+              <motion.div
+                className={styles.typesRightHeader}
+                initial="hidden"
+                whileInView="show"
+                variants={fadeUp}
+                viewport={VIEWPORT}
+              >
+                <p className={styles.combinedRightLabel}>Classification</p>
+                <h3 className={styles.typesRightHeading}>Types of Thin Lip Concerns</h3>
               </motion.div>
-            ))}
-          </motion.div>
+
+              <motion.div
+                className={styles.combinedCards}
+                variants={stagger(0.1)}
+                initial="hidden"
+                whileInView="show"
+                viewport={VIEWPORT}
+              >
+                {[
+                  {
+                    num: '01',
+                    title: 'Loss of Volume',
+                    desc: 'Lips appear flat and deflated due to reduced collagen and fat, often resulting from ageing or genetics.',
+                  },
+                  {
+                    num: '02',
+                    title: 'Poor Definition',
+                    desc: 'Blurred or indistinct lip borders make the lips appear shapeless, reducing overall facial balance.',
+                  },
+                  {
+                    num: '03',
+                    title: 'Lip Asymmetry',
+                    desc: 'One side of the upper or lower lip appears noticeably thinner than the other, creating an uneven appearance.',
+                  },
+                ].map((type) => (
+                  <motion.div
+                    key={type.num}
+                    className={styles.typeCardCombined}
+                    variants={fadeUp}
+                  >
+                    <span className={styles.typeNumCombined} aria-hidden="true">
+                      {type.num}
+                    </span>
+                    <div className={styles.typeCardHeader}>
+                      <h3 className={styles.typeTitleCombined}>{type.title}</h3>
+                      <p className={styles.typeDescCombined}>{type.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
         </Container>
       </Section>
 
@@ -475,34 +518,49 @@ export default function ThinLipsPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div className={styles.riskLeft} variants={stagger(0.1)}>
-              <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-                Risk Factors
-              </motion.p>
-              <motion.h2 className={styles.riskHeading} variants={fadeUp}>
-                Who Is More Likely to Have Thin Lips?
-              </motion.h2>
-              <motion.p className={styles.riskIntro} variants={fadeUp}>
-                Certain factors can make lip thinning more pronounced or occur earlier in life.
-              </motion.p>
+            {/* Left: image */}
+            <motion.div className={styles.riskImageWrap} variants={fadeUp}>
+              <Image
+                src="/images/Thin Lips.png"
+                alt="Person with thin lips showing lip concerns"
+                fill
+                className={styles.riskImage}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className={styles.riskImageOverlay} aria-hidden="true" />
             </motion.div>
 
-            <motion.ul
-              className={styles.riskList}
-              role="list"
-              variants={stagger(0.08)}
-            >
-              {RISK_FACTORS.map((item) => (
-                <motion.li key={item} className={styles.riskItem} variants={fadeUp}>
-                  <span className={styles.riskCheck} aria-hidden="true">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
-                  <span>{item}</span>
-                </motion.li>
-              ))}
-            </motion.ul>
+            {/* Right: heading + intro + checklist */}
+            <motion.div className={styles.riskRight} variants={stagger(0.1)}>
+              <div className={styles.riskRightInner}>
+                <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+                  Risk Factors
+                </motion.p>
+                <motion.h2 className={styles.riskHeading} variants={fadeUp}>
+                  Who Is More Likely to Have Thin Lips?
+                </motion.h2>
+                <motion.p className={styles.riskIntro} variants={fadeUp}>
+                  Certain factors can make lip thinning more pronounced or occur earlier in life.
+                </motion.p>
+
+                <motion.ul
+                  className={styles.riskList}
+                  role="list"
+                  variants={stagger(0.08)}
+                >
+                  {RISK_FACTORS.map((item) => (
+                    <motion.li key={item} className={styles.riskItem} variants={fadeUp}>
+                      <span className={styles.riskCheck} aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                          <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </span>
+                      <span>{item}</span>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </div>
+            </motion.div>
           </motion.div>
         </Container>
       </Section>
@@ -559,7 +617,101 @@ export default function ThinLipsPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          7. RESULTS & EXPECTATIONS
+          6. HOW DO WE DIAGNOSE?
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Our Process
+            </motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              How Do We Diagnose Thin Lips?
+            </motion.h2>
+            <motion.p className={styles.diagnoseIntro} variants={fadeUp}>
+              Our specialists will:
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.diagnoseGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {DIAGNOSE_STEPS.map((step) => (
+              <motion.div
+                key={step.num}
+                className={styles.diagnoseCard}
+                variants={fadeUp}
+              >
+                <span className={styles.diagnoseNum} aria-hidden="true">
+                  {step.num}
+                </span>
+                <p className={styles.diagnoseText}>{step.text}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          7. WHEN TO CALL A DOCTOR?
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.whenToCallWrap}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {/* Left: heading */}
+            <motion.div className={styles.whenToCallLeft} variants={stagger(0.1)}>
+              <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+                Medical Advice
+              </motion.p>
+              <motion.h2 className={styles.whenToCallHeading} variants={fadeUp}>
+                When to Call a Doctor?
+              </motion.h2>
+              <motion.p className={styles.whenToCallIntro} variants={fadeUp}>
+                While lip enhancement is generally safe, contact us if you experience:
+              </motion.p>
+            </motion.div>
+
+            {/* Right: warning list */}
+            <motion.ul
+              className={styles.whenToCallList}
+              role="list"
+              variants={stagger(0.08)}
+            >
+              {WHEN_TO_CALL.map((item) => (
+                <motion.li key={item} className={styles.whenToCallItem} variants={fadeUp}>
+                  <span className={styles.whenToCallIcon} aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="8" x2="12" y2="12"/>
+                      <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          8. RESULTS & EXPECTATIONS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
@@ -657,8 +809,8 @@ export default function ThinLipsPage() {
       {/* ════════════════════════════════════════
           11. FAQ
       ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
+      <Section variant="light" data-section-theme="light" className={styles.faqSection}>
+        <Container className={styles.faqInner}>
           <motion.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
@@ -666,8 +818,8 @@ export default function ThinLipsPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>FAQ</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
               Frequently Asked Questions
             </motion.h2>
           </motion.div>
@@ -735,48 +887,14 @@ export default function ThinLipsPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          13. COST BAND
-      ════════════════════════════════════════ */}
-      <section
-        className={styles.costBand}
-        data-section-theme="dark"
-        aria-label="Thin lips treatment cost"
-      >
-        <Container>
-          <motion.div
-            className={styles.costBandInner}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.costBandEyebrow} variants={fadeUp}>
-              Pricing
-            </motion.p>
-            <motion.h2 className={styles.costBandHeading} variants={fadeUp}>
-              Thin Lips Treatment Cost
-            </motion.h2>
-            <motion.p className={styles.costBandNote} variants={fadeUp}>
-              Contact us to enquire
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBtnPrimary}>
-                Book A Consultation
-              </BookConsultationButton>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
-
-      {/* ════════════════════════════════════════
-          14. LEAD FORM
+          13. LEAD FORM
       ════════════════════════════════════════ */}
       <div id="contact">
         <LeadForm />
       </div>
 
       {/* ════════════════════════════════════════
-          15. RELATED TREATMENTS
+          14. RELATED TREATMENTS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
@@ -819,7 +937,7 @@ export default function ThinLipsPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          16. RELATED CONDITIONS
+          15. RELATED CONDITIONS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.relatedConditionsSection}>
         <Container>

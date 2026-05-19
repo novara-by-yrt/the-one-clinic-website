@@ -1,7 +1,10 @@
-import Script from 'next/script';
-import styles from './Footer.module.css';
+'use client';
 
-const MAPS_URL = 'https://www.google.com/maps/place/The+One+Clinic+-+Leicester/@52.6272773,-1.1274381,17z/data=!3m1!4b1!4m5!3m4!1s0x4877615117ed46ad:0xa43d46d372fdae33!8m2!3d52.6272741!4d-1.1252494';
+import Script from 'next/script';
+import { useState } from 'react';
+import { CLINIC_INFO, getMapsSearchUrl } from '@/lib/clinic-info';
+import { clearConsentPreferences } from '@/lib/consent';
+import styles from './Footer.module.css';
 
 /* ── Inline SVGs ──────────────────────────────────────────── */
 function CircleArrow() {
@@ -32,6 +35,13 @@ function InstagramIcon() {
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const [managingCookies, setManagingCookies] = useState(false);
+
+  const handleManageCookies = () => {
+    clearConsentPreferences();
+    window.dispatchEvent(new CustomEvent('show-consent-banner'));
+    setManagingCookies(true);
+  };
 
   return (
     <footer className={styles.footer} role="contentinfo">
@@ -90,16 +100,18 @@ export default function Footer() {
 
           <div className={styles.col}>
             <p className={styles.colLabel}>Contact</p>
-            <a href="tel:07481342374" className={styles.contactItem}>07481342374</a>
-            <a href="mailto:info@the-oneclinic.net" className={styles.contactItem}>
-              info@the-oneclinic.net
+            <a href={`tel:${CLINIC_INFO.phone.tel}`} className={styles.contactItem}>
+              {CLINIC_INFO.phone.display}
+            </a>
+            <a href={`mailto:${CLINIC_INFO.email}`} className={styles.contactItem}>
+              {CLINIC_INFO.email}
             </a>
             <address className={styles.address}>
-              36, DeMontfort Street, Leicester<br />
-              LE1 7GS
+              {CLINIC_INFO.address.street}, {CLINIC_INFO.address.locality}<br />
+              {CLINIC_INFO.address.postalCode}
             </address>
             <a
-              href={MAPS_URL}
+              href={getMapsSearchUrl()}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.viewMap}
@@ -112,7 +124,7 @@ export default function Footer() {
             <p className={styles.colLabel}>Connect</p>
             <div className={styles.socials}>
               <a
-                href="https://www.facebook.com/theoneclinic.uk"
+                href={CLINIC_INFO.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialLink}
@@ -121,7 +133,7 @@ export default function Footer() {
                 <FacebookIcon />
               </a>
               <a
-                href="https://www.instagram.com/theoneclinic.uk/"
+                href={CLINIC_INFO.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialLink}
@@ -149,6 +161,14 @@ export default function Footer() {
             <a href="/privacy" className={styles.legalLink}>
               Privacy Policy <CircleArrow />
             </a>
+            <button
+              onClick={handleManageCookies}
+              className={styles.legalLink}
+              type="button"
+              aria-label="Manage cookie preferences"
+            >
+              Manage Cookies <CircleArrow />
+            </button>
             <a href="/sitemap.xml" className={styles.legalLink}>
               Sitemap <CircleArrow />
             </a>

@@ -85,7 +85,7 @@ const JOURNEY_STEPS = [
   {
     n: '01',
     title: 'Booking Your Appointment',
-    desc: 'Book your private dermatology consultation directly online or by phone — no GP referral required. Choose a convenient time and we will confirm your appointment promptly.',
+    desc: 'Book your private dermatology consultation directly online or by phone , no GP referral required. Choose a convenient time and we will confirm your appointment promptly.',
   },
   {
     n: '02',
@@ -149,7 +149,7 @@ const TREATED_BENEFITS = [
   },
   {
     title: 'Fast Diagnosis',
-    desc: 'Receive a clear diagnosis quickly — no lengthy NHS waiting lists. Same-day and next-day appointments available for urgent skin concerns.',
+    desc: 'Receive a clear diagnosis quickly , no lengthy NHS waiting lists. Same-day and next-day appointments available for urgent skin concerns.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -238,7 +238,7 @@ const WHAT_TO_EXPECT = [
 const CONDITIONS_WE_TREAT = [
   {
     title: 'Acne & Rosacea',
-    desc: 'From mild comedonal acne to severe nodular acne and flushing rosacea — expert assessment and prescription management for clear, confident skin.',
+    desc: 'From mild comedonal acne to severe nodular acne and flushing rosacea , expert assessment and prescription management for clear, confident skin.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -250,7 +250,7 @@ const CONDITIONS_WE_TREAT = [
   },
   {
     title: 'Eczema & Dermatitis',
-    desc: 'Atopic eczema, contact dermatitis, and seborrhoeic dermatitis — we identify triggers and provide personalised treatment to restore your skin barrier.',
+    desc: 'Atopic eczema, contact dermatitis, and seborrhoeic dermatitis , we identify triggers and provide personalised treatment to restore your skin barrier.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -269,7 +269,7 @@ const CONDITIONS_WE_TREAT = [
   },
   {
     title: 'Skin Cancer Screening',
-    desc: 'Mole mapping, dermoscopic evaluation of suspicious lesions, and prompt biopsy where required — peace of mind from expert assessment.',
+    desc: 'Mole mapping, dermoscopic evaluation of suspicious lesions, and prompt biopsy where required , peace of mind from expert assessment.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
@@ -279,7 +279,7 @@ const CONDITIONS_WE_TREAT = [
   },
   {
     title: 'Hair Loss (Alopecia)',
-    desc: 'Alopecia areata, androgenetic alopecia, telogen effluvium, and scarring alopecia — accurate diagnosis and evidence-based treatment to support hair regrowth.',
+    desc: 'Alopecia areata, androgenetic alopecia, telogen effluvium, and scarring alopecia , accurate diagnosis and evidence-based treatment to support hair regrowth.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -291,7 +291,7 @@ const CONDITIONS_WE_TREAT = [
   },
   {
     title: 'Nail Disorders',
-    desc: 'Nail dystrophy, psoriatic nail disease, fungal nail infections, and nail unit tumours — expert assessment and targeted treatment to restore healthy nails.',
+    desc: 'Nail dystrophy, psoriatic nail disease, fungal nail infections, and nail unit tumours , expert assessment and targeted treatment to restore healthy nails.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="20 7 20 14 14 14"/>
@@ -427,7 +427,7 @@ export default function DermatologistPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Expert skin diagnosis and treatment from a specialist dermatologist — fast access, no waiting lists.
+                Expert skin diagnosis and treatment from a specialist dermatologist , fast access, no waiting lists.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -507,13 +507,13 @@ export default function DermatologistPage() {
                   A private dermatologist consultation at The One Clinic is a specialist-level skin
                   assessment for complex or persistent skin conditions that require expert evaluation.
                   Our dermatologists diagnose, investigate, and manage conditions that are beyond
-                  standard GP-level care — whether that is a stubborn inflammatory skin condition,
+                  standard GP-level care , whether that is a stubborn inflammatory skin condition,
                   a suspicious lesion, or a hair or nail disorder that has not responded to
                   first-line treatment.
                 </p>
                 <p className={styles.combinedDesc}>
                   We offer skin biopsies, patch testing, dermoscopy, and access to prescription-only
-                  treatments including topical agents, oral medications, and biologic referrals — all
+                  treatments including topical agents, oral medications, and biologic referrals , all
                   in one clinic with no waiting lists.
                 </p>
               </motion.div>
@@ -801,7 +801,7 @@ export default function DermatologistPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. HOW IT WORKS — THE SERVICE
+          8. HOW IT WORKS , THE SERVICE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
@@ -826,7 +826,7 @@ export default function DermatologistPage() {
           >
             <motion.p className={styles.howPara} variants={fadeUp}>
               Our dermatology consultations begin with a full skin history and a thorough physical
-              examination. We use dermoscopy — a specialised magnification tool — to examine moles,
+              examination. We use dermoscopy , a specialised magnification tool , to examine moles,
               lesions, and areas of concern with precision. Where needed, skin biopsies, swabs, and
               patch testing for contact dermatitis are arranged promptly from within the clinic.
             </motion.p>
@@ -1095,7 +1095,7 @@ export default function DermatologistPage() {
               Experience the best private dermatology in Leicester at The One Clinic. Our expert
               doctors deliver comprehensive skin, hair, and nail assessments with rapid access to
               diagnosis and prescription treatment. Enjoy specialist-level care without the long
-              NHS wait — personalised to your skin, your condition, and your life.
+              NHS wait , personalised to your skin, your condition, and your life.
             </motion.p>
           </motion.div>
         </Container>

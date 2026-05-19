@@ -8,6 +8,18 @@ export type TeamMember = {
   bio: string[];
   /** Overrides the default /our-team/[slug] URL for the Read More link */
   profileUrl?: string;
+
+  /* ─ E-E-A-T & YMYL medical credentials ─ */
+  /** UK General Medical Council registration number, e.g. "7765432" */
+  gmcNumber?: string;
+  /** Year qualified or began medical practice */
+  yearQualified?: number;
+  /** Professional society memberships, e.g. ["BAAPS", "BACD"] */
+  specialtyMemberships?: string[];
+  /** Published papers, research, or clinical articles */
+  publications?: Array<{ title: string; url: string; year: number }>;
+  /** LinkedIn profile URL for professional social proof */
+  linkedinUrl?: string;
 };
 
 export const TEAM_MEMBERS: TeamMember[] = [
@@ -146,4 +158,72 @@ export const TEAM_MEMBERS: TeamMember[] = [
       'Her passion for patient wellbeing ensures every visit begins and ends on a positive note.',
     ],
   },
+  {
+    slug: 'mr-ashish-kelkar',
+    name: 'Mr Ashish Kelkar',
+    credentials: 'MBBS, MS',
+    initials: 'AK',
+    image: '/images/Mr. Ashish Kelkar-image.png',
+    role: 'Consultant General and Colorectal Surgeon',
+    profileUrl: '/team/mr-ashish-kelkar',
+    yearQualified: 1991,
+    specialtyMemberships: ['Royal College of Surgeons of Edinburgh'],
+    bio: [
+      'Mr Ashish Kelkar is a mightily experienced and highly regarded consultant general and colorectal surgeon who specialises in colorectal cancer, rectal bleeding, haemorrhoids, hernias and hernia surgery, anal fissures, and gallbladder surgery. He is currently practising at the Woodlands Hospital in Kettering.',
+      'Mr Kelkar, who also possesses expertise in inflammatory bowel disease, rectal prolapse surgery, and pelvic floor function, successfully completed an MBBS in medicine at the Seth GS Medical College and King Edward Memorial Hospital in Mumbai in 1991, and shortly afterwards followed this up by obtaining a masters in surgery from the King Edward Memorial Hospital in 1995.',
+      'Mr Kelkar is also an expert when it comes to performing both laparoscopic surgery and open cholecystectomies. He is a member of the Royal College of Surgeons of Edinburgh and has published an extensive amount of peer-reviewed articles in well-established medical journals, with a particular focus on colorectal cancer and lymph node retrieval in colorectal cancer patients.',
+    ],
+  },
+  {
+    slug: 'dr-veena-patel',
+    name: 'Dr Veena Patel',
+    credentials: 'MBBS, MEd, FHEA, FRCP',
+    initials: 'VP',
+    image: '/images/Dr. Veena Patel-image.png',
+    role: 'Consultant Rheumatologist',
+    profileUrl: '/team/dr-veena-patel',
+    specialtyMemberships: ['FRCP'],
+    bio: [
+      'Dr Veena Patel is a Consultant Rheumatologist at Nuffield Health Leicester Hospital and also works at the University Hospital of Leicester.',
+      'As a specialist, she has extensive experience in managing conditions such as rheumatoid arthritis, psoriatic arthritis, ankylosing spondylitis (commonly presenting as back pains), soft tissue rheumatism, connective tissue diseases, metabolic bone disorders, osteoporosis, muscle disorders and osteoarthritis.',
+      'She regularly teaches both undergraduate and postgraduate medical students. She has published many papers in peer-reviewed journals and has the title of Senior Lecturer (Honorary) at the University of Leicester.',
+    ],
+  },
+  {
+    slug: 'professor-prashanth-patel',
+    name: 'Professor Prashanth Patel',
+    credentials: 'MBBS, MSc, FRCPath, FRCP Edin',
+    initials: 'PP',
+    image: '/images/Dr. Prashanth Patel-image.png',
+    role: 'Consultant Metabolic Physician & Chemical Pathologist',
+    profileUrl: '/team/professor-prashanth-patel',
+    specialtyMemberships: ['FRCPath', 'FRCP'],
+    bio: [
+      'Professor Prashanth Patel is a Consultant Metabolic Physician and Chemical Pathologist at the University Hospitals of Leicester. His clinical interests are in the management of metabolic bone disease, osteoporosis, vitamin D disorders, parathyroid disorders and the management of health cholesterol and other lipid disorders.',
+      'He is Head of Service for the Department of Chemical Pathology and Metabolic Medicine at UHL. He is Chair of the Leicester Osteoporosis Group and the Clinical lead for Metabolic Bone Disease at UHL.',
+      'In addition to his clinical work, he also works as an honorary senior lecturer in Cardiovascular Science and is a Clinical Teacher in Metabolic Medicine and Chemical Pathology at the University of Leicester. His research interests include metabolic bone disorders, cholesterol, hypertension and prevention of cardiovascular diseases. He has published numerous papers in these fields and holds an honorary senior lecturer position in the Department of Cardiovascular Science at the University of Leicester.',
+    ],
+  },
+  {
+    slug: 'mr-randeep-aujla',
+    name: 'Mr Randeep S. Aujla',
+    credentials: 'MBChB',
+    initials: 'RA',
+    image: '/images/Mr Randeep Aujla-image.png',
+    role: 'Consultant Orthopaedic Surgeon',
+    profileUrl: '/team/mr-randeep-aujla',
+    specialtyMemberships: ['Royal College of Surgeons'],
+    bio: [
+      'Mr Randeep Aujla is an Internationally fellowship-trained Consultant Orthopaedic Surgeon with a specialist interest in knee conditions and lower limb sporting injuries. His NHS practice is based at the University Hospitals of Leicester and private practice at Spire (Leicester) and Nuffield Health (Leicester).',
+      'Specialising in ACL and multi-ligament knee reconstructions, meniscal tears, knee preservation surgery, knee osteoarthritis, hip arthroscopy, Achilles tendon issues, and tendinopathy, Mr Aujla has worked within elite sport since 2014. He has worked with many professional clubs including a 5-year stint as lead club doctor for Coventry City Football Club.',
+      'His medical sporting involvement also includes professional cricket (Loughborough Lightning), professional rugby (Coventry Rugby), mixed martial arts, and multi-sport games (European Games; BUCS; School Games). Mr Aujla relishes the opportunity to treat athletes, is very rehabilitation-focused, and works hard to maximise patient function through many treatment modalities including liaising closely with physiotherapists.',
+    ],
+  },
 ];
+
+/**
+ * Get team member by name
+ */
+export function getTeamMemberByName(name: string): TeamMember | null {
+  return TEAM_MEMBERS.find((member) => member.name === name) || null;
+}

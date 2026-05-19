@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════
-   SECTION — brand dark canvas
+   SECTION , brand dark canvas
 ══════════════════════════════════════════════════════ */
 .section {
   background: #161616 !important;
@@ -17,7 +17,7 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   LEFT — Form column (stretches full height)
+   LEFT , Form column (stretches full height)
 ══════════════════════════════════════════════════════ */
 .formCol {
   display: flex;
@@ -58,7 +58,7 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   RIGHT — Info + Map column
+   RIGHT , Info + Map column
 ══════════════════════════════════════════════════════ */
 .infoCol {
   display: flex;
@@ -233,7 +233,7 @@
   line-height: 1;
 }
 
-/* ── Map embed — fills remaining height ─────────────── */
+/* ── Map embed , fills remaining height ─────────────── */
 .mapWrap {
   position: relative;
   border-radius: 14px;

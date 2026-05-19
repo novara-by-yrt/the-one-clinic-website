@@ -21,7 +21,7 @@ import styles from './page.module.css';
 const AT_A_GLANCE = [
   {
     label: 'Procedure Time',
-    value: '45–60 min incl. numbing',
+    value: '45,60 min incl. numbing',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -40,7 +40,7 @@ const AT_A_GLANCE = [
   },
   {
     label: 'Downtime',
-    value: '1–2 days',
+    value: '1,2 days',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
@@ -101,7 +101,7 @@ const JOURNEY_STEPS = [
   {
     n: '04',
     title: 'Full Recovery',
-    desc: 'You walk out the same day. The wound heals over 2–4 weeks with regular dressing changes. Full activity resumes within 4–6 weeks, with no risk of that edge returning.',
+    desc: 'You walk out the same day. The wound heals over 2,4 weeks with regular dressing changes. Full activity resumes within 4,6 weeks, with no risk of that edge returning.',
   },
 ];
 
@@ -133,7 +133,7 @@ const ELIGIBILITY_SUITABLE = [
 
 const ELIGIBILITY_NOT_SUITABLE = [
   'Severe peripheral vascular disease affecting blood supply to the foot',
-  'Active severe infection without adequate antibiotic cover — antibiotics first, then surgery',
+  'Active severe infection without adequate antibiotic cover , antibiotics first, then surgery',
   'Confirmed allergy to local anaesthetic agents',
 ];
 
@@ -150,7 +150,7 @@ const TREATED_BENEFITS = [
   },
   {
     title: 'High Cure Rate',
-    desc: 'Phenolisation of the nail matrix delivers a 95%+ permanent cure rate — far superior to simple nail-cutting or conservative measures alone.',
+    desc: 'Phenolisation of the nail matrix delivers a 95%+ permanent cure rate , far superior to simple nail-cutting or conservative measures alone.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -160,7 +160,7 @@ const TREATED_BENEFITS = [
   },
   {
     title: 'Cosmetically Neat',
-    desc: 'Only the ingrown side strip is removed — the rest of the nail remains intact and grows normally, leaving a naturally narrower but healthy-looking nail.',
+    desc: 'Only the ingrown side strip is removed , the rest of the nail remains intact and grows normally, leaving a naturally narrower but healthy-looking nail.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -169,7 +169,7 @@ const TREATED_BENEFITS = [
   },
   {
     title: 'Quick Procedure',
-    desc: 'The entire appointment, including numbing time, takes around 45–60 minutes. You can usually book the procedure within days of your initial consultation.',
+    desc: 'The entire appointment, including numbing time, takes around 45,60 minutes. You can usually book the procedure within days of your initial consultation.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -221,8 +221,8 @@ const SYMPTOMS_ADDRESSED = [
 const CLINIC_REASONS = [
   { n: '01', text: 'GMC-registered doctors with minor surgery qualifications.' },
   { n: '02', text: 'Proper local anaesthetic ring block for a completely pain-free procedure.' },
-  { n: '03', text: 'Permanent solution using phenolisation — 95%+ cure rate.' },
-  { n: '04', text: 'No long NHS waiting lists — quick appointments and fast relief.' },
+  { n: '03', text: 'Permanent solution using phenolisation , 95%+ cure rate.' },
+  { n: '04', text: 'No long NHS waiting lists , quick appointments and fast relief.' },
   { n: '05', text: 'Fully sterile, clinical environment for complete safety.' },
   { n: '06', text: 'Transparent pricing and comprehensive aftercare included.' },
 ];
@@ -262,7 +262,7 @@ const FAQS = [
   {
     question: 'Does the injection hurt?',
     answer:
-      'The ring block injection stings for a few seconds. It works very quickly — within minutes the toe is completely numb and you will feel nothing during the procedure itself.',
+      'The ring block injection stings for a few seconds. It works very quickly , within minutes the toe is completely numb and you will feel nothing during the procedure itself.',
   },
   {
     question: 'Will I lose the whole nail?',
@@ -272,12 +272,12 @@ const FAQS = [
   {
     question: 'Can I walk home afterwards?',
     answer:
-      'Yes — you can walk out of the clinic. Your toe will still be numb for a couple of hours and you will have a dressing on, so we advise bringing open-toed sandals or loose shoes.',
+      'Yes , you can walk out of the clinic. Your toe will still be numb for a couple of hours and you will have a dressing on, so we advise bringing open-toed sandals or loose shoes.',
   },
   {
     question: 'Will the ingrown nail grow back?',
     answer:
-      'Very unlikely. We use phenol to permanently destroy the nail matrix in the treated corner. This gives a recurrence rate of less than 5%, compared with 70–80% after simple nail cutting.',
+      'Very unlikely. We use phenol to permanently destroy the nail matrix in the treated corner. This gives a recurrence rate of less than 5%, compared with 70,80% after simple nail cutting.',
   },
   {
     question: 'How long until I can wear normal shoes?',
@@ -343,7 +343,7 @@ export default function IngownToenailRemovalPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Fast, pain-free and permanent treatment for ingrown toenails — walk out
+                Fast, pain-free and permanent treatment for ingrown toenails , walk out
                 the same day with lasting relief.
               </motion.p>
 
@@ -424,7 +424,7 @@ export default function IngownToenailRemovalPage() {
                   An ingrown toenail occurs when the edge of the nail grows into the surrounding
                   skin rather than over it. This pierces the skin like a splinter, causing pain,
                   redness, and swelling. Left untreated, bacteria enter through the break in the
-                  skin and the area becomes infected — sometimes producing pus or bleeding.
+                  skin and the area becomes infected , sometimes producing pus or bleeding.
                 </p>
                 <p className={styles.combinedDesc}>
                   Ingrown toenail removal is a minor surgical procedure performed under local
@@ -547,9 +547,9 @@ export default function IngownToenailRemovalPage() {
           >
             <p className={styles.finalResultsEyebrow}>Final Results</p>
             <p className={styles.finalResultsText}>
-              Our three-step approach — anaesthetic, avulsion, and phenolisation — delivers
+              Our three-step approach , anaesthetic, avulsion, and phenolisation , delivers
               immediate pressure relief, infection control, and a permanent cure in a single
-              appointment. The wound heals fully within 4–6 weeks and the treated edge will
+              appointment. The wound heals fully within 4,6 weeks and the treated edge will
               not regrow.
             </p>
           </motion.div>
@@ -744,13 +744,13 @@ export default function IngownToenailRemovalPage() {
               The gold-standard treatment is Partial Nail Avulsion (PNA) with phenolisation.
               After the toe is fully anaesthetised with a ring block, the ingrown nail edge is
               lifted and excised in a single strip from the nail plate down to the germinal
-              matrix — the tissue responsible for growing that section of nail.
+              matrix , the tissue responsible for growing that section of nail.
             </motion.p>
             <motion.p className={styles.howPara} variants={fadeUp}>
               Liquefied phenol is then applied precisely to the exposed matrix. The chemical
               permanently destroys the cells in that corner, preventing the problematic edge
               from regrowing. Clinical data consistently show a 95%+ cure rate with this
-              technique — far superior to simple nail trimming or conservative measures.
+              technique , far superior to simple nail trimming or conservative measures.
             </motion.p>
           </motion.div>
 
@@ -824,13 +824,13 @@ export default function IngownToenailRemovalPage() {
                 <h3 className={styles.resultsAfterCardTitle}>Recovery Timeline</h3>
               </div>
               <p className={styles.resultsAfterCardBody}>
-                Mild soreness is common for 2–3 days once the anaesthetic wears off and
+                Mild soreness is common for 2,3 days once the anaesthetic wears off and
                 is well managed with paracetamol. The wound produces some discharge during
-                healing — this is entirely normal.
+                healing , this is entirely normal.
               </p>
               <div className={styles.resultsAfterCardSpacer} />
               <p className={styles.resultsAfterCardNote}>
-                The toe is fully healed within 4–6 weeks. Most patients return to sport
+                The toe is fully healed within 4,6 weeks. Most patients return to sport
                 and gym activities by this point, with no further episodes from the
                 treated edge.
               </p>
@@ -853,7 +853,7 @@ export default function IngownToenailRemovalPage() {
               </p>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Soreness for 2–3 days (managed with paracetamol)',
+                  'Soreness for 2,3 days (managed with paracetamol)',
                   'Clear or slightly bloody wound weeping during healing',
                   'Mild swelling around the treated area',
                   'Infection (rare when aftercare instructions are followed)',
@@ -889,7 +889,7 @@ export default function IngownToenailRemovalPage() {
                   'Wear open-toed shoes or loose sandals for the first week',
                   'Avoid tight footwear for at least two weeks',
                   'Attend your follow-up dressing-change appointment',
-                  'Trim remaining toenails straight across — never down the sides',
+                  'Trim remaining toenails straight across , never down the sides',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
                     <span className={styles.resultsAfterDot} aria-hidden="true" />
@@ -1013,7 +1013,7 @@ export default function IngownToenailRemovalPage() {
             </motion.h2>
             <motion.p className={styles.conditionsIntro} variants={fadeUp}>
               Our procedure is suitable for a wide range of toenail types and symptom presentations
-              — from straightforward first-time ingrown nails to complex recurrent or infected cases.
+              , from straightforward first-time ingrown nails to complex recurrent or infected cases.
             </motion.p>
           </motion.div>
 
@@ -1079,7 +1079,7 @@ export default function IngownToenailRemovalPage() {
             </motion.div>
             <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
               Experience expert, doctor-led ingrown toenail removal at The One Clinic Leicester.
-              We are not just an aesthetic clinic — we are a fully equipped medical facility with
+              We are not just an aesthetic clinic , we are a fully equipped medical facility with
               GMC-registered doctors who perform minor surgery to the highest clinical standards.
               Get permanent relief without the long NHS waiting lists, in a sterile, compassionate
               environment.

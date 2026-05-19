@@ -9,6 +9,8 @@ const nextConfig: NextConfig = {
 
   // Security and performance headers applied to all routes
   async headers() {
+    const isPreview = process.env.VERCEL_ENV === 'preview' || process.env.NEXT_PUBLIC_ENV === 'preview';
+
     return [
       {
         source: '/(.*)',
@@ -33,6 +35,13 @@ const nextConfig: NextConfig = {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=()',
           },
+          // Block indexing on preview subdomains
+          ...(isPreview ? [
+            {
+              key: 'X-Robots-Tag',
+              value: 'noindex, nofollow, nocache',
+            },
+          ] : []),
         ],
       },
     ];

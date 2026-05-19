@@ -26,7 +26,7 @@ export const fadeIn: Variants = {
   show:   { opacity: 1, transition: { duration: 0.5, ease: EASE } },
 };
 
-/** Stagger container — wrap around children that use fadeUp/fadeIn */
+/** Stagger container , wrap around children that use fadeUp/fadeIn */
 export function stagger(delay = 0.12): Variants {
   return {
     hidden: {},
@@ -64,5 +64,5 @@ export function staggerRight(delay = 0.12): Variants {
   };
 }
 
-/** Shared viewport config — trigger once when 80px into view */
+/** Shared viewport config , trigger once when 80px into view */
 export const VIEWPORT = { once: true, margin: '-80px' } as const;

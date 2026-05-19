@@ -3,8 +3,7 @@ import PatientExperiencePage from './PatientExperiencePage';
 
 export const metadata: Metadata = {
   title: 'Patient Experience | The One Clinic Leicester',
-  description:
-    'Discover the patient experience at The One Clinic, Leicester. From your first consultation to ongoing care, every step is tailored to you by our GMC-registered doctors.',
+  description: 'Discover the patient experience at The One Clinic, Leicester. From your first consultation to ongoing care, every step is tailored to you by our GMC-register…',
   openGraph: {
     title: 'Patient Experience | The One Clinic Leicester',
     description:

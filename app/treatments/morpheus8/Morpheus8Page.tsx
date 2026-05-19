@@ -341,7 +341,7 @@ export default function Morpheus8Page() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Dermatologist.jpg"
+                src="/images/Morpheus8 1.png"
                 alt="Morpheus8 RF microneedling treatment at The One Clinic Leicester"
                 fill
                 priority
@@ -388,8 +388,8 @@ export default function Morpheus8Page() {
 
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
-                alt="Morpheus8 consultation at The One Clinic"
+                src="/images/Morpheus8 2.png"
+                alt="What is Morpheus8 treatment at The One Clinic"
                 fill
                 className={styles.whatIsVideoFrame}
                 sizes="(max-width: 900px) 100vw, 50vw"

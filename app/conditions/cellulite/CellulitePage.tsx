@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import Link  from 'next/link';
 import { motion } from 'framer-motion';
@@ -15,8 +16,36 @@ import Testimonials           from '@/components/sections/Testimonials';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
 
+/* ── Cellulite grades ─────────────────────────────────────────── */
+const CELLULITE_GRADES = [
+  {
+    num: '01',
+    title: 'Grade 1 , Mild',
+    desc: 'Dimpling is only visible when the skin is pinched. Skin appears smooth at rest and when standing.',
+  },
+  {
+    num: '02',
+    title: 'Grade 2 , Moderate',
+    desc: 'Cellulite is visible when standing but may smooth out when lying down. The skin has a noticeably uneven texture.',
+  },
+  {
+    num: '03',
+    title: 'Grade 3 , Severe',
+    desc: 'Deep dimpling and raised areas are visible regardless of position. The skin feels thickened with a pronounced, irregular texture.',
+  },
+];
+
 /* ── Causes ───────────────────────────────────────────────────── */
 const CAUSES = [
+  {
+    title: 'Hormonal Factors',
+    desc: 'Oestrogen plays a central role in fat distribution and connective tissue integrity. Fluctuations during puberty, pregnancy, and the menopause can weaken the fibrous bands beneath the skin, making cellulite more visible.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+      </svg>
+    ),
+  },
   {
     title: 'Genetics',
     desc: 'A family history of cellulite significantly increases your likelihood of developing it. Inherited differences in connective tissue structure, fat cell distribution, and skin thickness all play a role.',
@@ -30,38 +59,6 @@ const CAUSES = [
     ),
   },
   {
-    title: 'Hormonal Changes',
-    desc: 'Oestrogen plays a central role in fat distribution and connective tissue integrity. Fluctuations during puberty, pregnancy, and the menopause can weaken the fibrous bands beneath the skin, making cellulite more visible.',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'Ageing & Skin Laxity',
-    desc: 'As skin thins and loses collagen and elasticity with age, underlying fat cells become more visible through the skin surface. The connective tissue bands that hold fat in place also weaken over time.',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="10"/>
-        <polyline points="12 6 12 12 16 14"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'Lifestyle Factors',
-    desc: 'A sedentary lifestyle, poor diet high in fat and sugar, dehydration, and smoking all contribute to poor circulation, increased fat cell expansion, and reduced skin elasticity, all of which worsen cellulite.',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
-        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
-        <line x1="6" y1="1" x2="6" y2="4"/>
-        <line x1="10" y1="1" x2="10" y2="4"/>
-        <line x1="14" y1="1" x2="14" y2="4"/>
-      </svg>
-    ),
-  },
-  {
     title: 'Poor Circulation',
     desc: 'Reduced blood and lymphatic flow causes fat cells to swell and press against weakened connective tissue. Poor circulation limits the removal of fluid and waste, worsening the dimpled texture over time.',
     icon: (
@@ -71,8 +68,8 @@ const CAUSES = [
     ),
   },
   {
-    title: 'Body Fat Distribution',
-    desc: 'Higher overall body fat increases the pressure on connective tissue bands, making cellulite more prominent. However, cellulite is not exclusive to higher weight, slim individuals can also develop it due to structural factors.',
+    title: 'High Body Fat',
+    desc: 'Higher overall body fat increases the pressure on connective tissue bands, making cellulite more prominent. However, cellulite is not exclusive to those with a higher weight, slim individuals can also develop it due to structural factors.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -81,77 +78,121 @@ const CAUSES = [
       </svg>
     ),
   },
-];
-
-/* ── Treatments ───────────────────────────────────────────────── */
-const TREATMENTS = [
   {
-    title: 'Body Contouring',
-    desc:  'Non-surgical body contouring treatments target stubborn fat deposits and improve skin texture, visibly reducing the appearance of cellulite and restoring a smoother body contour.',
-    href:  '/treatments/body-contouring',
+    title: 'Sedentary Lifestyle',
+    desc: 'Lack of regular physical activity weakens muscles, slows circulation, and encourages fat accumulation. This combination allows fat cells to press more easily through weakened connective tissue, worsening the appearance of cellulite.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+      </svg>
+    ),
   },
   {
-    title: 'Morpheus8',
-    desc:  'Radiofrequency microneedling remodels subcutaneous fat and stimulates collagen production deep within the skin, tightening connective tissue and significantly reducing cellulite dimpling.',
-    href:  '/treatments/morpheus8',
-  },
-  {
-    title: 'Endolift',
-    desc:  'Minimally invasive laser treatment tightens lax skin and breaks down localised fat deposits beneath the surface, delivering a firmer, smoother result with minimal downtime.',
-    href:  '/treatments/endolift',
-  },
-  {
-    title: 'The Body Confidence Package',
-    desc:  'A comprehensive, tailored combination of body treatments designed to address cellulite, skin laxity, and body shape for a more confident, sculpted appearance.',
-    href:  '/treatments/the-body-confidence-package',
+    title: 'Diet & Hydration',
+    desc: 'A diet high in fat, sugar, and processed foods combined with poor hydration contributes to toxin build-up, fluid retention, and increased fat cell expansion, all of which worsen the appearance of cellulite.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+      </svg>
+    ),
   },
 ];
 
 /* ── Risk factors ─────────────────────────────────────────────── */
 const RISK_FACTORS = [
-  'Women, oestrogen plays a central role in cellulite development and is far more common in women than men.',
-  'Those with a family history of cellulite or poor connective tissue structure.',
-  'Adults over 35 as skin elasticity decreases and collagen production slows.',
-  'Individuals with sedentary lifestyles or diets high in processed foods and sugar.',
-  'Those who have experienced significant weight gain, pregnancy, or hormonal changes.',
-  'People with poor circulation or lymphatic drainage.',
+  'Women , oestrogen plays a central role in cellulite development, affecting up to 90% of women.',
+  'Those with hormonal imbalances or fluctuations from puberty, pregnancy, or menopause.',
+  'Sedentary individuals with low physical activity levels.',
+  'People with higher body fat percentages or irregular fat distribution.',
+  'Those with a poor diet high in processed foods, sugar, or low in hydration.',
+  'Individuals with a genetic predisposition to poor connective tissue structure.',
+];
+
+/* ── Diagnose steps ───────────────────────────────────────────── */
+const DIAGNOSE_STEPS = [
+  {
+    num: '01',
+    text: 'Visual & Physical Assessment , Examine the affected areas to determine the grade and distribution of cellulite.',
+  },
+  {
+    num: '02',
+    text: 'Skin Elasticity Testing , Assess skin thickness, firmness, and the integrity of underlying connective tissue.',
+  },
+  {
+    num: '03',
+    text: 'Lifestyle & Hormonal Review , Discuss your medical history, diet, activity levels, and hormonal factors to guide treatment.',
+  },
+];
+
+/* ── Treatments ───────────────────────────────────────────────── */
+const TREATMENTS = [
+  {
+    title:  'Body Contouring',
+    desc:   'Non-surgical body contouring treatments target stubborn fat deposits and improve skin texture, visibly reducing the appearance of cellulite and restoring a smoother body contour.',
+    href:   '/treatments/body-contouring',
+    image:  '/images/BA1.jpg',
+  },
+  {
+    title:  'Endolift Laser',
+    desc:   'Minimally invasive laser treatment tightens lax skin and breaks down localised fat deposits beneath the surface, delivering a firmer, smoother result with minimal downtime.',
+    href:   '/treatments/endolift',
+    image:  '/images/BA2.jpg',
+  },
+  {
+    title:  'Liposuction',
+    desc:   'Surgical fat removal that precisely targets and eliminates stubborn fat deposits, significantly improving body shape and reducing the structural contributors to cellulite.',
+    href:   '/treatments/liposuction-leicester',
+    image:  '/images/BA3.jpg',
+  },
+  {
+    title:  'The Body Confidence Package',
+    desc:   'A comprehensive, tailored combination of body treatments designed to address cellulite, skin laxity, and body shape for a more confident, sculpted appearance.',
+    href:   '/treatments/the-body-confidence-package',
+    image:  '/images/BA4.jpg',
+  },
+];
+
+/* ── When to call a doctor ────────────────────────────────────── */
+const WHEN_TO_CALL = [
+  'Worsening dimpling or skin texture changes that occur rapidly.',
+  'Skin discolouration, redness, or unusual pigmentation in affected areas.',
+  'Associated pain, tenderness, or discomfort in areas of cellulite.',
+  'Swelling that does not reduce with lifestyle changes.',
 ];
 
 /* ── Results timeline ─────────────────────────────────────────── */
 const RESULTS_TIMELINE = [
   {
-    phase: '2 to 4 Weeks',
-    title: 'Texture Improving',
-    desc:  'Skin texture begins to improve as collagen stimulation and fat remodelling take effect.',
+    phase: 'Treatment Timeline',
+    title: 'Phased Improvement',
+    desc:  'Most patients see initial skin texture improvements within 2 to 4 weeks of beginning their treatment course.',
   },
   {
-    phase: '6 to 8 Weeks',
-    title: 'Smoother Skin',
-    desc:  'Visible reduction in dimpling and improved skin firmness and smoothness.',
+    phase: 'Skin Smoothness Progress',
+    title: 'Visible Reduction',
+    desc:  'Significant reduction in dimpling and improved skin firmness are typically visible by 6 to 8 weeks post-treatment.',
   },
   {
-    phase: '3 Months',
-    title: 'Full Results',
-    desc:  'Optimal results are seen as collagen remodelling and contouring reach their peak.',
-  },
-  {
-    phase: 'Long-term',
-    title: 'Maintained Results',
-    desc:  'Healthy lifestyle habits and maintenance treatments sustain a smoother contour.',
+    phase: 'Maintaining Results',
+    title: 'Long-term Care',
+    desc:  'Healthy lifestyle habits and periodic maintenance treatments sustain a smoother, firmer contour long term.',
   },
 ];
 
-/* ── Why choose ───────────────────────────────────────────────── */
+/* ── Why choose The One Clinic ────────────────────────────────── */
 const CLINIC_REASONS = [
-  { n: '01', text: 'All-in-one clinic with medical and aesthetic services.' },
-  { n: '02', text: 'Highly trained, compassionate, GMC-registered doctors.' },
-  { n: '03', text: 'Customised treatment plans based on your body type and goals.' },
-  { n: '04', text: 'State-of-the-art body contouring and skin tightening technology.' },
-  { n: '05', text: 'Strong reputation with excellent patient reviews.' },
-  { n: '06', text: 'Comprehensive aftercare and follow-up support.' },
+  { n: '01', text: 'All-in-one clinic with medical & aesthetic services.' },
+  { n: '02', text: 'Highly trained, compassionate doctors.' },
+  { n: '03', text: 'Customised treatments based on listening & expertise.' },
+  { n: '04', text: 'State-of-the-art facilities & modern equipment.' },
+  { n: '05', text: 'Strong reputation & excellent reviews.' },
+  { n: '06', text: 'Comprehensive care and referrals with specialists.' },
 ];
 
-/* ── FAQs ─────────────────────────────────────────────────────── */
+/* ── FAQ data ──────────────────────────────────────────────────── */
 const FAQS = [
   {
     question: 'What causes cellulite and why is it more common in women?',
@@ -161,26 +202,31 @@ const FAQS = [
   {
     question: 'Can cellulite be completely removed?',
     answer:
-      'Cellulite can be significantly reduced with the right combination of treatments, but complete elimination is not always achievable. Treatments such as Morpheus8 and body contouring can dramatically improve skin texture, firmness, and the appearance of dimpling. Results depend on the severity of cellulite, your skin type, and lifestyle factors. A personalised plan from our doctors will give you the most effective outcome.',
+      'Cellulite can be significantly reduced with the right combination of treatments, but complete elimination is not always achievable. Treatments such as body contouring, Endolift, and liposuction can dramatically improve skin texture, firmness, and the appearance of dimpling. Results depend on the severity of cellulite, your skin type, and lifestyle factors. A personalised plan from our doctors will give you the most effective outcome.',
   },
   {
     question: 'How many sessions will I need?',
     answer:
-      'The number of sessions depends on the grade of cellulite and the treatment chosen. Most patients see noticeable improvement after two to four sessions of Morpheus8 or body contouring, with full results developing over 8 to 12 weeks. Your doctor will recommend a personalised treatment course during your consultation.',
+      'The number of sessions depends on the grade of cellulite and the treatment chosen. Most patients see noticeable improvement after two to four sessions of body contouring, with full results developing over 8 to 12 weeks. Your doctor will recommend a personalised treatment course during your consultation.',
   },
   {
     question: 'Is cellulite treatment painful?',
     answer:
-      'Most treatments are well tolerated with minimal discomfort. Morpheus8 uses topical anaesthetic to ensure comfort during the procedure. Body contouring treatments are typically painless, with a warming or pressure sensation. Any post-treatment sensitivity is usually mild and resolves within a day or two.',
+      'Most treatments are well tolerated with minimal discomfort. Endolift uses local anaesthetic to ensure comfort during the procedure. Body contouring treatments are typically painless, with a warming or pressure sensation. Any post-treatment sensitivity is usually mild and resolves within a day or two.',
   },
   {
-    question: 'What is the recovery time?',
+    question: 'What is the recovery time after cellulite treatment?',
     answer:
-      'Recovery is minimal for most treatments. Body contouring requires no downtime. Morpheus8 may cause redness, mild swelling, or sensitivity for 2 to 3 days. Endolift has a short recovery of 2 to 5 days. Most patients return to normal activities quickly, and results continue to improve over the following weeks.',
+      'Recovery is minimal for most treatments. Body contouring requires no downtime. Endolift has a short recovery of 2 to 5 days. Liposuction involves a longer recovery of 1 to 2 weeks. Most patients return to normal activities quickly, and results continue to improve over the following weeks.',
+  },
+  {
+    question: 'Who is a good candidate for cellulite treatment?',
+    answer:
+      'Most adults bothered by the appearance of cellulite are suitable candidates. Ideal candidates are in good general health, have realistic expectations, and are close to their target weight. Our doctors will assess your grade of cellulite, skin quality, and overall health to recommend the most appropriate treatment for your needs.',
   },
 ];
 
-/* ── Related ──────────────────────────────────────────────────── */
+/* ── Related treatments ───────────────────────────────────────── */
 const RELATED_TREATMENTS = [
   {
     title: 'Body Contouring',
@@ -189,30 +235,37 @@ const RELATED_TREATMENTS = [
     tag:   'Body',
   },
   {
-    title: 'Morpheus8',
-    desc:  'Remodel subcutaneous fat and tighten connective tissue with radiofrequency microneedling.',
-    href:  '/treatments/morpheus8',
-    tag:   'Body',
-  },
-  {
     title: 'Endolift',
     desc:  'Tighten skin and target localised fat with minimally invasive laser treatment.',
     href:  '/treatments/endolift',
     tag:   'Body',
   },
+  {
+    title: 'Liposuction',
+    desc:  'Surgical fat removal for precise body shaping and improved skin contour.',
+    href:  '/treatments/liposuction-leicester',
+    tag:   'Body',
+  },
+  {
+    title: 'The Body Confidence Package',
+    desc:  'A comprehensive combination of body treatments tailored to your goals.',
+    href:  '/treatments/the-body-confidence-package',
+    tag:   'Body',
+  },
 ];
 
+/* ── Related conditions ───────────────────────────────────────── */
 const RELATED_CONDITIONS = [
   {
     title: 'Abdominal Fat / Belly Fat',
     desc:  'Reduce stubborn abdominal fat with targeted non-surgical body contouring treatments.',
-    href:  '/conditions/abdominal-fat',
+    href:  '/conditions/abdominal-fat-belly-fat',
     tag:   'Body',
   },
   {
     title: 'Excess Body Fat',
     desc:  'Address excess fat on the arms, bra line, back, and thighs with tailored treatments.',
-    href:  '/conditions/excess-fat',
+    href:  '/conditions/excess-body-fat-arm-fat-bra-fat-back-fat-thigh-fat',
     tag:   'Body',
   },
 ];
@@ -221,6 +274,10 @@ const RELATED_CONDITIONS = [
    PAGE
 ════════════════════════════════════════════════════════════════ */
 export default function CellulitePage() {
+  const [showAllFaqs, setShowAllFaqs] = useState(false);
+
+  const visibleFaqs = showAllFaqs ? FAQS : FAQS.slice(0, 4);
+
   return (
     <>
       {/* ════════════════════════════════════════
@@ -228,9 +285,10 @@ export default function CellulitePage() {
       ════════════════════════════════════════ */}
       <section
         className={styles.hero}
-        aria-label="Cellulite treatment, hero"
+        aria-label="Cellulite Treatment Leicester, hero"
         data-section-theme="dark"
       >
+        {/* Breadcrumb, pinned below fixed header */}
         <div className={styles.heroBreadcrumb}>
           <Container>
             <Breadcrumb
@@ -250,18 +308,18 @@ export default function CellulitePage() {
             initial="hidden"
             animate="show"
           >
+            {/* Left: text content */}
             <div className={styles.heroLeft}>
               <motion.span className={styles.heroCategory} variants={fadeUp}>
                 Conditions · Body
               </motion.span>
 
               <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                Cellulite
+                Cellulite Treatment Leicester
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Reduce the appearance of cellulite with advanced body treatments
-                that target the root cause, for smoother, firmer, more confident skin.
+                Smooth and firm skin with clinically proven cellulite treatments.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -270,10 +328,12 @@ export default function CellulitePage() {
                 </BookConsultationButton>
               </motion.div>
 
+              {/* Trust badges */}
               <motion.div variants={fadeUp}>
                 <TrustBadges theme="dark" />
               </motion.div>
 
+              {/* Trust items */}
               <motion.div className={styles.heroTrust} variants={fadeUp}>
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -301,10 +361,11 @@ export default function CellulitePage() {
               </motion.div>
             </div>
 
+            {/* Right: hero image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
                 src="/images/Cellulite.png"
-                alt="Cellulite treatment at The One Clinic Leicester"
+                alt="Cellulite treatment at The One Clinic Leicester , smooth and firm skin results"
                 fill
                 className={styles.heroImage}
                 sizes="(max-width: 900px) 100vw, 50vw"
@@ -317,101 +378,92 @@ export default function CellulitePage() {
       </section>
 
       {/* ════════════════════════════════════════
-          2. WHAT IS CELLULITE?
+          2. WHAT IS CELLULITE & TYPES (Combined)
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="light" data-section-theme="light" className={styles.overviewTypesSection}>
         <Container>
-          <motion.div
-            className={styles.overviewGrid}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.div className={styles.overviewLabel} variants={fadeUp}>
-              <p className={styles.eyebrowDark}>About This Condition</p>
-            </motion.div>
-
-            <div className={styles.overviewBody}>
-              <motion.h2 className={styles.overviewHeading} variants={fadeUp}>
-                What Is Cellulite?
-              </motion.h2>
-              <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Cellulite is a common condition characterised by a dimpled, uneven skin
-                texture, often described as an orange-peel appearance. It occurs when
-                fat cells beneath the skin push through weakened bands of connective
-                tissue, creating the characteristic lumpy surface most visible on the
-                thighs, buttocks, and abdomen.
-              </motion.p>
-              <motion.p className={styles.overviewPara} variants={fadeUp}>
-                Cellulite affects people of all body types and is far more common in
-                women than men. While it is entirely harmless, it can significantly
-                affect confidence. With the right professional treatment, the appearance
-                of cellulite can be substantially reduced, revealing smoother, firmer skin.
-              </motion.p>
+          <div className={styles.combinedBody}>
+            {/* Left column: Overview */}
+            <div className={styles.combinedLeft}>
+              <div className={styles.combinedLeftTop}>
+                <motion.p
+                  className={styles.eyebrowDark}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  About This Condition
+                </motion.p>
+                <motion.h2
+                  className={styles.combinedHeading}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  What is Cellulite?
+                </motion.h2>
+                <motion.p
+                  className={styles.combinedDesc}
+                  initial="hidden"
+                  whileInView="show"
+                  variants={fadeUp}
+                  viewport={VIEWPORT}
+                >
+                  Cellulite is a common condition characterised by a dimpled, uneven
+                  skin texture , often described as an orange-peel appearance. It occurs
+                  when fat cells beneath the skin push through weakened bands of
+                  connective tissue, creating a lumpy surface most visible on the thighs,
+                  buttocks, and abdomen. Cellulite affects people of all body types and
+                  is far more common in women, though it is entirely harmless.
+                </motion.p>
+              </div>
             </div>
-          </motion.div>
-        </Container>
-      </Section>
 
-      {/* ════════════════════════════════════════
-          3. GRADES
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              How It Presents
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Grades of Cellulite
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.typesCardsRow}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {[
-              {
-                num: '01',
-                title: 'Mild',
-                desc: 'Dimpling is only visible when the skin is pinched. Skin appears smooth at rest and when standing.',
-              },
-              {
-                num: '02',
-                title: 'Moderate',
-                desc: 'Cellulite is visible when standing but may smooth out when lying down. The skin has a noticeably uneven texture.',
-              },
-              {
-                num: '03',
-                title: 'Severe',
-                desc: 'Deep dimpling and raised areas visible regardless of position. The skin feels thickened and has a pronounced, irregular texture.',
-              },
-            ].map((type) => (
-              <motion.div key={type.num} className={styles.typeCard} variants={fadeUp}>
-                <span className={styles.typeNum} aria-hidden="true">{type.num}</span>
-                <div className={styles.typeCardBody}>
-                  <h3 className={styles.typeTitle}>{type.title}</h3>
-                  <p className={styles.typeDesc}>{type.desc}</p>
-                </div>
+            {/* Right column: Grades */}
+            <div className={styles.combinedRight}>
+              <motion.div
+                className={styles.typesRightHeader}
+                initial="hidden"
+                whileInView="show"
+                variants={fadeUp}
+                viewport={VIEWPORT}
+              >
+                <p className={styles.combinedRightLabel}>Classification</p>
+                <h3 className={styles.typesRightHeading}>Grades of Cellulite</h3>
               </motion.div>
-            ))}
-          </motion.div>
+
+              <motion.div
+                className={styles.combinedCards}
+                variants={stagger(0.1)}
+                initial="hidden"
+                whileInView="show"
+                viewport={VIEWPORT}
+              >
+                {CELLULITE_GRADES.map((grade) => (
+                  <motion.div
+                    key={grade.num}
+                    className={styles.typeCardCombined}
+                    variants={fadeUp}
+                  >
+                    <span className={styles.typeNumCombined} aria-hidden="true">
+                      {grade.num}
+                    </span>
+                    <div className={styles.typeCardHeader}>
+                      <h3 className={styles.typeTitleCombined}>{grade.title}</h3>
+                      <p className={styles.typeDescCombined}>{grade.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          4. CAUSES
+          4. CELLULITE CAUSES
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.causesSection}>
         <Container>
@@ -426,11 +478,11 @@ export default function CellulitePage() {
               Root Causes
             </motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              What Causes Cellulite?
+              Cellulite Causes
             </motion.h2>
             <motion.p className={styles.sectionSubtext} variants={fadeUp}>
-              Cellulite develops through a combination of structural, hormonal,
-              and lifestyle factors rather than a single cause.
+              Cellulite develops through a combination of structural, hormonal, and
+              lifestyle factors rather than a single cause.
             </motion.p>
           </motion.div>
 
@@ -461,7 +513,7 @@ export default function CellulitePage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          5. RISK FACTORS
+          5. WHO IS MORE LIKELY?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
@@ -472,41 +524,56 @@ export default function CellulitePage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div className={styles.riskLeft} variants={stagger(0.1)}>
-              <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-                Risk Factors
-              </motion.p>
-              <motion.h2 className={styles.riskHeading} variants={fadeUp}>
-                Who Is More Likely to Develop Cellulite?
-              </motion.h2>
-              <motion.p className={styles.riskIntro} variants={fadeUp}>
-                Cellulite is extremely common, but certain factors increase
-                its severity and how early it appears.
-              </motion.p>
+            {/* Left: image */}
+            <motion.div className={styles.riskImageWrap} variants={fadeUp}>
+              <Image
+                src="/images/Cellulite.png"
+                alt="Cellulite treatment results showing smoother skin at The One Clinic Leicester"
+                fill
+                className={styles.riskImage}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className={styles.riskImageOverlay} aria-hidden="true" />
             </motion.div>
 
-            <motion.ul
-              className={styles.riskList}
-              role="list"
-              variants={stagger(0.08)}
-            >
-              {RISK_FACTORS.map((item) => (
-                <motion.li key={item} className={styles.riskItem} variants={fadeUp}>
-                  <span className={styles.riskCheck} aria-hidden="true">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
-                  <span>{item}</span>
-                </motion.li>
-              ))}
-            </motion.ul>
+            {/* Right: heading + intro + checklist */}
+            <motion.div className={styles.riskRight} variants={stagger(0.1)}>
+              <div className={styles.riskRightInner}>
+                <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+                  Risk Factors
+                </motion.p>
+                <motion.h2 className={styles.riskHeading} variants={fadeUp}>
+                  Who Is More Likely to Develop Cellulite?
+                </motion.h2>
+                <motion.p className={styles.riskIntro} variants={fadeUp}>
+                  Cellulite is extremely common, but certain factors increase its
+                  severity and how early it appears.
+                </motion.p>
+
+                <motion.ul
+                  className={styles.riskList}
+                  role="list"
+                  variants={stagger(0.08)}
+                >
+                  {RISK_FACTORS.map((item) => (
+                    <motion.li key={item} className={styles.riskItem} variants={fadeUp}>
+                      <span className={styles.riskCheck} aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                          <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </span>
+                      <span>{item}</span>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </div>
+            </motion.div>
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          6. TREATMENTS
+          6. HOW DO WE DIAGNOSE?
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -518,10 +585,56 @@ export default function CellulitePage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Your Options
+              Our Process
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Treatments for Cellulite
+              How Do We Diagnose Cellulite?
+            </motion.h2>
+            <motion.p className={styles.diagnoseIntro} variants={fadeUp}>
+              Our specialists will:
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.diagnoseGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {DIAGNOSE_STEPS.map((step) => (
+              <motion.div
+                key={step.num}
+                className={styles.diagnoseCard}
+                variants={fadeUp}
+              >
+                <span className={styles.diagnoseNum} aria-hidden="true">
+                  {step.num}
+                </span>
+                <p className={styles.diagnoseText}>{step.text}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          7. TREATMENTS FOR CELLULITE
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Your Options
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Treatments For Cellulite
             </motion.h2>
           </motion.div>
 
@@ -557,9 +670,57 @@ export default function CellulitePage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          7. RESULTS & EXPECTATIONS
+          8. WHEN TO CALL A DOCTOR?
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light">
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.whenToCallWrap}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {/* Left: heading */}
+            <motion.div className={styles.whenToCallLeft} variants={stagger(0.1)}>
+              <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+                Medical Advice
+              </motion.p>
+              <motion.h2 className={styles.whenToCallHeading} variants={fadeUp}>
+                When to Call a Doctor?
+              </motion.h2>
+              <motion.p className={styles.whenToCallIntro} variants={fadeUp}>
+                Cellulite is usually harmless, but you should seek advice if you notice:
+              </motion.p>
+            </motion.div>
+
+            {/* Right: warning list */}
+            <motion.ul
+              className={styles.whenToCallList}
+              role="list"
+              variants={stagger(0.08)}
+            >
+              {WHEN_TO_CALL.map((item) => (
+                <motion.li key={item} className={styles.whenToCallItem} variants={fadeUp}>
+                  <span className={styles.whenToCallIcon} aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="8" x2="12" y2="12"/>
+                      <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          9. RESULTS & EXPECTATIONS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.resultsSection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -575,7 +736,8 @@ export default function CellulitePage() {
               Results &amp; Expectations
             </motion.h2>
             <motion.p className={styles.sectionSubtext} variants={fadeUp}>
-              After cellulite treatment, here is what you can typically expect at each stage.
+              After treatment for cellulite, here is what you can expect at each stage
+              of your recovery and improvement.
             </motion.p>
           </motion.div>
 
@@ -603,19 +765,19 @@ export default function CellulitePage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. MEET THE EXPERTS
+          10. MEET THE EXPERTS
       ════════════════════════════════════════ */}
       <MeetTheExperts />
 
       {/* ════════════════════════════════════════
-          9. GOOGLE REVIEWS
+          GOOGLE REVIEWS
       ════════════════════════════════════════ */}
       <Testimonials />
 
       {/* ════════════════════════════════════════
-          10. WHY CHOOSE THE ONE CLINIC
+          11. WHY CHOOSE THE ONE CLINIC
       ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
+      <Section variant="light" data-section-theme="light" className={styles.whySection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -624,8 +786,10 @@ export default function CellulitePage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Why Us</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Why Us
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
               Why Choose The One Clinic For Cellulite Treatment
             </motion.h2>
           </motion.div>
@@ -653,10 +817,10 @@ export default function CellulitePage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          11. FAQ
+          12. FAQ
       ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
+      <Section variant="light" data-section-theme="light" className={styles.faqSection}>
+        <Container className={styles.faqInner}>
           <motion.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
@@ -664,8 +828,8 @@ export default function CellulitePage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>FAQ</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
               Frequently Asked Questions
             </motion.h2>
           </motion.div>
@@ -677,19 +841,35 @@ export default function CellulitePage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <Accordion items={FAQS} theme="dark" />
+            <Accordion items={visibleFaqs} theme="dark" />
           </motion.div>
+
+          <div className={styles.faqToggleWrap}>
+            <button
+              className={styles.faqToggleBtn}
+              onClick={() => setShowAllFaqs((prev) => !prev)}
+            >
+              {showAllFaqs ? 'Show Fewer Questions' : 'View All Questions'}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                {showAllFaqs
+                  ? <polyline points="18 15 12 9 6 15" />
+                  : <polyline points="6 9 12 15 18 9" />
+                }
+              </svg>
+            </button>
+          </div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          12. CTA BAND
+          13. CONSULTATION CTA
       ════════════════════════════════════════ */}
       <section
         className={styles.ctaBand}
         data-section-theme="dark"
         aria-label="Cellulite consultation CTA"
       >
+        {/* Background image */}
         <div className={styles.ctaBandBgWrap} aria-hidden="true">
           <Image
             src="/images/Background section image new1.jpg"
@@ -717,8 +897,8 @@ export default function CellulitePage() {
               <span className={styles.ctaAccent}>Firmer Skin?</span>
             </motion.h2>
             <motion.p className={styles.ctaSubtext} variants={fadeUp}>
-              Speak to our specialists today to find the most effective treatment
-              for your cellulite and restore the body confidence you deserve.
+              Talk to our specialists today to find the best treatment for your
+              cellulite and restore the body confidence you deserve.
             </motion.p>
             <motion.div className={styles.ctaBtns} variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBtnPrimary}>
@@ -727,40 +907,6 @@ export default function CellulitePage() {
               <Link href="#contact" className={styles.ctaBtnSecondary}>
                 Contact Us
               </Link>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
-
-      {/* ════════════════════════════════════════
-          13. COST BAND
-      ════════════════════════════════════════ */}
-      <section
-        className={styles.costBand}
-        data-section-theme="dark"
-        aria-label="Cellulite treatment cost"
-      >
-        <Container>
-          <motion.div
-            className={styles.costBandInner}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.costBandEyebrow} variants={fadeUp}>
-              Pricing
-            </motion.p>
-            <motion.h2 className={styles.costBandHeading} variants={fadeUp}>
-              Cellulite Treatment Cost
-            </motion.h2>
-            <motion.p className={styles.costBandNote} variants={fadeUp}>
-              Contact us to enquire
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBtnPrimary}>
-                Book A Consultation
-              </BookConsultationButton>
             </motion.div>
           </motion.div>
         </Container>
@@ -858,6 +1004,7 @@ export default function CellulitePage() {
           </motion.div>
         </Container>
       </Section>
+
     </>
   );
 }

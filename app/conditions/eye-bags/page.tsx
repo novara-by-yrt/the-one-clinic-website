@@ -2,9 +2,8 @@ import type { Metadata } from 'next';
 import EyeBagsPage from './EyeBagsPage';
 
 export const metadata: Metadata = {
-  title: 'Eye Bags Treatment Leicester | Smooth & Refreshed Eyes | The One Clinic',
-  description:
-    'Expert eye bag treatment at The One Clinic, Leicester. Reduce puffiness and under-eye bags with personalised dermal filler and aesthetic treatments from GMC-registered doctors.',
+  title: 'Eye Bags Treatment Leicester | Smooth & Refreshed Eyes',
+  description: 'Expert eye bag treatment at The One Clinic, Leicester. Reduce puffiness and under-eye bags with personalised dermal filler and aesthetic treatments from GMC-…',
   keywords: [
     'eye bags treatment Leicester',
     'under eye bags Leicester',
@@ -21,7 +20,7 @@ export const metadata: Metadata = {
     'The One Clinic Leicester',
   ],
   openGraph: {
-    title: 'Eye Bags Treatment Leicester | The One Clinic',
+    title: 'Eye Bags Treatment Leicester',
     description:
       'Get rid of eye bags for a smooth and refreshed look with personalised treatments at The One Clinic, Leicester. GMC-registered doctors.',
   },

@@ -56,13 +56,13 @@
 }
 
 /* ══════════════════════════════════════════════════════════
-   STAGE — 3-column grid, all bottom-aligned
+   STAGE , 3-column grid, all bottom-aligned
    [prev small] | [active large] | [info top + 2 cards bottom]
 ══════════════════════════════════════════════════════════ */
 .stage {
   display: grid;
   grid-template-columns:
-    clamp(100px, 12vw, 148px)       /* prev card — sets the reference size */
+    clamp(100px, 12vw, 148px)       /* prev card , sets the reference size */
     clamp(240px, 28vw, 340px)       /* active card */
     clamp(220px, 30vw, 400px);      /* right col (info + 2 cards) */
   align-items: end;
@@ -78,7 +78,7 @@
 .stage:active { cursor: grabbing; }
 
 /* ══════════════════════════════════════════════════════════
-   NON-ACTIVE CARD BASE SIZE — prev card sets the reference.
+   NON-ACTIVE CARD BASE SIZE , prev card sets the reference.
    All side cards (prev + two next) share this height.
 ══════════════════════════════════════════════════════════ */
 .sideCard {
@@ -100,7 +100,7 @@
 }
 
 /* ══════════════════════════════════════════════════════════
-   ACTIVE CARD — tall, prominent
+   ACTIVE CARD , tall, prominent
 ══════════════════════════════════════════════════════════ */
 .activeCard {
   position: relative;
@@ -161,7 +161,7 @@
 }
 
 /* ══════════════════════════════════════════════════════════
-   RIGHT COLUMN — info (top) + 2 card thumbnails (bottom)
+   RIGHT COLUMN , info (top) + 2 card thumbnails (bottom)
    Same total height as active card
 ══════════════════════════════════════════════════════════ */
 .rightCol {
@@ -269,7 +269,7 @@
   border-radius: 50px;
 }
 
-/* ── Two next thumbnails — same size as prev card, side by side ── */
+/* ── Two next thumbnails , same size as prev card, side by side ── */
 .nextRow {
   display: flex;
   gap: clamp(10px, 1.4vw, 16px);
@@ -296,7 +296,7 @@
 }
 
 /* ══════════════════════════════════════════════════════════
-   MOBILE OVERLAY ARROWS — hidden on desktop, shown on mobile
+   MOBILE OVERLAY ARROWS , hidden on desktop, shown on mobile
 ══════════════════════════════════════════════════════════ */
 .mobileNavPrev,
 .mobileNavNext {
@@ -331,7 +331,7 @@
 .mobileNavNext { right: 12px; }
 
 /* ══════════════════════════════════════════════════════════
-   NAV ROW — centered below entire slideshow
+   NAV ROW , centered below entire slideshow
 ══════════════════════════════════════════════════════════ */
 .navRow {
   display: flex;
@@ -397,7 +397,7 @@
   }
 }
 
-/* Tablet portrait — hide prev card, 2-column layout */
+/* Tablet portrait , hide prev card, 2-column layout */
 @media (max-width: 768px) {
   .stage {
     grid-template-columns:
@@ -426,7 +426,7 @@
   .bio { -webkit-line-clamp: 2; }
 }
 
-/* Mobile — fully stacked */
+/* Mobile , fully stacked */
 @media (max-width: 540px) {
   .stage {
     display: flex;
