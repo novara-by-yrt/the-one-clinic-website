@@ -70,7 +70,7 @@ export default function Footer() {
           <div className={styles.newsletterFormWrap}>
             <iframe
               src="https://link.leadpipeline.ai/widget/form/dViZEitr7fnCtl8rKT3Q"
-              style={{ width: '100%', height: '395px', border: 'none', borderRadius: '0px', display: 'block' }}
+              style={{ width: '100%', height: '420px', border: 'none', borderRadius: '10px', display: 'block' }}
               id="inline-dViZEitr7fnCtl8rKT3Q"
               data-layout="{'id':'INLINE'}"
               data-trigger-type="alwaysShow"
@@ -80,7 +80,7 @@ export default function Footer() {
               data-deactivation-type="neverDeactivate"
               data-deactivation-value=""
               data-form-name="Newsletter Form"
-              data-height="395"
+              data-height="420"
               data-layout-iframe-id="inline-dViZEitr7fnCtl8rKT3Q"
               data-form-id="dViZEitr7fnCtl8rKT3Q"
               title="Newsletter Form"

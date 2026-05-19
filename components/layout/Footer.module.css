@@ -114,8 +114,10 @@
 
 /* ── Newsletter form (right) ─────────────── */
 .newsletterFormWrap {
-  /* iframe is 395px; no extra padding so it reaches the divider */
+  width: 100%;
+  min-height: 420px;
   overflow: hidden;
+  border-radius: 10px;
 }
 
 /* ═══════════════════════════════════════════
@@ -356,6 +358,10 @@
 @media (max-width: 580px) {
   .newsletterBand {
     padding-top: 48px;
+  }
+
+  .newsletterFormWrap {
+    min-height: 420px;
   }
 
   .leftZone {
