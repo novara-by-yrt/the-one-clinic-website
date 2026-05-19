@@ -67,7 +67,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Dr Mahesh Kodivalasa',
     credentials: '',
     initials: 'MK',
-    image: '/images/Dr Mahesh Kodivalasa.webp',
+    image: '/images/Dr Mahesh Kodivalasa-updated.png',
     role: 'Doctor',
     bio: [
       'Dr Mahesh Kodivalasa is a valued member of The One Clinic medical team, bringing dedication and clinical expertise to every patient interaction.',
@@ -79,7 +79,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Dr Hari Subramaniam',
     credentials: 'MSc, MD, DPM, DNB, FRCPsych',
     initials: 'HS',
-    image: '/images/Dr Hari Subramaniam.webp',
+    image: '/images/Dr Hari Subramaniam-updated.png',
     role: 'Consultant Psychiatrist',
     bio: [
       'Dr Hari Subramaniam is a Consultant Psychiatrist with an impressive portfolio of qualifications including MSc, MD, DPM, DNB, and FRCPsych.',
@@ -91,7 +91,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Dr Amol Vaze',
     credentials: '',
     initials: 'AV',
-    image: '/images/Dr Amol Vaze.jpg',
+    image: '/images/Dr Amol Vaze-updated.png',
     role: 'Doctor',
     bio: [
       'Dr Amol Vaze is an experienced clinician committed to providing exceptional patient care at The One Clinic.',
