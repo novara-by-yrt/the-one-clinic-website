@@ -3,9 +3,9 @@
   position: fixed;
   inset: 0;
   z-index: 200;
-  background: rgb(0 0 0 / 0.78);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgb(0 0 0 / 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 /* ── Modal outer centering wrapper ───────────────────────── */
@@ -24,35 +24,60 @@
 .modal {
   pointer-events: all;
   background: #fff;
-  border-radius: 16px;
-  overflow: visible;
-  width: min(900px, 100%);
+  border-radius: 22px;
+  overflow-x: hidden;
+  overflow-y: auto;          /* Whole modal scrolls as one if viewport too short */
   max-height: calc(100vh - 48px);
+  width: min(840px, 100%);
   display: flex;
   flex-direction: row;
   box-shadow:
-    0 32px 96px rgb(0 0 0 / 0.5),
-    0 0 0 1px rgba(0, 0, 0, 0.07);
+    0 48px 120px rgb(0 0 0 / 0.42),
+    0 20px 48px rgb(0 0 0 / 0.18),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
 }
 
-/* ── Team image panel (desktop left column) ───────────────── */
+/* ── Team image panel (left column) ──────────────────────── */
 .modalImage {
   position: relative;
-  flex: 0 0 320px;
-  align-self: stretch;
+  flex: 0 0 340px;
+  min-height: 420px;
   overflow: hidden;
+}
+
+/* Gradient overlay for premium blending */
+.modalImage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.08) 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.28) 100%
+  );
+  pointer-events: none;
 }
 
 /* ── Form side (right column) ─────────────────────────────── */
 .modalContent {
-  flex: 0 1 auto;
-  /* removed flex: 1 to prevent stretching; flex: 0 1 auto allows shrinking to content
-     while still allowing overflow with overflow-y: auto on small viewports */
+  flex: 1;
   min-width: 0;
-  overflow-y: auto;
-  max-height: calc(100vh - 48px);
   display: flex;
   flex-direction: column;
+  background: #ffffff;
+  position: relative;
+}
+
+/* Subtle decorative top accent line */
+.modalContent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0d1520 0%, rgba(13, 21, 32, 0.3) 100%);
 }
 
 /* ── Modal header row ─────────────────────────────────────── */
@@ -61,91 +86,107 @@
   align-items: flex-start;
   justify-content: space-between;
   padding: 28px 28px 16px;
-  gap: 16px;
+  gap: 12px;
 }
 
 .modalEyebrow {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin: 0 0 4px;
+  color: rgba(13, 21, 32, 0.42);
+  margin: 0 0 8px;
+}
+
+.modalEyebrow::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
 }
 
 .modalHeading {
-  font-size: 1.375rem;
+  font-size: 1.625rem;
   font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--color-text-dark);
+  letter-spacing: -0.03em;
+  color: #0d1520;
   margin: 0;
-  line-height: 1.15;
+  line-height: 1.1;
 }
 
 .closeBtn {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 1px solid var(--color-border-light);
-  background: transparent;
-  color: var(--color-text-dark);
+  border: 1.5px solid rgba(13, 21, 32, 0.12);
+  background: rgba(13, 21, 32, 0.04);
+  color: rgba(13, 21, 32, 0.65);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   flex-shrink: 0;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  margin-top: 2px;
 }
 
 .closeBtn:hover {
-  background: #f5f5f5;
-  border-color: rgb(0 0 0 / 0.2);
+  background: rgba(13, 21, 32, 0.09);
+  border-color: rgba(13, 21, 32, 0.25);
+  color: #0d1520;
 }
 
 .closeBtn:focus-visible {
-  outline: 2px solid #000;
+  outline: 2px solid #0d1520;
   outline-offset: 3px;
 }
 
 /* ── Form area ────────────────────────────────────────────── */
 .modalForm {
-  padding: 0 28px 24px;
+  padding: 0 28px 28px;
+  flex: 1;
 }
 
-/* ── Responsive ───────────────────────────────────────────── */
+/* ── Responsive: tablet ───────────────────────────────────── */
 @media (max-width: 720px) {
   .modal {
     flex-direction: column;
-    width: min(560px, 100%);
+    width: min(520px, 100%);
   }
 
   .modalImage {
     display: none;
   }
 
-  .modalContent {
-    max-height: calc(100vh - 48px);
+  .modalContent::before {
+    height: 3px;
   }
 }
 
+/* ── Responsive: mobile ───────────────────────────────────── */
 @media (max-width: 480px) {
   .modalOuter {
-    padding: 16px 12px;
+    padding: 12px;
+    align-items: flex-end;
   }
 
   .modal {
     width: 100%;
-    max-height: calc(100vh - 32px);
-    border-radius: 12px;
+    border-radius: 18px 18px 14px 14px;
   }
 
   .modalTop {
-    padding: 16px 16px 12px;
-    gap: 12px;
+    padding: 20px 20px 12px;
+    gap: 10px;
   }
 
   .modalHeading {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
   }
 
   .closeBtn {
@@ -154,12 +195,6 @@
   }
 
   .modalForm {
-    padding: 0 16px 16px;
-    overflow-y: auto;
-    max-height: calc(100vh - 160px);
-  }
-
-  .modalContent {
-    max-height: calc(100vh - 32px);
+    padding: 0 20px 20px;
   }
 }
