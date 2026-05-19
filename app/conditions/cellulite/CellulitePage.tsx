@@ -20,17 +20,17 @@ import styles from './page.module.css';
 const CELLULITE_GRADES = [
   {
     num: '01',
-    title: 'Grade 1 – Mild',
+    title: 'Grade 1 , Mild',
     desc: 'Dimpling is only visible when the skin is pinched. Skin appears smooth at rest and when standing.',
   },
   {
     num: '02',
-    title: 'Grade 2 – Moderate',
+    title: 'Grade 2 , Moderate',
     desc: 'Cellulite is visible when standing but may smooth out when lying down. The skin has a noticeably uneven texture.',
   },
   {
     num: '03',
-    title: 'Grade 3 – Severe',
+    title: 'Grade 3 , Severe',
     desc: 'Deep dimpling and raised areas are visible regardless of position. The skin feels thickened with a pronounced, irregular texture.',
   },
 ];
@@ -103,7 +103,7 @@ const CAUSES = [
 
 /* ── Risk factors ─────────────────────────────────────────────── */
 const RISK_FACTORS = [
-  'Women — oestrogen plays a central role in cellulite development, affecting up to 90% of women.',
+  'Women , oestrogen plays a central role in cellulite development, affecting up to 90% of women.',
   'Those with hormonal imbalances or fluctuations from puberty, pregnancy, or menopause.',
   'Sedentary individuals with low physical activity levels.',
   'People with higher body fat percentages or irregular fat distribution.',
@@ -115,15 +115,15 @@ const RISK_FACTORS = [
 const DIAGNOSE_STEPS = [
   {
     num: '01',
-    text: 'Visual & Physical Assessment — Examine the affected areas to determine the grade and distribution of cellulite.',
+    text: 'Visual & Physical Assessment , Examine the affected areas to determine the grade and distribution of cellulite.',
   },
   {
     num: '02',
-    text: 'Skin Elasticity Testing — Assess skin thickness, firmness, and the integrity of underlying connective tissue.',
+    text: 'Skin Elasticity Testing , Assess skin thickness, firmness, and the integrity of underlying connective tissue.',
   },
   {
     num: '03',
-    text: 'Lifestyle & Hormonal Review — Discuss your medical history, diet, activity levels, and hormonal factors to guide treatment.',
+    text: 'Lifestyle & Hormonal Review , Discuss your medical history, diet, activity levels, and hormonal factors to guide treatment.',
   },
 ];
 
@@ -365,7 +365,7 @@ export default function CellulitePage() {
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
                 src="/images/Cellulite.png"
-                alt="Cellulite treatment at The One Clinic Leicester — smooth and firm skin results"
+                alt="Cellulite treatment at The One Clinic Leicester , smooth and firm skin results"
                 fill
                 className={styles.heroImage}
                 sizes="(max-width: 900px) 100vw, 50vw"
@@ -412,7 +412,7 @@ export default function CellulitePage() {
                   viewport={VIEWPORT}
                 >
                   Cellulite is a common condition characterised by a dimpled, uneven
-                  skin texture — often described as an orange-peel appearance. It occurs
+                  skin texture , often described as an orange-peel appearance. It occurs
                   when fat cells beneath the skin push through weakened bands of
                   connective tissue, creating a lumpy surface most visible on the thighs,
                   buttocks, and abdomen. Cellulite affects people of all body types and

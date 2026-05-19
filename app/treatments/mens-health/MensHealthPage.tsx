@@ -140,7 +140,7 @@ const ELIGIBILITY_NOT_SUITABLE = [
 const BENEFITS = [
   {
     title: 'Discreet & Judgement-Free',
-    desc: 'A private, relaxed environment where you can speak openly about any health concern. No embarrassment, no judgement — just expert medical support.',
+    desc: 'A private, relaxed environment where you can speak openly about any health concern. No embarrassment, no judgement , just expert medical support.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -178,7 +178,7 @@ const BENEFITS = [
   },
   {
     title: 'Personalised Treatment',
-    desc: 'Evidence-based treatment plans tailored to your individual results, symptoms, and goals — not a one-size-fits-all approach.',
+    desc: 'Evidence-based treatment plans tailored to your individual results, symptoms, and goals , not a one-size-fits-all approach.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
@@ -342,7 +342,7 @@ const FAQS = [
   {
     question: "What men's health services do you offer?",
     answer:
-      "Our men's health service covers a broad range of concerns including erectile dysfunction, low testosterone and TRT, sexual health screening and STI testing, prostate health and PSA blood tests, mental health and stress, weight management, cardiovascular risk assessment, and general men's health MOTs. No concern is too sensitive — our doctors have heard it all.",
+      "Our men's health service covers a broad range of concerns including erectile dysfunction, low testosterone and TRT, sexual health screening and STI testing, prostate health and PSA blood tests, mental health and stress, weight management, cardiovascular risk assessment, and general men's health MOTs. No concern is too sensitive , our doctors have heard it all.",
   },
   {
     question: 'Do I need a referral to book a consultation?',
@@ -352,7 +352,7 @@ const FAQS = [
   {
     question: 'Is everything I discuss kept completely confidential?',
     answer:
-      'Absolutely. Your consultation is entirely private and confidential. Your medical information will only be shared with other healthcare professionals if you give permission, or if there is a serious safety concern — and we will always discuss this with you first.',
+      'Absolutely. Your consultation is entirely private and confidential. Your medical information will only be shared with other healthcare professionals if you give permission, or if there is a serious safety concern , and we will always discuss this with you first.',
   },
   {
     question: 'Can I be tested for low testosterone?',
@@ -362,12 +362,12 @@ const FAQS = [
   {
     question: 'Is erectile dysfunction something a GP can treat?',
     answer:
-      "Yes. Erectile dysfunction is a very common condition that is entirely treatable in most cases. Our doctors will take a thorough history, identify any underlying causes such as cardiovascular disease, diabetes, or hormonal issues, and recommend an appropriate treatment plan. There is no need to feel embarrassed — it is a medical condition like any other.",
+      "Yes. Erectile dysfunction is a very common condition that is entirely treatable in most cases. Our doctors will take a thorough history, identify any underlying causes such as cardiovascular disease, diabetes, or hormonal issues, and recommend an appropriate treatment plan. There is no need to feel embarrassed , it is a medical condition like any other.",
   },
   {
     question: 'How much does a men\'s health consultation cost?',
     answer:
-      "Men's health consultations at The One Clinic start from £150. The final cost depends on the nature of your appointment and any tests or treatments required. All fees are discussed clearly before or at the start of your appointment — there are no hidden charges.",
+      "Men's health consultations at The One Clinic start from £150. The final cost depends on the nature of your appointment and any tests or treatments required. All fees are discussed clearly before or at the start of your appointment , there are no hidden charges.",
   },
 ];
 
@@ -423,7 +423,7 @@ export default function MensHealthPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Private, confidential men&apos;s health consultations at The One Clinic — discreet,
+                Private, confidential men&apos;s health consultations at The One Clinic , discreet,
                 expert care for every aspect of male health.
               </motion.p>
 
@@ -823,9 +823,9 @@ export default function MensHealthPage() {
             <motion.p className={styles.howPara} variants={fadeUp}>
               Where indicated, a physical examination is carried out in the same appointment.
               Blood tests, urine analysis, and other investigations can be arranged on-site for
-              fast results. Your doctor then builds an evidence-based treatment plan — whether that
+              fast results. Your doctor then builds an evidence-based treatment plan , whether that
               is a prescription, lifestyle intervention, monitoring programme, or specialist
-              referral — tailored precisely to your needs.
+              referral , tailored precisely to your needs.
             </motion.p>
           </motion.div>
 
@@ -1087,7 +1087,7 @@ export default function MensHealthPage() {
             <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
               Experience the best men&apos;s health care in Leicester at The One Clinic. Our expert GPs
               deliver private, discreet, and comprehensive consultations for men of all ages. From
-              hormone health to sexual wellbeing, cardiovascular risk to mental health — enjoy
+              hormone health to sexual wellbeing, cardiovascular risk to mental health , enjoy
               personalised, evidence-based care with fast access and no long waits.
             </motion.p>
           </motion.div>
@@ -1114,7 +1114,7 @@ export default function MensHealthPage() {
             </motion.p>
             <motion.p className={styles.costBannerNote} variants={fadeUp}>
               The final price depends on the nature of your consultation and any tests or
-              treatments required. All fees are discussed clearly before your appointment —
+              treatments required. All fees are discussed clearly before your appointment ,
               no hidden charges.
             </motion.p>
             <motion.div variants={fadeUp}>

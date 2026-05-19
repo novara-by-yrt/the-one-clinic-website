@@ -88,7 +88,7 @@ const JOURNEY_STEPS = [
   {
     n: '02',
     title: 'Removal Procedure',
-    desc: 'Local anaesthetic is applied to ensure complete comfort. Your doctor then uses the most appropriate technique — surgical excision, shave excision, or electrocautery — to remove the lesion cleanly.',
+    desc: 'Local anaesthetic is applied to ensure complete comfort. Your doctor then uses the most appropriate technique , surgical excision, shave excision, or electrocautery , to remove the lesion cleanly.',
   },
   {
     n: '03',
@@ -111,7 +111,7 @@ const APPROACH_CARDS = [
   {
     eyebrow: '02',
     title: 'Tailored Removal Technique',
-    desc: 'We select the most appropriate removal method for your lesion — surgical excision with closure, shave excision, punch biopsy, or electrocautery — based on lesion type, size, and location.',
+    desc: 'We select the most appropriate removal method for your lesion , surgical excision with closure, shave excision, punch biopsy, or electrocautery , based on lesion type, size, and location.',
   },
   {
     eyebrow: '03',
@@ -192,7 +192,7 @@ const ELIGIBILITY_SUITABLE = [
 ];
 
 const ELIGIBILITY_NOT_SUITABLE = [
-  'Malignant or suspected malignant lesions — these require specialist oncology referral',
+  'Malignant or suspected malignant lesions , these require specialist oncology referral',
   'Patients with significant bleeding disorders',
   'Immunosuppressed patients (discuss with your doctor before booking)',
 ];
@@ -340,7 +340,7 @@ export default function SkinLesionPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Safe, expert removal of moles, cysts, lipomas &amp; more — by GMC-registered
+                Safe, expert removal of moles, cysts, lipomas &amp; more , by GMC-registered
                 doctors. Fast access, no NHS waiting lists.
               </motion.p>
 
@@ -504,7 +504,7 @@ export default function SkinLesionPage() {
               Our Skin Lesion Removal Approach
             </motion.h2>
             <motion.p className={styles.combinationIntroText} variants={fadeUp}>
-              At The One Clinic, we follow a structured three-stage approach — ensuring every
+              At The One Clinic, we follow a structured three-stage approach , ensuring every
               patient receives safe, accurate, and personalised lesion removal with expert
               aftercare.
             </motion.p>
@@ -540,7 +540,7 @@ export default function SkinLesionPage() {
           >
             <p className={styles.finalResultsEyebrow}>Our Standard of Care</p>
             <p className={styles.finalResultsText}>
-              Every step — from assessment to aftercare — is carried out by a qualified
+              Every step , from assessment to aftercare , is carried out by a qualified
               GMC-registered doctor, ensuring the highest standards of clinical safety and
               patient experience throughout your treatment journey.
             </p>
@@ -705,7 +705,7 @@ export default function SkinLesionPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. THE SCIENCE — HOW IT WORKS
+          8. THE SCIENCE , HOW IT WORKS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
@@ -801,7 +801,7 @@ export default function SkinLesionPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {/* Card 1 — Healing Timeline */}
+            {/* Card 1 , Healing Timeline */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -824,7 +824,7 @@ export default function SkinLesionPage() {
               </p>
             </motion.div>
 
-            {/* Card 2 — Side Effects */}
+            {/* Card 2 , Side Effects */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -859,7 +859,7 @@ export default function SkinLesionPage() {
               </p>
             </motion.div>
 
-            {/* Card 3 — Aftercare */}
+            {/* Card 3 , Aftercare */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -1065,7 +1065,7 @@ export default function SkinLesionPage() {
             <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
               Experience expert private skin lesion removal at The One Clinic in Leicester.
               Our GMC-registered doctors provide fast, safe, and clinically thorough removal
-              of moles, cysts, lipomas, and more — with minimal scarring, histology available,
+              of moles, cysts, lipomas, and more , with minimal scarring, histology available,
               and personalised aftercare tailored to every patient.
             </motion.p>
           </motion.div>

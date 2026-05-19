@@ -758,12 +758,12 @@ export default function LipomaRemovalPage() {
             <motion.p className={styles.howCoversLabel} variants={fadeUp}>Why Choose Surgical Excision</motion.p>
             <motion.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
               {[
-                'Permanent removal — lipoma cannot regrow',
-                'Complete histology — confirmation of benignity',
-                'Minimal trauma — careful surgical technique',
-                'Quick procedure — 15 to 60 minutes',
-                'Excellent cosmetic results — expert suturing',
-                'Minimal downtime — return to normal quickly',
+                'Permanent removal , lipoma cannot regrow',
+                'Complete histology , confirmation of benignity',
+                'Minimal trauma , careful surgical technique',
+                'Quick procedure , 15 to 60 minutes',
+                'Excellent cosmetic results , expert suturing',
+                'Minimal downtime , return to normal quickly',
               ].map((item) => (
                 <motion.li key={item} className={styles.howCoversItem} variants={fadeUp}>
                   <span className={styles.howCoversCheck} aria-hidden="true">
@@ -890,10 +890,10 @@ export default function LipomaRemovalPage() {
               </p>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Weeks 1–2: Pink or red, raised suture line',
-                  'Weeks 2–6: Gradually flattens, colour begins to fade',
-                  'Months 3–6: Significant fading and maturation',
-                  'Months 6–18: Continued improvement and fading',
+                  'Weeks 1,2: Pink or red, raised suture line',
+                  'Weeks 2,6: Gradually flattens, colour begins to fade',
+                  'Months 3,6: Significant fading and maturation',
+                  'Months 6,18: Continued improvement and fading',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
                     <span className={styles.resultsAfterDot} aria-hidden="true" />

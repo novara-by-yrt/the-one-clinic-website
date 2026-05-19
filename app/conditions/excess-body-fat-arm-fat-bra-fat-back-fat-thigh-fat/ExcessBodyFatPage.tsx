@@ -106,7 +106,7 @@ const FAQS = [
   {
     question: 'Why do I have stubborn fat on my arms, back, or thighs despite exercising?',
     answer:
-      'Spot reduction through exercise is largely a myth — the body burns fat systemically rather than from specific zones on demand. Genetics, hormones, and age determine where fat is stored and how readily it is released. This means localised deposits on the arms, bra line, back, and thighs can persist even when overall body composition improves. Professional body contouring treatments are specifically designed to address these resistant areas.',
+      'Spot reduction through exercise is largely a myth , the body burns fat systemically rather than from specific zones on demand. Genetics, hormones, and age determine where fat is stored and how readily it is released. This means localised deposits on the arms, bra line, back, and thighs can persist even when overall body composition improves. Professional body contouring treatments are specifically designed to address these resistant areas.',
   },
   {
     question: 'Can body contouring permanently remove fat in these areas?',
@@ -192,15 +192,15 @@ const RISK_FACTORS = [
 const DIAGNOSE_STEPS = [
   {
     num: '01',
-    text: 'Body Composition Analysis — assessing fat distribution, muscle mass, and overall body composition to understand your individual profile.',
+    text: 'Body Composition Analysis , assessing fat distribution, muscle mass, and overall body composition to understand your individual profile.',
   },
   {
     num: '02',
-    text: 'Targeted Area Assessment — examining the specific problem zones including arms, bra line, back, and thighs to determine the most effective approach.',
+    text: 'Targeted Area Assessment , examining the specific problem zones including arms, bra line, back, and thighs to determine the most effective approach.',
   },
   {
     num: '03',
-    text: 'Lifestyle & Health History — reviewing your diet, activity levels, hormonal health, and medical background to personalise your treatment plan.',
+    text: 'Lifestyle & Health History , reviewing your diet, activity levels, hormonal health, and medical background to personalise your treatment plan.',
   },
 ];
 
@@ -366,7 +366,7 @@ export default function ExcessBodyFatPage() {
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
                 src="/images/Excess Body Fat_Arm_Bra_Back_Thigh Fat.png"
-                alt="Excess body fat treatment at The One Clinic Leicester — arm fat, bra fat, back fat and thigh fat"
+                alt="Excess body fat treatment at The One Clinic Leicester , arm fat, bra fat, back fat and thigh fat"
                 fill
                 className={styles.heroImage}
                 sizes="(max-width: 900px) 100vw, 50vw"

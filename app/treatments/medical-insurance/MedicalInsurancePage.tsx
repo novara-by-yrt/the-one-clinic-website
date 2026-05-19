@@ -791,7 +791,7 @@ export default function MedicalInsurancePage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          9. RESULTS / AFTERCARE — REPORT DELIVERY
+          9. RESULTS / AFTERCARE , REPORT DELIVERY
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -817,7 +817,7 @@ export default function MedicalInsurancePage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {/* Card 1 — Report Timeline */}
+            {/* Card 1 , Report Timeline */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -840,7 +840,7 @@ export default function MedicalInsurancePage() {
               </p>
             </motion.div>
 
-            {/* Card 2 — What Happens Next */}
+            {/* Card 2 , What Happens Next */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -874,7 +874,7 @@ export default function MedicalInsurancePage() {
               </p>
             </motion.div>
 
-            {/* Card 3 — Working With Your Insurer */}
+            {/* Card 3 , Working With Your Insurer */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">

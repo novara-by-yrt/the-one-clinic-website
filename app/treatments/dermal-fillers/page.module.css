@@ -1053,7 +1053,7 @@
   border: none;
   display: block;
   object-fit: cover;
-  object-position: top center;
+  object-position: center;
 }
 
 /* ════════════════════════════════════════════════════
@@ -1193,7 +1193,7 @@
 
 .expertPhoto {
   object-fit: cover;
-  object-position: top center;
+  object-position: center;
 }
 
 /* ════════════════════════════════════════════════════
@@ -1392,7 +1392,7 @@
 
 .expertCardPhoto {
   object-fit: cover;
-  object-position: top center;
+  object-position: center;
 }
 
 .expertCardContent {
@@ -2230,7 +2230,7 @@
   /* Prevent any child (e.g. inline-flex TrustBadges) from causing overflow */
   .heroLeft { min-width: 0; max-width: 100%; overflow-x: hidden; }
 
-  .heroImage { object-position: top center; }
+  .heroImage { object-position: center; }
 
   .heroCtas {
     flex-direction: column;

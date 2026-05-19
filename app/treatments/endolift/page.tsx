@@ -39,7 +39,7 @@ const schemas = [
     preparation:
       'Topical anaesthetic is applied 30 minutes before treatment. Patients should avoid blood-thinning medications and alcohol 48 hours prior.',
     followup:
-      'Mild swelling and redness may persist for 2–5 days. Full results develop over 3–6 months as collagen remodelling occurs.',
+      'Mild swelling and redness may persist for 2,5 days. Full results develop over 3,6 months as collagen remodelling occurs.',
     startingPrice: 1500,
   }),
   buildFaqSchema(ENDOLIFT_FAQS),

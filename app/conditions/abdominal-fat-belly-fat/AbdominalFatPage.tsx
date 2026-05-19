@@ -117,15 +117,15 @@ const RISK_FACTORS = [
 const DIAGNOSE_STEPS = [
   {
     num: '01',
-    text: 'BMI & Body Measurements — assess waist circumference, BMI, and body composition to quantify abdominal fat.',
+    text: 'BMI & Body Measurements , assess waist circumference, BMI, and body composition to quantify abdominal fat.',
   },
   {
     num: '02',
-    text: 'Fat Distribution Assessment — determine whether fat is primarily subcutaneous or visceral using clinical evaluation.',
+    text: 'Fat Distribution Assessment , determine whether fat is primarily subcutaneous or visceral using clinical evaluation.',
   },
   {
     num: '03',
-    text: 'Lifestyle & Medical History Review — evaluate diet, activity levels, hormonal factors, and any underlying conditions.',
+    text: 'Lifestyle & Medical History Review , evaluate diet, activity levels, hormonal factors, and any underlying conditions.',
   },
 ];
 
@@ -483,7 +483,7 @@ export default function AbdominalFatPage() {
             </motion.h2>
             <motion.p className={styles.sectionSubtext} variants={fadeUp}>
               Abdominal fat accumulates through a combination of lifestyle, hormonal,
-              and genetic factors — many of which are resistant to diet and exercise alone.
+              and genetic factors , many of which are resistant to diet and exercise alone.
             </motion.p>
           </motion.div>
 

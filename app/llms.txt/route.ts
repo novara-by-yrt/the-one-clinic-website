@@ -55,7 +55,7 @@ export async function GET() {
 
   const teamLines = TEAM_MEMBERS.map(m => {
     const path = m.profileUrl?.startsWith('/') ? m.profileUrl : `/our-team/${m.slug}`;
-    return `- [${m.name}](${SITE}${path}): ${m.credentials} — ${m.role}`;
+    return `- [${m.name}](${SITE}${path}): ${m.credentials} , ${m.role}`;
   }).join('\n');
 
   const body = `# The One Clinic

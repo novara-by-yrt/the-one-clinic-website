@@ -14,7 +14,7 @@ import styles from './BrandReveal.module.css';
  *   z        -70px → 0   (reads from BrandStage's perspective: 1400px)
  *
  * Mobile halves all transform amounts for a subtler feel.
- * Respects prefers-reduced-motion — skips all transforms when set.
+ * Respects prefers-reduced-motion , skips all transforms when set.
  */
 
 // ~ power3.out

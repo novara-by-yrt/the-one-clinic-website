@@ -122,15 +122,15 @@ const RISK_FACTORS = [
 const DIAGNOSE_STEPS = [
   {
     num: '01',
-    text: 'Visual Vascular Assessment — a close examination of the affected areas to assess the type, extent, and pattern of visible veins.',
+    text: 'Visual Vascular Assessment , a close examination of the affected areas to assess the type, extent, and pattern of visible veins.',
   },
   {
     num: '02',
-    text: 'Doppler Ultrasound if Required — to assess deeper venous flow and identify any underlying insufficiency contributing to visible veins.',
+    text: 'Doppler Ultrasound if Required , to assess deeper venous flow and identify any underlying insufficiency contributing to visible veins.',
   },
   {
     num: '03',
-    text: 'Medical & Lifestyle History Review — to identify contributing factors such as hormonal changes, occupational habits, or previous treatments.',
+    text: 'Medical & Lifestyle History Review , to identify contributing factors such as hormonal changes, occupational habits, or previous treatments.',
   },
 ];
 
@@ -204,7 +204,7 @@ const FAQS = [
   {
     question: 'What are spider veins and thread veins?',
     answer:
-      'Spider veins and thread veins are small, dilated blood vessels that become visible through the skin. They typically appear as fine red, purple, or blue lines — often in a web-like or branching pattern — on the face, nose, cheeks, or legs. They are generally harmless but can be a source of self-consciousness.',
+      'Spider veins and thread veins are small, dilated blood vessels that become visible through the skin. They typically appear as fine red, purple, or blue lines , often in a web-like or branching pattern , on the face, nose, cheeks, or legs. They are generally harmless but can be a source of self-consciousness.',
   },
   {
     question: 'Can thread veins be permanently removed?',
@@ -420,8 +420,8 @@ export default function SpiderVeinsPage() {
                 >
                   Spider veins and thread veins are small, dilated blood vessels
                   that become visible just beneath the skin surface. They appear
-                  as fine red, purple, or blue lines — often forming a web-like
-                  or branching pattern — most commonly on the face, nose, cheeks,
+                  as fine red, purple, or blue lines , often forming a web-like
+                  or branching pattern , most commonly on the face, nose, cheeks,
                   and legs. While generally harmless, they can be a source of
                   self-consciousness, and with the right professional treatment,
                   visible thread veins can be significantly reduced or removed.

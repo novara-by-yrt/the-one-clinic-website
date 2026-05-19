@@ -94,7 +94,7 @@ const APPROACH_CARDS = [
   {
     eyebrow: '02',
     title: 'HRT Prescribing & Personalisation',
-    desc: 'We select the right type, dose, and delivery method of HRT for you — whether patches, gels, tablets, vaginal oestrogen, or implants — and adjust over time for optimal effect.',
+    desc: 'We select the right type, dose, and delivery method of HRT for you , whether patches, gels, tablets, vaginal oestrogen, or implants , and adjust over time for optimal effect.',
   },
   {
     eyebrow: '03',
@@ -178,7 +178,7 @@ const BENEFITS = [
   },
   {
     title: 'Expert Ongoing Support',
-    desc: 'Our doctors provide continuous, personalised care — adjusting your treatment, reviewing blood results, and supporting you through every stage of your menopause journey.',
+    desc: 'Our doctors provide continuous, personalised care , adjusting your treatment, reviewing blood results, and supporting you through every stage of your menopause journey.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -214,7 +214,7 @@ const WHAT_TO_EXPECT_CARDS = [
   {
     eyebrow: '02',
     title: 'Your HRT Prescription',
-    desc: 'A fully personalised prescription in the form and dose most suitable for you. We take your preferences into account — whether you prefer patches, gels, tablets, or vaginal preparations.',
+    desc: 'A fully personalised prescription in the form and dose most suitable for you. We take your preferences into account , whether you prefer patches, gels, tablets, or vaginal preparations.',
   },
   {
     eyebrow: '03',
@@ -336,7 +336,7 @@ const FAQS = [
   {
     question: 'How do I know if I need HRT?',
     answer:
-      'HRT is typically considered for women experiencing moderate to severe menopause symptoms such as hot flushes, night sweats, mood changes, brain fog, sleep disturbance, vaginal dryness, and reduced libido. During your consultation, your doctor will take a full symptom history, discuss your medical background, and assess whether HRT is appropriate for you — and if so, which type and dose would suit you best.',
+      'HRT is typically considered for women experiencing moderate to severe menopause symptoms such as hot flushes, night sweats, mood changes, brain fog, sleep disturbance, vaginal dryness, and reduced libido. During your consultation, your doctor will take a full symptom history, discuss your medical background, and assess whether HRT is appropriate for you , and if so, which type and dose would suit you best.',
   },
   {
     question: 'Is HRT safe?',
@@ -346,7 +346,7 @@ const FAQS = [
   {
     question: 'Do I need a referral to be seen?',
     answer:
-      'No referral is required. You can book directly with The One Clinic. If specialist gynaecological input is needed — for example, for complex menopause cases or concerns requiring further investigation — we will arrange this referral promptly on your behalf.',
+      'No referral is required. You can book directly with The One Clinic. If specialist gynaecological input is needed , for example, for complex menopause cases or concerns requiring further investigation , we will arrange this referral promptly on your behalf.',
   },
   {
     question: 'What is the difference between perimenopause and menopause?',
@@ -417,7 +417,7 @@ export default function MenopauseHRTPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Expert menopause care and hormone replacement therapy — private, personalised,
+                Expert menopause care and hormone replacement therapy , private, personalised,
                 and GP-led, helping you feel like yourself again.
               </motion.p>
 
@@ -501,7 +501,7 @@ export default function MenopauseHRTPage() {
                   remains safe and effective.
                 </p>
                 <p className={styles.combinedDesc}>
-                  We take an evidence-based, personalised approach — listening carefully to your
+                  We take an evidence-based, personalised approach , listening carefully to your
                   symptoms and preferences to create a treatment plan that works for you, not just
                   for a textbook patient.
                 </p>
@@ -814,7 +814,7 @@ export default function MenopauseHRTPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.howPara} variants={fadeUp}>
-              Your appointment begins with a detailed symptom assessment — covering the frequency
+              Your appointment begins with a detailed symptom assessment , covering the frequency
               and severity of your symptoms, their impact on your daily life, and your personal and
               family medical history. Baseline blood tests including FSH, oestradiol, and thyroid
               function are arranged where clinically appropriate.
@@ -1081,7 +1081,7 @@ export default function MenopauseHRTPage() {
               Experience expert menopause and HRT care at The One Clinic in Leicester. Our experienced
               doctors provide private, evidence-based, GP-led hormonal health services tailored entirely
               to you. Benefit from unhurried consultations, all forms of HRT, blood test monitoring,
-              and genuinely personalised ongoing support — without NHS waiting times.
+              and genuinely personalised ongoing support , without NHS waiting times.
             </motion.p>
           </motion.div>
         </Container>

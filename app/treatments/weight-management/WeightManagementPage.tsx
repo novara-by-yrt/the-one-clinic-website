@@ -745,7 +745,7 @@ export default function WeightManagementPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. HOW IT WORKS — THE SCIENCE
+          8. HOW IT WORKS , THE SCIENCE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
@@ -772,7 +772,7 @@ export default function WeightManagementPage() {
               Weight management is far more complex than simply eating less and moving more. Hormones
               such as leptin, ghrelin, and insulin play a critical role in regulating hunger, fat
               storage, and metabolism. When these systems are disrupted, weight loss becomes
-              physiologically difficult — even with strong willpower and effort.
+              physiologically difficult , even with strong willpower and effort.
             </motion.p>
             <motion.p className={styles.howPara} variants={fadeUp}>
               GLP-1 medications such as semaglutide work by mimicking a natural gut hormone that

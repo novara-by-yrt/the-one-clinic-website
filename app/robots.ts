@@ -12,7 +12,7 @@ export default function robots(): MetadataRoute.Robots {
 
   return {
     rules: [
-      // Block training-only crawlers — they harvest data without powering
+      // Block training-only crawlers , they harvest data without powering
       // any search or answer product visible to potential patients.
       { userAgent: 'CCBot',         disallow: '/' },
       { userAgent: 'anthropic-ai',  disallow: '/' },

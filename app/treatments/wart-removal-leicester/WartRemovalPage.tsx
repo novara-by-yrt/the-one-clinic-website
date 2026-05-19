@@ -21,7 +21,7 @@ import styles from './page.module.css';
 const AT_A_GLANCE = [
   {
     label: 'Session Time',
-    value: '15–30 minutes',
+    value: '15,30 minutes',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -53,7 +53,7 @@ const AT_A_GLANCE = [
   },
   {
     label: 'Sessions Required',
-    value: 'Usually 1–3',
+    value: 'Usually 1,3',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="1 4 1 10 7 10"/>
@@ -92,7 +92,7 @@ const APPROACH_STEPS = [
   {
     eyebrow: '02',
     title: 'Tailored Removal Method',
-    desc: 'We offer cryotherapy (liquid nitrogen freezing), electrocautery (heat treatment), and surgical excision — individually or in combination — to achieve the most effective and reliable outcome.',
+    desc: 'We offer cryotherapy (liquid nitrogen freezing), electrocautery (heat treatment), and surgical excision , individually or in combination , to achieve the most effective and reliable outcome.',
   },
   {
     eyebrow: '03',
@@ -199,9 +199,9 @@ const ELIGIBILITY_SUITABLE = [
 ];
 
 const ELIGIBILITY_NOT_SUITABLE = [
-  'Immunocompromised patients (treatable with extra care — discuss with doctor)',
-  'Some methods are not recommended during pregnancy — discuss options',
-  'Very young children — please contact us to discuss the most suitable approach',
+  'Immunocompromised patients (treatable with extra care , discuss with doctor)',
+  'Some methods are not recommended during pregnancy , discuss options',
+  'Very young children , please contact us to discuss the most suitable approach',
 ];
 
 const WART_TYPES = [
@@ -283,7 +283,7 @@ const FAQS = [
   {
     question: 'How many sessions will I need?',
     answer:
-      'Many warts can be cleared in a single session. Stubborn or deeply rooted warts — particularly plantar verrucas — may require 2 to 3 sessions. Your doctor will advise on the expected number of treatments during your consultation.',
+      'Many warts can be cleared in a single session. Stubborn or deeply rooted warts , particularly plantar verrucas , may require 2 to 3 sessions. Your doctor will advise on the expected number of treatments during your consultation.',
   },
   {
     question: 'Do I need a GP referral for wart removal?',
@@ -298,7 +298,7 @@ const FAQS = [
   {
     question: 'What should I expect after wart removal?',
     answer:
-      'After cryotherapy a blister may form — this is normal and part of the healing process. Keep the area clean and dry, and avoid picking the treated skin. The area typically heals within 1 to 3 weeks. Your doctor will provide specific aftercare instructions at your appointment.',
+      'After cryotherapy a blister may form , this is normal and part of the healing process. Keep the area clean and dry, and avoid picking the treated skin. The area typically heals within 1 to 3 weeks. Your doctor will provide specific aftercare instructions at your appointment.',
   },
 ];
 
@@ -434,7 +434,7 @@ export default function WartRemovalPage() {
                 <p className={styles.combinedDesc}>
                   Warts and verrucas are benign skin growths caused by strains of the human
                   papillomavirus (HPV). They can appear anywhere on the body and come in several
-                  forms — common warts, plantar verrucas, plane warts, and filiform warts.
+                  forms , common warts, plantar verrucas, plane warts, and filiform warts.
                   While not medically dangerous, they are contagious and can be cosmetically
                   bothersome or painful. At The One Clinic, our doctors assess each lesion and
                   apply the most effective clinical removal method for a faster, more reliable result.
@@ -722,7 +722,7 @@ export default function WartRemovalPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. HOW IT WORKS — THE SCIENCE
+          8. HOW IT WORKS , THE SCIENCE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
@@ -753,7 +753,7 @@ export default function WartRemovalPage() {
               uses controlled heat to burn away the wart tissue with precision.
             </motion.p>
             <motion.p className={styles.howPara} variants={fadeUp}>
-              Surgical excision removes the entire wart under local anaesthetic — the preferred
+              Surgical excision removes the entire wart under local anaesthetic , the preferred
               approach for larger or more deeply rooted growths. Salicylic acid may be used
               as an adjunct between sessions to soften and break down the wart tissue. By
               targeting the HPV virus at the root, clinical treatment significantly reduces
@@ -831,7 +831,7 @@ export default function WartRemovalPage() {
                 <h3 className={styles.resultsAfterCardTitle}>Healing Timeline</h3>
               </div>
               <p className={styles.resultsAfterCardBody}>
-                After cryotherapy, a blister may form within 24 hours — this is a normal and
+                After cryotherapy, a blister may form within 24 hours , this is a normal and
                 expected part of the healing process. The treated area typically heals within
                 1 to 3 weeks, depending on the size and location of the wart.
               </p>
@@ -1088,8 +1088,8 @@ export default function WartRemovalPage() {
             </motion.div>
             <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
               Experience expert wart and verruca removal at The One Clinic in Leicester. Our doctors
-              deliver safe, clinically assessed removal using proven methods — cryotherapy,
-              cautery, or excision — tailored to your individual needs. Enjoy fast access,
+              deliver safe, clinically assessed removal using proven methods , cryotherapy,
+              cautery, or excision , tailored to your individual needs. Enjoy fast access,
               no waiting lists, and professional aftercare to support lasting results.
             </motion.p>
           </motion.div>

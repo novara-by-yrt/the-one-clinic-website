@@ -15,7 +15,7 @@ const SKIP_PREFIXES = ['_', '.', '('];
 
 /**
  * Walks the app/ directory and collects every route that has a page file.
- * Skips dynamic segments ([slug]) — those come from data sources below.
+ * Skips dynamic segments ([slug]) , those come from data sources below.
  */
 function collectStaticRoutes(dir: string, routeSegment = ''): string[] {
   const routes: string[] = [];

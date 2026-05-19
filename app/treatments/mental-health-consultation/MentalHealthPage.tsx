@@ -133,9 +133,9 @@ const ELIGIBILITY_SUITABLE = [
 ];
 
 const ELIGIBILITY_NOT_SUITABLE = [
-  'Acute psychiatric emergency — please call 999 or your crisis team',
+  'Acute psychiatric emergency , please call 999 or your crisis team',
   'First-episode psychosis requiring urgent specialist assessment',
-  'Active suicidal crisis — call 999 or go to your nearest A&E',
+  'Active suicidal crisis , call 999 or go to your nearest A&E',
 ];
 
 const BENEFITS = [
@@ -239,13 +239,13 @@ const WHAT_TO_EXPECT_CARDS = [
 ];
 
 const CONDITIONS_SUPPORTED = [
-  { title: 'Anxiety & Panic Attacks', desc: 'Generalised anxiety disorder, social anxiety, panic disorder, and phobias — assessed and managed with compassion and evidence-based strategies.' },
-  { title: 'Depression & Low Mood', desc: 'Persistent low mood, loss of motivation, anhedonia, and clinical depression — including medication and therapy referral where appropriate.' },
-  { title: 'Work-Related Stress & Burnout', desc: 'Chronic workplace stress, emotional exhaustion, and occupational burnout — including sick notes, fit-for-work letters, and recovery planning.' },
-  { title: 'Sleep Disorders & Insomnia', desc: 'Difficulty falling asleep, staying asleep, or non-restorative sleep — assessed holistically with both medical and lifestyle-based interventions.' },
-  { title: 'PTSD & Trauma', desc: 'Post-traumatic stress, intrusive memories, hypervigilance, and trauma responses — with appropriate referral to specialist trauma therapists.' },
+  { title: 'Anxiety & Panic Attacks', desc: 'Generalised anxiety disorder, social anxiety, panic disorder, and phobias , assessed and managed with compassion and evidence-based strategies.' },
+  { title: 'Depression & Low Mood', desc: 'Persistent low mood, loss of motivation, anhedonia, and clinical depression , including medication and therapy referral where appropriate.' },
+  { title: 'Work-Related Stress & Burnout', desc: 'Chronic workplace stress, emotional exhaustion, and occupational burnout , including sick notes, fit-for-work letters, and recovery planning.' },
+  { title: 'Sleep Disorders & Insomnia', desc: 'Difficulty falling asleep, staying asleep, or non-restorative sleep , assessed holistically with both medical and lifestyle-based interventions.' },
+  { title: 'PTSD & Trauma', desc: 'Post-traumatic stress, intrusive memories, hypervigilance, and trauma responses , with appropriate referral to specialist trauma therapists.' },
   { title: 'OCD', desc: 'Obsessive-compulsive disorder assessed and managed with clinical guidance, including referral for specialist CBT and ERP therapy.' },
-  { title: 'Relationship & Life Challenges', desc: 'Adjustment difficulties, relationship stress, grief, bereavement, or major life transitions — support for when life feels overwhelming.' },
+  { title: 'Relationship & Life Challenges', desc: 'Adjustment difficulties, relationship stress, grief, bereavement, or major life transitions , support for when life feels overwhelming.' },
 ];
 
 const CONDITIONS_MH = [
@@ -270,7 +270,7 @@ const CONDITIONS_SUPPORT = [
 
 const CLINIC_REASONS = [
   { n: '01', text: 'Doctors qualified in both GP and psychiatry for truly holistic care.' },
-  { n: '02', text: 'Fully confidential — your privacy is always protected.' },
+  { n: '02', text: 'Fully confidential , your privacy is always protected.' },
   { n: '03', text: 'Same-day and next-day appointments with no waiting lists.' },
   { n: '04', text: 'Evidence-based, compassionate, non-judgemental approach.' },
   { n: '05', text: 'Access to prescriptions, referrals, and sick notes in one place.' },
@@ -362,7 +362,7 @@ export default function MentalHealthPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Private, Compassionate Support for Your Mental Wellbeing — fast access, no waiting
+                Private, Compassionate Support for Your Mental Wellbeing , fast access, no waiting
                 lists, and expert doctors who truly listen.
               </motion.p>
 
@@ -442,8 +442,8 @@ export default function MentalHealthPage() {
                 <p className={styles.combinedDesc}>
                   A private mental health consultation is a GP-led or specialist-led consultation
                   to assess and support your mental health concerns, including anxiety, depression,
-                  stress, sleep disorders, and burnout. At The One Clinic, our doctors — including
-                  Dr Gunjan Bedi who holds qualifications in both General Practice and Psychiatry —
+                  stress, sleep disorders, and burnout. At The One Clinic, our doctors , including
+                  Dr Gunjan Bedi who holds qualifications in both General Practice and Psychiatry ,
                   provide confidential, non-judgemental, evidence-based care that treats mind and
                   body together.
                 </p>
@@ -528,7 +528,7 @@ export default function MentalHealthPage() {
             </motion.h2>
             <motion.p className={styles.combinationIntroText} variants={fadeUp}>
               At The One Clinic, our approach to mental health is holistic, evidence-based, and
-              centred entirely on you — combining thorough clinical assessment with compassionate,
+              centred entirely on you , combining thorough clinical assessment with compassionate,
               personalised care.
             </motion.p>
           </motion.div>
@@ -565,7 +565,7 @@ export default function MentalHealthPage() {
             <p className={styles.finalResultsText}>
               From your first consultation through to ongoing care, we are committed to supporting
               your mental wellbeing with professionalism, compassion, and the highest clinical
-              standards — because your mental health matters as much as your physical health.
+              standards , because your mental health matters as much as your physical health.
             </p>
           </motion.div>
         </Container>
@@ -767,7 +767,7 @@ export default function MentalHealthPage() {
               Following the assessment, your doctor will discuss all appropriate options with you.
               This may include medication prescribing, referral for psychotherapy or specialist
               psychiatric input, sick notes or fit-for-work letters, and a plan for ongoing GP-led
-              monitoring and support — all co-ordinated seamlessly within the clinic.
+              monitoring and support , all co-ordinated seamlessly within the clinic.
             </motion.p>
           </motion.div>
 
@@ -926,7 +926,7 @@ export default function MentalHealthPage() {
               You Don&apos;t Have to Face It Alone.
             </motion.h2>
             <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
-              Take the first step — book a confidential mental health consultation today.
+              Take the first step , book a confidential mental health consultation today.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
@@ -1024,7 +1024,7 @@ export default function MentalHealthPage() {
             <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
               Experience compassionate, expert-led mental health care at The One Clinic, Leicester.
               Our doctors combine GP and psychiatric expertise to deliver holistic, evidence-based
-              support for anxiety, depression, stress, and more — with fast access, full
+              support for anxiety, depression, stress, and more , with fast access, full
               confidentiality, and a care plan tailored entirely to you.
             </motion.p>
           </motion.div>

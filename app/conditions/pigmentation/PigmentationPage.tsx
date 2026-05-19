@@ -374,7 +374,7 @@ export default function PigmentationPage() {
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
                 src="/images/Pigmentation.png"
-                alt="Pigmentation treatment at The One Clinic Leicester — clearer, more even skin tone"
+                alt="Pigmentation treatment at The One Clinic Leicester , clearer, more even skin tone"
                 fill
                 className={styles.heroImage}
                 sizes="(max-width: 900px) 100vw, 50vw"
@@ -421,7 +421,7 @@ export default function PigmentationPage() {
                   viewport={VIEWPORT}
                 >
                   Skin pigmentation refers to uneven colouration caused by an
-                  overproduction or irregular distribution of melanin — the natural
+                  overproduction or irregular distribution of melanin , the natural
                   pigment responsible for skin colour. It can appear as dark spots,
                   blotchy patches, or a generally dull, uneven complexion, and may
                   affect the face, hands, neck, or body. With the right treatment,
@@ -538,7 +538,7 @@ export default function PigmentationPage() {
             <motion.div className={styles.riskImageWrap} variants={fadeUp}>
               <Image
                 src="/images/Pigmentation.png"
-                alt="Person with pigmentation on skin — dark spots and uneven skin tone"
+                alt="Person with pigmentation on skin , dark spots and uneven skin tone"
                 fill
                 className={styles.riskImage}
                 sizes="(max-width: 768px) 100vw, 50vw"

@@ -315,7 +315,7 @@ export default function Testimonials({
           ))}
         </div>
 
-        {/* ── Patient video stories — home/brand page only ── */}
+        {/* ── Patient video stories , home/brand page only ── */}
         {showVideos && <div className={styles.patientsSection}>
           {/* Desktop: 3-column portrait grid */}
           <motion.div

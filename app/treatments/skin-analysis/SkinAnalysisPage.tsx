@@ -764,7 +764,7 @@ export default function SkinAnalysisPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. HOW IT WORKS — THE SCIENCE
+          8. HOW IT WORKS , THE SCIENCE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
@@ -936,7 +936,7 @@ export default function SkinAnalysisPage() {
               </p>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'No contact with the skin — fully non-invasive',
+                  'No contact with the skin , fully non-invasive',
                   'No redness, irritation, or sensitivity',
                   'Repeat scans available to track treatment progress',
                 ].map((item) => (

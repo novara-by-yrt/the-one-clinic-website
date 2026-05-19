@@ -120,15 +120,15 @@ const RISK_FACTORS = [
 const DIAGNOSE_STEPS = [
   {
     num: '01',
-    text: 'Wood\'s Lamp Skin Analysis — a specialised UV light that reveals the depth and distribution of pigmentation invisible to the naked eye.',
+    text: 'Wood\'s Lamp Skin Analysis , a specialised UV light that reveals the depth and distribution of pigmentation invisible to the naked eye.',
   },
   {
     num: '02',
-    text: 'Dermatoscopy & Visual Assessment — close examination of pigmented lesions to characterise their pattern, border, and severity.',
+    text: 'Dermatoscopy & Visual Assessment , close examination of pigmented lesions to characterise their pattern, border, and severity.',
   },
   {
     num: '03',
-    text: 'Skin History & Trigger Review — a thorough discussion of your lifestyle, sun habits, hormonal history, and skin concerns to identify root causes.',
+    text: 'Skin History & Trigger Review , a thorough discussion of your lifestyle, sun habits, hormonal history, and skin concerns to identify root causes.',
   },
 ];
 
@@ -417,7 +417,7 @@ export default function HyperpigmentationPage() {
                   viewport={VIEWPORT}
                 >
                   Hyperpigmentation is the darkening of areas of skin caused by an
-                  excess production of melanin — the pigment responsible for skin
+                  excess production of melanin , the pigment responsible for skin
                   colour. It encompasses a broad range of concerns including sun
                   damage, age spots, freckles, melasma, and post-inflammatory marks,
                   and can affect the face, hands, neck, or body.

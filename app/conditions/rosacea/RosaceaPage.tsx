@@ -203,15 +203,15 @@ const RISK_FACTORS = [
 const DIAGNOSE_STEPS = [
   {
     num: '01',
-    text: 'Visual Skin & Vascular Assessment — examining the degree of redness, flushing, and visible blood vessels across the face.',
+    text: 'Visual Skin & Vascular Assessment , examining the degree of redness, flushing, and visible blood vessels across the face.',
   },
   {
     num: '02',
-    text: 'Trigger Identification & History — reviewing your lifestyle, skincare routine, and known triggers to understand your rosacea pattern.',
+    text: 'Trigger Identification & History , reviewing your lifestyle, skincare routine, and known triggers to understand your rosacea pattern.',
   },
   {
     num: '03',
-    text: 'Skin Sensitivity & Redness Grading — assessing skin sensitivity and grading redness severity to guide the most appropriate treatment plan.',
+    text: 'Skin Sensitivity & Redness Grading , assessing skin sensitivity and grading redness severity to guide the most appropriate treatment plan.',
   },
 ];
 
@@ -254,7 +254,7 @@ const WHEN_TO_CALL = [
 /* ── Results timeline ─────────────────────────────────────────── */
 const RESULTS_TIMELINE = [
   {
-    phase: 'After 1–2 Sessions',
+    phase: 'After 1,2 Sessions',
     title: 'Redness Reduction Timeline',
     desc:  'Visible calming of facial redness and flushing, with broken capillaries beginning to fade following initial treatments.',
   },

@@ -41,7 +41,7 @@ const ITEMS = [
   },
   {
     title: 'Personalised Experience',
-    desc: 'Every element of your visit — consultation, treatment, aftercare — is tailored to you.',
+    desc: 'Every element of your visit , consultation, treatment, aftercare , is tailored to you.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />

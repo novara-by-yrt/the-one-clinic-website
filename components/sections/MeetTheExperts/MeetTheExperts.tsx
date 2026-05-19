@@ -144,7 +144,7 @@ export default function MeetTheExperts() {
             >
               {prevMember.image ? (
                 <Image src={prevMember.image}
-                  alt={`${prevMember.name} — ${prevMember.role} at The One Clinic Leicester`}
+                  alt={`${prevMember.name} , ${prevMember.role} at The One Clinic Leicester`}
                   fill className={styles.cardImg} sizes="160px" draggable={false} />
               ) : (
                 <div className={styles.cardInitials}>{prevMember.initials}</div>
@@ -169,7 +169,7 @@ export default function MeetTheExperts() {
             >
               {member.image ? (
                 <Image src={member.image}
-                  alt={`${member.name} — ${member.role} at The One Clinic Leicester`}
+                  alt={`${member.name} , ${member.role} at The One Clinic Leicester`}
                   fill className={styles.cardImg}
                   sizes="(max-width:640px) 55vw, 320px"
                   priority draggable={false} />
@@ -180,7 +180,7 @@ export default function MeetTheExperts() {
             </motion.div>
           </AnimatePresence>
 
-          {/* Mobile-only side arrows — overlaid on card */}
+          {/* Mobile-only side arrows , overlaid on card */}
           <button className={styles.mobileNavPrev} onClick={prev} aria-label="Previous team member">
             <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
               <path d="M11 3.5L5.5 9L11 14.5" stroke="currentColor" strokeWidth="2"
@@ -198,7 +198,7 @@ export default function MeetTheExperts() {
         {/* ── Right column: info (top) + next thumb (bottom) ── */}
         <div className={styles.rightCol}>
 
-          {/* Info panel — upper portion */}
+          {/* Info panel , upper portion */}
           <div className={styles.infoArea} aria-live="polite">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
@@ -230,7 +230,7 @@ export default function MeetTheExperts() {
             </AnimatePresence>
           </div>
 
-          {/* Two next card thumbnails — lower portion, side by side */}
+          {/* Two next card thumbnails , lower portion, side by side */}
           <div className={styles.nextRow}>
             {[nextMember, nextMember2].map((m, i) => (
               <button
@@ -250,7 +250,7 @@ export default function MeetTheExperts() {
                   >
                     {m.image ? (
                       <Image src={m.image}
-                        alt={`${m.name} — ${m.role} at The One Clinic Leicester`}
+                        alt={`${m.name} , ${m.role} at The One Clinic Leicester`}
                         fill className={styles.cardImg} sizes="160px" draggable={false} />
                     ) : (
                       <div className={styles.cardInitials}>{m.initials}</div>
@@ -265,7 +265,7 @@ export default function MeetTheExperts() {
         </div>
       </div>
 
-      {/* ── Arrows — centered below the entire slideshow ── */}
+      {/* ── Arrows , centered below the entire slideshow ── */}
       <div className={styles.navRow}>
         <button className={styles.navBtn} onClick={prev} aria-label="Previous team member">
           <svg width="16" height="16" viewBox="0 0 18 18" fill="none">

@@ -90,7 +90,7 @@ const APPROACH_CARDS = [
   {
     eyebrow: '02',
     title: 'Personalised Care Plan',
-    desc: 'Based on your assessment, a tailored plan is created that may include prescriptions, on-site tests, referrals, or lifestyle guidance — all designed around your individual needs and goals.',
+    desc: 'Based on your assessment, a tailored plan is created that may include prescriptions, on-site tests, referrals, or lifestyle guidance , all designed around your individual needs and goals.',
   },
   {
     eyebrow: '03',
@@ -113,7 +113,7 @@ const JOURNEY_STEPS = [
   {
     n: '03',
     title: 'Tests & Investigations',
-    desc: 'Where indicated, on-site testing is arranged — including blood hormone panels, STI screening, smear tests, swabs, and more — with results typically returned promptly.',
+    desc: 'Where indicated, on-site testing is arranged , including blood hormone panels, STI screening, smear tests, swabs, and more , with results typically returned promptly.',
   },
   {
     n: '04',
@@ -154,7 +154,7 @@ const TREATED_BENEFITS = [
   },
   {
     title: 'On-site Testing',
-    desc: 'Blood tests, smear tests, STI panels, and hormone profiles can all be carried out at your appointment — saving you time and multiple trips to different facilities.',
+    desc: 'Blood tests, smear tests, STI panels, and hormone profiles can all be carried out at your appointment , saving you time and multiple trips to different facilities.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/>
@@ -188,7 +188,7 @@ const TREATED_BENEFITS = [
 const ELIGIBILITY_SUITABLE = [
   'Women of all ages seeking private women\'s health services',
   'Those needing contraception advice, prescribing, or review',
-  'Anyone with menstrual concerns — irregular, painful, or heavy periods',
+  'Anyone with menstrual concerns , irregular, painful, or heavy periods',
   'Women seeking sexual health advice or STI testing',
   'Those experiencing perimenopause or menopause symptoms needing support or HRT',
   'Women with suspected PCOS, endometriosis, or hormonal imbalance',
@@ -196,7 +196,7 @@ const ELIGIBILITY_SUITABLE = [
 ];
 
 const ELIGIBILITY_NOT_SUITABLE = [
-  'Obstetric emergencies — please call 999 or attend your nearest A&E',
+  'Obstetric emergencies , please call 999 or attend your nearest A&E',
   'Complex gynaecological surgery (we will provide prompt specialist referral)',
   'Active labour or pregnancy complications requiring obstetric care',
 ];
@@ -224,7 +224,7 @@ const CONDITIONS_CARDS = [
   },
   {
     title: 'Sexual Health & STI Testing',
-    desc: 'Confidential sexual health consultations including full STI panels, blood tests, swabs, results review, and treatment prescribing — all handled with complete discretion.',
+    desc: 'Confidential sexual health consultations including full STI panels, blood tests, swabs, results review, and treatment prescribing , all handled with complete discretion.',
   },
   {
     title: 'Fertility Concerns',
@@ -253,7 +253,7 @@ const WHAT_TO_EXPECT_CARDS = [
       </svg>
     ),
     title: 'Your Tests & Investigations',
-    body: 'A comprehensive range of on-site tests can be performed at your appointment — including hormone blood panels, STI screening, cervical smear tests, and swabs. Results are reviewed promptly and explained clearly.',
+    body: 'A comprehensive range of on-site tests can be performed at your appointment , including hormone blood panels, STI screening, cervical smear tests, and swabs. Results are reviewed promptly and explained clearly.',
     note: 'Most results are available within days, with follow-up arranged as needed.',
   },
   {
@@ -317,7 +317,7 @@ const FAQS = [
   {
     question: "Is a referral needed to book a women's health appointment?",
     answer:
-      "No referral is required. You can book directly with The One Clinic at any time. If a specialist referral is needed following your consultation — for example, to a gynaecologist — we will arrange this promptly on your behalf.",
+      "No referral is required. You can book directly with The One Clinic at any time. If a specialist referral is needed following your consultation , for example, to a gynaecologist , we will arrange this promptly on your behalf.",
   },
   {
     question: 'How long does a women\'s health consultation last?',
@@ -383,7 +383,7 @@ export default function WomensHealthPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Private, compassionate women&apos;s health care at The One Clinic — from contraception
+                Private, compassionate women&apos;s health care at The One Clinic , from contraception
                 and smear tests to menopause and beyond.
               </motion.p>
 
@@ -549,7 +549,7 @@ export default function WomensHealthPage() {
             </motion.h2>
             <motion.p className={styles.combinationIntroText} variants={fadeUp}>
               At The One Clinic, our women&apos;s health service is built around three core principles
-              — thorough assessment, personalised planning, and consistent ongoing support.
+              , thorough assessment, personalised planning, and consistent ongoing support.
             </motion.p>
           </motion.div>
 
@@ -584,7 +584,7 @@ export default function WomensHealthPage() {
             <p className={styles.finalResultsEyebrow}>The Result</p>
             <p className={styles.finalResultsText}>
               When assessment, planning, and ongoing support come together, you receive truly
-              joined-up women&apos;s health care — addressing not just your immediate concern but your
+              joined-up women&apos;s health care , addressing not just your immediate concern but your
               long-term health and wellbeing.
             </p>
           </motion.div>
@@ -754,7 +754,7 @@ export default function WomensHealthPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. HOW IT WORKS — THE SERVICE
+          8. HOW IT WORKS , THE SERVICE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
@@ -778,7 +778,7 @@ export default function WomensHealthPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.howPara} variants={fadeUp}>
-              Your appointment begins with a full women&apos;s health history — covering your menstrual
+              Your appointment begins with a full women&apos;s health history , covering your menstrual
               cycle, contraceptive history, sexual health, symptoms, medications, and family history.
               Where clinically indicated, your doctor will carry out a relevant physical examination
               with your full consent.
@@ -787,7 +787,7 @@ export default function WomensHealthPage() {
               Blood tests can be taken on the same day, including hormone panels (FSH, LH, oestrogen,
               progesterone, testosterone, thyroid), STI screening, and general health markers.
               Contraception can be prescribed or reviewed, HRT can be initiated or optimised, smear
-              tests performed, and specialist referral letters arranged — all under one roof.
+              tests performed, and specialist referral letters arranged , all under one roof.
             </motion.p>
           </motion.div>
 
@@ -805,7 +805,7 @@ export default function WomensHealthPage() {
               {[
                 'Full women\'s health history',
                 'Examination if clinically indicated',
-                'Blood tests — hormones, STI panels, smears',
+                'Blood tests , hormones, STI panels, smears',
                 'Contraception prescribing and review',
                 'HRT initiation and management',
                 'Specialist referrals',
@@ -825,7 +825,7 @@ export default function WomensHealthPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          9. WHAT TO EXPECT — 3 CARDS
+          9. WHAT TO EXPECT , 3 CARDS
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -890,7 +890,7 @@ export default function WomensHealthPage() {
               Conditions We Address
             </motion.h2>
             <motion.p className={styles.beforeAfterSubheading} variants={fadeUp}>
-              From everyday health concerns to more complex conditions — we provide expert,
+              From everyday health concerns to more complex conditions , we provide expert,
               compassionate care for women at every stage of life.
             </motion.p>
           </motion.div>
@@ -1047,7 +1047,7 @@ export default function WomensHealthPage() {
               Experience the best private women&apos;s health care in Leicester at The One Clinic. Our
               GP-led team delivers safe, confidential, and comprehensive consultations for women at
               every stage of life. Enjoy same-week appointments, on-site testing, and personalised
-              care — all tailored to you.
+              care , all tailored to you.
             </motion.p>
           </motion.div>
         </Container>

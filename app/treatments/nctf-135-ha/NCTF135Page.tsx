@@ -397,7 +397,7 @@ export default function NCTF135Page() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                The Ultimate Skin Booster for Radiance, Hydration &amp; Rejuvenation — powered by
+                The Ultimate Skin Booster for Radiance, Hydration &amp; Rejuvenation , powered by
                 55 active ingredients delivered directly into the dermis.
               </motion.p>
 
@@ -476,8 +476,8 @@ export default function NCTF135Page() {
                 <h2 className={styles.combinedHeading}>What is NCTF 135 HA?</h2>
                 <p className={styles.combinedDesc}>
                   NCTF 135 HA is a pharmaceutical-grade skin booster containing polylactic acid and
-                  55 active ingredients — including hyaluronic acid, vitamins, amino acids, and
-                  minerals — injected precisely into the dermis. It stimulates collagen production,
+                  55 active ingredients , including hyaluronic acid, vitamins, amino acids, and
+                  minerals , injected precisely into the dermis. It stimulates collagen production,
                   boosts deep hydration, and improves overall skin quality for a naturally radiant,
                   rejuvenated complexion.
                 </p>
@@ -599,8 +599,8 @@ export default function NCTF135Page() {
             <p className={styles.finalResultsEyebrow}>The Outcome</p>
             <p className={styles.finalResultsText}>
               When every step is executed with precision and personalisation, NCTF 135 HA delivers
-              comprehensive skin renewal — addressing dehydration, fine lines, dullness, and
-              uneven tone — for a naturally radiant, rejuvenated complexion.
+              comprehensive skin renewal , addressing dehydration, fine lines, dullness, and
+              uneven tone , for a naturally radiant, rejuvenated complexion.
             </p>
           </motion.div>
         </Container>
@@ -751,7 +751,7 @@ export default function NCTF135Page() {
       </Section>
 
       {/* ════════════════════════════════════════
-          HOW IT WORKS — THE SCIENCE
+          HOW IT WORKS , THE SCIENCE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
@@ -775,8 +775,8 @@ export default function NCTF135Page() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.howPara} variants={fadeUp}>
-              NCTF 135 HA delivers 55 active ingredients — including hyaluronic acid, vitamins,
-              amino acids, minerals, and coenzymes — directly into the mid-dermis via precise
+              NCTF 135 HA delivers 55 active ingredients , including hyaluronic acid, vitamins,
+              amino acids, minerals, and coenzymes , directly into the mid-dermis via precise
               micro-injection. This saturates the dermis with the nutrients it needs to function
               optimally and repair age-related decline.
             </motion.p>

@@ -599,7 +599,7 @@ export default function WrinkleRelaxingPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {/* Card 1 — Results Timeline */}
+            {/* Card 1 , Results Timeline */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -621,7 +621,7 @@ export default function WrinkleRelaxingPage() {
               </p>
             </motion.div>
 
-            {/* Card 2 — Side Effects */}
+            {/* Card 2 , Side Effects */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -656,7 +656,7 @@ export default function WrinkleRelaxingPage() {
               </p>
             </motion.div>
 
-            {/* Card 3 — Aftercare */}
+            {/* Card 3 , Aftercare */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">

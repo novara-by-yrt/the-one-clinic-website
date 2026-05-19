@@ -18,7 +18,7 @@ const SLIDES_BASE = [
     src:   '/images/Endolift-Laser_1.jpg',
     title: 'Endolift',
     href:  '/treatments/endolift',
-    desc:  'An innovative laser treatment that tightens and lifts loose skin using minimally invasive fibre technology — no surgery, no general anaesthetic, minimal downtime.',
+    desc:  'An innovative laser treatment that tightens and lifts loose skin using minimally invasive fibre technology , no surgery, no general anaesthetic, minimal downtime.',
   },
   {
     src:   '/images/Minor Surgery.jpg',

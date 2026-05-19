@@ -17,7 +17,7 @@ export default function BrandBenefits() {
         <div className={styles.layout}>
 
           {/* ══════════════════════════════════
-              LEFT — oversized editorial text
+              LEFT , oversized editorial text
           ══════════════════════════════════ */}
           <motion.div
             className={styles.textCol}
@@ -30,7 +30,7 @@ export default function BrandBenefits() {
               Why Choose Us
             </motion.p>
 
-            {/* Oversized heading — editorial luxury scale */}
+            {/* Oversized heading , editorial luxury scale */}
             <motion.h2 className={styles.heading} variants={fadeUp}>
               Care&shy;fully<br />
               considered.<br />
@@ -57,7 +57,7 @@ export default function BrandBenefits() {
           </motion.div>
 
           {/* ══════════════════════════════════
-              RIGHT — layered image + float cards
+              RIGHT , layered image + float cards
           ══════════════════════════════════ */}
           <motion.div
             className={styles.imageCol}
@@ -83,7 +83,7 @@ export default function BrandBenefits() {
                 </div>
               </div>
 
-              {/* ── Secondary framed image (outside canvas — shadow preserved) ── */}
+              {/* ── Secondary framed image (outside canvas , shadow preserved) ── */}
               <motion.div
                 className={styles.imgSecondary}
                 initial={{ opacity: 0, y: 40 }}

@@ -115,7 +115,7 @@ const APPROACH_CARDS = [
   {
     eyebrow: '02',
     title: 'Personalised Treatment Plan',
-    desc: 'No two bodies are the same. We design a bespoke contouring programme selecting the optimal combination of technologies — whether radiofrequency, cryolipolysis, HIFU, or cavitation — to address your specific fat deposits, skin laxity, and body sculpting goals.',
+    desc: 'No two bodies are the same. We design a bespoke contouring programme selecting the optimal combination of technologies , whether radiofrequency, cryolipolysis, HIFU, or cavitation , to address your specific fat deposits, skin laxity, and body sculpting goals.',
   },
   {
     eyebrow: '03',
@@ -519,7 +519,7 @@ export default function BodyContouringPage() {
             </motion.h2>
             <motion.p className={styles.combinationIntroText} variants={fadeUp}>
               At The One Clinic, our body contouring programme follows a structured three-step
-              approach — combining expert assessment, personalised planning, and progressive
+              approach , combining expert assessment, personalised planning, and progressive
               treatment for optimal sculpting results without surgery.
             </motion.p>
           </motion.div>
@@ -556,7 +556,7 @@ export default function BodyContouringPage() {
             <p className={styles.finalResultsText}>
               When body analysis, personalised planning, and a progressive treatment programme
               are combined, patients achieve comprehensive fat reduction, improved skin firmness,
-              and lasting body definition — all without surgery or significant downtime.
+              and lasting body definition , all without surgery or significant downtime.
             </p>
           </motion.div>
         </Container>
@@ -749,8 +749,8 @@ export default function BodyContouringPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.howPara} variants={fadeUp}>
-              Non-surgical body contouring technologies work by delivering targeted energy — whether
-              cold, heat, or sound waves — to disrupt fat cell membranes in precise, localised areas.
+              Non-surgical body contouring technologies work by delivering targeted energy , whether
+              cold, heat, or sound waves , to disrupt fat cell membranes in precise, localised areas.
               Cryolipolysis crystallises fat cells using controlled cooling, while radiofrequency and
               HIFU use thermal energy to heat and destroy adipocytes beneath the skin surface, all
               without affecting surrounding tissue.
@@ -822,7 +822,7 @@ export default function BodyContouringPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {/* Card 1 — Results Timeline */}
+            {/* Card 1 , Results Timeline */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -846,7 +846,7 @@ export default function BodyContouringPage() {
               </p>
             </motion.div>
 
-            {/* Card 2 — Side Effects */}
+            {/* Card 2 , Side Effects */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -881,7 +881,7 @@ export default function BodyContouringPage() {
               </p>
             </motion.div>
 
-            {/* Card 3 — Aftercare */}
+            {/* Card 3 , Aftercare */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">

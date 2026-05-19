@@ -123,15 +123,15 @@ const RISK_FACTORS = [
 const DIAGNOSE_STEPS = [
   {
     num: '01',
-    text: 'Facial Skin Laxity Assessment — evaluating the degree of skin looseness and loss of firmness across the lower face.',
+    text: 'Facial Skin Laxity Assessment , evaluating the degree of skin looseness and loss of firmness across the lower face.',
   },
   {
     num: '02',
-    text: 'Jawline & Lower Face Analysis — examining the contour, definition, and extent of drooping along the jaw and chin.',
+    text: 'Jawline & Lower Face Analysis , examining the contour, definition, and extent of drooping along the jaw and chin.',
   },
   {
     num: '03',
-    text: 'Medical & Lifestyle History Review — discussing contributing factors such as weight changes, sun exposure, and skincare habits.',
+    text: 'Medical & Lifestyle History Review , discussing contributing factors such as weight changes, sun exposure, and skincare habits.',
   },
 ];
 

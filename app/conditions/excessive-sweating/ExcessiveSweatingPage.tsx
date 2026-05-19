@@ -21,7 +21,7 @@ const SWEATING_TYPES = [
   {
     num: '01',
     title: 'Primary Hyperhidrosis',
-    desc: 'No underlying medical cause; overactive sweat glands produce focal sweating of the hands, feet, underarms, and face — often beginning in adolescence.',
+    desc: 'No underlying medical cause; overactive sweat glands produce focal sweating of the hands, feet, underarms, and face , often beginning in adolescence.',
   },
   {
     num: '02',
@@ -417,8 +417,8 @@ export default function ExcessiveSweatingPage() {
                 >
                   Excessive sweating, medically known as hyperhidrosis, is a condition
                   where the body produces far more sweat than is needed to regulate
-                  temperature. It can affect specific areas — such as the underarms,
-                  palms, feet, and face — or occur across the whole body, and is often
+                  temperature. It can affect specific areas , such as the underarms,
+                  palms, feet, and face , or occur across the whole body, and is often
                   completely unrelated to heat or physical activity. Effective treatments
                   are available to dramatically reduce sweating and restore confidence.
                 </motion.p>

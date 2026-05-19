@@ -116,22 +116,22 @@ const RISK_FACTORS = [
   'Individuals with significant or prolonged sun exposure.',
   'Those who have lost weight rapidly.',
   'People with a genetic predisposition to deep smile lines.',
-  'Frequent expressers — animated talkers and smilers.',
+  'Frequent expressers , animated talkers and smilers.',
 ];
 
 /* ── Diagnose steps ───────────────────────────────────────────── */
 const DIAGNOSE_STEPS = [
   {
     num: '01',
-    text: 'Facial Volume & Crease Depth Assessment — evaluating the severity of the folds and underlying volume loss.',
+    text: 'Facial Volume & Crease Depth Assessment , evaluating the severity of the folds and underlying volume loss.',
   },
   {
     num: '02',
-    text: 'Dynamic vs Static Fold Analysis — determining whether folds are movement-related or present at rest.',
+    text: 'Dynamic vs Static Fold Analysis , determining whether folds are movement-related or present at rest.',
   },
   {
     num: '03',
-    text: 'Skin Quality & Laxity Review — assessing skin texture, elasticity, and overall condition to guide treatment.',
+    text: 'Skin Quality & Laxity Review , assessing skin texture, elasticity, and overall condition to guide treatment.',
   },
 ];
 

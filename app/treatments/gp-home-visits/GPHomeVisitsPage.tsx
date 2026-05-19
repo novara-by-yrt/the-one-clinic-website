@@ -254,7 +254,7 @@ const WHAT_TO_EXPECT_CARDS = [
     ),
     title: 'Follow-up',
     body: 'After the visit, the doctor will advise on the next steps. A phone follow-up call is available, and an in-clinic appointment can be arranged if further investigation or review is needed.',
-    note: 'Continuity of care is important to us — we support you beyond the initial home visit.',
+    note: 'Continuity of care is important to us , we support you beyond the initial home visit.',
   },
 ];
 
@@ -360,7 +360,7 @@ const FAQS = [
   {
     question: 'How much does a GP home visit cost?',
     answer:
-      'Home visit fees start from £250. Pricing is confirmed when you book and includes travel time. There are no hidden charges — all costs are discussed transparently before the visit.',
+      'Home visit fees start from £250. Pricing is confirmed when you book and includes travel time. There are no hidden charges , all costs are discussed transparently before the visit.',
   },
   {
     question: 'Which areas do you cover for home visits?',
@@ -426,7 +426,7 @@ export default function GPHomeVisitsPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Private GP Consultations in the Comfort of Your Home — same-day visits available
+                Private GP Consultations in the Comfort of Your Home , same-day visits available
                 across Leicester and the surrounding area.
               </motion.p>
 
@@ -508,8 +508,8 @@ export default function GPHomeVisitsPage() {
                   A GP home visit brings qualified private medical care directly to you. Whether
                   you are too unwell to travel, elderly, housebound, recovering from surgery, or
                   simply unable to reach a clinic, our doctors come to your location and deliver a
-                  full clinical assessment — including prescriptions, referrals, and follow-up advice
-                  — to the same standard as an in-clinic consultation.
+                  full clinical assessment , including prescriptions, referrals, and follow-up advice
+                  , to the same standard as an in-clinic consultation.
                 </p>
               </motion.div>
               <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
@@ -592,7 +592,7 @@ export default function GPHomeVisitsPage() {
             </motion.h2>
             <motion.p className={styles.combinationIntroText} variants={fadeUp}>
               At The One Clinic, our home visit service is designed to bring the full quality of
-              private GP care directly to your door — with the same thoroughness as any in-clinic
+              private GP care directly to your door , with the same thoroughness as any in-clinic
               consultation.
             </motion.p>
           </motion.div>
@@ -1096,7 +1096,7 @@ export default function GPHomeVisitsPage() {
             </motion.p>
             <motion.p className={styles.costBannerNote} variants={fadeUp}>
               Pricing includes travel time and varies depending on location and visit duration.
-              All costs are confirmed transparently at the time of booking — no hidden fees.
+              All costs are confirmed transparently at the time of booking , no hidden fees.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>

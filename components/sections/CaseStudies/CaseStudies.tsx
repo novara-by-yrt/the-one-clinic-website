@@ -77,7 +77,7 @@ export default function CaseStudies() {
         {/* ── Carousel ──────────────────────────────────── */}
         <div className={styles.carouselWrap}>
 
-          {/* Mask wrapper — only clips the slide track, not the nav row */}
+          {/* Mask wrapper , only clips the slide track, not the nav row */}
           <div className={styles.swiperMask}>
             <Swiper
               grabCursor
@@ -113,7 +113,7 @@ export default function CaseStudies() {
             </Swiper>
           </div>
 
-          {/* Arrow controls — outside the mask, always fully visible */}
+          {/* Arrow controls , outside the mask, always fully visible */}
           <div className={styles.navRow}>
             <button
               className={styles.navBtn}

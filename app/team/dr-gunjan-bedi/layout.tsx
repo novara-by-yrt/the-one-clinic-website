@@ -3,11 +3,11 @@ import JsonLd from '@/lib/schema/JsonLd';
 import { buildPhysicianSchema } from '@/lib/schema/builders';
 
 export const metadata: Metadata = {
-  title: 'Dr Gunjan Bedi — Advanced Aesthetics Practitioner',
+  title: 'Dr Gunjan Bedi , Advanced Aesthetics Practitioner',
   description: 'Meet Dr Gunjan Bedi at The One Clinic. 20+ years in medicine, qualified in GP, Psychiatry & Aesthetic Medicine. Specialising in injectables, radiofrequency and holistic care.',
   alternates: { canonical: '/team/dr-gunjan-bedi' },
   openGraph: {
-    title: 'Dr Gunjan Bedi — Advanced Aesthetics Practitioner | The One Clinic',
+    title: 'Dr Gunjan Bedi , Advanced Aesthetics Practitioner | The One Clinic',
     description: 'Meet Dr Gunjan Bedi at The One Clinic. 20+ years in medicine, qualified in GP, Psychiatry & Aesthetic Medicine. Specialising in injectables, radiofrequency and holistic care.',
     type: 'profile',
     images: [{ url: '/images/imgi_21_team-thumb-BEDI.jpg', alt: 'Dr Gunjan Bedi' }],
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Dr Gunjan Bedi — Advanced Aesthetics Practitioner | The One Clinic',
+    title: 'Dr Gunjan Bedi , Advanced Aesthetics Practitioner | The One Clinic',
     description: 'Meet Dr Gunjan Bedi at The One Clinic. 20+ years in medicine, qualified in GP, Psychiatry & Aesthetic Medicine. Specialising in injectables, radiofrequency and holistic care.',
   },
 };
