@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Script from 'next/script';
 import { motion } from 'framer-motion';
 import Section            from '@/components/ui/Section';
 import Container          from '@/components/ui/Container';
@@ -497,16 +496,12 @@ export default function BCCRemovalPage() {
 
             {/* Right: Wistia video */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
-              <Script src="https://fast.wistia.net/player.js" strategy="lazyOnload" />
-              <iframe
-                src="https://fast.wistia.net/embed/iframe/2u0e7sshum?web_component=true&seo=true"
-                title="BCC removal service page video"
-                allow="autoplay; fullscreen"
-                allowFullScreen
-                frameBorder="0"
-                scrolling="no"
+              <Image
+                src="/images/Doctor2.jpg"
+                alt="Basal cell carcinoma treatment at The One Clinic Leicester"
+                fill
                 className={styles.whatIsVideoFrame}
-                name="wistia_embed"
+                sizes="(max-width: 900px) 100vw, 50vw"
               />
             </motion.div>
           </motion.div>
