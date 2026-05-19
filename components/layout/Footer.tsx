@@ -68,10 +68,13 @@ export default function Footer() {
 
           {/* Right: form */}
           <div className={styles.newsletterFormWrap}>
+            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+            {/* @ts-ignore — scrolling is a valid iframe attr but deprecated in HTML spec */}
             <iframe
               src="https://link.leadpipeline.ai/widget/form/dViZEitr7fnCtl8rKT3Q"
-              style={{ width: '100%', height: '420px', border: 'none', borderRadius: '10px', display: 'block' }}
+              style={{ width: '100%', height: '560px', border: 'none', borderRadius: '10px', display: 'block' }}
               id="inline-dViZEitr7fnCtl8rKT3Q"
+              scrolling="no"
               data-layout="{'id':'INLINE'}"
               data-trigger-type="alwaysShow"
               data-trigger-value=""
@@ -80,7 +83,7 @@ export default function Footer() {
               data-deactivation-type="neverDeactivate"
               data-deactivation-value=""
               data-form-name="Newsletter Form"
-              data-height="420"
+              data-height="560"
               data-layout-iframe-id="inline-dViZEitr7fnCtl8rKT3Q"
               data-form-id="dViZEitr7fnCtl8rKT3Q"
               title="Newsletter Form"
