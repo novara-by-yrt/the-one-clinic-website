@@ -4,16 +4,18 @@
 .main {
   background: #fff;
   min-height: 60vh;
+  padding: 0;
 }
 
 /* ═══════════════════════════════════════════
    HERO BAND
 ═══════════════════════════════════════════ */
 .hero {
-  background: linear-gradient(135deg, #0d0d12 0%, #1a1a28 100%);
-  padding: 72px var(--container-padding) 56px;
+  background: #000;
+  padding-top: 72px;
+  padding-bottom: 56px;
   margin-bottom: 56px;
-  border-radius: 0 0 24px 24px;
+  width: 100%;
 }
 
 .eyebrow {

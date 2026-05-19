@@ -10,18 +10,22 @@ export const metadata: Metadata = {
 export default function PrivacyPolicyPage() {
   return (
     <main className={styles.main}>
+
+      {/* Full-width black hero — outside Container so it reaches both edges */}
+      <div className={styles.hero}>
+        <Container>
+          <span className={styles.eyebrow}>Legal</span>
+          <h1>Privacy Policy</h1>
+          <p className={styles.intro}>
+            This notice explains how The One Clinic collects, uses, and protects your personal data
+            in accordance with UK data protection law.
+          </p>
+          <p className={styles.lastUpdated}>Last updated: May 2026</p>
+        </Container>
+      </div>
+
       <Container>
         <article className={styles.content}>
-
-          <div className={styles.hero}>
-            <span className={styles.eyebrow}>Legal</span>
-            <h1>Privacy Policy</h1>
-            <p className={styles.intro}>
-              This notice explains how The One Clinic collects, uses, and protects your personal data
-              in accordance with UK data protection law.
-            </p>
-            <p className={styles.lastUpdated}>Last updated: May 2026</p>
-          </div>
 
           <section>
             <h2>Our Commitment</h2>
