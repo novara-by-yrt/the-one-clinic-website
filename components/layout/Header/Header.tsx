@@ -494,7 +494,7 @@ export default function Header() {
                       <p className={styles.megaFeaturedTitle}>Advanced Medical &amp; Aesthetic Care</p>
                       <button
                         className={styles.megaFeaturedCta}
-                        onClick={() => { setOpenDropdown(null); window.dispatchEvent(new CustomEvent('openCallbackModal')); }}
+                        onClick={() => { setOpenDropdown(null); window.dispatchEvent(new CustomEvent('openBookConsultationModal')); }}
                       >
                         Book a Consultation
                       </button>
@@ -555,7 +555,7 @@ export default function Header() {
 
               <button
                 className={styles.ctaLink}
-                onClick={() => window.dispatchEvent(new CustomEvent('openCallbackModal'))}
+                onClick={() => window.dispatchEvent(new CustomEvent('openBookConsultationModal'))}
                 aria-label="Book a consultation"
               >
                 Book a Consultation
@@ -753,7 +753,7 @@ export default function Header() {
               <div className={styles.mobileCta}>
                 <button
                   className={styles.mobileCtaLink}
-                  onClick={() => { closeMenu(); window.dispatchEvent(new CustomEvent('openCallbackModal')); }}
+                  onClick={() => { closeMenu(); window.dispatchEvent(new CustomEvent('openBookConsultationModal')); }}
                 >
                   Book a Consultation
                 </button>

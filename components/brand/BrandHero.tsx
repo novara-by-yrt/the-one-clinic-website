@@ -215,7 +215,7 @@ export default function BrandHero() {
               >
                 <button
                   className={styles.ctaBtn}
-                  onClick={() => window.dispatchEvent(new CustomEvent('openCallbackModal'))}
+                  onClick={() => window.dispatchEvent(new CustomEvent('openBookConsultationModal'))}
                 >
                   Book a Consultation
                   <svg

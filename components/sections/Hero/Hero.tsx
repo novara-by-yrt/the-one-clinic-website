@@ -133,7 +133,7 @@ export default function Hero({ showVideo = true }: { showVideo?: boolean }) {
               variants={FADE_UP}
               transition={TRANSITION_SMOOTH}
             >
-              <Button variant="primary" theme="dark" onClick={() => window.dispatchEvent(new CustomEvent('openCallbackModal'))}>
+              <Button variant="primary" theme="dark" onClick={() => window.dispatchEvent(new CustomEvent('openBookConsultationModal'))}>
                 Book a Consultation
               </Button>
             </motion.div>

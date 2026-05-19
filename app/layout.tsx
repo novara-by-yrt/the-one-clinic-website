@@ -4,6 +4,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import LayoutShell from '@/components/layout/LayoutShell';
 import StickyCallbackCTA from '@/components/ui/StickyCallbackCTA';
+import BookConsultationModal from '@/components/ui/BookConsultationModal';
 import CookieConsentBanner from '@/components/ui/CookieConsentBanner/CookieConsentBanner';
 import '@/styles/globals.css';
 
@@ -83,6 +84,7 @@ export default function RootLayout({
             </main>
           </LayoutShell>
           <StickyCallbackCTA />
+          <BookConsultationModal />
         </div>
 
         <CookieConsentBanner />

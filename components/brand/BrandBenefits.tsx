@@ -49,7 +49,7 @@ export default function BrandBenefits() {
               <Button
                 variant="primary"
                 theme="light"
-                onClick={() => window.dispatchEvent(new CustomEvent('openCallbackModal'))}
+                onClick={() => window.dispatchEvent(new CustomEvent('openBookConsultationModal'))}
               >
                 Book a Consultation
               </Button>
