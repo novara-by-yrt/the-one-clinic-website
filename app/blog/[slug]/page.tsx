@@ -59,6 +59,37 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   };
 }
 
+function splitContentForCTA(html: string): { before: string; after: string } {
+  // Find all <h2> positions in the content
+  const headingRegex = /<h2[^>]*>/g;
+  const positions: number[] = [];
+  let match;
+
+  while ((match = headingRegex.exec(html)) !== null) {
+    positions.push(match.index);
+  }
+
+  // Insert CTA two sections above the last heading (conclusion).
+  // For N headings, that's heading at index N-3 (the third-to-last).
+  // Fallbacks: if too few headings, place it as close to the end as makes sense.
+  let splitIndex: number;
+
+  if (positions.length >= 4) {
+    splitIndex = positions[positions.length - 3];
+  } else if (positions.length >= 2) {
+    splitIndex = positions[positions.length - 1];
+  } else if (positions.length === 1) {
+    splitIndex = positions[0];
+  } else {
+    return { before: html, after: '' };
+  }
+
+  return {
+    before: html.substring(0, splitIndex),
+    after: html.substring(splitIndex),
+  };
+}
+
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const resolvedParams = await params;
   const post = await getPostBySlug(resolvedParams.slug);
@@ -84,6 +115,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         day: 'numeric',
       })
     : null;
+
+  const { before: contentBefore, after: contentAfter } = splitContentForCTA(post.content);
 
   return (
     <>
@@ -157,9 +190,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </Container>
       </section>
 
-      {/* LeadPipeline Script */}
-      <Script src="https://link.leadpipeline.ai/js/form_embed.js" strategy="lazyOnload" />
-
       {/* Content */}
       <Section variant="light" data-section-theme="light" className={styles.contentSection}>
         <Container>
@@ -179,16 +209,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </div>
               )}
 
-              {/* First CTA Section - after image */}
-              <div className={styles.ctaSection}>
-                <DoctorCTA1 />
-              </div>
-
-              {/* Post content */}
+              {/* Post content - split with CTA in middle */}
               <div className={styles.mdxContent}>
-                <div
-                  dangerouslySetInnerHTML={{ __html: post.content }}
-                />
+                {/* Content before first heading */}
+                <div dangerouslySetInnerHTML={{ __html: contentBefore }} />
+
+                {/* CTA Section - in middle of content */}
+                <div className={styles.ctaSection}>
+                  <DoctorCTA1 />
+                </div>
+
+                {/* Content from first heading onwards */}
+                {contentAfter && <div dangerouslySetInnerHTML={{ __html: contentAfter }} />}
               </div>
 
               {/* Tags */}
@@ -209,9 +241,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <h3 className={styles.formTitle}>Request a Call Back</h3>
                 <div className={styles.formWrap}>
                   <iframe
-                    src="https://link.leadpipeline.ai/widget/form/Az3D8kxDVBz2diDQJ3uY"
-                    style={{ width: '100%', height: '500px', border: 'none', display: 'block' }}
-                    id="inline-Az3D8kxDVBz2diDQJ3uY"
+                    src="https://link.leadpipeline.ai/widget/form/fegqbVjvGrZqMfbk64P4"
+                    style={{ width: '100%', minHeight: '400px', border: 'none', display: 'block', borderRadius: '20px' }}
+                    id="inline-fegqbVjvGrZqMfbk64P4"
                     data-layout="{'id':'INLINE'}"
                     data-trigger-type="alwaysShow"
                     data-trigger-value=""
@@ -219,11 +251,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     data-activation-value=""
                     data-deactivation-type="neverDeactivate"
                     data-deactivation-value=""
-                    data-form-name="Request a Call Back"
-                    data-height="500"
-                    data-layout-iframe-id="inline-Az3D8kxDVBz2diDQJ3uY"
-                    data-form-id="Az3D8kxDVBz2diDQJ3uY"
+                    data-form-name="Request a Call Back Form"
+                    data-height="510"
+                    data-layout-iframe-id="inline-fegqbVjvGrZqMfbk64P4"
+                    data-form-id="fegqbVjvGrZqMfbk64P4"
                     title="Request a Call Back"
+                    scrolling="no"
                   />
                 </div>
               </div>

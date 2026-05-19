@@ -154,6 +154,32 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin: 0;
+  white-space: pre-wrap;
+}
+
+.reviewTextExpanded {
+  -webkit-line-clamp: unset;
+  overflow: visible;
+  display: block;
+}
+
+.readMoreBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: 8px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+  cursor: pointer;
+  transition: color 0.2s ease;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.4);
+}
+
+.readMoreBtn:hover {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration-color: rgba(255, 255, 255, 0.6);
 }
 
 .cardFooter {
@@ -467,33 +493,68 @@
 }
 
 @media (max-width: 480px) {
+  .carouselRow {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
   .cardsGrid {
     grid-template-columns: 1fr;
     gap: 12px;
+    min-height: auto;
   }
 
   .card:not(:first-child) {
     display: none;
   }
 
+  .card {
+    min-height: auto;
+    padding: 20px 16px 16px;
+  }
+
   .reviewText {
     display: block;
     -webkit-line-clamp: unset;
     overflow: visible;
+    font-size: 0.875rem;
   }
 
   .arrowBtn {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
+    order: 2;
+  }
+
+  .arrowBtn:first-child {
+    order: 1;
+  }
+
+  .viewport {
+    order: 0;
   }
 
   .heading {
-    font-size: clamp(1.875rem, 8vw, 2.5rem);
+    font-size: clamp(1.75rem, 6.5vw, 2.25rem);
   }
 
   .quoteIcon {
-    font-size: 4rem;
-    top: 10px;
-    right: 14px;
+    font-size: 3.5rem;
+    top: 8px;
+    right: 12px;
+  }
+
+  .dots {
+    margin-top: var(--space-4);
+    gap: 6px;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  .dotActive {
+    width: 20px;
   }
 }

@@ -36,7 +36,7 @@ export default function FinalCTA() {
           <motion.div className={styles.buttons} variants={fadeUp}>
             <button
               className={styles.btnPrimary}
-              onClick={() => window.dispatchEvent(new CustomEvent('openCallbackModal'))}
+              onClick={() => window.dispatchEvent(new CustomEvent('openBookConsultationModal'))}
             >
               Book Your Consultation
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">

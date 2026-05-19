@@ -5,7 +5,7 @@ import Script from 'next/script';
 
 export default function DoctorCTA2() {
   const handleClick = () => {
-    window.dispatchEvent(new Event('openCallbackModal'));
+    window.dispatchEvent(new Event('openBookConsultationModal'));
   };
 
   return (

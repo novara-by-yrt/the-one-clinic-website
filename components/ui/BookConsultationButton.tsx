@@ -7,7 +7,7 @@ type Props = {
 
 export default function BookConsultationButton({ className, children }: Props) {
   function open() {
-    window.dispatchEvent(new CustomEvent('openCallbackModal'));
+    window.dispatchEvent(new CustomEvent('openBookConsultationModal'));
   }
 
   return (

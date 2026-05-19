@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
-import { getAllPosts, getCategories } from '@/lib/blog';
+import { getAllPosts } from '@/lib/blog';
 import BlogPageContent from './BlogPageContent';
 import styles from './page.module.css';
 
@@ -22,7 +22,6 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
   const selectedCategory = params.category || '';
 
   const allPosts = await getAllPosts();
-  const categories = await getCategories();
 
   // Filter by category if selected
   const filteredPosts = selectedCategory
@@ -57,34 +56,6 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
           </div>
         </Container>
       </section>
-
-      {/* Category Filter Section */}
-      <Section variant="light" data-section-theme="light" className={styles.filterWrapper}>
-        <Container>
-          <div className={styles.filterSection}>
-            <div className={styles.filterLabel}>
-              <span>Filter by Category</span>
-            </div>
-            <div className={styles.filterTags}>
-              <a
-                href="/blog"
-                className={`${styles.filterTag} ${!selectedCategory ? styles.active : ''}`}
-              >
-                All Posts
-              </a>
-              {categories.map((cat) => (
-                <a
-                  key={cat}
-                  href={`/blog?category=${encodeURIComponent(cat)}`}
-                  className={`${styles.filterTag} ${selectedCategory === cat ? styles.active : ''}`}
-                >
-                  {cat}
-                </a>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </Section>
 
       {/* Blog Grid Section */}
       <Section variant="light" data-section-theme="light">

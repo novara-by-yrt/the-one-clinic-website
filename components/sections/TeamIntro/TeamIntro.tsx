@@ -8,7 +8,7 @@ import styles from './TeamIntro.module.css';
 
 const FACTS = [
   { value: '45+', label: 'Years Combined Experience' },
-  { value: '6+',  label: 'Specialist Doctors' },
+  { value: '10+',  label: 'Specialist Doctors' },
   { value: 'GMC', label: 'Registered Practitioners' },
   { value: 'CQC', label: 'Registered Clinic' },
 ];

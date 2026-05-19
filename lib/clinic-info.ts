@@ -95,12 +95,12 @@ export function getHoursDisplay() {
  * Helper: Generate Google Maps embed URL
  */
 export function getMapsEmbedUrl() {
-  return `https://maps.google.com/maps?q=${CLINIC_INFO.address.mapsQuery}&output=embed`;
+  return `https://maps.google.com/maps?q=52.6272741,-1.1252494&z=17&output=embed`;
 }
 
 /**
  * Helper: Generate Google Maps search URL
  */
 export function getMapsSearchUrl() {
-  return `https://www.google.com/maps/search/?api=1&query=${CLINIC_INFO.address.mapsQuery}`;
+  return `https://www.google.com/maps/place/The+One+Clinic+-+Leicester/@52.6272773,-1.1274381,17z/data=!3m1!4b1!4m5!3m4!1s0x4877615117ed46ad:0xa43d46d372fdae33!8m2!3d52.6272741!4d-1.1252494`;
 }

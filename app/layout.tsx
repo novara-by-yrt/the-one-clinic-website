@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import localFont from 'next/font/local';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import LayoutShell from '@/components/layout/LayoutShell';
 import StickyCallbackCTA from '@/components/ui/StickyCallbackCTA';
+import BookConsultationModal from '@/components/ui/BookConsultationModal';
 import CookieConsentBanner from '@/components/ui/CookieConsentBanner/CookieConsentBanner';
 import '@/styles/globals.css';
 
@@ -28,6 +30,12 @@ const isPreview = process.env.VERCEL_ENV === 'preview' || process.env.NEXT_PUBLI
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  },
   title: {
     default: 'The One Clinic | Premium Aesthetic & Wellness Leicester',
     template: '%s | The One Clinic',
@@ -71,6 +79,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body>
+        <Script
+          src="https://link.leadpipeline.ai/js/form_embed.js"
+          strategy="afterInteractive"
+        />
+
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
@@ -83,6 +96,7 @@ export default function RootLayout({
             </main>
           </LayoutShell>
           <StickyCallbackCTA />
+          <BookConsultationModal />
         </div>
 
         <CookieConsentBanner />

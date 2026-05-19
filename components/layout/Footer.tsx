@@ -1,9 +1,6 @@
 'use client';
 
-import Script from 'next/script';
-import { useState } from 'react';
 import { CLINIC_INFO, getMapsSearchUrl } from '@/lib/clinic-info';
-import { clearConsentPreferences } from '@/lib/consent';
 import styles from './Footer.module.css';
 
 /* ── Inline SVGs ──────────────────────────────────────────── */
@@ -35,18 +32,9 @@ function InstagramIcon() {
 
 export default function Footer() {
   const year = new Date().getFullYear();
-  const [managingCookies, setManagingCookies] = useState(false);
-
-  const handleManageCookies = () => {
-    clearConsentPreferences();
-    window.dispatchEvent(new CustomEvent('show-consent-banner'));
-    setManagingCookies(true);
-  };
 
   return (
     <footer className={styles.footer} role="contentinfo">
-      <Script src="https://link.leadpipeline.ai/js/form_embed.js" strategy="lazyOnload" />
-
       {/* ══════════════════════════════════════════════
           NEWSLETTER BAND
       ══════════════════════════════════════════════ */}
@@ -68,10 +56,13 @@ export default function Footer() {
 
           {/* Right: form */}
           <div className={styles.newsletterFormWrap}>
+            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+            {/* @ts-ignore — scrolling is a valid iframe attr but deprecated in HTML spec */}
             <iframe
               src="https://link.leadpipeline.ai/widget/form/dViZEitr7fnCtl8rKT3Q"
-              style={{ width: '100%', height: '395px', border: 'none', borderRadius: '0px', display: 'block' }}
+              style={{ width: '100%', height: '560px', minHeight: '560px', border: 'none', borderRadius: '10px', display: 'block' }}
               id="inline-dViZEitr7fnCtl8rKT3Q"
+              scrolling="no"
               data-layout="{'id':'INLINE'}"
               data-trigger-type="alwaysShow"
               data-trigger-value=""
@@ -80,7 +71,7 @@ export default function Footer() {
               data-deactivation-type="neverDeactivate"
               data-deactivation-value=""
               data-form-name="Newsletter Form"
-              data-height="395"
+              data-height="560"
               data-layout-iframe-id="inline-dViZEitr7fnCtl8rKT3Q"
               data-form-id="dViZEitr7fnCtl8rKT3Q"
               title="Newsletter Form"
@@ -146,8 +137,36 @@ export default function Footer() {
 
         </div>
 
-        {/* Centre: decorative spacer */}
-        <div className={styles.centerZone} aria-hidden="true" />
+        {/* Centre: navigation */}
+        <div className={styles.centerZone}>
+          <nav className={styles.footerNav} aria-label="Footer navigation">
+            <div className={styles.navCol}>
+              <p className={styles.navLabel}>About</p>
+              <ul className={styles.navList}>
+                <li><a href="/our-team">Our Team</a></li>
+                <li><a href="/our-facilities">Our Facilities</a></li>
+                <li><a href="/what-we-do">What We Do</a></li>
+              </ul>
+            </div>
+
+            <div className={styles.navCol}>
+              <p className={styles.navLabel}>Services</p>
+              <ul className={styles.navList}>
+                <li><a href="/treatments">Treatments</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/results">Results</a></li>
+              </ul>
+            </div>
+
+            <div className={styles.navCol}>
+              <p className={styles.navLabel}>Info</p>
+              <ul className={styles.navList}>
+                <li><a href="/contact">Contact Us</a></li>
+                <li><a href="/patient-experience">Patient Experience</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
 
         {/* Right zone: legal */}
         <div className={styles.rightZone}>
@@ -155,22 +174,11 @@ export default function Footer() {
             &copy; THE ONE CLINIC {year}. ALL RIGHTS RESERVED.
           </p>
           <nav className={styles.legalLinks} aria-label="Legal links">
-            <a href="/terms" className={styles.legalLink}>
+            <a href="/terms-conditions" className={styles.legalLink}>
               Terms &amp; Conditions <CircleArrow />
             </a>
-            <a href="/privacy" className={styles.legalLink}>
+            <a href="/privacy-policy" className={styles.legalLink}>
               Privacy Policy <CircleArrow />
-            </a>
-            <button
-              onClick={handleManageCookies}
-              className={styles.legalLink}
-              type="button"
-              aria-label="Manage cookie preferences"
-            >
-              Manage Cookies <CircleArrow />
-            </button>
-            <a href="/sitemap.xml" className={styles.legalLink}>
-              Sitemap <CircleArrow />
             </a>
           </nav>
         </div>

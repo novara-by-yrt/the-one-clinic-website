@@ -29,8 +29,6 @@ const CATEGORIES = [
 export default function ContactPage() {
   return (
     <>
-      <Script src="https://link.leadpipeline.ai/js/form_embed.js" strategy="lazyOnload" />
-
       {/* ══════════════════════════════════════
           1. HERO
       ══════════════════════════════════════ */}
@@ -168,11 +166,11 @@ export default function ContactPage() {
             >
               <div className={styles.formCard}>
                 <p className={styles.formEyebrow}>Book a Consultation</p>
-                <h2 className={styles.formHeading}>Request a Call Back</h2>
+                <h2 className={styles.formHeading}>Get in Touch with Us</h2>
                 <iframe
                   src="https://link.leadpipeline.ai/widget/form/Az3D8kxDVBz2diDQJ3uY"
-                  style={{ width: '100%', height: '509px', border: 'none' }}
-                  id="contact-form-Az3D8kxDVBz2diDQJ3uY"
+                  style={{ width: '100%', height: '480px', minHeight: '480px', border: 'none', borderRadius: '0px', display: 'block' }}
+                  id="inline-Az3D8kxDVBz2diDQJ3uY"
                   data-layout="{'id':'INLINE'}"
                   data-trigger-type="alwaysShow"
                   data-trigger-value=""
@@ -181,10 +179,11 @@ export default function ContactPage() {
                   data-deactivation-type="neverDeactivate"
                   data-deactivation-value=""
                   data-form-name="Book Consultation"
-                  data-height="509"
-                  data-layout-iframe-id="contact-form-Az3D8kxDVBz2diDQJ3uY"
+                  data-height="480"
+                  data-layout-iframe-id="inline-Az3D8kxDVBz2diDQJ3uY"
                   data-form-id="Az3D8kxDVBz2diDQJ3uY"
-                  title="Request a Call Back"
+                  title="Book Consultation"
+                  scrolling="no"
                 />
               </div>
             </motion.div>

@@ -20,62 +20,58 @@ export default function BlogCard({ post, variant = 'default' }: BlogCardProps) {
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
     >
-      <Link href={`/blog/${post.slug}`} className={styles.cardLink}>
-        {/* Image */}
-        <div className={styles.imageWrap}>
-          <Image
-            src={post.heroImage}
-            alt={post.heroImageAlt}
-            fill
-            className={styles.image}
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
-          <span className={styles.categoryBadge}>{post.category}</span>
+      {/* Stretched invisible link makes the whole card clickable */}
+      <Link href={`/blog/${post.slug}`} className={styles.cardStretch} aria-label={post.title} tabIndex={-1} />
+
+      {/* Image */}
+      <div className={styles.imageWrap}>
+        <Image
+          src={post.heroImage}
+          alt={post.heroImageAlt}
+          fill
+          className={styles.image}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        />
+        <span className={styles.categoryBadge}>{post.category}</span>
+      </div>
+
+      {/* Content */}
+      <div className={styles.content}>
+        <h3 className={styles.title}>{post.title}</h3>
+        <p className={styles.excerpt}>{post.excerpt}</p>
+
+        {/* Metadata */}
+        <div className={styles.meta}>
+          <span className={styles.author}>{post.author}</span>
+          <span className={styles.separator}>•</span>
+          <span className={styles.readTime}>{post.readingTime} min read</span>
+          <span className={styles.separator}>•</span>
+          <span className={styles.date}>
+            {new Date(post.publishedAt).toLocaleDateString('en-GB', {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric',
+            })}
+          </span>
         </div>
 
-        {/* Content */}
-        <div className={styles.content}>
-          <h3 className={styles.title}>{post.title}</h3>
-          <p className={styles.excerpt}>{post.excerpt}</p>
-
-          {/* Metadata */}
-          <div className={styles.meta}>
-            <span className={styles.author}>{post.author}</span>
-            <span className={styles.separator}>•</span>
-            <span className={styles.readTime}>{post.readingTime} min read</span>
-            <span className={styles.separator}>•</span>
-            <span className={styles.date}>
-              {new Date(post.publishedAt).toLocaleDateString('en-GB', {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric',
-              })}
+        {/* Tags */}
+        <div className={styles.tags}>
+          {post.tags.slice(0, 3).map((tag) => (
+            <span key={tag} className={styles.tag}>
+              #{tag}
             </span>
-          </div>
-
-          {/* Tags */}
-          <div className={styles.tags}>
-            {post.tags.slice(0, 3).map((tag) => (
-              <span key={tag} className={styles.tag}>
-                #{tag}
-              </span>
-            ))}
-          </div>
+          ))}
         </div>
 
-        {/* Arrow */}
-        <span className={styles.arrow} aria-hidden="true">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path
-              d="M3 8h10M9 4l4 4-4 4"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+        {/* Read More button */}
+        <Link href={`/blog/${post.slug}`} className={styles.readMore}>
+          Read More
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-        </span>
-      </Link>
+        </Link>
+      </div>
     </motion.article>
   );
 }

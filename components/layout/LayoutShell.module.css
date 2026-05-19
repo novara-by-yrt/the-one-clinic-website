@@ -2,10 +2,17 @@
 .content {
   position: relative;
   z-index: 2;
-  padding-bottom: var(--footer-height, 700px);
+  /* No padding-bottom here — the spacer below handles the scroll height */
 }
 
-/* Fixed footer layer , always at bottom, revealed as content scrolls up */
+/* Transparent spacer that creates scroll room for the fixed footer.
+   pointer-events:none ensures clicks pass straight through to the footer. */
+.footerSpacer {
+  height: var(--footer-height, 700px);
+  pointer-events: none;
+}
+
+/* Fixed footer layer — always at bottom, revealed as content scrolls up */
 .footerFixed {
   position: fixed;
   bottom: 0;
@@ -14,6 +21,5 @@
   z-index: 1;
   transform-origin: bottom center;
   will-change: transform, opacity;
-  background: #ffffff;
 }
 

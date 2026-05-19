@@ -54,6 +54,9 @@ export default function LayoutShell({ children, footer }: LayoutShellProps) {
   return (
     <>
       <div className={styles.content}>{children}</div>
+      {/* Spacer pushes the page height so the fixed footer is reachable by scroll,
+          but has pointer-events:none so it never blocks footer clicks */}
+      <div className={styles.footerSpacer} aria-hidden="true" />
       <motion.div
         ref={footerRef}
         className={styles.footerFixed}

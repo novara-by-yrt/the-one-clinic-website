@@ -13,7 +13,7 @@ export default function BookCta() {
         Speak with one of our doctors and discover the right treatment for you.
       </p>
       <button
-        onClick={() => window.dispatchEvent(new CustomEvent('openCallbackModal'))}
+        onClick={() => window.dispatchEvent(new CustomEvent('openBookConsultationModal'))}
         className="bg-white text-neutral-900 font-bold text-sm uppercase tracking-widest rounded-full px-8 py-3 hover:bg-neutral-100 transition-colors duration-200 cursor-pointer"
       >
         Book Your Consultation

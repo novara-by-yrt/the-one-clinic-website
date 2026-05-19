@@ -7,6 +7,7 @@
   border: 1px solid #e5e5e5;
   transition: all 0.3s ease;
   height: 100%;
+  position: relative;
 }
 
 .card:hover {
@@ -15,12 +16,18 @@
   transform: translateY(-4px);
 }
 
-.cardLink {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  text-decoration: none;
-  color: inherit;
+/* Full-card invisible link (stretched link pattern) */
+.cardStretch {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Content and image sit above the stretched link */
+.imageWrap,
+.content {
+  position: relative;
+  z-index: 1;
 }
 
 .imageWrap {
@@ -134,27 +141,29 @@
   color: white;
 }
 
-.arrow {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  background: white;
-  border-radius: 50%;
-  color: #000;
-  opacity: 0;
-  transform: translateX(8px);
-  transition: all 0.3s ease;
+.readMore {
+  position: relative;
   z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 0.75rem;
+  padding: 0.5rem 1.125rem;
+  background: #000;
+  color: #fff;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 6px;
+  align-self: flex-start;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.card:hover .arrow {
-  opacity: 1;
-  transform: translateX(0);
+.readMore:hover {
+  background: #222;
+  transform: translateX(2px);
 }
 
 /* Featured variant - larger, spans full width on mobile */

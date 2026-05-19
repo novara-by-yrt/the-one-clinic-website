@@ -22,8 +22,7 @@ const PILLARS = [
 ];
 
 const SLIDES = [
-  { src: '/images/website-img2.png', alt: 'The One Clinic, Leicester' },
-  { src: '/images/website-img1.png', alt: 'The One Clinic, interior' },
+  { src: '/images/Lumecca IPL Laser 2.png', alt: 'Lumecca IPL treatment at The One Clinic' },
   { src: '/images/website-img3.png', alt: 'The One Clinic, treatment' },
   { src: '/images/website-img4.png', alt: 'The One Clinic, care' },
 ];
@@ -150,8 +149,8 @@ export default function BrandProcess() {
                 transition={{ duration: 0.6, ease: EASE, delay: 0.5 }}
                 whileHover={{ y: -5, transition: { duration: 0.2 } }}
               >
-                <p className={styles.floatNum}>500+</p>
-                <p className={styles.floatLabel}>Patients treated</p>
+                <p className={styles.floatNum}>2000+</p>
+                <p className={styles.floatLabel}>Patients Treated</p>
               </motion.div>
 
               {/* Active pillar label */}

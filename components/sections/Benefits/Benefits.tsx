@@ -109,7 +109,7 @@ export default function Benefits() {
               <Button
                 variant="primary"
                 theme="light"
-                onClick={() => window.dispatchEvent(new CustomEvent('openCallbackModal'))}
+                onClick={() => window.dispatchEvent(new CustomEvent('openBookConsultationModal'))}
               >
                 Book a Consultation
               </Button>
