@@ -185,6 +185,7 @@ export default function ContactPage() {
                   data-layout-iframe-id="inline-Az3D8kxDVBz2diDQJ3uY"
                   data-form-id="Az3D8kxDVBz2diDQJ3uY"
                   title="Book Consultation"
+                  scrolling="no"
                 />
               </div>
             </motion.div>

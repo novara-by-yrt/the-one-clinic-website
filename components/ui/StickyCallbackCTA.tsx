@@ -167,6 +167,7 @@ export default function StickyCallbackCTA() {
                       data-layout-iframe-id="popup-callback-fegqbVjvGrZqMfbk64P4"
                       data-form-id="fegqbVjvGrZqMfbk64P4"
                       title="Request a Call Back"
+                      scrolling="no"
                     />
                   </div>
                 </div>
