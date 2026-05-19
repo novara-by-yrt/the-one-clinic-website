@@ -1,6 +1,6 @@
 /**
  * Renders one or more schema.org objects as <script type="application/ld+json">.
- * Pass a single object or an array of objects — each becomes its own script tag.
+ * Pass a single object or an array of objects , each becomes its own script tag.
  */
 export default function JsonLd({
   schema,

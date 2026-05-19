@@ -12,7 +12,7 @@
   /* Curved top corners */
   border-radius: 32px 32px 0 0;
 
-  /* Top edge — makes the rounded corners clearly visible against the dark page */
+  /* Top edge , makes the rounded corners clearly visible against the dark page */
   box-shadow:
     0 -1px 0 rgba(255, 255, 255, 0.18),
     0 -12px 48px rgba(0, 0, 0, 0.6),

@@ -14,7 +14,7 @@
 /*
   Use :where() to give these cascade rules zero class-level specificity.
   This lets any component CSS Module class (specificity 0,1,0) override them
-  without needing !important — :where(.light) contributes 0, only the element
+  without needing !important , :where(.light) contributes 0, only the element
   tag (0,0,1) counts, so component classes (0,1,0) always win.
 */
 :where(.light) h1,

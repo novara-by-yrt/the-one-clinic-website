@@ -11,7 +11,7 @@
   padding-top: 80px;
 }
 
-/* Breadcrumb strip — sits just below the fixed header */
+/* Breadcrumb strip , sits just below the fixed header */
 .heroBreadcrumb {
   position: absolute;
   top: 88px;
@@ -457,7 +457,7 @@
    COMBINED: WHAT IS + AT A GLANCE
 ════════════════════════════════════════════════════ */
 
-/* Outer 2-column grid — both sides stretch to equal height */
+/* Outer 2-column grid , both sides stretch to equal height */
 .combinedBody {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -530,7 +530,7 @@
   box-shadow: 0 4px 24px rgb(0 0 0 / 0.25);
 }
 
-/* White variant — for dark section CTAs (e.g. Why Choose Endolift Laser) */
+/* White variant , for dark section CTAs (e.g. Why Choose Endolift Laser) */
 .ctaWhiteInvert {
   background: #fff !important;
   color: #111 !important;
@@ -548,7 +548,7 @@
   padding-left: clamp(var(--space-7), 6vw, 88px);
 }
 
-/* "At a Glance" label — visually mirrors eyebrow on the left */
+/* "At a Glance" label , visually mirrors eyebrow on the left */
 .combinedRightLabel {
   font-size: 0.6875rem;
   font-weight: 700;
@@ -558,7 +558,7 @@
   margin: 0;
 }
 
-/* 2×2 card grid — fills the remaining height of the right column */
+/* 2×2 card grid , fills the remaining height of the right column */
 .combinedCards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -573,7 +573,7 @@
 }
 
 /* ════════════════════════════════════════════════════
-   TREATMENT JOURNEY  —  vertical timeline
+   TREATMENT JOURNEY  ,  vertical timeline
 ════════════════════════════════════════════════════ */
 .journeySection {
   background-color: #f5f5f5 !important;
@@ -814,7 +814,7 @@
    TREATABLE CONDITIONS
 ════════════════════════════════════════════════════ */
 .conditionsSection {
-  /* dark section — no override needed */
+  /* dark section , no override needed */
 }
 
 .conditionsList {
@@ -1022,7 +1022,7 @@
   object-fit: cover;
 }
 
-/* Wistia video embed — square ratio matching original image slot */
+/* Wistia video embed , square ratio matching original image slot */
 .whatIsVideoWrap {
   position: relative;
   border-radius: var(--radius-lg);
@@ -1065,7 +1065,7 @@
 }
 
 /* ════════════════════════════════════════════════════
-   AT A GLANCE — STANDALONE FULL-WIDTH GRID
+   AT A GLANCE , STANDALONE FULL-WIDTH GRID
 ════════════════════════════════════════════════════ */
 .glanceStandaloneGrid {
   display: grid;
@@ -1170,7 +1170,7 @@
 }
 
 /* ════════════════════════════════════════════════════
-   CTA BANNER — LOGO WATERMARK
+   CTA BANNER , LOGO WATERMARK
 ════════════════════════════════════════════════════ */
 .ctaBannerLogoWrap {
   position: absolute;
@@ -1310,7 +1310,7 @@
   color: #fff;
 }
 
-/* Price card grid — 2 cols, last item centred */
+/* Price card grid , 2 cols, last item centred */
 .costBannerGrid {
   list-style: none;
   padding: 0;
@@ -1472,7 +1472,7 @@
 }
 
 /* ════════════════════════════════════════════════════
-   EXPERT CARD — DR VIRMANI (premium dark)
+   EXPERT CARD , DR VIRMANI (premium dark)
 ════════════════════════════════════════════════════ */
 .expertCard {
   display: grid;
@@ -1761,7 +1761,7 @@
 }
 
 /* ════════════════════════════════════════════════════
-   TREATABLE AREAS — 2-COLUMN CATEGORIES (DARK)
+   TREATABLE AREAS , 2-COLUMN CATEGORIES (DARK)
 ════════════════════════════════════════════════════ */
 .conditionsIntro {
   font-size: 1.0625rem;
@@ -2323,7 +2323,7 @@
     padding-top: clamp(52px, 7vw, 80px);
     padding-bottom: clamp(52px, 7vw, 80px);
   }
-  /* Portrait image — 3/4 aspect ratio */
+  /* Portrait image , 3/4 aspect ratio */
   .heroImageWrap {
     min-height: unset;
     aspect-ratio: 3 / 4;
@@ -2396,7 +2396,7 @@
 
   /* Expert card: stack photo above content on mobile */
   .expertCard { grid-template-columns: 1fr; min-height: auto; }
-  /* Use aspect-ratio so photo scales with width — never a flat crop strip */
+  /* Use aspect-ratio so photo scales with width , never a flat crop strip */
   .expertCardPhotoPanel { min-height: unset; aspect-ratio: 4 / 3; }
   .expertCardContent { padding: var(--space-4); }
 

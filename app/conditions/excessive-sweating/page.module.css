@@ -11,7 +11,7 @@
   padding-top: 80px;
 }
 
-/* Breadcrumb strip — sits just below fixed header */
+/* Breadcrumb strip , sits just below fixed header */
 .heroBreadcrumb {
   position: absolute;
   top: 88px;
@@ -1369,7 +1369,7 @@
    RESPONSIVE
 ════════════════════════════════════════════════════ */
 
-/* Tablet — stack combined layout vertically */
+/* Tablet , stack combined layout vertically */
 @media (max-width: 900px) {
   .heroInner {
     grid-template-columns: 1fr;

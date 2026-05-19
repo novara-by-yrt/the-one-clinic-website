@@ -1,12 +1,12 @@
-/* ── Perspective stage — establishes the 3D context for all panels ── */
+/* ── Perspective stage , establishes the 3D context for all panels ── */
 .stage {
   perspective: 1400px;
   perspective-origin: 50% 25%;
-  /* No transform-style: preserve-3d here — panels don't need nested 3D.
+  /* No transform-style: preserve-3d here , panels don't need nested 3D.
      perspective alone is sufficient for translateZ on direct children. */
 }
 
-/* ── Fixed backdrop — warm cream gradient visible around panel edges ── */
+/* ── Fixed backdrop , warm cream gradient visible around panel edges ── */
 .backdrop {
   position: fixed;
   inset: 0;

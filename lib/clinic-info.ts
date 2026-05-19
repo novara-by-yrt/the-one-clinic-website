@@ -13,7 +13,7 @@ export const CLINIC_INFO = {
   // Legal business name (for contracts, official documents)
   name: 'The One Clinic',
 
-  // Phone — MUST match Google Business Profile and local citations
+  // Phone , MUST match Google Business Profile and local citations
   phone: {
     // Display format: shown to users
     display: '07481 342 374',
@@ -26,7 +26,7 @@ export const CLINIC_INFO = {
   // Email
   email: 'info@the-oneclinic.net',
 
-  // Address — MUST match Google Business Profile
+  // Address , MUST match Google Business Profile
   address: {
     street: '36 DeMontfort Street',
     locality: 'Leicester',
@@ -44,7 +44,7 @@ export const CLINIC_INFO = {
     lng: -1.1274381,
   },
 
-  // Opening hours — normalized format
+  // Opening hours , normalized format
   hours: [
     { day: 'Monday',    open: '09:00', close: '18:00' },
     { day: 'Tuesday',   open: '09:00', close: '18:00' },
@@ -66,16 +66,16 @@ export const CLINIC_INFO = {
 } as const;
 
 /**
- * Helper: Format opening hours for display (e.g., "Monday – Friday: 09:00 – 18:00")
+ * Helper: Format opening hours for display (e.g., "Monday , Friday: 09:00 , 18:00")
  */
 export function formatHours(hours = CLINIC_INFO.hours) {
   const weekdays = hours.slice(0, 5);
   const saturday = hours[5];
   const sunday = hours[6];
 
-  const weekdayStr = `Monday – Friday: ${weekdays[0].open} – ${weekdays[0].close}`;
-  const satStr = `Saturday: ${saturday.open} – ${saturday.close}`;
-  const sunStr = `Sunday: ${sunday.open} – ${sunday.close}`;
+  const weekdayStr = `Monday , Friday: ${weekdays[0].open} , ${weekdays[0].close}`;
+  const satStr = `Saturday: ${saturday.open} , ${saturday.close}`;
+  const sunStr = `Sunday: ${sunday.open} , ${sunday.close}`;
 
   return [weekdayStr, satStr, sunStr];
 }
@@ -85,9 +85,9 @@ export function formatHours(hours = CLINIC_INFO.hours) {
  */
 export function getHoursDisplay() {
   return [
-    { days: 'Monday – Friday', time: `${CLINIC_INFO.hours[0].open} – ${CLINIC_INFO.hours[0].close}` },
-    { days: 'Saturday',        time: `${CLINIC_INFO.hours[5].open} – ${CLINIC_INFO.hours[5].close}` },
-    { days: 'Sunday',          time: `${CLINIC_INFO.hours[6].open} – ${CLINIC_INFO.hours[6].close}` },
+    { days: 'Monday , Friday', time: `${CLINIC_INFO.hours[0].open} , ${CLINIC_INFO.hours[0].close}` },
+    { days: 'Saturday',        time: `${CLINIC_INFO.hours[5].open} , ${CLINIC_INFO.hours[5].close}` },
+    { days: 'Sunday',          time: `${CLINIC_INFO.hours[6].open} , ${CLINIC_INFO.hours[6].close}` },
   ];
 }
 

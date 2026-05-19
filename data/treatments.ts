@@ -71,7 +71,7 @@ export const treatments: Treatment[] = [
     title: 'Haemorrhoid Removal',
     category: 'Health & Wellbeing',
     shortDescription:
-      'Expert surgical haemorrhoid removal under local anaesthetic for grades I–III — no hospital stay, same-day procedure.',
+      'Expert surgical haemorrhoid removal under local anaesthetic for grades I,III , no hospital stay, same-day procedure.',
   },
   {
     slug: 'gp-home-visits',

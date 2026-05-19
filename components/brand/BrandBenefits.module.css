@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════
-   SECTION — subtle warm off-white, premium feel
+   SECTION , subtle warm off-white, premium feel
 ══════════════════════════════════════════════════════ */
 .section {
   background: #f8f7f5 !important;
@@ -8,7 +8,7 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   ASYMMETRIC GRID — 42 / 58
+   ASYMMETRIC GRID , 42 / 58
 ══════════════════════════════════════════════════════ */
 .layout {
   display: grid;
@@ -35,7 +35,7 @@
   margin: 0;
 }
 
-/* Editorial heading — aligned to brand scale */
+/* Editorial heading , aligned to brand scale */
 .heading {
   font-size: clamp(2.25rem, 4.4vw, 4rem);
   font-weight: 800;
@@ -87,7 +87,7 @@
   position: relative;
 }
 
-/* Decorative frame ring — visible border outline over the full composition */
+/* Decorative frame ring , visible border outline over the full composition */
 .canvasWrap::after {
   content: '';
   position: absolute;
@@ -112,7 +112,7 @@
     0 10px 28px rgba(0, 0, 0, 0.09);
 }
 
-/* Dominant hero image — full-bleed, canvas border-radius clips it */
+/* Dominant hero image , full-bleed, canvas border-radius clips it */
 .imgMain {
   position: absolute;
   inset: 0;
@@ -130,7 +130,7 @@
   );
 }
 
-/* Secondary — lower-left, white-framed, elevated */
+/* Secondary , lower-left, white-framed, elevated */
 .imgSecondary {
   position: absolute;
   bottom: 0;
@@ -152,7 +152,7 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   FLOATING GLASS CARDS — shared base
+   FLOATING GLASS CARDS , shared base
 ══════════════════════════════════════════════════════ */
 .card {
   position: absolute;
@@ -175,13 +175,13 @@
   white-space: nowrap;
 }
 
-/* Card 1 — Doctor-Led, top-left corner (outside the main image) */
+/* Card 1 , Doctor-Led, top-left corner (outside the main image) */
 .card1 {
   top: 20px;
   left: 10px;
 }
 
-/* Card 2 — 500+ stat, bottom-right corner of the composition */
+/* Card 2 , 500+ stat, bottom-right corner of the composition */
 .card2 {
   bottom: 20px;
   right: 20px;
@@ -237,7 +237,7 @@
   }
 }
 
-/* Tablet / mobile — single column, image on top */
+/* Tablet / mobile , single column, image on top */
 @media (max-width: 900px) {
   .section {
     padding-block: var(--space-7);
@@ -340,7 +340,7 @@
   }
 }
 
-/* Very small — hide cards to keep composition clean */
+/* Very small , hide cards to keep composition clean */
 @media (max-width: 420px) {
   .card {
     display: none;

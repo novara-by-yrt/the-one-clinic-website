@@ -75,7 +75,7 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   INNER — vertical stack
+   INNER , vertical stack
 ══════════════════════════════════════════════════════ */
 .inner {
   position: relative;
@@ -93,7 +93,7 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   TOP HEADER — centered
+   TOP HEADER , centered
 ══════════════════════════════════════════════════════ */
 .topHeader {
   display: flex;
@@ -174,7 +174,7 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   BOTTOM LAYOUT — left info + right carousel
+   BOTTOM LAYOUT , left info + right carousel
 ══════════════════════════════════════════════════════ */
 .bottomLayout {
   display: flex;
@@ -184,7 +184,7 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   LEFT PANEL — dynamic treatment info
+   LEFT PANEL , dynamic treatment info
 ══════════════════════════════════════════════════════ */
 .leftPanel {
   flex-shrink: 0;
@@ -266,7 +266,7 @@
     0 0 0 1px rgba(255, 255, 255, 0.10) inset;
 }
 
-/* Nav row — centred below carousel */
+/* Nav row , centred below carousel */
 .navRow {
   display: flex;
   align-items: center;
@@ -548,7 +548,7 @@
   }
 }
 
-/* Tablet — stack carousel above info panel */
+/* Tablet , stack carousel above info panel */
 @media (max-width: 860px) {
   .section {
     min-height: auto;

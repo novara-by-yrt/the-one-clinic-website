@@ -135,7 +135,7 @@
   transform: scale(1.02);
 }
 
-/* Right panel — photo */
+/* Right panel , photo */
 .heroPhoto {
   position: relative;
   aspect-ratio: 3 / 4;
@@ -371,7 +371,7 @@
    RESPONSIVE
 ═══════════════════════════════════════════ */
 
-/* Tablet — shrink image column */
+/* Tablet , shrink image column */
 @media (max-width: 1024px) {
   .heroGrid {
     grid-template-columns: 1fr 300px;
@@ -379,7 +379,7 @@
   }
 }
 
-/* Tablet small — stack, photo above text */
+/* Tablet small , stack, photo above text */
 @media (max-width: 768px) {
   .heroGrid {
     grid-template-columns: 1fr;

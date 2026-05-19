@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   HEADER OUTER SHELL — Positioning container
+   HEADER OUTER SHELL , Positioning container
 ═══════════════════════════════════════════════════════════════ */
 .headerOuter {
   position: fixed;
@@ -14,7 +14,7 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   MORPHING PILL — Main animated element
+   MORPHING PILL , Main animated element
 ═══════════════════════════════════════════════════════════════ */
 .pill {
   pointer-events: all; /* re-enable events on the pill */
@@ -22,7 +22,7 @@
   width: 100%;
   will-change: transform, background, box-shadow, border-radius, width;
   position: relative;
-  /* Backdrop filter via CSS — smoother transition than framer-motion */
+  /* Backdrop filter via CSS , smoother transition than framer-motion */
   backdrop-filter: blur(0px);
   -webkit-backdrop-filter: blur(0px);
   transition: backdrop-filter 0.55s cubic-bezier(0.22, 1, 0.36, 1), -webkit-backdrop-filter 0.55s cubic-bezier(0.22, 1, 0.36, 1);
@@ -34,7 +34,7 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   INNER LAYOUT — 3-column: left nav | logo | right group
+   INNER LAYOUT , 3-column: left nav | logo | right group
 ═══════════════════════════════════════════════════════════════ */
 .inner {
   display: grid;
@@ -51,7 +51,7 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   LOGO — center column
+   LOGO , center column
 ═══════════════════════════════════════════════════════════════ */
 .logo {
   display: flex;
@@ -76,7 +76,7 @@
 .pill[data-theme='dark']  .logoImg { filter: brightness(0) invert(1); }
 
 /* ═══════════════════════════════════════════════════════════════
-   LEFT NAV — first column, flush left
+   LEFT NAV , first column, flush left
 ═══════════════════════════════════════════════════════════════ */
 .leftNav {
   display: flex;
@@ -85,7 +85,7 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   RIGHT GROUP — third column, flush right
+   RIGHT GROUP , third column, flush right
 ═══════════════════════════════════════════════════════════════ */
 .rightGroup {
   display: flex;
@@ -149,7 +149,7 @@
    SIMPLE DROPDOWN  (About Our Clinic)
 ═══════════════════════════════════════════════════════════════ */
 /* ═══════════════════════════════════════════════════════════════
-   SIMPLE DROPDOWN  (About Our Clinic) — Dark glass
+   SIMPLE DROPDOWN  (About Our Clinic) , Dark glass
 ═══════════════════════════════════════════════════════════════ */
 .simpleDropdown {
   position: absolute;
@@ -188,7 +188,7 @@
 .simpleDropdown .ddItem:hover   { color: #fff; }
 
 /* ═══════════════════════════════════════════════════════════════
-   MEGA DROPDOWN  — Premium 3-panel dark glass experience
+   MEGA DROPDOWN  , Premium 3-panel dark glass experience
 ═══════════════════════════════════════════════════════════════ */
 .megaPanel {
   position: absolute;
@@ -266,7 +266,7 @@
   height: 330px;
 }
 
-/* LEFT — Editorial category navigation */
+/* LEFT , Editorial category navigation */
 .megaSidebar {
   flex: 0 0 170px;
   padding: 14px 10px;
@@ -277,7 +277,7 @@
   position: relative;
 }
 
-/* Gradient fade separator — sidebar → content */
+/* Gradient fade separator , sidebar → content */
 .megaSidebar::after {
   content: '';
   position: absolute;
@@ -352,7 +352,7 @@
   opacity: 0.55;
 }
 
-/* CENTER — Treatment links */
+/* CENTER , Treatment links */
 .megaContent {
   flex: 1;
   min-width: 0;
@@ -363,7 +363,7 @@
   scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
 }
 
-/* Gradient fade separator — content → featured */
+/* Gradient fade separator , content → featured */
 .megaContent::after {
   content: '';
   position: absolute;
@@ -405,7 +405,7 @@
 .megaPanel .ddItem::after  { background: linear-gradient(90deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02)); }
 .megaPanel .ddItem:hover   { color: #fff; padding-left: 18px; text-shadow: 0 0 18px rgba(255,255,255,0.22); }
 
-/* RIGHT — Featured preview panel */
+/* RIGHT , Featured preview panel */
 .megaFeatured {
   flex: 0 0 210px;
   position: relative;
@@ -838,7 +838,7 @@
 /* ═══════════════════════════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════════════════════════ */
-/* Medium screens — compress nav items to prevent overflow */
+/* Medium screens , compress nav items to prevent overflow */
 @media (min-width: 1025px) and (max-width: 1320px) {
   .navLink {
     padding: 7px 9px;

@@ -5,7 +5,7 @@
   padding-bottom: var(--footer-height, 700px);
 }
 
-/* Fixed footer layer — always at bottom, revealed as content scrolls up */
+/* Fixed footer layer , always at bottom, revealed as content scrolls up */
 .footerFixed {
   position: fixed;
   bottom: 0;
