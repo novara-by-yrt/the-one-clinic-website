@@ -1062,7 +1062,7 @@
   border: none;
   display: block;
   object-fit: cover;
-  object-position: top center;
+  object-position: center;
 }
 
 /* ════════════════════════════════════════════════════
