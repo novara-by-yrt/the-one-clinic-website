@@ -336,7 +336,7 @@ export default function ChemicalPeelsPage() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Endolift-Laser_1.jpg"
+                src="/Hero Section 2 Chemical Peel.jpg"
                 alt="Chemical peel treatment at The One Clinic"
                 fill
                 priority
@@ -383,7 +383,7 @@ export default function ChemicalPeelsPage() {
 
             <motion.div className={styles.whatIsImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/Chemical Peel.jpg"
                 alt="Chemical peel consultation at The One Clinic"
                 fill
                 className={styles.whatIsImage}

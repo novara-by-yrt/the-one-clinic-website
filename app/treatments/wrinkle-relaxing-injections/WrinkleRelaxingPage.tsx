@@ -341,7 +341,7 @@ export default function WrinkleRelaxingPage() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Dermatologist.jpg"
+                src="/Hero Section 2 Anti-wrinkle injections.jpg"
                 alt="Wrinkle relaxing injections at The One Clinic Leicester"
                 fill
                 priority
@@ -388,7 +388,7 @@ export default function WrinkleRelaxingPage() {
 
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/Anti-wrinkle injections (3).jpg"
                 alt="Wrinkle relaxing injections consultation at The One Clinic"
                 fill
                 className={styles.whatIsVideoFrame}

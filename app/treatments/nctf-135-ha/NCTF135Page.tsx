@@ -443,7 +443,7 @@ export default function NCTF135Page() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Profhilo (2).jpg"
+                src="/NCTF1.png"
                 alt="NCTF 135 HA skin booster treatment at The One Clinic Leicester"
                 fill
                 priority
@@ -492,7 +492,7 @@ export default function NCTF135Page() {
             {/* Right: image panel */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/NCTF2.png"
                 alt="NCTF 135 HA skin booster ingredients and treatment at The One Clinic"
                 fill
                 className={styles.whatIsVideoFrame}
