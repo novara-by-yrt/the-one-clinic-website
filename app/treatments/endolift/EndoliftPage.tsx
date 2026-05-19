@@ -374,8 +374,8 @@ export default function EndoliftPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/endolift-work.jpg"
-                alt="Endolift laser treatment in progress at The One Clinic"
+                src="/images/Endolift 1.png"
+                alt="Endolift laser treatment at The One Clinic Leicester"
                 fill
                 priority
                 className={styles.heroImage}
@@ -419,18 +419,14 @@ export default function EndoliftPage() {
               </motion.div>
             </motion.div>
 
-            {/* Right: Wistia video */}
+            {/* Right: Image */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
-              <Script src="https://fast.wistia.net/player.js" strategy="lazyOnload" />
-              <iframe
-                src="https://fast.wistia.net/embed/iframe/2u0e7sshum?web_component=true&seo=true"
-                title="Endolift service page Video"
-                allow="autoplay; fullscreen"
-                allowFullScreen
-                frameBorder="0"
-                scrolling="no"
+              <Image
+                src="/images/Endolift 2.png"
+                alt="What is Endolift treatment results at The One Clinic"
+                fill
                 className={styles.whatIsVideoFrame}
-                name="wistia_embed"
+                sizes="(max-width: 900px) 100vw, 50vw"
               />
             </motion.div>
           </motion.div>

@@ -444,7 +444,7 @@ export default function LaserResurfacingPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Endolift-Laser_1.jpg"
+                src="/images/Deep Laser 1.png"
                 alt="Laser resurfacing treatment in progress at The One Clinic Leicester"
                 fill
                 priority
@@ -494,8 +494,8 @@ export default function LaserResurfacingPage() {
             {/* Right: image */}
             <motion.div className={styles.whatIsImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
-                alt="Laser resurfacing consultation at The One Clinic Leicester"
+                src="/images/Deep Laser 2.png"
+                alt="What is laser resurfacing treatment at The One Clinic"
                 fill
                 className={styles.whatIsImage}
                 sizes="(max-width: 900px) 100vw, 50vw"
