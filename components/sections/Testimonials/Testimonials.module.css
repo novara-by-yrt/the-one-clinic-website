@@ -157,6 +157,12 @@
   white-space: pre-wrap;
 }
 
+.reviewTextExpanded {
+  -webkit-line-clamp: unset;
+  overflow: visible;
+  display: block;
+}
+
 .readMoreBtn {
   background: none;
   border: none;

@@ -221,11 +221,11 @@ function ReviewContent({ review, name, expanded, onToggle }: { review: string; n
     return <p className={styles.reviewText}>{review}</p>;
   }
 
-  const displayText = isExpanded ? review : review.substring(0, READ_MORE_THRESHOLD) + '...';
-
   return (
     <>
-      <p className={styles.reviewText}>{displayText}</p>
+      <p className={`${styles.reviewText} ${isExpanded ? styles.reviewTextExpanded : ''}`}>
+        {review}
+      </p>
       <button
         className={styles.readMoreBtn}
         onClick={() => onToggle(name)}
