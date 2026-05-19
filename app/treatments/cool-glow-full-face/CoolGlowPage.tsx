@@ -448,7 +448,7 @@ export default function CoolGlowPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Dermatologist.jpg"
+                src="/Hero Section 2 Chemical Peel.jpg"
                 alt="COOL Glow Peel treatment in progress at The One Clinic Leicester"
                 fill
                 priority
@@ -498,7 +498,7 @@ export default function CoolGlowPage() {
             {/* Right: image panel */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/Chemical Peel.jpg"
                 alt="COOL Glow Peel consultation at The One Clinic Leicester"
                 fill
                 className={styles.whatIsVideoFrame}
