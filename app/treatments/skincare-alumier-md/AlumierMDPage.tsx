@@ -415,7 +415,7 @@ export default function AlumierMDPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/images/AlumierMD Skincare hero.jpg"
                 alt="AlumierMD skincare consultation at The One Clinic Leicester"
                 fill
                 priority
@@ -463,7 +463,7 @@ export default function AlumierMDPage() {
             {/* Right: image panel */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/images/AlumierMD Skincare 1.jpg"
                 alt="AlumierMD skincare consultation at The One Clinic"
                 fill
                 className={styles.whatIsVideoFrame}

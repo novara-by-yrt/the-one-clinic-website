@@ -422,7 +422,7 @@ export default function ExosomeTherapyPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/images/Exosome Therapy hero.jpg"
                 alt="Exosome therapy treatment at The One Clinic Leicester"
                 fill
                 priority
@@ -471,7 +471,7 @@ export default function ExosomeTherapyPage() {
             {/* Right: image panels */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/images/Exosome Therapy 1.jpg"
                 alt="Exosome therapy consultation at The One Clinic"
                 fill
                 className={styles.whatIsVideoFrame}

@@ -386,7 +386,7 @@ export default function SkinLesionPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Minor Surgery.jpg"
+                src="/images/Skin Lesion Hero.jpg"
                 alt="Skin lesion removal procedure at The One Clinic Leicester"
                 fill
                 priority
@@ -435,7 +435,7 @@ export default function SkinLesionPage() {
             {/* Right: image */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/images/Skin Lesion 1.jpg"
                 alt="Doctor performing skin lesion assessment at The One Clinic"
                 fill
                 className={styles.whatIsVideoFrame}

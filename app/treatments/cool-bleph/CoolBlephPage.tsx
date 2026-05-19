@@ -342,7 +342,7 @@ export default function CoolBlephPage() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Dermatologist.jpg"
+                src="/images/Cool Bleph hero.jpg"
                 alt="Cool Bleph eyelid treatment at The One Clinic Leicester"
                 fill
                 priority
@@ -385,7 +385,7 @@ export default function CoolBlephPage() {
 
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/images/Cool Bleph 1.jpg"
                 alt="Cool Bleph consultation at The One Clinic"
                 fill
                 className={styles.whatIsVideoFrame}

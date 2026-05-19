@@ -393,7 +393,7 @@ export default function CoolScarLiftPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Minor Surgery.jpg"
+                src="/images/Cool Scar Lift hero.jpg"
                 alt="Cool Scar Lift treatment in progress at The One Clinic Leicester"
                 fill
                 priority
@@ -444,7 +444,7 @@ export default function CoolScarLiftPage() {
             {/* Right: image */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/images/Cool Scar Lift 1.jpg"
                 alt="Cool Scar Lift consultation at The One Clinic Leicester"
                 fill
                 className={styles.whatIsVideoFrame}
