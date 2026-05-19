@@ -171,7 +171,7 @@ export default function ContactPage() {
                 <h2 className={styles.formHeading}>Get in Touch with Us</h2>
                 <iframe
                   src="https://link.leadpipeline.ai/widget/form/Az3D8kxDVBz2diDQJ3uY"
-                  style={{ width: '100%', height: '480px', border: 'none', borderRadius: '0px' }}
+                  style={{ width: '100%', height: '650px', border: 'none', borderRadius: '0px', overflow: 'hidden' }}
                   id="inline-Az3D8kxDVBz2diDQJ3uY"
                   data-layout="{'id':'INLINE'}"
                   data-trigger-type="alwaysShow"
@@ -181,7 +181,7 @@ export default function ContactPage() {
                   data-deactivation-type="neverDeactivate"
                   data-deactivation-value=""
                   data-form-name="Book Consultation"
-                  data-height="480"
+                  data-height="650"
                   data-layout-iframe-id="inline-Az3D8kxDVBz2diDQJ3uY"
                   data-form-id="Az3D8kxDVBz2diDQJ3uY"
                   title="Book Consultation"

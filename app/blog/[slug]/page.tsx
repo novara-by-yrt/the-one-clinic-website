@@ -245,7 +245,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <div className={styles.formWrap}>
                   <iframe
                     src="https://link.leadpipeline.ai/widget/form/fegqbVjvGrZqMfbk64P4"
-                    style={{ width: '100%', height: '480px', border: 'none', display: 'block', borderRadius: '20px' }}
+                    style={{ width: '100%', height: '650px', border: 'none', display: 'block', borderRadius: '20px', overflow: 'hidden' }}
                     id="inline-fegqbVjvGrZqMfbk64P4"
                     data-layout="{'id':'INLINE'}"
                     data-trigger-type="alwaysShow"
@@ -255,7 +255,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     data-deactivation-type="neverDeactivate"
                     data-deactivation-value=""
                     data-form-name="Request a Call Back Form"
-                    data-height="400"
+                    data-height="650"
                     data-layout-iframe-id="inline-fegqbVjvGrZqMfbk64P4"
                     data-form-id="fegqbVjvGrZqMfbk64P4"
                     title="Request a Call Back"

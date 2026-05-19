@@ -153,7 +153,7 @@ export default function StickyCallbackCTA() {
                   <div className={styles.modalForm}>
                     <iframe
                       src="https://link.leadpipeline.ai/widget/form/fegqbVjvGrZqMfbk64P4"
-                      style={{ width: '100%', height: '480px', border: 'none', borderRadius: '20px' }}
+                      style={{ width: '100%', height: '650px', border: 'none', borderRadius: '20px', overflow: 'hidden' }}
                       id="popup-callback-fegqbVjvGrZqMfbk64P4"
                       data-layout="{'id':'INLINE'}"
                       data-trigger-type="alwaysShow"
@@ -163,7 +163,7 @@ export default function StickyCallbackCTA() {
                       data-deactivation-type="neverDeactivate"
                       data-deactivation-value=""
                       data-form-name="Request a Call Back Form"
-                      data-height="400"
+                      data-height="650"
                       data-layout-iframe-id="popup-callback-fegqbVjvGrZqMfbk64P4"
                       data-form-id="fegqbVjvGrZqMfbk64P4"
                       title="Request a Call Back"

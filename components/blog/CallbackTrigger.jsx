@@ -16,8 +16,9 @@ export default function CallbackTrigger() {
             src="https://link.leadpipeline.ai/widget/form/fegqbVjvGrZqMfbk64P4"
             style={{
               width: '100%',
-              height: '480px',
+              height: '650px',
               border: 'none',
+              overflow: 'hidden',
             }}
             id="popup-callback-fegqbVjvGrZqMfbk64P4"
             data-layout="{'id':'INLINE'}"
@@ -28,7 +29,7 @@ export default function CallbackTrigger() {
             data-deactivation-type="neverDeactivate"
             data-deactivation-value=""
             data-form-name="Request a Call Back Form"
-            data-height="400"
+            data-height="650"
             data-layout-iframe-id="popup-callback-fegqbVjvGrZqMfbk64P4"
             data-form-id="fegqbVjvGrZqMfbk64P4"
             title="Request a Call Back"
