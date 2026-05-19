@@ -146,7 +146,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Professor Prashanth Patel',
     credentials: 'MBBS, MSc, FRCPath, FRCP Edin',
     initials: 'PP',
-    image: '/images/Dr. Prashanth Patel-image.png',
+    image: '/images/Professor Prashanth Patel-updated.png',
     role: 'Consultant Metabolic Physician & Chemical Pathologist',
     profileUrl: '/team/professor-prashanth-patel',
     specialtyMemberships: ['FRCPath', 'FRCP'],
