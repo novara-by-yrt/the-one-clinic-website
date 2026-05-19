@@ -1,7 +1,7 @@
 /* ── Sticky bar , transparent float, no background ──────────── */
 .bar {
   position: fixed;
-  bottom: 24px;
+  bottom: 20px;
   left: 0;
   right: 0;
   z-index: 90;
@@ -9,9 +9,15 @@
   justify-content: center;
   align-items: center;
   pointer-events: none; /* clicks pass through to page */
+  padding: 0 12px;
 }
 
 @media (min-width: 768px) {
+  .bar {
+    bottom: 24px;
+    padding: 0;
+  }
+
   .ctaBtn {
     padding: 17px 52px;
     font-size: 1rem;
@@ -260,21 +266,49 @@
 @media (max-width: 480px) {
   .bar {
     bottom: 16px;
-    padding: 0 20px;
+    padding: 0 12px;
   }
 
   .ctaBtn {
     width: 100%;
-    max-width: 380px;
+    max-width: 100%;
     justify-content: center;
-    padding: 15px 24px;
+    padding: 14px 20px;
+    font-size: 0.875rem;
+    gap: 8px;
+  }
+
+  .modalOuter {
+    padding: 16px 12px;
+  }
+
+  .modal {
+    width: 100%;
+    max-height: calc(100vh - 32px);
+    border-radius: 12px;
   }
 
   .modalTop {
-    padding: 20px 20px 12px;
+    padding: 16px 16px 12px;
+    gap: 12px;
+  }
+
+  .modalHeading {
+    font-size: 1.125rem;
+  }
+
+  .closeBtn {
+    width: 32px;
+    height: 32px;
   }
 
   .modalForm {
-    padding: 0 20px 20px;
+    padding: 0 16px 16px;
+    overflow-y: auto;
+    max-height: calc(100vh - 160px);
+  }
+
+  .modalContent {
+    max-height: calc(100vh - 32px);
   }
 }

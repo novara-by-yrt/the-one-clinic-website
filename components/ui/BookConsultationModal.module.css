@@ -129,11 +129,37 @@
 }
 
 @media (max-width: 480px) {
+  .modalOuter {
+    padding: 16px 12px;
+  }
+
+  .modal {
+    width: 100%;
+    max-height: calc(100vh - 32px);
+    border-radius: 12px;
+  }
+
   .modalTop {
-    padding: 20px 20px 12px;
+    padding: 16px 16px 12px;
+    gap: 12px;
+  }
+
+  .modalHeading {
+    font-size: 1.125rem;
+  }
+
+  .closeBtn {
+    width: 32px;
+    height: 32px;
   }
 
   .modalForm {
-    padding: 0 20px 20px;
+    padding: 0 16px 16px;
+    overflow-y: auto;
+    max-height: calc(100vh - 160px);
+  }
+
+  .modalContent {
+    max-height: calc(100vh - 32px);
   }
 }
