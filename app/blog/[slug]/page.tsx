@@ -59,6 +59,20 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   };
 }
 
+function splitContentBeforeFirstHeading(html: string): { before: string; after: string } {
+  const headingRegex = /<h2[^>]*>/;
+  const match = html.match(headingRegex);
+
+  if (match && match.index) {
+    return {
+      before: html.substring(0, match.index),
+      after: html.substring(match.index),
+    };
+  }
+
+  return { before: html, after: '' };
+}
+
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const resolvedParams = await params;
   const post = await getPostBySlug(resolvedParams.slug);
@@ -84,6 +98,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         day: 'numeric',
       })
     : null;
+
+  const { before: contentBefore, after: contentAfter } = splitContentBeforeFirstHeading(post.content);
 
   return (
     <>
@@ -179,16 +195,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </div>
               )}
 
-              {/* First CTA Section - after image */}
-              <div className={styles.ctaSection}>
-                <DoctorCTA1 />
-              </div>
-
-              {/* Post content */}
+              {/* Post content - split with CTA in middle */}
               <div className={styles.mdxContent}>
-                <div
-                  dangerouslySetInnerHTML={{ __html: post.content }}
-                />
+                {/* Content before first heading */}
+                <div dangerouslySetInnerHTML={{ __html: contentBefore }} />
+
+                {/* CTA Section - in middle of content */}
+                <div className={styles.ctaSection}>
+                  <DoctorCTA1 />
+                </div>
+
+                {/* Content from first heading onwards */}
+                {contentAfter && <div dangerouslySetInnerHTML={{ __html: contentAfter }} />}
               </div>
 
               {/* Tags */}
