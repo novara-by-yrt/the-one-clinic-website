@@ -186,7 +186,7 @@ export default function Footer() {
             <a href="/terms-conditions" className={styles.legalLink}>
               Terms &amp; Conditions <CircleArrow />
             </a>
-            <a href="/privacy" className={styles.legalLink}>
+            <a href="/privacy-policy" className={styles.legalLink}>
               Privacy Policy <CircleArrow />
             </a>
             <button
