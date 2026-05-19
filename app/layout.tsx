@@ -30,6 +30,12 @@ const isPreview = process.env.VERCEL_ENV === 'preview' || process.env.NEXT_PUBLI
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  },
   title: {
     default: 'The One Clinic | Premium Aesthetic & Wellness Leicester',
     template: '%s | The One Clinic',
