@@ -59,18 +59,35 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   };
 }
 
-function splitContentBeforeFirstHeading(html: string): { before: string; after: string } {
-  const headingRegex = /<h2[^>]*>/;
-  const match = html.match(headingRegex);
+function splitContentForCTA(html: string): { before: string; after: string } {
+  // Find all <h2> positions in the content
+  const headingRegex = /<h2[^>]*>/g;
+  const positions: number[] = [];
+  let match;
 
-  if (match && match.index) {
-    return {
-      before: html.substring(0, match.index),
-      after: html.substring(match.index),
-    };
+  while ((match = headingRegex.exec(html)) !== null) {
+    positions.push(match.index);
   }
 
-  return { before: html, after: '' };
+  // Insert CTA two sections above the last heading (conclusion).
+  // For N headings, that's heading at index N-3 (the third-to-last).
+  // Fallbacks: if too few headings, place it as close to the end as makes sense.
+  let splitIndex: number;
+
+  if (positions.length >= 4) {
+    splitIndex = positions[positions.length - 3];
+  } else if (positions.length >= 2) {
+    splitIndex = positions[positions.length - 1];
+  } else if (positions.length === 1) {
+    splitIndex = positions[0];
+  } else {
+    return { before: html, after: '' };
+  }
+
+  return {
+    before: html.substring(0, splitIndex),
+    after: html.substring(splitIndex),
+  };
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
@@ -99,7 +116,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       })
     : null;
 
-  const { before: contentBefore, after: contentAfter } = splitContentBeforeFirstHeading(post.content);
+  const { before: contentBefore, after: contentAfter } = splitContentForCTA(post.content);
 
   return (
     <>
