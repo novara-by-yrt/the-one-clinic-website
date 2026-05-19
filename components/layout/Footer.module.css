@@ -7,7 +7,6 @@
   /* Extra bottom padding so sticky CTA bar doesn't cover footer */
   padding-bottom: calc(48px + 68px);
   position: relative;
-  overflow: hidden;
 
   /* Curved top corners */
   border-radius: 32px 32px 0 0;
@@ -54,6 +53,14 @@
   );
   pointer-events: none;
   z-index: 0;
+}
+
+/* All direct content sections sit above decorative pseudo-elements */
+.newsletterBand,
+.inner,
+.creditLine {
+  position: relative;
+  z-index: 1;
 }
 
 /* ═══════════════════════════════════════════
@@ -116,8 +123,9 @@
 .newsletterFormWrap {
   width: 100%;
   min-height: 420px;
-  overflow: hidden;
   border-radius: 10px;
+  position: relative;
+  z-index: 1;
 }
 
 /* ═══════════════════════════════════════════
