@@ -20,6 +20,10 @@ export type TeamMember = {
   publications?: Array<{ title: string; url: string; year: number }>;
   /** LinkedIn profile URL for professional social proof */
   linkedinUrl?: string;
+  /** Key areas of expertise shown as tags on the profile page */
+  specialties?: string[];
+  /** Three headline stats for the profile hero strip, e.g. [{value:'15+', label:'Years in Medicine'}] */
+  stats?: Array<{ value: string; label: string }>;
 };
 
 export const TEAM_MEMBERS: TeamMember[] = [
@@ -31,6 +35,12 @@ export const TEAM_MEMBERS: TeamMember[] = [
     image: '/images/imgi_20_team-thumb-VIRMANI.jpg',
     role: 'Co-Founder & GP',
     profileUrl: '/team/dr-sumit-virmani',
+    stats: [
+      { value: '15+', label: 'Years in Medicine' },
+      { value: '12+', label: 'Years as a GP' },
+      { value: 'MRCGP', label: 'Royal College Qualified' },
+    ],
+    specialties: ['Minor Surgery', 'Skin Lesion Excision', 'Body Contouring', 'Hair Rejuvenation', 'GP Services', 'Aesthetic Medicine'],
     bio: [
       'Dr Sumit Virmani is co-founder of The One Clinic. He has extensive experience having worked as a medical doctor for over 15 years, with over 12 of these years working as a local GP.',
       'His particular skills are in performing minor surgery, and the excision of skin lesions. Throughout his work he has been rewarded by the help he has given to his patients. He is especially proud when a person completes their treatment feeling elated by the transformation in their appearance. This has led to a growing interest in aesthetics, particularly with body contouring procedures and hair rejuvenation.',
@@ -45,6 +55,12 @@ export const TEAM_MEMBERS: TeamMember[] = [
     image: '/images/imgi_21_team-thumb-BEDI.jpg',
     role: 'General Practitioner & Psychiatrist',
     profileUrl: '/team/dr-gunjan-bedi',
+    stats: [
+      { value: '20+', label: 'Years in Medicine' },
+      { value: '10+', label: 'Years as a GP' },
+      { value: 'BCAM', label: 'Aesthetic Medicine Qualified' },
+    ],
+    specialties: ['Aesthetic Medicine', 'Dermal Fillers', 'General Practice', 'Psychiatry', 'Wrinkle Relaxing', 'Skin Treatments'],
     bio: [
       'Dr Gunjan Bedi brings a unique and comprehensive perspective to patient care, combining qualifications in General Practice, Psychiatry, and Aesthetic Medicine.',
       'Her breadth of expertise allows her to take a truly holistic approach, addressing both the physical and psychological dimensions of each patient\'s health and wellbeing.',
@@ -57,6 +73,12 @@ export const TEAM_MEMBERS: TeamMember[] = [
     initials: 'TS',
     image: '/images/Mr. Thangasamy Sankar.jpg',
     role: 'Consultant Plastic Surgeon & Laser Specialist',
+    stats: [
+      { value: 'FRCS', label: 'Fellowship Qualified' },
+      { value: 'Plastic', label: 'Surgery Specialist' },
+      { value: 'Laser', label: 'Treatment Specialist' },
+    ],
+    specialties: ['Plastic Surgery', 'Laser Treatments', 'Aesthetic Surgery', 'Skin Rejuvenation', 'Scar Revision'],
     bio: [
       'Mr Thangasamy Sankar is a highly skilled Consultant Plastic Surgeon holding the prestigious FRCS qualification, with specialist expertise in both surgical aesthetics and laser treatments.',
       'His surgical precision and in-depth knowledge of laser technology make him an invaluable member of The One Clinic team, offering patients access to world-class interventional care.',
@@ -69,6 +91,12 @@ export const TEAM_MEMBERS: TeamMember[] = [
     initials: 'MK',
     image: '/images/Dr Mahesh Kodivalasa-updated.png',
     role: 'Doctor',
+    stats: [
+      { value: 'GMC', label: 'Registered Practitioner' },
+      { value: 'NHS', label: 'Trained Doctor' },
+      { value: 'CQC', label: 'Registered Clinic' },
+    ],
+    specialties: ['General Medicine', 'Clinical Care', 'Patient Consultation', 'Aesthetic Medicine'],
     bio: [
       'Dr Mahesh Kodivalasa is a valued member of The One Clinic medical team, bringing dedication and clinical expertise to every patient interaction.',
       'Committed to the highest standards of care, Dr Kodivalasa works closely with colleagues to deliver comprehensive, personalised treatment plans.',
@@ -81,6 +109,12 @@ export const TEAM_MEMBERS: TeamMember[] = [
     initials: 'HS',
     image: '/images/Dr Hari Subramaniam-updated.png',
     role: 'Consultant Psychiatrist',
+    stats: [
+      { value: 'FRCPsych', label: 'Psychiatry Qualified' },
+      { value: 'DNB', label: 'National Board Certified' },
+      { value: 'MSc MD', label: 'Advanced Qualifications' },
+    ],
+    specialties: ['Psychiatry', 'Mental Health', 'Complex Clinical Cases', 'Psychological Assessment', 'Wellbeing'],
     bio: [
       'Dr Hari Subramaniam is a Consultant Psychiatrist with an impressive portfolio of qualifications including MSc, MD, DPM, DNB, and FRCPsych.',
       'With extensive experience in mental health and complex clinical presentations, Dr Subramaniam brings a depth of expertise that enriches the multidisciplinary approach at The One Clinic.',
@@ -93,6 +127,12 @@ export const TEAM_MEMBERS: TeamMember[] = [
     initials: 'AV',
     image: '/images/Dr Amol Vaze-updated.png',
     role: 'Doctor',
+    stats: [
+      { value: 'GMC', label: 'Registered Practitioner' },
+      { value: 'NHS', label: 'Trained Doctor' },
+      { value: 'CQC', label: 'Registered Clinic' },
+    ],
+    specialties: ['General Medicine', 'Evidence-Based Care', 'Patient Health', 'Clinical Assessment', 'Aesthetic Medicine'],
     bio: [
       'Dr Amol Vaze is an experienced clinician committed to providing exceptional patient care at The One Clinic.',
       'His approach is grounded in evidence-based medicine and a genuine commitment to improving each patient\'s health outcomes and quality of life.',
@@ -105,6 +145,12 @@ export const TEAM_MEMBERS: TeamMember[] = [
     initials: 'RM',
     image: '/images/Dr Ralph Mitchell.png',
     role: 'Doctor',
+    stats: [
+      { value: 'GMC', label: 'Registered Practitioner' },
+      { value: 'NHS', label: 'Trained Doctor' },
+      { value: 'CQC', label: 'Registered Clinic' },
+    ],
+    specialties: ['General Medicine', 'Aesthetic Medicine', 'Patient Care', 'Clinical Consultation'],
     bio: [
       'Dr Ralph Mitchell is a dedicated member of The One Clinic\'s medical team, bringing clinical expertise and a compassionate approach to every consultation.',
       'He is committed to delivering personalised, high-quality care across a range of medical and aesthetic services.',
@@ -120,6 +166,12 @@ export const TEAM_MEMBERS: TeamMember[] = [
     profileUrl: '/team/mr-ashish-kelkar',
     yearQualified: 1991,
     specialtyMemberships: ['Royal College of Surgeons of Edinburgh'],
+    stats: [
+      { value: '30+', label: 'Years in Surgery' },
+      { value: 'MBBS MS', label: 'Dual Qualified' },
+      { value: 'RCS Ed', label: 'College Member' },
+    ],
+    specialties: ['Colorectal Cancer', 'Haemorrhoid Removal', 'Hernia Surgery', 'Laparoscopic Surgery', 'Gallbladder Surgery', 'Bowel Surgery'],
     bio: [
       'Mr Ashish Kelkar is a mightily experienced and highly regarded consultant general and colorectal surgeon who specialises in colorectal cancer, rectal bleeding, haemorrhoids, hernias and hernia surgery, anal fissures, and gallbladder surgery. He is currently practising at the Woodlands Hospital in Kettering.',
       'Mr Kelkar, who also possesses expertise in inflammatory bowel disease, rectal prolapse surgery, and pelvic floor function, successfully completed an MBBS in medicine at the Seth GS Medical College and King Edward Memorial Hospital in Mumbai in 1991, and shortly afterwards followed this up by obtaining a masters in surgery from the King Edward Memorial Hospital in 1995.',
@@ -135,6 +187,12 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: 'Consultant Rheumatologist',
     profileUrl: '/team/dr-veena-patel',
     specialtyMemberships: ['FRCP'],
+    stats: [
+      { value: 'FRCP', label: 'Royal College Fellow' },
+      { value: 'FHEA', label: 'Higher Education Fellow' },
+      { value: 'UHL', label: 'Senior Lecturer' },
+    ],
+    specialties: ['Rheumatoid Arthritis', 'Psoriatic Arthritis', 'Osteoporosis', 'Metabolic Bone Disease', 'Connective Tissue Disorders', 'Osteoarthritis'],
     bio: [
       'Dr Veena Patel is a Consultant Rheumatologist at Nuffield Health Leicester Hospital and also works at the University Hospital of Leicester.',
       'As a specialist, she has extensive experience in managing conditions such as rheumatoid arthritis, psoriatic arthritis, ankylosing spondylitis (commonly presenting as back pains), soft tissue rheumatism, connective tissue diseases, metabolic bone disorders, osteoporosis, muscle disorders and osteoarthritis.',
@@ -150,6 +208,12 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: 'Consultant Metabolic Physician & Chemical Pathologist',
     profileUrl: '/team/professor-prashanth-patel',
     specialtyMemberships: ['FRCPath', 'FRCP'],
+    stats: [
+      { value: 'FRCPath', label: 'Pathology Fellow' },
+      { value: 'FRCP', label: 'Physicians Fellow' },
+      { value: 'UHL', label: 'Head of Service' },
+    ],
+    specialties: ['Metabolic Bone Disease', 'Osteoporosis', 'Vitamin D Disorders', 'Cholesterol Management', 'Parathyroid Disorders', 'Chemical Pathology'],
     bio: [
       'Professor Prashanth Patel is a Consultant Metabolic Physician and Chemical Pathologist at the University Hospitals of Leicester. His clinical interests are in the management of metabolic bone disease, osteoporosis, vitamin D disorders, parathyroid disorders and the management of health cholesterol and other lipid disorders.',
       'He is Head of Service for the Department of Chemical Pathology and Metabolic Medicine at UHL. He is Chair of the Leicester Osteoporosis Group and the Clinical lead for Metabolic Bone Disease at UHL.',
@@ -165,6 +229,12 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: 'Consultant Orthopaedic Surgeon',
     profileUrl: '/team/mr-randeep-aujla',
     specialtyMemberships: ['Royal College of Surgeons'],
+    stats: [
+      { value: "Int'l", label: 'Fellowship Trained' },
+      { value: '2014', label: 'Elite Sport Since' },
+      { value: 'RCS', label: 'College Member' },
+    ],
+    specialties: ['ACL Reconstruction', 'Knee Surgery', 'Hip Arthroscopy', 'Sports Injuries', 'Meniscal Repair', 'Tendinopathy'],
     bio: [
       'Mr Randeep Aujla is an Internationally fellowship-trained Consultant Orthopaedic Surgeon with a specialist interest in knee conditions and lower limb sporting injuries. His NHS practice is based at the University Hospitals of Leicester and private practice at Spire (Leicester) and Nuffield Health (Leicester).',
       'Specialising in ACL and multi-ligament knee reconstructions, meniscal tears, knee preservation surgery, knee osteoarthritis, hip arthroscopy, Achilles tendon issues, and tendinopathy, Mr Aujla has worked within elite sport since 2014. He has worked with many professional clubs including a 5-year stint as lead club doctor for Coventry City Football Club.',
@@ -178,6 +248,12 @@ export const TEAM_MEMBERS: TeamMember[] = [
     initials: 'NS',
     image: '/images/Nurse Sanj.png',
     role: 'Clinical Nurse',
+    stats: [
+      { value: 'RN', label: 'Registered Nurse' },
+      { value: 'CQC', label: 'Registered Clinic' },
+      { value: 'Expert', label: 'Clinical Nursing' },
+    ],
+    specialties: ['Clinical Nursing', 'Patient Support', 'Treatment Care', 'Post-Treatment Recovery'],
     bio: [
       'Nurse Sanj is an integral part of the clinical team at The One Clinic, providing expert nursing care and ensuring every patient feels comfortable and well-supported throughout their treatment.',
       'Her professionalism, warmth, and clinical expertise contribute greatly to the premium patient experience at the clinic.',
@@ -190,6 +266,12 @@ export const TEAM_MEMBERS: TeamMember[] = [
     initials: 'C',
     image: '/images/Chloe.jpg',
     role: 'Patient Care Team',
+    stats: [
+      { value: 'Care', label: 'Patient Experience' },
+      { value: 'Team', label: 'The One Clinic' },
+      { value: '5★', label: 'Patient Satisfaction' },
+    ],
+    specialties: ['Patient Experience', 'Appointment Coordination', 'Front of House', 'Patient Wellbeing'],
     bio: [
       'Chloe is a valued member of The One Clinic\'s patient care team, dedicated to providing a warm, welcoming experience for every visitor.',
       'Her attention to detail and commitment to patient satisfaction ensures that every visit to the clinic is comfortable and positive.',
@@ -202,6 +284,12 @@ export const TEAM_MEMBERS: TeamMember[] = [
     initials: 'H',
     image: '/images/Hollie.jpg',
     role: 'Patient Care Team',
+    stats: [
+      { value: 'Care', label: 'Patient Experience' },
+      { value: 'Team', label: 'The One Clinic' },
+      { value: '5★', label: 'Patient Satisfaction' },
+    ],
+    specialties: ['Patient Experience', 'Appointment Coordination', 'Front of House', 'Patient Wellbeing'],
     bio: [
       'Hollie brings enthusiasm and care to her role within The One Clinic\'s patient team, ensuring every patient receives attentive and thoughtful support.',
       'Her dedication to excellence in patient care is central to the outstanding experience the clinic is known for.',
@@ -214,6 +302,12 @@ export const TEAM_MEMBERS: TeamMember[] = [
     initials: 'CH',
     image: '/images/Charley.png',
     role: 'Patient Care Team',
+    stats: [
+      { value: 'Care', label: 'Patient Experience' },
+      { value: 'Team', label: 'The One Clinic' },
+      { value: '5★', label: 'Patient Satisfaction' },
+    ],
+    specialties: ['Patient Experience', 'Clinic Coordination', 'Front of House', 'Patient Wellbeing'],
     bio: [
       'Charley is a committed member of The One Clinic\'s front-of-house and patient care team, playing a key role in creating a welcoming and professional environment.',
       'Her passion for patient wellbeing ensures every visit begins and ends on a positive note.',
