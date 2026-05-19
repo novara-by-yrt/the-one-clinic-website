@@ -130,8 +130,8 @@ export default function BrandBenefits() {
                 transition={{ duration: 0.6, ease: EASE, delay: 0.58 }}
                 whileHover={{ y: -6, transition: { duration: 0.2 } }}
               >
-                <p className={styles.cardBigNum}>500+</p>
-                <p className={styles.cardSub}>Patients treated</p>
+                <p className={styles.cardBigNum}>2000+</p>
+                <p className={styles.cardSub}>Patients Treated</p>
               </motion.div>
 
             </div>

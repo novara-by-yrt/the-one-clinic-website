@@ -150,8 +150,8 @@ export default function BrandProcess() {
                 transition={{ duration: 0.6, ease: EASE, delay: 0.5 }}
                 whileHover={{ y: -5, transition: { duration: 0.2 } }}
               >
-                <p className={styles.floatNum}>500+</p>
-                <p className={styles.floatLabel}>Patients treated</p>
+                <p className={styles.floatNum}>2000+</p>
+                <p className={styles.floatLabel}>Patients Treated</p>
               </motion.div>
 
               {/* Active pillar label */}
