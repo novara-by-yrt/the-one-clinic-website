@@ -429,7 +429,7 @@ export default function LaserVaginalPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Women's Health.jpg"
+                src="/images/Menopause & HRT.jpg"
                 alt="Laser Vaginal Rejuvenation treatment at The One Clinic Leicester"
                 fill
                 priority
