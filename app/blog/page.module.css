@@ -54,11 +54,14 @@
 }
 
 /* Filter Section */
+.filterWrapper {
+  padding-block: 1.5rem !important;
+}
+
 .filterSection {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  padding: 1.5rem 0;
 }
 
 .filterLabel {
@@ -207,10 +210,6 @@
     font-size: 1rem;
   }
 
-  .filterSection {
-    padding: 1.5rem 0;
-  }
-
   .filterTags {
     gap: 0.75rem;
   }
@@ -252,10 +251,6 @@
   .eyebrow {
     font-size: 0.75rem;
     margin-bottom: 0.75rem;
-  }
-
-  .filterSection {
-    padding: 1.5rem 0;
   }
 
   .filterLabel {
