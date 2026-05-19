@@ -22,7 +22,7 @@ const PILLARS = [
 ];
 
 const SLIDES = [
-  { src: '/images/website-img2.png', alt: 'The One Clinic, Leicester' },
+  { src: '/images/Lumecca IPL Laser 2.png', alt: 'Lumecca IPL treatment at The One Clinic' },
   { src: '/images/website-img1.png', alt: 'The One Clinic, interior' },
   { src: '/images/website-img3.png', alt: 'The One Clinic, treatment' },
   { src: '/images/website-img4.png', alt: 'The One Clinic, care' },
