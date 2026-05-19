@@ -439,7 +439,7 @@ export default function MinorSurgeryPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Minor Surgery 1.jpg"
+                src="/Minor surgery hero.png"
                 alt="Minor surgery procedure at The One Clinic Leicester"
                 fill
                 priority

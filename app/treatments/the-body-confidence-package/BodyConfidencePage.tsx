@@ -400,7 +400,7 @@ export default function BodyConfidencePage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Minor Surgery.jpg"
+                src="/Ultimate Body Confidence Package hero.jpg"
                 alt="The Body Confidence Package treatment at The One Clinic Leicester"
                 fill
                 priority
@@ -453,7 +453,7 @@ export default function BodyConfidencePage() {
             {/* Right: image */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Minor Surgery.jpg"
+                src="/Ultimate Body Confidence Package.jpg"
                 alt="Body confidence package consultation at The One Clinic Leicester"
                 fill
                 className={styles.whatIsVideoFrame}
