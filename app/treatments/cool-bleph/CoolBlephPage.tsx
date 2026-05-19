@@ -376,8 +376,8 @@ export default function CoolBlephPage() {
                 </p>
               </motion.div>
 
-              <motion.div className={styles.whatIsCtaWrapper} variants={fadeUp}>
-                <BookConsultationButton className={styles.whatIsCtaButton}>
+              <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
+                <BookConsultationButton className={styles.combinedCta}>
                   Book Your Consultation
                 </BookConsultationButton>
               </motion.div>
