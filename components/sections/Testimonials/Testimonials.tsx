@@ -12,76 +12,157 @@ import styles from './Testimonials.module.css';
 /* ── Data ───────────────────────────────────────────────────── */
 const REVIEWS = [
   {
-    name: 'Amara L.',
-    initial: 'A',
+    name: 'Dimitrijs Jakovlevs',
+    initial: 'D',
     avatarBg: '#4285F4',
-    timeAgo: '2 weeks ago',
-    categories: ['weight-management', 'health'],
+    timeAgo: 'Recent',
+    categories: ['general', 'minor-surgery', 'laser'],
     review:
-      'The weight management programme changed my life. The doctors were supportive every step of the way. I finally have a plan that works for my lifestyle and I have never felt better.',
+      'I visited the clinic for removal of a haemangioma on my forehead. Initially, surgery was discussed due to the size, but during the appointment the doctor decided that laser treatment was the better and less invasive option.\n\nThe procedure itself was quick and straightforward, and I was reassured throughout. After the appointment, I realised there had been some confusion on my side regarding the pricing, as the invoice still reflected surgical treatment. I raised this with the clinic, and the difference was refunded promptly and without any issues.\n\nI really appreciated how professionally and fairly this was handled. Overall, a positive experience — good clinical judgement, clear results, and excellent customer service. I\'d be happy to recommend the clinic.',
   },
   {
-    name: 'David R.',
+    name: 'Daniela Angelova',
     initial: 'D',
     avatarBg: '#0F9D58',
-    timeAgo: '1 month ago',
-    categories: ['health', 'private-gp'],
+    timeAgo: 'Recent',
+    categories: ['aesthetics', 'hydrafacial'],
     review:
-      'I came in for help managing a long-term condition and left feeling genuinely heard. The level of care here is unlike any GP I have visited. Exceptional service from start to finish.',
+      'Absolutely loved my HydraFacial triplet! Each session left my skin clearer, brighter, and deeply hydrated. The glow is real and long-lasting. Highly recommend!',
   },
   {
-    name: 'Priya S.',
-    initial: 'P',
+    name: 'Kestutis Astrauskas',
+    initial: 'K',
     avatarBg: '#9C27B0',
-    timeAgo: '1 month ago',
-    categories: ['general'],
+    timeAgo: 'Recent',
+    categories: ['general', 'laser-snoring'],
     review:
-      'From the first call to my follow-up, everything felt seamless and professional. The clinic is calm, the team is brilliant and the results speak for themselves.',
+      'Received good service. Felt welcomed from the beginning, easy communication and booking. Done first anti snoring Laser treatment. So far All ok.',
   },
   {
-    name: 'James T.',
-    initial: 'J',
+    name: 'Anestacia Thomas',
+    initial: 'A',
     avatarBg: '#E53935',
-    timeAgo: '2 months ago',
+    timeAgo: 'Recent',
     categories: ['general'],
     review:
-      'Absolutely brilliant experience from start to finish. Dr Virmani took time to explain everything clearly. I felt completely at ease and the outcome exceeded my expectations.',
+      'My new cosmetologist Chloe was great. I felt taken care of. And my face felt amazing!',
   },
   {
-    name: 'Sofia M.',
-    initial: 'S',
+    name: 'Fran',
+    initial: 'F',
     avatarBg: '#FF7043',
-    timeAgo: '2 months ago',
-    categories: ['aesthetics', 'skin'],
+    timeAgo: 'Recent',
+    categories: ['general'],
     review:
-      'I had my skin treatment here and the results are incredible. The team was professional, friendly and made me feel completely comfortable throughout the entire process.',
+      'Telephoned yesterday as needed urgent advice over issue following facial aesthetic treatment. From first call, to receptionist to nurse and doctor all in one day - super efficient service. Everyone was really kind and helped to settle my anxiety. Big special mention to Chloe and Dr Virmani who were both excellent - cannot thank them enough. Would totally recommend this clinic.',
   },
   {
-    name: 'Ravi K.',
-    initial: 'R',
+    name: 'Temesgen Beyen',
+    initial: 'T',
     avatarBg: '#34A853',
-    timeAgo: '3 months ago',
+    timeAgo: 'Recent',
     categories: ['general'],
     review:
-      'Top-class clinic. Everything from reception to the treatment itself was handled with care and precision. Will definitely be returning for follow-up treatments.',
+      'Extremely happy Dr Gunjan provided perfect treatment plan.',
   },
   {
-    name: 'Natalia W.',
-    initial: 'N',
+    name: 'Sumaiya Hamed',
+    initial: 'S',
     avatarBg: '#1565C0',
-    timeAgo: '3 months ago',
-    categories: ['aesthetics'],
-    review:
-      'Dr Bedi was amazing. She listened to all my concerns and tailored the treatment perfectly. The results are so natural-looking. Highly recommend to anyone considering aesthetics.',
-  },
-  {
-    name: 'Michael B.',
-    initial: 'M',
-    avatarBg: '#F57F17',
-    timeAgo: '4 months ago',
+    timeAgo: 'Recent',
     categories: ['general'],
     review:
-      'Outstanding clinic. The facilities are modern and spotless. Staff are welcoming and knowledgeable. I was impressed by the high standard throughout my visit.',
+      'Amazing Services. They really took their time to explain the different procedures and which option would be best. Would recommend!',
+  },
+  {
+    name: 'Paul',
+    initial: 'P',
+    avatarBg: '#F57F17',
+    timeAgo: 'Recent',
+    categories: ['general', 'aesthetics'],
+    review:
+      'Recently had two procedures undertaken by Mr Sankar at the One Clinic excellent service throughout the process and great follow up care by Nurse Chloe would definitely recommend for aesthetic treatments.',
+  },
+  {
+    name: 'Hannah Clauss',
+    initial: 'H',
+    avatarBg: '#C2185B',
+    timeAgo: 'Recent',
+    categories: ['general'],
+    review:
+      'I had a consultation. Firstly they were running 10 minutes behind but kept me informed and offered me a drink etc. With the doctors I was advised my options but ultimately I got to choose what I wanted. Very happy so far.',
+  },
+  {
+    name: 'Young',
+    initial: 'Y',
+    avatarBg: '#7B1FA2',
+    timeAgo: 'Recent',
+    categories: ['aesthetics', 'hydrafacial'],
+    review:
+      'I had a hydrofacial done by Chloe recently and honestly-loved it! The whole experience was super relaxing, and my skin felt so clean, fresh, and glowy afterward.\n\nChloe was lovely to chat with, really knowledgeable, and made the whole process feel easy and enjoyable. The vibe was super chill and welcoming, which I really appreciated.',
+  },
+  {
+    name: 'Rachel',
+    initial: 'R',
+    avatarBg: '#00897B',
+    timeAgo: 'Recent',
+    categories: ['general', 'laser'],
+    review:
+      'I recently had the new cool laser on my upper and lower eyelids at The One Clinic. I\'m only a week into my treatment and I can already see the results. My eyes look so much fresher and renewed, and my upper lid is definitely tighter and less wrinkled. I can\'t wait to have my lower face done now!!',
+  },
+  {
+    name: 'Shanaz Parvin',
+    initial: 'S',
+    avatarBg: '#455A64',
+    timeAgo: 'Recent',
+    categories: ['general', 'laser'],
+    review:
+      'Alhamdulillah, I had a very good experience. The staff are well-experienced and treated me exceptionally well. I was suffering from an acne problem, and after the first session, I would say my acne has decreased by 70%. I will be scheduling another session soon.',
+  },
+  {
+    name: 'Jayshree Pancholi',
+    initial: 'J',
+    avatarBg: '#D32F2F',
+    timeAgo: 'Recent',
+    categories: ['general', 'laser'],
+    review:
+      'I had scars and pores skin so Dr Gunjan and her team suggested laser treatment. I just had my very first laser treatment and the result I got is amazing. Can\'t believe within one treatment, I will see big difference. My skin tone looks so healthy, bright and smooth, minimised my pores and scars. So happy with my results. I highly recommend laser treatment if you have scars, acne and pores skin. Thank you so much Rosie who did my laser and the whole one clinic team.',
+  },
+  {
+    name: 'Taralyn Cox',
+    initial: 'T',
+    avatarBg: '#6A1B9A',
+    timeAgo: 'Recent',
+    categories: ['general', 'aesthetics'],
+    review:
+      'Amazing results, informative and caring staff! Definitely worth going to a clinic over a spa setting. I felt heard, cared for and the results speak for themselves. They have a range of options available at different price points and they talk to you about all your options, not just the expensive ones! I had an endolift and Botox and a month after the non-invasive surgery I look great. I can see the difference and it will only get better. Clean facilities, lovely people and a great result. Thanks One Clinic!',
+  },
+  {
+    name: 'Roshni Abi',
+    initial: 'R',
+    avatarBg: '#00838F',
+    timeAgo: 'Recent',
+    categories: ['aesthetics', 'hydrafacial'],
+    review:
+      'Had my Hydrafacial done today. Loved how relaxing the whole experience was. Everything was very well explained and just cannot get over the glow on my face!',
+  },
+  {
+    name: 'Angelika B',
+    initial: 'A',
+    avatarBg: '#F57C00',
+    timeAgo: 'Recent',
+    categories: ['general'],
+    review:
+      'Thank you for my daughter\'s hydrofacial and further treatment planned. We are hoping that this will help with her acne. Thank you so far.',
+  },
+  {
+    name: 'Mehzabeen Warsi',
+    initial: 'M',
+    avatarBg: '#1976D2',
+    timeAgo: 'Recent',
+    categories: ['aesthetics', 'hydrafacial'],
+    review:
+      'Got my hydrafacial done by Ellie. She explained the process and did a great job. Would definitely recommend. Most importantly very kind and polite. Also met Dr Gunjan who was very informative.',
   },
 ];
 
@@ -92,6 +173,7 @@ const PATIENT_VIDEOS = [
 ];
 
 const PER_PAGE = 3;
+const READ_MORE_THRESHOLD = 150;
 
 /* ── Icons ──────────────────────────────────────────────────── */
 function GoogleG() {
@@ -130,6 +212,30 @@ const SLIDE = {
 };
 const TRANSITION = { duration: 0.42, ease: [0.25, 0.1, 0.25, 1] as const };
 
+/* ── Helper: Review content with read more ──────────────────── */
+function ReviewContent({ review, name, expanded, onToggle }: { review: string; name: string; expanded: Record<string, boolean>; onToggle: (name: string) => void }) {
+  const isExpanded = expanded[name];
+  const shouldTruncate = review.length > READ_MORE_THRESHOLD;
+
+  if (!shouldTruncate) {
+    return <p className={styles.reviewText}>{review}</p>;
+  }
+
+  const displayText = isExpanded ? review : review.substring(0, READ_MORE_THRESHOLD) + '...';
+
+  return (
+    <>
+      <p className={styles.reviewText}>{displayText}</p>
+      <button
+        className={styles.readMoreBtn}
+        onClick={() => onToggle(name)}
+      >
+        {isExpanded ? 'Show less' : 'Read more'}
+      </button>
+    </>
+  );
+}
+
 /* ── Component ──────────────────────────────────────────────── */
 export default function Testimonials({
   showVideos = false,
@@ -151,6 +257,7 @@ export default function Testimonials({
   /* Reviews carousel */
   const [page, setPage] = useState(0);
   const [dir,  setDir]  = useState(1);
+  const [expanded, setExpanded] = useState<Record<string, boolean>>({});
 
   /* Patient video mobile slideshow */
   const [videoActive, setVideoActive] = useState(0);
@@ -163,6 +270,10 @@ export default function Testimonials({
   function goTo(next: number, direction: number) {
     setDir(direction);
     setPage(next);
+  }
+
+  function toggleExpand(name: string) {
+    setExpanded(prev => ({ ...prev, [name]: !prev[name] }));
   }
 
   function onTouchStart(e: React.TouchEvent) { (e.currentTarget as HTMLDivElement).dataset.tx = String(e.touches[0].clientX); }
@@ -272,7 +383,7 @@ export default function Testimonials({
                     <div className={styles.starsRow} aria-label="5 out of 5 stars">
                       {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
                     </div>
-                    <p className={styles.reviewText}>{r.review}</p>
+                    <ReviewContent review={r.review} name={r.name} expanded={expanded} onToggle={toggleExpand} />
                     <div className={styles.cardFooter}>
                       <div className={styles.avatar} style={{ background: r.avatarBg }} aria-hidden="true">
                         {r.initial}
