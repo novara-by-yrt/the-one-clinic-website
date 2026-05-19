@@ -245,7 +245,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <div className={styles.formWrap}>
                   <iframe
                     src="https://link.leadpipeline.ai/widget/form/fegqbVjvGrZqMfbk64P4"
-                    style={{ width: '100%', height: '400px', border: 'none', display: 'block', borderRadius: '20px' }}
+                    style={{ width: '100%', height: '480px', border: 'none', display: 'block', borderRadius: '20px' }}
                     id="inline-fegqbVjvGrZqMfbk64P4"
                     data-layout="{'id':'INLINE'}"
                     data-trigger-type="alwaysShow"

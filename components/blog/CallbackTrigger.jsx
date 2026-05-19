@@ -16,7 +16,7 @@ export default function CallbackTrigger() {
             src="https://link.leadpipeline.ai/widget/form/fegqbVjvGrZqMfbk64P4"
             style={{
               width: '100%',
-              height: '400px',
+              height: '480px',
               border: 'none',
             }}
             id="popup-callback-fegqbVjvGrZqMfbk64P4"
