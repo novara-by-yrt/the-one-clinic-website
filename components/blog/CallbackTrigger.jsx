@@ -1,24 +1,21 @@
 'use client';
 
-import Script from 'next/script';
-
 export default function CallbackTrigger() {
   return (
     <>
-      <Script src="https://link.leadpipeline.ai/js/form_embed.js" strategy="lazyOnload" />
-
       <div className="bg-gray-50 border-2 border-gray-300 rounded-lg p-6 lg:p-7">
         <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-4 lg:mb-6">Request a Call Back</h3>
 
         {/* LeadPipeline form iframe */}
-        <div className="overflow-hidden rounded-md">
+        <div className="overflow-visible rounded-md">
           <iframe
             src="https://link.leadpipeline.ai/widget/form/fegqbVjvGrZqMfbk64P4"
             style={{
               width: '100%',
-              height: '650px',
+              height: '510px',
+              minHeight: '510px',
               border: 'none',
-              overflow: 'hidden',
+              display: 'block',
             }}
             id="popup-callback-fegqbVjvGrZqMfbk64P4"
             data-layout="{'id':'INLINE'}"
@@ -29,7 +26,7 @@ export default function CallbackTrigger() {
             data-deactivation-type="neverDeactivate"
             data-deactivation-value=""
             data-form-name="Request a Call Back Form"
-            data-height="650"
+            data-height="510"
             data-layout-iframe-id="popup-callback-fegqbVjvGrZqMfbk64P4"
             data-form-id="fegqbVjvGrZqMfbk64P4"
             title="Request a Call Back"

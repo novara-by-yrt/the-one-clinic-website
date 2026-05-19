@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import localFont from 'next/font/local';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -72,6 +73,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body>
+        <Script
+          src="https://link.leadpipeline.ai/js/form_embed.js"
+          strategy="afterInteractive"
+        />
+
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>

@@ -29,8 +29,6 @@ const CATEGORIES = [
 export default function ContactPage() {
   return (
     <>
-      <Script src="https://link.leadpipeline.ai/js/form_embed.js" strategy="lazyOnload" />
-
       {/* ══════════════════════════════════════
           1. HERO
       ══════════════════════════════════════ */}
@@ -171,7 +169,7 @@ export default function ContactPage() {
                 <h2 className={styles.formHeading}>Get in Touch with Us</h2>
                 <iframe
                   src="https://link.leadpipeline.ai/widget/form/Az3D8kxDVBz2diDQJ3uY"
-                  style={{ width: '100%', height: '650px', border: 'none', borderRadius: '0px', overflow: 'hidden' }}
+                  style={{ width: '100%', height: '480px', minHeight: '480px', border: 'none', borderRadius: '0px', display: 'block' }}
                   id="inline-Az3D8kxDVBz2diDQJ3uY"
                   data-layout="{'id':'INLINE'}"
                   data-trigger-type="alwaysShow"
@@ -181,7 +179,7 @@ export default function ContactPage() {
                   data-deactivation-type="neverDeactivate"
                   data-deactivation-value=""
                   data-form-name="Book Consultation"
-                  data-height="650"
+                  data-height="480"
                   data-layout-iframe-id="inline-Az3D8kxDVBz2diDQJ3uY"
                   data-form-id="Az3D8kxDVBz2diDQJ3uY"
                   title="Book Consultation"

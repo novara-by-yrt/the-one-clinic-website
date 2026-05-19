@@ -74,8 +74,6 @@ const SOCIAL_LINKS = [
 export default function LeadForm() {
   return (
     <Section variant="dark" data-section-theme="dark" className={styles.section} id="contact">
-      <Script src="https://link.leadpipeline.ai/js/form_embed.js" strategy="lazyOnload" />
-
       <Container>
         <div className={styles.splitGrid}>
 
@@ -94,7 +92,7 @@ export default function LeadForm() {
               <div className={styles.formWrap}>
                 <iframe
                 src="https://link.leadpipeline.ai/widget/form/fegqbVjvGrZqMfbk64P4"
-                style={{ width: '100%', height: '650px', border: 'none', display: 'block', borderRadius: '20px', overflow: 'hidden' }}
+                style={{ width: '100%', height: '510px', minHeight: '510px', border: 'none', display: 'block', borderRadius: '20px' }}
                 id="inline-fegqbVjvGrZqMfbk64P4"
                 data-layout="{'id':'INLINE'}"
                 data-trigger-type="alwaysShow"
@@ -104,7 +102,7 @@ export default function LeadForm() {
                 data-deactivation-type="neverDeactivate"
                 data-deactivation-value=""
                 data-form-name="Request a Call Back Form"
-                data-height="650"
+                data-height="510"
                 data-layout-iframe-id="inline-fegqbVjvGrZqMfbk64P4"
                 data-form-id="fegqbVjvGrZqMfbk64P4"
                 title="Request a Call Back"

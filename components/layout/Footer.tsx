@@ -1,6 +1,5 @@
 'use client';
 
-import Script from 'next/script';
 import { CLINIC_INFO, getMapsSearchUrl } from '@/lib/clinic-info';
 import styles from './Footer.module.css';
 
@@ -36,8 +35,6 @@ export default function Footer() {
 
   return (
     <footer className={styles.footer} role="contentinfo">
-      <Script src="https://link.leadpipeline.ai/js/form_embed.js" strategy="lazyOnload" />
-
       {/* ══════════════════════════════════════════════
           NEWSLETTER BAND
       ══════════════════════════════════════════════ */}
@@ -63,7 +60,7 @@ export default function Footer() {
             {/* @ts-ignore — scrolling is a valid iframe attr but deprecated in HTML spec */}
             <iframe
               src="https://link.leadpipeline.ai/widget/form/dViZEitr7fnCtl8rKT3Q"
-              style={{ width: '100%', height: '560px', border: 'none', borderRadius: '10px', display: 'block' }}
+              style={{ width: '100%', height: '560px', minHeight: '560px', border: 'none', borderRadius: '10px', display: 'block' }}
               id="inline-dViZEitr7fnCtl8rKT3Q"
               scrolling="no"
               data-layout="{'id':'INLINE'}"

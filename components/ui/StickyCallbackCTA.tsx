@@ -76,8 +76,6 @@ export default function StickyCallbackCTA() {
 
   return (
     <>
-      <Script src="https://link.leadpipeline.ai/js/form_embed.js" strategy="lazyOnload" />
-
       {/* ── Sticky bar ───────────────────────────────────────── */}
       <div className={styles.bar} role="complementary" aria-label="Quick contact">
         <button
@@ -153,7 +151,7 @@ export default function StickyCallbackCTA() {
                   <div className={styles.modalForm}>
                     <iframe
                       src="https://link.leadpipeline.ai/widget/form/fegqbVjvGrZqMfbk64P4"
-                      style={{ width: '100%', height: '650px', border: 'none', borderRadius: '20px', overflow: 'hidden' }}
+                      style={{ width: '100%', height: '650px', minHeight: '650px', border: 'none', borderRadius: '20px', display: 'block' }}
                       id="popup-callback-fegqbVjvGrZqMfbk64P4"
                       data-layout="{'id':'INLINE'}"
                       data-trigger-type="alwaysShow"
