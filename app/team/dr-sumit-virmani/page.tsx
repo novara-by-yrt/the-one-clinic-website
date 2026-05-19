@@ -12,7 +12,7 @@ import styles from './page.module.css';
 const STATS = [
   { value: '15+', label: 'Years in Medicine' },
   { value: '12+', label: 'Years as a GP' },
-  { value: '1',   label: 'Clinic Co-Founded' },
+  { value: 'MRCGP', label: 'Royal College Qualified' },
 ];
 
 const SPECIALTIES = [
