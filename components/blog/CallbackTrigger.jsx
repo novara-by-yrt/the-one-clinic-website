@@ -12,8 +12,7 @@ export default function CallbackTrigger() {
             src="https://link.leadpipeline.ai/widget/form/fegqbVjvGrZqMfbk64P4"
             style={{
               width: '100%',
-              height: '510px',
-              minHeight: '510px',
+              minHeight: '400px',
               border: 'none',
               display: 'block',
             }}

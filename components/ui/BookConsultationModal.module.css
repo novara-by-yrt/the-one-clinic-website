@@ -45,7 +45,9 @@
 
 /* ── Form side (right column) ─────────────────────────────── */
 .modalContent {
-  flex: 1;
+  flex: 0 1 auto;
+  /* removed flex: 1 to prevent stretching; flex: 0 1 auto allows shrinking to content
+     while still allowing overflow with overflow-y: auto on small viewports */
   min-width: 0;
   overflow-y: auto;
   max-height: calc(100vh - 48px);

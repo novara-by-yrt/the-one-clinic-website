@@ -88,7 +88,7 @@ export default function BookConsultationModal() {
                   <div className={styles.modalForm}>
                     <iframe
                       src="https://link.leadpipeline.ai/widget/form/Az3D8kxDVBz2diDQJ3uY"
-                      style={{ width: '100%', height: '480px', minHeight: '480px', border: 'none', borderRadius: '12px', display: 'block' }}
+                      style={{ width: '100%', minHeight: '380px', border: 'none', borderRadius: '12px', display: 'block' }}
                       id="popup-book-Az3D8kxDVBz2diDQJ3uY"
                       data-layout="{'id':'INLINE'}"
                       data-trigger-type="alwaysShow"
@@ -98,7 +98,7 @@ export default function BookConsultationModal() {
                       data-deactivation-type="neverDeactivate"
                       data-deactivation-value=""
                       data-form-name="Book Consultation"
-                      data-height="480"
+                      data-height="420"
                       data-layout-iframe-id="popup-book-Az3D8kxDVBz2diDQJ3uY"
                       data-form-id="Az3D8kxDVBz2diDQJ3uY"
                       title="Book a Consultation"
