@@ -44,3 +44,23 @@
   pointer-events: none;
 }
 
+/* Tablet / mobile: the footer is taller than the viewport, so the
+   fixed-position reveal effect would only ever show its bottom slice
+   with the sticky header overlapping whatever is at the visible top.
+   Switch to normal flow so users can scroll through every link. */
+@media (max-width: 1024px) {
+  .footerFixed {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    transform: none !important;
+    opacity: 1 !important;
+    will-change: auto;
+  }
+
+  .footerSpacer {
+    display: none;
+  }
+}
+
