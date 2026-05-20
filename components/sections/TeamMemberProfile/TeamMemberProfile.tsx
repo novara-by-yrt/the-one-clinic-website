@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import BookConsultationButton from '@/components/ui/BookConsultationButton';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -38,19 +37,9 @@ export default function TeamMemberProfile({ member }: { member: TeamMember }) {
             initial="hidden"
             animate="show"
           >
-            {/* Back link, top row on desktop, above photo on mobile */}
-            <motion.div className={styles.backWrap} variants={fadeUp}>
-              <Link href="/our-team" className={styles.back}>
-                <span aria-hidden="true">←</span> Our Team
-              </Link>
-            </motion.div>
-
             {/* Left — text content */}
             <div className={styles.heroLeft}>
               <motion.div className={styles.heroText} variants={stagger(0.08)}>
-                <motion.p className={styles.eyebrow} variants={fadeUp}>
-                  The One Clinic
-                </motion.p>
                 <motion.h1 className={styles.name} variants={fadeUp}>
                   {last ? (
                     <>
