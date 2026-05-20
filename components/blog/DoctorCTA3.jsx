@@ -37,7 +37,7 @@ export default function DoctorCTA3() {
 
             <button
               onClick={handleClick}
-              className="bg-white text-black font-bold px-5 py-1.5 rounded-full hover:bg-gray-100 transition-colors w-fit text-xs md:text-xs"
+              className="bg-white text-black font-bold px-6 py-2 rounded-full hover:bg-gray-100 transition-colors w-fit text-sm"
             >
               Book a Consultation
             </button>
