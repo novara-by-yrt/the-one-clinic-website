@@ -42,7 +42,7 @@ export default function BlogCard({ post, variant = 'default' }: BlogCardProps) {
 
         {/* Metadata */}
         <div className={styles.meta}>
-          <span className={styles.author}>{post.author}</span>
+          <span className={styles.author}>Reviewed by Dr. Sumit Varmani</span>
           <span className={styles.separator}>•</span>
           <span className={styles.readTime}>{post.readingTime} min read</span>
           <span className={styles.separator}>•</span>
