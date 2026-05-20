@@ -424,12 +424,12 @@
 /* Mobile */
 @media (max-width: 640px) {
   .contentWrapper {
-    padding-top: clamp(60px, 9svh, 72px);
-    padding-bottom: clamp(12px, 2.5svh, 24px);
+    padding-top: clamp(44px, 7svh, 56px);
+    padding-bottom: clamp(6px, 1.5svh, 16px);
   }
 
   .layout {
-    padding-block: clamp(8px, 2svh, 20px);
+    padding-block: clamp(6px, 1.5svh, 14px);
   }
 
   .overlayGradient {
