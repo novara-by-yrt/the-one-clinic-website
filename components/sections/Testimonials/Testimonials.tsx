@@ -265,7 +265,22 @@ export default function Testimonials({
   const videoTouchY = useRef(0);
 
   const totalPages = filterCategory ? 1 : Math.ceil(pool.length / PER_PAGE);
-  const visible    = filterCategory ? pool : pool.slice(page * PER_PAGE, (page + 1) * PER_PAGE);
+
+  /* Ensure last slide always shows PER_PAGE cards by adjusting visible range */
+  let visible = pool;
+  if (!filterCategory) {
+    const isLastPage = page === totalPages - 1;
+    const pageStart = page * PER_PAGE;
+    const pageEnd = pageStart + PER_PAGE;
+
+    if (isLastPage && pageEnd - pageStart < PER_PAGE && pageStart > 0) {
+      /* Last page with fewer than PER_PAGE reviews: show the last PER_PAGE reviews */
+      visible = pool.slice(Math.max(0, pool.length - PER_PAGE), pool.length);
+    } else {
+      /* Normal pagination */
+      visible = pool.slice(pageStart, pageEnd);
+    }
+  }
 
   function goTo(next: number, direction: number) {
     setDir(direction);
