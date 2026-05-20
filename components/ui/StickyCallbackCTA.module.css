@@ -459,7 +459,7 @@
   }
 
   .iframeCrop {
-    height: 348px;
+    height: clamp(380px, calc(100svh - 128px), 420px);
     border-radius: 12px;
     max-width: 100%;
   }
