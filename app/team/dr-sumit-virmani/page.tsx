@@ -11,8 +11,8 @@ import styles from './page.module.css';
 
 const STATS = [
   { value: '15+', label: 'Years in Medicine' },
-  { value: '12+', label: 'Years as a GP' },
-  { value: 'MRCGP', label: 'Royal College Qualified' },
+  { value: 'MRCGP', label: 'Royal College of GPs' },
+  { value: 'Aesthetic Medicine', label: 'Specialist Trained' },
 ];
 
 const SPECIALTIES = [

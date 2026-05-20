@@ -10,9 +10,9 @@ import LeadForm from '@/components/sections/LeadForm';
 import styles from './page.module.css';
 
 const STATS = [
-  { value: '10+', label: 'Years in Elite Sport' },
-  { value: 'Fellowship', label: 'International Training' },
-  { value: 'MBChB', label: 'Qualification' },
+  { value: '10+', label: 'Years in Sports Medicine' },
+  { value: 'International Fellowship', label: 'Advanced Training' },
+  { value: 'Orthopaedic Surgeon', label: 'Specialization' },
 ];
 
 const SPECIALTIES = [

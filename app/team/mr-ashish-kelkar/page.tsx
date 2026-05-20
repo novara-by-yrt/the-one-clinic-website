@@ -11,8 +11,8 @@ import styles from './page.module.css';
 
 const STATS = [
   { value: '30+', label: 'Years in Surgery' },
-  { value: 'MBBS, MS', label: 'Qualifications' },
   { value: 'FRCS', label: 'Royal College of Surgeons' },
+  { value: 'Colorectal', label: 'Sub-speciality' },
 ];
 
 const SPECIALTIES = [

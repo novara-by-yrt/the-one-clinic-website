@@ -10,9 +10,9 @@ import LeadForm from '@/components/sections/LeadForm';
 import styles from './page.module.css';
 
 const STATS = [
-  { value: 'MBBS, MSc', label: 'Qualifications' },
-  { value: 'FRCPath, FRCP', label: 'Professional Credentials' },
-  { value: 'Head of Service', label: 'Chemical Pathology, UHL' },
+  { value: 'FRCPath, FRCP', label: 'Royal College Fellow' },
+  { value: 'Head of Service', label: 'Chemical Pathology' },
+  { value: '15+', label: 'Years Consultant' },
 ];
 
 const SPECIALTIES = [

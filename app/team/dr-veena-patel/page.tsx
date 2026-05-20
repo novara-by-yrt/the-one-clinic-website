@@ -10,9 +10,9 @@ import LeadForm from '@/components/sections/LeadForm';
 import styles from './page.module.css';
 
 const STATS = [
-  { value: 'MBBS, MEd', label: 'Qualifications' },
-  { value: 'FHEA, FRCP', label: 'Professional Memberships' },
-  { value: 'UHL', label: 'University Hospital Leicester' },
+  { value: 'FRCP', label: 'Royal College Physician' },
+  { value: 'FHEA', label: 'Higher Education Fellow' },
+  { value: 'Rheumatology', label: 'Consultant Specialist' },
 ];
 
 const SPECIALTIES = [

@@ -11,8 +11,8 @@ import styles from './page.module.css';
 
 const STATS = [
   { value: '20+', label: 'Years in Medicine' },
-  { value: '10+', label: 'Years as a GP' },
-  { value: 'BCAM', label: 'Aesthetic Medicine' },
+  { value: 'BCAM', label: 'British Academy Aesthetics' },
+  { value: 'Advanced Aesthetics', label: 'Specialization' },
 ];
 
 const SPECIALTIES = [
