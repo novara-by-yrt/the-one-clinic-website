@@ -55,6 +55,13 @@ const EXPERTISE_STATS = [
   { stat: '2016', label: 'Year brand launched' },
 ];
 
+const CATEGORIES = [
+  { label: 'Cleansers',          src: '/images/alumiermd-cat-cleansers.jpg' },
+  { label: 'Serums',             src: '/images/alumiermd-cat-serums.jpg' },
+  { label: 'Moisturisers',       src: '/images/alumiermd-cat-moisturisers.jpg' },
+  { label: 'Eye Creams & SPF',   src: '/images/alumiermd-cat-eye-creams.jpg' },
+];
+
 export default function AlumierMDPage() {
   return (
     <>
@@ -156,6 +163,51 @@ export default function AlumierMDPage() {
           </motion.div>
         </Container>
       </Section>
+
+      {/* ════════════════════════════════════════
+          CATEGORIES
+      ════════════════════════════════════════ */}
+      <section className={styles.categoriesSection}>
+        <Container>
+          <motion.div
+            className={styles.categoriesHeader}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.h2 className={styles.categoriesTitle} variants={fadeUp}>
+              Shop by Category
+            </motion.h2>
+            <motion.p className={styles.categoriesSubtitle} variants={fadeUp}>
+              Explore our professionally dispensed AlumierMD collection
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.categoriesGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {CATEGORIES.map((cat, idx) => (
+              <motion.div key={idx} className={styles.categoryCard} variants={fadeUp}>
+                <div className={styles.categoryImageWrap}>
+                  <Image
+                    src={cat.src}
+                    alt={cat.label}
+                    fill
+                    className={styles.categoryImage}
+                    sizes="(max-width: 640px) 50vw, 25vw"
+                  />
+                </div>
+                <span className={styles.categoryLabel}>{cat.label}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </section>
 
       {/* ════════════════════════════════════════
           BRAND JOURNEY
