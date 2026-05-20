@@ -231,7 +231,7 @@ export default function BrandHero() {
                 </button>
               </motion.div>
 
-              {/* ── Trust strip , 4 badges in a row ── */}
+              {/* ── Trust strip , 2 badges in a row ── */}
               <div className={styles.trustRow} role="region" aria-label="Trust indicators">
 
                 {/* Google Reviews */}
@@ -278,38 +278,6 @@ export default function BrandHero() {
                     <span className={styles.trustDot} aria-hidden="true" />
                     <span className={styles.trustCount}>140+ reviews</span>
                   </p>
-                </motion.div>
-
-                {/* Aesthetics Awards Highly Commended 2025 */}
-                <motion.div
-                  className={`${styles.trustBadge} ${styles.trustBadgeImage}`}
-                  {...cineBadge(1.70, prefersReduced)}
-                >
-                  <div className={styles.trustImageWrap}>
-                    <Image
-                      src="/images/imgi_35_Untitled-3-5-e1749493207346.png"
-                      alt="Aesthetics Awards Highly Commended 2025"
-                      width={400}
-                      height={280}
-                      className={styles.trustImage}
-                    />
-                  </div>
-                </motion.div>
-
-                {/* AM Awards 2025 Finalist */}
-                <motion.div
-                  className={`${styles.trustBadge} ${styles.trustBadgeImage}`}
-                  {...cineBadge(1.85, prefersReduced)}
-                >
-                  <div className={styles.trustImageWrap}>
-                    <Image
-                      src="/images/imgi_86_AM_Awards_2025-black_FINALIST-1024x704.png"
-                      alt="Aesthetic Medicine Awards 2025 Finalist"
-                      width={200}
-                      height={138}
-                      className={styles.trustImage}
-                    />
-                  </div>
                 </motion.div>
 
               </div>
