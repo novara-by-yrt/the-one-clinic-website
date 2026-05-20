@@ -74,19 +74,54 @@ export default function StickyCallbackCTA() {
     return () => window.removeEventListener('openCallbackModal', onOpenModal);
   }, []);
 
+  const handleBookNow = () => {
+    window.dispatchEvent(new Event('openBookConsultationModal'));
+  };
+
+  const handleCallBack = () => {
+    isAutoRef.current = false;
+    setOpen(true);
+  };
+
   return (
     <>
       {/* ── Sticky bar ───────────────────────────────────────── */}
       <div className={styles.bar} role="complementary" aria-label="Quick contact">
+        {/* Desktop: Single button */}
         <button
           className={styles.ctaBtn}
-          onClick={() => { isAutoRef.current = false; setOpen(true); }}
+          onClick={handleCallBack}
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" className={styles.phoneIcon}>
             <path d="M13.5 10.5l-2-2a1 1 0 00-1.4 0l-.9.9a8.2 8.2 0 01-3.1-3.1l.9-.9a1 1 0 000-1.4l-2-2A1 1 0 003.6 2L2.5 3.1C1.8 3.8 1.7 4.9 2.3 5.8a15.5 15.5 0 008 8c.9.5 2 .4 2.7-.3l1.1-1.1a1 1 0 00-.6-1.9z" fill="currentColor"/>
           </svg>
           Request a Call Back
         </button>
+
+        {/* Mobile: Two buttons */}
+        <div className={styles.buttonGroup}>
+          <button
+            className={styles.bookNowBtn}
+            onClick={handleBookNow}
+            aria-label="Book Now"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2"/>
+              <path d="M16 2v4M8 2v4M3 10h18"/>
+            </svg>
+            <span>BOOK NOW</span>
+          </button>
+          <button
+            className={styles.callBackBtn}
+            onClick={handleCallBack}
+            aria-label="Call Back"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8A19.79 19.79 0 01.03 1.17 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/>
+            </svg>
+            <span>CALL BACK</span>
+          </button>
+        </div>
       </div>
 
       {/* ── Modal ────────────────────────────────────────────── */}
