@@ -14,6 +14,11 @@
   align-items: center;
 }
 
+/* Back link — spans full width above hero columns on desktop */
+.backWrap {
+  grid-column: 1 / -1;
+}
+
 /* Left panel */
 .heroLeft {
   display: flex;
@@ -348,24 +353,34 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 40px;
-  background: var(--color-white);
-  color: var(--color-text-dark);
-  font-size: var(--text-small);
-  font-weight: var(--fw-medium);
-  letter-spacing: 0.04em;
+  padding: 14px 32px;
+  background-color: #fff;
+  color: #000;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  border-radius: var(--radius-sm);
+  border-radius: 50px;
+  border: 1px solid #fff;
   text-decoration: none;
   margin-top: var(--space-2);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.12);
   transition:
-    opacity var(--duration-fast) var(--ease-out),
-    transform var(--duration-fast) var(--ease-out);
+    background-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease;
 }
 
 .ctaBtn:hover {
-  opacity: 0.88;
-  transform: scale(1.02);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(255, 255, 255, 0.28), inset 0 1px 0 rgba(0, 0, 0, 0.08);
+}
+
+.ctaBtn:active {
+  transform: translateY(-1px);
 }
 
 /* ═══════════════════════════════════════════
@@ -387,6 +402,12 @@
     gap: var(--space-5);
   }
 
+  /* Back link sits above the photo on mobile */
+  .backWrap {
+    order: -2;
+    grid-column: auto;
+  }
+
   .heroPhoto {
     order: -1;
     aspect-ratio: 4 / 5;
@@ -396,9 +417,13 @@
     margin-inline: auto;
   }
 
+  .bioSection {
+    padding-block: var(--space-5) var(--space-8);
+  }
+
   .bioLayout {
     grid-template-columns: 1fr;
-    gap: var(--space-5);
+    gap: var(--space-4);
   }
 
   .bioSidebar {

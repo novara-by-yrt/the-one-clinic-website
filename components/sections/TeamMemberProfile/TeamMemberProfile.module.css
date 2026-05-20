@@ -14,6 +14,11 @@
   align-items: center;
 }
 
+/* Back link — spans full width above hero columns on desktop */
+.backWrap {
+  grid-column: 1 / -1;
+}
+
 /* Left panel */
 .heroLeft {
   display: flex;
@@ -403,6 +408,12 @@
     gap: var(--space-5);
   }
 
+  /* Back link sits above the photo on mobile */
+  .backWrap {
+    order: -2;
+    grid-column: auto;
+  }
+
   .heroPhoto {
     order: -1;
     aspect-ratio: 4 / 5;
@@ -412,9 +423,13 @@
     margin-inline: auto;
   }
 
+  .bioSection {
+    padding-block: var(--space-5) var(--space-8);
+  }
+
   .bioLayout {
     grid-template-columns: 1fr;
-    gap: var(--space-5);
+    gap: var(--space-4);
   }
 
   .bioSidebar {

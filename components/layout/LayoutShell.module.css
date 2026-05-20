@@ -30,3 +30,17 @@
   will-change: transform, opacity;
 }
 
+/* Dark fill that sits just above the footer so the area revealed by
+   .content's bottom corner cutouts (overflow: clip + border-radius)
+   shows the footer's dark color instead of the white body behind it. */
+.footerFixed::before {
+  content: '';
+  position: absolute;
+  top: -32px;
+  left: 0;
+  right: 0;
+  height: 32px;
+  background: #0d0d12;
+  pointer-events: none;
+}
+

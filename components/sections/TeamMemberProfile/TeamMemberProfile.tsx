@@ -38,14 +38,15 @@ export default function TeamMemberProfile({ member }: { member: TeamMember }) {
             initial="hidden"
             animate="show"
           >
+            {/* Back link, top row on desktop, above photo on mobile */}
+            <motion.div className={styles.backWrap} variants={fadeUp}>
+              <Link href="/our-team" className={styles.back}>
+                <span aria-hidden="true">←</span> Our Team
+              </Link>
+            </motion.div>
+
             {/* Left — text content */}
             <div className={styles.heroLeft}>
-              <motion.div variants={fadeUp}>
-                <Link href="/our-team" className={styles.back}>
-                  <span aria-hidden="true">←</span> Our Team
-                </Link>
-              </motion.div>
-
               <motion.div className={styles.heroText} variants={stagger(0.08)}>
                 <motion.p className={styles.eyebrow} variants={fadeUp}>
                   The One Clinic
@@ -75,9 +76,6 @@ export default function TeamMemberProfile({ member }: { member: TeamMember }) {
                 <BookConsultationButton className={styles.btnPrimary}>
                   Book Consultation
                 </BookConsultationButton>
-                <Link href="/our-team" className={styles.btnGhost}>
-                  View All Team
-                </Link>
               </motion.div>
             </div>
 
