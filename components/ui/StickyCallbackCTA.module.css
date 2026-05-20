@@ -282,15 +282,6 @@
   width: 100%;
 }
 
-.modalContent::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #0d1520 0%, rgba(13, 21, 32, 0.3) 100%);
-}
 
 /* ── Modal header row ─────────────────────────────────────── */
 .modalTop {
@@ -395,10 +386,6 @@
 
   .modalImage {
     display: none;
-  }
-
-  .modalContent::before {
-    height: 3px;
   }
 }
 
