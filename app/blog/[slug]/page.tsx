@@ -266,6 +266,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </Container>
       </Section>
 
+      {/* Doctor CTA Section */}
+      <Section variant="light" data-section-theme="light" className={styles.ctaWrapperSection}>
+        <Container>
+          <div className={styles.ctaSection}>
+            <DoctorCTA2 />
+          </div>
+        </Container>
+      </Section>
+
       {/* Related Posts */}
       {relatedPosts.length > 0 && (
         <Section variant="light" data-section-theme="light" className={styles.relatedSection}>
@@ -284,15 +293,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </Container>
         </Section>
       )}
-
-      {/* Second CTA Section */}
-      <Section variant="light" data-section-theme="light" className={styles.ctaWrapperSection}>
-        <Container>
-          <div className={styles.ctaSection}>
-            <DoctorCTA2 />
-          </div>
-        </Container>
-      </Section>
     </>
   );
 }
