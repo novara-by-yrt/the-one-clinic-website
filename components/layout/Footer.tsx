@@ -170,17 +170,17 @@ export default function Footer() {
 
         {/* Right zone: legal */}
         <div className={styles.rightZone}>
+          <nav className={styles.legalLinks} aria-label="Legal links">
+            <a href="/terms-conditions" className={styles.legalLink}>
+              Terms &amp; Conditions
+            </a>
+            <a href="/privacy-policy" className={styles.legalLink}>
+              Privacy Policy
+            </a>
+          </nav>
           <p className={styles.copyright}>
             &copy; THE ONE CLINIC {year}. ALL RIGHTS RESERVED.
           </p>
-          <nav className={styles.legalLinks} aria-label="Legal links">
-            <a href="/terms-conditions" className={styles.legalLink}>
-              Terms &amp; Conditions <CircleArrow />
-            </a>
-            <a href="/privacy-policy" className={styles.legalLink}>
-              Privacy Policy <CircleArrow />
-            </a>
-          </nav>
         </div>
 
       </div>

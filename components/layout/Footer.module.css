@@ -302,21 +302,10 @@
 }
 
 .legalLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 0.9375rem;
   color: #fff;
   text-decoration: none;
   transition: opacity 0.2s ease;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  font: inherit;
 }
 
 .legalLink:hover { opacity: 0.65; }
@@ -384,7 +373,7 @@
 
   .centerZone {
     width: 100%;
-    order: 3;
+    order: 2;
     display: block;
   }
 
@@ -394,6 +383,7 @@
   }
 
   .rightZone {
+    order: 3;
     align-items: flex-start;
     text-align: left;
     width: 100%;
@@ -434,7 +424,7 @@
 
   .centerZone {
     width: 100%;
-    order: 3;
+    order: 2;
     display: block;
   }
 
@@ -444,6 +434,7 @@
   }
 
   .rightZone {
+    order: 3;
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-3);
@@ -453,5 +444,6 @@
   .legalLinks {
     flex-direction: column;
     align-items: flex-start;
+    gap: 6px;
   }
 }
