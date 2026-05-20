@@ -324,22 +324,29 @@
   }
 
   .modalOuter {
-    padding: 12px;
-    align-items: flex-end;
+    padding: 16px;
+    align-items: center;
+    justify-content: center;
   }
 
   .modal {
     width: 100%;
-    border-radius: 18px 18px 14px 14px;
+    border-radius: 18px;
+    flex-direction: column;
+    max-height: calc(100vh - 32px);
+  }
+
+  .modalImage {
+    display: none;
   }
 
   .modalTop {
-    padding: 16px 16px 10px;
+    padding: 16px;
     gap: 10px;
   }
 
   .modalHeading {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
   }
 
   .closeBtn {
@@ -347,11 +354,21 @@
     height: 32px;
   }
 
+  .modalContent {
+    width: 100%;
+  }
+
   .modalForm {
     padding: 0 16px 16px;
+    flex: 1;
   }
 
   .iframeCrop {
-    height: 480px;
+    height: 380px;
+    border-radius: 12px;
+  }
+
+  .iframeCrop iframe {
+    height: 750px !important;
   }
 }
