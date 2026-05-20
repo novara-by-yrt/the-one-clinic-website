@@ -195,37 +195,6 @@ const TREATED_BENEFITS = [
   },
 ];
 
-const PRODUCT_CATEGORIES = [
-  {
-    category: 'Cleansers',
-    desc: 'Gentle yet effective cleansing and pH-balancing to prepare skin for actives.',
-  },
-  {
-    category: 'Serums & Essences',
-    desc: 'Concentrated actives with pharmaceutical-grade performance at optimal concentrations.',
-  },
-  {
-    category: 'Moisturisers',
-    desc: 'Barrier-supporting hydration and specialised treatments for intensive repair.',
-  },
-  {
-    category: 'Targeted Treatments',
-    desc: 'Specialised products for problem zones and specific skin concerns.',
-  },
-  {
-    category: 'Sun Care & SPF',
-    desc: 'Essential protection, mandatory when using active ingredients.',
-  },
-  {
-    category: 'Maintenance Products',
-    desc: 'Long-term stabilising products to lock in results and maintain skin health.',
-  },
-  {
-    category: 'Treatment Bundles',
-    desc: 'Curated collections designed for specific concerns and skin types.',
-  },
-];
-
 const SKIN_CONCERNS_DATA = [
   {
     group: 'Skin Issues',
@@ -895,56 +864,7 @@ export default function CellDermaPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          10. PRODUCT CATEGORIES
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
-        <div className={styles.whiteBgWrap} aria-hidden="true">
-          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
-        </div>
-        <Container className={styles.whiteBgContent}>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-              Our Range
-            </motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              CellDerma Core Product Categories
-            </motion.h2>
-            <motion.p className={styles.beforeAfterSubheading} variants={fadeUp}>
-              A comprehensive range of professional skincare formulated to work synergistically for transformative results.
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            className={styles.cellCatGrid}
-            variants={stagger(0.07)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {PRODUCT_CATEGORIES.map((item, idx) => (
-              <motion.div
-                key={item.category}
-                className={styles.cellCatCard}
-                variants={fadeUp}
-                whileHover={{ y: -5, transition: { type: 'spring', stiffness: 300, damping: 20 } }}
-              >
-                <span className={styles.cellCatNum}>{String(idx + 1).padStart(2, '0')}</span>
-                <h3 className={styles.cellCatName}>{item.category}</h3>
-                <p className={styles.cellCatDesc}>{item.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          11. PATIENT REVIEWS
+          10. PATIENT REVIEWS
       ════════════════════════════════════════ */}
       <Testimonials />
 
