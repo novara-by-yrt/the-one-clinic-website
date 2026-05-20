@@ -400,7 +400,7 @@ export default function WartRemovalPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Wart Removal Hero.jpg"
+                src="/images/Hero Section Wart Removal.jpg"
                 alt="Wart removal treatment at The One Clinic Leicester"
                 fill
                 priority
@@ -450,7 +450,7 @@ export default function WartRemovalPage() {
             {/* Right: image panel */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Wart Removal 1.jpg"
+                src="/images/What is Wart Removal.jpg"
                 alt="Doctor consultation for wart removal at The One Clinic"
                 fill
                 className={styles.whatIsVideoFrame}

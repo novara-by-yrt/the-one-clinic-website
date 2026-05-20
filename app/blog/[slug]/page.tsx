@@ -10,6 +10,7 @@ import { SITE_URL } from '@/lib/schema/clinic';
 import BlogCard from '@/components/blog/BlogCard';
 import DoctorCTA1 from '@/components/blog/DoctorCTA1';
 import DoctorCTA2 from '@/components/blog/DoctorCTA2';
+import SocialShare from '@/components/blog/SocialShare';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './page.module.css';
@@ -140,7 +141,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 theme="dark"
                 items={[
                   { label: 'Blog', href: '/blog' },
-                  { label: post.category, href: `/blog?category=${encodeURIComponent(post.category)}` },
                   { label: post.title },
                 ]}
               />
@@ -156,36 +156,37 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               {post.title}
             </h1>
 
-            {/* Meta */}
-            <div className={styles.meta}>
-              <span className={styles.metaItem}>{post.author}</span>
-              <span className={styles.metaDivider}>•</span>
-              <span className={styles.metaItem}>{post.readingTime} min read</span>
-              <span className={styles.metaDivider}>•</span>
-              <time className={styles.metaItem} dateTime={post.publishedAt}>
-                {publishDate}
-              </time>
-              {updateDate && post.updatedAt !== post.publishedAt && (
-                <>
-                  <span className={styles.metaDivider}>•</span>
-                  <span className={styles.metaItem}>Updated {updateDate}</span>
-                </>
-              )}
+            {/* Attribution row + Social sharing */}
+            <div className={styles.attributionRow}>
+              <p className={styles.attributionText}>
+                Written By Aesthetic Content Writer{' '}
+                <Link
+                  href={`/blog/author/${post.author.toLowerCase().replace(/\s+/g, '-')}`}
+                  className={styles.attributionLink}
+                >
+                  {post.author}
+                </Link>
+                {post.medicalReviewer && (
+                  <>
+                    {'. '}Reviewed By Medical Director{' '}
+                    <Link
+                      href={`/reviewer/${post.medicalReviewer.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`}
+                      className={styles.attributionLink}
+                    >
+                      {post.medicalReviewer}
+                    </Link>
+                  </>
+                )}
+              </p>
+              <SocialShare title={post.title} slug={post.slug} siteUrl={SITE_URL} />
             </div>
 
-            {/* Medical reviewer */}
-            {post.medicalReviewer && post.reviewedAt && (
-              <div className={styles.reviewer}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                  <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-                </svg>
-                Reviewed by {post.medicalReviewer} on {new Date(post.reviewedAt).toLocaleDateString('en-GB', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </div>
-            )}
+            {/* Published date + reading time */}
+            <div className={styles.publishMeta}>
+              <span>Published On: {publishDate}</span>
+              <span className={styles.metaDivider}>•</span>
+              <span>{post.readingTime} min read</span>
+            </div>
           </div>
         </Container>
       </section>
@@ -242,7 +243,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <div className={styles.formWrap}>
                   <iframe
                     src="https://link.leadpipeline.ai/widget/form/fegqbVjvGrZqMfbk64P4"
-                    style={{ width: '100%', minHeight: '400px', border: 'none', display: 'block', borderRadius: '20px' }}
+                    style={{ width: '100%', height: '800px', minHeight: '800px', border: 'none', display: 'block' }}
                     id="inline-fegqbVjvGrZqMfbk64P4"
                     data-layout="{'id':'INLINE'}"
                     data-trigger-type="alwaysShow"
@@ -252,7 +253,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     data-deactivation-type="neverDeactivate"
                     data-deactivation-value=""
                     data-form-name="Request a Call Back Form"
-                    data-height="510"
+                    data-height="800"
                     data-layout-iframe-id="inline-fegqbVjvGrZqMfbk64P4"
                     data-form-id="fegqbVjvGrZqMfbk64P4"
                     title="Request a Call Back"

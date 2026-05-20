@@ -33,7 +33,6 @@ const BENEFITS = [
 ];
 
 const IMAGES = [
-  { src: '/images/imgi_78_GTR_0328-1-1.jpg', alt: 'The One Clinic team' },
   { src: '/images/Doctor2.jpg',               alt: 'The One Clinic doctor' },
   { src: '/images/Doctor1.jpg',               alt: 'The One Clinic doctor' },
 ];
@@ -125,21 +124,11 @@ export default function Benefits() {
             viewport={VIEWPORT}
           >
             <div className={styles.collage}>
-              <div className={styles.collageLarge}>
-                <Image
-                  src={IMAGES[0].src}
-                  alt={IMAGES[0].alt}
-                  fill
-                  className={styles.collageImg}
-                  sizes="(max-width: 900px) 100vw, 30vw"
-                  priority
-                />
-              </div>
               <div className={styles.collageStack}>
                 <div className={styles.collageSmall}>
                   <Image
-                    src={IMAGES[1].src}
-                    alt={IMAGES[1].alt}
+                    src={IMAGES[0].src}
+                    alt={IMAGES[0].alt}
                     fill
                     className={styles.collageImg}
                     sizes="(max-width: 900px) 50vw, 20vw"
@@ -147,8 +136,8 @@ export default function Benefits() {
                 </div>
                 <div className={styles.collageSmall}>
                   <Image
-                    src={IMAGES[2].src}
-                    alt={IMAGES[2].alt}
+                    src={IMAGES[1].src}
+                    alt={IMAGES[1].alt}
                     fill
                     className={styles.collageImg}
                     sizes="(max-width: 900px) 50vw, 20vw"

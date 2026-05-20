@@ -414,7 +414,7 @@ export default function SkinTagsRemovalPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Minor Surgery.jpg"
+                src="/images/Hero Section Skin Tag Removal.jpg"
                 alt="Skin tags removal treatment in progress at The One Clinic"
                 fill
                 priority
@@ -468,7 +468,7 @@ export default function SkinTagsRemovalPage() {
             {/* Right: image */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/images/What is Skin Tag Removal.jpg"
                 alt="Doctor reviewing skin tag at The One Clinic Leicester"
                 fill
                 className={styles.whatIsVideoFrame}

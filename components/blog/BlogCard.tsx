@@ -37,12 +37,14 @@ export default function BlogCard({ post, variant = 'default' }: BlogCardProps) {
 
       {/* Content */}
       <div className={styles.content}>
-        <h3 className={styles.title}>{post.title}</h3>
+        <Link href={`/blog/${post.slug}`} className={styles.titleLink}>
+          <h3 className={styles.title}>{post.title}</h3>
+        </Link>
         <p className={styles.excerpt}>{post.excerpt}</p>
 
         {/* Metadata */}
         <div className={styles.meta}>
-          <span className={styles.author}>{post.author}</span>
+          <span className={styles.author}>Reviewed by Dr. Sumit Varmani</span>
           <span className={styles.separator}>•</span>
           <span className={styles.readTime}>{post.readingTime} min read</span>
           <span className={styles.separator}>•</span>

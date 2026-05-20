@@ -57,17 +57,6 @@ export default function BookConsultationModal() {
                 exit={{ opacity: 0,    y: 20, scale: 0.97 }}
                 transition={{ duration: 0.48, ease: [0.22, 1, 0.36, 1] }}
               >
-                <div className={styles.modalImage} aria-hidden="true">
-                  <Image
-                    src="/images/imgi_78_GTR_0328-1-1.jpg"
-                    alt=""
-                    fill
-                    style={{ objectFit: 'cover', objectPosition: 'center top' }}
-                    sizes="380px"
-                    priority
-                  />
-                </div>
-
                 <div className={styles.modalContent}>
                   <div className={styles.modalTop}>
                     <div>

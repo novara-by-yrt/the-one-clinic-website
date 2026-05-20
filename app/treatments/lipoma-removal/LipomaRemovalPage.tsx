@@ -405,7 +405,7 @@ export default function LipomaRemovalPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Lipoma Removal hero.jpg"
+                src="/images/Hero Section Lipoma Removal.jpg"
                 alt="Lipoma removal surgical procedure at The One Clinic Leicester"
                 fill
                 priority
@@ -453,7 +453,7 @@ export default function LipomaRemovalPage() {
             {/* Right: image panel */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Lipoma Removal 1.jpg"
+                src="/images/What is Lipoma Removal.jpg"
                 alt="Lipoma removal consultation at The One Clinic Leicester"
                 fill
                 className={styles.whatIsVideoFrame}

@@ -116,18 +116,6 @@ export default function StickyCallbackCTA() {
                 exit={{ opacity: 0,    y: 20, scale: 0.97 }}
                 transition={{ duration: 0.48, ease: [0.22, 1, 0.36, 1] }}
               >
-                {/* Team image, desktop only */}
-                <div className={styles.modalImage} aria-hidden="true">
-                  <Image
-                    src="/images/imgi_78_GTR_0328-1-1.jpg"
-                    alt=""
-                    fill
-                    style={{ objectFit: 'cover', objectPosition: 'center top' }}
-                    sizes="380px"
-                    priority
-                  />
-                </div>
-
                 {/* Form side */}
                 <div className={styles.modalContent}>
                   {/* Header row */}
@@ -149,24 +137,26 @@ export default function StickyCallbackCTA() {
 
                   {/* Form iframe */}
                   <div className={styles.modalForm}>
-                    <iframe
-                      src="https://link.leadpipeline.ai/widget/form/fegqbVjvGrZqMfbk64P4"
-                      style={{ width: '100%', minHeight: '360px', border: 'none', borderRadius: '16px', display: 'block' }}
-                      id="popup-callback-fegqbVjvGrZqMfbk64P4"
-                      data-layout="{'id':'INLINE'}"
-                      data-trigger-type="alwaysShow"
-                      data-trigger-value=""
-                      data-activation-type="alwaysActivated"
-                      data-activation-value=""
-                      data-deactivation-type="neverDeactivate"
-                      data-deactivation-value=""
-                      data-form-name="Request a Call Back Form"
-                      data-height="450"
-                      data-layout-iframe-id="popup-callback-fegqbVjvGrZqMfbk64P4"
-                      data-form-id="fegqbVjvGrZqMfbk64P4"
-                      title="Request a Call Back"
-                      scrolling="no"
-                    />
+                    <div className={styles.iframeCrop}>
+                      <iframe
+                        src="https://link.leadpipeline.ai/widget/form/fegqbVjvGrZqMfbk64P4"
+                        style={{ width: '100%', height: '800px', minHeight: '800px', border: 'none', display: 'block' }}
+                        id="popup-callback-fegqbVjvGrZqMfbk64P4"
+                        data-layout="{'id':'INLINE'}"
+                        data-trigger-type="alwaysShow"
+                        data-trigger-value=""
+                        data-activation-type="alwaysActivated"
+                        data-activation-value=""
+                        data-deactivation-type="neverDeactivate"
+                        data-deactivation-value=""
+                        data-form-name="Request a Call Back Form"
+                        data-height="800"
+                        data-layout-iframe-id="popup-callback-fegqbVjvGrZqMfbk64P4"
+                        data-form-id="fegqbVjvGrZqMfbk64P4"
+                        title="Request a Call Back"
+                        scrolling="no"
+                      />
+                    </div>
                   </div>
                 </div>
               </motion.div>
