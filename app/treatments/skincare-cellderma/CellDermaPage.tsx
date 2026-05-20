@@ -921,16 +921,22 @@ export default function CellDermaPage() {
           </motion.div>
 
           <motion.div
-            className={styles.glanceStandaloneGrid}
-            variants={stagger(0.08)}
+            className={styles.cellCatGrid}
+            variants={stagger(0.07)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {PRODUCT_CATEGORIES.map((item) => (
-              <motion.div key={item.category} className={styles.glanceCard} variants={fadeUp}>
-                <span className={styles.glanceLabel} style={{ marginBottom: '8px' }}>{item.category}</span>
-                <span className={styles.glanceValue} style={{ fontSize: '0.9375rem', fontWeight: 500 }}>{item.desc}</span>
+            {PRODUCT_CATEGORIES.map((item, idx) => (
+              <motion.div
+                key={item.category}
+                className={styles.cellCatCard}
+                variants={fadeUp}
+                whileHover={{ y: -5, transition: { type: 'spring', stiffness: 300, damping: 20 } }}
+              >
+                <span className={styles.cellCatNum}>{String(idx + 1).padStart(2, '0')}</span>
+                <h3 className={styles.cellCatName}>{item.category}</h3>
+                <p className={styles.cellCatDesc}>{item.desc}</p>
               </motion.div>
             ))}
           </motion.div>
