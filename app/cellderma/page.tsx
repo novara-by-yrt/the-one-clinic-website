@@ -142,7 +142,7 @@ export default function CellDermaPage() {
           >
             <div className={styles.approachImageWrap}>
               <Image
-                src="/images/Cellderma 1.jpg"
+                src="/images/CellDerma 2.jpg"
                 alt="CellDerma skincare products"
                 fill
                 className={styles.approachImage}
@@ -183,23 +183,6 @@ export default function CellDermaPage() {
             <motion.p className={styles.sectionSubtitle} variants={fadeUp}>
               How Dr. Dev Patel turned an obsession with science into a world-class skincare range
             </motion.p>
-          </motion.div>
-
-          {/* Large hero image */}
-          <motion.div
-            className={styles.journeyHeroImage}
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={VIEWPORT}
-            transition={{ duration: 0.7 }}
-          >
-            <Image
-              src="/images/CellDerma 2.jpg"
-              alt="CellDerma science-driven skincare by Dr. Dev Patel"
-              fill
-              className={styles.journeyHeroImg}
-              sizes="100vw"
-            />
           </motion.div>
 
           {/* Horizontal steps */}
