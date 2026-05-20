@@ -154,6 +154,17 @@ export default function StickyCallbackCTA() {
                 exit={{ opacity: 0,    y: 20, scale: 0.97 }}
                 transition={{ duration: 0.48, ease: [0.22, 1, 0.36, 1] }}
               >
+                {/* Left: image panel — desktop only (hidden via CSS on mobile) */}
+                <div className={styles.modalImage}>
+                  <Image
+                    src="/images/Morpheus8-new.png"
+                    alt="Morpheus8 treatment at The One Clinic"
+                    fill
+                    className={styles.modalImg}
+                    sizes="340px"
+                  />
+                </div>
+
                 {/* Form side */}
                 <div className={styles.modalContent}>
                   {/* Header row */}

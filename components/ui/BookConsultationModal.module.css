@@ -48,6 +48,11 @@
   overflow: hidden;
 }
 
+.modalImg {
+  object-fit: cover;
+  object-position: center top;
+}
+
 /* Gradient overlay for premium blending */
 .modalImage::after {
   content: '';
