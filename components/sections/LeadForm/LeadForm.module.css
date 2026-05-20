@@ -52,9 +52,19 @@
   margin: 0 0 clamp(16px, 2.5vw, 24px);
 }
 
-/* iframe sits flush inside the white card */
+/* iframe sits flush inside the white card; crops oversized iframe to kill scrollbars */
 .formWrap {
   overflow: hidden;
+  height: 530px;
+  border-radius: 14px;
+}
+
+.formWrap iframe {
+  width: 100% !important;
+  height: 800px !important;
+  min-height: 800px !important;
+  border: none !important;
+  display: block !important;
 }
 
 /* ══════════════════════════════════════════════════════

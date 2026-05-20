@@ -276,6 +276,21 @@
   flex: 1;
 }
 
+/* Crops the oversized iframe so internal scrollbar never appears */
+.iframeCrop {
+  height: 530px;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.iframeCrop iframe {
+  width: 100% !important;
+  height: 800px !important;
+  min-height: 800px !important;
+  border: none !important;
+  display: block !important;
+}
+
 /* ── Responsive: tablet ───────────────────────────────────── */
 @media (max-width: 720px) {
   .modal {
@@ -336,8 +351,7 @@
     padding: 0 16px 16px;
   }
 
-  .modalForm iframe {
-    height: 460px !important;
-    min-height: 460px !important;
+  .iframeCrop {
+    height: 480px;
   }
 }

@@ -137,24 +137,26 @@ export default function StickyCallbackCTA() {
 
                   {/* Form iframe */}
                   <div className={styles.modalForm}>
-                    <iframe
-                      src="https://link.leadpipeline.ai/widget/form/fegqbVjvGrZqMfbk64P4"
-                      style={{ width: '100%', height: '510px', minHeight: '510px', border: 'none', borderRadius: '16px', display: 'block' }}
-                      id="popup-callback-fegqbVjvGrZqMfbk64P4"
-                      data-layout="{'id':'INLINE'}"
-                      data-trigger-type="alwaysShow"
-                      data-trigger-value=""
-                      data-activation-type="alwaysActivated"
-                      data-activation-value=""
-                      data-deactivation-type="neverDeactivate"
-                      data-deactivation-value=""
-                      data-form-name="Request a Call Back Form"
-                      data-height="510"
-                      data-layout-iframe-id="popup-callback-fegqbVjvGrZqMfbk64P4"
-                      data-form-id="fegqbVjvGrZqMfbk64P4"
-                      title="Request a Call Back"
-                      scrolling="no"
-                    />
+                    <div className={styles.iframeCrop}>
+                      <iframe
+                        src="https://link.leadpipeline.ai/widget/form/fegqbVjvGrZqMfbk64P4"
+                        style={{ width: '100%', height: '800px', minHeight: '800px', border: 'none', display: 'block' }}
+                        id="popup-callback-fegqbVjvGrZqMfbk64P4"
+                        data-layout="{'id':'INLINE'}"
+                        data-trigger-type="alwaysShow"
+                        data-trigger-value=""
+                        data-activation-type="alwaysActivated"
+                        data-activation-value=""
+                        data-deactivation-type="neverDeactivate"
+                        data-deactivation-value=""
+                        data-form-name="Request a Call Back Form"
+                        data-height="800"
+                        data-layout-iframe-id="popup-callback-fegqbVjvGrZqMfbk64P4"
+                        data-form-id="fegqbVjvGrZqMfbk64P4"
+                        title="Request a Call Back"
+                        scrolling="no"
+                      />
+                    </div>
                   </div>
                 </div>
               </motion.div>
