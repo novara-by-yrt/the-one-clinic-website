@@ -89,7 +89,7 @@
 }
 
 .imgCover {
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
 }
 
@@ -444,8 +444,8 @@
 /* Mobile */
 @media (max-width: 580px) {
   .mediaCanvas {
-    aspect-ratio: 4 / 3;
-    max-height: 300px;
+    aspect-ratio: 1 / 1;
+    max-height: 100%;
   }
 
   .imgSecondary {
@@ -476,7 +476,7 @@
 /* Small mobile */
 @media (max-width: 420px) {
   .mediaCanvas {
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 1 / 1;
   }
 
   .floatStat {
