@@ -528,7 +528,7 @@
   }
 
   .card {
-    min-height: auto;
+    min-height: 290px;
     padding: 20px 16px 16px;
   }
 
