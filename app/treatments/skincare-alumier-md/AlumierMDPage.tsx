@@ -392,8 +392,8 @@ export default function AlumierMDPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Category_Eye_Creams&Serums.png"
-                alt="AlumierMD skincare products"
+                src="/images/AlumierMD Skincare 1.jpg"
+                alt="AlumierMD skincare consultation at The One Clinic"
                 fill
                 priority
                 className={styles.heroImage}
@@ -440,8 +440,8 @@ export default function AlumierMDPage() {
             {/* Right: image panel */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/AlumierMD Skincare 1.jpg"
-                alt="AlumierMD skincare consultation at The One Clinic"
+                src="/images/Category_Eye_Creams&Serums.png"
+                alt="AlumierMD skincare products"
                 fill
                 className={styles.whatIsVideoFrame}
                 sizes="(max-width: 900px) 100vw, 50vw"
@@ -597,7 +597,63 @@ export default function AlumierMDPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          6. TREATED BENEFITS
+          6. PRODUCT CATEGORIES
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
+        <div className={styles.whiteBgWrap} aria-hidden="true">
+          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
+        </div>
+        <Container className={styles.whiteBgContent}>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Our Range
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              AlumierMD Core Product Categories
+            </motion.h2>
+            <motion.p className={styles.beforeAfterSubheading} variants={fadeUp}>
+              A comprehensive range of professional skincare formulated to work synergistically for transformative results.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.productCatGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {PRODUCT_CATEGORIES.map((item) => (
+              <motion.div
+                key={item.label}
+                className={styles.productCatCard}
+                variants={fadeUp}
+                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
+              >
+                <div className={styles.productCatImageWrap}>
+                  <Image
+                    src={item.img}
+                    alt={`AlumierMD ${item.label}`}
+                    fill
+                    className={styles.productCatImage}
+                    sizes="(max-width: 580px) 50vw, (max-width: 900px) 33vw, 20vw"
+                  />
+                </div>
+                <p className={styles.productCatLabel}>{item.label}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          7. TREATED BENEFITS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
         <div className={styles.whiteBgWrap} aria-hidden="true">
@@ -867,62 +923,6 @@ export default function AlumierMDPage() {
                 ))}
               </ul>
             </motion.div>
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          10. PRODUCT CATEGORIES
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
-        <div className={styles.whiteBgWrap} aria-hidden="true">
-          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
-        </div>
-        <Container className={styles.whiteBgContent}>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-              Our Range
-            </motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              AlumierMD Core Product Categories
-            </motion.h2>
-            <motion.p className={styles.beforeAfterSubheading} variants={fadeUp}>
-              A comprehensive range of professional skincare formulated to work synergistically for transformative results.
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            className={styles.productCatGrid}
-            variants={stagger(0.08)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {PRODUCT_CATEGORIES.map((item) => (
-              <motion.div
-                key={item.label}
-                className={styles.productCatCard}
-                variants={fadeUp}
-                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
-              >
-                <div className={styles.productCatImageWrap}>
-                  <Image
-                    src={item.img}
-                    alt={`AlumierMD ${item.label}`}
-                    fill
-                    className={styles.productCatImage}
-                    sizes="(max-width: 580px) 50vw, (max-width: 900px) 33vw, 20vw"
-                  />
-                </div>
-                <p className={styles.productCatLabel}>{item.label}</p>
-              </motion.div>
-            ))}
           </motion.div>
         </Container>
       </Section>
