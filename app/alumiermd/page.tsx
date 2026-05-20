@@ -4,8 +4,6 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
-import BookConsultationButton from '@/components/ui/BookConsultationButton';
-import TrustBadges from '@/components/ui/TrustBadges';
 import FinalCTA from '@/components/sections/FinalCTA';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
@@ -77,52 +75,27 @@ export default function AlumierMDPage() {
             initial="hidden"
             animate="show"
           >
-            <div className={styles.heroLeft}>
-              <motion.span className={styles.heroCategory} variants={fadeUp}>
-                Professional Skincare Brand
-              </motion.span>
+            <motion.span className={styles.heroCategory} variants={fadeUp}>
+              Professional Skincare Brand
+            </motion.span>
 
-              <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                AlumierMD
-              </motion.h1>
+            <motion.h1 className={styles.heroTitle} variants={fadeUp}>
+              AlumierMD
+            </motion.h1>
 
-              <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Clean, medical-grade skincare empowering you to feel confident in your own skin with
-                clinically proven ingredients and advanced technologies.
-              </motion.p>
+            <motion.p className={styles.heroDesc} variants={fadeUp}>
+              Clean, medical-grade skincare empowering you to feel confident in your own skin with
+              clinically proven ingredients and advanced technologies.
+            </motion.p>
 
-              <motion.div className={styles.heroCtas} variants={fadeUp}>
-                <BookConsultationButton className={styles.heroCtaPrimary}>
-                  Discover AlumierMD
-                </BookConsultationButton>
-              </motion.div>
-
-              <motion.div variants={fadeUp}>
-                <TrustBadges theme="dark" />
-              </motion.div>
-
-              <motion.div className={styles.heroStats} variants={fadeUp}>
-                {EXPERTISE_STATS.map((item, idx) => (
-                  <div key={idx} className={styles.statItem}>
-                    <span className={styles.statValue}>{item.stat}</span>
-                    <span className={styles.statLabel}>{item.label}</span>
-                  </div>
-                ))}
-              </motion.div>
-            </div>
-
-            <div className={styles.heroRight}>
-              <motion.div className={styles.heroImageWrap} variants={fadeUp}>
-                <Image
-                  src="/images/alumiermd-hero.jpg"
-                  alt="AlumierMD professional skincare products"
-                  fill
-                  className={styles.heroImage}
-                  priority
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </motion.div>
-            </div>
+            <motion.div className={styles.heroStats} variants={fadeUp}>
+              {EXPERTISE_STATS.map((item, idx) => (
+                <div key={idx} className={styles.statItem}>
+                  <span className={styles.statValue}>{item.stat}</span>
+                  <span className={styles.statLabel}>{item.label}</span>
+                </div>
+              ))}
+            </motion.div>
           </motion.div>
         </Container>
       </section>
@@ -156,7 +129,6 @@ export default function AlumierMDPage() {
           >
             {MISSION_POINTS.map((point, idx) => (
               <motion.div key={idx} className={styles.missionCard} variants={fadeUp}>
-                <div className={styles.missionIcon}>{point.icon}</div>
                 <h3 className={styles.missionTitle}>{point.title}</h3>
                 <p className={styles.missionDesc}>{point.desc}</p>
               </motion.div>
@@ -178,10 +150,10 @@ export default function AlumierMDPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.categoriesTitle} variants={fadeUp}>
-              Shop by Category
+              Our Product Range
             </motion.h2>
             <motion.p className={styles.categoriesSubtitle} variants={fadeUp}>
-              Explore our professionally dispensed AlumierMD collection
+              AlumierMD offers a comprehensive range of professionally dispensed skincare across these categories
             </motion.p>
           </motion.div>
 

@@ -12,20 +12,14 @@
 }
 
 .heroInner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(var(--space-5), 5vw, 72px);
-  align-items: center;
-  width: 100%;
-}
-
-.heroLeft {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
-  position: relative;
-  z-index: 1;
-  min-width: 0;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4);
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .heroCategory {
@@ -70,7 +64,7 @@
   line-height: 1.6;
   color: rgba(255 255 255 / 0.75);
   margin: 0;
-  max-width: 480px;
+  max-width: 600px;
 }
 
 .heroCtas {
@@ -105,15 +99,18 @@
 }
 
 .heroStats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: var(--space-4);
-  padding-top: var(--space-3);
+  display: flex;
+  gap: clamp(var(--space-4), 5vw, var(--space-7));
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: var(--space-2);
+  width: 100%;
 }
 
 .statItem {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 4px;
 }
 
@@ -128,30 +125,8 @@
   font-size: 0.875rem;
   color: rgba(255 255 255 / 0.6);
   line-height: 1.4;
-}
-
-/* Hero Right Image */
-.heroRight {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.heroImageWrap {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4/5;
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow:
-    0 0 0 1px rgba(255 255 255 / 0.07),
-    0 40px 80px rgba(0 0 0 / 0.6);
-}
-
-.heroImage {
-  object-fit: cover;
-  object-position: center;
+  text-align: center;
+  max-width: 140px;
 }
 
 /* ════════════════════════════════════════════════════
@@ -238,9 +213,11 @@
 .sectionHeader {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: var(--space-2);
-  max-width: 600px;
-  margin-bottom: clamp(var(--space-5), 3vw, var(--space-6));
+  max-width: 640px;
+  margin: 0 auto clamp(var(--space-5), 3vw, var(--space-6));
 }
 
 .sectionTitle {
@@ -274,21 +251,16 @@
   flex-direction: column;
   gap: var(--space-2);
   padding: var(--space-5);
-  background: #f9f9f9;
+  background: #ffffff;
   border-radius: 16px;
-  border: 1px solid rgba(0 0 0 / 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  border: 1.5px solid rgba(0 0 0 / 0.18);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .missionCard:hover {
   transform: translateY(-4px);
-  background: #ffffff;
   box-shadow: 0 8px 24px rgba(0 0 0 / 0.08);
-}
-
-.missionIcon {
-  font-size: 2.5rem;
-  line-height: 1;
+  border-color: rgba(0 0 0 / 0.28);
 }
 
 .missionTitle {
@@ -412,19 +384,6 @@
    RESPONSIVE
 ════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
-  .heroInner {
-    grid-template-columns: 1fr;
-    gap: var(--space-4);
-  }
-
-  .heroTitle {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-  }
-
-  .heroImageWrap {
-    min-height: 400px;
-  }
-
   .missionGrid {
     grid-template-columns: 1fr;
   }
@@ -462,11 +421,6 @@
     min-height: auto;
   }
 
-  .heroInner {
-    padding-top: var(--space-4);
-    padding-bottom: var(--space-4);
-  }
-
   .heroTitle {
     font-size: clamp(1.375rem, 3vw, 2rem);
   }
@@ -475,23 +429,12 @@
     font-size: 1rem;
   }
 
-  .heroStats {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-3);
-    margin-top: var(--space-3);
-  }
-
   .statValue {
     font-size: 1.5rem;
   }
 
   .statLabel {
     font-size: 0.8125rem;
-  }
-
-  .heroImageWrap {
-    min-height: 320px;
-    aspect-ratio: auto;
   }
 
   .missionCard {
@@ -550,18 +493,8 @@
     font-size: 0.9375rem;
   }
 
-  .heroCtas {
-    flex-direction: column;
-  }
-
-  .heroCtaPrimary {
-    width: 100%;
-  }
-
   .heroStats {
-    grid-template-columns: 1fr;
-    gap: var(--space-2);
-    margin-top: var(--space-2);
+    gap: var(--space-3);
   }
 
   .statValue {

@@ -12,20 +12,14 @@
 }
 
 .heroInner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(var(--space-5), 5vw, 72px);
-  align-items: center;
-  width: 100%;
-}
-
-.heroLeft {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
-  position: relative;
-  z-index: 1;
-  min-width: 0;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4);
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .heroCategory {
@@ -79,7 +73,7 @@
   line-height: 1.6;
   color: rgba(255 255 255 / 0.75);
   margin: 0;
-  max-width: 480px;
+  max-width: 600px;
 }
 
 .heroCtas {
@@ -115,6 +109,8 @@
 
 .heroCredibility {
   padding-top: var(--space-2);
+  display: flex;
+  justify-content: center;
 }
 
 .credItem {
@@ -179,9 +175,11 @@
 .sectionHeader {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: var(--space-2);
-  max-width: 600px;
-  margin-bottom: clamp(var(--space-5), 3vw, var(--space-6));
+  max-width: 640px;
+  margin: 0 auto clamp(var(--space-5), 3vw, var(--space-6));
 }
 
 .sectionTitle {
@@ -215,21 +213,16 @@
   flex-direction: column;
   gap: var(--space-2);
   padding: var(--space-5);
-  background: #f9f9f9;
+  background: #ffffff;
   border-radius: 16px;
-  border: 1px solid rgba(0 0 0 / 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  border: 1.5px solid rgba(0 0 0 / 0.18);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .philosophyCard:hover {
   transform: translateY(-4px);
-  background: #ffffff;
   box-shadow: 0 8px 24px rgba(0 0 0 / 0.08);
-}
-
-.philosophyIcon {
-  font-size: 2.5rem;
-  line-height: 1;
+  border-color: rgba(0 0 0 / 0.28);
 }
 
 .philosophyTitle {
@@ -251,13 +244,25 @@
    SCIENTIFIC APPROACH
 ════════════════════════════════════════════════════ */
 .scientificApproach {
-  max-width: 720px;
-  padding: var(--space-5);
-  background: #ffffff;
-  border: 1px solid rgba(0 0 0 / 0.08);
-  border-left: 4px solid #000000;
-  border-radius: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--space-4), 4vw, var(--space-6));
+  align-items: center;
   margin-bottom: clamp(var(--space-5), 3vw, var(--space-6));
+}
+
+.approachImageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0 0 0 / 0.10);
+}
+
+.approachImage {
+  object-fit: cover;
+  object-position: center;
 }
 
 .approachContent {
@@ -531,7 +536,7 @@
   }
 
   .scientificApproach {
-    padding: var(--space-4);
+    grid-template-columns: 1fr;
   }
 
   .approachTitle {
@@ -623,10 +628,6 @@
 
   .philosophyDesc {
     font-size: 0.875rem;
-  }
-
-  .scientificApproach {
-    padding: var(--space-3);
   }
 
   .approachTitle {

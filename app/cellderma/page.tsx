@@ -4,8 +4,6 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
-import BookConsultationButton from '@/components/ui/BookConsultationButton';
-import TrustBadges from '@/components/ui/TrustBadges';
 import FinalCTA from '@/components/sections/FinalCTA';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
@@ -60,57 +58,32 @@ export default function CellDermaPage() {
             initial="hidden"
             animate="show"
           >
-            <div className={styles.heroLeft}>
-              <motion.span className={styles.heroCategory} variants={fadeUp}>
-                Science-Driven Skincare
-              </motion.span>
+            <motion.span className={styles.heroCategory} variants={fadeUp}>
+              Science-Driven Skincare
+            </motion.span>
 
-              <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                CellDerma
-              </motion.h1>
+            <motion.h1 className={styles.heroTitle} variants={fadeUp}>
+              CellDerma
+            </motion.h1>
 
-              <motion.p className={styles.heroSubtitle} variants={fadeUp}>
-                Skincare Begins With Truth
-              </motion.p>
+            <motion.p className={styles.heroSubtitle} variants={fadeUp}>
+              Skincare Begins With Truth
+            </motion.p>
 
-              <motion.p className={styles.heroDesc} variants={fadeUp}>
-                High-performance skincare formulations designed by award-winning physician Dr. Dev Patel,
-                combining clinical efficacy with intelligent, science-led formulations that elevate skin health.
-              </motion.p>
+            <motion.p className={styles.heroDesc} variants={fadeUp}>
+              High-performance skincare formulations designed by award-winning physician Dr. Dev Patel,
+              combining clinical efficacy with intelligent, science-led formulations that elevate skin health.
+            </motion.p>
 
-              <motion.div className={styles.heroCtas} variants={fadeUp}>
-                <BookConsultationButton className={styles.heroCtaPrimary}>
-                  Explore CellDerma
-                </BookConsultationButton>
-              </motion.div>
-
-              <motion.div variants={fadeUp}>
-                <TrustBadges theme="dark" />
-              </motion.div>
-
-              <motion.div className={styles.heroCredibility} variants={fadeUp}>
-                <div className={styles.credItem}>
-                  <span className={styles.credIcon}>🏆</span>
-                  <div className={styles.credText}>
-                    <span className={styles.credLabel}>Award-Winning Clinic</span>
-                    <span className={styles.credDesc}>Perfect Skin Solutions - Aesthetic Awards Best Clinic South England 2022 & 2024</span>
-                  </div>
+            <motion.div className={styles.heroCredibility} variants={fadeUp}>
+              <div className={styles.credItem}>
+                <span className={styles.credIcon}>🏆</span>
+                <div className={styles.credText}>
+                  <span className={styles.credLabel}>Award-Winning Clinic</span>
+                  <span className={styles.credDesc}>Perfect Skin Solutions — Aesthetic Awards Best Clinic South England 2022 & 2024</span>
                 </div>
-              </motion.div>
-            </div>
-
-            <div className={styles.heroRight}>
-              <motion.div className={styles.heroImageWrap} variants={fadeUp}>
-                <Image
-                  src="/images/Cellderma 1.jpg"
-                  alt="CellDerma skincare products"
-                  fill
-                  className={styles.heroImage}
-                  priority
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </motion.div>
-            </div>
+              </div>
+            </motion.div>
           </motion.div>
         </Container>
       </section>
@@ -144,7 +117,6 @@ export default function CellDermaPage() {
           >
             {PHILOSOPHY_POINTS.map((point, idx) => (
               <motion.div key={idx} className={styles.philosophyCard} variants={fadeUp}>
-                <div className={styles.philosophyIcon}>{point.icon}</div>
                 <h3 className={styles.philosophyTitle}>{point.title}</h3>
                 <p className={styles.philosophyDesc}>{point.desc}</p>
               </motion.div>
@@ -158,6 +130,15 @@ export default function CellDermaPage() {
             viewport={VIEWPORT}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
+            <div className={styles.approachImageWrap}>
+              <Image
+                src="/images/Cellderma 1.jpg"
+                alt="CellDerma skincare products"
+                fill
+                className={styles.approachImage}
+                sizes="(max-width: 768px) 100vw, 45vw"
+              />
+            </div>
             <div className={styles.approachContent}>
               <h3 className={styles.approachTitle}>Our Commitment to Clean Science</h3>
               <p className={styles.approachText}>
