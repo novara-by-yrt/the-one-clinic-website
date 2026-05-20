@@ -18,6 +18,7 @@
   justify-content: center;
   padding: 24px 16px;
   pointer-events: none;
+  box-sizing: border-box;
 }
 
 /* ── Modal panel ──────────────────────────────────────────── */
@@ -29,8 +30,10 @@
   overflow-y: auto;          /* Whole modal scrolls as one if viewport too short */
   max-height: calc(100vh - 48px);
   width: min(840px, 100%);
+  max-width: 100%;
   display: flex;
   flex-direction: row;
+  box-sizing: border-box;
   box-shadow:
     0 48px 120px rgb(0 0 0 / 0.42),
     0 20px 48px rgb(0 0 0 / 0.18),
@@ -171,22 +174,28 @@
 /* ── Responsive: mobile ───────────────────────────────────── */
 @media (max-width: 480px) {
   .modalOuter {
-    padding: 12px;
-    align-items: flex-end;
+    padding: 16px;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
   }
 
   .modal {
     width: 100%;
-    border-radius: 18px 18px 14px 14px;
+    max-width: calc(100vw - 32px);
+    border-radius: 18px;
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+    box-sizing: border-box;
   }
 
   .modalTop {
-    padding: 20px 20px 12px;
+    padding: 16px 16px 12px;
     gap: 10px;
   }
 
   .modalHeading {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
   }
 
   .closeBtn {
@@ -195,6 +204,6 @@
   }
 
   .modalForm {
-    padding: 0 20px 20px;
+    padding: 0 12px 16px;
   }
 }
