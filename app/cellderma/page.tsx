@@ -118,7 +118,7 @@ export default function CellDermaPage() {
       {/* ════════════════════════════════════════
           PHILOSOPHY
       ════════════════════════════════════════ */}
-      <Section theme="light" spacing="lg">
+      <Section variant="light">
         <Container>
           <motion.div
             className={styles.sectionHeader}
@@ -177,7 +177,7 @@ export default function CellDermaPage() {
       {/* ════════════════════════════════════════
           DR. PATEL'S JOURNEY
       ════════════════════════════════════════ */}
-      <Section theme="light" spacing="lg">
+      <Section variant="light">
         <Container>
           <motion.div
             className={styles.sectionHeader}
