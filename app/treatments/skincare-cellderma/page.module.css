@@ -1,0 +1,2559 @@
+/* ════════════════════════════════════════════════════
+   HERO
+════════════════════════════════════════════════════ */
+.hero {
+  position: relative;
+  background-color: #090909;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  overflow-x: hidden;
+  padding-top: 80px;
+}
+
+/* Breadcrumb strip , sits just below the fixed header */
+.heroBreadcrumb {
+  position: absolute;
+  top: 88px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+/* Two-column inner grid */
+.heroInner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--space-5), 5vw, 72px);
+  align-items: center;
+  padding-top: clamp(64px, 7vw, 100px);
+  padding-bottom: clamp(64px, 7vw, 100px);
+}
+
+.heroLeft {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  position: relative;
+  z-index: 1;
+  min-width: 0; /* prevent grid blowout from inline-flex children */
+}
+
+/* Right: image panel */
+.heroImageWrap {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  align-self: stretch;
+  min-height: 480px;
+  box-shadow:
+    0 0 0 1px rgba(255 255 255 / 0.07),
+    0 40px 80px rgba(0 0 0 / 0.6);
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Subtle bottom-fade so the image dissolves into the dark bg */
+.heroImageFade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 55%,
+    rgba(9, 9, 9, 0.55) 100%
+  );
+  pointer-events: none;
+}
+
+/* ── Right-side card ─────────────────────────────────────── */
+.heroCard {
+  background: rgba(255 255 255 / 0.95);
+  border-radius: 20px;
+  padding: var(--space-5);
+  box-shadow: 0 16px 56px rgba(0 0 0 / 0.28);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.heroCardEyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.heroCardHeading {
+  font-size: clamp(1.25rem, 2.2vw, 1.625rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+  color: var(--color-text-dark);
+  line-height: 1.2;
+  margin: 0 0 4px;
+}
+
+.heroCardPara {
+  font-size: 0.9375rem;
+  line-height: 1.72;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* ── Review badges ───────────────────────────────────────── */
+.reviewBadges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.reviewBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255 255 255 / 0.10);
+  border: 1px solid rgba(255 255 255 / 0.2);
+  border-radius: 100px;
+  padding: 7px 14px 7px 7px;
+  backdrop-filter: blur(8px);
+}
+
+.reviewBadgeIcon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.8125rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.reviewBadgeGoogle {
+  background: #fff;
+  color: #4285F4;
+}
+
+.reviewBadgeTrustpilot {
+  background: #00B67A;
+  color: #fff;
+}
+
+.reviewBadgeText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.reviewStars {
+  color: #FFB800;
+  font-size: 0.625rem;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.reviewLabel {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: rgba(255 255 255 / 0.78);
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.heroCategory {
+  display: inline-block;
+  font-size: var(--text-small);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255 255 255 / 0.4);
+}
+
+.heroTitle {
+  font-size: clamp(2.25rem, 5.5vw, 4rem);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.03em;
+  color: var(--color-text-light);
+  margin: 0;
+}
+
+.heroDesc {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.65;
+  color: rgba(255 255 255 / 0.6);
+  max-width: 500px;
+}
+
+.heroCtas {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding-top: var(--space-1);
+}
+
+.heroCtaPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 36px;
+  background: #fff;
+  color: #000;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 50px;
+  box-shadow: 0 2px 16px rgb(255 255 255 / 0.15);
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.heroCtaPrimary:hover {
+  background: #e8e8e8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 24px rgb(255 255 255 / 0.2);
+}
+
+.heroTrust {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 0;
+  padding-top: var(--space-2);
+}
+
+.heroTrustItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(255 255 255 / 0.75);
+  letter-spacing: 0.01em;
+}
+
+.heroTrustDivider {
+  width: 1px;
+  height: 14px;
+  background: rgba(255 255 255 / 0.25);
+  margin: 0 14px;
+  flex-shrink: 0;
+}
+
+/* ════════════════════════════════════════════════════
+   SHARED TYPOGRAPHY
+════════════════════════════════════════════════════ */
+.eyebrowDark {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(0 0 0 / 0.05);
+  border: 1px solid rgba(0 0 0 / 0.10);
+  border-radius: 100px;
+  padding: 5px 14px;
+  font-size: var(--text-small);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.eyebrowDark::before {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+.eyebrowLight {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255 255 255 / 0.07);
+  border: 1px solid rgba(255 255 255 / 0.16);
+  border-radius: 100px;
+  padding: 5px 14px;
+  font-size: var(--text-small);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255 255 255 / 0.6);
+  margin: 0;
+}
+
+.eyebrowLight::before {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.65;
+  flex-shrink: 0;
+}
+
+.headingDark {
+  font-size: clamp(1.75rem, 3.5vw, var(--text-h2));
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+  color: var(--color-text-dark);
+  line-height: var(--lh-tight);
+  margin: 0;
+}
+
+.headingLight {
+  font-size: clamp(1.75rem, 3.5vw, var(--text-h2));
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+  color: var(--color-text-light);
+  line-height: var(--lh-tight);
+  margin: 0;
+}
+
+/* ════════════════════════════════════════════════════
+   SECTION HEADERS
+════════════════════════════════════════════════════ */
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-width: 560px;
+  margin-bottom: clamp(var(--space-5), 3vw, var(--space-6));
+}
+
+.sectionHeaderCentre {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  align-items: center;
+  text-align: center;
+  margin-bottom: clamp(var(--space-5), 4vw, var(--space-7));
+}
+
+/* ════════════════════════════════════════════════════
+   OVERVIEW (What is Health Screening)
+════════════════════════════════════════════════════ */
+.overviewGrid {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.overviewLabel {
+  padding-top: 6px;
+}
+
+.overviewBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.overviewHeading {
+  font-size: clamp(1.5rem, 3vw, var(--text-h2));
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+  color: var(--color-text-dark);
+  line-height: var(--lh-tight);
+  margin: 0;
+}
+
+.overviewPara {
+  font-size: var(--text-body);
+  line-height: 1.75;
+  color: var(--color-text-muted);
+  max-width: 640px;
+}
+
+/* ════════════════════════════════════════════════════
+   AT A GLANCE
+════════════════════════════════════════════════════ */
+.glanceSection {
+  background: #f4f4f4 !important;
+  border-top: none;
+  border-bottom: none;
+}
+
+.glanceGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+}
+
+.glanceCard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: var(--space-5) var(--space-5);
+  background: #111;
+  border: 1px solid rgba(255 255 255 / 0.10);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  min-height: 190px;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.glanceIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(255 255 255 / 0.07);
+  border: 1px solid rgba(255 255 255 / 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255 255 255 / 0.65);
+  flex-shrink: 0;
+}
+
+/* Top-edge shimmer accent */
+.glanceCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255 255 255 / 0.45) 40%,
+    rgba(255 255 255 / 0.45) 60%,
+    transparent
+  );
+}
+
+.glanceCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0 0 0 / 0.35);
+}
+
+.glanceLabel {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255 255 255 / 0.55);
+}
+
+.glanceValue {
+  font-size: 1.25rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+  color: #fff;
+  line-height: 1.2;
+}
+
+/* ════════════════════════════════════════════════════
+   COMBINED: WHAT IS + AT A GLANCE
+════════════════════════════════════════════════════ */
+
+/* Outer 2-column grid , both sides stretch to equal height */
+.combinedBody {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: stretch;
+}
+
+/* ── Left column ─────────────────────────────────── */
+.combinedLeft {
+  display: flex;
+  flex-direction: column;
+  padding-right: clamp(var(--space-7), 6vw, 88px);
+  border-right: 1px solid rgba(0 0 0 / 0.07);
+}
+
+/* Top group: eyebrow + heading + description */
+.combinedLeftTop {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  flex: 1; /* expands to fill space above the CTA */
+}
+
+.combinedHeading {
+  font-size: clamp(1.75rem, 3.5vw, var(--text-h2));
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+  color: var(--color-text-dark);
+  line-height: 1.15;
+  margin: 0;
+}
+
+.combinedDesc {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+  margin: 0;
+  max-width: 480px;
+}
+
+/* CTA anchored to the bottom of the left column */
+.combinedCtaWrapper {
+  padding-top: var(--space-7);
+}
+
+.combinedCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 36px;
+  background: #111;
+  color: #fff;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 50px;
+  box-shadow: 0 2px 16px rgb(0 0 0 / 0.15);
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.combinedCta:hover {
+  background: #2a2a2a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 24px rgb(0 0 0 / 0.25);
+}
+
+/* White variant , for dark section CTAs (e.g. Why Choose Endolift Laser) */
+.ctaWhiteInvert {
+  background: #fff !important;
+  color: #111 !important;
+}
+
+.ctaWhiteInvert:hover {
+  opacity: 0.88 !important;
+}
+
+/* ── Right column ────────────────────────────────── */
+.combinedRight {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-left: clamp(var(--space-7), 6vw, 88px);
+}
+
+/* "At a Glance" label , visually mirrors eyebrow on the left */
+.combinedRightLabel {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* 2×2 card grid , fills the remaining height of the right column */
+.combinedCards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+  flex: 1;
+  align-content: stretch;
+}
+
+/* Make each card fill the row height evenly */
+.combinedCards .glanceCard {
+  justify-content: flex-start;
+}
+
+/* ════════════════════════════════════════════════════
+   TREATMENT JOURNEY  ,  vertical timeline
+════════════════════════════════════════════════════ */
+.journeySection {
+  background-color: #f5f5f5;
+}
+
+.journeyList {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 680px;
+}
+
+.journeyStep {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: var(--space-4);
+  cursor: default;
+}
+
+/* Left column: circle + connector */
+.stepLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Numbered circle */
+.stepNumCircle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border-light);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.journeyStep:hover .stepNumCircle {
+  background: #000;
+  border-color: #000;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(0 0 0 / 0.18);
+}
+
+/* Vertical connector line */
+.stepConnector {
+  flex: 1;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--color-border-light) 0%, transparent 100%);
+  margin-top: 10px;
+  min-height: 24px;
+}
+
+.journeyStep:last-child .stepConnector {
+  display: none;
+}
+
+/* Right column: content */
+.stepBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 12px;
+  padding-bottom: var(--space-5);
+}
+
+.journeyStep:last-child .stepBody {
+  padding-bottom: 0;
+}
+
+.stepTitle {
+  font-size: 1.0625rem;
+  font-weight: var(--fw-bold);
+  color: var(--color-text-dark);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin: 0;
+  transition: color 0.25s ease;
+}
+
+.journeyStep:hover .stepTitle {
+  color: #000;
+}
+
+.stepDesc {
+  font-size: var(--text-small);
+  line-height: 1.68;
+  color: var(--color-text-muted);
+  margin: 0;
+  transition: color 0.25s ease;
+}
+
+.journeyStep:hover .stepDesc {
+  color: rgba(0 0 0 / 0.65);
+}
+
+/* Legacy class kept for any other uses */
+.stepNum {
+  font-size: var(--text-small);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-muted);
+  letter-spacing: 0.06em;
+}
+
+/* ════════════════════════════════════════════════════
+   WHY CHOOSE (Benefits)
+════════════════════════════════════════════════════ */
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+
+.benefitCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: rgba(255 255 255 / 0.04);
+  border: 1px solid rgba(255 255 255 / 0.08);
+  border-radius: var(--radius-lg);
+  transition: background 0.22s ease, border-color 0.22s ease;
+}
+
+.benefitCard:hover {
+  background: rgba(255 255 255 / 0.07);
+  border-color: rgba(255 255 255 / 0.14);
+}
+
+.benefitIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255 255 255 / 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255 255 255 / 0.7);
+  flex-shrink: 0;
+}
+
+.benefitTitle {
+  font-size: var(--text-body);
+  font-weight: var(--fw-bold);
+  color: var(--color-text-light);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.benefitDesc {
+  font-size: var(--text-small);
+  line-height: var(--lh-normal);
+  color: rgba(255 255 255 / 0.5);
+  margin: 0;
+}
+
+/* ════════════════════════════════════════════════════
+   HOW DOES IT WORK
+════════════════════════════════════════════════════ */
+.howSection {
+  background: #f9f9f9 !important;
+}
+
+/* Two-column paragraph grid */
+.howTextGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  margin-bottom: var(--space-7);
+}
+
+.howPara {
+  font-size: var(--text-body);
+  line-height: 1.78;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Screening covers checklist */
+.howCoversWrap {
+  background: #000;
+  border-radius: 20px;
+  padding: var(--space-6) var(--space-6);
+}
+
+.howCoversLabel {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255 255 255 / 0.38);
+  margin: 0 0 var(--space-4);
+}
+
+.howCoversList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3) var(--space-5);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.howCoversItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9375rem;
+  font-weight: var(--fw-medium);
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.howCoversCheck {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255 255 255 / 0.12);
+  border: 1px solid rgba(255 255 255 / 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255 255 255 / 0.9);
+  flex-shrink: 0;
+}
+
+/* ════════════════════════════════════════════════════
+   TREATABLE CONDITIONS
+════════════════════════════════════════════════════ */
+.conditionsSection {
+  /* dark section , no override needed */
+}
+
+.conditionsList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.conditionPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  background: #fff;
+  border: 1px solid var(--color-border-light);
+  border-radius: 100px;
+  font-size: 0.9375rem;
+  font-weight: var(--fw-medium);
+  color: var(--color-text-dark);
+  box-shadow: 0 1px 6px rgb(0 0 0 / 0.04);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.conditionPill:hover {
+  border-color: var(--color-text-dark);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.08);
+}
+
+.conditionDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-text-dark);
+  flex-shrink: 0;
+}
+
+/* ════════════════════════════════════════════════════
+   FAQ
+════════════════════════════════════════════════════ */
+.faqSection {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(64px, 8vw, 104px);
+  background-color: #f5f5f5;
+}
+
+.faqBgImg {
+  display: none;
+}
+
+.faqOverlay {
+  display: none;
+}
+
+.faqInner {
+  position: relative;
+  z-index: 2;
+}
+
+.faqBody {
+  max-width: 740px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.faqToggleWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-4);
+}
+
+.faqToggleBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 32px;
+  background: #000;
+  border: 2px solid #000;
+  border-radius: 100px;
+  color: #fff;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.faqToggleBtn:hover {
+  background: #1a1a1a;
+  border-color: #1a1a1a;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Center align FAQ section header */
+.faqSection .sectionHeader {
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Override text colors for FAQ section on gray background */
+.faqSection .eyebrowLight {
+  background: #000;
+  border-color: #000;
+  color: #fff;
+}
+
+.faqSection .headingLight {
+  color: #000;
+}
+
+/* ════════════════════════════════════════════════════
+   RELATED TREATMENTS
+════════════════════════════════════════════════════ */
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+  align-items: stretch;
+}
+
+/* Ensure motion wrapper and card fill the grid cell */
+.relatedGrid > * {
+  display: flex;
+  flex-direction: column;
+}
+
+.relatedGrid > * > * {
+  flex: 1;
+}
+
+.relatedCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: var(--space-4);
+  background: #fff;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 12px rgb(0 0 0 / 0.04);
+  text-decoration: none;
+  position: relative;
+  transition:
+    box-shadow 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.relatedCard:hover {
+  box-shadow: 0 8px 32px rgb(0 0 0 / 0.1);
+  border-color: rgba(0 0 0 / 0.15);
+  transform: translateY(-3px);
+}
+
+.relatedTitle {
+  font-size: 1rem;
+  font-weight: var(--fw-bold);
+  color: var(--color-text-dark);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin: 0;
+  padding-right: var(--space-3);
+}
+
+.relatedDesc {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+}
+
+.relatedArrow {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  color: var(--color-text-muted);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.relatedCard:hover .relatedArrow {
+  color: var(--color-text-dark);
+  transform: translate(2px, -2px);
+}
+
+/* ════════════════════════════════════════════════════
+   WHAT IS ENDOLIFT? (image + text)
+════════════════════════════════════════════════════ */
+.whatIsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--space-6), 6vw, 80px);
+  align-items: center;
+}
+
+.whatIsContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.whatIsTextGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  flex: 1;
+}
+
+.whatIsImageWrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  box-shadow: 0 24px 64px rgba(0 0 0 / 0.14);
+}
+
+.whatIsImage {
+  object-fit: cover;
+}
+
+/* Wistia video embed , square ratio matching original image slot */
+.whatIsVideoWrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  box-shadow: 0 24px 64px rgba(0 0 0 / 0.14);
+  background: #000;
+}
+
+.whatIsVideoFrame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ════════════════════════════════════════════════════
+   AT A GLANCE , STANDALONE FULL-WIDTH GRID
+════════════════════════════════════════════════════ */
+.glanceStandaloneGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-3);
+  align-items: stretch;
+}
+
+/* ════════════════════════════════════════════════════
+   BEFORE & AFTER CAROUSEL
+════════════════════════════════════════════════════ */
+.baSliderViewport {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-5);
+}
+
+.baSliderTrack {
+  display: flex;
+  transition: transform 0.48s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.baSlideItem {
+  flex: 1 0 0;
+  padding: 0 var(--space-2);
+}
+
+.baSlideItem:first-child { padding-left: 0; }
+.baSlideItem:last-child  { padding-right: 0; }
+
+.baImageWrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  /* Natural image ratio is 280×170 ≈ 5:3; use 5/3 so cover never crops */
+  aspect-ratio: 5 / 3;
+  background: #f0f0f0;
+  box-shadow: 0 4px 20px rgba(0 0 0 / 0.08);
+}
+
+.baImage {
+  object-fit: cover;
+}
+
+/* Controls row */
+.baControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.baArrowBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-light);
+  background: #fff;
+  color: var(--color-text-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.baArrowBtn:hover:not(:disabled) {
+  background: #f4f4f4;
+  border-color: rgba(0 0 0 / 0.18);
+}
+
+.baArrowBtn:disabled {
+  opacity: 0.32;
+  cursor: default;
+}
+
+.baDots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.baDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(0 0 0 / 0.18);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.baDot:hover {
+  background: rgba(0 0 0 / 0.4);
+}
+
+.baDotActive {
+  background: #111;
+  transform: scale(1.3);
+}
+
+/* ════════════════════════════════════════════════════
+   CTA BANNER , LOGO WATERMARK
+════════════════════════════════════════════════════ */
+.ctaBannerLogoWrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ctaBannerLogo {
+  object-fit: contain;
+  object-position: center;
+  opacity: 0.18;
+}
+
+/* ════════════════════════════════════════════════════
+   EXPERT PHOTO
+════════════════════════════════════════════════════ */
+.expertPhotoWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: var(--space-4);
+  box-shadow: 0 16px 48px rgba(0 0 0 / 0.12);
+  background: #f4f4f4;
+}
+
+.expertPhoto {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ════════════════════════════════════════════════════
+   CLINIC INTRO (Best Endolift Leicester)
+════════════════════════════════════════════════════ */
+.clinicIntroSection {
+  padding-block: clamp(var(--space-4), 3vw, var(--space-6)) !important;
+}
+
+.clinicIntroBody {
+  background: #1a1a1a;
+  border: 1px solid rgba(255 255 255 / 0.1);
+  border-radius: 16px;
+  padding: clamp(var(--space-4), 3vw, var(--space-5));
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--space-4), 3.5vw, var(--space-5));
+  align-items: center;
+  box-shadow: 0 4px 16px rgba(0 0 0 / 0.3);
+  transition: all 0.3s ease;
+}
+
+.clinicIntroBody:hover {
+  box-shadow: 0 12px 32px rgba(0 0 0 / 0.4);
+  border-color: rgba(255 255 255 / 0.2);
+  transform: translateY(-4px);
+}
+
+.clinicIntroLeft {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(var(--space-2), 1.5vw, var(--space-3));
+}
+
+.clinicIntroBody .clinicIntroLeft p:first-child {
+  background: rgba(255 255 255 / 0.1);
+  border-color: rgba(255 255 255 / 0.2);
+  color: rgba(255 255 255 / 0.85);
+}
+
+.clinicIntroBody .combinedHeading {
+  color: #ffffff;
+}
+
+.clinicIntroBody .clinicIntroDesc {
+  color: rgba(255 255 255 / 0.75);
+}
+
+.clinicIntroLeft p:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  width: fit-content;
+  background: rgba(0 0 0 / 0.06);
+  border: 1px solid rgba(0 0 0 / 0.12);
+  border-radius: 100px;
+  padding: 6px 16px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(0 0 0 / 0.55);
+  margin: 0;
+}
+
+.clinicIntroLeft p:first-child::before {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.clinicIntroLeft h2 {
+  margin: 0;
+}
+
+.clinicIntroDesc {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: rgba(0 0 0 / 0.62);
+  margin: 0;
+}
+
+/* ════════════════════════════════════════════════════
+   COST BANNER
+════════════════════════════════════════════════════ */
+.costBanner {
+  position: relative;
+  background-color: #050505;
+  background-image: url('/images/Background%20image2.jpg');
+  background-size: cover;
+  background-position: center;
+  padding-block: clamp(var(--space-8), 8vw, 96px);
+  overflow: hidden;
+}
+
+/* Dark overlay over cost banner photo */
+.costBanner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.costBannerInner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4);
+}
+
+.costBannerEyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255 255 255 / 0.35);
+  margin: 0;
+}
+
+.costBannerPrice {
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: #fff;
+  margin: 0;
+}
+
+.costBannerNote {
+  font-size: 1rem;
+  line-height: 1.72;
+  color: rgba(255 255 255 / 0.62);
+  max-width: 520px;
+  margin: 0;
+}
+
+/* ════════════════════════════════════════════════════
+   WHY CHOOSE THE ONE CLINIC (6 reasons)
+════════════════════════════════════════════════════ */
+.clinicReasonsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  align-items: stretch;
+}
+
+.clinicReasonCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  background: rgba(255 255 255 / 0.04);
+  border: 1px solid rgba(255 255 255 / 0.1);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  min-height: 160px;
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* Left accent bar */
+.clinicReasonCard::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 24px;
+  bottom: 24px;
+  width: 2px;
+  border-radius: 0 2px 2px 0;
+  background: rgba(255 255 255 / 0.1);
+  transition: background 0.35s ease, top 0.35s ease, bottom 0.35s ease;
+}
+
+.clinicReasonCard:hover {
+  background: rgba(255 255 255 / 0.08);
+  border-color: rgba(255 255 255 / 0.2);
+  box-shadow: 0 20px 56px rgba(0 0 0 / 0.38);
+}
+
+.clinicReasonCard:hover::after {
+  background: rgba(255 255 255 / 0.55);
+  top: 14px;
+  bottom: 14px;
+}
+
+/* Large decorative number */
+.clinicReasonNumber {
+  font-size: 2.75rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: rgba(255 255 255 / 0.08);
+  margin-bottom: var(--space-2);
+  transition: color 0.35s ease;
+}
+
+.clinicReasonCard:hover .clinicReasonNumber {
+  color: rgba(255 255 255 / 0.18);
+}
+
+.clinicReasonText {
+  font-size: 0.9375rem;
+  font-weight: var(--fw-medium);
+  color: rgba(255 255 255 / 0.82);
+  line-height: 1.65;
+  margin: 0;
+  transition: color 0.35s ease;
+}
+
+.clinicReasonCard:hover .clinicReasonText {
+  color: rgba(255 255 255 / 0.96);
+}
+
+/* ════════════════════════════════════════════════════
+   EXPERT CARD , DR VIRMANI (premium dark)
+════════════════════════════════════════════════════ */
+.expertCard {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  min-height: 560px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #0d0d0d;
+  border: 1px solid rgba(255 255 255 / 0.08);
+  box-shadow: 0 24px 64px rgba(0 0 0 / 0.18);
+}
+
+.expertCardPhotoPanel {
+  position: relative;
+  min-height: 520px;
+}
+
+.expertCardPhoto {
+  object-fit: cover;
+  object-position: center;
+}
+
+.expertCardContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: clamp(var(--space-6), 6vw, 72px);
+  justify-content: center;
+}
+
+.expertCardName {
+  font-size: clamp(1.875rem, 3.2vw, 2.75rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.03em;
+  color: #fff;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.expertCardBadges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.expertCardBadge {
+  background: rgba(255 255 255 / 0.07);
+  border: 1px solid rgba(255 255 255 / 0.14);
+  border-radius: 100px;
+  padding: 6px 18px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: rgba(255 255 255 / 0.68);
+  letter-spacing: 0.04em;
+}
+
+.expertCardBio {
+  font-size: 1rem;
+  line-height: 1.78;
+  color: rgba(255 255 255 / 0.68);
+  margin: 0;
+}
+
+/* CTA sub-text on the banner */
+.ctaBannerSub {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255 255 255 / 0.60);
+  margin: 0;
+  max-width: 480px;
+  text-align: center;
+}
+
+/* ════════════════════════════════════════════════════
+   TREATED BENEFITS (6-card grid)
+════════════════════════════════════════════════════ */
+.treatedBenefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  align-items: stretch;
+}
+
+.treatedBenefitCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  background: #1a1a1a;
+  border: 1px solid rgba(255 255 255 / 0.09);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 20px rgba(0 0 0 / 0.22);
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Top-edge shimmer line that fades in on hover */
+.treatedBenefitCard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    rgba(255 255 255 / 0),
+    rgba(255 255 255 / 0.28),
+    rgba(255 255 255 / 0)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.treatedBenefitCard:hover::before {
+  opacity: 1;
+}
+
+.treatedBenefitCard:hover {
+  background: #272727;
+  border-color: rgba(255 255 255 / 0.16);
+  box-shadow: 0 20px 56px rgba(0 0 0 / 0.45);
+}
+
+.treatedBenefitIconWrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255 255 255 / 0.06);
+  border: 1px solid rgba(255 255 255 / 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255 255 255 / 0.7);
+  flex-shrink: 0;
+  margin-bottom: var(--space-1);
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.treatedBenefitCard:hover .treatedBenefitIconWrap {
+  background: rgba(255 255 255 / 0.13);
+  border-color: rgba(255 255 255 / 0.22);
+  color: #fff;
+}
+
+.treatedBenefitTitle {
+  font-size: 1.0625rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.01em;
+  color: #fff;
+  margin: 0;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+.treatedBenefitCard:hover .treatedBenefitTitle {
+  color: #fff;
+}
+
+.treatedBenefitDesc {
+  font-size: 0.9375rem;
+  line-height: 1.68;
+  color: rgba(255 255 255 / 0.65);
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.treatedBenefitCard:hover .treatedBenefitDesc {
+  color: rgba(255 255 255 / 0.88);
+}
+
+/* ════════════════════════════════════════════════════
+   RESULTS, AFTERCARE & SIDE EFFECTS
+════════════════════════════════════════════════════ */
+.resultsAfterGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  align-items: stretch;
+}
+
+.resultsAfterCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  background: rgba(255 255 255 / 0.05);
+  border: 1px solid rgba(255 255 255 / 0.09);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+/* Spacer: makes list/body grow so the note always sits at the bottom */
+.resultsAfterCardSpacer {
+  flex: 1;
+}
+
+.resultsAfterCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 24px;
+  right: 24px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255 255 255 / 0.25) 40%,
+    rgba(255 255 255 / 0.25) 60%,
+    transparent
+  );
+}
+
+.resultsAfterCardHead {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.resultsAfterCardIcon {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 10px;
+  background: rgba(255 255 255 / 0.08);
+  border: 1px solid rgba(255 255 255 / 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255 255 255 / 0.7);
+  flex-shrink: 0;
+}
+
+.resultsAfterCardTitle {
+  font-size: 1.0625rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.015em;
+  color: #fff;
+  margin: 0;
+  line-height: 1.3;
+  padding-top: 8px;
+}
+
+.resultsAfterCardBody {
+  font-size: 0.9375rem;
+  line-height: 1.72;
+  color: rgba(255 255 255 / 0.75);
+  margin: 0;
+}
+
+.resultsAfterCardNote {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: rgba(255 255 255 / 0.58);
+  margin: 0;
+  padding-top: var(--space-2);
+  border-top: 1px solid rgba(255 255 255 / 0.1);
+}
+
+.resultsAfterCardList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.resultsAfterCardListItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: rgba(255 255 255 / 0.82);
+}
+
+.resultsAfterDot {
+  width: 6px;
+  height: 6px;
+  min-width: 6px;
+  border-radius: 50%;
+  background: rgba(255 255 255 / 0.35);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+/* ════════════════════════════════════════════════════
+   TREATABLE AREAS , 2-COLUMN CATEGORIES (DARK)
+════════════════════════════════════════════════════ */
+.conditionsIntro {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgba(255 255 255 / 0.70);
+  max-width: 540px;
+  text-align: center;
+  margin: var(--space-2) 0 0;
+}
+
+.areasColumns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.areasGroup {
+  background: rgba(255 255 255 / 0.03);
+  border: 1px solid rgba(255 255 255 / 0.1);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5) var(--space-5);
+  position: relative;
+  overflow: hidden;
+  transition:
+    border-color 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* Full-width gradient top accent */
+.areasGroup::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255 255 255 / 0.35) 50%, transparent 100%);
+}
+
+.areasGroup:hover {
+  background: rgba(255 255 255 / 0.06);
+  border-color: rgba(255 255 255 / 0.2);
+  box-shadow: 0 20px 56px rgba(0 0 0 / 0.4);
+}
+
+.areasGroupLabel {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255 255 255 / 0.45);
+  margin: 0 0 var(--space-4);
+}
+
+.areasGroupList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.areasGroupItem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.9375rem;
+  font-weight: var(--fw-medium);
+  color: rgba(255 255 255 / 0.82);
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255 255 255 / 0.08);
+  transition: color 0.22s ease, padding-left 0.22s ease;
+  cursor: default;
+}
+
+.areasGroupItem:hover {
+  color: #fff;
+  padding-left: 6px;
+}
+
+.areasGroupItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.areasGroupItem:first-child {
+  padding-top: 0;
+}
+
+.areasItemDot {
+  width: 6px;
+  height: 6px;
+  min-width: 6px;
+  border-radius: 50%;
+  background: rgba(255 255 255 / 0.35);
+  flex-shrink: 0;
+  transition: background 0.22s ease, transform 0.22s ease;
+}
+
+.areasGroupItem:hover .areasItemDot {
+  background: #fff;
+  transform: scale(1.5);
+}
+
+/* ════════════════════════════════════════════════════
+   ENDOLIFT COMBINATION (TRIPLE ACTION)
+════════════════════════════════════════════════════ */
+.combinationIntroText {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgba(255 255 255 / 0.70);
+  max-width: 560px;
+  text-align: center;
+  margin: var(--space-2) 0 0;
+}
+
+.techCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  align-items: stretch;
+}
+
+.techCard {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6) var(--space-5);
+  background: #ffffff;
+  border: 1px solid rgba(0 0 0 / 0.09);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+  box-shadow: 0 2px 20px rgba(0 0 0 / 0.07);
+  transition:
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+/* Animated shimmer sweep on hover */
+.techCard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; right: auto;
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(0 0 0 / 0.18), transparent);
+  transition: left 0.6s ease;
+}
+
+.techCard:hover::before {
+  left: 120%;
+}
+
+.techCard:hover {
+  box-shadow: 0 20px 56px rgba(0 0 0 / 0.13);
+  border-color: rgba(0 0 0 / 0.18);
+}
+
+/* Large decorative number */
+.techCardEyebrow {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: rgba(0 0 0 / 0.06);
+  margin-bottom: var(--space-3);
+  transition: color 0.35s ease;
+}
+
+.techCard:hover .techCardEyebrow {
+  color: rgba(0 0 0 / 0.1);
+}
+
+/* Thin separator before title */
+.techCardTitle {
+  font-size: 1.0625rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.01em;
+  color: #111827;
+  margin: 0 0 var(--space-2);
+  line-height: 1.3;
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(0 0 0 / 0.07);
+}
+
+.techCardDesc {
+  font-size: 0.9375rem;
+  line-height: 1.72;
+  color: #4B5563;
+  margin: 0;
+  transition: color 0.35s ease;
+}
+
+.techCard:hover .techCardDesc {
+  color: #1F2937;
+}
+
+.finalResultsBanner {
+  background: #fff;
+  border: 1px solid rgba(0 0 0 / 0.12);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5) var(--space-6);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-5);
+  align-items: center;
+  cursor: default;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.finalResultsBanner:hover {
+  box-shadow: 0 20px 56px rgba(0 0 0 / 0.22);
+  transform: translateY(-3px);
+  border-color: rgba(0 0 0 / 0.22);
+}
+
+.finalResultsEyebrow {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #0a0a0a;
+  white-space: nowrap;
+  margin: 0;
+  padding-right: var(--space-5);
+  border-right: 2px solid rgba(0 0 0 / 0.15);
+}
+
+.finalResultsText {
+  font-size: 1rem;
+  line-height: 1.72;
+  color: rgba(0 0 0 / 0.62);
+  margin: 0;
+}
+
+/* ════════════════════════════════════════════════════
+   ELIGIBILITY (WHY CHOOSE ENDOLIFT LASER)
+════════════════════════════════════════════════════ */
+.eligibilityWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.eligibilityIntro {
+  font-size: 1rem;
+  color: rgba(255 255 255 / 0.65);
+  margin: 0;
+  align-self: flex-start;
+  line-height: 1.6;
+}
+
+.eligibilityList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.eligibilityItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 1.0625rem;
+  font-weight: var(--fw-medium);
+  color: #111827;
+  line-height: 1.6;
+  padding: var(--space-3) var(--space-4);
+  background: #ffffff;
+  border: 1px solid rgba(0 0 0 / 0.1);
+  border-radius: 10px;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.2s ease,
+    box-shadow 0.25s ease;
+}
+
+.eligibilityItem:hover {
+  background: #111;
+  border-color: #111;
+  color: #ffffff;
+  transform: translateX(5px);
+  box-shadow: 0 8px 28px rgba(0 0 0 / 0.4);
+}
+
+.eligibilityCheck {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 50%;
+  background: rgba(0 0 0 / 0.06);
+  border: 1px solid rgba(0 0 0 / 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.eligibilityItem:hover .eligibilityCheck {
+  background: rgba(255 255 255 / 0.12);
+  border-color: rgba(255 255 255 / 0.22);
+  color: #fff;
+}
+
+.eligibilityClosing {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255 255 255 / 0.65);
+  text-align: center;
+  margin: 0;
+}
+
+/* ════════════════════════════════════════════════════
+   BEFORE & AFTER
+════════════════════════════════════════════════════ */
+.beforeAfterSubheading {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+  max-width: 520px;
+  text-align: center;
+  margin: var(--space-2) 0 0;
+}
+
+.beforeAfterPlaceholder {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  background: #f0f0f0;
+  border: 1px solid var(--color-border-light);
+}
+
+.placeholderInner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: var(--space-3);
+}
+
+.placeholderLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(0 0 0 / 0.3);
+}
+
+/* ════════════════════════════════════════════════════
+   CTA BANNER
+════════════════════════════════════════════════════ */
+.ctaBanner {
+  position: relative;
+  background: #0d0d0d;
+  padding-block: clamp(var(--space-8), 10vw, 120px);
+  overflow: hidden;
+}
+
+.ctaBannerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-5);
+}
+
+.ctaBannerHeading {
+  font-size: clamp(0.875rem, 4.5vw, 3.75rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+  color: #fff;
+  margin: 0;
+  max-width: 760px;
+}
+
+.ctaBannerBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 36px;
+  background: #fff;
+  color: #000;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 50px;
+  box-shadow: 0 2px 16px rgb(255 255 255 / 0.15);
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ctaBannerBtn:hover {
+  background: #e8e8e8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 24px rgb(255 255 255 / 0.2);
+}
+
+/* ════════════════════════════════════════════════════
+   GRAY SECTION BACKGROUND OVERRIDE
+════════════════════════════════════════════════════ */
+.sectionGray {
+  background-color: #f3f3f3 !important;
+}
+
+/* ════════════════════════════════════════════════════
+   WHITE TEXTURE BACKGROUND (bg-image-white.png)
+   Applied to: At a Glance, Treated Benefits, Before & After
+════════════════════════════════════════════════════ */
+.whiteBgSection {
+  position: relative !important;
+  overflow: hidden;
+}
+
+.whiteBgWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.whiteBgImg {
+  object-fit: cover;
+  object-position: center;
+}
+
+.whiteBgContent {
+  position: relative;
+  z-index: 1;
+}
+
+/* ════════════════════════════════════════════════════
+   EXPERT SLIDESHOW CONTROLS
+════════════════════════════════════════════════════ */
+.expertSlideshow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.expertSlideControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.expertSlideArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(0 0 0 / 0.14);
+  background: #fff;
+  color: #111;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.expertSlideArrow:hover:not(:disabled) {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+  transform: scale(1.06);
+}
+
+.expertSlideArrow:disabled {
+  opacity: 0.28;
+  cursor: default;
+}
+
+.expertSlideDots {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.expertSlideDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0 0 0 / 0.2);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.expertSlideDotActive {
+  background: #111;
+  transform: scale(1.35);
+}
+
+/* ════════════════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .glanceGrid { grid-template-columns: repeat(2, 1fr); }
+  .glanceStandaloneGrid { grid-template-columns: repeat(3, 1fr); }
+  .relatedGrid { grid-template-columns: repeat(2, 1fr); }
+  .howCoversList { grid-template-columns: repeat(2, 1fr); }
+  .techCardsGrid { grid-template-columns: 1fr 1fr; }
+  .treatedBenefitsGrid { grid-template-columns: repeat(2, 1fr); }
+  .resultsAfterGrid { grid-template-columns: 1fr 1fr; }
+  .clinicReasonsGrid { grid-template-columns: repeat(2, 1fr); }
+  .expertCard { grid-template-columns: 300px 1fr; }
+}
+
+/* Combined section: collapse to single column on tablet/mobile */
+@media (max-width: 900px) {
+  .combinedBody {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 0;
+  }
+
+  .combinedLeft {
+    padding-right: 0;
+    border-right: none;
+    padding-bottom: var(--space-6);
+    border-bottom: 1px solid rgba(0 0 0 / 0.08);
+    margin-bottom: var(--space-6);
+  }
+
+  .combinedCtaWrapper {
+    padding-top: var(--space-5);
+  }
+
+  .combinedRight {
+    padding-left: 0;
+    border-left: none;
+  }
+}
+
+@media (max-width: 900px) {
+  /* Hero: stack image below text on tablet */
+  .heroInner {
+    grid-template-columns: 1fr;
+    padding-top: clamp(52px, 7vw, 80px);
+    padding-bottom: clamp(52px, 7vw, 80px);
+  }
+  /* Portrait image , 3/4 aspect ratio */
+  .heroImageWrap {
+    min-height: unset;
+    aspect-ratio: 3 / 4;
+    align-self: center;
+    max-width: 100%;
+    margin-inline: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero { padding-top: 64px; overflow-x: hidden; }
+  .heroInner { gap: var(--space-4); padding-top: 88px; padding-bottom: 48px; }
+
+  /* Prevent any child (e.g. inline-flex TrustBadges) from causing overflow */
+  .heroLeft { min-width: 0; max-width: 100%; overflow-x: hidden; }
+
+  .heroImage { object-position: center; }
+
+  .heroCtas {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-2);
+  }
+
+  .heroCtaPrimary { width: 100%; justify-content: center; }
+
+  .heroTrust { gap: 8px 0; }
+  .heroTrustDivider { display: none; }
+  .heroTrustItem { font-size: 0.75rem; }
+
+  .overviewGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .overviewLabel { padding-top: 0; }
+
+  /* ── Benefits: center all content on mobile ── */
+  .benefitsGrid { grid-template-columns: 1fr; }
+
+  .benefitCard {
+    align-items: center;
+    text-align: center;
+  }
+
+  .howTextGrid { grid-template-columns: 1fr; }
+  .howCoversWrap { padding: var(--space-4); }
+  .howCoversList { grid-template-columns: 1fr; gap: var(--space-2); }
+
+  /* Tech cards: single column */
+  .techCardsGrid { grid-template-columns: 1fr; }
+
+  /* What is Endolift: stack on mobile */
+  .whatIsGrid { grid-template-columns: 1fr; gap: var(--space-5); }
+  .whatIsImageWrap { aspect-ratio: 4 / 3; }
+  .whatIsVideoWrap { aspect-ratio: 4 / 3; }
+
+  /* Standalone At a Glance: 2-col on mobile */
+  .glanceStandaloneGrid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Clinic intro: stack */
+  .clinicIntroBody {
+    grid-template-columns: 1fr;
+    gap: clamp(var(--space-3), 2.5vw, var(--space-4));
+    padding: clamp(var(--space-4), 3vw, var(--space-5));
+  }
+  .clinicIntroLeft {
+    padding-right: 0;
+    border-right: none;
+  }
+  .clinicIntroDesc {
+    padding-left: 0;
+  }
+
+  /* Why Choose The One Clinic: 1-col */
+  .clinicReasonsGrid { grid-template-columns: 1fr 1fr; }
+
+  /* Expert card: stack photo above content on mobile */
+  .expertCard { grid-template-columns: 1fr; min-height: auto; }
+  /* Use aspect-ratio so photo scales with width , never a flat crop strip */
+  .expertCardPhotoPanel { min-height: unset; aspect-ratio: 4 / 3; }
+  .expertCardContent { padding: var(--space-4); }
+
+  /* Final results banner: stack vertically */
+  .finalResultsBanner {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  .finalResultsEyebrow {
+    padding-right: 0;
+    border-right: none;
+    padding-bottom: var(--space-2);
+    border-bottom: 2px solid rgba(0 0 0 / 0.15);
+  }
+
+  /* Results grid: 1 col on tablet */
+  .resultsAfterGrid { grid-template-columns: 1fr; }
+
+  /* Areas columns: stack */
+  .areasColumns { grid-template-columns: 1fr; gap: var(--space-3); }
+
+  /* ── Treatment Journey: compact on mobile ── */
+  .journeyStep {
+    grid-template-columns: 48px 1fr;
+    gap: var(--space-3);
+  }
+
+  .stepNumCircle {
+    width: 44px;
+    height: 44px;
+  }
+
+  .headingDark,
+  .headingLight { font-size: clamp(1.5rem, 5vw, var(--text-h2)); }
+
+  /* ── Fix: expert card content padding was too large (64px/48px) ── */
+  .expertCardContent { padding: var(--space-4) var(--space-4); }
+
+  /* ── Fix: CTA banner heading clamp minimum was ~17px ── */
+  .ctaBannerHeading { font-size: clamp(1.5rem, 7vw, 3.75rem); }
+
+  /* ── Reduce paddings for all dark cards ── */
+  .techCard                { padding: var(--space-4); min-height: auto; }
+  .resultsAfterCard        { padding: var(--space-4); }
+  .areasGroup              { padding: var(--space-4); }
+  .clinicReasonCard        { padding: var(--space-4) var(--space-3); min-height: auto; }
+  .glanceCard              { min-height: auto; }
+  .treatedBenefitCard      { min-height: auto; }
+
+  /* ── CTA spacing ── */
+  .combinedCtaWrapper { padding-top: var(--space-4); display: none; }
+
+  /* ── Full-width CTA buttons ── */
+  .combinedCta  { width: 100%; justify-content: center; }
+  .ctaBannerBtn { width: 100%; max-width: 360px; align-self: center; }
+
+  /* ── Tighten section-header bottom margin ── */
+  .sectionHeaderCentre { margin-bottom: var(--space-4); }
+
+  /* ── Glance card: reduce padding in 2-col layout ── */
+  .glanceCard { padding: var(--space-4) var(--space-3); }
+
+  /* ── Treated-benefits grid: tighter gap ── */
+  .treatedBenefitsGrid { gap: var(--space-2); }
+
+  /* ── Clinic reasons: 1-col on mobile ── */
+  .clinicReasonsGrid { grid-template-columns: 1fr; gap: var(--space-2); }
+
+  /* ── Journey list: remove fixed max-width so it fills width ── */
+  .journeyList { max-width: 100%; }
+
+  /* ── What-is section: full-width CTA ── */
+  .whatIsContent .combinedCta { width: 100%; }
+
+  /* ── Eligibility wrap: full width ── */
+  .eligibilityWrap { max-width: 100%; }
+}
+
+@media (max-width: 580px) {
+  .glanceGrid { grid-template-columns: 1fr 1fr; }
+  .relatedGrid { grid-template-columns: 1fr; }
+
+  /* Glance cards: center icon + text in 2-col mobile grid */
+  .glanceCard {
+    align-items: center;
+    text-align: center;
+    padding: var(--space-4) var(--space-3);
+  }
+
+  .glanceIcon {
+    margin-bottom: 2px;
+  }
+
+  .conditionsList { flex-direction: column; align-items: stretch; }
+  .conditionPill { justify-content: flex-start; }
+
+  /* Treated benefits: 1-col */
+  .treatedBenefitsGrid { grid-template-columns: 1fr; }
+
+  /* Clinic reasons: 1-col */
+  .clinicReasonsGrid { grid-template-columns: 1fr; }
+
+  /* Standalone At a Glance: 1-col */
+  .glanceStandaloneGrid { grid-template-columns: 1fr; }
+
+  /* ── Expert card: tighter content padding on small phones ── */
+  .expertCardContent { padding: var(--space-3) var(--space-3); }
+
+  /* ── Further reduce card paddings on small phones ── */
+  .techCard         { padding: var(--space-3); }
+  .resultsAfterCard { padding: var(--space-3); }
+  .areasGroup       { padding: var(--space-3); }
+  .clinicReasonCard { padding: var(--space-3); }
+
+  /* ── Eligibility items: slightly compact ── */
+  .eligibilityItem  { font-size: 1rem; padding: var(--space-2) var(--space-3); }
+  .eligibilityCheck { width: 24px; height: 24px; min-width: 24px; }
+
+  /* ── How covers wrap: less internal padding ── */
+  .howCoversWrap { padding: var(--space-3); }
+
+  /* ── CTA buttons ── */
+  .ctaBannerBtn { max-width: 100%; }
+  .combinedCta  { padding: 12px 24px; }
+
+  /* ── Glance card padding ── */
+  .glanceCard { padding: var(--space-3); }
+
+  /* ── finalResults banner ── */
+  .finalResultsBanner { padding: var(--space-4) var(--space-3); }
+
+  /* ── Areas group items ── */
+  .areasGroupItem { font-size: 0.9375rem; }
+}
+
+/* ══════════════════════════════════════════════════
+   SMALL PHONES  ≤ 400px
+══════════════════════════════════════════════════ */
+@media (max-width: 400px) {
+  /* Hero inner: tighter vertical padding */
+  .heroInner { padding-top: 80px; padding-bottom: 40px; }
+
+  /* Headings: ensure never overflow */
+  .heroTitle { font-size: clamp(1.75rem, 8.5vw, 2.25rem); }
+  .combinedHeading { font-size: clamp(1.625rem, 7.5vw, 2.875rem); }
+  .expertCardName  { font-size: clamp(1.5rem, 7vw, 2.75rem); }
+
+  /* Glance standalone: tighter gap */
+  .glanceStandaloneGrid { gap: var(--space-2); }
+
+  /* Expert card content: tightest padding at ≤400px */
+  .expertCardContent { padding: var(--space-3) var(--space-2); }
+
+  /* Slideshow arrow buttons */
+  .expertSlideArrow { width: 40px; height: 40px; }
+
+  /* Journey step: compact */
+  .journeyStep { grid-template-columns: 40px 1fr; gap: var(--space-2); }
+  .stepNumCircle { width: 36px; height: 36px; font-size: 0.6875rem; }
+
+  /* Tech card */
+  .techCard { padding: var(--space-3) var(--space-2); }
+  .techCardEyebrow { font-size: 2.75rem; }
+
+  /* Treated benefit card */
+  .treatedBenefitCard { padding: var(--space-3) var(--space-2); }
+
+  /* Results card */
+  .resultsAfterCard { padding: var(--space-3) var(--space-2); }
+
+  /* Clinic reason cards */
+  .clinicReasonCard { padding: var(--space-3) var(--space-2); }
+  .clinicReasonNumber { font-size: 2rem; }
+
+  /* Areas group */
+  .areasGroup { padding: var(--space-3) var(--space-2); }
+
+  /* CTA buttons: full-width, smaller font */
+  .ctaBannerBtn { font-size: 0.875rem; padding: 13px 20px; }
+  .combinedCta  { font-size: 0.875rem; padding: 12px 20px; }
+  .heroCtaPrimary { font-size: 0.875rem; padding: 12px 20px; }
+
+  /* Before & After controls */
+  .baControls { gap: var(--space-2); }
+  .baArrowBtn { width: 38px; height: 38px; }
+
+  /* FAQ toggle button */
+  .faqToggleBtn { padding: 10px 20px; font-size: 0.875rem; }
+}

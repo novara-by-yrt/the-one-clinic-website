@@ -20,8 +20,8 @@ import styles from './page.module.css';
 /* ── Static data ──────────────────────────────────────────────── */
 const AT_A_GLANCE = [
   {
-    label: 'Customisation',
-    value: 'Fully Personalised',
+    label: 'Science-Driven',
+    value: 'Clinically Researched',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -30,7 +30,7 @@ const AT_A_GLANCE = [
   },
   {
     label: 'Product Strength',
-    value: 'Medical-Grade',
+    value: 'Pharmaceutical-Grade',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="1 4 1 10 7 10"/>
@@ -39,8 +39,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Skin Concerns',
-    value: 'Multiple Concerns',
+    label: 'Clean Science',
+    value: 'No Harsh Additives',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
@@ -49,8 +49,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Treatment Synergy',
-    value: 'In-Clinic Compatible',
+    label: 'Clinical Results',
+    value: 'Fast Visible Improvement',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
@@ -60,7 +60,7 @@ const AT_A_GLANCE = [
   },
   {
     label: 'Results Timeline',
-    value: '4,12 Weeks',
+    value: '2–6 Weeks',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <line x1="12" y1="1" x2="12" y2="23"/>
@@ -69,8 +69,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Investment',
-    value: 'From £200',
+    label: 'Founder',
+    value: 'Award-Winning Physician',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M3 21h18"/>
@@ -86,22 +86,22 @@ const JOURNEY_STEPS = [
   {
     n: '01',
     title: 'Comprehensive Skin Analysis',
-    desc: 'We begin with an in-depth consultation and skin assessment to understand your skin type, concerns, sensitivities, and lifestyle. This guides our bespoke product prescription.',
+    desc: 'We begin with an in-depth consultation and skin assessment to understand your skin type, concerns, sensitivities, and lifestyle. This guides our personalised product recommendation.',
   },
   {
     n: '02',
-    title: 'Prescription Formulation',
-    desc: 'Based on your analysis, our clinical experts design a personalised AlumierMD regimen tailored to address your specific skin concerns with the correct active ingredient strengths.',
+    title: 'Bespoke Formulation Prescription',
+    desc: 'Based on your analysis, our clinical experts prescribe a personalised CellDerma regimen tailored to address your specific skin concerns with clinically active ingredient strengths.',
   },
   {
     n: '03',
     title: 'Product Selection & Education',
-    desc: 'We select the right products from AlumierMD\'s range and provide comprehensive guidance on how to use them safely and effectively at home.',
+    desc: 'We select the right products from CellDerma\'s range and provide comprehensive guidance on how to use them safely and effectively at home for optimal results.',
   },
   {
     n: '04',
     title: 'Progressive Results & Support',
-    desc: 'Over 4,12 weeks, your skin improves progressively. We monitor your progress and adjust your regime as needed, providing ongoing professional support throughout your journey.',
+    desc: 'Within 2–6 weeks, your skin shows dramatic improvements. We monitor your progress and adjust your regime as needed, providing ongoing professional support throughout your journey.',
   },
 ];
 
@@ -113,18 +113,18 @@ const APPROACH_CARDS = [
   },
   {
     eyebrow: '02',
-    title: 'Prescription Formulation',
-    desc: 'Using pharmaceutical-grade actives at clinical concentrations, we formulate your personalised AlumierMD regimen targeting your specific priorities with precision.',
+    title: 'Award-Winning Formulations',
+    desc: 'Created by Dr. Dev Patel, an award-winning aesthetic physician, using pharmaceutical-grade actives at clinical concentrations for clinically proven results.',
   },
   {
     eyebrow: '03',
     title: 'Progressive Skincare Regimen',
-    desc: 'A step-by-step introduction to active ingredients ensures your skin tolerates and thrives on your regime, with adjustments as your skin strengthens and improves.',
+    desc: 'A step-by-step introduction to active ingredients ensures your skin tolerates and thrives on your regime, with adjustments as your skin improves.',
   },
 ];
 
 const ELIGIBILITY = [
-  'Anyone seeking medical-grade skincare for real skin improvement',
+  'Anyone seeking science-driven skincare for real skin improvement',
   'Ageing skin with fine lines, loss of elasticity, or dullness',
   'Hyperpigmentation and sun damage',
   'Acne-prone or congested skin',
@@ -134,8 +134,8 @@ const ELIGIBILITY = [
 
 const TREATED_BENEFITS = [
   {
-    title: 'Medical-Grade Formulations',
-    desc: 'AlumierMD products contain pharmaceutical-grade actives at concentrations far stronger than retail skincare, delivering measurable clinical results.',
+    title: 'Pharmaceutical-Grade Formulations',
+    desc: 'CellDerma products contain pharmaceutical-grade actives at clinical concentrations far stronger than retail skincare, delivering measurable clinical results.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -144,7 +144,7 @@ const TREATED_BENEFITS = [
   },
   {
     title: 'Personalised Prescriptions',
-    desc: 'Each regimen is tailored to your skin type and concerns. No one-size-fits-all approach,your products are chosen for your skin\'s unique needs.',
+    desc: 'Each regimen is tailored to your skin type and concerns. No one-size-fits-all approach, your products are chosen for your skin\'s unique needs.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
@@ -153,8 +153,8 @@ const TREATED_BENEFITS = [
     ),
   },
   {
-    title: 'Clinically Proven Results',
-    desc: 'Backed by scientific research and trusted by dermatologists worldwide, AlumierMD delivers visible improvements in skin texture, tone, and radiance.',
+    title: 'Award-Winning Science',
+    desc: 'Created by Dr. Dev Patel, a globally-reputed aesthetic physician and multiple award winner, CellDerma delivers visible improvements in skin texture, tone, and radiance.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12"/>
@@ -164,7 +164,7 @@ const TREATED_BENEFITS = [
   },
   {
     title: 'Complements Clinical Treatments',
-    desc: 'AlumierMD skincare synergises perfectly with in-clinic treatments like chemical peels, Morpheus8, and laser resurfacing to amplify and prolong results.',
+    desc: 'CellDerma skincare synergises perfectly with in-clinic treatments like chemical peels, Morpheus8, and laser resurfacing to amplify and prolong results.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -175,7 +175,7 @@ const TREATED_BENEFITS = [
   },
   {
     title: 'Visible Transformation',
-    desc: 'Progressive improvement from week 4 onwards, with optimal results at 12 weeks. Your skin becomes noticeably firmer, clearer, and more radiant.',
+    desc: 'Dramatic improvements often appear within 2–6 weeks, with optimal results visible much sooner than traditional skincare. Your skin becomes noticeably firmer, clearer, and more radiant.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
@@ -197,32 +197,32 @@ const TREATED_BENEFITS = [
 
 const PRODUCT_CATEGORIES = [
   {
-    category: 'Cleansers & Toners',
+    category: 'Cleansers',
     desc: 'Gentle yet effective cleansing and pH-balancing to prepare skin for actives.',
   },
   {
     category: 'Serums & Essences',
-    desc: 'Concentrated actives including retinoids, vitamin C, peptides, and growth factors.',
+    desc: 'Concentrated actives with pharmaceutical-grade performance at optimal concentrations.',
   },
   {
-    category: 'Moisturisers & Masks',
+    category: 'Moisturisers',
     desc: 'Barrier-supporting hydration and specialised treatments for intensive repair.',
   },
   {
     category: 'Targeted Treatments',
-    desc: 'Retinoid products, vitamin C serums, and problem-zone solutions.',
+    desc: 'Specialised products for problem zones and specific skin concerns.',
   },
   {
     category: 'Sun Care & SPF',
-    desc: 'Essential protection,mandatory when using active ingredients.',
+    desc: 'Essential protection, mandatory when using active ingredients.',
   },
   {
     category: 'Maintenance Products',
     desc: 'Long-term stabilising products to lock in results and maintain skin health.',
   },
   {
-    category: 'Combination Therapy Kits',
-    desc: 'Curated bundles designed for specific concerns and skin types.',
+    category: 'Treatment Bundles',
+    desc: 'Curated collections designed for specific concerns and skin types.',
   },
 ];
 
@@ -264,34 +264,34 @@ const CLINIC_REASONS = [
 
 const FAQS = [
   {
-    question: 'What is AlumierMD skincare?',
+    question: 'What is CellDerma skincare?',
     answer:
-      'AlumierMD is a professional medical-grade skincare line available exclusively through licensed clinics. It contains pharmaceutical-grade active ingredients at clinical concentrations,including retinoids, hydroxy acids, vitamin C, peptides, and growth factors,to deliver measurable clinical results.',
+      'CellDerma is a science-driven, professional-grade skincare range created by award-winning aesthetic physician Dr. Dev Patel. It contains pharmaceutical-grade active ingredients at clinical concentrations, including potent actives for accelerated skin transformation.',
   },
   {
-    question: 'How is AlumierMD different from high-street skincare?',
+    question: 'How is CellDerma different from high-street skincare?',
     answer:
-      'AlumierMD products contain active ingredients at much higher concentrations than retail products. These pharmaceutical-grade formulations require a prescription from a trained clinician to ensure they are used safely and effectively for your specific skin type.',
+      'CellDerma products contain active ingredients at much higher concentrations than retail products, formulated with obsessive attention to detail and clean science principles. These pharmaceutical-grade formulations deliver visible results within 2–6 weeks.',
   },
   {
-    question: 'What skin concerns can AlumierMD treat?',
+    question: 'What skin concerns can CellDerma treat?',
     answer:
-      'AlumierMD addresses ageing (fine lines, loss of firmness), pigmentation and sun damage, acne and congestion, sensitivity and rosacea, and overall skin radiance. Your personalised regime targets your specific concerns with precision.',
+      'CellDerma addresses ageing (fine lines, loss of firmness), pigmentation and sun damage, acne and congestion, sensitivity and rosacea, and overall skin radiance. Your personalised regime targets your specific concerns with precision.',
   },
   {
-    question: 'How do I get started with AlumierMD at The One Clinic?',
+    question: 'How do I get started with CellDerma at The One Clinic?',
     answer:
-      'Book a skin consultation with our team. We conduct a thorough skin analysis to understand your concerns and goals, then prescribe a bespoke AlumierMD regimen. Products are available to purchase directly from us, with ongoing professional support.',
+      'Book a skin consultation with our team. We conduct a thorough skin analysis to understand your concerns and goals, then prescribe a bespoke CellDerma regimen. Products are available to purchase directly from us, with ongoing professional support.',
   },
   {
     question: 'How long before I see results?',
     answer:
-      'Initial improvements often appear within 4 weeks as skin cell turnover accelerates. Most visible results develop by 8,12 weeks. Continued use maintains and enhances results. Consistency is key.',
+      'CellDerma is formulated for fast results. Many patients see dramatic improvements within 2–6 weeks. Optimal results are typically achieved within 8–12 weeks with consistent use. Your skin becomes noticeably firmer, clearer, and more radiant.',
   },
   {
-    question: 'Is AlumierMD suitable for sensitive skin?',
+    question: 'Is CellDerma suitable for sensitive skin?',
     answer:
-      'Yes. We prescribe tailored regimens for sensitive skin, starting with lower active concentrations and building tolerance gradually. Our team monitors your progress and adjusts as your skin strengthens.',
+      'Yes. We prescribe tailored regimens for sensitive skin, with professional guidance to ensure optimal tolerance. Our team monitors your progress and adjusts as your skin strengthens.',
   },
 ];
 
@@ -326,7 +326,7 @@ const RELATED = [
 ];
 
 /* ── Page component ───────────────────────────────────────────── */
-export default function AlumierMDPage() {
+export default function CellDermaPage() {
   const [showAllFaqs, setShowAllFaqs] = useState(false);
 
   return (
@@ -336,7 +336,7 @@ export default function AlumierMDPage() {
       ════════════════════════════════════════ */}
       <section
         className={styles.hero}
-        aria-label="AlumierMD Skincare Leicester, hero"
+        aria-label="CellDerma Skincare Leicester, hero"
         data-section-theme="dark"
       >
         {/* Breadcrumb, pinned to top of hero */}
@@ -346,7 +346,7 @@ export default function AlumierMDPage() {
               theme="dark"
               items={[
                 { label: 'Treatments', href: '/treatments' },
-                { label: 'Skincare, AlumierMD' },
+                { label: 'Skincare, CellDerma' },
               ]}
             />
           </Container>
@@ -362,15 +362,15 @@ export default function AlumierMDPage() {
             {/* Left: text */}
             <div className={styles.heroLeft}>
               <motion.span className={styles.heroCategory} variants={fadeUp}>
-                Medical-Grade Skincare
+                Science-Driven Skincare
               </motion.span>
 
               <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                AlumierMD Skincare in Leicester
+                CellDerma Skincare in Leicester
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Prescription skincare for advanced skin health and transformation. Medical-grade formulations tailored to your skin.
+                Award-winning medical-grade skincare created by aesthetic physician Dr. Dev Patel. Fast-acting formulations with clinically active ingredients for transformative results.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -392,7 +392,7 @@ export default function AlumierMDPage() {
                     <path d="M4.5 20.118a7.5 7.5 0 0115 0"/>
                     <path d="M18.5 15v5M16 17.5h5"/>
                   </svg>
-                  Prescribed by clinical experts
+                  Created by award-winning physician
                 </span>
                 <span className={styles.heroTrustDivider} aria-hidden="true" />
                 <span className={styles.heroTrustItem}>
@@ -415,8 +415,8 @@ export default function AlumierMDPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Category_Eye_Creams&Serums.png"
-                alt="AlumierMD skincare products"
+                src="/images/CellDerma 2.jpg"
+                alt="CellDerma skincare products"
                 fill
                 priority
                 className={styles.heroImage}
@@ -430,7 +430,7 @@ export default function AlumierMDPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          2. WHAT IS ALUMIERMD?
+          2. WHAT IS CELLDERMA?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
@@ -445,12 +445,12 @@ export default function AlumierMDPage() {
             <motion.div className={styles.whatIsContent} variants={stagger(0.12)}>
               <motion.div className={styles.whatIsTextGroup} variants={fadeUp}>
                 <p className={styles.eyebrowDark}>About This Treatment</p>
-                <h2 className={styles.combinedHeading}>What is AlumierMD?</h2>
+                <h2 className={styles.combinedHeading}>What is CellDerma?</h2>
                 <p className={styles.combinedDesc}>
-                  AlumierMD is a science-driven medical-grade skincare range available exclusively through licensed clinics.
-                  Each product is formulated with pharmaceutical-grade active ingredients,retinoids, hydroxy acids, vitamins,
-                  peptides, and growth factors,at clinical concentrations. We prescribe a personalised home care regimen based
-                  on your skin analysis, ensuring you receive exactly what your skin needs for real, measurable improvement.
+                  CellDerma is a science-driven medical-grade skincare range created by award-winning aesthetic physician Dr. Dev Patel.
+                  Each product is meticulously formulated with pharmaceutical-grade active ingredients at clinical concentrations
+                  for clinically proven transformation. We prescribe a personalised home care regimen based on your skin analysis,
+                  ensuring you receive exactly what your skin needs for real, fast, measurable improvement.
                 </p>
               </motion.div>
               <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
@@ -463,8 +463,8 @@ export default function AlumierMDPage() {
             {/* Right: image panel */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/AlumierMD Skincare 1.jpg"
-                alt="AlumierMD skincare consultation at The One Clinic"
+                src="/images/CellDerma 1.jpg"
+                alt="CellDerma skincare consultation at The One Clinic"
                 fill
                 className={styles.whatIsVideoFrame}
                 sizes="(max-width: 900px) 100vw, 50vw"
@@ -491,7 +491,7 @@ export default function AlumierMDPage() {
           >
             <motion.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              AlumierMD at a Glance
+              CellDerma at a Glance
             </motion.h2>
           </motion.div>
 
@@ -514,7 +514,7 @@ export default function AlumierMDPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          4. OUR ALUMIERMD APPROACH
+          4. OUR CELLDERMA APPROACH
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -529,11 +529,11 @@ export default function AlumierMDPage() {
               Our Approach
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              The AlumierMD Approach
+              The CellDerma Approach
             </motion.h2>
             <motion.p className={styles.combinationIntroText} variants={fadeUp}>
-              At The One Clinic, we believe skincare should be personalised, professional, and progressive.
-              Our three-step AlumierMD approach ensures your skin receives exactly what it needs.
+              At The One Clinic, we believe skincare should be science-driven, professional, and progressive.
+              Our three-step CellDerma approach ensures your skin receives exactly what it needs.
             </motion.p>
           </motion.div>
 
@@ -567,16 +567,16 @@ export default function AlumierMDPage() {
           >
             <p className={styles.finalResultsEyebrow}>Best Results</p>
             <p className={styles.finalResultsText}>
-              When combined, our comprehensive analysis, personalised prescription, and progressive regimen
-              deliver transformative results,addressing multiple skin concerns simultaneously for visibly healthier,
-              clearer, and more radiant skin.
+              When combined, our comprehensive analysis, award-winning formulations, and progressive regimen
+              deliver transformative results, addressing multiple skin concerns simultaneously for visibly healthier,
+              clearer, and more radiant skin in as little as 2–6 weeks.
             </p>
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          5. YOUR ALUMIERMD JOURNEY
+          5. YOUR CELLDERMA JOURNEY
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.journeySection}>
         <Container>
@@ -591,7 +591,7 @@ export default function AlumierMDPage() {
               What to Expect
             </motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Your AlumierMD Journey
+              Your CellDerma Journey
             </motion.h2>
           </motion.div>
 
@@ -601,7 +601,7 @@ export default function AlumierMDPage() {
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
-            aria-label="AlumierMD skincare journey steps"
+            aria-label="CellDerma skincare journey steps"
           >
             {JOURNEY_STEPS.map((step) => (
               <motion.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
@@ -635,7 +635,7 @@ export default function AlumierMDPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              AlumierMD Benefits
+              CellDerma Benefits
             </motion.h2>
           </motion.div>
 
@@ -680,7 +680,7 @@ export default function AlumierMDPage() {
               Is This Right for You?
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Who is Suitable for AlumierMD?
+              Who is Suitable for CellDerma?
             </motion.h2>
           </motion.div>
 
@@ -692,7 +692,7 @@ export default function AlumierMDPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
-              You can benefit from AlumierMD if you are:
+              You can benefit from CellDerma if you are:
             </motion.p>
             <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
               {ELIGIBILITY.map((item) => (
@@ -731,7 +731,7 @@ export default function AlumierMDPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              How AlumierMD Works: The Science
+              How CellDerma Works: The Science
             </motion.h2>
           </motion.div>
 
@@ -743,14 +743,14 @@ export default function AlumierMDPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.howPara} variants={fadeUp}>
-              AlumierMD uses synergistic active ingredients at pharmaceutical concentrations: retinoids accelerate cell turnover
-              and boost collagen; hydroxy acids exfoliate and smooth; vitamin C brightens and protects; peptides and growth factors
+              CellDerma uses synergistic active ingredients at pharmaceutical concentrations: potent actives accelerate cell turnover
+              and boost collagen; exfoliating ingredients smooth and refine; brightening compounds illuminate; peptides and growth factors
               stimulate repair and renewal. These ingredients work together to penetrate the skin and address multiple concerns simultaneously.
             </motion.p>
             <motion.p className={styles.howPara} variants={fadeUp}>
               When applied consistently, these actives regulate cellular renewal, boost collagen and elastin production, reduce
-              pigmentation, strengthen the skin barrier, and improve overall skin health. Results develop progressively over weeks
-              and months as your skin adapts and strengthens, with optimal results typically visible at 8,12 weeks of consistent use.
+              pigmentation, strengthen the skin barrier, and improve overall skin health. Results develop progressively, with dramatic improvements
+              often visible within 2–6 weeks as your skin adapts and strengthens.
             </motion.p>
           </motion.div>
 
@@ -761,7 +761,7 @@ export default function AlumierMDPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.howCoversLabel} variants={fadeUp}>AlumierMD Addresses</motion.p>
+            <motion.p className={styles.howCoversLabel} variants={fadeUp}>CellDerma Addresses</motion.p>
             <motion.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
               {[
                 'Fine lines & wrinkles',
@@ -821,15 +821,15 @@ export default function AlumierMDPage() {
                     <polyline points="17 6 23 6 23 12"/>
                   </svg>
                 </span>
-                <h3 className={styles.resultsAfterCardTitle}>Progressive Results Timeline</h3>
+                <h3 className={styles.resultsAfterCardTitle}>Fast Results Timeline</h3>
               </div>
               <p className={styles.resultsAfterCardBody}>
                 Initial adjustment phase may include mild flaking or redness as skin acclimates.
-                Progressive improvement from week 4, with significant visible results by week 8.
+                Dramatic improvements often visible within 2–6 weeks.
               </p>
               <div className={styles.resultsAfterCardSpacer} />
               <p className={styles.resultsAfterCardNote}>
-                Full benefits typically achieved at 12 weeks. Consistent daily use essential for optimal results.
+                Optimal results achieved by 8–12 weeks. Consistent daily use essential for optimal results.
                 Results continue to improve with long-term use.
               </p>
             </motion.div>
@@ -880,8 +880,8 @@ export default function AlumierMDPage() {
                 {[
                   'Mandatory when using active ingredients',
                   'Use SPF 30+ daily, reapply as needed',
-                  'Recommended AlumierMD SPF products available',
                   'Avoid sun exposure during intense adjustment phase',
+                  'CellDerma sun care products recommended',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
                     <span className={styles.resultsAfterDot} aria-hidden="true" />
@@ -913,7 +913,7 @@ export default function AlumierMDPage() {
               Our Range
             </motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              AlumierMD Core Product Categories
+              CellDerma Core Product Categories
             </motion.h2>
             <motion.p className={styles.beforeAfterSubheading} variants={fadeUp}>
               A comprehensive range of professional skincare formulated to work synergistically for transformative results.
@@ -945,7 +945,7 @@ export default function AlumierMDPage() {
       {/* ════════════════════════════════════════
           12. CTA BANNER
       ════════════════════════════════════════ */}
-      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book AlumierMD consultation">
+      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book CellDerma consultation">
         {/* Watermark logo */}
         <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
           <Image
@@ -968,7 +968,7 @@ export default function AlumierMDPage() {
               Unlock Your Skin&apos;s<br />Full Potential.
             </motion.h2>
             <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
-              Let our clinical experts prescribe your personalised AlumierMD regimen!
+              Let our clinical experts prescribe your personalised CellDerma regimen!
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
@@ -998,7 +998,7 @@ export default function AlumierMDPage() {
               Skin Concerns We Address
             </motion.h2>
             <motion.p className={styles.conditionsIntro} variants={fadeUp}>
-              Our personalised AlumierMD prescriptions target a comprehensive range of skin issues with tailored active ingredients.
+              Our personalised CellDerma prescriptions target a comprehensive range of skin issues with tailored active ingredients.
             </motion.p>
           </motion.div>
 
@@ -1032,7 +1032,7 @@ export default function AlumierMDPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          14. BEST ALUMIERMD LEICESTER EXPERIENCE
+          14. BEST CELLDERMA LEICESTER EXPERIENCE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.clinicIntroSection}>
         <Container>
@@ -1046,12 +1046,12 @@ export default function AlumierMDPage() {
             <motion.div className={styles.clinicIntroLeft} variants={fadeUp}>
               <p className={styles.eyebrowDark}>Skincare Excellence</p>
               <h2 className={styles.combinedHeading}>
-                Best AlumierMD<br />Leicester Experience
+                Best CellDerma<br />Leicester Experience
               </h2>
             </motion.div>
             <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
               Experience premium medical-grade skincare at our clinic. Our clinical experts conduct thorough skin analysis,
-              prescribe personalised AlumierMD regimens, and provide ongoing professional support. We combine pharmaceutical-grade
+              prescribe personalised CellDerma regimens, and provide ongoing professional support. We combine award-winning
               formulations with expert guidance to transform your skin safely and effectively.
             </motion.p>
           </motion.div>
@@ -1061,7 +1061,7 @@ export default function AlumierMDPage() {
       {/* ════════════════════════════════════════
           15. COST BANNER
       ════════════════════════════════════════ */}
-      <section className={styles.costBanner} data-section-theme="dark" aria-label="AlumierMD cost">
+      <section className={styles.costBanner} data-section-theme="dark" aria-label="CellDerma cost">
         <Container>
           <motion.div
             className={styles.costBannerInner}
@@ -1071,7 +1071,7 @@ export default function AlumierMDPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
-              AlumierMD Skincare Pricing at The One Clinic
+              CellDerma Skincare Pricing at The One Clinic
             </motion.p>
             <motion.p className={styles.costBannerPrice} variants={fadeUp}>
               From £200
@@ -1102,7 +1102,7 @@ export default function AlumierMDPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Why Choose The One Clinic For AlumierMD
+              Why Choose The One Clinic For CellDerma
             </motion.h2>
           </motion.div>
 
