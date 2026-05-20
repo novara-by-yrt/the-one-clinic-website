@@ -412,16 +412,17 @@
     padding-top: 32px;
   }
 
-  /* Fixed height crops the empty space inside the iframe below the Sign Up button.
-     The iframe is 320px tall; form content ends ~290px in, so 290px container
-     shows everything without any blank tail. */
+  /* padding-top: 10px creates a buffer so the iframe starts below the rounded
+     corners — prevents the form's first field from being clipped by overflow:hidden.
+     height: 300px = 10px padding + 290px of visible iframe content. */
   .newsletterFormWrap {
     min-height: unset;
-    height: 290px;
+    height: 300px;
+    padding-top: 10px;
   }
 
   .inner {
-    padding-top: 36px;
+    padding-top: 24px;
   }
 
   .leftZone {
