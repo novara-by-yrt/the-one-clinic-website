@@ -60,7 +60,7 @@ export default function Footer() {
             {/* @ts-ignore — scrolling is a valid iframe attr but deprecated in HTML spec */}
             <iframe
               src="https://link.leadpipeline.ai/widget/form/dViZEitr7fnCtl8rKT3Q"
-              style={{ width: '100%', height: '280px', minHeight: '280px', border: 'none', borderRadius: '10px', display: 'block' }}
+              style={{ width: '100%', height: '320px', minHeight: '320px', border: 'none', borderRadius: '10px', display: 'block' }}
               id="inline-dViZEitr7fnCtl8rKT3Q"
               scrolling="no"
               data-layout="{'id':'INLINE'}"
@@ -71,7 +71,7 @@ export default function Footer() {
               data-deactivation-type="neverDeactivate"
               data-deactivation-value=""
               data-form-name="Newsletter Form"
-              data-height="280"
+              data-height="320"
               data-layout-iframe-id="inline-dViZEitr7fnCtl8rKT3Q"
               data-form-id="dViZEitr7fnCtl8rKT3Q"
               title="Newsletter Form"

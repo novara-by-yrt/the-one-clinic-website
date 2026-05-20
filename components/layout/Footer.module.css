@@ -121,7 +121,7 @@
 /* ── Newsletter form (right) ─────────────── */
 .newsletterFormWrap {
   width: 100%;
-  min-height: 280px;
+  min-height: 320px;
   border-radius: 10px;
   position: relative;
   z-index: 1;
@@ -425,7 +425,7 @@
   }
 
   .newsletterFormWrap {
-    min-height: 300px;
+    min-height: 340px;
   }
 
   .leftZone {
