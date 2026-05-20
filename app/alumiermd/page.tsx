@@ -103,7 +103,7 @@ export default function AlumierMDPage() {
       {/* ════════════════════════════════════════
           MISSION & VALUES
       ════════════════════════════════════════ */}
-      <Section variant="light">
+      <Section variant="light" className={styles.compact}>
         <Container>
           <motion.div
             className={styles.sectionHeader}
@@ -185,7 +185,7 @@ export default function AlumierMDPage() {
       {/* ════════════════════════════════════════
           BRAND JOURNEY
       ════════════════════════════════════════ */}
-      <Section variant="light">
+      <Section variant="light" className={styles.compact}>
         <Container>
           <motion.div
             className={styles.sectionHeader}
