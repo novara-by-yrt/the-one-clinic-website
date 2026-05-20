@@ -15,37 +15,37 @@ import 'swiper/css/effect-coverflow';
 
 const SLIDES_BASE = [
   {
-    src:   '/images/Endolift-Laser_1.jpg',
+    src:   '/images/Endolift1.png',
     title: 'Endolift',
     href:  '/treatments/endolift',
     desc:  'An innovative laser treatment that tightens and lifts loose skin using minimally invasive fibre technology , no surgery, no general anaesthetic, minimal downtime.',
   },
   {
-    src:   '/images/Minor Surgery.jpg',
+    src:   '/images/Minor Surgery1.jpg',
     title: 'Minor Surgery',
     href:  '/treatments/minor-surgery',
     desc:  'Minor surgical procedures performed safely in our clinic. From mole removal to lipoma excision, handled with precision and expert care.',
   },
   {
-    src:   '/images/LumeccaIPL1.png',
+    src:   '/images/Deep Laser Resurfacing 1.png',
     title: 'Deep Laser Resurfacing',
     href:  '/treatments/deep-laser-resurfacing',
     desc:  'Intensive laser treatment targeting deeper skin layers to reduce wrinkles, scarring, and uneven texture for dramatically renewed, smoother skin.',
   },
   {
-    src:   '/images/Excess Body Fat_Arm_Bra_Back_Thigh Fat.png',
+    src:   '/images/The Ultimate Body Confidence Package.png',
     title: 'Ultimate Body Confidence Package',
     href:  '/treatments/ultimate-body-confidence-package',
     desc:  'A comprehensive programme combining our leading body contouring and skin tightening treatments for transformative, full-body results.',
   },
   {
-    src:   '/images/Jowls_Sagging Skin.png',
+    src:   '/images/Morpheus8-new.png',
     title: 'Morpheus 8',
     href:  '/treatments/morpheus-8',
     desc:  'Advanced radiofrequency microneedling that remodels fat and stimulates collagen deep within the skin for tightened, lifted, and youthful-looking contours.',
   },
   {
-    src:   '/images/Profhilo (2).jpg',
+    src:   '/images/Juliane.jpg',
     title: 'JULÄINE',
     href:  '/treatments/julaine',
     desc:  'An exclusive regenerative treatment combining the finest aesthetic techniques to deliver exceptional, long-lasting rejuvenation, tailored entirely to you.',
