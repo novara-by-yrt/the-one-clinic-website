@@ -479,27 +479,6 @@ export default function Header() {
                     </AnimatePresence>
                   </div>
 
-                  {/* RIGHT , Featured preview panel */}
-                  <div className={styles.megaFeatured}>
-                    <Image
-                      src="/images/imgi_78_GTR_0328-1-1.jpg"
-                      alt=""
-                      fill
-                      className={styles.megaFeaturedImg}
-                      sizes="210px"
-                    />
-                    <div className={styles.megaFeaturedOverlay} aria-hidden="true" />
-                    <div className={styles.megaFeaturedContent}>
-                      <span className={styles.megaFeaturedChip}>Doctor-Led Care</span>
-                      <p className={styles.megaFeaturedTitle}>Advanced Medical &amp; Aesthetic Care</p>
-                      <button
-                        className={styles.megaFeaturedCta}
-                        onClick={() => { setOpenDropdown(null); window.dispatchEvent(new CustomEvent('openBookConsultationModal')); }}
-                      >
-                        Book a Consultation
-                      </button>
-                    </div>
-                  </div>
                 </div>
               </motion.div>
             )}

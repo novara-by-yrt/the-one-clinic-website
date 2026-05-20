@@ -116,18 +116,6 @@ export default function StickyCallbackCTA() {
                 exit={{ opacity: 0,    y: 20, scale: 0.97 }}
                 transition={{ duration: 0.48, ease: [0.22, 1, 0.36, 1] }}
               >
-                {/* Team image, desktop only */}
-                <div className={styles.modalImage} aria-hidden="true">
-                  <Image
-                    src="/images/imgi_78_GTR_0328-1-1.jpg"
-                    alt=""
-                    fill
-                    style={{ objectFit: 'cover', objectPosition: 'center top' }}
-                    sizes="380px"
-                    priority
-                  />
-                </div>
-
                 {/* Form side */}
                 <div className={styles.modalContent}>
                   {/* Header row */}

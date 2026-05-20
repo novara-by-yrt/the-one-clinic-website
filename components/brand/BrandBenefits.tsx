@@ -68,21 +68,6 @@ export default function BrandBenefits() {
           >
             <div className={styles.canvasWrap}>
 
-              {/* ── Clipped canvas: hero image only ───── */}
-              <div className={styles.canvas}>
-                <div className={styles.imgMain}>
-                  <Image
-                    src="/images/imgi_78_GTR_0328-1-1.jpg"
-                    alt="The One Clinic team"
-                    fill
-                    className={styles.img}
-                    sizes="(max-width: 900px) 100vw, 55vw"
-                    priority
-                  />
-                  <div className={styles.imgGrad} />
-                </div>
-              </div>
-
               {/* ── Secondary framed image (outside canvas , shadow preserved) ── */}
               <motion.div
                 className={styles.imgSecondary}
