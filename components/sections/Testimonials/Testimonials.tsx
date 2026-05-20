@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Script from 'next/script';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -173,7 +173,6 @@ const PATIENT_VIDEOS = [
 ];
 
 const PER_PAGE = 3;
-const READ_MORE_THRESHOLD = 150;
 
 /* ── Icons ──────────────────────────────────────────────────── */
 function GoogleG() {
@@ -212,26 +211,40 @@ const SLIDE = {
 };
 const TRANSITION = { duration: 0.42, ease: [0.25, 0.1, 0.25, 1] as const };
 
-/* ── Helper: Review content with read more ──────────────────── */
-function ReviewContent({ review, name, expanded, onToggle }: { review: string; name: string; expanded: Record<string, boolean>; onToggle: (name: string) => void }) {
-  const isExpanded = expanded[name];
-  const shouldTruncate = review.length > READ_MORE_THRESHOLD;
+/* ── Review card body: shows 4 lines, Read more only when actually clamped ── */
+function ReviewCard({ review, isExpanded, onToggle }: {
+  review: string;
+  isExpanded: boolean;
+  onToggle: () => void;
+}) {
+  const textRef = useRef<HTMLParagraphElement>(null);
+  const [showToggle, setShowToggle] = useState(false);
 
-  if (!shouldTruncate) {
-    return <p className={styles.reviewText}>{review}</p>;
-  }
+  useEffect(() => {
+    const el = textRef.current;
+    if (!el) return;
+    // Compare full scroll height against 4-line threshold.
+    // scrollHeight is always the natural (unclamped) height, so this works
+    // correctly whether the text is currently expanded or collapsed.
+    const lh = parseFloat(getComputedStyle(el).lineHeight);
+    if (isFinite(lh) && lh > 0) {
+      setShowToggle(el.scrollHeight > Math.ceil(lh * 4) + 2);
+    }
+  }, [review]);
 
   return (
     <>
-      <p className={`${styles.reviewText} ${isExpanded ? styles.reviewTextExpanded : ''}`}>
+      <p
+        ref={textRef}
+        className={`${styles.reviewText} ${isExpanded ? styles.reviewTextExpanded : ''}`}
+      >
         {review}
       </p>
-      <button
-        className={styles.readMoreBtn}
-        onClick={() => onToggle(name)}
-      >
-        {isExpanded ? 'Show less' : 'Read more'}
-      </button>
+      {showToggle && (
+        <button className={styles.readMoreBtn} onClick={onToggle}>
+          {isExpanded ? 'Show less' : 'Read more'}
+        </button>
+      )}
     </>
   );
 }
@@ -364,7 +377,7 @@ export default function Testimonials({
           viewport={VIEWPORT}
         >
           <button
-            className={styles.arrowBtn}
+            className={`${styles.arrowBtn} ${styles.arrowDesktop}`}
             onClick={() => goTo((page - 1 + totalPages) % totalPages, -1)}
             aria-label="Previous reviews"
           >
@@ -396,7 +409,11 @@ export default function Testimonials({
                     <div className={styles.starsRow} aria-label="5 out of 5 stars">
                       {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
                     </div>
-                    <ReviewContent review={r.review} name={r.name} expanded={expanded} onToggle={toggleExpand} />
+                    <ReviewCard
+                      review={r.review}
+                      isExpanded={!!expanded[r.name]}
+                      onToggle={() => toggleExpand(r.name)}
+                    />
                     <div className={styles.cardFooter}>
                       <div className={styles.avatar} style={{ background: r.avatarBg }} aria-hidden="true">
                         {r.initial}
@@ -414,7 +431,7 @@ export default function Testimonials({
           </div>
 
           <button
-            className={styles.arrowBtn}
+            className={`${styles.arrowBtn} ${styles.arrowDesktop}`}
             onClick={() => goTo((page + 1) % totalPages, 1)}
             aria-label="Next reviews"
           >
@@ -424,6 +441,30 @@ export default function Testimonials({
             </svg>
           </button>
         </motion.div>
+
+        {/* ── Mobile: arrows side-by-side below card ────── */}
+        <div className={styles.mobileNav} aria-label="Review navigation">
+          <button
+            className={styles.arrowBtn}
+            onClick={() => goTo((page - 1 + totalPages) % totalPages, -1)}
+            aria-label="Previous reviews"
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M11 4L6 9L11 14" stroke="currentColor" strokeWidth="2"
+                strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+          <button
+            className={styles.arrowBtn}
+            onClick={() => goTo((page + 1) % totalPages, 1)}
+            aria-label="Next reviews"
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M7 4L12 9L7 14" stroke="currentColor" strokeWidth="2"
+                strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+        </div>
 
         {/* ── Pagination dots ───────────────────────────── */}
         <div className={styles.dots} role="tablist" aria-label="Review pages">
