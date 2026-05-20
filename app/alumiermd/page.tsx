@@ -56,10 +56,11 @@ const EXPERTISE_STATS = [
 ];
 
 const CATEGORIES = [
-  { label: 'Cleansers',          src: '/images/alumiermd-cat-cleansers.jpg' },
-  { label: 'Serums',             src: '/images/alumiermd-cat-serums.jpg' },
-  { label: 'Moisturisers',       src: '/images/alumiermd-cat-moisturisers.jpg' },
-  { label: 'Eye Creams & SPF',   src: '/images/alumiermd-cat-eye-creams.jpg' },
+  { label: 'Cleansers',           src: '/images/Category_Cleansers.png' },
+  { label: 'Facial Exfoliants',   src: '/images/Category_Exfoliants.png' },
+  { label: 'Serums',              src: '/images/Category_Serums.png' },
+  { label: 'Moisturisers',        src: '/images/Category_Moisturizers.png' },
+  { label: 'Eye Creams & Serums', src: '/images/Category_Eye_Creams&Serums.png' },
 ];
 
 export default function AlumierMDPage() {
@@ -199,7 +200,7 @@ export default function AlumierMDPage() {
                     alt={cat.label}
                     fill
                     className={styles.categoryImage}
-                    sizes="(max-width: 640px) 50vw, 25vw"
+                    sizes="(max-width: 640px) 50vw, 20vw"
                   />
                 </div>
                 <span className={styles.categoryLabel}>{cat.label}</span>

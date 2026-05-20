@@ -102,7 +102,7 @@ export default function CellDermaPage() {
             <div className={styles.heroRight}>
               <motion.div className={styles.heroImageWrap} variants={fadeUp}>
                 <Image
-                  src="/images/cellderma-hero.jpg"
+                  src="/images/Cellderma 1.jpg"
                   alt="CellDerma skincare products"
                   fill
                   className={styles.heroImage}
@@ -212,6 +212,16 @@ export default function CellDermaPage() {
             </motion.div>
 
             <motion.div className={styles.journeyHighlight} variants={fadeUp}>
+              <div className={styles.journeyImageWrap}>
+                <Image
+                  src="/images/CellDerma 2.jpg"
+                  alt="CellDerma science-driven skincare"
+                  fill
+                  className={styles.journeyImage}
+                  sizes="(max-width: 768px) 100vw, 45vw"
+                />
+              </div>
+
               <div className={styles.highlightBox}>
                 <p className={styles.highlightText}>
                   <strong>"This range is too good to only sell in our Perfect Skin Solutions clinic…
