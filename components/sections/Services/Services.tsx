@@ -49,7 +49,7 @@ const TREATMENTS: Treatment[] = [
     category: 'Health & Wellbeing',
     desc: 'Skilled minor surgical procedures performed safely in our clinical setting.',
     href: '/treatments/minor-surgery',
-    image: '/images/Minor Surgery.jpg',
+    image: '/images/Minor Surgery1.jpg',
     bg: 'linear-gradient(160deg,#17100d 0%,#2e1c16 100%)',
   },
   {
@@ -144,7 +144,7 @@ const TREATMENTS: Treatment[] = [
     category: 'Medical Aesthetics',
     desc: 'Combine microneedling with radiofrequency energy to tighten skin and remodel deep collagen.',
     href: '/treatments/morpheus8',
-    image: '/images/service-morpheus8.jpg',
+    image: '/images/Morpheus8-new.png',
     bg: 'linear-gradient(160deg,#17100d 0%,#2e1c16 100%)',
   },
   {
@@ -189,7 +189,7 @@ const TREATMENTS: Treatment[] = [
     category: 'Medical Aesthetics',
     desc: 'A curated combination of body treatments for comprehensive contouring and confidence.',
     href: '/treatments/body-confidence',
-    image: '/images/service-fat-freezing.jpg',
+    image: '/images/The Ultimate Body Confidence Package.png',
     bg: 'linear-gradient(160deg,#0d1117 0%,#131c2a 100%)',
   },
   {
@@ -197,7 +197,7 @@ const TREATMENTS: Treatment[] = [
     category: 'Medical Aesthetics',
     desc: 'Minimally invasive laser lifting for face, neck and body, no surgery required.',
     href: '/treatments/endolift',
-    image: '/images/Endolift-Laser_1.jpg',
+    image: '/images/Endolift1.png',
     bg: 'linear-gradient(160deg,#100d17 0%,#1e1633 100%)',
   },
   {
@@ -213,7 +213,7 @@ const TREATMENTS: Treatment[] = [
     category: 'Medical Aesthetics',
     desc: 'An exclusive regenerative treatment combining the finest aesthetic techniques to deliver exceptional, long-lasting rejuvenation, tailored entirely to you.',
     href: '/treatments/julaine',
-    image: '/images/Profhilo (2).jpg',
+    image: '/images/Juliane.jpg',
     bg: 'linear-gradient(160deg,#0d1520 0%,#142038 100%)',
   },
   {
@@ -313,7 +313,7 @@ const TREATMENTS: Treatment[] = [
     category: 'Medical Aesthetics',
     desc: 'Advanced laser to dramatically improve skin texture, scars and pigmentation.',
     href: '/treatments/laser-resurfacing',
-    image: '/images/service-laser-hair-removal.jpg',
+    image: '/images/Deep Laser Resurfacing 1.png',
     bg: 'linear-gradient(160deg,#171510 0%,#2a2316 100%)',
   },
   {
