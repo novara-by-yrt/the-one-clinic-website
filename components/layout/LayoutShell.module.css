@@ -3,6 +3,13 @@
   position: relative;
   z-index: 2;
   /* No padding-bottom here — the spacer below handles the scroll height */
+
+  /* Curved bottom corners — content visually rounds into the footer below.
+     overflow: clip clips children to the radius without creating a scroll
+     container, so position: sticky inside child pages keeps working. */
+  border-bottom-left-radius: 32px;
+  border-bottom-right-radius: 32px;
+  overflow: clip;
 }
 
 /* Transparent spacer that creates scroll room for the fixed footer.
