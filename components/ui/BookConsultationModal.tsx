@@ -75,24 +75,26 @@ export default function BookConsultationModal() {
                   </div>
 
                   <div className={styles.modalForm}>
-                    <iframe
-                      src="https://link.leadpipeline.ai/widget/form/Az3D8kxDVBz2diDQJ3uY"
-                      style={{ width: '100%', minHeight: '380px', border: 'none', borderRadius: '12px', display: 'block' }}
-                      id="popup-book-Az3D8kxDVBz2diDQJ3uY"
-                      data-layout="{'id':'INLINE'}"
-                      data-trigger-type="alwaysShow"
-                      data-trigger-value=""
-                      data-activation-type="alwaysActivated"
-                      data-activation-value=""
-                      data-deactivation-type="neverDeactivate"
-                      data-deactivation-value=""
-                      data-form-name="Book Consultation"
-                      data-height="420"
-                      data-layout-iframe-id="popup-book-Az3D8kxDVBz2diDQJ3uY"
-                      data-form-id="Az3D8kxDVBz2diDQJ3uY"
-                      title="Book a Consultation"
-                      scrolling="no"
-                    />
+                    <div className={styles.iframeCrop}>
+                      <iframe
+                        src="https://link.leadpipeline.ai/widget/form/Az3D8kxDVBz2diDQJ3uY"
+                        style={{ width: '100%', height: '800px', minHeight: '800px', border: 'none', display: 'block' }}
+                        id="popup-book-Az3D8kxDVBz2diDQJ3uY"
+                        data-layout="{'id':'INLINE'}"
+                        data-trigger-type="alwaysShow"
+                        data-trigger-value=""
+                        data-activation-type="alwaysActivated"
+                        data-activation-value=""
+                        data-deactivation-type="neverDeactivate"
+                        data-deactivation-value=""
+                        data-form-name="Book Consultation"
+                        data-height="420"
+                        data-layout-iframe-id="popup-book-Az3D8kxDVBz2diDQJ3uY"
+                        data-form-id="Az3D8kxDVBz2diDQJ3uY"
+                        title="Book a Consultation"
+                        scrolling="no"
+                      />
+                    </div>
                   </div>
                 </div>
               </motion.div>

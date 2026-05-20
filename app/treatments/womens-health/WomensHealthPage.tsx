@@ -429,8 +429,8 @@ export default function WomensHealthPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Women's Health.jpg"
-                alt="Women's health consultation at The One Clinic Leicester"
+                src="/images/Lumecca IPL Laser 2.png"
+                alt="IPL laser treatment at The One Clinic Leicester"
                 fill
                 priority
                 className={styles.heroImage}
