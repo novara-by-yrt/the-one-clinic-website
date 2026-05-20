@@ -219,17 +219,32 @@ function ReviewCard({ review, isExpanded, onToggle }: {
 }) {
   const textRef = useRef<HTMLParagraphElement>(null);
   const [showToggle, setShowToggle] = useState(false);
+  const isExpandedRef = useRef(isExpanded);
+  isExpandedRef.current = isExpanded;
 
   useEffect(() => {
     const el = textRef.current;
     if (!el) return;
-    // Compare full scroll height against 4-line threshold.
-    // scrollHeight is always the natural (unclamped) height, so this works
-    // correctly whether the text is currently expanded or collapsed.
-    const lh = parseFloat(getComputedStyle(el).lineHeight);
-    if (isFinite(lh) && lh > 0) {
-      setShowToggle(el.scrollHeight > Math.ceil(lh * 4) + 2);
+    const node = el; // narrowed non-null reference for use inside callbacks
+    let cancelled = false;
+
+    function measure() {
+      if (cancelled || isExpandedRef.current) return;
+      // scrollHeight > clientHeight means the clamp is actually cutting text off
+      setShowToggle(node.scrollHeight > node.clientHeight + 1);
     }
+
+    // Wait for fonts before the first measurement so fallback-font metrics
+    // don't produce a false positive on short reviews
+    document.fonts.ready.then(measure);
+
+    // Re-measure on resize (viewport change, orientation, etc.)
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => {
+      cancelled = true;
+      ro.disconnect();
+    };
   }, [review]);
 
   return (
