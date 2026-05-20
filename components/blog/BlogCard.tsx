@@ -32,7 +32,6 @@ export default function BlogCard({ post, variant = 'default' }: BlogCardProps) {
           className={styles.image}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
-        <span className={styles.categoryBadge}>{post.category}</span>
       </div>
 
       {/* Content */}
