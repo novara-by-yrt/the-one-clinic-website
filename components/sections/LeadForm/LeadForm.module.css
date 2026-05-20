@@ -317,8 +317,23 @@
 }
 
 @media (max-width: 580px) {
+  .section {
+    padding-block: 40px 52px;
+  }
+
+  .formCard {
+    padding: 16px 14px 12px;
+    border-radius: 16px;
+  }
+
   .formWrap {
-    height: 360px;
+    height: 310px;
+    border-radius: 10px;
+  }
+
+  .heading {
+    font-size: 1.625rem;
+    margin-bottom: 14px;
   }
 
   .contactGrid {
@@ -329,6 +344,30 @@
   .contactItem {
     padding: 12px;
     gap: 5px;
+  }
+
+  /* Social card: show icons only in a horizontal row */
+  .socialCard {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+  }
+
+  .socialLinks {
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .socialLink {
+    padding: 4px;
+    margin-inline: 0;
+    border-radius: 50%;
+  }
+
+  .socialMeta {
+    display: none;
   }
 
   .mapWrap {
