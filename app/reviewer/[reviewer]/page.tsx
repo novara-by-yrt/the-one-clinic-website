@@ -106,16 +106,9 @@ export default async function ReviewerPage({ params, searchParams }: ReviewerPag
               <h1 className={styles.name}>{reviewer.name}</h1>
               <p className={styles.titleText}>{reviewer.title}</p>
 
-              <div className={styles.infoGrid}>
-                <div className={styles.infoBlock}>
-                  <h3 className={styles.infoLabel}>Expertise</h3>
-                  <p className={styles.infoValue}>{reviewer.expertise}</p>
-                </div>
-                <div className={styles.infoBlock}>
-                  <h3 className={styles.infoLabel}>Experience</h3>
-                  <p className={styles.infoValue}>{reviewer.experience}</p>
-                </div>
-              </div>
+              <p className={styles.heroDescription}>
+                {reviewer.expertise} {reviewer.experience}
+              </p>
 
               <Link href={`/team/${reviewer.teamSlug}`} className={styles.profileBtn}>
                 View Full Team Profile
