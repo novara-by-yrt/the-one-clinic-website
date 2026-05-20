@@ -266,19 +266,17 @@ export default function Testimonials({
 
   const totalPages = filterCategory ? 1 : Math.ceil(pool.length / PER_PAGE);
 
-  /* Ensure last slide always shows PER_PAGE cards by adjusting visible range */
+  /* Ensure every slide shows PER_PAGE cards by shifting the last slice back when needed */
   let visible = pool;
   if (!filterCategory) {
-    const isLastPage = page === totalPages - 1;
     const pageStart = page * PER_PAGE;
-    const pageEnd = pageStart + PER_PAGE;
+    const remaining = pool.length - pageStart;
 
-    if (isLastPage && pageEnd - pageStart < PER_PAGE && pageStart > 0) {
-      /* Last page with fewer than PER_PAGE reviews: show the last PER_PAGE reviews */
-      visible = pool.slice(Math.max(0, pool.length - PER_PAGE), pool.length);
+    if (remaining < PER_PAGE && pool.length >= PER_PAGE) {
+      /* Last page has fewer than PER_PAGE reviews — show the final PER_PAGE reviews */
+      visible = pool.slice(pool.length - PER_PAGE, pool.length);
     } else {
-      /* Normal pagination */
-      visible = pool.slice(pageStart, pageEnd);
+      visible = pool.slice(pageStart, pageStart + PER_PAGE);
     }
   }
 
