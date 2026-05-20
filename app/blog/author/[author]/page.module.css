@@ -17,10 +17,17 @@
   pointer-events: none;
 }
 
-.heroContent {
+.heroInner {
   position: relative;
   z-index: 1;
-  max-width: 800px;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 4rem;
+  align-items: center;
+}
+
+.heroContent {
+  max-width: 600px;
 }
 
 .heroEyebrow {
@@ -82,6 +89,20 @@
   margin: 0;
   padding-top: 1.25rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ── Photo ────────────────────────────────────────────────── */
+.photoWrap {
+  position: relative;
+  height: 440px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.photo {
+  object-fit: cover;
+  object-position: center top;
 }
 
 /* ── Posts grid ───────────────────────────────────────────── */
@@ -154,9 +175,30 @@
 }
 
 /* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .heroInner {
+    grid-template-columns: 1fr 280px;
+    gap: 2.5rem;
+  }
+
+  .photoWrap {
+    height: 380px;
+  }
+}
+
 @media (max-width: 768px) {
   .hero {
     padding: 4rem var(--container-padding) 3rem;
+  }
+
+  .heroInner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .photoWrap {
+    height: 360px;
+    order: -1;
   }
 
   .heroTitle {
@@ -174,7 +216,15 @@
 }
 
 @media (max-width: 480px) {
+  .hero {
+    padding: 3.5rem var(--container-padding) 2.5rem;
+  }
+
   .heroTitle {
-    font-size: 1.625rem;
+    font-size: 1.5rem;
+  }
+
+  .photoWrap {
+    height: 300px;
   }
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
 import BlogCard from '@/components/blog/BlogCard';
@@ -12,11 +13,12 @@ interface AuthorPageProps {
   searchParams: Promise<{ page?: string }>;
 }
 
-const AUTHOR_BIOS: Record<string, { name: string; role: string; bio: string }> = {
+const AUTHOR_BIOS: Record<string, { name: string; role: string; bio: string; photo?: string }> = {
   'emily-carter': {
     name: 'Emily Carter',
     role: 'Aesthetic Content Writer',
     bio: 'Emily is a UK-based medical writer with a deep understanding of aesthetic care and holistic well-being. She writes informative and engaging content that helps readers make confident choices about their health and aesthetic choices. Emily\'s approachable writing style makes complex medical and aesthetic topics easy to understand, inspiring readers to look and feel their best.',
+    photo: '/images/Emily Carter.jpg',
   },
 };
 
@@ -72,28 +74,45 @@ export default async function AuthorPage({ params, searchParams }: AuthorPagePro
       <section className={styles.hero} data-section-theme="dark" aria-label="Author page">
         <div className={styles.heroGrid} aria-hidden="true" />
         <Container>
-          <div className={styles.heroContent}>
-            <Breadcrumb
-              theme="dark"
-              items={[
-                { label: 'Blog', href: '/blog' },
-                { label: authorName },
-              ]}
-            />
+          <div className={styles.heroInner}>
+            {/* Text side */}
+            <div className={styles.heroContent}>
+              <Breadcrumb
+                theme="dark"
+                items={[
+                  { label: 'Blog', href: '/blog' },
+                  { label: authorName },
+                ]}
+              />
 
-            <p className={styles.heroEyebrow}>Author</p>
-            <h1 className={styles.heroTitle}>{authorName}</h1>
+              <p className={styles.heroEyebrow}>Author</p>
+              <h1 className={styles.heroTitle}>{authorName}</h1>
 
-            {bio && (
-              <div className={styles.authorMeta}>
-                <span className={styles.authorRole}>{bio.role}</span>
-                <p className={styles.authorBio}>{bio.bio}</p>
+              {bio && (
+                <div className={styles.authorMeta}>
+                  <span className={styles.authorRole}>{bio.role}</span>
+                  <p className={styles.authorBio}>{bio.bio}</p>
+                </div>
+              )}
+
+              <p className={styles.articleCount}>
+                {authorPosts.length} {authorPosts.length === 1 ? 'article' : 'articles'} published
+              </p>
+            </div>
+
+            {/* Photo side */}
+            {bio?.photo && (
+              <div className={styles.photoWrap}>
+                <Image
+                  src={bio.photo}
+                  alt={authorName}
+                  fill
+                  className={styles.photo}
+                  sizes="(max-width: 768px) 100vw, 340px"
+                  priority
+                />
               </div>
             )}
-
-            <p className={styles.articleCount}>
-              {authorPosts.length} {authorPosts.length === 1 ? 'article' : 'articles'} published
-            </p>
           </div>
         </Container>
       </section>
