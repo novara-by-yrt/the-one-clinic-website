@@ -95,12 +95,6 @@ export function generateBreadcrumbSchema(
       {
         '@type': 'ListItem',
         position: 3,
-        name: post.category,
-        item: `${siteUrl}/blog/category/${encodeURIComponent(post.category.toLowerCase().replace(/\s+/g, '-'))}`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 4,
         name: post.title,
         item: `${siteUrl}/blog/${post.slug}`,
       },

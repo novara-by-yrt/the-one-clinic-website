@@ -141,7 +141,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 theme="dark"
                 items={[
                   { label: 'Blog', href: '/blog' },
-                  { label: post.category, href: `/blog?category=${encodeURIComponent(post.category)}` },
                   { label: post.title },
                 ]}
               />
