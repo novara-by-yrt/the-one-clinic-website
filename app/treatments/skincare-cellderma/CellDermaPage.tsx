@@ -463,7 +463,7 @@ export default function CellDermaPage() {
             {/* Right: image panel */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/CellDerma 1.jpg"
+                src="/images/Cellderma 1.jpg"
                 alt="CellDerma skincare consultation at The One Clinic"
                 fill
                 className={styles.whatIsVideoFrame}
