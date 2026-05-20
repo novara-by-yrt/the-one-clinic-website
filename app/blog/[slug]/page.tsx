@@ -10,6 +10,7 @@ import { SITE_URL } from '@/lib/schema/clinic';
 import BlogCard from '@/components/blog/BlogCard';
 import DoctorCTA1 from '@/components/blog/DoctorCTA1';
 import DoctorCTA2 from '@/components/blog/DoctorCTA2';
+import DoctorCTA3 from '@/components/blog/DoctorCTA3';
 import SocialShare from '@/components/blog/SocialShare';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -91,6 +92,19 @@ function splitContentForCTA(html: string): { before: string; after: string } {
   };
 }
 
+function splitContentBeforeFAQ(html: string): { before: string; after: string } {
+  const faqMatch = html.match(/<h2[^>]*>FAQs?<\/h2>/i);
+
+  if (!faqMatch || !faqMatch.index) {
+    return { before: html, after: '' };
+  }
+
+  return {
+    before: html.substring(0, faqMatch.index),
+    after: html.substring(faqMatch.index),
+  };
+}
+
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const resolvedParams = await params;
   const post = await getPostBySlug(resolvedParams.slug);
@@ -118,6 +132,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     : null;
 
   const { before: contentBefore, after: contentAfter } = splitContentForCTA(post.content);
+  const { before: contentBeforeFAQ, after: contentFAQ } = splitContentBeforeFAQ(contentAfter);
 
   return (
     <>
@@ -210,7 +225,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </div>
               )}
 
-              {/* Post content - split with CTA in middle */}
+              {/* Post content - split with CTAs */}
               <div className={styles.mdxContent}>
                 {/* Content before first heading */}
                 <div dangerouslySetInnerHTML={{ __html: contentBefore }} />
@@ -220,8 +235,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   <DoctorCTA1 />
                 </div>
 
-                {/* Content from first heading onwards */}
-                {contentAfter && <div dangerouslySetInnerHTML={{ __html: contentAfter }} />}
+                {/* Content before FAQ */}
+                {contentBeforeFAQ && <div dangerouslySetInnerHTML={{ __html: contentBeforeFAQ }} />}
+
+                {/* CTA Section - before FAQ */}
+                {contentFAQ && (
+                  <div className={styles.ctaSection}>
+                    <DoctorCTA3 />
+                  </div>
+                )}
+
+                {/* FAQ section */}
+                {contentFAQ && <div dangerouslySetInnerHTML={{ __html: contentFAQ }} />}
               </div>
 
               {/* Tags */}
