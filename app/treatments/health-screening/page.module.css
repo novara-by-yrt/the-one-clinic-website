@@ -1044,8 +1044,8 @@
   object-fit: cover;
 }
 
-/* Wistia video embed , square ratio matching original image slot */
-.whatIsVideoWrap {
+/* Health screening image */
+.whatIsImageWrap {
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -1054,13 +1054,7 @@
   background: #000;
 }
 
-.whatIsVideoFrame {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
+.whatIsImage {
   object-fit: cover;
   object-position: center;
 }
@@ -2343,7 +2337,6 @@
   /* What is Endolift: stack on mobile */
   .whatIsGrid { grid-template-columns: 1fr; gap: var(--space-5); }
   .whatIsImageWrap { aspect-ratio: 4 / 3; }
-  .whatIsVideoWrap { aspect-ratio: 4 / 3; }
 
   /* Standalone At a Glance: 2-col on mobile */
   .glanceStandaloneGrid { grid-template-columns: repeat(2, 1fr); }
