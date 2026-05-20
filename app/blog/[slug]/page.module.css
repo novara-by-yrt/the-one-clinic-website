@@ -273,8 +273,9 @@
 .sidebarForm {
   background: #f5f5f5;
   color: #1a1a1a;
-  padding: 1.5rem;
+  padding: 1.25rem 0.875rem 0.5rem;
   border-radius: 0.75rem;
+  border: 1.5px solid #2e2e2e;
 }
 
 .formTitle {
@@ -323,7 +324,7 @@
   }
 
   .sidebarForm {
-    padding: 1.5rem;
+    padding: 1.25rem 0.875rem 0.5rem;
   }
 
   .formTitle {
@@ -355,7 +356,7 @@
   }
 
   .sidebarForm {
-    padding: 1rem;
+    padding: 1rem 0.75rem 0.25rem;
   }
 
   .formSection {
