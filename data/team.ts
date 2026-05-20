@@ -52,7 +52,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Dr Gunjan Bedi',
     credentials: 'MBBS, MRCpsych, MRCGP, BCAM',
     initials: 'GB',
-    image: '/images/imgi_21_team-thumb-BEDI.jpg',
+    image: '/images/Dr-Gunjan-updated.png',
     role: 'General Practitioner & Psychiatrist',
     profileUrl: '/team/dr-gunjan-bedi',
     stats: [
@@ -71,7 +71,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Mr Thangasamy Sankar',
     credentials: 'FRCS',
     initials: 'TS',
-    image: '/images/Mr. Thangasamy Sankar.jpg',
+    image: '/images/Dr-Sankar-updated.png',
     role: 'Consultant Plastic Surgeon & Laser Specialist',
     stats: [
       { value: 'FRCS', label: 'Fellowship Qualified' },
@@ -264,7 +264,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Chloe',
     credentials: '',
     initials: 'C',
-    image: '/images/Chloe.jpg',
+    image: '/images/Chloe-updated.png',
     role: 'Patient Care Team',
     stats: [
       { value: 'Care', label: 'Patient Experience' },
@@ -282,7 +282,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Hollie',
     credentials: '',
     initials: 'H',
-    image: '/images/Hollie.jpg',
+    image: '/images/Hollie-updated.png',
     role: 'Patient Care Team',
     stats: [
       { value: 'Care', label: 'Patient Experience' },
@@ -300,7 +300,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Charley',
     credentials: '',
     initials: 'CH',
-    image: '/images/Charley.png',
+    image: '/images/Charley-updated.png',
     role: 'Patient Care Team',
     stats: [
       { value: 'Care', label: 'Patient Experience' },
