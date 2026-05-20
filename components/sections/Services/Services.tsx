@@ -325,7 +325,7 @@ const TREATMENTS: Treatment[] = [
     title: 'Non Surgical Blepharoplasty',
     category: 'Medical Aesthetics',
     desc: 'Lift and rejuvenate the eyelid area without surgery using advanced techniques.',
-    href: '/treatments/blepharoplasty',
+    href: '/treatments/non-surgical-blepharoplasty-leicester',
     bg: 'linear-gradient(160deg,#0d1020 0%,#141830 100%)',
   },
 ];
