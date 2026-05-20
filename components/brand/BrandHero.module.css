@@ -423,6 +423,12 @@
 
 /* Mobile */
 @media (max-width: 640px) {
+  /* Reduce from 100svh so the Recognised & Certified carousel peeks below
+     the fold, giving users a visual cue to scroll */
+  .hero {
+    min-height: 88svh;
+  }
+
   .contentWrapper {
     padding-top: clamp(44px, 7svh, 56px);
     padding-bottom: clamp(6px, 1.5svh, 16px);
