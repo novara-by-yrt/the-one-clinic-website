@@ -346,17 +346,17 @@
     gap: 5px;
   }
 
-  /* Social card: show icons only in a horizontal row */
+  /* Social card: label on top, icons in a row below */
   .socialCard {
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
     padding: 10px 12px;
   }
 
   .socialLinks {
     flex-direction: row;
-    gap: 8px;
+    gap: 10px;
     align-items: center;
   }
 
@@ -364,6 +364,11 @@
     padding: 4px;
     margin-inline: 0;
     border-radius: 50%;
+  }
+
+  .socialIcon {
+    width: 34px;
+    height: 34px;
   }
 
   .socialMeta {

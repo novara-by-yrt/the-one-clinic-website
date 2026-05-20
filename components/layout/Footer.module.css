@@ -409,16 +409,24 @@
 /* Mobile */
 @media (max-width: 580px) {
   .newsletterBand {
-    padding-top: 48px;
+    padding-top: 32px;
   }
 
+  /* Fixed height crops the empty space inside the iframe below the Sign Up button.
+     The iframe is 320px tall; form content ends ~290px in, so 290px container
+     shows everything without any blank tail. */
   .newsletterFormWrap {
-    min-height: 340px;
+    min-height: unset;
+    height: 290px;
+  }
+
+  .inner {
+    padding-top: 36px;
   }
 
   .leftZone {
     flex-direction: column;
-    gap: var(--space-5);
+    gap: var(--space-4);
     width: 100%;
   }
 
@@ -430,14 +438,14 @@
 
   .footerNav {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 14px;
   }
 
   .rightZone {
     order: 3;
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--space-3);
+    gap: var(--space-2);
     width: 100%;
   }
 
