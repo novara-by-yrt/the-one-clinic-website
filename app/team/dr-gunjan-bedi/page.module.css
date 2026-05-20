@@ -4,7 +4,7 @@
 .hero {
   background: var(--color-bg-dark);
   padding-top: calc(64px + var(--space-8));
-  padding-bottom: var(--space-9);
+  padding-bottom: var(--space-6);
 }
 
 .heroGrid {
@@ -155,21 +155,21 @@
 .statsSection {
   background: var(--color-bg-dark);
   border-top: 1px solid rgb(255 255 255 / 0.06);
-  padding-block: clamp(var(--space-3), 2vw, var(--space-5));
+  padding-block: clamp(var(--space-2), 1.5vw, var(--space-4));
 }
 
 .statsRow {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(var(--space-1), 1.5vw, var(--space-3));
+  gap: clamp(var(--space-1), 1vw, var(--space-2));
 }
 
 .stat {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  padding: clamp(var(--space-2), 2vw, var(--space-4)) clamp(var(--space-2), 2vw, var(--space-3));
+  gap: 4px;
+  padding: clamp(var(--space-2), 1.5vw, var(--space-3)) clamp(var(--space-2), 1.5vw, var(--space-3));
   border: 1px solid rgb(255 255 255 / 0.08);
   border-radius: var(--radius-lg);
   background: rgb(255 255 255 / 0.02);
@@ -185,7 +185,7 @@
 }
 
 .statValue {
-  font-size: clamp(1.375rem, 2.5vw, 2.25rem);
+  font-size: clamp(1.125rem, 2vw, 1.875rem);
   font-weight: var(--fw-bold);
   letter-spacing: -0.04em;
   color: var(--color-white);
@@ -193,10 +193,11 @@
 }
 
 .statLabel {
-  font-size: clamp(0.75rem, 1.2vw, 0.875rem);
+  font-size: clamp(0.7rem, 1vw, 0.8125rem);
   font-weight: var(--fw-medium);
   color: rgb(255 255 255 / 0.45);
   letter-spacing: 0.03em;
+  line-height: 1.2;
 }
 
 /* ═══════════════════════════════════════════
@@ -418,7 +419,7 @@
 @media (max-width: 480px) {
   .hero {
     padding-top: calc(64px + var(--space-6));
-    padding-bottom: var(--space-7);
+    padding-bottom: var(--space-4);
   }
 
   .heroPhoto {
@@ -441,25 +442,26 @@
   }
 
   .statsSection {
-    padding-block: var(--space-3);
+    padding-block: var(--space-2);
+    border-top: none;
   }
 
   .statsRow {
     grid-template-columns: 1fr;
     max-width: 100%;
-    gap: var(--space-2);
+    gap: 8px;
   }
 
   .stat {
-    padding: var(--space-2) var(--space-3);
-    gap: 4px;
+    padding: 10px 14px;
+    gap: 2px;
   }
 
   .statValue {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
   }
 
   .statLabel {
-    font-size: 0.7rem;
+    font-size: 0.6875rem;
   }
 }
