@@ -209,7 +209,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 28px 28px 16px;
+  padding: 20px 20px 12px;
   gap: 12px;
 }
 
@@ -272,7 +272,7 @@
 
 /* ── Form area ────────────────────────────────────────────── */
 .modalForm {
-  padding: 0 28px 28px;
+  padding: 0 20px 20px;
   flex: 1;
 }
 
@@ -319,7 +319,7 @@
   }
 
   .modalTop {
-    padding: 20px 20px 12px;
+    padding: 16px 16px 10px;
     gap: 10px;
   }
 
@@ -333,6 +333,6 @@
   }
 
   .modalForm {
-    padding: 0 20px 20px;
+    padding: 0 16px 16px;
   }
 }

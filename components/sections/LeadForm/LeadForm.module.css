@@ -28,7 +28,7 @@
 .formCard {
   background: #ffffff;
   border-radius: 20px;
-  padding: clamp(24px, 3.5vw, 40px);
+  padding: clamp(16px, 2.5vw, 28px);
   display: flex;
   flex-direction: column;
   flex: 1;
