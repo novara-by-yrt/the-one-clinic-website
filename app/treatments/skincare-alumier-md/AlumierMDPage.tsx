@@ -196,34 +196,11 @@ const TREATED_BENEFITS = [
 ];
 
 const PRODUCT_CATEGORIES = [
-  {
-    category: 'Cleansers & Toners',
-    desc: 'Gentle yet effective cleansing and pH-balancing to prepare skin for actives.',
-  },
-  {
-    category: 'Serums & Essences',
-    desc: 'Concentrated actives including retinoids, vitamin C, peptides, and growth factors.',
-  },
-  {
-    category: 'Moisturisers & Masks',
-    desc: 'Barrier-supporting hydration and specialised treatments for intensive repair.',
-  },
-  {
-    category: 'Targeted Treatments',
-    desc: 'Retinoid products, vitamin C serums, and problem-zone solutions.',
-  },
-  {
-    category: 'Sun Care & SPF',
-    desc: 'Essential protection,mandatory when using active ingredients.',
-  },
-  {
-    category: 'Maintenance Products',
-    desc: 'Long-term stabilising products to lock in results and maintain skin health.',
-  },
-  {
-    category: 'Combination Therapy Kits',
-    desc: 'Curated bundles designed for specific concerns and skin types.',
-  },
+  { label: 'Cleansers',           img: '/images/Category_Cleansers.png' },
+  { label: 'Facial Exfoliants',   img: '/images/Category_Exfoliants.png' },
+  { label: 'Serums',              img: '/images/Category_Serums.png' },
+  { label: 'Moisturisers',        img: '/images/Category_Moisturizers.png' },
+  { label: 'Eye Creams & Serums', img: '/images/Category_Eye_Creams&Serums.png' },
 ];
 
 const SKIN_CONCERNS_DATA = [
@@ -921,16 +898,29 @@ export default function AlumierMDPage() {
           </motion.div>
 
           <motion.div
-            className={styles.glanceStandaloneGrid}
+            className={styles.productCatGrid}
             variants={stagger(0.08)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
             {PRODUCT_CATEGORIES.map((item) => (
-              <motion.div key={item.category} className={styles.glanceCard} variants={fadeUp}>
-                <span className={styles.glanceLabel} style={{ marginBottom: '8px' }}>{item.category}</span>
-                <span className={styles.glanceValue} style={{ fontSize: '0.9375rem', fontWeight: 500 }}>{item.desc}</span>
+              <motion.div
+                key={item.label}
+                className={styles.productCatCard}
+                variants={fadeUp}
+                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
+              >
+                <div className={styles.productCatImageWrap}>
+                  <Image
+                    src={item.img}
+                    alt={`AlumierMD ${item.label}`}
+                    fill
+                    className={styles.productCatImage}
+                    sizes="(max-width: 580px) 50vw, (max-width: 900px) 33vw, 20vw"
+                  />
+                </div>
+                <p className={styles.productCatLabel}>{item.label}</p>
               </motion.div>
             ))}
           </motion.div>
