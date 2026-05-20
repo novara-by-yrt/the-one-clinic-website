@@ -10,19 +10,16 @@ import styles from './page.module.css';
 
 const PHILOSOPHY_POINTS = [
   {
-    icon: '🔬',
     title: 'Grounded in Science',
     desc: 'Every formula is meticulously crafted with clinically active ingredients at optimal concentrations.',
   },
   {
-    icon: '✨',
     title: 'Honest Communication',
-    desc: 'Clear messaging, no misleading language. Only delivering integrity, efficacy, and results you can trust.',
+    desc: 'Clear messaging, no misleading language — only integrity, efficacy, and results you can trust.',
   },
   {
-    icon: '🧬',
     title: 'Premium Actives',
-    desc: 'Select only the most refined and skin-compatible actives, ensuring exceptional performance with minimal irritation.',
+    desc: 'Only the most refined, skin-compatible actives are selected, ensuring exceptional performance with minimal irritation.',
   },
 ];
 
@@ -30,17 +27,40 @@ const DEVELOPMENT_STEPS = [
   {
     n: '01',
     title: 'The Discovery',
-    desc: 'Dr. Dev Patel embarked on a journey of learning, speaking with labs globally about the latest skincare technology and formulation science.',
+    desc: 'Dr. Dev Patel began speaking with labs globally, learning from the world\'s best chemists about cutting-edge skincare technology and formulation science.',
   },
   {
     n: '02',
     title: 'Meticulous Development',
-    desc: 'Through 40+ formulations and careful refinement, Dr. Patel created luxurious, high-quality formulas that out-perform market leaders.',
+    desc: 'Over 40 formulations were refined before arriving at the final range — luxurious, high-quality formulas with an obsessive attention to detail.',
   },
   {
     n: '03',
     title: 'Clinical Validation',
-    desc: 'In clinical trials, even single CellDerma products showed dramatic photographic improvements in just 2-6 weeks with outstanding results.',
+    desc: 'In clinical case studies, patients showed dramatic improvements from a single CellDerma product in just 2–6 weeks, far exceeding expectations.',
+  },
+];
+
+const EXPERTISE_FACTS = [
+  {
+    label: 'Multiple Industry Awards',
+    value: 'Dr. Dev Patel',
+    desc: 'Globally-reputed aesthetic physician and winner of multiple industry awards.',
+  },
+  {
+    label: 'Best Clinic South England',
+    value: '2022 & 2024',
+    desc: 'Perfect Skin Solutions — Aesthetic Awards Best Clinic South England.',
+  },
+  {
+    label: 'Products in Clinical Use',
+    value: '15+',
+    desc: 'Launched in 2020, refined through in-clinic trials at Perfect Skin Solutions.',
+  },
+  {
+    label: 'Clean Science Commitment',
+    value: 'Free From',
+    desc: 'No phthalates, sulphates, or parabens — and almost entirely fragrance-free.',
   },
 ];
 
@@ -48,7 +68,7 @@ export default function CellDermaPage() {
   return (
     <>
       {/* ════════════════════════════════════════
-          HERO
+          HERO — compact, centered, no image
       ════════════════════════════════════════ */}
       <section className={styles.hero} aria-label="CellDerma brand" data-section-theme="dark">
         <Container>
@@ -71,19 +91,9 @@ export default function CellDermaPage() {
             </motion.p>
 
             <motion.p className={styles.heroDesc} variants={fadeUp}>
-              High-performance skincare formulations designed by award-winning physician Dr. Dev Patel,
-              combining clinical efficacy with intelligent, science-led formulations that elevate skin health.
+              High-performance skincare formulations created by award-winning aesthetic physician Dr. Dev Patel,
+              combining clinical science with intelligent formulations that deliver visible, transformative results.
             </motion.p>
-
-            <motion.div className={styles.heroCredibility} variants={fadeUp}>
-              <div className={styles.credItem}>
-                <span className={styles.credIcon}>🏆</span>
-                <div className={styles.credText}>
-                  <span className={styles.credLabel}>Award-Winning Clinic</span>
-                  <span className={styles.credDesc}>Perfect Skin Solutions — Aesthetic Awards Best Clinic South England 2022 & 2024</span>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
         </Container>
       </section>
@@ -148,7 +158,7 @@ export default function CellDermaPage() {
               </p>
               <p className={styles.approachText}>
                 Every formula delivers exceptional performance with only the most refined, skin-compatible actives
-                at optimal concentrations, ensuring visible, transformative results with minimal irritation.
+                at optimal concentrations — ensuring visible, transformative results with minimal irritation.
               </p>
             </div>
           </motion.div>
@@ -156,7 +166,7 @@ export default function CellDermaPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          DR. PATEL'S JOURNEY
+          FROM VISION TO CLINICAL EXCELLENCE
       ════════════════════════════════════════ */}
       <Section variant="light">
         <Container>
@@ -171,91 +181,81 @@ export default function CellDermaPage() {
               From Vision to Clinical Excellence
             </motion.h2>
             <motion.p className={styles.sectionSubtitle} variants={fadeUp}>
-              Dr. Dev Patel's journey in creating high-performance skincare grounded in clinical evidence
+              How Dr. Dev Patel turned an obsession with science into a world-class skincare range
             </motion.p>
           </motion.div>
 
+          {/* Large hero image */}
           <motion.div
-            className={styles.journeyContainer}
+            className={styles.journeyHeroImage}
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={VIEWPORT}
+            transition={{ duration: 0.7 }}
+          >
+            <Image
+              src="/images/CellDerma 2.jpg"
+              alt="CellDerma science-driven skincare by Dr. Dev Patel"
+              fill
+              className={styles.journeyHeroImg}
+              sizes="100vw"
+            />
+          </motion.div>
+
+          {/* Horizontal steps */}
+          <motion.div
+            className={styles.stepsRow}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div className={styles.journeySteps} variants={fadeUp}>
-              {DEVELOPMENT_STEPS.map((step, idx) => (
-                <div key={idx} className={styles.journeyCard}>
-                  <div className={styles.journeyNumber}>{step.n}</div>
-                  <h3 className={styles.journeyTitle}>{step.title}</h3>
-                  <p className={styles.journeyDesc}>{step.desc}</p>
-                </div>
-              ))}
-            </motion.div>
-
-            <motion.div className={styles.journeyHighlight} variants={fadeUp}>
-              <div className={styles.journeyImageWrap}>
-                <Image
-                  src="/images/CellDerma 2.jpg"
-                  alt="CellDerma science-driven skincare"
-                  fill
-                  className={styles.journeyImage}
-                  sizes="(max-width: 768px) 100vw, 45vw"
-                />
-              </div>
-
-              <div className={styles.highlightBox}>
-                <p className={styles.highlightText}>
-                  <strong>"This range is too good to only sell in our Perfect Skin Solutions clinic…
-                  it needs to be available to everyone."</strong>
-                </p>
-                <p className={styles.highlightAuthor}>— Dr. Dev Patel</p>
-              </div>
-
-              <div className={styles.resultsBox}>
-                <h4 className={styles.resultsTitle}>Real, Proven Results</h4>
-                <p className={styles.resultsDesc}>
-                  In clinical case studies, patients showed dramatic photographic improvements from using
-                  just one CellDerma product in 2-6 weeks. Results far exceeded expectations, with clinical
-                  teams amazed by the efficacy.
-                </p>
-              </div>
-            </motion.div>
+            {DEVELOPMENT_STEPS.map((step, idx) => (
+              <motion.div key={idx} className={styles.stepItem} variants={fadeUp}>
+                <span className={styles.stepNumber}>{step.n}</span>
+                <div className={styles.stepDivider} />
+                <h3 className={styles.stepTitle}>{step.title}</h3>
+                <p className={styles.stepDesc}>{step.desc}</p>
+              </motion.div>
+            ))}
           </motion.div>
 
-          <motion.div
-            className={styles.drPatelsExpertise}
-            initial={{ opacity: 0, y: 20 }}
+          {/* Dr. Patel quote */}
+          <motion.blockquote
+            className={styles.quoteBlock}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={VIEWPORT}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.7 }}
           >
-            <div className={styles.expertiseItem}>
-              <span className={styles.expertiseIcon}>👨‍⚕️</span>
-              <div className={styles.expertiseContent}>
-                <h4 className={styles.expertiseTitle}>Award-Winning Aesthetic Physician</h4>
-                <p className={styles.expertiseDesc}>
-                  Dr. Dev Patel is a globally-reputed aesthetic physician and winner of multiple industry awards.
-                  His clinic, Perfect Skin Solutions, has won Aesthetic Awards for Best Clinic South England in 2022 and 2024.
-                </p>
-              </div>
-            </div>
-            <div className={styles.expertiseItem}>
-              <span className={styles.expertiseIcon}>🎯</span>
-              <div className={styles.expertiseContent}>
-                <h4 className={styles.expertiseTitle}>Commitment to Excellence</h4>
-                <p className={styles.expertiseDesc}>
-                  Living by his motto "strive to be better every day," Dr. Patel brings medical knowledge,
-                  scientific rigor, and obsessive attention to detail to every CellDerma formulation.
-                </p>
-              </div>
-            </div>
+            <p className={styles.quoteText}>
+              "This range is too good to only sell in our clinic — it needs to be available to everyone."
+            </p>
+            <footer className={styles.quoteFooter}>
+              <span className={styles.quoteAuthor}>Dr. Dev Patel</span>
+              <span className={styles.quoteRole}>Founder, CellDerma · Award-Winning Aesthetic Physician</span>
+            </footer>
+          </motion.blockquote>
+
+          {/* Expertise facts grid */}
+          <motion.div
+            className={styles.factsGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {EXPERTISE_FACTS.map((fact, idx) => (
+              <motion.div key={idx} className={styles.factCard} variants={fadeUp}>
+                <span className={styles.factValue}>{fact.value}</span>
+                <span className={styles.factLabel}>{fact.label}</span>
+                <p className={styles.factDesc}>{fact.desc}</p>
+              </motion.div>
+            ))}
           </motion.div>
         </Container>
       </Section>
 
-      {/* ════════════════════════════════════════
-          FINAL CTA
-      ════════════════════════════════════════ */}
       <FinalCTA />
     </>
   );
