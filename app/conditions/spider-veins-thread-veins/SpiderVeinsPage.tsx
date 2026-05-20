@@ -139,7 +139,7 @@ const TREATMENTS = [
   {
     title:  'Lumecca IPL',
     desc:   'Intense Pulsed Light targets and collapses thread veins with precision, causing them to fade naturally without damaging surrounding skin.',
-    href:   '/treatments/lumecca-ipl-leicester',
+    href:   '/treatments/lumecca-ipl',
     image:  '/images/BA1.jpg',
   },
   {
@@ -238,7 +238,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Lumecca IPL',
     desc:  'Target and collapse thread veins with precise Intense Pulsed Light therapy for clearer, more even skin.',
-    href:  '/treatments/lumecca-ipl-leicester',
+    href:  '/treatments/lumecca-ipl',
     tag:   'Medical Aesthetics',
   },
   {

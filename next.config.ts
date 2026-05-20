@@ -55,6 +55,11 @@ const nextConfig: NextConfig = {
         destination: '/treatments/non-surgical-blepharoplasty-leicester',
         permanent: true,
       },
+      {
+        source: '/treatments/lumecca-ipl-leicester',
+        destination: '/treatments/lumecca-ipl',
+        permanent: true,
+      },
     ];
   },
 };

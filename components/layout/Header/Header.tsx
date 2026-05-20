@@ -56,7 +56,7 @@ const NAV: NavItem[] = [
         group: 'Medical Aesthetics',
         items: [
           { label: 'Dermal Fillers',                            href: '/treatments/dermal-fillers' },
-          { label: 'Lumecca IPL',                               href: '/treatments/lumecca-ipl-leicester' },
+          { label: 'Lumecca IPL',                               href: '/treatments/lumecca-ipl' },
           { label: 'HydraFacial Keravive',                     href: '/treatments/hydrafacial-keravive' },
           { label: 'Morpheus8',                                 href: '/treatments/morpheus8' },
           { label: 'Wrinkle Relaxing Injections',               href: '/treatments/wrinkle-relaxing-injections' },

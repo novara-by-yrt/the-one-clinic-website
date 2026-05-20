@@ -146,7 +146,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Lumecca IPL',
     desc:  'Target dark spots and sun damage with intense pulsed light for a brighter, more even complexion.',
-    href:  '/treatments/lumecca-ipl-leicester',
+    href:  '/treatments/lumecca-ipl',
     tag:   'Medical Aesthetics',
   },
   {
@@ -218,7 +218,7 @@ const TREATMENTS = [
   {
     title:  'Lumecca IPL',
     desc:   'Intense pulsed light targets excess melanin to reduce dark spots, sun damage, and uneven pigmentation for a visibly brighter complexion.',
-    href:   '/treatments/lumecca-ipl-leicester',
+    href:   '/treatments/lumecca-ipl',
     image:  '/images/BA1.jpg',
   },
   {
