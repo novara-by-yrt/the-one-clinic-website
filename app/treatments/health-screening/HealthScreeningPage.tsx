@@ -416,7 +416,7 @@ export default function HealthScreeningPage() {
             {/* Right: Health screening image */}
             <motion.div className={styles.whatIsImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Health Screening.jpg"
+                src="/images/Doctor1.jpg"
                 alt="Health screening examination at The One Clinic"
                 fill
                 className={styles.whatIsImage}
