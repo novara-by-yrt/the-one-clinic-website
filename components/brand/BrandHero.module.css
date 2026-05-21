@@ -443,7 +443,7 @@
   }
 
   .content {
-    gap: clamp(16px, 3vw, 22px);
+    gap: clamp(28px, 3vw, 32px);
   }
 
   .eyebrow {
