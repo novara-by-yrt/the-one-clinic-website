@@ -202,6 +202,9 @@ export default function Footer() {
             <a href="/privacy-policy" className={styles.legalLink}>
               Privacy Policy
             </a>
+            <a href="/complaints-policy" className={styles.legalLink}>
+              Complaints Policy
+            </a>
           </nav>
           <p className={styles.copyright}>
             &copy; THE ONE CLINIC {year}. ALL RIGHTS RESERVED.
