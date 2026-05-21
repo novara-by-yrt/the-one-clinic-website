@@ -111,6 +111,8 @@
 
 .content {
   line-height: 1.8;
+  min-width: 0;
+  overflow-x: hidden;
 }
 
 .featuredImage {
@@ -124,6 +126,8 @@
   margin-bottom: 2rem;
   font-size: 1.0625rem;
   color: #333;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .mdxContent h2 {
@@ -163,6 +167,21 @@
 
 .blogHtml li {
   display: list-item;
+}
+
+/* Prevent any wide element in blog HTML from overflowing */
+.blogHtml img,
+.blogHtml table,
+.blogHtml iframe,
+.blogHtml video,
+.blogHtml pre {
+  max-width: 100%;
+  height: auto;
+}
+
+.blogHtml table {
+  display: block;
+  overflow-x: auto;
 }
 
 .mdxContent a {

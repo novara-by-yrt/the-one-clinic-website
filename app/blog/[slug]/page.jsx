@@ -108,7 +108,7 @@ export default async function BlogDetailPage({ params }) {
         {/* Desktop: Two-column grid */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.35fr] gap-8 lg:gap-12">
           {/* Left column - Featured Image + Content */}
-          <article>
+          <article className="min-w-0 overflow-x-hidden">
             {/* Featured Image */}
             {post.featured_image && (
               <div className="mb-8 bg-neutral-100 relative overflow-hidden rounded-lg">

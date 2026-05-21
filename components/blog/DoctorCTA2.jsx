@@ -52,7 +52,7 @@ export default function DoctorCTA2() {
                 fill
                 sizes="(max-width: 768px) 100vw, 40vw"
                 className="object-cover"
-                style={{ objectPosition: 'center 20%' }}
+                style={{ objectPosition: '50% 45%' }}
                 priority
               />
             </div>

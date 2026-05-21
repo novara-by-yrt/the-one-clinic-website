@@ -41,7 +41,7 @@ function splitHtmlForCTAs(html) {
 export default function ContentWithCTAs({ html }) {
   const { firstPart, middlePart, lastPart } = splitHtmlForCTAs(html);
 
-  const proseClasses = `prose prose-neutral prose-lg max-w-none
+  const proseClasses = `prose prose-neutral prose-lg max-w-none overflow-x-hidden [overflow-wrap:break-word] [word-break:break-word]
     prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:text-neutral-900
     prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
     prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
@@ -50,7 +50,8 @@ export default function ContentWithCTAs({ html }) {
     prose-a:text-neutral-900 prose-a:underline prose-a:underline-offset-2 hover:prose-a:text-neutral-600
     prose-ul:my-4 prose-ul:space-y-1
     prose-li:text-neutral-700
-    prose-strong:text-neutral-900 prose-strong:font-bold`;
+    prose-strong:text-neutral-900 prose-strong:font-bold
+    prose-img:max-w-full prose-table:overflow-x-auto`;
 
   return (
     <>
