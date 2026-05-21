@@ -94,7 +94,7 @@
   position: relative;
   z-index: 3;
   width: 100%;
-  padding-top: 88px;
+  padding-top: 120px;
   padding-bottom: 40px;
   display: flex;
   align-items: center;
@@ -430,7 +430,7 @@
   }
 
   .contentWrapper {
-    padding-top: clamp(28px, 4svh, 40px);
+    padding-top: clamp(36px, 5svh, 48px);
     padding-bottom: clamp(4px, 0.8svh, 10px);
   }
 
