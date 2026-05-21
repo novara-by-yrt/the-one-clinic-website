@@ -3,6 +3,13 @@
   position: relative;
   z-index: 2;
   /* No padding-bottom here — the spacer below handles the scroll height */
+
+  /* Curved bottom corners — content visually rounds into the footer below.
+     overflow: clip clips children to the radius without creating a scroll
+     container, so position: sticky inside child pages keeps working. */
+  border-bottom-left-radius: 32px;
+  border-bottom-right-radius: 32px;
+  overflow: clip;
 }
 
 /* Transparent spacer that creates scroll room for the fixed footer.
@@ -21,5 +28,39 @@
   z-index: 1;
   transform-origin: bottom center;
   will-change: transform, opacity;
+}
+
+/* Dark fill that sits just above the footer so the area revealed by
+   .content's bottom corner cutouts (overflow: clip + border-radius)
+   shows the footer's dark color instead of the white body behind it. */
+.footerFixed::before {
+  content: '';
+  position: absolute;
+  top: -32px;
+  left: 0;
+  right: 0;
+  height: 32px;
+  background: #0d0d12;
+  pointer-events: none;
+}
+
+/* Tablet / mobile: the footer is taller than the viewport, so the
+   fixed-position reveal effect would only ever show its bottom slice
+   with the sticky header overlapping whatever is at the visible top.
+   Switch to normal flow so users can scroll through every link. */
+@media (max-width: 1024px) {
+  .footerFixed {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    transform: none !important;
+    opacity: 1 !important;
+    will-change: auto;
+  }
+
+  .footerSpacer {
+    display: none;
+  }
 }
 

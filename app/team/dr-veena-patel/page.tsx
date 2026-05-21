@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import BookConsultationButton from '@/components/ui/BookConsultationButton';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -10,9 +9,9 @@ import LeadForm from '@/components/sections/LeadForm';
 import styles from './page.module.css';
 
 const STATS = [
-  { value: 'MBBS, MEd', label: 'Qualifications' },
-  { value: 'FHEA, FRCP', label: 'Professional Memberships' },
-  { value: 'UHL', label: 'University Hospital Leicester' },
+  { value: 'FRCP', label: 'Royal College Physician' },
+  { value: 'FHEA', label: 'Higher Education Fellow' },
+  { value: 'Rheumatology', label: 'Consultant Specialist' },
 ];
 
 const SPECIALTIES = [
@@ -46,16 +45,7 @@ export default function DrVeenaPatelPage() {
           >
             {/* Left, text content */}
             <div className={styles.heroLeft}>
-              <motion.div variants={fadeUp}>
-                <Link href="/our-team" className={styles.back}>
-                  <span aria-hidden="true">←</span> Our Team
-                </Link>
-              </motion.div>
-
               <motion.div className={styles.heroText} variants={stagger(0.08)}>
-                <motion.p className={styles.eyebrow} variants={fadeUp}>
-                  The One Clinic
-                </motion.p>
                 <motion.h1 className={styles.name} variants={fadeUp}>
                   Dr Veena<br />Patel
                 </motion.h1>
@@ -71,16 +61,13 @@ export default function DrVeenaPatelPage() {
                 <BookConsultationButton className={styles.btnPrimary}>
                   Book Consultation
                 </BookConsultationButton>
-                <Link href="/our-team" className={styles.btnGhost}>
-                  View All Team
-                </Link>
               </motion.div>
             </div>
 
             {/* Right, photo */}
             <motion.div className={styles.heroPhoto} variants={fadeUp}>
               <Image
-                src="/images/Dr. Veena Patel-image.png"
+                src="/DR-VEENA-PATEL.jpg"
                 alt="Dr Veena Patel"
                 fill
                 priority

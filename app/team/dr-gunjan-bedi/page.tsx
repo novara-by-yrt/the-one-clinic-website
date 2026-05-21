@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import BookConsultationButton from '@/components/ui/BookConsultationButton';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -11,8 +10,8 @@ import styles from './page.module.css';
 
 const STATS = [
   { value: '20+', label: 'Years in Medicine' },
-  { value: '10+', label: 'Years as a GP' },
-  { value: 'BCAM', label: 'Aesthetic Medicine' },
+  { value: 'BCAM', label: 'British Academy Aesthetics' },
+  { value: 'Advanced Aesthetics', label: 'Specialization' },
 ];
 
 const SPECIALTIES = [
@@ -46,16 +45,7 @@ export default function DrBediPage() {
           >
             {/* Left, text content */}
             <div className={styles.heroLeft}>
-              <motion.div variants={fadeUp}>
-                <Link href="/our-team" className={styles.back}>
-                  <span aria-hidden="true">←</span> Our Team
-                </Link>
-              </motion.div>
-
               <motion.div className={styles.heroText} variants={stagger(0.08)}>
-                <motion.p className={styles.eyebrow} variants={fadeUp}>
-                  The One Clinic
-                </motion.p>
                 <motion.h1 className={styles.name} variants={fadeUp}>
                   Dr Gunjan<br />Bedi
                 </motion.h1>
@@ -71,16 +61,13 @@ export default function DrBediPage() {
                 <BookConsultationButton className={styles.btnPrimary}>
                   Book Consultation
                 </BookConsultationButton>
-                <Link href="/our-team" className={styles.btnGhost}>
-                  View All Team
-                </Link>
               </motion.div>
             </div>
 
             {/* Right, photo */}
             <motion.div className={styles.heroPhoto} variants={fadeUp}>
               <Image
-                src="/images/imgi_21_team-thumb-BEDI.jpg"
+                src="/DR-GUNJAN.jpg"
                 alt="Dr Gunjan Bedi"
                 fill
                 priority

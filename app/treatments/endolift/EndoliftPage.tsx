@@ -228,7 +228,7 @@ const EXPERTS = [
   {
     name: 'Dr Sumit Virmani',
     credentials: ['MBBS', 'MRCGP', 'Co-Founder'],
-    image: '/images/imgi_20_team-thumb-VIRMANI.jpg',
+    image: '/DR-SUMIT.jpg',
     alt: 'Dr Sumit Virmani, Co-Founder, The One Clinic',
     bio: [
       'Dr Sumit Virmani, the co-founder of The One Clinic, brings over 15 years of medical expertise, including more than a decade as a trusted local GP. With advanced skills in minor surgery and a keen eye for detail, Dr Virmani is passionate about patient care and achieving outstanding results.',
@@ -238,7 +238,7 @@ const EXPERTS = [
   {
     name: 'Dr Gunjan Bedi',
     credentials: ['MBBS', 'MRCpsych', 'MRCGP', 'BCAM'],
-    image: '/images/imgi_21_team-thumb-BEDI.jpg',
+    image: '/DR-GUNJAN.jpg',
     alt: 'Dr Gunjan Bedi, General Practitioner and Aesthetics Practitioner, The One Clinic',
     bio: [
       'Dr Gunjan Bedi is a highly skilled, advanced aesthetics practitioner at The One Clinic. She is a highly experienced doctor, having worked in the medical sector for over 20 years, with over 10 years service as a GP.',
@@ -251,7 +251,7 @@ const RELATED = [
   { title: 'Morpheus8',                   href: '/treatments/morpheus8',         desc: 'Fractional radiofrequency skin remodelling for face and body.' },
   { title: 'Dermal Fillers',              href: '/treatments/dermal-fillers',    desc: 'Restore volume and structure to the face with precision filler.' },
   { title: 'Deep Laser Resurfacing',      href: '/treatments/laser-resurfacing', desc: 'Comprehensive skin renewal targeting texture, tone, and laxity.' },
-  { title: 'Non Surgical Blepharoplasty', href: '/treatments/blepharoplasty',    desc: 'Eye area rejuvenation without surgery or scarring.' },
+  { title: 'Non Surgical Blepharoplasty', href: '/treatments/non-surgical-blepharoplasty-leicester', desc: 'Eye area rejuvenation without surgery or scarring.' },
 ];
 
 const BA_IMAGES = [

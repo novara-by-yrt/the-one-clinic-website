@@ -19,6 +19,14 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  /* clip (not hidden) prevents horizontal scroll without creating a scroll
+     container, so position: sticky in child pages keeps working */
+  overflow-x: clip;
+  max-width: 100vw;
+}
+
 /* Skip to main content link - hidden off-screen until focused */
 .skip-link {
   position: absolute;

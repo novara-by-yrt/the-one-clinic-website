@@ -19,9 +19,9 @@ export default function OurFacilitiesPage() {
   return (
     <>
       <FacilitiesHero />
+      <FacilitiesIntro />
       <VideoSection />
       <Testimonials />
-      <FacilitiesIntro />
       <ArrivalExperience />
       <FacilityStats />
       <TechSafety />

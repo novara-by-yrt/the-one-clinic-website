@@ -55,7 +55,7 @@
 /* iframe sits flush inside the white card; crops oversized iframe to kill scrollbars */
 .formWrap {
   overflow: hidden;
-  height: 530px;
+  height: 460px;
   border-radius: 14px;
 }
 
@@ -183,7 +183,7 @@
 /* ── Social media card ─────────────────────────────── */
 .socialCard {
   cursor: default;
-  gap: 6px;
+  gap: 8px;
 }
 
 .socialCard:hover {
@@ -192,55 +192,37 @@
 
 .socialLinks {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  flex-direction: row;
+  gap: 8px;
   width: 100%;
 }
 
 .socialLink {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
   text-decoration: none;
-  padding: 3px 6px;
-  border-radius: 7px;
-  margin-inline: -6px;
-  transition: background 0.2s ease;
+  border-radius: 50%;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 
-.socialLink:hover {
-  background: rgba(255, 255, 255, 0.06);
+.socialLink:hover .socialIcon {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.28);
+  color: #ffffff;
 }
 
 .socialIcon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.14);
   color: rgba(255, 255, 255, 0.70);
   flex-shrink: 0;
-}
-
-.socialMeta {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-}
-
-.socialName {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #ffffff;
-  line-height: 1;
-}
-
-.socialHandle {
-  font-size: 0.625rem;
-  color: rgba(255, 255, 255, 0.40);
-  line-height: 1;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 /* ── Map embed , fills remaining height ─────────────── */
@@ -317,6 +299,25 @@
 }
 
 @media (max-width: 580px) {
+  .section {
+    padding-block: 40px 52px;
+  }
+
+  .formCard {
+    padding: 16px 14px 12px;
+    border-radius: 16px;
+  }
+
+  .formWrap {
+    height: 450px;
+    border-radius: 10px;
+  }
+
+  .heading {
+    font-size: 1.625rem;
+    margin-bottom: 14px;
+  }
+
   .contactGrid {
     grid-template-columns: 1fr 1fr;
     gap: 8px;

@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import BookConsultationButton from '@/components/ui/BookConsultationButton';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -10,9 +9,9 @@ import LeadForm from '@/components/sections/LeadForm';
 import styles from './page.module.css';
 
 const STATS = [
-  { value: 'MBBS, MSc', label: 'Qualifications' },
-  { value: 'FRCPath, FRCP', label: 'Professional Credentials' },
-  { value: 'Head of Service', label: 'Chemical Pathology, UHL' },
+  { value: 'FRCPath, FRCP', label: 'Royal College Fellow' },
+  { value: 'Head of Service', label: 'Chemical Pathology' },
+  { value: '15+', label: 'Years Consultant' },
 ];
 
 const SPECIALTIES = [
@@ -46,16 +45,7 @@ export default function ProfessorPrashanathPatelPage() {
           >
             {/* Left, text content */}
             <div className={styles.heroLeft}>
-              <motion.div variants={fadeUp}>
-                <Link href="/our-team" className={styles.back}>
-                  <span aria-hidden="true">←</span> Our Team
-                </Link>
-              </motion.div>
-
               <motion.div className={styles.heroText} variants={stagger(0.08)}>
-                <motion.p className={styles.eyebrow} variants={fadeUp}>
-                  The One Clinic
-                </motion.p>
                 <motion.h1 className={styles.name} variants={fadeUp}>
                   Professor<br />Prashanth Patel
                 </motion.h1>
@@ -71,16 +61,13 @@ export default function ProfessorPrashanathPatelPage() {
                 <BookConsultationButton className={styles.btnPrimary}>
                   Book Consultation
                 </BookConsultationButton>
-                <Link href="/our-team" className={styles.btnGhost}>
-                  View All Team
-                </Link>
               </motion.div>
             </div>
 
             {/* Right, photo */}
             <motion.div className={styles.heroPhoto} variants={fadeUp}>
               <Image
-                src="/images/Dr. Prashanth Patel-image.png"
+                src="/PROFESSOR-PRASHANTH-PATEL.jpg"
                 alt="Professor Prashanth Patel"
                 fill
                 priority

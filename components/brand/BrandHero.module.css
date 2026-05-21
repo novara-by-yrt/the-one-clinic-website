@@ -94,7 +94,7 @@
   position: relative;
   z-index: 3;
   width: 100%;
-  padding-top: 88px;
+  padding-top: 120px;
   padding-bottom: 40px;
   display: flex;
   align-items: center;
@@ -423,13 +423,19 @@
 
 /* Mobile */
 @media (max-width: 640px) {
+  /* Reduce from 100svh so the Recognised & Certified carousel peeks below
+     the fold, giving users a visual cue to scroll */
+  .hero {
+    min-height: 78svh;
+  }
+
   .contentWrapper {
-    padding-top: clamp(60px, 9svh, 72px);
-    padding-bottom: clamp(12px, 2.5svh, 24px);
+    padding-top: calc(76px + clamp(20px, 3svh, 32px));
+    padding-bottom: clamp(4px, 0.8svh, 10px);
   }
 
   .layout {
-    padding-block: clamp(8px, 2svh, 20px);
+    padding-block: clamp(4px, 0.8svh, 10px);
   }
 
   .overlayGradient {
@@ -437,7 +443,7 @@
   }
 
   .content {
-    gap: clamp(16px, 3vw, 22px);
+    gap: clamp(28px, 3vw, 32px);
   }
 
   .eyebrow {

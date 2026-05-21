@@ -111,6 +111,8 @@
 
 .content {
   line-height: 1.8;
+  min-width: 0;
+  overflow-x: hidden;
 }
 
 .featuredImage {
@@ -124,6 +126,8 @@
   margin-bottom: 2rem;
   font-size: 1.0625rem;
   color: #333;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .mdxContent h2 {
@@ -152,6 +156,32 @@
 
 .mdxContent li {
   margin-bottom: 0.5rem;
+}
+
+/* Bullet/number styles scoped to actual blog HTML only, not CTA components */
+.blogHtml ul,
+.blogHtml ol {
+  list-style-type: disc;
+  list-style-position: outside;
+}
+
+.blogHtml li {
+  display: list-item;
+}
+
+/* Prevent any wide element in blog HTML from overflowing */
+.blogHtml img,
+.blogHtml table,
+.blogHtml iframe,
+.blogHtml video,
+.blogHtml pre {
+  max-width: 100%;
+  height: auto;
+}
+
+.blogHtml table {
+  display: block;
+  overflow-x: auto;
 }
 
 .mdxContent a {
@@ -269,6 +299,7 @@
   position: sticky;
   top: 6rem;
   height: fit-content;
+  align-self: start;
 }
 
 .sidebarForm {
@@ -335,7 +366,7 @@
   }
 
   .sidebarForm {
-    padding: 1.25rem 0.875rem 0.5rem;
+    padding: 1.25rem 0.875rem 0;
   }
 
   .formTitle {
@@ -345,7 +376,7 @@
 
 @media (max-width: 768px) {
   .hero {
-    padding: 4rem var(--container-padding) 3rem;
+    padding: calc(76px + 1.5rem) var(--container-padding) 3rem;
     min-height: 280px;
   }
 
@@ -394,7 +425,7 @@
 
 @media (max-width: 640px) {
   .hero {
-    padding: 3.5rem var(--container-padding) 2.5rem;
+    padding: calc(76px + 1rem) var(--container-padding) 2.5rem;
     min-height: 240px;
   }
 
@@ -412,10 +443,11 @@
   }
 
   .sidebarForm {
-    padding: 1.25rem;
+    padding: 1rem 0.5rem 0;
   }
 
   .formTitle {
     font-size: 1rem;
+    padding-inline: 0.25rem;
   }
 }

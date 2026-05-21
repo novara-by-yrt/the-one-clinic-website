@@ -473,7 +473,7 @@
   .bio { -webkit-line-clamp: 3; }
 
   .nextRow {
-    gap: 12px;
+    display: none;
   }
 
   /* Taller thumbnails on mobile so faces aren't cropped */

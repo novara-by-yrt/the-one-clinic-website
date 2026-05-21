@@ -413,18 +413,14 @@ export default function HealthScreeningPage() {
               </motion.div>
             </motion.div>
 
-            {/* Right: Wistia video */}
-            <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
-              <Script src="https://fast.wistia.net/player.js" strategy="lazyOnload" />
-              <iframe
-                src="https://fast.wistia.net/embed/iframe/2u0e7sshum?web_component=true&seo=true"
-                title="Health Screening service page video"
-                allow="autoplay; fullscreen"
-                allowFullScreen
-                frameBorder="0"
-                scrolling="no"
-                className={styles.whatIsVideoFrame}
-                name="wistia_embed"
+            {/* Right: Health screening image */}
+            <motion.div className={styles.whatIsImageWrap} variants={fadeUp}>
+              <Image
+                src="/images/Doctor1.jpg"
+                alt="Health screening examination at The One Clinic"
+                fill
+                className={styles.whatIsImage}
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </motion.div>
           </motion.div>

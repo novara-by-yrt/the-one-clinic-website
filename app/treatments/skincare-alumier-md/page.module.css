@@ -1076,6 +1076,62 @@
 }
 
 /* ════════════════════════════════════════════════════
+   PRODUCT CATEGORIES  (image cards)
+════════════════════════════════════════════════════ */
+.productCatGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(12px, 2vw, 24px);
+  margin-top: var(--space-5);
+}
+
+.productCatCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: clamp(16px, 2vw, 28px) clamp(10px, 1.5vw, 18px) clamp(14px, 2vw, 22px);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.28s ease;
+  cursor: default;
+  text-align: center;
+}
+
+.productCatCard:hover {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.11);
+}
+
+.productCatImageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f8f8f8;
+}
+
+.productCatImage {
+  object-fit: contain;
+  object-position: center;
+  padding: 10%;
+}
+
+.productCatLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: #0d1520;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ════════════════════════════════════════════════════
    BEFORE & AFTER CAROUSEL
 ════════════════════════════════════════════════════ */
 .baSliderViewport {
@@ -2251,6 +2307,7 @@
   .resultsAfterGrid { grid-template-columns: 1fr 1fr; }
   .clinicReasonsGrid { grid-template-columns: repeat(2, 1fr); }
   .expertCard { grid-template-columns: 300px 1fr; }
+  .productCatGrid { grid-template-columns: repeat(5, 1fr); }
 }
 
 /* Combined section: collapse to single column on tablet/mobile */
@@ -2446,9 +2503,14 @@
   .eligibilityWrap { max-width: 100%; }
 }
 
+@media (max-width: 768px) {
+  .productCatGrid { grid-template-columns: repeat(3, 1fr); gap: clamp(10px, 2vw, 16px); }
+}
+
 @media (max-width: 580px) {
   .glanceGrid { grid-template-columns: 1fr 1fr; }
   .relatedGrid { grid-template-columns: 1fr; }
+  .productCatGrid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 
   /* Glance cards: center icon + text in 2-col mobile grid */
   .glanceCard {

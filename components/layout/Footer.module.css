@@ -8,13 +8,11 @@
   padding-bottom: calc(48px + 68px);
   position: relative;
 
-  /* Curved top corners */
-  border-radius: 32px 32px 0 0;
+  /* Flat top edge — the section above curves into the footer */
+  border-radius: 0;
 
-  /* Top edge , makes the rounded corners clearly visible against the dark page */
+  /* Subtle inset highlight only, no bottom-shadow halo */
   box-shadow:
-    0 -1px 0 rgba(255, 255, 255, 0.18),
-    0 -12px 48px rgba(0, 0, 0, 0.6),
     inset 0 1px 0 rgba(255, 255, 255, 0.09);
 }
 
@@ -78,7 +76,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(48px, 7vw, 96px);
-  align-items: center;
+  align-items: start;
 }
 
 /* ── Newsletter copy (left) ──────────────── */
@@ -86,7 +84,6 @@
   display: flex;
   flex-direction: column;
   gap: 18px;
-  padding-bottom: 64px;
 }
 
 .newsletterEyebrow {
@@ -122,10 +119,27 @@
 /* ── Newsletter form (right) ─────────────── */
 .newsletterFormWrap {
   width: 100%;
-  min-height: 560px;
-  border-radius: 10px;
   position: relative;
   z-index: 1;
+  overflow: hidden;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+/* Let form_embed.js control iframe height via PostMessage.
+   overflow:hidden kills any residual scrollbar at the iframe level. */
+.newsletterFormWrap iframe {
+  display: block;
+  width: 100% !important;
+  border: none !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  scrollbar-width: none !important;     /* Firefox */
+  -ms-overflow-style: none !important;  /* IE/Edge */
+}
+
+.newsletterFormWrap iframe::-webkit-scrollbar {
+  display: none !important;             /* Chrome/Safari */
 }
 
 /* ═══════════════════════════════════════════
@@ -287,14 +301,6 @@
   text-align: right;
 }
 
-.copyright {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: rgb(255 255 255 / 0.75);
-  margin: 0;
-  white-space: nowrap;
-}
 
 .legalLinks {
   display: flex;
@@ -304,21 +310,10 @@
 }
 
 .legalLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 0.9375rem;
   color: #fff;
   text-decoration: none;
   transition: opacity 0.2s ease;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  font: inherit;
 }
 
 .legalLink:hover { opacity: 0.65; }
@@ -342,7 +337,11 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   color: rgb(255 255 255 / 0.45);
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .creditLink {
@@ -386,7 +385,7 @@
 
   .centerZone {
     width: 100%;
-    order: 3;
+    order: 2;
     display: block;
   }
 
@@ -396,6 +395,7 @@
   }
 
   .rightZone {
+    order: 3;
     align-items: flex-start;
     text-align: left;
     width: 100%;
@@ -412,48 +412,47 @@
     gap: 12px;
   }
 
-  .copyright {
-    white-space: normal;
-    width: 100%;
-  }
 }
+
 
 /* Mobile */
 @media (max-width: 580px) {
   .newsletterBand {
-    padding-top: 48px;
+    padding-top: 32px;
   }
 
-  .newsletterFormWrap {
-    min-height: 560px;
+  .inner {
+    padding-top: 24px;
   }
 
   .leftZone {
     flex-direction: column;
-    gap: var(--space-5);
+    gap: var(--space-4);
     width: 100%;
   }
 
   .centerZone {
     width: 100%;
-    order: 3;
+    order: 2;
     display: block;
   }
 
   .footerNav {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 14px;
   }
 
   .rightZone {
+    order: 3;
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--space-3);
+    gap: var(--space-2);
     width: 100%;
   }
 
   .legalLinks {
     flex-direction: column;
     align-items: flex-start;
+    gap: 6px;
   }
 }

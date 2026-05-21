@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import BookConsultationButton from '@/components/ui/BookConsultationButton';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -11,8 +10,8 @@ import styles from './page.module.css';
 
 const STATS = [
   { value: '15+', label: 'Years in Medicine' },
-  { value: '12+', label: 'Years as a GP' },
-  { value: 'MRCGP', label: 'Royal College Qualified' },
+  { value: 'MRCGP', label: 'Royal College of GPs' },
+  { value: 'Aesthetic Medicine', label: 'Specialist Trained' },
 ];
 
 const SPECIALTIES = [
@@ -46,16 +45,7 @@ export default function DrVirmaniPage() {
           >
             {/* Left, text content */}
             <div className={styles.heroLeft}>
-              <motion.div variants={fadeUp}>
-                <Link href="/our-team" className={styles.back}>
-                  <span aria-hidden="true">←</span> Our Team
-                </Link>
-              </motion.div>
-
               <motion.div className={styles.heroText} variants={stagger(0.08)}>
-                <motion.p className={styles.eyebrow} variants={fadeUp}>
-                  The One Clinic
-                </motion.p>
                 <motion.h1 className={styles.name} variants={fadeUp}>
                   Dr Sumit<br />Virmani
                 </motion.h1>
@@ -71,16 +61,13 @@ export default function DrVirmaniPage() {
                 <BookConsultationButton className={styles.btnPrimary}>
                   Book Consultation
                 </BookConsultationButton>
-                <Link href="/our-team" className={styles.btnGhost}>
-                  View All Team
-                </Link>
               </motion.div>
             </div>
 
             {/* Right, photo */}
             <motion.div className={styles.heroPhoto} variants={fadeUp}>
               <Image
-                src="/images/imgi_20_team-thumb-VIRMANI.jpg"
+                src="/DR-SUMIT.jpg"
                 alt="Dr Sumit Virmani"
                 fill
                 priority

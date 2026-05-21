@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
@@ -27,6 +27,7 @@ const SLIDES = [...SLIDES_BASE, ...SLIDES_BASE];
 
 export default function CaseStudies() {
   const swiperRef = useRef<SwiperType | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <section className={styles.section} id="results">
@@ -89,6 +90,7 @@ export default function CaseStudies() {
                 640: { slidesPerView: 3, spaceBetween: 26 },
               }}
               onSwiper={(swiper) => { swiperRef.current = swiper; }}
+              onSlideChange={(swiper) => setActiveIndex(swiper.realIndex % SLIDES_BASE.length)}
               className={styles.swiper}
             >
               {SLIDES.map((slide, i) => (
@@ -113,7 +115,7 @@ export default function CaseStudies() {
             </Swiper>
           </div>
 
-          {/* Arrow controls , outside the mask, always fully visible */}
+          {/* Arrow controls and dots , outside the mask */}
           <div className={styles.navRow}>
             <button
               className={styles.navBtn}
@@ -125,6 +127,21 @@ export default function CaseStudies() {
                   strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
+
+            {/* Pagination dots */}
+            <div className={styles.dotsRow} role="tablist" aria-label="Slide pages">
+              {SLIDES_BASE.map((_, i) => (
+                <button
+                  key={i}
+                  className={`${styles.dot} ${i === activeIndex ? styles.dotActive : ''}`}
+                  onClick={() => swiperRef.current?.slideTo(i)}
+                  role="tab"
+                  aria-selected={i === activeIndex}
+                  aria-label={`Page ${i + 1} of ${SLIDES_BASE.length}`}
+                />
+              ))}
+            </div>
+
             <button
               className={styles.navBtn}
               aria-label="Next result"

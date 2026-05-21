@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Script from 'next/script';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -39,22 +39,13 @@ const REVIEWS = [
       'Received good service. Felt welcomed from the beginning, easy communication and booking. Done first anti snoring Laser treatment. So far All ok.',
   },
   {
-    name: 'Anestacia Thomas',
-    initial: 'A',
-    avatarBg: '#E53935',
-    timeAgo: 'Recent',
-    categories: ['general'],
-    review:
-      'My new cosmetologist Chloe was great. I felt taken care of. And my face felt amazing!',
-  },
-  {
     name: 'Fran',
     initial: 'F',
     avatarBg: '#FF7043',
     timeAgo: 'Recent',
     categories: ['general'],
     review:
-      'Telephoned yesterday as needed urgent advice over issue following facial aesthetic treatment. From first call, to receptionist to nurse and doctor all in one day - super efficient service. Everyone was really kind and helped to settle my anxiety. Big special mention to Chloe and Dr Virmani who were both excellent - cannot thank them enough. Would totally recommend this clinic.',
+      'Telephoned yesterday as needed urgent advice over issue following facial aesthetic treatment. From first call, to receptionist to nurse and doctor all in one day - super efficient service. Everyone was really kind and helped to settle my anxiety. Big special mention to Dr Virmani who was excellent - cannot thank them enough. Would totally recommend this clinic.',
   },
   {
     name: 'Temesgen Beyen',
@@ -81,7 +72,7 @@ const REVIEWS = [
     timeAgo: 'Recent',
     categories: ['general', 'aesthetics'],
     review:
-      'Recently had two procedures undertaken by Mr Sankar at the One Clinic excellent service throughout the process and great follow up care by Nurse Chloe would definitely recommend for aesthetic treatments.',
+      'Recently had two procedures undertaken by Mr Sankar at the One Clinic excellent service throughout the process and great follow up care. Would definitely recommend for aesthetic treatments.',
   },
   {
     name: 'Hannah Clauss',
@@ -91,15 +82,6 @@ const REVIEWS = [
     categories: ['general'],
     review:
       'I had a consultation. Firstly they were running 10 minutes behind but kept me informed and offered me a drink etc. With the doctors I was advised my options but ultimately I got to choose what I wanted. Very happy so far.',
-  },
-  {
-    name: 'Young',
-    initial: 'Y',
-    avatarBg: '#7B1FA2',
-    timeAgo: 'Recent',
-    categories: ['aesthetics', 'hydrafacial'],
-    review:
-      'I had a hydrofacial done by Chloe recently and honestly-loved it! The whole experience was super relaxing, and my skin felt so clean, fresh, and glowy afterward.\n\nChloe was lovely to chat with, really knowledgeable, and made the whole process feel easy and enjoyable. The vibe was super chill and welcoming, which I really appreciated.',
   },
   {
     name: 'Rachel',
@@ -173,7 +155,6 @@ const PATIENT_VIDEOS = [
 ];
 
 const PER_PAGE = 3;
-const READ_MORE_THRESHOLD = 150;
 
 /* ── Icons ──────────────────────────────────────────────────── */
 function GoogleG() {
@@ -212,26 +193,55 @@ const SLIDE = {
 };
 const TRANSITION = { duration: 0.42, ease: [0.25, 0.1, 0.25, 1] as const };
 
-/* ── Helper: Review content with read more ──────────────────── */
-function ReviewContent({ review, name, expanded, onToggle }: { review: string; name: string; expanded: Record<string, boolean>; onToggle: (name: string) => void }) {
-  const isExpanded = expanded[name];
-  const shouldTruncate = review.length > READ_MORE_THRESHOLD;
+/* ── Review card body: shows 4 lines, Read more only when actually clamped ── */
+function ReviewCard({ review, isExpanded, onToggle }: {
+  review: string;
+  isExpanded: boolean;
+  onToggle: () => void;
+}) {
+  const textRef = useRef<HTMLParagraphElement>(null);
+  const [showToggle, setShowToggle] = useState(false);
+  const isExpandedRef = useRef(isExpanded);
+  isExpandedRef.current = isExpanded;
 
-  if (!shouldTruncate) {
-    return <p className={styles.reviewText}>{review}</p>;
-  }
+  useEffect(() => {
+    const el = textRef.current;
+    if (!el) return;
+    const node = el; // narrowed non-null reference for use inside callbacks
+    let cancelled = false;
+
+    function measure() {
+      if (cancelled || isExpandedRef.current) return;
+      // scrollHeight > clientHeight means the clamp is actually cutting text off
+      setShowToggle(node.scrollHeight > node.clientHeight + 1);
+    }
+
+    // Wait for fonts before the first measurement so fallback-font metrics
+    // don't produce a false positive on short reviews
+    document.fonts.ready.then(measure);
+
+    // Re-measure on resize (viewport change, orientation, etc.)
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => {
+      cancelled = true;
+      ro.disconnect();
+    };
+  }, [review]);
 
   return (
     <>
-      <p className={`${styles.reviewText} ${isExpanded ? styles.reviewTextExpanded : ''}`}>
+      <p
+        ref={textRef}
+        className={`${styles.reviewText} ${isExpanded ? styles.reviewTextExpanded : ''}`}
+      >
         {review}
       </p>
-      <button
-        className={styles.readMoreBtn}
-        onClick={() => onToggle(name)}
-      >
-        {isExpanded ? 'Show less' : 'Read more'}
-      </button>
+      {showToggle && (
+        <button className={styles.readMoreBtn} onClick={onToggle}>
+          {isExpanded ? 'Show less' : 'Read more'}
+        </button>
+      )}
     </>
   );
 }
@@ -265,7 +275,20 @@ export default function Testimonials({
   const videoTouchY = useRef(0);
 
   const totalPages = filterCategory ? 1 : Math.ceil(pool.length / PER_PAGE);
-  const visible    = filterCategory ? pool : pool.slice(page * PER_PAGE, (page + 1) * PER_PAGE);
+
+  /* Ensure every slide shows PER_PAGE cards by shifting the last slice back when needed */
+  let visible = pool;
+  if (!filterCategory) {
+    const pageStart = page * PER_PAGE;
+    const remaining = pool.length - pageStart;
+
+    if (remaining < PER_PAGE && pool.length >= PER_PAGE) {
+      /* Last page has fewer than PER_PAGE reviews — show the final PER_PAGE reviews */
+      visible = pool.slice(pool.length - PER_PAGE, pool.length);
+    } else {
+      visible = pool.slice(pageStart, pageStart + PER_PAGE);
+    }
+  }
 
   function goTo(next: number, direction: number) {
     setDir(direction);
@@ -351,7 +374,7 @@ export default function Testimonials({
           viewport={VIEWPORT}
         >
           <button
-            className={styles.arrowBtn}
+            className={`${styles.arrowBtn} ${styles.arrowDesktop}`}
             onClick={() => goTo((page - 1 + totalPages) % totalPages, -1)}
             aria-label="Previous reviews"
           >
@@ -383,7 +406,11 @@ export default function Testimonials({
                     <div className={styles.starsRow} aria-label="5 out of 5 stars">
                       {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
                     </div>
-                    <ReviewContent review={r.review} name={r.name} expanded={expanded} onToggle={toggleExpand} />
+                    <ReviewCard
+                      review={r.review}
+                      isExpanded={!!expanded[r.name]}
+                      onToggle={() => toggleExpand(r.name)}
+                    />
                     <div className={styles.cardFooter}>
                       <div className={styles.avatar} style={{ background: r.avatarBg }} aria-hidden="true">
                         {r.initial}
@@ -401,7 +428,7 @@ export default function Testimonials({
           </div>
 
           <button
-            className={styles.arrowBtn}
+            className={`${styles.arrowBtn} ${styles.arrowDesktop}`}
             onClick={() => goTo((page + 1) % totalPages, 1)}
             aria-label="Next reviews"
           >
@@ -411,6 +438,30 @@ export default function Testimonials({
             </svg>
           </button>
         </motion.div>
+
+        {/* ── Mobile: arrows side-by-side below card ────── */}
+        <div className={styles.mobileNav} aria-label="Review navigation">
+          <button
+            className={styles.arrowBtn}
+            onClick={() => goTo((page - 1 + totalPages) % totalPages, -1)}
+            aria-label="Previous reviews"
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M11 4L6 9L11 14" stroke="currentColor" strokeWidth="2"
+                strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+          <button
+            className={styles.arrowBtn}
+            onClick={() => goTo((page + 1) % totalPages, 1)}
+            aria-label="Next reviews"
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M7 4L12 9L7 14" stroke="currentColor" strokeWidth="2"
+                strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+        </div>
 
         {/* ── Pagination dots ───────────────────────────── */}
         <div className={styles.dots} role="tablist" aria-label="Review pages">

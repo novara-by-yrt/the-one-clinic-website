@@ -1,0 +1,552 @@
+/* ════════════════════════════════════════════════════
+   HERO
+════════════════════════════════════════════════════ */
+.hero {
+  position: relative;
+  background-color: #090909;
+  overflow: hidden;
+  padding: clamp(100px, 10vw, 130px) 0 clamp(48px, 5vw, 64px);
+}
+
+.heroInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  max-width: 680px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.heroCategory {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255 255 255 / 0.07);
+  border: 1px solid rgba(255 255 255 / 0.16);
+  border-radius: 100px;
+  padding: 5px 14px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255 255 255 / 0.6);
+  width: fit-content;
+  margin: 0;
+}
+
+.heroCategory::before {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.65;
+  flex-shrink: 0;
+}
+
+.heroTitle {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.heroDesc {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.6;
+  color: rgba(255 255 255 / 0.75);
+  margin: 0;
+  max-width: 600px;
+}
+
+.heroCtas {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  padding-top: var(--space-1);
+}
+
+.heroCtaPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 36px;
+  background: #ffffff;
+  color: #000000;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.heroCtaPrimary:hover {
+  background: #e8e8e8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255 255 255 / 0.2);
+}
+
+.heroStats {
+  display: flex;
+  gap: clamp(var(--space-4), 5vw, var(--space-7));
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: var(--space-2);
+  width: 100%;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.statValue {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.statLabel {
+  font-size: 0.875rem;
+  color: rgba(255 255 255 / 0.6);
+  line-height: 1.4;
+  text-align: center;
+  max-width: 140px;
+}
+
+/* ════════════════════════════════════════════════════
+   CATEGORIES
+════════════════════════════════════════════════════ */
+.categoriesSection {
+  background: #f4f4f2;
+  padding: clamp(40px, 4vw, 56px) 0;
+}
+
+.categoriesHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-2);
+  margin-bottom: clamp(32px, 3vw, 48px);
+}
+
+.categoriesTitle {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text-dark);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.categoriesSubtitle {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(var(--space-3), 2.5vw, var(--space-4));
+}
+
+.categoryCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  cursor: default;
+}
+
+.categoryImageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0 0 0 / 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.categoryCard:hover .categoryImageWrap {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0 0 0 / 0.10);
+}
+
+.categoryImage {
+  object-fit: contain;
+  object-position: center;
+  padding: 12%;
+}
+
+.categoryLabel {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-dark);
+  text-align: center;
+}
+
+/* ════════════════════════════════════════════════════
+   SECTION HEADERS
+════════════════════════════════════════════════════ */
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  max-width: 640px;
+  margin: 0 auto clamp(32px, 3vw, 48px);
+}
+
+.sectionTitle {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text-dark);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.sectionSubtitle {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* ════════════════════════════════════════════════════
+   MISSION GRID
+════════════════════════════════════════════════════ */
+.missionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  margin-bottom: clamp(32px, 3vw, 48px);
+}
+
+.missionCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1.5px solid rgba(0 0 0 / 0.18);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.missionCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0 0 0 / 0.08);
+  border-color: rgba(0 0 0 / 0.28);
+}
+
+.missionTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.missionDesc {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* ════════════════════════════════════════════════════
+   JOURNEY TIMELINE
+════════════════════════════════════════════════════ */
+.journeySteps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: clamp(32px, 3vw, 48px);
+  position: relative;
+}
+
+.journeyCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: #ffffff;
+  border: 1px solid rgba(0 0 0 / 0.08);
+  border-radius: 16px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.journeyCard:hover {
+  border-color: rgba(0 0 0 / 0.15);
+  box-shadow: 0 8px 24px rgba(0 0 0 / 0.06);
+}
+
+.journeyNumber {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: rgba(0 0 0 / 0.08);
+  line-height: 1;
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-4);
+}
+
+.journeyYear {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0 0 0 / 0.04);
+  border: 1px solid rgba(0 0 0 / 0.08);
+  border-radius: 100px;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  width: fit-content;
+  margin: 0;
+}
+
+.journeyTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin: 0;
+  padding-right: var(--space-4);
+  line-height: 1.3;
+}
+
+.journeyDesc {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.journeyLine {
+  position: absolute;
+  bottom: -var(--space-4);
+  left: var(--space-5);
+  width: 2px;
+  height: var(--space-4);
+  background: linear-gradient(to bottom, rgba(0 0 0 / 0.1), transparent);
+  display: none;
+}
+
+/* ════════════════════════════════════════════════════
+   MISSION STATEMENT
+════════════════════════════════════════════════════ */
+.missionStatement {
+  max-width: 680px;
+  margin: clamp(32px, 3vw, 48px) auto 0;
+  padding: 32px 36px;
+  background: #f9f9f9;
+  border-left: 4px solid #000000;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.missionText {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--color-text-dark);
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* ════════════════════════════════════════════════════
+   COMPACT SECTION OVERRIDE
+════════════════════════════════════════════════════ */
+.compact {
+  padding-block: clamp(40px, 4vw, 56px) !important;
+}
+
+/* ════════════════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .missionGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .journeySteps {
+    grid-template-columns: 1fr;
+  }
+
+  .journeyLine {
+    display: block;
+  }
+
+  .categoriesGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-3);
+  }
+}
+
+@media (max-width: 768px) {
+  .categoriesGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-3);
+  }
+
+  .categoryImageWrap {
+    border-radius: 16px;
+  }
+
+  .categoryLabel {
+    font-size: 0.75rem;
+  }
+
+  .hero {
+    padding: 88px 0 40px;
+  }
+
+  .heroTitle {
+    font-size: clamp(1.375rem, 3vw, 2rem);
+  }
+
+  .heroDesc {
+    font-size: 1rem;
+  }
+
+  .statValue {
+    font-size: 1.5rem;
+  }
+
+  .statLabel {
+    font-size: 0.8125rem;
+  }
+
+  .missionCard {
+    padding: var(--space-4);
+  }
+
+  .sectionTitle {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .journeyTitle {
+    font-size: 1.125rem;
+  }
+
+  .missionStatement {
+    padding: var(--space-4);
+    border-left-width: 3px;
+  }
+
+  .missionText {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .categoriesGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2);
+  }
+
+  .categoriesGrid > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    margin: 0 auto;
+    justify-self: center;
+  }
+
+  .categoryImageWrap {
+    border-radius: 12px;
+  }
+
+  .categoryLabel {
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+  }
+
+  .hero {
+    padding: 72px 0 32px;
+  }
+
+  .heroTitle {
+    font-size: 1.5rem;
+  }
+
+  .heroDesc {
+    font-size: 0.9375rem;
+  }
+
+  .heroStats {
+    gap: var(--space-3);
+  }
+
+  .statValue {
+    font-size: 1.25rem;
+  }
+
+  .missionCard {
+    padding: var(--space-3);
+    gap: var(--space-1);
+  }
+
+  .missionIcon {
+    font-size: 2rem;
+  }
+
+  .missionTitle {
+    font-size: 1.125rem;
+  }
+
+  .missionDesc {
+    font-size: 0.875rem;
+  }
+
+  .journeyCard {
+    padding: var(--space-3);
+  }
+
+  .journeyNumber {
+    font-size: 2rem;
+    top: var(--space-2);
+    right: var(--space-3);
+  }
+
+  .journeyTitle {
+    font-size: 1rem;
+    padding-right: var(--space-3);
+  }
+
+  .journeyDesc {
+    font-size: 0.875rem;
+  }
+
+  .missionStatement {
+    padding: var(--space-3);
+    margin-top: var(--space-4);
+  }
+
+  .missionText {
+    font-size: 0.9375rem;
+  }
+}

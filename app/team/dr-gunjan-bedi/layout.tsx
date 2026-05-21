@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: 'Dr Gunjan Bedi , Advanced Aesthetics Practitioner | The One Clinic',
     description: 'Meet Dr Gunjan Bedi at The One Clinic. 20+ years in medicine, qualified in GP, Psychiatry & Aesthetic Medicine. Specialising in injectables, radiofrequency and holistic care.',
     type: 'profile',
-    images: [{ url: '/images/imgi_21_team-thumb-BEDI.jpg', alt: 'Dr Gunjan Bedi' }],
+    images: [{ url: '/DR-GUNJAN.jpg', alt: 'Dr Gunjan Bedi' }],
     url: '/team/dr-gunjan-bedi',
   },
   twitter: {
@@ -24,7 +24,7 @@ const schema = buildPhysicianSchema({
   name: 'Dr Gunjan Bedi',
   role: 'General Practitioner & Psychiatrist',
   credentials: 'MBBS, MRCpsych, MRCGP, BCAM',
-  image: '/images/imgi_21_team-thumb-BEDI.jpg',
+  image: '/DR-GUNJAN.jpg',
   bio: 'Dr Gunjan Bedi brings a unique perspective combining qualifications in General Practice, Psychiatry, and Aesthetic Medicine. Her holistic approach addresses both physical and psychological dimensions of each patient\'s health and wellbeing.',
   medicalSpecialty: 'Psychiatry',
   profilePath: '/team/dr-gunjan-bedi',

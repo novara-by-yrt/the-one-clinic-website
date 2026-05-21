@@ -151,7 +151,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Lumecca IPL',
     desc:  'Target broken capillaries and persistent facial redness with clinically proven intense pulsed light.',
-    href:  '/treatments/lumecca-ipl-leicester',
+    href:  '/treatments/lumecca-ipl',
     tag:   'Medical Aesthetics',
   },
   {
@@ -220,7 +220,7 @@ const TREATMENTS = [
   {
     title:  'Lumecca IPL',
     desc:   'Clinically proven intense pulsed light that selectively targets haemoglobin to reduce redness, flushing, and visible broken capillaries.',
-    href:   '/treatments/lumecca-ipl-leicester',
+    href:   '/treatments/lumecca-ipl',
     image:  '/images/BA1.jpg',
   },
   {

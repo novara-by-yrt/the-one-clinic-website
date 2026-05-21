@@ -137,7 +137,7 @@ const TREATMENTS = [
   {
     title:  'Lumecca IPL',
     desc:   'Intense Pulsed Light precisely targets excess melanin, breaking down sunspots, freckles, and areas of uneven pigmentation for a noticeably clearer complexion.',
-    href:   '/treatments/lumecca-ipl-leicester',
+    href:   '/treatments/lumecca-ipl',
     image:  '/images/BA1.jpg',
   },
   {
@@ -236,7 +236,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Lumecca IPL',
     desc:  'Break down sunspots and freckles with targeted Intense Pulsed Light therapy for a clearer complexion.',
-    href:  '/treatments/lumecca-ipl-leicester',
+    href:  '/treatments/lumecca-ipl',
     tag:   'Medical Aesthetics',
   },
   {

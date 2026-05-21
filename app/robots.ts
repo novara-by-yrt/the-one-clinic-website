@@ -1,10 +1,13 @@
-import { MetadataRoute } from 'next';
+import { headers } from 'next/headers';
+import type { MetadataRoute } from 'next';
 
-export default function robots(): MetadataRoute.Robots {
-  const isPreview = process.env.VERCEL_URL?.includes('preview') ||
-                   process.env.NEXT_PUBLIC_ENV === 'preview';
+const PRODUCTION_HOST = 'the-oneclinic.net';
 
-  if (isPreview) {
+export default async function robots(): Promise<MetadataRoute.Robots> {
+  const headersList = await headers();
+  const host = headersList.get('host') ?? '';
+
+  if (host !== PRODUCTION_HOST) {
     return {
       rules: { userAgent: '*', disallow: '/' },
     };
@@ -12,19 +15,17 @@ export default function robots(): MetadataRoute.Robots {
 
   return {
     rules: [
-      // Block training-only crawlers , they harvest data without powering
+      // Block training-only crawlers — they harvest data without powering
       // any search or answer product visible to potential patients.
-      { userAgent: 'CCBot',         disallow: '/' },
-      { userAgent: 'anthropic-ai',  disallow: '/' },
+      { userAgent: 'CCBot',          disallow: '/' },
+      { userAgent: 'anthropic-ai',   disallow: '/' },
 
       // Explicitly allow AI search / answer-engine crawlers.
-      // Listing them individually makes the policy auditable and survives
-      // future changes to the wildcard default.
-      { userAgent: 'GPTBot',         allow: '/' },   // OpenAI ChatGPT search
-      { userAgent: 'OAI-SearchBot',  allow: '/' },   // OpenAI search index
-      { userAgent: 'ClaudeBot',      allow: '/' },   // Anthropic Claude.ai
-      { userAgent: 'PerplexityBot',  allow: '/' },   // Perplexity answer engine
-      { userAgent: 'Google-Extended', allow: '/' },  // Google AI Overviews / Gemini
+      { userAgent: 'GPTBot',          allow: '/' },
+      { userAgent: 'OAI-SearchBot',   allow: '/' },
+      { userAgent: 'ClaudeBot',       allow: '/' },
+      { userAgent: 'PerplexityBot',   allow: '/' },
+      { userAgent: 'Google-Extended', allow: '/' },
 
       // Default: allow all other crawlers; protect internal routes
       { userAgent: '*', allow: '/', disallow: ['/admin', '/api'] },

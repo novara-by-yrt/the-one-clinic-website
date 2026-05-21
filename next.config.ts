@@ -46,6 +46,22 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+
+  // 301 redirects for moved or renamed pages
+  async redirects() {
+    return [
+      {
+        source: '/treatments/blepharoplasty',
+        destination: '/treatments/non-surgical-blepharoplasty-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/lumecca-ipl-leicester',
+        destination: '/treatments/lumecca-ipl',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

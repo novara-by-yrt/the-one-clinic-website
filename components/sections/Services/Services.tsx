@@ -49,7 +49,7 @@ const TREATMENTS: Treatment[] = [
     category: 'Health & Wellbeing',
     desc: 'Skilled minor surgical procedures performed safely in our clinical setting.',
     href: '/treatments/minor-surgery',
-    image: '/images/Minor Surgery.jpg',
+    image: '/images/Minor Surgery1.jpg',
     bg: 'linear-gradient(160deg,#17100d 0%,#2e1c16 100%)',
   },
   {
@@ -144,7 +144,7 @@ const TREATMENTS: Treatment[] = [
     category: 'Medical Aesthetics',
     desc: 'Combine microneedling with radiofrequency energy to tighten skin and remodel deep collagen.',
     href: '/treatments/morpheus8',
-    image: '/images/service-morpheus8.jpg',
+    image: '/images/Morpheus8-new.png',
     bg: 'linear-gradient(160deg,#17100d 0%,#2e1c16 100%)',
   },
   {
@@ -185,11 +185,11 @@ const TREATMENTS: Treatment[] = [
     bg: 'linear-gradient(160deg,#0d1520 0%,#142038 100%)',
   },
   {
-    title: 'Body Contouring',
+    title: 'Body Confidence Package',
     category: 'Medical Aesthetics',
-    desc: 'Non-surgical fat reduction and body shaping treatments for lasting, visible results.',
-    href: '/treatments/body-contouring',
-    image: '/images/service-fat-freezing.jpg',
+    desc: 'A curated combination of body treatments for comprehensive contouring and confidence.',
+    href: '/treatments/body-confidence',
+    image: '/images/The Ultimate Body Confidence Package.png',
     bg: 'linear-gradient(160deg,#0d1117 0%,#131c2a 100%)',
   },
   {
@@ -197,6 +197,7 @@ const TREATMENTS: Treatment[] = [
     category: 'Medical Aesthetics',
     desc: 'Minimally invasive laser lifting for face, neck and body, no surgery required.',
     href: '/treatments/endolift',
+    image: '/images/Endolift1.png',
     bg: 'linear-gradient(160deg,#100d17 0%,#1e1633 100%)',
   },
   {
@@ -205,6 +206,14 @@ const TREATMENTS: Treatment[] = [
     desc: 'Deep hydration and bio-remodelling with ultra-pure hyaluronic acid for a natural, luminous glow.',
     href: '/treatments/profhilo',
     image: '/images/Profhilo (2).jpg',
+    bg: 'linear-gradient(160deg,#0d1520 0%,#142038 100%)',
+  },
+  {
+    title: 'JULÄINE',
+    category: 'Medical Aesthetics',
+    desc: 'An exclusive regenerative treatment combining the finest aesthetic techniques to deliver exceptional, long-lasting rejuvenation, tailored entirely to you.',
+    href: '/treatments/julaine',
+    image: '/images/Juliane.jpg',
     bg: 'linear-gradient(160deg,#0d1520 0%,#142038 100%)',
   },
   {
@@ -304,7 +313,7 @@ const TREATMENTS: Treatment[] = [
     category: 'Medical Aesthetics',
     desc: 'Advanced laser to dramatically improve skin texture, scars and pigmentation.',
     href: '/treatments/laser-resurfacing',
-    image: '/images/service-laser-hair-removal.jpg',
+    image: '/images/Deep Laser Resurfacing 1.png',
     bg: 'linear-gradient(160deg,#171510 0%,#2a2316 100%)',
   },
   {
@@ -325,14 +334,23 @@ const TREATMENTS: Treatment[] = [
     title: 'Non Surgical Blepharoplasty',
     category: 'Medical Aesthetics',
     desc: 'Lift and rejuvenate the eyelid area without surgery using advanced techniques.',
-    href: '/treatments/blepharoplasty',
+    href: '/treatments/non-surgical-blepharoplasty-leicester',
     bg: 'linear-gradient(160deg,#0d1020 0%,#141830 100%)',
   },
 ];
 
-// Only show Medical Aesthetics cards that have a photo
+// Only show featured treatments in the carousel
+const FEATURED_TREATMENT_TITLES = [
+  'Endolift Laser',
+  'Morpheus8',
+  'Minor Surgery',
+  'Body Confidence Package',
+  'JULÄINE',
+  'Deep Laser Resurfacing',
+];
+
 const DISPLAYED_TREATMENTS = TREATMENTS.filter(
-  (t) => t.category !== 'Medical Aesthetics' || !!t.image,
+  (t) => FEATURED_TREATMENT_TITLES.includes(t.title),
 );
 
 // px per frame, slow, elegant pace (~21 px/s at 60fps)

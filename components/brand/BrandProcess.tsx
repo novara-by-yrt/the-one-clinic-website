@@ -23,8 +23,9 @@ const PILLARS = [
 
 const SLIDES = [
   { src: '/images/Lumecca IPL Laser 2.png', alt: 'Lumecca IPL treatment at The One Clinic' },
-  { src: '/images/website-img3.png', alt: 'The One Clinic, treatment' },
-  { src: '/images/website-img4.png', alt: 'The One Clinic, care' },
+  { src: '/images/Endolift 1.png',          alt: 'Endolift treatment at The One Clinic' },
+  { src: '/images/Morpheus8 1.png',         alt: 'Morpheus8 treatment at The One Clinic' },
+  { src: '/images/Doctor2.jpg',             alt: 'Clinician performing treatment at The One Clinic' },
 ];
 
 const EASE     = [0.25, 0.1, 0.25, 1] as const;

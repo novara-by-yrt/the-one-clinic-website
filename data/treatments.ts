@@ -165,7 +165,7 @@ export const treatments: Treatment[] = [
     ],
   },
   {
-    slug: 'lumecca-ipl-leicester',
+    slug: 'lumecca-ipl',
     title: 'Lumecca IPL',
     category: 'Medical Aesthetics',
     shortDescription:

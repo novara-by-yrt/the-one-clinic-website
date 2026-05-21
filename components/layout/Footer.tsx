@@ -1,5 +1,7 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
+import Script from 'next/script';
 import { CLINIC_INFO, getMapsSearchUrl } from '@/lib/clinic-info';
 import styles from './Footer.module.css';
 
@@ -32,6 +34,27 @@ function InstagramIcon() {
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  /* Keep scrolling="no" even if form_embed.js removes it */
+  useEffect(() => {
+    const iframe = iframeRef.current;
+    if (!iframe) return;
+
+    const lock = () => {
+      if (iframe.getAttribute('scrolling') !== 'no') {
+        iframe.setAttribute('scrolling', 'no');
+      }
+      (iframe.style as CSSStyleDeclaration & { scrollbarWidth: string }).scrollbarWidth = 'none';
+    };
+
+    lock();
+
+    const observer = new MutationObserver(lock);
+    observer.observe(iframe, { attributes: true, attributeFilter: ['scrolling', 'style'] });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <footer className={styles.footer} role="contentinfo">
@@ -59,8 +82,9 @@ export default function Footer() {
             {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
             {/* @ts-ignore — scrolling is a valid iframe attr but deprecated in HTML spec */}
             <iframe
+              ref={iframeRef}
               src="https://link.leadpipeline.ai/widget/form/dViZEitr7fnCtl8rKT3Q"
-              style={{ width: '100%', height: '560px', minHeight: '560px', border: 'none', borderRadius: '10px', display: 'block' }}
+              style={{ width: '100%', height: '425px', border: 'none', borderRadius: '10px', display: 'block' }}
               id="inline-dViZEitr7fnCtl8rKT3Q"
               scrolling="no"
               data-layout="{'id':'INLINE'}"
@@ -71,11 +95,12 @@ export default function Footer() {
               data-deactivation-type="neverDeactivate"
               data-deactivation-value=""
               data-form-name="Newsletter Form"
-              data-height="560"
+              data-height="425"
               data-layout-iframe-id="inline-dViZEitr7fnCtl8rKT3Q"
               data-form-id="dViZEitr7fnCtl8rKT3Q"
               title="Newsletter Form"
             />
+            <Script src="https://link.leadpipeline.ai/js/form_embed.js" strategy="lazyOnload" />
           </div>
 
         </div>
@@ -170,15 +195,15 @@ export default function Footer() {
 
         {/* Right zone: legal */}
         <div className={styles.rightZone}>
-          <p className={styles.copyright}>
-            &copy; THE ONE CLINIC {year}. ALL RIGHTS RESERVED.
-          </p>
           <nav className={styles.legalLinks} aria-label="Legal links">
             <a href="/terms-conditions" className={styles.legalLink}>
-              Terms &amp; Conditions <CircleArrow />
+              Terms &amp; Conditions
             </a>
             <a href="/privacy-policy" className={styles.legalLink}>
-              Privacy Policy <CircleArrow />
+              Privacy Policy
+            </a>
+            <a href="/complaints-policy" className={styles.legalLink}>
+              Complaints Policy
             </a>
           </nav>
         </div>
@@ -189,7 +214,8 @@ export default function Footer() {
           CREDIT LINE
       ══════════════════════════════════════════════ */}
       <div className={styles.creditLine}>
-        Design, Developed and Managed by <a href="https://mangoeyes.co" target="_blank" rel="noopener noreferrer" className={styles.creditLink}>mangoeyes.co</a>
+        <span>&copy; THE ONE CLINIC {year}. ALL RIGHTS RESERVED.</span>
+        <span>Design, Developed and Managed by <a href="https://mangoeyes.co" target="_blank" rel="noopener noreferrer" className={styles.creditLink}>mangoeyes.co</a></span>
       </div>
 
     </footer>
