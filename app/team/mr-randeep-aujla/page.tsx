@@ -72,7 +72,8 @@ export default function MrRandeepAujlaPage() {
                 fill
                 priority
                 className={styles.photo}
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 300px, 400px"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 300px, 380px"
+                quality={90}
               />
             </motion.div>
           </motion.div>

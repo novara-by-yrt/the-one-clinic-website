@@ -59,6 +59,7 @@ export default function DoctorsGrid() {
                     fill
                     className={styles.photo}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    quality={90}
                   />
                 ) : (
                   <div className={styles.initialsWrap} aria-hidden="true">

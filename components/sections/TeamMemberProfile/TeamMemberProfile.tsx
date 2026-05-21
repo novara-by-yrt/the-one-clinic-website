@@ -77,7 +77,8 @@ export default function TeamMemberProfile({ member }: { member: TeamMember }) {
                   fill
                   priority
                   className={styles.photo}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 300px, 400px"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 300px, 380px"
+                  quality={90}
                 />
               ) : (
                 <div className={styles.initialsWrap} aria-hidden="true">
