@@ -29,7 +29,7 @@ export default function DoctorCTA1() {
           </div>
 
           {/* Content */}
-          <div className="p-4 md:p-5 lg:p-6 md:pl-0 flex flex-col justify-center">
+          <div className="p-4 md:p-5 lg:p-6 md:pl-0 flex flex-col justify-center items-center md:items-start text-center md:text-left">
             <h3 className="text-xl md:text-2xl lg:text-3xl font-extrabold mb-2 md:mb-3 text-white leading-tight" style={{ color: '#ffffff' }}>
               Look and Feel Your Best Every Day!
             </h3>
@@ -51,7 +51,7 @@ export default function DoctorCTA1() {
 
             <button
               onClick={handleClick}
-              className="bg-white text-black font-bold px-6 py-2 rounded-full hover:bg-gray-100 transition-colors w-fit text-sm"
+              className="bg-white text-black font-bold px-6 py-2 rounded-full hover:bg-gray-100 transition-colors w-fit text-sm mx-auto md:mx-0"
             >
               Book a Consultation
             </button>

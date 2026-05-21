@@ -345,7 +345,7 @@
 
 @media (max-width: 768px) {
   .hero {
-    padding: 4rem var(--container-padding) 3rem;
+    padding: calc(76px + 1.5rem) var(--container-padding) 3rem;
     min-height: 280px;
   }
 
@@ -394,7 +394,7 @@
 
 @media (max-width: 640px) {
   .hero {
-    padding: 3.5rem var(--container-padding) 2.5rem;
+    padding: calc(76px + 1rem) var(--container-padding) 2.5rem;
     min-height: 240px;
   }
 
@@ -412,10 +412,11 @@
   }
 
   .sidebarForm {
-    padding: 1.25rem;
+    padding: 1rem 0.5rem 0.25rem;
   }
 
   .formTitle {
     font-size: 1rem;
+    padding-inline: 0.25rem;
   }
 }

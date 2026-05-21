@@ -3,7 +3,7 @@
 export default function CallbackTrigger() {
   return (
     <>
-      <div className="bg-gray-50 border-2 border-gray-300 rounded-lg p-6 lg:p-7">
+      <div className="bg-gray-50 border-2 border-gray-300 rounded-lg px-3 py-5 sm:px-5 sm:py-6 lg:px-7 lg:py-7">
         <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-4 lg:mb-6">Request a Call Back</h3>
 
         {/* LeadPipeline form iframe */}

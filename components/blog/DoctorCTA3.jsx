@@ -15,7 +15,7 @@ export default function DoctorCTA3() {
       <div className="bg-black rounded-lg overflow-hidden my-3 md:my-4 lg:my-5">
         <div className="grid grid-cols-1 md:grid-cols-[60%_40%] gap-0 items-center">
           {/* Content */}
-          <div className="p-3 md:p-4 lg:p-4 md:pr-2 flex flex-col justify-center order-2 md:order-1">
+          <div className="p-3 md:p-4 lg:p-4 md:pr-2 flex flex-col justify-center order-2 md:order-1 items-center md:items-start text-center md:text-left">
             <h3 className="text-sm md:text-base lg:text-lg font-extrabold mb-2 md:mb-2.5 text-white leading-snug" style={{ color: '#ffffff' }}>
               Take the Next Step in Your Aesthetic or Health Journey!
             </h3>
@@ -37,7 +37,7 @@ export default function DoctorCTA3() {
 
             <button
               onClick={handleClick}
-              className="bg-white text-black font-bold px-6 py-2 rounded-full hover:bg-gray-100 transition-colors w-fit text-sm"
+              className="bg-white text-black font-bold px-6 py-2 rounded-full hover:bg-gray-100 transition-colors w-fit text-sm mx-auto md:mx-0"
             >
               Book a Consultation
             </button>
