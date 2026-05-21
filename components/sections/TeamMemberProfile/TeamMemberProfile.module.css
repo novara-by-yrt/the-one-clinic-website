@@ -10,7 +10,7 @@
 .heroGrid {
   display: grid;
   grid-template-columns: 1fr 380px;
-  gap: clamp(var(--space-6), 5vw, var(--space-9));
+  gap: clamp(var(--space-3), 2.5vw, var(--space-5));
   align-items: center;
 }
 
