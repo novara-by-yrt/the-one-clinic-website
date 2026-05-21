@@ -136,8 +136,8 @@ export default function Process() {
             viewport={VIEWPORT}
           >
             <motion.div className={styles.header} variants={fadeUp}>
-              <p className={styles.eyebrow}>The Journey</p>
-              <h2 className={styles.heading}>How It Works</h2>
+              <p className={styles.eyebrow}>The One Clinic</p>
+              <h2 className={styles.heading}>Patient Experience</h2>
               <p className={styles.subtext}>
                 From your first visit to long-term results, here&apos;s what to expect
                 when you choose The One Clinic.
