@@ -327,24 +327,20 @@
    BOOK CTA
 ═══════════════════════════════════════════ */
 .ctaSection {
-  background: var(--color-bg-dark);
+  background: var(--color-bg-dark) url('/images/Background-logo.png') center/contain no-repeat;
   border-top: 1px solid rgb(255 255 255 / 0.06);
   padding-block: var(--space-8);
   position: relative;
   overflow: hidden;
 }
 
-.ctaBgWrap {
+.ctaSection::before {
+  content: '';
   position: absolute;
   inset: 0;
+  background: var(--color-bg-dark);
+  opacity: 0.82;
   pointer-events: none;
-  overflow: hidden;
-}
-
-.ctaBgImage {
-  object-fit: contain;
-  object-position: center;
-  opacity: 0.18;
 }
 
 .ctaInner {

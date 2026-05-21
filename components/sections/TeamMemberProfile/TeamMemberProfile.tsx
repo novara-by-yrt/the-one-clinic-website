@@ -157,15 +157,6 @@ export default function TeamMemberProfile({ member }: { member: TeamMember }) {
           BOOK CTA — dark
       ───────────────────────────────────────── */}
       <section className={styles.ctaSection} data-section-theme="dark">
-        <div className={styles.ctaBgWrap} aria-hidden="true">
-          <Image
-            src="/images/Background-logo.png"
-            alt=""
-            fill
-            className={styles.ctaBgImage}
-            sizes="100vw"
-          />
-        </div>
         <Container>
           <motion.div
             className={styles.ctaInner}
