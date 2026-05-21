@@ -10,6 +10,7 @@ import styles from './ExtendedTeam.module.css';
 
 const SPECIALIST = {
   name: 'Mr Thangasamy Sankar',
+  role: 'Medical Director & Consultant Plastic Surgeon',
   credentials: 'FRCS',
   specialties: ['Plastic Surgery', 'Laser Treatments'],
   initials: 'TS',
@@ -50,6 +51,7 @@ export default function ExtendedTeam() {
             <div className={styles.specialistBody}>
               <div className={styles.specialistMeta}>
                 <h3 className={styles.specialistName}>{SPECIALIST.name}</h3>
+                <p className={styles.specialistCredentials}>{SPECIALIST.role}</p>
                 <p className={styles.specialistCredentials}>{SPECIALIST.credentials}</p>
                 <div className={styles.tags}>
                   {SPECIALIST.specialties.map((s) => (

@@ -72,11 +72,11 @@ export const TEAM_MEMBERS: TeamMember[] = [
     credentials: 'FRCS',
     initials: 'TS',
     image: '/images/Dr-Sankar-updated.png',
-    role: 'Consultant Plastic Surgeon & Laser Specialist',
+    role: 'Medical Director & Consultant Plastic Surgeon',
     stats: [
+      { value: 'Medical', label: 'Director' },
       { value: 'FRCS', label: 'Fellowship Qualified' },
       { value: 'Plastic', label: 'Surgery Specialist' },
-      { value: 'Laser', label: 'Treatment Specialist' },
     ],
     specialties: ['Plastic Surgery', 'Laser Treatments', 'Aesthetic Surgery', 'Skin Rejuvenation', 'Scar Revision'],
     bio: [
