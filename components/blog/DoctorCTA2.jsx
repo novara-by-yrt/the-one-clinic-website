@@ -20,7 +20,7 @@ export default function DoctorCTA2() {
               Take the Next Step in Your Aesthetic or Health Journey!
             </h3>
 
-            <ul className="space-y-2 mb-4 text-sm md:text-base">
+            <ul className="space-y-2 mb-4 text-sm md:text-base list-none">
               <li className="flex items-start gap-2 text-white/90">
                 <span className="text-white flex-shrink-0 mt-1">•</span>
                 <span>Personalised treatments for your unique needs.</span>

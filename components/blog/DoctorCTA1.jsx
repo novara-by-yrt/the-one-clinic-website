@@ -34,7 +34,7 @@ export default function DoctorCTA1() {
               Look and Feel Your Best Every Day!
             </h3>
 
-            <ul className="space-y-2 mb-4 text-sm md:text-base">
+            <ul className="space-y-2 mb-4 text-sm md:text-base list-none">
               <li className="flex items-start gap-2 text-white/90">
                 <span className="text-white flex-shrink-0 mt-1">•</span>
                 <span>Advanced facial, body, and hair treatments.</span>
