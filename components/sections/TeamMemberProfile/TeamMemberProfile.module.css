@@ -334,12 +334,17 @@
   overflow: hidden;
 }
 
+.ctaBgWrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
 .ctaBgImage {
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   opacity: 0.18;
-  pointer-events: none;
-  user-select: none;
 }
 
 .ctaInner {
