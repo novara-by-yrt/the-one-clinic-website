@@ -145,7 +145,7 @@ export default function MeetTheExperts() {
               {prevMember.image ? (
                 <Image src={prevMember.image}
                   alt={`${prevMember.name} , ${prevMember.role} at The One Clinic Leicester`}
-                  fill className={styles.cardImg} sizes="160px" draggable={false} />
+                  fill className={styles.cardImg} sizes="160px" quality={90} draggable={false} />
               ) : (
                 <div className={styles.cardInitials}>{prevMember.initials}</div>
               )}
@@ -171,8 +171,8 @@ export default function MeetTheExperts() {
                 <Image src={member.image}
                   alt={`${member.name} , ${member.role} at The One Clinic Leicester`}
                   fill className={styles.cardImg}
-                  sizes="(max-width:640px) 55vw, 320px"
-                  priority draggable={false} />
+                  sizes="(max-width:640px) 55vw, 340px"
+                  quality={90} priority draggable={false} />
               ) : (
                 <div className={styles.cardInitials}>{member.initials}</div>
               )}
@@ -251,7 +251,7 @@ export default function MeetTheExperts() {
                     {m.image ? (
                       <Image src={m.image}
                         alt={`${m.name} , ${m.role} at The One Clinic Leicester`}
-                        fill className={styles.cardImg} sizes="160px" draggable={false} />
+                        fill className={styles.cardImg} sizes="160px" quality={90} draggable={false} />
                     ) : (
                       <div className={styles.cardInitials}>{m.initials}</div>
                     )}

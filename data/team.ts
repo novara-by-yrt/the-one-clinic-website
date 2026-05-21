@@ -71,7 +71,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Mr Thangasamy Sankar',
     credentials: 'FRCS',
     initials: 'TS',
-    image: '/MR-SANKAR.jpg',
+    image: '/images/MR-SANKAR-updated.jpg',
     role: 'Medical Director & Consultant Plastic Surgeon',
     stats: [
       { value: 'Medical', label: 'Director' },
