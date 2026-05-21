@@ -430,7 +430,7 @@
   }
 
   .contentWrapper {
-    padding-top: clamp(36px, 5svh, 48px);
+    padding-top: calc(76px + clamp(20px, 3svh, 32px));
     padding-bottom: clamp(4px, 0.8svh, 10px);
   }
 
