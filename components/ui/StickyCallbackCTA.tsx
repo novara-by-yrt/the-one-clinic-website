@@ -38,8 +38,8 @@ export default function StickyCallbackCTA() {
     const t = setTimeout(() => {
       if (cancelled) return;
       lsSet(KEY_PHASE, '1');
-      isAutoRef.current = true;
-      setOpen(true);
+      // Auto-open the Book Consultation modal on first visit
+      window.dispatchEvent(new Event('openBookConsultationModal'));
     }, FIRST_DELAY);
     return () => { cancelled = true; clearTimeout(t); };
   }, []);
