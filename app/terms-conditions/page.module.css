@@ -59,7 +59,8 @@
 ═══════════════════════════════════════════ */
 .body {
   background: var(--color-bg-light);
-  padding-block: var(--space-9);
+  padding-top: var(--space-9);
+  padding-bottom: clamp(4rem, 8vw, 7rem);
 }
 
 .content {
@@ -69,6 +70,10 @@
 
 .content section {
   margin-bottom: var(--space-6);
+}
+
+.content section:last-child {
+  margin-bottom: 0;
 }
 
 .content h2 {
