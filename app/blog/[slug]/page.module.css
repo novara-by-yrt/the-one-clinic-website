@@ -376,7 +376,7 @@
 
 @media (max-width: 768px) {
   .hero {
-    padding: calc(76px + 1.5rem) var(--container-padding) 3rem;
+    padding: calc(76px + 1.5rem) 0 3rem;
     min-height: 280px;
   }
 
@@ -431,7 +431,7 @@
 
 @media (max-width: 640px) {
   .hero {
-    padding: calc(76px + 1rem) var(--container-padding) 2.5rem;
+    padding: calc(76px + 1rem) 0 2.5rem;
     min-height: 240px;
   }
 
