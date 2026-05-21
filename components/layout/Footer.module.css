@@ -123,6 +123,19 @@
   z-index: 1;
   overflow: hidden;
   border-radius: 10px;
+  max-height: 425px;
+  height: 425px;
+  box-sizing: border-box;
+}
+
+.newsletterFormWrap iframe {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 425px !important;
+  border: none !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
 }
 
 /* ═══════════════════════════════════════════
@@ -365,6 +378,11 @@
     align-items: center;
   }
 
+  .newsletterFormWrap {
+    max-height: 425px;
+    height: 425px;
+  }
+
   .inner {
     flex-wrap: wrap;
     gap: var(--space-5);
@@ -409,6 +427,11 @@
 @media (max-width: 580px) {
   .newsletterBand {
     padding-top: 32px;
+  }
+
+  .newsletterFormWrap {
+    max-height: 425px;
+    height: 425px;
   }
 
   .inner {
