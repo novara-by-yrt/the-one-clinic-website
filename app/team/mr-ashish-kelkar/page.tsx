@@ -67,7 +67,7 @@ export default function MrAshishKelkarPage() {
             {/* Right, photo */}
             <motion.div className={styles.heroPhoto} variants={fadeUp}>
               <Image
-                src="/images/Mr. Ashish Kelkar-image.png"
+                src="/DR-ASHISH.jpg"
                 alt="Mr Ashish Kelkar"
                 fill
                 priority

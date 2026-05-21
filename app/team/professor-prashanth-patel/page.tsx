@@ -67,7 +67,7 @@ export default function ProfessorPrashanathPatelPage() {
             {/* Right, photo */}
             <motion.div className={styles.heroPhoto} variants={fadeUp}>
               <Image
-                src="/images/Dr. Prashanth Patel-image.png"
+                src="/PROFESSOR-PRASHANTH-PATEL.jpg"
                 alt="Professor Prashanth Patel"
                 fill
                 priority

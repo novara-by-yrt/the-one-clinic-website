@@ -67,7 +67,7 @@ export default function DrBediPage() {
             {/* Right, photo */}
             <motion.div className={styles.heroPhoto} variants={fadeUp}>
               <Image
-                src="/images/imgi_21_team-thumb-BEDI.jpg"
+                src="/DR-GUNJAN.jpg"
                 alt="Dr Gunjan Bedi"
                 fill
                 priority

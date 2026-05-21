@@ -67,7 +67,7 @@ export default function MrRandeepAujlaPage() {
             {/* Right, photo */}
             <motion.div className={styles.heroPhoto} variants={fadeUp}>
               <Image
-                src="/images/Mr Randeep Aujla-image.png"
+                src="/MR-RANDEEP-S.-AUJLA.jpg"
                 alt="Mr Randeep Aujla"
                 fill
                 priority

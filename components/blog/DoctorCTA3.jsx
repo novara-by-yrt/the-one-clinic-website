@@ -47,7 +47,7 @@ export default function DoctorCTA3() {
           <div className="p-3 md:p-4 lg:p-4 order-1 md:order-2">
             <div className="relative aspect-square w-full rounded-md overflow-hidden bg-white">
               <Image
-                src="/images/imgi_21_team-thumb-BEDI.jpg"
+                src="/DR-GUNJAN.jpg"
                 alt="Dr Gunjan Bedi"
                 fill
                 sizes="(max-width: 768px) 100vw, 40vw"
