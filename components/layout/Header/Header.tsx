@@ -410,16 +410,18 @@ export default function Header() {
                 {/* Top strip */}
                 <div className={styles.megaTop}>
                   <span className={styles.megaCategoryLabel}>{item.label}</span>
-                  <Link
-                    href={item.href}
-                    className={styles.megaViewAll}
-                    onClick={() => setOpenDropdown(null)}
-                  >
-                    View all
-                    <svg width="12" height="12" viewBox="0 0 13 13" fill="none" aria-hidden="true">
-                      <path d="M2.5 6.5h8M7.5 3l3.5 3.5L7.5 10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </Link>
+                  {!item.href.startsWith('#') && (
+                    <Link
+                      href={item.href}
+                      className={styles.megaViewAll}
+                      onClick={() => setOpenDropdown(null)}
+                    >
+                      View all
+                      <svg width="12" height="12" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+                        <path d="M2.5 6.5h8M7.5 3l3.5 3.5L7.5 10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </Link>
+                  )}
                 </div>
 
                 {/* Three-panel body */}
