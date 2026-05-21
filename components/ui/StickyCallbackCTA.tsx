@@ -15,7 +15,7 @@ const FIRST_DELAY = 15_000; // 15 s, auto-show once after first page load
  *   '0'  never auto-triggered
  *   '1'  auto-triggered once; never show automatically again
  */
-const KEY_PHASE = 'toc_popup_phase';
+const KEY_PHASE = 'toc_book_popup_shown';
 
 function lsGet(key: string): string | null {
   try { return localStorage.getItem(key); } catch { return null; }
