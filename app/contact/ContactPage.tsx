@@ -1,5 +1,6 @@
 'use client';
 
+import { useRef, useEffect } from 'react';
 import Script from 'next/script';
 import { motion } from 'framer-motion';
 import { CLINIC_INFO, getMapsEmbedUrl, getMapsSearchUrl } from '@/lib/clinic-info';
@@ -26,7 +27,24 @@ const CATEGORIES = [
   },
 ];
 
+const FORM_ID = '0tX56kJTWOHkgkZ6UYno';
+
 export default function ContactPage() {
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  useEffect(() => {
+    const iframe = iframeRef.current;
+    if (!iframe) return;
+    const lock = () => {
+      if (iframe.getAttribute('scrolling') !== 'no') iframe.setAttribute('scrolling', 'no');
+      iframe.style.overflow = 'hidden';
+    };
+    lock();
+    const observer = new MutationObserver(lock);
+    observer.observe(iframe, { attributes: true, attributeFilter: ['scrolling', 'style'] });
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       {/* ══════════════════════════════════════
@@ -167,24 +185,28 @@ export default function ContactPage() {
               <div className={styles.formCard}>
                 <p className={styles.formEyebrow}>Book a Consultation</p>
                 <h2 className={styles.formHeading}>Get in Touch with Us</h2>
-                <iframe
-                  src="https://link.leadpipeline.ai/widget/form/Az3D8kxDVBz2diDQJ3uY"
-                  style={{ width: '100%', height: '480px', minHeight: '480px', border: 'none', borderRadius: '0px', display: 'block' }}
-                  id="inline-Az3D8kxDVBz2diDQJ3uY"
-                  data-layout="{'id':'INLINE'}"
-                  data-trigger-type="alwaysShow"
-                  data-trigger-value=""
-                  data-activation-type="alwaysActivated"
-                  data-activation-value=""
-                  data-deactivation-type="neverDeactivate"
-                  data-deactivation-value=""
-                  data-form-name="Book Consultation"
-                  data-height="480"
-                  data-layout-iframe-id="inline-Az3D8kxDVBz2diDQJ3uY"
-                  data-form-id="Az3D8kxDVBz2diDQJ3uY"
-                  title="Book Consultation"
-                  scrolling="no"
-                />
+                <div className={styles.formWrap}>
+                  <iframe
+                    ref={iframeRef}
+                    src={`https://link.leadpipeline.ai/widget/form/${FORM_ID}`}
+                    style={{ width: '100%', height: '505px', minHeight: '505px', border: 'none', borderRadius: '0px', display: 'block', overflow: 'hidden' }}
+                    id={`inline-${FORM_ID}`}
+                    data-layout="{'id':'INLINE'}"
+                    data-trigger-type="alwaysShow"
+                    data-trigger-value=""
+                    data-activation-type="alwaysActivated"
+                    data-activation-value=""
+                    data-deactivation-type="neverDeactivate"
+                    data-deactivation-value=""
+                    data-form-name="Contact Us New Form"
+                    data-height="505"
+                    data-layout-iframe-id={`inline-${FORM_ID}`}
+                    data-form-id={FORM_ID}
+                    title="Contact Us New Form"
+                    scrolling="no"
+                  />
+                </div>
+                <Script src="https://link.leadpipeline.ai/js/form_embed.js" strategy="lazyOnload" />
               </div>
             </motion.div>
           </div>
