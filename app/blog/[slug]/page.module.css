@@ -280,6 +280,7 @@
   position: sticky;
   top: 6rem;
   height: fit-content;
+  align-self: start;
 }
 
 .sidebarForm {

@@ -163,10 +163,8 @@ export default async function BlogDetailPage({ params }) {
           </article>
 
           {/* Right column - Sticky form (hidden on mobile/tablet) */}
-          <div className="hidden lg:block">
-            <div className="sticky top-24">
-              <CallbackTrigger />
-            </div>
+          <div className="hidden lg:block sticky top-24 self-start">
+            <CallbackTrigger />
           </div>
         </div>
 
