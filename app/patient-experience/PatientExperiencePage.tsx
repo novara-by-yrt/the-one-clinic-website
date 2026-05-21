@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import Container              from '@/components/ui/Container';
 import BookConsultationButton from '@/components/ui/BookConsultationButton';
-import ArrivalExperience      from '@/components/sections/ArrivalExperience';
 import Process                from '@/components/sections/Process';
 import TestimonialVideos      from '@/components/sections/TestimonialVideos';
 import Testimonials           from '@/components/sections/Testimonials';
@@ -62,11 +61,6 @@ export default function PatientExperiencePage() {
           HEAR FROM OUR PATIENTS, VIDEO TESTIMONIALS
       ════════════════════════════════════════ */}
       <TestimonialVideos />
-
-      {/* ════════════════════════════════════════
-          THE ARRIVAL EXPERIENCE
-      ════════════════════════════════════════ */}
-      <ArrivalExperience />
 
       {/* ════════════════════════════════════════
           EXCELLENT PATIENT REVIEWS
