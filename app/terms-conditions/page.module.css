@@ -59,7 +59,7 @@
 ═══════════════════════════════════════════ */
 .body {
   background: var(--color-bg-light);
-  padding-top: var(--space-9);
+  padding-top: clamp(3rem, 6vw, 5rem);
   padding-bottom: clamp(4rem, 8vw, 7rem);
 }
 
