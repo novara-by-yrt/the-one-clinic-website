@@ -18,7 +18,7 @@ export default function TermsConditionsPage() {
             <p className={styles.heroEyebrow}>Legal</p>
             <h1 className={styles.heroTitle}>Terms &amp; Conditions</h1>
             <p className={styles.heroSubtitle}>
-              Please read these terms carefully before visiting or booking with The One Clinic.
+              Please read these Terms and Conditions carefully prior to your visit. By making an appointment reservation online, by phone, or in person, you agree to these terms and any applicable statutory rights.
             </p>
           </div>
         </Container>
@@ -28,10 +28,6 @@ export default function TermsConditionsPage() {
       <div className={styles.body}>
         <Container>
           <article className={styles.content}>
-            <p className={styles.intro}>
-              Please read these Terms and Conditions carefully prior to your visit. By making an appointment reservation online, by phone, or in person, you agree to these terms and any applicable statutory rights.
-            </p>
-
             <section>
               <h2>1. Consultations</h2>
               <p>
