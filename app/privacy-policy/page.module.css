@@ -130,6 +130,111 @@
   font-weight: var(--fw-bold);
 }
 
+.content a {
+  color: var(--color-text-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s;
+}
+
+.content a:hover {
+  opacity: 0.65;
+}
+
+/* ── Category grid (cookies) ── */
+.categoryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.categoryCard {
+  background: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: 10px;
+  padding: var(--space-4);
+}
+
+.categoryCard h3 {
+  font-size: 0.9375rem;
+  font-weight: var(--fw-bold);
+  color: var(--color-text-dark);
+  margin: 0 0 var(--space-2);
+}
+
+.categoryCard p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-2);
+}
+
+.categoryCard dl {
+  margin: 0;
+}
+
+.categoryCard dt {
+  font-size: 0.875rem;
+  font-weight: var(--fw-bold);
+  color: var(--color-text-dark);
+  margin-top: var(--space-2);
+}
+
+.categoryCard dd {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin: 2px 0 0;
+}
+
+.note {
+  font-size: 0.875rem !important;
+  font-style: italic;
+  color: var(--color-text-muted);
+  background: var(--color-bg-light);
+  border-left: 3px solid var(--color-border-light);
+  padding: var(--space-2) var(--space-3);
+  border-radius: 0 6px 6px 0;
+  margin: 0 !important;
+}
+
+/* ── Data processors table ── */
+.processorTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--space-3);
+  font-size: 0.9375rem;
+}
+
+.processorTable thead th {
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 2px solid var(--color-border-light);
+}
+
+.processorTable tbody td {
+  padding: var(--space-2) var(--space-3);
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-border-light);
+  vertical-align: top;
+}
+
+.processorTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ── Last updated ── */
+.lastUpdated {
+  font-size: 0.875rem !important;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
 /* ═══════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════ */

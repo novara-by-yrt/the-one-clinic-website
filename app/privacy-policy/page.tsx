@@ -3,22 +3,24 @@ import Container from '@/components/ui/Container';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Complaints Policy | The One Clinic Leicester',
-  description: 'Read the complaints policy for The One Clinic. We value your feedback and aim to resolve any concerns quickly and fairly.',
+  title: 'Privacy Policy | The One Clinic Leicester',
+  description: 'Read the privacy policy for The One Clinic. Learn how we collect, use, and protect your personal data and how cookies work on our site.',
 };
 
-export default function ComplaintsPolicyPage() {
+export default function PrivacyPolicyPage() {
   return (
     <>
       {/* ── Hero ── */}
-      <section className={styles.hero} data-section-theme="dark" aria-label="Complaints Policy, hero">
+      <section className={styles.hero} data-section-theme="dark" aria-label="Privacy Policy hero">
         <div className={styles.heroGrid} aria-hidden="true" />
         <Container>
           <div className={styles.heroContent}>
             <p className={styles.eyebrow}>Legal</p>
-            <h1>Complaints Policy</h1>
+            <h1>Privacy Policy</h1>
             <p className={styles.intro}>
-              Your Experience Matters to Us. We always aim to provide the highest standard of care. If you are unhappy with any aspect of your experience at The One Clinic, please let us know as soon as possible.
+              The One Clinic is committed to protecting your privacy and ensuring you have a positive
+              experience on our website. This policy explains how we collect, use, and protect your
+              personal data.
             </p>
           </div>
         </Container>
@@ -28,86 +30,198 @@ export default function ComplaintsPolicyPage() {
       <div className={styles.body}>
         <Container>
           <article className={styles.content}>
+
             <section>
-              <h2>How to Submit a Formal Complaint</h2>
+              <h2>Introduction</h2>
               <p>
-                You can submit a complaint verbally, by letter, by email, or through our website contact form.
+                The One Clinic ("we", "us", "our") is committed to protecting your privacy and
+                ensuring you have a positive experience on our website. This policy explains how we
+                collect, use, and protect your personal data, and how cookies and similar technologies
+                work on our site.
               </p>
+            </section>
+
+            <section>
+              <h2>Cookie Categories</h2>
               <p>
-                Please provide your name, contact details, and a brief summary of your complaint. Include relevant dates and names if possible. You may also ask someone to file a complaint on your behalf. If so, please ensure we have your written consent.
+                We use cookies and similar tracking technologies to enhance your experience, analyse
+                site usage, and support our marketing efforts. We categorise our cookies as follows:
               </p>
-              <p>
-                Please send your complaint or feedback to:
-              </p>
+
+              <div className={styles.categoryGrid}>
+                <div className={styles.categoryCard}>
+                  <h3>Strictly Necessary Cookies</h3>
+                  <p>
+                    Essential for core website functionality. These cannot be disabled and do not
+                    require consent under UK GDPR and PECR regulations.
+                  </p>
+                  <dl>
+                    <dt>LeadPipeline Form Embed</dt>
+                    <dd>Enables our contact and newsletter forms to function correctly.</dd>
+                  </dl>
+                </div>
+
+                <div className={styles.categoryCard}>
+                  <h3>Functional Cookies</h3>
+                  <p>
+                    Enable enhanced features and personalisation based on your preferences. These
+                    improve your user experience but are not strictly necessary.
+                  </p>
+                  <dl>
+                    <dt>Wistia Video Player</dt>
+                    <dd>Used to deliver and track engagement with embedded video content on our site.</dd>
+                    <dt>LeadPipeline Forms</dt>
+                    <dd>Personalisation and tracking of form interactions and submissions.</dd>
+                  </dl>
+                </div>
+
+                <div className={styles.categoryCard}>
+                  <h3>Analytics Cookies</h3>
+                  <p>
+                    Help us understand how you use our site so we can improve it. These cookies
+                    collect aggregated, anonymised data.
+                  </p>
+                  <p className={styles.note}>
+                    We do not currently use third-party analytics tools. This category is reserved for
+                    future implementation.
+                  </p>
+                </div>
+
+                <div className={styles.categoryCard}>
+                  <h3>Marketing Cookies</h3>
+                  <p>
+                    Used to deliver personalised ads and marketing content. These allow us to measure
+                    campaign effectiveness and understand audience interests.
+                  </p>
+                  <dl>
+                    <dt>Facebook Social Plugins</dt>
+                    <dd>
+                      Facebook may set cookies if you interact with our social media links or embedded
+                      social content.
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <h2>Data Processors</h2>
+              <p>We use the following third-party services to process data collected via cookies:</p>
+
+              <table className={styles.processorTable}>
+                <thead>
+                  <tr>
+                    <th>Service</th>
+                    <th>Purpose</th>
+                    <th>Privacy Policy</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>LeadPipeline</td>
+                    <td>Contact form collection and CRM integration</td>
+                    <td>
+                      <a href="https://link.leadpipeline.ai/privacy" target="_blank" rel="noopener noreferrer">
+                        LeadPipeline Privacy Policy
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Wistia</td>
+                    <td>Video hosting and analytics</td>
+                    <td>
+                      <a href="https://wistia.com/privacy" target="_blank" rel="noopener noreferrer">
+                        Wistia Privacy Policy
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Google Maps</td>
+                    <td>Location embedding and directions</td>
+                    <td>
+                      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+                        Google Privacy Policy
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Facebook</td>
+                    <td>Social media integration</td>
+                    <td>
+                      <a href="https://www.facebook.com/policies/cookies/" target="_blank" rel="noopener noreferrer">
+                        Facebook Cookie Policy
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section>
+              <h2>Your Rights</h2>
+              <p>Under UK GDPR, you have the right to:</p>
               <ul>
-                <li><strong>Email:</strong> info@the-oneclinic.net</li>
-                <li><strong>Phone:</strong> 07481342374</li>
-                <li><strong>Post:</strong> The Clinic Manager, The One Clinic, 36 DeMontfort Street, Leicester, LE1 7GS</li>
+                <li>
+                  <strong>Access your data:</strong> Request a copy of personal data we hold about you
+                </li>
+                <li>
+                  <strong>Rectification:</strong> Correct inaccurate or incomplete data
+                </li>
+                <li>
+                  <strong>Erasure:</strong> Request deletion of your data in certain circumstances
+                </li>
+                <li>
+                  <strong>Restrict processing:</strong> Limit how we use your data
+                </li>
+                <li>
+                  <strong>Data portability:</strong> Receive your data in a portable format
+                </li>
+                <li>
+                  <strong>Withdraw consent:</strong> Revoke consent for non-essential cookies at any time
+                </li>
               </ul>
             </section>
 
             <section>
-              <h2>Information We Need From You</h2>
+              <h2>Managing Your Consent</h2>
               <p>
-                To help us review your case, please provide:
+                You can manage your cookie preferences at any time by clicking &ldquo;Manage Cookies&rdquo; in the
+                footer. You can:
               </p>
               <ul>
-                <li>Your full name and contact details.</li>
-                <li>A clear summary of your complaint.</li>
-                <li>Relevant dates and the names of the staff involved.</li>
-                <li>What you hope to achieve as a resolution</li>
+                <li>Accept all cookies</li>
+                <li>Reject all non-essential cookies</li>
+                <li>Customise which categories you consent to</li>
               </ul>
               <p>
-                You may also ask someone to file a complaint on your behalf. If so, please ensure we have your written consent to proceed.
+                Consent preferences are stored in your browser and expire after 12 months. You can
+                withdraw consent at any time by using the &ldquo;Manage Cookies&rdquo; button.
               </p>
             </section>
 
             <section>
-              <h2>What Happens Next</h2>
-              <ul>
-                <li>We will acknowledge your complaint within 2 business days.</li>
-                <li>Our Clinic Manager will review your case thoroughly.</li>
-                <li>You will receive a written response within 10 business days. If we require more time, we will provide a clear update on our progress.</li>
-              </ul>
-            </section>
-
-            <section>
-              <h2>Complaint Response Timeframes</h2>
+              <h2>Contact Us</h2>
               <p>
-                You will receive a full written response within ten business days. If we require more time to complete a thorough review, we will keep you updated on our progress. We always aim to resolve matters as swiftly as possible.
+                If you have any questions about our privacy practices or cookies, please contact us at:
+              </p>
+              <p>
+                <strong>The One Clinic</strong><br />
+                36 DeMontfort Street<br />
+                Leicester, LE1 7GS<br />
+                <a href="mailto:info@the-oneclinic.net">info@the-oneclinic.net</a><br />
+                <a href="tel:+447481342374">07481 342 374</a>
               </p>
             </section>
 
             <section>
-              <h2>Confidentiality and Data Protection</h2>
+              <h2>Policy Updates</h2>
               <p>
-                We handle all complaints in strict confidence. A complaint will never affect your future care or treatments. Only staff directly involved with your case will see your data. We protect your privacy at all times.
+                We may update this privacy policy from time to time. We will notify you of significant
+                changes by updating the date below and highlighting the changes on our website.
               </p>
+              <p className={styles.lastUpdated}>Last updated: 21 May 2026</p>
             </section>
 
-            <section>
-              <h2>Continuous Improvement Through Patient Feedback</h2>
-              <p>
-                We learn from every complaint. Your feedback helps us to refine our standards and improve our clinic. We use this data to train our team and prevent future issues.
-              </p>
-            </section>
-
-            <section>
-              <h2>Further Steps</h2>
-              <p>
-                We want to ensure you feel heard and supported. If you feel unsatisfied with our final response, you can escalate your complaint to ISCAS (The Independent Sector Complaints Adjudication Service).
-              </p>
-              <p>
-                If you remain unsatisfied, you can also contact the Parliamentary and Health Service Ombudsman.
-              </p>
-            </section>
-
-            <section>
-              <h2>Additional Support</h2>
-              <p>
-                Please ask at reception if you need this policy in another format, require assistance to submit a complaint, or need translation services.
-              </p>
-            </section>
           </article>
         </Container>
       </div>
