@@ -228,7 +228,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               {/* Post content - split with CTAs */}
               <div className={styles.mdxContent}>
                 {/* Content before first heading */}
-                <div dangerouslySetInnerHTML={{ __html: contentBefore }} />
+                <div className={styles.blogHtml} dangerouslySetInnerHTML={{ __html: contentBefore }} />
 
                 {/* CTA Section - in middle of content */}
                 <div className={styles.ctaSection}>
@@ -236,7 +236,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </div>
 
                 {/* Content before FAQ */}
-                {contentBeforeFAQ && <div dangerouslySetInnerHTML={{ __html: contentBeforeFAQ }} />}
+                {contentBeforeFAQ && <div className={styles.blogHtml} dangerouslySetInnerHTML={{ __html: contentBeforeFAQ }} />}
 
                 {/* CTA Section - before FAQ */}
                 {contentFAQ && (
@@ -246,7 +246,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 )}
 
                 {/* FAQ section */}
-                {contentFAQ && <div dangerouslySetInnerHTML={{ __html: contentFAQ }} />}
+                {contentFAQ && <div className={styles.blogHtml} dangerouslySetInnerHTML={{ __html: contentFAQ }} />}
               </div>
 
               {/* Tags */}

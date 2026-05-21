@@ -20,7 +20,7 @@ export default function DoctorCTA3() {
               Take the Next Step in Your Aesthetic or Health Journey!
             </h3>
 
-            <ul className="space-y-1 md:space-y-1.5 mb-3 text-xs list-none">
+            <ul className="space-y-1 md:space-y-1.5 mb-3 text-xs" style={{ listStyle: 'none', marginLeft: 0 }}>
               <li className="flex items-start gap-2 text-white/90">
                 <span className="text-white flex-shrink-0 mt-0.5">•</span>
                 <span>Personalised treatments for your unique needs.</span>
@@ -51,7 +51,8 @@ export default function DoctorCTA3() {
                 alt="Dr Gunjan Bedi"
                 fill
                 sizes="(max-width: 768px) 100vw, 40vw"
-                className="object-cover object-center"
+                className="object-cover"
+                style={{ objectPosition: 'center 20%' }}
                 priority
               />
             </div>

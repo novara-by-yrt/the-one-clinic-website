@@ -22,7 +22,8 @@ export default function DoctorCTA1() {
                 alt="Dr Sumit Virmani"
                 fill
                 sizes="(max-width: 768px) 100vw, 40vw"
-                className="object-cover object-center"
+                className="object-cover"
+                style={{ objectPosition: 'center 20%' }}
                 priority
               />
             </div>
@@ -34,7 +35,7 @@ export default function DoctorCTA1() {
               Look and Feel Your Best Every Day!
             </h3>
 
-            <ul className="space-y-2 mb-4 text-sm md:text-base list-none">
+            <ul className="space-y-2 mb-4 text-sm md:text-base" style={{ listStyle: 'none', marginLeft: 0 }}>
               <li className="flex items-start gap-2 text-white/90">
                 <span className="text-white flex-shrink-0 mt-1">•</span>
                 <span>Advanced facial, body, and hair treatments.</span>

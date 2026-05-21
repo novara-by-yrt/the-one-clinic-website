@@ -148,12 +148,20 @@
 .mdxContent ol {
   margin-left: 2rem;
   margin-bottom: 1.25rem;
-  list-style-type: disc;
-  list-style-position: outside;
 }
 
 .mdxContent li {
   margin-bottom: 0.5rem;
+}
+
+/* Bullet/number styles scoped to actual blog HTML only, not CTA components */
+.blogHtml ul,
+.blogHtml ol {
+  list-style-type: disc;
+  list-style-position: outside;
+}
+
+.blogHtml li {
   display: list-item;
 }
 
