@@ -129,6 +129,20 @@ export default function ContactPage() {
                   </span>
                 </a>
 
+                {/* Parking & Accessibility */}
+                <div className={styles.contactRow} style={{ pointerEvents: 'none' }}>
+                  <span className={styles.contactIcon} aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                      <line x1="9" y1="9" x2="15" y2="9"/>
+                      <line x1="9" y1="15" x2="15" y2="15"/>
+                    </svg>
+                  </span>
+                  <div className={styles.contactText}>
+                    <strong>Parking &amp; Accessibility</strong><br />Disabled parking at the rear of the building
+                  </div>
+                </div>
+
                 {/* Social */}
                 <div className={styles.socialRow}>
                   <a
