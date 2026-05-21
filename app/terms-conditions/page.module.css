@@ -95,6 +95,32 @@
   margin: 0;
 }
 
+.content ul,
+.content ol {
+  margin: 0 0 var(--space-3);
+  padding-left: 1.5rem;
+  list-style-type: disc;
+  list-style-position: outside;
+}
+
+.content ol {
+  list-style-type: decimal;
+}
+
+.content ul li,
+.content ol li {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+  display: list-item;
+}
+
+.content strong {
+  color: var(--color-text-dark);
+  font-weight: var(--fw-bold);
+}
+
 /* ═══════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════ */
@@ -136,6 +162,8 @@
   }
 
   .content p,
+  .content ul li,
+  .content ol li,
   .intro {
     font-size: 0.9375rem;
   }
