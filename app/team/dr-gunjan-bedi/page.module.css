@@ -475,21 +475,20 @@
   }
 
   .statsRow {
-    grid-template-columns: 1fr;
-    max-width: 100%;
-    gap: 8px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
   }
 
   .stat {
-    padding: 10px 14px;
+    padding: 8px 6px;
     gap: 2px;
   }
 
   .statValue {
-    font-size: 1.125rem;
+    font-size: 0.9375rem;
   }
 
   .statLabel {
-    font-size: 0.6875rem;
+    font-size: 0.625rem;
   }
 }
