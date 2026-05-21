@@ -51,7 +51,7 @@ export default function DoctorCTA3() {
                 alt="Dr Gunjan Bedi"
                 fill
                 sizes="(max-width: 768px) 100vw, 40vw"
-                className="object-cover object-top"
+                className="object-cover object-center"
                 priority
               />
             </div>
