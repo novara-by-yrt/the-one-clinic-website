@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import Script from 'next/script';
 import { CLINIC_INFO, getMapsSearchUrl } from '@/lib/clinic-info';
 import styles from './Footer.module.css';
@@ -33,6 +34,27 @@ function InstagramIcon() {
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  /* Keep scrolling="no" even if form_embed.js removes it */
+  useEffect(() => {
+    const iframe = iframeRef.current;
+    if (!iframe) return;
+
+    const lock = () => {
+      if (iframe.getAttribute('scrolling') !== 'no') {
+        iframe.setAttribute('scrolling', 'no');
+      }
+      (iframe.style as CSSStyleDeclaration & { scrollbarWidth: string }).scrollbarWidth = 'none';
+    };
+
+    lock();
+
+    const observer = new MutationObserver(lock);
+    observer.observe(iframe, { attributes: true, attributeFilter: ['scrolling', 'style'] });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <footer className={styles.footer} role="contentinfo">
@@ -60,6 +82,7 @@ export default function Footer() {
             {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
             {/* @ts-ignore — scrolling is a valid iframe attr but deprecated in HTML spec */}
             <iframe
+              ref={iframeRef}
               src="https://link.leadpipeline.ai/widget/form/dViZEitr7fnCtl8rKT3Q"
               style={{ width: '100%', height: '425px', border: 'none', borderRadius: '10px', display: 'block' }}
               id="inline-dViZEitr7fnCtl8rKT3Q"
