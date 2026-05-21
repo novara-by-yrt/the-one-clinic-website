@@ -105,59 +105,6 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2>Data Processors</h2>
-              <p>We use the following third-party services to process data collected via cookies:</p>
-
-              <table className={styles.processorTable}>
-                <thead>
-                  <tr>
-                    <th>Service</th>
-                    <th>Purpose</th>
-                    <th>Privacy Policy</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>LeadPipeline</td>
-                    <td>Contact form collection and CRM integration</td>
-                    <td>
-                      <a href="https://link.leadpipeline.ai/privacy" target="_blank" rel="noopener noreferrer">
-                        LeadPipeline Privacy Policy
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Wistia</td>
-                    <td>Video hosting and analytics</td>
-                    <td>
-                      <a href="https://wistia.com/privacy" target="_blank" rel="noopener noreferrer">
-                        Wistia Privacy Policy
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Google Maps</td>
-                    <td>Location embedding and directions</td>
-                    <td>
-                      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
-                        Google Privacy Policy
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Facebook</td>
-                    <td>Social media integration</td>
-                    <td>
-                      <a href="https://www.facebook.com/policies/cookies/" target="_blank" rel="noopener noreferrer">
-                        Facebook Cookie Policy
-                      </a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </section>
-
-            <section>
               <h2>Your Rights</h2>
               <p>Under UK GDPR, you have the right to:</p>
               <ul>
