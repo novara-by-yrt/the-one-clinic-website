@@ -393,6 +393,12 @@
     gap: 2rem;
   }
 
+  /* Drop the section's own side padding on mobile so only the
+     Container's padding applies — halves the left/right gutter */
+  .contentSection {
+    padding-inline: 0;
+  }
+
   .sidebar {
     position: static;
   }
@@ -434,7 +440,7 @@
   }
 
   .contentSection {
-    padding: 2rem var(--container-padding);
+    padding: 2rem 0;
   }
 
   .categoryBadge {
