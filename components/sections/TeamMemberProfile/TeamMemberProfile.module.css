@@ -462,7 +462,7 @@
 
   .heroPhoto {
     max-width: 100%;
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 4 / 5;
   }
 
   .name {
@@ -479,10 +479,26 @@
     justify-content: center;
   }
 
+  .statsSection {
+    padding-block: var(--space-2);
+    border-top: none;
+  }
+
   .statsRow {
-    grid-template-columns: 1fr;
-    max-width: 320px;
-    margin-inline: auto;
-    gap: var(--space-2);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+
+  .stat {
+    padding: 8px 6px;
+    gap: 2px;
+  }
+
+  .statValue {
+    font-size: 0.9375rem;
+  }
+
+  .statLabel {
+    font-size: 0.625rem;
   }
 }
