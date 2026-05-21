@@ -301,14 +301,6 @@
   text-align: right;
 }
 
-.copyright {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: rgb(255 255 255 / 0.75);
-  margin: 0;
-  white-space: nowrap;
-}
 
 .legalLinks {
   display: flex;
@@ -345,7 +337,11 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   color: rgb(255 255 255 / 0.45);
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .creditLink {
@@ -416,11 +412,8 @@
     gap: 12px;
   }
 
-  .copyright {
-    white-space: normal;
-    width: 100%;
-  }
 }
+
 
 /* Mobile */
 @media (max-width: 580px) {

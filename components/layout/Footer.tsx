@@ -206,9 +206,6 @@ export default function Footer() {
               Complaints Policy
             </a>
           </nav>
-          <p className={styles.copyright}>
-            &copy; THE ONE CLINIC {year}. ALL RIGHTS RESERVED.
-          </p>
         </div>
 
       </div>
@@ -217,7 +214,8 @@ export default function Footer() {
           CREDIT LINE
       ══════════════════════════════════════════════ */}
       <div className={styles.creditLine}>
-        Design, Developed and Managed by <a href="https://mangoeyes.co" target="_blank" rel="noopener noreferrer" className={styles.creditLink}>mangoeyes.co</a>
+        <span>&copy; THE ONE CLINIC {year}. ALL RIGHTS RESERVED.</span>
+        <span>Design, Developed and Managed by <a href="https://mangoeyes.co" target="_blank" rel="noopener noreferrer" className={styles.creditLink}>mangoeyes.co</a></span>
       </div>
 
     </footer>
