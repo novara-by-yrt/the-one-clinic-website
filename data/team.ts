@@ -303,8 +303,8 @@ export const TEAM_MEMBERS: TeamMember[] = [
     image: '/images/Charley-updated.png',
     role: 'Patient Care Team',
     stats: [
-      { value: 'Care', label: 'Patient Experience' },
-      { value: 'Team', label: 'The One Clinic' },
+      { value: 'Dedicated', label: 'Patient Care' },
+      { value: 'Seamless', label: 'Patient Journey' },
       { value: '5★', label: 'Patient Satisfaction' },
     ],
     specialties: ['Patient Experience', 'Clinic Coordination', 'Front of House', 'Patient Wellbeing'],
