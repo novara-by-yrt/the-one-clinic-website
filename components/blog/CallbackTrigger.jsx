@@ -7,12 +7,12 @@ export default function CallbackTrigger() {
         <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-4 lg:mb-6">Request a Call Back</h3>
 
         {/* LeadPipeline form iframe */}
-        <div className="overflow-visible rounded-md">
+        <div className="overflow-hidden rounded-md" style={{ height: '455px' }}>
           <iframe
             src="https://link.leadpipeline.ai/widget/form/fegqbVjvGrZqMfbk64P4"
             style={{
               width: '100%',
-              minHeight: '400px',
+              height: '510px',
               border: 'none',
               display: 'block',
             }}
