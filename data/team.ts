@@ -249,9 +249,9 @@ export const TEAM_MEMBERS: TeamMember[] = [
     image: '/images/Nurse Sanj.png',
     role: 'Clinical Nurse',
     stats: [
-      { value: 'RN', label: 'Registered Nurse' },
+      { value: 'Expert', label: 'Treatment Care' },
       { value: 'CQC', label: 'Registered Clinic' },
-      { value: 'Expert', label: 'Clinical Nursing' },
+      { value: 'Skilled', label: 'Clinical Nursing' },
     ],
     specialties: ['Clinical Nursing', 'Patient Support', 'Treatment Care', 'Post-Treatment Recovery'],
     bio: [
@@ -267,8 +267,8 @@ export const TEAM_MEMBERS: TeamMember[] = [
     image: '/images/Chloe-updated.png',
     role: 'Patient Care Team',
     stats: [
-      { value: 'Care', label: 'Patient Experience' },
-      { value: 'Team', label: 'The One Clinic' },
+      { value: 'Warm', label: 'Patient Welcome' },
+      { value: 'Attentive', label: 'Appointment Care' },
       { value: '5★', label: 'Patient Satisfaction' },
     ],
     specialties: ['Patient Experience', 'Appointment Coordination', 'Front of House', 'Patient Wellbeing'],
@@ -285,8 +285,8 @@ export const TEAM_MEMBERS: TeamMember[] = [
     image: '/images/Hollie-updated.png',
     role: 'Patient Care Team',
     stats: [
-      { value: 'Care', label: 'Patient Experience' },
-      { value: 'Team', label: 'The One Clinic' },
+      { value: 'Caring', label: 'Patient Support' },
+      { value: 'Thoughtful', label: 'Patient Experience' },
       { value: '5★', label: 'Patient Satisfaction' },
     ],
     specialties: ['Patient Experience', 'Appointment Coordination', 'Front of House', 'Patient Wellbeing'],
