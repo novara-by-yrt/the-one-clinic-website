@@ -174,10 +174,6 @@ export default function LeadForm() {
                       aria-label={`The One Clinic on ${s.label}`}
                     >
                       <div className={styles.socialIcon}>{s.icon}</div>
-                      <div className={styles.socialMeta}>
-                        <span className={styles.socialName}>{s.label}</span>
-                        <span className={styles.socialHandle}>{s.handle}</span>
-                      </div>
                     </a>
                   ))}
                 </div>
