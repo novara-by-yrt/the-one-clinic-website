@@ -21,7 +21,6 @@ const CLINICAL = [
 ];
 
 const SUPPORT = [
-  { name: 'Chloe',  role: 'Patient Care Team',   initials: 'C' },
   { name: 'Hollie', role: 'Patient Care Team',   initials: 'H' },
   { name: 'Charley',role: 'Patient Care Team',   initials: 'CH' },
 ];

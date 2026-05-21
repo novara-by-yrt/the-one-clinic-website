@@ -85,24 +85,6 @@ export const TEAM_MEMBERS: TeamMember[] = [
     ],
   },
   {
-    slug: 'dr-mahesh-kodivalasa',
-    name: 'Dr Mahesh Kodivalasa',
-    credentials: '',
-    initials: 'MK',
-    image: '/images/Dr Mahesh Kodivalasa-updated.png',
-    role: 'Doctor',
-    stats: [
-      { value: 'GMC', label: 'Registered Practitioner' },
-      { value: 'NHS', label: 'Trained Doctor' },
-      { value: 'CQC', label: 'Registered Clinic' },
-    ],
-    specialties: ['General Medicine', 'Clinical Care', 'Patient Consultation', 'Aesthetic Medicine'],
-    bio: [
-      'Dr Mahesh Kodivalasa is a valued member of The One Clinic medical team, bringing dedication and clinical expertise to every patient interaction.',
-      'Committed to the highest standards of care, Dr Kodivalasa works closely with colleagues to deliver comprehensive, personalised treatment plans.',
-    ],
-  },
-  {
     slug: 'dr-hari-subramaniam',
     name: 'Dr Hari Subramaniam',
     credentials: 'MSc, MD, DPM, DNB, FRCPsych',
@@ -257,24 +239,6 @@ export const TEAM_MEMBERS: TeamMember[] = [
     bio: [
       'Nurse Sanj is an integral part of the clinical team at The One Clinic, providing expert nursing care and ensuring every patient feels comfortable and well-supported throughout their treatment.',
       'Her professionalism, warmth, and clinical expertise contribute greatly to the premium patient experience at the clinic.',
-    ],
-  },
-  {
-    slug: 'chloe',
-    name: 'Chloe',
-    credentials: '',
-    initials: 'C',
-    image: '/images/Chloe-updated.png',
-    role: 'Patient Care Team',
-    stats: [
-      { value: 'Warm', label: 'Patient Welcome' },
-      { value: 'Attentive', label: 'Appointment Care' },
-      { value: '5★', label: 'Patient Satisfaction' },
-    ],
-    specialties: ['Patient Experience', 'Appointment Coordination', 'Front of House', 'Patient Wellbeing'],
-    bio: [
-      'Chloe is a valued member of The One Clinic\'s patient care team, dedicated to providing a warm, welcoming experience for every visitor.',
-      'Her attention to detail and commitment to patient satisfaction ensures that every visit to the clinic is comfortable and positive.',
     ],
   },
   {

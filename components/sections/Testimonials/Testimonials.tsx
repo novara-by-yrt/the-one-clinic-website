@@ -39,22 +39,13 @@ const REVIEWS = [
       'Received good service. Felt welcomed from the beginning, easy communication and booking. Done first anti snoring Laser treatment. So far All ok.',
   },
   {
-    name: 'Anestacia Thomas',
-    initial: 'A',
-    avatarBg: '#E53935',
-    timeAgo: 'Recent',
-    categories: ['general'],
-    review:
-      'My new cosmetologist Chloe was great. I felt taken care of. And my face felt amazing!',
-  },
-  {
     name: 'Fran',
     initial: 'F',
     avatarBg: '#FF7043',
     timeAgo: 'Recent',
     categories: ['general'],
     review:
-      'Telephoned yesterday as needed urgent advice over issue following facial aesthetic treatment. From first call, to receptionist to nurse and doctor all in one day - super efficient service. Everyone was really kind and helped to settle my anxiety. Big special mention to Chloe and Dr Virmani who were both excellent - cannot thank them enough. Would totally recommend this clinic.',
+      'Telephoned yesterday as needed urgent advice over issue following facial aesthetic treatment. From first call, to receptionist to nurse and doctor all in one day - super efficient service. Everyone was really kind and helped to settle my anxiety. Big special mention to Dr Virmani who was excellent - cannot thank them enough. Would totally recommend this clinic.',
   },
   {
     name: 'Temesgen Beyen',
@@ -81,7 +72,7 @@ const REVIEWS = [
     timeAgo: 'Recent',
     categories: ['general', 'aesthetics'],
     review:
-      'Recently had two procedures undertaken by Mr Sankar at the One Clinic excellent service throughout the process and great follow up care by Nurse Chloe would definitely recommend for aesthetic treatments.',
+      'Recently had two procedures undertaken by Mr Sankar at the One Clinic excellent service throughout the process and great follow up care. Would definitely recommend for aesthetic treatments.',
   },
   {
     name: 'Hannah Clauss',
@@ -91,15 +82,6 @@ const REVIEWS = [
     categories: ['general'],
     review:
       'I had a consultation. Firstly they were running 10 minutes behind but kept me informed and offered me a drink etc. With the doctors I was advised my options but ultimately I got to choose what I wanted. Very happy so far.',
-  },
-  {
-    name: 'Young',
-    initial: 'Y',
-    avatarBg: '#7B1FA2',
-    timeAgo: 'Recent',
-    categories: ['aesthetics', 'hydrafacial'],
-    review:
-      'I had a hydrofacial done by Chloe recently and honestly-loved it! The whole experience was super relaxing, and my skin felt so clean, fresh, and glowy afterward.\n\nChloe was lovely to chat with, really knowledgeable, and made the whole process feel easy and enjoyable. The vibe was super chill and welcoming, which I really appreciated.',
   },
   {
     name: 'Rachel',
