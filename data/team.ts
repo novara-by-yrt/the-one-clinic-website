@@ -286,7 +286,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: 'Patient Care Team',
     stats: [
       { value: 'Caring', label: 'Patient Support' },
-      { value: 'Thoughtful', label: 'Patient Experience' },
+      { value: 'Passionate', label: 'Patient Support' },
       { value: '5★', label: 'Patient Satisfaction' },
     ],
     specialties: ['Patient Experience', 'Appointment Coordination', 'Front of House', 'Patient Wellbeing'],
