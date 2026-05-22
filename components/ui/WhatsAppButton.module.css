@@ -37,6 +37,13 @@
   line-height: 1;
 }
 
+.whatsappButton svg {
+  color: #ffffff;
+  width: 28px;
+  height: 28px;
+  stroke: #ffffff;
+}
+
 .whatsappButton:hover {
   background: #20ba5a;
   transform: scale(1.08);
