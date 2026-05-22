@@ -1,0 +1,176 @@
+/* ══════════════════════════════════════════════════════
+   WHATSAPP STICKY BUTTON
+   Fixed position on left side, bottom
+   Responsive for all screens, no overlaps
+══════════════════════════════════════════════════════ */
+
+.whatsappButton {
+  position: fixed;
+  bottom: 32px;
+  left: 32px;
+  z-index: 40;
+
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+
+  background: #25d366;
+  border: none;
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  box-shadow:
+    0 8px 24px rgba(37, 211, 102, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.12);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  padding: 0;
+  font-size: 0;
+  line-height: 1;
+}
+
+.whatsappButton:hover {
+  background: #20ba5a;
+  transform: scale(1.08);
+  box-shadow:
+    0 12px 32px rgba(37, 211, 102, 0.5),
+    0 6px 16px rgba(0, 0, 0, 0.16);
+}
+
+.whatsappButton:active {
+  transform: scale(0.95);
+}
+
+/* ──────────────────────────────────────────────────── */
+/* TABLET / LARGE SCREENS (768px - 1200px)          */
+/* ──────────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .whatsappButton {
+    bottom: 28px;
+    left: 28px;
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* ──────────────────────────────────────────────────── */
+/* TABLET (481px - 768px)                           */
+/* ──────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .whatsappButton {
+    bottom: 24px;
+    left: 24px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .whatsappButton svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* ──────────────────────────────────────────────────── */
+/* MOBILE (320px - 480px)                          */
+/* ──────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .whatsappButton {
+    bottom: 20px;
+    left: 20px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .whatsappButton svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* ──────────────────────────────────────────────────── */
+/* VERY SMALL MOBILE (< 320px)                     */
+/* ──────────────────────────────────────────────────── */
+@media (max-width: 320px) {
+  .whatsappButton {
+    bottom: 16px;
+    left: 16px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .whatsappButton svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* ──────────────────────────────────────────────────── */
+/* ACCESSIBILITY: Reduced motion                   */
+/* ──────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .whatsappButton {
+    transition: none;
+  }
+
+  .whatsappButton:hover {
+    transform: none;
+  }
+
+  .whatsappButton:active {
+    transform: none;
+  }
+}
+
+/* ──────────────────────────────────────────────────── */
+/* LANDSCAPE MOBILE: adjust bottom to avoid overlap   */
+/* ──────────────────────────────────────────────────── */
+@media (max-height: 480px) and (orientation: landscape) {
+  .whatsappButton {
+    bottom: 16px;
+  }
+}
+
+/* ──────────────────────────────────────────────────── */
+/* SAFE AREA SUPPORT (notched devices)              */
+/* ──────────────────────────────────────────────────── */
+@supports (bottom: max(32px, env(safe-area-inset-bottom))) {
+  .whatsappButton {
+    bottom: max(32px, env(safe-area-inset-bottom));
+    left: max(32px, env(safe-area-inset-left));
+  }
+}
+
+@supports (bottom: max(28px, env(safe-area-inset-bottom))) {
+  @media (max-width: 1200px) {
+    .whatsappButton {
+      bottom: max(28px, env(safe-area-inset-bottom));
+      left: max(28px, env(safe-area-inset-left));
+    }
+  }
+}
+
+@supports (bottom: max(24px, env(safe-area-inset-bottom))) {
+  @media (max-width: 768px) {
+    .whatsappButton {
+      bottom: max(24px, env(safe-area-inset-bottom));
+      left: max(24px, env(safe-area-inset-left));
+    }
+  }
+}
+
+@supports (bottom: max(20px, env(safe-area-inset-bottom))) {
+  @media (max-width: 480px) {
+    .whatsappButton {
+      bottom: max(20px, env(safe-area-inset-bottom));
+      left: max(20px, env(safe-area-inset-left));
+    }
+  }
+}
