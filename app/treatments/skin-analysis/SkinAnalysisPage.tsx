@@ -444,7 +444,7 @@ export default function SkinAnalysisPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Skin Analysis Hero.jpg"
+                src="/images/Hero Section Skin Analysis.jpg"
                 alt="Life Viz 3D skin analysis at The One Clinic Leicester"
                 fill
                 priority
@@ -492,7 +492,7 @@ export default function SkinAnalysisPage() {
             {/* Right: image panel */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Skin Analysis 1.jpg"
+                src="/images/What is Skin Analysis.jpg"
                 alt="Skin analysis consultation at The One Clinic Leicester"
                 fill
                 className={styles.whatIsVideoFrame}

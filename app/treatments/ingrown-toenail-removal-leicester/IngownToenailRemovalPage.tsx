@@ -389,7 +389,7 @@ export default function IngownToenailRemovalPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Minor Surgery.jpg"
+                src="/images/Hero Section Ingrown Toenail Removal.jpg"
                 alt="Ingrown toenail removal procedure at The One Clinic Leicester"
                 fill
                 priority
@@ -443,7 +443,7 @@ export default function IngownToenailRemovalPage() {
             {/* Right: image */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/images/What is Ingrown Toenail Removal.jpg"
                 alt="Doctor at The One Clinic Leicester consulting a patient about ingrown toenail removal"
                 fill
                 className={styles.whatIsVideoFrame}

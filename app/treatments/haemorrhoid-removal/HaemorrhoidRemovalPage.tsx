@@ -392,7 +392,7 @@ export default function HaemorrhoidRemovalPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Minor Surgery.jpg"
+                src="/images/Hero Section Haemorrhoid Removal.jpg"
                 alt="Haemorrhoid removal procedure at The One Clinic Leicester"
                 fill
                 priority
@@ -446,7 +446,7 @@ export default function HaemorrhoidRemovalPage() {
             {/* Right: image */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/images/What is Haemorrhoid Removal.jpg"
                 alt="Doctor at The One Clinic Leicester consulting a patient about haemorrhoid removal"
                 fill
                 className={styles.whatIsVideoFrame}

@@ -44,8 +44,9 @@
   position: relative;
   border-radius: 24px;
   overflow: hidden;
-  align-self: stretch;
-  min-height: 480px;
+  align-self: center;
+  aspect-ratio: 681 / 540;
+  width: 100%;
   box-shadow:
     0 0 0 1px rgba(255 255 255 / 0.07),
     0 40px 80px rgba(0 0 0 / 0.6);
@@ -2289,7 +2290,7 @@
   /* Portrait image , 3/4 aspect ratio */
   .heroImageWrap {
     min-height: unset;
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 681 / 540;
     align-self: center;
     max-width: 100%;
     margin-inline: auto;
@@ -2342,8 +2343,8 @@
 
   /* What is Endolift: stack on mobile */
   .whatIsGrid { grid-template-columns: 1fr; gap: var(--space-5); }
-  .whatIsImageWrap { aspect-ratio: 4 / 3; }
-  .whatIsVideoWrap { aspect-ratio: 4 / 3; }
+  .whatIsImageWrap { aspect-ratio: 1 / 1; }
+  .whatIsVideoWrap { aspect-ratio: 1 / 1; }
 
   /* Standalone At a Glance: 2-col on mobile */
   .glanceStandaloneGrid { grid-template-columns: repeat(2, 1fr); }
