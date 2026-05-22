@@ -675,7 +675,7 @@ export default function LumeccaIPLPage() {
             </motion.p>
           </motion.div>
 
-          <div className={styles.baSliderViewport}>
+          <div className={styles.baSliderViewport} style={{ maxWidth: '480px', margin: '0 auto var(--space-5)' }}>
             <div
               className={styles.baSliderTrack}
               style={{
