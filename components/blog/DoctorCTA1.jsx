@@ -18,7 +18,7 @@ export default function DoctorCTA1() {
           <div className="p-4 md:p-5 lg:p-6">
             <div className="relative aspect-square w-full rounded-md overflow-hidden bg-white">
               <Image
-                src="/DR-SUMIT.jpg"
+                src="/images/imgi_20_team-thumb-VIRMANI.jpg"
                 alt="Dr Sumit Virmani"
                 fill
                 sizes="(max-width: 768px) 100vw, 40vw"

@@ -268,7 +268,7 @@ const EXPERTS = [
   {
     name: 'Dr Sumit Virmani',
     credentials: ['MBBS', 'MRCGP', 'Co-Founder'],
-    image: '/DR-SUMIT.jpg',
+    image: '/images/imgi_20_team-thumb-VIRMANI.jpg',
     alt: 'Dr Sumit Virmani, Co-Founder, The One Clinic',
     bio: [
       'Dr Sumit Virmani, the co-founder of The One Clinic, brings over 15 years of medical expertise, including more than a decade as a trusted local GP. With advanced skills in minor surgery and a keen eye for detail, Dr Virmani is passionate about patient care and achieving outstanding results.',
