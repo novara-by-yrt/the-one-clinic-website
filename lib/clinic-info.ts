@@ -52,7 +52,7 @@ export const CLINIC_INFO = {
     { day: 'Thursday',  open: '09:00', close: '18:00' },
     { day: 'Friday',    open: '09:00', close: '18:00' },
     { day: 'Saturday',  open: '09:00', close: '16:00' },
-    { day: 'Sunday',    open: '09:00', close: '18:00' },
+    { day: 'Sunday',    open: null,    close: null    },
   ],
 
   // Social media & professional profiles
@@ -66,18 +66,21 @@ export const CLINIC_INFO = {
 } as const;
 
 /**
+ * Helper: Format a single day's hours, returning "Closed" when not open.
+ */
+function formatTime(h: { open: string | null; close: string | null }) {
+  return h.open && h.close ? `${h.open} , ${h.close}` : 'Closed';
+}
+
+/**
  * Helper: Format opening hours for display (e.g., "Monday , Friday: 09:00 , 18:00")
  */
 export function formatHours(hours = CLINIC_INFO.hours) {
-  const weekdays = hours.slice(0, 5);
-  const saturday = hours[5];
-  const sunday = hours[6];
-
-  const weekdayStr = `Monday , Friday: ${weekdays[0].open} , ${weekdays[0].close}`;
-  const satStr = `Saturday: ${saturday.open} , ${saturday.close}`;
-  const sunStr = `Sunday: ${sunday.open} , ${sunday.close}`;
-
-  return [weekdayStr, satStr, sunStr];
+  return [
+    `Monday , Friday: ${formatTime(hours[0])}`,
+    `Saturday: ${formatTime(hours[5])}`,
+    `Sunday: ${formatTime(hours[6])}`,
+  ];
 }
 
 /**
@@ -85,9 +88,9 @@ export function formatHours(hours = CLINIC_INFO.hours) {
  */
 export function getHoursDisplay() {
   return [
-    { days: 'Monday , Friday', time: `${CLINIC_INFO.hours[0].open} , ${CLINIC_INFO.hours[0].close}` },
-    { days: 'Saturday',        time: `${CLINIC_INFO.hours[5].open} , ${CLINIC_INFO.hours[5].close}` },
-    { days: 'Sunday',          time: `${CLINIC_INFO.hours[6].open} , ${CLINIC_INFO.hours[6].close}` },
+    { days: 'Monday , Friday', time: formatTime(CLINIC_INFO.hours[0]) },
+    { days: 'Saturday',        time: formatTime(CLINIC_INFO.hours[5]) },
+    { days: 'Sunday',          time: formatTime(CLINIC_INFO.hours[6]) },
   ];
 }
 

@@ -11,7 +11,7 @@ import styles from './page.module.css';
 
 const HOURS = CLINIC_INFO.hours.map(h => ({
   day: h.day,
-  hours: `${h.open}, ${h.close}`,
+  hours: h.open && h.close ? `${h.open}, ${h.close}` : 'Closed',
 }));
 
 const CATEGORIES = [
