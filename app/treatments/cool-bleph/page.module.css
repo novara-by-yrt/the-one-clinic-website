@@ -45,7 +45,7 @@
   border-radius: 24px;
   overflow: hidden;
   align-self: center;
-  aspect-ratio: 681 / 540;
+  aspect-ratio: 540 / 681;
   width: 100%;
   box-shadow:
     0 0 0 1px rgba(255 255 255 / 0.07),
@@ -2205,7 +2205,7 @@
   /* Portrait image , 3/4 aspect ratio */
   .heroImageWrap {
     min-height: unset;
-    aspect-ratio: 681 / 540;
+    aspect-ratio: 540 / 681;
     align-self: center;
     max-width: 100%;
     margin-inline: auto;
