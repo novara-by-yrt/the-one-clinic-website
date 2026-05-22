@@ -30,7 +30,7 @@ const REVIEWERS: Record<string, ReviewerData> = {
   'dr-sumit-virmani': {
     name: 'Dr Sumit Virmani',
     title: 'Co-Founder of The One Clinic',
-    photo: '/DR-SUMIT.jpg',
+    photo: '/images/imgi_20_team-thumb-VIRMANI.jpg',
     expertise: 'Minor surgical procedures, clinical skin assessments, evidence-based treatment planning.',
     experience: 'Specialist consultations, delivering patient-focused care, and overseeing aesthetic results.',
     highlights: [

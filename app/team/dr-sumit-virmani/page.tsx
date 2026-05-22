@@ -67,7 +67,7 @@ export default function DrVirmaniPage() {
             {/* Right, photo */}
             <motion.div className={styles.heroPhoto} variants={fadeUp}>
               <Image
-                src="/DR-SUMIT.jpg"
+                src="/images/imgi_20_team-thumb-VIRMANI.jpg"
                 alt="Dr Sumit Virmani"
                 fill
                 priority

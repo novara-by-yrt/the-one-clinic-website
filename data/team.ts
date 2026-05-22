@@ -32,7 +32,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Dr Sumit Virmani',
     credentials: 'MBBS, MRCGP',
     initials: 'SV',
-    image: '/DR-SUMIT.jpg',
+    image: '/images/imgi_20_team-thumb-VIRMANI.jpg',
     role: 'Co-Founder & GP',
     profileUrl: '/team/dr-sumit-virmani',
     stats: [
