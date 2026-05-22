@@ -392,7 +392,7 @@ export default function LiposuctionPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Liposuction hero.jpg"
+                src="/images/Hero Section Liposuction.jpg"
                 alt="Liposuction surgical consultation at The One Clinic Leicester"
                 fill
                 priority
@@ -441,7 +441,7 @@ export default function LiposuctionPage() {
             {/* Right: image panel */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Liposuction 1.jpg"
+                src="/images/What is Liposuction.jpg"
                 alt="Liposuction surgical procedure overview"
                 fill
                 className={styles.whatIsVideoFrame}
