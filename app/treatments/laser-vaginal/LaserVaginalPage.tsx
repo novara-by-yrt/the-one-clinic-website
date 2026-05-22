@@ -429,7 +429,7 @@ export default function LaserVaginalPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Menopause & HRT.jpg"
+                src="/Hero Section Laser Vaginal Rejuvenation.jpg"
                 alt="Laser Vaginal Rejuvenation treatment at The One Clinic Leicester"
                 fill
                 priority
@@ -483,7 +483,7 @@ export default function LaserVaginalPage() {
             {/* Right: image panel */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/What is Laser Vaginal Rejuvenation.jpg"
                 alt="Women's health doctor at The One Clinic Leicester"
                 fill
                 className={styles.whatIsVideoFrame}

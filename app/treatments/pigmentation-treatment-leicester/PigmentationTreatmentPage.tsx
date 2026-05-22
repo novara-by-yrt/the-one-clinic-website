@@ -339,7 +339,7 @@ export default function PigmentationTreatmentPage() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Pigmentation hero.jpg"
+                src="/Hero Section Pigmentation Treatment.jpg"
                 alt="Pigmentation treatment at The One Clinic Leicester"
                 fill
                 priority
@@ -386,7 +386,7 @@ export default function PigmentationTreatmentPage() {
 
             <motion.div className={styles.whatIsImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Pigmentation 1.jpg"
+                src="/What is Pigmentation Treatment.jpg"
                 alt="Pigmentation treatment consultation at The One Clinic"
                 fill
                 className={styles.whatIsImage}

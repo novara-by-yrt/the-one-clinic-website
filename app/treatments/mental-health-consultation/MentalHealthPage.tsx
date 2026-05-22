@@ -408,7 +408,7 @@ export default function MentalHealthPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor2.jpg"
+                src="/images/Hero Section Mental Health Consultation.jpg"
                 alt="Mental health consultation at The One Clinic Leicester"
                 fill
                 priority
@@ -458,7 +458,7 @@ export default function MentalHealthPage() {
             {/* Right: image panel */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/images/What is Mental Health Consultation.jpg"
                 alt="Compassionate doctor at The One Clinic ready to help with mental health"
                 fill
                 className={styles.whatIsVideoFrame}

@@ -337,7 +337,7 @@ export default function VampireFacialPage() {
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Dermatologist.jpg"
+                src="/images/Hero Section Vampire Facial.jpg"
                 alt="Vampire Facial PRP treatment at The One Clinic Leicester"
                 fill
                 priority
@@ -384,7 +384,7 @@ export default function VampireFacialPage() {
 
             <motion.div className={styles.whatIsImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
+                src="/images/What is Vampire Facial.jpg"
                 alt="Vampire Facial consultation at The One Clinic"
                 fill
                 className={styles.whatIsImage}
