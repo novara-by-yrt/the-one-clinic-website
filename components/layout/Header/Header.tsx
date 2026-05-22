@@ -69,7 +69,7 @@ const NAV: NavItem[] = [
           { label: 'Profhilo',                                  href: '/treatments/profhilo' },
           { label: 'NCTF 135 HA',                               href: '/treatments/nctf-135-ha' },
           { label: 'Skincare, Alumier MD',                      href: '/treatments/skincare-alumier-md' },
-          { label: 'Cellderma Skincare',                        href: '/treatments/cellderma-skincare' },
+          { label: 'Cellderma Skincare',                        href: '/treatments/skincare-cellderma' },
           { label: 'Skin Lesion Removal Leicester',             href: '/treatments/skin-lesion' },
           { label: 'BCC Removal Leicester',                     href: '/treatments/basal-cell-carcinoma-bcc-removal-leicester' },
           { label: 'Skin Tag Removal Leicester',                href: '/treatments/skin-tags-removal-leicester' },
