@@ -10,8 +10,12 @@ import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
 
 const IMAGES = [
-  { src: '/images/Endolift Before & After 1.jpg',     alt: 'Endolift before and after results',          title: 'Endolift' },
-  { src: '/images/Endolift Before & After 8.jpg',     alt: 'Endolift treatment before and after',        title: 'Endolift' },
+  { src: '/images/Endolift B-A.jpg',                  alt: 'Endolift before and after results',          title: 'Endolift' },
+  { src: '/images/Endolift 1 B-A.jpg',                alt: 'Endolift before and after result 1',         title: 'Endolift' },
+  { src: '/images/Endolift 2 B-A.jpg',                alt: 'Endolift before and after result 2',         title: 'Endolift' },
+  { src: '/images/Endolift 3 B-A.jpg',                alt: 'Endolift before and after result 3',         title: 'Endolift' },
+  { src: '/images/Endolift 4 B-A.jpg',                alt: 'Endolift before and after result 4',         title: 'Endolift' },
+  { src: '/images/Endolift 5 B-A.jpg',                alt: 'Endolift before and after result 5',         title: 'Endolift' },
   { src: '/images/Lumecca Before & After 2.jpg',      alt: 'Lumecca laser before and after results',     title: 'Lumecca Laser' },
   { src: '/images/Morpheus8 Before & After 2.jpg',    alt: 'Morpheus 8 before and after results',        title: 'Morpheus 8' },
   { src: '/images/Lip Filler  Before & After.jpg',    alt: 'Lip filler before and after results',        title: 'Lip Filler' },

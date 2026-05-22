@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -248,6 +248,11 @@ const FAQS = [
   },
 ];
 
+const BA_IMAGES = [
+  { src: '/images/Morpheus8 1 B-A.jpg',  alt: 'Morpheus8 before and after result 1' },
+  { src: '/images/Morpheus8 2  B-A.jpg', alt: 'Morpheus8 before and after result 2' },
+];
+
 const RELATED = [
   { title: 'Endolift Laser',              href: '/treatments/endolift',                    desc: 'Minimally invasive laser skin tightening for face, neck, and body.' },
   { title: 'Dermal Fillers',              href: '/treatments/dermal-fillers',              desc: 'Restore lost volume and define facial contours with precision filler.' },
@@ -258,6 +263,21 @@ const RELATED = [
 /* ── Page component ───────────────────────────────────────────── */
 export default function Morpheus8Page() {
   const [showAllFaqs, setShowAllFaqs] = useState(false);
+  const [baIndex, setBaIndex]           = useState(0);
+  const [visibleCount, setVisibleCount] = useState(2);
+
+  useEffect(() => {
+    const update = () => setVisibleCount(window.innerWidth < 768 ? 1 : 2);
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
+
+  useEffect(() => {
+    setBaIndex((i) => Math.min(i, BA_IMAGES.length - visibleCount));
+  }, [visibleCount]);
+
+  const maxBaIndex = BA_IMAGES.length - visibleCount;
 
   return (
     <>
@@ -680,6 +700,93 @@ export default function Morpheus8Page() {
               </ul>
             </motion.div>
           </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          BEFORE & AFTER
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
+        <div className={styles.whiteBgWrap} aria-hidden="true">
+          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
+        </div>
+        <Container className={styles.whiteBgContent}>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Real Results</motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Morpheus8 Before &amp; After
+            </motion.h2>
+            <motion.p className={styles.beforeAfterSubheading} variants={fadeUp}>
+              Real skin remodelling and tightening results from our patients at The One Clinic, Leicester.
+            </motion.p>
+          </motion.div>
+
+          <div className={styles.baSliderViewport}>
+            <div
+              className={styles.baSliderTrack}
+              style={{
+                transform: `translateX(-${baIndex * (100 / BA_IMAGES.length)}%)`,
+                width: `${(BA_IMAGES.length / visibleCount) * 100}%`,
+              }}
+            >
+              {BA_IMAGES.map((img) => (
+                <div key={img.src} className={styles.baSlideItem}>
+                  <div className={styles.baImageWrap}>
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      className={styles.baImage}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {maxBaIndex > 0 && (
+            <div className={styles.baControls}>
+              <button
+                className={styles.baArrowBtn}
+                onClick={() => setBaIndex((i) => Math.max(0, i - 1))}
+                aria-label="Previous before and after image"
+                disabled={baIndex === 0}
+              >
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M12.5 15l-5-5 5-5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+              <div className={styles.baDots} role="tablist" aria-label="Before and after carousel navigation">
+                {Array.from({ length: maxBaIndex + 1 }).map((_, i) => (
+                  <button
+                    key={i}
+                    className={`${styles.baDot} ${baIndex === i ? styles.baDotActive : ''}`}
+                    onClick={() => setBaIndex(i)}
+                    aria-label={`Go to image set ${i + 1}`}
+                    aria-selected={baIndex === i}
+                    role="tab"
+                  />
+                ))}
+              </div>
+              <button
+                className={styles.baArrowBtn}
+                onClick={() => setBaIndex((i) => Math.min(maxBaIndex, i + 1))}
+                aria-label="Next before and after image"
+                disabled={baIndex === maxBaIndex}
+              >
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M7.5 5l5 5-5 5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          )}
         </Container>
       </Section>
 
