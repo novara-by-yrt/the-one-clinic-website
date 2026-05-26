@@ -14,14 +14,15 @@ export const CLINIC = {
     addressCountry: CLINIC_INFO.address.country,
   },
   geo: { latitude: CLINIC_INFO.geo.lat, longitude: CLINIC_INFO.geo.lng },
-  openingHours: CLINIC_INFO.hours.map(h => ({
-    days: h.day === 'Monday' ? ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
-        : h.day === 'Saturday' ? ['Saturday']
-        : h.day === 'Sunday' ? ['Sunday']
-        : [],
-    open: h.open,
-    close: h.close,
-  })).filter((h, i, a) => i === 0 || h.days[0] !== a[i-1].days[0]),
+  openingHours: CLINIC_INFO.hours
+    .filter(h => h.open !== null && h.close !== null)
+    .map(h => ({
+      days: h.day === 'Monday' ? ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+          : h.day === 'Saturday' ? ['Saturday']
+          : [],
+      open: h.open,
+      close: h.close,
+    })).filter((h, i, a) => i === 0 || h.days[0] !== a[i-1].days[0]),
   priceRange: CLINIC_INFO.priceRange,
   sameAs: [CLINIC_INFO.social.facebook, CLINIC_INFO.social.instagram],
 } as const;
