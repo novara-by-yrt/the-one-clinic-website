@@ -1,7 +1,7 @@
 import { headers } from 'next/headers';
 import type { MetadataRoute } from 'next';
 
-const PRODUCTION_HOST = 'the-oneclinic.net';
+const PRODUCTION_HOST = 'www.the-oneclinic.co.uk';
 
 export default async function robots(): Promise<MetadataRoute.Robots> {
   const headersList = await headers();
@@ -30,6 +30,6 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
       // Default: allow all other crawlers; protect internal routes
       { userAgent: '*', allow: '/', disallow: ['/admin', '/api'] },
     ],
-    sitemap: 'https://the-oneclinic.net/sitemap.xml',
+    sitemap: 'https://www.the-oneclinic.co.uk/sitemap.xml',
   };
 }
