@@ -1,12 +1,15 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-const PRODUCTION_HOST = 'www.the-oneclinic.co.uk';
+const PRODUCTION_HOSTS = new Set([
+  'www.the-oneclinic.co.uk',
+  'the-oneclinic.co.uk',
+]);
 
 export function proxy(request: NextRequest) {
   const host = request.headers.get('host') ?? '';
-  // Any host that is not the bare production domain gets noindex headers
-  if (host !== PRODUCTION_HOST) {
+  // Any host that is not a production domain gets noindex headers
+  if (!PRODUCTION_HOSTS.has(host)) {
     const response = NextResponse.next();
     response.headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive');
     return response;
