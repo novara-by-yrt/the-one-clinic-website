@@ -87,7 +87,7 @@ export default function ThankYouPage() {
       </section>
 
       {/* ── Contact info + Map ── */}
-      <div className={styles.body} data-section-theme="dark">
+      <div className={styles.body} data-section-theme="light">
         <Container>
 
           {/* 2×2 info grid */}
