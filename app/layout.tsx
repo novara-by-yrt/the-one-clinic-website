@@ -26,7 +26,7 @@ const inter = localFont({
   fallback: ['system-ui', 'sans-serif'],
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://the-oneclinic.net';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.the-oneclinic.co.uk';
 const isPreview = process.env.VERCEL_ENV === 'preview' || process.env.NEXT_PUBLIC_ENV === 'preview';
 
 export const metadata: Metadata = {

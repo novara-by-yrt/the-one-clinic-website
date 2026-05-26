@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-const PRODUCTION_HOST = 'the-oneclinic.net';
+const PRODUCTION_HOST = 'www.the-oneclinic.co.uk';
 
 export function proxy(request: NextRequest) {
   const host = request.headers.get('host') ?? '';
