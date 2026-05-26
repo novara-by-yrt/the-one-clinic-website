@@ -5,8 +5,8 @@ import { CLINIC_INFO, getMapsEmbedUrl, getMapsSearchUrl, getHoursDisplay } from 
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Thank You | The One Clinic Leicester',
-  description: 'Thank you for getting in touch with The One Clinic. A member of our team will be in touch with you shortly.',
+  title: 'Thank You for Subscribing | The One Clinic Leicester',
+  description: 'Thank you for subscribing to The One Clinic newsletter. You will receive the latest treatments, patient results, and wellness tips from our team.',
   robots: { index: false, follow: false },
 };
 
@@ -60,21 +60,22 @@ function CheckIcon() {
   );
 }
 
-export default function ThankYouPage() {
+export default function ThankYouNewsletterPage() {
   return (
     <>
       {/* ── Hero ── */}
-      <section className={styles.hero} data-section-theme="dark" aria-label="Thank you confirmation">
+      <section className={styles.hero} data-section-theme="dark" aria-label="Newsletter subscription confirmation">
         <div className={styles.heroGrid} aria-hidden="true" />
         <Container>
           <div className={styles.heroContent}>
             <div className={styles.checkWrap} aria-hidden="true">
               <CheckIcon />
             </div>
-            <p className={styles.heroEyebrow}>Message Received</p>
-            <h1 className={styles.heroTitle}>Thank You!</h1>
+            <p className={styles.heroEyebrow}>Subscription Confirmed</p>
+            <h1 className={styles.heroTitle}>Thank You for Subscribing!</h1>
             <p className={styles.heroSubtitle}>
-              Your message has been received and one of The One Clinic team will be in touch shortly.
+              You&apos;re now subscribed to The One Clinic newsletter. Look out for the latest
+              treatments, patient results, and wellness tips delivered straight to your inbox.
             </p>
             <Link href="/" className={styles.homeBtn}>
               Back to Home
