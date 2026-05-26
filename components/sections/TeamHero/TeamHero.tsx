@@ -44,9 +44,9 @@ export default function TeamHero() {
             <BookConsultationButton className={styles.btnPrimary}>
               Book Consultation
             </BookConsultationButton>
-            <BookConsultationButton className={styles.btnSecondary}>
+            <Link href="/contact" className={styles.btnSecondary}>
               Contact Us
-            </BookConsultationButton>
+            </Link>
           </motion.div>
         </motion.div>
       </Container>

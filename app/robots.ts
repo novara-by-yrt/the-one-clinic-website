@@ -1,13 +1,16 @@
 import { headers } from 'next/headers';
 import type { MetadataRoute } from 'next';
 
-const PRODUCTION_HOST = 'the-oneclinic.net';
+const PRODUCTION_HOSTS = new Set([
+  'www.the-oneclinic.co.uk',
+  'the-oneclinic.co.uk',
+]);
 
 export default async function robots(): Promise<MetadataRoute.Robots> {
   const headersList = await headers();
   const host = headersList.get('host') ?? '';
 
-  if (host !== PRODUCTION_HOST) {
+  if (!PRODUCTION_HOSTS.has(host)) {
     return {
       rules: { userAgent: '*', disallow: '/' },
     };
@@ -30,6 +33,6 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
       // Default: allow all other crawlers; protect internal routes
       { userAgent: '*', allow: '/', disallow: ['/admin', '/api'] },
     ],
-    sitemap: 'https://the-oneclinic.net/sitemap.xml',
+    sitemap: 'https://www.the-oneclinic.co.uk/sitemap.xml',
   };
 }

@@ -1,0 +1,188 @@
+/* ══════════════════════════════════════════════════════
+   WHATSAPP STICKY BUTTON
+   Fixed position on left side, bottom
+   Responsive for all screens, no overlaps
+
+   NOTE: On mobile (< 768px) the StickyCallbackCTA renders a
+   full-width fixed bottom bar (CALL BACK / BOOK NOW). The
+   WhatsApp button is lifted ABOVE that bar so nothing overlaps.
+══════════════════════════════════════════════════════ */
+
+.whatsappButton {
+  position: fixed;
+  bottom: 32px;
+  left: 32px;
+  z-index: 80;
+
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+
+  background: #25d366;
+  border: none;
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  box-shadow:
+    0 8px 24px rgba(37, 211, 102, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.12);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  padding: 0;
+  font-size: 0;
+  line-height: 1;
+}
+
+.whatsappButton svg {
+  color: #ffffff;
+  fill: #ffffff;
+  width: 30px;
+  height: 30px;
+}
+
+.whatsappButton:hover {
+  background: #20ba5a;
+  transform: scale(1.08);
+  box-shadow:
+    0 12px 32px rgba(37, 211, 102, 0.5),
+    0 6px 16px rgba(0, 0, 0, 0.16);
+}
+
+.whatsappButton:active {
+  transform: scale(0.95);
+}
+
+/* ──────────────────────────────────────────────────── */
+/* TABLET / LARGE SCREENS (768px - 1200px)          */
+/* On these screens the sticky CTA is a centered      */
+/* single button at bottom:12px - no left overlap.    */
+/* ──────────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .whatsappButton {
+    bottom: 28px;
+    left: 28px;
+    width: 52px;
+    height: 52px;
+  }
+
+  .whatsappButton svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* ──────────────────────────────────────────────────── */
+/* MOBILE (<= 767px)                                */
+/* Full-width CALL BACK / BOOK NOW bar sits at        */
+/* bottom:0 (~68px tall). Lift the button above it.   */
+/* ──────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .whatsappButton {
+    bottom: 84px;
+    left: 16px;
+    width: 46px;
+    height: 46px;
+  }
+
+  .whatsappButton svg {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+/* ──────────────────────────────────────────────────── */
+/* SMALL MOBILE (<= 480px)                          */
+/* Bottom bar is ~58px tall here.                     */
+/* ──────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .whatsappButton {
+    bottom: 74px;
+    left: 14px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .whatsappButton svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* ──────────────────────────────────────────────────── */
+/* EXTRA SMALL MOBILE (<= 360px)                    */
+/* Bottom bar is ~52px tall here.                     */
+/* ──────────────────────────────────────────────────── */
+@media (max-width: 360px) {
+  .whatsappButton {
+    bottom: 66px;
+    left: 12px;
+    width: 42px;
+    height: 42px;
+  }
+
+  .whatsappButton svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* ──────────────────────────────────────────────────── */
+/* ACCESSIBILITY: Reduced motion                   */
+/* ──────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .whatsappButton {
+    transition: none;
+  }
+
+  .whatsappButton:hover,
+  .whatsappButton:active {
+    transform: none;
+  }
+}
+
+/* ──────────────────────────────────────────────────── */
+/* SAFE AREA SUPPORT (notched devices)              */
+/* Adds the device safe-area inset on top of the      */
+/* mobile offset so the button clears the bottom bar  */
+/* AND the home indicator.                            */
+/* ──────────────────────────────────────────────────── */
+@supports (padding: env(safe-area-inset-left)) {
+  .whatsappButton {
+    left: calc(32px + env(safe-area-inset-left));
+  }
+
+  @media (max-width: 1200px) {
+    .whatsappButton {
+      left: calc(28px + env(safe-area-inset-left));
+    }
+  }
+
+  @media (max-width: 767px) {
+    .whatsappButton {
+      bottom: calc(84px + env(safe-area-inset-bottom));
+      left: calc(16px + env(safe-area-inset-left));
+    }
+  }
+
+  @media (max-width: 480px) {
+    .whatsappButton {
+      bottom: calc(74px + env(safe-area-inset-bottom));
+      left: calc(14px + env(safe-area-inset-left));
+    }
+  }
+
+  @media (max-width: 360px) {
+    .whatsappButton {
+      bottom: calc(66px + env(safe-area-inset-bottom));
+      left: calc(12px + env(safe-area-inset-left));
+    }
+  }
+}

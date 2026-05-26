@@ -103,7 +103,7 @@ export default function FacilitiesServices() {
               Our proficient doctors are fully qualified and trained to the highest standards.
               We all appear on the GMC register and boast over 45 years of valuable experience between us.
             </p>
-            <Link href="#team" className={styles.trustCta}>
+            <Link href="/our-team" className={styles.trustCta}>
               Meet Our Team
               <span aria-hidden="true" className={styles.ctaArrow}>→</span>
             </Link>
