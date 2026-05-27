@@ -93,12 +93,12 @@ const TREATMENTS = [
   {
     title: 'Dermal Fillers',
     desc:  'Hyaluronic acid lip filler is carefully placed to restore volume, define the lip border, and improve overall shape, all while maintaining a natural, balanced appearance.',
-    href:  '/treatments/dermal-fillers',
+    href:  '/treatments/dermal-filler-leicester',
   },
   {
     title: 'Profhilo',
     desc:  'A highly concentrated injectable treatment that hydrates and bioremodels the skin around the lips, improving quality and texture without adding artificial volume.',
-    href:  '/treatments/profhilo',
+    href:  '/treatments/profhilo-leicester',
   },
   {
     title: 'Polynucleotides',
@@ -108,7 +108,7 @@ const TREATMENTS = [
   {
     title: 'Chemical Peel',
     desc:  'Resurfaces the skin around the mouth to reduce vertical lip lines, improve tone and texture, and create a smoother, more refined lip area.',
-    href:  '/treatments/chemical-peels',
+    href:  '/treatments/chemical-peels-leicester',
   },
 ];
 
@@ -214,13 +214,13 @@ const RELATED_TREATMENTS = [
   {
     title: 'Dermal Fillers',
     desc:  'Restore lip volume and define the lip border with precision-placed hyaluronic acid filler.',
-    href:  '/treatments/dermal-fillers',
+    href:  '/treatments/dermal-filler-leicester',
     tag:   'Medical Aesthetics',
   },
   {
     title: 'Profhilo',
     desc:  'Bioremodel and hydrate the skin around the lips for improved texture and quality.',
-    href:  '/treatments/profhilo',
+    href:  '/treatments/profhilo-leicester',
     tag:   'Medical Aesthetics',
   },
   {

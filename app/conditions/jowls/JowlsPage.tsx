@@ -140,25 +140,25 @@ const TREATMENTS = [
   {
     title:  'Endolift Laser',
     desc:   'A minimally invasive laser treatment that tightens and lifts sagging skin along the jawline and lower face from within.',
-    href:   '/treatments/endolift',
+    href:   '/treatments/endolift-laser-leicester',
     image:  '/images/BA1.jpg',
   },
   {
     title:  'Morpheus8',
     desc:   'Combines microneedling with radiofrequency energy to deeply remodel tissue and firm lax skin around the jaw.',
-    href:   '/treatments/morpheus8',
+    href:   '/treatments/morpheus8-leicester',
     image:  '/images/BA2.jpg',
   },
   {
     title:  'Dermal Fillers',
     desc:   'Precision-placed hyaluronic acid filler restores lost volume to the cheeks and jawline, lifting and redefining the lower face.',
-    href:   '/treatments/dermal-fillers',
+    href:   '/treatments/dermal-filler-leicester',
     image:  '/images/BA3.jpg',
   },
   {
     title:  'Wrinkle Relaxing Injections',
     desc:   'Strategically placed injections relax the muscles that pull the lower face downwards, softening jowls and improving contour.',
-    href:   '/treatments/wrinkle-relaxing-injections',
+    href:   '/treatments/wrinkle-relaxing-injections-leicester',
     image:  '/images/BA4.jpg',
   },
 ];
@@ -239,25 +239,25 @@ const RELATED_TREATMENTS = [
   {
     title: 'Endolift Laser',
     desc:  'A minimally invasive laser that lifts and tightens sagging skin along the jaw and lower face from within.',
-    href:  '/treatments/endolift',
+    href:  '/treatments/endolift-laser-leicester',
     tag:   'Medical Aesthetics',
   },
   {
     title: 'Morpheus8',
     desc:  'Microneedling with radiofrequency energy to deeply remodel tissue and firm lax skin around the jawline.',
-    href:  '/treatments/morpheus8',
+    href:  '/treatments/morpheus8-leicester',
     tag:   'Medical Aesthetics',
   },
   {
     title: 'Dermal Fillers',
     desc:  'Restore volume and redefine the jawline with precision-placed hyaluronic acid filler.',
-    href:  '/treatments/dermal-fillers',
+    href:  '/treatments/dermal-filler-leicester',
     tag:   'Medical Aesthetics',
   },
   {
     title: 'Wrinkle Relaxing Injections',
     desc:  'Relax downward-pulling facial muscles to soften jowls and improve lower face contour.',
-    href:  '/treatments/wrinkle-relaxing-injections',
+    href:  '/treatments/wrinkle-relaxing-injections-leicester',
     tag:   'Medical Aesthetics',
   },
 ];

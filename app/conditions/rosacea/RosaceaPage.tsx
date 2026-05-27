@@ -151,25 +151,25 @@ const RELATED_TREATMENTS = [
   {
     title: 'Lumecca IPL',
     desc:  'Target broken capillaries and persistent facial redness with clinically proven intense pulsed light.',
-    href:  '/treatments/lumecca-ipl',
+    href:  '/treatments/ipl-leicester',
     tag:   'Medical Aesthetics',
   },
   {
     title: 'Laser Resurfacing',
     desc:  'Resurface and calm rosacea-prone skin to improve tone, texture, and vascular redness.',
-    href:  '/treatments/laser-resurfacing',
+    href:  '/treatments/deep-laser-resurfacing-leicester',
     tag:   'Medical Aesthetics',
   },
   {
     title: 'AlumierMD Skincare',
     desc:  'Medical-grade skincare formulated to strengthen the skin barrier and reduce chronic redness.',
-    href:  '/treatments/skincare-alumier-md',
+    href:  '/treatments/skincare-alumier-md-leicester',
     tag:   'Medical Aesthetics',
   },
   {
     title: 'Private GP Consultation',
     desc:  'Expert medical assessment and personalised rosacea management from our GMC-registered doctors.',
-    href:  '/treatments/private-gp',
+    href:  '/treatments/private-gp-leicester',
     tag:   'Medical',
   },
 ];
@@ -220,25 +220,25 @@ const TREATMENTS = [
   {
     title:  'Lumecca IPL',
     desc:   'Clinically proven intense pulsed light that selectively targets haemoglobin to reduce redness, flushing, and visible broken capillaries.',
-    href:   '/treatments/lumecca-ipl',
+    href:   '/treatments/ipl-leicester',
     image:  '/images/BA1.jpg',
   },
   {
     title:  'Laser Resurfacing',
     desc:   'Targeted laser energy resurfaces the skin and reduces vascular redness, improving overall skin tone and texture.',
-    href:   '/treatments/laser-resurfacing',
+    href:   '/treatments/deep-laser-resurfacing-leicester',
     image:  '/images/BA2.jpg',
   },
   {
     title:  'AlumierMD Skincare',
     desc:   'Medical-grade skincare products formulated to strengthen the skin barrier, reduce inflammation, and calm rosacea-prone skin.',
-    href:   '/treatments/skincare-alumier-md',
+    href:   '/treatments/skincare-alumier-md-leicester',
     image:  '/images/BA3.jpg',
   },
   {
     title:  'Private GP Consultation',
     desc:   'Comprehensive medical assessment of your rosacea with a personalised management plan from our GMC-registered doctors.',
-    href:   '/treatments/private-gp',
+    href:   '/treatments/private-gp-leicester',
     image:  '/images/BA4.jpg',
   },
 ];

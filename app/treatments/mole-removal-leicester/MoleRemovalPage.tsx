@@ -241,10 +241,10 @@ const FAQS = [
 ];
 
 const RELATED = [
-  { title: 'Laser Mole Removal',  href: '/treatments/laser-mole-removal', desc: 'Non-surgical laser removal for superficial moles and lesions.' },
-  { title: 'Skin Tag Removal',    href: '/treatments/skin-tags-removal-leicester', desc: 'Quick, effective removal of unwanted skin tags.' },
-  { title: 'Minor Surgery',       href: '/treatments/minor-surgery',       desc: 'Expert minor surgical procedures at The One Clinic.' },
-  { title: 'Skin Analysis',       href: '/treatments/skin-analysis',       desc: 'Advanced skin assessment and analysis with personalised advice.' },
+  { title: 'Laser Mole Removal',  href: '/treatments/laser-mole-removal-leicester', desc: 'Non-surgical laser removal for superficial moles and lesions.' },
+  { title: 'Skin Tag Removal',    href: '/treatments/skin-tag-removal-leicester', desc: 'Quick, effective removal of unwanted skin tags.' },
+  { title: 'Minor Surgery',       href: '/treatments/minor-surgery-leicester',       desc: 'Expert minor surgical procedures at The One Clinic.' },
+  { title: 'Skin Analysis',       href: '/treatments/skin-analysis-leicester',       desc: 'Advanced skin assessment and analysis with personalised advice.' },
 ];
 
 /* ── Page component ───────────────────────────────────────────── */

@@ -87,19 +87,19 @@ const TREATMENTS = [
   {
     title: 'Dermal Fillers',
     desc: 'Restore volume and define the chin and jawline with hyaluronic acid filler for a sharper profile.',
-    href: '/treatments/dermal-fillers',
+    href: '/treatments/dermal-filler-leicester',
     image: '/images/BA1.jpg',
   },
   {
     title: 'Endolift',
     desc: 'Radiofrequency energy stimulates collagen production for enhanced chin definition and skin firmness.',
-    href: '/treatments/endolift',
+    href: '/treatments/endolift-laser-leicester',
     image: '/images/BA2.jpg',
   },
   {
     title: 'Profhilo',
     desc: 'Bioremodels and firms the lower face, improving skin elasticity and jaw definition.',
-    href: '/treatments/profhilo',
+    href: '/treatments/profhilo-leicester',
     image: '/images/BA3.jpg',
   },
   {
@@ -219,19 +219,19 @@ const RELATED_TREATMENTS = [
   {
     title: 'Dermal Fillers',
     desc: 'Add projection and definition to the chin and jawline with precision-placed filler.',
-    href: '/treatments/dermal-fillers',
+    href: '/treatments/dermal-filler-leicester',
     tag: 'Medical Aesthetics',
   },
   {
     title: 'Endolift',
     desc: 'Stimulate collagen production for enhanced chin and jaw definition and firmness.',
-    href: '/treatments/endolift',
+    href: '/treatments/endolift-laser-leicester',
     tag: 'Medical Aesthetics',
   },
   {
     title: 'Profhilo',
     desc: 'Bioremodel and firm the lower face to support and enhance jawline definition.',
-    href: '/treatments/profhilo',
+    href: '/treatments/profhilo-leicester',
     tag: 'Medical Aesthetics',
   },
 ];

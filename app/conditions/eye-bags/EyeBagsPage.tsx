@@ -145,7 +145,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Dermal Fillers',
     desc:  'Restore volume and smooth the under-eye area with precision-placed hyaluronic acid filler.',
-    href:  '/treatments/dermal-fillers',
+    href:  '/treatments/dermal-filler-leicester',
     tag:   'Medical Aesthetics',
   },
 ];
@@ -196,19 +196,19 @@ const TREATMENTS = [
   {
     title:  'Dermal Fillers',
     desc:   'Restore volume and smooth the under-eye area to reduce under-eye bags.',
-    href:   '/treatments/dermal-fillers',
+    href:   '/treatments/dermal-filler-leicester',
     image:  '/images/BA1.jpg',
   },
   {
     title:  'Cool Bleph',
     desc:   'The laser blepharoplasty strengthens and firms the under-eye skin, reducing sagging.',
-    href:   '/treatments/cool-bleph',
+    href:   '/treatments/cool-bleph-leicester',
     image:  '/images/BA2.jpg',
   },
   {
     title:  'Chemical Peel',
     desc:   'Removes dead skin & refreshes the under-eye skin.',
-    href:   '/treatments/chemical-peels',
+    href:   '/treatments/chemical-peels-leicester',
     image:  '/images/BA3.jpg',
   },
   {

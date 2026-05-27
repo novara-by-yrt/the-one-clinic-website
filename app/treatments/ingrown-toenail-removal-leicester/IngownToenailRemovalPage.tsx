@@ -292,8 +292,8 @@ const FAQS = [
 ];
 
 const RELATED = [
-  { title: 'Minor Surgery',        href: '/treatments/minor-surgery',          desc: 'Safe, doctor-led minor surgical procedures at our Leicester clinic.' },
-  { title: 'Haemorrhoid Removal',  href: '/treatments/haemorrhoid-removal',    desc: 'Discreet, effective treatment for haemorrhoids without hospital admission.' },
+  { title: 'Minor Surgery',        href: '/treatments/minor-surgery-leicester',          desc: 'Safe, doctor-led minor surgical procedures at our Leicester clinic.' },
+  { title: 'Haemorrhoid Removal',  href: '/treatments/haemorrhoid-treatment-leicester',    desc: 'Discreet, effective treatment for haemorrhoids without hospital admission.' },
   { title: 'Skin Lesion Removal',  href: '/treatments/skin-lesion-removal',    desc: 'Precise removal of benign skin lesions with minimal scarring.' },
   { title: 'Wart Removal',         href: '/treatments/wart-removal',           desc: 'Fast, clinical removal of warts and verrucas using proven techniques.' },
 ];

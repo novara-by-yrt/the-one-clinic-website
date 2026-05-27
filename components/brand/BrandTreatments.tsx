@@ -17,31 +17,31 @@ const SLIDES_BASE = [
   {
     src:   '/images/Endolift1.png',
     title: 'Endolift',
-    href:  '/treatments/endolift',
+    href:  '/treatments/endolift-laser-leicester',
     desc:  'An innovative laser treatment that tightens and lifts loose skin using minimally invasive fibre technology , no surgery, no general anaesthetic, minimal downtime.',
   },
   {
     src:   '/images/Minor Surgery1.jpg',
     title: 'Minor Surgery',
-    href:  '/treatments/minor-surgery',
+    href:  '/treatments/minor-surgery-leicester',
     desc:  'Minor surgical procedures performed safely in our clinic. From mole removal to lipoma excision, handled with precision and expert care.',
   },
   {
     src:   '/images/Deep Laser Resurfacing 1.png',
     title: 'Deep Laser Resurfacing',
-    href:  '/treatments/deep-laser-resurfacing',
+    href:  '/treatments/deep-laser-resurfacing-leicester',
     desc:  'Intensive laser treatment targeting deeper skin layers to reduce wrinkles, scarring, and uneven texture for dramatically renewed, smoother skin.',
   },
   {
     src:   '/images/The Ultimate Body Confidence Package.png',
     title: 'Ultimate Body Confidence Package',
-    href:  '/treatments/ultimate-body-confidence-package',
+    href:  '/treatments/the-body-confidence-package',
     desc:  'A comprehensive programme combining our leading body contouring and skin tightening treatments for transformative, full-body results.',
   },
   {
     src:   '/images/Morpheus8-new.png',
     title: 'Morpheus 8',
-    href:  '/treatments/morpheus-8',
+    href:  '/treatments/morpheus8-leicester',
     desc:  'Advanced radiofrequency microneedling that remodels fat and stimulates collagen deep within the skin for tightened, lifted, and youthful-looking contours.',
   },
   {

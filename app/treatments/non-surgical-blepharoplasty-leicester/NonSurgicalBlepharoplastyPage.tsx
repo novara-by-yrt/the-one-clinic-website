@@ -244,10 +244,10 @@ const FAQS = [
 ];
 
 const RELATED = [
-  { title: 'Endolift Laser',      href: '/treatments/endolift',           desc: 'Minimally invasive laser lifting for face and neck without surgery.' },
-  { title: 'Morpheus8',           href: '/treatments/morpheus8',          desc: 'RF microneedling for skin tightening and collagen renewal.' },
-  { title: 'Dermal Fillers',      href: '/treatments/dermal-fillers',     desc: 'Restore volume and contour for a naturally refreshed appearance.' },
-  { title: 'Profhilo',            href: '/treatments/profhilo',           desc: 'Deep skin hydration and bio-remodelling for a natural, lasting glow.' },
+  { title: 'Endolift Laser',      href: '/treatments/endolift-laser-leicester',           desc: 'Minimally invasive laser lifting for face and neck without surgery.' },
+  { title: 'Morpheus8',           href: '/treatments/morpheus8-leicester',          desc: 'RF microneedling for skin tightening and collagen renewal.' },
+  { title: 'Dermal Fillers',      href: '/treatments/dermal-filler-leicester',     desc: 'Restore volume and contour for a naturally refreshed appearance.' },
+  { title: 'Profhilo',            href: '/treatments/profhilo-leicester',           desc: 'Deep skin hydration and bio-remodelling for a natural, lasting glow.' },
 ];
 
 /* ── Page component ───────────────────────────────────────────── */

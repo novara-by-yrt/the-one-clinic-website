@@ -146,25 +146,25 @@ const RELATED_TREATMENTS = [
   {
     title: 'Lumecca IPL',
     desc:  'Target dark spots and sun damage with intense pulsed light for a brighter, more even complexion.',
-    href:  '/treatments/lumecca-ipl',
+    href:  '/treatments/ipl-leicester',
     tag:   'Medical Aesthetics',
   },
   {
     title: 'Chemical Peels',
     desc:  'Resurface and brighten pigmented skin with exfoliating, skin-renewing peels.',
-    href:  '/treatments/chemical-peels',
+    href:  '/treatments/chemical-peels-leicester',
     tag:   'Medical Aesthetics',
   },
   {
     title: 'Laser Resurfacing',
     desc:  'Break down excess melanin and renew the skin surface for a clearer, more uniform tone.',
-    href:  '/treatments/laser-resurfacing',
+    href:  '/treatments/deep-laser-resurfacing-leicester',
     tag:   'Medical Aesthetics',
   },
   {
     title: 'AlumierMD Skincare',
     desc:  'Clinically formulated skincare to brighten, protect, and maintain clear, even-toned skin.',
-    href:  '/treatments/skincare-alumier-md',
+    href:  '/treatments/skincare-alumier-md-leicester',
     tag:   'Medical Aesthetics',
   },
 ];
@@ -218,25 +218,25 @@ const TREATMENTS = [
   {
     title:  'Lumecca IPL',
     desc:   'Intense pulsed light targets excess melanin to reduce dark spots, sun damage, and uneven pigmentation for a visibly brighter complexion.',
-    href:   '/treatments/lumecca-ipl',
+    href:   '/treatments/ipl-leicester',
     image:  '/images/BA1.jpg',
   },
   {
     title:  'Chemical Peels',
     desc:   'Exfoliating peels remove pigmented surface cells and stimulate renewal, progressively lightening dark patches and uneven tone.',
-    href:   '/treatments/chemical-peels',
+    href:   '/treatments/chemical-peels-leicester',
     image:  '/images/BA2.jpg',
   },
   {
     title:  'Laser Resurfacing',
     desc:   'Targeted laser energy breaks down melanin deposits and resurfacing the skin for a clearer, more even complexion.',
-    href:   '/treatments/laser-resurfacing',
+    href:   '/treatments/deep-laser-resurfacing-leicester',
     image:  '/images/BA3.jpg',
   },
   {
     title:  'AlumierMD Skincare',
     desc:   'Clinically formulated brightening skincare that inhibits melanin production, maintains results, and protects with daily SPF.',
-    href:   '/treatments/skincare-alumier-md',
+    href:   '/treatments/skincare-alumier-md-leicester',
     image:  '/images/BA4.jpg',
   },
 ];

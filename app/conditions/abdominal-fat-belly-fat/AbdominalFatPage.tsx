@@ -134,7 +134,7 @@ const TREATMENTS = [
   {
     title: 'Body Contouring',
     desc:  'Non-surgical body contouring precisely targets stubborn abdominal fat deposits resistant to diet and exercise, sculpting and reshaping the midsection without surgery or downtime.',
-    href:  '/treatments/body-contouring',
+    href:  '/treatments/body-contouring-leicester',
     image: '/images/BA1.jpg',
   },
   {
@@ -146,13 +146,13 @@ const TREATMENTS = [
   {
     title: 'Weight Management',
     desc:  'Our medically supervised weight management programme provides personalised support, dietary guidance, and clinical interventions to reduce overall body fat including stubborn abdominal fat.',
-    href:  '/treatments/weight-management',
+    href:  '/treatments/weight-management-leicester',
     image: '/images/BA3.jpg',
   },
   {
     title: 'Cool Sculpting / Body Contouring',
     desc:  'Advanced fat-freezing and body contouring technology targets and eliminates stubborn fat cells in the abdominal region, delivering a slimmer, more defined midsection.',
-    href:  '/treatments/body-contouring',
+    href:  '/treatments/body-contouring-leicester',
     image: '/images/BA4.jpg',
   },
 ];
@@ -233,7 +233,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Body Contouring',
     desc:  'Non-surgical fat reduction and body sculpting for a slimmer, more defined midsection.',
-    href:  '/treatments/body-contouring',
+    href:  '/treatments/body-contouring-leicester',
     tag:   'Body',
   },
   {
@@ -245,7 +245,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Weight Management',
     desc:  'Medically supervised programme to reduce overall body fat and improve metabolic health.',
-    href:  '/treatments/weight-management',
+    href:  '/treatments/weight-management-leicester',
     tag:   'Body',
   },
   {

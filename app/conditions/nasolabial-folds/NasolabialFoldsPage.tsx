@@ -140,25 +140,25 @@ const TREATMENTS = [
   {
     title:  'Dermal Fillers',
     desc:   'Hyaluronic acid filler is precisely placed along the nasolabial folds to restore volume, soften the crease, and create a naturally smooth, refreshed appearance.',
-    href:   '/treatments/dermal-fillers',
+    href:   '/treatments/dermal-filler-leicester',
     image:  '/images/BA1.jpg',
   },
   {
     title:  'Endolift Laser',
     desc:   'A minimally invasive laser treatment that tightens skin and stimulates collagen from within, lifting and firming the mid-face to reduce deep folds.',
-    href:   '/treatments/endolift',
+    href:   '/treatments/endolift-laser-leicester',
     image:  '/images/BA2.jpg',
   },
   {
     title:  'Morpheus8',
     desc:   'Combines radiofrequency energy with microneedling to remodel deeper layers of skin, improving texture and reducing the appearance of nasolabial folds.',
-    href:   '/treatments/morpheus8',
+    href:   '/treatments/morpheus8-leicester',
     image:  '/images/BA3.jpg',
   },
   {
     title:  'Profhilo',
     desc:   'A highly concentrated injectable that bioremodels the skin from within, improving hydration, elasticity, and overall skin quality around the nose and mouth.',
-    href:   '/treatments/profhilo',
+    href:   '/treatments/profhilo-leicester',
     image:  '/images/BA4.jpg',
   },
 ];
@@ -239,25 +239,25 @@ const RELATED_TREATMENTS = [
   {
     title: 'Dermal Fillers',
     desc:  'Restore volume and smooth nasolabial folds with precision-placed hyaluronic acid filler.',
-    href:  '/treatments/dermal-fillers',
+    href:  '/treatments/dermal-filler-leicester',
     tag:   'Medical Aesthetics',
   },
   {
     title: 'Endolift',
     desc:  'Minimally invasive laser tightening to lift and firm the mid-face from within.',
-    href:  '/treatments/endolift',
+    href:  '/treatments/endolift-laser-leicester',
     tag:   'Medical Aesthetics',
   },
   {
     title: 'Morpheus8',
     desc:  'Radiofrequency microneedling to remodel skin and reduce deep smile lines.',
-    href:  '/treatments/morpheus8',
+    href:  '/treatments/morpheus8-leicester',
     tag:   'Medical Aesthetics',
   },
   {
     title: 'Profhilo',
     desc:  'Bioremodel and deeply hydrate the skin to restore elasticity and soften folds.',
-    href:  '/treatments/profhilo',
+    href:  '/treatments/profhilo-leicester',
     tag:   'Medical Aesthetics',
   },
 ];

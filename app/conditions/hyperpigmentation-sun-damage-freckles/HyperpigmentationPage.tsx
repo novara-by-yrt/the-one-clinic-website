@@ -137,25 +137,25 @@ const TREATMENTS = [
   {
     title:  'Lumecca IPL',
     desc:   'Intense Pulsed Light precisely targets excess melanin, breaking down sunspots, freckles, and areas of uneven pigmentation for a noticeably clearer complexion.',
-    href:   '/treatments/lumecca-ipl',
+    href:   '/treatments/ipl-leicester',
     image:  '/images/BA1.jpg',
   },
   {
     title:  'Chemical Peels',
     desc:   'Exfoliating peels remove pigmented surface skin cells, accelerate cell turnover, and progressively lighten dark patches and uneven discolouration.',
-    href:   '/treatments/chemical-peels',
+    href:   '/treatments/chemical-peels-leicester',
     image:  '/images/BA2.jpg',
   },
   {
     title:  'Laser Resurfacing',
     desc:   'Targeted laser energy penetrates deeper pigmentation, stimulating cell renewal and collagen production to reduce sun damage and uneven skin tone.',
-    href:   '/treatments/laser-resurfacing',
+    href:   '/treatments/deep-laser-resurfacing-leicester',
     image:  '/images/BA3.jpg',
   },
   {
     title:  'AlumierMD Skincare',
     desc:   'Clinically formulated brightening skincare that inhibits melanin production and supports a clearer, more even complexion between clinic treatments.',
-    href:   '/treatments/skincare-alumier-md',
+    href:   '/treatments/skincare-alumier-md-leicester',
     image:  '/images/BA4.jpg',
   },
 ];
@@ -236,25 +236,25 @@ const RELATED_TREATMENTS = [
   {
     title: 'Lumecca IPL',
     desc:  'Break down sunspots and freckles with targeted Intense Pulsed Light therapy for a clearer complexion.',
-    href:  '/treatments/lumecca-ipl',
+    href:  '/treatments/ipl-leicester',
     tag:   'Medical Aesthetics',
   },
   {
     title: 'Chemical Peels',
     desc:  'Resurface and brighten pigmented skin with exfoliating, skin-renewing peels tailored to your tone.',
-    href:  '/treatments/chemical-peels',
+    href:  '/treatments/chemical-peels-leicester',
     tag:   'Medical Aesthetics',
   },
   {
     title: 'Laser Resurfacing',
     desc:  'Reduce deeper sun damage and uneven tone with precision laser treatment and collagen stimulation.',
-    href:  '/treatments/laser-resurfacing',
+    href:  '/treatments/deep-laser-resurfacing-leicester',
     tag:   'Medical Aesthetics',
   },
   {
     title: 'AlumierMD Skincare',
     desc:  'Clinical-grade brightening skincare that inhibits melanin and sustains your results at home.',
-    href:  '/treatments/skincare-alumier-md',
+    href:  '/treatments/skincare-alumier-md-leicester',
     tag:   'Medical Aesthetics',
   },
 ];

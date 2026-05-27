@@ -132,13 +132,13 @@ const TREATMENTS = [
   {
     title:  'Body Contouring',
     desc:   'Non-surgical body contouring treatments target stubborn fat deposits and improve skin texture, visibly reducing the appearance of cellulite and restoring a smoother body contour.',
-    href:   '/treatments/body-contouring',
+    href:   '/treatments/body-contouring-leicester',
     image:  '/images/BA1.jpg',
   },
   {
     title:  'Endolift Laser',
     desc:   'Minimally invasive laser treatment tightens lax skin and breaks down localised fat deposits beneath the surface, delivering a firmer, smoother result with minimal downtime.',
-    href:   '/treatments/endolift',
+    href:   '/treatments/endolift-laser-leicester',
     image:  '/images/BA2.jpg',
   },
   {
@@ -231,13 +231,13 @@ const RELATED_TREATMENTS = [
   {
     title: 'Body Contouring',
     desc:  'Non-surgical body sculpting to target cellulite and restore a smoother contour.',
-    href:  '/treatments/body-contouring',
+    href:  '/treatments/body-contouring-leicester',
     tag:   'Body',
   },
   {
     title: 'Endolift',
     desc:  'Tighten skin and target localised fat with minimally invasive laser treatment.',
-    href:  '/treatments/endolift',
+    href:  '/treatments/endolift-laser-leicester',
     tag:   'Body',
   },
   {

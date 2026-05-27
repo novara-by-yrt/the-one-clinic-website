@@ -270,10 +270,10 @@ const EXPERTS = [
 ];
 
 const RELATED = [
-  { title: 'Body Contouring',           href: '/treatments/body-contouring',   desc: 'Comprehensive body reshaping and sculpting treatments.' },
-  { title: 'Weight Management',         href: '/treatments/weight-management', desc: 'Medical support and guidance for sustainable weight loss.' },
-  { title: 'Skin Analysis',             href: '/treatments/skin-analysis',     desc: 'Advanced skin assessment and personalised treatment plans.' },
-  { title: 'Non-Surgical Fat Removal',  href: '/treatments/endolift',          desc: 'Minimally invasive fat reduction and skin tightening.' },
+  { title: 'Body Contouring',           href: '/treatments/body-contouring-leicester',   desc: 'Comprehensive body reshaping and sculpting treatments.' },
+  { title: 'Weight Management',         href: '/treatments/weight-management-leicester', desc: 'Medical support and guidance for sustainable weight loss.' },
+  { title: 'Skin Analysis',             href: '/treatments/skin-analysis-leicester',     desc: 'Advanced skin assessment and personalised treatment plans.' },
+  { title: 'Non-Surgical Fat Removal',  href: '/treatments/endolift-laser-leicester',          desc: 'Minimally invasive fat reduction and skin tightening.' },
 ];
 
 const FA_REDUCTION = [

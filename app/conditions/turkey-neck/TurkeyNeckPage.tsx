@@ -119,13 +119,13 @@ const TREATMENTS = [
   {
     title: 'Endolift',
     desc: 'Advanced radiofrequency technology delivers controlled heat to stimulate collagen production, tightening loose neck tissue.',
-    href: '/treatments/endolift',
+    href: '/treatments/endolift-laser-leicester',
     image: '/images/BA1.jpg',
   },
   {
     title: 'Profhilo',
     desc: 'A highly concentrated injectable hyaluronic acid treatment that bioremodels the skin, restoring elasticity and firmness.',
-    href: '/treatments/profhilo',
+    href: '/treatments/profhilo-leicester',
     image: '/images/BA2.jpg',
   },
   {
@@ -137,7 +137,7 @@ const TREATMENTS = [
   {
     title: 'Chemical Peels',
     desc: 'Resurfaces the skin to reduce the appearance of horizontal necklines and improve overall texture.',
-    href: '/treatments/chemical-peels',
+    href: '/treatments/chemical-peels-leicester',
     image: '/images/BA4.jpg',
   },
 ];
@@ -233,13 +233,13 @@ const RELATED_TREATMENTS = [
   {
     title: 'Endolift',
     desc: 'Stimulate collagen deep within the skin to firm and tighten loose neck tissue.',
-    href: '/treatments/endolift',
+    href: '/treatments/endolift-laser-leicester',
     tag: 'Medical Aesthetics',
   },
   {
     title: 'Profhilo',
     desc: 'Bioremodel and deeply hydrate the neck skin to restore elasticity and firmness.',
-    href: '/treatments/profhilo',
+    href: '/treatments/profhilo-leicester',
     tag: 'Medical Aesthetics',
   },
   {
