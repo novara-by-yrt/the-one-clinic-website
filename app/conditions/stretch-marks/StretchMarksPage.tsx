@@ -83,7 +83,7 @@ const TREATMENTS = [
   {
     title: 'Morpheus8',
     desc:  'Radiofrequency microneedling penetrates deep into the dermis, stimulating collagen and elastin production to remodel stretch mark scar tissue and restore smoother, more even skin texture.',
-    href:  '/treatments/morpheus8',
+    href:  '/treatments/morpheus8-leicester',
   },
   {
     title: 'Laser Resurfacing',
@@ -93,7 +93,7 @@ const TREATMENTS = [
   {
     title: 'Chemical Peel',
     desc:  'Exfoliating peels accelerate cell turnover and stimulate the regeneration of healthy skin tissue, helping to fade the discolouration and improve the texture of stretch marks over time.',
-    href:  '/treatments/chemical-peels',
+    href:  '/treatments/chemical-peels-leicester',
   },
   {
     title: 'Polynucleotides',
@@ -204,7 +204,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Morpheus8',
     desc:  'Remodel stretch mark scar tissue and stimulate collagen with radiofrequency microneedling.',
-    href:  '/treatments/morpheus8',
+    href:  '/treatments/morpheus8-leicester',
     tag:   'Body',
   },
   {

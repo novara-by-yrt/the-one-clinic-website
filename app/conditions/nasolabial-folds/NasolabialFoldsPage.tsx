@@ -152,13 +152,13 @@ const TREATMENTS = [
   {
     title:  'Morpheus8',
     desc:   'Combines radiofrequency energy with microneedling to remodel deeper layers of skin, improving texture and reducing the appearance of nasolabial folds.',
-    href:   '/treatments/morpheus8',
+    href:   '/treatments/morpheus8-leicester',
     image:  '/images/BA3.jpg',
   },
   {
     title:  'Profhilo',
     desc:   'A highly concentrated injectable that bioremodels the skin from within, improving hydration, elasticity, and overall skin quality around the nose and mouth.',
-    href:   '/treatments/profhilo',
+    href:   '/treatments/profhilo-leicester',
     image:  '/images/BA4.jpg',
   },
 ];
@@ -251,13 +251,13 @@ const RELATED_TREATMENTS = [
   {
     title: 'Morpheus8',
     desc:  'Radiofrequency microneedling to remodel skin and reduce deep smile lines.',
-    href:  '/treatments/morpheus8',
+    href:  '/treatments/morpheus8-leicester',
     tag:   'Medical Aesthetics',
   },
   {
     title: 'Profhilo',
     desc:  'Bioremodel and deeply hydrate the skin to restore elasticity and soften folds.',
-    href:  '/treatments/profhilo',
+    href:  '/treatments/profhilo-leicester',
     tag:   'Medical Aesthetics',
   },
 ];

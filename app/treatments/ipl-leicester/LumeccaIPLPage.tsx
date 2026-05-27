@@ -248,10 +248,10 @@ const BA_IMAGES = [
 ];
 
 const RELATED = [
-  { title: 'HydraFacial',         href: '/treatments/hydrafacial',        desc: 'Deep hydration and cleansing for radiant, glowing skin.' },
-  { title: 'Chemical Peels',      href: '/treatments/chemical-peels',     desc: 'Medical-grade peels to resurface skin and improve tone.' },
-  { title: 'Morpheus8',           href: '/treatments/morpheus8',          desc: 'RF microneedling for skin tightening and collagen renewal.' },
-  { title: 'Profhilo',            href: '/treatments/profhilo',           desc: 'Deep skin hydration and bio-remodelling for natural glow.' },
+  { title: 'HydraFacial',         href: '/treatments/hydrafacial-leicester',        desc: 'Deep hydration and cleansing for radiant, glowing skin.' },
+  { title: 'Chemical Peels',      href: '/treatments/chemical-peels-leicester',     desc: 'Medical-grade peels to resurface skin and improve tone.' },
+  { title: 'Morpheus8',           href: '/treatments/morpheus8-leicester',          desc: 'RF microneedling for skin tightening and collagen renewal.' },
+  { title: 'Profhilo',            href: '/treatments/profhilo-leicester',           desc: 'Deep skin hydration and bio-remodelling for natural glow.' },
 ];
 
 /* ── Page component ───────────────────────────────────────────── */

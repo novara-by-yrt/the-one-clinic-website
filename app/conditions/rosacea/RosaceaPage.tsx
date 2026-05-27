@@ -163,13 +163,13 @@ const RELATED_TREATMENTS = [
   {
     title: 'AlumierMD Skincare',
     desc:  'Medical-grade skincare formulated to strengthen the skin barrier and reduce chronic redness.',
-    href:  '/treatments/skincare-alumier-md',
+    href:  '/treatments/skincare-alumier-md-leicester',
     tag:   'Medical Aesthetics',
   },
   {
     title: 'Private GP Consultation',
     desc:  'Expert medical assessment and personalised rosacea management from our GMC-registered doctors.',
-    href:  '/treatments/private-gp',
+    href:  '/treatments/private-gp-leicester',
     tag:   'Medical',
   },
 ];
@@ -232,13 +232,13 @@ const TREATMENTS = [
   {
     title:  'AlumierMD Skincare',
     desc:   'Medical-grade skincare products formulated to strengthen the skin barrier, reduce inflammation, and calm rosacea-prone skin.',
-    href:   '/treatments/skincare-alumier-md',
+    href:   '/treatments/skincare-alumier-md-leicester',
     image:  '/images/BA3.jpg',
   },
   {
     title:  'Private GP Consultation',
     desc:   'Comprehensive medical assessment of your rosacea with a personalised management plan from our GMC-registered doctors.',
-    href:   '/treatments/private-gp',
+    href:   '/treatments/private-gp-leicester',
     image:  '/images/BA4.jpg',
   },
 ];

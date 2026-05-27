@@ -248,7 +248,7 @@ const EXPERTS = [
 ];
 
 const RELATED = [
-  { title: 'Morpheus8',                   href: '/treatments/morpheus8',         desc: 'Fractional radiofrequency skin remodelling for face and body.' },
+  { title: 'Morpheus8',                   href: '/treatments/morpheus8-leicester',         desc: 'Fractional radiofrequency skin remodelling for face and body.' },
   { title: 'Dermal Fillers',              href: '/treatments/dermal-filler-leicester',    desc: 'Restore volume and structure to the face with precision filler.' },
   { title: 'Deep Laser Resurfacing',      href: '/treatments/deep-laser-resurfacing-leicester', desc: 'Comprehensive skin renewal targeting texture, tone, and laxity.' },
   { title: 'Non Surgical Blepharoplasty', href: '/treatments/non-surgical-blepharoplasty-leicester', desc: 'Eye area rejuvenation without surgery or scarring.' },

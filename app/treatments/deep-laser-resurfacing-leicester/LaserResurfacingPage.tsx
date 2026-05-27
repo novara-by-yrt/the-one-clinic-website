@@ -347,9 +347,9 @@ const FAQS = [
 
 const RELATED = [
   { title: 'Endolift',       href: '/treatments/endolift-laser-leicester',        desc: 'Minimally invasive laser lifting and tightening for face and neck.' },
-  { title: 'Morpheus8',      href: '/treatments/morpheus8',        desc: 'Fractional radiofrequency skin remodelling for face and body.' },
-  { title: 'Chemical Peels', href: '/treatments/chemical-peels',   desc: 'Medical-grade peels to resurface skin and improve tone and texture.' },
-  { title: 'Skin Analysis',  href: '/treatments/skin-analysis',    desc: 'Comprehensive skin assessment to guide your personalised treatment plan.' },
+  { title: 'Morpheus8',      href: '/treatments/morpheus8-leicester',        desc: 'Fractional radiofrequency skin remodelling for face and body.' },
+  { title: 'Chemical Peels', href: '/treatments/chemical-peels-leicester',   desc: 'Medical-grade peels to resurface skin and improve tone and texture.' },
+  { title: 'Skin Analysis',  href: '/treatments/skin-analysis-leicester',    desc: 'Comprehensive skin assessment to guide your personalised treatment plan.' },
 ];
 
 /* ── Page component ───────────────────────────────────────────── */

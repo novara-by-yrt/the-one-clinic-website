@@ -143,7 +143,7 @@ const TREATMENTS = [
   {
     title:  'Chemical Peels',
     desc:   'Exfoliating peels remove pigmented surface skin cells, accelerate cell turnover, and progressively lighten dark patches and uneven discolouration.',
-    href:   '/treatments/chemical-peels',
+    href:   '/treatments/chemical-peels-leicester',
     image:  '/images/BA2.jpg',
   },
   {
@@ -155,7 +155,7 @@ const TREATMENTS = [
   {
     title:  'AlumierMD Skincare',
     desc:   'Clinically formulated brightening skincare that inhibits melanin production and supports a clearer, more even complexion between clinic treatments.',
-    href:   '/treatments/skincare-alumier-md',
+    href:   '/treatments/skincare-alumier-md-leicester',
     image:  '/images/BA4.jpg',
   },
 ];
@@ -242,7 +242,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Chemical Peels',
     desc:  'Resurface and brighten pigmented skin with exfoliating, skin-renewing peels tailored to your tone.',
-    href:  '/treatments/chemical-peels',
+    href:  '/treatments/chemical-peels-leicester',
     tag:   'Medical Aesthetics',
   },
   {
@@ -254,7 +254,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'AlumierMD Skincare',
     desc:  'Clinical-grade brightening skincare that inhibits melanin and sustains your results at home.',
-    href:  '/treatments/skincare-alumier-md',
+    href:  '/treatments/skincare-alumier-md-leicester',
     tag:   'Medical Aesthetics',
   },
 ];

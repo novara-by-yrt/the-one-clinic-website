@@ -32,28 +32,28 @@ export const treatments: Treatment[] = [
   // ── Health & Wellbeing ──────────────────────────────────────
 
   {
-    slug: 'health-screening',
+    slug: 'health-screening-leicester',
     title: 'Health Screening',
     category: 'Health & Wellbeing',
     shortDescription:
       'Comprehensive health assessments to detect risks early and give you a clear picture of your overall health.',
   },
   {
-    slug: 'private-gp',
+    slug: 'private-gp-leicester',
     title: 'Private GP Leicester',
     category: 'Health & Wellbeing',
     shortDescription:
       'Same-day private GP appointments with experienced doctors for diagnosis, referrals, and personalised care.',
   },
   {
-    slug: 'joint-injections',
+    slug: 'joint-injections-leicester',
     title: 'Joint Injections',
     category: 'Health & Wellbeing',
     shortDescription:
       'Targeted steroid or hyaluronic acid injections to relieve joint pain, stiffness, and inflammation.',
   },
   {
-    slug: 'minor-surgery',
+    slug: 'minor-surgery-leicester',
     title: 'Minor Surgery',
     category: 'Health & Wellbeing',
     shortDescription:
@@ -67,70 +67,70 @@ export const treatments: Treatment[] = [
       'Permanent relief from painful ingrown toenails using Partial Nail Avulsion (PNA) with phenol treatment.',
   },
   {
-    slug: 'haemorrhoid-removal',
+    slug: 'haemorrhoid-treatment-leicester',
     title: 'Haemorrhoid Removal',
     category: 'Health & Wellbeing',
     shortDescription:
       'Expert surgical haemorrhoid removal under local anaesthetic for grades I,III , no hospital stay, same-day procedure.',
   },
   {
-    slug: 'gp-home-visits',
+    slug: 'gp-home-visits-leicester',
     title: 'GP Home Visits Leicester',
     category: 'Health & Wellbeing',
     shortDescription:
       'Private GP home visits for patients who are unable to travel to the clinic or prefer to be seen at home.',
   },
   {
-    slug: 'travel-vaccine',
+    slug: 'travel-vaccine-leicester',
     title: 'Travel Vaccine & Immunisations',
     category: 'Health & Wellbeing',
     shortDescription:
       'Travel health consultations and vaccinations to keep you protected wherever in the world you are heading.',
   },
   {
-    slug: 'weight-management',
+    slug: 'weight-management-leicester',
     title: 'Weight Management',
     category: 'Health & Wellbeing',
     shortDescription:
       'Medically supervised weight loss programmes combining clinical assessment, lifestyle support, and medication where appropriate.',
   },
   {
-    slug: 'medical-insurance',
+    slug: 'medical-insurance-leicester',
     title: 'Medical Insurance Examination',
     category: 'Health & Wellbeing',
     shortDescription:
       'Independent medical examinations and reports for insurance providers, employers, and legal purposes.',
   },
   {
-    slug: 'dermatologist',
+    slug: 'dermatologist-leicester',
     title: 'Dermatologist Leicester',
     category: 'Health & Wellbeing',
     shortDescription:
       'Expert skin consultations for a wide range of dermatological conditions including acne, eczema, psoriasis, and more.',
   },
   {
-    slug: 'mens-health',
+    slug: 'mens-health-leicester',
     title: "Men's Health",
     category: 'Health & Wellbeing',
     shortDescription:
       "Confidential men's health services covering testosterone, sexual health, prostate health, and general wellbeing.",
   },
   {
-    slug: 'womens-health',
+    slug: 'womens-health-leicester',
     title: "Women's Health Clinic",
     category: 'Health & Wellbeing',
     shortDescription:
       "Comprehensive women's health services from contraception and cervical screening to general GP care.",
   },
   {
-    slug: 'menopause-hrt',
+    slug: 'menopause-hrt-leicester',
     title: "Women's Health, Menopause / HRT / Contraception",
     category: 'Health & Wellbeing',
     shortDescription:
       'Specialist support for menopause, HRT prescribing, and contraception management from experienced doctors.',
   },
   {
-    slug: 'mental-health-consultation',
+    slug: 'mental-health-consultation-leicester',
     title: 'Mental Health Consultation',
     category: 'Health & Wellbeing',
     shortDescription:
@@ -140,7 +140,7 @@ export const treatments: Treatment[] = [
   // ── Medical Aesthetics ──────────────────────────────────────
 
   {
-    slug: 'dermal-fillers',
+    slug: 'dermal-filler-leicester',
     title: 'Dermal Fillers',
     category: 'Medical Aesthetics',
     shortDescription:
@@ -165,28 +165,28 @@ export const treatments: Treatment[] = [
     ],
   },
   {
-    slug: 'lumecca-ipl',
+    slug: 'ipl-leicester',
     title: 'Lumecca IPL',
     category: 'Medical Aesthetics',
     shortDescription:
       'The most powerful IPL device available, treating pigmentation, sun damage, redness, and vascular lesions in fewer sessions.',
   },
   {
-    slug: 'hydrafacial-keravive',
+    slug: 'hydrafacial-keravive-leicester',
     title: 'HydraFacial Keravive',
     category: 'Medical Aesthetics',
     shortDescription:
       'A three-step scalp treatment that cleanses, stimulates, and nourishes hair follicles to promote a healthy scalp and fuller-looking hair.',
   },
   {
-    slug: 'morpheus8',
+    slug: 'morpheus8-leicester',
     title: 'Morpheus8',
     category: 'Medical Aesthetics',
     shortDescription:
       'Fractional radiofrequency microneedling that remodels skin and subdermal tissue for tighter, smoother skin on face and body.',
   },
   {
-    slug: 'wrinkle-relaxing-injections',
+    slug: 'wrinkle-relaxing-injections-leicester',
     title: 'Wrinkle Relaxing Injections',
     category: 'Medical Aesthetics',
     shortDescription:
@@ -207,35 +207,35 @@ export const treatments: Treatment[] = [
     ],
   },
   {
-    slug: 'hydrafacial',
+    slug: 'hydrafacial-leicester',
     title: 'Hydrafacial Leicester',
     category: 'Medical Aesthetics',
     shortDescription:
       'A multi-step facial treatment that cleanses, exfoliates, extracts, and hydrates to deliver instantly glowing, refreshed skin.',
   },
   {
-    slug: 'vampire-facial',
+    slug: 'vampire-facial-leicester',
     title: 'Vampire Facial',
     category: 'Medical Aesthetics',
     shortDescription:
       'PRP microneedling combining platelet-rich plasma with skin needling to stimulate collagen and renew skin texture.',
   },
   {
-    slug: 'chemical-peels',
+    slug: 'chemical-peels-leicester',
     title: 'Chemical Peels',
     category: 'Medical Aesthetics',
     shortDescription:
       'Medical-grade chemical peels to resurface the skin, treat pigmentation, acne, and improve overall skin tone and texture.',
   },
   {
-    slug: 'skin-analysis',
+    slug: 'skin-analysis-leicester',
     title: 'Skin Analysis, Life Viz 3D Camera',
     category: 'Medical Aesthetics',
     shortDescription:
       'Advanced 3D skin imaging to assess texture, pigmentation, pores, and wrinkles and guide your personalised skincare plan.',
   },
   {
-    slug: 'body-contouring',
+    slug: 'body-contouring-leicester',
     title: 'Body Contouring',
     category: 'Medical Aesthetics',
     shortDescription:
@@ -254,35 +254,35 @@ export const treatments: Treatment[] = [
     ],
   },
   {
-    slug: 'endolift',
+    slug: 'endolift-laser-leicester',
     title: 'Endolift Laser',
     category: 'Medical Aesthetics',
     shortDescription:
       'Minimally invasive laser skin tightening for face, neck, and body that lifts, contours, and stimulates collagen without surgery.',
   },
   {
-    slug: 'skincare-alumier-md',
+    slug: 'skincare-alumier-md-leicester',
     title: 'Skincare, Alumier MD',
     category: 'Medical Aesthetics',
     shortDescription:
       'Medical-grade Alumier MD skincare products prescribed and tailored to your skin type, concerns, and goals.',
   },
   {
-    slug: 'skin-lesion',
+    slug: 'skin-lesions-leicester',
     title: 'Skin Lesion Removal Leicester',
     category: 'Medical Aesthetics',
     shortDescription:
       'Safe, precise removal of benign and suspicious skin lesions under local anaesthetic with histology available.',
   },
   {
-    slug: 'basal-cell-carcinoma-bcc-removal-leicester',
+    slug: 'basal-cell-carcinoma-leicester',
     title: 'BCC Removal Leicester',
     category: 'Medical Aesthetics',
     shortDescription:
       'Expert diagnosis and surgical removal of basal cell carcinoma (BCC) with histological analysis to confirm clear margins.',
   },
   {
-    slug: 'skin-tags-removal-leicester',
+    slug: 'skin-tag-removal-leicester',
     title: 'Skin Tag Removal Leicester',
     category: 'Medical Aesthetics',
     shortDescription:
@@ -296,14 +296,14 @@ export const treatments: Treatment[] = [
       'Clinically proven wart removal treatments including cryotherapy, curettage, and cauterisation for lasting results.',
   },
   {
-    slug: 'acne-scar-removal-leicester',
+    slug: 'laser-acne-scar-treatment-leicester',
     title: 'Acne Scar Removal Leicester',
     category: 'Medical Aesthetics',
     shortDescription:
       'Advanced treatments targeting acne scarring to smooth skin texture, reduce discolouration, and restore confidence.',
   },
   {
-    slug: 'regenerative-medicine-exosome-therapy',
+    slug: 'regenerative-medicine-exosome-therapy-leicester',
     title: 'Regenerative Medicine, Exosome Therapy',
     category: 'Medical Aesthetics',
     shortDescription:
@@ -317,21 +317,21 @@ export const treatments: Treatment[] = [
       'Polynucleotide (PDRN) injections to deeply hydrate, repair, and regenerate skin for long-lasting rejuvenation.',
   },
   {
-    slug: 'cool-bleph',
+    slug: 'cool-bleph-leicester',
     title: 'Cool Bleph',
     category: 'Medical Aesthetics',
     shortDescription:
       'Non-surgical eyelid treatment using targeted cooling and radiofrequency to tighten and refresh the eye area.',
   },
   {
-    slug: 'cool-glow-full-face',
+    slug: 'cool-glow-full-face-leicester',
     title: 'COOL Glow Peel (Full Face)',
     category: 'Medical Aesthetics',
     shortDescription:
       'A rejuvenating full-face peel treatment combining cooling technology to brighten, smooth, and revitalise skin.',
   },
   {
-    slug: 'cool-scar-lift',
+    slug: 'cool-scar-lift-leicester',
     title: 'Cool Scar Lift',
     category: 'Medical Aesthetics',
     shortDescription:
@@ -345,28 +345,28 @@ export const treatments: Treatment[] = [
       'Safe, precise mole removal under local anaesthetic with optional histology. Minimal scarring, fast healing.',
   },
   {
-    slug: 'laser-mole-removal',
+    slug: 'laser-mole-removal-leicester',
     title: 'Laser Mole Removal',
     category: 'Medical Aesthetics',
     shortDescription:
       'Non-surgical laser removal of flat, benign moles for a clean, scar-free finish with minimal downtime.',
   },
   {
-    slug: 'laser-snoring-treatment',
+    slug: 'laser-snoring-treatment-leicester',
     title: 'Laser Snoring Treatment',
     category: 'Medical Aesthetics',
     shortDescription:
       'NightLase laser therapy to reduce snoring by tightening soft palate tissue, improving sleep quality for you and your partner.',
   },
   {
-    slug: 'laser-vaginal',
+    slug: 'laser-vaginal-leicester',
     title: 'Laser Vaginal Rejuvenation',
     category: 'Medical Aesthetics',
     shortDescription:
       'Non-surgical laser treatment to tighten vaginal tissue, improve dryness, and address urinary stress incontinence.',
   },
   {
-    slug: 'iv-drip-therapy',
+    slug: 'iv-drip-therapy-leicester',
     title: 'IV Drip Therapy',
     category: 'Medical Aesthetics',
     shortDescription:
@@ -387,7 +387,7 @@ export const treatments: Treatment[] = [
     ],
   },
   {
-    slug: 'laser-resurfacing',
+    slug: 'deep-laser-resurfacing-leicester',
     title: 'Deep Laser Resurfacing',
     category: 'Medical Aesthetics',
     shortDescription:
@@ -415,7 +415,7 @@ export const treatments: Treatment[] = [
       'A comprehensive body treatment package combining multiple modalities to sculpt, tighten, and transform your confidence.',
   },
   {
-    slug: 'lipoma-removal',
+    slug: 'lipoma-removal-leicester',
     title: 'Lipoma Removal Leicester',
     category: 'Medical Aesthetics',
     shortDescription:

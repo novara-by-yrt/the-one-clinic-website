@@ -292,7 +292,7 @@ const RELATED = [
   { title: 'Mole Removal',     href: '/treatments/mole-removal',    desc: 'Precise removal of benign moles with minimal scarring.' },
   { title: 'BCC Removal',      href: '/treatments/bcc-removal',     desc: 'Expert management and removal of basal cell carcinoma.' },
   { title: 'Minor Surgery',    href: '/treatments/minor-surgery-leicester',   desc: 'A full range of minor surgical procedures under local anaesthetic.' },
-  { title: 'Dermatologist',    href: '/treatments/dermatologist',   desc: 'Full dermatological assessment and specialist skin care.' },
+  { title: 'Dermatologist',    href: '/treatments/dermatologist-leicester',   desc: 'Full dermatological assessment and specialist skin care.' },
 ];
 
 /* ── Page component ───────────────────────────────────────────── */

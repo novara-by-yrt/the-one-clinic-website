@@ -132,7 +132,7 @@ const TREATMENTS = [
   {
     title:  'Body Contouring',
     desc:   'Non-surgical body contouring treatments target stubborn fat deposits and improve skin texture, visibly reducing the appearance of cellulite and restoring a smoother body contour.',
-    href:   '/treatments/body-contouring',
+    href:   '/treatments/body-contouring-leicester',
     image:  '/images/BA1.jpg',
   },
   {
@@ -231,7 +231,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Body Contouring',
     desc:  'Non-surgical body sculpting to target cellulite and restore a smoother contour.',
-    href:  '/treatments/body-contouring',
+    href:  '/treatments/body-contouring-leicester',
     tag:   'Body',
   },
   {

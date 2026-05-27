@@ -99,7 +99,7 @@ const TREATMENTS = [
   {
     title: 'Profhilo',
     desc: 'Bioremodels and firms the lower face, improving skin elasticity and jaw definition.',
-    href: '/treatments/profhilo',
+    href: '/treatments/profhilo-leicester',
     image: '/images/BA3.jpg',
   },
   {
@@ -231,7 +231,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Profhilo',
     desc: 'Bioremodel and firm the lower face to support and enhance jawline definition.',
-    href: '/treatments/profhilo',
+    href: '/treatments/profhilo-leicester',
     tag: 'Medical Aesthetics',
   },
 ];

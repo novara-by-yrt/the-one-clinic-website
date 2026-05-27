@@ -98,7 +98,7 @@ const TREATMENTS = [
   {
     title: 'Profhilo',
     desc:  'A highly concentrated injectable treatment that hydrates and bioremodels the skin around the lips, improving quality and texture without adding artificial volume.',
-    href:  '/treatments/profhilo',
+    href:  '/treatments/profhilo-leicester',
   },
   {
     title: 'Polynucleotides',
@@ -108,7 +108,7 @@ const TREATMENTS = [
   {
     title: 'Chemical Peel',
     desc:  'Resurfaces the skin around the mouth to reduce vertical lip lines, improve tone and texture, and create a smoother, more refined lip area.',
-    href:  '/treatments/chemical-peels',
+    href:  '/treatments/chemical-peels-leicester',
   },
 ];
 
@@ -220,7 +220,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Profhilo',
     desc:  'Bioremodel and hydrate the skin around the lips for improved texture and quality.',
-    href:  '/treatments/profhilo',
+    href:  '/treatments/profhilo-leicester',
     tag:   'Medical Aesthetics',
   },
   {

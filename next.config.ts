@@ -91,6 +91,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/treatments/endolift-laser',
+        destination: '/treatments/endolift-laser-leicester',
+        permanent: true,
+      },
+      {
         source: '/treatments/vampire-facial',
         destination: '/treatments/vampire-facial-leicester',
         permanent: true,
@@ -123,6 +128,161 @@ const nextConfig: NextConfig = {
       {
         source: '/treatments/haemorrhoid-removal',
         destination: '/treatments/haemorrhoid-treatment-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/body-contouring',
+        destination: '/treatments/body-contouring-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/chemical-peels',
+        destination: '/treatments/chemical-peels-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/cool-bleph',
+        destination: '/treatments/cool-bleph-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/cool-glow-full-face',
+        destination: '/treatments/cool-glow-full-face-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/cool-scar-lift',
+        destination: '/treatments/cool-scar-lift-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/dermatologist',
+        destination: '/treatments/dermatologist-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/gp-home-visits',
+        destination: '/treatments/gp-home-visits-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/health-screening',
+        destination: '/treatments/health-screening-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/hydrafacial',
+        destination: '/treatments/hydrafacial-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/hydrafacial-keravive',
+        destination: '/treatments/hydrafacial-keravive-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/iv-drip-therapy',
+        destination: '/treatments/iv-drip-therapy-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/joint-injections',
+        destination: '/treatments/joint-injections-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/laser-mole-removal',
+        destination: '/treatments/laser-mole-removal-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/laser-snoring-treatment',
+        destination: '/treatments/laser-snoring-treatment-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/laser-vaginal',
+        destination: '/treatments/laser-vaginal-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/medical-insurance',
+        destination: '/treatments/medical-insurance-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/menopause-hrt',
+        destination: '/treatments/menopause-hrt-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/mens-health',
+        destination: '/treatments/mens-health-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/mental-health-consultation',
+        destination: '/treatments/mental-health-consultation-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/morpheus8',
+        destination: '/treatments/morpheus8-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/nctf-135-ha',
+        destination: '/treatments/nctf-135-ha-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/private-gp',
+        destination: '/treatments/private-gp-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/profhilo',
+        destination: '/treatments/profhilo-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/regenerative-medicine-exosome-therapy',
+        destination: '/treatments/regenerative-medicine-exosome-therapy-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/skin-analysis',
+        destination: '/treatments/skin-analysis-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/skincare-alumier-md',
+        destination: '/treatments/skincare-alumier-md-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/skincare-cellderma',
+        destination: '/treatments/skincare-cellderma-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/travel-vaccine',
+        destination: '/treatments/travel-vaccine-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/weight-management',
+        destination: '/treatments/weight-management-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/womens-health',
+        destination: '/treatments/womens-health-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/wrinkle-relaxing-injections',
+        destination: '/treatments/wrinkle-relaxing-injections-leicester',
         permanent: true,
       },
     ];

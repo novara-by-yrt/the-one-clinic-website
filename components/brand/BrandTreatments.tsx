@@ -29,19 +29,19 @@ const SLIDES_BASE = [
   {
     src:   '/images/Deep Laser Resurfacing 1.png',
     title: 'Deep Laser Resurfacing',
-    href:  '/treatments/deep-laser-resurfacing',
+    href:  '/treatments/deep-laser-resurfacing-leicester',
     desc:  'Intensive laser treatment targeting deeper skin layers to reduce wrinkles, scarring, and uneven texture for dramatically renewed, smoother skin.',
   },
   {
     src:   '/images/The Ultimate Body Confidence Package.png',
     title: 'Ultimate Body Confidence Package',
-    href:  '/treatments/ultimate-body-confidence-package',
+    href:  '/treatments/the-body-confidence-package',
     desc:  'A comprehensive programme combining our leading body contouring and skin tightening treatments for transformative, full-body results.',
   },
   {
     src:   '/images/Morpheus8-new.png',
     title: 'Morpheus 8',
-    href:  '/treatments/morpheus-8',
+    href:  '/treatments/morpheus8-leicester',
     desc:  'Advanced radiofrequency microneedling that remodels fat and stimulates collagen deep within the skin for tightened, lifted, and youthful-looking contours.',
   },
   {

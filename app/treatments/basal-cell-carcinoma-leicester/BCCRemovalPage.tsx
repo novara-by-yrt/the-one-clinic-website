@@ -354,7 +354,7 @@ const RELATED = [
   { title: 'Mole Removal',              href: '/treatments/mole-removal-leicester', desc: 'Safe surgical removal of suspicious or cosmetically concerning moles with histology where indicated.' },
   { title: 'Skin Lesion Removal',       href: '/treatments/skin-lesions-leicester',            desc: 'Expert excision of cysts, lumps, and benign skin lesions under local anaesthetic.' },
   { title: 'Lipoma Removal',            href: '/treatments/lipoma-removal-leicester',         desc: 'Minor surgical removal of fatty lumps with discreet, well-planned scarring.' },
-  { title: 'Dermatologist Consultation', href: '/treatments/dermatologist',          desc: 'Private dermatology assessment for skin concerns, lesions, and long-term skin health.' },
+  { title: 'Dermatologist Consultation', href: '/treatments/dermatologist-leicester',          desc: 'Private dermatology assessment for skin concerns, lesions, and long-term skin health.' },
 ];
 
 /* ── Page component ───────────────────────────────────────────── */

@@ -244,10 +244,10 @@ const FAQS = [
 ];
 
 const RELATED = [
-  { title: 'HydraFacial Keravive',     href: '/treatments/hydrafacial-keravive',           desc: 'Scalp cleansing and follicle nourishment for healthier hair.' },
-  { title: 'Profhilo',                 href: '/treatments/profhilo',                       desc: 'Deep skin hydration and bio-remodelling for natural glow.' },
+  { title: 'HydraFacial Keravive',     href: '/treatments/hydrafacial-keravive-leicester',           desc: 'Scalp cleansing and follicle nourishment for healthier hair.' },
+  { title: 'Profhilo',                 href: '/treatments/profhilo-leicester',                       desc: 'Deep skin hydration and bio-remodelling for natural glow.' },
   { title: 'Polynucleotides',          href: '/treatments/polynucleotides-leicester',      desc: 'Regenerative injections to repair, hydrate, and revitalise skin.' },
-  { title: 'Chemical Peels',           href: '/treatments/chemical-peels',                 desc: 'Medical-grade peels to resurface skin and improve tone.' },
+  { title: 'Chemical Peels',           href: '/treatments/chemical-peels-leicester',                 desc: 'Medical-grade peels to resurface skin and improve tone.' },
 ];
 
 /* ── Page component ───────────────────────────────────────────── */

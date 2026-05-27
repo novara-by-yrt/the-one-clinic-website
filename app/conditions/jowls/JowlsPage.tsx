@@ -146,7 +146,7 @@ const TREATMENTS = [
   {
     title:  'Morpheus8',
     desc:   'Combines microneedling with radiofrequency energy to deeply remodel tissue and firm lax skin around the jaw.',
-    href:   '/treatments/morpheus8',
+    href:   '/treatments/morpheus8-leicester',
     image:  '/images/BA2.jpg',
   },
   {
@@ -158,7 +158,7 @@ const TREATMENTS = [
   {
     title:  'Wrinkle Relaxing Injections',
     desc:   'Strategically placed injections relax the muscles that pull the lower face downwards, softening jowls and improving contour.',
-    href:   '/treatments/wrinkle-relaxing-injections',
+    href:   '/treatments/wrinkle-relaxing-injections-leicester',
     image:  '/images/BA4.jpg',
   },
 ];
@@ -245,7 +245,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Morpheus8',
     desc:  'Microneedling with radiofrequency energy to deeply remodel tissue and firm lax skin around the jawline.',
-    href:  '/treatments/morpheus8',
+    href:  '/treatments/morpheus8-leicester',
     tag:   'Medical Aesthetics',
   },
   {
@@ -257,7 +257,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Wrinkle Relaxing Injections',
     desc:  'Relax downward-pulling facial muscles to soften jowls and improve lower face contour.',
-    href:  '/treatments/wrinkle-relaxing-injections',
+    href:  '/treatments/wrinkle-relaxing-injections-leicester',
     tag:   'Medical Aesthetics',
   },
 ];

@@ -125,7 +125,7 @@ const TREATMENTS = [
   {
     title: 'Profhilo',
     desc: 'A highly concentrated injectable hyaluronic acid treatment that bioremodels the skin, restoring elasticity and firmness.',
-    href: '/treatments/profhilo',
+    href: '/treatments/profhilo-leicester',
     image: '/images/BA2.jpg',
   },
   {
@@ -137,7 +137,7 @@ const TREATMENTS = [
   {
     title: 'Chemical Peels',
     desc: 'Resurfaces the skin to reduce the appearance of horizontal necklines and improve overall texture.',
-    href: '/treatments/chemical-peels',
+    href: '/treatments/chemical-peels-leicester',
     image: '/images/BA4.jpg',
   },
 ];
@@ -239,7 +239,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Profhilo',
     desc: 'Bioremodel and deeply hydrate the neck skin to restore elasticity and firmness.',
-    href: '/treatments/profhilo',
+    href: '/treatments/profhilo-leicester',
     tag: 'Medical Aesthetics',
   },
   {

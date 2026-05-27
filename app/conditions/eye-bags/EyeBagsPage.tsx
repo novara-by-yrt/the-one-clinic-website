@@ -202,13 +202,13 @@ const TREATMENTS = [
   {
     title:  'Cool Bleph',
     desc:   'The laser blepharoplasty strengthens and firms the under-eye skin, reducing sagging.',
-    href:   '/treatments/cool-bleph',
+    href:   '/treatments/cool-bleph-leicester',
     image:  '/images/BA2.jpg',
   },
   {
     title:  'Chemical Peel',
     desc:   'Removes dead skin & refreshes the under-eye skin.',
-    href:   '/treatments/chemical-peels',
+    href:   '/treatments/chemical-peels-leicester',
     image:  '/images/BA3.jpg',
   },
   {

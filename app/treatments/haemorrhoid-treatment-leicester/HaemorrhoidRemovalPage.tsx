@@ -295,7 +295,7 @@ const RELATED = [
   { title: 'Minor Surgery',           href: '/treatments/minor-surgery-leicester',           desc: 'Expert in-clinic minor surgical procedures performed under local anaesthetic.' },
   { title: 'Ingrown Toenail Removal', href: '/treatments/ingrown-toenail-removal', desc: 'Permanent relief from painful ingrown toenails with a straightforward procedure.' },
   { title: 'Skin Lesion Removal',     href: '/treatments/skin-lesion-removal',     desc: 'Safe removal of cysts, moles, warts, and other benign skin lesions.' },
-  { title: 'Dermatologist',           href: '/treatments/dermatologist',           desc: 'Expert dermatology consultations and skin condition treatments.' },
+  { title: 'Dermatologist',           href: '/treatments/dermatologist-leicester',           desc: 'Expert dermatology consultations and skin condition treatments.' },
 ];
 
 /* ── Page component ───────────────────────────────────────────── */

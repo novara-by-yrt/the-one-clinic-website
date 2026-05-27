@@ -157,7 +157,7 @@ const TREATMENTS = [
   {
     title:  'Private GP Consultation',
     desc:   'A thorough medical assessment to identify the root cause of your veins and create a personalised, clinically appropriate treatment plan.',
-    href:   '/treatments/private-gp',
+    href:   '/treatments/private-gp-leicester',
     image:  '/images/BA4.jpg',
   },
 ];
@@ -256,7 +256,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Private GP',
     desc:  'A thorough medical consultation to assess your veins and create an appropriate treatment plan.',
-    href:  '/treatments/private-gp',
+    href:  '/treatments/private-gp-leicester',
     tag:   'Medical',
   },
 ];

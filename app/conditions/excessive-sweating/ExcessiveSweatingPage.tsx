@@ -135,13 +135,13 @@ const TREATMENTS = [
   {
     title: 'Wrinkle Relaxing Injections',
     desc: 'Botulinum toxin injections block the nerve signals that stimulate sweat glands, dramatically reducing sweating in the underarms, palms, or feet for 6 to 12 months.',
-    href: '/treatments/wrinkle-relaxing-injections',
+    href: '/treatments/wrinkle-relaxing-injections-leicester',
     image: '/images/BA1.jpg',
   },
   {
     title: 'Morpheus8',
     desc: 'Radiofrequency microneedling that targets sweat glands directly, offering a longer-term reduction in sweating with minimal downtime and lasting skin tightening benefits.',
-    href: '/treatments/morpheus8',
+    href: '/treatments/morpheus8-leicester',
     image: '/images/BA2.jpg',
   },
   {
@@ -153,7 +153,7 @@ const TREATMENTS = [
   {
     title: 'Medical Management',
     desc: 'A Private GP consultation provides a comprehensive assessment, identifies any underlying cause, and creates a personalised hyperhidrosis management plan combining medical and aesthetic options.',
-    href: '/treatments/private-gp',
+    href: '/treatments/private-gp-leicester',
     image: '/images/BA4.jpg',
   },
 ];
@@ -190,13 +190,13 @@ const RELATED_TREATMENTS = [
   {
     title: 'Wrinkle Relaxing Injections',
     desc: 'Block sweat gland nerve signals and dramatically reduce excessive sweating for months at a time.',
-    href: '/treatments/wrinkle-relaxing-injections',
+    href: '/treatments/wrinkle-relaxing-injections-leicester',
     tag: 'Medical Aesthetics',
   },
   {
     title: 'Morpheus8',
     desc: 'Radiofrequency microneedling targeting sweat glands for longer-term reduction in sweating.',
-    href: '/treatments/morpheus8',
+    href: '/treatments/morpheus8-leicester',
     tag: 'Medical Aesthetics',
   },
   {
@@ -208,7 +208,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Private GP',
     desc: 'Comprehensive medical assessment and a fully personalised hyperhidrosis management plan.',
-    href: '/treatments/private-gp',
+    href: '/treatments/private-gp-leicester',
     tag: 'Medical',
   },
 ];

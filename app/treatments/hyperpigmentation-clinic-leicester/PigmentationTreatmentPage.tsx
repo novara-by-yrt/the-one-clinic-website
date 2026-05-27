@@ -248,8 +248,8 @@ const FAQS = [
 
 const RELATED = [
   { title: 'Lumecca IPL',         href: '/treatments/ipl-leicester',        desc: 'Intense pulsed light targeting pigmentation, sun damage, and redness.' },
-  { title: 'HydraFacial',          href: '/treatments/hydrafacial',        desc: 'Deep hydration and cleansing for radiant, glowing skin.' },
-  { title: 'Chemical Peels',       href: '/treatments/chemical-peels',     desc: 'Medical-grade peels to resurface skin and improve tone.' },
+  { title: 'HydraFacial',          href: '/treatments/hydrafacial-leicester',        desc: 'Deep hydration and cleansing for radiant, glowing skin.' },
+  { title: 'Chemical Peels',       href: '/treatments/chemical-peels-leicester',     desc: 'Medical-grade peels to resurface skin and improve tone.' },
   { title: 'Laser Resurfacing',    href: '/treatments/deep-laser-resurfacing-leicester',  desc: 'Advanced skin renewal for wrinkles, scars, and texture.' },
 ];
 

@@ -291,9 +291,9 @@ const FAQS = [
 ];
 
 const RELATED = [
-  { title: 'NCTF 135 HA',      href: '/treatments/nctf-135-ha',                    desc: 'Comprehensive skin biorevitalisation with 59 active ingredients.' },
-  { title: 'Profhilo',         href: '/treatments/profhilo',                       desc: 'Bio-remodelling hydration for deep skin plumping and firmness.' },
-  { title: 'Skin Analysis',    href: '/treatments/skin-analysis',                  desc: 'Advanced diagnostic imaging to assess your skin\'s health in depth.' },
+  { title: 'NCTF 135 HA',      href: '/treatments/nctf-135-ha-leicester',                    desc: 'Comprehensive skin biorevitalisation with 59 active ingredients.' },
+  { title: 'Profhilo',         href: '/treatments/profhilo-leicester',                       desc: 'Bio-remodelling hydration for deep skin plumping and firmness.' },
+  { title: 'Skin Analysis',    href: '/treatments/skin-analysis-leicester',                  desc: 'Advanced diagnostic imaging to assess your skin\'s health in depth.' },
   { title: 'Exosome Therapy',  href: '/treatments/exosome-therapy',               desc: 'Next-generation cellular regeneration for hair and skin.' },
 ];
 

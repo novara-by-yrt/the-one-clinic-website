@@ -310,7 +310,7 @@ const EXPERTS = [
 const RELATED = [
   { title: 'Skin Lesion Removal',         href: '/treatments/skin-lesion-removal',  desc: 'Removal of benign skin growths with expert precision.' },
   { title: 'Minor Surgery',                href: '/treatments/minor-surgery-leicester',         desc: 'Wide range of minor surgical procedures in-clinic.' },
-  { title: 'Body Contouring',              href: '/treatments/body-contouring',       desc: 'Shape and define your body with precision.' },
+  { title: 'Body Contouring',              href: '/treatments/body-contouring-leicester',       desc: 'Shape and define your body with precision.' },
   { title: 'Liposuction',                  href: '/treatments/liposuction',           desc: 'Fat reduction and body sculpting for larger areas.' },
 ];
 

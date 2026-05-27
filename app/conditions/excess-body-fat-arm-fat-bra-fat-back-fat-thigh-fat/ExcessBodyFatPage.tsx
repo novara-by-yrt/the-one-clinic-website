@@ -140,7 +140,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Body Contouring',
     desc:  'Non-surgical fat reduction targeting arms, bra line, back, and thighs for a sculpted silhouette.',
-    href:  '/treatments/body-contouring',
+    href:  '/treatments/body-contouring-leicester',
     tag:   'Body',
   },
   {
@@ -158,7 +158,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Weight Management',
     desc:  'Medically supervised weight management to support long-term fat reduction and body health.',
-    href:  '/treatments/weight-management',
+    href:  '/treatments/weight-management-leicester',
     tag:   'Body',
   },
 ];
@@ -209,7 +209,7 @@ const TREATMENTS = [
   {
     title:  'Body Contouring',
     desc:   'Non-surgical body contouring precisely targets and reduces stubborn fat deposits on the arms, bra line, back, and thighs, sculpting a smoother, more proportionate shape without surgery or downtime.',
-    href:   '/treatments/body-contouring',
+    href:   '/treatments/body-contouring-leicester',
     image:  '/images/BA1.jpg',
   },
   {
@@ -227,7 +227,7 @@ const TREATMENTS = [
   {
     title:  'Weight Management',
     desc:   'Our medically supervised weight management programme provides personalised support, dietary guidance, and clinical interventions to reduce overall body fat and support long-term results.',
-    href:   '/treatments/weight-management',
+    href:   '/treatments/weight-management-leicester',
     image:  '/images/BA4.jpg',
   },
 ];

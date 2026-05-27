@@ -249,10 +249,10 @@ const FAQS = [
 ];
 
 const RELATED = [
-  { title: 'Wrinkle Relaxing Injections', href: '/treatments/wrinkle-relaxing-injections', desc: 'Smooth expression lines with precise, clinician-administered muscle-relaxing injections.' },
-  { title: 'Profhilo',                    href: '/treatments/profhilo',                    desc: 'Deep skin hydration and bio-remodelling for a natural, lasting glow.' },
+  { title: 'Wrinkle Relaxing Injections', href: '/treatments/wrinkle-relaxing-injections-leicester', desc: 'Smooth expression lines with precise, clinician-administered muscle-relaxing injections.' },
+  { title: 'Profhilo',                    href: '/treatments/profhilo-leicester',                    desc: 'Deep skin hydration and bio-remodelling for a natural, lasting glow.' },
   { title: 'Endolift Laser',              href: '/treatments/endolift-laser-leicester',                    desc: 'Minimally invasive laser skin tightening for face, neck, and body.' },
-  { title: 'Morpheus8',                   href: '/treatments/morpheus8',                   desc: 'Fractional radiofrequency microneedling for tighter, smoother skin.' },
+  { title: 'Morpheus8',                   href: '/treatments/morpheus8-leicester',                   desc: 'Fractional radiofrequency microneedling for tighter, smoother skin.' },
 ];
 
 /* ── Page component ───────────────────────────────────────────── */
