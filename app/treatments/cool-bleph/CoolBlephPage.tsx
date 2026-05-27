@@ -253,7 +253,7 @@ const FAQS = [
 
 const RELATED = [
   { title: 'Non-Surgical Blepharoplasty',       href: '/treatments/non-surgical-blepharoplasty-leicester', desc: 'Advanced eye rejuvenation without surgery or downtime.' },
-  { title: 'Endolift Laser',                    href: '/treatments/endolift',                           desc: 'Non-surgical skin lifting and tightening for face and body.' },
+  { title: 'Endolift Laser',                    href: '/treatments/endolift-laser-leicester',                           desc: 'Non-surgical skin lifting and tightening for face and body.' },
   { title: 'Morpheus8',                         href: '/treatments/morpheus8',                          desc: 'Fractional radiofrequency for comprehensive skin remodelling.' },
   { title: 'Profhilo',                          href: '/treatments/profhilo',                           desc: 'Bio-stimulating treatment for deep hydration and rejuvenation.' },
 ];

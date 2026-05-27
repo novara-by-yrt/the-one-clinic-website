@@ -298,7 +298,7 @@ const EXPERTS = [
 const RELATED = [
   { title: 'Skin Analysis',                href: '/treatments/skin-analysis',         desc: 'Professional assessment to guide your skincare and treatment plan.' },
   { title: 'Chemical Peels',               href: '/treatments/chemical-peels',       desc: 'In-clinic exfoliation to amplify the effects of your home care regimen.' },
-  { title: 'Endolift Laser',               href: '/treatments/endolift',             desc: 'Skin tightening and lifting to complement your skincare results.' },
+  { title: 'Endolift Laser',               href: '/treatments/endolift-laser-leicester',             desc: 'Skin tightening and lifting to complement your skincare results.' },
   { title: 'Dermatologist Consultation',   href: '/treatments/dermatologist',        desc: 'Expert diagnosis and personalised treatment for complex skin conditions.' },
 ];
 

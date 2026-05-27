@@ -139,19 +139,19 @@ const TREATMENTS = [
   {
     title:  'Lumecca IPL',
     desc:   'Intense Pulsed Light targets and collapses thread veins with precision, causing them to fade naturally without damaging surrounding skin.',
-    href:   '/treatments/lumecca-ipl',
+    href:   '/treatments/ipl-leicester',
     image:  '/images/BA1.jpg',
   },
   {
     title:  'Laser Resurfacing',
     desc:   'Precise laser energy heats and closes superficial blood vessels, significantly reducing their visible appearance and improving overall skin clarity.',
-    href:   '/treatments/laser-resurfacing',
+    href:   '/treatments/deep-laser-resurfacing-leicester',
     image:  '/images/BA2.jpg',
   },
   {
     title:  'Endolift Laser',
     desc:   'A minimally invasive laser treatment that targets deeper vessels and supports skin tightening, reducing visibility of reticular and spider veins.',
-    href:   '/treatments/endolift',
+    href:   '/treatments/endolift-laser-leicester',
     image:  '/images/BA3.jpg',
   },
   {
@@ -238,19 +238,19 @@ const RELATED_TREATMENTS = [
   {
     title: 'Lumecca IPL',
     desc:  'Target and collapse thread veins with precise Intense Pulsed Light therapy for clearer, more even skin.',
-    href:  '/treatments/lumecca-ipl',
+    href:  '/treatments/ipl-leicester',
     tag:   'Medical Aesthetics',
   },
   {
     title: 'Laser Resurfacing',
     desc:  'Use targeted laser energy to close superficial blood vessels and improve overall skin clarity and tone.',
-    href:  '/treatments/laser-resurfacing',
+    href:  '/treatments/deep-laser-resurfacing-leicester',
     tag:   'Medical Aesthetics',
   },
   {
     title: 'Endolift',
     desc:  'A minimally invasive laser solution for deeper veins and skin laxity, with minimal downtime.',
-    href:  '/treatments/endolift',
+    href:  '/treatments/endolift-laser-leicester',
     tag:   'Medical Aesthetics',
   },
   {

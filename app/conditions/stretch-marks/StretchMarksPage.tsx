@@ -88,7 +88,7 @@ const TREATMENTS = [
   {
     title: 'Laser Resurfacing',
     desc:  'Targeted laser energy resurfaces the skin and stimulates new collagen, reducing the depth, width, and discolouration of stretch marks for a noticeably smoother skin surface.',
-    href:  '/treatments/laser-resurfacing',
+    href:  '/treatments/deep-laser-resurfacing-leicester',
   },
   {
     title: 'Chemical Peel',
@@ -210,7 +210,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Laser Resurfacing',
     desc:  'Resurface and improve skin texture with targeted laser treatment.',
-    href:  '/treatments/laser-resurfacing',
+    href:  '/treatments/deep-laser-resurfacing-leicester',
     tag:   'Body',
   },
   {

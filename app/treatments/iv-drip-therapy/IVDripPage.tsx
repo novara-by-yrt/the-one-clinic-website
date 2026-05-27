@@ -289,7 +289,7 @@ const FAQS = [
 const RELATED = [
   { title: 'Skin Analysis',       href: '/treatments/skin-analysis',       desc: 'Advanced diagnostic imaging to assess skin health and guide your treatment plan.' },
   { title: 'Health Screening',    href: '/treatments/health-screening',     desc: 'Comprehensive health checks to understand your baseline and optimise your wellbeing.' },
-  { title: 'Endolift Laser',      href: '/treatments/endolift',             desc: 'Minimally invasive laser skin lifting and contouring without surgery.' },
+  { title: 'Endolift Laser',      href: '/treatments/endolift-laser-leicester',             desc: 'Minimally invasive laser skin lifting and contouring without surgery.' },
   { title: 'Weight Management',   href: '/treatments/weight-management',    desc: 'Medical weight management programmes tailored to your goals and health profile.' },
 ];
 

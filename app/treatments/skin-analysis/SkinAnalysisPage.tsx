@@ -347,7 +347,7 @@ const FAQS = [
 ];
 
 const RELATED = [
-  { title: 'Endolift',           href: '/treatments/endolift',          desc: 'Non-surgical laser lifting and contouring for face, neck, and body.' },
+  { title: 'Endolift',           href: '/treatments/endolift-laser-leicester',          desc: 'Non-surgical laser lifting and contouring for face, neck, and body.' },
   { title: 'NCTF 135 HA',        href: '/treatments/nctf-135-ha',       desc: 'Skin revitalisation with polynucleotides and hyaluronic acid.' },
   { title: 'AlumierMD Skincare', href: '/treatments/alumiermd',         desc: 'Medical-grade personalised skincare programmes.' },
   { title: 'Dermatologist',      href: '/treatments/dermatologist',     desc: 'Expert dermatology consultations and skin health assessments.' },

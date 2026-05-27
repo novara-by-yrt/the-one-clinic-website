@@ -21,7 +21,7 @@ import styles from './page.module.css';
 const AT_A_GLANCE = [
   {
     label: 'Treatment Time',
-    value: '30 to 45 minutes',
+    value: '30 to 60 minutes',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -30,8 +30,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Sessions Needed',
-    value: '2 sessions (4 weeks apart)',
+    label: 'Sessions Recommended',
+    value: '1 to 6 sessions',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="1 4 1 10 7 10"/>
@@ -41,7 +41,7 @@ const AT_A_GLANCE = [
   },
   {
     label: 'First Results',
-    value: '2 to 4 weeks',
+    value: '1 to 4 weeks',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
@@ -50,8 +50,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Results Last',
-    value: 'Around 6 months',
+    label: 'Full Results',
+    value: '3 to 6 months',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
@@ -73,7 +73,7 @@ const AT_A_GLANCE = [
   },
   {
     label: 'Treatment Cost',
-    value: 'From £200',
+    value: 'From £100',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <line x1="12" y1="1" x2="12" y2="23"/>
@@ -86,76 +86,53 @@ const AT_A_GLANCE = [
 const JOURNEY_STEPS = [
   {
     n: '01',
-    title: 'Consultation and Skin Assessment',
-    desc: 'Our doctor assesses your skin, understands your concerns, and creates a personalised treatment plan tailored to your unique needs and goals.',
+    title: 'Skin Assessment and Consultation',
+    desc: 'Our medical team examines your pigmentation in detail, identifying the type (sun spots, melasma, post-inflammatory marks) and depth. A personalised treatment plan is created based on your skin type and the specific cause.',
   },
   {
     n: '02',
-    title: 'Preparation',
-    desc: 'We cleanse the treatment area and may apply a topical anaesthetic cream to ensure your comfort throughout the procedure.',
+    title: 'Treatment Selection',
+    desc: 'Depending on your assessment, we may recommend laser therapy, IPL, chemical peels, or a combination approach. Your clinician explains the procedure, expected results, and aftercare requirements.',
   },
   {
     n: '03',
-    title: 'BAP Technique Injections',
-    desc: 'Using the BAP (Bio Aesthetic Points) technique, precise injections are placed at key points on the face or neck for optimal, even distribution under the skin.',
+    title: 'Pigmentation Treatment',
+    desc: 'The selected treatment is applied to target melanin deposits and break down discolouration. Light-based treatments typically take 30 to 60 minutes, while chemical peels vary. Protective measures ensure your comfort and safety throughout.',
   },
   {
     n: '04',
-    title: 'Post-Treatment and Recovery',
-    desc: 'The product spreads naturally under the skin. You may experience mild redness that quickly settles, allowing you to resume your routine with minimal interruption.',
+    title: 'Healing and Ongoing Care',
+    desc: 'Post-treatment skin may show temporary redness or slight darkening before pigmented areas fade. Sun protection and skincare are essential. Results progressively improve over weeks as the skin renews and discolouration naturally sheds.',
   },
 ];
 
 const BENEFITS = [
   {
-    title: 'Deep Hydration',
-    desc: 'Ensures your skin feels plumper, softer, and consistently moisturised from the inside out.',
+    title: 'Targeted Precision',
+    desc: 'Advanced laser and IPL technology selectively targets melanin deposits in the skin, breaking down dark spots and discolouration without affecting the surrounding tissue.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 2C6.5 9 4 13.5 4 16a8 8 0 0 0 16 0c0-2.5-2.5-7-8-14z"/>
+        <circle cx="12" cy="12" r="10"/>
+        <circle cx="12" cy="12" r="4"/>
+        <line x1="12" y1="2" x2="12" y2="4"/>
+        <line x1="12" y1="20" x2="12" y2="22"/>
+        <line x1="2" y1="12" x2="4" y2="12"/>
+        <line x1="20" y1="12" x2="22" y2="12"/>
       </svg>
     ),
   },
   {
-    title: 'Enhanced Firmness',
-    desc: 'Rebuilds the skin\'s internal scaffolding, making it feel bouncier and noticeably tighter over time.',
+    title: 'Treats Multiple Causes',
+    desc: 'Whether your pigmentation is caused by sun damage, hormonal changes (melasma), post-inflammatory marks, or ageing, our team selects the most appropriate treatment for the specific type and depth of discolouration.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-        <polyline points="17 6 23 6 23 12"/>
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
       </svg>
     ),
   },
   {
-    title: 'Minimal Downtime',
-    desc: 'A highly tolerable procedure allowing you to return to your day with virtually no recovery time needed.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-        <polyline points="22 4 12 14.01 9 11.01"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'Natural Luminosity',
-    desc: 'Breathes new life into tired skin, giving you a refreshed and brilliant glow without looking done.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="5"/>
-        <line x1="12" y1="1" x2="12" y2="3"/>
-        <line x1="12" y1="21" x2="12" y2="23"/>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-        <line x1="1" y1="12" x2="3" y2="12"/>
-        <line x1="21" y1="12" x2="23" y2="12"/>
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'Softened Fine Lines',
-    desc: 'Reduces fine lines and crepey skin while keeping your look entirely natural and rested.',
+    title: 'Even, Radiant Skin Tone',
+    desc: 'Treatment progressively lightens and fades areas of discolouration, restoring a more uniform, luminous complexion, with continued improvement as the skin renews over several weeks.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
@@ -164,39 +141,62 @@ const BENEFITS = [
     ),
   },
   {
-    title: 'Improved Skin Texture',
-    desc: 'Refines uneven skin, making it feel smoother, softer, and more even to the touch after each session.',
+    title: 'Expert Skin Assessment',
+    desc: 'Our clinical team carries out a thorough skin analysis before recommending a treatment plan, ensuring the right approach is taken for your skin type, tone, and the nature of your pigmentation.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Flexible Treatment Options',
+    desc: 'We offer laser therapy, IPL, and chemical peels, allowing us to tailor the approach to your specific pigmentation type, skin tone, and desired results for optimal safety and effectiveness.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M3.5 2h17a1.5 1.5 0 0 1 1.5 1.5v17a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 20.5v-17A1.5 1.5 0 0 1 3.5 2z"/>
+        <circle cx="8.5" cy="8.5" r="1.5"/>
+        <path d="M21 15l-5-5-6 6-4-4"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Progressive, Natural Results',
+    desc: 'Rather than sudden changes, pigmentation fades naturally as skin renews. This progressive approach ensures a natural appearance and allows you to assess results between sessions.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+        <polyline points="17 6 23 6 23 12"/>
       </svg>
     ),
   },
 ];
 
 const ELIGIBILITY = [
-  'Wanting firmer, more hydrated skin without altering your features',
-  'Looking to improve dullness or skin laxity with minimal downtime',
-  'Seeking a natural-looking result that enhances rather than changes',
-  'Wanting to complement other treatments such as anti-wrinkle injections',
-  'Looking for a clinically proven, highly purified hyaluronic acid treatment',
+  'Dealing with sun spots, age spots, or freckles',
+  'Concerned about melasma or hormonal pigmentation',
+  'Having post-inflammatory marks or pigmentation scars',
+  'Wanting to restore a more even, uniform skin tone',
+  'Committed to sun protection during and after treatment',
 ];
 
-const TREATABLE_FACE = [
-  'Chin and Jawline',
-  'Nasolabial Folds',
-  'Smile and Laughter Lines',
-  'Lower Eyelids',
-  'Neck and Decolletage',
+const TREATABLE_CONCERNS = [
+  'Sun Spots and Age Spots',
+  'Melasma and Hormonal Pigmentation',
+  'Post-Inflammatory Hyperpigmentation',
+  'Freckles and Flat Brown Spots',
+  'Uneven Skin Tone and Discolouration',
 ];
 
-const TREATABLE_BODY = [
-  'Stomach',
-  'Arms',
-  'Inner Thighs',
-  'Ankles',
-  'Knees',
-  'Buttock Area',
+const TREATABLE_AREAS = [
+  'Full Face',
+  'Cheeks and Forehead',
+  'Bridge of Nose',
+  'Upper Lip and Chin',
+  'Neck and Décolletage',
 ];
 
 const CLINIC_REASONS = [
@@ -210,51 +210,51 @@ const CLINIC_REASONS = [
 
 const FAQS = [
   {
-    question: 'Who should consider Profhilo treatment?',
+    question: 'What causes skin pigmentation?',
     answer:
-      'Profhilo is ideal for men and women experiencing dull, dry, or slightly lax skin who want a natural structural improvement without changing their facial features.',
+      'Pigmentation occurs when melanin, the pigment responsible for skin colour, is produced unevenly. Common causes include sun exposure (sun spots, freckles), hormonal changes (melasma), post-inflammatory hyperpigmentation following acne or injury, and the natural ageing process. The type and cause of pigmentation determines the most appropriate treatment approach.',
   },
   {
-    question: 'Is it painful?',
+    question: 'How many sessions will I need?',
     answer:
-      'Most clients find it highly tolerable. The precise BAP technique requires only ten injection points, and we can use a topical anaesthetic cream to make you as comfortable as possible.',
+      'The number of sessions depends on the type, depth, and extent of the pigmentation being treated. Superficial sun spots may respond well after 1 to 2 sessions, while conditions such as melasma typically require a course of treatments alongside ongoing sun protection. Your clinician will outline a personalised plan at your consultation.',
   },
   {
-    question: 'How is Profhilo treatment performed?',
+    question: 'Is pigmentation treatment suitable for all skin tones?',
     answer:
-      'Profhilo treatment requires an injection under the skin\'s surface at precisely 10 locations on the face. It is a quick process, lasting between 15 and 20 minutes.',
+      'Many pigmentation treatments can be adapted for a wide range of skin tones, but careful assessment is essential, particularly for deeper skin tones where certain laser wavelengths carry a higher risk of post-inflammatory hyperpigmentation. Our team will assess your skin thoroughly and recommend only treatments that are safe and appropriate for you.',
   },
   {
-    question: 'How long does it take to recover?',
+    question: 'Do I need a referral for pigmentation treatment?',
     answer:
-      'Downtime is minimal. You may notice small bumps or mild redness at the injection sites, which usually settle within 24 to 48 hours.',
+      'No referral is needed. You can book directly with The One Clinic. A comprehensive skin assessment is carried out before treatment begins to identify the type of pigmentation present and determine the safest, most effective treatment protocol.',
   },
   {
-    question: 'How long do the results last?',
+    question: 'What is the downtime?',
     answer:
-      'A complete treatment with two sessions will produce luminous results that typically last for about six months.',
+      'Most pigmentation treatments have minimal downtime. You can typically return to normal activities immediately, though sun exposure should be avoided. Some treatments may cause temporary redness, mild peeling, or darkening of pigmented areas before they fade.',
   },
   {
-    question: 'Are there any risks?',
+    question: 'How long before I see results?',
     answer:
-      'As this procedure uses highly purified hyaluronic acid, it is extremely safe. The only side effects that can be observed temporarily are redness, swelling, or bruising.',
+      'Initial changes may be visible within 1 to 2 weeks as pigmented areas darken or begin to fade. Optimal results typically develop over 4 to 12 weeks as the skin naturally renews and discolouration progressively fades with each treatment session.',
   },
   {
-    question: 'Do I need follow-ups?',
+    question: 'Can pigmentation come back?',
     answer:
-      'Yes, to achieve the best outcome, you should have a second session four weeks after the first. A top-up maintenance session is usually recommended every six months thereafter.',
+      'While treated pigmentation fades, ongoing sun exposure can cause new spots to develop. Diligent sun protection (SPF 50 daily) is essential to prevent recurrence. Maintenance treatments may be recommended annually to preserve results.',
   },
 ];
 
 const RELATED = [
-  { title: 'Dermal Fillers',              href: '/treatments/dermal-filler-leicester',    desc: 'Restore volume and structure to the face with precision filler.' },
-  { title: 'Wrinkle Relaxing Injections', href: '/treatments/wrinkle-relaxing-injections', desc: 'Smooth dynamic lines naturally for a rested, refreshed appearance.' },
-  { title: 'HydraFacial',                 href: '/treatments/hydrafacial',       desc: 'Multi-step facial for instant hydration and glow with zero downtime.' },
-  { title: 'Morpheus8',                   href: '/treatments/morpheus8',         desc: 'Advanced RF microneedling for skin tightening and collagen renewal.' },
+  { title: 'Lumecca IPL',         href: '/treatments/ipl-leicester',        desc: 'Intense pulsed light targeting pigmentation, sun damage, and redness.' },
+  { title: 'HydraFacial',          href: '/treatments/hydrafacial',        desc: 'Deep hydration and cleansing for radiant, glowing skin.' },
+  { title: 'Chemical Peels',       href: '/treatments/chemical-peels',     desc: 'Medical-grade peels to resurface skin and improve tone.' },
+  { title: 'Laser Resurfacing',    href: '/treatments/deep-laser-resurfacing-leicester',  desc: 'Advanced skin renewal for wrinkles, scars, and texture.' },
 ];
 
 /* ── Page component ───────────────────────────────────────────── */
-export default function ProfhiloPage() {
+export default function PigmentationTreatmentPage() {
   const [showAllFaqs, setShowAllFaqs] = useState(false);
 
   return (
@@ -264,7 +264,7 @@ export default function ProfhiloPage() {
       ════════════════════════════════════════ */}
       <section
         className={styles.hero}
-        aria-label="Profhilo Leicester, hero"
+        aria-label="Pigmentation Treatment Leicester, hero"
         data-section-theme="dark"
       >
         <div className={styles.heroBreadcrumb}>
@@ -273,7 +273,7 @@ export default function ProfhiloPage() {
               theme="dark"
               items={[
                 { label: 'Treatments', href: '/treatments' },
-                { label: 'Profhilo' },
+                { label: 'Pigmentation Treatment Leicester' },
               ]}
             />
           </Container>
@@ -288,17 +288,16 @@ export default function ProfhiloPage() {
           >
             <div className={styles.heroLeft}>
               <motion.span className={styles.heroCategory} variants={fadeUp}>
-                Medical Aesthetics
+                Skin Concerns
               </motion.span>
 
               <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                Profhilo<br />in Leicester
+                Pigmentation Treatment<br />in Leicester
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Experience visibly healthier, more radiant skin with expert Profhilo treatments.
-                Deep hydration and bio-remodelling for a natural, luminous glow without altering
-                your features.
+                Advanced laser, IPL, and chemical peel treatments to fade sun spots,
+                melasma, and uneven skin tone. Restore a clear, luminous complexion.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -314,37 +313,34 @@ export default function ProfhiloPage() {
               <motion.div className={styles.heroTrust} variants={fadeUp}>
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                    <circle cx="9" cy="7" r="4"/>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+                    <path d="M4.5 20.118a7.5 7.5 0 0115 0"/>
+                    <path d="M18.5 15v5M16 17.5h5"/>
                   </svg>
-                  Led by GMC-registered doctors
+                  Expert clinical team
+                </span>
+                <span className={styles.heroTrustDivider} aria-hidden="true" />
+                <span className={styles.heroTrustItem}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                  Same-day appointments available
                 </span>
                 <span className={styles.heroTrustDivider} aria-hidden="true" />
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
                   </svg>
-                  Trusted by patients in Leicester
-                </span>
-                <span className={styles.heroTrustDivider} aria-hidden="true" />
-                <span className={styles.heroTrustItem}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                    <line x1="16" y1="2" x2="16" y2="6"/>
-                    <line x1="8" y1="2" x2="8" y2="6"/>
-                    <line x1="3" y1="10" x2="21" y2="10"/>
-                  </svg>
-                  Minimal downtime
+                  Trusted by patients across Leicester
                 </span>
               </motion.div>
             </div>
 
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Profhilo (2).jpg"
-                alt="Profhilo treatment at The One Clinic Leicester"
+                src="/Hero Section Pigmentation Treatment.jpg"
+                alt="Pigmentation treatment at The One Clinic Leicester"
                 fill
                 priority
                 className={styles.heroImage}
@@ -357,7 +353,7 @@ export default function ProfhiloPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          2. WHAT IS PROFHILO?
+          2. WHAT IS PIGMENTATION TREATMENT?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
@@ -371,13 +367,13 @@ export default function ProfhiloPage() {
             <motion.div className={styles.whatIsContent} variants={stagger(0.12)}>
               <motion.div className={styles.whatIsTextGroup} variants={fadeUp}>
                 <p className={styles.eyebrowDark}>About This Treatment</p>
-                <h2 className={styles.combinedHeading}>What is Profhilo?</h2>
+                <h2 className={styles.combinedHeading}>What is Pigmentation Treatment?</h2>
                 <p className={styles.combinedDesc}>
-                  Profhilo is an innovative injectable skin treatment formulated with one of the
-                  highest concentrations of ultra-pure hyaluronic acid available. Rather than adding
-                  volume like a traditional dermal filler, it works as a bio-remodelling agent,
-                  treating dull, dry, and ageing skin through intense deep hydration and naturally
-                  stimulating collagen and elastin production from within.
+                  Pigmentation treatment uses advanced laser, IPL, and chemical peel technologies
+                  to target and fade melanin deposits in the skin. Whether caused by sun damage,
+                  hormonal changes, or post-inflammatory marks, our expert team assesses the specific
+                  type of discolouration and creates a personalised plan to restore a clear,
+                  luminous, and even-toned complexion.
                 </p>
               </motion.div>
 
@@ -390,8 +386,8 @@ export default function ProfhiloPage() {
 
             <motion.div className={styles.whatIsImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
-                alt="Profhilo consultation at The One Clinic"
+                src="/What is Pigmentation Treatment.jpg"
+                alt="Pigmentation treatment consultation at The One Clinic"
                 fill
                 className={styles.whatIsImage}
                 sizes="(max-width: 900px) 100vw, 50vw"
@@ -418,7 +414,7 @@ export default function ProfhiloPage() {
           >
             <motion.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Profhilo at a Glance
+              Pigmentation Treatment at a Glance
             </motion.h2>
           </motion.div>
 
@@ -462,7 +458,7 @@ export default function ProfhiloPage() {
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
-            aria-label="Profhilo treatment journey steps"
+            aria-label="Pigmentation treatment journey steps"
           >
             {JOURNEY_STEPS.map((step) => (
               <motion.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
@@ -495,9 +491,9 @@ export default function ProfhiloPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Why Choose This Treatment</motion.p>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Why This Treatment</motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              The Benefits of Profhilo
+              The Benefits of Pigmentation Treatment
             </motion.h2>
           </motion.div>
 
@@ -550,7 +546,7 @@ export default function ProfhiloPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
-              Profhilo may be right for you if you are:
+              Pigmentation treatment may be right for you if you are:
             </motion.p>
             <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
               {ELIGIBILITY.map((item) => (
@@ -565,7 +561,7 @@ export default function ProfhiloPage() {
               ))}
             </motion.ul>
             <motion.p className={styles.eligibilityClosing} variants={fadeUp}>
-              Book a consultation and our team will guide you on whether Profhilo is the right choice for your skin.
+              Book a consultation and our team will assess your pigmentation and confirm which treatment is right for you.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
@@ -577,7 +573,7 @@ export default function ProfhiloPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          7. RESULTS, AFTERCARE & SIDE EFFECTS
+          7. TREATABLE AREAS
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -588,152 +584,12 @@ export default function ProfhiloPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Post-Treatment</motion.p>
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Skin Concerns and Areas</motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Results, Aftercare and Side Effects
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.resultsAfterGrid}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
-              <div className={styles.resultsAfterCardHead}>
-                <span className={styles.resultsAfterCardIcon} aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-                    <polyline points="17 6 23 6 23 12"/>
-                  </svg>
-                </span>
-                <h3 className={styles.resultsAfterCardTitle}>When Will You See Results?</h3>
-              </div>
-              <p className={styles.resultsAfterCardBody}>
-                Most patients notice initial improvements in hydration and plumpness within a couple
-                of weeks of their first session. The full bio-remodelling benefits become
-                significantly more pronounced after completing the second session.
-              </p>
-              <div className={styles.resultsAfterCardSpacer} />
-              <p className={styles.resultsAfterCardNote}>
-                Results from a complete two-session course typically last for approximately six
-                months, after which a single maintenance session is advised to sustain outcomes.
-              </p>
-            </motion.div>
-
-            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
-              <div className={styles.resultsAfterCardHead}>
-                <span className={styles.resultsAfterCardIcon} aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10"/>
-                    <line x1="12" y1="8" x2="12" y2="12"/>
-                    <line x1="12" y1="16" x2="12.01" y2="16"/>
-                  </svg>
-                </span>
-                <h3 className={styles.resultsAfterCardTitle}>Side Effects</h3>
-              </div>
-              <ul className={styles.resultsAfterCardList} role="list">
-                {[
-                  'Redness at the injection site',
-                  'Small temporary bumps that naturally settle',
-                  'Occasional slight bruising',
-                  'Mild itching or irritation',
-                ].map((item) => (
-                  <li key={item} className={styles.resultsAfterCardListItem}>
-                    <span className={styles.resultsAfterDot} aria-hidden="true" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <div className={styles.resultsAfterCardSpacer} />
-              <p className={styles.resultsAfterCardNote}>
-                All side effects are mild and temporary, resolving within 24 to 48 hours.
-              </p>
-            </motion.div>
-
-            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
-              <div className={styles.resultsAfterCardHead}>
-                <span className={styles.resultsAfterCardIcon} aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                    <polyline points="22 4 12 14.01 9 11.01"/>
-                  </svg>
-                </span>
-                <h3 className={styles.resultsAfterCardTitle}>Aftercare Tips</h3>
-              </div>
-              <ul className={styles.resultsAfterCardList} role="list">
-                {[
-                  'Keep the treated area clean and avoid touching your face unnecessarily',
-                  'Avoid strenuous exercise and saunas for at least 24 hours',
-                  'Do not apply makeup for at least 12 hours post-treatment',
-                  'Book your second session 4 weeks after the first for maximum collagen stimulation',
-                  'Follow up with a maintenance session every 6 months',
-                ].map((item) => (
-                  <li key={item} className={styles.resultsAfterCardListItem}>
-                    <span className={styles.resultsAfterDot} aria-hidden="true" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          8. PATIENT REVIEWS
-      ════════════════════════════════════════ */}
-      <Testimonials />
-
-      {/* ════════════════════════════════════════
-          9. CTA BANNER
-      ════════════════════════════════════════ */}
-      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book Profhilo consultation">
-        <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
-          <Image src="/images/Background-logo.png" alt="" fill className={styles.ctaBannerLogo} sizes="100vw" />
-        </div>
-        <Container>
-          <motion.div
-            className={styles.ctaBannerContent}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
-              Uncover Your Natural<br />Beauty and Radiance.
-            </motion.h2>
-            <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
-              Give your skin the deep hydration and structural renewal it deserves.
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBannerBtn}>Book Consultation</BookConsultationButton>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
-
-      {/* ════════════════════════════════════════
-          10. TREATABLE AREAS
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark" className={styles.conditionsSection}>
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Treatable Areas</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              What Areas Can Be Treated With Profhilo?
+              What Types of Pigmentation Can We Treat?
             </motion.h2>
             <motion.p className={styles.conditionsIntro} variants={fadeUp}>
-              Profhilo is suitable for treating a range of face and body areas, delivering
-              deep hydration and bio-remodelling results across the skin.
+              We treat a wide range of pigmentation concerns across all facial areas.
             </motion.p>
           </motion.div>
 
@@ -749,9 +605,9 @@ export default function ProfhiloPage() {
               variants={fadeUp}
               whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
             >
-              <p className={styles.areasGroupLabel}>Face and Neck</p>
+              <p className={styles.areasGroupLabel}>Types of Pigmentation</p>
               <ul className={styles.areasGroupList} role="list">
-                {TREATABLE_FACE.map((item) => (
+                {TREATABLE_CONCERNS.map((item) => (
                   <li key={item} className={styles.areasGroupItem}>
                     <span className={styles.areasItemDot} aria-hidden="true" />
                     {item}
@@ -765,9 +621,9 @@ export default function ProfhiloPage() {
               variants={fadeUp}
               whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
             >
-              <p className={styles.areasGroupLabel}>Body</p>
+              <p className={styles.areasGroupLabel}>Treatment Areas</p>
               <ul className={styles.areasGroupList} role="list">
-                {TREATABLE_BODY.map((item) => (
+                {TREATABLE_AREAS.map((item) => (
                   <li key={item} className={styles.areasGroupItem}>
                     <span className={styles.areasItemDot} aria-hidden="true" />
                     {item}
@@ -780,7 +636,12 @@ export default function ProfhiloPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          11. CLINIC INTRO
+          8. PATIENT REVIEWS
+      ════════════════════════════════════════ */}
+      <Testimonials />
+
+      {/* ════════════════════════════════════════
+          9. CLINIC INTRO
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.clinicIntroSection}>
         <Container>
@@ -792,25 +653,25 @@ export default function ProfhiloPage() {
             viewport={VIEWPORT}
           >
             <motion.div className={styles.clinicIntroLeft} variants={fadeUp}>
-              <p className={styles.eyebrowLight}>Profhilo Treatment</p>
-              <h2 className={styles.headingLight}>
-                Best Profhilo<br />in Leicester
+              <p className={styles.eyebrowDark}>Pigmentation Treatment</p>
+              <h2 className={styles.headingDark}>
+                Best Pigmentation Treatment<br />in Leicester
               </h2>
             </motion.div>
             <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
-              The One Clinic provides the best Profhilo experience in Leicester, offering
-              modern equipment in a relaxing, luxurious environment. Our highly trained,
-              caring doctors apply their extensive knowledge and expertise to recommend
-              tailored aesthetic solutions, ensuring you achieve natural, confidence-boosting results.
+              The One Clinic delivers expert pigmentation treatment in Leicester, combining
+              advanced laser, IPL, and chemical peel technologies with personalised medical care.
+              Our experienced doctors assess your specific pigmentation type and create a customised
+              treatment plan to achieve safe, effective results in a clinical environment you can trust.
             </motion.p>
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          12. COST BANNER
+          10. COST BANNER
       ════════════════════════════════════════ */}
-      <section className={styles.costBanner} data-section-theme="dark" aria-label="Profhilo cost">
+      <section className={styles.costBanner} data-section-theme="dark" aria-label="Pigmentation treatment cost">
         <Container>
           <motion.div
             className={styles.costBannerInner}
@@ -819,20 +680,26 @@ export default function ProfhiloPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>Profhilo Pricing at The One Clinic</motion.p>
-            <motion.p className={styles.costBannerPrice} variants={fadeUp}>From £200</motion.p>
+            <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
+              Pigmentation Treatment Pricing at The One Clinic
+            </motion.p>
+            <motion.p className={styles.costBannerPrice} variants={fadeUp}>
+              From £100
+            </motion.p>
             <motion.p className={styles.costBannerNote} variants={fadeUp}>
-              Pricing varies by treatment area and number of sessions. Full details provided at your consultation.
+              Pricing varies by treatment type, area size, and number of sessions required. Full details provided at your consultation.
             </motion.p>
             <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBannerBtn}>Book A Consultation</BookConsultationButton>
+              <BookConsultationButton className={styles.ctaBannerBtn}>
+                Book A Consultation
+              </BookConsultationButton>
             </motion.div>
           </motion.div>
         </Container>
       </section>
 
       {/* ════════════════════════════════════════
-          13. WHY CHOOSE THE ONE CLINIC
+          11. WHY CHOOSE THE ONE CLINIC
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -844,7 +711,7 @@ export default function ProfhiloPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Why Choose The One Clinic For Profhilo
+              Why Choose The One Clinic For Pigmentation Treatment
             </motion.h2>
           </motion.div>
 
@@ -871,75 +738,56 @@ export default function ProfhiloPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          14. MEET THE EXPERTS
+          12. MEET THE EXPERTS
       ════════════════════════════════════════ */}
       <MeetTheExperts />
 
       {/* ════════════════════════════════════════
-          15. FAQ
+          13. FAQ
       ════════════════════════════════════════ */}
-      <section className={styles.faqSection} data-section-theme="light">
-        <div className={styles.faqInner}>
-          <Container>
-            <motion.div
-              className={styles.sectionHeaderCentre}
-              variants={stagger(0.1)}
-              initial="hidden"
-              whileInView="show"
-              viewport={VIEWPORT}
-            >
-              <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
-              <motion.h2 className={styles.headingLight} variants={fadeUp}>
-                Frequently Asked Questions
-              </motion.h2>
-            </motion.div>
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Frequently Asked Questions
+            </motion.h2>
+          </motion.div>
 
-            <motion.div
-              className={styles.faqBody}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="show"
-              viewport={VIEWPORT}
-            >
-              <Accordion items={showAllFaqs ? FAQS : FAQS.slice(0, 5)} theme="dark" />
-
-              {FAQS.length > 5 && (
-                <div className={styles.faqToggleWrap}>
-                  <button
-                    className={styles.faqToggleBtn}
-                    onClick={() => setShowAllFaqs((v) => !v)}
-                    aria-expanded={showAllFaqs}
-                  >
-                    {showAllFaqs ? (
-                      <>
-                        Show Less
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                          <path d="M4 10l4-4 4 4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </>
-                    ) : (
-                      <>
-                        Show More
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                          <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </>
-                    )}
-                  </button>
-                </div>
-              )}
-            </motion.div>
-          </Container>
-        </div>
-      </section>
+          <motion.div
+            className={styles.faqBody}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <Accordion items={showAllFaqs ? FAQS : FAQS.slice(0, 5)} theme="dark" />
+            {!showAllFaqs && FAQS.length > 5 && (
+              <motion.button
+                onClick={() => setShowAllFaqs(true)}
+                className={styles.faqToggle}
+                variants={fadeUp}
+              >
+                Show All FAQs
+              </motion.button>
+            )}
+          </motion.div>
+        </Container>
+      </Section>
 
       {/* ════════════════════════════════════════
-          16. BOOKING FORM
+          14. BOOKING FORM
       ════════════════════════════════════════ */}
       <LeadForm />
 
       {/* ════════════════════════════════════════
-          17. RELATED TREATMENTS
+          15. RELATED TREATMENTS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
@@ -981,7 +829,7 @@ export default function ProfhiloPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          18. FINAL CTA
+          16. FINAL CTA
       ════════════════════════════════════════ */}
       <FinalCTA />
     </>

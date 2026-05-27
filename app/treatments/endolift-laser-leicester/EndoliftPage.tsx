@@ -1,26 +1,28 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import Script from 'next/script';
 import { motion } from 'framer-motion';
-import Section                from '@/components/ui/Section';
-import Container              from '@/components/ui/Container';
-import Accordion              from '@/components/ui/Accordion';
+import Section            from '@/components/ui/Section';
+import Container          from '@/components/ui/Container';
+import Accordion          from '@/components/ui/Accordion';
 import BookConsultationButton from '@/components/ui/BookConsultationButton';
-import TrustBadges            from '@/components/ui/TrustBadges';
-import Breadcrumb             from '@/components/ui/Breadcrumb';
-import LeadForm               from '@/components/sections/LeadForm';
-import MeetTheExperts         from '@/components/sections/MeetTheExperts';
-import Testimonials           from '@/components/sections/Testimonials';
-import FinalCTA               from '@/components/sections/FinalCTA';
+import TrustBadges        from '@/components/ui/TrustBadges';
+import Breadcrumb         from '@/components/ui/Breadcrumb';
+import LeadForm           from '@/components/sections/LeadForm';
+import MeetTheExperts     from '@/components/sections/MeetTheExperts';
+import Testimonials       from '@/components/sections/Testimonials';
+import FinalCTA           from '@/components/sections/FinalCTA';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
+import { ENDOLIFT_FAQS as FAQS } from './data';
 
 /* ── Static data ──────────────────────────────────────────────── */
 const AT_A_GLANCE = [
   {
-    label: 'Treatment Time',
+    label: 'Treatment Duration',
     value: '30 to 45 minutes',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -30,8 +32,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Sessions Needed',
-    value: '2 sessions (4 weeks apart)',
+    label: 'Treatment Frequency',
+    value: 'Every 1 to 2 years',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="1 4 1 10 7 10"/>
@@ -40,18 +42,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'First Results',
-    value: '2 to 4 weeks',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-        <polyline points="17 6 23 6 23 12"/>
-      </svg>
-    ),
-  },
-  {
-    label: 'Results Last',
-    value: 'Around 6 months',
+    label: 'Downtime',
+    value: '1 to 3 days',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
@@ -60,65 +52,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Downtime',
-    value: 'Minimal',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-        <line x1="16" y1="2" x2="16" y2="6"/>
-        <line x1="8" y1="2" x2="8" y2="6"/>
-        <line x1="3" y1="10" x2="21" y2="10"/>
-      </svg>
-    ),
-  },
-  {
-    label: 'Treatment Cost',
-    value: 'From £200',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <line x1="12" y1="1" x2="12" y2="23"/>
-        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-      </svg>
-    ),
-  },
-];
-
-const JOURNEY_STEPS = [
-  {
-    n: '01',
-    title: 'Consultation and Skin Assessment',
-    desc: 'Our doctor assesses your skin, understands your concerns, and creates a personalised treatment plan tailored to your unique needs and goals.',
-  },
-  {
-    n: '02',
-    title: 'Preparation',
-    desc: 'We cleanse the treatment area and may apply a topical anaesthetic cream to ensure your comfort throughout the procedure.',
-  },
-  {
-    n: '03',
-    title: 'BAP Technique Injections',
-    desc: 'Using the BAP (Bio Aesthetic Points) technique, precise injections are placed at key points on the face or neck for optimal, even distribution under the skin.',
-  },
-  {
-    n: '04',
-    title: 'Post-Treatment and Recovery',
-    desc: 'The product spreads naturally under the skin. You may experience mild redness that quickly settles, allowing you to resume your routine with minimal interruption.',
-  },
-];
-
-const BENEFITS = [
-  {
-    title: 'Deep Hydration',
-    desc: 'Ensures your skin feels plumper, softer, and consistently moisturised from the inside out.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 2C6.5 9 4 13.5 4 16a8 8 0 0 0 16 0c0-2.5-2.5-7-8-14z"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'Enhanced Firmness',
-    desc: 'Rebuilds the skin\'s internal scaffolding, making it feel bouncier and noticeably tighter over time.',
+    label: 'Results Longevity',
+    value: '2 to 3 years or more',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
@@ -127,35 +62,122 @@ const BENEFITS = [
     ),
   },
   {
-    title: 'Minimal Downtime',
-    desc: 'A highly tolerable procedure allowing you to return to your day with virtually no recovery time needed.',
+    label: 'Treatment Cost',
+    value: 'From £1,500',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-        <polyline points="22 4 12 14.01 9 11.01"/>
+        <line x1="12" y1="1" x2="12" y2="23"/>
+        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
       </svg>
     ),
   },
   {
-    title: 'Natural Luminosity',
-    desc: 'Breathes new life into tired skin, giving you a refreshed and brilliant glow without looking done.',
+    label: 'Appointment Type',
+    value: 'In-clinic',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="5"/>
-        <line x1="12" y1="1" x2="12" y2="3"/>
-        <line x1="12" y1="21" x2="12" y2="23"/>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-        <line x1="1" y1="12" x2="3" y2="12"/>
-        <line x1="21" y1="12" x2="23" y2="12"/>
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        <path d="M3 21h18"/>
+        <path d="M5 21V7l8-4v4"/>
+        <path d="M19 21V11l-6-4"/>
+        <path d="M9 21v-4h6v4"/>
+      </svg>
+    ),
+  },
+];
+
+const JOURNEY_STEPS = [
+  {
+    n: '01',
+    title: 'Initial Consultation & Assessment',
+    desc: 'A thorough review of your skin laxity, fat deposits, and target areas, allowing your doctor to create a personalised Endolift treatment plan.',
+  },
+  {
+    n: '02',
+    title: 'Treatment Preparation',
+    desc: 'The treatment area is cleansed and a local anaesthetic is applied to ensure your comfort. Tiny entry points are mapped on the skin.',
+  },
+  {
+    n: '03',
+    title: 'Laser Fibre Treatment',
+    desc: 'A fine optical fibre is gently guided under the skin. Laser energy precisely targets localised fat and stimulates collagen contraction to lift and contour.',
+  },
+  {
+    n: '04',
+    title: 'Recovery & Ongoing Results',
+    desc: 'Minimal downtime of 1 to 2 days. Skin improvements develop progressively over 3 to 6 months as new collagen matures and remodels.',
+  },
+];
+
+const TECH_CARDS = [
+  {
+    eyebrow: '01',
+    title: 'Endolift',
+    desc: 'A fine laser fibre guided beneath the skin surface precisely melts localised fat and contracts collagen fibres simultaneously, lifting and tightening from within without any surgical incision.',
+  },
+  {
+    eyebrow: '02',
+    title: 'LipoLift',
+    desc: 'Combined with Ecojet, a gentle water-assisted system, LipoLift precisely emulsifies and removes small fat deposits with minimal trauma to surrounding tissue, sculpting the contour without a scalpel.',
+  },
+  {
+    eyebrow: '03',
+    title: 'BioLift',
+    desc: 'Bio-stimulating injectables, including Profhilo or polynucleotides, replenish lost volume and deeply hydrate the dermis, amplifying and prolonging the lifting and tightening effects.',
+  },
+];
+
+const ELIGIBILITY = [
+  'Not ready for surgery but want visible, long-lasting results',
+  'Struggling with sagging skin on the face, neck, or body',
+  'Looking to reduce jowls or define the jawline without an operation',
+  'Wanting skin tightening on the arms, abdomen, or thighs',
+  'Hoping for natural, gradual improvement with minimal downtime',
+];
+
+const TREATED_BENEFITS = [
+  {
+    title: 'Non-Surgical Facelift',
+    desc: 'Lifts and tightens skin without cuts, stitches, or scars, delivering a rejuvenated appearance with none of the surgical risks.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
       </svg>
     ),
   },
   {
-    title: 'Softened Fine Lines',
-    desc: 'Reduces fine lines and crepey skin while keeping your look entirely natural and rested.',
+    title: 'Visible Tightening',
+    desc: 'Skin appears firmer immediately after treatment, with continued improvement developing progressively over the following months.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+        <polyline points="17 6 23 6 23 12"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Collagen Boost',
+    desc: 'Stimulates the natural production of new collagen and elastin for long-lasting firmness, improved skin texture, and enhanced elasticity.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12"/>
+        <path d="M12 6v6l4 2"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Fat Reduction',
+    desc: 'Precisely melts small, stubborn fat deposits to smooth and contour areas such as the double chin, love handles, or inner thighs.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <circle cx="12" cy="12" r="4"/>
+        <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Natural, Precise Results',
+    desc: 'Targets even delicate areas, such as under the eyes, safely and with remarkable precision for a refreshed, natural-looking outcome.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
@@ -164,33 +186,26 @@ const BENEFITS = [
     ),
   },
   {
-    title: 'Improved Skin Texture',
-    desc: 'Refines uneven skin, making it feel smoother, softer, and more even to the touch after each session.',
+    title: 'Minimal Downtime',
+    desc: 'Quick recovery with most patients returning to daily activities within 1 to 2 days. Ideal for those with busy schedules.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+        <polyline points="22 4 12 14.01 9 11.01"/>
       </svg>
     ),
   },
 ];
 
-const ELIGIBILITY = [
-  'Wanting firmer, more hydrated skin without altering your features',
-  'Looking to improve dullness or skin laxity with minimal downtime',
-  'Seeking a natural-looking result that enhances rather than changes',
-  'Wanting to complement other treatments such as anti-wrinkle injections',
-  'Looking for a clinically proven, highly purified hyaluronic acid treatment',
-];
-
-const TREATABLE_FACE = [
-  'Chin and Jawline',
+const CONDITIONS_FACE = [
+  'Chin & Jawline',
   'Nasolabial Folds',
-  'Smile and Laughter Lines',
+  'Smile & Laughter Lines',
   'Lower Eyelids',
-  'Neck and Decolletage',
+  'Neck & Décolletage',
 ];
 
-const TREATABLE_BODY = [
+const CONDITIONS_BODY = [
   'Stomach',
   'Arms',
   'Inner Thighs',
@@ -200,62 +215,77 @@ const TREATABLE_BODY = [
 ];
 
 const CLINIC_REASONS = [
-  { n: '01', text: 'All-in-one clinic with medical and aesthetic services.' },
-  { n: '02', text: 'Highly trained, compassionate GMC-registered doctors.' },
-  { n: '03', text: 'Customised treatments based on listening and expertise.' },
-  { n: '04', text: 'State-of-the-art facilities and modern equipment.' },
-  { n: '05', text: 'Strong reputation and excellent patient reviews.' },
+  { n: '01', text: 'All-in-one clinic with medical & aesthetic services.' },
+  { n: '02', text: 'Highly trained, compassionate doctors.' },
+  { n: '03', text: 'Customised treatments based on listening & expertise.' },
+  { n: '04', text: 'State-of-the-art facilities & modern equipment.' },
+  { n: '05', text: 'Strong reputation & excellent reviews.' },
   { n: '06', text: 'Comprehensive care and referrals with specialists.' },
 ];
 
-const FAQS = [
+
+const EXPERTS = [
   {
-    question: 'Who should consider Profhilo treatment?',
-    answer:
-      'Profhilo is ideal for men and women experiencing dull, dry, or slightly lax skin who want a natural structural improvement without changing their facial features.',
+    name: 'Dr Sumit Virmani',
+    credentials: ['MBBS', 'MRCGP', 'Co-Founder'],
+    image: '/images/imgi_20_team-thumb-VIRMANI.jpg',
+    alt: 'Dr Sumit Virmani, Co-Founder, The One Clinic',
+    bio: [
+      'Dr Sumit Virmani, the co-founder of The One Clinic, brings over 15 years of medical expertise, including more than a decade as a trusted local GP. With advanced skills in minor surgery and a keen eye for detail, Dr Virmani is passionate about patient care and achieving outstanding results.',
+      'His growing interest in aesthetic medicine, particularly body contouring and hair rejuvenation, reflects his commitment to helping patients look and feel their best. Alongside his ongoing GP practice, Dr Virmani continues to offer safe, effective, and transformative aesthetic treatments at The One Clinic.',
+    ],
   },
   {
-    question: 'Is it painful?',
-    answer:
-      'Most clients find it highly tolerable. The precise BAP technique requires only ten injection points, and we can use a topical anaesthetic cream to make you as comfortable as possible.',
-  },
-  {
-    question: 'How is Profhilo treatment performed?',
-    answer:
-      'Profhilo treatment requires an injection under the skin\'s surface at precisely 10 locations on the face. It is a quick process, lasting between 15 and 20 minutes.',
-  },
-  {
-    question: 'How long does it take to recover?',
-    answer:
-      'Downtime is minimal. You may notice small bumps or mild redness at the injection sites, which usually settle within 24 to 48 hours.',
-  },
-  {
-    question: 'How long do the results last?',
-    answer:
-      'A complete treatment with two sessions will produce luminous results that typically last for about six months.',
-  },
-  {
-    question: 'Are there any risks?',
-    answer:
-      'As this procedure uses highly purified hyaluronic acid, it is extremely safe. The only side effects that can be observed temporarily are redness, swelling, or bruising.',
-  },
-  {
-    question: 'Do I need follow-ups?',
-    answer:
-      'Yes, to achieve the best outcome, you should have a second session four weeks after the first. A top-up maintenance session is usually recommended every six months thereafter.',
+    name: 'Dr Gunjan Bedi',
+    credentials: ['MBBS', 'MRCpsych', 'MRCGP', 'BCAM'],
+    image: '/DR-GUNJAN.jpg',
+    alt: 'Dr Gunjan Bedi, General Practitioner and Aesthetics Practitioner, The One Clinic',
+    bio: [
+      'Dr Gunjan Bedi is a highly skilled, advanced aesthetics practitioner at The One Clinic. She is a highly experienced doctor, having worked in the medical sector for over 20 years, with over 10 years service as a GP.',
+      'Dr Bedi brings a unique and comprehensive perspective to patient care, combining qualifications in General Practice, Psychiatry, and Aesthetic Medicine. Her breadth of expertise allows her to take a truly holistic approach, addressing both the physical and psychological dimensions of each patient\'s wellbeing.',
+    ],
   },
 ];
 
 const RELATED = [
+  { title: 'Morpheus8',                   href: '/treatments/morpheus8',         desc: 'Fractional radiofrequency skin remodelling for face and body.' },
   { title: 'Dermal Fillers',              href: '/treatments/dermal-filler-leicester',    desc: 'Restore volume and structure to the face with precision filler.' },
-  { title: 'Wrinkle Relaxing Injections', href: '/treatments/wrinkle-relaxing-injections', desc: 'Smooth dynamic lines naturally for a rested, refreshed appearance.' },
-  { title: 'HydraFacial',                 href: '/treatments/hydrafacial',       desc: 'Multi-step facial for instant hydration and glow with zero downtime.' },
-  { title: 'Morpheus8',                   href: '/treatments/morpheus8',         desc: 'Advanced RF microneedling for skin tightening and collagen renewal.' },
+  { title: 'Deep Laser Resurfacing',      href: '/treatments/deep-laser-resurfacing-leicester', desc: 'Comprehensive skin renewal targeting texture, tone, and laxity.' },
+  { title: 'Non Surgical Blepharoplasty', href: '/treatments/non-surgical-blepharoplasty-leicester', desc: 'Eye area rejuvenation without surgery or scarring.' },
+];
+
+const BA_IMAGES = [
+  { src: '/images/BA1.jpg', alt: 'Endolift before and after result 1' },
+  { src: '/images/BA2.jpg', alt: 'Endolift before and after result 2' },
+  { src: '/images/BA3.jpg', alt: 'Endolift before and after result 3' },
+  { src: '/images/BA4.jpg', alt: 'Endolift before and after result 4' },
+  { src: '/images/BA5.jpg', alt: 'Endolift before and after result 5' },
+  { src: '/images/BA6.jpg', alt: 'Endolift before and after result 6' },
+  { src: '/images/BA7.jpg', alt: 'Endolift before and after result 7' },
 ];
 
 /* ── Page component ───────────────────────────────────────────── */
-export default function ProfhiloPage() {
+export default function EndoliftPage() {
+  const [baIndex, setBaIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(2);
   const [showAllFaqs, setShowAllFaqs] = useState(false);
+
+  useEffect(() => {
+    const update = () => {
+      if (window.innerWidth < 768) setVisibleCount(1);
+      else if (window.innerWidth < 1024) setVisibleCount(1);
+      else setVisibleCount(2);
+    };
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
+
+  useEffect(() => {
+    setBaIndex((i) => Math.min(i, BA_IMAGES.length - visibleCount));
+  }, [visibleCount]);
+
+  const maxBaIndex = BA_IMAGES.length - visibleCount;
 
   return (
     <>
@@ -264,16 +294,17 @@ export default function ProfhiloPage() {
       ════════════════════════════════════════ */}
       <section
         className={styles.hero}
-        aria-label="Profhilo Leicester, hero"
+        aria-label="Endolift Leicester, hero"
         data-section-theme="dark"
       >
+        {/* Breadcrumb, pinned to top of hero */}
         <div className={styles.heroBreadcrumb}>
           <Container>
             <Breadcrumb
               theme="dark"
               items={[
                 { label: 'Treatments', href: '/treatments' },
-                { label: 'Profhilo' },
+                { label: 'Endolift Laser' },
               ]}
             />
           </Container>
@@ -286,40 +317,41 @@ export default function ProfhiloPage() {
             initial="hidden"
             animate="show"
           >
+            {/* Left: text */}
             <div className={styles.heroLeft}>
               <motion.span className={styles.heroCategory} variants={fadeUp}>
                 Medical Aesthetics
               </motion.span>
 
               <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                Profhilo<br />in Leicester
+                Endolift in Leicester
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Experience visibly healthier, more radiant skin with expert Profhilo treatments.
-                Deep hydration and bio-remodelling for a natural, luminous glow without altering
-                your features.
+                Reveal firmer, smoother, and contoured skin in just one Endolift session,
+                with minimal downtime.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
                 <BookConsultationButton className={styles.heroCtaPrimary}>
-                  Book Consultation
+                  Book Appointment
                 </BookConsultationButton>
               </motion.div>
 
+              {/* Review badges */}
               <motion.div variants={fadeUp}>
                 <TrustBadges theme="dark" />
               </motion.div>
 
+              {/* Trust items */}
               <motion.div className={styles.heroTrust} variants={fadeUp}>
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                    <circle cx="9" cy="7" r="4"/>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+                    <path d="M4.5 20.118a7.5 7.5 0 0115 0"/>
+                    <path d="M18.5 15v5M16 17.5h5"/>
                   </svg>
-                  Led by GMC-registered doctors
+                  Led by highly trained doctors
                 </span>
                 <span className={styles.heroTrustDivider} aria-hidden="true" />
                 <span className={styles.heroTrustItem}>
@@ -331,25 +363,25 @@ export default function ProfhiloPage() {
                 <span className={styles.heroTrustDivider} aria-hidden="true" />
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                    <line x1="16" y1="2" x2="16" y2="6"/>
-                    <line x1="8" y1="2" x2="8" y2="6"/>
-                    <line x1="3" y1="10" x2="21" y2="10"/>
+                    <circle cx="12" cy="12" r="9.5"/>
+                    <path d="M12 7.5v9M7.5 12h9"/>
                   </svg>
-                  Minimal downtime
+                  Comprehensive medical &amp; aesthetic care
                 </span>
               </motion.div>
             </div>
 
+            {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Profhilo (2).jpg"
-                alt="Profhilo treatment at The One Clinic Leicester"
+                src="/images/Endolift 1.png"
+                alt="Endolift laser treatment at The One Clinic Leicester"
                 fill
                 priority
                 className={styles.heroImage}
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
+              {/* Subtle bottom-fade to blend with section */}
               <div className={styles.heroImageFade} aria-hidden="true" />
             </motion.div>
           </motion.div>
@@ -357,7 +389,7 @@ export default function ProfhiloPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          2. WHAT IS PROFHILO?
+          3A. WHAT IS ENDOLIFT?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
@@ -368,19 +400,18 @@ export default function ProfhiloPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
+            {/* Left: text */}
             <motion.div className={styles.whatIsContent} variants={stagger(0.12)}>
               <motion.div className={styles.whatIsTextGroup} variants={fadeUp}>
                 <p className={styles.eyebrowDark}>About This Treatment</p>
-                <h2 className={styles.combinedHeading}>What is Profhilo?</h2>
+                <h2 className={styles.combinedHeading}>What is Endolift?</h2>
                 <p className={styles.combinedDesc}>
-                  Profhilo is an innovative injectable skin treatment formulated with one of the
-                  highest concentrations of ultra-pure hyaluronic acid available. Rather than adding
-                  volume like a traditional dermal filler, it works as a bio-remodelling agent,
-                  treating dull, dry, and ageing skin through intense deep hydration and naturally
-                  stimulating collagen and elastin production from within.
+                  Endolift is a minimally invasive laser treatment that lifts, tightens, and contours
+                  the skin, all without surgery. This treatment encourages collagen production,
+                  helping remodel the skin on your face, neck, jawline, and even your arms, abdomen,
+                  or thighs.
                 </p>
               </motion.div>
-
               <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
                 <BookConsultationButton className={styles.combinedCta}>
                   Book Your Consultation
@@ -388,12 +419,13 @@ export default function ProfhiloPage() {
               </motion.div>
             </motion.div>
 
-            <motion.div className={styles.whatIsImageWrap} variants={fadeUp}>
+            {/* Right: Image */}
+            <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
-                alt="Profhilo consultation at The One Clinic"
+                src="/images/Endolift 2.png"
+                alt="What is Endolift treatment results at The One Clinic"
                 fill
-                className={styles.whatIsImage}
+                className={styles.whatIsVideoFrame}
                 sizes="(max-width: 900px) 100vw, 50vw"
               />
             </motion.div>
@@ -402,7 +434,7 @@ export default function ProfhiloPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          3. AT A GLANCE
+          3B. AT A GLANCE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
         <div className={styles.whiteBgWrap} aria-hidden="true">
@@ -418,7 +450,7 @@ export default function ProfhiloPage() {
           >
             <motion.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Profhilo at a Glance
+              Endolift Treatment at a Glance
             </motion.h2>
           </motion.div>
 
@@ -441,6 +473,68 @@ export default function ProfhiloPage() {
       </Section>
 
       {/* ════════════════════════════════════════
+          NEW: ENDOLIFT COMBINATION
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Our Approach
+            </motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              A Triple Action for Sculpted Skin
+            </motion.h2>
+            <motion.p className={styles.combinationIntroText} variants={fadeUp}>
+              At The One Clinic, our Endolift Combination combines three technologies, ideal for
+              those who want to lift, tighten, and contour their face or body safely.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.techCardsGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {TECH_CARDS.map((card) => (
+              <motion.div
+                key={card.title}
+                className={styles.techCard}
+                variants={fadeUp}
+                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
+              >
+                <span className={styles.techCardEyebrow}>{card.eyebrow}</span>
+                <h3 className={styles.techCardTitle}>{card.title}</h3>
+                <p className={styles.techCardDesc}>{card.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            className={styles.finalResultsBanner}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <p className={styles.finalResultsEyebrow}>Final Results</p>
+            <p className={styles.finalResultsText}>
+              When combined, Endolift, LipoLift, and BioLift deliver complete skin renewal,
+              addressing laxity, fat deposits, and volume loss in a single programme for a
+              naturally sculpted, youthful outcome.
+            </p>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
           4. TREATMENT JOURNEY
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.journeySection}>
@@ -452,8 +546,12 @@ export default function ProfhiloPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>What to Expect</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>Your Treatment Journey</motion.h2>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              What to Expect
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Your Treatment Journey
+            </motion.h2>
           </motion.div>
 
           <motion.ol
@@ -462,7 +560,7 @@ export default function ProfhiloPage() {
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
-            aria-label="Profhilo treatment journey steps"
+            aria-label="Endolift treatment journey steps"
           >
             {JOURNEY_STEPS.map((step) => (
               <motion.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
@@ -481,7 +579,7 @@ export default function ProfhiloPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          5. BENEFITS
+          NEW: TREATED BENEFITS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
         <div className={styles.whiteBgWrap} aria-hidden="true">
@@ -495,9 +593,8 @@ export default function ProfhiloPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Why Choose This Treatment</motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              The Benefits of Profhilo
+              Endolift Treated Benefits
             </motion.h2>
           </motion.div>
 
@@ -508,14 +605,16 @@ export default function ProfhiloPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {BENEFITS.map((b) => (
+            {TREATED_BENEFITS.map((b) => (
               <motion.div
                 key={b.title}
                 className={styles.treatedBenefitCard}
                 variants={fadeUp}
                 whileHover={{ y: -8, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
               >
-                <span className={styles.treatedBenefitIconWrap} aria-hidden="true">{b.icon}</span>
+                <span className={styles.treatedBenefitIconWrap} aria-hidden="true">
+                  {b.icon}
+                </span>
                 <h3 className={styles.treatedBenefitTitle}>{b.title}</h3>
                 <p className={styles.treatedBenefitDesc}>{b.desc}</p>
               </motion.div>
@@ -525,7 +624,7 @@ export default function ProfhiloPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          6. ELIGIBILITY
+          5. WHY CHOOSE ENDOLIFT LASER
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -536,9 +635,11 @@ export default function ProfhiloPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Is This Right for You?</motion.p>
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Is This Right for You?
+            </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Who Is a Good Candidate?
+              Why Choose an Endolift Laser?
             </motion.h2>
           </motion.div>
 
@@ -550,7 +651,7 @@ export default function ProfhiloPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
-              Profhilo may be right for you if you are:
+              You can choose Endolift laser skin tightening if you are:
             </motion.p>
             <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
               {ELIGIBILITY.map((item) => (
@@ -565,7 +666,7 @@ export default function ProfhiloPage() {
               ))}
             </motion.ul>
             <motion.p className={styles.eligibilityClosing} variants={fadeUp}>
-              Book a consultation and our team will guide you on whether Profhilo is the right choice for your skin.
+              If any of these sound familiar, Endolift laser skin tightening could be the right solution for you.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
@@ -577,7 +678,76 @@ export default function ProfhiloPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          7. RESULTS, AFTERCARE & SIDE EFFECTS
+          6. HOW DOES ENDOLIFT WORK
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.howSection}>
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              How Does Endolift Work?
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.howTextGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.howPara} variants={fadeUp}>
+              Endolift uses advanced laser technology: a very thin laser fibre that is gently
+              inserted under the skin in targeted areas. The laser energy selectively melts small
+              fat deposits and stimulates the surrounding connective tissue to contract, tightening
+              and reshaping the skin from within.
+            </motion.p>
+            <motion.p className={styles.howPara} variants={fadeUp}>
+              This controlled thermal stimulus activates the body&apos;s natural fibroblasts to produce
+              new collagen and elastin, progressively remodelling the skin. Results become visible
+              over weeks to months as collagen matures, with many patients reporting continued
+              improvement for up to six months following treatment.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.howCoversWrap}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.howCoversLabel} variants={fadeUp}>Endolift Addresses</motion.p>
+            <motion.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
+              {[
+                'Face & jowls',
+                'Neck & jawline',
+                'Double chin',
+                'Upper arms',
+                'Abdomen',
+                'Thighs & knees',
+              ].map((item) => (
+                <motion.li key={item} className={styles.howCoversItem} variants={fadeUp}>
+                  <span className={styles.howCoversCheck} aria-hidden="true">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <polyline points="2,6 5,9 10,3" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  {item}
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          NEW: RESULTS, AFTERCARE & SIDE EFFECTS
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -588,9 +758,11 @@ export default function ProfhiloPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Post-Treatment</motion.p>
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Post-Treatment
+            </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Results, Aftercare and Side Effects
+              Results, Aftercare &amp; Side Effects
             </motion.h2>
           </motion.div>
 
@@ -601,6 +773,7 @@ export default function ProfhiloPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
+            {/* Card 1, Results Timeline */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -612,17 +785,18 @@ export default function ProfhiloPage() {
                 <h3 className={styles.resultsAfterCardTitle}>When Will You See Results?</h3>
               </div>
               <p className={styles.resultsAfterCardBody}>
-                Most patients notice initial improvements in hydration and plumpness within a couple
-                of weeks of their first session. The full bio-remodelling benefits become
-                significantly more pronounced after completing the second session.
+                Some visible tightening appears within 4 to 8 weeks as new collagen begins to form.
+                Skin continues to improve over 3 to 6 months, with final results typically visible at
+                around 6 to 9 months.
               </p>
               <div className={styles.resultsAfterCardSpacer} />
               <p className={styles.resultsAfterCardNote}>
-                Results from a complete two-session course typically last for approximately six
-                months, after which a single maintenance session is advised to sustain outcomes.
+                Results are long-lasting, often 2 to 3 years, depending on age, skin condition,
+                and lifestyle. A good skincare routine helps maintain the effect.
               </p>
             </motion.div>
 
+            {/* Card 2, Side Effects */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -634,12 +808,15 @@ export default function ProfhiloPage() {
                 </span>
                 <h3 className={styles.resultsAfterCardTitle}>Side Effects</h3>
               </div>
+              <p className={styles.resultsAfterCardBody}>
+                Endolift is minimally invasive and generally very safe. Most patients experience
+                only mild, temporary effects:
+              </p>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Redness at the injection site',
-                  'Small temporary bumps that naturally settle',
-                  'Occasional slight bruising',
-                  'Mild itching or irritation',
+                  'Slight redness or warmth in the treated area',
+                  'Mild swelling or tenderness',
+                  'Minor bruising in some cases',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
                     <span className={styles.resultsAfterDot} aria-hidden="true" />
@@ -649,10 +826,12 @@ export default function ProfhiloPage() {
               </ul>
               <div className={styles.resultsAfterCardSpacer} />
               <p className={styles.resultsAfterCardNote}>
-                All side effects are mild and temporary, resolving within 24 to 48 hours.
+                These usually fade within a few days. The risk of serious complications is
+                extremely low when performed by a trained doctor.
               </p>
             </motion.div>
 
+            {/* Card 3, Aftercare */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -665,11 +844,10 @@ export default function ProfhiloPage() {
               </div>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Keep the treated area clean and avoid touching your face unnecessarily',
-                  'Avoid strenuous exercise and saunas for at least 24 hours',
-                  'Do not apply makeup for at least 12 hours post-treatment',
-                  'Book your second session 4 weeks after the first for maximum collagen stimulation',
-                  'Follow up with a maintenance session every 6 months',
+                  'Avoid heat, saunas, and intense exercise for 48 hours',
+                  'Keep skin well-hydrated and clean',
+                  'Do not touch or rub the treated areas',
+                  'Follow any specific advice from your doctor for best results',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
                     <span className={styles.resultsAfterDot} aria-hidden="true" />
@@ -683,16 +861,114 @@ export default function ProfhiloPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. PATIENT REVIEWS
+          NEW: BEFORE & AFTER
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
+        <div className={styles.whiteBgWrap} aria-hidden="true">
+          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
+        </div>
+        <Container className={styles.whiteBgContent}>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Real Results
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Endolift Before &amp; After
+            </motion.h2>
+            <motion.p className={styles.beforeAfterSubheading} variants={fadeUp}>
+              Real skin lifting and tightening results from our patients at The One Clinic, Leicester.
+            </motion.p>
+          </motion.div>
+
+          {/* Carousel viewport */}
+          <div className={styles.baSliderViewport}>
+            <div
+              className={styles.baSliderTrack}
+              style={{
+                transform: `translateX(-${baIndex * (100 / BA_IMAGES.length)}%)`,
+                width: `${(BA_IMAGES.length / visibleCount) * 100}%`,
+              }}
+            >
+              {BA_IMAGES.map((img) => (
+                <div key={img.src} className={styles.baSlideItem}>
+                  <div className={styles.baImageWrap}>
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      className={styles.baImage}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Controls: arrows + dots */}
+          <div className={styles.baControls}>
+            <button
+              className={styles.baArrowBtn}
+              onClick={() => setBaIndex((i) => Math.max(0, i - 1))}
+              aria-label="Previous before and after image"
+              disabled={baIndex === 0}
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M12.5 15l-5-5 5-5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+
+            <div className={styles.baDots} role="tablist" aria-label="Before and after carousel navigation">
+              {Array.from({ length: maxBaIndex + 1 }).map((_, i) => (
+                <button
+                  key={i}
+                  className={`${styles.baDot} ${baIndex === i ? styles.baDotActive : ''}`}
+                  onClick={() => setBaIndex(i)}
+                  aria-label={`Go to image set ${i + 1}`}
+                  aria-selected={baIndex === i}
+                  role="tab"
+                />
+              ))}
+            </div>
+
+            <button
+              className={styles.baArrowBtn}
+              onClick={() => setBaIndex((i) => Math.min(maxBaIndex, i + 1))}
+              aria-label="Next before and after image"
+              disabled={baIndex === maxBaIndex}
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M7.5 5l5 5-5 5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          2. PATIENT REVIEWS
       ════════════════════════════════════════ */}
       <Testimonials />
 
       {/* ════════════════════════════════════════
-          9. CTA BANNER
+          NEW: CTA BANNER
       ════════════════════════════════════════ */}
-      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book Profhilo consultation">
+      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book Endolift consultation">
+        {/* Watermark logo */}
         <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
-          <Image src="/images/Background-logo.png" alt="" fill className={styles.ctaBannerLogo} sizes="100vw" />
+          <Image
+            src="/images/Background-logo.png"
+            alt=""
+            fill
+            className={styles.ctaBannerLogo}
+            sizes="100vw"
+          />
         </div>
         <Container>
           <motion.div
@@ -703,20 +979,22 @@ export default function ProfhiloPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
-              Uncover Your Natural<br />Beauty and Radiance.
+              Turn The Clock Backwards,<br />Your Endolift Facelift Awaits!
             </motion.h2>
             <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
-              Give your skin the deep hydration and structural renewal it deserves.
+              Let our experts create your personalised Endolift plan!
             </motion.p>
             <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBannerBtn}>Book Consultation</BookConsultationButton>
+              <BookConsultationButton className={styles.ctaBannerBtn}>
+                Book Consultation
+              </BookConsultationButton>
             </motion.div>
           </motion.div>
         </Container>
       </section>
 
       {/* ════════════════════════════════════════
-          10. TREATABLE AREAS
+          7. TREATABLE AREAS
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark" className={styles.conditionsSection}>
         <Container>
@@ -727,13 +1005,15 @@ export default function ProfhiloPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Treatable Areas</motion.p>
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Treatable Areas
+            </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              What Areas Can Be Treated With Profhilo?
+              What Areas Can Be Treated With Endolift?
             </motion.h2>
             <motion.p className={styles.conditionsIntro} variants={fadeUp}>
-              Profhilo is suitable for treating a range of face and body areas, delivering
-              deep hydration and bio-remodelling results across the skin.
+              Endolift is our treatment of choice to tackle skin sagging and stubborn fat cells
+              on various face and body areas.
             </motion.p>
           </motion.div>
 
@@ -749,12 +1029,12 @@ export default function ProfhiloPage() {
               variants={fadeUp}
               whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
             >
-              <p className={styles.areasGroupLabel}>Face and Neck</p>
+              <p className={styles.areasGroupLabel}>Face &amp; Neck</p>
               <ul className={styles.areasGroupList} role="list">
-                {TREATABLE_FACE.map((item) => (
-                  <li key={item} className={styles.areasGroupItem}>
+                {CONDITIONS_FACE.map((area) => (
+                  <li key={area} className={styles.areasGroupItem}>
                     <span className={styles.areasItemDot} aria-hidden="true" />
-                    {item}
+                    {area}
                   </li>
                 ))}
               </ul>
@@ -767,10 +1047,10 @@ export default function ProfhiloPage() {
             >
               <p className={styles.areasGroupLabel}>Body</p>
               <ul className={styles.areasGroupList} role="list">
-                {TREATABLE_BODY.map((item) => (
-                  <li key={item} className={styles.areasGroupItem}>
+                {CONDITIONS_BODY.map((area) => (
+                  <li key={area} className={styles.areasGroupItem}>
                     <span className={styles.areasItemDot} aria-hidden="true" />
-                    {item}
+                    {area}
                   </li>
                 ))}
               </ul>
@@ -780,7 +1060,7 @@ export default function ProfhiloPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          11. CLINIC INTRO
+          NEW: BEST ENDOLIFT LEICESTER EXPERIENCE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.clinicIntroSection}>
         <Container>
@@ -792,25 +1072,25 @@ export default function ProfhiloPage() {
             viewport={VIEWPORT}
           >
             <motion.div className={styles.clinicIntroLeft} variants={fadeUp}>
-              <p className={styles.eyebrowLight}>Profhilo Treatment</p>
-              <h2 className={styles.headingLight}>
-                Best Profhilo<br />in Leicester
+              <p className={styles.eyebrowDark}>Endolift Treatment</p>
+              <h2 className={styles.combinedHeading}>
+                Best Endolift<br />Leicester Experience
               </h2>
             </motion.div>
             <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
-              The One Clinic provides the best Profhilo experience in Leicester, offering
-              modern equipment in a relaxing, luxurious environment. Our highly trained,
-              caring doctors apply their extensive knowledge and expertise to recommend
-              tailored aesthetic solutions, ensuring you achieve natural, confidence-boosting results.
+              Experience the best Endolift in Leicester at our clinic. Our expert doctors deliver
+              safe, non-surgical skin-lifting and contouring treatments for the face, neck, and body.
+              Enjoy natural, long-lasting results with minimal downtime and personalised care
+              tailored to you.
             </motion.p>
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          12. COST BANNER
+          NEW: COST BANNER
       ════════════════════════════════════════ */}
-      <section className={styles.costBanner} data-section-theme="dark" aria-label="Profhilo cost">
+      <section className={styles.costBanner} data-section-theme="dark" aria-label="Endolift cost">
         <Container>
           <motion.div
             className={styles.costBannerInner}
@@ -819,20 +1099,27 @@ export default function ProfhiloPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>Profhilo Pricing at The One Clinic</motion.p>
-            <motion.p className={styles.costBannerPrice} variants={fadeUp}>From £200</motion.p>
+            <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
+              Endolift Cost at The One Clinic
+            </motion.p>
+            <motion.p className={styles.costBannerPrice} variants={fadeUp}>
+              Endolift Cost Starts From £1,500
+            </motion.p>
             <motion.p className={styles.costBannerNote} variants={fadeUp}>
-              Pricing varies by treatment area and number of sessions. Full details provided at your consultation.
+              The final price depends on your personalised treatment plan and will be discussed
+              during your consultation with our expert.
             </motion.p>
             <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBannerBtn}>Book A Consultation</BookConsultationButton>
+              <BookConsultationButton className={styles.ctaBannerBtn}>
+                Book A Consultation
+              </BookConsultationButton>
             </motion.div>
           </motion.div>
         </Container>
       </section>
 
       {/* ════════════════════════════════════════
-          13. WHY CHOOSE THE ONE CLINIC
+          NEW: WHY CHOOSE THE ONE CLINIC
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -844,7 +1131,7 @@ export default function ProfhiloPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Why Choose The One Clinic For Profhilo
+              Why Choose The One Clinic For Endolift Laser
             </motion.h2>
           </motion.div>
 
@@ -871,14 +1158,14 @@ export default function ProfhiloPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          14. MEET THE EXPERTS
+          8. MEET THE EXPERTS
       ════════════════════════════════════════ */}
       <MeetTheExperts />
 
       {/* ════════════════════════════════════════
-          15. FAQ
+          9. FAQ
       ════════════════════════════════════════ */}
-      <section className={styles.faqSection} data-section-theme="light">
+      <section className={styles.faqSection} data-section-theme="dark">
         <div className={styles.faqInner}>
           <Container>
             <motion.div
@@ -934,12 +1221,12 @@ export default function ProfhiloPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          16. BOOKING FORM
+          10. BOOKING FORM
       ════════════════════════════════════════ */}
       <LeadForm />
 
       {/* ════════════════════════════════════════
-          17. RELATED TREATMENTS
+          11. RELATED TREATMENTS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
@@ -950,8 +1237,12 @@ export default function ProfhiloPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Explore More</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>Related Treatments</motion.h2>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Explore More
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Related Treatments
+            </motion.h2>
           </motion.div>
 
           <motion.div
@@ -981,7 +1272,7 @@ export default function ProfhiloPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          18. FINAL CTA
+          FINAL CTA
       ════════════════════════════════════════ */}
       <FinalCTA />
     </>

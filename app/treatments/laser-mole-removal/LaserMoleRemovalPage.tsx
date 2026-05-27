@@ -245,8 +245,8 @@ const FAQS = [
 
 const RELATED = [
   { title: 'Mole Removal Leicester',           href: '/treatments/mole-removal-leicester',          desc: 'Surgical mole removal for complete elimination.' },
-  { title: 'Skin Tag Removal Leicester',       href: '/treatments/skin-tags-removal-leicester',     desc: 'Safe removal of skin tags and benign growths.' },
-  { title: 'Skin Lesion Removal Leicester',    href: '/treatments/skin-lesion',                     desc: 'Professional removal of various skin lesions.' },
+  { title: 'Skin Tag Removal Leicester',       href: '/treatments/skin-tag-removal-leicester',     desc: 'Safe removal of skin tags and benign growths.' },
+  { title: 'Skin Lesion Removal Leicester',    href: '/treatments/skin-lesions-leicester',                     desc: 'Professional removal of various skin lesions.' },
   { title: 'Dermatologist Leicester',          href: '/treatments/dermatologist',                   desc: 'Expert dermatology assessment and treatment.' },
 ];
 

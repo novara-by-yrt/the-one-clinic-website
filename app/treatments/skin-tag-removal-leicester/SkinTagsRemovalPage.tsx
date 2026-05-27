@@ -4,24 +4,24 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import Section                from '@/components/ui/Section';
-import Container              from '@/components/ui/Container';
-import Accordion              from '@/components/ui/Accordion';
+import Section            from '@/components/ui/Section';
+import Container          from '@/components/ui/Container';
+import Accordion          from '@/components/ui/Accordion';
 import BookConsultationButton from '@/components/ui/BookConsultationButton';
-import TrustBadges            from '@/components/ui/TrustBadges';
-import Breadcrumb             from '@/components/ui/Breadcrumb';
-import LeadForm               from '@/components/sections/LeadForm';
-import MeetTheExperts         from '@/components/sections/MeetTheExperts';
-import Testimonials           from '@/components/sections/Testimonials';
-import FinalCTA               from '@/components/sections/FinalCTA';
+import TrustBadges        from '@/components/ui/TrustBadges';
+import Breadcrumb         from '@/components/ui/Breadcrumb';
+import LeadForm           from '@/components/sections/LeadForm';
+import MeetTheExperts     from '@/components/sections/MeetTheExperts';
+import Testimonials       from '@/components/sections/Testimonials';
+import FinalCTA           from '@/components/sections/FinalCTA';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
 
 /* ── Static data ──────────────────────────────────────────────── */
 const AT_A_GLANCE = [
   {
-    label: 'Treatment Time',
-    value: '30 to 45 minutes',
+    label: 'Session Time',
+    value: '15 to 30 minutes',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -30,28 +30,24 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Sessions Needed',
-    value: '2 sessions (4 weeks apart)',
+    label: 'Treatment Type',
+    value: 'Cryotherapy / Excision / Electrocautery',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="1 4 1 10 7 10"/>
-        <path d="M3.51 15a9 9 0 1 0 .49-3.1"/>
+        <path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/>
+        <path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+        <path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/>
+        <path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/>
+        <path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/>
+        <path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/>
+        <path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/>
+        <path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/>
       </svg>
     ),
   },
   {
-    label: 'First Results',
-    value: '2 to 4 weeks',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-        <polyline points="17 6 23 6 23 12"/>
-      </svg>
-    ),
-  },
-  {
-    label: 'Results Last',
-    value: 'Around 6 months',
+    label: 'Downtime',
+    value: 'Minimal',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
@@ -60,8 +56,101 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Downtime',
-    value: 'Minimal',
+    label: 'Tags Per Visit',
+    value: 'Multiple',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="1 4 1 10 7 10"/>
+        <path d="M3.51 15a9 9 0 1 0 .49-3.1"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Results',
+    value: 'Immediate',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+        <polyline points="17 6 23 6 23 12"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Treatment Cost',
+    value: 'From £95',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <line x1="12" y1="1" x2="12" y2="23"/>
+        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+      </svg>
+    ),
+  },
+];
+
+const APPROACH_CARDS = [
+  {
+    eyebrow: '01',
+    title: 'Clinical Assessment',
+    desc: 'Every lesion is examined by our medical team before any procedure begins. We confirm the growth is a benign skin tag and check its size, location, and characteristics, ensuring nothing is missed and the safest approach is selected.',
+  },
+  {
+    eyebrow: '02',
+    title: 'Removal Technique Selection',
+    desc: 'Based on the assessment, we choose the most appropriate method , cryotherapy, surgical excision under local anaesthetic, or electrocautery. Larger or more complex tags benefit from excision, while smaller ones respond well to freezing or heat-based removal.',
+  },
+  {
+    eyebrow: '03',
+    title: 'Aftercare & Healing',
+    desc: 'Following removal you receive clear aftercare guidance. The treatment site is kept clean and protected. Most patients heal within one to two weeks with minimal marks that fade naturally over time.',
+  },
+];
+
+const JOURNEY_STEPS = [
+  {
+    n: '01',
+    title: 'Initial Consultation',
+    desc: 'Our clinical team reviews your skin tags, discusses your concerns, and confirms the lesions are benign. A personalised treatment plan is prepared during this visit.',
+  },
+  {
+    n: '02',
+    title: 'Assessment & Method Selection',
+    desc: 'Each tag is assessed individually for size, location, and type. The most appropriate removal technique is selected and explained to you before proceeding.',
+  },
+  {
+    n: '03',
+    title: 'Same-Day Removal',
+    desc: 'Where suitable, removal is carried out in the same appointment. The procedure is quick and precise, typically taking 15 to 30 minutes depending on the number and location of tags.',
+  },
+  {
+    n: '04',
+    title: 'Healing & Aftercare',
+    desc: 'Following treatment you receive written aftercare instructions. The site heals within one to two weeks. New tags elsewhere can be reviewed at a follow-up appointment if needed.',
+  },
+];
+
+const TREATED_BENEFITS = [
+  {
+    title: 'Fast & Effective',
+    desc: 'Skin tags are removed quickly and cleanly in a single session using the method best suited to the size and location of the tag, delivering immediate, visible results.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Minimal Discomfort',
+    desc: 'Procedures are performed with local anaesthetic or topical numbing as needed. Most patients experience only mild sensation during treatment and very little discomfort afterwards.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Multiple Tags in One Visit',
+    desc: 'Whether you have one skin tag or several, our team assesses and treats multiple tags in a single appointment, saving you time and giving you immediate results.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
@@ -72,90 +161,20 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Treatment Cost',
-    value: 'From £200',
+    title: 'Clinically Assessed',
+    desc: 'Every lesion is examined by our clinical team before removal to confirm it is benign. If any concern is noted, appropriate advice and onward referral is provided without delay.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <line x1="12" y1="1" x2="12" y2="23"/>
-        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-      </svg>
-    ),
-  },
-];
-
-const JOURNEY_STEPS = [
-  {
-    n: '01',
-    title: 'Consultation and Skin Assessment',
-    desc: 'Our doctor assesses your skin, understands your concerns, and creates a personalised treatment plan tailored to your unique needs and goals.',
-  },
-  {
-    n: '02',
-    title: 'Preparation',
-    desc: 'We cleanse the treatment area and may apply a topical anaesthetic cream to ensure your comfort throughout the procedure.',
-  },
-  {
-    n: '03',
-    title: 'BAP Technique Injections',
-    desc: 'Using the BAP (Bio Aesthetic Points) technique, precise injections are placed at key points on the face or neck for optimal, even distribution under the skin.',
-  },
-  {
-    n: '04',
-    title: 'Post-Treatment and Recovery',
-    desc: 'The product spreads naturally under the skin. You may experience mild redness that quickly settles, allowing you to resume your routine with minimal interruption.',
-  },
-];
-
-const BENEFITS = [
-  {
-    title: 'Deep Hydration',
-    desc: 'Ensures your skin feels plumper, softer, and consistently moisturised from the inside out.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 2C6.5 9 4 13.5 4 16a8 8 0 0 0 16 0c0-2.5-2.5-7-8-14z"/>
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
       </svg>
     ),
   },
   {
-    title: 'Enhanced Firmness',
-    desc: 'Rebuilds the skin\'s internal scaffolding, making it feel bouncier and noticeably tighter over time.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-        <polyline points="17 6 23 6 23 12"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'Minimal Downtime',
-    desc: 'A highly tolerable procedure allowing you to return to your day with virtually no recovery time needed.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-        <polyline points="22 4 12 14.01 9 11.01"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'Natural Luminosity',
-    desc: 'Breathes new life into tired skin, giving you a refreshed and brilliant glow without looking done.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="5"/>
-        <line x1="12" y1="1" x2="12" y2="3"/>
-        <line x1="12" y1="21" x2="12" y2="23"/>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-        <line x1="1" y1="12" x2="3" y2="12"/>
-        <line x1="21" y1="12" x2="23" y2="12"/>
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'Softened Fine Lines',
-    desc: 'Reduces fine lines and crepey skin while keeping your look entirely natural and rested.',
+    title: 'No Scarring',
+    desc: 'Our experienced practitioners use techniques that minimise trauma to the surrounding skin, leaving only a small mark that fades naturally within a few weeks in the majority of cases.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
@@ -164,97 +183,148 @@ const BENEFITS = [
     ),
   },
   {
-    title: 'Improved Skin Texture',
-    desc: 'Refines uneven skin, making it feel smoother, softer, and more even to the touch after each session.',
+    title: 'Permanent Removal',
+    desc: 'Once a skin tag is properly removed it will not grow back at the same site. New tags may develop elsewhere over time and can be treated at a future appointment as needed.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+        <polyline points="22 4 12 14.01 9 11.01"/>
       </svg>
     ),
   },
 ];
 
-const ELIGIBILITY = [
-  'Wanting firmer, more hydrated skin without altering your features',
-  'Looking to improve dullness or skin laxity with minimal downtime',
-  'Seeking a natural-looking result that enhances rather than changes',
-  'Wanting to complement other treatments such as anti-wrinkle injections',
-  'Looking for a clinically proven, highly purified hyaluronic acid treatment',
+const ELIGIBILITY_SUITABLE = [
+  'Adults with one or more benign skin tags confirmed by clinical assessment',
+  'Those experiencing cosmetic concern from skin tags on visible areas such as the neck or eyelids',
+  'Patients whose skin tags cause physical irritation from rubbing against clothing or jewellery',
+  'Anyone who wants quick, permanent removal without a GP referral or long wait',
 ];
 
-const TREATABLE_FACE = [
-  'Chin and Jawline',
-  'Nasolabial Folds',
-  'Smile and Laughter Lines',
-  'Lower Eyelids',
-  'Neck and Decolletage',
+const ELIGIBILITY_NOT_SUITABLE = [
+  'Lesions that appear atypical, irregular, or suspicious , these will be referred appropriately',
+  'Patients with known bleeding disorders without prior medical clearance',
+  'Immunosuppressed individuals should discuss suitability with our team before booking',
 ];
 
-const TREATABLE_BODY = [
-  'Stomach',
-  'Arms',
-  'Inner Thighs',
-  'Ankles',
-  'Knees',
-  'Buttock Area',
+const HOW_CARDS = [
+  {
+    eyebrow: '01',
+    title: 'Cryotherapy',
+    desc: 'Liquid nitrogen is applied precisely to the skin tag, freezing the tissue. The frozen cells die and the tag falls off naturally within one to two weeks. This method is ideal for smaller, superficial tags and requires no incision.',
+  },
+  {
+    eyebrow: '02',
+    title: 'Surgical Excision',
+    desc: 'The tag is numbed with a local anaesthetic and then cleanly removed using fine surgical scissors or a scalpel. This is the preferred approach for larger tags or those in sensitive locations, giving an immediate, precise result.',
+  },
+  {
+    eyebrow: '03',
+    title: 'Electrocautery',
+    desc: 'A fine probe delivers a controlled electrical current to the base of the tag, using heat to destroy the tissue and simultaneously seal the wound. This method is particularly effective for multiple smaller tags and minimises bleeding.',
+  },
+];
+
+const LESIONS_REMOVED = [
+  {
+    title: 'Moles',
+    desc: 'Benign pigmented lesions clinically assessed before removal by excision or shave biopsy.',
+  },
+  {
+    title: 'Sebaceous Cysts',
+    desc: 'Enclosed sacs of keratin beneath the skin surface, removed by surgical excision under local anaesthetic.',
+  },
+  {
+    title: 'Lipomas',
+    desc: 'Soft, fatty lumps that develop under the skin, removed surgically through a small incision.',
+  },
+  {
+    title: 'Warts & Verrucae',
+    desc: 'HPV-related growths treated by cryotherapy, electrocautery, or surgical removal depending on size and site.',
+  },
+  {
+    title: 'Dermatofibromas',
+    desc: 'Firm, benign nodules in the skin that can be excised when causing cosmetic concern or discomfort.',
+  },
+  {
+    title: 'Seborrhoeic Keratosis',
+    desc: 'Rough, waxy, non-cancerous growths removed by cryotherapy, curettage, or electrocautery.',
+  },
+  {
+    title: 'Milia',
+    desc: 'Tiny keratin-filled cysts, commonly around the eyes, removed by careful extraction or superficial excision.',
+  },
+];
+
+const CONDITIONS_BODY = [
+  'Neck',
+  'Armpits',
+  'Groin',
+  'Eyelids / periorbital area',
+  'Under breasts',
+  'Back & torso',
+];
+
+const CONDITIONS_TYPES = [
+  'Pedunculated tags',
+  'Sessile tags',
+  'Small thread-like tags',
+  'Large tags',
+  'Clustered tags',
+  'Irritated or inflamed tags',
 ];
 
 const CLINIC_REASONS = [
-  { n: '01', text: 'All-in-one clinic with medical and aesthetic services.' },
-  { n: '02', text: 'Highly trained, compassionate GMC-registered doctors.' },
-  { n: '03', text: 'Customised treatments based on listening and expertise.' },
-  { n: '04', text: 'State-of-the-art facilities and modern equipment.' },
-  { n: '05', text: 'Strong reputation and excellent patient reviews.' },
+  { n: '01', text: 'All-in-one clinic with medical & aesthetic services.' },
+  { n: '02', text: 'Highly trained, compassionate doctors.' },
+  { n: '03', text: 'Customised treatments based on listening & expertise.' },
+  { n: '04', text: 'State-of-the-art facilities & modern equipment.' },
+  { n: '05', text: 'Strong reputation & excellent reviews.' },
   { n: '06', text: 'Comprehensive care and referrals with specialists.' },
 ];
 
 const FAQS = [
   {
-    question: 'Who should consider Profhilo treatment?',
+    question: 'What are skin tags and are they harmful?',
     answer:
-      'Profhilo is ideal for men and women experiencing dull, dry, or slightly lax skin who want a natural structural improvement without changing their facial features.',
+      'Skin tags (acrochordons) are small, soft growths of skin that hang off the body, typically on the neck, armpits, groin, eyelids, or under the breasts. They are entirely benign and pose no medical risk, but many people find them cosmetically bothersome or physically irritating, particularly if they catch on clothing or jewellery.',
   },
   {
-    question: 'Is it painful?',
+    question: 'How are skin tags removed at The One Clinic?',
     answer:
-      'Most clients find it highly tolerable. The precise BAP technique requires only ten injection points, and we can use a topical anaesthetic cream to make you as comfortable as possible.',
+      'Depending on the size and location of the tag, we use cryotherapy (liquid nitrogen freezing), surgical excision under local anaesthetic, or electrocautery (heat). Your clinician will assess each tag at your appointment and recommend the most appropriate and effective method.',
   },
   {
-    question: 'How is Profhilo treatment performed?',
+    question: 'Will skin tags grow back after removal?',
     answer:
-      'Profhilo treatment requires an injection under the skin\'s surface at precisely 10 locations on the face. It is a quick process, lasting between 15 and 20 minutes.',
+      'Once a skin tag is properly removed, it will not grow back at the same site. However, new skin tags may develop elsewhere on the body over time, particularly if you are genetically predisposed to them. These can be treated at a future appointment.',
   },
   {
-    question: 'How long does it take to recover?',
+    question: 'Do I need a GP referral for skin tag removal?',
     answer:
-      'Downtime is minimal. You may notice small bumps or mild redness at the injection sites, which usually settle within 24 to 48 hours.',
+      'No referral is needed. You can book directly with The One Clinic. Our team will assess the lesion at your appointment, confirm it is a benign skin tag, and carry out removal in the same visit where appropriate.',
   },
   {
-    question: 'How long do the results last?',
+    question: 'Is skin tag removal painful?',
     answer:
-      'A complete treatment with two sessions will produce luminous results that typically last for about six months.',
+      'Most patients experience minimal discomfort. Local anaesthetic or topical numbing is used where necessary. Cryotherapy may cause a brief cold sting, while excision is performed under local anaesthetic so the area is numb throughout.',
   },
   {
-    question: 'Are there any risks?',
+    question: 'How long does healing take after skin tag removal?',
     answer:
-      'As this procedure uses highly purified hyaluronic acid, it is extremely safe. The only side effects that can be observed temporarily are redness, swelling, or bruising.',
-  },
-  {
-    question: 'Do I need follow-ups?',
-    answer:
-      'Yes, to achieve the best outcome, you should have a second session four weeks after the first. A top-up maintenance session is usually recommended every six months thereafter.',
+      'Most treated sites heal within one to two weeks. A small mark may remain initially but fades naturally. Keeping the area clean and dry and avoiding picking at the site helps ensure the best healing outcome.',
   },
 ];
 
 const RELATED = [
-  { title: 'Dermal Fillers',              href: '/treatments/dermal-filler-leicester',    desc: 'Restore volume and structure to the face with precision filler.' },
-  { title: 'Wrinkle Relaxing Injections', href: '/treatments/wrinkle-relaxing-injections', desc: 'Smooth dynamic lines naturally for a rested, refreshed appearance.' },
-  { title: 'HydraFacial',                 href: '/treatments/hydrafacial',       desc: 'Multi-step facial for instant hydration and glow with zero downtime.' },
-  { title: 'Morpheus8',                   href: '/treatments/morpheus8',         desc: 'Advanced RF microneedling for skin tightening and collagen renewal.' },
+  { title: 'Skin Lesion Removal',  href: '/treatments/skin-lesion-removal',   desc: 'Expert clinical removal of a wide range of benign skin lesions.' },
+  { title: 'Mole Removal',         href: '/treatments/mole-removal',           desc: 'Safe, precise mole assessment and removal by our medical team.' },
+  { title: 'Wart Removal',         href: '/treatments/wart-removal',           desc: 'Effective removal of warts and verrucae using cryotherapy and more.' },
+  { title: 'Minor Surgery',        href: '/treatments/minor-surgery-leicester',          desc: 'Minor surgical procedures carried out by our experienced doctors.' },
 ];
 
 /* ── Page component ───────────────────────────────────────────── */
-export default function ProfhiloPage() {
+export default function SkinTagsRemovalPage() {
   const [showAllFaqs, setShowAllFaqs] = useState(false);
 
   return (
@@ -264,16 +334,17 @@ export default function ProfhiloPage() {
       ════════════════════════════════════════ */}
       <section
         className={styles.hero}
-        aria-label="Profhilo Leicester, hero"
+        aria-label="Skin Tags Removal Leicester, hero"
         data-section-theme="dark"
       >
+        {/* Breadcrumb, pinned to top of hero */}
         <div className={styles.heroBreadcrumb}>
           <Container>
             <Breadcrumb
               theme="dark"
               items={[
                 { label: 'Treatments', href: '/treatments' },
-                { label: 'Profhilo' },
+                { label: 'Skin Tags Removal Leicester' },
               ]}
             />
           </Container>
@@ -286,40 +357,41 @@ export default function ProfhiloPage() {
             initial="hidden"
             animate="show"
           >
+            {/* Left: text */}
             <div className={styles.heroLeft}>
               <motion.span className={styles.heroCategory} variants={fadeUp}>
-                Medical Aesthetics
+                Minor Surgery
               </motion.span>
 
               <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                Profhilo<br />in Leicester
+                Skin Tags Removal Leicester
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Experience visibly healthier, more radiant skin with expert Profhilo treatments.
-                Deep hydration and bio-remodelling for a natural, luminous glow without altering
-                your features.
+                Fast, safe &amp; permanent removal of skin tags by our expert medical team,
+                with minimal discomfort and immediate results.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
                 <BookConsultationButton className={styles.heroCtaPrimary}>
-                  Book Consultation
+                  Book Appointment
                 </BookConsultationButton>
               </motion.div>
 
+              {/* Review badges */}
               <motion.div variants={fadeUp}>
                 <TrustBadges theme="dark" />
               </motion.div>
 
+              {/* Trust items */}
               <motion.div className={styles.heroTrust} variants={fadeUp}>
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                    <circle cx="9" cy="7" r="4"/>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+                    <path d="M4.5 20.118a7.5 7.5 0 0115 0"/>
+                    <path d="M18.5 15v5M16 17.5h5"/>
                   </svg>
-                  Led by GMC-registered doctors
+                  Led by highly trained doctors
                 </span>
                 <span className={styles.heroTrustDivider} aria-hidden="true" />
                 <span className={styles.heroTrustItem}>
@@ -331,25 +403,25 @@ export default function ProfhiloPage() {
                 <span className={styles.heroTrustDivider} aria-hidden="true" />
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                    <line x1="16" y1="2" x2="16" y2="6"/>
-                    <line x1="8" y1="2" x2="8" y2="6"/>
-                    <line x1="3" y1="10" x2="21" y2="10"/>
+                    <circle cx="12" cy="12" r="9.5"/>
+                    <path d="M12 7.5v9M7.5 12h9"/>
                   </svg>
-                  Minimal downtime
+                  Comprehensive medical &amp; aesthetic care
                 </span>
               </motion.div>
             </div>
 
+            {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Profhilo (2).jpg"
-                alt="Profhilo treatment at The One Clinic Leicester"
+                src="/images/Hero Section Skin Tag Removal.jpg"
+                alt="Skin tags removal treatment in progress at The One Clinic"
                 fill
                 priority
                 className={styles.heroImage}
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
+              {/* Subtle bottom-fade to blend with section */}
               <div className={styles.heroImageFade} aria-hidden="true" />
             </motion.div>
           </motion.div>
@@ -357,7 +429,7 @@ export default function ProfhiloPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          2. WHAT IS PROFHILO?
+          2. WHAT ARE SKIN TAGS?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
@@ -368,19 +440,24 @@ export default function ProfhiloPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
+            {/* Left: text */}
             <motion.div className={styles.whatIsContent} variants={stagger(0.12)}>
               <motion.div className={styles.whatIsTextGroup} variants={fadeUp}>
                 <p className={styles.eyebrowDark}>About This Treatment</p>
-                <h2 className={styles.combinedHeading}>What is Profhilo?</h2>
+                <h2 className={styles.combinedHeading}>What are Skin Tags?</h2>
                 <p className={styles.combinedDesc}>
-                  Profhilo is an innovative injectable skin treatment formulated with one of the
-                  highest concentrations of ultra-pure hyaluronic acid available. Rather than adding
-                  volume like a traditional dermal filler, it works as a bio-remodelling agent,
-                  treating dull, dry, and ageing skin through intense deep hydration and naturally
-                  stimulating collagen and elastin production from within.
+                  Skin tags (acrochordons) are small, benign soft growths that hang off the skin
+                  on a thin stalk. They most commonly appear on the neck, armpits, groin, eyelids,
+                  and under the breasts , anywhere skin rubs against skin or clothing. They are
+                  entirely harmless, but many people find them cosmetically bothersome or
+                  physically irritating when they catch on jewellery or clothing.
+                </p>
+                <p className={styles.combinedDesc}>
+                  At The One Clinic, our medical team assesses every lesion before proceeding and
+                  selects the most appropriate removal method , cryotherapy, surgical excision, or
+                  electrocautery , to achieve a clean result with minimal discomfort and downtime.
                 </p>
               </motion.div>
-
               <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
                 <BookConsultationButton className={styles.combinedCta}>
                   Book Your Consultation
@@ -388,12 +465,13 @@ export default function ProfhiloPage() {
               </motion.div>
             </motion.div>
 
-            <motion.div className={styles.whatIsImageWrap} variants={fadeUp}>
+            {/* Right: image */}
+            <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
-                alt="Profhilo consultation at The One Clinic"
+                src="/images/What is Skin Tag Removal.jpg"
+                alt="Doctor reviewing skin tag at The One Clinic Leicester"
                 fill
-                className={styles.whatIsImage}
+                className={styles.whatIsVideoFrame}
                 sizes="(max-width: 900px) 100vw, 50vw"
               />
             </motion.div>
@@ -418,7 +496,7 @@ export default function ProfhiloPage() {
           >
             <motion.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Profhilo at a Glance
+              Skin Tags Removal at a Glance
             </motion.h2>
           </motion.div>
 
@@ -441,7 +519,70 @@ export default function ProfhiloPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          4. TREATMENT JOURNEY
+          4. OUR APPROACH
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Our Approach
+            </motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Our Skin Tag Removal Approach
+            </motion.h2>
+            <motion.p className={styles.combinationIntroText} variants={fadeUp}>
+              At The One Clinic, every skin tag removal begins with a proper clinical assessment.
+              We select the most appropriate technique for your skin type, tag location, and
+              personal preference , then guide you through healing with clear aftercare support.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.techCardsGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {APPROACH_CARDS.map((card) => (
+              <motion.div
+                key={card.title}
+                className={styles.techCard}
+                variants={fadeUp}
+                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
+              >
+                <span className={styles.techCardEyebrow}>{card.eyebrow}</span>
+                <h3 className={styles.techCardTitle}>{card.title}</h3>
+                <p className={styles.techCardDesc}>{card.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            className={styles.finalResultsBanner}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <p className={styles.finalResultsEyebrow}>The Outcome</p>
+            <p className={styles.finalResultsText}>
+              Our structured approach , assess, select the right technique, then support your
+              healing , means you leave the clinic with clear skin and the confidence that each
+              tag has been permanently removed by a trained medical professional.
+            </p>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          5. TREATMENT JOURNEY
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.journeySection}>
         <Container>
@@ -452,8 +593,12 @@ export default function ProfhiloPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>What to Expect</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>Your Treatment Journey</motion.h2>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              What to Expect
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Your Treatment Journey
+            </motion.h2>
           </motion.div>
 
           <motion.ol
@@ -462,7 +607,7 @@ export default function ProfhiloPage() {
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
-            aria-label="Profhilo treatment journey steps"
+            aria-label="Skin tags removal treatment journey steps"
           >
             {JOURNEY_STEPS.map((step) => (
               <motion.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
@@ -481,7 +626,7 @@ export default function ProfhiloPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          5. BENEFITS
+          6. BENEFITS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
         <div className={styles.whiteBgWrap} aria-hidden="true">
@@ -495,9 +640,8 @@ export default function ProfhiloPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Why Choose This Treatment</motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              The Benefits of Profhilo
+              Skin Tags Removal Benefits
             </motion.h2>
           </motion.div>
 
@@ -508,14 +652,16 @@ export default function ProfhiloPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {BENEFITS.map((b) => (
+            {TREATED_BENEFITS.map((b) => (
               <motion.div
                 key={b.title}
                 className={styles.treatedBenefitCard}
                 variants={fadeUp}
                 whileHover={{ y: -8, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
               >
-                <span className={styles.treatedBenefitIconWrap} aria-hidden="true">{b.icon}</span>
+                <span className={styles.treatedBenefitIconWrap} aria-hidden="true">
+                  {b.icon}
+                </span>
                 <h3 className={styles.treatedBenefitTitle}>{b.title}</h3>
                 <p className={styles.treatedBenefitDesc}>{b.desc}</p>
               </motion.div>
@@ -525,7 +671,7 @@ export default function ProfhiloPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          6. ELIGIBILITY
+          7. WHO IS ELIGIBLE?
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -536,9 +682,11 @@ export default function ProfhiloPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Is This Right for You?</motion.p>
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Is This Right for You?
+            </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Who Is a Good Candidate?
+              Who is Suitable for Skin Tag Removal?
             </motion.h2>
           </motion.div>
 
@@ -550,10 +698,10 @@ export default function ProfhiloPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
-              Profhilo may be right for you if you are:
+              Skin tag removal is suitable for:
             </motion.p>
             <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
-              {ELIGIBILITY.map((item) => (
+              {ELIGIBILITY_SUITABLE.map((item) => (
                 <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
                   <span className={styles.eligibilityCheck} aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -564,8 +712,26 @@ export default function ProfhiloPage() {
                 </motion.li>
               ))}
             </motion.ul>
+
+            <motion.p className={styles.eligibilityIntro} variants={fadeUp} style={{ marginTop: '2rem' }}>
+              Treatment may not be suitable if:
+            </motion.p>
+            <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
+              {ELIGIBILITY_NOT_SUITABLE.map((item) => (
+                <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
+                  <span className={styles.eligibilityCheck} aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <line x1="3" y1="3" x2="11" y2="11" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
+                      <line x1="11" y1="3" x2="3" y2="11" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+
             <motion.p className={styles.eligibilityClosing} variants={fadeUp}>
-              Book a consultation and our team will guide you on whether Profhilo is the right choice for your skin.
+              Not sure if you are suitable? Book a consultation and our clinical team will advise you in person.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
@@ -577,7 +743,76 @@ export default function ProfhiloPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          7. RESULTS, AFTERCARE & SIDE EFFECTS
+          8. HOW IT WORKS , THE SCIENCE
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.howSection}>
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              How Does Skin Tag Removal Work?
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.howTextGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.howPara} variants={fadeUp}>
+              The removal method is chosen based on the size, location, and characteristics of each
+              tag, as well as patient preference. Cryotherapy uses liquid nitrogen to freeze the tag
+              tissue, causing it to die and fall away naturally. Surgical excision involves numbing
+              the area with a local anaesthetic and cleanly cutting the tag away at its base.
+            </motion.p>
+            <motion.p className={styles.howPara} variants={fadeUp}>
+              Electrocautery uses a controlled electrical current to generate heat that destroys
+              the tag tissue and seals the wound simultaneously, which is particularly effective
+              for multiple smaller tags. All methods leave only a small mark that fades
+              progressively over the following weeks.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.howCoversWrap}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.howCoversLabel} variants={fadeUp}>Methods We Use</motion.p>
+            <motion.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
+              {[
+                'Cryotherapy (liquid nitrogen)',
+                'Surgical excision under local anaesthetic',
+                'Electrocautery (heat-based removal)',
+                'Method chosen by tag size & location',
+                'Patient preference always considered',
+                'Multiple tags treated in one session',
+              ].map((item) => (
+                <motion.li key={item} className={styles.howCoversItem} variants={fadeUp}>
+                  <span className={styles.howCoversCheck} aria-hidden="true">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <polyline points="2,6 5,9 10,3" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  {item}
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          9. RESULTS, AFTERCARE & SIDE EFFECTS
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -588,9 +823,11 @@ export default function ProfhiloPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Post-Treatment</motion.p>
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Post-Treatment
+            </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Results, Aftercare and Side Effects
+              Results, Aftercare &amp; Side Effects
             </motion.h2>
           </motion.div>
 
@@ -601,6 +838,7 @@ export default function ProfhiloPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
+            {/* Card 1: Results Timeline */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -609,20 +847,22 @@ export default function ProfhiloPage() {
                     <polyline points="17 6 23 6 23 12"/>
                   </svg>
                 </span>
-                <h3 className={styles.resultsAfterCardTitle}>When Will You See Results?</h3>
+                <h3 className={styles.resultsAfterCardTitle}>What to Expect</h3>
               </div>
               <p className={styles.resultsAfterCardBody}>
-                Most patients notice initial improvements in hydration and plumpness within a couple
-                of weeks of their first session. The full bio-remodelling benefits become
-                significantly more pronounced after completing the second session.
+                For surgical excision, the tag is removed immediately and completely. With
+                cryotherapy, the tag typically falls off within one to two weeks. Electrocautery
+                delivers an immediate result similar to excision.
               </p>
               <div className={styles.resultsAfterCardSpacer} />
               <p className={styles.resultsAfterCardNote}>
-                Results from a complete two-session course typically last for approximately six
-                months, after which a single maintenance session is advised to sustain outcomes.
+                A small mark remains at the site but fades naturally over several weeks.
+                Healing is typically complete within one to two weeks, depending on tag
+                size and location.
               </p>
             </motion.div>
 
+            {/* Card 2: Side Effects */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -634,12 +874,15 @@ export default function ProfhiloPage() {
                 </span>
                 <h3 className={styles.resultsAfterCardTitle}>Side Effects</h3>
               </div>
+              <p className={styles.resultsAfterCardBody}>
+                Skin tag removal is a minor procedure with a very low risk of complications.
+                Most patients experience only:
+              </p>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Redness at the injection site',
-                  'Small temporary bumps that naturally settle',
-                  'Occasional slight bruising',
-                  'Mild itching or irritation',
+                  'Mild redness or soreness at the treated site',
+                  'Small blister or scab with cryotherapy',
+                  'Minor swelling that settles within a day or two',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
                     <span className={styles.resultsAfterDot} aria-hidden="true" />
@@ -649,10 +892,13 @@ export default function ProfhiloPage() {
               </ul>
               <div className={styles.resultsAfterCardSpacer} />
               <p className={styles.resultsAfterCardNote}>
-                All side effects are mild and temporary, resolving within 24 to 48 hours.
+                Serious complications are rare when the procedure is performed by a
+                trained clinician. Any concerns following treatment can be raised with
+                our team directly.
               </p>
             </motion.div>
 
+            {/* Card 3: Aftercare */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -665,11 +911,10 @@ export default function ProfhiloPage() {
               </div>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Keep the treated area clean and avoid touching your face unnecessarily',
-                  'Avoid strenuous exercise and saunas for at least 24 hours',
-                  'Do not apply makeup for at least 12 hours post-treatment',
-                  'Book your second session 4 weeks after the first for maximum collagen stimulation',
-                  'Follow up with a maintenance session every 6 months',
+                  'Keep the area clean and dry for the first 48 hours',
+                  'Avoid picking at any scab or blister that forms',
+                  'Do not apply make-up or perfumed products directly to the site',
+                  'Follow any specific aftercare instructions provided at your appointment',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
                     <span className={styles.resultsAfterDot} aria-hidden="true" />
@@ -683,16 +928,72 @@ export default function ProfhiloPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. PATIENT REVIEWS
+          10. OTHER LESIONS WE REMOVE (replaces B&A)
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
+        <div className={styles.whiteBgWrap} aria-hidden="true">
+          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
+        </div>
+        <Container className={styles.whiteBgContent}>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Minor Surgery
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Other Lesions We Remove
+            </motion.h2>
+            <motion.p className={styles.beforeAfterSubheading} variants={fadeUp}>
+              In addition to skin tags, our clinical team is experienced in the assessment
+              and removal of a wide range of benign skin lesions.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.relatedGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {LESIONS_REMOVED.map((lesion) => (
+              <motion.div
+                key={lesion.title}
+                className={styles.relatedCard}
+                variants={fadeUp}
+                whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
+              >
+                <h3 className={styles.relatedTitle}>{lesion.title}</h3>
+                <p className={styles.relatedDesc}>{lesion.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          11. PATIENT REVIEWS
       ════════════════════════════════════════ */}
       <Testimonials />
 
       {/* ════════════════════════════════════════
-          9. CTA BANNER
+          12. CTA BANNER
       ════════════════════════════════════════ */}
-      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book Profhilo consultation">
+      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book skin tags removal consultation">
+        {/* Watermark logo */}
         <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
-          <Image src="/images/Background-logo.png" alt="" fill className={styles.ctaBannerLogo} sizes="100vw" />
+          <Image
+            src="/images/Background-logo.png"
+            alt=""
+            fill
+            className={styles.ctaBannerLogo}
+            sizes="100vw"
+          />
         </div>
         <Container>
           <motion.div
@@ -703,20 +1004,22 @@ export default function ProfhiloPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
-              Uncover Your Natural<br />Beauty and Radiance.
+              Clear Skin Starts Here.
             </motion.h2>
             <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
-              Give your skin the deep hydration and structural renewal it deserves.
+              Let our expert medical team remove your skin tags quickly and permanently.
             </motion.p>
             <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBannerBtn}>Book Consultation</BookConsultationButton>
+              <BookConsultationButton className={styles.ctaBannerBtn}>
+                Book Consultation
+              </BookConsultationButton>
             </motion.div>
           </motion.div>
         </Container>
       </section>
 
       {/* ════════════════════════════════════════
-          10. TREATABLE AREAS
+          13. TREATMENT LOCATIONS
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark" className={styles.conditionsSection}>
         <Container>
@@ -727,13 +1030,15 @@ export default function ProfhiloPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Treatable Areas</motion.p>
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Treatment Locations
+            </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              What Areas Can Be Treated With Profhilo?
+              Where Can Skin Tags Be Removed?
             </motion.h2>
             <motion.p className={styles.conditionsIntro} variants={fadeUp}>
-              Profhilo is suitable for treating a range of face and body areas, delivering
-              deep hydration and bio-remodelling results across the skin.
+              Our team treats skin tags across a wide range of body areas and handles all
+              common tag types, from small thread-like growths to larger or clustered tags.
             </motion.p>
           </motion.div>
 
@@ -749,12 +1054,12 @@ export default function ProfhiloPage() {
               variants={fadeUp}
               whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
             >
-              <p className={styles.areasGroupLabel}>Face and Neck</p>
+              <p className={styles.areasGroupLabel}>Body Areas</p>
               <ul className={styles.areasGroupList} role="list">
-                {TREATABLE_FACE.map((item) => (
-                  <li key={item} className={styles.areasGroupItem}>
+                {CONDITIONS_BODY.map((area) => (
+                  <li key={area} className={styles.areasGroupItem}>
                     <span className={styles.areasItemDot} aria-hidden="true" />
-                    {item}
+                    {area}
                   </li>
                 ))}
               </ul>
@@ -765,12 +1070,12 @@ export default function ProfhiloPage() {
               variants={fadeUp}
               whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
             >
-              <p className={styles.areasGroupLabel}>Body</p>
+              <p className={styles.areasGroupLabel}>Skin Tag Types</p>
               <ul className={styles.areasGroupList} role="list">
-                {TREATABLE_BODY.map((item) => (
-                  <li key={item} className={styles.areasGroupItem}>
+                {CONDITIONS_TYPES.map((type) => (
+                  <li key={type} className={styles.areasGroupItem}>
                     <span className={styles.areasItemDot} aria-hidden="true" />
-                    {item}
+                    {type}
                   </li>
                 ))}
               </ul>
@@ -780,7 +1085,7 @@ export default function ProfhiloPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          11. CLINIC INTRO
+          14. BEST LEICESTER EXPERIENCE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.clinicIntroSection}>
         <Container>
@@ -792,25 +1097,26 @@ export default function ProfhiloPage() {
             viewport={VIEWPORT}
           >
             <motion.div className={styles.clinicIntroLeft} variants={fadeUp}>
-              <p className={styles.eyebrowLight}>Profhilo Treatment</p>
-              <h2 className={styles.headingLight}>
-                Best Profhilo<br />in Leicester
+              <p className={styles.eyebrowDark}>Skin Tag Removal</p>
+              <h2 className={styles.combinedHeading}>
+                Best Skin Tag Removal<br />Leicester Experience
               </h2>
             </motion.div>
             <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
-              The One Clinic provides the best Profhilo experience in Leicester, offering
-              modern equipment in a relaxing, luxurious environment. Our highly trained,
-              caring doctors apply their extensive knowledge and expertise to recommend
-              tailored aesthetic solutions, ensuring you achieve natural, confidence-boosting results.
+              Experience safe, effective skin tag removal in Leicester at The One Clinic. Our
+              experienced medical doctors perform every procedure with clinical precision,
+              ensuring thorough assessment, the right technique for your skin, and clear
+              aftercare guidance. Enjoy clear, smooth skin with minimal downtime and care
+              tailored specifically to you.
             </motion.p>
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          12. COST BANNER
+          15. COST BANNER
       ════════════════════════════════════════ */}
-      <section className={styles.costBanner} data-section-theme="dark" aria-label="Profhilo cost">
+      <section className={styles.costBanner} data-section-theme="dark" aria-label="Skin tags removal cost">
         <Container>
           <motion.div
             className={styles.costBannerInner}
@@ -819,20 +1125,27 @@ export default function ProfhiloPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>Profhilo Pricing at The One Clinic</motion.p>
-            <motion.p className={styles.costBannerPrice} variants={fadeUp}>From £200</motion.p>
+            <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
+              Skin Tags Removal Cost at The One Clinic
+            </motion.p>
+            <motion.p className={styles.costBannerPrice} variants={fadeUp}>
+              Skin Tag Removal From £95
+            </motion.p>
             <motion.p className={styles.costBannerNote} variants={fadeUp}>
-              Pricing varies by treatment area and number of sessions. Full details provided at your consultation.
+              The final price depends on the number and size of tags being treated and will be
+              confirmed during your consultation with our clinical team.
             </motion.p>
             <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBannerBtn}>Book A Consultation</BookConsultationButton>
+              <BookConsultationButton className={styles.ctaBannerBtn}>
+                Book A Consultation
+              </BookConsultationButton>
             </motion.div>
           </motion.div>
         </Container>
       </section>
 
       {/* ════════════════════════════════════════
-          13. WHY CHOOSE THE ONE CLINIC
+          16. WHY CHOOSE THE ONE CLINIC
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -844,7 +1157,7 @@ export default function ProfhiloPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Why Choose The One Clinic For Profhilo
+              Why Choose The One Clinic For Skin Tags Removal
             </motion.h2>
           </motion.div>
 
@@ -871,14 +1184,14 @@ export default function ProfhiloPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          14. MEET THE EXPERTS
+          17. MEET THE EXPERTS
       ════════════════════════════════════════ */}
       <MeetTheExperts />
 
       {/* ════════════════════════════════════════
-          15. FAQ
+          18. FAQ
       ════════════════════════════════════════ */}
-      <section className={styles.faqSection} data-section-theme="light">
+      <section className={styles.faqSection} data-section-theme="dark">
         <div className={styles.faqInner}>
           <Container>
             <motion.div
@@ -934,12 +1247,12 @@ export default function ProfhiloPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          16. BOOKING FORM
+          19. BOOKING FORM
       ════════════════════════════════════════ */}
       <LeadForm />
 
       {/* ════════════════════════════════════════
-          17. RELATED TREATMENTS
+          20. RELATED TREATMENTS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
@@ -950,8 +1263,12 @@ export default function ProfhiloPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Explore More</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>Related Treatments</motion.h2>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Explore More
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Related Treatments
+            </motion.h2>
           </motion.div>
 
           <motion.div
@@ -981,7 +1298,7 @@ export default function ProfhiloPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          18. FINAL CTA
+          FINAL CTA
       ════════════════════════════════════════ */}
       <FinalCTA />
     </>

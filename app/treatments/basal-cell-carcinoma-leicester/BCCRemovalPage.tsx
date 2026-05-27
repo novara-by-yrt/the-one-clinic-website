@@ -1,9 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Script from 'next/script';
 import { motion } from 'framer-motion';
 import Section            from '@/components/ui/Section';
 import Container          from '@/components/ui/Container';
@@ -21,8 +20,8 @@ import styles from './page.module.css';
 /* ── Static data ──────────────────────────────────────────────── */
 const AT_A_GLANCE = [
   {
-    label: 'Session Time',
-    value: '30 to 45 minutes',
+    label: 'Procedure Time',
+    value: '30 to 60 minutes',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -31,18 +30,30 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Application Method',
-    value: 'Topical or Microneedling',
+    label: 'Anaesthetic',
+    value: 'Local anaesthetic',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="1 4 1 10 7 10"/>
-        <path d="M3.51 15a9 9 0 1 0 .49-3.1"/>
+        <path d="M19 14l-7 7-7-7"/>
+        <path d="M12 3v18"/>
       </svg>
     ),
   },
   {
-    label: 'Downtime',
-    value: 'None to Minimal',
+    label: 'Histology',
+    value: 'Sent for analysis',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        <line x1="11" y1="8" x2="11" y2="14"/>
+        <line x1="8" y1="11" x2="14" y2="11"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Recovery',
+    value: '5 to 14 days',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
@@ -51,28 +62,19 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Results Onset',
-    value: '1 to 2 weeks',
+    label: 'Stitches',
+    value: 'Removed at 7 to 14 days',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-        <polyline points="17 6 23 6 23 12"/>
+        <path d="M3 12h18"/>
+        <path d="M6 9l-3 3 3 3"/>
+        <path d="M18 9l3 3-3 3"/>
       </svg>
     ),
   },
   {
-    label: 'Full Results',
-    value: '8 to 12 weeks',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <line x1="12" y1="1" x2="12" y2="23"/>
-        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-      </svg>
-    ),
-  },
-  {
-    label: 'Treatment Cost',
-    value: 'From £400',
+    label: 'Cost',
+    value: 'From £350',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <line x1="12" y1="1" x2="12" y2="23"/>
@@ -85,48 +87,57 @@ const AT_A_GLANCE = [
 const JOURNEY_STEPS = [
   {
     n: '01',
-    title: 'Skin Assessment',
-    desc: 'A thorough evaluation of your skin concerns, goals, and skin type. Your practitioner determines whether exosome therapy alone or combined with another procedure is best suited to your needs.',
+    title: 'Initial Consultation & Assessment',
+    desc: 'A thorough dermatological assessment of your lesion, including a review of your skin history, sun exposure, and any prior biopsy results, so your doctor can confirm diagnosis and plan the most appropriate excision.',
   },
   {
     n: '02',
-    title: 'Treatment Preparation',
-    desc: 'The treatment area is gently cleansed. If microneedling is used, a topical numbing agent is applied. Otherwise, the skin is prepped for topical application of exosomes.',
+    title: 'Surgical Excision',
+    desc: 'Under local anaesthetic, the BCC is removed with a defined margin of healthy tissue to ensure complete clearance. The wound is closed in layers using fine sutures, with meticulous attention to cosmetic outcome.',
   },
   {
     n: '03',
-    title: 'Exosome Application',
-    desc: 'Exosomes are applied directly to the skin or delivered via microneedling channels. The nano-vesicles penetrate deeply, targeting skin cells to stimulate regeneration and collagen production.',
+    title: 'Histology & Wound Care',
+    desc: 'All excised tissue is sent for histological analysis to confirm complete removal. You will receive clear written wound-care instructions, dressings, and direct access to our team for any concerns during healing.',
   },
   {
     n: '04',
-    title: 'Progressive Regeneration',
-    desc: 'Over the following weeks and months, cellular repair accelerates. Visible improvements in texture, tone, and elasticity develop progressively, with optimal results at 8 to 12 weeks.',
+    title: 'Follow-Up Review',
+    desc: 'Sutures are removed between 7 and 14 days, with a follow-up review to discuss histology results, assess healing, and provide guidance on scar care and ongoing skin surveillance.',
   },
 ];
 
-const APPROACH_STEPS = [
+const TECH_CARDS = [
   {
     eyebrow: '01',
-    title: 'Skin Assessment',
-    desc: 'Thorough evaluation of skin concerns, ageing signs, and treatment goals. Your practitioner creates a customised protocol suited to your skin.',
+    title: 'Assessment & Diagnosis',
+    desc: 'A comprehensive clinical examination and dermoscopy by our GMC-registered doctors confirms the presence of a basal cell carcinoma and rules out other lesions. Where indicated, a diagnostic biopsy is arranged before definitive surgery.',
   },
   {
     eyebrow: '02',
-    title: 'Exosome Application',
-    desc: 'Exosomes are delivered topically or via microneedling to penetrate deeply and trigger cellular repair, collagen stimulation, and skin renewal.',
+    title: 'Surgical Excision',
+    desc: 'Precise surgical excision is performed under local anaesthetic with an appropriate margin of healthy tissue around the tumour. Layered closure techniques are used to minimise tension, optimise healing, and produce the finest possible scar.',
   },
   {
     eyebrow: '03',
-    title: 'Post-Treatment Optimisation',
-    desc: 'Guidance on skincare, sun protection, and maintenance to maximise results. Optional follow-up treatments or combination therapies recommended based on your response.',
+    title: 'Histology & Follow-Up',
+    desc: 'Every excised specimen is sent for independent histopathological analysis to confirm complete removal. A structured follow-up review covers your results, suture removal, scar care, and a plan for ongoing skin surveillance.',
   },
 ];
 
-const BENEFITS = [
+const ELIGIBILITY = [
+  'Noticed a suspicious lesion, pearly bump, or non-healing sore on sun-exposed skin',
+  'Had a biopsy confirming a basal cell carcinoma that now requires removal',
+  'Concerned about a recurrence of a previously treated BCC or other skin lesion',
+  'Have significant sun-damaged skin or a personal history of non-melanoma skin cancer',
+  'Have a strong family history of skin cancer and prefer prompt private assessment',
+  'Want to avoid lengthy NHS waiting lists for skin cancer removal and follow-up',
+];
+
+const TREATED_BENEFITS = [
   {
-    title: 'Next-Generation Regeneration',
-    desc: 'Exosomes are nano-sized biological messengers that deliver growth factors and signalling proteins directly into skin cells, triggering repair and renewal at a cellular level beyond conventional treatments.',
+    title: 'Prompt Treatment',
+    desc: 'Avoid lengthy NHS waiting lists with prompt private appointments. Early removal of BCC reduces local tissue damage and the risk of recurrence.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -135,17 +146,38 @@ const BENEFITS = [
     ),
   },
   {
-    title: 'Powerful Collagen Stimulation',
-    desc: 'Exosome therapy delivers a concentrated payload of growth factors to the dermis, stimulating significantly more collagen and elastin production than conventional biostimulatory treatments.',
+    title: 'GMC-Registered Surgeons',
+    desc: 'Procedures are performed by experienced GMC-registered doctors with advanced skills in minor surgery, dermoscopy, and skin cancer management.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <path d="M9 12l2 2 4-4"/>
       </svg>
     ),
   },
   {
-    title: 'Accelerates Treatment Recovery',
-    desc: 'Applied after procedures such as Morpheus8, laser resurfacing, or microneedling, exosomes dramatically accelerate skin healing, reducing downtime and enhancing the final result.',
+    title: 'Minimal Scarring',
+    desc: 'Careful planning, fine layered closure, and meticulous suturing produce the best possible cosmetic outcome and a discreet, gradually fading scar.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+        <circle cx="12" cy="12" r="3"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Histology Confirmation',
+    desc: 'All excised tissue is sent for independent histopathological analysis to confirm complete removal and verify diagnosis, giving you full peace of mind.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Local Anaesthetic',
+    desc: 'Performed under local anaesthetic in our comfortable Leicester clinic, avoiding general anaesthesia, hospital stays, and prolonged recovery.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
@@ -154,8 +186,8 @@ const BENEFITS = [
     ),
   },
   {
-    title: 'Expert-Led Treatment',
-    desc: 'Exosome therapy at The One Clinic is administered by our experienced medical team. A full consultation is carried out to determine the most effective protocol for your skin goals.',
+    title: 'Same-Clinic Follow-Up',
+    desc: 'Suture removal, histology results, wound checks, and scar care all happen with the same trusted team who performed your surgery, ensuring continuity of care.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -165,175 +197,169 @@ const BENEFITS = [
       </svg>
     ),
   },
+];
+
+const CONDITIONS_FACE = [
+  'Nose',
+  'Forehead',
+  'Cheeks',
+  'Ears',
+  'Eyelids',
+  'Lips',
+];
+
+const CONDITIONS_BODY = [
+  'Chest',
+  'Back',
+  'Shoulders',
+  'Arms',
+  'Legs',
+  'Scalp',
+];
+
+const CLINIC_REASONS = [
+  { n: '01', text: 'GMC-registered doctors with extensive minor surgery and skin cancer experience.' },
+  { n: '02', text: 'Prompt private appointments with no GP referral required.' },
+  { n: '03', text: 'Independent histology on every excision for complete diagnostic certainty.' },
+  { n: '04', text: 'Layered closure techniques designed for the best possible cosmetic outcome.' },
+  { n: '05', text: 'Continuity of care, with surgery, suture removal, and follow-up all in one clinic.' },
+  { n: '06', text: 'Trusted Leicester clinic with strong reviews and a calm, modern environment.' },
+];
+
+const OTHER_LESIONS = [
   {
-    title: 'Visible Skin Renewal',
-    desc: 'Progressive improvements in fine lines, wrinkles, skin texture, and radiance. Results improve over weeks and months as collagen remodelling and cellular regeneration progress.',
+    title: 'Basal Cell Carcinoma (BCC)',
+    desc: 'Surgical excision of the most common non-melanoma skin cancer, with histological confirmation of complete removal.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-        <polyline points="17 6 23 6 23 12"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'Long-Lasting Rejuvenation',
-    desc: 'Results continue to improve over months as new collagen matures. Maintenance treatments keep skin looking fresh, radiant, and youthful for sustained rejuvenation.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+        <circle cx="12" cy="12" r="9"/>
         <circle cx="12" cy="12" r="3"/>
       </svg>
     ),
   },
-];
-
-const ELIGIBILITY_YES = [
-  'Anyone seeking advanced skin regeneration and renewal',
-  'Ageing skin concerns, fine lines, wrinkles, and loss of elasticity',
-  'Post-procedure healing acceleration after laser, Morpheus8, or microneedling',
-  'Collagen loss and skin texture concerns',
-  'Dull complexion and sun-damaged skin',
-];
-
-const ELIGIBILITY_NO = [
-  'Active skin infections or inflammation',
-  'Open wounds (must wait until fully healed)',
-  'Severe autoimmune diseases (consult your doctor)',
-  'Known allergy to exosome components',
-];
-
-const TREATMENT_APPLICATIONS = [
   {
-    title: 'Skin Rejuvenation',
-    desc: 'Standalone exosome therapy to stimulate collagen, improve texture, and restore radiance for a comprehensive skin renewal treatment.',
+    title: 'Squamous Cell Carcinoma (SCC)',
+    desc: 'Prompt assessment and surgical removal of SCC lesions, with histology to confirm clear margins and inform follow-up surveillance.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    ),
   },
   {
-    title: 'Post-Procedure Healing Boost',
-    desc: 'Applied immediately after Morpheus8, laser resurfacing, or microneedling to accelerate healing and enhance final results.',
+    title: 'Moles',
+    desc: 'Removal of suspicious, changing, or cosmetically concerning moles, with all specimens sent for routine histology where clinically appropriate.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <circle cx="12" cy="12" r="4" fill="currentColor"/>
+      </svg>
+    ),
   },
   {
-    title: 'Anti-Ageing Treatment',
-    desc: 'Targets fine lines, wrinkles, and loss of elasticity, delivering powerful growth factors to stimulate natural collagen regeneration.',
+    title: 'Cysts',
+    desc: 'Complete excision of epidermoid, pilar, and sebaceous cysts, including the cyst wall, to minimise the risk of recurrence and inflammation.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <ellipse cx="12" cy="12" rx="9" ry="6"/>
+        <circle cx="12" cy="12" r="2"/>
+      </svg>
+    ),
   },
   {
-    title: 'Skin Texture Improvement',
-    desc: 'Refines pore size, smooths rough texture, and improves overall skin quality for a more even, polished appearance.',
+    title: 'Lipomas',
+    desc: 'Surgical removal of benign fatty lumps from the trunk, limbs, and shoulders under local anaesthetic, with discreet, well-planned scars.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M4 14c0-5 4-9 8-9s8 4 8 9-4 5-8 5-8 0-8-5z"/>
+      </svg>
+    ),
   },
   {
-    title: 'Scar Reduction',
-    desc: 'Stimulates healing and collagen remodelling, helping to soften the appearance of acne scars and post-surgical scars.',
+    title: 'Skin Tags',
+    desc: 'Fast, comfortable removal of skin tags around the neck, underarms, and eyelids, restoring smooth skin with minimal downtime.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 2v6"/>
+        <circle cx="12" cy="14" r="6"/>
+      </svg>
+    ),
   },
   {
-    title: 'Radiofrequency Synergy',
-    desc: 'Combines exosomes with Morpheus8 radiofrequency for amplified collagen stimulation and superior tightening and lifting.',
+    title: 'Seborrhoeic Keratoses',
+    desc: 'Treatment of these common, benign, often pigmented lesions that can mimic skin cancers, with histology where diagnosis needs to be confirmed.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M3 12c2-4 6-6 9-6s7 2 9 6c-2 4-6 6-9 6s-7-2-9-6z"/>
+        <circle cx="12" cy="12" r="2"/>
+      </svg>
+    ),
   },
-  {
-    title: 'Laser Recovery Enhancement',
-    desc: 'Applied post-laser to accelerate skin recovery, reduce inflammation, and accelerate the formation of new collagen.',
-  },
-];
-
-const CONDITIONS_CONCERNS = [
-  'Fine lines and wrinkles',
-  'Loss of elasticity',
-  'Dull complexion',
-  'Sun-damaged skin',
-  'Uneven skin texture',
-  'Enlarged pores',
-  'Post-acne scars',
-];
-
-const CONDITIONS_COMBINATIONS = [
-  'Standalone treatment',
-  'Post-Morpheus8 protocol',
-  'Post-radiofrequency',
-  'Post-laser recovery',
-  'With microneedling',
-  'Maintenance course (quarterly)',
-  'Pre-event boost',
-];
-
-const CLINIC_REASONS = [
-  { n: '01', text: 'All-in-one clinic with medical & aesthetic services.' },
-  { n: '02', text: 'Highly trained, compassionate doctors.' },
-  { n: '03', text: 'Customised treatments based on listening & expertise.' },
-  { n: '04', text: 'State-of-the-art facilities & modern equipment.' },
-  { n: '05', text: 'Strong reputation & excellent reviews.' },
-  { n: '06', text: 'Comprehensive care and referrals with specialists.' },
 ];
 
 const FAQS = [
   {
-    question: 'What is exosome therapy?',
+    question: 'What is a basal cell carcinoma (BCC)?',
     answer:
-      'Exosomes are extracellular vesicles,tiny biological particles naturally produced by cells to carry growth factors, proteins, and genetic information between cells. In aesthetic medicine, laboratory-derived exosomes are applied to the skin to stimulate collagen production, accelerate repair, and improve overall skin quality at a cellular level.',
+      'A basal cell carcinoma (BCC) is the most common form of non-melanoma skin cancer, arising from the basal cells in the deepest layer of the epidermis. BCCs are typically slow-growing and locally invasive but rarely spread to other parts of the body. They are usually caused by long-term sun or ultraviolet exposure and most commonly appear on sun-exposed areas such as the face, ears, neck, scalp, and upper trunk.',
   },
   {
-    question: 'How is exosome therapy delivered?',
+    question: 'Is a BCC dangerous and does it count as skin cancer?',
     answer:
-      'Exosomes are typically delivered into the skin via topical application, microneedling, or mesotherapy. When used after procedures such as laser resurfacing or Morpheus8, the microchannels created allow deep penetration for maximum therapeutic effect.',
+      'Yes, a BCC is a form of skin cancer, but it is the least aggressive type. It rarely spreads to lymph nodes or distant organs. However, if left untreated, a BCC can grow deeper and damage surrounding tissue, including cartilage, muscle, and bone in advanced cases. For this reason, prompt removal and histological confirmation are strongly recommended.',
   },
   {
-    question: 'What results can I expect from exosome therapy?',
+    question: 'How is BCC removal performed?',
     answer:
-      'Patients typically notice improved skin texture, radiance, and hydration within 1 to 2 weeks, with continued improvement over 2 to 3 months as collagen remodelling progresses. Exosomes also significantly reduce post-treatment redness and downtime when used alongside other procedures.',
+      'BCC removal is performed as a minor surgical procedure in our Leicester clinic under local anaesthetic. The lesion is excised along with a defined margin of healthy tissue to ensure complete removal, and the wound is closed in layers using fine sutures. The excised specimen is then sent to an independent histopathology laboratory to confirm clear margins and verify the diagnosis.',
   },
   {
-    question: 'Is exosome therapy safe?',
+    question: 'Will I have a scar after BCC removal?',
     answer:
-      'Yes. Exosome therapy is minimally invasive and very safe when performed by trained professionals. Exosomes are naturally occurring biological messengers, and adverse reactions are extremely rare. A thorough consultation ensures it suits your skin and health.',
+      'Any surgical excision will leave a scar, but our team take great care to plan the incision along natural skin tension lines and use layered closure with fine sutures to minimise its appearance. Most scars settle and fade significantly over 6 to 12 months. You will receive detailed scar-care advice at your follow-up review.',
   },
   {
-    question: 'How often should I have exosome therapy treatments?',
+    question: 'Why is histology important after BCC excision?',
     answer:
-      'For standalone treatments, most patients benefit from an initial course of 2 to 3 sessions spaced 2 to 4 weeks apart, followed by maintenance treatments every 3 to 6 months. When used with other procedures, exosome application is typically a one-time addition to that treatment.',
+      'Histology is the microscopic examination of the excised tissue by a specialist histopathologist. It confirms that the lesion is a BCC, identifies its subtype, and crucially verifies that the surgical margins are clear of tumour. This is the gold-standard way to ensure complete removal and decide whether any further treatment or surveillance is needed.',
   },
   {
-    question: 'Can exosome therapy be combined with other treatments?',
+    question: 'Can a BCC come back after it is removed?',
     answer:
-      'Yes, absolutely. Exosome therapy works beautifully with Morpheus8, laser resurfacing, microneedling, and radiofrequency treatments. In fact, using exosomes immediately after these procedures dramatically enhances results and speeds recovery. Your practitioner will recommend the best combination for your goals.',
+      'When a BCC is excised with clear histological margins, the risk of recurrence at the same site is low. However, anyone who has had one BCC has a higher chance of developing further BCCs elsewhere on sun-damaged skin. We recommend regular skin checks and prompt review of any new or changing lesions.',
+  },
+  {
+    question: 'How long is recovery after BCC removal?',
+    answer:
+      'Most patients recover quickly. Wounds typically heal over 5 to 14 days, with sutures removed at 7 to 14 days depending on the location. Bruising and swelling settle within a week or two, and the scar continues to fade and remodel over several months. You will receive written aftercare instructions and access to our team for any concerns.',
+  },
+  {
+    question: 'How much does BCC removal cost at The One Clinic?',
+    answer:
+      'BCC removal at The One Clinic starts from £350. The final cost depends on the size and location of the lesion and the complexity of closure. A full quote will be provided at your consultation, and pricing includes the procedure, histology, suture removal, and follow-up review.',
+  },
+  {
+    question: 'Do I need a GP referral for BCC removal?',
+    answer:
+      'No referral is required. You can book a private consultation directly with our team at The One Clinic. Our doctors will examine the lesion, discuss your history, and recommend the most appropriate course of action. If surgical removal is indicated, this can usually be arranged promptly without further referral.',
+  },
+  {
+    question: 'How do I look after my skin after BCC removal?',
+    answer:
+      'After your procedure, keep the wound clean and dry as advised, avoid swimming and strenuous exercise until sutures are removed, and protect the area from sun exposure during healing. Long-term, daily SPF, regular self-checks, and routine clinical skin reviews are strongly recommended to reduce the risk of further BCCs.',
   },
 ];
 
 const RELATED = [
-  { title: 'Skin Analysis',             href: '/treatments/skin-analysis',     desc: 'Comprehensive skin assessment to guide your personalised treatment plan.' },
-  { title: 'NCTF 135 HA',               href: '/treatments/nctf-135-ha',       desc: 'Advanced bio-revitalisation for deep hydration and collagen stimulation.' },
-  { title: 'Endolift',                  href: '/treatments/endolift-laser-leicester',          desc: 'Minimally invasive laser lifting and tightening for face and body.' },
-  { title: 'Morpheus8',                 href: '/treatments/morpheus8',         desc: 'Fractional radiofrequency skin remodelling for face and body.' },
-];
-
-const BA_IMAGES = [
-  { src: '/images/BA1.jpg', alt: 'Exosome therapy skin rejuvenation result 1' },
-  { src: '/images/BA2.jpg', alt: 'Exosome therapy skin rejuvenation result 2' },
-  { src: '/images/BA3.jpg', alt: 'Exosome therapy skin rejuvenation result 3' },
-  { src: '/images/BA4.jpg', alt: 'Exosome therapy skin rejuvenation result 4' },
-  { src: '/images/BA5.jpg', alt: 'Exosome therapy skin rejuvenation result 5' },
-  { src: '/images/BA6.jpg', alt: 'Exosome therapy skin rejuvenation result 6' },
-  { src: '/images/BA7.jpg', alt: 'Exosome therapy skin rejuvenation result 7' },
+  { title: 'Mole Removal',              href: '/treatments/mole-removal-leicester', desc: 'Safe surgical removal of suspicious or cosmetically concerning moles with histology where indicated.' },
+  { title: 'Skin Lesion Removal',       href: '/treatments/skin-lesions-leicester',            desc: 'Expert excision of cysts, lumps, and benign skin lesions under local anaesthetic.' },
+  { title: 'Lipoma Removal',            href: '/treatments/lipoma-removal-leicester',         desc: 'Minor surgical removal of fatty lumps with discreet, well-planned scarring.' },
+  { title: 'Dermatologist Consultation', href: '/treatments/dermatologist',          desc: 'Private dermatology assessment for skin concerns, lesions, and long-term skin health.' },
 ];
 
 /* ── Page component ───────────────────────────────────────────── */
-export default function ExosomeTherapyPage() {
-  const [baIndex, setBaIndex] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(2);
+export default function BCCRemovalPage() {
   const [showAllFaqs, setShowAllFaqs] = useState(false);
-
-  useEffect(() => {
-    const update = () => {
-      if (window.innerWidth < 768) setVisibleCount(1);
-      else if (window.innerWidth < 1024) setVisibleCount(1);
-      else setVisibleCount(2);
-    };
-    update();
-    window.addEventListener('resize', update);
-    return () => window.removeEventListener('resize', update);
-  }, []);
-
-  useEffect(() => {
-    setBaIndex((i) => Math.min(i, BA_IMAGES.length - visibleCount));
-  }, [visibleCount]);
-
-  const maxBaIndex = BA_IMAGES.length - visibleCount;
 
   return (
     <>
@@ -342,7 +368,7 @@ export default function ExosomeTherapyPage() {
       ════════════════════════════════════════ */}
       <section
         className={styles.hero}
-        aria-label="Exosome Therapy Leicester, hero"
+        aria-label="Basal Cell Carcinoma Removal Leicester, hero"
         data-section-theme="dark"
       >
         {/* Breadcrumb, pinned to top of hero */}
@@ -352,7 +378,7 @@ export default function ExosomeTherapyPage() {
               theme="dark"
               items={[
                 { label: 'Treatments', href: '/treatments' },
-                { label: 'Regenerative Medicine: Exosome Therapy' },
+                { label: 'BCC Removal Leicester' },
               ]}
             />
           </Container>
@@ -368,21 +394,21 @@ export default function ExosomeTherapyPage() {
             {/* Left: text */}
             <div className={styles.heroLeft}>
               <motion.span className={styles.heroCategory} variants={fadeUp}>
-                Regenerative Medicine
+                Skin Cancer Treatment
               </motion.span>
 
               <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                Exosome Therapy in Leicester
+                Basal Cell Carcinoma Removal Leicester
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Next-generation cellular regeneration for advanced skin renewal,
-                with accelerated results and minimal downtime.
+                Private, prompt removal of basal cell carcinoma by our GMC-registered doctors,
+                with full histological confirmation and meticulous attention to minimal scarring.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
                 <BookConsultationButton className={styles.heroCtaPrimary}>
-                  Book Appointment
+                  Book Consultation
                 </BookConsultationButton>
               </motion.div>
 
@@ -399,22 +425,22 @@ export default function ExosomeTherapyPage() {
                     <path d="M4.5 20.118a7.5 7.5 0 0115 0"/>
                     <path d="M18.5 15v5M16 17.5h5"/>
                   </svg>
-                  Led by highly trained doctors
+                  GMC-registered doctors
+                </span>
+                <span className={styles.heroTrustDivider} aria-hidden="true" />
+                <span className={styles.heroTrustItem}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                  Prompt appointments, no GP referral
                 </span>
                 <span className={styles.heroTrustDivider} aria-hidden="true" />
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
                   </svg>
-                  Trusted by patients in Leicester
-                </span>
-                <span className={styles.heroTrustDivider} aria-hidden="true" />
-                <span className={styles.heroTrustItem}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <circle cx="12" cy="12" r="9.5"/>
-                    <path d="M12 7.5v9M7.5 12h9"/>
-                  </svg>
-                  Comprehensive medical &amp; aesthetic care
+                  Trusted by Leicester patients
                 </span>
               </motion.div>
             </div>
@@ -422,8 +448,8 @@ export default function ExosomeTherapyPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Hero Section Exosome Therapy.jpg"
-                alt="Exosome therapy treatment at The One Clinic Leicester"
+                src="/images/endolift-work.jpg"
+                alt="Basal cell carcinoma removal at The One Clinic Leicester"
                 fill
                 priority
                 className={styles.heroImage}
@@ -437,7 +463,7 @@ export default function ExosomeTherapyPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          2. WHAT IS EXOSOME THERAPY?
+          3A. WHAT IS BASAL CELL CARCINOMA?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
@@ -452,13 +478,13 @@ export default function ExosomeTherapyPage() {
             <motion.div className={styles.whatIsContent} variants={stagger(0.12)}>
               <motion.div className={styles.whatIsTextGroup} variants={fadeUp}>
                 <p className={styles.eyebrowDark}>About This Treatment</p>
-                <h2 className={styles.combinedHeading}>What is Exosome Therapy?</h2>
+                <h2 className={styles.combinedHeading}>What is Basal Cell Carcinoma?</h2>
                 <p className={styles.combinedDesc}>
-                  Exosome therapy is a next-generation regenerative treatment that uses naturally
-                  occurring nano-sized biological messengers to deliver a concentrated payload of
-                  growth factors, proteins, and repair signals directly to skin cells. The result is
-                  accelerated collagen synthesis, reduced inflammation, and visibly improved skin
-                  quality, representing a significant advance beyond traditional treatments.
+                  Basal cell carcinoma (BCC) is the most common form of non-melanoma skin cancer.
+                  It arises from the basal cells of the epidermis and is typically slow-growing,
+                  locally invasive, and very rarely spreads to other parts of the body. The
+                  definitive treatment for most BCCs is surgical excision under local anaesthetic,
+                  followed by histological confirmation that the lesion has been completely removed.
                 </p>
               </motion.div>
               <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
@@ -468,11 +494,11 @@ export default function ExosomeTherapyPage() {
               </motion.div>
             </motion.div>
 
-            {/* Right: image panels */}
+            {/* Right: Wistia video */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/What is Exosome Therapy.jpg"
-                alt="Exosome therapy consultation at The One Clinic"
+                src="/images/Doctor2.jpg"
+                alt="Basal cell carcinoma treatment at The One Clinic Leicester"
                 fill
                 className={styles.whatIsVideoFrame}
                 sizes="(max-width: 900px) 100vw, 50vw"
@@ -483,7 +509,7 @@ export default function ExosomeTherapyPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          3. AT A GLANCE
+          3B. AT A GLANCE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
         <div className={styles.whiteBgWrap} aria-hidden="true">
@@ -499,7 +525,7 @@ export default function ExosomeTherapyPage() {
           >
             <motion.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Exosome Therapy at a Glance
+              BCC Removal at a Glance
             </motion.h2>
           </motion.div>
 
@@ -522,7 +548,7 @@ export default function ExosomeTherapyPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          4. OUR EXOSOME THERAPY APPROACH
+          COMPREHENSIVE BCC APPROACH
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -537,11 +563,12 @@ export default function ExosomeTherapyPage() {
               Our Approach
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Our Exosome Therapy Approach
+              A Comprehensive BCC Approach
             </motion.h2>
             <motion.p className={styles.combinationIntroText} variants={fadeUp}>
-              At The One Clinic, our exosome therapy approach follows a proven three-step protocol,
-              customised to your skin goals and concerns for optimal regeneration and renewal.
+              At The One Clinic, our BCC removal pathway brings together expert diagnosis, precise
+              surgery, and independent histology, giving you complete clinical certainty alongside
+              the best possible cosmetic outcome.
             </motion.p>
           </motion.div>
 
@@ -552,7 +579,7 @@ export default function ExosomeTherapyPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {APPROACH_STEPS.map((card) => (
+            {TECH_CARDS.map((card) => (
               <motion.div
                 key={card.title}
                 className={styles.techCard}
@@ -573,18 +600,18 @@ export default function ExosomeTherapyPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <p className={styles.finalResultsEyebrow}>The Science</p>
+            <p className={styles.finalResultsEyebrow}>Complete Care</p>
             <p className={styles.finalResultsText}>
-              Exosomes derived from stem cells contain growth factors, anti-inflammatory molecules,
-              and antioxidants that penetrate the skin to signal fibroblasts to increase collagen
-              and elastin production, accelerating wound healing and cellular regeneration.
+              When combined, careful assessment, precise surgical excision, and independent
+              histology deliver complete BCC care, with definitive removal, clear diagnosis,
+              and a planned pathway for follow-up and long-term skin health.
             </p>
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          5. TREATMENT JOURNEY
+          4. TREATMENT JOURNEY
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.journeySection}>
         <Container>
@@ -599,7 +626,7 @@ export default function ExosomeTherapyPage() {
               What to Expect
             </motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Your Exosome Therapy Journey
+              Your BCC Removal Journey
             </motion.h2>
           </motion.div>
 
@@ -609,7 +636,7 @@ export default function ExosomeTherapyPage() {
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
-            aria-label="Exosome therapy treatment journey steps"
+            aria-label="BCC removal treatment journey steps"
           >
             {JOURNEY_STEPS.map((step) => (
               <motion.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
@@ -628,7 +655,7 @@ export default function ExosomeTherapyPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          6. EXOSOME THERAPY BENEFITS
+          TREATED BENEFITS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
         <div className={styles.whiteBgWrap} aria-hidden="true">
@@ -643,7 +670,7 @@ export default function ExosomeTherapyPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Exosome Therapy Benefits
+              Benefits of BCC Removal With Us
             </motion.h2>
           </motion.div>
 
@@ -654,7 +681,7 @@ export default function ExosomeTherapyPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {BENEFITS.map((b) => (
+            {TREATED_BENEFITS.map((b) => (
               <motion.div
                 key={b.title}
                 className={styles.treatedBenefitCard}
@@ -673,7 +700,7 @@ export default function ExosomeTherapyPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          7. WHO IS SUITABLE
+          5. WHY CHOOSE BCC REMOVAL
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -688,7 +715,7 @@ export default function ExosomeTherapyPage() {
               Is This Right for You?
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Who is Suitable for Exosome Therapy?
+              Who Is BCC Removal For?
             </motion.h2>
           </motion.div>
 
@@ -700,10 +727,10 @@ export default function ExosomeTherapyPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
-              Exosome therapy is suitable for you if you are:
+              Private BCC removal at The One Clinic may be the right choice if you have:
             </motion.p>
             <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
-              {ELIGIBILITY_YES.map((item) => (
+              {ELIGIBILITY.map((item) => (
                 <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
                   <span className={styles.eligibilityCheck} aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -714,26 +741,9 @@ export default function ExosomeTherapyPage() {
                 </motion.li>
               ))}
             </motion.ul>
-
-            <motion.p className={styles.eligibilityIntro} variants={fadeUp} style={{ marginTop: '2rem' }}>
-              Exosome therapy may not be suitable if you have:
-            </motion.p>
-            <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
-              {ELIGIBILITY_NO.map((item) => (
-                <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
-                  <span className={styles.eligibilityCheck} aria-hidden="true" style={{ color: 'var(--color-error-light)' }}>
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <line x1="2" y1="2" x2="12" y2="12" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
-                      <line x1="12" y1="2" x2="2" y2="12" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
-                    </svg>
-                  </span>
-                  <span>{item}</span>
-                </motion.li>
-              ))}
-            </motion.ul>
-
             <motion.p className={styles.eligibilityClosing} variants={fadeUp}>
-              A full consultation with our experts will determine if exosome therapy is right for you.
+              If any of these apply to you, private BCC removal with our team could be the right
+              next step. A consultation will confirm the diagnosis and the most suitable plan.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
@@ -745,7 +755,7 @@ export default function ExosomeTherapyPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. HOW EXOSOMES WORK / THE SCIENCE
+          6. HOW DOES BCC REMOVAL WORK
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
@@ -757,7 +767,7 @@ export default function ExosomeTherapyPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              How Exosome Therapy Works
+              How Does BCC Removal Work?
             </motion.h2>
           </motion.div>
 
@@ -769,16 +779,18 @@ export default function ExosomeTherapyPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.howPara} variants={fadeUp}>
-              Exosomes are extracellular vesicles derived from stem cells, packed with growth factors,
-              anti-inflammatory molecules, cytokines, and antioxidants. When applied to the skin
-              topically or via microneedling, these nano-sized messengers penetrate deeply into the
-              dermis and epidermis.
+              BCC removal is a precise minor surgical procedure. After the diagnosis is confirmed,
+              your doctor maps out a planned excision around the lesion, including an appropriate
+              margin of healthy tissue based on its size, location, and subtype. The area is
+              cleansed and infiltrated with local anaesthetic so the procedure itself is
+              comfortable and painless.
             </motion.p>
             <motion.p className={styles.howPara} variants={fadeUp}>
-              Once inside, exosomes communicate with skin cells, signalling fibroblasts to dramatically
-              increase collagen and elastin production. They also reduce inflammation, accelerate wound
-              healing, and trigger cellular regeneration. Results develop progressively over 1 to 12 weeks
-              as new collagen matures and skin texture, tone, and elasticity improve dramatically.
+              The tumour is then excised in a controlled, elliptical pattern that respects the
+              skin&apos;s natural tension lines. The wound is closed in layers using fine absorbable
+              and non-absorbable sutures, optimising healing and minimising scarring. Every
+              specimen is sent for independent histopathological analysis to confirm complete
+              removal and inform any future surveillance.
             </motion.p>
           </motion.div>
 
@@ -789,15 +801,15 @@ export default function ExosomeTherapyPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.howCoversLabel} variants={fadeUp}>Exosome Therapy Addresses</motion.p>
+            <motion.p className={styles.howCoversLabel} variants={fadeUp}>Your BCC Procedure Covers</motion.p>
             <motion.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
               {[
-                'Fine lines & wrinkles',
-                'Loss of elasticity',
-                'Dull, tired skin',
-                'Uneven skin texture',
-                'Enlarged pores',
-                'Post-acne scarring',
+                'Local anaesthetic',
+                'Tumour excision with margins',
+                'Layered wound closure',
+                'Histology analysis',
+                'Aftercare advice',
+                'Suture removal',
               ].map((item) => (
                 <motion.li key={item} className={styles.howCoversItem} variants={fadeUp}>
                   <span className={styles.howCoversCheck} aria-hidden="true">
@@ -814,7 +826,7 @@ export default function ExosomeTherapyPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          9. RESULTS, AFTERCARE & SIDE EFFECTS
+          RESULTS, AFTERCARE & SIDE EFFECTS
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -829,7 +841,7 @@ export default function ExosomeTherapyPage() {
               Post-Treatment
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              What to Expect: Results &amp; Aftercare
+              Results, Aftercare &amp; Side Effects
             </motion.h2>
           </motion.div>
 
@@ -840,7 +852,7 @@ export default function ExosomeTherapyPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {/* Card 1, Results Timeline */}
+            {/* Card 1, Results */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -849,22 +861,21 @@ export default function ExosomeTherapyPage() {
                     <polyline points="17 6 23 6 23 12"/>
                   </svg>
                 </span>
-                <h3 className={styles.resultsAfterCardTitle}>When Will You See Results?</h3>
+                <h3 className={styles.resultsAfterCardTitle}>What Results Can You Expect?</h3>
               </div>
               <p className={styles.resultsAfterCardBody}>
-                Mild redness may appear for up to 24 hours if microneedling is used. Progressive
-                improvements in skin texture, tone, and hydration appear within 1 to 2 weeks. Full
-                results with visible collagen stimulation and skin renewal typically become evident
-                at 8 to 12 weeks.
+                The primary result is complete removal of the BCC, confirmed by independent
+                histology. Once the wound has healed, you are left with a discreet linear scar
+                that continues to fade and remodel over the following months.
               </p>
               <div className={styles.resultsAfterCardSpacer} />
               <p className={styles.resultsAfterCardNote}>
-                Best results are achieved with a series of treatments or when exosomes are combined
-                with other procedures. Maintenance treatments help sustain and enhance the results.
+                Histology results are typically discussed at your follow-up review, alongside any
+                advice on long-term skin surveillance for new or changing lesions.
               </p>
             </motion.div>
 
-            {/* Card 2, Downtime & Side Effects */}
+            {/* Card 2, Side Effects */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -874,17 +885,17 @@ export default function ExosomeTherapyPage() {
                     <line x1="12" y1="16" x2="12.01" y2="16"/>
                   </svg>
                 </span>
-                <h3 className={styles.resultsAfterCardTitle}>Downtime &amp; Side Effects</h3>
+                <h3 className={styles.resultsAfterCardTitle}>Side Effects</h3>
               </div>
               <p className={styles.resultsAfterCardBody}>
-                Exosome therapy is minimally invasive with minimal to no downtime. Most patients
-                experience little to no side effects. If microneedling is used:
+                BCC excision is generally very safe when performed by experienced doctors. Most
+                patients experience only mild, temporary effects:
               </p>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Mild redness or warmth for up to 24 hours',
-                  'Slight sensitivity when cleansing',
-                  'Possible minor flaking on day 2-3',
+                  'Bruising and mild swelling around the wound',
+                  'Tightness or pulling sensation at the suture line',
+                  'A red or pink scar that gradually fades over months',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
                     <span className={styles.resultsAfterDot} aria-hidden="true" />
@@ -894,7 +905,8 @@ export default function ExosomeTherapyPage() {
               </ul>
               <div className={styles.resultsAfterCardSpacer} />
               <p className={styles.resultsAfterCardNote}>
-                Side effects are temporary and mild. Most patients return to normal activities immediately.
+                More significant complications, such as infection or wound separation, are
+                uncommon. You will receive clear written advice on warning signs to look out for.
               </p>
             </motion.div>
 
@@ -907,16 +919,14 @@ export default function ExosomeTherapyPage() {
                     <polyline points="22 4 12 14.01 9 11.01"/>
                   </svg>
                 </span>
-                <h3 className={styles.resultsAfterCardTitle}>Aftercare &amp; Skincare</h3>
+                <h3 className={styles.resultsAfterCardTitle}>Aftercare Tips</h3>
               </div>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Maintain a good skincare routine with gentle cleansing',
-                  'Use a hydrating moisturiser to support skin barrier',
-                  'Apply broad-spectrum SPF 30+ daily',
-                  'Avoid direct sun exposure for 48 hours if microneedling used',
-                  'Avoid harsh actives (retinol, acids) for 48 hours',
-                  'Stay well-hydrated to support skin healing',
+                  'Keep the wound clean and dry as advised by your doctor',
+                  'Avoid swimming, saunas, and strenuous exercise until sutures are removed',
+                  'Sutures are typically removed at 7 to 14 days, depending on the site',
+                  'Protect the scar from direct sun and apply SPF once healed',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
                     <span className={styles.resultsAfterDot} aria-hidden="true" />
@@ -930,7 +940,7 @@ export default function ExosomeTherapyPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          10. TREATMENT APPLICATIONS
+          OTHER SKIN LESIONS WE REMOVE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
         <div className={styles.whiteBgWrap} aria-hidden="true">
@@ -945,14 +955,14 @@ export default function ExosomeTherapyPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-              Versatility
+              Beyond BCC
             </motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Treatment Applications for Exosome Therapy
+              Other Skin Lesions We Remove
             </motion.h2>
-            <motion.p className={styles.conditionsIntro} variants={fadeUp}>
-              Exosome therapy is incredibly versatile, used standalone or combined with other procedures
-              to maximise skin regeneration and aesthetic results.
+            <motion.p className={styles.beforeAfterSubheading} variants={fadeUp}>
+              Alongside BCC removal, our minor surgery team safely treat a wide range of skin
+              lumps, bumps, and lesions in our Leicester clinic, with histology where indicated.
             </motion.p>
           </motion.div>
 
@@ -963,15 +973,18 @@ export default function ExosomeTherapyPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {TREATMENT_APPLICATIONS.map((item) => (
+            {OTHER_LESIONS.map((l) => (
               <motion.div
-                key={item.title}
+                key={l.title}
                 className={styles.treatedBenefitCard}
                 variants={fadeUp}
                 whileHover={{ y: -8, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
               >
-                <h3 className={styles.treatedBenefitTitle}>{item.title}</h3>
-                <p className={styles.treatedBenefitDesc}>{item.desc}</p>
+                <span className={styles.treatedBenefitIconWrap} aria-hidden="true">
+                  {l.icon}
+                </span>
+                <h3 className={styles.treatedBenefitTitle}>{l.title}</h3>
+                <p className={styles.treatedBenefitDesc}>{l.desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -979,14 +992,14 @@ export default function ExosomeTherapyPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          11. PATIENT TESTIMONIALS
+          PATIENT REVIEWS
       ════════════════════════════════════════ */}
       <Testimonials />
 
       {/* ════════════════════════════════════════
-          12. CTA BANNER
+          CTA BANNER
       ════════════════════════════════════════ */}
-      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book exosome therapy">
+      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book BCC removal consultation">
         {/* Watermark logo */}
         <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
           <Image
@@ -1006,10 +1019,11 @@ export default function ExosomeTherapyPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
-              Unlock Your Skin&apos;s Natural<br />Healing Power.
+              Don&apos;t Wait With A BCC,<br />Book Prompt Expert Removal Today.
             </motion.h2>
             <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
-              Experience advanced exosome therapy for visible skin regeneration and renewal.
+              Our GMC-registered team will assess your lesion, plan the safest excision, and
+              guide you through histology and follow-up, all under one roof in Leicester.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
@@ -1021,129 +1035,7 @@ export default function ExosomeTherapyPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          13. BEFORE & AFTER
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
-        <div className={styles.whiteBgWrap} aria-hidden="true">
-          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
-        </div>
-        <Container className={styles.whiteBgContent}>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-              Real Results
-            </motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Exosome Therapy Before &amp; After
-            </motion.h2>
-            <motion.p className={styles.beforeAfterSubheading} variants={fadeUp}>
-              Real skin regeneration and renewal results from our patients at The One Clinic, Leicester.
-            </motion.p>
-          </motion.div>
-
-          {/* Carousel viewport */}
-          <div className={styles.baSliderViewport}>
-            <div
-              className={styles.baSliderTrack}
-              style={{
-                transform: `translateX(-${baIndex * (100 / BA_IMAGES.length)}%)`,
-                width: `${(BA_IMAGES.length / visibleCount) * 100}%`,
-              }}
-            >
-              {BA_IMAGES.map((img) => (
-                <div key={img.src} className={styles.baSlideItem}>
-                  <div className={styles.baImageWrap}>
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      fill
-                      className={styles.baImage}
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Controls: arrows + dots */}
-          <div className={styles.baControls}>
-            <button
-              className={styles.baArrowBtn}
-              onClick={() => setBaIndex((i) => Math.max(0, i - 1))}
-              aria-label="Previous before and after image"
-              disabled={baIndex === 0}
-            >
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M12.5 15l-5-5 5-5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-
-            <div className={styles.baDots} role="tablist" aria-label="Before and after carousel navigation">
-              {Array.from({ length: maxBaIndex + 1 }).map((_, i) => (
-                <button
-                  key={i}
-                  className={`${styles.baDot} ${baIndex === i ? styles.baDotActive : ''}`}
-                  onClick={() => setBaIndex(i)}
-                  aria-label={`Go to image set ${i + 1}`}
-                  aria-selected={baIndex === i}
-                  role="tab"
-                />
-              ))}
-            </div>
-
-            <button
-              className={styles.baArrowBtn}
-              onClick={() => setBaIndex((i) => Math.min(maxBaIndex, i + 1))}
-              aria-label="Next before and after image"
-              disabled={baIndex === maxBaIndex}
-            >
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M7.5 5l5 5-5 5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-          </div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          14. COST BANNER
-      ════════════════════════════════════════ */}
-      <section className={styles.costBanner} data-section-theme="dark" aria-label="Exosome therapy cost">
-        <Container>
-          <motion.div
-            className={styles.costBannerInner}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
-              Exosome Therapy Cost at The One Clinic
-            </motion.p>
-            <motion.p className={styles.costBannerPrice} variants={fadeUp}>
-              From £400
-            </motion.p>
-            <motion.p className={styles.costBannerNote} variants={fadeUp}>
-              The final price depends on your personalised treatment protocol and whether exosome therapy
-              is combined with another procedure. Full details will be discussed during your consultation.
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBannerBtn}>
-                Book A Consultation
-              </BookConsultationButton>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
-
-      {/* ════════════════════════════════════════
-          15. SKIN CONDITIONS WE ADDRESS
+          7. COMMON BCC LOCATIONS
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark" className={styles.conditionsSection}>
         <Container>
@@ -1155,14 +1047,14 @@ export default function ExosomeTherapyPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Skin Conditions We Address
+              Treatable Areas
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Skin Concerns &amp; Treatment Combinations
+              Common BCC Locations
             </motion.h2>
             <motion.p className={styles.conditionsIntro} variants={fadeUp}>
-              Exosome therapy is remarkably versatile, addressing a wide range of skin concerns,
-              whether used standalone or as part of a comprehensive treatment programme.
+              BCCs most often appear on areas of skin with long-term sun exposure. Our team can
+              safely remove BCCs across the following common locations on the face and body.
             </motion.p>
           </motion.div>
 
@@ -1178,9 +1070,9 @@ export default function ExosomeTherapyPage() {
               variants={fadeUp}
               whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
             >
-              <p className={styles.areasGroupLabel}>Skin Concerns</p>
+              <p className={styles.areasGroupLabel}>Face &amp; Head</p>
               <ul className={styles.areasGroupList} role="list">
-                {CONDITIONS_CONCERNS.map((area) => (
+                {CONDITIONS_FACE.map((area) => (
                   <li key={area} className={styles.areasGroupItem}>
                     <span className={styles.areasItemDot} aria-hidden="true" />
                     {area}
@@ -1194,9 +1086,9 @@ export default function ExosomeTherapyPage() {
               variants={fadeUp}
               whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
             >
-              <p className={styles.areasGroupLabel}>Treatment Combinations</p>
+              <p className={styles.areasGroupLabel}>Body</p>
               <ul className={styles.areasGroupList} role="list">
-                {CONDITIONS_COMBINATIONS.map((area) => (
+                {CONDITIONS_BODY.map((area) => (
                   <li key={area} className={styles.areasGroupItem}>
                     <span className={styles.areasItemDot} aria-hidden="true" />
                     {area}
@@ -1209,7 +1101,7 @@ export default function ExosomeTherapyPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          16. BEST EXOSOME THERAPY LEICESTER EXPERIENCE
+          BEST BCC REMOVAL LEICESTER EXPERIENCE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.clinicIntroSection}>
         <Container>
@@ -1221,23 +1113,55 @@ export default function ExosomeTherapyPage() {
             viewport={VIEWPORT}
           >
             <motion.div className={styles.clinicIntroLeft} variants={fadeUp}>
-              <p className={styles.eyebrowDark}>Exosome Therapy Treatment</p>
+              <p className={styles.eyebrowDark}>BCC Removal</p>
               <h2 className={styles.combinedHeading}>
-                Best Exosome Therapy<br />Leicester Experience
+                Best BCC Removal<br />Leicester Experience
               </h2>
             </motion.div>
             <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
-              Experience the best exosome therapy in Leicester at our clinic. Our expert doctors deliver
-              safe, advanced regenerative treatments for skin renewal and rejuvenation. Enjoy progressive
-              improvements in skin texture, tone, and elasticity with minimal downtime and personalised care
-              tailored to your unique skin goals.
+              Experience the best BCC removal in Leicester at our clinic. Our GMC-registered doctors
+              combine careful assessment, precise surgical excision, and independent histology to
+              deliver complete care under one roof. From your first consultation to suture removal
+              and ongoing skin checks, you stay with the same trusted team every step of the way.
             </motion.p>
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          17. WHY CHOOSE THE ONE CLINIC
+          COST BANNER
+      ════════════════════════════════════════ */}
+      <section className={styles.costBanner} data-section-theme="dark" aria-label="BCC removal cost">
+        <Container>
+          <motion.div
+            className={styles.costBannerInner}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
+              BCC Removal Cost at The One Clinic
+            </motion.p>
+            <motion.p className={styles.costBannerPrice} variants={fadeUp}>
+              BCC Removal Starts From £350
+            </motion.p>
+            <motion.p className={styles.costBannerNote} variants={fadeUp}>
+              The final price depends on the size, location, and complexity of the lesion and is
+              discussed transparently at your consultation. Pricing includes the procedure,
+              histology, suture removal, and follow-up review.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={styles.ctaBannerBtn}>
+                Book A Consultation
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
+
+      {/* ════════════════════════════════════════
+          WHY CHOOSE THE ONE CLINIC
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -1249,7 +1173,7 @@ export default function ExosomeTherapyPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Why Choose The One Clinic For Exosome Therapy
+              Why Choose The One Clinic For BCC Removal
             </motion.h2>
           </motion.div>
 
@@ -1276,12 +1200,12 @@ export default function ExosomeTherapyPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          18. MEET THE EXPERTS
+          8. MEET THE EXPERTS
       ════════════════════════════════════════ */}
       <MeetTheExperts />
 
       {/* ════════════════════════════════════════
-          19. FAQ
+          9. FAQ
       ════════════════════════════════════════ */}
       <section className={styles.faqSection} data-section-theme="dark">
         <div className={styles.faqInner}>
@@ -1339,12 +1263,12 @@ export default function ExosomeTherapyPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          20. BOOKING FORM
+          10. BOOKING FORM
       ════════════════════════════════════════ */}
       <LeadForm />
 
       {/* ════════════════════════════════════════
-          21. RELATED TREATMENTS
+          11. RELATED TREATMENTS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
@@ -1390,7 +1314,7 @@ export default function ExosomeTherapyPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          22. FINAL CTA
+          FINAL CTA
       ════════════════════════════════════════ */}
       <FinalCTA />
     </>

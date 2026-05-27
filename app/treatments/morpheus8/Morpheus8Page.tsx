@@ -254,9 +254,9 @@ const BA_IMAGES = [
 ];
 
 const RELATED = [
-  { title: 'Endolift Laser',              href: '/treatments/endolift',                    desc: 'Minimally invasive laser skin tightening for face, neck, and body.' },
-  { title: 'Dermal Fillers',              href: '/treatments/dermal-fillers',              desc: 'Restore lost volume and define facial contours with precision filler.' },
-  { title: 'Deep Laser Resurfacing',      href: '/treatments/laser-resurfacing',           desc: 'Transform skin texture and tone with advanced laser technology.' },
+  { title: 'Endolift Laser',              href: '/treatments/endolift-laser-leicester',                    desc: 'Minimally invasive laser skin tightening for face, neck, and body.' },
+  { title: 'Dermal Fillers',              href: '/treatments/dermal-filler-leicester',              desc: 'Restore lost volume and define facial contours with precision filler.' },
+  { title: 'Deep Laser Resurfacing',      href: '/treatments/deep-laser-resurfacing-leicester',           desc: 'Transform skin texture and tone with advanced laser technology.' },
   { title: 'Wrinkle Relaxing Injections', href: '/treatments/wrinkle-relaxing-injections', desc: 'Smooth expression lines with clinician-administered muscle-relaxing injections.' },
 ];
 

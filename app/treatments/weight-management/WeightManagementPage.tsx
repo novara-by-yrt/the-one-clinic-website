@@ -329,7 +329,7 @@ const RELATED = [
   { title: 'Vitamin & Nutrient Injections', href: '/treatments/vitamin-injections',    desc: 'Boost energy, immunity, and metabolism with targeted vitamin therapy.' },
   { title: 'Health Screening',              href: '/treatments/health-screening',       desc: 'Comprehensive blood tests and health assessments for complete peace of mind.' },
   { title: 'Morpheus8',                     href: '/treatments/morpheus8',              desc: 'Fractional radiofrequency body contouring and skin tightening.' },
-  { title: 'Endolift',                      href: '/treatments/endolift',               desc: 'Non-surgical laser lifting and body contouring treatment.' },
+  { title: 'Endolift',                      href: '/treatments/endolift-laser-leicester',               desc: 'Non-surgical laser lifting and body contouring treatment.' },
 ];
 
 /* ── Page component ───────────────────────────────────────────── */

@@ -249,7 +249,7 @@ const FAQS = [
 ];
 
 const RELATED = [
-  { title: 'Dermal Fillers',    href: '/treatments/dermal-fillers',    desc: 'Restore volume and define facial contours with precision filler.' },
+  { title: 'Dermal Fillers',    href: '/treatments/dermal-filler-leicester',    desc: 'Restore volume and define facial contours with precision filler.' },
   { title: 'Profhilo',          href: '/treatments/profhilo',          desc: 'Deep skin hydration and bio-remodelling for a natural glow.' },
   { title: 'Morpheus8',         href: '/treatments/morpheus8',         desc: 'Fractional radiofrequency skin remodelling for face and body.' },
   { title: 'HydraFacial',       href: '/treatments/hydrafacial',       desc: 'Advanced multi-step facial for deep cleansing and skin renewal.' },

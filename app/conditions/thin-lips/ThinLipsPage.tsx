@@ -93,7 +93,7 @@ const TREATMENTS = [
   {
     title: 'Dermal Fillers',
     desc:  'Hyaluronic acid lip filler is carefully placed to restore volume, define the lip border, and improve overall shape, all while maintaining a natural, balanced appearance.',
-    href:  '/treatments/dermal-fillers',
+    href:  '/treatments/dermal-filler-leicester',
   },
   {
     title: 'Profhilo',
@@ -214,7 +214,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Dermal Fillers',
     desc:  'Restore lip volume and define the lip border with precision-placed hyaluronic acid filler.',
-    href:  '/treatments/dermal-fillers',
+    href:  '/treatments/dermal-filler-leicester',
     tag:   'Medical Aesthetics',
   },
   {

@@ -147,7 +147,7 @@ const TREATMENTS = [
   {
     title: 'Laser Treatment',
     desc: 'Laser energy is precisely directed to reduce sweat gland activity, providing a non-surgical option for lasting reduction in excessive sweating.',
-    href: '/treatments/laser-resurfacing',
+    href: '/treatments/deep-laser-resurfacing-leicester',
     image: '/images/BA3.jpg',
   },
   {
@@ -202,7 +202,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Laser Resurfacing',
     desc: 'Precisely directed laser energy to reduce sweat gland activity with lasting results.',
-    href: '/treatments/laser-resurfacing',
+    href: '/treatments/deep-laser-resurfacing-leicester',
     tag: 'Medical Aesthetics',
   },
   {

@@ -140,7 +140,7 @@ const TREATMENTS = [
   {
     title:  'Endolift Laser',
     desc:   'A minimally invasive laser treatment that tightens and lifts sagging skin along the jawline and lower face from within.',
-    href:   '/treatments/endolift',
+    href:   '/treatments/endolift-laser-leicester',
     image:  '/images/BA1.jpg',
   },
   {
@@ -152,7 +152,7 @@ const TREATMENTS = [
   {
     title:  'Dermal Fillers',
     desc:   'Precision-placed hyaluronic acid filler restores lost volume to the cheeks and jawline, lifting and redefining the lower face.',
-    href:   '/treatments/dermal-fillers',
+    href:   '/treatments/dermal-filler-leicester',
     image:  '/images/BA3.jpg',
   },
   {
@@ -239,7 +239,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Endolift Laser',
     desc:  'A minimally invasive laser that lifts and tightens sagging skin along the jaw and lower face from within.',
-    href:  '/treatments/endolift',
+    href:  '/treatments/endolift-laser-leicester',
     tag:   'Medical Aesthetics',
   },
   {
@@ -251,7 +251,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Dermal Fillers',
     desc:  'Restore volume and redefine the jawline with precision-placed hyaluronic acid filler.',
-    href:  '/treatments/dermal-fillers',
+    href:  '/treatments/dermal-filler-leicester',
     tag:   'Medical Aesthetics',
   },
   {

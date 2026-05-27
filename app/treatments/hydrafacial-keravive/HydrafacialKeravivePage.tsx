@@ -246,7 +246,7 @@ const FAQS = [
 const RELATED = [
   { title: 'HydraFacial',          href: '/treatments/hydrafacial',              desc: 'Advanced facial cleansing, exfoliation, and hydration for glowing skin.' },
   { title: 'Profhilo',             href: '/treatments/profhilo',                 desc: 'Deep skin hydration and bio-remodelling for a natural, lasting glow.' },
-  { title: 'Vampire Facial',       href: '/treatments/vampire-facial',           desc: 'PRP-powered skin rejuvenation using your own growth factors.' },
+  { title: 'Vampire Facial',       href: '/treatments/vampire-facial-leicester',           desc: 'PRP-powered skin rejuvenation using your own growth factors.' },
   { title: 'Polynucleotides',      href: '/treatments/polynucleotides-leicester', desc: 'Regenerative injections to repair, hydrate, and revitalise skin and scalp.' },
 ];
 

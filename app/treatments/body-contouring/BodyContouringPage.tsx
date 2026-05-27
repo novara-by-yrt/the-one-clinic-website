@@ -302,7 +302,7 @@ const FAQS = [
 ];
 
 const RELATED = [
-  { title: 'Endolift Laser',    href: '/treatments/endolift',              desc: 'Minimally invasive laser lifting and fat reduction for face and body.' },
+  { title: 'Endolift Laser',    href: '/treatments/endolift-laser-leicester',              desc: 'Minimally invasive laser lifting and fat reduction for face and body.' },
   { title: 'Liposuction',       href: '/treatments/liposuction-leicester', desc: 'Surgical fat removal for comprehensive body sculpting and significant volume reduction.' },
   { title: 'Weight Management', href: '/treatments/weight-management',     desc: 'Medically supervised programmes to support healthy, sustainable weight loss.' },
   { title: 'IV Drip Therapy',   href: '/treatments/iv-drip-therapy',      desc: 'Bespoke intravenous nutrient infusions to support recovery and overall wellness.' },

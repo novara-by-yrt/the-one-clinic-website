@@ -138,7 +138,7 @@ const TREATMENTS = [
   {
     title:  'Endolift Laser',
     desc:   'Minimally invasive laser treatment tightens lax skin and breaks down localised fat deposits beneath the surface, delivering a firmer, smoother result with minimal downtime.',
-    href:   '/treatments/endolift',
+    href:   '/treatments/endolift-laser-leicester',
     image:  '/images/BA2.jpg',
   },
   {
@@ -237,7 +237,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Endolift',
     desc:  'Tighten skin and target localised fat with minimally invasive laser treatment.',
-    href:  '/treatments/endolift',
+    href:  '/treatments/endolift-laser-leicester',
     tag:   'Body',
   },
   {

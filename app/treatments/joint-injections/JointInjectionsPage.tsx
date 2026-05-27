@@ -296,7 +296,7 @@ const FAQS = [
 ];
 
 const RELATED = [
-  { title: 'Minor Surgery',      href: '/treatments/minor-surgery',    desc: 'Expert minor surgical procedures performed safely in our clinic.' },
+  { title: 'Minor Surgery',      href: '/treatments/minor-surgery-leicester',    desc: 'Expert minor surgical procedures performed safely in our clinic.' },
   { title: 'Private GP',         href: '/treatments/private-gp',       desc: 'Prompt private GP appointments for all health concerns.' },
   { title: 'Health Screening',   href: '/treatments/health-screening',  desc: 'Comprehensive health checks and preventative screening.' },
   { title: 'Weight Management',  href: '/treatments/weight-management', desc: 'Medically supervised weight management and lifestyle support.' },

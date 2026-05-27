@@ -119,7 +119,7 @@ const TREATMENTS = [
   {
     title: 'Endolift',
     desc: 'Advanced radiofrequency technology delivers controlled heat to stimulate collagen production, tightening loose neck tissue.',
-    href: '/treatments/endolift',
+    href: '/treatments/endolift-laser-leicester',
     image: '/images/BA1.jpg',
   },
   {
@@ -233,7 +233,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Endolift',
     desc: 'Stimulate collagen deep within the skin to firm and tighten loose neck tissue.',
-    href: '/treatments/endolift',
+    href: '/treatments/endolift-laser-leicester',
     tag: 'Medical Aesthetics',
   },
   {

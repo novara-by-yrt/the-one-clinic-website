@@ -146,7 +146,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Lumecca IPL',
     desc:  'Target dark spots and sun damage with intense pulsed light for a brighter, more even complexion.',
-    href:  '/treatments/lumecca-ipl',
+    href:  '/treatments/ipl-leicester',
     tag:   'Medical Aesthetics',
   },
   {
@@ -158,7 +158,7 @@ const RELATED_TREATMENTS = [
   {
     title: 'Laser Resurfacing',
     desc:  'Break down excess melanin and renew the skin surface for a clearer, more uniform tone.',
-    href:  '/treatments/laser-resurfacing',
+    href:  '/treatments/deep-laser-resurfacing-leicester',
     tag:   'Medical Aesthetics',
   },
   {
@@ -218,7 +218,7 @@ const TREATMENTS = [
   {
     title:  'Lumecca IPL',
     desc:   'Intense pulsed light targets excess melanin to reduce dark spots, sun damage, and uneven pigmentation for a visibly brighter complexion.',
-    href:   '/treatments/lumecca-ipl',
+    href:   '/treatments/ipl-leicester',
     image:  '/images/BA1.jpg',
   },
   {
@@ -230,7 +230,7 @@ const TREATMENTS = [
   {
     title:  'Laser Resurfacing',
     desc:   'Targeted laser energy breaks down melanin deposits and resurfacing the skin for a clearer, more even complexion.',
-    href:   '/treatments/laser-resurfacing',
+    href:   '/treatments/deep-laser-resurfacing-leicester',
     image:  '/images/BA3.jpg',
   },
   {

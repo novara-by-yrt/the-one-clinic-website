@@ -140,13 +140,13 @@ const TREATMENTS = [
   {
     title:  'Dermal Fillers',
     desc:   'Hyaluronic acid filler is precisely placed along the nasolabial folds to restore volume, soften the crease, and create a naturally smooth, refreshed appearance.',
-    href:   '/treatments/dermal-fillers',
+    href:   '/treatments/dermal-filler-leicester',
     image:  '/images/BA1.jpg',
   },
   {
     title:  'Endolift Laser',
     desc:   'A minimally invasive laser treatment that tightens skin and stimulates collagen from within, lifting and firming the mid-face to reduce deep folds.',
-    href:   '/treatments/endolift',
+    href:   '/treatments/endolift-laser-leicester',
     image:  '/images/BA2.jpg',
   },
   {
@@ -239,13 +239,13 @@ const RELATED_TREATMENTS = [
   {
     title: 'Dermal Fillers',
     desc:  'Restore volume and smooth nasolabial folds with precision-placed hyaluronic acid filler.',
-    href:  '/treatments/dermal-fillers',
+    href:  '/treatments/dermal-filler-leicester',
     tag:   'Medical Aesthetics',
   },
   {
     title: 'Endolift',
     desc:  'Minimally invasive laser tightening to lift and firm the mid-face from within.',
-    href:  '/treatments/endolift',
+    href:  '/treatments/endolift-laser-leicester',
     tag:   'Medical Aesthetics',
   },
   {

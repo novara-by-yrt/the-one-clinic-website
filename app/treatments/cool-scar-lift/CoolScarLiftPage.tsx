@@ -296,7 +296,7 @@ const FAQS = [
 ];
 
 const RELATED = [
-  { title: 'Acne Scar Removal',   href: '/treatments/acne-scar-removal-leicester', desc: 'Advanced acne scar reduction combining targeted resurfacing technologies.' },
+  { title: 'Acne Scar Removal',   href: '/treatments/laser-acne-scar-treatment-leicester', desc: 'Advanced acne scar reduction combining targeted resurfacing technologies.' },
   { title: 'Morpheus8',           href: '/treatments/morpheus8',                   desc: 'Fractional radiofrequency skin remodelling for face and body.' },
   { title: 'Chemical Peels',      href: '/treatments/chemical-peels',              desc: 'Medical-grade peels to resurface skin and improve tone and texture.' },
   { title: 'Skin Analysis',       href: '/treatments/skin-analysis',               desc: 'Detailed skin assessment to inform a personalised treatment plan.' },

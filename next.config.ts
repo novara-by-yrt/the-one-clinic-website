@@ -57,7 +57,72 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/treatments/lumecca-ipl-leicester',
-        destination: '/treatments/lumecca-ipl',
+        destination: '/treatments/ipl-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/lumecca-ipl',
+        destination: '/treatments/ipl-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/dermal-fillers',
+        destination: '/treatments/dermal-filler-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/pigmentation-treatment-leicester',
+        destination: '/treatments/hyperpigmentation-clinic-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/acne-scar-removal-leicester',
+        destination: '/treatments/laser-acne-scar-treatment-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/skin-tags-removal-leicester',
+        destination: '/treatments/skin-tag-removal-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/endolift',
+        destination: '/treatments/endolift-laser-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/vampire-facial',
+        destination: '/treatments/vampire-facial-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/minor-surgery',
+        destination: '/treatments/minor-surgery-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/laser-resurfacing',
+        destination: '/treatments/deep-laser-resurfacing-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/lipoma-removal',
+        destination: '/treatments/lipoma-removal-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/skin-lesion',
+        destination: '/treatments/skin-lesions-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/basal-cell-carcinoma-bcc-removal-leicester',
+        destination: '/treatments/basal-cell-carcinoma-leicester',
+        permanent: true,
+      },
+      {
+        source: '/treatments/haemorrhoid-removal',
+        destination: '/treatments/haemorrhoid-treatment-leicester',
         permanent: true,
       },
     ];

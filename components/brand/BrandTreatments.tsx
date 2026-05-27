@@ -17,13 +17,13 @@ const SLIDES_BASE = [
   {
     src:   '/images/Endolift1.png',
     title: 'Endolift',
-    href:  '/treatments/endolift',
+    href:  '/treatments/endolift-laser-leicester',
     desc:  'An innovative laser treatment that tightens and lifts loose skin using minimally invasive fibre technology , no surgery, no general anaesthetic, minimal downtime.',
   },
   {
     src:   '/images/Minor Surgery1.jpg',
     title: 'Minor Surgery',
-    href:  '/treatments/minor-surgery',
+    href:  '/treatments/minor-surgery-leicester',
     desc:  'Minor surgical procedures performed safely in our clinic. From mole removal to lipoma excision, handled with precision and expert care.',
   },
   {

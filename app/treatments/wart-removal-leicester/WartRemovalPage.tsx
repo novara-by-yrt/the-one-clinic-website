@@ -305,7 +305,7 @@ const FAQS = [
 const RELATED = [
   { title: 'Skin Lesion Removal', href: '/treatments/skin-lesion-removal', desc: 'Expert removal of a wide range of benign skin lesions.' },
   { title: 'Skin Tags Removal',   href: '/treatments/skin-tags',           desc: 'Safe and effective removal of skin tags by our clinical team.' },
-  { title: 'Minor Surgery',       href: '/treatments/minor-surgery',       desc: 'A wide range of minor surgical procedures carried out in clinic.' },
+  { title: 'Minor Surgery',       href: '/treatments/minor-surgery-leicester',       desc: 'A wide range of minor surgical procedures carried out in clinic.' },
   { title: 'Dermatologist',       href: '/treatments/dermatologist',       desc: 'Specialist skin assessment and treatment from our expert team.' },
 ];
 

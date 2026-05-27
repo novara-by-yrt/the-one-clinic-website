@@ -347,7 +347,7 @@ const FAQS = [
 
 const RELATED = [
   { title: 'Skin Analysis',      href: '/treatments/skin-analysis',             desc: 'Detailed diagnostic assessment to understand your skin\'s needs and plan treatment.' },
-  { title: 'Endolift Laser',     href: '/treatments/endolift',                  desc: 'Minimally invasive laser lifting and tightening for face, neck, and body.' },
+  { title: 'Endolift Laser',     href: '/treatments/endolift-laser-leicester',                  desc: 'Minimally invasive laser lifting and tightening for face, neck, and body.' },
   { title: 'Dermatologist',      href: '/treatments/dermatology',               desc: 'Expert medical dermatology consultations and treatment for all skin conditions.' },
   { title: 'AlumierMD Skincare', href: '/treatments/alumiermd-skincare',        desc: 'Clinically advanced skincare products tailored to your individual skin type.' },
 ];
