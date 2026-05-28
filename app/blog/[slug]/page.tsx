@@ -39,11 +39,13 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     ? post.heroImage
     : `${SITE_URL}${post.heroImage}`;
 
+  const metaTitle = post.metaTitle || post.title;
+
   return {
-    title: post.title,
+    title: metaTitle,
     description: post.description,
     openGraph: {
-      title: post.title,
+      title: metaTitle,
       description: post.description,
       type: 'article',
       url: `${SITE_URL}/blog/${post.slug}`,
@@ -54,7 +56,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
+      title: metaTitle,
       description: post.description,
       images: [imageUrl],
     },
