@@ -75,13 +75,36 @@ const AT_A_GLANCE = [
   },
   {
     label: 'Treatment Cost',
-    value: 'From £120',
+    value: 'From £145',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <line x1="12" y1="1" x2="12" y2="23"/>
         <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
       </svg>
     ),
+  },
+];
+
+const HYDRAFACIAL_PRICING = [
+  {
+    name: 'Deluxe HydraFacial',
+    price: '£145',
+    includes: 'Includes complimentary Dermalux LED',
+  },
+  {
+    name: 'Platinum HydraFacial',
+    price: '£165',
+    includes: 'Includes complimentary Dermalux LED, lymphatic drainage & a personalised skin booster',
+  },
+  {
+    name: 'Glass Skin HydraFacial',
+    price: '£195',
+    includes: 'Includes Deluxe HydraFacial + Dermalux LED + Microneedling',
+  },
+  {
+    name: 'Dermalux LED',
+    price: '£75',
+    includes: '20-minute session',
   },
 ];
 
@@ -349,7 +372,7 @@ const FAQS = [
   {
     question: 'How much does a HydraFacial cost at The One Clinic?',
     answer:
-      'HydraFacial at The One Clinic starts from £120 per session. The final price depends on the protocol selected and any booster add-ons, which will be discussed during your consultation.',
+      'Our HydraFacial menu starts at £145 for the Deluxe HydraFacial (including complimentary Dermalux LED), £165 for the Platinum HydraFacial, and £195 for the Glass Skin HydraFacial. A standalone 20-minute Dermalux LED session is £75. The final price depends on the protocol selected and any booster add-ons, which will be discussed during your consultation.',
   },
 ];
 
@@ -1148,9 +1171,21 @@ export default function HydrafacialPage() {
             <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
               HydraFacial Cost at The One Clinic
             </motion.p>
-            <motion.p className={styles.costBannerPrice} variants={fadeUp}>
-              HydraFacial From £120 Per Session
-            </motion.p>
+            <motion.h2 className={styles.costBannerHeading} variants={fadeUp}>
+              Treatment &amp; Pricing Menu
+            </motion.h2>
+            <motion.ul className={styles.priceMenu} variants={stagger(0.08)}>
+              {HYDRAFACIAL_PRICING.map((item) => (
+                <motion.li key={item.name} className={styles.priceMenuItem} variants={fadeUp}>
+                  <div className={styles.priceMenuRow}>
+                    <span className={styles.priceMenuName}>{item.name}</span>
+                    <span className={styles.priceMenuLeader} aria-hidden="true" />
+                    <span className={styles.priceMenuPrice}>{item.price}</span>
+                  </div>
+                  <p className={styles.priceMenuIncludes}>{item.includes}</p>
+                </motion.li>
+              ))}
+            </motion.ul>
             <motion.p className={styles.costBannerNote} variants={fadeUp}>
               The final price depends on your personalised treatment protocol and any booster
               add-ons selected. Full details will be discussed at your consultation.

@@ -1332,13 +1332,70 @@
   margin: 0;
 }
 
-.costBannerPrice {
+.costBannerHeading {
   font-size: clamp(1.75rem, 4vw, 3rem);
   font-weight: var(--fw-bold);
   letter-spacing: -0.03em;
   line-height: 1.1;
   color: #fff;
   margin: 0;
+}
+
+/* ── Pricing menu ── */
+.priceMenu {
+  list-style: none;
+  margin: var(--space-2) 0 0;
+  padding: 0;
+  width: 100%;
+  max-width: 620px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  text-align: left;
+}
+
+.priceMenuItem {
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid rgba(255 255 255 / 0.12);
+}
+
+.priceMenuItem:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.priceMenuRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.priceMenuName {
+  font-size: clamp(1.0625rem, 2vw, 1.25rem);
+  font-weight: var(--fw-bold);
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* Dotted leader fills the gap between the name and the price */
+.priceMenuLeader {
+  flex: 1 1 auto;
+  border-bottom: 1px dotted rgba(255 255 255 / 0.25);
+  transform: translateY(-0.2em);
+}
+
+.priceMenuPrice {
+  font-size: clamp(1.0625rem, 2vw, 1.25rem);
+  font-weight: var(--fw-bold);
+  color: #fff;
+  white-space: nowrap;
+}
+
+.priceMenuIncludes {
+  margin: var(--space-1) 0 0;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: rgba(255 255 255 / 0.55);
 }
 
 .costBannerNote {
