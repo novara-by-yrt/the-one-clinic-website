@@ -1,15 +1,17 @@
 import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
 
-const PRODUCTION_HOSTS = new Set([
-  'www.the-oneclinic.co.uk',
-  'the-oneclinic.co.uk',
-]);
+// Hide only preview/staging deployments from crawlers. Gate on the
+// environment (matching robots.ts and next.config.ts) instead of the
+// per-request Host header: a Host that failed to match — proxied/rewritten,
+// an internal alias — used to stamp X-Robots-Tag: noindex onto production
+// responses and de-index real pages. Environment gating cannot misfire on
+// production traffic.
+const isPreview =
+  process.env.VERCEL_ENV === 'preview' ||
+  process.env.NEXT_PUBLIC_ENV === 'preview';
 
-export function proxy(request: NextRequest) {
-  const host = request.headers.get('host') ?? '';
-  // Any host that is not a production domain gets noindex headers
-  if (!PRODUCTION_HOSTS.has(host)) {
+export function proxy() {
+  if (isPreview) {
     const response = NextResponse.next();
     response.headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive');
     return response;
