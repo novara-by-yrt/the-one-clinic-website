@@ -72,7 +72,7 @@ export default function ThankYouPage() {
               <CheckIcon />
             </div>
             <p className={styles.heroEyebrow}>We&apos;ve received your enquiry</p>
-            <h1 className={styles.heroTitle}>Thank you for getting in touch</h1>
+            <h1 className={styles.heroTitle}>Thank you for getting in touch!</h1>
             <p className={styles.heroSubtitle}>
               Your message has reached the team at The One Clinic. We&apos;ll be in touch within
               one working day to answer your questions and help you take the next step.

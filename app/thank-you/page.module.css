@@ -32,7 +32,7 @@
   align-items: center;
   text-align: center;
   gap: clamp(14px, 1.5vw, 20px);
-  max-width: 640px;
+  max-width: min(960px, 92vw);
   margin-inline: auto;
 }
 
@@ -63,7 +63,8 @@
 }
 
 .heroTitle {
-  font-size: clamp(2.5rem, 5.6vw, 4.25rem);
+  font-size: clamp(1rem, 5.3vw, 4.25rem);
+  white-space: nowrap;
   font-weight: var(--fw-bold);
   letter-spacing: -0.03em;
   background: linear-gradient(180deg, #ffffff 0%, rgb(255 255 255 / 0.78) 100%);
@@ -307,10 +308,6 @@ a.infoCard:hover {
     height: 64px;
   }
 
-  .heroTitle {
-    font-size: clamp(2.1rem, 9vw, 3rem);
-  }
-
   .heroSubtitle {
     font-size: 1rem;
     line-height: 1.6;
@@ -364,9 +361,5 @@ a.infoCard:hover {
 @media (max-width: 400px) {
   .infoGrid {
     grid-template-columns: 1fr;
-  }
-
-  .heroTitle {
-    font-size: 2rem;
   }
 }
