@@ -71,10 +71,11 @@ export default function ThankYouPage() {
             <div className={styles.checkWrap} aria-hidden="true">
               <CheckIcon />
             </div>
-            <p className={styles.heroEyebrow}>Message Received</p>
-            <h1 className={styles.heroTitle}>Thank You!</h1>
+            <p className={styles.heroEyebrow}>We&apos;ve received your enquiry</p>
+            <h1 className={styles.heroTitle}>Thank you for getting in touch</h1>
             <p className={styles.heroSubtitle}>
-              Your message has been received and one of The One Clinic team will be in touch shortly.
+              Your message has reached the team at The One Clinic. We&apos;ll be in touch within
+              one working day to answer your questions and help you take the next step.
             </p>
             <Link href="/" className={styles.homeBtn}>
               Back to Home
