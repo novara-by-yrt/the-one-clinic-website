@@ -1,16 +1,20 @@
-import { headers } from 'next/headers';
 import type { MetadataRoute } from 'next';
 
-const PRODUCTION_HOSTS = new Set([
-  'www.the-oneclinic.co.uk',
-  'the-oneclinic.co.uk',
-]);
+// Only preview/staging deployments must be hidden from crawlers. We gate on
+// the build-time environment (the same signal next.config.ts uses for the
+// X-Robots-Tag header) rather than the per-request Host header.
+//
+// Host-gating was fragile: any request whose Host wasn't an exact match —
+// a proxied/rewritten Host, an internal deployment alias, a revalidation
+// fetch — caused production to serve "Disallow: /", which de-indexed pages
+// ("Indexed, though blocked by robots.txt"). Environment gating is
+// deterministic, so production can never accidentally block crawling.
+const isPreview =
+  process.env.VERCEL_ENV === 'preview' ||
+  process.env.NEXT_PUBLIC_ENV === 'preview';
 
-export default async function robots(): Promise<MetadataRoute.Robots> {
-  const headersList = await headers();
-  const host = headersList.get('host') ?? '';
-
-  if (!PRODUCTION_HOSTS.has(host)) {
+export default function robots(): MetadataRoute.Robots {
+  if (isPreview) {
     return {
       rules: { userAgent: '*', disallow: '/' },
     };
