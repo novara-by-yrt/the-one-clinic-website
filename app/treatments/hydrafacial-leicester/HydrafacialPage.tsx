@@ -445,7 +445,7 @@ export default function HydrafacialPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/Hero Section 1 HydraFacial.jpg"
+                src="/images/Hero Section HydraFacial Keravive.jpg"
                 alt="HydraFacial treatment at The One Clinic Leicester"
                 fill
                 priority
@@ -493,7 +493,7 @@ export default function HydrafacialPage() {
             {/* Right: image panel */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/HydraFacial (2).jpg"
+                src="/images/What is HydraFacial Keravive.jpg"
                 alt="HydraFacial consultation at The One Clinic Leicester"
                 fill
                 className={styles.whatIsVideoFrame}
