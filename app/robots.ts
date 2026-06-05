@@ -37,6 +37,6 @@ export default function robots(): MetadataRoute.Robots {
       // Default: allow all other crawlers; protect internal routes
       { userAgent: '*', allow: '/', disallow: ['/admin', '/api'] },
     ],
-    sitemap: 'https://www.the-oneclinic.co.uk/sitemap.xml',
+    sitemap: 'https://the-oneclinic.co.uk/sitemap.xml',
   };
 }

@@ -5,7 +5,7 @@ import { treatments } from '@/data/treatments';
 import { TEAM_MEMBERS } from '@/data/team';
 import { posts } from '@/lib/blogData';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.the-oneclinic.co.uk';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://the-oneclinic.co.uk';
 
 // Directories to exclude from the static page scan
 const EXCLUDED_DIRS = new Set(['api']);
