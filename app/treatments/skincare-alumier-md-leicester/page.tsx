@@ -3,19 +3,19 @@ import AlumierMDPage from './AlumierMDPage';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/treatments/skincare-alumier-md-leicester' },
-  title: 'AlumierMD Skincare Leicester | Medical-Grade Skincare',
+  title: 'Best Alumier Skincare in Leicester | The One Clinic',
   description:
-    'AlumierMD medical-grade skincare in Leicester. Personalised skincare prescriptions and professional treatments to transform your skin at The One Clinic.',
+    'Introducing innovative Alumier MD skincare products in Leicester. Restore, nourish, and rejuvenate your skin with our bespoke, customised treatments.',
   openGraph: {
-    title: 'AlumierMD Skincare Leicester',
+    title: 'Best Alumier Skincare in Leicester | The One Clinic',
     description:
-      'Expert AlumierMD medical-grade skincare in Leicester. Personalised prescriptions and professional treatments for visibly healthier skin at The One Clinic.',
+      'Introducing innovative Alumier MD skincare products in Leicester. Restore, nourish, and rejuvenate your skin with our bespoke, customised treatments.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AlumierMD Skincare Leicester',
+    title: 'Best Alumier Skincare in Leicester | The One Clinic',
     description:
-      'Expert AlumierMD medical-grade skincare in Leicester. Personalised prescriptions and professional treatments for visibly healthier skin at The One Clinic.',
+      'Introducing innovative Alumier MD skincare products in Leicester. Restore, nourish, and rejuvenate your skin with our bespoke, customised treatments.',
   },
 };
 

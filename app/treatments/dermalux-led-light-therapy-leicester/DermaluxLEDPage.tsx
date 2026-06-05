@@ -4,24 +4,24 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import Section                from '@/components/ui/Section';
-import Container              from '@/components/ui/Container';
-import Accordion              from '@/components/ui/Accordion';
+import Section            from '@/components/ui/Section';
+import Container          from '@/components/ui/Container';
+import Accordion          from '@/components/ui/Accordion';
 import BookConsultationButton from '@/components/ui/BookConsultationButton';
-import TrustBadges            from '@/components/ui/TrustBadges';
-import Breadcrumb             from '@/components/ui/Breadcrumb';
-import LeadForm               from '@/components/sections/LeadForm';
-import MeetTheExperts         from '@/components/sections/MeetTheExperts';
-import Testimonials           from '@/components/sections/Testimonials';
-import FinalCTA               from '@/components/sections/FinalCTA';
+import TrustBadges        from '@/components/ui/TrustBadges';
+import Breadcrumb         from '@/components/ui/Breadcrumb';
+import LeadForm           from '@/components/sections/LeadForm';
+import MeetTheExperts     from '@/components/sections/MeetTheExperts';
+import Testimonials       from '@/components/sections/Testimonials';
+import FinalCTA           from '@/components/sections/FinalCTA';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
 
 /* ── Static data ──────────────────────────────────────────────── */
 const AT_A_GLANCE = [
   {
-    label: 'Treatment Time',
-    value: '45 to 60 minutes',
+    label: 'Treatment Duration',
+    value: '20-minute standalone session',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -30,8 +30,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Sessions Needed',
-    value: '3 sessions (monthly)',
+    label: 'Treatment Frequency',
+    value: 'A course is recommended for the best results, with regular sessions to maintain healthy skin',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="1 4 1 10 7 10"/>
@@ -40,18 +40,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'First Results',
-    value: '4 to 8 weeks',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-        <polyline points="17 6 23 6 23 12"/>
-      </svg>
-    ),
-  },
-  {
-    label: 'Full Results',
-    value: '3 to 6 months',
+    label: 'Downtime',
+    value: 'Zero downtime',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
@@ -60,75 +50,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Downtime',
-    value: 'None',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-        <line x1="16" y1="2" x2="16" y2="6"/>
-        <line x1="8" y1="2" x2="8" y2="6"/>
-        <line x1="3" y1="10" x2="21" y2="10"/>
-      </svg>
-    ),
-  },
-  {
-    label: 'Treatment Cost',
-    value: 'From £200',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <line x1="12" y1="1" x2="12" y2="23"/>
-        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-      </svg>
-    ),
-  },
-];
-
-const JOURNEY_STEPS = [
-  {
-    n: '01',
-    title: 'Scalp Consultation and Assessment',
-    desc: 'Our clinical team assesses your scalp condition, hair concerns, and goals in detail. A personalised Keravive treatment plan is created to address your specific needs, whether hair thinning, dryness, oiliness, or general scalp health.',
-  },
-  {
-    n: '02',
-    title: 'HydraFacial Extraction and Cleanse',
-    desc: 'The HydraFacial Keravive handpiece gently exfoliates the scalp, removing dead skin cells, excess sebum, and follicle-clogging debris using a specialised vortex extraction tip designed for scalp use.',
-  },
-  {
-    n: '03',
-    title: 'Growth Factor Infusion',
-    desc: 'A proprietary blend of growth factors, skin proteins, and peptides is infused directly into the scalp using HydraFacial technology. This nourishing serum penetrates the follicles to support a healthier scalp environment and stronger hair.',
-  },
-  {
-    n: '04',
-    title: 'Take-Home Spray and Aftercare',
-    desc: 'You will receive a Keravive take-home scalp spray to use daily between sessions, extending the treatment benefits and reinforcing the growth factor complex at home. Our team provides full aftercare guidance.',
-  },
-];
-
-const BENEFITS = [
-  {
-    title: 'Deep Scalp Cleansing',
-    desc: 'Keravive uses HydraFacial technology to extract impurities, excess sebum, and follicle-clogging debris, creating the optimal environment for healthy hair growth.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="10"/>
-        <polyline points="12 6 12 12 16 14"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'Nourishes Hair Follicles',
-    desc: 'A proprietary blend of growth factors, peptides, and skin proteins is infused into the scalp to nourish follicles at the root level, supporting stronger and fuller-looking hair.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'Stimulates Healthy Hair Growth',
-    desc: 'By addressing the scalp environment at the follicle level, Keravive helps create the conditions needed for healthier, more resilient hair to grow over time.',
+    label: 'Results Longevity',
+    value: 'Instant radiance, with cumulative long-term benefits',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
@@ -137,121 +60,189 @@ const BENEFITS = [
     ),
   },
   {
-    title: 'Clinically Proven Results',
-    desc: 'Clinical studies demonstrate that HydraFacial Keravive measurably improves scalp health, hair density, and hair thickness over a course of three monthly treatments.',
+    label: 'Cost',
+    value: 'Standalone sessions from £75',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-        <polyline points="22 4 12 14.01 9 11.01"/>
+        <line x1="12" y1="1" x2="12" y2="23"/>
+        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
       </svg>
     ),
   },
   {
-    title: 'No Downtime Required',
-    desc: 'HydraFacial Keravive is completely non-invasive with no recovery period. You can return to your normal routine immediately after each session.',
+    label: 'Appointment Type',
+    value: 'In-clinic',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-        <line x1="16" y1="2" x2="16" y2="6"/>
-        <line x1="8" y1="2" x2="8" y2="6"/>
-        <line x1="3" y1="10" x2="21" y2="10"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'Comfortable and Relaxing',
-    desc: 'The Keravive treatment is painless and deeply relaxing. Most patients find the scalp massage and infusion process a pleasant experience from start to finish.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-        <circle cx="9" cy="7" r="4"/>
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        <path d="M3 21h18"/>
+        <path d="M5 21V7l8-4v4"/>
+        <path d="M19 21V11l-6-4"/>
+        <path d="M9 21v-4h6v4"/>
       </svg>
     ),
   },
 ];
 
 const ELIGIBILITY = [
-  'Experiencing hair thinning or increased hair shedding',
-  'Dealing with scalp dryness, oiliness, dandruff, or congestion',
-  'Looking to support scalp health as a preventative measure',
-  'Seeking a non-invasive, no-downtime scalp treatment',
-  'Wanting expert-led care with clinically proven technology',
+  'Struggle with persistent acne breakouts or blemish-prone skin',
+  'Suffer from rosacea, redness, or highly sensitive skin',
+  'Are looking for a safe, pain-free treatment to boost overall skin health',
+  'Want to accelerate healing and enhance the lovely results of other aesthetic procedures like microneedling or a HydraFacial',
 ];
 
-const TREATABLE_CONCERNS = [
-  'Hair Thinning and Shedding',
-  'Scalp Dryness and Flaking',
-  'Excess Sebum and Oiliness',
-  'Follicle Congestion and Buildup',
-  'General Scalp Imbalance',
+const TREATED_BENEFITS = [
+  {
+    title: 'Reduces Acne & Breakouts',
+    desc: 'Blue light effectively destroys acne-causing bacteria and clears congestion.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <circle cx="12" cy="12" r="6"/>
+        <circle cx="12" cy="12" r="2"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Calms Redness & Rosacea',
+    desc: 'Near-infrared light intensely reduces inflammation and soothes sensitive skin.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Anti-Ageing Power',
+    desc: 'Red light supercharges cell renewal and collagen production to soften fine lines.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/>
+        <line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/>
+        <line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Enhances Other Treatments',
+    desc: 'Works brilliantly alongside our bespoke facial packages to speed up recovery and amplify results.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Zero Pain or Downtime',
+    desc: 'A completely relaxing, non-invasive experience with no recovery time needed, meaning you can carry on with your day straightaway.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+        <path d="M9 12l2 2 4-4"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Fast Recovery',
+    desc: 'Supports faster skin recovery and rejuvenation for a healthier, more resilient complexion.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+        <polyline points="17 6 23 6 23 12"/>
+      </svg>
+    ),
+  },
 ];
 
-const TREATABLE_AREAS = [
-  'Full Scalp Coverage',
-  'Crown and Top of Head',
-  'Frontal Hairline',
-  'Temporal Areas',
-  'Occipital and Nape Region',
+const HOW_ADDRESSES = [
+  'Acne & breakouts',
+  'Rosacea & redness',
+  'Pigmentation',
+  'Fine lines & wrinkles',
+  'Signs of ageing',
+  'Dull, tired skin',
 ];
 
 const CLINIC_REASONS = [
-  { n: '01', text: 'All-in-one clinic with medical and aesthetic services.' },
-  { n: '02', text: 'Highly trained, compassionate GMC-registered doctors.' },
-  { n: '03', text: 'Customised treatments based on listening and expertise.' },
-  { n: '04', text: 'State-of-the-art facilities and modern equipment.' },
-  { n: '05', text: 'Strong reputation and excellent patient reviews.' },
-  { n: '06', text: 'Comprehensive care and referrals with specialists.' },
+  { n: '01', text: 'Experienced medical team with extensive aesthetic expertise.' },
+  { n: '02', text: 'Personalised treatment plans tailored to your skin.' },
+  { n: '03', text: 'Advanced, award-winning LED light therapy technology.' },
+  { n: '04', text: 'Focused on natural-looking, radiant results.' },
+  { n: '05', text: 'Full support throughout your treatment journey.' },
+  { n: '06', text: 'Honest advice and transparent pricing.' },
 ];
 
 const FAQS = [
   {
-    question: 'What is HydraFacial Keravive?',
+    question: 'Who is Dermalux LED treatment suitable for?',
     answer:
-      'HydraFacial Keravive is a three-step scalp treatment that uses HydraFacial technology to cleanse and exfoliate the scalp, followed by infusion of a unique blend of growth factors, skin proteins, and peptides. A take-home spray extends the benefits between sessions. The result is a healthier scalp environment that supports fuller, stronger hair.',
+      'Dermalux LED is spot on for all skin types, including highly sensitive skin. It is ideal for anyone looking to treat acne, rosacea, pigmentation, or the visible signs of ageing.',
   },
   {
-    question: 'Who is HydraFacial Keravive suitable for?',
+    question: 'Is it painful?',
     answer:
-      'Keravive is suitable for both men and women experiencing hair thinning, scalp dryness, oiliness, dandruff, or general scalp concerns. It is also popular as a preventative treatment to maintain scalp health and is suitable for all hair types. A consultation is included to confirm it is the right option for you.',
+      'Not at all. It is a completely pain-free, relaxing experience that simply feels like a warm, soothing glow on your face.',
   },
   {
-    question: 'How many sessions are recommended?',
+    question: 'How is it done?',
     answer:
-      'A course of 3 monthly in-clinic sessions is typically recommended for optimal results, supplemented by daily use of the Keravive take-home spray. Maintenance sessions every 3 to 6 months can help sustain the results long-term.',
+      'You will lie comfortably whilst the Dermalux canopy is placed over your face, delivering clinically proven wavelengths of light for a targeted session.',
   },
   {
-    question: 'Is there any downtime after Keravive?',
+    question: 'How long does it take to recover?',
     answer:
-      'No. HydraFacial Keravive is a completely non-invasive treatment with no downtime or recovery period. You can return to your normal daily activities immediately after each session, including washing your hair.',
+      'There is zero downtime. You can apply makeup and carry on with your normal routine straightaway.',
   },
   {
-    question: 'When will I see results from HydraFacial Keravive?',
+    question: 'How often should I have the treatment?',
     answer:
-      'Improvements in scalp condition are often noticed after the first session. Visible improvements in hair density and thickness typically develop over 4 to 8 weeks as the scalp environment improves. Full course results continue to develop over 3 to 6 months.',
+      'A single session delivers a brilliant boost, but we often recommend a tailored course of treatments to achieve the best long-term clinical results.',
   },
   {
-    question: 'Can Keravive be combined with other hair or scalp treatments?',
+    question: 'How long do the results last?',
     answer:
-      'Yes. Keravive can be combined with other scalp and hair health treatments such as Profhilo or polynucleotides for enhanced results. Our clinical team will advise on the best combination approach based on your individual scalp assessment.',
+      'The beautiful results are cumulative and can be exceptionally long-lasting provided you maintain a consistent skincare routine and book occasional maintenance sessions.',
+  },
+];
+
+const DERMALUX_PROCEDURE_STEPS = [
+  {
+    n: '01',
+    title: 'Skin Assessment & Consultation',
+    desc: 'Your clinician first assesses your skin to determine the precise wavelengths of light (Red, Blue, or Near-Infrared) needed to achieve your aesthetic goals.',
   },
   {
-    question: 'Do I need a referral for HydraFacial Keravive?',
-    answer:
-      'No referral is needed. You can book directly with The One Clinic. A scalp consultation is included before treatment to assess your needs and confirm Keravive is the most suitable option for you.',
+    n: '02',
+    title: 'Cleanse & Prepare',
+    desc: 'The treatment area is gently and thoroughly cleansed to prepare your skin, so the targeted light can be absorbed for maximum benefit.',
+  },
+  {
+    n: '03',
+    title: 'Relax Under the Dermalux Canopy',
+    desc: 'You simply relax comfortably under the Dermalux canopy for 20 minutes whilst the targeted light works its magic — it feels just like a warm, soothing holiday in the sun, entirely without the harmful UV rays.',
+  },
+  {
+    n: '04',
+    title: 'Zero Downtime',
+    desc: 'Following the session, there is absolutely zero downtime, allowing you to apply makeup and carry on with your normal routine straightaway.',
   },
 ];
 
 const RELATED = [
-  { title: 'HydraFacial',          href: '/treatments/hydrafacial-leicester',              desc: 'Advanced facial cleansing, exfoliation, and hydration for glowing skin.' },
-  { title: 'Profhilo',             href: '/treatments/profhilo-leicester',                 desc: 'Deep skin hydration and bio-remodelling for a natural, lasting glow.' },
-  { title: 'Vampire Facial',       href: '/treatments/vampire-facial-leicester',           desc: 'PRP-powered skin rejuvenation using your own growth factors.' },
-  { title: 'Polynucleotides',      href: '/treatments/polynucleotides-leicester', desc: 'Regenerative injections to repair, hydrate, and revitalise skin and scalp.' },
+  { title: 'Hydrafacial',     href: '/treatments/hydrafacial-leicester',      desc: 'A deep-cleansing facial that pairs beautifully with LED light therapy for an instant glow.' },
+  { title: 'Vampire Facial',  href: '/treatments/vampire-facial-leicester',   desc: 'PRP microneedling, with LED light therapy helping to soothe and speed up recovery.' },
+  { title: 'Chemical Peels',  href: '/treatments/chemical-peels-leicester',   desc: 'Resurfacing peels enhanced by the calming, healing power of LED light.' },
+  { title: 'Skin Analysis',   href: '/treatments/skin-analysis-leicester',    desc: 'Professional assessment to guide your bespoke LED light therapy plan.' },
 ];
 
 /* ── Page component ───────────────────────────────────────────── */
-export default function HydrafacialKeravivePage() {
+export default function DermaluxLEDPage() {
   const [showAllFaqs, setShowAllFaqs] = useState(false);
 
   return (
@@ -261,16 +252,17 @@ export default function HydrafacialKeravivePage() {
       ════════════════════════════════════════ */}
       <section
         className={styles.hero}
-        aria-label="HydraFacial Keravive Leicester, hero"
+        aria-label="Dermalux LED Light Therapy Leicester, hero"
         data-section-theme="dark"
       >
+        {/* Breadcrumb, pinned to top of hero */}
         <div className={styles.heroBreadcrumb}>
           <Container>
             <Breadcrumb
               theme="dark"
               items={[
                 { label: 'Treatments', href: '/treatments' },
-                { label: 'HydraFacial Keravive' },
+                { label: 'Dermalux LED Light Therapy' },
               ]}
             />
           </Container>
@@ -283,19 +275,20 @@ export default function HydrafacialKeravivePage() {
             initial="hidden"
             animate="show"
           >
+            {/* Left: text */}
             <div className={styles.heroLeft}>
               <motion.span className={styles.heroCategory} variants={fadeUp}>
-                Scalp and Hair Health
+                LED Light Therapy
               </motion.span>
 
               <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                HydraFacial Keravive<br />in Leicester
+                Dermalux LED Light Therapy in Leicester
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Advanced scalp cleansing and follicle nourishment for healthier,
-                fuller-looking hair. Clinically proven Keravive treatment, no downtime,
-                no referral needed.
+                Experience visibly healthier, beautifully glowing skin with our expert Dermalux LED
+                treatments in Leicester. This award-winning, non-invasive light therapy clinically
+                repairs and rejuvenates your skin, leaving you looking properly rested and radiant.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -304,47 +297,50 @@ export default function HydrafacialKeravivePage() {
                 </BookConsultationButton>
               </motion.div>
 
+              {/* Review badges */}
               <motion.div variants={fadeUp}>
                 <TrustBadges theme="dark" />
               </motion.div>
 
+              {/* Trust items */}
               <motion.div className={styles.heroTrust} variants={fadeUp}>
-                <span className={styles.heroTrustItem}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                    <circle cx="9" cy="7" r="4"/>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                  </svg>
-                  Expert clinical team
-                </span>
-                <span className={styles.heroTrustDivider} aria-hidden="true" />
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
                   </svg>
-                  Trusted by patients across Leicester
+                  Award-winning LED light therapy
+                </span>
+                <span className={styles.heroTrustDivider} aria-hidden="true" />
+                <span className={styles.heroTrustItem}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+                    <path d="M4.5 20.118a7.5 7.5 0 0115 0"/>
+                    <path d="M18.5 15v5M16 17.5h5"/>
+                  </svg>
+                  Trusted by patients in Leicester
                 </span>
                 <span className={styles.heroTrustDivider} aria-hidden="true" />
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <circle cx="12" cy="12" r="10"/>
-                    <polyline points="12 6 12 12 16 14"/>
+                    <path d="M9 12l2 2 4-4"/>
                   </svg>
-                  No referral required
+                  Non-invasive &amp; pain-free
                 </span>
               </motion.div>
             </div>
 
+            {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/Hero Section 1 HydraFacial.jpg"
-                alt="HydraFacial Keravive scalp treatment at The One Clinic Leicester"
+                src="/images/Hero Section Dermalux.jpg"
+                alt="Dermalux LED light therapy for radiant skin at The One Clinic Leicester"
                 fill
                 priority
                 className={styles.heroImage}
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
+              {/* Subtle bottom-fade to blend with section */}
               <div className={styles.heroImageFade} aria-hidden="true" />
             </motion.div>
           </motion.div>
@@ -352,7 +348,7 @@ export default function HydrafacialKeravivePage() {
       </section>
 
       {/* ════════════════════════════════════════
-          2. WHAT IS HYDRAFACIAL KERAVIVE?
+          2. WHAT IS DERMALUX LED?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
@@ -363,32 +359,32 @@ export default function HydrafacialKeravivePage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
+            {/* Left: text */}
             <motion.div className={styles.whatIsContent} variants={stagger(0.12)}>
               <motion.div className={styles.whatIsTextGroup} variants={fadeUp}>
                 <p className={styles.eyebrowDark}>About This Treatment</p>
-                <h2 className={styles.combinedHeading}>What is HydraFacial Keravive?</h2>
+                <h2 className={styles.combinedHeading}>What is Dermalux LED?</h2>
                 <p className={styles.combinedDesc}>
-                  HydraFacial Keravive is a clinically proven, three-step scalp health treatment
-                  that combines HydraFacial extraction technology with a proprietary blend of
-                  growth factors, skin proteins, and peptides. It addresses the root causes of
-                  scalp congestion, dryness, and hair thinning, creating the optimal environment
-                  for healthier, more resilient hair growth.
+                  Dermalux LED is a clinically proven, non-invasive treatment that uses the power of
+                  pure light to accelerate your skin&apos;s natural repair processes. It effectively
+                  treats a range of conditions, including acne, rosacea, pigmentation, and the
+                  visible signs of ageing, restoring a lovely, youthful glow to your complexion.
                 </p>
               </motion.div>
-
               <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
                 <BookConsultationButton className={styles.combinedCta}>
-                  Book Your Consultation
+                  Book Your Skin Consultation
                 </BookConsultationButton>
               </motion.div>
             </motion.div>
 
-            <motion.div className={styles.whatIsImageWrap} variants={fadeUp}>
+            {/* Right: image panel */}
+            <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/HydraFacial (2).jpg"
-                alt="HydraFacial Keravive scalp consultation at The One Clinic"
+                src="/images/What is Dermalux.jpg"
+                alt="Dermalux LED light therapy treatment at The One Clinic"
                 fill
-                className={styles.whatIsImage}
+                className={styles.whatIsVideoFrame}
                 sizes="(max-width: 900px) 100vw, 50vw"
               />
             </motion.div>
@@ -397,7 +393,153 @@ export default function HydrafacialKeravivePage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          3. AT A GLANCE
+          3. HOW DOES DERMALUX LED WORK?
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.howSection}>
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              How Does Dermalux LED Work?
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.howTextSingle}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.howParaCentered} variants={fadeUp}>
+              The treatment uses specific, proven wavelengths of light (Red, Blue, and Near-Infrared)
+              that are safely absorbed by the skin cells. This light energy stimulates cellular
+              renewal, boosts collagen and elastin production, and eliminates acne-causing bacteria.
+              It intensely calms redness and irritation, allowing you to enjoy a spotless, healthy
+              complexion in your everyday life.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.howCoversWrap}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.howCoversLabel} variants={fadeUp}>Dermalux LED Addresses</motion.p>
+            <motion.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
+              {HOW_ADDRESSES.map((item) => (
+                <motion.li key={item} className={styles.howCoversItem} variants={fadeUp}>
+                  <span className={styles.howCoversCheck} aria-hidden="true">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <polyline points="2,6 5,9 10,3" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  {item}
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          4. CTA BANNER , Radiant glow
+      ════════════════════════════════════════ */}
+      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book Dermalux LED consultation">
+        {/* Watermark logo */}
+        <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
+          <Image
+            src="/images/Background-logo.png"
+            alt=""
+            fill
+            className={styles.ctaBannerLogo}
+            sizes="100vw"
+          />
+        </div>
+        <Container>
+          <motion.div
+            className={styles.ctaBannerContent}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.h3 className={styles.ctaBannerHeading} variants={fadeUp}>
+              Achieve a Radiant Glow Today<br />with Expert Dermalux LED!
+            </motion.h3>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={styles.ctaBannerBtn}>
+                Book a Consultation
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
+
+      {/* ════════════════════════════════════════
+          5. WHY CHOOSE DERMALUX LED?
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Is This Right for You?
+            </motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Why Choose Dermalux LED?
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.eligibilityWrap}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
+              You might find Dermalux LED to be a brilliant choice if you:
+            </motion.p>
+            <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
+              {ELIGIBILITY.map((item) => (
+                <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
+                  <span className={styles.eligibilityCheck} aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+            <motion.p className={styles.eligibilityClosing} variants={fadeUp}>
+              Dermalux LED is suitable for all skin types, including sensitive skin. Book a
+              consultation and we will tailor the perfect light therapy programme to your skin.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
+                Book Your Consultation
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          6. AT A GLANCE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
         <div className={styles.whiteBgWrap} aria-hidden="true">
@@ -413,7 +555,7 @@ export default function HydrafacialKeravivePage() {
           >
             <motion.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              HydraFacial Keravive at a Glance
+              Dermalux LED Treatment At A Glance
             </motion.h2>
           </motion.div>
 
@@ -436,9 +578,54 @@ export default function HydrafacialKeravivePage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          4. TREATMENT JOURNEY
+          7. BENEFIT OF DERMALUX LED
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.journeySection}>
+      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
+        <div className={styles.whiteBgWrap} aria-hidden="true">
+          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
+        </div>
+        <Container className={styles.whiteBgContent}>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Benefits of Dermalux LED
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.treatedBenefitsGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {TREATED_BENEFITS.map((b) => (
+              <motion.div
+                key={b.title}
+                className={styles.treatedBenefitCard}
+                variants={fadeUp}
+                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
+              >
+                <span className={styles.treatedBenefitIconWrap} aria-hidden="true">
+                  {b.icon}
+                </span>
+                <h3 className={styles.treatedBenefitTitle}>{b.title}</h3>
+                <p className={styles.treatedBenefitDesc}>{b.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          8. DERMALUX LED PROCEDURE
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -447,8 +634,12 @@ export default function HydrafacialKeravivePage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>What to Expect</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>Your Treatment Journey</motion.h2>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              The Process
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Dermalux LED Procedure
+            </motion.h2>
           </motion.div>
 
           <motion.ol
@@ -457,9 +648,9 @@ export default function HydrafacialKeravivePage() {
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
-            aria-label="HydraFacial Keravive treatment journey steps"
+            aria-label="Dermalux LED procedure steps"
           >
-            {JOURNEY_STEPS.map((step) => (
+            {DERMALUX_PROCEDURE_STEPS.map((step) => (
               <motion.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
                 <div className={styles.stepLeft}>
                   <div className={styles.stepNumCircle} aria-hidden="true">{step.n}</div>
@@ -476,51 +667,7 @@ export default function HydrafacialKeravivePage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          5. BENEFITS
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
-        <div className={styles.whiteBgWrap} aria-hidden="true">
-          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
-        </div>
-        <Container className={styles.whiteBgContent}>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Why Keravive</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              The Benefits of HydraFacial Keravive
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.treatedBenefitsGrid}
-            variants={stagger(0.08)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {BENEFITS.map((b) => (
-              <motion.div
-                key={b.title}
-                className={styles.treatedBenefitCard}
-                variants={fadeUp}
-                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
-              >
-                <span className={styles.treatedBenefitIconWrap} aria-hidden="true">{b.icon}</span>
-                <h3 className={styles.treatedBenefitTitle}>{b.title}</h3>
-                <p className={styles.treatedBenefitDesc}>{b.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          6. ELIGIBILITY
+          9. RESULTS, AFTERCARE & SIDE EFFECTS
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -531,61 +678,11 @@ export default function HydrafacialKeravivePage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Is This Right for You?</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Who Is a Good Candidate?
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.eligibilityWrap}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
-              HydraFacial Keravive may be right for you if you are:
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Post-Treatment
             </motion.p>
-            <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
-              {ELIGIBILITY.map((item) => (
-                <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
-                  <span className={styles.eligibilityCheck} aria-hidden="true">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
-                  <span>{item}</span>
-                </motion.li>
-              ))}
-            </motion.ul>
-            <motion.p className={styles.eligibilityClosing} variants={fadeUp}>
-              Book a consultation and our team will assess your scalp and confirm whether HydraFacial Keravive is the right treatment for you.
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
-                Book Your Consultation
-              </BookConsultationButton>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          7. RESULTS, AFTERCARE & SIDE EFFECTS
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Post-Treatment</motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Results, Aftercare and Side Effects
+              Results, Aftercare &amp; Side Effects
             </motion.h2>
           </motion.div>
 
@@ -596,6 +693,7 @@ export default function HydrafacialKeravivePage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
+            {/* Card 1: Results Timeline & Longevity */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -604,20 +702,21 @@ export default function HydrafacialKeravivePage() {
                     <polyline points="17 6 23 6 23 12"/>
                   </svg>
                 </span>
-                <h3 className={styles.resultsAfterCardTitle}>When Will You See Results?</h3>
+                <h3 className={styles.resultsAfterCardTitle}>How Long to See Results?</h3>
               </div>
               <p className={styles.resultsAfterCardBody}>
-                Improvements in scalp condition are often felt after the first session.
-                Visible improvements in hair density and thickness typically develop over
-                4 to 8 weeks as the scalp environment improves.
+                You will notice a visible, healthy glow immediately after your session. With a full
+                course of treatments, significant improvements in acne, redness, and ageing become
+                increasingly pronounced over several weeks.
               </p>
               <div className={styles.resultsAfterCardSpacer} />
               <p className={styles.resultsAfterCardNote}>
-                Full course results continue to develop over 3 to 6 months, with maintenance
-                sessions every 3 to 6 months sustaining long-term benefits.
+                The beautiful results are cumulative and can be long-lasting, provided you maintain a
+                consistent skincare routine and book occasional maintenance sessions.
               </p>
             </motion.div>
 
+            {/* Card 2: Side Effects */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -629,25 +728,18 @@ export default function HydrafacialKeravivePage() {
                 </span>
                 <h3 className={styles.resultsAfterCardTitle}>Side Effects</h3>
               </div>
-              <ul className={styles.resultsAfterCardList} role="list">
-                {[
-                  'Mild scalp redness lasting a few hours',
-                  'Temporary tingling or sensitivity during treatment',
-                  'Occasional mild flaking in the first day or two',
-                ].map((item) => (
-                  <li key={item} className={styles.resultsAfterCardListItem}>
-                    <span className={styles.resultsAfterDot} aria-hidden="true" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              <p className={styles.resultsAfterCardBody}>
+                Dermalux LED is completely safe and clinically proven. There are virtually no side
+                effects, no burning, and no irritation.
+              </p>
               <div className={styles.resultsAfterCardSpacer} />
               <p className={styles.resultsAfterCardNote}>
-                Side effects are minimal and short-lived. Most patients experience no
-                discomfort during or after the treatment session.
+                It is a gentle, soothing treatment that is suitable for all skin types, including the
+                most sensitive skin.
               </p>
             </motion.div>
 
+            {/* Card 3: Aftercare Tips */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -660,11 +752,9 @@ export default function HydrafacialKeravivePage() {
               </div>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Apply the Keravive take-home spray daily as directed',
-                  'Avoid harsh shampoos or scalp treatments for 24 hours',
-                  'Protect the scalp from direct sun exposure after sessions',
-                  'Attend all three monthly sessions for optimal results',
-                  'Book a follow-up consultation if you have any concerns',
+                  'Keep your skin deeply hydrated',
+                  'Apply a high-quality SPF daily to protect your rejuvenating skin',
+                  'Follow the bespoke skincare routine your doctor recommended to maintain your lovely glow',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
                     <span className={styles.resultsAfterDot} aria-hidden="true" />
@@ -678,104 +768,44 @@ export default function HydrafacialKeravivePage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. PATIENT REVIEWS
+          10. PATIENT REVIEWS
       ════════════════════════════════════════ */}
       <Testimonials />
 
       {/* ════════════════════════════════════════
-          9. CTA BANNER
+          11. DERMALUX LED COST IN LEICESTER
       ════════════════════════════════════════ */}
-      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book HydraFacial Keravive">
-        <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
-          <Image src="/images/Background-logo.png" alt="" fill className={styles.ctaBannerLogo} sizes="100vw" />
-        </div>
+      <section className={styles.costBanner} data-section-theme="dark" aria-label="Dermalux LED cost">
         <Container>
           <motion.div
-            className={styles.ctaBannerContent}
+            className={styles.costBannerInner}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
-              Healthier Scalp.<br />Fuller Hair.
+            <motion.h2 className={styles.costBannerEyebrow} variants={fadeUp}>
+              Dermalux LED Cost in Leicester
             </motion.h2>
-            <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
-              Book a HydraFacial Keravive consultation with our expert team in Leicester.
+            <motion.p className={styles.costBannerPrice} variants={fadeUp}>
+              From £75
+            </motion.p>
+            <motion.p className={styles.costBannerNote} variants={fadeUp}>
+              At The One Clinic, we offer Dermalux LED both as a powerful standalone therapy and as
+              part of our premium, bespoke skin packages to deliver spot-on results. Standalone
+              sessions start from £75 for a 20-minute session.
             </motion.p>
             <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBannerBtn}>Book Consultation</BookConsultationButton>
+              <BookConsultationButton className={styles.ctaBannerBtn}>
+                Book A Consultation
+              </BookConsultationButton>
             </motion.div>
           </motion.div>
         </Container>
       </section>
 
       {/* ════════════════════════════════════════
-          10. TREATABLE AREAS
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark" className={styles.conditionsSection}>
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Scalp Concerns and Areas</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              What Can HydraFacial Keravive Treat?
-            </motion.h2>
-            <motion.p className={styles.conditionsIntro} variants={fadeUp}>
-              Keravive addresses a wide range of scalp health concerns and can be
-              applied across the full scalp for comprehensive coverage.
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            className={styles.areasColumns}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.div
-              className={styles.areasGroup}
-              variants={fadeUp}
-              whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
-            >
-              <p className={styles.areasGroupLabel}>Scalp Concerns</p>
-              <ul className={styles.areasGroupList} role="list">
-                {TREATABLE_CONCERNS.map((item) => (
-                  <li key={item} className={styles.areasGroupItem}>
-                    <span className={styles.areasItemDot} aria-hidden="true" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            <motion.div
-              className={styles.areasGroup}
-              variants={fadeUp}
-              whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
-            >
-              <p className={styles.areasGroupLabel}>Treatment Areas</p>
-              <ul className={styles.areasGroupList} role="list">
-                {TREATABLE_AREAS.map((item) => (
-                  <li key={item} className={styles.areasGroupItem}>
-                    <span className={styles.areasItemDot} aria-hidden="true" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          11. CLINIC INTRO
+          12. BEST DERMALUX LED LEICESTER
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.clinicIntroSection}>
         <Container>
@@ -787,47 +817,28 @@ export default function HydrafacialKeravivePage() {
             viewport={VIEWPORT}
           >
             <motion.div className={styles.clinicIntroLeft} variants={fadeUp}>
-              <p className={styles.eyebrowLight}>HydraFacial Keravive</p>
-              <h2 className={styles.headingLight}>
-                Best Scalp Treatment<br />in Leicester
+              <p className={styles.eyebrowDark}>LED Light Therapy Excellence</p>
+              <h2 className={styles.combinedHeading}>
+                Best Dermalux LED<br />in Leicester
               </h2>
             </motion.div>
             <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
-              The One Clinic delivers expert HydraFacial Keravive in Leicester, combining
-              advanced scalp technology with personalised clinical care. Our experienced team
-              tailors every Keravive course to your specific scalp concerns, ensuring a
-              comfortable, effective treatment in a trusted medical environment.
+              The One Clinic provides the best Dermalux LED light therapy experience in Leicester. As
+              a clinic that puts patients first, we apply our extensive aesthetic expertise to
+              deliver tailored, relaxing treatments. We perform every session in a luxurious
+              environment, helping you feel refreshed and look naturally radiant when you leave.
             </motion.p>
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          12. COST BANNER
+          13. MEET THE EXPERTS
       ════════════════════════════════════════ */}
-      <section className={styles.costBanner} data-section-theme="dark" aria-label="HydraFacial Keravive cost">
-        <Container>
-          <motion.div
-            className={styles.costBannerInner}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>HydraFacial Keravive Pricing at The One Clinic</motion.p>
-            <motion.p className={styles.costBannerPrice} variants={fadeUp}>From £200</motion.p>
-            <motion.p className={styles.costBannerNote} variants={fadeUp}>
-              Pricing varies by number of sessions. Full details provided at your consultation.
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBannerBtn}>Book A Consultation</BookConsultationButton>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
+      <MeetTheExperts />
 
       {/* ════════════════════════════════════════
-          13. WHY CHOOSE THE ONE CLINIC
+          14. WHY CHOOSE THE ONE CLINIC
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -839,7 +850,7 @@ export default function HydrafacialKeravivePage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Why Choose The One Clinic For HydraFacial Keravive
+              Why Choose The One Clinic For Dermalux LED
             </motion.h2>
           </motion.div>
 
@@ -866,14 +877,47 @@ export default function HydrafacialKeravivePage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          14. MEET THE EXPERTS
+          15. CTA BANNER , Brighter skin
       ════════════════════════════════════════ */}
-      <MeetTheExperts />
+      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book Dermalux LED treatment">
+        {/* Watermark logo */}
+        <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
+          <Image
+            src="/images/Background-logo.png"
+            alt=""
+            fill
+            className={styles.ctaBannerLogo}
+            sizes="100vw"
+          />
+        </div>
+        <Container>
+          <motion.div
+            className={styles.ctaBannerContent}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
+              Reveal Healthier, Brighter Skin<br />with Dermalux Treatment Today
+            </motion.h2>
+            <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
+              Experience the power of advanced LED light therapy and take the next step towards a
+              clearer, more radiant complexion.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={styles.ctaBannerBtn}>
+                Book Consultation
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
 
       {/* ════════════════════════════════════════
-          15. FAQ
+          16. FAQ
       ════════════════════════════════════════ */}
-      <section className={styles.faqSection} data-section-theme="light">
+      <section className={styles.faqSection} data-section-theme="dark">
         <div className={styles.faqInner}>
           <Container>
             <motion.div
@@ -929,12 +973,12 @@ export default function HydrafacialKeravivePage() {
       </section>
 
       {/* ════════════════════════════════════════
-          16. BOOKING FORM
+          17. BOOKING FORM
       ════════════════════════════════════════ */}
       <LeadForm />
 
       {/* ════════════════════════════════════════
-          17. RELATED TREATMENTS
+          18. RELATED TREATMENTS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
@@ -945,8 +989,12 @@ export default function HydrafacialKeravivePage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Explore More</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>Related Treatments</motion.h2>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Explore More
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Related Treatments
+            </motion.h2>
           </motion.div>
 
           <motion.div
@@ -976,7 +1024,7 @@ export default function HydrafacialKeravivePage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          18. FINAL CTA
+          FINAL CTA
       ════════════════════════════════════════ */}
       <FinalCTA />
     </>

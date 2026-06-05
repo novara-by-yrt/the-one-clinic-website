@@ -3,19 +3,19 @@ import HydrafacialPage from './HydrafacialPage';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/treatments/hydrafacial-leicester' },
-  title: 'HydraFacial Leicester | Deep Cleanse & Skin Hydration',
+  title: 'Best HydraFacial in Leicester | The One Clinic',
   description:
-    'HydraFacial treatment in Leicester. Deep cleanse, exfoliate, extract, and hydrate your skin in a single session. Expert care at The One Clinic.',
+    'Discover expert HydraFacial treatments in Leicester. Rejuvenate your skin with our bespoke, deep-cleansing facial packages.',
   openGraph: {
-    title: 'HydraFacial Leicester',
+    title: 'Best HydraFacial in Leicester | The One Clinic',
     description:
-      'HydraFacial skin treatment in Leicester. Deep cleanse, exfoliation, and intense hydration in one session at The One Clinic.',
+      'Discover expert HydraFacial treatments in Leicester. Rejuvenate your skin with our bespoke, deep-cleansing facial packages.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'HydraFacial Leicester',
+    title: 'Best HydraFacial in Leicester | The One Clinic',
     description:
-      'HydraFacial skin treatment in Leicester. Deep cleanse, exfoliation, and intense hydration in one session at The One Clinic.',
+      'Discover expert HydraFacial treatments in Leicester. Rejuvenate your skin with our bespoke, deep-cleansing facial packages.',
   },
 };
 

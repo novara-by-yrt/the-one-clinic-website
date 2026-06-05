@@ -759,11 +759,27 @@
   margin-bottom: var(--space-7);
 }
 
+/* Single centred paragraph wrapper */
+.howTextSingle {
+  max-width: 780px;
+  margin-inline: auto;
+  margin-bottom: var(--space-7);
+  text-align: center;
+}
+
 .howPara {
   font-size: var(--text-body);
   line-height: 1.78;
   color: var(--color-text-muted);
   margin: 0;
+}
+
+.howParaCentered {
+  font-size: var(--text-body);
+  line-height: 1.78;
+  color: var(--color-text-muted);
+  margin: 0;
+  text-align: center;
 }
 
 /* Screening covers checklist */

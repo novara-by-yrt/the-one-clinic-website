@@ -20,17 +20,18 @@ import styles from './page.module.css';
 /* ── Static data ──────────────────────────────────────────────── */
 const AT_A_GLANCE = [
   {
-    label: 'Customisation',
-    value: 'Fully Personalised',
+    label: 'Treatment Duration',
+    value: '30 to 45 minutes',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14"/>
       </svg>
     ),
   },
   {
-    label: 'Product Strength',
-    value: 'Medical-Grade',
+    label: 'Treatment Frequency',
+    value: 'Daily use of your prescribed products at home',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="1 4 1 10 7 10"/>
@@ -39,8 +40,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Skin Concerns',
-    value: 'Multiple Concerns',
+    label: 'Downtime',
+    value: 'None',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
@@ -49,8 +50,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Treatment Synergy',
-    value: 'In-Clinic Compatible',
+    label: 'Results Longevity',
+    value: 'Long-term result with a consistent regimen',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
@@ -59,8 +60,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Results Timeline',
-    value: '4,12 Weeks',
+    label: 'Cost',
+    value: 'Starts from £200',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <line x1="12" y1="1" x2="12" y2="23"/>
@@ -69,8 +70,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Investment',
-    value: 'From £200',
+    label: 'Appointment Type',
+    value: 'In-clinic',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M3 21h18"/>
@@ -82,60 +83,28 @@ const AT_A_GLANCE = [
   },
 ];
 
-const JOURNEY_STEPS = [
-  {
-    n: '01',
-    title: 'Comprehensive Skin Analysis',
-    desc: 'We begin with an in-depth consultation and skin assessment to understand your skin type, concerns, sensitivities, and lifestyle. This guides our bespoke product prescription.',
-  },
-  {
-    n: '02',
-    title: 'Prescription Formulation',
-    desc: 'Based on your analysis, our clinical experts design a personalised AlumierMD regimen tailored to address your specific skin concerns with the correct active ingredient strengths.',
-  },
-  {
-    n: '03',
-    title: 'Product Selection & Education',
-    desc: 'We select the right products from AlumierMD\'s range and provide comprehensive guidance on how to use them safely and effectively at home.',
-  },
-  {
-    n: '04',
-    title: 'Progressive Results & Support',
-    desc: 'Over 4,12 weeks, your skin improves progressively. We monitor your progress and adjust your regime as needed, providing ongoing professional support throughout your journey.',
-  },
-];
-
-const APPROACH_CARDS = [
-  {
-    eyebrow: '01',
-    title: 'Comprehensive Skin Analysis',
-    desc: 'Every skin is unique. We conduct a thorough assessment of your skin concerns, barrier function, sensitivities, and goals to design a truly personalised regime.',
-  },
-  {
-    eyebrow: '02',
-    title: 'Prescription Formulation',
-    desc: 'Using pharmaceutical-grade actives at clinical concentrations, we formulate your personalised AlumierMD regimen targeting your specific priorities with precision.',
-  },
-  {
-    eyebrow: '03',
-    title: 'Progressive Skincare Regimen',
-    desc: 'A step-by-step introduction to active ingredients ensures your skin tolerates and thrives on your regime, with adjustments as your skin strengthens and improves.',
-  },
-];
-
 const ELIGIBILITY = [
-  'Anyone seeking medical-grade skincare for real skin improvement',
-  'Ageing skin with fine lines, loss of elasticity, or dullness',
-  'Hyperpigmentation and sun damage',
-  'Acne-prone or congested skin',
-  'Post-procedure skin support and recovery',
-  'Sensitive skin requiring professional guidance',
+  'Struggle with persistent acne, breakouts, or congested skin',
+  'Suffer from rosacea or highly sensitive, redness-prone skin',
+  'Are dealing with sun damage, hyperpigmentation, or uneven skin tone',
+  'Want a targeted, science-backed solution that standard high-street skincare simply cannot sort out',
 ];
 
 const TREATED_BENEFITS = [
   {
-    title: 'Medical-Grade Formulations',
-    desc: 'AlumierMD products contain pharmaceutical-grade actives at concentrations far stronger than retail skincare, delivering measurable clinical results.',
+    title: 'Targeted Treatment',
+    desc: 'Specifically addresses chronic skin conditions like acne and rosacea with medical-grade efficacy.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <circle cx="12" cy="12" r="6"/>
+        <circle cx="12" cy="12" r="2"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Clean Science',
+    desc: 'Free from harmful parabens, sulphates, and artificial fragrances.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -143,155 +112,124 @@ const TREATED_BENEFITS = [
     ),
   },
   {
-    title: 'Personalised Prescriptions',
-    desc: 'Each regimen is tailored to your skin type and concerns. No one-size-fits-all approach,your products are chosen for your skin\'s unique needs.',
+    title: 'Brilliant Luminosity',
+    desc: 'Breathes new life into dull complexions, restoring a natural, well-rested glow.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-        <polyline points="17 6 23 6 23 12"/>
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/>
+        <line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/>
+        <line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
       </svg>
     ),
   },
   {
-    title: 'Clinically Proven Results',
-    desc: 'Backed by scientific research and trusted by dermatologists worldwide, AlumierMD delivers visible improvements in skin texture, tone, and radiance.',
+    title: 'Customised Care',
+    desc: 'Completely personalised based on the unique needs of your skin.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12"/>
-        <path d="M12 6v6l4 2"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'Complements Clinical Treatments',
-    desc: 'AlumierMD skincare synergises perfectly with in-clinic treatments like chemical peels, Morpheus8, and laser resurfacing to amplify and prolong results.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="10"/>
-        <circle cx="12" cy="12" r="4"/>
-        <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'Visible Transformation',
-    desc: 'Progressive improvement from week 4 onwards, with optimal results at 12 weeks. Your skin becomes noticeably firmer, clearer, and more radiant.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
         <circle cx="12" cy="12" r="3"/>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/>
       </svg>
     ),
   },
   {
-    title: 'Professional Support',
-    desc: 'Ongoing guidance from our clinical team ensures your regimen is working optimally. We adjust, troubleshoot, and support your journey every step of the way.',
+    title: 'Enhanced Confidence',
+    desc: 'Helps you feel properly comfortable and proud of your natural, bare skin.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-        <polyline points="22 4 12 14.01 9 11.01"/>
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Strengthens Skin Barrier',
+    desc: 'Deeply nourishes and strengthens your skin, helping to protect it from harmful environmental influences.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <path d="M9 12l2 2 4-4"/>
       </svg>
     ),
   },
 ];
 
-const PRODUCT_CATEGORIES = [
-  { label: 'Cleansers',           img: '/images/Category_Cleansers.png' },
-  { label: 'Facial Exfoliants',   img: '/images/Category_Exfoliants.png' },
-  { label: 'Serums',              img: '/images/Category_Serums.png' },
-  { label: 'Moisturisers',        img: '/images/Category_Moisturizers.png' },
-  { label: 'Eye Creams & Serums', img: '/images/Category_Eye_Creams&Serums.png' },
-];
-
-const SKIN_CONCERNS_DATA = [
-  {
-    group: 'Skin Issues',
-    items: [
-      'Fine lines and wrinkles',
-      'Pigmentation & sun damage',
-      'Acne & congestion',
-      'Sensitivity & redness',
-      'Loss of elasticity',
-      'Dull & tired skin',
-      'Post-procedure recovery',
-    ],
-  },
-  {
-    group: 'Product Selection',
-    items: [
-      'Targeted for each concern',
-      'Customised active strengths',
-      'Professional supervision',
-      'Synergistic combinations',
-      'Progressive regimen approach',
-      'Maintenance support',
-      'Adjustment as needed',
-    ],
-  },
+const HOW_ADDRESSES = [
+  'Acne & breakouts',
+  'Rosacea & redness',
+  'Hyperpigmentation',
+  'Signs of ageing',
+  'Sun damage',
+  'Uneven skin tone',
 ];
 
 const CLINIC_REASONS = [
-  { n: '01', text: 'All-in-one clinic with medical & aesthetic services.' },
-  { n: '02', text: 'Highly trained, compassionate doctors.' },
-  { n: '03', text: 'Customised treatments based on listening & expertise.' },
-  { n: '04', text: 'State-of-the-art facilities & modern equipment.' },
-  { n: '05', text: 'Strong reputation & excellent reviews.' },
-  { n: '06', text: 'Comprehensive care and referrals with specialists.' },
+  { n: '01', text: 'Expert doctors with extensive aesthetic experience.' },
+  { n: '02', text: 'Personalised care tailored to your unique skin.' },
+  { n: '03', text: 'Advanced technology for safe, effective treatments.' },
+  { n: '04', text: 'Trusted reputation with excellent patient reviews.' },
+  { n: '05', text: 'Full support throughout your skincare journey.' },
+  { n: '06', text: 'Honest advice and transparent pricing.' },
 ];
 
 const FAQS = [
   {
-    question: 'What is AlumierMD skincare?',
+    question: 'Is it suitable for sensitive skin?',
     answer:
-      'AlumierMD is a professional medical-grade skincare line available exclusively through licensed clinics. It contains pharmaceutical-grade active ingredients at clinical concentrations,including retinoids, hydroxy acids, vitamin C, peptides, and growth factors,to deliver measurable clinical results.',
+      "Yes. Alumier MD is renowned for treating sensitive skin and rosacea. During your consultation, our doctors will tailor the active ingredients to ensure they are spot on for your skin's specific tolerance levels.",
   },
   {
-    question: 'How is AlumierMD different from high-street skincare?',
+    question: 'Are there any risks?',
     answer:
-      'AlumierMD products contain active ingredients at much higher concentrations than retail products. These pharmaceutical-grade formulations require a prescription from a trained clinician to ensure they are used safely and effectively for your specific skin type.',
+      'Because the active ingredients are powerful, you may experience mild, temporary peeling or redness whilst your skin acclimatises. It sorts itself out quickly with proper professional guidance.',
   },
   {
-    question: 'What skin concerns can AlumierMD treat?',
+    question: 'How long does it take to apply?',
     answer:
-      'AlumierMD addresses ageing (fine lines, loss of firmness), pigmentation and sun damage, acne and congestion, sensitivity and rosacea, and overall skin radiance. Your personalised regime targets your specific concerns with precision.',
+      'Your bespoke daily routine will only take a few minutes each morning and evening.',
   },
   {
-    question: 'How do I get started with AlumierMD at The One Clinic?',
+    question: 'When will I see changes?',
     answer:
-      'Book a skin consultation with our team. We conduct a thorough skin analysis to understand your concerns and goals, then prescribe a bespoke AlumierMD regimen. Products are available to purchase directly from us, with ongoing professional support.',
+      "Most patients show rapid improvement in their skin's appearance and hydration after just two weeks of continuous use, with the best results seen at 8 to 12 weeks.",
   },
   {
-    question: 'How long before I see results?',
+    question: 'Can I use makeup with my new skincare routine?',
     answer:
-      'Initial improvements often appear within 4 weeks as skin cell turnover accelerates. Most visible results develop by 8,12 weeks. Continued use maintains and enhances results. Consistency is key.',
+      'Yes, you can absolutely wear makeup. However, to achieve the absolute best results and avoid clogging your pores, we recommend using high-quality, non-comedogenic mineral makeup.',
   },
   {
-    question: 'Is AlumierMD suitable for sensitive skin?',
+    question: 'Is Alumier MD safe during pregnancy?',
     answer:
-      'Yes. We prescribe tailored regimens for sensitive skin, starting with lower active concentrations and building tolerance gradually. Our team monitors your progress and adjusts as your skin strengthens.',
+      'While many products in the Alumier range are perfectly safe during pregnancy, some active ingredients, like retinol, must be avoided. Your doctor will tailor your bespoke programme to ensure it is entirely safe for you and your baby.',
   },
 ];
 
-const EXPERTS = [
+const ALUMIER_PROCEDURE_STEPS = [
   {
-    name: 'Dr Sumit Virmani',
-    credentials: ['MBBS', 'MRCGP', 'Co-Founder'],
-    image: '/images/imgi_20_team-thumb-VIRMANI.jpg',
-    alt: 'Dr Sumit Virmani, Co-Founder, The One Clinic',
-    bio: [
-      'Dr Sumit Virmani, the co-founder of The One Clinic, brings over 15 years of medical expertise, including more than a decade as a trusted local GP. With advanced skills in minor surgery and a keen eye for detail, Dr Virmani is passionate about patient care and achieving outstanding results.',
-      'His growing interest in aesthetic medicine, particularly body contouring and hair rejuvenation, reflects his commitment to helping patients look and feel their best. Alongside his ongoing GP practice, Dr Virmani continues to offer safe, effective, and transformative aesthetic treatments at The One Clinic.',
-    ],
+    n: '01',
+    title: 'Consultation & Skin Analysis',
+    desc: 'Your doctor listens carefully to your concerns, analyses your skin in detail, and identifies the root causes of your specific skin conditions to map out your bespoke Alumier programme.',
   },
   {
-    name: 'Dr Gunjan Bedi',
-    credentials: ['MBBS', 'MRCpsych', 'MRCGP', 'BCAM'],
-    image: '/DR-GUNJAN.jpg',
-    alt: 'Dr Gunjan Bedi, General Practitioner and Aesthetics Practitioner, The One Clinic',
-    bio: [
-      'Dr Gunjan Bedi is a highly skilled, advanced aesthetics practitioner at The One Clinic. She is a highly experienced doctor, having worked in the medical sector for over 20 years, with over 10 years service as a GP.',
-      'Dr Bedi brings a unique and comprehensive perspective to patient care, combining qualifications in General Practice, Psychiatry, and Aesthetic Medicine. Her breadth of expertise allows her to take a truly holistic approach, addressing both the physical and psychological dimensions of each patient\'s wellbeing.',
-    ],
+    n: '02',
+    title: 'Bespoke Prescription',
+    desc: 'A fully personalised Alumier MD regimen is formulated for you — selecting the right active ingredients, concentrations, and product combinations to precisely target your skin goals.',
+  },
+  {
+    n: '03',
+    title: 'Product Introduction & Guidance',
+    desc: 'We walk you through each product, explaining exactly how and when to apply them so you can seamlessly integrate these medical-grade formulations into your daily at-home routine.',
+  },
+  {
+    n: '04',
+    title: 'Ongoing Support & Review',
+    desc: 'We provide continuous professional support and scheduled follow-up reviews to monitor your progress, celebrate your results, and adjust your programme as your skin improves.',
   },
 ];
 
@@ -313,7 +251,7 @@ export default function AlumierMDPage() {
       ════════════════════════════════════════ */}
       <section
         className={styles.hero}
-        aria-label="AlumierMD Skincare Leicester, hero"
+        aria-label="Alumier Skincare Leicester, hero"
         data-section-theme="dark"
       >
         {/* Breadcrumb, pinned to top of hero */}
@@ -323,7 +261,7 @@ export default function AlumierMDPage() {
               theme="dark"
               items={[
                 { label: 'Treatments', href: '/treatments' },
-                { label: 'Skincare, AlumierMD' },
+                { label: 'Alumier Skincare' },
               ]}
             />
           </Container>
@@ -343,11 +281,13 @@ export default function AlumierMDPage() {
               </motion.span>
 
               <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                AlumierMD Skincare in Leicester
+                Alumier Skincare in Leicester
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Prescription skincare for advanced skin health and transformation. Medical-grade formulations tailored to your skin.
+                Enjoy flawless, glowing skin with our customised Alumier MD skincare regimen. Our
+                medically proven skincare products will work wonders for your skin, helping you
+                achieve healthy skin and look absolutely radiant.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -393,7 +333,7 @@ export default function AlumierMDPage() {
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
                 src="/images/Hero Section Alumier Skincare.jpg"
-                alt="AlumierMD skincare consultation at The One Clinic"
+                alt="Alumier MD skincare consultation at The One Clinic Leicester"
                 fill
                 priority
                 className={styles.heroImage}
@@ -407,7 +347,7 @@ export default function AlumierMDPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          2. WHAT IS ALUMIERMD?
+          2. WHAT IS ALUMIER SKINCARE?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
@@ -422,12 +362,11 @@ export default function AlumierMDPage() {
             <motion.div className={styles.whatIsContent} variants={stagger(0.12)}>
               <motion.div className={styles.whatIsTextGroup} variants={fadeUp}>
                 <p className={styles.eyebrowDark}>About This Treatment</p>
-                <h2 className={styles.combinedHeading}>What is AlumierMD?</h2>
+                <h2 className={styles.combinedHeading}>What is Alumier Skincare?</h2>
                 <p className={styles.combinedDesc}>
-                  AlumierMD is a science-driven medical-grade skincare range available exclusively through licensed clinics.
-                  Each product is formulated with pharmaceutical-grade active ingredients,retinoids, hydroxy acids, vitamins,
-                  peptides, and growth factors,at clinical concentrations. We prescribe a personalised home care regimen based
-                  on your skin analysis, ensuring you receive exactly what your skin needs for real, measurable improvement.
+                  Alumier MD is a medically dispensed, high-grade skincare range that is focused on
+                  Clean Science. It helps treat various skin problems, such as acne, rosacea,
+                  hyperpigmentation, and signs of ageing, giving your skin a radiant glow.
                 </p>
               </motion.div>
               <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
@@ -441,7 +380,7 @@ export default function AlumierMDPage() {
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
                 src="/images/What is Alumier Skincare.jpg"
-                alt="AlumierMD skincare products"
+                alt="Alumier MD medical-grade skincare products"
                 fill
                 className={styles.whatIsVideoFrame}
                 sizes="(max-width: 900px) 100vw, 50vw"
@@ -452,7 +391,153 @@ export default function AlumierMDPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          3. AT A GLANCE
+          3. HOW DOES ALUMIER SKINCARE WORK?
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.howSection}>
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              How Does Alumier Skincare Work?
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.howTextSingle}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.howParaCentered} variants={fadeUp}>
+              By utilising highly potent, clinically proven active ingredients, Alumier formulations
+              penetrate deep into the skin&apos;s layers to correct underlying issues rather than just
+              masking them. The bespoke programme encourages cellular turnover, boosts collagen
+              production, and defends against environmental damage, leaving you with a beautifully
+              clear and refreshed complexion in your everyday life.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.howCoversWrap}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.howCoversLabel} variants={fadeUp}>Alumier Skincare Addresses</motion.p>
+            <motion.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
+              {HOW_ADDRESSES.map((item) => (
+                <motion.li key={item} className={styles.howCoversItem} variants={fadeUp}>
+                  <span className={styles.howCoversCheck} aria-hidden="true">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <polyline points="2,6 5,9 10,3" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  {item}
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          4. CTA BANNER , Reveal healthier skin
+      ════════════════════════════════════════ */}
+      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book Alumier skincare consultation">
+        {/* Watermark logo */}
+        <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
+          <Image
+            src="/images/Background-logo.png"
+            alt=""
+            fill
+            className={styles.ctaBannerLogo}
+            sizes="100vw"
+          />
+        </div>
+        <Container>
+          <motion.div
+            className={styles.ctaBannerContent}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.h3 className={styles.ctaBannerHeading} variants={fadeUp}>
+              Reveal Healthier, Glowing Skin with<br />Personalised Expert Care Today!
+            </motion.h3>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={styles.ctaBannerBtn}>
+                Book a Consultation
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
+
+      {/* ════════════════════════════════════════
+          5. WHY CHOOSE ALUMIER SKINCARE?
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Is This Right for You?
+            </motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Why Choose Alumier Skincare?
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.eligibilityWrap}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
+              You might find a bespoke Alumier programme to be a brilliant choice if you:
+            </motion.p>
+            <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
+              {ELIGIBILITY.map((item) => (
+                <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
+                  <span className={styles.eligibilityCheck} aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+            <motion.p className={styles.eligibilityClosing} variants={fadeUp}>
+              Alumier MD is suitable for a wide range of skin types. Book a consultation and we will
+              tailor the perfect medical-grade regimen to your skin.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
+                Book Your Consultation
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          6. AT A GLANCE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
         <div className={styles.whiteBgWrap} aria-hidden="true">
@@ -468,7 +553,7 @@ export default function AlumierMDPage() {
           >
             <motion.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              AlumierMD at a Glance
+              Alumier Skincare Treatment At A Glance
             </motion.h2>
           </motion.div>
 
@@ -491,169 +576,7 @@ export default function AlumierMDPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          4. OUR ALUMIERMD APPROACH
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Our Approach
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              The AlumierMD Approach
-            </motion.h2>
-            <motion.p className={styles.combinationIntroText} variants={fadeUp}>
-              At The One Clinic, we believe skincare should be personalised, professional, and progressive.
-              Our three-step AlumierMD approach ensures your skin receives exactly what it needs.
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            className={styles.techCardsGrid}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {APPROACH_CARDS.map((card) => (
-              <motion.div
-                key={card.title}
-                className={styles.techCard}
-                variants={fadeUp}
-                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
-              >
-                <span className={styles.techCardEyebrow}>{card.eyebrow}</span>
-                <h3 className={styles.techCardTitle}>{card.title}</h3>
-                <p className={styles.techCardDesc}>{card.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          <motion.div
-            className={styles.finalResultsBanner}
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <p className={styles.finalResultsEyebrow}>Best Results</p>
-            <p className={styles.finalResultsText}>
-              When combined, our comprehensive analysis, personalised prescription, and progressive regimen
-              deliver transformative results,addressing multiple skin concerns simultaneously for visibly healthier,
-              clearer, and more radiant skin.
-            </p>
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          5. YOUR ALUMIERMD JOURNEY
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.journeySection}>
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-              What to Expect
-            </motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Your AlumierMD Journey
-            </motion.h2>
-          </motion.div>
-
-          <motion.ol
-            className={styles.journeyList}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-            aria-label="AlumierMD skincare journey steps"
-          >
-            {JOURNEY_STEPS.map((step) => (
-              <motion.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
-                <div className={styles.stepLeft}>
-                  <div className={styles.stepNumCircle} aria-hidden="true">{step.n}</div>
-                  <div className={styles.stepConnector} aria-hidden="true" />
-                </div>
-                <div className={styles.stepBody}>
-                  <h3 className={styles.stepTitle}>{step.title}</h3>
-                  <p className={styles.stepDesc}>{step.desc}</p>
-                </div>
-              </motion.li>
-            ))}
-          </motion.ol>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          6. PRODUCT CATEGORIES
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
-        <div className={styles.whiteBgWrap} aria-hidden="true">
-          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
-        </div>
-        <Container className={styles.whiteBgContent}>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-              Our Range
-            </motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              AlumierMD Core Product Categories
-            </motion.h2>
-            <motion.p className={styles.beforeAfterSubheading} variants={fadeUp}>
-              A comprehensive range of professional skincare formulated to work synergistically for transformative results.
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            className={styles.productCatGrid}
-            variants={stagger(0.08)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {PRODUCT_CATEGORIES.map((item) => (
-              <motion.div
-                key={item.label}
-                className={styles.productCatCard}
-                variants={fadeUp}
-                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
-              >
-                <div className={styles.productCatImageWrap}>
-                  <Image
-                    src={item.img}
-                    alt={`AlumierMD ${item.label}`}
-                    fill
-                    className={styles.productCatImage}
-                    sizes="(max-width: 580px) 50vw, (max-width: 900px) 33vw, 20vw"
-                  />
-                </div>
-                <p className={styles.productCatLabel}>{item.label}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          7. TREATED BENEFITS
+          7. BENEFIT OF ALUMIER SKINCARE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
         <div className={styles.whiteBgWrap} aria-hidden="true">
@@ -668,7 +591,7 @@ export default function AlumierMDPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              AlumierMD Benefits
+              Benefits of Alumier Skincare
             </motion.h2>
           </motion.div>
 
@@ -698,61 +621,7 @@ export default function AlumierMDPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          7. WHO IS SUITABLE
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Is This Right for You?
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Who is Suitable for AlumierMD?
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.eligibilityWrap}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
-              You can benefit from AlumierMD if you are:
-            </motion.p>
-            <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
-              {ELIGIBILITY.map((item) => (
-                <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
-                  <span className={styles.eligibilityCheck} aria-hidden="true">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
-                  <span>{item}</span>
-                </motion.li>
-              ))}
-            </motion.ul>
-            <motion.p className={styles.eligibilityClosing} variants={fadeUp}>
-              Not suitable: severe allergies to product components, active severe dermatitis (treat first), pregnancy (some actives require discussion with your doctor).
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
-                Book Your Consultation
-              </BookConsultationButton>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          8. THE SCIENCE
+          8. ALUMIER SKINCARE PROCEDURE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
@@ -763,63 +632,40 @@ export default function AlumierMDPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              The Process
+            </motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              How AlumierMD Works: The Science
+              Alumier Skincare Procedure
             </motion.h2>
           </motion.div>
 
-          <motion.div
-            className={styles.howTextGrid}
-            variants={stagger(0.1)}
+          <motion.ol
+            className={styles.journeyList}
+            variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
+            aria-label="Alumier Skincare procedure steps"
           >
-            <motion.p className={styles.howPara} variants={fadeUp}>
-              AlumierMD uses synergistic active ingredients at pharmaceutical concentrations: retinoids accelerate cell turnover
-              and boost collagen; hydroxy acids exfoliate and smooth; vitamin C brightens and protects; peptides and growth factors
-              stimulate repair and renewal. These ingredients work together to penetrate the skin and address multiple concerns simultaneously.
-            </motion.p>
-            <motion.p className={styles.howPara} variants={fadeUp}>
-              When applied consistently, these actives regulate cellular renewal, boost collagen and elastin production, reduce
-              pigmentation, strengthen the skin barrier, and improve overall skin health. Results develop progressively over weeks
-              and months as your skin adapts and strengthens, with optimal results typically visible at 8,12 weeks of consistent use.
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            className={styles.howCoversWrap}
-            variants={stagger(0.08)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.howCoversLabel} variants={fadeUp}>AlumierMD Addresses</motion.p>
-            <motion.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
-              {[
-                'Fine lines & wrinkles',
-                'Pigmentation & sun damage',
-                'Acne & congestion',
-                'Sensitivity & redness',
-                'Loss of elasticity',
-                'Dull & tired skin',
-              ].map((item) => (
-                <motion.li key={item} className={styles.howCoversItem} variants={fadeUp}>
-                  <span className={styles.howCoversCheck} aria-hidden="true">
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                      <polyline points="2,6 5,9 10,3" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
-                  {item}
-                </motion.li>
-              ))}
-            </motion.ul>
-          </motion.div>
+            {ALUMIER_PROCEDURE_STEPS.map((step) => (
+              <motion.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
+                <div className={styles.stepLeft}>
+                  <div className={styles.stepNumCircle} aria-hidden="true">{step.n}</div>
+                  <div className={styles.stepConnector} aria-hidden="true" />
+                </div>
+                <div className={styles.stepBody}>
+                  <h3 className={styles.stepTitle}>{step.title}</h3>
+                  <p className={styles.stepDesc}>{step.desc}</p>
+                </div>
+              </motion.li>
+            ))}
+          </motion.ol>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          9. WHAT TO EXPECT & AFTERCARE
+          9. RESULTS, AFTERCARE & SIDE EFFECTS
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -831,10 +677,10 @@ export default function AlumierMDPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Your Skincare Journey
+              Post-Treatment
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              What to Expect &amp; Aftercare
+              Results, Aftercare &amp; Side Effects
             </motion.h2>
           </motion.div>
 
@@ -845,7 +691,7 @@ export default function AlumierMDPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {/* Card 1, Results Timeline */}
+            {/* Card 1: Results Timeline & Longevity */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -854,20 +700,21 @@ export default function AlumierMDPage() {
                     <polyline points="17 6 23 6 23 12"/>
                   </svg>
                 </span>
-                <h3 className={styles.resultsAfterCardTitle}>Progressive Results Timeline</h3>
+                <h3 className={styles.resultsAfterCardTitle}>How Long to See Results?</h3>
               </div>
               <p className={styles.resultsAfterCardBody}>
-                Initial adjustment phase may include mild flaking or redness as skin acclimates.
-                Progressive improvement from week 4, with significant visible results by week 8.
+                You will likely notice an initial improvement in hydration and skin texture within a
+                few weeks. Dramatic, lovely results will shine through after consistent use over a
+                couple of months.
               </p>
               <div className={styles.resultsAfterCardSpacer} />
               <p className={styles.resultsAfterCardNote}>
-                Full benefits typically achieved at 12 weeks. Consistent daily use essential for optimal results.
-                Results continue to improve with long-term use.
+                The beautiful results are exceptionally long-lasting, provided you stick to your daily
+                skincare regimen and attend your maintenance reviews.
               </p>
             </motion.div>
 
-            {/* Card 2, Application Tips */}
+            {/* Card 2: Side Effects */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -877,18 +724,12 @@ export default function AlumierMDPage() {
                     <line x1="12" y1="16" x2="12.01" y2="16"/>
                   </svg>
                 </span>
-                <h3 className={styles.resultsAfterCardTitle}>Application &amp; Usage</h3>
+                <h3 className={styles.resultsAfterCardTitle}>Side Effects</h3>
               </div>
-              <p className={styles.resultsAfterCardBody}>
-                Follow your personalised regimen exactly as prescribed. Start with recommended frequencies;
-                your clinician may adjust as your skin tolerates actives.
-              </p>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Use morning and/or evening as directed',
-                  'Apply to clean, dry skin',
-                  'Begin with lower frequencies, increase gradually',
-                  'Patch test if sensitive',
+                  'Mild redness or flaking as your skin acclimatises to the potent active ingredients (such as retinol)',
+                  'Temporary dryness during the initial phase',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
                     <span className={styles.resultsAfterDot} aria-hidden="true" />
@@ -898,7 +739,7 @@ export default function AlumierMDPage() {
               </ul>
             </motion.div>
 
-            {/* Card 3, SPF & Protection */}
+            {/* Card 3: Aftercare Tips */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -907,14 +748,14 @@ export default function AlumierMDPage() {
                     <polyline points="22 4 12 14.01 9 11.01"/>
                   </svg>
                 </span>
-                <h3 className={styles.resultsAfterCardTitle}>Sun Protection</h3>
+                <h3 className={styles.resultsAfterCardTitle}>Aftercare Tips</h3>
               </div>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Mandatory when using active ingredients',
-                  'Use SPF 30+ daily, reapply as needed',
-                  'Recommended AlumierMD SPF products available',
-                  'Avoid sun exposure during intense adjustment phase',
+                  'Apply a high-quality Alumier SPF daily to protect your rejuvenating skin from UV damage',
+                  'Introduce highly active ingredients gradually, exactly as advised by your doctor, to minimise irritation',
+                  'Keep up with your tailored routine consistently',
+                  'Attend your essential follow-up appointments to ensure your progress stays on track',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
                     <span className={styles.resultsAfterDot} aria-hidden="true" />
@@ -928,41 +769,35 @@ export default function AlumierMDPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          11. PATIENT REVIEWS
+          10. PATIENT REVIEWS
       ════════════════════════════════════════ */}
       <Testimonials />
 
       {/* ════════════════════════════════════════
-          12. CTA BANNER
+          11. ALUMIER SKINCARE COST IN LEICESTER
       ════════════════════════════════════════ */}
-      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book AlumierMD consultation">
-        {/* Watermark logo */}
-        <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
-          <Image
-            src="/images/Background-logo.png"
-            alt=""
-            fill
-            className={styles.ctaBannerLogo}
-            sizes="100vw"
-          />
-        </div>
+      <section className={styles.costBanner} data-section-theme="dark" aria-label="Alumier skincare cost">
         <Container>
           <motion.div
-            className={styles.ctaBannerContent}
+            className={styles.costBannerInner}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
-              Unlock Your Skin&apos;s<br />Full Potential.
+            <motion.h2 className={styles.costBannerEyebrow} variants={fadeUp}>
+              Alumier Skincare Cost in Leicester
             </motion.h2>
-            <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
-              Let our clinical experts prescribe your personalised AlumierMD regimen!
+            <motion.p className={styles.costBannerPrice} variants={fadeUp}>
+              Starts From £200
+            </motion.p>
+            <motion.p className={styles.costBannerNote} variants={fadeUp}>
+              At The One Clinic, Alumier Skincare starts from £200. The full details of your bespoke
+              regimen and product selection are discussed during your consultation.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
-                Book Consultation
+                Book A Consultation
               </BookConsultationButton>
             </motion.div>
           </motion.div>
@@ -970,59 +805,7 @@ export default function AlumierMDPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          13. SKIN CONCERNS WE ADDRESS
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark" className={styles.conditionsSection}>
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Skin Concerns
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Skin Concerns We Address
-            </motion.h2>
-            <motion.p className={styles.conditionsIntro} variants={fadeUp}>
-              Our personalised AlumierMD prescriptions target a comprehensive range of skin issues with tailored active ingredients.
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            className={styles.areasColumns}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {SKIN_CONCERNS_DATA.map((section) => (
-              <motion.div
-                key={section.group}
-                className={styles.areasGroup}
-                variants={fadeUp}
-                whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
-              >
-                <p className={styles.areasGroupLabel}>{section.group}</p>
-                <ul className={styles.areasGroupList} role="list">
-                  {section.items.map((item) => (
-                    <li key={item} className={styles.areasGroupItem}>
-                      <span className={styles.areasItemDot} aria-hidden="true" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          14. BEST ALUMIERMD LEICESTER EXPERIENCE
+          12. BEST ALUMIER SKINCARE LEICESTER
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.clinicIntroSection}>
         <Container>
@@ -1036,51 +819,27 @@ export default function AlumierMDPage() {
             <motion.div className={styles.clinicIntroLeft} variants={fadeUp}>
               <p className={styles.eyebrowDark}>Skincare Excellence</p>
               <h2 className={styles.combinedHeading}>
-                Best AlumierMD<br />Leicester Experience
+                Best Alumier Skincare<br />in Leicester
               </h2>
             </motion.div>
             <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
-              Experience premium medical-grade skincare at our clinic. Our clinical experts conduct thorough skin analysis,
-              prescribe personalised AlumierMD regimens, and provide ongoing professional support. We combine pharmaceutical-grade
-              formulations with expert guidance to transform your skin safely and effectively.
+              The One Clinic provides the best medical-grade skincare experience in Leicester. As a
+              clinic that puts patients first, we have highly trained, caring doctors who apply their
+              extensive aesthetic expertise to recommend tailored solutions. We ensure every
+              consultation is performed in a relaxing, luxurious environment to deliver naturally
+              radiant results.
             </motion.p>
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          15. COST BANNER
+          13. MEET THE EXPERTS
       ════════════════════════════════════════ */}
-      <section className={styles.costBanner} data-section-theme="dark" aria-label="AlumierMD cost">
-        <Container>
-          <motion.div
-            className={styles.costBannerInner}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
-              AlumierMD Skincare Pricing at The One Clinic
-            </motion.p>
-            <motion.p className={styles.costBannerPrice} variants={fadeUp}>
-              From £200
-            </motion.p>
-            <motion.p className={styles.costBannerNote} variants={fadeUp}>
-              Depends on your personalised prescription and product selection. Initial consultation and skin analysis included.
-              Full costs discussed during your appointment.
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBannerBtn}>
-                Book A Consultation
-              </BookConsultationButton>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
+      <MeetTheExperts />
 
       {/* ════════════════════════════════════════
-          16. WHY CHOOSE THE ONE CLINIC
+          14. WHY CHOOSE THE ONE CLINIC
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -1092,7 +851,7 @@ export default function AlumierMDPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Why Choose The One Clinic For AlumierMD
+              Why Choose The One Clinic For Alumier Skincare
             </motion.h2>
           </motion.div>
 
@@ -1119,12 +878,44 @@ export default function AlumierMDPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          17. MEET THE EXPERTS
+          15. CTA BANNER , Get Instant Glow
       ════════════════════════════════════════ */}
-      <MeetTheExperts />
+      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book advanced skincare treatment">
+        {/* Watermark logo */}
+        <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
+          <Image
+            src="/images/Background-logo.png"
+            alt=""
+            fill
+            className={styles.ctaBannerLogo}
+            sizes="100vw"
+          />
+        </div>
+        <Container>
+          <motion.div
+            className={styles.ctaBannerContent}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.h3 className={styles.ctaBannerHeading} variants={fadeUp}>
+              Get Instant Glow with<br />Advanced Skin Care Treatments
+            </motion.h3>
+            <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
+              Refresh, hydrate, and revive your skin with expert treatments designed for visible results.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={styles.ctaBannerBtn}>
+                Book Consultation
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
 
       {/* ════════════════════════════════════════
-          18. FAQ
+          16. FAQ
       ════════════════════════════════════════ */}
       <section className={styles.faqSection} data-section-theme="dark">
         <div className={styles.faqInner}>
@@ -1182,12 +973,12 @@ export default function AlumierMDPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          19. BOOKING FORM
+          17. BOOKING FORM
       ════════════════════════════════════════ */}
       <LeadForm />
 
       {/* ════════════════════════════════════════
-          20. RELATED TREATMENTS
+          18. RELATED TREATMENTS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>

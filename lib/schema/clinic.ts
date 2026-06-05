@@ -1,6 +1,6 @@
 import { CLINIC_INFO } from '@/lib/clinic-info';
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.the-oneclinic.co.uk';
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://the-oneclinic.co.uk';
 
 export const CLINIC = {
   name: CLINIC_INFO.name,

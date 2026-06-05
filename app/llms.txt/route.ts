@@ -3,7 +3,7 @@ import { TEAM_MEMBERS } from '@/data/team';
 
 export const dynamic = 'force-static';
 
-const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.the-oneclinic.co.uk';
+const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://the-oneclinic.co.uk';
 
 /**
  * Ordered by patient search volume / commercial intent.

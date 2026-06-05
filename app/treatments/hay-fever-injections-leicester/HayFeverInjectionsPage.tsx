@@ -4,24 +4,24 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import Section                from '@/components/ui/Section';
-import Container              from '@/components/ui/Container';
-import Accordion              from '@/components/ui/Accordion';
+import Section            from '@/components/ui/Section';
+import Container          from '@/components/ui/Container';
+import Accordion          from '@/components/ui/Accordion';
 import BookConsultationButton from '@/components/ui/BookConsultationButton';
-import TrustBadges            from '@/components/ui/TrustBadges';
-import Breadcrumb             from '@/components/ui/Breadcrumb';
-import LeadForm               from '@/components/sections/LeadForm';
-import MeetTheExperts         from '@/components/sections/MeetTheExperts';
-import Testimonials           from '@/components/sections/Testimonials';
-import FinalCTA               from '@/components/sections/FinalCTA';
+import TrustBadges        from '@/components/ui/TrustBadges';
+import Breadcrumb         from '@/components/ui/Breadcrumb';
+import LeadForm           from '@/components/sections/LeadForm';
+import MeetTheExperts     from '@/components/sections/MeetTheExperts';
+import Testimonials       from '@/components/sections/Testimonials';
+import FinalCTA           from '@/components/sections/FinalCTA';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
 
 /* ── Static data ──────────────────────────────────────────────── */
 const AT_A_GLANCE = [
   {
-    label: 'Treatment Time',
-    value: '45 to 60 minutes',
+    label: 'Treatment Duration',
+    value: 'Approx. 15-30 minutes',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -30,8 +30,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Sessions Needed',
-    value: '3 sessions (monthly)',
+    label: 'Treatment Frequency',
+    value: 'Typically one injection per hay fever season',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="1 4 1 10 7 10"/>
@@ -40,18 +40,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'First Results',
-    value: '4 to 8 weeks',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-        <polyline points="17 6 23 6 23 12"/>
-      </svg>
-    ),
-  },
-  {
-    label: 'Full Results',
-    value: '3 to 6 months',
+    label: 'Downtime',
+    value: 'None',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
@@ -60,20 +50,20 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Downtime',
-    value: 'None',
+    label: 'Results Longevity',
+    value: 'Usually lasts for the entire pollen season (up to 3 months)',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-        <line x1="16" y1="2" x2="16" y2="6"/>
-        <line x1="8" y1="2" x2="8" y2="6"/>
-        <line x1="3" y1="10" x2="21" y2="10"/>
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="9" y1="15" x2="15" y2="15"/>
+        <line x1="9" y1="11" x2="15" y2="11"/>
       </svg>
     ),
   },
   {
-    label: 'Treatment Cost',
-    value: 'From £200',
+    label: 'Cost',
+    value: 'Contact us',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <line x1="12" y1="1" x2="12" y2="23"/>
@@ -81,45 +71,61 @@ const AT_A_GLANCE = [
       </svg>
     ),
   },
-];
-
-const JOURNEY_STEPS = [
   {
-    n: '01',
-    title: 'Scalp Consultation and Assessment',
-    desc: 'Our clinical team assesses your scalp condition, hair concerns, and goals in detail. A personalised Keravive treatment plan is created to address your specific needs, whether hair thinning, dryness, oiliness, or general scalp health.',
-  },
-  {
-    n: '02',
-    title: 'HydraFacial Extraction and Cleanse',
-    desc: 'The HydraFacial Keravive handpiece gently exfoliates the scalp, removing dead skin cells, excess sebum, and follicle-clogging debris using a specialised vortex extraction tip designed for scalp use.',
-  },
-  {
-    n: '03',
-    title: 'Growth Factor Infusion',
-    desc: 'A proprietary blend of growth factors, skin proteins, and peptides is infused directly into the scalp using HydraFacial technology. This nourishing serum penetrates the follicles to support a healthier scalp environment and stronger hair.',
-  },
-  {
-    n: '04',
-    title: 'Take-Home Spray and Aftercare',
-    desc: 'You will receive a Keravive take-home scalp spray to use daily between sessions, extending the treatment benefits and reinforcing the growth factor complex at home. Our team provides full aftercare guidance.',
-  },
-];
-
-const BENEFITS = [
-  {
-    title: 'Deep Scalp Cleansing',
-    desc: 'Keravive uses HydraFacial technology to extract impurities, excess sebum, and follicle-clogging debris, creating the optimal environment for healthy hair growth.',
+    label: 'Appointment Type',
+    value: 'In-clinic',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="10"/>
-        <polyline points="12 6 12 12 16 14"/>
+        <path d="M3 21h18"/>
+        <path d="M5 21V7l8-4v4"/>
+        <path d="M19 21V11l-6-4"/>
+        <path d="M9 21v-4h6v4"/>
+      </svg>
+    ),
+  },
+];
+
+const TECH_CARDS = [
+  {
+    eyebrow: '01',
+    title: 'Targeted Corticosteroid',
+    desc: 'A precise dose of corticosteroid that suppresses your immune system\'s overactive response to pollen, reducing inflammation and histamine production at the source.',
+  },
+  {
+    eyebrow: '02',
+    title: 'Intramuscular Administration',
+    desc: 'The injection is administered into the gluteal muscle, allowing the medication to be released gradually over weeks, providing continuous, long-lasting relief.',
+  },
+  {
+    eyebrow: '03',
+    title: 'Season-Long Protection',
+    desc: 'A single injection works throughout the hay fever season, eliminating the need for daily tablets, nasal sprays, or constant medication adjustments.',
+  },
+];
+
+const ELIGIBILITY = [
+  'Suffer from severe hay fever symptoms that disrupt your daily life or sleep',
+  'Have tried high-street antihistamines, nasal sprays, or eye drops without success',
+  'Experience severe itchy, watery, or swollen eyes during the British pollen season',
+  'Struggle with persistent sneezing, nasal congestion, or throat irritation',
+  'Are looking for a quick-fix solution without having to take pills daily',
+  'Need instant relief before an important event or examination',
+];
+
+const TREATED_BENEFITS = [
+  {
+    title: 'Powerful Relief',
+    desc: 'Quickly alleviates the painful pressure of sinus congestion and severe eye irritation.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
       </svg>
     ),
   },
   {
-    title: 'Nourishes Hair Follicles',
-    desc: 'A proprietary blend of growth factors, peptides, and skin proteins is infused into the scalp to nourish follicles at the root level, supporting stronger and fuller-looking hair.',
+    title: 'Long-Term Results',
+    desc: 'A single dose continuously releases medication to provide relief for the entire season.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -127,18 +133,8 @@ const BENEFITS = [
     ),
   },
   {
-    title: 'Stimulates Healthy Hair Growth',
-    desc: 'By addressing the scalp environment at the follicle level, Keravive helps create the conditions needed for healthier, more resilient hair to grow over time.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-        <polyline points="17 6 23 6 23 12"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'Clinically Proven Results',
-    desc: 'Clinical studies demonstrate that HydraFacial Keravive measurably improves scalp health, hair density, and hair thickness over a course of three monthly treatments.',
+    title: 'Improved Comfort',
+    desc: 'Restores your ability to breathe easily and sleep soundly without frustrating interruptions.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
@@ -147,111 +143,93 @@ const BENEFITS = [
     ),
   },
   {
-    title: 'No Downtime Required',
-    desc: 'HydraFacial Keravive is completely non-invasive with no recovery period. You can return to your normal routine immediately after each session.',
+    title: 'Lifestyle Improvement',
+    desc: 'Allows you to confidently enjoy the outdoors, gardening, and sport without constantly reaching for tissues.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-        <line x1="16" y1="2" x2="16" y2="6"/>
-        <line x1="8" y1="2" x2="8" y2="6"/>
-        <line x1="3" y1="10" x2="21" y2="10"/>
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
       </svg>
     ),
   },
   {
-    title: 'Comfortable and Relaxing',
-    desc: 'The Keravive treatment is painless and deeply relaxing. Most patients find the scalp massage and infusion process a pleasant experience from start to finish.',
+    title: 'Ultimate Convenience',
+    desc: 'Eliminates the daily hassle of remembering to take multiple tablets or use sticky nasal sprays.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-        <circle cx="9" cy="7" r="4"/>
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M12 6v6l4 2"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Reduce Allergy Symptoms',
+    desc: 'Helps control sneezing, runny nose, itchy eyes, and other hay fever symptoms, allowing you to enjoy your daily activities with fewer disruptions.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+        <path d="M4.5 20.118a7.5 7.5 0 0115 0"/>
       </svg>
     ),
   },
 ];
 
-const ELIGIBILITY = [
-  'Experiencing hair thinning or increased hair shedding',
-  'Dealing with scalp dryness, oiliness, dandruff, or congestion',
-  'Looking to support scalp health as a preventative measure',
-  'Seeking a non-invasive, no-downtime scalp treatment',
-  'Wanting expert-led care with clinically proven technology',
-];
-
-const TREATABLE_CONCERNS = [
-  'Hair Thinning and Shedding',
-  'Scalp Dryness and Flaking',
-  'Excess Sebum and Oiliness',
-  'Follicle Congestion and Buildup',
-  'General Scalp Imbalance',
-];
-
-const TREATABLE_AREAS = [
-  'Full Scalp Coverage',
-  'Crown and Top of Head',
-  'Frontal Hairline',
-  'Temporal Areas',
-  'Occipital and Nape Region',
-];
-
 const CLINIC_REASONS = [
-  { n: '01', text: 'All-in-one clinic with medical and aesthetic services.' },
-  { n: '02', text: 'Highly trained, compassionate GMC-registered doctors.' },
-  { n: '03', text: 'Customised treatments based on listening and expertise.' },
-  { n: '04', text: 'State-of-the-art facilities and modern equipment.' },
-  { n: '05', text: 'Strong reputation and excellent patient reviews.' },
-  { n: '06', text: 'Comprehensive care and referrals with specialists.' },
+  { n: '01', text: 'Trusted and experienced clinicians with expertise in allergy management.' },
+  { n: '02', text: 'Personalised treatment plans tailored to your specific hay fever profile.' },
+  { n: '03', text: 'Advanced medical techniques and a relaxing, luxurious clinic environment.' },
+  { n: '04', text: 'Friendly and professional service focused entirely on your comfort and wellbeing.' },
+  { n: '05', text: 'High standards of safety and patient care in all treatments.' },
+  { n: '06', text: 'Honest advice and transparent pricing for all hay fever injection services.' },
 ];
 
 const FAQS = [
   {
-    question: 'What is HydraFacial Keravive?',
-    answer:
-      'HydraFacial Keravive is a three-step scalp treatment that uses HydraFacial technology to cleanse and exfoliate the scalp, followed by infusion of a unique blend of growth factors, skin proteins, and peptides. A take-home spray extends the benefits between sessions. The result is a healthier scalp environment that supports fuller, stronger hair.',
+    question: 'Is the injection suitable for everyone?',
+    answer: 'It is suitable for most healthy adults; however, we do not prescribe it for children, pregnant or breastfeeding women, or individuals with certain underlying health conditions. Your doctor will evaluate your medical background to determine if it is suitable for you.',
   },
   {
-    question: 'Who is HydraFacial Keravive suitable for?',
-    answer:
-      'Keravive is suitable for both men and women experiencing hair thinning, scalp dryness, oiliness, dandruff, or general scalp concerns. It is also popular as a preventative treatment to maintain scalp health and is suitable for all hair types. A consultation is included to confirm it is the right option for you.',
+    question: 'Is hay fever injection painful?',
+    answer: 'Not at all. The injection is very quick, and most patients only feel a mild, brief scratch.',
   },
   {
-    question: 'How many sessions are recommended?',
-    answer:
-      'A course of 3 monthly in-clinic sessions is typically recommended for optimal results, supplemented by daily use of the Keravive take-home spray. Maintenance sessions every 3 to 6 months can help sustain the results long-term.',
+    question: 'How is it done?',
+    answer: 'The medication is administered intramuscularly, usually into the gluteal muscle, in a safe, relaxing, and private clinical setting.',
   },
   {
-    question: 'Is there any downtime after Keravive?',
-    answer:
-      'No. HydraFacial Keravive is a completely non-invasive treatment with no downtime or recovery period. You can return to your normal daily activities immediately after each session, including washing your hair.',
+    question: 'What exactly is in the injection?',
+    answer: 'The injection contains a targeted dose of a corticosteroid, which powerfully suppresses your body\'s overactive immune response to pollen.',
   },
   {
-    question: 'When will I see results from HydraFacial Keravive?',
-    answer:
-      'Improvements in scalp condition are often noticed after the first session. Visible improvements in hair density and thickness typically develop over 4 to 8 weeks as the scalp environment improves. Full course results continue to develop over 3 to 6 months.',
+    question: 'When will I see changes?',
+    answer: 'You should notice a significant reduction in your sneezing, itching, and congestion within 24 to 72 hours following the treatment.',
   },
   {
-    question: 'Can Keravive be combined with other hair or scalp treatments?',
-    answer:
-      'Yes. Keravive can be combined with other scalp and hair health treatments such as Profhilo or polynucleotides for enhanced results. Our clinical team will advise on the best combination approach based on your individual scalp assessment.',
+    question: 'How long do the results last?',
+    answer: 'The brilliant relief typically lasts throughout the hay fever season, providing comfort for several months, depending on your individual response to the pollen count.',
   },
   {
-    question: 'Do I need a referral for HydraFacial Keravive?',
-    answer:
-      'No referral is needed. You can book directly with The One Clinic. A scalp consultation is included before treatment to assess your needs and confirm Keravive is the most suitable option for you.',
+    question: 'How long does it take to recover?',
+    answer: 'There is absolutely zero downtime. You can return to your normal activities immediately after the injection.',
+  },
+  {
+    question: 'Can I still use other hay fever medications?',
+    answer: 'Yes. Whilst the injection is highly effective on its own and usually replaces the need for daily tablets, it is perfectly safe to use supplementary eye drops or nasal sprays if you need a quick top-up on days with an exceptionally high pollen count.',
+  },
+  {
+    question: 'Are there any risks?',
+    answer: 'Because it is a steroid medication, there are some potential rare side effects. They will all be explained in detail by your consultant during your appointment.',
   },
 ];
 
 const RELATED = [
-  { title: 'HydraFacial',          href: '/treatments/hydrafacial-leicester',              desc: 'Advanced facial cleansing, exfoliation, and hydration for glowing skin.' },
-  { title: 'Profhilo',             href: '/treatments/profhilo-leicester',                 desc: 'Deep skin hydration and bio-remodelling for a natural, lasting glow.' },
-  { title: 'Vampire Facial',       href: '/treatments/vampire-facial-leicester',           desc: 'PRP-powered skin rejuvenation using your own growth factors.' },
-  { title: 'Polynucleotides',      href: '/treatments/polynucleotides-leicester', desc: 'Regenerative injections to repair, hydrate, and revitalise skin and scalp.' },
+  { title: 'Private GP Consultation',            href: '/treatments/private-gp-leicester',                   desc: 'Expert GP care without the wait, at a time that suits you.' },
+  { title: 'Joint Injections',                   href: '/treatments/joint-injections-leicester',             desc: 'Targeted injections to relieve pain and improve mobility.' },
+  { title: 'Travel Vaccine & Immunisations',     href: '/treatments/travel-vaccine-leicester',               desc: 'Travel health consultations and vaccinations for protection.' },
+  { title: 'Health Screening',                   href: '/treatments/health-screening-leicester',             desc: 'Comprehensive health assessments to detect risks early.' },
 ];
 
 /* ── Page component ───────────────────────────────────────────── */
-export default function HydrafacialKeravivePage() {
+export default function HayFeverInjectionsPage() {
   const [showAllFaqs, setShowAllFaqs] = useState(false);
 
   return (
@@ -261,16 +239,17 @@ export default function HydrafacialKeravivePage() {
       ════════════════════════════════════════ */}
       <section
         className={styles.hero}
-        aria-label="HydraFacial Keravive Leicester, hero"
+        aria-label="Hay Fever Injections Leicester, hero"
         data-section-theme="dark"
       >
+        {/* Breadcrumb, pinned to top of hero */}
         <div className={styles.heroBreadcrumb}>
           <Container>
             <Breadcrumb
               theme="dark"
               items={[
                 { label: 'Treatments', href: '/treatments' },
-                { label: 'HydraFacial Keravive' },
+                { label: 'Hay Fever Injections Leicester' },
               ]}
             />
           </Container>
@@ -283,68 +262,70 @@ export default function HydrafacialKeravivePage() {
             initial="hidden"
             animate="show"
           >
+            {/* Left: text */}
             <div className={styles.heroLeft}>
               <motion.span className={styles.heroCategory} variants={fadeUp}>
-                Scalp and Hair Health
+                Health &amp; Wellbeing
               </motion.span>
 
               <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                HydraFacial Keravive<br />in Leicester
+                Hay Fever Injections in Leicester
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Advanced scalp cleansing and follicle nourishment for healthier,
-                fuller-looking hair. Clinically proven Keravive treatment, no downtime,
-                no referral needed.
+                Enjoy instant, lasting relief from your worst seasonal allergies with our professional hay fever shots. With this specific therapy, you will be able to stop sneezing, eye itching, and congestion, helping you fully enjoy nature.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
                 <BookConsultationButton className={styles.heroCtaPrimary}>
-                  Book Consultation
+                  Book Appointment
                 </BookConsultationButton>
               </motion.div>
 
+              {/* Review badges */}
               <motion.div variants={fadeUp}>
                 <TrustBadges theme="dark" />
               </motion.div>
 
+              {/* Trust items */}
               <motion.div className={styles.heroTrust} variants={fadeUp}>
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                    <circle cx="9" cy="7" r="4"/>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+                    <path d="M4.5 20.118a7.5 7.5 0 0115 0"/>
+                    <path d="M18.5 15v5M16 17.5h5"/>
                   </svg>
-                  Expert clinical team
+                  Led by GMC-registered doctors
                 </span>
                 <span className={styles.heroTrustDivider} aria-hidden="true" />
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
                   </svg>
-                  Trusted by patients across Leicester
+                  Trusted by patients in Leicester
                 </span>
                 <span className={styles.heroTrustDivider} aria-hidden="true" />
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10"/>
-                    <polyline points="12 6 12 12 16 14"/>
+                    <circle cx="12" cy="12" r="9.5"/>
+                    <path d="M12 7.5v9M7.5 12h9"/>
                   </svg>
-                  No referral required
+                  Comprehensive medical &amp; wellbeing care
                 </span>
               </motion.div>
             </div>
 
+            {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/Hero Section 1 HydraFacial.jpg"
-                alt="HydraFacial Keravive scalp treatment at The One Clinic Leicester"
+                src="/images/Hero SectionHay Fever Injection.jpg"
+                alt="Hay fever injection appointment at The One Clinic, Leicester"
                 fill
                 priority
                 className={styles.heroImage}
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
+              {/* Subtle bottom-fade to blend with section */}
               <div className={styles.heroImageFade} aria-hidden="true" />
             </motion.div>
           </motion.div>
@@ -352,7 +333,7 @@ export default function HydrafacialKeravivePage() {
       </section>
 
       {/* ════════════════════════════════════════
-          2. WHAT IS HYDRAFACIAL KERAVIVE?
+          3A. WHAT ARE HAY FEVER INJECTIONS?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
@@ -363,33 +344,30 @@ export default function HydrafacialKeravivePage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
+            {/* Left: text */}
             <motion.div className={styles.whatIsContent} variants={stagger(0.12)}>
               <motion.div className={styles.whatIsTextGroup} variants={fadeUp}>
-                <p className={styles.eyebrowDark}>About This Treatment</p>
-                <h2 className={styles.combinedHeading}>What is HydraFacial Keravive?</h2>
+                <p className={styles.eyebrowDark}>About This Service</p>
+                <h2 className={styles.combinedHeading}>What are Hay Fever Injections?</h2>
                 <p className={styles.combinedDesc}>
-                  HydraFacial Keravive is a clinically proven, three-step scalp health treatment
-                  that combines HydraFacial extraction technology with a proprietary blend of
-                  growth factors, skin proteins, and peptides. It addresses the root causes of
-                  scalp congestion, dryness, and hair thinning, creating the optimal environment
-                  for healthier, more resilient hair growth.
+                  Hay fever injections are a highly effective medical treatment for severe allergic rhinitis. They contain a targeted dose of a corticosteroid, which helps suppress the body's overactive immune response to pollen, providing powerful relief when high-street antihistamines simply cannot sort it out.
                 </p>
               </motion.div>
-
               <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
                 <BookConsultationButton className={styles.combinedCta}>
-                  Book Your Consultation
+                  Book Your Injection
                 </BookConsultationButton>
               </motion.div>
             </motion.div>
 
+            {/* Right: image */}
             <motion.div className={styles.whatIsImageWrap} variants={fadeUp}>
               <Image
-                src="/HydraFacial (2).jpg"
-                alt="HydraFacial Keravive scalp consultation at The One Clinic"
+                src="/images/What is Hay Fever Injection.jpg"
+                alt="What is a hay fever injection , treatment at The One Clinic"
                 fill
                 className={styles.whatIsImage}
-                sizes="(max-width: 900px) 100vw, 50vw"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </motion.div>
           </motion.div>
@@ -397,12 +375,72 @@ export default function HydrafacialKeravivePage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          3. AT A GLANCE
+          HOW DO HAY FEVER INJECTIONS WORK?
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
-        <div className={styles.whiteBgWrap} aria-hidden="true">
-          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
-        </div>
+      <Section variant="light" data-section-theme="light" className={styles.howSection}>
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              How Do Hay Fever Injections Work?
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.howTextGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.howPara} variants={fadeUp}>
+              Injections are made into the muscles, releasing the drug gradually over weeks. It continuously reduces inflammation and histamine production, effectively preventing the frustrating symptoms of hay fever.
+            </motion.p>
+            <motion.p className={styles.howPara} variants={fadeUp}>
+              It means you can go about your daily life, enjoy holidays, and spend time outside feeling properly comfortable and spot on. A single injection provides reliable relief throughout the hay fever season without the need for daily medication adjustments.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.howCoversWrap}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.howCoversLabel} variants={fadeUp}>Treatment Options</motion.p>
+            <motion.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
+              {[
+                'Hay fever injection (corticosteroid)',
+                'Fast-acting relief within 24-72 hours',
+                'Season-long protection (up to 3 months)',
+                'Minimal downtime and side effects',
+                'Alternative to daily antihistamines',
+                'Suitable for severe allergic rhinitis',
+              ].map((item) => (
+                <motion.li key={item} className={styles.howCoversItem} variants={fadeUp}>
+                  <span className={styles.howCoversCheck} aria-hidden="true">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <polyline points="2,6 5,9 10,3" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  {item}
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          AT A GLANCE
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light">
         <Container className={styles.whiteBgContent}>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -413,7 +451,7 @@ export default function HydrafacialKeravivePage() {
           >
             <motion.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              HydraFacial Keravive at a Glance
+              Hay Fever Injections at a Glance
             </motion.h2>
           </motion.div>
 
@@ -436,6 +474,164 @@ export default function HydrafacialKeravivePage() {
       </Section>
 
       {/* ════════════════════════════════════════
+          HOW IT WORKS - COMPREHENSIVE APPROACH
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Our Approach
+            </motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              How Hay Fever Injections Work
+            </motion.h2>
+            <motion.p className={styles.combinationIntroText} variants={fadeUp}>
+              At The One Clinic, our hay fever injections work through three complementary mechanisms to deliver season-long relief from your worst allergic symptoms.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.techCardsGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {TECH_CARDS.map((card) => (
+              <motion.div
+                key={card.title}
+                className={styles.techCard}
+                variants={fadeUp}
+                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
+              >
+                <span className={styles.techCardEyebrow}>{card.eyebrow}</span>
+                <h3 className={styles.techCardTitle}>{card.title}</h3>
+                <p className={styles.techCardDesc}>{card.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            className={styles.finalResultsBanner}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <p className={styles.finalResultsEyebrow}>Get Relief Today with Expert Hay Fever Injections!</p>
+            <p className={styles.finalResultsText}>
+              Book a Consultation!
+            </p>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          BENEFITS
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
+        <div className={styles.whiteBgWrap} aria-hidden="true">
+          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
+        </div>
+        <Container className={styles.whiteBgContent}>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Benefits of Hay Fever Injections
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.treatedBenefitsGrid}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            {TREATED_BENEFITS.map((b) => (
+              <motion.div
+                key={b.title}
+                className={styles.treatedBenefitCard}
+                variants={fadeUp}
+                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
+              >
+                <span className={styles.treatedBenefitIconWrap} aria-hidden="true">
+                  {b.icon}
+                </span>
+                <h3 className={styles.treatedBenefitTitle}>{b.title}</h3>
+                <p className={styles.treatedBenefitDesc}>{b.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          WHY CHOOSE HAY FEVER INJECTIONS
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Is This Right for You?
+            </motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Why Choose Hay Fever Injections?
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.eligibilityWrap}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
+              You might find a hay fever injection to be a brilliant choice if you:
+            </motion.p>
+            <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
+              {ELIGIBILITY.map((item) => (
+                <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
+                  <span className={styles.eligibilityCheck} aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+            <motion.p className={styles.eligibilityClosing} variants={fadeUp}>
+              If any of these sound familiar, a hay fever injection could be the brilliant solution you've been searching for.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
+                Book Your Injection
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
           4. TREATMENT JOURNEY
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.journeySection}>
@@ -447,8 +643,12 @@ export default function HydrafacialKeravivePage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>What to Expect</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>Your Treatment Journey</motion.h2>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              What to Expect
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Your Treatment Journey
+            </motion.h2>
           </motion.div>
 
           <motion.ol
@@ -457,9 +657,30 @@ export default function HydrafacialKeravivePage() {
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
-            aria-label="HydraFacial Keravive treatment journey steps"
+            aria-label="Hay fever injection treatment journey steps"
           >
-            {JOURNEY_STEPS.map((step) => (
+            {[
+              {
+                n: '01',
+                title: 'Consultation',
+                desc: 'A detailed assessment of your hay fever symptoms, medical history, and previous treatments. Your doctor discusses the injection, expected outcomes, and answers all your questions about the procedure.',
+              },
+              {
+                n: '02',
+                title: 'Pre-Treatment Preparation',
+                desc: 'Any necessary pre-treatment checks are completed. You receive clear instructions on how to prepare for injection day and what to expect during and after the procedure.',
+              },
+              {
+                n: '03',
+                title: 'Injection Day',
+                desc: 'The hay fever injection is administered quickly and precisely in our clinic. The procedure takes just 15-30 minutes, and you can return to your normal activities immediately with absolutely zero downtime.',
+              },
+              {
+                n: '04',
+                title: 'Relief & Follow-Up',
+                desc: 'You should notice significant relief within 24 to 72 hours. Your doctor schedules follow-up contact to monitor your response and ensure you are experiencing the full benefits throughout the hay fever season.',
+              },
+            ].map((step) => (
               <motion.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
                 <div className={styles.stepLeft}>
                   <div className={styles.stepNumCircle} aria-hidden="true">{step.n}</div>
@@ -476,51 +697,7 @@ export default function HydrafacialKeravivePage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          5. BENEFITS
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
-        <div className={styles.whiteBgWrap} aria-hidden="true">
-          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
-        </div>
-        <Container className={styles.whiteBgContent}>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Why Keravive</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              The Benefits of HydraFacial Keravive
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.treatedBenefitsGrid}
-            variants={stagger(0.08)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {BENEFITS.map((b) => (
-              <motion.div
-                key={b.title}
-                className={styles.treatedBenefitCard}
-                variants={fadeUp}
-                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
-              >
-                <span className={styles.treatedBenefitIconWrap} aria-hidden="true">{b.icon}</span>
-                <h3 className={styles.treatedBenefitTitle}>{b.title}</h3>
-                <p className={styles.treatedBenefitDesc}>{b.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          6. ELIGIBILITY
+          RESULTS, AFTERCARE & SIDE EFFECTS
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -531,61 +708,11 @@ export default function HydrafacialKeravivePage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Is This Right for You?</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Who Is a Good Candidate?
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.eligibilityWrap}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
-              HydraFacial Keravive may be right for you if you are:
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              After Your Injection
             </motion.p>
-            <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
-              {ELIGIBILITY.map((item) => (
-                <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
-                  <span className={styles.eligibilityCheck} aria-hidden="true">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
-                  <span>{item}</span>
-                </motion.li>
-              ))}
-            </motion.ul>
-            <motion.p className={styles.eligibilityClosing} variants={fadeUp}>
-              Book a consultation and our team will assess your scalp and confirm whether HydraFacial Keravive is the right treatment for you.
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
-                Book Your Consultation
-              </BookConsultationButton>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          7. RESULTS, AFTERCARE & SIDE EFFECTS
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Post-Treatment</motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Results, Aftercare and Side Effects
+              Results, Aftercare &amp; Side Effects
             </motion.h2>
           </motion.div>
 
@@ -596,28 +723,25 @@ export default function HydrafacialKeravivePage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
+            {/* Card 1, Results */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-                    <polyline points="17 6 23 6 23 12"/>
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="9" y1="15" x2="15" y2="15"/>
+                    <line x1="9" y1="11" x2="15" y2="11"/>
                   </svg>
                 </span>
-                <h3 className={styles.resultsAfterCardTitle}>When Will You See Results?</h3>
+                <h3 className={styles.resultsAfterCardTitle}>How long to see results?</h3>
               </div>
               <p className={styles.resultsAfterCardBody}>
-                Improvements in scalp condition are often felt after the first session.
-                Visible improvements in hair density and thickness typically develop over
-                4 to 8 weeks as the scalp environment improves.
-              </p>
-              <div className={styles.resultsAfterCardSpacer} />
-              <p className={styles.resultsAfterCardNote}>
-                Full course results continue to develop over 3 to 6 months, with maintenance
-                sessions every 3 to 6 months sustaining long-term benefits.
+                The results are typically seen within 24 to 72 hours after treatment.
               </p>
             </motion.div>
 
+            {/* Card 2, Duration */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -627,27 +751,14 @@ export default function HydrafacialKeravivePage() {
                     <line x1="12" y1="16" x2="12.01" y2="16"/>
                   </svg>
                 </span>
-                <h3 className={styles.resultsAfterCardTitle}>Side Effects</h3>
+                <h3 className={styles.resultsAfterCardTitle}>How long do results last?</h3>
               </div>
-              <ul className={styles.resultsAfterCardList} role="list">
-                {[
-                  'Mild scalp redness lasting a few hours',
-                  'Temporary tingling or sensitivity during treatment',
-                  'Occasional mild flaking in the first day or two',
-                ].map((item) => (
-                  <li key={item} className={styles.resultsAfterCardListItem}>
-                    <span className={styles.resultsAfterDot} aria-hidden="true" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <div className={styles.resultsAfterCardSpacer} />
-              <p className={styles.resultsAfterCardNote}>
-                Side effects are minimal and short-lived. Most patients experience no
-                discomfort during or after the treatment session.
+              <p className={styles.resultsAfterCardBody}>
+                The brilliant relief typically lasts for the entire hay fever season, providing comfort for several months, depending on your individual response to the pollen count.
               </p>
             </motion.div>
 
+            {/* Card 3, Aftercare */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -660,11 +771,10 @@ export default function HydrafacialKeravivePage() {
               </div>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Apply the Keravive take-home spray daily as directed',
-                  'Avoid harsh shampoos or scalp treatments for 24 hours',
-                  'Protect the scalp from direct sun exposure after sessions',
-                  'Attend all three monthly sessions for optimal results',
-                  'Book a follow-up consultation if you have any concerns',
+                  'Do not touch the injection site during the day',
+                  'Avoid heavy exercise or hot saunas for the first 24 hours',
+                  'Monitor your symptoms and ring the clinic if you have any unusual reactions',
+                  'Keep a diary of your pollen triggers to help manage your long-term health',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
                     <span className={styles.resultsAfterDot} aria-hidden="true" />
@@ -678,104 +788,12 @@ export default function HydrafacialKeravivePage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          8. PATIENT REVIEWS
+          2. PATIENT REVIEWS
       ════════════════════════════════════════ */}
       <Testimonials />
 
       {/* ════════════════════════════════════════
-          9. CTA BANNER
-      ════════════════════════════════════════ */}
-      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book HydraFacial Keravive">
-        <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
-          <Image src="/images/Background-logo.png" alt="" fill className={styles.ctaBannerLogo} sizes="100vw" />
-        </div>
-        <Container>
-          <motion.div
-            className={styles.ctaBannerContent}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
-              Healthier Scalp.<br />Fuller Hair.
-            </motion.h2>
-            <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
-              Book a HydraFacial Keravive consultation with our expert team in Leicester.
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBannerBtn}>Book Consultation</BookConsultationButton>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
-
-      {/* ════════════════════════════════════════
-          10. TREATABLE AREAS
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark" className={styles.conditionsSection}>
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Scalp Concerns and Areas</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              What Can HydraFacial Keravive Treat?
-            </motion.h2>
-            <motion.p className={styles.conditionsIntro} variants={fadeUp}>
-              Keravive addresses a wide range of scalp health concerns and can be
-              applied across the full scalp for comprehensive coverage.
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            className={styles.areasColumns}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.div
-              className={styles.areasGroup}
-              variants={fadeUp}
-              whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
-            >
-              <p className={styles.areasGroupLabel}>Scalp Concerns</p>
-              <ul className={styles.areasGroupList} role="list">
-                {TREATABLE_CONCERNS.map((item) => (
-                  <li key={item} className={styles.areasGroupItem}>
-                    <span className={styles.areasItemDot} aria-hidden="true" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            <motion.div
-              className={styles.areasGroup}
-              variants={fadeUp}
-              whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
-            >
-              <p className={styles.areasGroupLabel}>Treatment Areas</p>
-              <ul className={styles.areasGroupList} role="list">
-                {TREATABLE_AREAS.map((item) => (
-                  <li key={item} className={styles.areasGroupItem}>
-                    <span className={styles.areasItemDot} aria-hidden="true" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          11. CLINIC INTRO
+          BEST HAY FEVER INJECTIONS LEICESTER
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.clinicIntroSection}>
         <Container>
@@ -787,47 +805,57 @@ export default function HydrafacialKeravivePage() {
             viewport={VIEWPORT}
           >
             <motion.div className={styles.clinicIntroLeft} variants={fadeUp}>
-              <p className={styles.eyebrowLight}>HydraFacial Keravive</p>
-              <h2 className={styles.headingLight}>
-                Best Scalp Treatment<br />in Leicester
+              <p className={styles.eyebrowDark}>Hay Fever Injections</p>
+              <h2 className={styles.combinedHeading}>
+                Best Hay Fever Injections<br />Leicester Experience
               </h2>
             </motion.div>
             <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
-              The One Clinic delivers expert HydraFacial Keravive in Leicester, combining
-              advanced scalp technology with personalised clinical care. Our experienced team
-              tailors every Keravive course to your specific scalp concerns, ensuring a
-              comfortable, effective treatment in a trusted medical environment.
+              The One Clinic provides the best hay fever relief experience in Leicester. As a medical clinic that puts patients first, we have highly trained, caring doctors who apply their extensive clinical expertise to provide safe, effective treatments. We ensure every injection is administered in a relaxing, luxurious environment to deliver a proper, brilliant, symptom-free summer.
             </motion.p>
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          12. COST BANNER
+          CTA BANNER
       ════════════════════════════════════════ */}
-      <section className={styles.costBanner} data-section-theme="dark" aria-label="HydraFacial Keravive cost">
+      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book hay fever injection appointment">
+        {/* Watermark logo */}
+        <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
+          <Image
+            src="/images/Background-logo.png"
+            alt=""
+            fill
+            className={styles.ctaBannerLogo}
+            sizes="100vw"
+          />
+        </div>
         <Container>
           <motion.div
-            className={styles.costBannerInner}
+            className={styles.ctaBannerContent}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>HydraFacial Keravive Pricing at The One Clinic</motion.p>
-            <motion.p className={styles.costBannerPrice} variants={fadeUp}>From £200</motion.p>
-            <motion.p className={styles.costBannerNote} variants={fadeUp}>
-              Pricing varies by number of sessions. Full details provided at your consultation.
+            <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
+              Uncover a Comfortable, Symptom-Free Summer!<br />Book Your Injection Today!
+            </motion.h2>
+            <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
+              Give your body the powerful, targeted relief it truly deserves. Let our expert doctors at The One Clinic help you achieve a beautiful, clear, and comfortable season.
             </motion.p>
             <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBannerBtn}>Book A Consultation</BookConsultationButton>
+              <BookConsultationButton className={styles.ctaBannerBtn}>
+                Book Consultation
+              </BookConsultationButton>
             </motion.div>
           </motion.div>
         </Container>
       </section>
 
       {/* ════════════════════════════════════════
-          13. WHY CHOOSE THE ONE CLINIC
+          WHY CHOOSE THE ONE CLINIC
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -839,7 +867,7 @@ export default function HydrafacialKeravivePage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Why Choose The One Clinic For HydraFacial Keravive
+              Why Choose The One Clinic For Hay Fever Injections
             </motion.h2>
           </motion.div>
 
@@ -866,14 +894,14 @@ export default function HydrafacialKeravivePage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          14. MEET THE EXPERTS
+          MEET THE EXPERTS
       ════════════════════════════════════════ */}
       <MeetTheExperts />
 
       {/* ════════════════════════════════════════
-          15. FAQ
+          FAQ
       ════════════════════════════════════════ */}
-      <section className={styles.faqSection} data-section-theme="light">
+      <section className={styles.faqSection} data-section-theme="dark">
         <div className={styles.faqInner}>
           <Container>
             <motion.div
@@ -929,12 +957,12 @@ export default function HydrafacialKeravivePage() {
       </section>
 
       {/* ════════════════════════════════════════
-          16. BOOKING FORM
+          BOOKING FORM
       ════════════════════════════════════════ */}
       <LeadForm />
 
       {/* ════════════════════════════════════════
-          17. RELATED TREATMENTS
+          RELATED TREATMENTS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
@@ -945,8 +973,12 @@ export default function HydrafacialKeravivePage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Explore More</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>Related Treatments</motion.h2>
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              Explore More
+            </motion.p>
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              Related Treatments
+            </motion.h2>
           </motion.div>
 
           <motion.div
@@ -976,7 +1008,7 @@ export default function HydrafacialKeravivePage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          18. FINAL CTA
+          FINAL CTA
       ════════════════════════════════════════ */}
       <FinalCTA />
     </>

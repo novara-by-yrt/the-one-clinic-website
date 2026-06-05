@@ -20,8 +20,8 @@ import styles from './page.module.css';
 /* ── Static data ──────────────────────────────────────────────── */
 const AT_A_GLANCE = [
   {
-    label: 'Session Time',
-    value: '30 to 60 minutes',
+    label: 'Treatment Duration',
+    value: '30 to 60 minutes, depending on your chosen package',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -30,42 +30,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Downtime',
-    value: 'None',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-        <line x1="16" y1="2" x2="16" y2="6"/>
-        <line x1="8" y1="2" x2="8" y2="6"/>
-        <line x1="3" y1="10" x2="21" y2="10"/>
-      </svg>
-    ),
-  },
-  {
-    label: 'Skin Types',
-    value: 'All skin types',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-        <circle cx="9" cy="7" r="4"/>
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-      </svg>
-    ),
-  },
-  {
-    label: 'Results',
-    value: 'Immediate glow',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-        <polyline points="17 6 23 6 23 12"/>
-      </svg>
-    ),
-  },
-  {
-    label: 'Recommended',
-    value: 'Monthly sessions',
+    label: 'Treatment Frequency',
+    value: 'Recommended once a month for optimal skin health',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="1 4 1 10 7 10"/>
@@ -74,12 +40,44 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Treatment Cost',
-    value: 'From £145',
+    label: 'Downtime',
+    value: 'None',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+        <path d="M9 12l2 2 4-4"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Results Longevity',
+    value: 'An instant glow that lasts several weeks, with cumulative benefits over time',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+        <polyline points="17 6 23 6 23 12"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Cost',
+    value: 'Packages start from £145',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <line x1="12" y1="1" x2="12" y2="23"/>
         <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Appointment Type',
+    value: 'In-clinic',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M3 21h18"/>
+        <path d="M5 21V7l8-4v4"/>
+        <path d="M19 21V11l-6-4"/>
+        <path d="M9 21v-4h6v4"/>
       </svg>
     ),
   },
@@ -130,29 +128,57 @@ const JOURNEY_STEPS = [
   {
     n: '01',
     title: 'Consultation & Skin Analysis',
-    desc: 'Your skin therapist reviews your skin type, concerns, and goals. A personalised HydraFacial protocol is selected, including the right serums and any booster add-ons to address your specific needs.',
+    desc: 'During your consultation, your clinician will listen to your concerns, thoroughly analyse your skin, and recommend the best HydraFacial package for you.',
   },
   {
     n: '02',
-    title: 'Skin Preparation & Cleanse',
-    desc: 'The skin is thoroughly cleansed and prepared. The HydraFacial handpiece gently uncovers a new layer of skin using mild chemical exfoliation to reveal a fresh, smoother surface underneath.',
+    title: 'Cleanse & Peel',
+    desc: 'The procedure begins with a gentle cleanse and peel to exfoliate and resurface, uncovering a fresh new layer of skin.',
   },
   {
     n: '03',
-    title: 'Extraction & Infusion',
-    desc: 'Painless Vortex suction removes blackheads and congestion from pores while simultaneously delivering hydrating and antioxidant-rich serums deep into the skin.',
+    title: 'Extract & Hydrate',
+    desc: 'A painless vortex suction effortlessly extracts debris from your pores whilst intense moisturisers quench the skin.',
   },
   {
     n: '04',
-    title: 'Instant Glow & Protection',
-    desc: 'The final step saturates the skin with hyaluronic acid, peptides, and antioxidants, leaving it visibly plumped, glowing, and protected. You leave with immediately brighter, healthier-looking skin.',
+    title: 'Protect & Glow',
+    desc: 'The surface is then saturated with nourishing antioxidants and peptides to protect it and maximise your lovely, radiant glow.',
   },
 ];
 
 const TREATED_BENEFITS = [
   {
+    title: 'Deep Cleansing & Extraction',
+    desc: 'Effortlessly clears out congested pores and removes blackheads without painful squeezing.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Intense Hydration',
+    desc: 'Floods the skin with moisture, ensuring it feels plump, soft, and properly comfortable.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Customisable Care',
+    desc: 'Tailored exactly to your skin’s unique profile using bespoke boosters and serums.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/>
+      </svg>
+    ),
+  },
+  {
     title: 'Instant Radiance',
-    desc: 'Results are visible immediately after treatment. Skin looks brighter, feels smoother, and radiates a healthy, luminous glow from the very first session.',
+    desc: 'Breathes new life into dull complexions, delivering an immediate, brilliant glow.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="5"/>
@@ -168,17 +194,8 @@ const TREATED_BENEFITS = [
     ),
   },
   {
-    title: 'Deep Pore Cleansing',
-    desc: 'The Vortex-Fusion extraction step removes blackheads and trapped congestion more effectively and comfortably than manual extraction, leaving pores visibly cleaner.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-      </svg>
-    ),
-  },
-  {
     title: 'No Downtime',
-    desc: 'HydraFacial is completely non-invasive with no redness, peeling, or recovery time. You can return to your day, or attend an event, immediately after treatment.',
+    desc: 'A relaxing, soothing treatment that allows you to return to your normal routine straightaway.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
@@ -187,64 +204,45 @@ const TREATED_BENEFITS = [
     ),
   },
   {
-    title: 'Hydration Boost',
-    desc: 'Powerful hyaluronic acid serums are infused directly into the skin, delivering deep, lasting hydration that plumps fine lines and restores suppleness.',
+    title: 'Improve Skin Texture & Tone',
+    desc: 'Helps give a smoother texture to skin while improving its appearance.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'Suitable for All Skin Types',
-    desc: 'Whether your skin is dry, oily, sensitive, or combination, HydraFacial can be adapted to your unique needs. It is safe for all ages and skin tones.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-        <circle cx="9" cy="7" r="4"/>
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'Customisable Boosters',
-    desc: 'Booster serums and add-ons can be tailored to target specific concerns including pigmentation, fine lines, redness, or congestion, making every HydraFacial uniquely yours.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
         <circle cx="12" cy="12" r="3"/>
-        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/>
       </svg>
     ),
   },
 ];
 
 const ELIGIBILITY = [
-  'Wanting clearer, brighter, and more hydrated skin',
-  'Looking for a treatment with absolutely no downtime',
-  'Dealing with congested pores, oily skin, or uneven skin texture',
-  'Preparing for a special event or occasion',
-  'Experiencing dehydration, dullness, or fine lines',
-  'Wanting a relaxing, results-driven treatment suitable for all skin types',
+  'Struggle with blackheads, enlarged pores, or congested skin',
+  'Have dry, dull, or tired-looking skin that needs a massive hydration boost',
+  'Are dealing with uneven skin tone, sun damage, or mild hyperpigmentation',
+  'Want a lovely, natural glow before a special event or holiday',
 ];
 
-const SKIN_CONCERNS_TARGETED = [
-  'Hydration levels',
-  'Pore size and congestion',
-  'Skin texture and smoothness',
-  'Oiliness and sebum control',
-  'Fine lines and early wrinkles',
-  'Radiance and luminosity',
-  'Skin firmness and elasticity',
-];
-
-const ADDON_BOOSTERS = [
-  'Britenol , for pigmentation and uneven tone',
-  'Dermabuilder , for fine lines and firmness',
-  'Growth Factor booster for anti-ageing',
-  'LED therapy add-on',
-  'Lymphatic drainage enhancement',
-  'Customised serums for specific concerns',
+const PACKAGES = [
+  {
+    name: 'Deluxe HydraFacial',
+    price: '£145',
+    includes: ['Includes complimentary Dermalux LED'],
+  },
+  {
+    name: 'Platinum HydraFacial',
+    price: '£165',
+    includes: ['Includes complimentary Dermalux LED, lymphatic drainage & personalised skin booster'],
+  },
+  {
+    name: 'Dermalux LED (Stand-alone)',
+    price: '£75',
+    includes: ['20-minute session'],
+  },
+  {
+    name: 'Glass Skin HydraFacial',
+    price: '£195',
+    includes: ['Includes Deluxe HydraFacial + Dermalux LED + Microneedling'],
+  },
 ];
 
 const SKIN_CONCERN_CARDS = [
@@ -325,49 +323,49 @@ const SKIN_CONCERN_CARDS = [
 ];
 
 const CLINIC_REASONS = [
-  { n: '01', text: 'All-in-one clinic with medical and aesthetic services.' },
-  { n: '02', text: 'Highly trained, compassionate GMC-registered doctors.' },
-  { n: '03', text: 'Customised treatments based on listening and expertise.' },
-  { n: '04', text: 'State-of-the-art facilities and modern equipment.' },
-  { n: '05', text: 'Strong reputation and excellent patient reviews.' },
-  { n: '06', text: 'Comprehensive care and referrals with specialists.' },
+  { n: '01', text: 'Expert doctors with extensive aesthetic experience.' },
+  { n: '02', text: 'Personalised care tailored to your unique skin.' },
+  { n: '03', text: 'Advanced technology for safe, effective treatments.' },
+  { n: '04', text: 'Trusted reputation with excellent patient reviews.' },
+  { n: '05', text: 'Full support throughout your skincare journey.' },
+  { n: '06', text: 'Honest advice and transparent pricing.' },
 ];
 
 const FAQS = [
   {
-    question: 'What is a HydraFacial?',
+    question: 'Who is a good candidate for HydraFacial?',
     answer:
-      'HydraFacial is a patented, multi-step skin treatment that cleanses, exfoliates, extracts congestion, and infuses the skin with nourishing serums, all in a single session. It uses Vortex-Fusion technology to deliver immediate, visible results with no discomfort or downtime.',
+      'The HydraFacial is spot on for virtually all skin types. It is highly effective for anyone dealing with dullness, congestion, signs of ageing, or dryness.',
   },
   {
-    question: 'Is HydraFacial suitable for sensitive skin?',
+    question: 'Is HydraFacial painful?',
     answer:
-      'Yes. HydraFacial is one of the gentlest professional skin treatments available and is suitable for even the most sensitive skin types. The serums and handpiece settings are adjusted to your individual skin needs, ensuring a comfortable and safe experience.',
+      'Not at all. The treatment is non-invasive, incredibly gentle, and often described as a cool, relaxing paintbrush gliding across the face.',
   },
   {
-    question: 'How quickly will I see results?',
+    question: 'How is it done?',
     answer:
-      'Results are immediate. Your skin will feel deeply hydrated, look brighter, and appear smoother straight after your treatment. For best long-term results, a course of monthly sessions is recommended.',
+      'The treatment uses a patented wand with vortex technology to cleanse, extract, and hydrate your skin in 30 to 60 minutes.',
   },
   {
-    question: 'Is there any downtime after a HydraFacial?',
+    question: 'Are there any risks?',
     answer:
-      'No. There is no downtime whatsoever. Your skin will look and feel great immediately after treatment. You can apply makeup, return to work, or attend an event the same day.',
+      'HydraFacials are very safe treatments. Sensitive skin can sometimes be a little red, but that goes away fast.',
   },
   {
-    question: 'How often should I have a HydraFacial?',
+    question: 'How long does it take to recover?',
     answer:
-      'For maintaining healthy, glowing skin, a monthly HydraFacial is ideal. For specific skin concerns such as pigmentation or congestion, your therapist may recommend a more intensive course of treatments initially.',
+      'There is zero downtime. You can carry on with your day and even apply makeup straightaway if needed, though we recommend leaving your skin bare to let the lovely serums absorb.',
   },
   {
-    question: 'Can HydraFacial be combined with other treatments?',
+    question: 'When will I see changes?',
     answer:
-      'Yes. HydraFacial pairs very well with treatments such as Profhilo, skin boosters, and LED therapy for enhanced results. Your therapist will advise on the best combination at your consultation.',
+      'The brilliant results are immediate. You will leave the clinic with visibly cleaner, plumper, and more radiant skin.',
   },
   {
-    question: 'What skin concerns can HydraFacial address?',
+    question: 'Do I need follow-ups?',
     answer:
-      'HydraFacial is effective for a wide range of concerns including dehydration, dullness, congested pores, oily skin, fine lines, hyperpigmentation, and uneven texture. The treatment can be customised with booster serums to target your specific concerns.',
+      'For the absolute best results and long-term skin health, we recommend booking a session every four weeks.',
   },
   {
     question: 'How much does a HydraFacial cost at The One Clinic?',
@@ -424,17 +422,18 @@ export default function HydrafacialPage() {
               </motion.span>
 
               <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                HydraFacial Leicester
+                HydraFacial in Leicester
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                The ultimate multi-step facial for cleansed, hydrated, and radiant skin ,
-                with zero downtime and instant, visible results.
+                Experience visibly clearer, beautifully hydrated skin with our expert HydraFacial
+                treatments in Leicester. This non-invasive, multi-step procedure deeply cleanses,
+                extracts, and nourishes, leaving your complexion looking proper, brilliant and refreshed.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
                 <BookConsultationButton className={styles.heroCtaPrimary}>
-                  Book Appointment
+                  Book Consultation
                 </BookConsultationButton>
               </motion.div>
 
@@ -474,7 +473,7 @@ export default function HydrafacialPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/Hero Section 1 HydraFacial.jpg"
+                src="/images/Hero Section HydraFacial Keravive.jpg"
                 alt="HydraFacial treatment at The One Clinic Leicester"
                 fill
                 priority
@@ -504,15 +503,12 @@ export default function HydrafacialPage() {
             <motion.div className={styles.whatIsContent} variants={stagger(0.12)}>
               <motion.div className={styles.whatIsTextGroup} variants={fadeUp}>
                 <p className={styles.eyebrowDark}>About This Treatment</p>
-                <h2 className={styles.combinedHeading}>What is HydraFacial?</h2>
+                <h2 className={styles.combinedHeading}>What is a HydraFacial?</h2>
                 <p className={styles.combinedDesc}>
-                  HydraFacial is a multi-step medical-grade facial that uses patented Vortex-Fusion
-                  technology to cleanse, exfoliate, extract, and infuse the skin with powerful
-                  serums in one session. The patented three-step process simultaneously removes
-                  dead skin cells and congestion while delivering antioxidants, hyaluronic acid,
-                  and peptides deep into the skin. Suitable for all skin types with no downtime,
-                  every HydraFacial at The One Clinic is tailored to your specific skin concerns
-                  for immediate, visible results.
+                  The HydraFacial is an advanced, non-invasive skin resurfacing therapy that
+                  cleanses, exfoliates, extracts impurities, hydrates, and protects the skin with
+                  antioxidants. It works to remove dullness, congestion, wrinkles, and rough
+                  textures, giving your skin a fresh glow without any downtime.
                 </p>
               </motion.div>
               <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
@@ -525,7 +521,7 @@ export default function HydrafacialPage() {
             {/* Right: image panel */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/HydraFacial (2).jpg"
+                src="/images/What is HydraFacial Keravive.jpg"
                 alt="HydraFacial consultation at The One Clinic Leicester"
                 fill
                 className={styles.whatIsVideoFrame}
@@ -628,11 +624,9 @@ export default function HydrafacialPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <p className={styles.finalResultsEyebrow}>The Result</p>
+            <p className={styles.finalResultsEyebrow}>Reveal Your Best Skin with HydraFacial</p>
             <p className={styles.finalResultsText}>
-              When combined, these three steps deliver a complete skin renewal , addressing
-              congestion, dehydration, and dullness in a single programme for a deeply cleansed,
-              glowing, and refreshed complexion with zero downtime.
+              Experience deep cleaning, lasting hydration, and an instant radiant glow in just one treatment.
             </p>
           </motion.div>
         </Container>
@@ -651,10 +645,10 @@ export default function HydrafacialPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-              What to Expect
+              The Procedure
             </motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Your HydraFacial Journey
+              HydraFacial Procedure
             </motion.h2>
           </motion.div>
 
@@ -743,7 +737,7 @@ export default function HydrafacialPage() {
               Is This Right for You?
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Who Is Suitable for HydraFacial?
+              Why Choose a HydraFacial?
             </motion.h2>
           </motion.div>
 
@@ -755,7 +749,7 @@ export default function HydrafacialPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
-              HydraFacial is suitable for you if you are:
+              You might find a HydraFacial to be a brilliant choice if you:
             </motion.p>
             <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
               {ELIGIBILITY.map((item) => (
@@ -795,7 +789,7 @@ export default function HydrafacialPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              How Does HydraFacial Work?
+              How Does a HydraFacial Work?
             </motion.h2>
           </motion.div>
 
@@ -807,17 +801,13 @@ export default function HydrafacialPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.howPara} variants={fadeUp}>
-              HydraFacial uses patented Vortex-Fusion technology: a specially designed handpiece
-              that simultaneously exfoliates the skin and delivers serums using a vortex suction
-              mechanism. As the device glides across the skin, it creates a whirlpool effect that
-              lifts debris, blackheads, and dead cells from pores while infusing hyaluronic acid,
-              antioxidants, and peptides deep into the dermis.
+              Using patented vortex technology, the HydraFacial device gently vacuums away dead skin
+              cells and impurities from deep within your pores. At the same time, it infuses your
+              skin with highly potent, nourishing serums tailored to your specific needs.
             </motion.p>
             <motion.p className={styles.howPara} variants={fadeUp}>
-              The treatment also incorporates a lymphatic drainage function to improve circulation
-              and reduce puffiness. The combination of extraction and infusion in a single pass
-              makes HydraFacial uniquely effective , addressing congestion and dehydration
-              simultaneously, without irritation or downtime.
+              It leaves your skin deeply hydrated and noticeably plumper, giving you a spot-on,
+              radiant complexion in your everyday life.
             </motion.p>
           </motion.div>
 
@@ -888,18 +878,15 @@ export default function HydrafacialPage() {
                     <polyline points="17 6 23 6 23 12"/>
                   </svg>
                 </span>
-                <h3 className={styles.resultsAfterCardTitle}>When Will You See Results?</h3>
+                <h3 className={styles.resultsAfterCardTitle}>How Long to See Results?</h3>
               </div>
               <p className={styles.resultsAfterCardBody}>
-                Results are immediate. Skin looks brighter, feels softer, and appears more
-                hydrated straight after your first session. Pores look cleaner and overall
-                skin tone is more even.
+                You will notice a visible, brilliant glow immediately after the treatment.
               </p>
               <div className={styles.resultsAfterCardSpacer} />
               <p className={styles.resultsAfterCardNote}>
-                With monthly treatments, skin quality progressively improves over time, building
-                lasting hydration, clarity, and resilience. Most patients report results lasting
-                several days to a week after each session.
+                The smooth results and hydration typically last for 5 to 7 days or even longer.
+                We highly recommend monthly treatments to support long-term skin health.
               </p>
             </motion.div>
 
@@ -916,24 +903,12 @@ export default function HydrafacialPage() {
                 <h3 className={styles.resultsAfterCardTitle}>Side Effects</h3>
               </div>
               <p className={styles.resultsAfterCardBody}>
-                HydraFacial has an excellent safety profile. It is non-irritating for the vast
-                majority of patients. In rare cases, you may experience:
+                HydraFacials are incredibly gentle. You may experience very mild pinkness
+                straightaway, but this sorts itself out within an hour or two.
               </p>
-              <ul className={styles.resultsAfterCardList} role="list">
-                {[
-                  'Mild temporary redness on very sensitive skin',
-                  'Slight tingling during the exfoliation step',
-                  'Minor skin sensitivity for a few hours',
-                ].map((item) => (
-                  <li key={item} className={styles.resultsAfterCardListItem}>
-                    <span className={styles.resultsAfterDot} aria-hidden="true" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
               <div className={styles.resultsAfterCardSpacer} />
               <p className={styles.resultsAfterCardNote}>
-                These effects are mild and short-lived. No downtime is required after treatment.
+                There is no downtime required after treatment, and any temporary pinkness fades quickly.
               </p>
             </motion.div>
 
@@ -950,12 +925,9 @@ export default function HydrafacialPage() {
               </div>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Apply SPF 30 or higher sunscreen daily',
-                  'Stay well hydrated throughout the day',
-                  'Avoid direct sun exposure for 24 hours',
-                  'Avoid harsh actives such as retinol for 24 hours',
-                  'Use gentle, hydrating skincare products',
-                  'Book your next session in 4 to 6 weeks',
+                  'Avoid intense sun exposure and apply a high-quality SPF daily',
+                  'Do not use harsh exfoliants or active ingredients (like retinol) for a couple of days',
+                  'Keep your skin clean and makeup-free until evening for maximum serum effectiveness',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
                     <span className={styles.resultsAfterDot} aria-hidden="true" />
@@ -1047,10 +1019,11 @@ export default function HydrafacialPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
-              Glow From the Inside Out.
+              Uncover Your Natural Glow!
             </motion.h2>
             <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
-              Let our experts create your personalised HydraFacial treatment plan!
+              Give your skin the deep cleansing and hydration it truly deserves. Let our experts at
+              The One Clinic help you achieve a beautifully clear, glowing appearance.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
@@ -1062,7 +1035,7 @@ export default function HydrafacialPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          13. TREATMENT AREAS & BOOSTERS
+          13. HYDRAFACIAL COST IN LEICESTER
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark" className={styles.conditionsSection}>
         <Container>
@@ -1074,14 +1047,14 @@ export default function HydrafacialPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Treatment Parameters
+              Our Packages
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              What HydraFacial Targets &amp; Our Add-On Boosters
+              HydraFacial Cost in Leicester
             </motion.h2>
             <motion.p className={styles.conditionsIntro} variants={fadeUp}>
-              Every HydraFacial session addresses key skin parameters and can be enhanced with
-              targeted booster serums to maximise your results.
+              At The One Clinic, we offer bespoke HydraFacial packages designed to suit your unique
+              skin needs and deliver spot-on results.
             </motion.p>
           </motion.div>
 
@@ -1092,37 +1065,24 @@ export default function HydrafacialPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div
-              className={styles.areasGroup}
-              variants={fadeUp}
-              whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
-            >
-              <p className={styles.areasGroupLabel}>Skin Parameters Targeted</p>
-              <ul className={styles.areasGroupList} role="list">
-                {SKIN_CONCERNS_TARGETED.map((area) => (
-                  <li key={area} className={styles.areasGroupItem}>
-                    <span className={styles.areasItemDot} aria-hidden="true" />
-                    {area}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            <motion.div
-              className={styles.areasGroup}
-              variants={fadeUp}
-              whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
-            >
-              <p className={styles.areasGroupLabel}>Add-On Boosters</p>
-              <ul className={styles.areasGroupList} role="list">
-                {ADDON_BOOSTERS.map((area) => (
-                  <li key={area} className={styles.areasGroupItem}>
-                    <span className={styles.areasItemDot} aria-hidden="true" />
-                    {area}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+            {PACKAGES.map((pkg) => (
+              <motion.div
+                key={pkg.name}
+                className={styles.areasGroup}
+                variants={fadeUp}
+                whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
+              >
+                <p className={styles.areasGroupLabel}>{pkg.name} , {pkg.price}</p>
+                <ul className={styles.areasGroupList} role="list">
+                  {pkg.includes.map((item) => (
+                    <li key={item} className={styles.areasGroupItem}>
+                      <span className={styles.areasItemDot} aria-hidden="true" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
           </motion.div>
         </Container>
       </Section>
@@ -1146,11 +1106,10 @@ export default function HydrafacialPage() {
               </h2>
             </motion.div>
             <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
-              Experience the best HydraFacial in Leicester at The One Clinic. Our expert skin
-              therapists deliver fully tailored treatments using the latest HydraFacial technology,
-              targeting your unique skin concerns for immediate, visible results. Whether it is your
-              first session or part of a regular skincare routine, every visit leaves you with
-              deeply cleansed, hydrated, and glowing skin.
+              The One Clinic provides the best HydraFacial experience in Leicester. As a clinic that
+              puts patients first, we apply our extensive aesthetic expertise to deliver tailored,
+              relaxing treatments. We ensure every facial is performed in a luxurious environment, so
+              you leave feeling refreshed and looking naturally radiant.
             </motion.p>
           </motion.div>
         </Container>
@@ -1187,8 +1146,8 @@ export default function HydrafacialPage() {
               ))}
             </motion.ul>
             <motion.p className={styles.costBannerNote} variants={fadeUp}>
-              The final price depends on your personalised treatment protocol and any booster
-              add-ons selected. Full details will be discussed at your consultation.
+              Choose from our bespoke HydraFacial packages, tailored to your unique skin needs.
+              Full details will be discussed at your consultation.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>

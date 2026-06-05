@@ -452,11 +452,11 @@
 }
 
 .glanceValue {
-  font-size: clamp(1.0625rem, 1.6vw, 1.375rem);
+  font-size: 1.25rem;
   font-weight: var(--fw-bold);
   letter-spacing: -0.02em;
   color: #fff;
-  line-height: 1.25;
+  line-height: 1.2;
 }
 
 /* ════════════════════════════════════════════════════
@@ -765,22 +765,6 @@
   margin: 0;
 }
 
-/* Single centred paragraph wrapper */
-.howTextSingle {
-  max-width: 780px;
-  margin-inline: auto;
-  margin-bottom: var(--space-7);
-  text-align: center;
-}
-
-.howParaCentered {
-  font-size: var(--text-body);
-  line-height: 1.78;
-  color: var(--color-text-muted);
-  margin: 0;
-  text-align: center;
-}
-
 /* Screening covers checklist */
 .howCoversWrap {
   background: #000;
@@ -1060,8 +1044,8 @@
   object-fit: cover;
 }
 
-/* Wistia video embed , square ratio matching original image slot */
-.whatIsVideoWrap {
+/* Health screening image */
+.whatIsImageWrap {
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -1070,13 +1054,7 @@
   background: #000;
 }
 
-.whatIsVideoFrame {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
+.whatIsImage {
   object-fit: cover;
   object-position: center;
 }
@@ -1087,7 +1065,7 @@
 .glanceStandaloneGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(12px, 2vw, 20px);
+  gap: var(--space-3);
   align-items: stretch;
 }
 
@@ -2359,9 +2337,8 @@
   /* What is Endolift: stack on mobile */
   .whatIsGrid { grid-template-columns: 1fr; gap: var(--space-5); }
   .whatIsImageWrap { aspect-ratio: 4 / 3; }
-  .whatIsVideoWrap { aspect-ratio: 4 / 3; }
 
-  /* Standalone At a Glance: 2-col on tablet */
+  /* Standalone At a Glance: 2-col on mobile */
   .glanceStandaloneGrid { grid-template-columns: repeat(2, 1fr); }
 
   /* Clinic intro: stack */
@@ -2486,7 +2463,7 @@
   /* Clinic reasons: 1-col */
   .clinicReasonsGrid { grid-template-columns: 1fr; }
 
-  /* Standalone At a Glance: 1-col on small phones */
+  /* Standalone At a Glance: 1-col */
   .glanceStandaloneGrid { grid-template-columns: 1fr; }
 
   /* ── Expert card: tighter content padding on small phones ── */
