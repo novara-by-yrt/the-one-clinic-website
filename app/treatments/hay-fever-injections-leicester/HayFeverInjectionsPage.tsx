@@ -318,7 +318,7 @@ export default function HayFeverInjectionsPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Health Screening.jpg"
+                src="/images/Hero SectionHay Fever Injection.jpg"
                 alt="Hay fever injection appointment at The One Clinic, Leicester"
                 fill
                 priority
@@ -363,8 +363,8 @@ export default function HayFeverInjectionsPage() {
             {/* Right: image */}
             <motion.div className={styles.whatIsImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor1.jpg"
-                alt="Hay fever injection treatment at The One Clinic"
+                src="/images/What is Hay Fever Injection.jpg"
+                alt="What is a hay fever injection , treatment at The One Clinic"
                 fill
                 className={styles.whatIsImage}
                 sizes="(max-width: 768px) 100vw, 50vw"
