@@ -377,11 +377,8 @@ export default function HayFeverInjectionsPage() {
       {/* ════════════════════════════════════════
           HOW DO HAY FEVER INJECTIONS WORK?
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
-        <div className={styles.whiteBgWrap} aria-hidden="true">
-          <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
-        </div>
-        <Container className={styles.whiteBgContent}>
+      <Section variant="light" data-section-theme="light" className={styles.howSection}>
+        <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
@@ -389,7 +386,6 @@ export default function HayFeverInjectionsPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>How It Works</motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
               How Do Hay Fever Injections Work?
             </motion.h2>
@@ -403,8 +399,40 @@ export default function HayFeverInjectionsPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.howPara} variants={fadeUp}>
-              Injections are made into the muscles, releasing the drug gradually over weeks. It continuously reduces inflammation and histamine production, effectively preventing the frustrating symptoms of hay fever. It means you can go about your daily life, enjoy holidays, and spend time outside feeling properly comfortable and spot on.
+              Injections are made into the muscles, releasing the drug gradually over weeks. It continuously reduces inflammation and histamine production, effectively preventing the frustrating symptoms of hay fever.
             </motion.p>
+            <motion.p className={styles.howPara} variants={fadeUp}>
+              It means you can go about your daily life, enjoy holidays, and spend time outside feeling properly comfortable and spot on. A single injection provides reliable relief throughout the hay fever season without the need for daily medication adjustments.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.howCoversWrap}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.howCoversLabel} variants={fadeUp}>Treatment Options</motion.p>
+            <motion.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
+              {[
+                'Hay fever injection (corticosteroid)',
+                'Fast-acting relief within 24-72 hours',
+                'Season-long protection (up to 3 months)',
+                'Minimal downtime and side effects',
+                'Alternative to daily antihistamines',
+                'Suitable for severe allergic rhinitis',
+              ].map((item) => (
+                <motion.li key={item} className={styles.howCoversItem} variants={fadeUp}>
+                  <span className={styles.howCoversCheck} aria-hidden="true">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <polyline points="2,6 5,9 10,3" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  {item}
+                </motion.li>
+              ))}
+            </motion.ul>
           </motion.div>
         </Container>
       </Section>
@@ -604,9 +632,9 @@ export default function HayFeverInjectionsPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          HAY FEVER INJECTION PROCEDURE
+          4. TREATMENT JOURNEY
       ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.howSection}>
+      <Section variant="light" data-section-theme="light" className={styles.journeySection}>
         <Container>
           <motion.div
             className={styles.sectionHeaderCentre}
@@ -615,22 +643,56 @@ export default function HayFeverInjectionsPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              What to Expect
+            </motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Hay Fever Injection Procedure
+              Your Treatment Journey
             </motion.h2>
           </motion.div>
 
-          <motion.div
-            className={styles.howTextGrid}
-            variants={stagger(0.1)}
+          <motion.ol
+            className={styles.journeyList}
+            variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
+            aria-label="Hay fever injection treatment journey steps"
           >
-            <motion.p className={styles.howPara} variants={fadeUp}>
-              During their consultation, your doctor will be attentive to your concerns, carefully consider your medical history, and confirm whether an injection is the best choice for your needs. The injection site, typically the gluteal muscle, is then gently cleansed in our state-of-the-art clinic before the doctor quickly and precisely administers the medication with a fine needle to minimise discomfort. Following the treatment, there is absolutely zero downtime; a small plaster is applied, allowing you to get back to your routine straightaway.
-            </motion.p>
-          </motion.div>
+            {[
+              {
+                n: '01',
+                title: 'Consultation',
+                desc: 'A detailed assessment of your hay fever symptoms, medical history, and previous treatments. Your doctor discusses the injection, expected outcomes, and answers all your questions about the procedure.',
+              },
+              {
+                n: '02',
+                title: 'Pre-Treatment Preparation',
+                desc: 'Any necessary pre-treatment checks are completed. You receive clear instructions on how to prepare for injection day and what to expect during and after the procedure.',
+              },
+              {
+                n: '03',
+                title: 'Injection Day',
+                desc: 'The hay fever injection is administered quickly and precisely in our clinic. The procedure takes just 15-30 minutes, and you can return to your normal activities immediately with absolutely zero downtime.',
+              },
+              {
+                n: '04',
+                title: 'Relief & Follow-Up',
+                desc: 'You should notice significant relief within 24 to 72 hours. Your doctor schedules follow-up contact to monitor your response and ensure you are experiencing the full benefits throughout the hay fever season.',
+              },
+            ].map((step) => (
+              <motion.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
+                <div className={styles.stepLeft}>
+                  <div className={styles.stepNumCircle} aria-hidden="true">{step.n}</div>
+                  <div className={styles.stepConnector} aria-hidden="true" />
+                </div>
+                <div className={styles.stepBody}>
+                  <h3 className={styles.stepTitle}>{step.title}</h3>
+                  <p className={styles.stepDesc}>{step.desc}</p>
+                </div>
+              </motion.li>
+            ))}
+          </motion.ol>
         </Container>
       </Section>
 
