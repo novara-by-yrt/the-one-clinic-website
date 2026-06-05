@@ -333,7 +333,7 @@ export default function DermaluxLEDPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/AlumierMD Skincare hero.jpg"
+                src="/images/Hero Section Dermalux.jpg"
                 alt="Dermalux LED light therapy for radiant skin at The One Clinic Leicester"
                 fill
                 priority
@@ -381,7 +381,7 @@ export default function DermaluxLEDPage() {
             {/* Right: image panel */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/AlumierMD Skincare 1.jpg"
+                src="/images/What is Dermalux.jpg"
                 alt="Dermalux LED light therapy treatment at The One Clinic"
                 fill
                 className={styles.whatIsVideoFrame}
