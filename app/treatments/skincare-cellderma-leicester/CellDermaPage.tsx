@@ -20,17 +20,18 @@ import styles from './page.module.css';
 /* ── Static data ──────────────────────────────────────────────── */
 const AT_A_GLANCE = [
   {
-    label: 'Science-Driven',
-    value: 'Clinically Researched',
+    label: 'Treatment Duration',
+    value: 'An initial comprehensive skin analysis consultation to design your bespoke regime',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14"/>
       </svg>
     ),
   },
   {
-    label: 'Product Strength',
-    value: 'Pharmaceutical-Grade',
+    label: 'Treatment Frequency',
+    value: 'Daily home use, applied morning and/or evening exactly as directed',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="1 4 1 10 7 10"/>
@@ -39,8 +40,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Clean Science',
-    value: 'No Harsh Additives',
+    label: 'Downtime',
+    value: 'Minimal',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
@@ -49,8 +50,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Clinical Results',
-    value: 'Fast Visible Improvement',
+    label: 'Results Longevity',
+    value: 'Progressive results that continue to improve with long-term, consistent use',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
@@ -59,8 +60,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Results Timeline',
-    value: '2–6 Weeks',
+    label: 'Cost',
+    value: 'Starts from £200',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <line x1="12" y1="1" x2="12" y2="23"/>
@@ -69,8 +70,8 @@ const AT_A_GLANCE = [
     ),
   },
   {
-    label: 'Founder',
-    value: 'Award-Winning Physician',
+    label: 'Appointment Type',
+    value: 'In-clinic',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M3 21h18"/>
@@ -82,208 +83,130 @@ const AT_A_GLANCE = [
   },
 ];
 
-const JOURNEY_STEPS = [
-  {
-    n: '01',
-    title: 'Comprehensive Skin Analysis',
-    desc: 'We begin with an in-depth consultation and skin assessment to understand your skin type, concerns, sensitivities, and lifestyle. This guides our personalised product recommendation.',
-  },
-  {
-    n: '02',
-    title: 'Bespoke Formulation Prescription',
-    desc: 'Based on your analysis, our clinical experts prescribe a personalised CellDerma regimen tailored to address your specific skin concerns with clinically active ingredient strengths.',
-  },
-  {
-    n: '03',
-    title: 'Product Selection & Education',
-    desc: 'We select the right products from CellDerma\'s range and provide comprehensive guidance on how to use them safely and effectively at home for optimal results.',
-  },
-  {
-    n: '04',
-    title: 'Progressive Results & Support',
-    desc: 'Within 2–6 weeks, your skin shows dramatic improvements. We monitor your progress and adjust your regime as needed, providing ongoing professional support throughout your journey.',
-  },
-];
-
-const APPROACH_CARDS = [
-  {
-    eyebrow: '01',
-    title: 'Comprehensive Skin Analysis',
-    desc: 'Every skin is unique. We conduct a thorough assessment of your skin concerns, barrier function, sensitivities, and goals to design a truly personalised regime.',
-  },
-  {
-    eyebrow: '02',
-    title: 'Award-Winning Formulations',
-    desc: 'Created by Dr. Dev Patel, an award-winning aesthetic physician, using pharmaceutical-grade actives at clinical concentrations for clinically proven results.',
-  },
-  {
-    eyebrow: '03',
-    title: 'Progressive Skincare Regimen',
-    desc: 'A step-by-step introduction to active ingredients ensures your skin tolerates and thrives on your regime, with adjustments as your skin improves.',
-  },
-];
-
 const ELIGIBILITY = [
-  'Anyone seeking science-driven skincare for real skin improvement',
-  'Ageing skin with fine lines, loss of elasticity, or dullness',
-  'Hyperpigmentation and sun damage',
-  'Acne-prone or congested skin',
-  'Post-procedure skin support and recovery',
-  'Sensitive skin requiring professional guidance',
+  'Struggle with persistent dry, dull, or tired-looking skin',
+  'Are dealing with hyperpigmentation, sun damage, or uneven skin tone',
+  'Want a targeted solution that standard high-street skincare cannot sort out',
+  'Are looking to complement and maintain the results of your in-clinic aesthetic treatments, such as Morpheus8 or HydraFacial',
 ];
 
 const TREATED_BENEFITS = [
   {
-    title: 'Pharmaceutical-Grade Formulations',
-    desc: 'CellDerma products contain pharmaceutical-grade actives at clinical concentrations far stronger than retail skincare, delivering measurable clinical results.',
+    title: 'Deep Hydration',
+    desc: 'Ensures your skin feels consistently plump, soft, and moisturised year-round.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
       </svg>
     ),
   },
   {
-    title: 'Personalised Prescriptions',
-    desc: 'Each regimen is tailored to your skin type and concerns. No one-size-fits-all approach, your products are chosen for your skin\'s unique needs.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-        <polyline points="17 6 23 6 23 12"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'Award-Winning Science',
-    desc: 'Created by Dr. Dev Patel, a globally-reputed aesthetic physician and multiple award winner, CellDerma delivers visible improvements in skin texture, tone, and radiance.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12"/>
-        <path d="M12 6v6l4 2"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'Complements Clinical Treatments',
-    desc: 'CellDerma skincare synergises perfectly with in-clinic treatments like chemical peels, Morpheus8, and laser resurfacing to amplify and prolong results.',
+    title: 'Targeted Rejuvenation',
+    desc: 'Specifically addresses fine lines and sun damage to promote long-term skin health.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
-        <circle cx="12" cy="12" r="4"/>
-        <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+        <circle cx="12" cy="12" r="6"/>
+        <circle cx="12" cy="12" r="2"/>
       </svg>
     ),
   },
   {
-    title: 'Visible Transformation',
-    desc: 'Dramatic improvements often appear within 2–6 weeks, with optimal results visible much sooner than traditional skincare. Your skin becomes noticeably firmer, clearer, and more radiant.',
+    title: 'Brilliant Luminosity',
+    desc: 'Breathes new life into your complexion, restoring a natural, well-rested glow.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/>
+        <line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/>
+        <line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Customised Care',
+    desc: "Formulated specifically to meet your skin's requirements, guaranteeing accurate results.",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="3"/>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/>
       </svg>
     ),
   },
   {
-    title: 'Professional Support',
-    desc: 'Ongoing guidance from our clinical team ensures your regimen is working optimally. We adjust, troubleshoot, and support your journey every step of the way.',
+    title: 'Enhanced Confidence',
+    desc: 'Helps you feel properly comfortable and proud of your natural, bare skin.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-        <polyline points="22 4 12 14.01 9 11.01"/>
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Skin Barrier Support',
+    desc: "Supports the integrity of the skin's barrier function for long-term skin health and resilience.",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <path d="M9 12l2 2 4-4"/>
       </svg>
     ),
   },
 ];
 
-const SKIN_CONCERNS_DATA = [
-  {
-    group: 'Skin Issues',
-    items: [
-      'Fine lines and wrinkles',
-      'Pigmentation & sun damage',
-      'Acne & congestion',
-      'Sensitivity & redness',
-      'Loss of elasticity',
-      'Dull & tired skin',
-      'Post-procedure recovery',
-    ],
-  },
-  {
-    group: 'Product Selection',
-    items: [
-      'Targeted for each concern',
-      'Customised active strengths',
-      'Professional supervision',
-      'Synergistic combinations',
-      'Progressive regimen approach',
-      'Maintenance support',
-      'Adjustment as needed',
-    ],
-  },
+const HOW_ADDRESSES = [
+  'Dullness & tired skin',
+  'Fine lines & wrinkles',
+  'Hyperpigmentation',
+  'Uneven texture & tone',
+  'Sun damage',
+  'Loss of elasticity',
 ];
 
 const CLINIC_REASONS = [
-  { n: '01', text: 'All-in-one clinic with medical & aesthetic services.' },
-  { n: '02', text: 'Highly trained, compassionate doctors.' },
-  { n: '03', text: 'Customised treatments based on listening & expertise.' },
-  { n: '04', text: 'State-of-the-art facilities & modern equipment.' },
-  { n: '05', text: 'Strong reputation & excellent reviews.' },
-  { n: '06', text: 'Comprehensive care and referrals with specialists.' },
+  { n: '01', text: 'Expert doctors with extensive aesthetic experience.' },
+  { n: '02', text: 'Personalised care tailored to your unique skin.' },
+  { n: '03', text: 'Advanced technology for safe, effective treatments.' },
+  { n: '04', text: 'Trusted reputation with excellent patient reviews.' },
+  { n: '05', text: 'Full support throughout your skincare journey.' },
+  { n: '06', text: 'Honest advice and transparent pricing.' },
 ];
 
 const FAQS = [
   {
-    question: 'What is CellDerma skincare?',
+    question: 'Who is CellDerma Skincare suitable for?',
     answer:
-      'CellDerma is a science-driven, professional-grade skincare range created by award-winning aesthetic physician Dr. Dev Patel. It contains pharmaceutical-grade active ingredients at clinical concentrations, including potent actives for accelerated skin transformation.',
+      'It is ideal for anyone seeking science-driven skincare for real improvement, particularly those dealing with signs of ageing, pigmentation, acne, dullness, or sensitivity.',
   },
   {
-    question: 'How is CellDerma different from high-street skincare?',
+    question: 'Is it suitable for sensitive skin?',
     answer:
-      'CellDerma products contain active ingredients at much higher concentrations than retail products, formulated with obsessive attention to detail and clean science principles. These pharmaceutical-grade formulations deliver visible results within 2–6 weeks.',
+      'Yes, the regimen with progressive introduction of active agents allows the skin to get used to them, so patch testing is suggested for those with sensitive skin.',
   },
   {
-    question: 'What skin concerns can CellDerma treat?',
+    question: 'How is it different from high-street brands?',
     answer:
-      'CellDerma addresses ageing (fine lines, loss of firmness), pigmentation and sun damage, acne and congestion, sensitivity and rosacea, and overall skin radiance. Your personalised regime targets your specific concerns with precision.',
+      'CellDerma products contain pharmaceutical-grade active ingredients at clinical concentrations, which are far stronger than retail skincare, delivering measurable, fast clinical results.',
   },
   {
-    question: 'How do I get started with CellDerma at The One Clinic?',
+    question: 'When will I see changes?',
     answer:
-      'Book a skin consultation with our team. We conduct a thorough skin analysis to understand your concerns and goals, then prescribe a bespoke CellDerma regimen. Products are available to purchase directly from us, with ongoing professional support.',
+      'Many patients notice fast, visible improvement and dramatic changes within 2 to 6 weeks, with optimal results by 8 to 12 weeks.',
   },
   {
-    question: 'How long before I see results?',
+    question: 'Are there any risks?',
     answer:
-      'CellDerma is formulated for fast results. Many patients see dramatic improvements within 2–6 weeks. Optimal results are typically achieved within 8–12 weeks with consistent use. Your skin becomes noticeably firmer, clearer, and more radiant.',
+      'People with severe allergies to any of the product ingredients, severe dermatitis, or certain pregnant women should avoid using this product. Minor flaking or temporary reddening may occur during the adjustment process.',
   },
   {
-    question: 'Is CellDerma suitable for sensitive skin?',
+    question: 'Do I need follow-ups?',
     answer:
-      'Yes. We prescribe tailored regimens for sensitive skin, with professional guidance to ensure optimal tolerance. Our team monitors your progress and adjusts as your skin strengthens.',
-  },
-];
-
-const EXPERTS = [
-  {
-    name: 'Dr Sumit Virmani',
-    credentials: ['MBBS', 'MRCGP', 'Co-Founder'],
-    image: '/images/imgi_20_team-thumb-VIRMANI.jpg',
-    alt: 'Dr Sumit Virmani, Co-Founder, The One Clinic',
-    bio: [
-      'Dr Sumit Virmani, the co-founder of The One Clinic, brings over 15 years of medical expertise, including more than a decade as a trusted local GP. With advanced skills in minor surgery and a keen eye for detail, Dr Virmani is passionate about patient care and achieving outstanding results.',
-      'His growing interest in aesthetic medicine, particularly body contouring and hair rejuvenation, reflects his commitment to helping patients look and feel their best. Alongside his ongoing GP practice, Dr Virmani continues to offer safe, effective, and transformative aesthetic treatments at The One Clinic.',
-    ],
-  },
-  {
-    name: 'Dr Gunjan Bedi',
-    credentials: ['MBBS', 'MRCpsych', 'MRCGP', 'BCAM'],
-    image: '/DR-GUNJAN.jpg',
-    alt: 'Dr Gunjan Bedi, General Practitioner and Aesthetics Practitioner, The One Clinic',
-    bio: [
-      'Dr Gunjan Bedi is a highly skilled, advanced aesthetics practitioner at The One Clinic. She is a highly experienced doctor, having worked in the medical sector for over 20 years, with over 10 years service as a GP.',
-      'Dr Bedi brings a unique and comprehensive perspective to patient care, combining qualifications in General Practice, Psychiatry, and Aesthetic Medicine. Her breadth of expertise allows her to take a truly holistic approach, addressing both the physical and psychological dimensions of each patient\'s wellbeing.',
-    ],
+      'Yes, we provide ongoing professional support to monitor your progress and make any necessary adjustments to your regimen, ensuring your skin thrives.',
   },
 ];
 
@@ -315,7 +238,7 @@ export default function CellDermaPage() {
               theme="dark"
               items={[
                 { label: 'Treatments', href: '/treatments' },
-                { label: 'Skincare, CellDerma' },
+                { label: 'CellDerma Skincare' },
               ]}
             />
           </Container>
@@ -331,7 +254,7 @@ export default function CellDermaPage() {
             {/* Left: text */}
             <div className={styles.heroLeft}>
               <motion.span className={styles.heroCategory} variants={fadeUp}>
-                Science-Driven Skincare
+                Medical-Grade Skincare
               </motion.span>
 
               <motion.h1 className={styles.heroTitle} variants={fadeUp}>
@@ -339,7 +262,10 @@ export default function CellDermaPage() {
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Award-winning medical-grade skincare created by aesthetic physician Dr. Dev Patel. Fast-acting formulations with clinically active ingredients for transformative results.
+                Experience visibly healthier, more radiant skin with a bespoke CellDerma skincare
+                programme. These advanced, medical-grade products target specific skin concerns,
+                improve skin rejuvenation, and deliver visible results to help you feel more
+                confident in your own skin.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -361,7 +287,7 @@ export default function CellDermaPage() {
                     <path d="M4.5 20.118a7.5 7.5 0 0115 0"/>
                     <path d="M18.5 15v5M16 17.5h5"/>
                   </svg>
-                  Created by award-winning physician
+                  Bespoke medical-grade skincare
                 </span>
                 <span className={styles.heroTrustDivider} aria-hidden="true" />
                 <span className={styles.heroTrustItem}>
@@ -376,7 +302,7 @@ export default function CellDermaPage() {
                     <circle cx="12" cy="12" r="9.5"/>
                     <path d="M12 7.5v9M7.5 12h9"/>
                   </svg>
-                  Pharmaceutical-grade ingredients
+                  Targeted, visible results
                 </span>
               </motion.div>
             </div>
@@ -385,7 +311,7 @@ export default function CellDermaPage() {
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
                 src="/images/CellDerma 2.jpg"
-                alt="CellDerma skincare products"
+                alt="CellDerma medical-grade skincare at The One Clinic Leicester"
                 fill
                 priority
                 className={styles.heroImage}
@@ -399,7 +325,7 @@ export default function CellDermaPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          2. WHAT IS CELLDERMA?
+          2. WHAT IS CELLDERMA SKINCARE?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
@@ -414,12 +340,12 @@ export default function CellDermaPage() {
             <motion.div className={styles.whatIsContent} variants={stagger(0.12)}>
               <motion.div className={styles.whatIsTextGroup} variants={fadeUp}>
                 <p className={styles.eyebrowDark}>About This Treatment</p>
-                <h2 className={styles.combinedHeading}>What is CellDerma?</h2>
+                <h2 className={styles.combinedHeading}>What is CellDerma Skincare?</h2>
                 <p className={styles.combinedDesc}>
-                  CellDerma is a science-driven medical-grade skincare range created by award-winning aesthetic physician Dr. Dev Patel.
-                  Each product is meticulously formulated with pharmaceutical-grade active ingredients at clinical concentrations
-                  for clinically proven transformation. We prescribe a personalised home care regimen based on your skin analysis,
-                  ensuring you receive exactly what your skin needs for real, fast, measurable improvement.
+                  CellDerma is an advanced, medical-grade skincare range designed to improve various
+                  skin concerns by supporting healthy skin renewal and repair. It effectively treats
+                  issues such as dullness, fine lines, hyperpigmentation, and uneven texture,
+                  restoring a lovely, youthful glow to your face.
                 </p>
               </motion.div>
               <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
@@ -444,7 +370,153 @@ export default function CellDermaPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          3. AT A GLANCE
+          3. HOW DOES CELLDERMA SKINCARE WORK?
+      ════════════════════════════════════════ */}
+      <Section variant="light" data-section-theme="light" className={styles.howSection}>
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+              How Does CellDerma Skincare Work?
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.howTextGrid}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.howPara} variants={fadeUp}>
+              CellDerma formulations use powerful active ingredients to reach the deeper layers of
+              the skin, boost collagen production, support skin renewal, and help the skin repair
+              itself naturally. The programme enhances deep hydration, boosts collagen production,
+              and protects against environmental damage, allowing you to enjoy a beautifully clear,
+              refreshed complexion in your everyday life.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className={styles.howCoversWrap}
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.howCoversLabel} variants={fadeUp}>CellDerma Skincare Addresses</motion.p>
+            <motion.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
+              {HOW_ADDRESSES.map((item) => (
+                <motion.li key={item} className={styles.howCoversItem} variants={fadeUp}>
+                  <span className={styles.howCoversCheck} aria-hidden="true">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <polyline points="2,6 5,9 10,3" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  {item}
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          4. CTA BANNER , Radiant complexion
+      ════════════════════════════════════════ */}
+      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book CellDerma skincare consultation">
+        {/* Watermark logo */}
+        <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
+          <Image
+            src="/images/Background-logo.png"
+            alt=""
+            fill
+            className={styles.ctaBannerLogo}
+            sizes="100vw"
+          />
+        </div>
+        <Container>
+          <motion.div
+            className={styles.ctaBannerContent}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.h3 className={styles.ctaBannerHeading} variants={fadeUp}>
+              Achieve a Radiant Complexion Today<br />with Expert Skincare!
+            </motion.h3>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={styles.ctaBannerBtn}>
+                Book a Consultation
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
+
+      {/* ════════════════════════════════════════
+          5. WHY CHOOSE CELLDERMA SKINCARE?
+      ════════════════════════════════════════ */}
+      <Section variant="dark" data-section-theme="dark">
+        <Container>
+          <motion.div
+            className={styles.sectionHeaderCentre}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+              Is This Right for You?
+            </motion.p>
+            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              Why Choose CellDerma Skincare?
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className={styles.eligibilityWrap}
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
+              You might find a bespoke CellDerma programme to be a brilliant choice if you:
+            </motion.p>
+            <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
+              {ELIGIBILITY.map((item) => (
+                <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
+                  <span className={styles.eligibilityCheck} aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+            <motion.p className={styles.eligibilityClosing} variants={fadeUp}>
+              CellDerma is suitable for a wide range of skin types. Book a consultation and we will
+              tailor the perfect medical-grade regimen to your skin.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
+                Book Your Consultation
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* ════════════════════════════════════════
+          6. AT A GLANCE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
         <div className={styles.whiteBgWrap} aria-hidden="true">
@@ -460,7 +532,7 @@ export default function CellDermaPage() {
           >
             <motion.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              CellDerma at a Glance
+              CellDerma Skincare Treatment At A Glance
             </motion.h2>
           </motion.div>
 
@@ -483,113 +555,7 @@ export default function CellDermaPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          4. OUR CELLDERMA APPROACH
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Our Approach
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              The CellDerma Approach
-            </motion.h2>
-            <motion.p className={styles.combinationIntroText} variants={fadeUp}>
-              At The One Clinic, we believe skincare should be science-driven, professional, and progressive.
-              Our three-step CellDerma approach ensures your skin receives exactly what it needs.
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            className={styles.techCardsGrid}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {APPROACH_CARDS.map((card) => (
-              <motion.div
-                key={card.title}
-                className={styles.techCard}
-                variants={fadeUp}
-                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 280, damping: 18 } }}
-              >
-                <span className={styles.techCardEyebrow}>{card.eyebrow}</span>
-                <h3 className={styles.techCardTitle}>{card.title}</h3>
-                <p className={styles.techCardDesc}>{card.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          <motion.div
-            className={styles.finalResultsBanner}
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <p className={styles.finalResultsEyebrow}>Best Results</p>
-            <p className={styles.finalResultsText}>
-              When combined, our comprehensive analysis, award-winning formulations, and progressive regimen
-              deliver transformative results, addressing multiple skin concerns simultaneously for visibly healthier,
-              clearer, and more radiant skin in as little as 2–6 weeks.
-            </p>
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          5. YOUR CELLDERMA JOURNEY
-      ════════════════════════════════════════ */}
-      <Section variant="light" data-section-theme="light" className={styles.journeySection}>
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
-              What to Expect
-            </motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Your CellDerma Journey
-            </motion.h2>
-          </motion.div>
-
-          <motion.ol
-            className={styles.journeyList}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-            aria-label="CellDerma skincare journey steps"
-          >
-            {JOURNEY_STEPS.map((step) => (
-              <motion.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
-                <div className={styles.stepLeft}>
-                  <div className={styles.stepNumCircle} aria-hidden="true">{step.n}</div>
-                  <div className={styles.stepConnector} aria-hidden="true" />
-                </div>
-                <div className={styles.stepBody}>
-                  <h3 className={styles.stepTitle}>{step.title}</h3>
-                  <p className={styles.stepDesc}>{step.desc}</p>
-                </div>
-              </motion.li>
-            ))}
-          </motion.ol>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          6. TREATED BENEFITS
+          7. BENEFIT OF CELLDERMA SKINCARE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.whiteBgSection}>
         <div className={styles.whiteBgWrap} aria-hidden="true">
@@ -604,7 +570,7 @@ export default function CellDermaPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              CellDerma Benefits
+              Benefits of CellDerma Skincare
             </motion.h2>
           </motion.div>
 
@@ -634,61 +600,7 @@ export default function CellDermaPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          7. WHO IS SUITABLE
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark">
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Is This Right for You?
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Who is Suitable for CellDerma?
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className={styles.eligibilityWrap}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
-              You can benefit from CellDerma if you are:
-            </motion.p>
-            <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
-              {ELIGIBILITY.map((item) => (
-                <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
-                  <span className={styles.eligibilityCheck} aria-hidden="true">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
-                  <span>{item}</span>
-                </motion.li>
-              ))}
-            </motion.ul>
-            <motion.p className={styles.eligibilityClosing} variants={fadeUp}>
-              Not suitable: severe allergies to product components, active severe dermatitis (treat first), pregnancy (some actives require discussion with your doctor).
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
-                Book Your Consultation
-              </BookConsultationButton>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          8. THE SCIENCE
+          8. CELLDERMA SKINCARE PROCEDURE
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
@@ -699,8 +611,11 @@ export default function CellDermaPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
+            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+              The Process
+            </motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              How CellDerma Works: The Science
+              CellDerma Skincare Procedure
             </motion.h2>
           </motion.div>
 
@@ -712,50 +627,22 @@ export default function CellDermaPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.howPara} variants={fadeUp}>
-              CellDerma uses synergistic active ingredients at pharmaceutical concentrations: potent actives accelerate cell turnover
-              and boost collagen; exfoliating ingredients smooth and refine; brightening compounds illuminate; peptides and growth factors
-              stimulate repair and renewal. These ingredients work together to penetrate the skin and address multiple concerns simultaneously.
+              During your consultation, your clinician will listen to your concerns, carefully
+              analyse your skin, and design a personalised CellDerma regimen built around your goals.
+              We then introduce you to your prescribed products and explain exactly how and when to
+              apply each one for maximum benefit, so you can confidently integrate these medical-grade
+              formulations into your daily at-home routine.
             </motion.p>
             <motion.p className={styles.howPara} variants={fadeUp}>
-              When applied consistently, these actives regulate cellular renewal, boost collagen and elastin production, reduce
-              pigmentation, strengthen the skin barrier, and improve overall skin health. Results develop progressively, with dramatic improvements
-              often visible within 2–6 weeks as your skin adapts and strengthens.
+              From there, we provide ongoing support and follow-up reviews to make sure your skin is
+              responding well, refining your programme as your skin improves.
             </motion.p>
-          </motion.div>
-
-          <motion.div
-            className={styles.howCoversWrap}
-            variants={stagger(0.08)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.howCoversLabel} variants={fadeUp}>CellDerma Addresses</motion.p>
-            <motion.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
-              {[
-                'Fine lines & wrinkles',
-                'Pigmentation & sun damage',
-                'Acne & congestion',
-                'Sensitivity & redness',
-                'Loss of elasticity',
-                'Dull & tired skin',
-              ].map((item) => (
-                <motion.li key={item} className={styles.howCoversItem} variants={fadeUp}>
-                  <span className={styles.howCoversCheck} aria-hidden="true">
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                      <polyline points="2,6 5,9 10,3" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
-                  {item}
-                </motion.li>
-              ))}
-            </motion.ul>
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          9. WHAT TO EXPECT & AFTERCARE
+          9. RESULTS, AFTERCARE & SIDE EFFECTS
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -767,10 +654,10 @@ export default function CellDermaPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Your Skincare Journey
+              Post-Treatment
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              What to Expect &amp; Aftercare
+              Results, Aftercare &amp; Side Effects
             </motion.h2>
           </motion.div>
 
@@ -781,7 +668,7 @@ export default function CellDermaPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            {/* Card 1, Results Timeline */}
+            {/* Card 1: Results Timeline & Longevity */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -790,20 +677,20 @@ export default function CellDermaPage() {
                     <polyline points="17 6 23 6 23 12"/>
                   </svg>
                 </span>
-                <h3 className={styles.resultsAfterCardTitle}>Fast Results Timeline</h3>
+                <h3 className={styles.resultsAfterCardTitle}>How Long to See Results?</h3>
               </div>
               <p className={styles.resultsAfterCardBody}>
-                Initial adjustment phase may include mild flaking or redness as skin acclimates.
-                Dramatic improvements often visible within 2–6 weeks.
+                Dramatic improvements are often visible within 2 to 6 weeks. You can typically achieve
+                optimal results after 8 to 12 weeks of consistent use.
               </p>
               <div className={styles.resultsAfterCardSpacer} />
               <p className={styles.resultsAfterCardNote}>
-                Optimal results achieved by 8–12 weeks. Consistent daily use essential for optimal results.
-                Results continue to improve with long-term use.
+                The beautiful results continue to improve and are maintained as long as you stick to
+                your daily, long-term skincare regimen.
               </p>
             </motion.div>
 
-            {/* Card 2, Application Tips */}
+            {/* Card 2: Side Effects */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -813,28 +700,20 @@ export default function CellDermaPage() {
                     <line x1="12" y1="16" x2="12.01" y2="16"/>
                   </svg>
                 </span>
-                <h3 className={styles.resultsAfterCardTitle}>Application &amp; Usage</h3>
+                <h3 className={styles.resultsAfterCardTitle}>Side Effects</h3>
               </div>
               <p className={styles.resultsAfterCardBody}>
-                Follow your personalised regimen exactly as prescribed. Start with recommended frequencies;
-                your clinician may adjust as your skin tolerates actives.
+                Mild flaking or redness during the initial adjustment phase as your skin acclimatises
+                to the active ingredients.
               </p>
-              <ul className={styles.resultsAfterCardList} role="list">
-                {[
-                  'Use morning and/or evening as directed',
-                  'Apply to clean, dry skin',
-                  'Begin with lower frequencies, increase gradually',
-                  'Patch test if sensitive',
-                ].map((item) => (
-                  <li key={item} className={styles.resultsAfterCardListItem}>
-                    <span className={styles.resultsAfterDot} aria-hidden="true" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              <div className={styles.resultsAfterCardSpacer} />
+              <p className={styles.resultsAfterCardNote}>
+                Starting with lower frequencies and increasing gradually helps minimise any irritation
+                while your skin adjusts.
+              </p>
             </motion.div>
 
-            {/* Card 3, SPF & Protection */}
+            {/* Card 3: Aftercare Tips */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
@@ -843,14 +722,14 @@ export default function CellDermaPage() {
                     <polyline points="22 4 12 14.01 9 11.01"/>
                   </svg>
                 </span>
-                <h3 className={styles.resultsAfterCardTitle}>Sun Protection</h3>
+                <h3 className={styles.resultsAfterCardTitle}>Aftercare Tips</h3>
               </div>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Mandatory when using active ingredients',
-                  'Use SPF 30+ daily, reapply as needed',
-                  'Avoid sun exposure during intense adjustment phase',
-                  'CellDerma sun care products recommended',
+                  'Follow your personalised regimen exactly as prescribed, starting with lower frequencies and increasing gradually',
+                  'Apply products only to clean, dry skin',
+                  'Use SPF 30+ daily — mandatory when using active ingredients',
+                  'Avoid intense sun exposure during the initial adjustment phase',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
                     <span className={styles.resultsAfterDot} aria-hidden="true" />
@@ -864,41 +743,36 @@ export default function CellDermaPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          10. PATIENT REVIEWS
+          10. WHAT OUR CUSTOMERS SAY
       ════════════════════════════════════════ */}
       <Testimonials />
 
       {/* ════════════════════════════════════════
-          12. CTA BANNER
+          11. CELLDERMA SKINCARE COST IN LEICESTER
       ════════════════════════════════════════ */}
-      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book CellDerma consultation">
-        {/* Watermark logo */}
-        <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
-          <Image
-            src="/images/Background-logo.png"
-            alt=""
-            fill
-            className={styles.ctaBannerLogo}
-            sizes="100vw"
-          />
-        </div>
+      <section className={styles.costBanner} data-section-theme="dark" aria-label="CellDerma skincare cost">
         <Container>
           <motion.div
-            className={styles.ctaBannerContent}
+            className={styles.costBannerInner}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
-              Unlock Your Skin&apos;s<br />Full Potential.
+            <motion.h2 className={styles.costBannerEyebrow} variants={fadeUp}>
+              CellDerma Skincare Cost in Leicester
             </motion.h2>
-            <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
-              Let our clinical experts prescribe your personalised CellDerma regimen!
+            <motion.p className={styles.costBannerPrice} variants={fadeUp}>
+              Starts From £200
+            </motion.p>
+            <motion.p className={styles.costBannerNote} variants={fadeUp}>
+              At The One Clinic, CellDerma Skincare starts from £200. It includes your initial
+              consultation and comprehensive skin analysis, with full costs clearly discussed
+              depending on your personalised prescription and product selection.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
-                Book Consultation
+                Book A Consultation
               </BookConsultationButton>
             </motion.div>
           </motion.div>
@@ -906,59 +780,7 @@ export default function CellDermaPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          13. SKIN CONCERNS WE ADDRESS
-      ════════════════════════════════════════ */}
-      <Section variant="dark" data-section-theme="dark" className={styles.conditionsSection}>
-        <Container>
-          <motion.div
-            className={styles.sectionHeaderCentre}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              Skin Concerns
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Skin Concerns We Address
-            </motion.h2>
-            <motion.p className={styles.conditionsIntro} variants={fadeUp}>
-              Our personalised CellDerma prescriptions target a comprehensive range of skin issues with tailored active ingredients.
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            className={styles.areasColumns}
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            {SKIN_CONCERNS_DATA.map((section) => (
-              <motion.div
-                key={section.group}
-                className={styles.areasGroup}
-                variants={fadeUp}
-                whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
-              >
-                <p className={styles.areasGroupLabel}>{section.group}</p>
-                <ul className={styles.areasGroupList} role="list">
-                  {section.items.map((item) => (
-                    <li key={item} className={styles.areasGroupItem}>
-                      <span className={styles.areasItemDot} aria-hidden="true" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* ════════════════════════════════════════
-          14. BEST CELLDERMA LEICESTER EXPERIENCE
+          12. BEST CELLDERMA SKINCARE LEICESTER
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.clinicIntroSection}>
         <Container>
@@ -972,51 +794,27 @@ export default function CellDermaPage() {
             <motion.div className={styles.clinicIntroLeft} variants={fadeUp}>
               <p className={styles.eyebrowDark}>Skincare Excellence</p>
               <h2 className={styles.combinedHeading}>
-                Best CellDerma<br />Leicester Experience
+                Best CellDerma Skincare<br />in Leicester
               </h2>
             </motion.div>
             <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
-              Experience premium medical-grade skincare at our clinic. Our clinical experts conduct thorough skin analysis,
-              prescribe personalised CellDerma regimens, and provide ongoing professional support. We combine award-winning
-              formulations with expert guidance to transform your skin safely and effectively.
+              Experience premium medical-grade skincare at The One Clinic. Our clinical experts
+              conduct thorough skin analyses to prescribe personalised CellDerma regimens that
+              combine award-winning formulations with ongoing professional support. We ensure that
+              every consultation provides you with the knowledge and bespoke care you need to
+              transform your skin safely and effectively.
             </motion.p>
           </motion.div>
         </Container>
       </Section>
 
       {/* ════════════════════════════════════════
-          15. COST BANNER
+          13. MEET THE EXPERTS
       ════════════════════════════════════════ */}
-      <section className={styles.costBanner} data-section-theme="dark" aria-label="CellDerma cost">
-        <Container>
-          <motion.div
-            className={styles.costBannerInner}
-            variants={stagger(0.12)}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT}
-          >
-            <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
-              CellDerma Skincare Pricing at The One Clinic
-            </motion.p>
-            <motion.p className={styles.costBannerPrice} variants={fadeUp}>
-              From £200
-            </motion.p>
-            <motion.p className={styles.costBannerNote} variants={fadeUp}>
-              Depends on your personalised prescription and product selection. Initial consultation and skin analysis included.
-              Full costs discussed during your appointment.
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <BookConsultationButton className={styles.ctaBannerBtn}>
-                Book A Consultation
-              </BookConsultationButton>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
+      <MeetTheExperts />
 
       {/* ════════════════════════════════════════
-          16. WHY CHOOSE THE ONE CLINIC
+          14. WHY CHOOSE THE ONE CLINIC
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
@@ -1028,7 +826,7 @@ export default function CellDermaPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Why Choose The One Clinic For CellDerma
+              Why Choose The One Clinic For CellDerma Skincare
             </motion.h2>
           </motion.div>
 
@@ -1055,12 +853,45 @@ export default function CellDermaPage() {
       </Section>
 
       {/* ════════════════════════════════════════
-          17. MEET THE EXPERTS
+          15. CTA BANNER , Most radiant complexion
       ════════════════════════════════════════ */}
-      <MeetTheExperts />
+      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book CellDerma consultation">
+        {/* Watermark logo */}
+        <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
+          <Image
+            src="/images/Background-logo.png"
+            alt=""
+            fill
+            className={styles.ctaBannerLogo}
+            sizes="100vw"
+          />
+        </div>
+        <Container>
+          <motion.div
+            className={styles.ctaBannerContent}
+            variants={stagger(0.12)}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+          >
+            <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
+              Uncover Your Most<br />Radiant Complexion!
+            </motion.h2>
+            <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
+              Give your skin the advanced, science-driven nourishment it truly deserves. Let our
+              expert clinical team help you achieve a beautifully healthy, glowing appearance.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <BookConsultationButton className={styles.ctaBannerBtn}>
+                Book Consultation
+              </BookConsultationButton>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
 
       {/* ════════════════════════════════════════
-          18. FAQ
+          16. FAQ
       ════════════════════════════════════════ */}
       <section className={styles.faqSection} data-section-theme="dark">
         <div className={styles.faqInner}>
@@ -1118,12 +949,12 @@ export default function CellDermaPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          19. BOOKING FORM
+          17. BOOKING FORM
       ════════════════════════════════════════ */}
       <LeadForm />
 
       {/* ════════════════════════════════════════
-          20. RELATED TREATMENTS
+          18. RELATED TREATMENTS
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>

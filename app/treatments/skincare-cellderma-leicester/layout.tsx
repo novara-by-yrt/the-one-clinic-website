@@ -2,19 +2,19 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/treatments/skincare-cellderma-leicester' },
-  title: 'CellDerma Skincare Leicester | Science-Driven Medical-Grade Skincare',
+  title: 'Best CellDerma Skincare in Leicester | The One Clinic',
   description:
-    'CellDerma science-driven skincare in Leicester. Personalised skincare with clinically active ingredients and professional treatments to transform your skin at The One Clinic.',
+    'Discover expert CellDerma skincare consultations in Leicester. Rejuvenate your complexion with bespoke medical-grade skincare.',
   openGraph: {
-    title: 'CellDerma Skincare Leicester',
+    title: 'Best CellDerma Skincare in Leicester | The One Clinic',
     description:
-      'Expert CellDerma science-driven skincare in Leicester. Personalised prescriptions and professional treatments for visibly healthier skin at The One Clinic.',
+      'Discover expert CellDerma skincare consultations in Leicester. Rejuvenate your complexion with bespoke medical-grade skincare.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CellDerma Skincare Leicester',
+    title: 'Best CellDerma Skincare in Leicester | The One Clinic',
     description:
-      'Expert CellDerma science-driven skincare in Leicester. Personalised prescriptions and professional treatments for visibly healthier skin at The One Clinic.',
+      'Discover expert CellDerma skincare consultations in Leicester. Rejuvenate your complexion with bespoke medical-grade skincare.',
   },
 };
 
