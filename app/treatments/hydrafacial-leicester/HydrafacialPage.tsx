@@ -83,6 +83,29 @@ const AT_A_GLANCE = [
   },
 ];
 
+const HYDRAFACIAL_PRICING = [
+  {
+    name: 'Deluxe HydraFacial',
+    price: '£145',
+    includes: 'Includes complimentary Dermalux LED',
+  },
+  {
+    name: 'Platinum HydraFacial',
+    price: '£165',
+    includes: 'Includes complimentary Dermalux LED, lymphatic drainage & a personalised skin booster',
+  },
+  {
+    name: 'Glass Skin HydraFacial',
+    price: '£195',
+    includes: 'Includes Deluxe HydraFacial + Dermalux LED + Microneedling',
+  },
+  {
+    name: 'Dermalux LED',
+    price: '£75',
+    includes: '20-minute session',
+  },
+];
+
 const APPROACH_STEPS = [
   {
     eyebrow: '01',
@@ -343,6 +366,11 @@ const FAQS = [
     question: 'Do I need follow-ups?',
     answer:
       'For the absolute best results and long-term skin health, we recommend booking a session every four weeks.',
+  },
+  {
+    question: 'How much does a HydraFacial cost at The One Clinic?',
+    answer:
+      'Our HydraFacial menu starts at £145 for the Deluxe HydraFacial (including complimentary Dermalux LED), £165 for the Platinum HydraFacial, and £195 for the Glass Skin HydraFacial. A standalone 20-minute Dermalux LED session is £75. The final price depends on the protocol selected and any booster add-ons, which will be discussed during your consultation.',
   },
 ];
 
@@ -1102,9 +1130,21 @@ export default function HydrafacialPage() {
             <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
               HydraFacial Cost at The One Clinic
             </motion.p>
-            <motion.p className={styles.costBannerPrice} variants={fadeUp}>
-              Packages Start From £145
-            </motion.p>
+            <motion.h2 className={styles.costBannerHeading} variants={fadeUp}>
+              Treatment &amp; Pricing Menu
+            </motion.h2>
+            <motion.ul className={styles.priceMenu} variants={stagger(0.08)}>
+              {HYDRAFACIAL_PRICING.map((item) => (
+                <motion.li key={item.name} className={styles.priceMenuItem} variants={fadeUp}>
+                  <div className={styles.priceMenuRow}>
+                    <span className={styles.priceMenuName}>{item.name}</span>
+                    <span className={styles.priceMenuLeader} aria-hidden="true" />
+                    <span className={styles.priceMenuPrice}>{item.price}</span>
+                  </div>
+                  <p className={styles.priceMenuIncludes}>{item.includes}</p>
+                </motion.li>
+              ))}
+            </motion.ul>
             <motion.p className={styles.costBannerNote} variants={fadeUp}>
               Choose from our bespoke HydraFacial packages, tailored to your unique skin needs.
               Full details will be discussed at your consultation.

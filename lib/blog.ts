@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 
 export interface BlogPostFrontmatter {
   title: string;
+  metaTitle?: string;
   slug: string;
   description: string;
   excerpt?: string;
