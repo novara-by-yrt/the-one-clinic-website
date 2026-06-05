@@ -333,7 +333,7 @@ export default function CellDermaPage() {
             {/* Right: image */}
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/CellDerma 2.jpg"
+                src="/images/Hero Section CellDerma Skincare.jpg"
                 alt="CellDerma medical-grade skincare at The One Clinic Leicester"
                 fill
                 priority
@@ -381,7 +381,7 @@ export default function CellDermaPage() {
             {/* Right: image panel */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Cellderma 1.jpg"
+                src="/images/What is CellDerma Skincare.jpg"
                 alt="CellDerma skincare consultation at The One Clinic"
                 fill
                 className={styles.whatIsVideoFrame}
