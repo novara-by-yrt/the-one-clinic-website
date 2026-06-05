@@ -53,6 +53,13 @@ export const treatments: Treatment[] = [
       'Targeted steroid or hyaluronic acid injections to relieve joint pain, stiffness, and inflammation.',
   },
   {
+    slug: 'hay-fever-injections-leicester',
+    title: 'Hay Fever Injections',
+    category: 'Health & Wellbeing',
+    shortDescription:
+      'Expert hay fever injections to relieve severe allergic rhinitis and enjoy a symptom-free summer.',
+  },
+  {
     slug: 'minor-surgery-leicester',
     title: 'Minor Surgery',
     category: 'Health & Wellbeing',

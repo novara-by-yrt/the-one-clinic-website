@@ -38,6 +38,7 @@ const NAV: NavItem[] = [
           { label: 'Health Screening',                                      href: '/treatments/health-screening-leicester' },
           { label: 'Private GP Leicester',                                  href: '/treatments/private-gp-leicester' },
           { label: 'Joint Injections',                                      href: '/treatments/joint-injections-leicester' },
+          { label: 'Hay Fever Injections',                                  href: '/treatments/hay-fever-injections-leicester' },
           { label: 'Minor Surgery',                                         href: '/treatments/minor-surgery-leicester' },
           { label: 'Ingrown Toenail Removal',                               href: '/treatments/ingrown-toenail-removal-leicester' },
           { label: 'Haemorrhoid Removal',                                   href: '/treatments/haemorrhoid-treatment-leicester' },
