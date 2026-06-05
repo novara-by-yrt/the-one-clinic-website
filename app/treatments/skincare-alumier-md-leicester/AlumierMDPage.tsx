@@ -210,6 +210,29 @@ const FAQS = [
   },
 ];
 
+const ALUMIER_PROCEDURE_STEPS = [
+  {
+    n: '01',
+    title: 'Consultation & Skin Analysis',
+    desc: 'Your doctor listens carefully to your concerns, analyses your skin in detail, and identifies the root causes of your specific skin conditions to map out your bespoke Alumier programme.',
+  },
+  {
+    n: '02',
+    title: 'Bespoke Prescription',
+    desc: 'A fully personalised Alumier MD regimen is formulated for you — selecting the right active ingredients, concentrations, and product combinations to precisely target your skin goals.',
+  },
+  {
+    n: '03',
+    title: 'Product Introduction & Guidance',
+    desc: 'We walk you through each product, explaining exactly how and when to apply them so you can seamlessly integrate these medical-grade formulations into your daily at-home routine.',
+  },
+  {
+    n: '04',
+    title: 'Ongoing Support & Review',
+    desc: 'We provide continuous professional support and scheduled follow-up reviews to monitor your progress, celebrate your results, and adjust your programme as your skin improves.',
+  },
+];
+
 const RELATED = [
   { title: 'Skin Analysis',                href: '/treatments/skin-analysis-leicester',         desc: 'Professional assessment to guide your skincare and treatment plan.' },
   { title: 'Chemical Peels',               href: '/treatments/chemical-peels-leicester',       desc: 'In-clinic exfoliation to amplify the effects of your home care regimen.' },
@@ -385,13 +408,13 @@ export default function AlumierMDPage() {
           </motion.div>
 
           <motion.div
-            className={styles.howTextGrid}
+            className={styles.howTextSingle}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.howPara} variants={fadeUp}>
+            <motion.p className={styles.howParaCentered} variants={fadeUp}>
               By utilising highly potent, clinically proven active ingredients, Alumier formulations
               penetrate deep into the skin&apos;s layers to correct underlying issues rather than just
               masking them. The bespoke programme encourages cellular turnover, boosts collagen
@@ -617,25 +640,27 @@ export default function AlumierMDPage() {
             </motion.h2>
           </motion.div>
 
-          <motion.div
-            className={styles.howTextGrid}
-            variants={stagger(0.1)}
+          <motion.ol
+            className={styles.journeyList}
+            variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
+            aria-label="Alumier Skincare procedure steps"
           >
-            <motion.p className={styles.howPara} variants={fadeUp}>
-              During your consultation, your doctor will understand your concerns, carefully analyse
-              your skin, and create a personalised Alumier MD routine based on your goals. We will
-              then introduce you to your new products and explain precisely how and when to apply
-              them for maximum benefit, so you can seamlessly integrate these medical-grade
-              formulations into your daily at-home routine.
-            </motion.p>
-            <motion.p className={styles.howPara} variants={fadeUp}>
-              Following this, we provide ongoing support and follow-up reviews to ensure your skin is
-              responding brilliantly, adjusting the programme as it improves.
-            </motion.p>
-          </motion.div>
+            {ALUMIER_PROCEDURE_STEPS.map((step) => (
+              <motion.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
+                <div className={styles.stepLeft}>
+                  <div className={styles.stepNumCircle} aria-hidden="true">{step.n}</div>
+                  <div className={styles.stepConnector} aria-hidden="true" />
+                </div>
+                <div className={styles.stepBody}>
+                  <h3 className={styles.stepTitle}>{step.title}</h3>
+                  <p className={styles.stepDesc}>{step.desc}</p>
+                </div>
+              </motion.li>
+            ))}
+          </motion.ol>
         </Container>
       </Section>
 

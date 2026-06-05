@@ -210,6 +210,29 @@ const FAQS = [
   },
 ];
 
+const CELLDERMA_PROCEDURE_STEPS = [
+  {
+    n: '01',
+    title: 'Consultation & Skin Analysis',
+    desc: 'Your clinician listens to your concerns, performs a thorough skin analysis, and identifies the specific issues and underlying causes to be addressed by your bespoke CellDerma programme.',
+  },
+  {
+    n: '02',
+    title: 'Personalised Prescription',
+    desc: 'A tailored CellDerma regimen is designed for you — selecting the right medical-grade formulations, active ingredients, and concentrations to target your unique skin goals precisely.',
+  },
+  {
+    n: '03',
+    title: 'Product Introduction & Application Guidance',
+    desc: 'We introduce you to each of your prescribed products and explain exactly how and when to apply them, so you can confidently integrate these advanced formulations into your daily at-home routine.',
+  },
+  {
+    n: '04',
+    title: 'Ongoing Support & Follow-Up Reviews',
+    desc: 'We provide continuous professional support and regular follow-up reviews to monitor your skin\'s progress, celebrate your results, and refine your programme as your skin continues to improve.',
+  },
+];
+
 const RELATED = [
   { title: 'Skin Analysis',                href: '/treatments/skin-analysis-leicester',         desc: 'Professional assessment to guide your skincare and treatment plan.' },
   { title: 'Chemical Peels',               href: '/treatments/chemical-peels-leicester',       desc: 'In-clinic exfoliation to amplify the effects of your home care regimen.' },
@@ -619,25 +642,27 @@ export default function CellDermaPage() {
             </motion.h2>
           </motion.div>
 
-          <motion.div
-            className={styles.howTextGrid}
-            variants={stagger(0.1)}
+          <motion.ol
+            className={styles.journeyList}
+            variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
+            aria-label="CellDerma Skincare procedure steps"
           >
-            <motion.p className={styles.howPara} variants={fadeUp}>
-              During your consultation, your clinician will listen to your concerns, carefully
-              analyse your skin, and design a personalised CellDerma regimen built around your goals.
-              We then introduce you to your prescribed products and explain exactly how and when to
-              apply each one for maximum benefit, so you can confidently integrate these medical-grade
-              formulations into your daily at-home routine.
-            </motion.p>
-            <motion.p className={styles.howPara} variants={fadeUp}>
-              From there, we provide ongoing support and follow-up reviews to make sure your skin is
-              responding well, refining your programme as your skin improves.
-            </motion.p>
-          </motion.div>
+            {CELLDERMA_PROCEDURE_STEPS.map((step) => (
+              <motion.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
+                <div className={styles.stepLeft}>
+                  <div className={styles.stepNumCircle} aria-hidden="true">{step.n}</div>
+                  <div className={styles.stepConnector} aria-hidden="true" />
+                </div>
+                <div className={styles.stepBody}>
+                  <h3 className={styles.stepTitle}>{step.title}</h3>
+                  <p className={styles.stepDesc}>{step.desc}</p>
+                </div>
+              </motion.li>
+            ))}
+          </motion.ol>
         </Container>
       </Section>
 
