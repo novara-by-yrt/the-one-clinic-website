@@ -410,13 +410,13 @@ export default function CellDermaPage() {
           </motion.div>
 
           <motion.div
-            className={styles.howTextGrid}
+            className={styles.howTextSingle}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.howPara} variants={fadeUp}>
+            <motion.p className={styles.howParaCentered} variants={fadeUp}>
               CellDerma formulations use powerful active ingredients to reach the deeper layers of
               the skin, boost collagen production, support skin renewal, and help the skin repair
               itself naturally. The programme enhances deep hydration, boosts collagen production,
