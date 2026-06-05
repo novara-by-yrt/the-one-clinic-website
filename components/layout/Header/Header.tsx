@@ -71,6 +71,7 @@ const NAV: NavItem[] = [
           { label: 'NCTF 135 HA',                               href: '/treatments/nctf-135-ha-leicester' },
           { label: 'Skincare, Alumier MD',                      href: '/treatments/skincare-alumier-md-leicester' },
           { label: 'Cellderma Skincare',                        href: '/treatments/skincare-cellderma-leicester' },
+          { label: 'Dermalux LED Light Therapy',                href: '/treatments/dermalux-led-light-therapy-leicester' },
           { label: 'Skin Lesion Removal Leicester',             href: '/treatments/skin-lesions-leicester' },
           { label: 'BCC Removal Leicester',                     href: '/treatments/basal-cell-carcinoma-leicester' },
           { label: 'Skin Tag Removal Leicester',                href: '/treatments/skin-tag-removal-leicester' },
