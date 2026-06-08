@@ -10,6 +10,7 @@ import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
 
 const IMAGES = [
+  // Endolift
   { src: '/images/Endolift B-A.jpg',                  alt: 'Endolift before and after results',          title: 'Endolift' },
   { src: '/images/Endolift 1 B-A.jpg',                alt: 'Endolift before and after result 1',         title: 'Endolift' },
   { src: '/images/Endolift 2 B-A.jpg',                alt: 'Endolift before and after result 2',         title: 'Endolift' },
@@ -18,18 +19,36 @@ const IMAGES = [
   { src: '/images/Endolift 5 B-A.jpg',                alt: 'Endolift before and after result 5',         title: 'Endolift' },
   { src: '/images/Endolift Before & After 1.jpg',     alt: 'Endolift before and after result',           title: 'Endolift' },
   { src: '/images/Endolift Before & After 8.jpg',     alt: 'Endolift before and after result',           title: 'Endolift' },
+  { src: '/images/BA1.jpg',                           alt: 'Endolift before and after result',           title: 'Endolift' },
+  { src: '/images/BA2.jpg',                           alt: 'Endolift before and after result',           title: 'Endolift' },
+  { src: '/images/BA3.jpg',                           alt: 'Endolift before and after result',           title: 'Endolift' },
+  { src: '/images/BA4.jpg',                           alt: 'Endolift before and after result',           title: 'Endolift' },
+  { src: '/images/BA5.jpg',                           alt: 'Endolift before and after result',           title: 'Endolift' },
+  { src: '/images/BA6.jpg',                           alt: 'Endolift before and after result',           title: 'Endolift' },
+  { src: '/images/BA7.jpg',                           alt: 'Endolift before and after result',           title: 'Endolift' },
+  { src: '/images/Endolift-before-after.jpg',         alt: 'Endolift laser before and after results',    title: 'Endolift' },
+  { src: '/images/Endolift-before-after-real-result.jpg', alt: 'Endolift real patient result',           title: 'Endolift' },
+  { src: '/images/Endolift-laser-before-after.jpg',   alt: 'Endolift laser treatment before and after',  title: 'Endolift' },
+  { src: '/images/Home page Endolift before-and-after image..png', alt: 'Endolift before and after result', title: 'Endolift' },
+  // Lumecca / IPL
   { src: '/images/Lumecca Before & After 2.jpg',      alt: 'Lumecca laser before and after results',     title: 'Lumecca Laser' },
   { src: '/images/Lumecca IPL B-A.jpg',               alt: 'Lumecca IPL before and after results',       title: 'Lumecca IPL' },
+  // Morpheus 8
   { src: '/images/Morpheus8 Before & After 2.jpg',    alt: 'Morpheus 8 before and after results',        title: 'Morpheus 8' },
   { src: '/images/Morpheus8 1 B-A.jpg',               alt: 'Morpheus8 before and after result 1',        title: 'Morpheus 8' },
   { src: '/images/Morpheus8 2  B-A.jpg',              alt: 'Morpheus8 before and after result 2',        title: 'Morpheus 8' },
+  // Patient Results
   { src: '/images/B-A2.png',                          alt: 'Patient before and after results',           title: 'Patient Results' },
   { src: '/images/B-A4.png',                          alt: 'Patient before and after results',           title: 'Patient Results' },
-  { src: '/images/Lip Filler  Before & After.jpg',    alt: 'Lip filler before and after results',        title: 'Lip Filler' },
   { src: '/images/B-A6.png',                          alt: 'Patient before and after results',           title: 'Patient Results' },
-  { src: '/images/Pigmentation Before & After 2.jpg', alt: 'Pigmentation treatment before and after',    title: 'Pigmentation Treatment' },
   { src: '/images/B-A7.png',                          alt: 'Patient before and after results',           title: 'Patient Results' },
   { src: '/images/B-A8.png',                          alt: 'Patient before and after results',           title: 'Patient Results' },
+  { src: '/images/Before and after 1.png',            alt: 'Patient before and after results',           title: 'Patient Results' },
+  { src: '/images/Before and after 2.png',            alt: 'Patient before and after results',           title: 'Patient Results' },
+  { src: '/images/Before and after 3.png',            alt: 'Patient before and after results',           title: 'Patient Results' },
+  // Other treatments
+  { src: '/images/Lip Filler  Before & After.jpg',    alt: 'Lip filler before and after results',        title: 'Lip Filler' },
+  { src: '/images/Pigmentation Before & After 2.jpg', alt: 'Pigmentation treatment before and after',    title: 'Pigmentation Treatment' },
   { src: '/images/Mole Removal Before & After.jpg',   alt: 'Mole removal before and after results',      title: 'Mole Removal' },
   { src: '/images/ACNE Before & After.jpg',           alt: 'Acne treatment before and after results',    title: 'Acne Treatment' },
 ];
