@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import Script from 'next/script';
 import { motion } from 'framer-motion';
 import Section                from '@/components/ui/Section';
 import Container              from '@/components/ui/Container';
@@ -384,16 +385,22 @@ export default function CoolBlephPage() {
             </motion.div>
 
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
-              <Image
-                src="/images/What is Cool Bleph.jpg"
-                alt="Cool Bleph consultation at The One Clinic"
-                fill
+              <iframe
+                src="https://fast.wistia.net/embed/iframe/d7xbiwcs46?web_component=true&seo=true"
+                title="What is Cool Bleph?"
+                allow="autoplay; fullscreen"
+                allowTransparency
+                frameBorder="0"
+                scrolling="no"
                 className={styles.whatIsVideoFrame}
-                sizes="(max-width: 900px) 100vw, 50vw"
+                name="wistia_embed"
               />
             </motion.div>
           </motion.div>
         </Container>
+
+        {/* Wistia player, loaded once, lazy */}
+        <Script src="https://fast.wistia.net/player.js" strategy="lazyOnload" />
       </Section>
 
       {/* ════════════════════════════════════════
