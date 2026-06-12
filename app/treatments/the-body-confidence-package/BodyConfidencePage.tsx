@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import Script from 'next/script';
 import { motion } from 'framer-motion';
 import Section            from '@/components/ui/Section';
 import Container          from '@/components/ui/Container';
@@ -450,18 +451,24 @@ export default function BodyConfidencePage() {
               </motion.div>
             </motion.div>
 
-            {/* Right: image */}
+            {/* Right: video */}
             <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
-              <Image
-                src="/images/What is The Body Confidence Package.jpg"
-                alt="Body confidence package consultation at The One Clinic Leicester"
-                fill
+              <iframe
+                src="https://fast.wistia.net/embed/iframe/xpoiek649q?web_component=true&seo=true"
+                title="What is The Body Confidence Package?"
+                allow="autoplay; fullscreen"
+                allowTransparency
+                frameBorder="0"
+                scrolling="no"
                 className={styles.whatIsVideoFrame}
-                sizes="(max-width: 900px) 100vw, 50vw"
+                name="wistia_embed"
               />
             </motion.div>
           </motion.div>
         </Container>
+
+        {/* Wistia player, loaded once, lazy */}
+        <Script src="https://fast.wistia.net/player.js" strategy="lazyOnload" />
       </Section>
 
       {/* ════════════════════════════════════════
