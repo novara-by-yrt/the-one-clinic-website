@@ -2130,7 +2130,7 @@
   line-height: 1.15;
   color: #fff;
   margin: 0;
-  max-width: 760px;
+  max-width: none;
 }
 
 .ctaBannerBtn {
