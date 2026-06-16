@@ -31,7 +31,7 @@ const AT_A_GLANCE = [
   },
   {
     label: 'Treatment Frequency',
-    value: 'Typically one injection per hay fever season',
+    value: 'Typically a one-off procedure per hay fever season',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="1 4 1 10 7 10"/>
@@ -104,12 +104,11 @@ const TECH_CARDS = [
 ];
 
 const ELIGIBILITY = [
-  'Suffer from severe hay fever symptoms that disrupt your daily life or sleep',
-  'Have tried high-street antihistamines, nasal sprays, or eye drops without success',
-  'Experience severe itchy, watery, or swollen eyes during the British pollen season',
-  'Struggle with persistent sneezing, nasal congestion, or throat irritation',
-  'Are looking for a quick-fix solution without having to take pills daily',
-  'Need instant relief before an important event or examination',
+  'Suffer from severe seasonal allergies that disrupt your daily routine or sleep',
+  'Have tried high-street antihistamines, nasal sprays, or eye drops with no success',
+  'Experience severely itchy, watery, or swollen eyes during the British pollen season',
+  'Struggle with persistent sneezing, nasal congestion, or an irritated throat',
+  'Want a convenient, long-lasting solution rather than remembering to take daily tablets',
 ];
 
 const TREATED_BENEFITS = [
@@ -176,28 +175,24 @@ const TREATED_BENEFITS = [
 const CLINIC_REASONS = [
   { n: '01', text: 'Trusted and experienced clinicians with expertise in allergy management.' },
   { n: '02', text: 'Personalised treatment plans tailored to your specific hay fever profile.' },
-  { n: '03', text: 'Advanced medical techniques and a relaxing, luxurious clinic environment.' },
+  { n: '03', text: 'Advanced technology and a relaxing, luxurious clinic environment.' },
   { n: '04', text: 'Friendly and professional service focused entirely on your comfort and wellbeing.' },
   { n: '05', text: 'High standards of safety and patient care in all treatments.' },
-  { n: '06', text: 'Honest advice and transparent pricing for all hay fever injection services.' },
+  { n: '06', text: 'Honest advice and transparent pricing for all hay fever treatment services.' },
 ];
 
 const FAQS = [
   {
-    question: 'Is the injection suitable for everyone?',
+    question: 'Is the treatment suitable for everyone?',
     answer: 'It is suitable for most healthy adults; however, we do not prescribe it for children, pregnant or breastfeeding women, or individuals with certain underlying health conditions. Your doctor will evaluate your medical background to determine if it is suitable for you.',
   },
   {
-    question: 'Is hay fever injection painful?',
-    answer: 'Not at all. The injection is very quick, and most patients only feel a mild, brief scratch.',
+    question: 'Is Hay Fever Treatment painful?',
+    answer: 'Not at all. The procedure is very quick, and most patients only feel a mild, brief scratch.',
   },
   {
     question: 'How is it done?',
     answer: 'The medication is administered intramuscularly, usually into the gluteal muscle, in a safe, relaxing, and private clinical setting.',
-  },
-  {
-    question: 'What exactly is in the injection?',
-    answer: 'The injection contains a targeted dose of a corticosteroid, which powerfully suppresses your body\'s overactive immune response to pollen.',
   },
   {
     question: 'When will I see changes?',
@@ -209,11 +204,7 @@ const FAQS = [
   },
   {
     question: 'How long does it take to recover?',
-    answer: 'There is absolutely zero downtime. You can return to your normal activities immediately after the injection.',
-  },
-  {
-    question: 'Can I still use other hay fever medications?',
-    answer: 'Yes. Whilst the injection is highly effective on its own and usually replaces the need for daily tablets, it is perfectly safe to use supplementary eye drops or nasal sprays if you need a quick top-up on days with an exceptionally high pollen count.',
+    answer: 'There is absolutely zero downtime. You can return to your normal activities immediately after the treatment.',
   },
   {
     question: 'Are there any risks?',
@@ -239,7 +230,7 @@ export default function HayFeverInjectionsPage() {
       ════════════════════════════════════════ */}
       <section
         className={styles.hero}
-        aria-label="Hay Fever Injections Leicester, hero"
+        aria-label="Hay Fever Treatment Leicester, hero"
         data-section-theme="dark"
       >
         {/* Breadcrumb, pinned to top of hero */}
@@ -249,7 +240,7 @@ export default function HayFeverInjectionsPage() {
               theme="dark"
               items={[
                 { label: 'Treatments', href: '/treatments' },
-                { label: 'Hay Fever Injections Leicester' },
+                { label: 'Hay Fever Treatment Leicester' },
               ]}
             />
           </Container>
@@ -269,11 +260,11 @@ export default function HayFeverInjectionsPage() {
               </motion.span>
 
               <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                Hay Fever Injections in Leicester
+                Hay Fever Treatment in Leicester
               </motion.h1>
 
               <motion.p className={styles.heroDesc} variants={fadeUp}>
-                Enjoy instant, lasting relief from your worst seasonal allergies with our professional hay fever shots. With this specific therapy, you will be able to stop sneezing, eye itching, and congestion, helping you fully enjoy nature.
+                Experience rapid, long-lasting relief from severe seasonal allergies with our bespoke hay fever treatments. Reclaim your comfort and enjoy the lovely British outdoors without the constant frustration of sneezing, congestion, and itchy eyes.
               </motion.p>
 
               <motion.div className={styles.heroCtas} variants={fadeUp}>
@@ -319,7 +310,7 @@ export default function HayFeverInjectionsPage() {
             <motion.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
                 src="/images/Hero SectionHay Fever Injection.jpg"
-                alt="Hay fever injection appointment at The One Clinic, Leicester"
+                alt="Hay fever treatment appointment at The One Clinic, Leicester"
                 fill
                 priority
                 className={styles.heroImage}
@@ -333,7 +324,7 @@ export default function HayFeverInjectionsPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          3A. WHAT ARE HAY FEVER INJECTIONS?
+          3A. WHAT IS HAY FEVER TREATMENT?
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
@@ -348,14 +339,14 @@ export default function HayFeverInjectionsPage() {
             <motion.div className={styles.whatIsContent} variants={stagger(0.12)}>
               <motion.div className={styles.whatIsTextGroup} variants={fadeUp}>
                 <p className={styles.eyebrowDark}>About This Service</p>
-                <h2 className={styles.combinedHeading}>What are Hay Fever Injections?</h2>
+                <h2 className={styles.combinedHeading}>What is Hay Fever Treatment?</h2>
                 <p className={styles.combinedDesc}>
-                  Hay fever injections are a highly effective medical treatment for severe allergic rhinitis. They contain a targeted dose of a corticosteroid, which helps suppress the body's overactive immune response to pollen, providing powerful relief when high-street antihistamines simply cannot sort it out.
+                  Allergy treatment for hay fever is a cutting-edge medical service designed to alleviate symptoms of allergic rhinitis. This treatment method addresses the excessive immune response to pollen that causes distressing symptoms such as uncontrollable sneezing, nasal congestion, and itchy, watery eyes, for which common remedies are ineffective.
                 </p>
               </motion.div>
               <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
                 <BookConsultationButton className={styles.combinedCta}>
-                  Book Your Injection
+                  Book a Consultation
                 </BookConsultationButton>
               </motion.div>
             </motion.div>
@@ -364,7 +355,7 @@ export default function HayFeverInjectionsPage() {
             <motion.div className={styles.whatIsImageWrap} variants={fadeUp}>
               <Image
                 src="/images/What is Hay Fever Injection.jpg"
-                alt="What is a hay fever injection , treatment at The One Clinic"
+                alt="What is hay fever treatment at The One Clinic"
                 fill
                 className={styles.whatIsImage}
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -387,7 +378,7 @@ export default function HayFeverInjectionsPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              How Do Hay Fever Injections Work?
+              How Do Hay Fever Treatments Work?
             </motion.h2>
           </motion.div>
 
@@ -399,10 +390,10 @@ export default function HayFeverInjectionsPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.howPara} variants={fadeUp}>
-              Injections are made into the muscles, releasing the drug gradually over weeks. It continuously reduces inflammation and histamine production, effectively preventing the frustrating symptoms of hay fever.
+              Depending on your bespoke consultation, the treatment often involves a targeted intramuscular injection that slowly releases a corticosteroid into your system.
             </motion.p>
             <motion.p className={styles.howPara} variants={fadeUp}>
-              It means you can go about your daily life, enjoy holidays, and spend time outside feeling properly comfortable and spot on. A single injection provides reliable relief throughout the hay fever season without the need for daily medication adjustments.
+              It continuously reduces inflammation and histamine production, allowing you to go about your daily life, enjoy holidays, and spend time outside feeling proper comfortable and spot on.
             </motion.p>
           </motion.div>
 
@@ -416,7 +407,7 @@ export default function HayFeverInjectionsPage() {
             <motion.p className={styles.howCoversLabel} variants={fadeUp}>Treatment Options</motion.p>
             <motion.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
               {[
-                'Hay fever injection (corticosteroid)',
+                'Hay fever treatment (corticosteroid injection)',
                 'Fast-acting relief within 24-72 hours',
                 'Season-long protection (up to 3 months)',
                 'Minimal downtime and side effects',
@@ -451,7 +442,7 @@ export default function HayFeverInjectionsPage() {
           >
             <motion.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Hay Fever Injections at a Glance
+              Hay Fever Treatment at a Glance
             </motion.h2>
           </motion.div>
 
@@ -489,10 +480,10 @@ export default function HayFeverInjectionsPage() {
               Our Approach
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              How Hay Fever Injections Work
+              How Hay Fever Treatments Work
             </motion.h2>
             <motion.p className={styles.combinationIntroText} variants={fadeUp}>
-              At The One Clinic, our hay fever injections work through three complementary mechanisms to deliver season-long relief from your worst allergic symptoms.
+              At The One Clinic, our hay fever treatments work through three complementary mechanisms to deliver season-long relief from your worst allergic symptoms.
             </motion.p>
           </motion.div>
 
@@ -524,7 +515,7 @@ export default function HayFeverInjectionsPage() {
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <p className={styles.finalResultsEyebrow}>Get Relief Today with Expert Hay Fever Injections!</p>
+            <p className={styles.finalResultsEyebrow}>Get Relief Today with Expert Hay Fever Treatment!</p>
             <p className={styles.finalResultsText}>
               Book a Consultation!
             </p>
@@ -548,7 +539,7 @@ export default function HayFeverInjectionsPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Benefits of Hay Fever Injections
+              Benefits of Hay Fever Treatment
             </motion.h2>
           </motion.div>
 
@@ -593,7 +584,7 @@ export default function HayFeverInjectionsPage() {
               Is This Right for You?
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Why Choose Hay Fever Injections?
+              Why Choose Hay Fever Treatment?
             </motion.h2>
           </motion.div>
 
@@ -605,7 +596,7 @@ export default function HayFeverInjectionsPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
-              You might find a hay fever injection to be a brilliant choice if you:
+              You might find a hay fever treatment to be a brilliant choice if you:
             </motion.p>
             <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
               {ELIGIBILITY.map((item) => (
@@ -620,11 +611,11 @@ export default function HayFeverInjectionsPage() {
               ))}
             </motion.ul>
             <motion.p className={styles.eligibilityClosing} variants={fadeUp}>
-              If any of these sound familiar, a hay fever injection could be the brilliant solution you've been searching for.
+              If any of these sound familiar, a hay fever treatment could be the brilliant solution you've been searching for.
             </motion.p>
             <motion.div variants={fadeUp}>
               <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
-                Book Your Injection
+                Book a Consultation
               </BookConsultationButton>
             </motion.div>
           </motion.div>
@@ -647,7 +638,7 @@ export default function HayFeverInjectionsPage() {
               What to Expect
             </motion.p>
             <motion.h2 className={styles.headingDark} variants={fadeUp}>
-              Your Treatment Journey
+              Hay Fever Treatment Procedure
             </motion.h2>
           </motion.div>
 
@@ -657,23 +648,23 @@ export default function HayFeverInjectionsPage() {
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
-            aria-label="Hay fever injection treatment journey steps"
+            aria-label="Hay fever treatment procedure steps"
           >
             {[
               {
                 n: '01',
                 title: 'Consultation',
-                desc: 'A detailed assessment of your hay fever symptoms, medical history, and previous treatments. Your doctor discusses the injection, expected outcomes, and answers all your questions about the procedure.',
+                desc: 'Your doctor takes into account your needs, discusses your medical history, and ensures the prescribed treatment is the safest option for you, answering all your questions about the procedure.',
               },
               {
                 n: '02',
-                title: 'Pre-Treatment Preparation',
-                desc: 'Any necessary pre-treatment checks are completed. You receive clear instructions on how to prepare for injection day and what to expect during and after the procedure.',
+                title: 'Preparation',
+                desc: 'Your skin is gently cleaned in our top-class clinic and any necessary pre-treatment checks are completed, so you know exactly what to expect during and after the procedure.',
               },
               {
                 n: '03',
-                title: 'Injection Day',
-                desc: 'The hay fever injection is administered quickly and precisely in our clinic. The procedure takes just 15-30 minutes, and you can return to your normal activities immediately with absolutely zero downtime.',
+                title: 'Treatment Day',
+                desc: 'Your doctor applies the medication using advanced, completely safe methods. The procedure takes just 15-30 minutes, with no downtime afterwards , sometimes only a small amount of plaster is required.',
               },
               {
                 n: '04',
@@ -709,7 +700,7 @@ export default function HayFeverInjectionsPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.eyebrowLight} variants={fadeUp}>
-              After Your Injection
+              After Your Treatment
             </motion.p>
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
               Results, Aftercare &amp; Side Effects
@@ -734,28 +725,37 @@ export default function HayFeverInjectionsPage() {
                     <line x1="9" y1="11" x2="15" y2="11"/>
                   </svg>
                 </span>
-                <h3 className={styles.resultsAfterCardTitle}>How long to see results?</h3>
+                <h3 className={styles.resultsAfterCardTitle}>Results</h3>
               </div>
               <p className={styles.resultsAfterCardBody}>
-                The results are typically seen within 24 to 72 hours after treatment.
+                Most patients notice a significant improvement in their symptoms within 24 to 72 hours following their appointment. The brilliant relief typically lasts for the entire hay fever season, providing comfort for several months.
               </p>
             </motion.div>
 
-            {/* Card 2, Duration */}
+            {/* Card 2, Side Effects */}
             <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10"/>
-                    <line x1="12" y1="8" x2="12" y2="12"/>
-                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                    <line x1="12" y1="9" x2="12" y2="13"/>
+                    <line x1="12" y1="17" x2="12.01" y2="17"/>
                   </svg>
                 </span>
-                <h3 className={styles.resultsAfterCardTitle}>How long do results last?</h3>
+                <h3 className={styles.resultsAfterCardTitle}>Side Effects</h3>
               </div>
-              <p className={styles.resultsAfterCardBody}>
-                The brilliant relief typically lasts for the entire hay fever season, providing comfort for several months, depending on your individual response to the pollen count.
-              </p>
+              <ul className={styles.resultsAfterCardList} role="list">
+                {[
+                  'Slight pain or swelling at the administration site',
+                  'Temporary facial flushing',
+                  'Because it is a corticosteroid, there are potential rare systemic side effects, which your doctor will thoroughly explain',
+                ].map((item) => (
+                  <li key={item} className={styles.resultsAfterCardListItem}>
+                    <span className={styles.resultsAfterDot} aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </motion.div>
 
             {/* Card 3, Aftercare */}
@@ -771,10 +771,9 @@ export default function HayFeverInjectionsPage() {
               </div>
               <ul className={styles.resultsAfterCardList} role="list">
                 {[
-                  'Do not touch the injection site during the day',
+                  'Keep the area clean and dry for the rest of the day',
                   'Avoid heavy exercise or hot saunas for the first 24 hours',
                   'Monitor your symptoms and ring the clinic if you have any unusual reactions',
-                  'Keep a diary of your pollen triggers to help manage your long-term health',
                 ].map((item) => (
                   <li key={item} className={styles.resultsAfterCardListItem}>
                     <span className={styles.resultsAfterDot} aria-hidden="true" />
@@ -805,13 +804,13 @@ export default function HayFeverInjectionsPage() {
             viewport={VIEWPORT}
           >
             <motion.div className={styles.clinicIntroLeft} variants={fadeUp}>
-              <p className={styles.eyebrowDark}>Hay Fever Injections</p>
+              <p className={styles.eyebrowDark}>Hay Fever Treatment</p>
               <h2 className={styles.combinedHeading}>
-                Best Hay Fever Injections<br />Leicester Experience
+                Best Hay Fever Treatment<br />in Leicester
               </h2>
             </motion.div>
             <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
-              The One Clinic provides the best hay fever relief experience in Leicester. As a medical clinic that puts patients first, we have highly trained, caring doctors who apply their extensive clinical expertise to provide safe, effective treatments. We ensure every injection is administered in a relaxing, luxurious environment to deliver a proper, brilliant, symptom-free summer.
+              The One Clinic provides the best hay fever relief experience in Leicester. As a medical clinic that puts patients first, we have highly trained, caring doctors who apply their extensive clinical expertise to provide safe, effective treatments. We ensure every appointment takes place in a relaxing, luxurious environment to deliver a proper, brilliant, symptom-free summer.
             </motion.p>
           </motion.div>
         </Container>
@@ -820,7 +819,7 @@ export default function HayFeverInjectionsPage() {
       {/* ════════════════════════════════════════
           CTA BANNER
       ════════════════════════════════════════ */}
-      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book hay fever injection appointment">
+      <section className={styles.ctaBanner} data-section-theme="dark" aria-label="Book hay fever treatment appointment">
         {/* Watermark logo */}
         <div className={styles.ctaBannerLogoWrap} aria-hidden="true">
           <Image
@@ -840,7 +839,7 @@ export default function HayFeverInjectionsPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
-              Uncover a Comfortable, Symptom-Free Summer!<br />Book Your Injection Today!
+              Uncover a Comfortable,<br />Symptom-Free Summer!
             </motion.h2>
             <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
               Give your body the powerful, targeted relief it truly deserves. Let our expert doctors at The One Clinic help you achieve a beautiful, clear, and comfortable season.
@@ -867,7 +866,7 @@ export default function HayFeverInjectionsPage() {
             viewport={VIEWPORT}
           >
             <motion.h2 className={styles.headingLight} variants={fadeUp}>
-              Why Choose The One Clinic For Hay Fever Injections
+              Why Choose The One Clinic For Hay Fever Treatment
             </motion.h2>
           </motion.div>
 
