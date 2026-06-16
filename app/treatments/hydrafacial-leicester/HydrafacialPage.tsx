@@ -1135,12 +1135,14 @@ export default function HydrafacialPage() {
             </motion.h2>
             <motion.ul className={styles.priceMenu} variants={stagger(0.08)}>
               {HYDRAFACIAL_PRICING.map((item) => (
-                <motion.li key={item.name} className={styles.priceMenuItem} variants={fadeUp}>
-                  <div className={styles.priceMenuRow}>
-                    <span className={styles.priceMenuName}>{item.name}</span>
-                    <span className={styles.priceMenuLeader} aria-hidden="true" />
-                    <span className={styles.priceMenuPrice}>{item.price}</span>
-                  </div>
+                <motion.li
+                  key={item.name}
+                  className={styles.priceMenuItem}
+                  variants={fadeUp}
+                  whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
+                >
+                  <span className={styles.priceMenuName}>{item.name}</span>
+                  <span className={styles.priceMenuPrice}>{item.price}</span>
                   <p className={styles.priceMenuIncludes}>{item.includes}</p>
                 </motion.li>
               ))}
