@@ -83,29 +83,6 @@ const AT_A_GLANCE = [
   },
 ];
 
-const HYDRAFACIAL_PRICING = [
-  {
-    name: 'Deluxe HydraFacial',
-    price: '£145',
-    includes: 'Includes complimentary Dermalux LED',
-  },
-  {
-    name: 'Platinum HydraFacial',
-    price: '£165',
-    includes: 'Includes complimentary Dermalux LED, lymphatic drainage & a personalised skin booster',
-  },
-  {
-    name: 'Glass Skin HydraFacial',
-    price: '£195',
-    includes: 'Includes Deluxe HydraFacial + Dermalux LED + Microneedling',
-  },
-  {
-    name: 'Dermalux LED',
-    price: '£75',
-    includes: '20-minute session',
-  },
-];
-
 const APPROACH_STEPS = [
   {
     eyebrow: '01',
@@ -1058,32 +1035,26 @@ export default function HydrafacialPage() {
             </motion.p>
           </motion.div>
 
-          <motion.div
-            className={styles.areasColumns}
-            variants={stagger(0.1)}
+          <motion.ul
+            className={styles.priceMenu}
+            variants={stagger(0.08)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
             {PACKAGES.map((pkg) => (
-              <motion.div
+              <motion.li
                 key={pkg.name}
-                className={styles.areasGroup}
+                className={styles.priceMenuItem}
                 variants={fadeUp}
                 whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
               >
-                <p className={styles.areasGroupLabel}>{pkg.name} , {pkg.price}</p>
-                <ul className={styles.areasGroupList} role="list">
-                  {pkg.includes.map((item) => (
-                    <li key={item} className={styles.areasGroupItem}>
-                      <span className={styles.areasItemDot} aria-hidden="true" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
+                <span className={styles.priceMenuName}>{pkg.name}</span>
+                <span className={styles.priceMenuPrice}>{pkg.price}</span>
+                <p className={styles.priceMenuIncludes}>{pkg.includes.join(' · ')}</p>
+              </motion.li>
             ))}
-          </motion.div>
+          </motion.ul>
         </Container>
       </Section>
 
@@ -1128,23 +1099,11 @@ export default function HydrafacialPage() {
             viewport={VIEWPORT}
           >
             <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
-              HydraFacial Cost at The One Clinic
+              Book Your HydraFacial
             </motion.p>
             <motion.h2 className={styles.costBannerHeading} variants={fadeUp}>
-              Treatment &amp; Pricing Menu
+              Ready to Reveal Radiant,<br />Glowing Skin?
             </motion.h2>
-            <motion.ul className={styles.priceMenu} variants={stagger(0.08)}>
-              {HYDRAFACIAL_PRICING.map((item) => (
-                <motion.li key={item.name} className={styles.priceMenuItem} variants={fadeUp}>
-                  <div className={styles.priceMenuRow}>
-                    <span className={styles.priceMenuName}>{item.name}</span>
-                    <span className={styles.priceMenuLeader} aria-hidden="true" />
-                    <span className={styles.priceMenuPrice}>{item.price}</span>
-                  </div>
-                  <p className={styles.priceMenuIncludes}>{item.includes}</p>
-                </motion.li>
-              ))}
-            </motion.ul>
             <motion.p className={styles.costBannerNote} variants={fadeUp}>
               Choose from our bespoke HydraFacial packages, tailored to your unique skin needs.
               Full details will be discussed at your consultation.

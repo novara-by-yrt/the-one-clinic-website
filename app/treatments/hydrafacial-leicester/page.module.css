@@ -1344,58 +1344,70 @@
 /* ── Pricing menu ── */
 .priceMenu {
   list-style: none;
-  margin: var(--space-2) 0 0;
+  margin: var(--space-3) auto 0;
   padding: 0;
   width: 100%;
-  max-width: 620px;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
+  max-width: 900px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
   text-align: left;
 }
 
 .priceMenuItem {
-  padding-bottom: var(--space-4);
-  border-bottom: 1px solid rgba(255 255 255 / 0.12);
-}
-
-.priceMenuItem:last-child {
-  padding-bottom: 0;
-  border-bottom: none;
-}
-
-.priceMenuRow {
+  position: relative;
   display: flex;
-  align-items: baseline;
-  gap: var(--space-2);
+  flex-direction: column;
+  padding: var(--space-5);
+  background: linear-gradient(158deg, rgba(255 255 255 / 0.08) 0%, rgba(255 255 255 / 0.02) 100%);
+  border: 1px solid rgba(255 255 255 / 0.14);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Subtle accent hairline along the top edge */
+.priceMenuItem::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+    rgba(255 255 255 / 0) 0%,
+    rgba(255 255 255 / 0.55) 50%,
+    rgba(255 255 255 / 0) 100%);
+}
+
+.priceMenuItem:hover {
+  border-color: rgba(255 255 255 / 0.30);
+  box-shadow: 0 20px 56px rgba(0 0 0 / 0.45);
 }
 
 .priceMenuName {
-  font-size: clamp(1.0625rem, 2vw, 1.25rem);
-  font-weight: var(--fw-bold);
-  color: #fff;
-  white-space: nowrap;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255 255 255 / 0.62);
 }
 
-/* Dotted leader fills the gap between the name and the price */
-.priceMenuLeader {
-  flex: 1 1 auto;
-  border-bottom: 1px dotted rgba(255 255 255 / 0.25);
-  transform: translateY(-0.2em);
-}
-
+/* The price is the hero of each card */
 .priceMenuPrice {
-  font-size: clamp(1.0625rem, 2vw, 1.25rem);
-  font-weight: var(--fw-bold);
+  margin-top: 10px;
+  font-size: clamp(2.25rem, 5vw, 3rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
   color: #fff;
-  white-space: nowrap;
 }
 
 .priceMenuIncludes {
-  margin: var(--space-1) 0 0;
-  font-size: 0.875rem;
-  line-height: 1.55;
-  color: rgba(255 255 255 / 0.55);
+  margin: 14px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255 255 255 / 0.10);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: rgba(255 255 255 / 0.62);
 }
 
 .costBannerNote {
@@ -2506,6 +2518,9 @@
 @media (max-width: 580px) {
   .glanceGrid { grid-template-columns: 1fr 1fr; }
   .relatedGrid { grid-template-columns: 1fr; }
+
+  /* Pricing cards: single column on phones */
+  .priceMenu { grid-template-columns: 1fr; }
 
   /* Glance cards: center icon + text in 2-col mobile grid */
   .glanceCard {

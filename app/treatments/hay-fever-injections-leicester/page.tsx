@@ -5,32 +5,32 @@ import { buildVideoSchema, buildProcedureSchema, buildBreadcrumbSchema } from '@
 
 export const metadata: Metadata = {
   alternates: { canonical: '/treatments/hay-fever-injections-leicester' },
-  title: 'Best Hay Fever Injections in Leicester | The One Clinic',
-  description: 'Get expert hay fever injections in Leicester. Relieve severe symptoms instantly and enjoy a brilliant, symptom-free summer.',
+  title: { absolute: 'Best Hay Fever Treatment in Leicester | The One Clinic' },
+  description: 'Discover expert hay fever treatments in Leicester. Relieve severe symptoms like sneezing and itchy eyes for a brilliant, symptom-free summer.',
   openGraph: {
-    title: 'Best Hay Fever Injections in Leicester | The One Clinic',
+    title: 'Best Hay Fever Treatment in Leicester | The One Clinic',
     description:
-      'Get expert hay fever injections in Leicester. Relieve severe symptoms instantly and enjoy a brilliant, symptom-free summer.',
+      'Discover expert hay fever treatments in Leicester. Relieve severe symptoms like sneezing and itchy eyes for a brilliant, symptom-free summer.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Best Hay Fever Injections in Leicester | The One Clinic',
+    title: 'Best Hay Fever Treatment in Leicester | The One Clinic',
     description:
-      'Get expert hay fever injections in Leicester. Relieve severe symptoms instantly and enjoy a brilliant, symptom-free summer.',
+      'Discover expert hay fever treatments in Leicester. Relieve severe symptoms like sneezing and itchy eyes for a brilliant, symptom-free summer.',
   },
 };
 
 const schemas = [
   buildProcedureSchema({
-    name: 'Hay Fever Injections Leicester',
-    description: 'Expert hay fever injections to relieve severe allergic rhinitis and enjoy a symptom-free summer.',
+    name: 'Hay Fever Treatment Leicester',
+    description: 'Expert hay fever treatments to relieve severe allergic rhinitis and enjoy a symptom-free summer.',
     category: 'Health & Wellbeing',
     slug: 'hay-fever-injections-leicester',
     howPerformed: 'A targeted corticosteroid injection administered intramuscularly, typically into the gluteal muscle, providing relief for the entire hay fever season.',
   }),
   buildBreadcrumbSchema([
     { name: 'Treatments', href: '/treatments' },
-    { name: 'Hay Fever Injections' },
+    { name: 'Hay Fever Treatment' },
   ]),
 ];
 
