@@ -1344,7 +1344,7 @@
 /* ── Pricing menu ── */
 .priceMenu {
   list-style: none;
-  margin: var(--space-3) 0 0;
+  margin: var(--space-3) auto 0;
   padding: 0;
   width: 100%;
   max-width: 900px;
