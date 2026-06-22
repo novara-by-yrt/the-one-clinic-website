@@ -22,13 +22,14 @@
 .overlay {
   position: absolute;
   inset: 0;
-  /* Slight darken so the play button reads against any swatch colour. */
-  background: linear-gradient(180deg, rgba(8, 8, 14, 0.28) 0%, rgba(8, 8, 14, 0.55) 100%);
+  /* Light vignette only — enough for the play button to read, while keeping
+     the (now full-resolution) Wistia poster looking crisp and natural. */
+  background: linear-gradient(180deg, rgba(8, 8, 14, 0.10) 0%, rgba(8, 8, 14, 0.28) 100%);
   transition: background 0.3s ease;
 }
 
 .facade:hover .overlay {
-  background: linear-gradient(180deg, rgba(8, 8, 14, 0.18) 0%, rgba(8, 8, 14, 0.45) 100%);
+  background: linear-gradient(180deg, rgba(8, 8, 14, 0.04) 0%, rgba(8, 8, 14, 0.20) 100%);
 }
 
 .playBtn {
