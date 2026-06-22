@@ -1,10 +1,9 @@
 'use client';
 
-import { useEffect } from 'react';
-import Script from 'next/script';
 import { m } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
+import WistiaFacade from '@/components/ui/WistiaFacade';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './BrandVideoSection.module.css';
 
@@ -13,20 +12,9 @@ const VIDEOS = [
   { id: 't8y82cnp5e', title: 'TOC - Patient Stories' },
 ];
 
-declare global {
-  interface Window {
-    _wq: Array<{ id: string; onReady: (v: unknown) => void }>;
-  }
-}
-
 export default function BrandVideoSection() {
-  useEffect(() => {
-    window._wq = window._wq || [];
-  }, []);
-
   return (
     <Section variant="dark" data-section-theme="dark" className={styles.section}>
-      <Script src="https://fast.wistia.net/player.js" strategy="lazyOnload" />
 
       {/* Ambient glows */}
       <div className={styles.glowLeft}  aria-hidden="true" />
@@ -72,18 +60,13 @@ export default function BrandVideoSection() {
               viewport={VIEWPORT}
               transition={{ duration: 0.8, delay: i * 0.15, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              {/* 16:9 embed */}
+              {/* 16:9 embed — click-to-play facade keeps the Wistia player
+                  off the initial load */}
               <div className={styles.videoWrapper}>
-                <iframe
-                  src={`https://fast.wistia.net/embed/iframe/${video.id}?web_component=true&seo=true`}
+                <WistiaFacade
+                  videoId={video.id}
                   title={video.title}
-                  allow="autoplay; fullscreen"
-                  allowTransparency
-                  frameBorder="0"
-                  scrolling="no"
-                  loading="lazy"
-                  className={styles.embed}
-                  name="wistia_embed"
+                  iframeClassName={styles.embed}
                 />
               </div>
 

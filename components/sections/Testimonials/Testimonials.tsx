@@ -2,10 +2,10 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import Script from 'next/script';
 import { m, AnimatePresence } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
+import WistiaFacade from '@/components/ui/WistiaFacade';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './Testimonials.module.css';
 
@@ -324,7 +324,6 @@ export default function Testimonials({
 
   return (
     <Section variant="dark" data-section-theme="dark" className={styles.section}>
-      <Script src="https://fast.wistia.net/player.js" strategy="lazyOnload" />
 
       {/* Background image */}
       <div className={styles.bgWrap} aria-hidden="true">
@@ -490,16 +489,7 @@ export default function Testimonials({
             {PATIENT_VIDEOS.map((v) => (
               <m.div key={v.id} className={styles.videoCard} variants={fadeUp}>
                 <div className={styles.videoPortrait}>
-                  <iframe
-                    src={`https://fast.wistia.net/embed/iframe/${v.id}?web_component=true&seo=true`}
-                    title={v.title}
-                    allow="autoplay; fullscreen"
-                    allowFullScreen
-                    frameBorder="0"
-                    scrolling="no"
-                    loading="lazy"
-                    className={styles.iframe}
-                  />
+                  <WistiaFacade videoId={v.id} title={v.title} iframeClassName={styles.iframe} />
                 </div>
               </m.div>
             ))}
@@ -525,16 +515,11 @@ export default function Testimonials({
                 onTouchEnd={onVideoTouchEnd}
               >
                 <div className={styles.videoPortraitMobile}>
-                  <iframe
+                  <WistiaFacade
                     key={videoActive}
-                    src={`https://fast.wistia.net/embed/iframe/${PATIENT_VIDEOS[videoActive].id}?web_component=true&seo=true`}
+                    videoId={PATIENT_VIDEOS[videoActive].id}
                     title={PATIENT_VIDEOS[videoActive].title}
-                    allow="autoplay; fullscreen"
-                    allowFullScreen
-                    frameBorder="0"
-                    scrolling="no"
-                    loading="lazy"
-                    className={styles.iframe}
+                    iframeClassName={styles.iframe}
                   />
                 </div>
               </div>
