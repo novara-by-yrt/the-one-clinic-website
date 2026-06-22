@@ -218,6 +218,7 @@ export default function ContactPage() {
                     data-form-id={FORM_ID}
                     title="Contact Us New Form"
                     scrolling="no"
+                    loading="lazy"
                   />
                 </div>
                 <Script src="https://link.leadpipeline.ai/js/form_embed.js" strategy="lazyOnload" />

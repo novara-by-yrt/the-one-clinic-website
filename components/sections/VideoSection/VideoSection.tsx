@@ -66,6 +66,7 @@ export default function VideoSection() {
                   allowTransparency
                   frameBorder="0"
                   scrolling="no"
+                  loading="lazy"
                   className={styles.embed}
                   name="wistia_embed"
                 />

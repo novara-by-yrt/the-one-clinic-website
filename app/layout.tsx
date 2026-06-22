@@ -110,7 +110,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         <Script
           src="https://link.leadpipeline.ai/js/form_embed.js"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
 
         <a href="#main-content" className="skip-link">

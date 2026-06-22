@@ -392,6 +392,7 @@ export default function CoolBlephPage() {
                 allowTransparency
                 frameBorder="0"
                 scrolling="no"
+                loading="lazy"
                 className={styles.whatIsVideoFrame}
                 name="wistia_embed"
               />

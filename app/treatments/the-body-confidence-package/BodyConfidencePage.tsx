@@ -460,6 +460,7 @@ export default function BodyConfidencePage() {
                 allowTransparency
                 frameBorder="0"
                 scrolling="no"
+                loading="lazy"
                 className={styles.whatIsVideoFrame}
                 name="wistia_embed"
               />

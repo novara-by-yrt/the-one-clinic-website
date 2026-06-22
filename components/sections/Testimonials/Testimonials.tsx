@@ -497,6 +497,7 @@ export default function Testimonials({
                     allowFullScreen
                     frameBorder="0"
                     scrolling="no"
+                    loading="lazy"
                     className={styles.iframe}
                   />
                 </div>
@@ -532,6 +533,7 @@ export default function Testimonials({
                     allowFullScreen
                     frameBorder="0"
                     scrolling="no"
+                    loading="lazy"
                     className={styles.iframe}
                   />
                 </div>

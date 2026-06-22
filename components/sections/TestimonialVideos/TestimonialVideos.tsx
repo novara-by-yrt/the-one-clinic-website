@@ -74,6 +74,7 @@ export default function TestimonialVideos() {
                   allowFullScreen
                   frameBorder="0"
                   scrolling="no"
+                  loading="lazy"
                   className={styles.iframe}
                 />
               </div>
@@ -110,6 +111,7 @@ export default function TestimonialVideos() {
                     allowFullScreen
                     frameBorder="0"
                     scrolling="no"
+                    loading="lazy"
                     className={styles.iframe}
                   />
                 </div>
