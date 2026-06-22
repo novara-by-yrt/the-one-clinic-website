@@ -7,6 +7,20 @@ const nextConfig: NextConfig = {
   // Strict mode catches potential React issues early
   reactStrictMode: true,
 
+  // Image delivery optimization — serves AVIF/WebP (smaller at identical
+  // visual quality) and caches optimized variants for a year so repeat
+  // visitors never re-download. No change to source files or visible quality.
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 31_536_000, // 1 year
+  },
+
+  // Tree-shake heavy, site-wide animation/carousel libraries so each route
+  // only ships the exports it actually uses.
+  experimental: {
+    optimizePackageImports: ['framer-motion', 'swiper'],
+  },
+
   // Security and performance headers applied to all routes
   async headers() {
     const isPreview = process.env.VERCEL_ENV === 'preview' || process.env.NEXT_PUBLIC_ENV === 'preview';
@@ -42,6 +56,18 @@ const nextConfig: NextConfig = {
               value: 'noindex, nofollow, nocache',
             },
           ] : []),
+        ],
+      },
+      {
+        // Static, content-hashed-by-name assets (raw images used by CSS
+        // backgrounds, local fonts) are immutable — cache hard so repeat
+        // views and cross-page navigation never re-fetch them.
+        source: '/:path(images|fonts)/:file*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
         ],
       },
     ];
