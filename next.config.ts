@@ -13,12 +13,12 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 31_536_000, // 1 year
-    // Next 16 requires an explicit quality allowlist. 60 is used for the
-    // photographic hero background (darkened behind gradient/vignette
-    // overlays, so the lower quality is invisible but cuts bytes + AVIF
-    // encode time, which directly helps LCP). 75 stays the default for
-    // everything else; higher `quality` props clamp down to 75.
-    qualities: [60, 75],
+    // Next 16 requires an explicit quality allowlist, and — importantly — it
+    // REJECTS (HTTP 400) any `quality` prop not listed here rather than
+    // clamping. So every value used in the app must be present:
+    //   75 — Next.js default; used everywhere unless overridden (incl. hero)
+    //   90 — doctor / team headshots, where facial detail matters most
+    qualities: [75, 90],
   },
 
   // Tree-shake heavy, site-wide animation/carousel libraries so each route
