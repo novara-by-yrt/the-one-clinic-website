@@ -129,7 +129,11 @@ export default function BrandTreatments() {
                 <h3 className={styles.treatmentName}>{active.title}</h3>
                 <div className={styles.rule} aria-hidden="true" />
                 <p className={styles.treatmentDesc}>{active.desc}</p>
-                <Link href={active.href} className={styles.cta}>
+                <Link
+                  href={active.href}
+                  className={styles.cta}
+                  aria-label={`Learn more about ${active.title}`}
+                >
                   Learn More
                   <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                     <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6"

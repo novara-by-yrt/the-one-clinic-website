@@ -78,6 +78,7 @@ export default function BrandHero() {
                 alt=""
                 fill
                 preload={i === 0}
+                fetchPriority={i === 0 ? 'high' : undefined}
                 quality={75}
                 className={styles.heroBgImg}
                 sizes="100vw"
