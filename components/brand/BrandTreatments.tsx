@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Autoplay } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
@@ -87,30 +87,30 @@ export default function BrandTreatments() {
       <div className={styles.inner}>
 
         {/* ══ Top: centered heading ══ */}
-        <motion.div
+        <m.div
           className={styles.topHeader}
           variants={stagger(0.1)}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <motion.div variants={fadeUp}>
+          <m.div variants={fadeUp}>
             <span className={styles.chip}>
               <span className={styles.chipDot} aria-hidden="true" />
               Medical Aesthetics &amp; Health Care
             </span>
-          </motion.div>
+          </m.div>
 
-          <motion.h2 className={styles.heading} variants={fadeUp}>
+          <m.h2 className={styles.heading} variants={fadeUp}>
             Our Popular{' '}
             <em className={styles.headingAccent}>Treatments</em>
-          </motion.h2>
+          </m.h2>
 
-          <motion.p className={styles.sectionDesc} variants={fadeUp}>
+          <m.p className={styles.sectionDesc} variants={fadeUp}>
             Advanced aesthetic and health treatments, all under one roof,
             tailored to your goals by our qualified doctors.
-          </motion.p>
-        </motion.div>
+          </m.p>
+        </m.div>
 
         {/* ══ Bottom: dynamic info + carousel ══ */}
         <div className={styles.bottomLayout}>
@@ -118,7 +118,7 @@ export default function BrandTreatments() {
           {/* ── Left: dynamic treatment info ── */}
           <div className={styles.leftPanel}>
             <AnimatePresence mode="wait">
-              <motion.div
+              <m.div
                 key={activeIndex}
                 className={styles.treatmentInfo}
                 variants={INFO_VARIANTS}
@@ -136,7 +136,7 @@ export default function BrandTreatments() {
                       strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </Link>
-              </motion.div>
+              </m.div>
             </AnimatePresence>
 
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { m, useReducedMotion } from 'framer-motion';
 import { ReactNode, useEffect, useState } from 'react';
 import styles from './BrandReveal.module.css';
 
@@ -36,7 +36,7 @@ export default function BrandReveal({ children }: { children: ReactNode }) {
   const k = reduce ? 0 : isMobile ? 0.4 : 1;
 
   return (
-    <motion.div
+    <m.div
       className={styles.layer}
       initial={k > 0
         ? { opacity: 0, y: 56 * k, scale: 1 - 0.035 * k, z: -70 * k }
@@ -50,6 +50,6 @@ export default function BrandReveal({ children }: { children: ReactNode }) {
       transition={{ duration: 0.88, ease: EASE }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

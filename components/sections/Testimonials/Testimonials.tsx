@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Script from 'next/script';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
@@ -340,33 +340,33 @@ export default function Testimonials({
       <Container className={styles.contentLayer}>
 
         {/* ── Header ────────────────────────────────────── */}
-        <motion.div
+        <m.div
           className={styles.header}
           variants={stagger(0.12)}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <motion.div className={styles.chipRow} variants={fadeUp}>
+          <m.div className={styles.chipRow} variants={fadeUp}>
             <span className={styles.chip}>
               <TrophyIcon />
               Loved by Thousands
             </span>
-          </motion.div>
+          </m.div>
 
-          <motion.h2 className={styles.heading} variants={fadeUp}>
+          <m.h2 className={styles.heading} variants={fadeUp}>
             What Our<br />
             <span className={styles.headingAccent}>Customers Say</span>
-          </motion.h2>
+          </m.h2>
 
-          <motion.p className={styles.subtext} variants={fadeUp}>
+          <m.p className={styles.subtext} variants={fadeUp}>
             Don&apos;t just take our word for it. Here&apos;s what real patients have
             to say about their experience at The One Clinic.
-          </motion.p>
-        </motion.div>
+          </m.p>
+        </m.div>
 
         {/* ── Reviews carousel ──────────────────────────── */}
-        <motion.div
+        <m.div
           className={styles.carouselRow}
           variants={fadeUp}
           initial="hidden"
@@ -390,7 +390,7 @@ export default function Testimonials({
             onTouchEnd={onTouchEnd}
           >
             <AnimatePresence mode="wait" custom={dir}>
-              <motion.div
+              <m.div
                 key={page}
                 className={styles.cardsGrid}
                 custom={dir}
@@ -423,7 +423,7 @@ export default function Testimonials({
                     </div>
                   </div>
                 ))}
-              </motion.div>
+              </m.div>
             </AnimatePresence>
           </div>
 
@@ -437,7 +437,7 @@ export default function Testimonials({
                 strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
-        </motion.div>
+        </m.div>
 
         {/* ── Mobile: arrows side-by-side below card ────── */}
         <div className={styles.mobileNav} aria-label="Review navigation">
@@ -480,7 +480,7 @@ export default function Testimonials({
         {/* ── Patient video stories , home/brand page only ── */}
         {showVideos && <div className={styles.patientsSection}>
           {/* Desktop: 3-column portrait grid */}
-          <motion.div
+          <m.div
             className={styles.videosGrid}
             variants={stagger(0.12)}
             initial="hidden"
@@ -488,7 +488,7 @@ export default function Testimonials({
             viewport={VIEWPORT}
           >
             {PATIENT_VIDEOS.map((v) => (
-              <motion.div key={v.id} className={styles.videoCard} variants={fadeUp}>
+              <m.div key={v.id} className={styles.videoCard} variants={fadeUp}>
                 <div className={styles.videoPortrait}>
                   <iframe
                     src={`https://fast.wistia.net/embed/iframe/${v.id}?web_component=true&seo=true`}
@@ -501,9 +501,9 @@ export default function Testimonials({
                     className={styles.iframe}
                   />
                 </div>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
 
           {/* Mobile: slideshow */}
           <div className={styles.mobileSlideshow}>

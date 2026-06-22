@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
+import { m, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import styles from './BrandHero.module.css';
@@ -151,7 +151,7 @@ export default function BrandHero() {
       <div className={styles.overlaySpotlight} aria-hidden="true" />
 
       {/* ── Scroll-parallax content wrapper ──────────────── */}
-      <motion.div
+      <m.div
         className={styles.contentWrapper}
         style={{ y: contentY, opacity }}
       >
@@ -162,54 +162,54 @@ export default function BrandHero() {
             <div className={styles.content}>
 
               {/* ── Eyebrow ── */}
-              <motion.p
+              <m.p
                 className={styles.eyebrow}
                 {...cineText(0.15, prefersReduced)}
               >
                 Medical &amp; Aesthetic Care, Leicester
-              </motion.p>
+              </m.p>
 
               {/* ── Headline , three lines, ultra-slow stagger ── */}
               <h1 className={styles.headline}>
-                <motion.span
+                <m.span
                   className={styles.headlineLine}
                   {...cineH1(0.30, prefersReduced)}
                 >
                   Where
-                </motion.span>
-                <motion.span
+                </m.span>
+                <m.span
                   className={styles.headlineLine}
                   {...cineH1(0.52, prefersReduced)}
                 >
                   Expertise
-                </motion.span>
-                <motion.span
+                </m.span>
+                <m.span
                   className={`${styles.headlineLine} ${styles.headlineLineAccent}`}
                   {...cineH1(0.74, prefersReduced)}
                 >
                   <span className={styles.headlineAccent}>Meets Care</span>
-                </motion.span>
+                </m.span>
               </h1>
 
               {/* ── Tagline , eye-catching ── */}
-              <motion.p
+              <m.p
                 className={styles.tagline}
                 {...cineText(0.90, prefersReduced)}
               >
                 Empowering Happy Patients
-              </motion.p>
+              </m.p>
 
               {/* ── Subtext ── */}
-              <motion.p
+              <m.p
                 className={styles.subtext}
                 {...cineText(1.00, prefersReduced)}
               >
                 Advanced medical, aesthetic and wellness care,
                 all under one roof.
-              </motion.p>
+              </m.p>
 
               {/* ── CTA button ── */}
-              <motion.div
+              <m.div
                 className={styles.ctaRow}
                 {...cineText(1.20, prefersReduced)}
               >
@@ -229,13 +229,13 @@ export default function BrandHero() {
                     />
                   </svg>
                 </button>
-              </motion.div>
+              </m.div>
 
               {/* ── Trust strip , 2 badges in a row ── */}
               <div className={styles.trustRow} role="region" aria-label="Trust indicators">
 
                 {/* Google Reviews */}
-                <motion.div
+                <m.div
                   className={styles.trustBadge}
                   {...cineBadge(1.40, prefersReduced)}
                 >
@@ -255,10 +255,10 @@ export default function BrandHero() {
                     <span className={styles.trustDot} aria-hidden="true" />
                     <span className={styles.trustCount}>120+ reviews</span>
                   </p>
-                </motion.div>
+                </m.div>
 
                 {/* Trustpilot */}
-                <motion.div
+                <m.div
                   className={styles.trustBadge}
                   {...cineBadge(1.55, prefersReduced)}
                 >
@@ -278,30 +278,30 @@ export default function BrandHero() {
                     <span className={styles.trustDot} aria-hidden="true" />
                     <span className={styles.trustCount}>140+ reviews</span>
                   </p>
-                </motion.div>
+                </m.div>
 
               </div>
 
             </div>
           </div>
         </Container>
-      </motion.div>
+      </m.div>
 
       {/* ── Scroll indicator ─────────────────────────────── */}
-      <motion.div
+      <m.div
         className={styles.scrollIndicator}
         aria-hidden="true"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.4, duration: 0.9 }}
       >
-        <motion.span
+        <m.span
           className={styles.scrollLine}
           animate={{ scaleY: [0.4, 1, 0.4] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         />
         <span className={styles.scrollLabel}>Scroll</span>
-      </motion.div>
+      </m.div>
     </section>
   );
 }

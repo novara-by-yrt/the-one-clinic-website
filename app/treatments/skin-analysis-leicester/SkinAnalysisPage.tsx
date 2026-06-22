@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Section            from '@/components/ui/Section';
 import Container          from '@/components/ui/Container';
 import Accordion          from '@/components/ui/Accordion';
@@ -381,7 +381,7 @@ export default function SkinAnalysisPage() {
         </div>
 
         <Container>
-          <motion.div
+          <m.div
             className={styles.heroInner}
             variants={stagger(0.12)}
             initial="hidden"
@@ -389,32 +389,32 @@ export default function SkinAnalysisPage() {
           >
             {/* Left: text */}
             <div className={styles.heroLeft}>
-              <motion.span className={styles.heroCategory} variants={fadeUp}>
+              <m.span className={styles.heroCategory} variants={fadeUp}>
                 Advanced Skin Diagnostics
-              </motion.span>
+              </m.span>
 
-              <motion.h1 className={styles.heroTitle} variants={fadeUp}>
+              <m.h1 className={styles.heroTitle} variants={fadeUp}>
                 Skin Analysis Leicester
-              </motion.h1>
+              </m.h1>
 
-              <motion.p className={styles.heroDesc} variants={fadeUp}>
+              <m.p className={styles.heroDesc} variants={fadeUp}>
                 Advanced 3D skin scanning for precision treatment planning. Understand
                 your skin at a clinical level with the Life Viz 3D imaging system.
-              </motion.p>
+              </m.p>
 
-              <motion.div className={styles.heroCtas} variants={fadeUp}>
+              <m.div className={styles.heroCtas} variants={fadeUp}>
                 <BookConsultationButton className={styles.heroCtaPrimary}>
                   Book Appointment
                 </BookConsultationButton>
-              </motion.div>
+              </m.div>
 
               {/* Review badges */}
-              <motion.div variants={fadeUp}>
+              <m.div variants={fadeUp}>
                 <TrustBadges theme="dark" />
-              </motion.div>
+              </m.div>
 
               {/* Trust items */}
-              <motion.div className={styles.heroTrust} variants={fadeUp}>
+              <m.div className={styles.heroTrust} variants={fadeUp}>
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
@@ -438,11 +438,11 @@ export default function SkinAnalysisPage() {
                   </svg>
                   Comprehensive medical &amp; aesthetic care
                 </span>
-              </motion.div>
+              </m.div>
             </div>
 
             {/* Right: image */}
-            <motion.div className={styles.heroImageWrap} variants={fadeUp}>
+            <m.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
                 src="/images/Hero Section Skin Analysis.jpg"
                 alt="Life Viz 3D skin analysis at The One Clinic Leicester"
@@ -453,8 +453,8 @@ export default function SkinAnalysisPage() {
               />
               {/* Subtle bottom-fade to blend with section */}
               <div className={styles.heroImageFade} aria-hidden="true" />
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </section>
 
@@ -463,7 +463,7 @@ export default function SkinAnalysisPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.whatIsGrid}
             variants={stagger(0.12)}
             initial="hidden"
@@ -471,8 +471,8 @@ export default function SkinAnalysisPage() {
             viewport={VIEWPORT}
           >
             {/* Left: text */}
-            <motion.div className={styles.whatIsContent} variants={stagger(0.12)}>
-              <motion.div className={styles.whatIsTextGroup} variants={fadeUp}>
+            <m.div className={styles.whatIsContent} variants={stagger(0.12)}>
+              <m.div className={styles.whatIsTextGroup} variants={fadeUp}>
                 <p className={styles.eyebrowDark}>About This Service</p>
                 <h2 className={styles.combinedHeading}>What is Skin Analysis?</h2>
                 <p className={styles.combinedDesc}>
@@ -481,16 +481,16 @@ export default function SkinAnalysisPage() {
                   extraordinary clinical detail. Using multi-spectral structured light, it provides
                   objective data that forms the foundation of a truly bespoke treatment plan.
                 </p>
-              </motion.div>
-              <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
+              </m.div>
+              <m.div className={styles.combinedCtaWrapper} variants={fadeUp}>
                 <BookConsultationButton className={styles.combinedCta}>
                   Book Your Consultation
                 </BookConsultationButton>
-              </motion.div>
-            </motion.div>
+              </m.div>
+            </m.div>
 
             {/* Right: image panel */}
-            <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
+            <m.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
                 src="/images/What is Skin Analysis.jpg"
                 alt="Skin analysis consultation at The One Clinic Leicester"
@@ -498,8 +498,8 @@ export default function SkinAnalysisPage() {
                 className={styles.whatIsVideoFrame}
                 sizes="(max-width: 900px) 100vw, 50vw"
               />
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -511,20 +511,20 @@ export default function SkinAnalysisPage() {
           <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
         </div>
         <Container className={styles.whiteBgContent}>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            <m.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</m.p>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Skin Analysis at a Glance
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.glanceStandaloneGrid}
             variants={stagger(0.08)}
             initial="hidden"
@@ -532,13 +532,13 @@ export default function SkinAnalysisPage() {
             viewport={VIEWPORT}
           >
             {AT_A_GLANCE.map((item) => (
-              <motion.div key={item.label} className={styles.glanceCard} variants={fadeUp}>
+              <m.div key={item.label} className={styles.glanceCard} variants={fadeUp}>
                 <span className={styles.glanceIcon}>{item.icon}</span>
                 <span className={styles.glanceLabel}>{item.label}</span>
                 <span className={styles.glanceValue}>{item.value}</span>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -547,26 +547,26 @@ export default function SkinAnalysisPage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <m.p className={styles.eyebrowLight} variants={fadeUp}>
               Our Approach
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               Our Skin Analysis Approach
-            </motion.h2>
-            <motion.p className={styles.combinationIntroText} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.combinationIntroText} variants={fadeUp}>
               At The One Clinic, our skin analysis process combines clinical expertise with
               advanced 3D imaging technology to give you the most complete picture of your skin.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.techCardsGrid}
             variants={stagger(0.1)}
             initial="hidden"
@@ -574,7 +574,7 @@ export default function SkinAnalysisPage() {
             viewport={VIEWPORT}
           >
             {APPROACH_CARDS.map((card) => (
-              <motion.div
+              <m.div
                 key={card.title}
                 className={styles.techCard}
                 variants={fadeUp}
@@ -583,11 +583,11 @@ export default function SkinAnalysisPage() {
                 <span className={styles.techCardEyebrow}>{card.eyebrow}</span>
                 <h3 className={styles.techCardTitle}>{card.title}</h3>
                 <p className={styles.techCardDesc}>{card.desc}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.finalResultsBanner}
             variants={fadeUp}
             initial="hidden"
@@ -600,7 +600,7 @@ export default function SkinAnalysisPage() {
               visit, leading directly to personalised treatment recommendations grounded in your
               unique skin data.
             </p>
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -609,22 +609,22 @@ export default function SkinAnalysisPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.journeySection}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+            <m.p className={styles.eyebrowDark} variants={fadeUp}>
               What to Expect
-            </motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Your Skin Analysis Journey
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.ol
+          <m.ol
             className={styles.journeyList}
             variants={stagger(0.12)}
             initial="hidden"
@@ -633,7 +633,7 @@ export default function SkinAnalysisPage() {
             aria-label="Skin analysis journey steps"
           >
             {JOURNEY_STEPS.map((step) => (
-              <motion.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
+              <m.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
                 <div className={styles.stepLeft}>
                   <div className={styles.stepNumCircle} aria-hidden="true">{step.n}</div>
                   <div className={styles.stepConnector} aria-hidden="true" />
@@ -642,9 +642,9 @@ export default function SkinAnalysisPage() {
                   <h3 className={styles.stepTitle}>{step.title}</h3>
                   <p className={styles.stepDesc}>{step.desc}</p>
                 </div>
-              </motion.li>
+              </m.li>
             ))}
-          </motion.ol>
+          </m.ol>
         </Container>
       </Section>
 
@@ -656,19 +656,19 @@ export default function SkinAnalysisPage() {
           <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
         </div>
         <Container className={styles.whiteBgContent}>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Benefits of 3D Skin Analysis
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.treatedBenefitsGrid}
             variants={stagger(0.08)}
             initial="hidden"
@@ -676,7 +676,7 @@ export default function SkinAnalysisPage() {
             viewport={VIEWPORT}
           >
             {BENEFITS.map((b) => (
-              <motion.div
+              <m.div
                 key={b.title}
                 className={styles.treatedBenefitCard}
                 variants={fadeUp}
@@ -687,9 +687,9 @@ export default function SkinAnalysisPage() {
                 </span>
                 <h3 className={styles.treatedBenefitTitle}>{b.title}</h3>
                 <p className={styles.treatedBenefitDesc}>{b.desc}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -698,49 +698,49 @@ export default function SkinAnalysisPage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <m.p className={styles.eyebrowLight} variants={fadeUp}>
               Is This Right for You?
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               Who is Suitable for Skin Analysis?
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.eligibilityWrap}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
+            <m.p className={styles.eligibilityIntro} variants={fadeUp}>
               Skin analysis is suitable for:
-            </motion.p>
-            <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
+            </m.p>
+            <m.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
               {ELIGIBILITY_SUITABLE.map((item) => (
-                <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
+                <m.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
                   <span className={styles.eligibilityCheck} aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                       <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </span>
                   <span>{item}</span>
-                </motion.li>
+                </m.li>
               ))}
-            </motion.ul>
-            <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
+            </m.ul>
+            <m.p className={styles.eligibilityIntro} variants={fadeUp}>
               It may not be suitable if you have:
-            </motion.p>
-            <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
+            </m.p>
+            <m.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
               {ELIGIBILITY_NOT_SUITABLE.map((item) => (
-                <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
+                <m.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
                   <span className={styles.eligibilityCheck} aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                       <line x1="3" y1="3" x2="11" y2="11" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
@@ -748,18 +748,18 @@ export default function SkinAnalysisPage() {
                     </svg>
                   </span>
                   <span>{item}</span>
-                </motion.li>
+                </m.li>
               ))}
-            </motion.ul>
-            <motion.p className={styles.eligibilityClosing} variants={fadeUp}>
+            </m.ul>
+            <m.p className={styles.eligibilityClosing} variants={fadeUp}>
               Our clinical team will advise you on the best approach at your consultation.
-            </motion.p>
-            <motion.div variants={fadeUp}>
+            </m.p>
+            <m.div variants={fadeUp}>
               <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
                 Book Your Consultation
               </BookConsultationButton>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -768,48 +768,48 @@ export default function SkinAnalysisPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               How Does Skin Analysis Work?
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.howTextGrid}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.howPara} variants={fadeUp}>
+            <m.p className={styles.howPara} variants={fadeUp}>
               The Life Viz 3D system uses structured light projection to map the skin surface in
               three dimensions. Multiple images are captured in rapid succession, using both
               standard and UV fluorescence lighting to detect concerns above and below the visible
               skin surface.
-            </motion.p>
-            <motion.p className={styles.howPara} variants={fadeUp}>
+            </m.p>
+            <m.p className={styles.howPara} variants={fadeUp}>
               Advanced software analyses the captured data to measure pore size, wrinkle depth,
               pigmentation distribution, sebum levels, redness, and UV damage. The result is a
               comprehensive clinical report that gives your treatment team an objective baseline
               and empowers truly personalised recommendations.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.howCoversWrap}
             variants={stagger(0.08)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.howCoversLabel} variants={fadeUp}>Parameters Measured by the Life Viz 3D</motion.p>
-            <motion.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
+            <m.p className={styles.howCoversLabel} variants={fadeUp}>Parameters Measured by the Life Viz 3D</m.p>
+            <m.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
               {[
                 'Pigmentation distribution',
                 'Pore size & density',
@@ -821,17 +821,17 @@ export default function SkinAnalysisPage() {
                 'Skin firmness indicators',
                 'Hydration markers',
               ].map((item) => (
-                <motion.li key={item} className={styles.howCoversItem} variants={fadeUp}>
+                <m.li key={item} className={styles.howCoversItem} variants={fadeUp}>
                   <span className={styles.howCoversCheck} aria-hidden="true">
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                       <polyline points="2,6 5,9 10,3" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </span>
                   {item}
-                </motion.li>
+                </m.li>
               ))}
-            </motion.ul>
-          </motion.div>
+            </m.ul>
+          </m.div>
         </Container>
       </Section>
 
@@ -840,22 +840,22 @@ export default function SkinAnalysisPage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <m.p className={styles.eyebrowLight} variants={fadeUp}>
               After Your Scan
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               What to Expect From Your Skin Analysis
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.resultsAfterGrid}
             variants={stagger(0.1)}
             initial="hidden"
@@ -863,7 +863,7 @@ export default function SkinAnalysisPage() {
             viewport={VIEWPORT}
           >
             {/* Card 1, Detailed Report */}
-            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+            <m.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -886,10 +886,10 @@ export default function SkinAnalysisPage() {
                 You leave with a clear understanding of your skin&apos;s current condition and a
                 personalised plan for addressing your individual concerns.
               </p>
-            </motion.div>
+            </m.div>
 
             {/* Card 2, Treatment Recommendations */}
-            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+            <m.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -916,10 +916,10 @@ export default function SkinAnalysisPage() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </m.div>
 
             {/* Card 3, Aftercare & Follow-up */}
-            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+            <m.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -946,8 +946,8 @@ export default function SkinAnalysisPage() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -959,26 +959,26 @@ export default function SkinAnalysisPage() {
           <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
         </div>
         <Container className={styles.whiteBgContent}>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+            <m.p className={styles.eyebrowDark} variants={fadeUp}>
               Skin Concerns Detected
-            </motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               What the Life Viz 3D Can Detect
-            </motion.h2>
-            <motion.p className={styles.beforeAfterSubheading} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.beforeAfterSubheading} variants={fadeUp}>
               From surface texture to hidden UV damage, the Life Viz 3D captures a comprehensive
               picture of your skin health.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.treatedBenefitsGrid}
             variants={stagger(0.08)}
             initial="hidden"
@@ -986,7 +986,7 @@ export default function SkinAnalysisPage() {
             viewport={VIEWPORT}
           >
             {SKIN_CONCERNS.map((concern) => (
-              <motion.div
+              <m.div
                 key={concern.title}
                 className={styles.treatedBenefitCard}
                 variants={fadeUp}
@@ -997,9 +997,9 @@ export default function SkinAnalysisPage() {
                 </span>
                 <h3 className={styles.treatedBenefitTitle}>{concern.title}</h3>
                 <p className={styles.treatedBenefitDesc}>{concern.desc}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -1023,25 +1023,25 @@ export default function SkinAnalysisPage() {
           />
         </div>
         <Container>
-          <motion.div
+          <m.div
             className={styles.ctaBannerContent}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
+            <m.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
               Know Your Skin.<br />Transform Your Skin.
-            </motion.h2>
-            <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.ctaBannerSub} variants={fadeUp}>
               Let our experts create your personalised skin analysis and treatment plan.
-            </motion.p>
-            <motion.div variants={fadeUp}>
+            </m.p>
+            <m.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
                 Book Consultation
               </BookConsultationButton>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </section>
 
@@ -1050,33 +1050,33 @@ export default function SkinAnalysisPage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark" className={styles.conditionsSection}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <m.p className={styles.eyebrowLight} variants={fadeUp}>
               Comprehensive Skin Data
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               What Skin Analysis Reveals
-            </motion.h2>
-            <motion.p className={styles.conditionsIntro} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.conditionsIntro} variants={fadeUp}>
               The Life Viz 3D generates clinical data across a wide range of skin parameters,
               directly informing which treatments will produce the best results for your skin.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.areasColumns}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div
+            <m.div
               className={styles.areasGroup}
               variants={fadeUp}
               whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
@@ -1090,9 +1090,9 @@ export default function SkinAnalysisPage() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </m.div>
 
-            <motion.div
+            <m.div
               className={styles.areasGroup}
               variants={fadeUp}
               whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
@@ -1106,8 +1106,8 @@ export default function SkinAnalysisPage() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -1116,26 +1116,26 @@ export default function SkinAnalysisPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.clinicIntroSection}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.clinicIntroBody}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div className={styles.clinicIntroLeft} variants={fadeUp}>
+            <m.div className={styles.clinicIntroLeft} variants={fadeUp}>
               <p className={styles.eyebrowDark}>Skin Analysis</p>
               <h2 className={styles.combinedHeading}>
                 Best Skin Analysis<br />Leicester Experience
               </h2>
-            </motion.div>
-            <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
+            </m.div>
+            <m.p className={styles.clinicIntroDesc} variants={fadeUp}>
               Experience the best 3D skin analysis in Leicester at The One Clinic. Our expert
               doctors use the Life Viz 3D imaging system to provide a complete, objective picture
               of your skin health. From identifying hidden UV damage to planning bespoke
               treatments, every recommendation is grounded in clinical data tailored to you.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
         </Container>
       </Section>
 
@@ -1144,29 +1144,29 @@ export default function SkinAnalysisPage() {
       ════════════════════════════════════════ */}
       <section className={styles.costBanner} data-section-theme="dark" aria-label="Skin analysis cost">
         <Container>
-          <motion.div
+          <m.div
             className={styles.costBannerInner}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
+            <m.p className={styles.costBannerEyebrow} variants={fadeUp}>
               Skin Analysis Cost at The One Clinic
-            </motion.p>
-            <motion.p className={styles.costBannerPrice} variants={fadeUp}>
+            </m.p>
+            <m.p className={styles.costBannerPrice} variants={fadeUp}>
               Skin Analysis From £50
-            </motion.p>
-            <motion.p className={styles.costBannerNote} variants={fadeUp}>
+            </m.p>
+            <m.p className={styles.costBannerNote} variants={fadeUp}>
               Often included as part of a treatment consultation. The final price will be confirmed
               when you book your appointment with our team.
-            </motion.p>
-            <motion.div variants={fadeUp}>
+            </m.p>
+            <m.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
                 Book A Consultation
               </BookConsultationButton>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </section>
 
@@ -1175,19 +1175,19 @@ export default function SkinAnalysisPage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               Why Choose The One Clinic For Skin Analysis
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.clinicReasonsGrid}
             variants={stagger(0.08)}
             initial="hidden"
@@ -1195,7 +1195,7 @@ export default function SkinAnalysisPage() {
             viewport={VIEWPORT}
           >
             {CLINIC_REASONS.map((r) => (
-              <motion.div
+              <m.div
                 key={r.n}
                 className={styles.clinicReasonCard}
                 variants={fadeUp}
@@ -1203,9 +1203,9 @@ export default function SkinAnalysisPage() {
               >
                 <span className={styles.clinicReasonNumber}>{r.n}</span>
                 <p className={styles.clinicReasonText}>{r.text}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -1220,20 +1220,20 @@ export default function SkinAnalysisPage() {
       <section className={styles.faqSection} data-section-theme="dark">
         <div className={styles.faqInner}>
           <Container>
-            <motion.div
+            <m.div
               className={styles.sectionHeaderCentre}
               variants={stagger(0.1)}
               initial="hidden"
               whileInView="show"
               viewport={VIEWPORT}
             >
-              <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
-              <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              <m.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</m.p>
+              <m.h2 className={styles.headingLight} variants={fadeUp}>
                 Frequently Asked Questions
-              </motion.h2>
-            </motion.div>
+              </m.h2>
+            </m.div>
 
-            <motion.div
+            <m.div
               className={styles.faqBody}
               variants={fadeUp}
               initial="hidden"
@@ -1267,7 +1267,7 @@ export default function SkinAnalysisPage() {
                   </button>
                 </div>
               )}
-            </motion.div>
+            </m.div>
           </Container>
         </div>
       </section>
@@ -1282,22 +1282,22 @@ export default function SkinAnalysisPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+            <m.p className={styles.eyebrowDark} variants={fadeUp}>
               Explore More
-            </motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Related Treatments
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.relatedGrid}
             variants={stagger(0.1)}
             initial="hidden"
@@ -1305,7 +1305,7 @@ export default function SkinAnalysisPage() {
             viewport={VIEWPORT}
           >
             {RELATED.map((r) => (
-              <motion.div key={r.title} variants={fadeUp}>
+              <m.div key={r.title} variants={fadeUp}>
                 <Link href={r.href} className={styles.relatedCard}>
                   <h3 className={styles.relatedTitle}>{r.title}</h3>
                   <p className={styles.relatedDesc}>{r.desc}</p>
@@ -1317,9 +1317,9 @@ export default function SkinAnalysisPage() {
                     </svg>
                   </span>
                 </Link>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 

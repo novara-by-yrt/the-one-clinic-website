@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import Accordion from '@/components/ui/Accordion';
@@ -44,22 +44,22 @@ export default function FAQ() {
   return (
     <Section variant="dark" data-section-theme="dark">
       <Container>
-        <motion.div
+        <m.div
           className={styles.header}
           variants={stagger()}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <motion.p className={styles.eyebrow} variants={fadeUp}>
+          <m.p className={styles.eyebrow} variants={fadeUp}>
             FAQ
-          </motion.p>
-          <motion.h2 className={styles.heading} variants={fadeUp}>
+          </m.p>
+          <m.h2 className={styles.heading} variants={fadeUp}>
             Frequently Asked Questions
-          </motion.h2>
-        </motion.div>
+          </m.h2>
+        </m.div>
 
-        <motion.div
+        <m.div
           className={styles.body}
           variants={fadeUp}
           initial="hidden"
@@ -67,7 +67,7 @@ export default function FAQ() {
           viewport={VIEWPORT}
         >
           <Accordion items={QUESTIONS} theme="light" />
-        </motion.div>
+        </m.div>
       </Container>
     </Section>
   );

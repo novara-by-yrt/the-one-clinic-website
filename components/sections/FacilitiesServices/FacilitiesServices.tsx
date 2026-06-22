@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
@@ -45,28 +45,28 @@ export default function FacilitiesServices() {
     <Section variant="light" data-section-theme="light" className={styles.section}>
       <Container>
         {/* Header */}
-        <motion.div
+        <m.div
           className={styles.header}
           variants={stagger()}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <motion.p className={styles.eyebrow} variants={fadeUp}>
+          <m.p className={styles.eyebrow} variants={fadeUp}>
             What We Offer
-          </motion.p>
-          <motion.h2 className={styles.heading} variants={fadeUp}>
+          </m.p>
+          <m.h2 className={styles.heading} variants={fadeUp}>
             Services Under One Roof
-          </motion.h2>
-          <motion.p className={styles.subtext} variants={fadeUp}>
+          </m.h2>
+          <m.p className={styles.subtext} variants={fadeUp}>
             Our range of treatments provide solutions for a number of wellbeing concerns.
             With everything you need under one roof, a visit to The One Clinic will leave
             you glowing from head to toe, inside and out.
-          </motion.p>
-        </motion.div>
+          </m.p>
+        </m.div>
 
         {/* Services grid */}
-        <motion.div
+        <m.div
           className={styles.grid}
           variants={stagger(0.08)}
           initial="hidden"
@@ -74,7 +74,7 @@ export default function FacilitiesServices() {
           viewport={VIEWPORT}
         >
           {SERVICES.map((s) => (
-            <motion.div key={s.number} className={styles.card} variants={fadeUp}>
+            <m.div key={s.number} className={styles.card} variants={fadeUp}>
               <div className={styles.cardTop}>
                 <span className={styles.number}>{s.number}</span>
                 <span className={styles.arrow} aria-hidden="true">
@@ -85,12 +85,12 @@ export default function FacilitiesServices() {
               </div>
               <h3 className={styles.cardTitle}>{s.title}</h3>
               <p className={styles.cardDesc}>{s.description}</p>
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
 
         {/* Team trust block */}
-        <motion.div
+        <m.div
           className={styles.teamTrust}
           variants={fadeUp}
           initial="hidden"
@@ -108,7 +108,7 @@ export default function FacilitiesServices() {
               <span aria-hidden="true" className={styles.ctaArrow}>→</span>
             </Link>
           </div>
-        </motion.div>
+        </m.div>
       </Container>
     </Section>
   );

@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { CLINIC_INFO } from '@/lib/clinic-info';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
@@ -11,29 +11,29 @@ export default function FinalCTA() {
   return (
     <Section variant="light" data-section-theme="light" className={styles.section}>
       <Container className={styles.container}>
-        <motion.div
+        <m.div
           className={styles.card}
           variants={stagger(0.18)}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <motion.p className={styles.eyebrow} variants={fadeUp}>
+          <m.p className={styles.eyebrow} variants={fadeUp}>
             Take the First Step
-          </motion.p>
+          </m.p>
 
-          <motion.h2 className={styles.heading} variants={fadeUp}>
+          <m.h2 className={styles.heading} variants={fadeUp}>
             Ready to Feel Your Best?
-          </motion.h2>
+          </m.h2>
 
-          <motion.div className={styles.rule} variants={fadeUp} aria-hidden="true" />
+          <m.div className={styles.rule} variants={fadeUp} aria-hidden="true" />
 
-          <motion.p className={styles.subtext} variants={fadeUp}>
+          <m.p className={styles.subtext} variants={fadeUp}>
             Our team is here to help. Book your consultation today and take
             control of your health and confidence.
-          </motion.p>
+          </m.p>
 
-          <motion.div className={styles.buttons} variants={fadeUp}>
+          <m.div className={styles.buttons} variants={fadeUp}>
             <button
               className={styles.btnPrimary}
               onClick={() => window.dispatchEvent(new CustomEvent('openBookConsultationModal'))}
@@ -48,8 +48,8 @@ export default function FinalCTA() {
             <a href={`tel:${CLINIC_INFO.phone.tel}`} className={styles.btnOutline}>
               Call {CLINIC_INFO.phone.display}
             </a>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </Container>
     </Section>
   );

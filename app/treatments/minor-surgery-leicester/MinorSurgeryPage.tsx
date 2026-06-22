@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Section            from '@/components/ui/Section';
 import Container          from '@/components/ui/Container';
 import Accordion          from '@/components/ui/Accordion';
@@ -377,7 +377,7 @@ export default function MinorSurgeryPage() {
         </div>
 
         <Container>
-          <motion.div
+          <m.div
             className={styles.heroInner}
             variants={stagger(0.12)}
             initial="hidden"
@@ -385,32 +385,32 @@ export default function MinorSurgeryPage() {
           >
             {/* Left: text */}
             <div className={styles.heroLeft}>
-              <motion.span className={styles.heroCategory} variants={fadeUp}>
+              <m.span className={styles.heroCategory} variants={fadeUp}>
                 Minor Surgery
-              </motion.span>
+              </m.span>
 
-              <motion.h1 className={styles.heroTitle} variants={fadeUp}>
+              <m.h1 className={styles.heroTitle} variants={fadeUp}>
                 Minor Surgery Leicester
-              </motion.h1>
+              </m.h1>
 
-              <motion.p className={styles.heroDesc} variants={fadeUp}>
+              <m.p className={styles.heroDesc} variants={fadeUp}>
                 Expert in-clinic minor surgical procedures performed under local anaesthetic.
                 No hospital stay. Fast access. Full aftercare included.
-              </motion.p>
+              </m.p>
 
-              <motion.div className={styles.heroCtas} variants={fadeUp}>
+              <m.div className={styles.heroCtas} variants={fadeUp}>
                 <BookConsultationButton className={styles.heroCtaPrimary}>
                   Book Appointment
                 </BookConsultationButton>
-              </motion.div>
+              </m.div>
 
               {/* Review badges */}
-              <motion.div variants={fadeUp}>
+              <m.div variants={fadeUp}>
                 <TrustBadges theme="dark" />
-              </motion.div>
+              </m.div>
 
               {/* Trust items */}
-              <motion.div className={styles.heroTrust} variants={fadeUp}>
+              <m.div className={styles.heroTrust} variants={fadeUp}>
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
@@ -433,11 +433,11 @@ export default function MinorSurgeryPage() {
                   </svg>
                   Local anaesthetic, no hospital stay
                 </span>
-              </motion.div>
+              </m.div>
             </div>
 
             {/* Right: image */}
-            <motion.div className={styles.heroImageWrap} variants={fadeUp}>
+            <m.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
                 src="/Minor surgery hero.png"
                 alt="Minor surgery procedure at The One Clinic Leicester"
@@ -448,8 +448,8 @@ export default function MinorSurgeryPage() {
               />
               {/* Subtle bottom-fade to blend with section */}
               <div className={styles.heroImageFade} aria-hidden="true" />
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </section>
 
@@ -458,7 +458,7 @@ export default function MinorSurgeryPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.whatIsGrid}
             variants={stagger(0.12)}
             initial="hidden"
@@ -466,8 +466,8 @@ export default function MinorSurgeryPage() {
             viewport={VIEWPORT}
           >
             {/* Left: text */}
-            <motion.div className={styles.whatIsContent} variants={stagger(0.12)}>
-              <motion.div className={styles.whatIsTextGroup} variants={fadeUp}>
+            <m.div className={styles.whatIsContent} variants={stagger(0.12)}>
+              <m.div className={styles.whatIsTextGroup} variants={fadeUp}>
                 <p className={styles.eyebrowDark}>About This Treatment</p>
                 <h2 className={styles.combinedHeading}>What is Minor Surgery?</h2>
                 <p className={styles.combinedDesc}>
@@ -482,16 +482,16 @@ export default function MinorSurgeryPage() {
                   environment, and full aftercare support so that each patient experiences a
                   smooth, reassuring journey from start to finish.
                 </p>
-              </motion.div>
-              <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
+              </m.div>
+              <m.div className={styles.combinedCtaWrapper} variants={fadeUp}>
                 <BookConsultationButton className={styles.combinedCta}>
                   Book Your Consultation
                 </BookConsultationButton>
-              </motion.div>
-            </motion.div>
+              </m.div>
+            </m.div>
 
             {/* Right: image panel */}
-            <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
+            <m.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
                 src="/images/Minor Surgery 2.png"
                 alt="What is minor surgery treatment at The One Clinic"
@@ -499,8 +499,8 @@ export default function MinorSurgeryPage() {
                 className={styles.whatIsVideoFrame}
                 sizes="(max-width: 900px) 100vw, 50vw"
               />
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -512,20 +512,20 @@ export default function MinorSurgeryPage() {
           <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
         </div>
         <Container className={styles.whiteBgContent}>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            <m.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</m.p>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Minor Surgery at a Glance
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.glanceStandaloneGrid}
             variants={stagger(0.08)}
             initial="hidden"
@@ -533,13 +533,13 @@ export default function MinorSurgeryPage() {
             viewport={VIEWPORT}
           >
             {AT_A_GLANCE.map((item) => (
-              <motion.div key={item.label} className={styles.glanceCard} variants={fadeUp}>
+              <m.div key={item.label} className={styles.glanceCard} variants={fadeUp}>
                 <span className={styles.glanceIcon}>{item.icon}</span>
                 <span className={styles.glanceLabel}>{item.label}</span>
                 <span className={styles.glanceValue}>{item.value}</span>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -548,26 +548,26 @@ export default function MinorSurgeryPage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <m.p className={styles.eyebrowLight} variants={fadeUp}>
               Our Approach
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               Our Minor Surgery Approach
-            </motion.h2>
-            <motion.p className={styles.combinationIntroText} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.combinationIntroText} variants={fadeUp}>
               At The One Clinic, we follow a rigorous three-stage approach to ensure every
               minor surgical procedure is safe, well-planned, and supported by expert aftercare.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.techCardsGrid}
             variants={stagger(0.1)}
             initial="hidden"
@@ -575,7 +575,7 @@ export default function MinorSurgeryPage() {
             viewport={VIEWPORT}
           >
             {APPROACH_CARDS.map((card) => (
-              <motion.div
+              <m.div
                 key={card.title}
                 className={styles.techCard}
                 variants={fadeUp}
@@ -584,11 +584,11 @@ export default function MinorSurgeryPage() {
                 <span className={styles.techCardEyebrow}>{card.eyebrow}</span>
                 <h3 className={styles.techCardTitle}>{card.title}</h3>
                 <p className={styles.techCardDesc}>{card.desc}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.finalResultsBanner}
             variants={fadeUp}
             initial="hidden"
@@ -601,7 +601,7 @@ export default function MinorSurgeryPage() {
               step of the way, delivering safe, effective, and compassionate minor surgical care
               without the need for a hospital visit.
             </p>
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -610,22 +610,22 @@ export default function MinorSurgeryPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.journeySection}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+            <m.p className={styles.eyebrowDark} variants={fadeUp}>
               What to Expect
-            </motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Your Minor Surgery Journey
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.ol
+          <m.ol
             className={styles.journeyList}
             variants={stagger(0.12)}
             initial="hidden"
@@ -634,7 +634,7 @@ export default function MinorSurgeryPage() {
             aria-label="Minor surgery journey steps"
           >
             {JOURNEY_STEPS.map((step) => (
-              <motion.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
+              <m.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
                 <div className={styles.stepLeft}>
                   <div className={styles.stepNumCircle} aria-hidden="true">{step.n}</div>
                   <div className={styles.stepConnector} aria-hidden="true" />
@@ -643,9 +643,9 @@ export default function MinorSurgeryPage() {
                   <h3 className={styles.stepTitle}>{step.title}</h3>
                   <p className={styles.stepDesc}>{step.desc}</p>
                 </div>
-              </motion.li>
+              </m.li>
             ))}
-          </motion.ol>
+          </m.ol>
         </Container>
       </Section>
 
@@ -657,19 +657,19 @@ export default function MinorSurgeryPage() {
           <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
         </div>
         <Container className={styles.whiteBgContent}>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Benefits of Minor Surgery at The One Clinic
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.treatedBenefitsGrid}
             variants={stagger(0.08)}
             initial="hidden"
@@ -677,7 +677,7 @@ export default function MinorSurgeryPage() {
             viewport={VIEWPORT}
           >
             {TREATED_BENEFITS.map((b) => (
-              <motion.div
+              <m.div
                 key={b.title}
                 className={styles.treatedBenefitCard}
                 variants={fadeUp}
@@ -688,9 +688,9 @@ export default function MinorSurgeryPage() {
                 </span>
                 <h3 className={styles.treatedBenefitTitle}>{b.title}</h3>
                 <p className={styles.treatedBenefitDesc}>{b.desc}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -699,50 +699,50 @@ export default function MinorSurgeryPage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <m.p className={styles.eyebrowLight} variants={fadeUp}>
               Is This Right for You?
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               Who is Suitable for Minor Surgery?
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.eligibilityWrap}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
+            <m.p className={styles.eligibilityIntro} variants={fadeUp}>
               Minor surgery at The One Clinic is suitable for:
-            </motion.p>
-            <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
+            </m.p>
+            <m.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
               {ELIGIBILITY_SUITABLE.map((item) => (
-                <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
+                <m.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
                   <span className={styles.eligibilityCheck} aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                       <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </span>
                   <span>{item}</span>
-                </motion.li>
+                </m.li>
               ))}
-            </motion.ul>
+            </m.ul>
 
-            <motion.p className={styles.eligibilityIntro} variants={fadeUp} style={{ marginTop: '2rem' }}>
+            <m.p className={styles.eligibilityIntro} variants={fadeUp} style={{ marginTop: '2rem' }}>
               It may not be suitable if you have:
-            </motion.p>
-            <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
+            </m.p>
+            <m.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
               {ELIGIBILITY_NOT_SUITABLE.map((item) => (
-                <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
+                <m.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
                   <span className={styles.eligibilityCheck} aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                       <line x1="3" y1="3" x2="11" y2="11" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
@@ -750,20 +750,20 @@ export default function MinorSurgeryPage() {
                     </svg>
                   </span>
                   <span>{item}</span>
-                </motion.li>
+                </m.li>
               ))}
-            </motion.ul>
+            </m.ul>
 
-            <motion.p className={styles.eligibilityClosing} variants={fadeUp}>
+            <m.p className={styles.eligibilityClosing} variants={fadeUp}>
               If you are unsure whether minor surgery is right for you, book a consultation and
               our doctors will assess your suitability and recommend the most appropriate treatment.
-            </motion.p>
-            <motion.div variants={fadeUp}>
+            </m.p>
+            <m.div variants={fadeUp}>
               <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
                 Book Your Consultation
               </BookConsultationButton>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -772,48 +772,48 @@ export default function MinorSurgeryPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               How Does Minor Surgery Work?
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.howTextGrid}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.howPara} variants={fadeUp}>
+            <m.p className={styles.howPara} variants={fadeUp}>
               Each procedure begins with full consent and a pre-assessment to review your medical
               history, medications, and allergy status. The treatment area is cleaned and prepared
               in a sterile environment before local anaesthetic is precisely infiltrated to numb
               the site completely.
-            </motion.p>
-            <motion.p className={styles.howPara} variants={fadeUp}>
+            </m.p>
+            <m.p className={styles.howPara} variants={fadeUp}>
               Our doctors then perform the excision or procedure using fine surgical instruments,
               closing the wound with sutures or an appropriate dressing as required. Histological
               analysis of removed tissue is available on request, providing a laboratory diagnosis
               for your peace of mind.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.howCoversWrap}
             variants={stagger(0.08)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.howCoversLabel} variants={fadeUp}>Minor Surgery Covers</motion.p>
-            <motion.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
+            <m.p className={styles.howCoversLabel} variants={fadeUp}>Minor Surgery Covers</m.p>
+            <m.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
               {[
                 'Skin lesion & mole removal',
                 'Cyst & lipoma excision',
@@ -822,17 +822,17 @@ export default function MinorSurgeryPage() {
                 'Haemorrhoid removal',
                 'Excision biopsy & histology',
               ].map((item) => (
-                <motion.li key={item} className={styles.howCoversItem} variants={fadeUp}>
+                <m.li key={item} className={styles.howCoversItem} variants={fadeUp}>
                   <span className={styles.howCoversCheck} aria-hidden="true">
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                       <polyline points="2,6 5,9 10,3" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </span>
                   {item}
-                </motion.li>
+                </m.li>
               ))}
-            </motion.ul>
-          </motion.div>
+            </m.ul>
+          </m.div>
         </Container>
       </Section>
 
@@ -841,22 +841,22 @@ export default function MinorSurgeryPage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <m.p className={styles.eyebrowLight} variants={fadeUp}>
               Post-Treatment
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               What to Expect
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.resultsAfterGrid}
             variants={stagger(0.1)}
             initial="hidden"
@@ -864,7 +864,7 @@ export default function MinorSurgeryPage() {
             viewport={VIEWPORT}
           >
             {/* Card 1 */}
-            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+            <m.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
                   {WHAT_TO_EXPECT_CARDS[0].icon}
@@ -874,10 +874,10 @@ export default function MinorSurgeryPage() {
               <p className={styles.resultsAfterCardBody}>{WHAT_TO_EXPECT_CARDS[0].body}</p>
               <div className={styles.resultsAfterCardSpacer} />
               <p className={styles.resultsAfterCardNote}>{WHAT_TO_EXPECT_CARDS[0].note}</p>
-            </motion.div>
+            </m.div>
 
             {/* Card 2 */}
-            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+            <m.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
                   {WHAT_TO_EXPECT_CARDS[1].icon}
@@ -893,10 +893,10 @@ export default function MinorSurgeryPage() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </m.div>
 
             {/* Card 3 */}
-            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+            <m.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
                   {WHAT_TO_EXPECT_CARDS[2].icon}
@@ -906,8 +906,8 @@ export default function MinorSurgeryPage() {
               <p className={styles.resultsAfterCardBody}>{WHAT_TO_EXPECT_CARDS[2].body}</p>
               <div className={styles.resultsAfterCardSpacer} />
               <p className={styles.resultsAfterCardNote}>{WHAT_TO_EXPECT_CARDS[2].note}</p>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -919,25 +919,25 @@ export default function MinorSurgeryPage() {
           <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
         </div>
         <Container className={styles.whiteBgContent}>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+            <m.p className={styles.eyebrowDark} variants={fadeUp}>
               What We Offer
-            </motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Procedures We Perform
-            </motion.h2>
-            <motion.p className={styles.beforeAfterSubheading} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.beforeAfterSubheading} variants={fadeUp}>
               Our experienced doctors perform a wide range of minor surgical procedures at The One Clinic, Leicester.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.techCardsGrid}
             variants={stagger(0.08)}
             initial="hidden"
@@ -945,7 +945,7 @@ export default function MinorSurgeryPage() {
             viewport={VIEWPORT}
           >
             {PROCEDURES_WE_PERFORM.map((proc) => (
-              <motion.div
+              <m.div
                 key={proc.title}
                 className={styles.treatedBenefitCard}
                 variants={fadeUp}
@@ -954,9 +954,9 @@ export default function MinorSurgeryPage() {
                 <span className={styles.techCardEyebrow}>{proc.eyebrow}</span>
                 <h3 className={styles.treatedBenefitTitle}>{proc.title}</h3>
                 <p className={styles.treatedBenefitDesc}>{proc.desc}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -980,25 +980,25 @@ export default function MinorSurgeryPage() {
           />
         </div>
         <Container>
-          <motion.div
+          <m.div
             className={styles.ctaBannerContent}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
+            <m.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
               Skilled Hands.<br />Swift Recovery.
-            </motion.h2>
-            <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.ctaBannerSub} variants={fadeUp}>
               Let our expert doctors assess and perform your procedure today.
-            </motion.p>
-            <motion.div variants={fadeUp}>
+            </m.p>
+            <m.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
                 Book Consultation
               </BookConsultationButton>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </section>
 
@@ -1007,33 +1007,33 @@ export default function MinorSurgeryPage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark" className={styles.conditionsSection}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <m.p className={styles.eyebrowLight} variants={fadeUp}>
               Areas &amp; Procedures
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               Where Can Minor Surgery Be Performed?
-            </motion.h2>
-            <motion.p className={styles.conditionsIntro} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.conditionsIntro} variants={fadeUp}>
               Our in-clinic minor surgery covers a wide range of body locations and procedure
               types, all performed under local anaesthetic.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.areasColumns}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div
+            <m.div
               className={styles.areasGroup}
               variants={fadeUp}
               whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
@@ -1047,9 +1047,9 @@ export default function MinorSurgeryPage() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </m.div>
 
-            <motion.div
+            <m.div
               className={styles.areasGroup}
               variants={fadeUp}
               whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
@@ -1063,8 +1063,8 @@ export default function MinorSurgeryPage() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -1073,26 +1073,26 @@ export default function MinorSurgeryPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.clinicIntroSection}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.clinicIntroBody}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div className={styles.clinicIntroLeft} variants={fadeUp}>
+            <m.div className={styles.clinicIntroLeft} variants={fadeUp}>
               <p className={styles.eyebrowDark}>Minor Surgery</p>
               <h2 className={styles.combinedHeading}>
                 Best Minor Surgery<br />Leicester Experience
               </h2>
-            </motion.div>
-            <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
+            </m.div>
+            <m.p className={styles.clinicIntroDesc} variants={fadeUp}>
               Experience expert minor surgery in Leicester at The One Clinic. Our GMC-registered
               doctors deliver safe, precise in-clinic procedures under local anaesthetic, covering
               everything from skin lesion removal to ingrown toenail treatment and haemorrhoid care.
               Enjoy fast access, minimal downtime, and personalised aftercare tailored to you.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
         </Container>
       </Section>
 
@@ -1101,29 +1101,29 @@ export default function MinorSurgeryPage() {
       ════════════════════════════════════════ */}
       <section className={styles.costBanner} data-section-theme="dark" aria-label="Minor surgery cost">
         <Container>
-          <motion.div
+          <m.div
             className={styles.costBannerInner}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
+            <m.p className={styles.costBannerEyebrow} variants={fadeUp}>
               Minor Surgery Cost at The One Clinic
-            </motion.p>
-            <motion.p className={styles.costBannerPrice} variants={fadeUp}>
+            </m.p>
+            <m.p className={styles.costBannerPrice} variants={fadeUp}>
               Minor Surgery From £250
-            </motion.p>
-            <motion.p className={styles.costBannerNote} variants={fadeUp}>
+            </m.p>
+            <m.p className={styles.costBannerNote} variants={fadeUp}>
               The price depends on the procedure type and complexity. A full quote will be
               provided following your initial consultation with our expert.
-            </motion.p>
-            <motion.div variants={fadeUp}>
+            </m.p>
+            <m.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
                 Book A Consultation
               </BookConsultationButton>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </section>
 
@@ -1132,19 +1132,19 @@ export default function MinorSurgeryPage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               Why Choose The One Clinic For Minor Surgery
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.clinicReasonsGrid}
             variants={stagger(0.08)}
             initial="hidden"
@@ -1152,7 +1152,7 @@ export default function MinorSurgeryPage() {
             viewport={VIEWPORT}
           >
             {CLINIC_REASONS.map((r) => (
-              <motion.div
+              <m.div
                 key={r.n}
                 className={styles.clinicReasonCard}
                 variants={fadeUp}
@@ -1160,9 +1160,9 @@ export default function MinorSurgeryPage() {
               >
                 <span className={styles.clinicReasonNumber}>{r.n}</span>
                 <p className={styles.clinicReasonText}>{r.text}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -1177,20 +1177,20 @@ export default function MinorSurgeryPage() {
       <section className={styles.faqSection} data-section-theme="dark">
         <div className={styles.faqInner}>
           <Container>
-            <motion.div
+            <m.div
               className={styles.sectionHeaderCentre}
               variants={stagger(0.1)}
               initial="hidden"
               whileInView="show"
               viewport={VIEWPORT}
             >
-              <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
-              <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              <m.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</m.p>
+              <m.h2 className={styles.headingLight} variants={fadeUp}>
                 Frequently Asked Questions
-              </motion.h2>
-            </motion.div>
+              </m.h2>
+            </m.div>
 
-            <motion.div
+            <m.div
               className={styles.faqBody}
               variants={fadeUp}
               initial="hidden"
@@ -1224,7 +1224,7 @@ export default function MinorSurgeryPage() {
                   </button>
                 </div>
               )}
-            </motion.div>
+            </m.div>
           </Container>
         </div>
       </section>
@@ -1239,22 +1239,22 @@ export default function MinorSurgeryPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+            <m.p className={styles.eyebrowDark} variants={fadeUp}>
               Explore More
-            </motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Related Treatments
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.relatedGrid}
             variants={stagger(0.1)}
             initial="hidden"
@@ -1262,7 +1262,7 @@ export default function MinorSurgeryPage() {
             viewport={VIEWPORT}
           >
             {RELATED.map((r) => (
-              <motion.div key={r.title} variants={fadeUp}>
+              <m.div key={r.title} variants={fadeUp}>
                 <Link href={r.href} className={styles.relatedCard}>
                   <h3 className={styles.relatedTitle}>{r.title}</h3>
                   <p className={styles.relatedDesc}>{r.desc}</p>
@@ -1274,9 +1274,9 @@ export default function MinorSurgeryPage() {
                     </svg>
                   </span>
                 </Link>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 

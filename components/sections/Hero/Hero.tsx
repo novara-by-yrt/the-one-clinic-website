@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { m, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import Script from 'next/script';
 import Container from '@/components/ui/Container';
@@ -116,25 +116,25 @@ export default function Hero({ showVideo = true }: { showVideo?: boolean }) {
       <div className={styles.gridOverlay} aria-hidden="true" />
 
       {/* ── Animated content wrapper ────────────────────────── */}
-      <motion.div className={styles.contentWrapper} style={{ y: contentY, opacity }}>
+      <m.div className={styles.contentWrapper} style={{ y: contentY, opacity }}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.content}
             variants={CONTAINER_VARIANTS}
             initial="hidden"
             animate="show"
           >
             {/* Eyebrow label */}
-            <motion.p
+            <m.p
               className={styles.eyebrow}
               variants={FADE_UP}
               transition={TRANSITION_SMOOTH}
             >
               Medical &amp; Aesthetic Care, Leicester
-            </motion.p>
+            </m.p>
 
             {/* H1 Headline */}
-            <motion.h1
+            <m.h1
               className={styles.headline}
               variants={FADE_UP}
               transition={TRANSITION_SMOOTH}
@@ -142,20 +142,20 @@ export default function Hero({ showVideo = true }: { showVideo?: boolean }) {
               Where Expertise
               <br />
               <span className={styles.headlineAccent}>Meets Care</span>
-            </motion.h1>
+            </m.h1>
 
             {/* Subtext */}
-            <motion.p
+            <m.p
               className={styles.subtext}
               variants={FADE_UP}
               transition={TRANSITION_SMOOTH}
             >
               Advanced medical, aesthetic and wellness care, 
               all under one roof.
-            </motion.p>
+            </m.p>
 
             {/* CTAs */}
-            <motion.div
+            <m.div
               className={styles.ctas}
               variants={FADE_UP}
               transition={TRANSITION_SMOOTH}
@@ -163,21 +163,21 @@ export default function Hero({ showVideo = true }: { showVideo?: boolean }) {
               <Button variant="primary" theme="dark" onClick={() => window.dispatchEvent(new CustomEvent('openBookConsultationModal'))}>
                 Book a Consultation
               </Button>
-            </motion.div>
+            </m.div>
 
             {/* Trust badges */}
-            <motion.div
+            <m.div
               variants={FADE_UP}
               transition={{ ...TRANSITION_SMOOTH, delay: 0.1 }}
             >
               <TrustBadges theme="dark" />
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
-      </motion.div>
+      </m.div>
 
       {/* ── Scroll indicator ─────────────────────────────────── */}
-      <motion.div
+      <m.div
         className={styles.scrollIndicator}
         aria-hidden="true"
         variants={FADE_IN}
@@ -185,13 +185,13 @@ export default function Hero({ showVideo = true }: { showVideo?: boolean }) {
         animate="show"
         transition={{ delay: 1.4, duration: 0.8 }}
       >
-        <motion.span
+        <m.span
           className={styles.scrollLine}
           animate={{ scaleY: [0.4, 1, 0.4] }}
           transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
         />
         <span className={styles.scrollLabel}>Scroll</span>
-      </motion.div>
+      </m.div>
     </section>
   );
 }

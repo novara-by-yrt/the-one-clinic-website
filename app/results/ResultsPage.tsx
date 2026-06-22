@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
@@ -83,7 +83,7 @@ function MobileSlideshow() {
       <div className={styles.slideshowInner}>
         <div className={styles.slideshowTrack} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
           <AnimatePresence custom={direction} mode="popLayout" initial={false}>
-            <motion.div
+            <m.div
               key={active}
               className={styles.slide}
               custom={direction}
@@ -100,7 +100,7 @@ function MobileSlideshow() {
                 className={styles.slideImage}
                 sizes="100vw"
               />
-            </motion.div>
+            </m.div>
           </AnimatePresence>
         </div>
         <button className={`${styles.arrow} ${styles.arrowPrev}`} onClick={() => go(active - 1)} aria-label="Previous">
@@ -138,19 +138,19 @@ export default function ResultsPage() {
       <section className={styles.hero} aria-label="Results hero" data-section-theme="dark">
         <div className={styles.heroGrid} aria-hidden="true" />
         <Container>
-          <motion.div
+          <m.div
             className={styles.heroContent}
             variants={stagger(0.15)}
             initial="hidden"
             animate="show"
           >
-            <motion.p className={styles.heroEyebrow} variants={fadeUp}>Patient Outcomes</motion.p>
-            <motion.h1 className={styles.heroTitle} variants={fadeUp}>Real Transformations</motion.h1>
-            <motion.p className={styles.heroDesc} variants={fadeUp}>
+            <m.p className={styles.heroEyebrow} variants={fadeUp}>Patient Outcomes</m.p>
+            <m.h1 className={styles.heroTitle} variants={fadeUp}>Real Transformations</m.h1>
+            <m.p className={styles.heroDesc} variants={fadeUp}>
               Genuine before and after results from our patients, delivered by
               experienced, qualified doctors at The One Clinic Leicester.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
         </Container>
       </section>
 
@@ -168,7 +168,7 @@ export default function ResultsPage() {
 
         <Container className={styles.imagesContent}>
           {/* Desktop grid */}
-          <motion.div
+          <m.div
             className={styles.grid}
             variants={stagger(0.12)}
             initial="hidden"
@@ -176,7 +176,7 @@ export default function ResultsPage() {
             viewport={VIEWPORT}
           >
             {IMAGES.map((img, i) => (
-              <motion.div key={i} className={styles.imageCardWrap} variants={fadeUp}>
+              <m.div key={i} className={styles.imageCardWrap} variants={fadeUp}>
                 <p className={styles.imageTitle}>{img.title}</p>
                 <div className={styles.imageCard}>
                   <Image
@@ -187,9 +187,9 @@ export default function ResultsPage() {
                     sizes="(max-width: 768px) 0vw, (max-width: 1024px) 50vw, 25vw"
                   />
                 </div>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
 
           {/* Mobile slideshow */}
           <div className={styles.mobileOnly}>
@@ -197,7 +197,7 @@ export default function ResultsPage() {
           </div>
 
           {/* Coming soon notice */}
-          <motion.div
+          <m.div
             className={styles.comingSoon}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -211,7 +211,7 @@ export default function ResultsPage() {
                 across our full range of treatments.
               </p>
             </div>
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 

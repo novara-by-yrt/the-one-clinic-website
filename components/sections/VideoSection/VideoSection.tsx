@@ -1,7 +1,7 @@
 'use client';
 
 import Script from 'next/script';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
@@ -29,26 +29,26 @@ export default function VideoSection() {
     <Section variant="dark" data-section-theme="dark">
       <Container>
         {/* Header */}
-        <motion.div
+        <m.div
           className={styles.header}
           variants={stagger()}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <motion.p className={styles.eyebrow} variants={fadeUp}>
+          <m.p className={styles.eyebrow} variants={fadeUp}>
             Watch &amp; Learn
-          </motion.p>
-          <motion.h2 className={styles.heading} variants={fadeUp}>
+          </m.p>
+          <m.h2 className={styles.heading} variants={fadeUp}>
             The One Clinic Where Expertise Meets Care
-          </motion.h2>
-          <motion.p className={styles.subtext} variants={fadeUp}>
+          </m.h2>
+          <m.p className={styles.subtext} variants={fadeUp}>
             Experience our holistic approach and the real transformations our clients experience.
-          </motion.p>
-        </motion.div>
+          </m.p>
+        </m.div>
 
         {/* Video grid */}
-        <motion.div
+        <m.div
           className={styles.grid}
           variants={stagger(0.15)}
           initial="hidden"
@@ -56,7 +56,7 @@ export default function VideoSection() {
           viewport={VIEWPORT}
         >
           {VIDEOS.map((video) => (
-            <motion.div key={video.id} className={styles.videoCard} variants={fadeUp}>
+            <m.div key={video.id} className={styles.videoCard} variants={fadeUp}>
               {/* 16:9 responsive wrapper */}
               <div className={styles.videoWrapper}>
                 <iframe
@@ -71,9 +71,9 @@ export default function VideoSection() {
                   name="wistia_embed"
                 />
               </div>
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
       </Container>
 
       {/* Wistia player, loaded once, lazy */}

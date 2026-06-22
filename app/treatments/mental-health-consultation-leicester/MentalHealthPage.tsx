@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Section            from '@/components/ui/Section';
 import Container          from '@/components/ui/Container';
 import Accordion          from '@/components/ui/Accordion';
@@ -345,7 +345,7 @@ export default function MentalHealthPage() {
         </div>
 
         <Container>
-          <motion.div
+          <m.div
             className={styles.heroInner}
             variants={stagger(0.12)}
             initial="hidden"
@@ -353,32 +353,32 @@ export default function MentalHealthPage() {
           >
             {/* Left: text */}
             <div className={styles.heroLeft}>
-              <motion.span className={styles.heroCategory} variants={fadeUp}>
+              <m.span className={styles.heroCategory} variants={fadeUp}>
                 Health &amp; Wellbeing
-              </motion.span>
+              </m.span>
 
-              <motion.h1 className={styles.heroTitle} variants={fadeUp}>
+              <m.h1 className={styles.heroTitle} variants={fadeUp}>
                 Mental Health Consultation Leicester
-              </motion.h1>
+              </m.h1>
 
-              <motion.p className={styles.heroDesc} variants={fadeUp}>
+              <m.p className={styles.heroDesc} variants={fadeUp}>
                 Private, Compassionate Support for Your Mental Wellbeing , fast access, no waiting
                 lists, and expert doctors who truly listen.
-              </motion.p>
+              </m.p>
 
-              <motion.div className={styles.heroCtas} variants={fadeUp}>
+              <m.div className={styles.heroCtas} variants={fadeUp}>
                 <BookConsultationButton className={styles.heroCtaPrimary}>
                   Book Appointment
                 </BookConsultationButton>
-              </motion.div>
+              </m.div>
 
               {/* Review badges */}
-              <motion.div variants={fadeUp}>
+              <m.div variants={fadeUp}>
                 <TrustBadges theme="dark" />
-              </motion.div>
+              </m.div>
 
               {/* Trust items */}
-              <motion.div className={styles.heroTrust} variants={fadeUp}>
+              <m.div className={styles.heroTrust} variants={fadeUp}>
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
@@ -402,11 +402,11 @@ export default function MentalHealthPage() {
                   </svg>
                   Same-day appointments available
                 </span>
-              </motion.div>
+              </m.div>
             </div>
 
             {/* Right: image */}
-            <motion.div className={styles.heroImageWrap} variants={fadeUp}>
+            <m.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
                 src="/images/Hero Section Mental Health Consultation.jpg"
                 alt="Mental health consultation at The One Clinic Leicester"
@@ -417,8 +417,8 @@ export default function MentalHealthPage() {
               />
               {/* Subtle bottom-fade to blend with section */}
               <div className={styles.heroImageFade} aria-hidden="true" />
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </section>
 
@@ -427,7 +427,7 @@ export default function MentalHealthPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.whatIsGrid}
             variants={stagger(0.12)}
             initial="hidden"
@@ -435,8 +435,8 @@ export default function MentalHealthPage() {
             viewport={VIEWPORT}
           >
             {/* Left: text */}
-            <motion.div className={styles.whatIsContent} variants={stagger(0.12)}>
-              <motion.div className={styles.whatIsTextGroup} variants={fadeUp}>
+            <m.div className={styles.whatIsContent} variants={stagger(0.12)}>
+              <m.div className={styles.whatIsTextGroup} variants={fadeUp}>
                 <p className={styles.eyebrowDark}>About This Service</p>
                 <h2 className={styles.combinedHeading}>What is a Mental Health Consultation?</h2>
                 <p className={styles.combinedDesc}>
@@ -447,16 +447,16 @@ export default function MentalHealthPage() {
                   provide confidential, non-judgemental, evidence-based care that treats mind and
                   body together.
                 </p>
-              </motion.div>
-              <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
+              </m.div>
+              <m.div className={styles.combinedCtaWrapper} variants={fadeUp}>
                 <BookConsultationButton className={styles.combinedCta}>
                   Book Your Consultation
                 </BookConsultationButton>
-              </motion.div>
-            </motion.div>
+              </m.div>
+            </m.div>
 
             {/* Right: image panel */}
-            <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
+            <m.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
                 src="/images/What is Mental Health Consultation.jpg"
                 alt="Compassionate doctor at The One Clinic ready to help with mental health"
@@ -464,8 +464,8 @@ export default function MentalHealthPage() {
                 className={styles.whatIsVideoFrame}
                 sizes="(max-width: 900px) 100vw, 50vw"
               />
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -477,20 +477,20 @@ export default function MentalHealthPage() {
           <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
         </div>
         <Container className={styles.whiteBgContent}>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            <m.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</m.p>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Mental Health Consultation at a Glance
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.glanceStandaloneGrid}
             variants={stagger(0.08)}
             initial="hidden"
@@ -498,13 +498,13 @@ export default function MentalHealthPage() {
             viewport={VIEWPORT}
           >
             {AT_A_GLANCE.map((item) => (
-              <motion.div key={item.label} className={styles.glanceCard} variants={fadeUp}>
+              <m.div key={item.label} className={styles.glanceCard} variants={fadeUp}>
                 <span className={styles.glanceIcon}>{item.icon}</span>
                 <span className={styles.glanceLabel}>{item.label}</span>
                 <span className={styles.glanceValue}>{item.value}</span>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -513,27 +513,27 @@ export default function MentalHealthPage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <m.p className={styles.eyebrowLight} variants={fadeUp}>
               Our Approach
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               Our Mental Health Approach
-            </motion.h2>
-            <motion.p className={styles.combinationIntroText} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.combinationIntroText} variants={fadeUp}>
               At The One Clinic, our approach to mental health is holistic, evidence-based, and
               centred entirely on you , combining thorough clinical assessment with compassionate,
               personalised care.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.techCardsGrid}
             variants={stagger(0.1)}
             initial="hidden"
@@ -541,7 +541,7 @@ export default function MentalHealthPage() {
             viewport={VIEWPORT}
           >
             {APPROACH_CARDS.map((card) => (
-              <motion.div
+              <m.div
                 key={card.title}
                 className={styles.techCard}
                 variants={fadeUp}
@@ -550,11 +550,11 @@ export default function MentalHealthPage() {
                 <span className={styles.techCardEyebrow}>{card.eyebrow}</span>
                 <h3 className={styles.techCardTitle}>{card.title}</h3>
                 <p className={styles.techCardDesc}>{card.desc}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.finalResultsBanner}
             variants={fadeUp}
             initial="hidden"
@@ -567,7 +567,7 @@ export default function MentalHealthPage() {
               your mental wellbeing with professionalism, compassion, and the highest clinical
               standards , because your mental health matters as much as your physical health.
             </p>
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -576,22 +576,22 @@ export default function MentalHealthPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.journeySection}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+            <m.p className={styles.eyebrowDark} variants={fadeUp}>
               What to Expect
-            </motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Your Mental Health Journey
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.ol
+          <m.ol
             className={styles.journeyList}
             variants={stagger(0.12)}
             initial="hidden"
@@ -600,7 +600,7 @@ export default function MentalHealthPage() {
             aria-label="Mental health consultation journey steps"
           >
             {JOURNEY_STEPS.map((step) => (
-              <motion.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
+              <m.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
                 <div className={styles.stepLeft}>
                   <div className={styles.stepNumCircle} aria-hidden="true">{step.n}</div>
                   <div className={styles.stepConnector} aria-hidden="true" />
@@ -609,9 +609,9 @@ export default function MentalHealthPage() {
                   <h3 className={styles.stepTitle}>{step.title}</h3>
                   <p className={styles.stepDesc}>{step.desc}</p>
                 </div>
-              </motion.li>
+              </m.li>
             ))}
-          </motion.ol>
+          </m.ol>
         </Container>
       </Section>
 
@@ -623,19 +623,19 @@ export default function MentalHealthPage() {
           <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
         </div>
         <Container className={styles.whiteBgContent}>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Benefits of Private Mental Health Care
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.treatedBenefitsGrid}
             variants={stagger(0.08)}
             initial="hidden"
@@ -643,7 +643,7 @@ export default function MentalHealthPage() {
             viewport={VIEWPORT}
           >
             {BENEFITS.map((b) => (
-              <motion.div
+              <m.div
                 key={b.title}
                 className={styles.treatedBenefitCard}
                 variants={fadeUp}
@@ -654,9 +654,9 @@ export default function MentalHealthPage() {
                 </span>
                 <h3 className={styles.treatedBenefitTitle}>{b.title}</h3>
                 <p className={styles.treatedBenefitDesc}>{b.desc}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -665,50 +665,50 @@ export default function MentalHealthPage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <m.p className={styles.eyebrowLight} variants={fadeUp}>
               Is This Right for You?
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               Who Is This Service Suitable For?
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.eligibilityWrap}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
+            <m.p className={styles.eligibilityIntro} variants={fadeUp}>
               Our mental health consultation service is suitable for adults who are:
-            </motion.p>
-            <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
+            </m.p>
+            <m.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
               {ELIGIBILITY_SUITABLE.map((item) => (
-                <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
+                <m.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
                   <span className={styles.eligibilityCheck} aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                       <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </span>
                   <span>{item}</span>
-                </motion.li>
+                </m.li>
               ))}
-            </motion.ul>
+            </m.ul>
 
-            <motion.p className={styles.eligibilityIntro} variants={fadeUp} style={{ marginTop: '2rem' }}>
+            <m.p className={styles.eligibilityIntro} variants={fadeUp} style={{ marginTop: '2rem' }}>
               This service is <strong>not</strong> suitable for:
-            </motion.p>
-            <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
+            </m.p>
+            <m.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
               {ELIGIBILITY_NOT_SUITABLE.map((item) => (
-                <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
+                <m.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
                   <span className={styles.eligibilityCheck} aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                       <line x1="3" y1="3" x2="11" y2="11" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
@@ -716,20 +716,20 @@ export default function MentalHealthPage() {
                     </svg>
                   </span>
                   <span>{item}</span>
-                </motion.li>
+                </m.li>
               ))}
-            </motion.ul>
+            </m.ul>
 
-            <motion.p className={styles.eligibilityClosing} variants={fadeUp}>
+            <m.p className={styles.eligibilityClosing} variants={fadeUp}>
               If you are unsure whether our service is right for you, please call the clinic and
               our team will advise you on the best path forward.
-            </motion.p>
-            <motion.div variants={fadeUp}>
+            </m.p>
+            <m.div variants={fadeUp}>
               <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
                 Book Your Consultation
               </BookConsultationButton>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -738,48 +738,48 @@ export default function MentalHealthPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               How Does Our Mental Health Service Work?
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.howTextGrid}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.howPara} variants={fadeUp}>
+            <m.p className={styles.howPara} variants={fadeUp}>
               Our structured mental health assessment uses validated clinical tools including the
               PHQ-9 for depression and the GAD-7 for anxiety, alongside a detailed personal and
               medical history. Your doctor will listen carefully, ask the right questions, and work
               with you to understand the full picture of your mental wellbeing.
-            </motion.p>
-            <motion.p className={styles.howPara} variants={fadeUp}>
+            </m.p>
+            <m.p className={styles.howPara} variants={fadeUp}>
               Following the assessment, your doctor will discuss all appropriate options with you.
               This may include medication prescribing, referral for psychotherapy or specialist
               psychiatric input, sick notes or fit-for-work letters, and a plan for ongoing GP-led
               monitoring and support , all co-ordinated seamlessly within the clinic.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.howCoversWrap}
             variants={stagger(0.08)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.howCoversLabel} variants={fadeUp}>The Service Includes</motion.p>
-            <motion.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
+            <m.p className={styles.howCoversLabel} variants={fadeUp}>The Service Includes</m.p>
+            <m.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
               {[
                 'Structured mental health assessment (PHQ-9, GAD-7)',
                 'Detailed personal & medical history review',
@@ -788,17 +788,17 @@ export default function MentalHealthPage() {
                 'Sick notes & fit-for-work letters',
                 'Ongoing GP support & monitoring',
               ].map((item) => (
-                <motion.li key={item} className={styles.howCoversItem} variants={fadeUp}>
+                <m.li key={item} className={styles.howCoversItem} variants={fadeUp}>
                   <span className={styles.howCoversCheck} aria-hidden="true">
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                       <polyline points="2,6 5,9 10,3" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </span>
                   {item}
-                </motion.li>
+                </m.li>
               ))}
-            </motion.ul>
-          </motion.div>
+            </m.ul>
+          </m.div>
         </Container>
       </Section>
 
@@ -807,22 +807,22 @@ export default function MentalHealthPage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <m.p className={styles.eyebrowLight} variants={fadeUp}>
               Your Experience
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               What to Expect
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.resultsAfterGrid}
             variants={stagger(0.1)}
             initial="hidden"
@@ -830,7 +830,7 @@ export default function MentalHealthPage() {
             viewport={VIEWPORT}
           >
             {WHAT_TO_EXPECT_CARDS.map((card) => (
-              <motion.div key={card.title} className={styles.resultsAfterCard} variants={fadeUp}>
+              <m.div key={card.title} className={styles.resultsAfterCard} variants={fadeUp}>
                 <div className={styles.resultsAfterCardHead}>
                   <span className={styles.resultsAfterCardIcon} aria-hidden="true">
                     {card.icon}
@@ -840,9 +840,9 @@ export default function MentalHealthPage() {
                 <p className={styles.resultsAfterCardBody}>{card.body}</p>
                 <div className={styles.resultsAfterCardSpacer} />
                 <p className={styles.resultsAfterCardNote}>{card.note}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -854,26 +854,26 @@ export default function MentalHealthPage() {
           <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
         </div>
         <Container className={styles.whiteBgContent}>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+            <m.p className={styles.eyebrowDark} variants={fadeUp}>
               Conditions We Support
-            </motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Mental Health Conditions We Can Help With
-            </motion.h2>
-            <motion.p className={styles.beforeAfterSubheading} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.beforeAfterSubheading} variants={fadeUp}>
               We provide compassionate assessment and management for a wide range of mental health
               concerns at The One Clinic, Leicester.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.treatedBenefitsGrid}
             variants={stagger(0.08)}
             initial="hidden"
@@ -881,7 +881,7 @@ export default function MentalHealthPage() {
             viewport={VIEWPORT}
           >
             {CONDITIONS_SUPPORTED.map((c) => (
-              <motion.div
+              <m.div
                 key={c.title}
                 className={styles.treatedBenefitCard}
                 variants={fadeUp}
@@ -889,9 +889,9 @@ export default function MentalHealthPage() {
               >
                 <h3 className={styles.treatedBenefitTitle}>{c.title}</h3>
                 <p className={styles.treatedBenefitDesc}>{c.desc}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -915,25 +915,25 @@ export default function MentalHealthPage() {
           />
         </div>
         <Container>
-          <motion.div
+          <m.div
             className={styles.ctaBannerContent}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
+            <m.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
               You Don&apos;t Have to Face It Alone.
-            </motion.h2>
-            <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.ctaBannerSub} variants={fadeUp}>
               Take the first step , book a confidential mental health consultation today.
-            </motion.p>
-            <motion.div variants={fadeUp}>
+            </m.p>
+            <m.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
                 Book Consultation
               </BookConsultationButton>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </section>
 
@@ -942,33 +942,33 @@ export default function MentalHealthPage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark" className={styles.conditionsSection}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <m.p className={styles.eyebrowLight} variants={fadeUp}>
               Services &amp; Support
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               What We Offer
-            </motion.h2>
-            <motion.p className={styles.conditionsIntro} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.conditionsIntro} variants={fadeUp}>
               Our private mental health service covers a broad range of conditions and support
               options, all delivered in one convenient, compassionate clinic.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.areasColumns}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div
+            <m.div
               className={styles.areasGroup}
               variants={fadeUp}
               whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
@@ -982,9 +982,9 @@ export default function MentalHealthPage() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </m.div>
 
-            <motion.div
+            <m.div
               className={styles.areasGroup}
               variants={fadeUp}
               whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
@@ -998,8 +998,8 @@ export default function MentalHealthPage() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -1008,26 +1008,26 @@ export default function MentalHealthPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.clinicIntroSection}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.clinicIntroBody}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div className={styles.clinicIntroLeft} variants={fadeUp}>
+            <m.div className={styles.clinicIntroLeft} variants={fadeUp}>
               <p className={styles.eyebrowDark}>Mental Health Support</p>
               <h2 className={styles.combinedHeading}>
                 Best Private Mental Health<br />Consultation in Leicester
               </h2>
-            </motion.div>
-            <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
+            </m.div>
+            <m.p className={styles.clinicIntroDesc} variants={fadeUp}>
               Experience compassionate, expert-led mental health care at The One Clinic, Leicester.
               Our doctors combine GP and psychiatric expertise to deliver holistic, evidence-based
               support for anxiety, depression, stress, and more , with fast access, full
               confidentiality, and a care plan tailored entirely to you.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
         </Container>
       </Section>
 
@@ -1036,29 +1036,29 @@ export default function MentalHealthPage() {
       ════════════════════════════════════════ */}
       <section className={styles.costBanner} data-section-theme="dark" aria-label="Mental health consultation cost">
         <Container>
-          <motion.div
+          <m.div
             className={styles.costBannerInner}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
+            <m.p className={styles.costBannerEyebrow} variants={fadeUp}>
               Mental Health Consultation Cost at The One Clinic
-            </motion.p>
-            <motion.p className={styles.costBannerPrice} variants={fadeUp}>
+            </m.p>
+            <m.p className={styles.costBannerPrice} variants={fadeUp}>
               Consultations Start From £150
-            </motion.p>
-            <motion.p className={styles.costBannerNote} variants={fadeUp}>
+            </m.p>
+            <m.p className={styles.costBannerNote} variants={fadeUp}>
               The final price depends on the length and complexity of your appointment and will be
               confirmed at the time of booking with no hidden fees.
-            </motion.p>
-            <motion.div variants={fadeUp}>
+            </m.p>
+            <m.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
                 Book A Consultation
               </BookConsultationButton>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </section>
 
@@ -1067,19 +1067,19 @@ export default function MentalHealthPage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               Why Choose The One Clinic for Mental Health Support
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.clinicReasonsGrid}
             variants={stagger(0.08)}
             initial="hidden"
@@ -1087,7 +1087,7 @@ export default function MentalHealthPage() {
             viewport={VIEWPORT}
           >
             {CLINIC_REASONS.map((r) => (
-              <motion.div
+              <m.div
                 key={r.n}
                 className={styles.clinicReasonCard}
                 variants={fadeUp}
@@ -1095,9 +1095,9 @@ export default function MentalHealthPage() {
               >
                 <span className={styles.clinicReasonNumber}>{r.n}</span>
                 <p className={styles.clinicReasonText}>{r.text}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -1112,20 +1112,20 @@ export default function MentalHealthPage() {
       <section className={styles.faqSection} data-section-theme="dark">
         <div className={styles.faqInner}>
           <Container>
-            <motion.div
+            <m.div
               className={styles.sectionHeaderCentre}
               variants={stagger(0.1)}
               initial="hidden"
               whileInView="show"
               viewport={VIEWPORT}
             >
-              <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
-              <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              <m.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</m.p>
+              <m.h2 className={styles.headingLight} variants={fadeUp}>
                 Frequently Asked Questions
-              </motion.h2>
-            </motion.div>
+              </m.h2>
+            </m.div>
 
-            <motion.div
+            <m.div
               className={styles.faqBody}
               variants={fadeUp}
               initial="hidden"
@@ -1159,7 +1159,7 @@ export default function MentalHealthPage() {
                   </button>
                 </div>
               )}
-            </motion.div>
+            </m.div>
           </Container>
         </div>
       </section>
@@ -1174,22 +1174,22 @@ export default function MentalHealthPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+            <m.p className={styles.eyebrowDark} variants={fadeUp}>
               Explore More
-            </motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Related Services
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.relatedGrid}
             variants={stagger(0.1)}
             initial="hidden"
@@ -1197,7 +1197,7 @@ export default function MentalHealthPage() {
             viewport={VIEWPORT}
           >
             {RELATED.map((r) => (
-              <motion.div key={r.title} variants={fadeUp}>
+              <m.div key={r.title} variants={fadeUp}>
                 <Link href={r.href} className={styles.relatedCard}>
                   <h3 className={styles.relatedTitle}>{r.title}</h3>
                   <p className={styles.relatedDesc}>{r.desc}</p>
@@ -1209,9 +1209,9 @@ export default function MentalHealthPage() {
                     </svg>
                   </span>
                 </Link>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 

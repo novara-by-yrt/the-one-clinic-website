@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
@@ -72,7 +72,7 @@ export default function FacilityStats() {
         <div className={styles.layout}>
 
           {/* ── Left: image slideshow ── */}
-          <motion.div
+          <m.div
             className={styles.imageCol}
             variants={fadeUp}
             initial="hidden"
@@ -81,7 +81,7 @@ export default function FacilityStats() {
           >
             <div className={styles.imageWrap}>
               <AnimatePresence mode="sync">
-                <motion.div
+                <m.div
                   key={active}
                   className={styles.slide}
                   initial={{ opacity: 0 }}
@@ -96,7 +96,7 @@ export default function FacilityStats() {
                     className={styles.image}
                     sizes="(max-width: 900px) 100vw, 50vw"
                   />
-                </motion.div>
+                </m.div>
               </AnimatePresence>
 
               {/* Dots */}
@@ -113,28 +113,28 @@ export default function FacilityStats() {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </m.div>
 
           {/* ── Right: stats + accessibility ── */}
-          <motion.div
+          <m.div
             className={styles.textCol}
             variants={stagger(0.08)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div className={styles.header} variants={fadeUp}>
+            <m.div className={styles.header} variants={fadeUp}>
               <p className={styles.eyebrow}>By The Numbers</p>
               <h2 className={styles.heading}>Built to Meet Every Need</h2>
               <p className={styles.subtext}>
                 The main part of the clinic contains 5 consulting rooms and 2 treatment rooms, over 3 floors.
               </p>
-            </motion.div>
+            </m.div>
 
             {/* Stats grid */}
-            <motion.div className={styles.statsGrid} variants={stagger(0.07)}>
+            <m.div className={styles.statsGrid} variants={stagger(0.07)}>
               {STATS.map((s) => (
-                <motion.div
+                <m.div
                   key={s.label}
                   className={styles.stat}
                   variants={fadeUp}
@@ -143,12 +143,12 @@ export default function FacilityStats() {
                 >
                   <span className={styles.statValue}>{s.value}</span>
                   <span className={styles.statLabel}>{s.label}</span>
-                </motion.div>
+                </m.div>
               ))}
-            </motion.div>
+            </m.div>
 
             {/* Accessibility */}
-            <motion.div className={styles.accessBar} variants={fadeUp}>
+            <m.div className={styles.accessBar} variants={fadeUp}>
               <p className={styles.accessTitle}>Fully Inclusive</p>
               <ul className={styles.accessList} role="list">
                 {ACCESS.map((a) => (
@@ -158,8 +158,8 @@ export default function FacilityStats() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
 
         </div>
       </Container>

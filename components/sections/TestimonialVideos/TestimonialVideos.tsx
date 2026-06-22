@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Script from 'next/script';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
@@ -42,22 +42,22 @@ export default function TestimonialVideos() {
       <Script src="https://fast.wistia.net/player.js" strategy="lazyOnload" />
 
       <Container>
-        <motion.div
+        <m.div
           className={styles.header}
           variants={stagger(0.15)}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <motion.p className={styles.eyebrow} variants={fadeUp}>Patient Stories</motion.p>
-          <motion.h2 className={styles.heading} variants={fadeUp}>Hear From Our Patients</motion.h2>
-          <motion.p className={styles.subtext} variants={fadeUp}>
+          <m.p className={styles.eyebrow} variants={fadeUp}>Patient Stories</m.p>
+          <m.h2 className={styles.heading} variants={fadeUp}>Hear From Our Patients</m.h2>
+          <m.p className={styles.subtext} variants={fadeUp}>
             Real people, real results, in their own words.
-          </motion.p>
-        </motion.div>
+          </m.p>
+        </m.div>
 
         {/* Desktop: 3-column portrait grid */}
-        <motion.div
+        <m.div
           className={styles.grid}
           variants={stagger(0.12)}
           initial="hidden"
@@ -65,7 +65,7 @@ export default function TestimonialVideos() {
           viewport={VIEWPORT}
         >
           {VIDEOS.map((v) => (
-            <motion.div key={v.id} className={styles.videoCard} variants={fadeUp}>
+            <m.div key={v.id} className={styles.videoCard} variants={fadeUp}>
               <div className={styles.videoWrap}>
                 <iframe
                   src={`https://fast.wistia.net/embed/iframe/${v.id}?web_component=true&seo=true`}
@@ -78,9 +78,9 @@ export default function TestimonialVideos() {
                   className={styles.iframe}
                 />
               </div>
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
 
         {/* Mobile: slideshow with arrows + dots */}
         <div className={styles.mobileSlideshow}>

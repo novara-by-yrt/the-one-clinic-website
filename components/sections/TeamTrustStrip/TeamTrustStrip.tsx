@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import { stagger, fadeIn, VIEWPORT } from '@/lib/motion';
@@ -16,7 +16,7 @@ export default function TeamTrustStrip() {
   return (
     <Section variant="light" data-section-theme="light" className={styles.strip}>
       <Container>
-        <motion.ul
+        <m.ul
           className={styles.list}
           variants={stagger(0.08)}
           initial="hidden"
@@ -26,14 +26,14 @@ export default function TeamTrustStrip() {
           aria-label="Team trust indicators"
         >
           {ITEMS.map((text) => (
-            <motion.li key={text} className={styles.item} variants={fadeIn}>
+            <m.li key={text} className={styles.item} variants={fadeIn}>
               <span className={styles.check} aria-hidden="true">
                 <span className={styles.checkMark} />
               </span>
               <span className={styles.label}>{text}</span>
-            </motion.li>
+            </m.li>
           ))}
-        </motion.ul>
+        </m.ul>
       </Container>
     </Section>
   );

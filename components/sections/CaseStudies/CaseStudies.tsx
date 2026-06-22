@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
@@ -85,31 +85,31 @@ export default function CaseStudies() {
       <div className={styles.inner}>
 
         {/* ── Centered header ───────────────────────────── */}
-        <motion.div
+        <m.div
           className={styles.header}
           variants={stagger(0.1)}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <motion.div variants={fadeUp}>
+          <m.div variants={fadeUp}>
             <span className={styles.chip}>
               <span className={styles.chipDot} aria-hidden="true" />
               Patient Outcomes
             </span>
-          </motion.div>
+          </m.div>
 
-          <motion.h2 className={styles.heading} variants={fadeUp}>
+          <m.h2 className={styles.heading} variants={fadeUp}>
             Real Transformations
-          </motion.h2>
+          </m.h2>
 
-          <motion.div className={styles.rule} variants={fadeUp} aria-hidden="true" />
+          <m.div className={styles.rule} variants={fadeUp} aria-hidden="true" />
 
-          <motion.p className={styles.desc} variants={fadeUp}>
+          <m.p className={styles.desc} variants={fadeUp}>
             Helping patients achieve confidence and long-term results,
             one personalised treatment at a time.
-          </motion.p>
-        </motion.div>
+          </m.p>
+        </m.div>
 
         {/* ── Carousel ──────────────────────────────────── */}
         <div className={styles.carouselWrap}>

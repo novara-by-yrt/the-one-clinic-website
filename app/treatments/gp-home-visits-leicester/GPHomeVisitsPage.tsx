@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Section            from '@/components/ui/Section';
 import Container          from '@/components/ui/Container';
 import Accordion          from '@/components/ui/Accordion';
@@ -409,7 +409,7 @@ export default function GPHomeVisitsPage() {
         </div>
 
         <Container>
-          <motion.div
+          <m.div
             className={styles.heroInner}
             variants={stagger(0.12)}
             initial="hidden"
@@ -417,32 +417,32 @@ export default function GPHomeVisitsPage() {
           >
             {/* Left: text */}
             <div className={styles.heroLeft}>
-              <motion.span className={styles.heroCategory} variants={fadeUp}>
+              <m.span className={styles.heroCategory} variants={fadeUp}>
                 Primary Care
-              </motion.span>
+              </m.span>
 
-              <motion.h1 className={styles.heroTitle} variants={fadeUp}>
+              <m.h1 className={styles.heroTitle} variants={fadeUp}>
                 GP Home Visits Leicester
-              </motion.h1>
+              </m.h1>
 
-              <motion.p className={styles.heroDesc} variants={fadeUp}>
+              <m.p className={styles.heroDesc} variants={fadeUp}>
                 Private GP Consultations in the Comfort of Your Home , same-day visits available
                 across Leicester and the surrounding area.
-              </motion.p>
+              </m.p>
 
-              <motion.div className={styles.heroCtas} variants={fadeUp}>
+              <m.div className={styles.heroCtas} variants={fadeUp}>
                 <BookConsultationButton className={styles.heroCtaPrimary}>
                   Book a Home Visit
                 </BookConsultationButton>
-              </motion.div>
+              </m.div>
 
               {/* Review badges */}
-              <motion.div variants={fadeUp}>
+              <m.div variants={fadeUp}>
                 <TrustBadges theme="dark" />
-              </motion.div>
+              </m.div>
 
               {/* Trust items */}
-              <motion.div className={styles.heroTrust} variants={fadeUp}>
+              <m.div className={styles.heroTrust} variants={fadeUp}>
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
@@ -467,11 +467,11 @@ export default function GPHomeVisitsPage() {
                   </svg>
                   Care delivered at home
                 </span>
-              </motion.div>
+              </m.div>
             </div>
 
             {/* Right: image */}
-            <motion.div className={styles.heroImageWrap} variants={fadeUp}>
+            <m.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
                 src="/images/GP Home Visits.jpg"
                 alt="GP home visit, doctor visiting patient at home in Leicester"
@@ -482,8 +482,8 @@ export default function GPHomeVisitsPage() {
               />
               {/* Subtle bottom-fade to blend with section */}
               <div className={styles.heroImageFade} aria-hidden="true" />
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </section>
 
@@ -492,7 +492,7 @@ export default function GPHomeVisitsPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.whatIsGrid}
             variants={stagger(0.12)}
             initial="hidden"
@@ -500,8 +500,8 @@ export default function GPHomeVisitsPage() {
             viewport={VIEWPORT}
           >
             {/* Left: text */}
-            <motion.div className={styles.whatIsContent} variants={stagger(0.12)}>
-              <motion.div className={styles.whatIsTextGroup} variants={fadeUp}>
+            <m.div className={styles.whatIsContent} variants={stagger(0.12)}>
+              <m.div className={styles.whatIsTextGroup} variants={fadeUp}>
                 <p className={styles.eyebrowDark}>About This Service</p>
                 <h2 className={styles.combinedHeading}>What is a GP Home Visit?</h2>
                 <p className={styles.combinedDesc}>
@@ -511,16 +511,16 @@ export default function GPHomeVisitsPage() {
                   full clinical assessment , including prescriptions, referrals, and follow-up advice
                   , to the same standard as an in-clinic consultation.
                 </p>
-              </motion.div>
-              <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
+              </m.div>
+              <m.div className={styles.combinedCtaWrapper} variants={fadeUp}>
                 <BookConsultationButton className={styles.combinedCta}>
                   Book a Home Visit
                 </BookConsultationButton>
-              </motion.div>
-            </motion.div>
+              </m.div>
+            </m.div>
 
             {/* Right: image panel */}
-            <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
+            <m.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
                 src="/images/Doctor1.jpg"
                 alt="Private GP doctor ready for a home visit"
@@ -528,8 +528,8 @@ export default function GPHomeVisitsPage() {
                 className={styles.whatIsVideoFrame}
                 sizes="(max-width: 900px) 100vw, 50vw"
               />
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -541,20 +541,20 @@ export default function GPHomeVisitsPage() {
           <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
         </div>
         <Container className={styles.whiteBgContent}>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            <m.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</m.p>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               GP Home Visit at a Glance
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.glanceStandaloneGrid}
             variants={stagger(0.08)}
             initial="hidden"
@@ -562,13 +562,13 @@ export default function GPHomeVisitsPage() {
             viewport={VIEWPORT}
           >
             {AT_A_GLANCE.map((item) => (
-              <motion.div key={item.label} className={styles.glanceCard} variants={fadeUp}>
+              <m.div key={item.label} className={styles.glanceCard} variants={fadeUp}>
                 <span className={styles.glanceIcon}>{item.icon}</span>
                 <span className={styles.glanceLabel}>{item.label}</span>
                 <span className={styles.glanceValue}>{item.value}</span>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -577,27 +577,27 @@ export default function GPHomeVisitsPage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <m.p className={styles.eyebrowLight} variants={fadeUp}>
               Our Approach
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               Our GP Home Visit Approach
-            </motion.h2>
-            <motion.p className={styles.combinationIntroText} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.combinationIntroText} variants={fadeUp}>
               At The One Clinic, our home visit service is designed to bring the full quality of
               private GP care directly to your door , with the same thoroughness as any in-clinic
               consultation.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.techCardsGrid}
             variants={stagger(0.1)}
             initial="hidden"
@@ -605,7 +605,7 @@ export default function GPHomeVisitsPage() {
             viewport={VIEWPORT}
           >
             {APPROACH_CARDS.map((card) => (
-              <motion.div
+              <m.div
                 key={card.title}
                 className={styles.techCard}
                 variants={fadeUp}
@@ -614,11 +614,11 @@ export default function GPHomeVisitsPage() {
                 <span className={styles.techCardEyebrow}>{card.eyebrow}</span>
                 <h3 className={styles.techCardTitle}>{card.title}</h3>
                 <p className={styles.techCardDesc}>{card.desc}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.finalResultsBanner}
             variants={fadeUp}
             initial="hidden"
@@ -631,7 +631,7 @@ export default function GPHomeVisitsPage() {
               Our GPs bring diagnostic tools, prescribing capability, and referral resources to
               ensure you receive complete, uncompromised medical care wherever you are.
             </p>
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -640,22 +640,22 @@ export default function GPHomeVisitsPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.journeySection}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+            <m.p className={styles.eyebrowDark} variants={fadeUp}>
               Step by Step
-            </motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Your GP Home Visit Journey
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.ol
+          <m.ol
             className={styles.journeyList}
             variants={stagger(0.12)}
             initial="hidden"
@@ -664,7 +664,7 @@ export default function GPHomeVisitsPage() {
             aria-label="GP home visit journey steps"
           >
             {JOURNEY_STEPS.map((step) => (
-              <motion.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
+              <m.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
                 <div className={styles.stepLeft}>
                   <div className={styles.stepNumCircle} aria-hidden="true">{step.n}</div>
                   <div className={styles.stepConnector} aria-hidden="true" />
@@ -673,9 +673,9 @@ export default function GPHomeVisitsPage() {
                   <h3 className={styles.stepTitle}>{step.title}</h3>
                   <p className={styles.stepDesc}>{step.desc}</p>
                 </div>
-              </motion.li>
+              </m.li>
             ))}
-          </motion.ol>
+          </m.ol>
         </Container>
       </Section>
 
@@ -687,19 +687,19 @@ export default function GPHomeVisitsPage() {
           <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
         </div>
         <Container className={styles.whiteBgContent}>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Benefits of a GP Home Visit
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.treatedBenefitsGrid}
             variants={stagger(0.08)}
             initial="hidden"
@@ -707,7 +707,7 @@ export default function GPHomeVisitsPage() {
             viewport={VIEWPORT}
           >
             {BENEFITS.map((b) => (
-              <motion.div
+              <m.div
                 key={b.title}
                 className={styles.treatedBenefitCard}
                 variants={fadeUp}
@@ -718,9 +718,9 @@ export default function GPHomeVisitsPage() {
                 </span>
                 <h3 className={styles.treatedBenefitTitle}>{b.title}</h3>
                 <p className={styles.treatedBenefitDesc}>{b.desc}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -729,53 +729,53 @@ export default function GPHomeVisitsPage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <m.p className={styles.eyebrowLight} variants={fadeUp}>
               Is This Right for You?
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               Who is a GP Home Visit Suitable For?
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.eligibilityWrap}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
+            <m.p className={styles.eligibilityIntro} variants={fadeUp}>
               A GP home visit may be suitable if you are:
-            </motion.p>
-            <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
+            </m.p>
+            <m.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
               {ELIGIBILITY_YES.map((item) => (
-                <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
+                <m.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
                   <span className={styles.eligibilityCheck} aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                       <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </span>
                   <span>{item}</span>
-                </motion.li>
+                </m.li>
               ))}
-            </motion.ul>
-            <motion.p className={styles.eligibilityClosing} variants={fadeUp}>
+            </m.ul>
+            <m.p className={styles.eligibilityClosing} variants={fadeUp}>
               If you are experiencing a medical emergency, please call 999. Home visits are not a
               replacement for emergency services or hospital-level care.
-            </motion.p>
-            <motion.div variants={fadeUp}>
+            </m.p>
+            <m.div variants={fadeUp}>
               <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
                 Book Your Home Visit
               </BookConsultationButton>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -784,48 +784,48 @@ export default function GPHomeVisitsPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               How the GP Home Visit Service Works
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.howTextGrid}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.howPara} variants={fadeUp}>
+            <m.p className={styles.howPara} variants={fadeUp}>
               Our visiting GPs carry a full diagnostic kit including blood pressure monitors, ECG
               devices, blood glucose meters, urine testing strips, and examination tools. On arrival,
               the doctor performs a thorough assessment, gathering a full history and conducting a
               physical examination appropriate to your presenting concern.
-            </motion.p>
-            <motion.p className={styles.howPara} variants={fadeUp}>
+            </m.p>
+            <m.p className={styles.howPara} variants={fadeUp}>
               Following the consultation, the doctor issues a diagnosis, prescribes medication,
               writes sick or fit notes, and can arrange further investigations such as blood tests
               or imaging. Referral letters to consultants or hospitals are provided where specialist
               input is required, with a clear and transparent plan for your ongoing care.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.howCoversWrap}
             variants={stagger(0.08)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.howCoversLabel} variants={fadeUp}>What Our GPs Bring</motion.p>
-            <motion.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
+            <m.p className={styles.howCoversLabel} variants={fadeUp}>What Our GPs Bring</m.p>
+            <m.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
               {[
                 'Blood pressure monitor',
                 'ECG device',
@@ -834,17 +834,17 @@ export default function GPHomeVisitsPage() {
                 'Examination tools',
                 'Prescription capability',
               ].map((item) => (
-                <motion.li key={item} className={styles.howCoversItem} variants={fadeUp}>
+                <m.li key={item} className={styles.howCoversItem} variants={fadeUp}>
                   <span className={styles.howCoversCheck} aria-hidden="true">
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                       <polyline points="2,6 5,9 10,3" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </span>
                   {item}
-                </motion.li>
+                </m.li>
               ))}
-            </motion.ul>
-          </motion.div>
+            </m.ul>
+          </m.div>
         </Container>
       </Section>
 
@@ -853,22 +853,22 @@ export default function GPHomeVisitsPage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <m.p className={styles.eyebrowLight} variants={fadeUp}>
               During & After Your Visit
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               What to Expect
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.resultsAfterGrid}
             variants={stagger(0.1)}
             initial="hidden"
@@ -876,7 +876,7 @@ export default function GPHomeVisitsPage() {
             viewport={VIEWPORT}
           >
             {WHAT_TO_EXPECT_CARDS.map((card) => (
-              <motion.div key={card.title} className={styles.resultsAfterCard} variants={fadeUp}>
+              <m.div key={card.title} className={styles.resultsAfterCard} variants={fadeUp}>
                 <div className={styles.resultsAfterCardHead}>
                   <span className={styles.resultsAfterCardIcon} aria-hidden="true">
                     {card.icon}
@@ -886,9 +886,9 @@ export default function GPHomeVisitsPage() {
                 <p className={styles.resultsAfterCardBody}>{card.body}</p>
                 <div className={styles.resultsAfterCardSpacer} />
                 <p className={styles.resultsAfterCardNote}>{card.note}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -900,22 +900,22 @@ export default function GPHomeVisitsPage() {
           <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
         </div>
         <Container className={styles.whiteBgContent}>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+            <m.p className={styles.eyebrowDark} variants={fadeUp}>
               Medical Concerns We Cover
-            </motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Conditions We See at Home
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.treatedBenefitsGrid}
             variants={stagger(0.08)}
             initial="hidden"
@@ -923,7 +923,7 @@ export default function GPHomeVisitsPage() {
             viewport={VIEWPORT}
           >
             {CONDITIONS_WE_SEE.map((c) => (
-              <motion.div
+              <m.div
                 key={c.title}
                 className={styles.treatedBenefitCard}
                 variants={fadeUp}
@@ -934,9 +934,9 @@ export default function GPHomeVisitsPage() {
                 </span>
                 <h3 className={styles.treatedBenefitTitle}>{c.title}</h3>
                 <p className={styles.treatedBenefitDesc}>{c.desc}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -960,25 +960,25 @@ export default function GPHomeVisitsPage() {
           />
         </div>
         <Container>
-          <motion.div
+          <m.div
             className={styles.ctaBannerContent}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
+            <m.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
               Expert Care. At Your Door.
-            </motion.h2>
-            <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.ctaBannerSub} variants={fadeUp}>
               Book a same-day GP home visit with one of our qualified doctors today.
-            </motion.p>
-            <motion.div variants={fadeUp}>
+            </m.p>
+            <m.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
                 Book a Home Visit
               </BookConsultationButton>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </section>
 
@@ -987,33 +987,33 @@ export default function GPHomeVisitsPage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark" className={styles.conditionsSection}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <m.p className={styles.eyebrowLight} variants={fadeUp}>
               Service Area
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               Areas We Cover & Services Provided
-            </motion.h2>
-            <motion.p className={styles.conditionsIntro} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.conditionsIntro} variants={fadeUp}>
               We provide GP home visits across Leicester, Leicestershire, and the surrounding
               region. Call us to confirm whether your location is within our current service area.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.areasColumns}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div
+            <m.div
               className={styles.areasGroup}
               variants={fadeUp}
               whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
@@ -1027,9 +1027,9 @@ export default function GPHomeVisitsPage() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </m.div>
 
-            <motion.div
+            <m.div
               className={styles.areasGroup}
               variants={fadeUp}
               whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
@@ -1043,8 +1043,8 @@ export default function GPHomeVisitsPage() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -1053,26 +1053,26 @@ export default function GPHomeVisitsPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.clinicIntroSection}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.clinicIntroBody}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div className={styles.clinicIntroLeft} variants={fadeUp}>
+            <m.div className={styles.clinicIntroLeft} variants={fadeUp}>
               <p className={styles.eyebrowDark}>GP Home Visits</p>
               <h2 className={styles.combinedHeading}>
                 Best GP Home Visit<br />Leicester Experience
               </h2>
-            </motion.div>
-            <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
+            </m.div>
+            <m.p className={styles.clinicIntroDesc} variants={fadeUp}>
               Experience the best private GP home visit service in Leicester at The One Clinic. Our
               GMC-registered doctors deliver safe, comprehensive medical care in the comfort of your
               home. Enjoy the same clinical standard as an in-clinic appointment, with same-day
               availability and a personalised approach tailored to your health needs.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
         </Container>
       </Section>
 
@@ -1081,29 +1081,29 @@ export default function GPHomeVisitsPage() {
       ════════════════════════════════════════ */}
       <section className={styles.costBanner} data-section-theme="dark" aria-label="GP home visit cost">
         <Container>
-          <motion.div
+          <m.div
             className={styles.costBannerInner}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
+            <m.p className={styles.costBannerEyebrow} variants={fadeUp}>
               GP Home Visit Cost at The One Clinic
-            </motion.p>
-            <motion.p className={styles.costBannerPrice} variants={fadeUp}>
+            </m.p>
+            <m.p className={styles.costBannerPrice} variants={fadeUp}>
               From £250 per Home Visit
-            </motion.p>
-            <motion.p className={styles.costBannerNote} variants={fadeUp}>
+            </m.p>
+            <m.p className={styles.costBannerNote} variants={fadeUp}>
               Pricing includes travel time and varies depending on location and visit duration.
               All costs are confirmed transparently at the time of booking , no hidden fees.
-            </motion.p>
-            <motion.div variants={fadeUp}>
+            </m.p>
+            <m.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
                 Book A Home Visit
               </BookConsultationButton>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </section>
 
@@ -1112,19 +1112,19 @@ export default function GPHomeVisitsPage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               Why Choose The One Clinic For GP Home Visits
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.clinicReasonsGrid}
             variants={stagger(0.08)}
             initial="hidden"
@@ -1132,7 +1132,7 @@ export default function GPHomeVisitsPage() {
             viewport={VIEWPORT}
           >
             {CLINIC_REASONS.map((r) => (
-              <motion.div
+              <m.div
                 key={r.n}
                 className={styles.clinicReasonCard}
                 variants={fadeUp}
@@ -1140,9 +1140,9 @@ export default function GPHomeVisitsPage() {
               >
                 <span className={styles.clinicReasonNumber}>{r.n}</span>
                 <p className={styles.clinicReasonText}>{r.text}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -1157,20 +1157,20 @@ export default function GPHomeVisitsPage() {
       <section className={styles.faqSection} data-section-theme="dark">
         <div className={styles.faqInner}>
           <Container>
-            <motion.div
+            <m.div
               className={styles.sectionHeaderCentre}
               variants={stagger(0.1)}
               initial="hidden"
               whileInView="show"
               viewport={VIEWPORT}
             >
-              <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
-              <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              <m.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</m.p>
+              <m.h2 className={styles.headingLight} variants={fadeUp}>
                 Frequently Asked Questions
-              </motion.h2>
-            </motion.div>
+              </m.h2>
+            </m.div>
 
-            <motion.div
+            <m.div
               className={styles.faqBody}
               variants={fadeUp}
               initial="hidden"
@@ -1204,7 +1204,7 @@ export default function GPHomeVisitsPage() {
                   </button>
                 </div>
               )}
-            </motion.div>
+            </m.div>
           </Container>
         </div>
       </section>
@@ -1219,22 +1219,22 @@ export default function GPHomeVisitsPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+            <m.p className={styles.eyebrowDark} variants={fadeUp}>
               Explore More
-            </motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Related Services
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.relatedGrid}
             variants={stagger(0.1)}
             initial="hidden"
@@ -1242,7 +1242,7 @@ export default function GPHomeVisitsPage() {
             viewport={VIEWPORT}
           >
             {RELATED.map((r) => (
-              <motion.div key={r.title} variants={fadeUp}>
+              <m.div key={r.title} variants={fadeUp}>
                 <Link href={r.href} className={styles.relatedCard}>
                   <h3 className={styles.relatedTitle}>{r.title}</h3>
                   <p className={styles.relatedDesc}>{r.desc}</p>
@@ -1254,9 +1254,9 @@ export default function GPHomeVisitsPage() {
                     </svg>
                   </span>
                 </Link>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Section            from '@/components/ui/Section';
 import Container          from '@/components/ui/Container';
 import Accordion          from '@/components/ui/Accordion';
@@ -332,7 +332,7 @@ export default function MedicalInsurancePage() {
         </div>
 
         <Container>
-          <motion.div
+          <m.div
             className={styles.heroInner}
             variants={stagger(0.12)}
             initial="hidden"
@@ -340,32 +340,32 @@ export default function MedicalInsurancePage() {
           >
             {/* Left: text */}
             <div className={styles.heroLeft}>
-              <motion.span className={styles.heroCategory} variants={fadeUp}>
+              <m.span className={styles.heroCategory} variants={fadeUp}>
                 Medical Services
-              </motion.span>
+              </m.span>
 
-              <motion.h1 className={styles.heroTitle} variants={fadeUp}>
+              <m.h1 className={styles.heroTitle} variants={fadeUp}>
                 Medical Insurance Examination Leicester
-              </motion.h1>
+              </m.h1>
 
-              <motion.p className={styles.heroDesc} variants={fadeUp}>
+              <m.p className={styles.heroDesc} variants={fadeUp}>
                 Comprehensive medical reports and examinations for insurance, visa, and occupational
                 purposes, conducted by GMC-registered doctors at The One Clinic.
-              </motion.p>
+              </m.p>
 
-              <motion.div className={styles.heroCtas} variants={fadeUp}>
+              <m.div className={styles.heroCtas} variants={fadeUp}>
                 <BookConsultationButton className={styles.heroCtaPrimary}>
                   Book Examination
                 </BookConsultationButton>
-              </motion.div>
+              </m.div>
 
               {/* Review badges */}
-              <motion.div variants={fadeUp}>
+              <m.div variants={fadeUp}>
                 <TrustBadges theme="dark" />
-              </motion.div>
+              </m.div>
 
               {/* Trust items */}
-              <motion.div className={styles.heroTrust} variants={fadeUp}>
+              <m.div className={styles.heroTrust} variants={fadeUp}>
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
@@ -390,11 +390,11 @@ export default function MedicalInsurancePage() {
                   </svg>
                   Accepted by major UK insurers
                 </span>
-              </motion.div>
+              </m.div>
             </div>
 
             {/* Right: image */}
-            <motion.div className={styles.heroImageWrap} variants={fadeUp}>
+            <m.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
                 src="/images/Medical Insurance Exam.jpg"
                 alt="Medical insurance examination at The One Clinic Leicester"
@@ -405,8 +405,8 @@ export default function MedicalInsurancePage() {
               />
               {/* Subtle bottom-fade to blend with section */}
               <div className={styles.heroImageFade} aria-hidden="true" />
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </section>
 
@@ -415,7 +415,7 @@ export default function MedicalInsurancePage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.whatIsGrid}
             variants={stagger(0.12)}
             initial="hidden"
@@ -423,8 +423,8 @@ export default function MedicalInsurancePage() {
             viewport={VIEWPORT}
           >
             {/* Left: text */}
-            <motion.div className={styles.whatIsContent} variants={stagger(0.12)}>
-              <motion.div className={styles.whatIsTextGroup} variants={fadeUp}>
+            <m.div className={styles.whatIsContent} variants={stagger(0.12)}>
+              <m.div className={styles.whatIsTextGroup} variants={fadeUp}>
                 <p className={styles.eyebrowDark}>About This Service</p>
                 <h2 className={styles.combinedHeading}>What is a Medical Insurance Examination?</h2>
                 <p className={styles.combinedDesc}>
@@ -435,16 +435,16 @@ export default function MedicalInsurancePage() {
                   48 to 72 hours. All examinations are conducted with complete confidentiality and
                   impartiality.
                 </p>
-              </motion.div>
-              <motion.div className={styles.combinedCtaWrapper} variants={fadeUp}>
+              </m.div>
+              <m.div className={styles.combinedCtaWrapper} variants={fadeUp}>
                 <BookConsultationButton className={styles.combinedCta}>
                   Book Your Examination
                 </BookConsultationButton>
-              </motion.div>
-            </motion.div>
+              </m.div>
+            </m.div>
 
             {/* Right: image */}
-            <motion.div className={styles.whatIsVideoWrap} variants={fadeUp}>
+            <m.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
                 src="/images/Doctor1.jpg"
                 alt="Doctor conducting a medical examination at The One Clinic Leicester"
@@ -452,8 +452,8 @@ export default function MedicalInsurancePage() {
                 className={styles.whatIsVideoFrame}
                 sizes="(max-width: 900px) 100vw, 50vw"
               />
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -465,20 +465,20 @@ export default function MedicalInsurancePage() {
           <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
         </div>
         <Container className={styles.whiteBgContent}>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            <m.p className={styles.eyebrowDark} variants={fadeUp}>Quick Facts</m.p>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Medical Insurance Examination at a Glance
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.glanceStandaloneGrid}
             variants={stagger(0.08)}
             initial="hidden"
@@ -486,13 +486,13 @@ export default function MedicalInsurancePage() {
             viewport={VIEWPORT}
           >
             {AT_A_GLANCE.map((item) => (
-              <motion.div key={item.label} className={styles.glanceCard} variants={fadeUp}>
+              <m.div key={item.label} className={styles.glanceCard} variants={fadeUp}>
                 <span className={styles.glanceIcon}>{item.icon}</span>
                 <span className={styles.glanceLabel}>{item.label}</span>
                 <span className={styles.glanceValue}>{item.value}</span>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -501,27 +501,27 @@ export default function MedicalInsurancePage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <m.p className={styles.eyebrowLight} variants={fadeUp}>
               Our Approach
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               Our Medical Examination Approach
-            </motion.h2>
-            <motion.p className={styles.combinationIntroText} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.combinationIntroText} variants={fadeUp}>
               At The One Clinic, every medical examination follows a structured three-step process
               designed to ensure accuracy, thoroughness, and a report that meets the exact standards
               of the requesting party.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.techCardsGrid}
             variants={stagger(0.1)}
             initial="hidden"
@@ -529,7 +529,7 @@ export default function MedicalInsurancePage() {
             viewport={VIEWPORT}
           >
             {APPROACH_CARDS.map((card) => (
-              <motion.div
+              <m.div
                 key={card.title}
                 className={styles.techCard}
                 variants={fadeUp}
@@ -538,11 +538,11 @@ export default function MedicalInsurancePage() {
                 <span className={styles.techCardEyebrow}>{card.eyebrow}</span>
                 <h3 className={styles.techCardTitle}>{card.title}</h3>
                 <p className={styles.techCardDesc}>{card.desc}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.finalResultsBanner}
             variants={fadeUp}
             initial="hidden"
@@ -555,7 +555,7 @@ export default function MedicalInsurancePage() {
               designed to be efficient, professional, and stress-free, giving you and the requesting
               party complete confidence in the findings.
             </p>
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -564,22 +564,22 @@ export default function MedicalInsurancePage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.journeySection}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+            <m.p className={styles.eyebrowDark} variants={fadeUp}>
               What to Expect
-            </motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Your Medical Examination Journey
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.ol
+          <m.ol
             className={styles.journeyList}
             variants={stagger(0.12)}
             initial="hidden"
@@ -588,7 +588,7 @@ export default function MedicalInsurancePage() {
             aria-label="Medical examination journey steps"
           >
             {JOURNEY_STEPS.map((step) => (
-              <motion.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
+              <m.li key={step.n} className={styles.journeyStep} variants={fadeUp}>
                 <div className={styles.stepLeft}>
                   <div className={styles.stepNumCircle} aria-hidden="true">{step.n}</div>
                   <div className={styles.stepConnector} aria-hidden="true" />
@@ -597,9 +597,9 @@ export default function MedicalInsurancePage() {
                   <h3 className={styles.stepTitle}>{step.title}</h3>
                   <p className={styles.stepDesc}>{step.desc}</p>
                 </div>
-              </motion.li>
+              </m.li>
             ))}
-          </motion.ol>
+          </m.ol>
         </Container>
       </Section>
 
@@ -611,19 +611,19 @@ export default function MedicalInsurancePage() {
           <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
         </div>
         <Container className={styles.whiteBgContent}>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Why Choose Our Medical Examination Service
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.treatedBenefitsGrid}
             variants={stagger(0.08)}
             initial="hidden"
@@ -631,7 +631,7 @@ export default function MedicalInsurancePage() {
             viewport={VIEWPORT}
           >
             {BENEFITS.map((b) => (
-              <motion.div
+              <m.div
                 key={b.title}
                 className={styles.treatedBenefitCard}
                 variants={fadeUp}
@@ -642,9 +642,9 @@ export default function MedicalInsurancePage() {
                 </span>
                 <h3 className={styles.treatedBenefitTitle}>{b.title}</h3>
                 <p className={styles.treatedBenefitDesc}>{b.desc}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -653,49 +653,49 @@ export default function MedicalInsurancePage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <m.p className={styles.eyebrowLight} variants={fadeUp}>
               Is This Right for You?
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               Who Is This Service Suitable For?
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.eligibilityWrap}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eligibilityIntro} variants={fadeUp}>
+            <m.p className={styles.eligibilityIntro} variants={fadeUp}>
               Our medical examination service is suitable for:
-            </motion.p>
-            <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
+            </m.p>
+            <m.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
               {ELIGIBILITY_SUITABLE.map((item) => (
-                <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
+                <m.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
                   <span className={styles.eligibilityCheck} aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                       <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </span>
                   <span>{item}</span>
-                </motion.li>
+                </m.li>
               ))}
-            </motion.ul>
-            <motion.p className={styles.eligibilityIntro} variants={fadeUp} style={{ marginTop: '1.5rem' }}>
+            </m.ul>
+            <m.p className={styles.eligibilityIntro} variants={fadeUp} style={{ marginTop: '1.5rem' }}>
               This service is not suitable for:
-            </motion.p>
-            <motion.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
+            </m.p>
+            <m.ul className={styles.eligibilityList} role="list" variants={stagger(0.1)}>
               {ELIGIBILITY_NOT_SUITABLE.map((item) => (
-                <motion.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
+                <m.li key={item} className={styles.eligibilityItem} variants={fadeUp}>
                   <span className={styles.eligibilityCheck} aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                       <line x1="3" y1="3" x2="11" y2="11" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
@@ -703,18 +703,18 @@ export default function MedicalInsurancePage() {
                     </svg>
                   </span>
                   <span>{item}</span>
-                </motion.li>
+                </m.li>
               ))}
-            </motion.ul>
-            <motion.p className={styles.eligibilityClosing} variants={fadeUp}>
+            </m.ul>
+            <m.p className={styles.eligibilityClosing} variants={fadeUp}>
               If you are unsure whether our service meets your requirements, contact us and one of our team will be happy to advise.
-            </motion.p>
-            <motion.div variants={fadeUp}>
+            </m.p>
+            <m.div variants={fadeUp}>
               <BookConsultationButton className={`${styles.combinedCta} ${styles.ctaWhiteInvert}`}>
                 Book Your Examination
               </BookConsultationButton>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -723,50 +723,50 @@ export default function MedicalInsurancePage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.howSection}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               How Does a Medical Insurance Examination Work?
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.howTextGrid}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.howPara} variants={fadeUp}>
+            <m.p className={styles.howPara} variants={fadeUp}>
               Your appointment begins with a thorough clinical history, during which your doctor
               reviews your past and current medical conditions, medications, and family history. This
               is followed by a structured physical examination covering blood pressure, heart and lung
               sounds, and abdominal assessment, all tailored to the specific requirements of the
               requesting insurer or authority.
-            </motion.p>
-            <motion.p className={styles.howPara} variants={fadeUp}>
+            </m.p>
+            <m.p className={styles.howPara} variants={fadeUp}>
               Where investigations are required, such as urine analysis or blood sampling, these are
               completed during the same appointment. Following the examination, your doctor prepares
               a comprehensive, objective written report. Reports are issued within 48 to 72 hours and
               are sent directly to the requesting party or provided to you, depending on your
               instructions.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.howCoversWrap}
             variants={stagger(0.08)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.howCoversLabel} variants={fadeUp}>The Examination Typically Covers</motion.p>
-            <motion.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
+            <m.p className={styles.howCoversLabel} variants={fadeUp}>The Examination Typically Covers</m.p>
+            <m.ul className={styles.howCoversList} role="list" variants={stagger(0.08)}>
               {[
                 'Detailed medical history review',
                 'Blood pressure measurement',
@@ -776,17 +776,17 @@ export default function MedicalInsurancePage() {
                 'Urine and blood tests if required',
                 'Written medical report',
               ].map((item) => (
-                <motion.li key={item} className={styles.howCoversItem} variants={fadeUp}>
+                <m.li key={item} className={styles.howCoversItem} variants={fadeUp}>
                   <span className={styles.howCoversCheck} aria-hidden="true">
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                       <polyline points="2,6 5,9 10,3" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </span>
                   {item}
-                </motion.li>
+                </m.li>
               ))}
-            </motion.ul>
-          </motion.div>
+            </m.ul>
+          </m.div>
         </Container>
       </Section>
 
@@ -795,22 +795,22 @@ export default function MedicalInsurancePage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <m.p className={styles.eyebrowLight} variants={fadeUp}>
               After Your Examination
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               Report Delivery &amp; What Happens Next
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.resultsAfterGrid}
             variants={stagger(0.1)}
             initial="hidden"
@@ -818,7 +818,7 @@ export default function MedicalInsurancePage() {
             viewport={VIEWPORT}
           >
             {/* Card 1 , Report Timeline */}
-            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+            <m.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -838,10 +838,10 @@ export default function MedicalInsurancePage() {
                 Urgent reports may be available in some circumstances. Please discuss your timeline
                 requirements with our team when booking.
               </p>
-            </motion.div>
+            </m.div>
 
             {/* Card 2 , What Happens Next */}
-            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+            <m.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -872,10 +872,10 @@ export default function MedicalInsurancePage() {
                 If further information is required by the requesting party, our doctors are available
                 to clarify or supplement the report as needed.
               </p>
-            </motion.div>
+            </m.div>
 
             {/* Card 3 , Working With Your Insurer */}
-            <motion.div className={styles.resultsAfterCard} variants={fadeUp}>
+            <m.div className={styles.resultsAfterCard} variants={fadeUp}>
               <div className={styles.resultsAfterCardHead}>
                 <span className={styles.resultsAfterCardIcon} aria-hidden="true">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -900,8 +900,8 @@ export default function MedicalInsurancePage() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -913,26 +913,26 @@ export default function MedicalInsurancePage() {
           <Image src="/bg-image-white.png" alt="" fill className={styles.whiteBgImg} sizes="100vw" />
         </div>
         <Container className={styles.whiteBgContent}>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+            <m.p className={styles.eyebrowDark} variants={fadeUp}>
               What We Offer
-            </motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Types of Medical Examination
-            </motion.h2>
-            <motion.p className={styles.beforeAfterSubheading} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.beforeAfterSubheading} variants={fadeUp}>
               We offer a comprehensive range of medical examinations to meet the needs of insurers,
               employers, and regulatory authorities.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.treatedBenefitsGrid}
             variants={stagger(0.08)}
             initial="hidden"
@@ -940,7 +940,7 @@ export default function MedicalInsurancePage() {
             viewport={VIEWPORT}
           >
             {EXAM_TYPES.map((exam) => (
-              <motion.div
+              <m.div
                 key={exam.title}
                 className={styles.treatedBenefitCard}
                 variants={fadeUp}
@@ -948,9 +948,9 @@ export default function MedicalInsurancePage() {
               >
                 <h3 className={styles.treatedBenefitTitle}>{exam.title}</h3>
                 <p className={styles.treatedBenefitDesc}>{exam.desc}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -974,25 +974,25 @@ export default function MedicalInsurancePage() {
           />
         </div>
         <Container>
-          <motion.div
+          <m.div
             className={styles.ctaBannerContent}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
+            <m.h2 className={styles.ctaBannerHeading} variants={fadeUp}>
               Accurate Reports,<br />Delivered With Speed.
-            </motion.h2>
-            <motion.p className={styles.ctaBannerSub} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.ctaBannerSub} variants={fadeUp}>
               Book your medical insurance examination with our expert doctors today.
-            </motion.p>
-            <motion.div variants={fadeUp}>
+            </m.p>
+            <m.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
                 Book Examination
               </BookConsultationButton>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </section>
 
@@ -1001,33 +1001,33 @@ export default function MedicalInsurancePage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark" className={styles.conditionsSection}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <m.p className={styles.eyebrowLight} variants={fadeUp}>
               Examination Scope
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               What We Cover
-            </motion.h2>
-            <motion.p className={styles.conditionsIntro} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.conditionsIntro} variants={fadeUp}>
               Our medical examinations are accepted for a wide range of insurance and occupational
               purposes across the UK.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.areasColumns}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div
+            <m.div
               className={styles.areasGroup}
               variants={fadeUp}
               whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
@@ -1041,9 +1041,9 @@ export default function MedicalInsurancePage() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </m.div>
 
-            <motion.div
+            <m.div
               className={styles.areasGroup}
               variants={fadeUp}
               whileHover={{ y: -6, transition: { type: 'spring', stiffness: 280, damping: 20 } }}
@@ -1057,8 +1057,8 @@ export default function MedicalInsurancePage() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -1067,27 +1067,27 @@ export default function MedicalInsurancePage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.clinicIntroSection}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.clinicIntroBody}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div className={styles.clinicIntroLeft} variants={fadeUp}>
+            <m.div className={styles.clinicIntroLeft} variants={fadeUp}>
               <p className={styles.eyebrowDark}>Medical Examination</p>
               <h2 className={styles.combinedHeading}>
                 Best Medical Insurance<br />Examination in Leicester
               </h2>
-            </motion.div>
-            <motion.p className={styles.clinicIntroDesc} variants={fadeUp}>
+            </m.div>
+            <m.p className={styles.clinicIntroDesc} variants={fadeUp}>
               Experience professional, thorough, and confidential medical examinations at The One
               Clinic in Leicester. Our GMC-registered doctors carry out comprehensive assessments
               for insurance, visa, and occupational purposes, delivering accurate, impartial reports
               that are accepted by major UK insurers and employers. With prompt turnaround times
               and a patient-centred approach, we make the process straightforward and stress-free.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
         </Container>
       </Section>
 
@@ -1096,30 +1096,30 @@ export default function MedicalInsurancePage() {
       ════════════════════════════════════════ */}
       <section className={styles.costBanner} data-section-theme="dark" aria-label="Medical examination cost">
         <Container>
-          <motion.div
+          <m.div
             className={styles.costBannerInner}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.costBannerEyebrow} variants={fadeUp}>
+            <m.p className={styles.costBannerEyebrow} variants={fadeUp}>
               Medical Examination Cost at The One Clinic
-            </motion.p>
-            <motion.p className={styles.costBannerPrice} variants={fadeUp}>
+            </m.p>
+            <m.p className={styles.costBannerPrice} variants={fadeUp}>
               Examinations From £150
-            </motion.p>
-            <motion.p className={styles.costBannerNote} variants={fadeUp}>
+            </m.p>
+            <m.p className={styles.costBannerNote} variants={fadeUp}>
               Pricing depends on the type of examination and report required. A full quote is
               provided when you book. In many cases, the cost is covered by the requesting insurer
               or employer.
-            </motion.p>
-            <motion.div variants={fadeUp}>
+            </m.p>
+            <m.div variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBannerBtn}>
                 Book An Examination
               </BookConsultationButton>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </section>
 
@@ -1128,19 +1128,19 @@ export default function MedicalInsurancePage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               Why Choose The One Clinic For Your Medical Examination
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.clinicReasonsGrid}
             variants={stagger(0.08)}
             initial="hidden"
@@ -1148,7 +1148,7 @@ export default function MedicalInsurancePage() {
             viewport={VIEWPORT}
           >
             {CLINIC_REASONS.map((r) => (
-              <motion.div
+              <m.div
                 key={r.n}
                 className={styles.clinicReasonCard}
                 variants={fadeUp}
@@ -1156,9 +1156,9 @@ export default function MedicalInsurancePage() {
               >
                 <span className={styles.clinicReasonNumber}>{r.n}</span>
                 <p className={styles.clinicReasonText}>{r.text}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -1173,20 +1173,20 @@ export default function MedicalInsurancePage() {
       <section className={styles.faqSection} data-section-theme="dark">
         <div className={styles.faqInner}>
           <Container>
-            <motion.div
+            <m.div
               className={styles.sectionHeaderCentre}
               variants={stagger(0.1)}
               initial="hidden"
               whileInView="show"
               viewport={VIEWPORT}
             >
-              <motion.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</motion.p>
-              <motion.h2 className={styles.headingLight} variants={fadeUp}>
+              <m.p className={styles.eyebrowLight} variants={fadeUp}>FAQ</m.p>
+              <m.h2 className={styles.headingLight} variants={fadeUp}>
                 Frequently Asked Questions
-              </motion.h2>
-            </motion.div>
+              </m.h2>
+            </m.div>
 
-            <motion.div
+            <m.div
               className={styles.faqBody}
               variants={fadeUp}
               initial="hidden"
@@ -1220,7 +1220,7 @@ export default function MedicalInsurancePage() {
                   </button>
                 </div>
               )}
-            </motion.div>
+            </m.div>
           </Container>
         </div>
       </section>
@@ -1235,22 +1235,22 @@ export default function MedicalInsurancePage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.sectionGray}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+            <m.p className={styles.eyebrowDark} variants={fadeUp}>
               Explore More
-            </motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Related Services
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.relatedGrid}
             variants={stagger(0.1)}
             initial="hidden"
@@ -1258,7 +1258,7 @@ export default function MedicalInsurancePage() {
             viewport={VIEWPORT}
           >
             {RELATED.map((r) => (
-              <motion.div key={r.title} variants={fadeUp}>
+              <m.div key={r.title} variants={fadeUp}>
                 <Link href={r.href} className={styles.relatedCard}>
                   <h3 className={styles.relatedTitle}>{r.title}</h3>
                   <p className={styles.relatedDesc}>{r.desc}</p>
@@ -1270,9 +1270,9 @@ export default function MedicalInsurancePage() {
                     </svg>
                   </span>
                 </Link>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 

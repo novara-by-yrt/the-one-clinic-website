@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Link from 'next/link';
 import type { Treatment } from '@/data/treatments';
 import Container from '@/components/ui/Container';
@@ -28,23 +28,23 @@ export default function TreatmentsListing({ treatments }: Props) {
       <section className={styles.hero} data-section-theme="dark">
         <div className={styles.heroGrid} aria-hidden="true" />
         <Container>
-          <motion.div
+          <m.div
             className={styles.heroContent}
             variants={stagger(0.18)}
             initial="hidden"
             animate="show"
           >
-            <motion.p className={styles.eyebrow} variants={fadeUp}>
+            <m.p className={styles.eyebrow} variants={fadeUp}>
               The One Clinic
-            </motion.p>
-            <motion.h1 className={styles.heroTitle} variants={fadeUp}>
+            </m.p>
+            <m.h1 className={styles.heroTitle} variants={fadeUp}>
               Our Treatments
-            </motion.h1>
-            <motion.p className={styles.heroDesc} variants={fadeUp}>
+            </m.h1>
+            <m.p className={styles.heroDesc} variants={fadeUp}>
               A comprehensive range of clinician-led aesthetic and wellness
               treatments, each tailored to your goals.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
         </Container>
       </section>
 
@@ -56,20 +56,20 @@ export default function TreatmentsListing({ treatments }: Props) {
             className={`${styles.group} ${ci % 2 === 1 ? styles.groupAlt : ''}`}
           >
             <Container>
-              <motion.div
+              <m.div
                 className={styles.groupHeader}
                 variants={stagger(0.1)}
                 initial="hidden"
                 whileInView="show"
                 viewport={VIEWPORT}
               >
-                <motion.h2 className={styles.groupTitle} variants={fadeUp}>
+                <m.h2 className={styles.groupTitle} variants={fadeUp}>
                   {category}
-                </motion.h2>
-                <motion.div className={styles.groupRule} variants={fadeUp} aria-hidden="true" />
-              </motion.div>
+                </m.h2>
+                <m.div className={styles.groupRule} variants={fadeUp} aria-hidden="true" />
+              </m.div>
 
-              <motion.ul
+              <m.ul
                 className={styles.cards}
                 role="list"
                 variants={stagger(0.07)}
@@ -78,7 +78,7 @@ export default function TreatmentsListing({ treatments }: Props) {
                 viewport={VIEWPORT}
               >
                 {grouped[category].map((t) => (
-                  <motion.li key={t.slug} variants={fadeUp}>
+                  <m.li key={t.slug} variants={fadeUp}>
                     <Link
                       href={`/treatments/${t.slug}`}
                       className={styles.cardLink}
@@ -92,9 +92,9 @@ export default function TreatmentsListing({ treatments }: Props) {
                         </span>
                       </Card>
                     </Link>
-                  </motion.li>
+                  </m.li>
                 ))}
-              </motion.ul>
+              </m.ul>
             </Container>
           </section>
         ))}

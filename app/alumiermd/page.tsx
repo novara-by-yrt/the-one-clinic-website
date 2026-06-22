@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Image from 'next/image';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
@@ -69,34 +69,34 @@ export default function AlumierMDPage() {
       ════════════════════════════════════════ */}
       <section className={styles.hero} aria-label="AlumierMD brand" data-section-theme="dark">
         <Container>
-          <motion.div
+          <m.div
             className={styles.heroInner}
             variants={stagger(0.12)}
             initial="hidden"
             animate="show"
           >
-            <motion.span className={styles.heroCategory} variants={fadeUp}>
+            <m.span className={styles.heroCategory} variants={fadeUp}>
               Professional Skincare Brand
-            </motion.span>
+            </m.span>
 
-            <motion.h1 className={styles.heroTitle} variants={fadeUp}>
+            <m.h1 className={styles.heroTitle} variants={fadeUp}>
               AlumierMD
-            </motion.h1>
+            </m.h1>
 
-            <motion.p className={styles.heroDesc} variants={fadeUp}>
+            <m.p className={styles.heroDesc} variants={fadeUp}>
               Clean, medical-grade skincare empowering you to feel confident in your own skin with
               clinically proven ingredients and advanced technologies.
-            </motion.p>
+            </m.p>
 
-            <motion.div className={styles.heroStats} variants={fadeUp}>
+            <m.div className={styles.heroStats} variants={fadeUp}>
               {EXPERTISE_STATS.map((item, idx) => (
                 <div key={idx} className={styles.statItem}>
                   <span className={styles.statValue}>{item.stat}</span>
                   <span className={styles.statLabel}>{item.label}</span>
                 </div>
               ))}
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </section>
 
@@ -105,22 +105,22 @@ export default function AlumierMDPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" className={styles.compact}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeader}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.h2 className={styles.sectionTitle} variants={fadeUp}>
+            <m.h2 className={styles.sectionTitle} variants={fadeUp}>
               Our Mission
-            </motion.h2>
-            <motion.p className={styles.sectionSubtitle} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.sectionSubtitle} variants={fadeUp}>
               Empowering skin health through science-driven innovation and professional expertise
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.missionGrid}
             variants={stagger(0.1)}
             initial="hidden"
@@ -128,12 +128,12 @@ export default function AlumierMDPage() {
             viewport={VIEWPORT}
           >
             {MISSION_POINTS.map((point, idx) => (
-              <motion.div key={idx} className={styles.missionCard} variants={fadeUp}>
+              <m.div key={idx} className={styles.missionCard} variants={fadeUp}>
                 <h3 className={styles.missionTitle}>{point.title}</h3>
                 <p className={styles.missionDesc}>{point.desc}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -142,22 +142,22 @@ export default function AlumierMDPage() {
       ════════════════════════════════════════ */}
       <section className={styles.categoriesSection}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.categoriesHeader}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.h2 className={styles.categoriesTitle} variants={fadeUp}>
+            <m.h2 className={styles.categoriesTitle} variants={fadeUp}>
               Our Product Range
-            </motion.h2>
-            <motion.p className={styles.categoriesSubtitle} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.categoriesSubtitle} variants={fadeUp}>
               AlumierMD offers a comprehensive range of professionally dispensed skincare across these categories
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.categoriesGrid}
             variants={stagger(0.1)}
             initial="hidden"
@@ -165,7 +165,7 @@ export default function AlumierMDPage() {
             viewport={VIEWPORT}
           >
             {CATEGORIES.map((cat, idx) => (
-              <motion.div key={idx} className={styles.categoryCard} variants={fadeUp}>
+              <m.div key={idx} className={styles.categoryCard} variants={fadeUp}>
                 <div className={styles.categoryImageWrap}>
                   <Image
                     src={cat.src}
@@ -176,9 +176,9 @@ export default function AlumierMDPage() {
                   />
                 </div>
                 <span className={styles.categoryLabel}>{cat.label}</span>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </section>
 
@@ -187,22 +187,22 @@ export default function AlumierMDPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" className={styles.compact}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeader}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.h2 className={styles.sectionTitle} variants={fadeUp}>
+            <m.h2 className={styles.sectionTitle} variants={fadeUp}>
               The AlumierMD Story
-            </motion.h2>
-            <motion.p className={styles.sectionSubtitle} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.sectionSubtitle} variants={fadeUp}>
               From pioneering innovation to global leadership in professional skincare
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.journeySteps}
             variants={stagger(0.12)}
             initial="hidden"
@@ -210,17 +210,17 @@ export default function AlumierMDPage() {
             viewport={VIEWPORT}
           >
             {JOURNEY_STEPS.map((step, idx) => (
-              <motion.div key={idx} className={styles.journeyCard} variants={fadeUp}>
+              <m.div key={idx} className={styles.journeyCard} variants={fadeUp}>
                 <div className={styles.journeyNumber}>{step.n}</div>
                 <span className={styles.journeyYear}>{step.year}</span>
                 <h3 className={styles.journeyTitle}>{step.title}</h3>
                 <p className={styles.journeyDesc}>{step.desc}</p>
                 {idx < JOURNEY_STEPS.length - 1 && <div className={styles.journeyLine} />}
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.missionStatement}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -232,7 +232,7 @@ export default function AlumierMDPage() {
               Our commitment to clean science, professional integrity, and transformative results
               has made us one of the fastest-growing professionally dispensed skincare brands globally.
             </p>
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 

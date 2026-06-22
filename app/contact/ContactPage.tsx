@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from 'react';
 import Script from 'next/script';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { CLINIC_INFO, getMapsEmbedUrl, getMapsSearchUrl } from '@/lib/clinic-info';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
@@ -57,20 +57,20 @@ export default function ContactPage() {
       >
         <div className={styles.heroGrid} aria-hidden="true" />
         <Container>
-          <motion.div
+          <m.div
             className={styles.heroContent}
             variants={stagger(0.15)}
             initial="hidden"
             animate="show"
           >
-            <motion.h1 className={styles.heroTitle} variants={fadeUp}>
+            <m.h1 className={styles.heroTitle} variants={fadeUp}>
               Get in Touch
-            </motion.h1>
-            <motion.p className={styles.heroDesc} variants={fadeUp}>
+            </m.h1>
+            <m.p className={styles.heroDesc} variants={fadeUp}>
               Book a consultation or ask a question by simply filling in the form below,
               and one of our team will be in touch.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
         </Container>
       </section>
 
@@ -82,7 +82,7 @@ export default function ContactPage() {
           <div className={styles.mainGrid}>
 
             {/* Left, contact details */}
-            <motion.div
+            <m.div
               className={styles.infoCol}
               variants={stagger(0.12)}
               initial="hidden"
@@ -90,7 +90,7 @@ export default function ContactPage() {
               viewport={VIEWPORT}
             >
               {/* Contact details card */}
-              <motion.div className={styles.infoCard} variants={fadeUp}>
+              <m.div className={styles.infoCard} variants={fadeUp}>
                 <h2 className={styles.infoHeading}>Contact Details</h2>
 
                 <a href={`tel:${CLINIC_INFO.phone.tel}`} className={styles.contactRow}>
@@ -172,10 +172,10 @@ export default function ContactPage() {
                     <span>Instagram</span>
                   </a>
                 </div>
-              </motion.div>
+              </m.div>
 
               {/* Opening hours card */}
-              <motion.div className={styles.infoCard} variants={fadeUp}>
+              <m.div className={styles.infoCard} variants={fadeUp}>
                 <h2 className={styles.infoHeading}>Opening Hours</h2>
                 <ul className={styles.hoursList}>
                   {HOURS.map(({ day, hours }) => (
@@ -185,11 +185,11 @@ export default function ContactPage() {
                     </li>
                   ))}
                 </ul>
-              </motion.div>
-            </motion.div>
+              </m.div>
+            </m.div>
 
             {/* Right, form */}
-            <motion.div
+            <m.div
               className={styles.formCol}
               variants={fadeUp}
               initial="hidden"
@@ -223,7 +223,7 @@ export default function ContactPage() {
                 </div>
                 <Script src="https://link.leadpipeline.ai/js/form_embed.js" strategy="lazyOnload" />
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </Container>
       </Section>
@@ -233,24 +233,24 @@ export default function ContactPage() {
       ══════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
-          <motion.div
+          <m.div
             className={styles.facilitiesGrid}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div variants={fadeUp}>
+            <m.div variants={fadeUp}>
               <p className={styles.eyebrowLight}>Our Clinic</p>
               <h2 className={styles.headingLight}>Purpose-Built Facilities</h2>
-            </motion.div>
-            <motion.p className={styles.facilitiesText} variants={fadeUp}>
+            </m.div>
+            <m.p className={styles.facilitiesText} variants={fadeUp}>
               Visit our state-of-the-art purpose-built clinic in Leicester. Our clinic has been
               carefully designed to deliver a premium experience from the moment you arrive. With
               dedicated treatment rooms, a welcoming reception area, and a discreet, private
               environment, every detail has been considered with your comfort in mind.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
         </Container>
       </Section>
 
@@ -271,24 +271,24 @@ export default function ContactPage() {
           />
         </div>
         <Container>
-          <motion.div
+          <m.div
             className={styles.mapInfo}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div variants={fadeUp}>
+            <m.div variants={fadeUp}>
               <p className={styles.eyebrowDark}>Getting Here</p>
               <h2 className={styles.headingDark}>About the Area</h2>
-            </motion.div>
-            <motion.p className={styles.mapText} variants={fadeUp}>
+            </m.div>
+            <m.p className={styles.mapText} variants={fadeUp}>
               Our clinic is conveniently located in the heart of Leicester on DeMontfort Street,
               close to the city centre and easily accessible by public transport. There is also
               pay-and-display parking available nearby. Whether you are travelling by bus, car,
               or on foot, we are easy to find.
-            </motion.p>
-            <motion.a
+            </m.p>
+            <m.a
               href={getMapsSearchUrl()}
               target="_blank"
               rel="noopener noreferrer"
@@ -299,8 +299,8 @@ export default function ContactPage() {
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-            </motion.a>
-          </motion.div>
+            </m.a>
+          </m.div>
         </Container>
       </section>
 
@@ -309,23 +309,23 @@ export default function ContactPage() {
       ══════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
-          <motion.div
+          <m.div
             className={styles.areasHeader}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>What We Offer</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>Treatments &amp; Areas We Cover</motion.h2>
-            <motion.p className={styles.areasIntro} variants={fadeUp}>
+            <m.p className={styles.eyebrowDark} variants={fadeUp}>What We Offer</m.p>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>Treatments &amp; Areas We Cover</m.h2>
+            <m.p className={styles.areasIntro} variants={fadeUp}>
               The One Clinic offers a comprehensive range of medical and aesthetic treatments
               for patients across Leicester and the surrounding areas. Our team of GMC-registered
               doctors and trained practitioners deliver care across two key specialities.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.categoriesGrid}
             variants={stagger(0.12)}
             initial="hidden"
@@ -333,7 +333,7 @@ export default function ContactPage() {
             viewport={VIEWPORT}
           >
             {CATEGORIES.map((cat) => (
-              <motion.a
+              <m.a
                 key={cat.title}
                 href={cat.href}
                 className={styles.categoryCard}
@@ -346,9 +346,9 @@ export default function ContactPage() {
                     <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </span>
-              </motion.a>
+              </m.a>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
     </>

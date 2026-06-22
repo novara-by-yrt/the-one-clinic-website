@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
@@ -33,29 +33,29 @@ export default function TechSafety() {
     <Section variant="dark" data-section-theme="dark">
       <Container>
         {/* Header */}
-        <motion.div
+        <m.div
           className={styles.header}
           variants={stagger()}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <motion.p className={styles.eyebrow} variants={fadeUp}>
+          <m.p className={styles.eyebrow} variants={fadeUp}>
             Standards &amp; Technology
-          </motion.p>
-          <motion.h2 className={styles.heading} variants={fadeUp}>
+          </m.p>
+          <m.h2 className={styles.heading} variants={fadeUp}>
             Equipped for Excellence
-          </motion.h2>
-          <motion.p className={styles.subtext} variants={fadeUp}>
+          </m.h2>
+          <m.p className={styles.subtext} variants={fadeUp}>
             All machines and equipment used at the clinic are modern, state-of-the-art devices
             that are medically approved for safety and efficiency. We select world-leading,
             innovative devices and first-rate products to help our patients achieve the best
             results possible.
-          </motion.p>
-        </motion.div>
+          </m.p>
+        </m.div>
 
         {/* Two-column grid */}
-        <motion.div
+        <m.div
           className={styles.grid}
           variants={stagger(0.1)}
           initial="hidden"
@@ -63,7 +63,7 @@ export default function TechSafety() {
           viewport={VIEWPORT}
         >
           {/* Technology */}
-          <motion.div className={styles.column} variants={fadeUp}>
+          <m.div className={styles.column} variants={fadeUp}>
             <div className={styles.columnHead}>
               <span className={styles.columnIcon} aria-hidden="true">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -82,10 +82,10 @@ export default function TechSafety() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </m.div>
 
           {/* Safety */}
-          <motion.div className={styles.column} variants={fadeUp}>
+          <m.div className={styles.column} variants={fadeUp}>
             <div className={styles.columnHead}>
               <span className={styles.columnIcon} aria-hidden="true">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -102,8 +102,8 @@ export default function TechSafety() {
                 </li>
               ))}
             </ul>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </Container>
     </Section>
   );

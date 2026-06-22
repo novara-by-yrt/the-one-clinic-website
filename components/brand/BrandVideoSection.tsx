@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import Script from 'next/script';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
@@ -35,36 +35,36 @@ export default function BrandVideoSection() {
       <Container className={styles.inner}>
 
         {/* ── Header ── */}
-        <motion.div
+        <m.div
           className={styles.header}
           variants={stagger(0.1)}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <motion.div variants={fadeUp}>
+          <m.div variants={fadeUp}>
             <span className={styles.chip}>
               <span className={styles.chipDot} aria-hidden="true" />
               See It For Yourself
             </span>
-          </motion.div>
+          </m.div>
 
-          <motion.h2 className={styles.heading} variants={fadeUp}>
+          <m.h2 className={styles.heading} variants={fadeUp}>
             Our Story &amp;<br />
             <em className={styles.headingAccent}>Real Patient</em> Results
-          </motion.h2>
+          </m.h2>
 
-          <motion.div className={styles.rule} variants={fadeUp} aria-hidden="true" />
+          <m.div className={styles.rule} variants={fadeUp} aria-hidden="true" />
 
-          <motion.p className={styles.subtext} variants={fadeUp}>
+          <m.p className={styles.subtext} variants={fadeUp}>
             Hear directly from our founder and the patients whose lives we&apos;ve helped transform.
-          </motion.p>
-        </motion.div>
+          </m.p>
+        </m.div>
 
         {/* ── Video grid ── */}
         <div className={styles.grid}>
           {VIDEOS.map((video, i) => (
-            <motion.div
+            <m.div
               key={video.id}
               className={styles.videoCard}
               initial={{ opacity: 0, y: 40 }}
@@ -89,7 +89,7 @@ export default function BrandVideoSection() {
 
               {/* Hover glow */}
               <div className={styles.cardGlow} aria-hidden="true" />
-            </motion.div>
+            </m.div>
           ))}
         </div>
 

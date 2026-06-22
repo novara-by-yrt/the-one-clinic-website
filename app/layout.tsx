@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import localFont from 'next/font/local';
+import MotionProvider from '@/components/providers/MotionProvider';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import LayoutShell from '@/components/layout/LayoutShell';
@@ -117,19 +118,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           Skip to main content
         </a>
 
-        <div className="site-wrapper">
-          <Header />
-          <LayoutShell footer={<Footer />}>
-            <main id="main-content" tabIndex={-1}>
-              {children}
-            </main>
-          </LayoutShell>
-          <StickyCallbackCTA />
-          <WhatsAppButton />
-          <BookConsultationModal />
-        </div>
+        <MotionProvider>
+          <div className="site-wrapper">
+            <Header />
+            <LayoutShell footer={<Footer />}>
+              <main id="main-content" tabIndex={-1}>
+                {children}
+              </main>
+            </LayoutShell>
+            <StickyCallbackCTA />
+            <WhatsAppButton />
+            <BookConsultationModal />
+          </div>
 
-        <CookieConsentBanner />
+          <CookieConsentBanner />
+        </MotionProvider>
       </body>
     </html>
   );

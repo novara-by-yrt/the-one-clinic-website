@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Container              from '@/components/ui/Container';
 import BookConsultationButton from '@/components/ui/BookConsultationButton';
 import Process                from '@/components/sections/Process';
@@ -26,29 +26,29 @@ export default function PatientExperiencePage() {
         <div className={styles.heroGrid} aria-hidden="true" />
 
         <Container>
-          <motion.div
+          <m.div
             className={styles.heroContent}
             variants={stagger(0.15)}
             initial="hidden"
             animate="show"
           >
-            <motion.h1 className={styles.heroTitle} variants={fadeUp}>
+            <m.h1 className={styles.heroTitle} variants={fadeUp}>
               The One Clinic <span className={styles.heroTitleAccent}>Patient Experience</span>
-            </motion.h1>
+            </m.h1>
 
-            <motion.p className={styles.heroDesc} variants={fadeUp}>
+            <m.p className={styles.heroDesc} variants={fadeUp}>
               Achieving a patient&apos;s happiness is why The One Clinic practises.
               We believe that each patient is entitled to their own bespoke journey,
               as it&apos;s this approach that ensures a patient&apos;s needs are
               truly fulfilled.
-            </motion.p>
+            </m.p>
 
-            <motion.div className={styles.heroCtas} variants={fadeUp}>
+            <m.div className={styles.heroCtas} variants={fadeUp}>
               <BookConsultationButton className={styles.heroCtaPrimary}>
                 Book a Consultation
               </BookConsultationButton>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </section>
 

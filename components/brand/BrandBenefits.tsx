@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Image from 'next/image';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
@@ -19,33 +19,33 @@ export default function BrandBenefits() {
           {/* ══════════════════════════════════
               LEFT , oversized editorial text
           ══════════════════════════════════ */}
-          <motion.div
+          <m.div
             className={styles.textCol}
             variants={staggerLeft(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrow} variants={fadeUp}>
+            <m.p className={styles.eyebrow} variants={fadeUp}>
               Why Choose Us
-            </motion.p>
+            </m.p>
 
             {/* Oversized heading , editorial luxury scale */}
-            <motion.h2 className={styles.heading} variants={fadeUp}>
+            <m.h2 className={styles.heading} variants={fadeUp}>
               Care&shy;fully<br />
               considered.<br />
               <em className={styles.headingEm}>Genuinely</em><br />
               <span className={styles.headingDark}>yours.</span>
-            </motion.h2>
+            </m.h2>
 
-            <motion.div className={styles.rule} variants={fadeUp} aria-hidden="true" />
+            <m.div className={styles.rule} variants={fadeUp} aria-hidden="true" />
 
-            <motion.p className={styles.subtext} variants={fadeUp}>
+            <m.p className={styles.subtext} variants={fadeUp}>
               Every patient receives genuine attention and a tailored plan built
               around their health, goals and lifestyle.
-            </motion.p>
+            </m.p>
 
-            <motion.div variants={fadeUp}>
+            <m.div variants={fadeUp}>
               <Button
                 variant="primary"
                 theme="light"
@@ -53,13 +53,13 @@ export default function BrandBenefits() {
               >
                 Book a Consultation
               </Button>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
 
           {/* ══════════════════════════════════
               RIGHT , layered image + float cards
           ══════════════════════════════════ */}
-          <motion.div
+          <m.div
             className={styles.imageCol}
             initial={{ opacity: 0, x: 60 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -69,7 +69,7 @@ export default function BrandBenefits() {
             <div className={styles.canvasWrap}>
 
               {/* ── Secondary framed image (outside canvas , shadow preserved) ── */}
-              <motion.div
+              <m.div
                 className={styles.imgSecondary}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -83,10 +83,10 @@ export default function BrandBenefits() {
                   className={styles.img}
                   sizes="(max-width: 900px) 50vw, 26vw"
                 />
-              </motion.div>
+              </m.div>
 
               {/* ── Float card 1: Doctor-Led (top-left) ── */}
-              <motion.div
+              <m.div
                 className={`${styles.card} ${styles.card1}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -104,10 +104,10 @@ export default function BrandBenefits() {
                   <p className={styles.cardTitle}>Doctor-Led</p>
                   <p className={styles.cardSub}>Every treatment</p>
                 </div>
-              </motion.div>
+              </m.div>
 
               {/* ── Float card 2: stat (bottom-right) ─── */}
-              <motion.div
+              <m.div
                 className={`${styles.card} ${styles.card2}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -117,10 +117,10 @@ export default function BrandBenefits() {
               >
                 <p className={styles.cardBigNum}>2000+</p>
                 <p className={styles.cardSub}>Patients Treated</p>
-              </motion.div>
+              </m.div>
 
             </div>
-          </motion.div>
+          </m.div>
 
         </div>
       </Container>

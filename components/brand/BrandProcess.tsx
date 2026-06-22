@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { m, AnimatePresence, useInView } from 'framer-motion';
 import Image from 'next/image';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
@@ -74,7 +74,7 @@ export default function BrandProcess() {
           {/* ══════════════════════════════════════════════
               LEFT , Layered media canvas
           ══════════════════════════════════════════════ */}
-          <motion.div
+          <m.div
             className={styles.mediaCol}
             initial={{ opacity: 0, x: -52 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -86,13 +86,13 @@ export default function BrandProcess() {
               <div className={styles.mediaHalo} aria-hidden="true" />
 
               {/* Main dominant image */}
-              <motion.div
+              <m.div
                 className={styles.imgMain}
                 whileHover={{ scale: 1.025 }}
                 transition={{ duration: 0.8, ease: EASE }}
               >
                 <AnimatePresence mode="sync">
-                  <motion.div
+                  <m.div
                     key={activeSlide}
                     className={styles.imgFill}
                     initial={{ opacity: 0 }}
@@ -108,13 +108,13 @@ export default function BrandProcess() {
                       sizes="(max-width: 900px) 100vw, 48vw"
                       priority={activeSlide === 0}
                     />
-                  </motion.div>
+                  </m.div>
                 </AnimatePresence>
                 <div className={styles.imgGrad} aria-hidden="true" />
-              </motion.div>
+              </m.div>
 
               {/* Secondary preview image */}
-              <motion.div
+              <m.div
                 className={styles.imgSecondary}
                 initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -122,7 +122,7 @@ export default function BrandProcess() {
                 transition={{ duration: 0.85, ease: EASE, delay: 0.32 }}
               >
                 <AnimatePresence mode="sync">
-                  <motion.div
+                  <m.div
                     key={previewSlide}
                     className={styles.imgFill}
                     initial={{ opacity: 0 }}
@@ -137,12 +137,12 @@ export default function BrandProcess() {
                       className={styles.imgCover}
                       sizes="(max-width: 900px) 40vw, 22vw"
                     />
-                  </motion.div>
+                  </m.div>
                 </AnimatePresence>
-              </motion.div>
+              </m.div>
 
               {/* Floating stat card */}
-              <motion.div
+              <m.div
                 className={styles.floatStat}
                 initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -152,11 +152,11 @@ export default function BrandProcess() {
               >
                 <p className={styles.floatNum}>2000+</p>
                 <p className={styles.floatLabel}>Patients Treated</p>
-              </motion.div>
+              </m.div>
 
               {/* Active pillar label */}
               <AnimatePresence mode="wait">
-                <motion.div
+                <m.div
                   key={hoveredPillar ?? 'idle'}
                   className={styles.stepLabel}
                   initial={{ opacity: 0, y: 6 }}
@@ -168,12 +168,12 @@ export default function BrandProcess() {
                   <span className={styles.stepLabelText}>
                     {hoveredPillar !== null ? PILLARS[hoveredPillar].tag : 'The One Clinic'}
                   </span>
-                </motion.div>
+                </m.div>
               </AnimatePresence>
 
 
             </div>
-          </motion.div>
+          </m.div>
 
           {/* ══════════════════════════════════════════════
               RIGHT , Header + two editorial pillars
@@ -181,25 +181,25 @@ export default function BrandProcess() {
           <div className={styles.textCol}>
 
             {/* Header */}
-            <motion.div
+            <m.div
               className={styles.header}
               variants={HEADER_VARIANTS}
               initial="hidden"
               whileInView="show"
               viewport={VIEWPORT}
             >
-              <motion.div variants={fadeUp}>
+              <m.div variants={fadeUp}>
                 <span className={styles.chip}>
                   <span className={styles.chipDot} aria-hidden="true" />
                   About Us
                 </span>
-              </motion.div>
-              <motion.h2 className={styles.heading} variants={fadeUp}>Our Philosophy</motion.h2>
-              <motion.p className={styles.subtext} variants={fadeUp}>
+              </m.div>
+              <m.h2 className={styles.heading} variants={fadeUp}>Our Philosophy</m.h2>
+              <m.p className={styles.subtext} variants={fadeUp}>
                 One Clinic Leicester, where a fresh approach to aesthetics meets
                 genuine, lasting care for every patient.
-              </motion.p>
-            </motion.div>
+              </m.p>
+            </m.div>
 
             {/* Editorial pillar cards */}
             <div className={styles.pillars} ref={pillarsRef}>
@@ -208,7 +208,7 @@ export default function BrandProcess() {
                   (hoveredPillar === null && seqIdx === i);
 
                 return (
-                  <motion.div
+                  <m.div
                     key={pillar.tag}
                     className={`${styles.pillarItem} ${isActive ? styles.isActive : ''}`}
                     initial={{ opacity: 0, x: 30 }}
@@ -224,7 +224,7 @@ export default function BrandProcess() {
                       <h3 className={styles.pillarHeading}>{pillar.heading}</h3>
                       <p className={styles.pillarBody}>{pillar.body}</p>
                     </div>
-                  </motion.div>
+                  </m.div>
                 );
               })}
             </div>

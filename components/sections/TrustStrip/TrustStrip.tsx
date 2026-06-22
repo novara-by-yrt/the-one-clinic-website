@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
@@ -32,20 +32,20 @@ export default function TrustStrip() {
       <Container>
 
         {/* ── Awards row ───────────────────────────────────── */}
-        <motion.div
+        <m.div
           className={styles.awardsRow}
           variants={stagger(0.12)}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <motion.p className={styles.sectionEyebrow} variants={fadeUp}>
+          <m.p className={styles.sectionEyebrow} variants={fadeUp}>
             Awards &amp; Recognition
-          </motion.p>
+          </m.p>
 
           <div className={styles.awardCards}>
             {AWARDS.map((award) => (
-              <motion.div key={award.src} className={styles.awardCard} variants={fadeUp}>
+              <m.div key={award.src} className={styles.awardCard} variants={fadeUp}>
                 <div className={styles.awardImgWrap}>
                   <Image
                     src={award.src}
@@ -55,10 +55,10 @@ export default function TrustStrip() {
                     style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
                   />
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
-        </motion.div>
+        </m.div>
 
       </Container>
     </Section>
