@@ -24,6 +24,10 @@ const inter = localFont({
   ],
   variable: '--font-inter',
   display: 'swap',
+  // Don't preload the fonts: with display:swap the metrics-matched fallback
+  // paints text immediately, and freeing the high-priority request queue lets
+  // the LCP hero image download first (fonts swap in once loaded, no CLS).
+  preload: false,
   fallback: ['system-ui', 'sans-serif'],
 });
 
