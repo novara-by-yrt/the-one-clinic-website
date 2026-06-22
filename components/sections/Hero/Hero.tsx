@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import Script from 'next/script';
@@ -36,6 +36,32 @@ const TRANSITION_SMOOTH = { duration: 0.7, ease: [0.25, 0.1, 0.25, 1] as const }
 export default function Hero({ showVideo = true }: { showVideo?: boolean }) {
   const sectionRef = useRef<HTMLElement>(null);
 
+  // Facade: the static black background image is shown instantly as the
+  // hero poster, and the ambient Wistia loop is mounted only once the
+  // browser is idle after first paint — keeping the heavy embed off the
+  // critical path so it never delays LCP. No visible change: the video
+  // still auto-plays in the background a moment later.
+  const [mountVideo, setMountVideo] = useState(false);
+  useEffect(() => {
+    if (!showVideo) return;
+    let idleId = 0;
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+    const mount = () => setMountVideo(true);
+    const ric = (window as typeof window & {
+      requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+      cancelIdleCallback?: (id: number) => void;
+    });
+    if (typeof ric.requestIdleCallback === 'function') {
+      idleId = ric.requestIdleCallback(mount, { timeout: 3000 });
+    } else {
+      timeoutId = setTimeout(mount, 1500);
+    }
+    return () => {
+      if (idleId && typeof ric.cancelIdleCallback === 'function') ric.cancelIdleCallback(idleId);
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, [showVideo]);
+
   // Subtle parallax on scroll: content drifts up slightly as user scrolls
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -63,8 +89,8 @@ export default function Hero({ showVideo = true }: { showVideo?: boolean }) {
         />
       </div>
 
-      {/* ── Wistia background video ─────────────────────────── */}
-      {showVideo && (
+      {/* ── Wistia background video (deferred until browser idle) ── */}
+      {showVideo && mountVideo && (
         <>
           <div className={styles.videoBg} aria-hidden="true">
             <div className={styles.videoSizer}>
@@ -75,6 +101,7 @@ export default function Hero({ showVideo = true }: { showVideo?: boolean }) {
                 allowFullScreen
                 frameBorder="0"
                 scrolling="no"
+                loading="lazy"
                 className={styles.videoIframe}
               />
             </div>
