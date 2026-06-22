@@ -106,7 +106,7 @@ export default function BrandProcess() {
                       fill
                       className={styles.imgCover}
                       sizes="(max-width: 900px) 100vw, 48vw"
-                      priority={activeSlide === 0}
+                      loading="lazy"
                     />
                   </m.div>
                 </AnimatePresence>

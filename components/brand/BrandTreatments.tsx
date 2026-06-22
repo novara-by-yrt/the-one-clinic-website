@@ -77,7 +77,7 @@ export default function BrandTreatments() {
           fill
           className={styles.bgImg}
           sizes="100vw"
-          priority
+          loading="lazy"
         />
       </div>
       <div className={styles.overlay} aria-hidden="true" />
