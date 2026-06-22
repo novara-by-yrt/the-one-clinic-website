@@ -172,7 +172,7 @@ export default function MeetTheExperts() {
                   alt={`${member.name} , ${member.role} at The One Clinic Leicester`}
                   fill className={styles.cardImg}
                   sizes="(max-width:640px) 55vw, 340px"
-                  quality={90} priority draggable={false} />
+                  quality={90} draggable={false} />
               ) : (
                 <div className={styles.cardInitials}>{member.initials}</div>
               )}

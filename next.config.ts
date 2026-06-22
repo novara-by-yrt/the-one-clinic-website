@@ -13,6 +13,12 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 31_536_000, // 1 year
+    // Next 16 requires an explicit quality allowlist. 60 is used for the
+    // photographic hero background (darkened behind gradient/vignette
+    // overlays, so the lower quality is invisible but cuts bytes + AVIF
+    // encode time, which directly helps LCP). 75 stays the default for
+    // everything else; higher `quality` props clamp down to 75.
+    qualities: [60, 75],
   },
 
   // Tree-shake heavy, site-wide animation/carousel libraries so each route

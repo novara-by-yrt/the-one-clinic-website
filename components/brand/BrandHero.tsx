@@ -103,8 +103,14 @@ export default function BrandHero() {
   const sectionRef     = useRef<HTMLElement>(null);
   const prefersReduced = useReducedMotion();
   const [bgIndex, setBgIndex] = useState(0);
+  // Gate the non-LCP slideshow images behind mount so the first hero image
+  // (the LCP element) downloads alone and isn't forced to share bandwidth or
+  // the image optimizer's encode queue. The crossfade doesn't start until 4s,
+  // so mounting the rest a tick after first paint is invisible to the user.
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const id = setInterval(() => {
       setBgIndex(prev => (prev + 1) % BG_IMAGES.length);
     }, 4000);
@@ -128,20 +134,23 @@ export default function BrandHero() {
       {/* ── Background slideshow ─────────────────────────── */}
       <div className={styles.heroBg} aria-hidden="true">
         {BG_IMAGES.map((src, i) => (
-          <div
-            key={src}
-            className={styles.heroBgSlide}
-            style={{ opacity: bgIndex === i ? 1 : 0 }}
-          >
-            <Image
-              src={src}
-              alt=""
-              fill
-              priority={i === 0}
-              className={styles.heroBgImg}
-              sizes="100vw"
-            />
-          </div>
+          (i === 0 || mounted) && (
+            <div
+              key={src}
+              className={styles.heroBgSlide}
+              style={{ opacity: bgIndex === i ? 1 : 0 }}
+            >
+              <Image
+                src={src}
+                alt=""
+                fill
+                preload={i === 0}
+                quality={60}
+                className={styles.heroBgImg}
+                sizes="100vw"
+              />
+            </div>
+          )
         ))}
       </div>
 

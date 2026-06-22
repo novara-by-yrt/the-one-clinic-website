@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from 'react';
 import {
-  motion,
+  m,
   useScroll,
   useTransform,
   useSpring,
@@ -57,13 +57,13 @@ export default function LayoutShell({ children, footer }: LayoutShellProps) {
       {/* Spacer pushes the page height so the fixed footer is reachable by scroll,
           but has pointer-events:none so it never blocks footer clicks */}
       <div className={styles.footerSpacer} aria-hidden="true" />
-      <motion.div
+      <m.div
         ref={footerRef}
         className={styles.footerFixed}
         style={{ y, opacity }}
       >
         {footer}
-      </motion.div>
+      </m.div>
     </>
   );
 }
