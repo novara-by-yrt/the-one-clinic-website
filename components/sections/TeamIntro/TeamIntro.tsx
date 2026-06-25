@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
@@ -20,33 +20,33 @@ export default function TeamIntro() {
         <div className={styles.layout}>
 
           {/* Left, text */}
-          <motion.div
+          <m.div
             className={styles.textCol}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrow} variants={fadeUp}>
+            <m.p className={styles.eyebrow} variants={fadeUp}>
               Our Experts
-            </motion.p>
-            <motion.h2 className={styles.heading} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.heading} variants={fadeUp}>
               A Team You Can Trust
-            </motion.h2>
-            <motion.p className={styles.body} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.body} variants={fadeUp}>
               Our team is at the heart of everything we do. Fully qualified,
               GMC-registered, and trained to the highest standards, our doctors
               bring over 45 years of combined experience.
-            </motion.p>
-            <motion.p className={styles.body} variants={fadeUp}>
+            </m.p>
+            <m.p className={styles.body} variants={fadeUp}>
               From general health and private GP services to advanced medical
               aesthetics, every member of our team is committed to delivering
               exceptional, personalised care in a safe and welcoming environment.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
           {/* Right, credentials card */}
-          <motion.div
+          <m.div
             className={styles.cardCol}
             variants={fadeUp}
             initial="hidden"
@@ -69,7 +69,7 @@ export default function TeamIntro() {
                 of valuable experience between us.&rdquo;
               </p>
             </div>
-          </motion.div>
+          </m.div>
 
         </div>
       </Container>

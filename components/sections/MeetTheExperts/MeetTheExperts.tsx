@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { TEAM_MEMBERS } from '@/data/team';
 import styles from './MeetTheExperts.module.css';
 
@@ -134,7 +134,7 @@ export default function MeetTheExperts() {
           aria-label={`View ${prevMember.name}`}
         >
           <AnimatePresence mode="popLayout" initial={false}>
-            <motion.div
+            <m.div
               key={prevMember.slug}
               className={styles.sideCardInner}
               initial={{ opacity: 0 }}
@@ -150,14 +150,14 @@ export default function MeetTheExperts() {
                 <div className={styles.cardInitials}>{prevMember.initials}</div>
               )}
               <div className={styles.sideDim} aria-hidden="true" />
-            </motion.div>
+            </m.div>
           </AnimatePresence>
         </button>
 
         {/* ── Active card (tall, center) ── */}
         <div className={styles.activeCard} aria-live="polite">
           <AnimatePresence mode="wait" initial={false} custom={direction}>
-            <motion.div
+            <m.div
               key={active}
               className={styles.activeInner}
               custom={direction}
@@ -172,12 +172,12 @@ export default function MeetTheExperts() {
                   alt={`${member.name} , ${member.role} at The One Clinic Leicester`}
                   fill className={styles.cardImg}
                   sizes="(max-width:640px) 55vw, 340px"
-                  quality={90} priority draggable={false} />
+                  quality={90} draggable={false} />
               ) : (
                 <div className={styles.cardInitials}>{member.initials}</div>
               )}
               <div className={styles.activeOverlay} aria-hidden="true" />
-            </motion.div>
+            </m.div>
           </AnimatePresence>
 
           {/* Mobile-only side arrows , overlaid on card */}
@@ -201,7 +201,7 @@ export default function MeetTheExperts() {
           {/* Info panel , upper portion */}
           <div className={styles.infoArea} aria-live="polite">
             <AnimatePresence mode="wait" initial={false}>
-              <motion.div
+              <m.div
                 key={active}
                 className={styles.infoPanel}
                 variants={INFO_VARIANTS}
@@ -226,37 +226,37 @@ export default function MeetTheExperts() {
                       strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </Link>
-              </motion.div>
+              </m.div>
             </AnimatePresence>
           </div>
 
           {/* Two next card thumbnails , lower portion, side by side */}
           <div className={styles.nextRow}>
-            {[nextMember, nextMember2].map((m, i) => (
+            {[nextMember, nextMember2].map((person, i) => (
               <button
-                key={m.slug + i}
+                key={person.slug + i}
                 className={styles.nextThumb}
                 onClick={() => goTo((active + i + 1) % TOTAL)}
-                aria-label={`View ${m.name}`}
+                aria-label={`View ${person.name}`}
               >
                 <AnimatePresence mode="popLayout" initial={false}>
-                  <motion.div
-                    key={m.slug}
+                  <m.div
+                    key={person.slug}
                     className={styles.nextThumbInner}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.30 }}
                   >
-                    {m.image ? (
-                      <Image src={m.image}
-                        alt={`${m.name} , ${m.role} at The One Clinic Leicester`}
+                    {person.image ? (
+                      <Image src={person.image}
+                        alt={`${person.name} , ${person.role} at The One Clinic Leicester`}
                         fill className={styles.cardImg} sizes="160px" quality={90} draggable={false} />
                     ) : (
-                      <div className={styles.cardInitials}>{m.initials}</div>
+                      <div className={styles.cardInitials}>{person.initials}</div>
                     )}
                     <div className={styles.sideDim} aria-hidden="true" />
-                  </motion.div>
+                  </m.div>
                 </AnimatePresence>
               </button>
             ))}

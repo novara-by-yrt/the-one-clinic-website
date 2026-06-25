@@ -1,11 +1,11 @@
 import BrandHero         from '@/components/brand/BrandHero';
 import BrandVideoSection from '@/components/brand/BrandVideoSection';
 import LogoCarousel      from '@/components/sections/LogoCarousel';
-import BrandTreatments   from '@/components/brand/BrandTreatments';
+import BrandTreatmentsLazy from '@/components/brand/BrandTreatmentsLazy';
 import BrandProcess      from '@/components/brand/BrandProcess';
 import Testimonials      from '@/components/sections/Testimonials';
 import MeetTheExperts    from '@/components/sections/MeetTheExperts';
-import CaseStudies       from '@/components/sections/CaseStudies';
+import CaseStudiesLazy   from '@/components/sections/CaseStudies/CaseStudiesLazy';
 import LeadForm          from '@/components/sections/LeadForm';
 import FinalCTA          from '@/components/sections/FinalCTA';
 import JsonLd            from '@/lib/schema/JsonLd';
@@ -18,11 +18,11 @@ export default function Home() {
       <BrandHero />
       <LogoCarousel />
       <BrandVideoSection />
-      <BrandTreatments />
+      <BrandTreatmentsLazy />
       <BrandProcess />
       <Testimonials showVideos />
       <MeetTheExperts />
-      <CaseStudies />
+      <CaseStudiesLazy />
       <LeadForm />
       <FinalCTA />
     </>

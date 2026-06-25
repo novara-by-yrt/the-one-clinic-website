@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import type { BlogPost } from '@/lib/blog';
 import styles from './BlogCard.module.css';
 
@@ -13,7 +13,7 @@ interface BlogCardProps {
 
 export default function BlogCard({ post, variant = 'default' }: BlogCardProps) {
   return (
-    <motion.article
+    <m.article
       className={`${styles.card} ${styles[variant]}`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -73,6 +73,6 @@ export default function BlogCard({ post, variant = 'default' }: BlogCardProps) {
           </svg>
         </Link>
       </div>
-    </motion.article>
+    </m.article>
   );
 }

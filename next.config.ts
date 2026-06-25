@@ -13,6 +13,12 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 31_536_000, // 1 year
+    // Next 16 requires an explicit quality allowlist, and — importantly — it
+    // REJECTS (HTTP 400) any `quality` prop not listed here rather than
+    // clamping. So every value used in the app must be present:
+    //   75 — Next.js default; used everywhere unless overridden (incl. hero)
+    //   90 — doctor / team headshots, where facial detail matters most
+    qualities: [75, 90],
   },
 
   // Tree-shake heavy, site-wide animation/carousel libraries so each route

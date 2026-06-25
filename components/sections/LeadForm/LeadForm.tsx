@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Script from 'next/script';
 import { CLINIC_INFO, getMapsEmbedUrl, getMapsSearchUrl, getHoursDisplay } from '@/lib/clinic-info';
 import Section from '@/components/ui/Section';
@@ -78,7 +78,7 @@ export default function LeadForm() {
         <div className={styles.splitGrid}>
 
           {/* ── LEFT: Form column ───────────────────────── */}
-          <motion.div
+          <m.div
             className={styles.formCol}
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -107,13 +107,14 @@ export default function LeadForm() {
                 data-form-id="fegqbVjvGrZqMfbk64P4"
                 title="Request a Call Back"
                 scrolling="no"
+                loading="lazy"
               />
               </div>
             </div>
-          </motion.div>
+          </m.div>
 
           {/* ── RIGHT: Info + Map column ─────────────────── */}
-          <motion.div
+          <m.div
             className={styles.infoCol}
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -127,7 +128,7 @@ export default function LeadForm() {
             </p>
 
             {/* Contact info grid */}
-            <motion.div
+            <m.div
               className={styles.contactGrid}
               variants={stagger(0.1)}
               initial="hidden"
@@ -136,7 +137,7 @@ export default function LeadForm() {
             >
               {/* Phone + Email */}
               {CONTACT_ITEMS.map((item) => (
-                <motion.a
+                <m.a
                   key={item.value}
                   href={item.href}
                   className={styles.contactItem}
@@ -144,11 +145,11 @@ export default function LeadForm() {
                 >
                   <div className={styles.contactIconWrap}>{item.icon}</div>
                   <span className={styles.contactValue}>{item.value}</span>
-                </motion.a>
+                </m.a>
               ))}
 
               {/* Opening hours card */}
-              <motion.div className={`${styles.contactItem} ${styles.hoursCard}`} variants={fadeUp}>
+              <m.div className={`${styles.contactItem} ${styles.hoursCard}`} variants={fadeUp}>
                 <span className={styles.contactLabel}>Opening Hours</span>
                 <div className={styles.hoursGrid}>
                   {HOURS.map((h) => (
@@ -158,10 +159,10 @@ export default function LeadForm() {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </m.div>
 
               {/* Social media card */}
-              <motion.div className={`${styles.contactItem} ${styles.socialCard}`} variants={fadeUp}>
+              <m.div className={`${styles.contactItem} ${styles.socialCard}`} variants={fadeUp}>
                 <span className={styles.contactLabel}>Follow Us</span>
                 <div className={styles.socialLinks}>
                   {SOCIAL_LINKS.map((s) => (
@@ -177,8 +178,8 @@ export default function LeadForm() {
                     </a>
                   ))}
                 </div>
-              </motion.div>
-            </motion.div>
+              </m.div>
+            </m.div>
 
             {/* Map embed */}
             <div className={styles.mapWrap}>
@@ -205,7 +206,7 @@ export default function LeadForm() {
                 </span>
               </a>
             </div>
-          </motion.div>
+          </m.div>
 
         </div>
       </Container>

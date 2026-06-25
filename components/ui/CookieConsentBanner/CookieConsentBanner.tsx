@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { getConsentPreferences, setConsentPreferences } from '@/lib/consent';
 import { ConsentPreferences, CONSENT_CATEGORIES } from '@/lib/consent-types';
 import styles from './CookieConsentBanner.module.css';
@@ -72,14 +72,14 @@ export default function CookieConsentBanner() {
   return (
     <AnimatePresence>
       {isVisible && (
-        <motion.div
+        <m.div
           className={styles.overlay}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <motion.div
+          <m.div
             className={styles.banner}
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -88,7 +88,7 @@ export default function CookieConsentBanner() {
           >
             <AnimatePresence mode="wait">
               {view === 'banner' && (
-                <motion.div
+                <m.div
                   key="banner-view"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -120,11 +120,11 @@ export default function CookieConsentBanner() {
                       Accept All
                     </button>
                   </div>
-                </motion.div>
+                </m.div>
               )}
 
               {view === 'details' && (
-                <motion.div
+                <m.div
                   key="details-view"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -168,11 +168,11 @@ export default function CookieConsentBanner() {
                       Save Preferences
                     </button>
                   </div>
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       )}
     </AnimatePresence>
   );

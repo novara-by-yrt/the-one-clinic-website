@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
@@ -57,24 +57,24 @@ export default function ArrivalExperience() {
   return (
     <Section variant="dark" data-section-theme="dark" className={styles.section}>
       <Container>
-        <motion.div
+        <m.div
           className={styles.wrapper}
           variants={stagger(0.08)}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <motion.div className={styles.header} variants={fadeUp}>
+          <m.div className={styles.header} variants={fadeUp}>
             <p className={styles.eyebrow}>From the Moment You Arrive</p>
             <h2 className={styles.heading}>The Arrival Experience</h2>
             <p className={styles.subtext}>
               Every visit is curated to make you feel entirely at ease from the moment you step through our doors.
             </p>
-          </motion.div>
+          </m.div>
 
-          <motion.div className={styles.itemsGrid} variants={stagger(0.08)}>
+          <m.div className={styles.itemsGrid} variants={stagger(0.08)}>
             {ITEMS.map((item) => (
-              <motion.div
+              <m.div
                 key={item.title}
                 className={styles.itemCard}
                 variants={fadeUp}
@@ -84,10 +84,10 @@ export default function ArrivalExperience() {
                 <div className={styles.itemIcon}>{item.icon}</div>
                 <h3 className={styles.itemTitle}>{item.title}</h3>
                 <p className={styles.itemDesc}>{item.desc}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </Container>
     </Section>
   );

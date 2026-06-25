@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
+import { m, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { ReactNode } from 'react';
 import BrandGlobalStyle from './BrandGlobalStyle';
 import styles from './BrandStage.module.css';
@@ -21,7 +21,7 @@ export default function BrandStage({ children }: { children: ReactNode }) {
   return (
     <div className={styles.stage} data-brand="">
       <BrandGlobalStyle />
-      <motion.div
+      <m.div
         className={styles.backdrop}
         aria-hidden="true"
         style={reduce ? undefined : { y: bgY }}

@@ -1,77 +1,11 @@
 'use client';
 
 import { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
+import type { CSSProperties } from 'react';
+import { m, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import styles from './BrandHero.module.css';
-
-/* ─────────────────────────────────────────────────────────────
-   CINEMATIC EASING , extra-slow exponential decel.
-   Almost no starting velocity, glides into a full stop.
-───────────────────────────────────────────────────────────── */
-const EC   = [0.16, 1, 0.30, 1] as const;
-const EC_R = [0.25, 0.1, 0.25, 1] as const;
-
-/* ─── Secondary text , large left-side travel + soft blur ── */
-function cineText(delay: number, prefersReduced: boolean | null) {
-  if (prefersReduced) {
-    return {
-      initial: { opacity: 0 },
-      animate: { opacity: 1 },
-      transition: { duration: 0.5, ease: EC_R, delay: delay * 0.2 },
-    };
-  }
-  return {
-    initial: { opacity: 0, x: -180, filter: 'blur(4px)' },
-    animate: { opacity: 1, x: 0,    filter: 'blur(0px)' },
-    transition: {
-      opacity: { duration: 1.40, ease: EC, delay },
-      x:       { duration: 1.70, ease: EC, delay },
-      filter:  { duration: 1.00, ease: EC, delay },
-    },
-  };
-}
-
-/* ─── Headline lines , much wider travel + stronger blur ─── */
-function cineH1(delay: number, prefersReduced: boolean | null) {
-  if (prefersReduced) {
-    return {
-      initial: { opacity: 0 },
-      animate: { opacity: 1 },
-      transition: { duration: 0.5, ease: EC_R, delay: delay * 0.2 },
-    };
-  }
-  return {
-    initial: { opacity: 0, x: -260, filter: 'blur(10px)' },
-    animate: { opacity: 1, x: 0,    filter: 'blur(0px)' },
-    transition: {
-      opacity: { duration: 1.55, ease: EC, delay },
-      x:       { duration: 1.95, ease: EC, delay },
-      filter:  { duration: 1.20, ease: EC, delay },
-    },
-  };
-}
-
-/* ─── Trust badges , gentle rise + fade, no x-travel ─────── */
-function cineBadge(delay: number, prefersReduced: boolean | null) {
-  if (prefersReduced) {
-    return {
-      initial: { opacity: 0 },
-      animate: { opacity: 1 },
-      transition: { duration: 0.5, ease: EC_R, delay: delay * 0.2 },
-    };
-  }
-  return {
-    initial: { opacity: 0, y: 18, filter: 'blur(3px)' },
-    animate: { opacity: 1, y: 0,  filter: 'blur(0px)' },
-    transition: {
-      opacity: { duration: 1.10, ease: EC, delay },
-      y:       { duration: 1.20, ease: EC, delay },
-      filter:  { duration: 0.85, ease: EC, delay },
-    },
-  };
-}
 
 /* ── Inline SVG icons ─────────────────────────────────────── */
 function GoogleIcon() {
@@ -101,10 +35,15 @@ const BG_IMAGES = [
 /* ── Component ────────────────────────────────────────────── */
 export default function BrandHero() {
   const sectionRef     = useRef<HTMLElement>(null);
-  const prefersReduced = useReducedMotion();
   const [bgIndex, setBgIndex] = useState(0);
+  // Gate the non-LCP slideshow images behind mount so the first hero image
+  // (the LCP element) downloads alone and isn't forced to share bandwidth or
+  // the image optimizer's encode queue. The crossfade doesn't start until 4s,
+  // so mounting the rest a tick after first paint is invisible to the user.
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const id = setInterval(() => {
       setBgIndex(prev => (prev + 1) % BG_IMAGES.length);
     }, 4000);
@@ -128,20 +67,24 @@ export default function BrandHero() {
       {/* ── Background slideshow ─────────────────────────── */}
       <div className={styles.heroBg} aria-hidden="true">
         {BG_IMAGES.map((src, i) => (
-          <div
-            key={src}
-            className={styles.heroBgSlide}
-            style={{ opacity: bgIndex === i ? 1 : 0 }}
-          >
-            <Image
-              src={src}
-              alt=""
-              fill
-              priority={i === 0}
-              className={styles.heroBgImg}
-              sizes="100vw"
-            />
-          </div>
+          (i === 0 || mounted) && (
+            <div
+              key={src}
+              className={styles.heroBgSlide}
+              style={{ opacity: bgIndex === i ? 1 : 0 }}
+            >
+              <Image
+                src={src}
+                alt=""
+                fill
+                preload={i === 0}
+                fetchPriority={i === 0 ? 'high' : undefined}
+                quality={75}
+                className={styles.heroBgImg}
+                sizes="100vw"
+              />
+            </div>
+          )
         ))}
       </div>
 
@@ -151,67 +94,72 @@ export default function BrandHero() {
       <div className={styles.overlaySpotlight} aria-hidden="true" />
 
       {/* ── Scroll-parallax content wrapper ──────────────── */}
-      <motion.div
+      <m.div
         className={styles.contentWrapper}
         style={{ y: contentY, opacity }}
       >
         <Container>
           <div className={styles.layout}>
 
-            {/* Open content column , no glass panel */}
+            {/* Open content column , no glass panel.
+
+                Content reveal runs on CSS animations (see *.anim* classes
+                in the module), not Framer Motion — so the headline (LCP
+                element) paints on the CSS timeline instead of waiting for
+                the JS bundle to hydrate. `--cine-delay` staggers each line. */}
             <div className={styles.content}>
 
               {/* ── Eyebrow ── */}
-              <motion.p
-                className={styles.eyebrow}
-                {...cineText(0.15, prefersReduced)}
+              <p
+                className={`${styles.eyebrow} ${styles.animText}`}
+                style={{ '--cine-delay': '0.15s' } as CSSProperties}
               >
                 Medical &amp; Aesthetic Care, Leicester
-              </motion.p>
+              </p>
 
               {/* ── Headline , three lines, ultra-slow stagger ── */}
               <h1 className={styles.headline}>
-                <motion.span
-                  className={styles.headlineLine}
-                  {...cineH1(0.30, prefersReduced)}
+                <span
+                  className={`${styles.headlineLine} ${styles.animH1}`}
+                  style={{ '--cine-delay': '0.30s' } as CSSProperties}
                 >
                   Where
-                </motion.span>
-                <motion.span
-                  className={styles.headlineLine}
-                  {...cineH1(0.52, prefersReduced)}
+                </span>
+                <span
+                  className={`${styles.headlineLine} ${styles.animH1}`}
+                  style={{ '--cine-delay': '0.52s' } as CSSProperties}
                 >
                   Expertise
-                </motion.span>
-                <motion.span
-                  className={`${styles.headlineLine} ${styles.headlineLineAccent}`}
-                  {...cineH1(0.74, prefersReduced)}
+                </span>
+                <span
+                  className={`${styles.headlineLine} ${styles.headlineLineAccent} ${styles.animH1}`}
+                  style={{ '--cine-delay': '0.74s' } as CSSProperties}
                 >
                   <span className={styles.headlineAccent}>Meets Care</span>
-                </motion.span>
+                </span>
               </h1>
 
               {/* ── Tagline , eye-catching ── */}
-              <motion.p
-                className={styles.tagline}
-                {...cineText(0.90, prefersReduced)}
+              <p
+                className={`${styles.tagline} ${styles.animText}`}
+                style={{ '--cine-delay': '0.90s' } as CSSProperties}
               >
                 Empowering Happy Patients
-              </motion.p>
+              </p>
 
               {/* ── Subtext ── */}
-              <motion.p
-                className={styles.subtext}
-                {...cineText(1.00, prefersReduced)}
+              <p
+                className={`${styles.subtext} ${styles.animText}`}
+                style={{ '--cine-delay': '1.00s' } as CSSProperties}
               >
                 Advanced medical, aesthetic and wellness care,
                 all under one roof.
-              </motion.p>
+              </p>
 
               {/* ── CTA button ── */}
-              <motion.div
-                className={styles.ctaRow}
-                {...cineText(1.20, prefersReduced)}
+              <div
+                className={`${styles.ctaRow} ${styles.animText}`}
+                style={{ '--cine-delay': '1.20s' } as CSSProperties}
               >
                 <button
                   className={styles.ctaBtn}
@@ -229,15 +177,15 @@ export default function BrandHero() {
                     />
                   </svg>
                 </button>
-              </motion.div>
+              </div>
 
               {/* ── Trust strip , 2 badges in a row ── */}
               <div className={styles.trustRow} role="region" aria-label="Trust indicators">
 
                 {/* Google Reviews */}
-                <motion.div
-                  className={styles.trustBadge}
-                  {...cineBadge(1.40, prefersReduced)}
+                <div
+                  className={`${styles.trustBadge} ${styles.animBadge}`}
+                  style={{ '--cine-delay': '1.40s' } as CSSProperties}
                 >
                   <div className={styles.trustBadgeHeader}>
                     <GoogleIcon />
@@ -255,12 +203,12 @@ export default function BrandHero() {
                     <span className={styles.trustDot} aria-hidden="true" />
                     <span className={styles.trustCount}>120+ reviews</span>
                   </p>
-                </motion.div>
+                </div>
 
                 {/* Trustpilot */}
-                <motion.div
-                  className={styles.trustBadge}
-                  {...cineBadge(1.55, prefersReduced)}
+                <div
+                  className={`${styles.trustBadge} ${styles.animBadge}`}
+                  style={{ '--cine-delay': '1.55s' } as CSSProperties}
                 >
                   <div className={styles.trustBadgeHeader}>
                     <TrustpilotIcon />
@@ -278,30 +226,30 @@ export default function BrandHero() {
                     <span className={styles.trustDot} aria-hidden="true" />
                     <span className={styles.trustCount}>140+ reviews</span>
                   </p>
-                </motion.div>
+                </div>
 
               </div>
 
             </div>
           </div>
         </Container>
-      </motion.div>
+      </m.div>
 
       {/* ── Scroll indicator ─────────────────────────────── */}
-      <motion.div
+      <m.div
         className={styles.scrollIndicator}
         aria-hidden="true"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.4, duration: 0.9 }}
       >
-        <motion.span
+        <m.span
           className={styles.scrollLine}
           animate={{ scaleY: [0.4, 1, 0.4] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         />
         <span className={styles.scrollLabel}>Scroll</span>
-      </motion.div>
+      </m.div>
     </section>
   );
 }

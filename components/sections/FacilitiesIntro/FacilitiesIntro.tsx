@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
@@ -19,35 +19,35 @@ export default function FacilitiesIntro() {
       <Container>
         <div className={styles.layout}>
           {/* Left, text */}
-          <motion.div
+          <m.div
             className={styles.textCol}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrow} variants={fadeUp}>
+            <m.p className={styles.eyebrow} variants={fadeUp}>
               About Our Clinic
-            </motion.p>
-            <motion.h2 className={styles.heading} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.heading} variants={fadeUp}>
               Our Facilities
-            </motion.h2>
-            <motion.p className={styles.body} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.body} variants={fadeUp}>
               Behind our charming 19th Century building you&apos;ll find convenient parking which has
               space for 15 cars. Patients can feel safe in the knowledge that as a CQC registered
               clinic, every step has been taken to ensure their safety, as well as using ICU data
               protection and adhering to GDPR guidance.
-            </motion.p>
-            <motion.p className={styles.body} variants={fadeUp}>
+            </m.p>
+            <m.p className={styles.body} variants={fadeUp}>
               Our reception area is located at the front of the building, where our front-of-house
               representative will book you in. You&apos;ll be offered some refreshments while you wait
               for treatment, and you&apos;ll be shown our &lsquo;skincare bar&rsquo; where we display a collection
               of the products available at our clinic, which you are free to sample.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
           {/* Right, fact card */}
-          <motion.div
+          <m.div
             className={styles.cardCol}
             variants={fadeUp}
             initial="hidden"
@@ -69,7 +69,7 @@ export default function FacilitiesIntro() {
                 &ldquo;A space that inspires confidence before your consultation even begins.&rdquo;
               </p>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </Container>
     </Section>

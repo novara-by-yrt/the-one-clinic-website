@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link  from 'next/link';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Section                from '@/components/ui/Section';
 import Container              from '@/components/ui/Container';
 import Accordion              from '@/components/ui/Accordion';
@@ -263,37 +263,37 @@ export default function StretchMarksPage() {
         </div>
 
         <Container>
-          <motion.div
+          <m.div
             className={styles.heroInner}
             variants={stagger(0.12)}
             initial="hidden"
             animate="show"
           >
             <div className={styles.heroLeft}>
-              <motion.span className={styles.heroCategory} variants={fadeUp}>
+              <m.span className={styles.heroCategory} variants={fadeUp}>
                 Conditions · Body
-              </motion.span>
+              </m.span>
 
-              <motion.h1 className={styles.heroTitle} variants={fadeUp}>
+              <m.h1 className={styles.heroTitle} variants={fadeUp}>
                 Stretch Marks
-              </motion.h1>
+              </m.h1>
 
-              <motion.p className={styles.heroDesc} variants={fadeUp}>
+              <m.p className={styles.heroDesc} variants={fadeUp}>
                 Reduce the appearance of stretch marks with advanced skin treatments
                 that stimulate collagen, resurface skin, and restore a smoother texture.
-              </motion.p>
+              </m.p>
 
-              <motion.div className={styles.heroCtas} variants={fadeUp}>
+              <m.div className={styles.heroCtas} variants={fadeUp}>
                 <BookConsultationButton className={styles.heroCtaPrimary}>
                   Book A Consultation
                 </BookConsultationButton>
-              </motion.div>
+              </m.div>
 
-              <motion.div variants={fadeUp}>
+              <m.div variants={fadeUp}>
                 <TrustBadges theme="dark" />
-              </motion.div>
+              </m.div>
 
-              <motion.div className={styles.heroTrust} variants={fadeUp}>
+              <m.div className={styles.heroTrust} variants={fadeUp}>
                 <span className={styles.heroTrustItem}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
@@ -317,10 +317,10 @@ export default function StretchMarksPage() {
                   </svg>
                   Comprehensive medical &amp; aesthetic care
                 </span>
-              </motion.div>
+              </m.div>
             </div>
 
-            <motion.div className={styles.heroImageWrap} variants={fadeUp}>
+            <m.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
                 src="/images/Stretch Marks.png"
                 alt="Stretch marks treatment at The One Clinic Leicester"
@@ -330,8 +330,8 @@ export default function StretchMarksPage() {
                 priority
               />
               <div className={styles.heroImageFade} aria-hidden="true" />
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </section>
 
@@ -344,7 +344,7 @@ export default function StretchMarksPage() {
             {/* Left column: Overview */}
             <div className={styles.combinedLeft}>
               <div className={styles.combinedLeftTop}>
-                <motion.p
+                <m.p
                   className={styles.eyebrowDark}
                   initial="hidden"
                   whileInView="show"
@@ -352,8 +352,8 @@ export default function StretchMarksPage() {
                   viewport={VIEWPORT}
                 >
                   About This Condition
-                </motion.p>
-                <motion.h2
+                </m.p>
+                <m.h2
                   className={styles.combinedHeading}
                   initial="hidden"
                   whileInView="show"
@@ -361,8 +361,8 @@ export default function StretchMarksPage() {
                   viewport={VIEWPORT}
                 >
                   What are Stretch Marks?
-                </motion.h2>
-                <motion.p
+                </m.h2>
+                <m.p
                   className={styles.combinedDesc}
                   initial="hidden"
                   whileInView="show"
@@ -374,8 +374,8 @@ export default function StretchMarksPage() {
                   elastin fibres within the dermis to tear. They typically appear as
                   streaks or lines on the abdomen, thighs, hips, breasts, upper arms,
                   and lower back.
-                </motion.p>
-                <motion.p
+                </m.p>
+                <m.p
                   className={styles.combinedDesc}
                   initial="hidden"
                   whileInView="show"
@@ -387,13 +387,13 @@ export default function StretchMarksPage() {
                   embedded in the skin. While harmless, they can cause significant
                   self-consciousness, and with the right treatment, their appearance
                   can be substantially reduced.
-                </motion.p>
+                </m.p>
               </div>
             </div>
 
             {/* Right column: Types */}
             <div className={styles.combinedRight}>
-              <motion.div
+              <m.div
                 className={styles.typesRightHeader}
                 initial="hidden"
                 whileInView="show"
@@ -402,9 +402,9 @@ export default function StretchMarksPage() {
               >
                 <p className={styles.combinedRightLabel}>Classification</p>
                 <h3 className={styles.typesRightHeading}>Types of Stretch Marks</h3>
-              </motion.div>
+              </m.div>
 
-              <motion.div
+              <m.div
                 className={styles.combinedCards}
                 variants={stagger(0.1)}
                 initial="hidden"
@@ -428,7 +428,7 @@ export default function StretchMarksPage() {
                     desc: 'Stretch marks formed during pregnancy on abdomen, breasts, and hips. Very common and often accompanied by skin laxity that can also be addressed.',
                   },
                 ].map((type) => (
-                  <motion.div
+                  <m.div
                     key={type.num}
                     className={styles.typeCardCombined}
                     variants={fadeUp}
@@ -440,9 +440,9 @@ export default function StretchMarksPage() {
                       <h3 className={styles.typeTitleCombined}>{type.title}</h3>
                       <p className={styles.typeDescCombined}>{type.desc}</p>
                     </div>
-                  </motion.div>
+                  </m.div>
                 ))}
-              </motion.div>
+              </m.div>
             </div>
           </div>
         </Container>
@@ -453,26 +453,26 @@ export default function StretchMarksPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.causesSection}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+            <m.p className={styles.eyebrowDark} variants={fadeUp}>
               Root Causes
-            </motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               What Causes Stretch Marks?
-            </motion.h2>
-            <motion.p className={styles.sectionSubtext} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.sectionSubtext} variants={fadeUp}>
               Stretch marks form whenever the skin is stretched faster than it can
               adapt, tearing the underlying collagen and elastin fibres.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.causesGrid}
             variants={stagger(0.08)}
             initial="hidden"
@@ -480,7 +480,7 @@ export default function StretchMarksPage() {
             viewport={VIEWPORT}
           >
             {CAUSES.map((cause) => (
-              <motion.div
+              <m.div
                 key={cause.title}
                 className={styles.causeCard}
                 variants={fadeUp}
@@ -492,9 +492,9 @@ export default function StretchMarksPage() {
                 <span className={styles.causeIcon}>{cause.icon}</span>
                 <h3 className={styles.causeTitle}>{cause.title}</h3>
                 <p className={styles.causeDesc}>{cause.desc}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -503,7 +503,7 @@ export default function StretchMarksPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
-          <motion.div
+          <m.div
             className={styles.riskGrid}
             variants={stagger(0.12)}
             initial="hidden"
@@ -511,7 +511,7 @@ export default function StretchMarksPage() {
             viewport={VIEWPORT}
           >
             {/* Left: image */}
-            <motion.div className={styles.riskImageWrap} variants={fadeUp}>
+            <m.div className={styles.riskImageWrap} variants={fadeUp}>
               <Image
                 src="/images/Stretch Marks.png"
                 alt="Stretch marks on skin showing treatment areas"
@@ -520,41 +520,41 @@ export default function StretchMarksPage() {
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className={styles.riskImageOverlay} aria-hidden="true" />
-            </motion.div>
+            </m.div>
 
             {/* Right: heading + intro + checklist */}
-            <motion.div className={styles.riskRight} variants={stagger(0.1)}>
+            <m.div className={styles.riskRight} variants={stagger(0.1)}>
               <div className={styles.riskRightInner}>
-                <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+                <m.p className={styles.eyebrowDark} variants={fadeUp}>
                   Risk Factors
-                </motion.p>
-                <motion.h2 className={styles.riskHeading} variants={fadeUp}>
+                </m.p>
+                <m.h2 className={styles.riskHeading} variants={fadeUp}>
                   Who Is More Likely to Develop Stretch Marks?
-                </motion.h2>
-                <motion.p className={styles.riskIntro} variants={fadeUp}>
+                </m.h2>
+                <m.p className={styles.riskIntro} variants={fadeUp}>
                   Stretch marks are extremely common, but certain life stages and
                   physical changes make them more likely to develop.
-                </motion.p>
+                </m.p>
 
-                <motion.ul
+                <m.ul
                   className={styles.riskList}
                   role="list"
                   variants={stagger(0.08)}
                 >
                   {RISK_FACTORS.map((item) => (
-                    <motion.li key={item} className={styles.riskItem} variants={fadeUp}>
+                    <m.li key={item} className={styles.riskItem} variants={fadeUp}>
                       <span className={styles.riskCheck} aria-hidden="true">
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                           <polyline points="2,7 5.5,10.5 12,3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                       </span>
                       <span>{item}</span>
-                    </motion.li>
+                    </m.li>
                   ))}
-                </motion.ul>
+                </m.ul>
               </div>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -563,22 +563,22 @@ export default function StretchMarksPage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <m.p className={styles.eyebrowLight} variants={fadeUp}>
               Your Options
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               Treatments for Stretch Marks
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.treatmentsGrid}
             variants={stagger(0.1)}
             initial="hidden"
@@ -586,7 +586,7 @@ export default function StretchMarksPage() {
             viewport={VIEWPORT}
           >
             {TREATMENTS.map((t) => (
-              <motion.div
+              <m.div
                 key={t.title}
                 className={styles.treatmentCard}
                 variants={fadeUp}
@@ -603,9 +603,9 @@ export default function StretchMarksPage() {
                   </Link>
                   <p className={styles.treatmentDesc}>{t.desc}</p>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -614,25 +614,25 @@ export default function StretchMarksPage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <m.p className={styles.eyebrowLight} variants={fadeUp}>
               Our Process
-            </motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               How Do We Diagnose Stretch Marks?
-            </motion.h2>
-            <motion.p className={styles.diagnoseIntro} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.diagnoseIntro} variants={fadeUp}>
               Our specialists will:
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.diagnoseGrid}
             variants={stagger(0.1)}
             initial="hidden"
@@ -640,7 +640,7 @@ export default function StretchMarksPage() {
             viewport={VIEWPORT}
           >
             {DIAGNOSE_STEPS.map((step) => (
-              <motion.div
+              <m.div
                 key={step.num}
                 className={styles.diagnoseCard}
                 variants={fadeUp}
@@ -649,9 +649,9 @@ export default function StretchMarksPage() {
                   {step.num}
                 </span>
                 <p className={styles.diagnoseText}>{step.text}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -660,7 +660,7 @@ export default function StretchMarksPage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
-          <motion.div
+          <m.div
             className={styles.whenToCallWrap}
             variants={stagger(0.12)}
             initial="hidden"
@@ -668,26 +668,26 @@ export default function StretchMarksPage() {
             viewport={VIEWPORT}
           >
             {/* Left: heading */}
-            <motion.div className={styles.whenToCallLeft} variants={stagger(0.1)}>
-              <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <m.div className={styles.whenToCallLeft} variants={stagger(0.1)}>
+              <m.p className={styles.eyebrowLight} variants={fadeUp}>
                 Medical Advice
-              </motion.p>
-              <motion.h2 className={styles.whenToCallHeading} variants={fadeUp}>
+              </m.p>
+              <m.h2 className={styles.whenToCallHeading} variants={fadeUp}>
                 When to Call a Doctor?
-              </motion.h2>
-              <motion.p className={styles.whenToCallIntro} variants={fadeUp}>
+              </m.h2>
+              <m.p className={styles.whenToCallIntro} variants={fadeUp}>
                 While stretch marks are not medically dangerous, contact us if you experience:
-              </motion.p>
-            </motion.div>
+              </m.p>
+            </m.div>
 
             {/* Right: warning list */}
-            <motion.ul
+            <m.ul
               className={styles.whenToCallList}
               role="list"
               variants={stagger(0.08)}
             >
               {WHEN_TO_CALL.map((item) => (
-                <motion.li key={item} className={styles.whenToCallItem} variants={fadeUp}>
+                <m.li key={item} className={styles.whenToCallItem} variants={fadeUp}>
                   <span className={styles.whenToCallIcon} aria-hidden="true">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                       <circle cx="12" cy="12" r="10"/>
@@ -696,10 +696,10 @@ export default function StretchMarksPage() {
                     </svg>
                   </span>
                   <span>{item}</span>
-                </motion.li>
+                </m.li>
               ))}
-            </motion.ul>
-          </motion.div>
+            </m.ul>
+          </m.div>
         </Container>
       </Section>
 
@@ -708,26 +708,26 @@ export default function StretchMarksPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>
+            <m.p className={styles.eyebrowDark} variants={fadeUp}>
               What To Expect
-            </motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Results &amp; Expectations
-            </motion.h2>
-            <motion.p className={styles.sectionSubtext} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.sectionSubtext} variants={fadeUp}>
               Stretch mark treatment works progressively, results develop over several
               months as collagen remodelling takes effect.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.resultsGrid}
             variants={stagger(0.1)}
             initial="hidden"
@@ -735,7 +735,7 @@ export default function StretchMarksPage() {
             viewport={VIEWPORT}
           >
             {RESULTS_TIMELINE.map((item) => (
-              <motion.div
+              <m.div
                 key={item.phase}
                 className={styles.resultCard}
                 variants={fadeUp}
@@ -744,9 +744,9 @@ export default function StretchMarksPage() {
                 <span className={styles.resultPhase}>{item.phase}</span>
                 <h3 className={styles.resultTitle}>{item.title}</h3>
                 <p className={styles.resultDesc}>{item.desc}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -765,20 +765,20 @@ export default function StretchMarksPage() {
       ════════════════════════════════════════ */}
       <Section variant="dark" data-section-theme="dark">
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>Why Us</motion.p>
-            <motion.h2 className={styles.headingLight} variants={fadeUp}>
+            <m.p className={styles.eyebrowLight} variants={fadeUp}>Why Us</m.p>
+            <m.h2 className={styles.headingLight} variants={fadeUp}>
               Why Choose The One Clinic For Stretch Mark Treatment
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.whyGrid}
             variants={stagger(0.08)}
             initial="hidden"
@@ -786,7 +786,7 @@ export default function StretchMarksPage() {
             viewport={VIEWPORT}
           >
             {CLINIC_REASONS.map((r) => (
-              <motion.div
+              <m.div
                 key={r.n}
                 className={styles.whyCard}
                 variants={fadeUp}
@@ -794,9 +794,9 @@ export default function StretchMarksPage() {
               >
                 <span className={styles.whyNumber}>{r.n}</span>
                 <p className={styles.whyText}>{r.text}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -805,20 +805,20 @@ export default function StretchMarksPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.faqSection}>
         <Container className={styles.faqInner}>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>FAQ</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            <m.p className={styles.eyebrowDark} variants={fadeUp}>FAQ</m.p>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Frequently Asked Questions
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.faqBody}
             variants={fadeUp}
             initial="hidden"
@@ -826,7 +826,7 @@ export default function StretchMarksPage() {
             viewport={VIEWPORT}
           >
             <Accordion items={FAQS} theme="dark" />
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -850,33 +850,33 @@ export default function StretchMarksPage() {
         </div>
 
         <Container>
-          <motion.div
+          <m.div
             className={styles.ctaContent}
             variants={stagger(0.15)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowLight} variants={fadeUp}>
+            <m.p className={styles.eyebrowLight} variants={fadeUp}>
               Take the First Step
-            </motion.p>
-            <motion.h2 className={styles.ctaHeading} variants={fadeUp}>
+            </m.p>
+            <m.h2 className={styles.ctaHeading} variants={fadeUp}>
               Ready for Smoother,{' '}
               <span className={styles.ctaAccent}>Clearer Skin?</span>
-            </motion.h2>
-            <motion.p className={styles.ctaSubtext} variants={fadeUp}>
+            </m.h2>
+            <m.p className={styles.ctaSubtext} variants={fadeUp}>
               Speak to our specialists today to find the most effective treatment
               for your stretch marks and restore smooth, confident skin.
-            </motion.p>
-            <motion.div className={styles.ctaBtns} variants={fadeUp}>
+            </m.p>
+            <m.div className={styles.ctaBtns} variants={fadeUp}>
               <BookConsultationButton className={styles.ctaBtnPrimary}>
                 Book a Consultation
               </BookConsultationButton>
               <Link href="#contact" className={styles.ctaBtnSecondary}>
                 Contact Us
               </Link>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </Container>
       </section>
 
@@ -892,20 +892,20 @@ export default function StretchMarksPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light">
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Explore</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            <m.p className={styles.eyebrowDark} variants={fadeUp}>Explore</m.p>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Related Treatments
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.relatedGrid}
             variants={stagger(0.1)}
             initial="hidden"
@@ -913,7 +913,7 @@ export default function StretchMarksPage() {
             viewport={VIEWPORT}
           >
             {RELATED_TREATMENTS.map((item) => (
-              <motion.div key={item.title} className={styles.relatedCell} variants={fadeUp}>
+              <m.div key={item.title} className={styles.relatedCell} variants={fadeUp}>
                 <Link href={item.href} className={styles.relatedCard}>
                   <span className={styles.relatedTag}>{item.tag}</span>
                   <h3 className={styles.relatedTitle}>{item.title}</h3>
@@ -924,9 +924,9 @@ export default function StretchMarksPage() {
                     </svg>
                   </span>
                 </Link>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
 
@@ -935,20 +935,20 @@ export default function StretchMarksPage() {
       ════════════════════════════════════════ */}
       <Section variant="light" data-section-theme="light" className={styles.relatedConditionsSection}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.sectionHeaderCentre}
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrowDark} variants={fadeUp}>Similar Concerns</motion.p>
-            <motion.h2 className={styles.headingDark} variants={fadeUp}>
+            <m.p className={styles.eyebrowDark} variants={fadeUp}>Similar Concerns</m.p>
+            <m.h2 className={styles.headingDark} variants={fadeUp}>
               Related Conditions
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.relatedGrid}
             variants={stagger(0.1)}
             initial="hidden"
@@ -956,7 +956,7 @@ export default function StretchMarksPage() {
             viewport={VIEWPORT}
           >
             {RELATED_CONDITIONS.map((item) => (
-              <motion.div key={item.title} className={styles.relatedCell} variants={fadeUp}>
+              <m.div key={item.title} className={styles.relatedCell} variants={fadeUp}>
                 <Link href={item.href} className={styles.relatedCard}>
                   <span className={styles.relatedTag}>{item.tag}</span>
                   <h3 className={styles.relatedTitle}>{item.title}</h3>
@@ -967,9 +967,9 @@ export default function StretchMarksPage() {
                     </svg>
                   </span>
                 </Link>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Container>
       </Section>
     </>

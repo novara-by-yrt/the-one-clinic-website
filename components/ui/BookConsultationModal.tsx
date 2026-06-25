@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Script from 'next/script';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import styles from './BookConsultationModal.module.css';
 
 export default function BookConsultationModal() {
@@ -36,7 +36,7 @@ export default function BookConsultationModal() {
       <AnimatePresence>
         {open && (
           <>
-            <motion.div
+            <m.div
               className={styles.backdrop}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -47,7 +47,7 @@ export default function BookConsultationModal() {
             />
 
             <div className={styles.modalOuter}>
-              <motion.div
+              <m.div
                 className={styles.modal}
                 role="dialog"
                 aria-modal="true"
@@ -60,8 +60,8 @@ export default function BookConsultationModal() {
                 {/* Left: image panel — desktop only (hidden via CSS on mobile) */}
                 <div className={styles.modalImage}>
                   <Image
-                    src="/images/Morpheus8-new.png"
-                    alt="Morpheus8 treatment at The One Clinic"
+                    src="/images/Morpheus8 1.png"
+                    alt="Clinician performing treatment at The One Clinic"
                     fill
                     className={styles.modalImg}
                     sizes="300px"
@@ -108,7 +108,7 @@ export default function BookConsultationModal() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
             </div>
           </>
         )}

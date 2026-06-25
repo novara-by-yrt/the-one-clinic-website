@@ -3,7 +3,7 @@
 import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
@@ -438,16 +438,16 @@ export default function Services() {
       {/* Content layer above background */}
       <div className={styles.contentLayer}>
         <Container>
-          <motion.div
+          <m.div
             className={styles.header}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.p className={styles.eyebrow} variants={fadeUp}>Our</motion.p>
-            <motion.h2 className={styles.heading} variants={fadeUp}>Popular Treatments</motion.h2>
-          </motion.div>
+            <m.p className={styles.eyebrow} variants={fadeUp}>Our</m.p>
+            <m.h2 className={styles.heading} variants={fadeUp}>Popular Treatments</m.h2>
+          </m.div>
         </Container>
 
         {/* ── Carousel ────────────────────────────────────────── */}
@@ -514,7 +514,7 @@ export default function Services() {
 
         {/* ── Explore all CTA ─────────────────────────────────── */}
         <Container>
-          <motion.div
+          <m.div
             className={styles.exploreCta}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -528,7 +528,7 @@ export default function Services() {
                   strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </Link>
-          </motion.div>
+          </m.div>
         </Container>
       </div>
     </Section>

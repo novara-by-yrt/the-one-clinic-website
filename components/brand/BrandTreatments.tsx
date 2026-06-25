@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Autoplay } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
@@ -77,7 +77,7 @@ export default function BrandTreatments() {
           fill
           className={styles.bgImg}
           sizes="100vw"
-          priority
+          loading="lazy"
         />
       </div>
       <div className={styles.overlay} aria-hidden="true" />
@@ -87,30 +87,30 @@ export default function BrandTreatments() {
       <div className={styles.inner}>
 
         {/* ══ Top: centered heading ══ */}
-        <motion.div
+        <m.div
           className={styles.topHeader}
           variants={stagger(0.1)}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <motion.div variants={fadeUp}>
+          <m.div variants={fadeUp}>
             <span className={styles.chip}>
               <span className={styles.chipDot} aria-hidden="true" />
               Medical Aesthetics &amp; Health Care
             </span>
-          </motion.div>
+          </m.div>
 
-          <motion.h2 className={styles.heading} variants={fadeUp}>
+          <m.h2 className={styles.heading} variants={fadeUp}>
             Our Popular{' '}
             <em className={styles.headingAccent}>Treatments</em>
-          </motion.h2>
+          </m.h2>
 
-          <motion.p className={styles.sectionDesc} variants={fadeUp}>
+          <m.p className={styles.sectionDesc} variants={fadeUp}>
             Advanced aesthetic and health treatments, all under one roof,
             tailored to your goals by our qualified doctors.
-          </motion.p>
-        </motion.div>
+          </m.p>
+        </m.div>
 
         {/* ══ Bottom: dynamic info + carousel ══ */}
         <div className={styles.bottomLayout}>
@@ -118,7 +118,7 @@ export default function BrandTreatments() {
           {/* ── Left: dynamic treatment info ── */}
           <div className={styles.leftPanel}>
             <AnimatePresence mode="wait">
-              <motion.div
+              <m.div
                 key={activeIndex}
                 className={styles.treatmentInfo}
                 variants={INFO_VARIANTS}
@@ -129,14 +129,18 @@ export default function BrandTreatments() {
                 <h3 className={styles.treatmentName}>{active.title}</h3>
                 <div className={styles.rule} aria-hidden="true" />
                 <p className={styles.treatmentDesc}>{active.desc}</p>
-                <Link href={active.href} className={styles.cta}>
+                <Link
+                  href={active.href}
+                  className={styles.cta}
+                  aria-label={`Learn more about ${active.title}`}
+                >
                   Learn More
                   <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                     <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6"
                       strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </Link>
-              </motion.div>
+              </m.div>
             </AnimatePresence>
 
 

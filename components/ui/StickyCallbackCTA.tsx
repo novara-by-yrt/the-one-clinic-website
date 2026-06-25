@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import Script from 'next/script';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import styles from './StickyCallbackCTA.module.css';
 
 /* ── Timing constants ──────────────────────────────────────────── */
@@ -132,7 +132,7 @@ export default function StickyCallbackCTA() {
         {open && (
           <>
             {/* Backdrop */}
-            <motion.div
+            <m.div
               className={styles.backdrop}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -144,7 +144,7 @@ export default function StickyCallbackCTA() {
 
             {/* Modal container */}
             <div className={styles.modalOuter}>
-              <motion.div
+              <m.div
                 className={styles.modal}
                 role="dialog"
                 aria-modal="true"
@@ -157,8 +157,8 @@ export default function StickyCallbackCTA() {
                 {/* Left: image panel — desktop only (hidden via CSS on mobile) */}
                 <div className={styles.modalImage}>
                   <Image
-                    src="/images/Morpheus8-new.png"
-                    alt="Morpheus8 treatment at The One Clinic"
+                    src="/images/Morpheus8 1.png"
+                    alt="Clinician performing treatment at The One Clinic"
                     fill
                     className={styles.modalImg}
                     sizes="340px"
@@ -208,7 +208,7 @@ export default function StickyCallbackCTA() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
             </div>
           </>
         )}

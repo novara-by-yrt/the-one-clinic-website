@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import localFont from 'next/font/local';
+import MotionProvider from '@/components/providers/MotionProvider';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import LayoutShell from '@/components/layout/LayoutShell';
@@ -23,6 +24,10 @@ const inter = localFont({
   ],
   variable: '--font-inter',
   display: 'swap',
+  // Don't preload the fonts: with display:swap the metrics-matched fallback
+  // paints text immediately, and freeing the high-priority request queue lets
+  // the LCP hero image download first (fonts swap in once loaded, no CLS).
+  preload: false,
   fallback: ['system-ui', 'sans-serif'],
 });
 
@@ -88,7 +93,7 @@ export default function RootLayout({
       <head>
         <Script
           id="gtm-head"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -110,26 +115,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         <Script
           src="https://link.leadpipeline.ai/js/form_embed.js"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
 
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
 
-        <div className="site-wrapper">
-          <Header />
-          <LayoutShell footer={<Footer />}>
-            <main id="main-content" tabIndex={-1}>
-              {children}
-            </main>
-          </LayoutShell>
-          <StickyCallbackCTA />
-          <WhatsAppButton />
-          <BookConsultationModal />
-        </div>
+        <MotionProvider>
+          <div className="site-wrapper">
+            <Header />
+            <LayoutShell footer={<Footer />}>
+              <main id="main-content" tabIndex={-1}>
+                {children}
+              </main>
+            </LayoutShell>
+            <StickyCallbackCTA />
+            <WhatsAppButton />
+            <BookConsultationModal />
+          </div>
 
-        <CookieConsentBanner />
+          <CookieConsentBanner />
+        </MotionProvider>
       </body>
     </html>
   );

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import BookConsultationButton from '@/components/ui/BookConsultationButton';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
@@ -32,19 +32,19 @@ export default function ExtendedTeam() {
       <Container>
 
         {/* ── Specialist ── */}
-        <motion.div
+        <m.div
           className={styles.block}
           variants={stagger(0.1)}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <motion.div className={styles.blockHeader} variants={fadeUp}>
+          <m.div className={styles.blockHeader} variants={fadeUp}>
             <p className={styles.blockEyebrow}>Specialist</p>
             <h2 className={styles.blockHeading}>Our Surgical Expert</h2>
-          </motion.div>
+          </m.div>
 
-          <motion.article className={styles.specialistCard} variants={fadeUp}>
+          <m.article className={styles.specialistCard} variants={fadeUp}>
             <div className={styles.specialistAvatar} aria-hidden="true">
               <span className={styles.specialistInitials}>{SPECIALIST.initials}</span>
             </div>
@@ -65,62 +65,62 @@ export default function ExtendedTeam() {
                 <span aria-hidden="true" className={styles.ctaArrow}>→</span>
               </BookConsultationButton>
             </div>
-          </motion.article>
-        </motion.div>
+          </m.article>
+        </m.div>
 
         {/* ── Clinical Team ── */}
-        <motion.div
+        <m.div
           className={styles.block}
           variants={stagger(0.1)}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <motion.div className={styles.blockHeader} variants={fadeUp}>
+          <m.div className={styles.blockHeader} variants={fadeUp}>
             <p className={styles.blockEyebrow}>Clinical Team</p>
             <h2 className={styles.blockHeading}>Nursing &amp; Clinical Staff</h2>
-          </motion.div>
+          </m.div>
 
-          <motion.div className={styles.staffRow} variants={stagger(0.08)}>
-            {CLINICAL.map((m) => (
-              <motion.div key={m.name} className={styles.staffCard} variants={fadeUp}>
+          <m.div className={styles.staffRow} variants={stagger(0.08)}>
+            {CLINICAL.map((member) => (
+              <m.div key={member.name} className={styles.staffCard} variants={fadeUp}>
                 <div className={styles.staffAvatar} aria-hidden="true">
-                  <span className={styles.staffInitials}>{m.initials}</span>
+                  <span className={styles.staffInitials}>{member.initials}</span>
                 </div>
                 <div className={styles.staffInfo}>
-                  <p className={styles.staffName}>{m.name}</p>
-                  <p className={styles.staffRole}>{m.role}</p>
+                  <p className={styles.staffName}>{member.name}</p>
+                  <p className={styles.staffRole}>{member.role}</p>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
 
         {/* ── Support Team ── */}
-        <motion.div
+        <m.div
           className={styles.block}
           variants={stagger(0.1)}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <motion.div className={styles.blockHeader} variants={fadeUp}>
+          <m.div className={styles.blockHeader} variants={fadeUp}>
             <p className={styles.blockEyebrow}>Support Team</p>
             <h2 className={styles.blockHeading}>Patient Care &amp; Front of House</h2>
-          </motion.div>
+          </m.div>
 
-          <motion.div className={styles.supportRow} variants={stagger(0.08)}>
-            {SUPPORT.map((m) => (
-              <motion.div key={m.name} className={styles.supportCard} variants={fadeUp}>
+          <m.div className={styles.supportRow} variants={stagger(0.08)}>
+            {SUPPORT.map((member) => (
+              <m.div key={member.name} className={styles.supportCard} variants={fadeUp}>
                 <div className={styles.supportAvatar} aria-hidden="true">
-                  <span className={styles.supportInitials}>{m.initials}</span>
+                  <span className={styles.supportInitials}>{member.initials}</span>
                 </div>
-                <p className={styles.supportName}>{m.name}</p>
-                <p className={styles.supportRole}>{m.role}</p>
-              </motion.div>
+                <p className={styles.supportName}>{member.name}</p>
+                <p className={styles.supportRole}>{member.role}</p>
+              </m.div>
             ))}
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
 
       </Container>
     </Section>

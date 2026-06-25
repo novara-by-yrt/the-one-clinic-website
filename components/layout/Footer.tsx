@@ -99,6 +99,7 @@ export default function Footer() {
               data-layout-iframe-id="inline-dViZEitr7fnCtl8rKT3Q"
               data-form-id="dViZEitr7fnCtl8rKT3Q"
               title="Newsletter Form"
+              loading="lazy"
             />
             <Script src="https://link.leadpipeline.ai/js/form_embed.js" strategy="lazyOnload" />
           </div>

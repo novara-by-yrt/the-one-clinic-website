@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './Header.module.css';
@@ -366,7 +366,7 @@ export default function Header() {
         {item.simple && (
           <AnimatePresence>
             {isOpen && (
-              <motion.div
+              <m.div
                 className={styles.simpleDropdown}
                 variants={simpleDropVars}
                 initial="closed"
@@ -389,7 +389,7 @@ export default function Header() {
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
         )}
@@ -398,7 +398,7 @@ export default function Header() {
         {item.groups && (
           <AnimatePresence>
             {isOpen && (
-              <motion.div
+              <m.div
                 className={styles.megaPanel}
                 variants={megaVars}
                 initial="closed"
@@ -458,7 +458,7 @@ export default function Header() {
                         const gKey = `${i}-${gi}`;
                         if (openMegaGroup !== gKey) return null;
                         return (
-                          <motion.ul
+                          <m.ul
                             key={gKey}
                             className={styles.megaList}
                             role="list"
@@ -468,7 +468,7 @@ export default function Header() {
                             exit={{ opacity: 0, transition: { duration: 0.08 } }}
                           >
                             {grp.items.map((link) => (
-                              <motion.li key={link.href} variants={megaItemVars}>
+                              <m.li key={link.href} variants={megaItemVars}>
                                 <Link
                                   href={link.href}
                                   className={styles.ddItem}
@@ -476,16 +476,16 @@ export default function Header() {
                                 >
                                   {link.label}
                                 </Link>
-                              </motion.li>
+                              </m.li>
                             ))}
-                          </motion.ul>
+                          </m.ul>
                         );
                       })}
                     </AnimatePresence>
                   </div>
 
                 </div>
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
         )}
@@ -500,7 +500,7 @@ export default function Header() {
     <>
       {/* ── Header outer shell ────────────────────────────────── */}
       <header className={styles.headerOuter} role="banner">
-        <motion.div
+        <m.div
           ref={pillRef}
           className={styles.pill}
           data-theme={theme}
@@ -552,17 +552,17 @@ export default function Header() {
                 aria-expanded={menuOpen}
                 aria-controls="mobile-menu"
               >
-                <motion.span
+                <m.span
                   className={styles.bar}
                   animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
                   transition={{ duration: 0.25 }}
                 />
-                <motion.span
+                <m.span
                   className={styles.bar}
                   animate={menuOpen ? { opacity: 0, scaleX: 0.2 } : { opacity: 1, scaleX: 1 }}
                   transition={{ duration: 0.2 }}
                 />
-                <motion.span
+                <m.span
                   className={styles.bar}
                   animate={menuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
                   transition={{ duration: 0.25 }}
@@ -571,13 +571,13 @@ export default function Header() {
             </div>
 
           </div>
-        </motion.div>
+        </m.div>
       </header>
 
       {/* ── Mega menu backdrop ───────────────────────────────── */}
       <AnimatePresence>
         {anyMegaOpen && (
-          <motion.div
+          <m.div
             className={styles.megaBackdrop}
             variants={backdropVars}
             initial="closed"
@@ -594,7 +594,7 @@ export default function Header() {
       <AnimatePresence>
         {menuOpen && (
           <>
-            <motion.div
+            <m.div
               className={styles.mobileBackdrop}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -604,7 +604,7 @@ export default function Header() {
               aria-hidden="true"
             />
 
-            <motion.div
+            <m.div
               id="mobile-menu"
               className={styles.mobileMenu}
               role="dialog"
@@ -666,7 +666,7 @@ export default function Header() {
 
                         <AnimatePresence initial={false}>
                           {hasDropdown && isExpanded && (
-                            <motion.div
+                            <m.div
                               className={styles.mobileSubContent}
                               initial={{ height: 0, opacity: 0 }}
                               animate={{ height: 'auto', opacity: 1 }}
@@ -702,7 +702,7 @@ export default function Header() {
                                         </button>
                                         <AnimatePresence initial={false}>
                                           {grpOpen && (
-                                            <motion.ul
+                                            <m.ul
                                               className={styles.mobileSubList}
                                               role="list"
                                               initial={{ height: 0, opacity: 0 }}
@@ -717,7 +717,7 @@ export default function Header() {
                                                   </Link>
                                                 </li>
                                               ))}
-                                            </motion.ul>
+                                            </m.ul>
                                           )}
                                         </AnimatePresence>
                                       </div>
@@ -725,7 +725,7 @@ export default function Header() {
                                   })}
                                 </div>
                               )}
-                            </motion.div>
+                            </m.div>
                           )}
                         </AnimatePresence>
                       </li>
@@ -742,7 +742,7 @@ export default function Header() {
                   Book a Consultation
                 </button>
               </div>
-            </motion.div>
+            </m.div>
           </>
         )}
       </AnimatePresence>

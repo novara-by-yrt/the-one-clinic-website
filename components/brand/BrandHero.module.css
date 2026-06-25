@@ -107,6 +107,49 @@
   padding-block: clamp(28px, 5vw, 60px);
 }
 
+/* ══════════════════════════════════════════════════════
+   CINEMATIC ENTRANCE , CSS-driven (not Framer Motion)
+
+   Above-the-fold hero content must paint on the CSS timeline
+   instead of waiting for the JS bundle to download + hydrate.
+   Driving the entrance with CSS keyframes lets the headline (the
+   LCP element) reveal as soon as the stylesheet is parsed, which
+   is dramatically earlier than React hydration on slow mobile.
+
+   Only opacity + transform are animated (both GPU-composited and
+   cheap); the previous filter: blur() was non-composited and made
+   the main thread repaint every frame, hurting TBT.
+══════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: no-preference) {
+  .animText,
+  .animH1,
+  .animBadge {
+    opacity: 0;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.30, 1);
+    animation-delay: var(--cine-delay, 0s);
+  }
+
+  .animText  { animation-name: cineText;  animation-duration: 1.4s; }
+  .animH1    { animation-name: cineH1;    animation-duration: 1.7s; }
+  .animBadge { animation-name: cineBadge; animation-duration: 1.1s; }
+}
+
+@keyframes cineText {
+  from { opacity: 0; transform: translate3d(-180px, 0, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes cineH1 {
+  from { opacity: 0; transform: translate3d(-260px, 0, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes cineBadge {
+  from { opacity: 0; transform: translate3d(0, 18px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
 /* ── Open content column , replaces glass panel ── */
 .content {
   max-width: 620px;

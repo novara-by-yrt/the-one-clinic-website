@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
@@ -46,14 +46,14 @@ export default function Benefits() {
         <div className={styles.layout}>
 
           {/* ── Left: text col ──────────────────────────────── */}
-          <motion.div
+          <m.div
             className={styles.textCol}
             variants={staggerLeft(0.08)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div className={styles.header} variants={fadeUp}>
+            <m.div className={styles.header} variants={fadeUp}>
               <p className={styles.eyebrow}>Why Choose Us</p>
               <h2 className={styles.heading}>
                 Carefully considered.<br />
@@ -62,12 +62,12 @@ export default function Benefits() {
               <p className={styles.subtext}>
                 Every patient is met with genuine attention and a step-by-step plan built around their health, goals and lifestyle. Here&rsquo;s what sets us apart.
               </p>
-            </motion.div>
+            </m.div>
 
             {/* ── Accordion items ──────────────────────────── */}
             <div className={styles.items}>
               {BENEFITS.map((b, i) => (
-                <motion.div key={b.number} className={styles.itemWrap} variants={fadeUp}>
+                <m.div key={b.number} className={styles.itemWrap} variants={fadeUp}>
                   <button
                     className={styles.item}
                     onClick={() => setExpanded(expanded === i ? null : i)}
@@ -88,7 +88,7 @@ export default function Benefits() {
 
                   <AnimatePresence initial={false}>
                     {expanded === i && (
-                      <motion.div
+                      <m.div
                         className={styles.desc}
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
@@ -96,15 +96,15 @@ export default function Benefits() {
                         transition={{ duration: 0.28, ease: [0.25, 0.1, 0.25, 1] }}
                       >
                         <p className={styles.descText}>{b.description}</p>
-                      </motion.div>
+                      </m.div>
                     )}
                   </AnimatePresence>
-                </motion.div>
+                </m.div>
               ))}
             </div>
 
             {/* ── CTAs ─────────────────────────────────────── */}
-            <motion.div className={styles.ctas} variants={fadeUp}>
+            <m.div className={styles.ctas} variants={fadeUp}>
               <Button
                 variant="primary"
                 theme="light"
@@ -112,11 +112,11 @@ export default function Benefits() {
               >
                 Book a Consultation
               </Button>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
 
           {/* ── Right: image collage ─────────────────────────── */}
-          <motion.div
+          <m.div
             className={styles.imageCol}
             variants={fadeRight}
             initial="hidden"
@@ -145,7 +145,7 @@ export default function Benefits() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </m.div>
 
         </div>
       </Container>

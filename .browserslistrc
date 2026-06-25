@@ -1,0 +1,4 @@
+# Modern baseline: every browser here supports ES modules, so Next/SWC stops
+# emitting legacy transforms and polyfills (the Lighthouse "Legacy JavaScript"
+# audit) while still covering effectively all real users (~2018+ browsers).
+defaults and supports es6-module

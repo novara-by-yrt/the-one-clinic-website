@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
@@ -15,27 +15,27 @@ export default function DoctorsGrid() {
       <Section variant="light" data-section-theme="light">
       <Container>
         {/* Header */}
-        <motion.div
+        <m.div
           className={styles.header}
           variants={stagger()}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
         >
-          <motion.p className={styles.eyebrow} variants={fadeUp}>
+          <m.p className={styles.eyebrow} variants={fadeUp}>
             The One Clinic
-          </motion.p>
-          <motion.h2 className={styles.heading} variants={fadeUp}>
+          </m.p>
+          <m.h2 className={styles.heading} variants={fadeUp}>
             Meet the Team
-          </motion.h2>
-          <motion.p className={styles.subtext} variants={fadeUp}>
+          </m.h2>
+          <m.p className={styles.subtext} variants={fadeUp}>
             Every member of our team is dedicated to delivering exceptional,
             personalised care in a safe and welcoming environment.
-          </motion.p>
-        </motion.div>
+          </m.p>
+        </m.div>
 
         {/* Grid */}
-        <motion.div
+        <m.div
           className={styles.grid}
           variants={stagger(0.06)}
           initial="hidden"
@@ -44,7 +44,7 @@ export default function DoctorsGrid() {
           role="list"
         >
           {TEAM_MEMBERS.map((member) => (
-            <motion.article
+            <m.article
               key={member.slug}
               className={styles.card}
               variants={fadeUp}
@@ -88,9 +88,9 @@ export default function DoctorsGrid() {
                   <span className={styles.ctaArrow} aria-hidden="true">→</span>
                 </Link>
               </div>
-            </motion.article>
+            </m.article>
           ))}
-        </motion.div>
+        </m.div>
       </Container>
     </Section>
     </div>

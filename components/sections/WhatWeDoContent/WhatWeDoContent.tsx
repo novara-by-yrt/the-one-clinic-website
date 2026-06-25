@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
@@ -21,27 +21,27 @@ export default function WhatWeDoContent() {
         <Container>
           <div className={styles.layout}>
             {/* Left, text */}
-            <motion.div
+            <m.div
               className={styles.textCol}
               variants={stagger(0.1)}
               initial="hidden"
               whileInView="show"
               viewport={VIEWPORT}
             >
-              <motion.p className={styles.eyebrow} variants={fadeUp}>
+              <m.p className={styles.eyebrow} variants={fadeUp}>
                 About Our Clinic
-              </motion.p>
-              <motion.h2 className={styles.heading} variants={fadeUp}>
+              </m.p>
+              <m.h2 className={styles.heading} variants={fadeUp}>
                 What We Do
-              </motion.h2>
-              <motion.p className={styles.body} variants={fadeUp}>
+              </m.h2>
+              <m.p className={styles.body} variants={fadeUp}>
                 The One Clinic is made up of a team of esteemed medical
                 professionals who believe that aesthetic medicine should be
                 available to all who want it. Collectively, our doctors have a
                 range of skills and knowledge, and work as a team to provide
                 patients with whatever solution(s) they need.
-              </motion.p>
-              <motion.p className={styles.body} variants={fadeUp}>
+              </m.p>
+              <m.p className={styles.body} variants={fadeUp}>
                 It is often the case that a person visits a clinic having more
                 than one concern on their mind. Continuity of care means patients
                 will most often be seen by the same practitioner, with whom they
@@ -49,11 +49,11 @@ export default function WhatWeDoContent() {
                 possess their own area of specialty, we can conveniently liaise
                 with another colleague to ensure the patient&apos;s entire needs
                 are met.
-              </motion.p>
-            </motion.div>
+              </m.p>
+            </m.div>
 
             {/* Right, stat card */}
-            <motion.div
+            <m.div
               className={styles.cardCol}
               variants={fadeUp}
               initial="hidden"
@@ -76,7 +76,7 @@ export default function WhatWeDoContent() {
                   every patient&apos;s entire needs are met.&rdquo;
                 </p>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </Container>
       </Section>

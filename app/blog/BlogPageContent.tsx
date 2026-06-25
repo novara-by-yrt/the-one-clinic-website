@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import BlogCard from '@/components/blog/BlogCard';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import type { BlogPost } from '@/lib/blog';
@@ -12,7 +12,7 @@ interface BlogPageContentProps {
 
 export default function BlogPageContent({ posts }: BlogPageContentProps) {
   return (
-    <motion.div
+    <m.div
       className={styles.blogGrid}
       variants={stagger(0.05)}
       initial="hidden"
@@ -20,10 +20,10 @@ export default function BlogPageContent({ posts }: BlogPageContentProps) {
       viewport={VIEWPORT}
     >
       {posts.map((post) => (
-        <motion.div key={post.slug} variants={fadeUp}>
+        <m.div key={post.slug} variants={fadeUp}>
           <BlogCard post={post} />
-        </motion.div>
+        </m.div>
       ))}
-    </motion.div>
+    </m.div>
   );
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { m, AnimatePresence, useInView } from 'framer-motion';
 import Image from 'next/image';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
@@ -83,7 +83,7 @@ export default function Process() {
         <div className={styles.layout}>
 
           {/* ── Left: image slideshow ──────────────────────── */}
-          <motion.div
+          <m.div
             className={styles.imageCol}
             variants={fadeLeft}
             initial="hidden"
@@ -92,7 +92,7 @@ export default function Process() {
           >
             <div className={styles.imageWrap}>
               <AnimatePresence mode="sync">
-                <motion.div
+                <m.div
                   key={active}
                   className={styles.slide}
                   initial={{ opacity: 0 }}
@@ -108,7 +108,7 @@ export default function Process() {
                     sizes="(max-width: 900px) 100vw, 50vw"
                     priority={active === 0}
                   />
-                </motion.div>
+                </m.div>
               </AnimatePresence>
 
               {/* Dots */}
@@ -125,28 +125,28 @@ export default function Process() {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </m.div>
 
           {/* ── Right: header + steps ──────────────────────── */}
-          <motion.div
+          <m.div
             className={styles.textCol}
             variants={staggerRight(0.08)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <motion.div className={styles.header} variants={fadeUp}>
+            <m.div className={styles.header} variants={fadeUp}>
               <p className={styles.eyebrow}>The One Clinic</p>
               <h2 className={styles.heading}>Patient Experience</h2>
               <p className={styles.subtext}>
                 From your first visit to long-term results, here&apos;s what to expect
                 when you choose The One Clinic.
               </p>
-            </motion.div>
+            </m.div>
 
             <ol className={styles.steps} aria-label="Treatment process steps" ref={stepsRef}>
               {STEPS.map((step, i) => (
-                <motion.li
+                <m.li
                   key={step.number}
                   className={`${styles.step} ${i === seqIdx ? styles.highlighted : ''}`}
                   initial={{ opacity: 0, y: 28 }}
@@ -159,10 +159,10 @@ export default function Process() {
                     <h3 className={styles.stepTitle}>{step.title}</h3>
                     <p className={styles.stepDesc}>{step.description}</p>
                   </div>
-                </motion.li>
+                </m.li>
               ))}
             </ol>
-          </motion.div>
+          </m.div>
 
         </div>
       </Container>
