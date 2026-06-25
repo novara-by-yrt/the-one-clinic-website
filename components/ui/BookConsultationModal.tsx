@@ -60,8 +60,8 @@ export default function BookConsultationModal() {
                 {/* Left: image panel — desktop only (hidden via CSS on mobile) */}
                 <div className={styles.modalImage}>
                   <Image
-                    src="/images/Morpheus8-new.png"
-                    alt="Morpheus8 treatment at The One Clinic"
+                    src="/images/Doctor2.jpg"
+                    alt="Clinician performing treatment at The One Clinic"
                     fill
                     className={styles.modalImg}
                     sizes="300px"
