@@ -77,8 +77,10 @@ const AT_A_GLANCE = [
     value: 'From £250',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <line x1="12" y1="1" x2="12" y2="23"/>
-        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+        <path d="M6 19h12"/>
+        <path d="M7 9a5 5 0 0 1 10 0v1H6.5"/>
+        <path d="M6 13h9"/>
+        <path d="M7 13v6"/>
       </svg>
     ),
   },
