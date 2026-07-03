@@ -258,48 +258,108 @@ export default function ContactPage() {
           4. MAP
       ══════════════════════════════════════ */}
       <section className={styles.mapSection} aria-label="Clinic location map" data-section-theme="light">
-        <div className={styles.mapWrapper}>
-          <iframe
-            src={getMapsEmbedUrl()}
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="The One Clinic location map"
-          />
-        </div>
         <Container>
           <m.div
-            className={styles.mapInfo}
+            className={styles.locationCard}
             variants={stagger(0.12)}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
           >
-            <m.div variants={fadeUp}>
-              <p className={styles.eyebrowDark}>Getting Here</p>
-              <h2 className={styles.headingDark}>About the Area</h2>
+            {/* ── Map panel ── */}
+            <m.div className={styles.mapPanel} variants={fadeUp}>
+              <iframe
+                src={getMapsEmbedUrl()}
+                className={styles.mapFrame}
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="The One Clinic location map"
+              />
+              <a
+                href={getMapsSearchUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.mapAddressChip}
+                aria-label="Open clinic address in Google Maps"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                <span>{CLINIC_INFO.address.display}</span>
+              </a>
             </m.div>
-            <m.p className={styles.mapText} variants={fadeUp}>
-              Our clinic is conveniently located in the heart of Leicester on DeMontfort Street,
-              close to the city centre and easily accessible by public transport. There is also
-              pay-and-display parking available nearby. Whether you are travelling by bus, car,
-              or on foot, we are easy to find.
-            </m.p>
-            <m.a
-              href={getMapsSearchUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.directionsBtn}
-              variants={fadeUp}
-            >
-              Get Directions
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </m.a>
+
+            {/* ── Info panel ── */}
+            <div className={styles.mapContent}>
+              <m.div variants={fadeUp}>
+                <p className={styles.eyebrowDark}>Getting Here</p>
+                <h2 className={styles.headingDark}>About the Area</h2>
+              </m.div>
+
+              <m.p className={styles.mapText} variants={fadeUp}>
+                Our clinic sits in the heart of Leicester on DeMontfort Street, moments from
+                the city centre and easily reached by public transport. Whether you arrive by
+                bus, car, or on foot, we are simple to find.
+              </m.p>
+
+              <m.ul className={styles.travelList} variants={fadeUp}>
+                <li className={styles.travelItem}>
+                  <span className={styles.travelIcon} aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                      <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                  </span>
+                  <span className={styles.travelBody}>
+                    <span className={styles.travelTitle}>Central Location</span>
+                    <span className={styles.travelDesc}>Heart of Leicester, near the city centre</span>
+                  </span>
+                </li>
+                <li className={styles.travelItem}>
+                  <span className={styles.travelIcon} aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M4 16V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10"/>
+                      <path d="M4 11h16"/>
+                      <path d="M4 16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2"/>
+                      <circle cx="8" cy="18" r="1.4"/>
+                      <circle cx="16" cy="18" r="1.4"/>
+                    </svg>
+                  </span>
+                  <span className={styles.travelBody}>
+                    <span className={styles.travelTitle}>Public Transport</span>
+                    <span className={styles.travelDesc}>Well connected by local bus routes</span>
+                  </span>
+                </li>
+                <li className={styles.travelItem}>
+                  <span className={styles.travelIcon} aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="4" y="4" width="16" height="16" rx="3"/>
+                      <path d="M9 16V8h3.2a2.4 2.4 0 0 1 0 4.8H9"/>
+                    </svg>
+                  </span>
+                  <span className={styles.travelBody}>
+                    <span className={styles.travelTitle}>Parking Nearby</span>
+                    <span className={styles.travelDesc}>Pay-and-display parking close by</span>
+                  </span>
+                </li>
+              </m.ul>
+
+              <m.a
+                href={getMapsSearchUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.directionsBtn}
+                variants={fadeUp}
+              >
+                Get Directions
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </m.a>
+            </div>
           </m.div>
         </Container>
       </section>
