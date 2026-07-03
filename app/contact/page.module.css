@@ -457,6 +457,44 @@
   color: var(--color-text-dark, #111);
 }
 
+.ageDisclaimerWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.ageDisclaimer {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: rgba(0 0 0 / 0.04);
+  border: 1px solid rgba(0 0 0 / 0.08);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.6;
+  color: rgba(0 0 0 / 0.55);
+  max-width: 100%;
+}
+
+@media (max-width: 600px) {
+  .ageDisclaimerWrap {
+    justify-content: flex-start;
+  }
+
+  .ageDisclaimer {
+    border-radius: 10px;
+  }
+}
+
+.ageDisclaimer svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+  opacity: 0.5;
+}
+
 .categoryDesc {
   font-size: clamp(0.875rem, 1.2vw, 1rem);
   line-height: 1.7;
