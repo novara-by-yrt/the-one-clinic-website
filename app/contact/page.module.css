@@ -508,7 +508,7 @@
 /* ── Areas / categories ───────────────────────────────────────── */
 .areasHeader {
   text-align: center;
-  margin-bottom: clamp(var(--space-6), 5vw, var(--space-8));
+  margin-bottom: clamp(var(--space-4), 3.5vw, var(--space-6));
 }
 
 .areasIntro {
