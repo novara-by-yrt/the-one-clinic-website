@@ -50,6 +50,9 @@ export const metadata: Metadata = {
   description:
     'Clinician-led aesthetic and wellness treatments in Leicester. Anti-wrinkle injections, dermal fillers, laser resurfacing, hair restoration, body contouring, and IV therapy.',
   authors: [{ name: 'The One Clinic' }],
+  verification: {
+    google: 'TQxp6MYZcZOzMQDxYqdggJHhuFenXraQGfUvKuOcCeE',
+  },
   icons: {
     icon: [{ url: '/icon.png', type: 'image/png' }],
     apple: [{ url: '/icon.png', type: 'image/png' }],
