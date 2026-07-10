@@ -73,7 +73,7 @@ const AT_A_GLANCE = [
   },
   {
     label: 'Treatment Cost',
-    value: 'From £150',
+    value: 'From £200',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <line x1="12" y1="1" x2="12" y2="23"/>
@@ -239,7 +239,7 @@ const FAQS = [
   {
     question: 'What is the cost of Lumecca IPL?',
     answer:
-      'Lumecca IPL treatments start from £150, with pricing varying by treatment area and number of sessions required. Full details are provided during your consultation.',
+      'Lumecca IPL treatments start from £200, with pricing varying by treatment area and number of sessions required. Full details are provided during your consultation.',
   },
 ];
 
@@ -787,7 +787,7 @@ export default function LumeccaIPLPage() {
               Lumecca IPL Pricing at The One Clinic
             </m.p>
             <m.p className={styles.costBannerPrice} variants={fadeUp}>
-              From £150
+              From £200
             </m.p>
             <m.p className={styles.costBannerNote} variants={fadeUp}>
               Pricing varies by treatment area and number of sessions required. Full details provided at your consultation.
