@@ -49,11 +49,16 @@ const SLIDES_BASE = [
   { src: '/images/Morpheus8 2  B-A.jpg',              title: 'Morpheus 8',             alt: 'Morpheus8 before and after result 2' },
   // Hydrafacial
   { src: '/images/Hydrafacial  Before & After 1.jpg', title: 'Hydrafacial',            alt: 'Hydrafacial before and after results' },
+  { src: '/images/Hydrafacial  Before & After 2.jpg', title: 'Hydrafacial',            alt: 'Hydrafacial before and after results' },
   // Lip Filler / Filler
   { src: '/images/Lip Filler  Before & After.jpg',    title: 'Lip Filler',             alt: 'Lip filler before and after results' },
   { src: '/images/Lip Filler  Before & After 4.jpg',  title: 'Lip Filler',             alt: 'Lip filler before and after results' },
+  { src: '/images/Lip Filler  Before & After 6.jpg',  title: 'Lip Filler',             alt: 'Lip filler before and after results' },
   { src: '/images/Filler  Before & After 1.jpg',      title: 'Filler',                 alt: 'Filler before and after results' },
   { src: '/images/Filler  Before & After 2.jpg',      title: 'Filler',                 alt: 'Filler before and after results' },
+  // Non-Surgical Rhinoplasty
+  { src: '/images/Non surgical rhinoplasty  Before & After.jpg',  title: 'Non-Surgical Rhinoplasty', alt: 'Non-surgical rhinoplasty before and after results' },
+  { src: '/images/Non surgical rhinoplasty  Before & After1.jpg', title: 'Non-Surgical Rhinoplasty', alt: 'Non-surgical rhinoplasty before and after results' },
   // Pigmentation
   { src: '/images/Pigmentation Before & After 1.jpg', title: 'Pigmentation',           alt: 'Pigmentation treatment before and after' },
   { src: '/images/Pigmentation Before & After 2.jpg', title: 'Pigmentation Treatment', alt: 'Pigmentation treatment before and after' },
