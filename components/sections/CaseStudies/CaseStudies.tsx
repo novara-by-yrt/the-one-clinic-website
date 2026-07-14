@@ -30,6 +30,17 @@ const SLIDES_BASE = [
   // Lumecca / IPL
   { src: '/images/Lumecca Before & After 2.jpg',      title: 'Lumecca Laser',          alt: 'Lumecca laser before and after results' },
   { src: '/images/Lumecca IPL B-A.jpg',               title: 'Lumecca IPL',            alt: 'Lumecca IPL before and after results' },
+  // Anti-Wrinkle Injections
+  { src: '/images/Botox Before & After.jpg',          title: 'Anti-Wrinkle Injections', alt: 'Anti-wrinkle injections before and after results' },
+  { src: '/images/Botox Before & After-1.jpg',        title: 'Anti-Wrinkle Injections', alt: 'Anti-wrinkle injections before and after results' },
+  { src: '/images/Botox Before & After-2.jpg',        title: 'Anti-Wrinkle Injections', alt: 'Anti-wrinkle injections before and after results' },
+  { src: '/images/Botox Before & After-3.jpg',        title: 'Anti-Wrinkle Injections', alt: 'Anti-wrinkle injections before and after results' },
+  { src: '/images/Botox Before & After-4.jpg',        title: 'Anti-Wrinkle Injections', alt: 'Anti-wrinkle injections before and after results' },
+  { src: '/images/Botox Before & After-5.jpg',        title: 'Anti-Wrinkle Injections', alt: 'Anti-wrinkle injections before and after results' },
+  { src: '/images/Botox Before & After-6.jpg',        title: 'Anti-Wrinkle Injections', alt: 'Anti-wrinkle injections before and after results' },
+  { src: '/images/Botox Before & After-7.jpg',        title: 'Anti-Wrinkle Injections', alt: 'Anti-wrinkle injections before and after results' },
+  { src: '/images/Botox Before & After-8.jpg',        title: 'Anti-Wrinkle Injections', alt: 'Anti-wrinkle injections before and after results' },
+  { src: '/images/Botox Before & After-9.jpg',        title: 'Anti-Wrinkle Injections', alt: 'Anti-wrinkle injections before and after results' },
   // Morpheus 8
   { src: '/images/Morpheus8 Before & After 1.jpg',    title: 'Morpheus 8',             alt: 'Morpheus 8 before and after result' },
   { src: '/images/Morpheus8 Before & After 2.jpg',    title: 'Morpheus 8',             alt: 'Morpheus 8 before and after results' },
