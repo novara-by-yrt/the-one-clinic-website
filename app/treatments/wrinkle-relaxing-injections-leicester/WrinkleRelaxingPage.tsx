@@ -16,6 +16,7 @@ import Testimonials           from '@/components/sections/Testimonials';
 import FinalCTA               from '@/components/sections/FinalCTA';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
+import BeforeAfterSlideshow from '@/components/sections/BeforeAfterSlideshow';
 
 /* ── Static data ──────────────────────────────────────────────── */
 const AT_A_GLANCE = [
@@ -253,6 +254,19 @@ const RELATED = [
   { title: 'Profhilo',          href: '/treatments/profhilo-leicester',          desc: 'Deep skin hydration and bio-remodelling for a natural glow.' },
   { title: 'Morpheus8',         href: '/treatments/morpheus8-leicester',         desc: 'Fractional radiofrequency skin remodelling for face and body.' },
   { title: 'HydraFacial',       href: '/treatments/hydrafacial-leicester',       desc: 'Advanced multi-step facial for deep cleansing and skin renewal.' },
+];
+
+const BA_IMAGES = [
+  { src: '/images/Botox Before & After.jpg',   alt: 'Anti-wrinkle injections before and after result at The One Clinic Leicester' },
+  { src: '/images/Botox Before & After-1.jpg', alt: 'Anti-wrinkle injections before and after result at The One Clinic Leicester' },
+  { src: '/images/Botox Before & After-2.jpg', alt: 'Anti-wrinkle injections before and after result at The One Clinic Leicester' },
+  { src: '/images/Botox Before & After-3.jpg', alt: 'Anti-wrinkle injections before and after result at The One Clinic Leicester' },
+  { src: '/images/Botox Before & After-4.jpg', alt: 'Anti-wrinkle injections before and after result at The One Clinic Leicester' },
+  { src: '/images/Botox Before & After-5.jpg', alt: 'Anti-wrinkle injections before and after result at The One Clinic Leicester' },
+  { src: '/images/Botox Before & After-6.jpg', alt: 'Anti-wrinkle injections before and after result at The One Clinic Leicester' },
+  { src: '/images/Botox Before & After-7.jpg', alt: 'Anti-wrinkle injections before and after result at The One Clinic Leicester' },
+  { src: '/images/Botox Before & After-8.jpg', alt: 'Anti-wrinkle injections before and after result at The One Clinic Leicester' },
+  { src: '/images/Botox Before & After-9.jpg', alt: 'Anti-wrinkle injections before and after result at The One Clinic Leicester' },
 ];
 
 /* ── Page component ───────────────────────────────────────────── */
@@ -685,6 +699,16 @@ export default function WrinkleRelaxingPage() {
           </m.div>
         </Container>
       </Section>
+
+      {/* ════════════════════════════════════════
+          BEFORE & AFTER
+      ════════════════════════════════════════ */}
+      <BeforeAfterSlideshow
+        heading={"Anti-Wrinkle Injections Before & After"}
+        description={"Real, natural-looking results from our patients at The One Clinic, Leicester."}
+        images={BA_IMAGES}
+        defaultTitle={"Anti-Wrinkle Injections"}
+      />
 
       {/* ════════════════════════════════════════
           8. PATIENT REVIEWS

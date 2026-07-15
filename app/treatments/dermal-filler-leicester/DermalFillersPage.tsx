@@ -16,6 +16,7 @@ import Testimonials           from '@/components/sections/Testimonials';
 import FinalCTA               from '@/components/sections/FinalCTA';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
+import BeforeAfterSlideshow from '@/components/sections/BeforeAfterSlideshow';
 
 /* ── Static data ──────────────────────────────────────────────── */
 const AT_A_GLANCE = [
@@ -256,6 +257,16 @@ const RELATED = [
 ];
 
 /* ── Page component ───────────────────────────────────────────── */
+const BA_IMAGES = [
+  { src: '/images/Lip Filler  Before & After.jpg',   alt: 'Lip filler before and after result at The One Clinic Leicester' },
+  { src: '/images/Lip Filler  Before & After 4.jpg', alt: 'Lip filler before and after result at The One Clinic Leicester' },
+  { src: '/images/Lip Filler  Before & After 6.jpg', alt: 'Lip filler before and after result at The One Clinic Leicester' },
+  { src: '/images/Filler  Before & After 1.jpg',     alt: 'Dermal filler before and after result at The One Clinic Leicester' },
+  { src: '/images/Filler  Before & After 2.jpg',     alt: 'Dermal filler before and after result at The One Clinic Leicester' },
+  { src: '/images/Non surgical rhinoplasty  Before & After.jpg',  alt: 'Non-surgical rhinoplasty before and after result at The One Clinic Leicester' },
+  { src: '/images/Non surgical rhinoplasty  Before & After1.jpg', alt: 'Non-surgical rhinoplasty before and after result at The One Clinic Leicester' },
+];
+
 export default function DermalFillersPage() {
   const [showAllFaqs, setShowAllFaqs] = useState(false);
 
@@ -682,6 +693,15 @@ export default function DermalFillersPage() {
           </m.div>
         </Container>
       </Section>
+
+      {/* ════════════════════════════════════════
+          BEFORE & AFTER
+      ════════════════════════════════════════ */}
+      <BeforeAfterSlideshow
+        heading={"Dermal Filler Before & After"}
+        description={"Real lip enhancement, dermal filler, and non-surgical rhinoplasty results from our patients at The One Clinic, Leicester."}
+        images={BA_IMAGES}
+      />
 
       {/* ════════════════════════════════════════
           8. PATIENT REVIEWS

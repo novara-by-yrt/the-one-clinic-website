@@ -16,6 +16,7 @@ import Testimonials       from '@/components/sections/Testimonials';
 import FinalCTA           from '@/components/sections/FinalCTA';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './page.module.css';
+import BeforeAfterSlideshow from '@/components/sections/BeforeAfterSlideshow';
 
 /* ── Static data ──────────────────────────────────────────────── */
 const AT_A_GLANCE = [
@@ -359,6 +360,11 @@ const RELATED = [
 ];
 
 /* ── Page component ───────────────────────────────────────────── */
+const BA_IMAGES = [
+  { src: '/images/Hydrafacial  Before & After 1.jpg', alt: 'HydraFacial before and after result at The One Clinic Leicester' },
+  { src: '/images/Hydrafacial  Before & After 2.jpg', alt: 'HydraFacial before and after result at The One Clinic Leicester' },
+];
+
 export default function HydrafacialPage() {
   const [showAllFaqs, setShowAllFaqs] = useState(false);
 
@@ -967,6 +973,16 @@ export default function HydrafacialPage() {
           </m.div>
         </Container>
       </Section>
+
+      {/* ════════════════════════════════════════
+          BEFORE & AFTER
+      ════════════════════════════════════════ */}
+      <BeforeAfterSlideshow
+        heading={"HydraFacial Before & After"}
+        description={"Real skin clarity and radiance results from our patients at The One Clinic, Leicester."}
+        images={BA_IMAGES}
+        defaultTitle={"HydraFacial"}
+      />
 
       {/* ════════════════════════════════════════
           11. PATIENT REVIEWS
