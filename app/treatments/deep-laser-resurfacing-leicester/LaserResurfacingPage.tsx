@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import Script from 'next/script';
 import { m } from 'framer-motion';
 import Section            from '@/components/ui/Section';
 import Container          from '@/components/ui/Container';
@@ -491,14 +492,17 @@ export default function LaserResurfacingPage() {
               </m.div>
             </m.div>
 
-            {/* Right: image */}
-            <m.div className={styles.whatIsImageWrap} variants={fadeUp}>
-              <Image
-                src="/images/Deep Laser 2.png"
-                alt="What is laser resurfacing treatment at The One Clinic"
-                fill
-                className={styles.whatIsImage}
-                sizes="(max-width: 900px) 100vw, 50vw"
+            {/* Right: video */}
+            <m.div className={styles.whatIsVideoWrap} variants={fadeUp}>
+              <Script src="https://fast.wistia.com/player.js" strategy="afterInteractive" />
+              <Script src="https://fast.wistia.com/embed/bzqqbl5anz.js" type="module" strategy="afterInteractive" />
+              <div
+                className={styles.wistiaEmbed}
+                dangerouslySetInnerHTML={{
+                  __html:
+                    `<style>wistia-player[media-id='bzqqbl5anz']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/bzqqbl5anz/swatch'); display: block; filter: blur(5px); padding-top:100.0%; }</style>` +
+                    `<wistia-player media-id="bzqqbl5anz" aspect="1.0"></wistia-player>`,
+                }}
               />
             </m.div>
           </m.div>
