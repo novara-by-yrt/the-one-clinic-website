@@ -69,12 +69,21 @@ export const metadata: Metadata = {
     description:
       'Expert-led aesthetic and wellness treatments tailored to you. Discover a new standard in cosmetic medicine.',
     url: '/',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 512,
+        height: 512,
+        alt: 'The One Clinic logo',
+      },
+    ],
   },
   twitter: {
-    card: 'summary_large_image',
+    card: 'summary',
     title: 'The One Clinic | Premium Aesthetic & Wellness Leicester',
     description:
       'Expert-led aesthetic and wellness treatments tailored to you. Discover a new standard in cosmetic medicine.',
+    images: ['/og-image.png'],
   },
   robots: isPreview ? {
     index: false,
