@@ -122,6 +122,90 @@
 }
 
 /* ═══════════════════════════════════════════
+   DEPOSIT SCHEDULE PANEL
+═══════════════════════════════════════════ */
+.depositPanel {
+  margin-top: var(--space-4);
+  padding: clamp(var(--space-3), 4vw, var(--space-5));
+  background: #FAFAFA;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+}
+
+.depositPanel .depositPanelTitle {
+  font-size: 1.25rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.01em;
+  color: var(--color-text-dark);
+  margin: 0;
+}
+
+.depositBlock {
+  margin-top: var(--space-4);
+}
+
+.depositBlock .depositBlockTitle {
+  font-size: 1.0625rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.01em;
+  color: var(--color-text-dark);
+  margin: 0 0 var(--space-1);
+}
+
+/* Responsive table: scrolls horizontally if it can't fit */
+.depositTableWrap {
+  margin-top: var(--space-3);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+}
+
+.depositTable {
+  width: 100%;
+  min-width: 320px;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+
+.depositTable th,
+.depositTable td {
+  text-align: left;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--color-border-light);
+  color: var(--color-text-muted);
+}
+
+.depositTable thead th {
+  background: var(--color-text-dark);
+  color: var(--color-white);
+  font-weight: var(--fw-bold);
+  font-size: 0.9375rem;
+}
+
+.depositTable tbody td {
+  color: var(--color-text-dark);
+}
+
+.depositTable tbody tr:nth-child(even) td {
+  background: rgb(0 0 0 / 0.02);
+}
+
+.depositTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.depositTable th:last-child,
+.depositTable td:last-child {
+  white-space: nowrap;
+}
+
+.depositNote {
+  margin-top: var(--space-4);
+}
+
+/* ═══════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════ */
 @media (max-width: 768px) {
@@ -166,5 +250,45 @@
   .content ol li,
   .intro {
     font-size: 0.9375rem;
+  }
+
+  .depositPanel .depositPanelTitle {
+    font-size: 1.125rem;
+  }
+
+  .depositBlock .depositBlockTitle {
+    font-size: 1rem;
+  }
+}
+
+/* Small screens: shrink the table so it fits fully with no cut-off text */
+@media (max-width: 600px) {
+  .depositTable {
+    table-layout: fixed;
+    min-width: 0;
+  }
+
+  .depositTable th,
+  .depositTable td {
+    padding: 10px 12px;
+    font-size: 0.8125rem;
+    overflow-wrap: break-word;
+  }
+
+  .depositTable thead th {
+    font-size: 0.8125rem;
+  }
+
+  .depositTable th:last-child,
+  .depositTable td:last-child {
+    width: 64px;
+  }
+}
+
+@media (max-width: 360px) {
+  .depositTable th,
+  .depositTable td {
+    padding: 8px 8px;
+    font-size: 0.75rem;
   }
 }

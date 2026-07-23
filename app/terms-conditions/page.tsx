@@ -40,6 +40,72 @@ export default function TermsConditionsPage() {
               <p>
                 A deposit is required to secure an appointment, consultation, procedure, or treatment. Deposits are used to reserve clinical time and administrative resources and may be retained where a patient cancels late or does not attend, subject always to applicable law.
               </p>
+
+              <div className={styles.depositPanel}>
+                <h3 className={styles.depositPanelTitle}>Deposit Terms &amp; Conditions</h3>
+
+                <div className={styles.depositBlock}>
+                  <h4 className={styles.depositBlockTitle}>Deposit Payment</h4>
+                  <p>
+                    All appointment deposits must be paid at least <strong>72 hours</strong> before your appointment. If payment has not been received by <strong>48 hours</strong> before your appointment, it will be automatically cancelled.
+                  </p>
+                </div>
+
+                <div className={styles.depositBlock}>
+                  <h4 className={styles.depositBlockTitle}>Cancellation &amp; Rescheduling</h4>
+                  <p>
+                    Appointments cancelled or rescheduled within <strong>24 hours</strong> will lose the deposit. Changes made with more notice can transfer the deposit to a new booking.
+                  </p>
+                </div>
+
+                <div className={styles.depositBlock}>
+                  <h4 className={styles.depositBlockTitle}>Redeeming Your Deposit</h4>
+                  <p>
+                    All deposits are fully redeemable against treatment costs, except consultations with <strong>Mr Sankar (Plastic Surgeon)</strong>, which are non-redeemable specialist consultation fees.
+                  </p>
+
+                  <div className={styles.depositTableWrap}>
+                    <table className={styles.depositTable}>
+                      <thead>
+                        <tr>
+                          <th scope="col">Appointment</th>
+                          <th scope="col">Deposit</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Therapist Consultation</td>
+                          <td>£20</td>
+                        </tr>
+                        <tr>
+                          <td>Doctor/Nurse Consultation</td>
+                          <td>£45</td>
+                        </tr>
+                        <tr>
+                          <td>Plastic Surgeon Consultation</td>
+                          <td>£200</td>
+                        </tr>
+                        <tr>
+                          <td>Endolift Consultation</td>
+                          <td>£120</td>
+                        </tr>
+                        <tr>
+                          <td>Minor Surgery Consultation</td>
+                          <td>£120</td>
+                        </tr>
+                        <tr>
+                          <td>Medical Botox (Hyperhidrosis/Teeth Grinding)</td>
+                          <td>£120</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <p className={styles.depositNote}>
+                  If you have any questions, please contact The One Clinic. Thank you for helping us keep appointments running smoothly.
+                </p>
+              </div>
             </section>
 
             <section>
