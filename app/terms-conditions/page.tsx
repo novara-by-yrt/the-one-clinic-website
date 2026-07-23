@@ -47,21 +47,21 @@ export default function TermsConditionsPage() {
                 <div className={styles.depositBlock}>
                   <h4 className={styles.depositBlockTitle}>Deposit Payment</h4>
                   <p>
-                    All appointment deposits must be paid at least <strong>72 hours</strong> before your appointment. If payment has not been received by <strong>48 hours</strong> before your appointment, it will be automatically cancelled.
+                    All appointment deposits must be paid at least 72 hours before your appointment. If payment has not been received by 48 hours before your appointment, it will be automatically cancelled.
                   </p>
                 </div>
 
                 <div className={styles.depositBlock}>
                   <h4 className={styles.depositBlockTitle}>Cancellation &amp; Rescheduling</h4>
                   <p>
-                    Appointments cancelled or rescheduled within <strong>24 hours</strong> will lose the deposit. Changes made with more notice can transfer the deposit to a new booking.
+                    Appointments cancelled or rescheduled within 24 hours will lose the deposit. Changes made with more notice can transfer the deposit to a new booking.
                   </p>
                 </div>
 
                 <div className={styles.depositBlock}>
                   <h4 className={styles.depositBlockTitle}>Redeeming Your Deposit</h4>
                   <p>
-                    All deposits are fully redeemable against treatment costs, except consultations with <strong>Mr Sankar (Plastic Surgeon)</strong>, which are non-redeemable specialist consultation fees.
+                    All deposits are fully redeemable against treatment costs, except consultations with Mr Sankar (Plastic Surgeon), which are non-redeemable specialist consultation fees.
                   </p>
 
                   <div className={styles.depositTableWrap}>
