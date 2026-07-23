@@ -259,14 +259,36 @@
   .depositBlock .depositBlockTitle {
     font-size: 1rem;
   }
+}
+
+/* Small screens: shrink the table so it fits fully with no cut-off text */
+@media (max-width: 600px) {
+  .depositTable {
+    table-layout: fixed;
+    min-width: 0;
+  }
 
   .depositTable th,
   .depositTable td {
-    padding: 12px 14px;
-    font-size: 0.9375rem;
+    padding: 10px 12px;
+    font-size: 0.8125rem;
+    overflow-wrap: break-word;
   }
 
   .depositTable thead th {
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
+  }
+
+  .depositTable th:last-child,
+  .depositTable td:last-child {
+    width: 64px;
+  }
+}
+
+@media (max-width: 360px) {
+  .depositTable th,
+  .depositTable td {
+    padding: 8px 8px;
+    font-size: 0.75rem;
   }
 }
