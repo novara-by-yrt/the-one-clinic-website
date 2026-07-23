@@ -261,10 +261,11 @@
   }
 }
 
-/* Small screens: shrink the table so it fits fully with no cut-off text */
+/* Small screens: shrink the table so it fits fully with no cut-off text.
+   The deposit column auto-sizes to its content (kept on one line), so the
+   header and values always align with proper padding on every device. */
 @media (max-width: 600px) {
   .depositTable {
-    table-layout: fixed;
     min-width: 0;
   }
 
@@ -281,7 +282,7 @@
 
   .depositTable th:last-child,
   .depositTable td:last-child {
-    width: 64px;
+    width: 1%;
   }
 }
 
