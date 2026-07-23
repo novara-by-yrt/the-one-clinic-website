@@ -201,8 +201,8 @@
   white-space: nowrap;
 }
 
-.depositNote {
-  margin-top: var(--space-4);
+.depositPanel .depositNote {
+  margin-top: var(--space-5);
 }
 
 /* ═══════════════════════════════════════════
