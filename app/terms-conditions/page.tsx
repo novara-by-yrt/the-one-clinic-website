@@ -61,7 +61,7 @@ export default function TermsConditionsPage() {
                 <div className={styles.depositBlock}>
                   <h4 className={styles.depositBlockTitle}>Redeeming Your Deposit</h4>
                   <p>
-                    All deposits are fully redeemable against treatment costs, except consultations with Mr Sankar (Plastic Surgeon), which are non-redeemable specialist consultation fees.
+                    All deposits are fully redeemable against treatment costs, except consultations with Mr Sankar (Plastic Surgeon) and GP consultations, which are non-redeemable consultation fees.
                   </p>
 
                   <div className={styles.depositTableWrap}>
@@ -80,6 +80,10 @@ export default function TermsConditionsPage() {
                         <tr>
                           <td>Doctor/Nurse Consultation</td>
                           <td>£45</td>
+                        </tr>
+                        <tr>
+                          <td>GP Consultation</td>
+                          <td>£120</td>
                         </tr>
                         <tr>
                           <td>Plastic Surgeon Consultation</td>
