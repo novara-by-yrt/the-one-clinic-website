@@ -79,14 +79,16 @@ export default function DoctorsGrid() {
                       </div>
                     )}
                   </div>
-                  {member.credentials && (
-                    <p className={styles.credentials}>{member.credentials}</p>
+                  {(member.credentials || member.role) && (
+                    <p className={styles.credentials}>{member.credentials || member.role}</p>
                   )}
                 </div>
-                <Link href={member.profileUrl ?? `/our-team/${member.slug}`} className={styles.cta}>
-                  Read More
-                  <span className={styles.ctaArrow} aria-hidden="true">→</span>
-                </Link>
+                {!member.noProfilePage && (
+                  <Link href={member.profileUrl ?? `/our-team/${member.slug}`} className={styles.cta}>
+                    Read More
+                    <span className={styles.ctaArrow} aria-hidden="true">→</span>
+                  </Link>
+                )}
               </div>
             </m.article>
           ))}

@@ -54,6 +54,7 @@ export async function GET() {
   ].join('\n');
 
   const teamLines = TEAM_MEMBERS.map(m => {
+    if (m.noProfilePage) return `- ${m.name}: ${m.role}`;
     const path = m.profileUrl?.startsWith('/') ? m.profileUrl : `/our-team/${m.slug}`;
     return `- [${m.name}](${SITE}${path}): ${m.credentials} , ${m.role}`;
   }).join('\n');

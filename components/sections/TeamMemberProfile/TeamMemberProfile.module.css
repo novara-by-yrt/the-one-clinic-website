@@ -74,6 +74,13 @@
   margin-top: 4px;
 }
 
+.roleRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-self: flex-start;
+}
+
 .role {
   display: inline-flex;
   align-self: flex-start;

@@ -56,9 +56,11 @@ export default function TeamMemberProfile({ member }: { member: TeamMember }) {
                     {member.credentials}
                   </m.p>
                 )}
-                <m.p className={styles.role} variants={fadeUp}>
-                  {member.role}
-                </m.p>
+                <m.div className={styles.roleRow} variants={fadeUp}>
+                  {(member.heroRoles ?? [member.role]).map((r) => (
+                    <span key={r} className={styles.role}>{r}</span>
+                  ))}
+                </m.div>
               </m.div>
 
               <m.div className={styles.heroCtas} variants={fadeUp}>
