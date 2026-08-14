@@ -248,7 +248,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Laylah',
     credentials: '',
     initials: 'L',
-    image: '/images/team-member-placeholder.jpg',
+    image: '/images/Laylah Headshot.png',
     role: 'Skin Therapist',
     stats: [
       { value: '5+', label: 'Years\' Experience' },
@@ -266,7 +266,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Bhavin Vadhia',
     credentials: '',
     initials: 'BV',
-    image: '/images/team-member-placeholder.jpg',
+    image: '/images/Bhavin Vadhia Headshot.png',
     role: 'Clinic Manager',
     noProfilePage: true,
     bio: [
