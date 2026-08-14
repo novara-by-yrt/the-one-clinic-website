@@ -69,7 +69,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // 3. Dynamic team-member routes
   //    Use profileUrl if it's a local path, otherwise fall back to /our-team/[slug]
-  const teamRoutes = TEAM_MEMBERS.map((m) => {
+  const teamRoutes = TEAM_MEMBERS.filter((m) => !m.noProfilePage).map((m) => {
     if (m.profileUrl && m.profileUrl.startsWith('/')) return m.profileUrl;
     return `/our-team/${m.slug}`;
   });

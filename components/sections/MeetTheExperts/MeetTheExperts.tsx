@@ -216,16 +216,18 @@ export default function MeetTheExperts() {
                 <p className={styles.role}>{member.role}</p>
                 <div className={styles.divider} aria-hidden="true" />
                 <p className={styles.bio}>{member.bio[0]}</p>
-                <Link
-                  href={member.profileUrl ?? `/our-team/${member.slug}`}
-                  className={styles.cta}
-                >
-                  View Full Profile
-                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7"
-                      strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </Link>
+                {!member.noProfilePage && (
+                  <Link
+                    href={member.profileUrl ?? `/our-team/${member.slug}`}
+                    className={styles.cta}
+                  >
+                    View Full Profile
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7"
+                        strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </Link>
+                )}
               </m.div>
             </AnimatePresence>
           </div>

@@ -8,6 +8,8 @@ export type TeamMember = {
   bio: string[];
   /** Overrides the default /our-team/[slug] URL for the Read More link */
   profileUrl?: string;
+  /** True while a member has no dedicated profile page yet — hides profile links and skips page generation */
+  noProfilePage?: boolean;
 
   /* ─ E-E-A-T & YMYL medical credentials ─ */
   /** UK General Medical Council registration number, e.g. "7765432" */
@@ -239,6 +241,36 @@ export const TEAM_MEMBERS: TeamMember[] = [
     bio: [
       'Nurse Sanj is an integral part of the clinical team at The One Clinic, providing expert nursing care and ensuring every patient feels comfortable and well-supported throughout their treatment.',
       'Her professionalism, warmth, and clinical expertise contribute greatly to the premium patient experience at the clinic.',
+    ],
+  },
+  {
+    slug: 'laylah',
+    name: 'Laylah',
+    credentials: '',
+    initials: 'L',
+    image: '/images/team-member-placeholder.jpg',
+    role: 'Skin Therapist',
+    stats: [
+      { value: '5+', label: 'Years\' Experience' },
+      { value: 'Skin', label: 'Health Specialist' },
+      { value: '5★', label: 'Client Care' },
+    ],
+    specialties: ['Skin Health', 'Aesthetic Treatments', 'Personalised Skincare', 'Client Confidence'],
+    bio: [
+      'Laylah is an Aesthetic Practitioner with five years of experience in the beauty industry and a real passion for skin health.',
+      'I love helping people feel confident and comfortable in their skin, and I take pride in creating personalised treatment experiences that make every client feel listened to, cared for and at ease.',
+    ],
+  },
+  {
+    slug: 'bhavin-vadhia',
+    name: 'Bhavin Vadhia',
+    credentials: '',
+    initials: 'BV',
+    image: '/images/team-member-placeholder.jpg',
+    role: 'Clinic Manager',
+    noProfilePage: true,
+    bio: [
+      'Bhavin Vadhia is the Clinic Manager at The One Clinic, overseeing the day-to-day running of the clinic and ensuring every patient receives a smooth, well-organised experience from booking through to aftercare.',
     ],
   },
   {

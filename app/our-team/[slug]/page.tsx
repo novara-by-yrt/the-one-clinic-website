@@ -7,7 +7,7 @@ import LeadForm from '@/components/sections/LeadForm';
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateStaticParams() {
-  return TEAM_MEMBERS.map((m) => ({ slug: m.slug }));
+  return TEAM_MEMBERS.filter((m) => !m.noProfilePage).map((m) => ({ slug: m.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function TeamMemberPage({ params }: Props) {
   const { slug } = await params;
   const member = TEAM_MEMBERS.find((m) => m.slug === slug);
-  if (!member) notFound();
+  if (!member || member.noProfilePage) notFound();
 
   return (
     <>
