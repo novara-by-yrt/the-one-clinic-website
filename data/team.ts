@@ -5,6 +5,8 @@ export type TeamMember = {
   initials: string;
   image?: string;
   role: string;
+  /** Capsules shown in the profile hero — falls back to [role] when omitted */
+  heroRoles?: string[];
   bio: string[];
   /** Overrides the default /our-team/[slug] URL for the Read More link */
   profileUrl?: string;
@@ -250,6 +252,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     initials: 'L',
     image: '/images/Laylah Headshot.png',
     role: 'Skin Therapist',
+    heroRoles: ['Skin Therapist', 'Aesthetic Practitioner'],
     stats: [
       { value: '5+', label: 'Years\' Experience' },
       { value: 'Skin', label: 'Health Specialist' },
