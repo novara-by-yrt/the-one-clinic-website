@@ -267,6 +267,7 @@ const BA_IMAGES = [
   { src: '/images/Botox Before & After-7.jpg', alt: 'Anti-wrinkle injections before and after result at The One Clinic Leicester' },
   { src: '/images/Botox Before & After-8.jpg', alt: 'Anti-wrinkle injections before and after result at The One Clinic Leicester' },
   { src: '/images/Botox Before & After-9.jpg', alt: 'Anti-wrinkle injections before and after result at The One Clinic Leicester' },
+  { src: '/images/Wrinkle Relaxing Injections BA.jpg', alt: 'Anti-wrinkle injections before and after result at The One Clinic Leicester' },
 ];
 
 /* ── Page component ───────────────────────────────────────────── */

@@ -36,6 +36,7 @@ const IMAGES = [
   { src: '/images/Botox Before & After-7.jpg',        alt: 'Anti-wrinkle injections before and after results', title: 'Anti-Wrinkle Injections' },
   { src: '/images/Botox Before & After-8.jpg',        alt: 'Anti-wrinkle injections before and after results', title: 'Anti-Wrinkle Injections' },
   { src: '/images/Botox Before & After-9.jpg',        alt: 'Anti-wrinkle injections before and after results', title: 'Anti-Wrinkle Injections' },
+  { src: '/images/Wrinkle Relaxing Injections BA.jpg', alt: 'Anti-wrinkle injections before and after results', title: 'Anti-Wrinkle Injections' },
   { src: '/images/Morpheus8 Before & After 1.jpg',    alt: 'Morpheus 8 before and after result',         title: 'Morpheus 8' },
   { src: '/images/Morpheus8 Before & After 2.jpg',    alt: 'Morpheus 8 before and after results',        title: 'Morpheus 8' },
   { src: '/images/Morpheus8 Before & After 3.jpg',    alt: 'Morpheus 8 before and after result',         title: 'Morpheus 8' },
