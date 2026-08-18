@@ -1049,8 +1049,8 @@
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  /* Match the embedded video's native 16:9 ratio so it fills without letterboxing */
-  aspect-ratio: 16 / 9;
+  /* Square panel matching the video's 1:1 content and the image it replaced */
+  aspect-ratio: 1 / 1;
   box-shadow: 0 24px 64px rgba(0 0 0 / 0.14);
   background: #000;
 }
@@ -2344,8 +2344,8 @@
   /* What is Endolift: stack on mobile */
   .whatIsGrid { grid-template-columns: 1fr; gap: var(--space-5); }
   .whatIsImageWrap { aspect-ratio: 4 / 3; }
-  /* Video keeps its native 16:9 ratio on mobile too */
-  .whatIsVideoWrap { aspect-ratio: 16 / 9; }
+  /* Video keeps its square ratio on mobile too */
+  .whatIsVideoWrap { aspect-ratio: 1 / 1; }
 
   /* Standalone At a Glance: 2-col on mobile */
   .glanceStandaloneGrid { grid-template-columns: repeat(2, 1fr); }
