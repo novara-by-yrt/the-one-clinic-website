@@ -2343,7 +2343,8 @@
   /* What is Endolift: stack on mobile */
   .whatIsGrid { grid-template-columns: 1fr; gap: var(--space-5); }
   .whatIsImageWrap { aspect-ratio: 4 / 3; }
-  .whatIsVideoWrap { aspect-ratio: 4 / 3; }
+  /* Video keeps its square 1:1 ratio on mobile too */
+  .whatIsVideoWrap { aspect-ratio: 1 / 1; }
 
   /* Standalone At a Glance: 2-col on mobile */
   .glanceStandaloneGrid { grid-template-columns: repeat(2, 1fr); }

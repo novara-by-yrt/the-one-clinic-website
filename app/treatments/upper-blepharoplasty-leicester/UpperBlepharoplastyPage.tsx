@@ -362,14 +362,15 @@ export default function UpperBlepharoplastyPage() {
               </m.div>
             </m.div>
 
-            {/* Right: Image */}
+            {/* Right: video */}
             <m.div className={styles.whatIsVideoWrap} variants={fadeUp}>
-              <Image
-                src="/images/What is Non-surgical blepharoplasty.jpg"
-                alt="What is upper blepharoplasty eyelid lift at The One Clinic"
-                fill
+              <iframe
+                src="https://cineo.mangoeyes.io/embed/d74943fb-e16c-41c9-b774-90418e5e90fa"
                 className={styles.whatIsVideoFrame}
-                sizes="(max-width: 900px) 100vw, 50vw"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowFullScreen
+                loading="lazy"
+                title="Upper Blepharoplasty Service Page Video"
               />
             </m.div>
           </m.div>
