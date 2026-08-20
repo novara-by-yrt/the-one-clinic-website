@@ -748,6 +748,18 @@
 ════════════════════════════════════════════════════ */
 .howSection {
   background: #f9f9f9 !important;
+  /* The section above shares the same grey background, so the two paddings
+     merge into one oversized gap — halve this section's own padding to keep
+     the visible spacing equal to the rest of the page. */
+  padding-block: var(--space-5) !important; /* 48px desktop */
+}
+
+@media (max-width: 1024px) {
+  .howSection { padding-block: var(--space-4) !important; } /* 32px */
+}
+
+@media (max-width: 768px) {
+  .howSection { padding-block: var(--space-3) !important; } /* 24px */
 }
 
 /* Two-column paragraph grid */
