@@ -271,9 +271,15 @@ export const TEAM_MEMBERS: TeamMember[] = [
     initials: 'BV',
     image: '/images/Bhavin Vadhia Headshot.png',
     role: 'Clinic Manager',
-    noProfilePage: true,
+    stats: [
+      { value: 'Multi-Site', label: 'Operations Leader' },
+      { value: 'CQC', label: 'Compliance Standards' },
+      { value: 'Clinical', label: 'Governance Frameworks' },
+    ],
+    specialties: ['Operational Management', 'Strategic Planning', 'Clinical Governance', 'Regulatory Compliance', 'Financial Oversight', 'Staff Development'],
     bio: [
-      'Bhavin Vadhia is the Clinic Manager at The One Clinic, overseeing the day-to-day running of the clinic and ensuring every patient receives a smooth, well-organised experience from booking through to aftercare.',
+      'Accomplished healthcare manager with extensive experience leading multi-site hospital and clinic operations. Proven ability to deliver high-quality patient care, maintain regulatory compliance, and implement clinical governance frameworks across diverse healthcare settings.',
+      'Skilled in operational management, strategic planning, financial oversight, and staff development. Adept at managing complex teams, improving service delivery, and ensuring compliance with CQC standards and healthcare legislation.',
     ],
   },
   {
