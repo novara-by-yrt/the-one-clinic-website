@@ -93,6 +93,7 @@ const NAV: NavItem[] = [
           { label: 'Lipoma Removal Leicester',                  href: '/treatments/lipoma-removal-leicester' },
           { label: 'Liposuction Leicester',                     href: '/treatments/liposuction-leicester' },
           { label: 'Non Surgical Blepharoplasty',               href: '/treatments/non-surgical-blepharoplasty-leicester' },
+          { label: 'Upper Blepharoplasty',                      href: '/treatments/upper-blepharoplasty-leicester' },
         ],
       },
     ],

@@ -442,6 +442,13 @@ export const treatments: Treatment[] = [
     shortDescription:
       'Rejuvenate the eye area and reduce hooded lids without surgery using plasma or radiofrequency technology.',
   },
+  {
+    slug: 'upper-blepharoplasty-leicester',
+    title: 'Upper Blepharoplasty',
+    category: 'Medical Aesthetics',
+    shortDescription:
+      'Eyelid lift treatment that addresses excess skin and hooded upper eyelids for brighter, more youthful eyes.',
+  },
 ];
 
 // ── Helpers ─────────────────────────────────────────────────────
