@@ -476,14 +476,15 @@ export default function WomensHealthPage() {
               </m.div>
             </m.div>
 
-            {/* Right: image panel */}
+            {/* Right: video panel */}
             <m.div className={styles.whatIsVideoWrap} variants={fadeUp}>
-              <Image
-                src="/images/Doctor1.jpg"
-                alt="Doctor at The One Clinic women's health consultation"
-                fill
+              <iframe
+                src="https://cineo.mangoeyes.io/embed/7c684304-818b-4a14-afe7-f7f3554026bd"
                 className={styles.whatIsVideoFrame}
-                sizes="(max-width: 900px) 100vw, 50vw"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowFullScreen
+                loading="lazy"
+                title="TOC Women Health Services - Service Page Video"
               />
             </m.div>
           </m.div>
