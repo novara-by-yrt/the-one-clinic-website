@@ -320,7 +320,7 @@ export default function LongevityMedicinePage() {
             {/* Right: image */}
             <m.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Doctor2.jpg"
+                src="/images/Longevity Medicine Hero Section.jpg"
                 alt="Longevity medicine consultation at The One Clinic Leicester"
                 fill
                 priority
@@ -370,7 +370,7 @@ export default function LongevityMedicinePage() {
             {/* Right: image */}
             <m.div className={styles.whatIsVideoWrap} variants={fadeUp}>
               <Image
-                src="/images/Health Screening.jpg"
+                src="/images/What is Longevity Medicine.jpg"
                 alt="What is longevity medicine at The One Clinic Leicester"
                 fill
                 className={styles.whatIsVideoFrame}

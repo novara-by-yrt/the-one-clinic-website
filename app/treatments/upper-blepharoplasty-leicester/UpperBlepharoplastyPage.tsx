@@ -317,7 +317,7 @@ export default function UpperBlepharoplastyPage() {
             {/* Right: image */}
             <m.div className={styles.heroImageWrap} variants={fadeUp}>
               <Image
-                src="/images/Hero Section Non-surgical blepharoplasty.jpg"
+                src="/images/Upper Blepharoplasty Hero Section.jpg"
                 alt="Upper blepharoplasty eyelid lift treatment at The One Clinic Leicester"
                 fill
                 priority
