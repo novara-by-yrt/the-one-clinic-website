@@ -103,6 +103,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
+        {/* Speed up LeadPipeline form loading */}
+        <link rel="preconnect" href="https://link.leadpipeline.ai" />
         <Script
           id="gtm-head"
           strategy="lazyOnload"
@@ -127,7 +129,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         <Script
           src="https://link.leadpipeline.ai/js/form_embed.js"
-          strategy="lazyOnload"
+          strategy="afterInteractive"
         />
 
         <a href="#main-content" className="skip-link">
