@@ -1,7 +1,6 @@
 'use client';
 
 import { m } from 'framer-motion';
-import Script from 'next/script';
 import { CLINIC_INFO, getMapsEmbedUrl, getMapsSearchUrl, getHoursDisplay } from '@/lib/clinic-info';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
@@ -107,7 +106,6 @@ export default function LeadForm() {
                 data-form-id="fegqbVjvGrZqMfbk64P4"
                 title="Request a Call Back"
                 scrolling="no"
-                loading="lazy"
               />
               </div>
             </div>

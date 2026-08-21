@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import Script from 'next/script';
 import { CLINIC_INFO, getMapsSearchUrl } from '@/lib/clinic-info';
 import styles from './Footer.module.css';
 
@@ -99,9 +98,7 @@ export default function Footer() {
               data-layout-iframe-id="inline-dViZEitr7fnCtl8rKT3Q"
               data-form-id="dViZEitr7fnCtl8rKT3Q"
               title="Newsletter Form"
-              loading="lazy"
             />
-            <Script src="https://link.leadpipeline.ai/js/form_embed.js" strategy="lazyOnload" />
           </div>
 
         </div>

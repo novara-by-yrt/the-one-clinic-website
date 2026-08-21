@@ -51,6 +51,7 @@ const NAV: NavItem[] = [
           { label: "Women's Health Clinic",                                 href: '/treatments/womens-health-leicester' },
           { label: "Women's Health, Menopause / HRT / Contraception",      href: '/treatments/menopause-hrt-leicester' },
           { label: 'Mental Health Consultation',                            href: '/treatments/mental-health-consultation-leicester' },
+          { label: 'Longevity Medicine',                                    href: '/treatments/longevity-medicine-leicester' },
         ],
       },
       {
@@ -93,6 +94,7 @@ const NAV: NavItem[] = [
           { label: 'Lipoma Removal Leicester',                  href: '/treatments/lipoma-removal-leicester' },
           { label: 'Liposuction Leicester',                     href: '/treatments/liposuction-leicester' },
           { label: 'Non Surgical Blepharoplasty',               href: '/treatments/non-surgical-blepharoplasty-leicester' },
+          { label: 'Upper Blepharoplasty',                      href: '/treatments/upper-blepharoplasty-leicester' },
         ],
       },
     ],

@@ -143,6 +143,13 @@ export const treatments: Treatment[] = [
     shortDescription:
       'Confidential mental health consultations to assess, support, and guide treatment for anxiety, depression, and more.',
   },
+  {
+    slug: 'longevity-medicine-leicester',
+    title: 'Longevity Medicine',
+    category: 'Health & Wellbeing',
+    shortDescription:
+      'Science-led metabolic health optimisation paired with expert face profiling for long-term wellness and a fresher-looking face.',
+  },
 
   // ── Medical Aesthetics ──────────────────────────────────────
 
@@ -441,6 +448,13 @@ export const treatments: Treatment[] = [
     category: 'Medical Aesthetics',
     shortDescription:
       'Rejuvenate the eye area and reduce hooded lids without surgery using plasma or radiofrequency technology.',
+  },
+  {
+    slug: 'upper-blepharoplasty-leicester',
+    title: 'Upper Blepharoplasty',
+    category: 'Medical Aesthetics',
+    shortDescription:
+      'Eyelid lift treatment that addresses excess skin and hooded upper eyelids for brighter, more youthful eyes.',
   },
 ];
 
