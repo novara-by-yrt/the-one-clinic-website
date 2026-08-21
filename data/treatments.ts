@@ -143,6 +143,13 @@ export const treatments: Treatment[] = [
     shortDescription:
       'Confidential mental health consultations to assess, support, and guide treatment for anxiety, depression, and more.',
   },
+  {
+    slug: 'longevity-medicine-leicester',
+    title: 'Longevity Medicine',
+    category: 'Health & Wellbeing',
+    shortDescription:
+      'Science-led metabolic health optimisation paired with expert face profiling for long-term wellness and a fresher-looking face.',
+  },
 
   // ── Medical Aesthetics ──────────────────────────────────────
 

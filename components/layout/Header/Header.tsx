@@ -51,6 +51,7 @@ const NAV: NavItem[] = [
           { label: "Women's Health Clinic",                                 href: '/treatments/womens-health-leicester' },
           { label: "Women's Health, Menopause / HRT / Contraception",      href: '/treatments/menopause-hrt-leicester' },
           { label: 'Mental Health Consultation',                            href: '/treatments/mental-health-consultation-leicester' },
+          { label: 'Longevity Medicine',                                    href: '/treatments/longevity-medicine-leicester' },
         ],
       },
       {
