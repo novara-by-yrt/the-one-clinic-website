@@ -8,7 +8,7 @@ import CardFanCarousel, { type CardItem } from '@/components/ui/CardFanCarousel'
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './BrandTreatments.module.css';
 
-const SLIDES_BASE = [
+export const SLIDES_BASE = [
   {
     src:   '/images/Endolift1.png',
     title: 'Endolift',

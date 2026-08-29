@@ -7,7 +7,7 @@ import WistiaFacade from '@/components/ui/WistiaFacade';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './BrandVideoSection.module.css';
 
-const VIDEOS = [
+export const VIDEOS = [
   { id: 'hu75ttgmlm', title: 'TOC - Intro Video (LP)' },
   { id: 't8y82cnp5e', title: 'TOC - Patient Stories' },
 ];

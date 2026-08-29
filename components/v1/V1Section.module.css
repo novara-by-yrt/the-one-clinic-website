@@ -1,0 +1,78 @@
+.section {
+  position: relative;
+  background: var(--v1-bg);
+  color: var(--v1-fg);
+  padding-block: var(--v1-pad-block);
+  /* Contains the 3D children so a tilted card can never widen the page */
+  overflow: hidden;
+  /* Every child transform resolves against one shared camera */
+  perspective: var(--v1-perspective);
+}
+
+.flush {
+  padding-block: 0;
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--v1-max);
+  margin-inline: auto;
+  padding-inline: var(--v1-pad-inline);
+}
+
+.wide {
+  max-width: none;
+  padding-inline: 0;
+}
+
+/* ── Seam ──────────────────────────────────────────────────
+   A hairline where two surfaces of similar value meet, so the
+   gray/white boundary reads as intentional rather than as a
+   rendering artefact.
+──────────────────────────────────────────────────────────── */
+.seam::before {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 1px;
+  background: var(--v1-border);
+  z-index: 3;
+}
+
+/* ── Ambient depth ─────────────────────────────────────────
+   A soft radial pool behind the content. On dark surfaces it is
+   a warm glow; on light ones a faint shadow that keeps the flat
+   fill from looking like paper.
+──────────────────────────────────────────────────────────── */
+.ambient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ambient::after {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(
+    ellipse 55% 45% at 50% 38%,
+    var(--v1-ambient-tint, transparent) 0%,
+    transparent 70%
+  );
+}
+
+.section:global(.v1-surface-black) {
+  --v1-ambient-tint: rgb(175 132 72 / 0.09);
+}
+
+.section:global(.v1-surface-gray) {
+  --v1-ambient-tint: rgb(11 11 13 / 0.045);
+}
+
+.section:global(.v1-surface-white) {
+  --v1-ambient-tint: rgb(11 11 13 / 0.028);
+}

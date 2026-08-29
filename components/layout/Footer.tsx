@@ -213,7 +213,6 @@ export default function Footer() {
       ══════════════════════════════════════════════ */}
       <div className={styles.creditLine}>
         <span>&copy; THE ONE CLINIC {year}. ALL RIGHTS RESERVED.</span>
-        <span>Design, Developed and Managed by <a href="https://mangoeyes.co" target="_blank" rel="noopener noreferrer" className={styles.creditLink}>mangoeyes.co</a></span>
       </div>
 
     </footer>

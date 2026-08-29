@@ -1,0 +1,77 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(12px, 1.6vw, 18px);
+  max-width: 760px;
+  margin-inline: auto;
+  margin-bottom: clamp(40px, 5vw, 72px);
+}
+
+.left {
+  align-items: flex-start;
+  text-align: left;
+  margin-inline: 0;
+  /* Used inline in a column that supplies its own gap — the centred
+     variant's bottom margin would double the space under it. */
+  margin-bottom: 0;
+}
+
+/* ── Eyebrow chip ── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 16px 7px 12px;
+  border: 1px solid var(--v1-border);
+  border-radius: 100px;
+  background: var(--v1-sheen);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--v1-fg-muted);
+  backdrop-filter: blur(8px);
+}
+
+.chipDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--v1-accent);
+  box-shadow: 0 0 0 3px var(--v1-accent-soft);
+}
+
+/* ── Heading ── */
+.heading {
+  font-size: clamp(2rem, 4.6vw, 3.75rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: var(--v1-fg);
+  margin: 0;
+  text-wrap: balance;
+}
+
+.accent {
+  font-style: italic;
+  font-weight: 800;
+  color: var(--v1-accent-text);
+}
+
+.rule {
+  width: 56px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--v1-accent-line), transparent);
+}
+
+.sub {
+  font-size: clamp(0.9375rem, 1.15vw, 1.0625rem);
+  line-height: 1.75;
+  color: var(--v1-fg-muted);
+  margin: 0;
+  max-width: 56ch;
+  text-wrap: pretty;
+}

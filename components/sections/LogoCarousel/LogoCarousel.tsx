@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Section from '@/components/ui/Section';
 import styles from './LogoCarousel.module.css';
 
-const LOGOS = [
+export const LOGOS = [
   { src: '/images/imgi_34_Hydra.png',                                  alt: 'Hydra',                              w: 400,  h: 160 },
   { src: '/images/imgi_39_cqc-logo.png',                               alt: 'Care Quality Commission',           w: 300,  h: 150 },
   { src: '/images/imgi_78_endolift-768x474.webp',                      alt: 'Endolift',                          w: 768,  h: 474 },

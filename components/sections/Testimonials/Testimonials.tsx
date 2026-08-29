@@ -10,7 +10,7 @@ import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './Testimonials.module.css';
 
 /* ── Data ───────────────────────────────────────────────────── */
-const REVIEWS = [
+export const REVIEWS = [
   {
     name: 'Dimitrijs Jakovlevs',
     initial: 'D',
@@ -148,7 +148,7 @@ const REVIEWS = [
   },
 ];
 
-const PATIENT_VIDEOS = [
+export const PATIENT_VIDEOS = [
   { id: 'idcb1vywka', title: 'Customer Testimonial' },
   { id: 'onscmatqmy', title: 'Customer Testimonial, Oxana' },
   { id: 'fm142sxmlw', title: 'Customer Testimonial, Mahanoor' },

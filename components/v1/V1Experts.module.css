@@ -1,0 +1,182 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(232px, 1fr));
+  gap: clamp(16px, 2.2vw, 28px);
+  perspective: var(--v1-perspective);
+}
+
+.stage { transform-style: preserve-3d; }
+
+.card {
+  position: relative;
+  display: block;
+  height: 100%;
+  border-radius: var(--v1-r-lg);
+  overflow: hidden;
+  border: 1px solid var(--v1-border);
+  background: var(--v1-bg-raised);
+  box-shadow: var(--v1-lift);
+  text-decoration: none;
+  color: inherit;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: box-shadow var(--v1-dur) var(--v1-ease),
+              border-color var(--v1-dur) var(--v1-ease),
+              transform var(--v1-dur) var(--v1-ease);
+}
+
+.card:hover {
+  border-color: var(--v1-accent-line);
+  box-shadow: var(--v1-lift-hi), 0 0 70px -20px rgb(175 132 72 / 0.42);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--v1-accent);
+  outline-offset: 3px;
+}
+
+.portrait {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #101014;
+}
+
+.img {
+  object-fit: cover;
+  object-position: center 18%;
+  transition: transform 1s var(--v1-ease), filter var(--v1-dur) var(--v1-ease);
+  filter: grayscale(0.5) contrast(1.02);
+}
+
+.card:hover .img {
+  transform: scale(1.07);
+  filter: grayscale(0) contrast(1.05);
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top,
+    rgb(8 8 10 / 0.96) 0%, rgb(8 8 10 / 0.9) 22%, rgb(8 8 10 / 0.66) 40%,
+    rgb(8 8 10 / 0.24) 62%, transparent 88%);
+}
+
+/* Gold hairline that sweeps up on hover */
+.edge {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  z-index: 3;
+  background: linear-gradient(90deg, transparent, var(--v1-accent), transparent);
+  transform: scaleX(0);
+  transform-origin: 50% 50%;
+  transition: transform var(--v1-dur) var(--v1-ease);
+}
+
+.card:hover .edge { transform: scaleX(1); }
+
+.meta {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 18px 18px 20px;
+  transform: translateZ(30px);
+}
+
+.name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: #fff;
+  text-wrap: balance;
+}
+
+.role {
+  margin: 0;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  line-height: 1.45;
+  /* 0.78 white on the scrim clears 4.5:1 comfortably */
+  color: rgb(255 255 255 / 0.78);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 6px;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #d9ab68;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity var(--v1-dur) var(--v1-ease),
+              transform var(--v1-dur) var(--v1-ease);
+}
+
+.card:hover .link,
+.card:focus-visible .link { opacity: 1; transform: translateY(0); }
+
+/* ── Footer CTA ──────────────────────────────────────────── */
+.more {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(28px, 3.5vw, 48px);
+}
+
+.moreBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 28px;
+  border: 1px solid var(--v1-border-strong);
+  border-radius: 100px;
+  color: var(--v1-fg);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: background var(--v1-dur-fast) var(--v1-ease),
+              border-color var(--v1-dur-fast) var(--v1-ease),
+              transform var(--v1-dur-fast) var(--v1-ease);
+}
+
+.moreBtn:hover {
+  background: var(--v1-sheen);
+  border-color: var(--v1-accent-line);
+  transform: translateY(-3px);
+}
+
+.moreBtn:focus-visible {
+  outline: 2px solid var(--v1-accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 620px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .meta { padding: 13px 13px 15px; }
+  .name { font-size: 0.875rem; }
+  .role { font-size: 0.625rem; letter-spacing: 0.06em; }
+}
+
+@media (max-width: 360px) {
+  .grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .card:hover { transform: none !important; }
+  .card:hover .img { transform: none; }
+}

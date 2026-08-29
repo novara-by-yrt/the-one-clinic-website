@@ -1,0 +1,114 @@
+/* ══════════════════════════════════════════════════════════════
+   V1 DESIGN TOKENS
+   A premium black / gray / white system with a single warm-gold
+   accent carried over from the existing brand. Every section reads
+   its surface colours from --v1-* tokens that V1Section re-binds
+   per background, so one component works on all three surfaces.
+══════════════════════════════════════════════════════════════ */
+
+.v1-root {
+  /* ── Surfaces ── */
+  --v1-black: #08080a;
+  --v1-black-raised: #101014;
+  --v1-gray: #eceae6;
+  --v1-gray-raised: #f6f5f2;
+  --v1-white: #ffffff;
+  --v1-white-raised: #fafaf9;
+
+  /* ── Accent (carried from the existing brand gold) ── */
+  --v1-accent: #af8448;
+  --v1-accent-soft: rgb(175 132 72 / 0.16);
+  --v1-accent-line: rgb(175 132 72 / 0.55);
+
+  /* ── Depth: a single elevation ramp used by every 3D surface ── */
+  --v1-lift-1: 0 2px 8px rgb(0 0 0 / 0.06), 0 8px 24px rgb(0 0 0 / 0.06);
+  --v1-lift-2: 0 6px 18px rgb(0 0 0 / 0.10), 0 22px 56px rgb(0 0 0 / 0.12);
+  --v1-lift-3: 0 12px 32px rgb(0 0 0 / 0.14), 0 40px 96px rgb(0 0 0 / 0.20);
+  --v1-lift-dark-1: 0 2px 8px rgb(0 0 0 / 0.5), 0 10px 30px rgb(0 0 0 / 0.45);
+  --v1-lift-dark-2: 0 8px 24px rgb(0 0 0 / 0.6), 0 28px 72px rgb(0 0 0 / 0.55);
+  --v1-lift-dark-3: 0 16px 40px rgb(0 0 0 / 0.7), 0 48px 120px rgb(0 0 0 / 0.6);
+
+  /* ── Motion: slow and expensive-feeling, never snappy ── */
+  --v1-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --v1-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --v1-dur-fast: 260ms;
+  --v1-dur: 520ms;
+  --v1-dur-slow: 780ms;
+
+  /* ── Perspective: shared so nested 3D reads as one space ── */
+  --v1-perspective: 1200px;
+
+  /* ── Radii & rhythm ── */
+  --v1-r-sm: 10px;
+  --v1-r: 18px;
+  --v1-r-lg: 26px;
+  --v1-pad-block: clamp(72px, 9vw, 148px);
+  --v1-pad-inline: clamp(20px, 5vw, 72px);
+  --v1-max: 1400px;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SURFACE THEMES
+   Each sets the same six semantic tokens, so a card or heading
+   written once stays legible on black, gray and white alike.
+   Text pairs are all >= 4.5:1 against their own surface.
+══════════════════════════════════════════════════════════════ */
+
+.v1-surface-black {
+  --v1-bg: var(--v1-black);
+  --v1-bg-raised: var(--v1-black-raised);
+  --v1-fg: #ffffff;
+  /* 0.72 white on #08080a ~= 8.9:1 */
+  --v1-fg-muted: rgb(255 255 255 / 0.72);
+  --v1-fg-faint: rgb(255 255 255 / 0.46);
+  --v1-border: rgb(255 255 255 / 0.12);
+  --v1-border-strong: rgb(255 255 255 / 0.24);
+  --v1-lift: var(--v1-lift-dark-2);
+  --v1-lift-hi: var(--v1-lift-dark-3);
+  --v1-sheen: rgb(255 255 255 / 0.06);
+}
+
+.v1-surface-gray {
+  --v1-bg: var(--v1-gray);
+  --v1-bg-raised: var(--v1-gray-raised);
+  --v1-fg: #0b0b0d;
+  /* #4a4a52 on #eceae6 ~= 7.4:1 */
+  --v1-fg-muted: #4a4a52;
+  --v1-fg-faint: #5c5c66;
+  --v1-border: rgb(11 11 13 / 0.12);
+  --v1-border-strong: rgb(11 11 13 / 0.22);
+  --v1-lift: var(--v1-lift-2);
+  --v1-lift-hi: var(--v1-lift-3);
+  --v1-sheen: rgb(255 255 255 / 0.7);
+}
+
+.v1-surface-white {
+  --v1-bg: var(--v1-white);
+  --v1-bg-raised: var(--v1-white-raised);
+  --v1-fg: #0b0b0d;
+  /* #4a4a52 on #ffffff ~= 8.4:1 */
+  --v1-fg-muted: #4a4a52;
+  --v1-fg-faint: #5c5c66;
+  --v1-border: rgb(11 11 13 / 0.10);
+  --v1-border-strong: rgb(11 11 13 / 0.20);
+  --v1-lift: var(--v1-lift-1);
+  --v1-lift-hi: var(--v1-lift-2);
+  --v1-sheen: rgb(255 255 255 / 0.9);
+}
+
+/* On light surfaces the gold needs darkening to clear 4.5:1 for text */
+.v1-surface-gray,
+.v1-surface-white {
+  --v1-accent-text: #7a5a26;
+}
+.v1-surface-black {
+  --v1-accent-text: #d9ab68;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v1-root {
+    --v1-dur-fast: 1ms;
+    --v1-dur: 1ms;
+    --v1-dur-slow: 1ms;
+  }
+}
