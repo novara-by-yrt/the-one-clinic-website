@@ -1,7 +1,6 @@
 /* ══════════════════════════════════════════════════════════════
    V1 DESIGN TOKENS
-   A premium black / gray / white system with a single warm-gold
-   accent carried over from the existing brand. Every section reads
+   A strictly monochrome black / gray / white system. Every section reads
    its surface colours from --v1-* tokens that V1Section re-binds
    per background, so one component works on all three surfaces.
 ══════════════════════════════════════════════════════════════ */
@@ -15,10 +14,11 @@
   --v1-white: #ffffff;
   --v1-white-raised: #fafaf9;
 
-  /* ── Accent (carried from the existing brand gold) ── */
-  --v1-accent: #af8448;
-  --v1-accent-soft: rgb(175 132 72 / 0.16);
-  --v1-accent-line: rgb(175 132 72 / 0.55);
+  /* ── Accent ──
+     The brand is black, white and grey only, so "accent" is not a hue —
+     it is the surface's own maximum contrast. Each surface below rebinds
+     these, which is why every dot, rule, focus ring and hover edge stays
+     on-brand without any component knowing which surface it sits on. ── */
 
   /* ── Depth: a single elevation ramp used by every 3D surface ── */
   --v1-lift-1: 0 2px 8px rgb(0 0 0 / 0.06), 0 8px 24px rgb(0 0 0 / 0.06);
@@ -66,6 +66,11 @@
   --v1-lift: var(--v1-lift-dark-2);
   --v1-lift-hi: var(--v1-lift-dark-3);
   --v1-sheen: rgb(255 255 255 / 0.06);
+  --v1-accent: #ffffff;
+  --v1-accent-text: #ffffff;
+  --v1-accent-line: rgb(255 255 255 / 0.6);
+  --v1-accent-soft: rgb(255 255 255 / 0.14);
+  --v1-accent-halo: rgb(255 255 255 / 0.3);
 }
 
 .v1-surface-gray {
@@ -80,6 +85,11 @@
   --v1-lift: var(--v1-lift-2);
   --v1-lift-hi: var(--v1-lift-3);
   --v1-sheen: rgb(255 255 255 / 0.7);
+  --v1-accent: #0b0b0d;
+  --v1-accent-text: #0b0b0d;
+  --v1-accent-line: rgb(11 11 13 / 0.5);
+  --v1-accent-soft: rgb(11 11 13 / 0.1);
+  --v1-accent-halo: rgb(11 11 13 / 0.22);
 }
 
 .v1-surface-white {
@@ -94,15 +104,11 @@
   --v1-lift: var(--v1-lift-1);
   --v1-lift-hi: var(--v1-lift-2);
   --v1-sheen: rgb(255 255 255 / 0.9);
-}
-
-/* On light surfaces the gold needs darkening to clear 4.5:1 for text */
-.v1-surface-gray,
-.v1-surface-white {
-  --v1-accent-text: #7a5a26;
-}
-.v1-surface-black {
-  --v1-accent-text: #d9ab68;
+  --v1-accent: #0b0b0d;
+  --v1-accent-text: #0b0b0d;
+  --v1-accent-line: rgb(11 11 13 / 0.5);
+  --v1-accent-soft: rgb(11 11 13 / 0.1);
+  --v1-accent-halo: rgb(11 11 13 / 0.2);
 }
 
 @media (prefers-reduced-motion: reduce) {

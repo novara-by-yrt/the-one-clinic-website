@@ -24,13 +24,14 @@ const FADE = {
   show: { opacity: 1, y: 0 },
 };
 
-function Stars({ fill }: { fill: string }) {
+/** Rating stars: the brand is monochrome, so they read by shape, not hue. */
+function Stars() {
   return (
     <span className={styles.stars}>
       {Array.from({ length: 5 }).map((_, i) => (
         <svg key={i} width="13" height="13" viewBox="0 0 24 24" aria-hidden="true">
           <path
-            fill={fill}
+            fill="currentColor"
             d="M12 2l2.582 7.952H22.9l-6.832 4.962 2.608 8.024L12 18.012l-6.676 4.926 2.608-8.024L1.1 9.952H9.418z"
           />
         </svg>
@@ -200,7 +201,7 @@ export default function V1Hero() {
                 </svg>
                 <span className={styles.trustName}>Google</span>
               </div>
-              <Stars fill="#FBBC04" />
+              <Stars />
               <p className={styles.trustMeta}>
                 <strong className={styles.score}>5.0</strong>
                 <span className={styles.metaDot} aria-hidden="true" />
@@ -215,7 +216,7 @@ export default function V1Hero() {
                 </svg>
                 <span className={styles.trustName}>Trustpilot</span>
               </div>
-              <Stars fill="#00B67A" />
+              <Stars />
               <p className={styles.trustMeta}>
                 <strong className={styles.score}>4.7</strong>
                 <span className={styles.metaDot} aria-hidden="true" />

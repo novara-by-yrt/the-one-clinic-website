@@ -1,6 +1,6 @@
 /* ── Section , brand dark ───────────────────────────────────────── */
 .section {
-  background-color: #0d1520;
+  background-color: #161616;
   border-top: none;
   padding-block: clamp(64px, 8vw, 104px);
 }

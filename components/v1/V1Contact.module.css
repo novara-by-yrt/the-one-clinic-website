@@ -145,8 +145,8 @@ a.row:hover .icon {
 
 .cta:hover {
   transform: translateY(-3px);
-  background: linear-gradient(96deg, #8a6634, var(--v1-accent));
-  box-shadow: 0 14px 38px rgb(175 132 72 / 0.34);
+  background: linear-gradient(96deg, #33333b, #08080a);
+  box-shadow: 0 14px 38px rgb(11 11 13 / 0.34);
 }
 
 .cta:focus-visible {

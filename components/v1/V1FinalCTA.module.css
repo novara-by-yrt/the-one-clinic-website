@@ -26,7 +26,7 @@
 
 .card:hover {
   border-color: var(--v1-accent-line);
-  box-shadow: var(--v1-lift-hi), 0 0 120px -30px rgb(175 132 72 / 0.5);
+  box-shadow: var(--v1-lift-hi), 0 0 120px -30px rgb(255 255 255 / 0.26);
 }
 
 /* Warm pool sitting behind the copy */
@@ -36,7 +36,7 @@
   z-index: 0;
   pointer-events: none;
   background: radial-gradient(ellipse 46% 52% at 50% 42%,
-    rgb(175 132 72 / 0.24) 0%, transparent 68%);
+    rgb(255 255 255 / 0.1) 0%, transparent 68%);
 }
 
 .grid {
@@ -80,7 +80,7 @@
 
 .accent {
   font-style: italic;
-  background: linear-gradient(96deg, #f0dcb8, var(--v1-accent));
+  background: linear-gradient(96deg, #ffffff 0%, #d6d6dc 48%, #8e8e98 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -127,7 +127,8 @@
   overflow: hidden;
   box-shadow: 0 2px 16px rgb(255 255 255 / 0.14), 0 16px 44px rgb(0 0 0 / 0.5);
   transition: transform var(--v1-dur-fast) var(--v1-ease),
-              box-shadow var(--v1-dur-fast) var(--v1-ease);
+              box-shadow var(--v1-dur-fast) var(--v1-ease),
+              color var(--v1-dur) var(--v1-ease);
 }
 
 .primary::before {
@@ -135,14 +136,16 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(96deg, #f0dcb8, var(--v1-accent));
+  background: linear-gradient(96deg, #26262c, #08080a);
   transform: translateX(-101%);
   transition: transform var(--v1-dur) var(--v1-ease);
 }
 
 .primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 24px rgb(175 132 72 / 0.34), 0 24px 64px rgb(0 0 0 / 0.6);
+  /* Wipe covers the white pill, so the label has to flip with it */
+  color: #fff;
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.5), 0 24px 64px rgb(0 0 0 / 0.6);
 }
 
 .primary:hover::before { transform: translateX(0); }

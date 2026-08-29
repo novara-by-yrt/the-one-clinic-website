@@ -182,7 +182,7 @@ const TREATMENTS: Treatment[] = [
     category: 'Medical Aesthetics',
     desc: 'Advanced 3D skin imaging with Life Viz Camera for a precise, personalised treatment plan.',
     href: '/treatments/skin-analysis-leicester',
-    bg: 'linear-gradient(160deg,#0d1520 0%,#142038 100%)',
+    bg: 'linear-gradient(160deg,#161616 0%,#142038 100%)',
   },
   {
     title: 'Body Confidence Package',
@@ -206,7 +206,7 @@ const TREATMENTS: Treatment[] = [
     desc: 'Deep hydration and bio-remodelling with ultra-pure hyaluronic acid for a natural, luminous glow.',
     href: '/treatments/profhilo-leicester',
     image: '/images/Profhilo (2).jpg',
-    bg: 'linear-gradient(160deg,#0d1520 0%,#142038 100%)',
+    bg: 'linear-gradient(160deg,#161616 0%,#142038 100%)',
   },
   {
     title: 'JULÄINE',
@@ -214,7 +214,7 @@ const TREATMENTS: Treatment[] = [
     desc: 'An exclusive regenerative treatment combining the finest aesthetic techniques to deliver exceptional, long-lasting rejuvenation, tailored entirely to you.',
     href: '/treatments/julaine',
     image: '/images/Juliane.jpg',
-    bg: 'linear-gradient(160deg,#0d1520 0%,#142038 100%)',
+    bg: 'linear-gradient(160deg,#161616 0%,#142038 100%)',
   },
   {
     title: 'NCTF 135 HA',
@@ -222,7 +222,7 @@ const TREATMENTS: Treatment[] = [
     desc: 'Premium skin booster with hyaluronic acid and vitamins to reduce dark circles and stimulate collagen.',
     href: '/treatments/nctf-135-ha-leicester',
     image: '/NCTF 135 HA.jpg',
-    bg: 'linear-gradient(160deg,#0d1520 0%,#142038 100%)',
+    bg: 'linear-gradient(160deg,#161616 0%,#142038 100%)',
   },
   {
     title: 'Skincare, Alumier MD',

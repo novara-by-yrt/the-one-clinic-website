@@ -38,14 +38,14 @@
   font-size: 5.5rem;
   line-height: 1;
   font-weight: 800;
-  color: var(--v1-accent);
-  opacity: 0.12;
+  color: var(--v1-fg);
+  opacity: 0.1;
   pointer-events: none;
   transform: translateZ(-20px);
   transition: opacity var(--v1-dur) var(--v1-ease);
 }
 
-.card:hover .quoteMark { opacity: 0.22; }
+.card:hover .quoteMark { opacity: 0.18; }
 
 .head {
   display: flex;
@@ -61,7 +61,8 @@
   height: 42px;
   flex-shrink: 0;
   border-radius: 50%;
-  color: #fff;
+  background: var(--v1-fg);
+  color: var(--v1-bg-raised);
   font-size: 1rem;
   font-weight: 800;
   box-shadow: 0 3px 12px rgb(0 0 0 / 0.2);
@@ -83,7 +84,8 @@
 
 .stars { display: flex; gap: 1px; }
 
-.starSvg { fill: #f5a623; }
+/* Brand is monochrome: rating stars read by shape, not colour */
+.starSvg { fill: var(--v1-fg); }
 
 .when {
   font-size: 0.6875rem;

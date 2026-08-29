@@ -2,8 +2,8 @@
 .section {
   padding-block: 28px !important;
   overflow: hidden;
-  border-top: 1px solid rgba(13, 21, 32, 0.07);
-  border-bottom: 1px solid rgba(13, 21, 32, 0.07);
+  border-top: 1px solid rgba(22, 22, 22, 0.07);
+  border-bottom: 1px solid rgba(22, 22, 22, 0.07);
 }
 
 /* ── Label row , flanked by thin rules ─────────────────────────── */
@@ -20,7 +20,7 @@
   flex: 0 0 auto;
   width: clamp(36px, 5vw, 80px);
   height: 1px;
-  background: rgba(13, 21, 32, 0.12);
+  background: rgba(22, 22, 22, 0.12);
   border-radius: 1px;
 }
 
@@ -29,7 +29,7 @@
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(13, 21, 32, 0.38);
+  color: rgba(22, 22, 22, 0.38);
   white-space: nowrap;
 }
 

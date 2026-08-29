@@ -69,8 +69,7 @@
 
 .cta:hover {
   transform: translateY(-3px);
-  background: linear-gradient(96deg, #f0dcb8, var(--v1-accent));
-  box-shadow: 0 12px 34px rgb(175 132 72 / 0.34);
+  box-shadow: 0 0 0 4px rgb(255 255 255 / 0.14), 0 14px 36px rgb(0 0 0 / 0.55);
 }
 
 .cta:focus-visible {

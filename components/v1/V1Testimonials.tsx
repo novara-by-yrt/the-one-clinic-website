@@ -40,9 +40,7 @@ function ReviewCard({ review, index, dir }: { review: Review; index: number; dir
         <span className={styles.quoteMark} aria-hidden="true">&ldquo;</span>
 
         <header className={styles.head}>
-          <span className={styles.avatar} style={{ background: review.avatarBg }} aria-hidden="true">
-            {review.initial}
-          </span>
+          <span className={styles.avatar} aria-hidden="true">{review.initial}</span>
           <span className={styles.who}>
             <span className={styles.name}>{review.name}</span>
             <span className={styles.metaRow}>

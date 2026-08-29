@@ -101,7 +101,7 @@
   z-index: 0;
   pointer-events: none;
   background: radial-gradient(ellipse at 46% 50%,
-    rgb(175 132 72 / 0.2) 0%, transparent 66%);
+    var(--v1-accent-halo) 0%, transparent 66%);
 }
 
 /* ── Text column ─────────────────────────────────────────── */
