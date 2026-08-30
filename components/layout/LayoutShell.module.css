@@ -44,6 +44,21 @@
   pointer-events: none;
 }
 
+/* ── Normal-flow footer ─────────────────────────────────────────
+   Opt-out of the fixed reveal for routes in FLOW_FOOTER_ROUTES: the
+   footer sits in the document and scrolls with the page like any
+   other section. Same shape the mobile query below falls back to.
+─────────────────────────────────────────────────────────────── */
+.footerFlow {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  transform: none;
+  opacity: 1;
+  will-change: auto;
+}
+
 /* Tablet / mobile: the footer is taller than the viewport, so the
    fixed-position reveal effect would only ever show its bottom slice
    with the sticky header overlapping whatever is at the visible top.

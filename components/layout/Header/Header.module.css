@@ -13,6 +13,28 @@
   pointer-events: none; /* transparent areas pass clicks through */
 }
 
+/* ── Yield to the footer ────────────────────────────────────────
+   On routes with a normal-flow footer, LayoutShell flags <html> once
+   the footer scrolls into view and the header lifts out of the way,
+   so it never floats over the footer. :focus-within brings it back
+   for keyboard users who tab into it while it is parked.
+─────────────────────────────────────────────────────────────── */
+:global(html[data-footer-visible='true']) .headerOuter:not(:focus-within) {
+  transform: translateY(-110%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.headerOuter {
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .headerOuter { transition: none; }
+}
+
 /* ═══════════════════════════════════════════════════════════════
    MORPHING PILL , Main animated element
 ═══════════════════════════════════════════════════════════════ */
