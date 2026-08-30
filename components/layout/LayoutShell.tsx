@@ -9,6 +9,7 @@ import {
   useSpring,
   useReducedMotion,
 } from 'framer-motion';
+import { isV1Route } from '@/components/v1/v1-routes';
 import styles from './LayoutShell.module.css';
 
 interface LayoutShellProps {
@@ -16,18 +17,13 @@ interface LayoutShellProps {
   footer: React.ReactNode;
 }
 
-/**
- * Routes whose footer scrolls in normal document flow instead of using the
- * fixed reveal. On these the header also gets out of the way once the footer
- * is on screen, so nothing floats over it.
- */
-const FLOW_FOOTER_ROUTES = new Set(['/v1']);
-
 export default function LayoutShell({ children, footer }: LayoutShellProps) {
   const footerRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
   const pathname = usePathname();
-  const flowFooter = FLOW_FOOTER_ROUTES.has(pathname);
+  // v1 routes scroll their footer in normal flow instead of the fixed reveal,
+  // and get the footer-visible flag so their header can yield to it.
+  const flowFooter = isV1Route(pathname);
 
   // Measure footer height and set CSS variable
   useEffect(() => {
