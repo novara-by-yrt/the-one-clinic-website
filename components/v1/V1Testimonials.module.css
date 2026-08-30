@@ -1,7 +1,8 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(16px, 2.2vw, 28px);
+  /* Wider gaps: the bezel needs room around each card to read as a tray */
+  gap: clamp(26px, 3vw, 40px);
   perspective: var(--v1-perspective);
 }
 
@@ -14,10 +15,16 @@
   gap: 14px;
   height: 100%;
   padding: clamp(22px, 2.6vw, 30px);
-  border-radius: var(--v1-r-lg);
+  border-radius: var(--v1-r-inner);
   border: 1px solid var(--v1-border);
   background: var(--v1-bg-raised);
-  box-shadow: var(--v1-lift);
+  /* Bezel: the card is an inner core sitting in a tray. The outer ring and
+     the inset highlight are drawn with shadows so the DOM stays flat. */
+  box-shadow:
+    0 0 0 var(--v1-bezel-pad) var(--v1-tray),
+    0 0 0 calc(var(--v1-bezel-pad) + 1px) var(--v1-tray-line),
+    var(--v1-inner-hi),
+    var(--v1-lift);
   transform-style: preserve-3d;
   will-change: transform;
   transition: box-shadow var(--v1-dur) var(--v1-ease),
@@ -27,7 +34,11 @@
 
 .card:hover {
   border-color: var(--v1-accent-line);
-  box-shadow: var(--v1-lift-hi);
+  box-shadow:
+    0 0 0 var(--v1-bezel-pad) var(--v1-tray),
+    0 0 0 calc(var(--v1-bezel-pad) + 1px) var(--v1-accent-line),
+    var(--v1-inner-hi),
+    var(--v1-lift-hi);
 }
 
 /* Oversized quote mark, sunk behind the text */

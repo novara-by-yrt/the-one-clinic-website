@@ -13,10 +13,23 @@ type Theme = 'dark' | 'light';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
+/** Panels swing down from the bar's edge rather than fading in flat. */
 const PANEL = {
-  hidden: { opacity: 0, y: -8 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.26, ease: EASE } },
-  exit: { opacity: 0, y: -6, transition: { duration: 0.16, ease: 'easeIn' as const } },
+  hidden: { opacity: 0, y: -10, rotateX: -14, scale: 0.985, transformPerspective: 1400 },
+  show: {
+    opacity: 1, y: 0, rotateX: 0, scale: 1, transformPerspective: 1400,
+    transition: { duration: 0.42, ease: EASE, staggerChildren: 0.018 },
+  },
+  exit: {
+    opacity: 0, y: -8, rotateX: -8, scale: 0.99, transformPerspective: 1400,
+    transition: { duration: 0.18, ease: 'easeIn' as const },
+  },
+};
+
+/** Columns arrive one after another, so the panel assembles rather than pops. */
+const COLUMN = {
+  hidden: { opacity: 0, y: 12, filter: 'blur(6px)' },
+  show: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.45, ease: EASE } },
 };
 
 const Caret = ({ className }: { className?: string }) => (
@@ -206,7 +219,16 @@ export default function V1Header() {
             <m.div className={styles.mega} variants={PANEL}
                    initial="hidden" animate="show" exit="exit">
               {groups.map((g) => (
-                <div key={g.group} className={styles.megaGroup}>
+                <m.div
+                  key={g.group}
+                  className={styles.megaGroup}
+                  variants={COLUMN}
+                  // In motion rather than CSS: once the entry animation
+                  // settles, framer writes transform inline and a CSS
+                  // :hover transform can never win against it.
+                  whileHover={{ translateZ: 26 }}
+                  transition={{ duration: 0.45, ease: EASE }}
+                >
                   <p className={styles.megaTitle}>{g.group}</p>
                   <ul className={styles.megaList} role="list">
                     {g.items.map((l) => (
@@ -216,7 +238,7 @@ export default function V1Header() {
                       </li>
                     ))}
                   </ul>
-                </div>
+                </m.div>
               ))}
             </m.div>
           )}

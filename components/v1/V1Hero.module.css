@@ -166,7 +166,7 @@
   display: inline-flex;
   align-items: center;
   gap: 11px;
-  padding: 15px 30px;
+  padding: 13px 15px 13px 28px;
   border: none;
   border-radius: 100px;
   background: #fff;
@@ -205,8 +205,29 @@
 
 .cta > * { position: relative; z-index: 1; }
 
-.ctaArrow { transition: transform var(--v1-dur-fast) var(--v1-ease); }
-.cta:hover .ctaArrow { transform: translateX(4px); }
+
+/* Trailing icon sits in its own well rather than floating beside the label */
+.iconWell {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin-right: -10px;
+  border-radius: 50%;
+  background: rgb(8 8 10 / 0.08);
+  transition:
+    transform var(--v1-dur) var(--v1-ease),
+    background var(--v1-dur) var(--v1-ease);
+}
+
+.cta:hover .iconWell {
+  background: rgb(255 255 255 / 0.18);
+  /* Diagonal nudge reads as tension inside the button, not just a slide */
+  transform: translate(3px, -1px) scale(1.06);
+}
+
+.ctaArrow { transition: transform var(--v1-dur) var(--v1-ease); }
+.cta:active { transform: translateY(-1px) scale(0.985); }
 
 .ctaGhost {
   display: inline-flex;

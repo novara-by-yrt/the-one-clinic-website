@@ -115,7 +115,7 @@
 .pillars {
   display: flex;
   flex-direction: column;
-  gap: clamp(14px, 1.8vw, 20px);
+  gap: clamp(24px, 2.6vw, 32px);
   transform-style: preserve-3d;
 }
 
@@ -124,10 +124,16 @@
   display: flex;
   gap: 18px;
   padding: clamp(20px, 2.4vw, 28px);
-  border-radius: var(--v1-r);
+  border-radius: var(--v1-r-inner);
   border: 1px solid var(--v1-border);
   background: var(--v1-bg-raised);
-  box-shadow: var(--v1-lift);
+  /* Bezel: the card is an inner core sitting in a tray. The outer ring and
+     the inset highlight are drawn with shadows so the DOM stays flat. */
+  box-shadow:
+    0 0 0 var(--v1-bezel-pad) var(--v1-tray),
+    0 0 0 calc(var(--v1-bezel-pad) + 1px) var(--v1-tray-line),
+    var(--v1-inner-hi),
+    var(--v1-lift);
   transform-style: preserve-3d;
   will-change: transform;
   transition: box-shadow var(--v1-dur) var(--v1-ease),
@@ -137,7 +143,11 @@
 
 .pillar:hover {
   border-color: var(--v1-accent-line);
-  box-shadow: var(--v1-lift-hi);
+  box-shadow:
+    0 0 0 var(--v1-bezel-pad) var(--v1-tray),
+    0 0 0 calc(var(--v1-bezel-pad) + 1px) var(--v1-accent-line),
+    var(--v1-inner-hi),
+    var(--v1-lift-hi);
 }
 
 /* Gold spine that grows on hover */

@@ -168,16 +168,16 @@ export default function V1Hero() {
           >
             <button type="button" className={styles.cta} onClick={openModal}>
               <span>Book a Consultation</span>
-              <svg
-                className={styles.ctaArrow}
-                width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"
-              >
-                <path
-                  d="M2.5 7.5h10M8 3l4.5 4.5L8 12"
-                  stroke="currentColor" strokeWidth="1.8"
-                  strokeLinecap="round" strokeLinejoin="round"
-                />
-              </svg>
+              <span className={styles.iconWell} aria-hidden="true">
+                <svg className={styles.ctaArrow} width="13" height="13"
+                     viewBox="0 0 15 15" fill="none">
+                  <path
+                    d="M2.5 7.5h10M8 3l4.5 4.5L8 12"
+                    stroke="currentColor" strokeWidth="1.9"
+                    strokeLinecap="round" strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
             </button>
             <a href={`tel:${CLINIC_INFO.phone.tel}`} className={styles.ctaGhost}>
               {CLINIC_INFO.phone.display}

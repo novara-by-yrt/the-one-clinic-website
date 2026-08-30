@@ -1,7 +1,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(232px, 1fr));
-  gap: clamp(16px, 2.2vw, 28px);
+  gap: clamp(26px, 3vw, 40px);
   perspective: var(--v1-perspective);
 }
 
@@ -11,11 +11,17 @@
   position: relative;
   display: block;
   height: 100%;
-  border-radius: var(--v1-r-lg);
+  border-radius: var(--v1-r-inner);
   overflow: hidden;
   border: 1px solid var(--v1-border);
   background: var(--v1-bg-raised);
-  box-shadow: var(--v1-lift);
+  /* Bezel: the card is an inner core sitting in a tray. The outer ring and
+     the inset highlight are drawn with shadows so the DOM stays flat. */
+  box-shadow:
+    0 0 0 var(--v1-bezel-pad) var(--v1-tray),
+    0 0 0 calc(var(--v1-bezel-pad) + 1px) var(--v1-tray-line),
+    var(--v1-inner-hi),
+    var(--v1-lift);
   text-decoration: none;
   color: inherit;
   transform-style: preserve-3d;
@@ -27,7 +33,12 @@
 
 .card:hover {
   border-color: var(--v1-accent-line);
-  box-shadow: var(--v1-lift-hi), 0 0 70px -20px var(--v1-accent-halo);
+  box-shadow:
+    0 0 0 var(--v1-bezel-pad) var(--v1-tray),
+    0 0 0 calc(var(--v1-bezel-pad) + 1px) var(--v1-accent-line),
+    var(--v1-inner-hi),
+    var(--v1-lift-hi),
+    0 0 80px -22px var(--v1-accent-halo);
 }
 
 .card:focus-visible {

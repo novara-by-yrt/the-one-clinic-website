@@ -4,8 +4,7 @@ import { buildClinicSchema } from '@/lib/schema/builders';
 import V1Section, { surfaceAt } from '@/components/v1/V1Section';
 import V1Heading from '@/components/v1/V1Heading';
 import V1Hero from '@/components/v1/V1Hero';
-import V1Logos from '@/components/v1/V1Logos';
-import V1Video from '@/components/v1/V1Video';
+import LogoCarousel from '@/components/sections/LogoCarousel';
 import V1Treatments from '@/components/v1/V1Treatments';
 import V1Philosophy from '@/components/v1/V1Philosophy';
 import V1Testimonials from '@/components/v1/V1Testimonials';
@@ -38,21 +37,10 @@ export default function V1Page() {
       {/* 0 — black */}
       <V1Hero />
 
-      {/* 1 — gray */}
-      <V1Section surface={surfaceAt(1)} label="Accreditations" wide>
-        <V1Logos />
-      </V1Section>
-
-      {/* 2 — white */}
-      <V1Section surface={surfaceAt(2)} seam>
-        <V1Heading
-          chip="See It For Yourself"
-          title="Our Story &amp; Real Patient"
-          accent="Results"
-          sub="Hear directly from our founder and the patients whose lives we've helped transform."
-        />
-        <V1Video />
-      </V1Section>
+      {/* Accreditation strip — the homepage carousel, unchanged. It reads as
+          a divider rather than a section, so the surface rhythm below picks
+          up where the hero left off. */}
+      <LogoCarousel />
 
       {/* 3 — black */}
       <V1Section surface={surfaceAt(3)} id="treatments">

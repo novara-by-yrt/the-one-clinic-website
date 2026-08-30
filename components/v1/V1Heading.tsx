@@ -13,8 +13,8 @@ const VIEW = { once: true, margin: '-80px 0px' };
  * beneath it, rather than as flat text pasted on top.
  */
 const RISE = {
-  hidden: { opacity: 0, y: 26, rotateX: -12 },
-  show: { opacity: 1, y: 0, rotateX: 0 },
+  hidden: { opacity: 0, y: 30, rotateX: -12, filter: 'blur(10px)' },
+  show: { opacity: 1, y: 0, rotateX: 0, filter: 'blur(0px)' },
 };
 
 export default function V1Heading({
@@ -40,7 +40,7 @@ export default function V1Heading({
       initial="hidden"
       whileInView="show"
       viewport={VIEW}
-      transition={{ staggerChildren: 0.09 }}
+      transition={{ staggerChildren: 0.11 }}
       style={{ transformStyle: 'preserve-3d' }}
     >
       {chip && (
@@ -56,7 +56,7 @@ export default function V1Heading({
         id={id}
         className={styles.heading}
         variants={RISE}
-        transition={{ duration: 0.8, ease: EASE }}
+        transition={{ duration: 0.95, ease: EASE }}
       >
         {title}
         {accent && (
