@@ -127,9 +127,9 @@
   align-items: center;
   gap: 7px;
   margin-top: 6px;
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #ffffff;
   opacity: 0;
@@ -176,11 +176,20 @@
   outline-offset: 3px;
 }
 
+/* Tablet: auto-fill only fits two 232px tracks in ~690px of content width,
+   which made the cards huge and the section 2.3 screens tall. Three fixed
+   columns keeps the portraits a sensible size and the section scannable.
+   Below 700px three columns would leave the cards too narrow for the name
+   and role, so that range falls back to the auto-fill default of two. */
+@media (min-width: 700px) and (max-width: 1023px) {
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 26px); }
+}
+
 @media (max-width: 620px) {
-  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
   .meta { padding: 13px 13px 15px; }
   .name { font-size: 0.875rem; }
-  .role { font-size: 0.625rem; letter-spacing: 0.06em; }
+  .role { font-size: 0.6875rem; letter-spacing: 0.05em; }
 }
 
 @media (max-width: 360px) {
