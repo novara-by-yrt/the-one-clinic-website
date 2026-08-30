@@ -14,7 +14,7 @@
   /* Text */
   --color-text-light:   #FFFFFF;
   --color-text-dark:    #000000;
-  --color-text-muted:   #6B7280;
+  --color-text-muted:   #727272;
 
   /* Semantic aliases (used by components) */
   --color-bg:           var(--color-bg-light);

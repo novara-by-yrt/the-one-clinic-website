@@ -62,7 +62,7 @@
   cursor: pointer;
   width: 1rem;
   height: 1rem;
-  accent-color: #0066cc;
+  accent-color: #161616;
   flex-shrink: 0;
 }
 
@@ -127,12 +127,12 @@
 }
 
 .btnAccept {
-  background-color: #0066cc;
+  background-color: #161616;
   color: white;
 }
 
 .btnAccept:hover {
-  background-color: #0052a3;
+  background-color: #000000;
 }
 
 @media (max-width: 640px) {
