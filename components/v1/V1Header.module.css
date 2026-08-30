@@ -121,7 +121,12 @@
 .shell[data-theme='light'] .logoImg { filter: brightness(0); }
 
 /* ── Nav ─────────────────────────────────────────────────────── */
-.nav { display: flex; align-items: center; }
+.nav {
+  display: flex;
+  align-items: center;
+  /* Without this the nav refuses to shrink and pushes the CTA off the edge */
+  min-width: 0;
+}
 
 .navList {
   display: flex;
@@ -194,6 +199,8 @@
   gap: clamp(8px, 1.4vw, 18px);
   flex-shrink: 0;
 }
+
+.logo { flex-shrink: 0; }
 
 .cta {
   display: inline-flex;
@@ -424,6 +431,15 @@
    The seven top-level items plus a CTA stop fitting a single row
    below ~1200px, so the bar switches to logo + CTA + sheet there.
 ══════════════════════════════════════════════════════════════ */
+/* 1200-1365px: the full nav fits only once the gaps and paddings tighten.
+   Left alone, the CTA overhung the right edge by 14px at 1280. */
+@media (min-width: 1200px) and (max-width: 1365px) {
+  .navList { gap: 2px; }
+  .navLink { padding: 9px 7px; font-size: 0.78125rem; }
+  .cta { padding: 11px 17px; }
+  .bar { padding-inline: clamp(16px, 2.4vw, 28px); }
+}
+
 @media (max-width: 1199px) {
   .nav { display: none; }
   .menuBtn { display: inline-flex; }
@@ -432,15 +448,38 @@
 @media (max-width: 560px) {
   .bar { height: 76px; }
   .shell[data-scrolled='true'] .bar { height: 62px; }
-  .cta {
-    padding: 10px 15px;
-    font-size: 0.75rem;
-  }
+  .cta { padding: 10px 16px; font-size: 0.75rem; }
+  /* Shortens to "Book" rather than disappearing — it is the primary action */
   .ctaLabelLong { display: none; }
 }
 
-@media (max-width: 380px) {
-  .cta { display: none; }
+@media (max-width: 400px) {
+  .bar { padding-inline: 14px; gap: 10px; }
+  .cta { padding: 9px 14px; }
+  .menuBtn { width: 38px; height: 38px; }
+  .logoImg { height: 24px; }
+}
+
+@media (max-width: 330px) {
+  .bar { padding-inline: 10px; gap: 8px; }
+  .cta { padding: 8px 11px; font-size: 0.6875rem; }
+  .menuBtn { width: 34px; height: 34px; }
+  .logoImg { height: 21px; }
+}
+
+/* Landscape phones: a 92px bar eats a third of a 320px-tall viewport */
+@media (max-height: 500px) and (min-width: 480px) {
+  .bar { height: 58px; }
+  .shell[data-scrolled='true'] .bar { height: 52px; }
+  .logoImg { height: 22px; }
+  .shell[data-scrolled='true'] .logoImg { height: 20px; }
+  .sheet { padding-top: 72px; }
+}
+
+/* A short viewport cannot show a tall mega panel; cap and scroll it */
+@media (max-height: 640px) {
+  .mega { max-height: calc(100vh - var(--hd-bar-h, 92px) - 16px); }
+  .panel { max-height: calc(100vh - var(--hd-bar-h, 92px) - 16px); overflow-y: auto; }
 }
 
 @media (prefers-reduced-motion: reduce) {

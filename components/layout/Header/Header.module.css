@@ -898,6 +898,23 @@
   .megaContent { max-height: 260px; }
 }
 
+/* Landscape phones: a 76px bar takes a quarter of a 320px-tall viewport */
+@media (max-height: 500px) and (min-width: 480px) {
+  .inner { height: 56px; }
+  /* The scrolled rule above is more specific, so it needs matching here */
+  .pill[data-scrolled='true'] .inner { height: 52px; }
+  .logoImg { height: 40px; }
+  .pill[data-scrolled='true'] .logoImg { height: 36px; }
+}
+
+/* Ultra-narrow (Galaxy Fold closed, 280px): the right group overhung the
+   viewport by 20px. Tighten the shell so everything stays on screen. */
+@media (max-width: 340px) {
+  .inner { padding-inline: 10px; gap: 6px; }
+  .logoImg { height: 44px; }
+  .menuBtn { width: 36px; height: 36px; }
+}
+
 @media (max-width: 400px) {
   .mobileMenu { width: 100vw; }
 }

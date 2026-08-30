@@ -21,24 +21,41 @@ export default function LayoutShell({ children, footer }: LayoutShellProps) {
   const footerRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
   const pathname = usePathname();
-  // v1 routes scroll their footer in normal flow instead of the fixed reveal,
-  // and get the footer-visible flag so their header can yield to it.
-  const flowFooter = isV1Route(pathname);
+  /**
+   * The reveal only works while the whole footer fits on screen. A footer
+   * taller than the viewport has its top permanently out of reach, because a
+   * fixed element does not scroll — at 1366x768, one of the most common
+   * laptop sizes, that hid the newsletter heading entirely. Measuring beats
+   * a height breakpoint here: the footer's height changes with its content
+   * and with width, so any fixed number would be wrong somewhere.
+   */
+  const [footerFits, setFooterFits] = useState(true);
+  const flowFooter = isV1Route(pathname) || !footerFits;
 
-  // Measure footer height and set CSS variable
+  // Measure the footer: publishes its height for the spacer, and decides
+  // whether the fixed reveal can show all of it.
   useEffect(() => {
     const el = footerRef.current;
     if (!el) return;
 
-    const observer = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        const h = entry.contentRect.height;
-        document.documentElement.style.setProperty('--footer-height', `${h}px`);
-      }
-    });
+    const measure = (h: number) => {
+      document.documentElement.style.setProperty('--footer-height', `${h}px`);
+      setFooterFits(h <= window.innerHeight);
+    };
 
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) measure(entry.contentRect.height);
+    });
     observer.observe(el);
-    return () => observer.disconnect();
+
+    // Height alone does not change on a window resize, so re-test on resize too
+    const onResize = () => measure(el.getBoundingClientRect().height);
+    window.addEventListener('resize', onResize);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', onResize);
+    };
   }, []);
 
   /**
