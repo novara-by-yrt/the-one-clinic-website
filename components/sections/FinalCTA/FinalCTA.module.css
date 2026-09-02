@@ -22,7 +22,7 @@
   align-items: center;
   text-align: center;
   gap: clamp(12px, 1.6vw, 18px);
-  box-shadow: 0 24px 64px rgba(13, 21, 32, 0.18), 0 4px 16px rgba(13, 21, 32, 0.10);
+  box-shadow: 0 24px 64px rgba(22, 22, 22, 0.18), 0 4px 16px rgba(22, 22, 22, 0.10);
 }
 
 /* ── Eyebrow ─────────────────────────────────────────────────────── */

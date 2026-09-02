@@ -2,7 +2,7 @@
 
 import BeforeAfterSlideshow from '@/components/sections/BeforeAfterSlideshow';
 
-const SLIDES_BASE = [
+export const SLIDES_BASE = [
   // Endolift
   { src: '/images/Endolift B-A.jpg',                  title: 'Endolift',               alt: 'Endolift before and after results' },
   { src: '/images/Endolift 1 B-A.jpg',                title: 'Endolift',               alt: 'Endolift before and after result 1' },

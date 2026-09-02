@@ -1829,7 +1829,7 @@
   font-size: 1.375rem;
   font-weight: var(--fw-bold);
   letter-spacing: -0.02em;
-  color: #111827;
+  color: #181818;
   margin: 0 0 var(--space-2);
   line-height: 1.2;
   padding-top: var(--space-3);
@@ -1839,13 +1839,13 @@
 .techCardDesc {
   font-size: 0.9375rem;
   line-height: 1.72;
-  color: #6B7280;
+  color: #727272;
   margin: 0;
   transition: color 0.35s ease;
 }
 
 .techCard:hover .techCardDesc {
-  color: #374151;
+  color: #404040;
 }
 
 .finalResultsBanner {
@@ -1913,7 +1913,7 @@
   gap: 14px;
   font-size: 1.0625rem;
   font-weight: var(--fw-medium);
-  color: #111827;
+  color: #181818;
   line-height: 1.6;
   padding: var(--space-3) var(--space-4);
   background: #ffffff;

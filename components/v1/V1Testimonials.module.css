@@ -1,0 +1,217 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* Wider gaps: the bezel needs room around each card to read as a tray */
+  gap: clamp(26px, 3vw, 40px);
+  perspective: var(--v1-perspective);
+}
+
+.stage { transform-style: preserve-3d; }
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  height: 100%;
+  padding: clamp(22px, 2.6vw, 30px);
+  border-radius: var(--v1-r-inner);
+  border: 1px solid var(--v1-border);
+  background: var(--v1-bg-raised);
+  /* Bezel: the card is an inner core sitting in a tray. The outer ring and
+     the inset highlight are drawn with shadows so the DOM stays flat. */
+  box-shadow:
+    0 0 0 var(--v1-bezel-pad) var(--v1-tray),
+    0 0 0 calc(var(--v1-bezel-pad) + 1px) var(--v1-tray-line),
+    var(--v1-inner-hi),
+    var(--v1-lift);
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: box-shadow var(--v1-dur) var(--v1-ease),
+              border-color var(--v1-dur) var(--v1-ease),
+              transform var(--v1-dur) var(--v1-ease);
+}
+
+.card:hover {
+  border-color: var(--v1-accent-line);
+  box-shadow:
+    0 0 0 var(--v1-bezel-pad) var(--v1-tray),
+    0 0 0 calc(var(--v1-bezel-pad) + 1px) var(--v1-accent-line),
+    var(--v1-inner-hi),
+    var(--v1-lift-hi);
+}
+
+/* Oversized quote mark, sunk behind the text */
+.quoteMark {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 5.5rem;
+  line-height: 1;
+  font-weight: 800;
+  color: var(--v1-fg);
+  opacity: 0.1;
+  pointer-events: none;
+  transform: translateZ(-20px);
+  transition: opacity var(--v1-dur) var(--v1-ease);
+}
+
+.card:hover .quoteMark { opacity: 0.18; }
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transform: translateZ(24px);
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--v1-fg);
+  color: var(--v1-bg-raised);
+  font-size: 1rem;
+  font-weight: 800;
+  box-shadow: 0 3px 12px rgb(0 0 0 / 0.2);
+}
+
+.who { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+
+.name {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--v1-fg);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.metaRow { display: flex; align-items: center; gap: 7px; }
+
+.stars { display: flex; gap: 1px; }
+
+/* Brand is monochrome: rating stars read by shape, not colour */
+.starSvg { fill: var(--v1-fg); }
+
+.when {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--v1-fg-faint);
+}
+
+.body {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.74;
+  color: var(--v1-fg-muted);
+  transform: translateZ(16px);
+  /* Even card heights in a 3-up grid; full text is on the reviews page */
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  line-clamp: 7;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.foot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--v1-border);
+  transform: translateZ(12px);
+}
+
+.source {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--v1-fg-faint);
+}
+
+/* ── Controls ────────────────────────────────────────────── */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: clamp(28px, 3.4vw, 44px);
+}
+
+.arrow {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--v1-border-strong);
+  background: var(--v1-bg-raised);
+  color: var(--v1-fg-muted);
+  cursor: pointer;
+  box-shadow: var(--v1-lift);
+  transition: transform var(--v1-dur-fast) var(--v1-ease),
+              border-color var(--v1-dur-fast) var(--v1-ease),
+              color var(--v1-dur-fast) var(--v1-ease);
+}
+
+.arrow:hover {
+  transform: translateY(-3px);
+  border-color: var(--v1-accent-line);
+  color: var(--v1-fg);
+}
+
+.arrow:active { transform: translateY(-1px) scale(0.95); }
+
+.arrow:focus-visible {
+  outline: 2px solid var(--v1-accent);
+  outline-offset: 3px;
+}
+
+.dots { display: flex; align-items: center; gap: 8px; }
+
+.dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--v1-border-strong);
+  cursor: pointer;
+  transition: background var(--v1-dur-fast) var(--v1-ease),
+              transform var(--v1-dur-fast) var(--v1-ease);
+}
+
+.dot:hover { background: var(--v1-fg-faint); }
+
+.dotOn { background: var(--v1-accent); transform: scale(1.35); }
+
+.dot:focus-visible {
+  outline: 2px solid var(--v1-accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 940px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid > .stage:nth-child(3) { display: none; }
+}
+
+@media (max-width: 620px) {
+  .grid { grid-template-columns: minmax(0, 1fr); }
+  .grid > .stage:nth-child(2) { display: none; }
+  .body { -webkit-line-clamp: 9; line-clamp: 9; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .card:hover { transform: none !important; }
+}

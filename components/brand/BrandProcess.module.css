@@ -17,7 +17,7 @@
   height: 130%;
   background: radial-gradient(
     ellipse at 30% 50%,
-    rgba(13, 21, 32, 0.04) 0%,
+    rgba(22, 22, 22, 0.04) 0%,
     transparent 70%
   );
   pointer-events: none;
@@ -55,7 +55,7 @@
   inset: -30%;
   background: radial-gradient(
     ellipse at 52% 48%,
-    rgba(13, 21, 32, 0.06) 0%,
+    rgba(22, 22, 22, 0.06) 0%,
     transparent 70%
   );
   pointer-events: none;
@@ -196,7 +196,7 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #0d1520;
+  background: #161616;
   flex-shrink: 0;
 }
 
@@ -286,14 +286,14 @@
   align-items: center;
   gap: 7px;
   padding: 7px 16px;
-  background: rgba(13, 21, 32, 0.06);
-  border: 1px solid rgba(13, 21, 32, 0.15);
+  background: rgba(22, 22, 22, 0.06);
+  border: 1px solid rgba(22, 22, 22, 0.15);
   border-radius: 50px;
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(13, 21, 32, 0.55);
+  color: rgba(22, 22, 22, 0.55);
 }
 
 .chipDot {
@@ -309,7 +309,7 @@
   font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1.04;
-  color: #0d1520;
+  color: #161616;
   margin: 0;
 }
 
@@ -349,7 +349,7 @@
 }
 
 .isActive .pillarAccent {
-  background: #0d1520;
+  background: #161616;
 }
 
 .pillarCard {
@@ -383,7 +383,7 @@
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(13, 21, 32, 0.45);
+  color: rgba(22, 22, 22, 0.45);
   margin: 0 0 8px;
 }
 

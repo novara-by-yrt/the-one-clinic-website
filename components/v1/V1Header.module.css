@@ -1,0 +1,565 @@
+/* ══════════════════════════════════════════════════════════════
+   V1 HEADER — editorial bar
+   Full-bleed, logo hard left, nav right, hairline underneath.
+   Transparent over the hero; on scroll it condenses onto a solid
+   surface. Ink flips with the section beneath it (data-theme), so
+   the same bar reads on black, grey and white.
+══════════════════════════════════════════════════════════════ */
+
+.shell {
+  position: fixed;
+  inset: 0 0 auto 0;
+  /* Above the WhatsApp float (80), the sticky call-back bar (90) and
+     --z-sticky (200), so an open menu covers them rather than being
+     punctured by them. */
+  z-index: 300;
+  /* Transparent gutters pass clicks through to the page */
+  pointer-events: none;
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Yield to the footer: LayoutShell flags <html> once the footer is on screen.
+   The bar stays put for a keyboard user who is inside it, so nobody gets sent
+   somewhere invisible. :focus-within alone is too broad — clicking a nav
+   button also focuses it, which would pin the bar open for the rest of the
+   session; the second rule re-hides when the focus is not keyboard-visible.
+   Browsers without :has() simply keep the :focus-within behaviour. */
+:global(html[data-footer-visible='true']) .shell:not(:focus-within),
+:global(html[data-footer-visible='true']) .shell:focus-within:not(:has(:focus-visible)) {
+  transform: translateY(-110%);
+  opacity: 0;
+}
+
+.bar {
+  pointer-events: auto;
+  position: relative;
+  /* Must stay above .sheet or the close button is unreachable */
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(16px, 3vw, 48px);
+  padding-inline: clamp(18px, 4vw, 56px);
+  /* Roomy over the hero, condensed once scrolled */
+  height: 92px;
+  transition:
+    height 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.4s ease,
+    backdrop-filter 0.4s ease;
+}
+
+.shell[data-scrolled='true'] .bar {
+  height: 66px;
+  background-color: var(--hd-surface);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+}
+
+/* The hairline is the bar's signature — it draws itself on scroll */
+.rule {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 1px;
+  background: var(--hd-line);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.shell[data-scrolled='true'] .rule { transform: scaleX(1); }
+
+/* ── Theme tokens ────────────────────────────────────────────
+   One bar, two inks. Over a dark section it is white-on-nothing;
+   over a light one it inverts. Both pairs clear 4.5:1.
+────────────────────────────────────────────────────────────── */
+.shell[data-theme='dark'] {
+  --hd-ink: #ffffff;
+  --hd-ink-dim: rgb(255 255 255 / 0.72);
+  --hd-line: rgb(255 255 255 / 0.16);
+  --hd-surface: rgb(8 8 10 / 0.82);
+  --hd-panel: #0b0b0e;
+  --hd-hover: rgb(255 255 255 / 0.1);
+  --hd-cta-bg: #ffffff;
+  --hd-cta-ink: #08080a;
+  --hd-tray: rgb(255 255 255 / 0.045);
+  --hd-edge: rgb(255 255 255 / 0.1);
+  --hd-well: rgb(255 255 255 / 0.07);
+}
+
+.shell[data-theme='light'] {
+  --hd-ink: #0b0b0d;
+  --hd-ink-dim: #4a4a52;
+  --hd-line: rgb(11 11 13 / 0.14);
+  --hd-surface: rgb(255 255 255 / 0.86);
+  --hd-panel: #ffffff;
+  --hd-hover: rgb(11 11 13 / 0.06);
+  --hd-cta-bg: #08080a;
+  --hd-cta-ink: #ffffff;
+  --hd-tray: rgb(11 11 13 / 0.03);
+  --hd-edge: rgb(255 255 255 / 0.9);
+  --hd-well: rgb(11 11 13 / 0.05);
+}
+
+/* ── Logo ────────────────────────────────────────────────────── */
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+  transition: opacity 0.25s ease;
+}
+
+.logo:hover { opacity: 0.72; }
+
+.logoImg {
+  height: clamp(26px, 3vw, 34px);
+  width: auto;
+  transition: height 0.4s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
+}
+
+.shell[data-scrolled='true'] .logoImg { height: clamp(23px, 2.6vw, 29px); }
+
+/* The source art is neither black nor white, so it has to be flattened with
+   brightness(0) before being inverted — invert alone leaves it muddy. */
+.shell[data-theme='dark']  .logoImg { filter: brightness(0) invert(1); }
+.shell[data-theme='light'] .logoImg { filter: brightness(0); }
+
+/* ── Nav ─────────────────────────────────────────────────────── */
+.nav {
+  display: flex;
+  align-items: center;
+  /* Without this the nav refuses to shrink and pushes the CTA off the edge */
+  min-width: 0;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 1.1vw, 14px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navItem { position: relative; }
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 11px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--hd-ink-dim);
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.22s ease, background 0.22s ease;
+}
+
+.navLink:hover,
+.navLinkOpen { color: var(--hd-ink); background: var(--hd-hover); }
+
+.navLink:focus-visible,
+.cta:focus-visible,
+.logo:focus-visible,
+.menuBtn:focus-visible,
+.ddLink:focus-visible,
+.megaLink:focus-visible {
+  outline: 2px solid var(--hd-ink);
+  outline-offset: 2px;
+}
+
+.caret {
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 0.7;
+}
+
+.navLinkOpen .caret { transform: rotate(180deg); }
+
+/* Active-page marker: a short rule under the label */
+.navLinkActive { color: var(--hd-ink); }
+
+.navLinkActive::after {
+  content: '';
+  position: absolute;
+  left: 11px;
+  right: 11px;
+  bottom: 2px;
+  height: 1.5px;
+  background: var(--hd-ink);
+  border-radius: 2px;
+}
+
+/* ── CTA ─────────────────────────────────────────────────────── */
+.right {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1.4vw, 18px);
+  flex-shrink: 0;
+}
+
+.logo { flex-shrink: 0; }
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 22px;
+  border: none;
+  border-radius: 100px;
+  background: var(--hd-cta-bg);
+  color: var(--hd-cta-ink);
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.28s ease, opacity 0.22s ease;
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgb(0 0 0 / 0.28);
+}
+
+.cta:active { transform: translateY(0); }
+
+.ctaArrow { transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1); }
+.cta:hover .ctaArrow { transform: translateX(3px); }
+
+/* ── Dropdown panels ─────────────────────────────────────────── */
+.panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  z-index: 2;
+  min-width: 236px;
+  padding: 10px;
+  border: 1px solid var(--hd-line);
+  border-radius: 22px;
+  background: var(--hd-panel);
+  backdrop-filter: blur(24px) saturate(1.5);
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  transform-origin: 50% 0;
+  perspective: 1000px;
+  box-shadow:
+    0 0 0 6px var(--hd-tray),
+    0 0 0 7px var(--hd-line),
+    inset 0 1px 0 var(--hd-edge),
+    0 2px 6px rgb(0 0 0 / 0.18),
+    0 26px 52px -22px rgb(0 0 0 / 0.32),
+    0 64px 110px -50px rgb(0 0 0 / 0.46);
+  list-style: none;
+  margin: 0;
+}
+
+/* NB: perspective is set on the panels themselves, never on an ancestor.
+   A perspective ancestor becomes the containing block for position: fixed
+   descendants, which collapsed the mega panel to the width of its <li>.
+   The panel's own hinge uses transformPerspective in the variants instead. */
+
+/* Mega panel: anchored to the bar, not the item, so wide grids stay on screen */
+.mega {
+  position: fixed;
+  top: var(--hd-bar-h, 92px);
+  left: clamp(18px, 4vw, 56px);
+  right: clamp(18px, 4vw, 56px);
+  z-index: 2;
+  max-height: min(70vh, 640px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(228px, 1fr));
+  gap: clamp(14px, 2vw, 34px);
+  padding: clamp(20px, 2.4vw, 32px);
+  border: 1px solid var(--hd-line);
+  border-radius: 26px;
+  background: var(--hd-panel);
+  backdrop-filter: blur(24px) saturate(1.5);
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  transform-origin: 50% 0;
+  perspective: 1200px;
+  box-shadow:
+    0 0 0 6px var(--hd-tray),
+    0 0 0 7px var(--hd-line),
+    inset 0 1px 0 var(--hd-edge),
+    0 2px 6px rgb(0 0 0 / 0.18),
+    0 30px 60px -24px rgb(0 0 0 / 0.34),
+    0 80px 140px -60px rgb(0 0 0 / 0.5);
+}
+
+.megaTitle {
+  margin: 0 0 12px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--hd-line);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--hd-ink-dim);
+}
+
+.megaList, .ddList { list-style: none; margin: 0; padding: 0; }
+
+.megaLink, .ddLink {
+  position: relative;
+  display: block;
+  padding: 9px 12px 9px 22px;
+  border-radius: 10px;
+  color: var(--hd-ink-dim);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  text-decoration: none;
+  transform-style: preserve-3d;
+  /* transform, not padding — padding animation reflows the whole column */
+  transition:
+    color 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Leading rule that grows out of the left edge on hover */
+.megaLink::before, .ddLink::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  width: 8px;
+  height: 1.5px;
+  border-radius: 2px;
+  background: currentColor;
+  transform: translateY(-50%) scaleX(0);
+  transform-origin: 0 50%;
+  opacity: 0;
+  transition:
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.megaLink:hover, .ddLink:hover,
+.megaLink:focus-visible, .ddLink:focus-visible {
+  color: var(--hd-ink);
+  background: var(--hd-hover);
+  /* Comes toward the viewer inside the panel's own perspective */
+  transform: translateZ(16px) translateX(3px);
+}
+
+.megaLink:hover::before, .ddLink:hover::before,
+.megaLink:focus-visible::before, .ddLink:focus-visible::before {
+  transform: translateY(-50%) scaleX(1);
+  opacity: 1;
+}
+
+/* Group columns lift as a unit, so the panel reads as layered plates */
+.megaGroup {
+  min-width: 0;
+  padding: 4px;
+  border-radius: 18px;
+  transform-style: preserve-3d;
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.megaGroup:hover {
+  background: var(--hd-well);
+  /* The lift itself is applied via whileHover in the component */
+}
+
+/* ── Mobile ──────────────────────────────────────────────────── */
+.menuBtn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid var(--hd-line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--hd-ink);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.22s ease, border-color 0.22s ease;
+}
+
+.menuBtn:hover { background: var(--hd-hover); }
+
+.bars { display: block; width: 16px; height: 10px; position: relative; }
+
+.bar1, .bar2 {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.2s ease;
+}
+
+.bar1 { top: 0; }
+.bar2 { bottom: 0; }
+
+.menuBtn[aria-expanded='true'] .bar1 { transform: translateY(4.25px) rotate(45deg); }
+.menuBtn[aria-expanded='true'] .bar2 { transform: translateY(-4.25px) rotate(-45deg); }
+
+.sheet {
+  pointer-events: auto;
+  position: fixed;
+  inset: 0;
+  /* Above the site-wide floating CTAs, which would otherwise sit on the menu */
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 96px clamp(18px, 5vw, 40px) 40px;
+  background: var(--v1-black);
+  color: #fff;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.sheetList { list-style: none; margin: 0; padding: 0; }
+
+.sheetRow { border-bottom: 1px solid rgb(255 255 255 / 0.1); }
+
+.sheetLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+  padding: 17px 2px;
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.sheetLink:focus-visible { outline: 2px solid #fff; outline-offset: -2px; }
+
+.sheetCaret { transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1); opacity: 0.6; }
+.sheetLinkOpen .sheetCaret { transform: rotate(180deg); }
+
+.sheetSub { list-style: none; margin: 0; padding: 0 0 12px 2px; overflow: hidden; }
+
+.sheetSubTitle {
+  margin: 12px 0 6px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.46);
+}
+
+.sheetSubLink {
+  display: block;
+  padding: 9px 0;
+  color: rgb(255 255 255 / 0.76);
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.sheetSubLink:hover { color: #fff; }
+.sheetSubLink:focus-visible { outline: 2px solid #fff; outline-offset: -2px; }
+
+.sheetCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 28px;
+  padding: 16px 28px;
+  border: none;
+  border-radius: 100px;
+  background: #fff;
+  color: #08080a;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+}
+
+.sheetCta:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE
+   The seven top-level items plus a CTA stop fitting a single row
+   below ~1200px, so the bar switches to logo + CTA + sheet there.
+══════════════════════════════════════════════════════════════ */
+/* 1200-1365px: the full nav fits only once the gaps and paddings tighten.
+   Left alone, the CTA overhung the right edge by 14px at 1280. */
+@media (min-width: 1200px) and (max-width: 1365px) {
+  .navList { gap: 2px; }
+  .navLink { padding: 9px 7px; font-size: 0.78125rem; }
+  .cta { padding: 11px 17px; }
+  .bar { padding-inline: clamp(16px, 2.4vw, 28px); }
+}
+
+@media (max-width: 1199px) {
+  .nav { display: none; }
+  .menuBtn { display: inline-flex; }
+}
+
+@media (max-width: 560px) {
+  .bar { height: 76px; }
+  .shell[data-scrolled='true'] .bar { height: 62px; }
+  .cta { padding: 10px 16px; font-size: 0.75rem; }
+  /* Shortens to "Book" rather than disappearing — it is the primary action */
+  .ctaLabelLong { display: none; }
+}
+
+@media (max-width: 400px) {
+  .bar { padding-inline: 14px; gap: 10px; }
+  .cta { padding: 9px 14px; }
+  .menuBtn { width: 38px; height: 38px; }
+  .logoImg { height: 24px; }
+}
+
+@media (max-width: 330px) {
+  .bar { padding-inline: 10px; gap: 8px; }
+  .cta { padding: 8px 11px; font-size: 0.6875rem; }
+  .menuBtn { width: 34px; height: 34px; }
+  .logoImg { height: 21px; }
+}
+
+/* Landscape phones: a 92px bar eats a third of a 320px-tall viewport */
+@media (max-height: 500px) and (min-width: 480px) {
+  .bar { height: 58px; }
+  .shell[data-scrolled='true'] .bar { height: 52px; }
+  .logoImg { height: 22px; }
+  .shell[data-scrolled='true'] .logoImg { height: 20px; }
+  .sheet { padding-top: 72px; }
+}
+
+/* A short viewport cannot show a tall mega panel; cap and scroll it */
+@media (max-height: 640px) {
+  .mega { max-height: calc(100vh - var(--hd-bar-h, 92px) - 16px); }
+  .panel { max-height: calc(100vh - var(--hd-bar-h, 92px) - 16px); overflow-y: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shell, .bar, .rule, .logoImg, .caret, .cta, .ctaArrow,
+  .bar1, .bar2, .megaLink, .ddLink, .megaGroup {
+    transition: none;
+  }
+  .megaLink:hover, .ddLink:hover, .megaGroup:hover { transform: none; }
+  .rule { transform: scaleX(1); }
+}

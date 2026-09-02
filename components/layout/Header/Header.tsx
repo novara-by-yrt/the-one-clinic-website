@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { usePathname } from 'next/navigation';
+import { isV1Route } from '@/components/v1/v1-routes';
 import { m, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -8,9 +10,9 @@ import styles from './Header.module.css';
 
 // ── Types ────────────────────────────────────────────────────────
 type Theme    = 'light' | 'dark';
-type NavLink  = { label: string; href: string };
-type NavGroup = { group: string; items: NavLink[] };
-type NavItem  = {
+export type NavLink  = { label: string; href: string };
+export type NavGroup = { group: string; items: NavLink[] };
+export type NavItem  = {
   label: string;
   href:  string;
   simple?: NavLink[];
@@ -18,7 +20,7 @@ type NavItem  = {
 };
 
 // ── Nav data ─────────────────────────────────────────────────────
-const NAV: NavItem[] = [
+export const NAV: NavItem[] = [
   {
     label: 'About Our Clinic',
     href:  '#about',
@@ -228,6 +230,7 @@ function Chevron({ open, size = 10 }: { open: boolean; size?: number }) {
 
 // ── Component ────────────────────────────────────────────────────
 export default function Header() {
+  const pathname = usePathname();
   const [scrolled, setScrolled]         = useState(false);
   const [sectionTheme, setSectionTheme] = useState<Theme>('dark');
   const [menuOpen, setMenuOpen]         = useState(false);
@@ -494,6 +497,10 @@ export default function Header() {
       </li>
     );
   }
+
+  // The v1 concept ships its own header; stand down so the two never stack.
+  // Placed after the hooks so hook order stays stable across routes.
+  if (isV1Route(pathname)) return null;
 
   const pillAnimate = getPillAnimate(scrolled, sectionTheme);
   const anyMegaOpen = openDropdown !== null && !!NAV[openDropdown]?.groups;

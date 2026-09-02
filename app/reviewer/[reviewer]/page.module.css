@@ -1,6 +1,6 @@
 /* ── Hero ─────────────────────────────────────────────────── */
 .hero {
-  background: linear-gradient(135deg, #0d0d12 0%, #1a1a2e 100%);
+  background: linear-gradient(135deg, #0d0d12 0%, #1c1c1c 100%);
   color: white;
   position: relative;
   overflow: hidden;
@@ -82,7 +82,7 @@
   gap: 0.5rem;
   padding: 0.875rem 1.75rem;
   background: #fff;
-  color: #0d1520;
+  color: #161616;
   border-radius: 50px;
   text-decoration: none;
   font-size: 0.9rem;
@@ -126,7 +126,7 @@
   font-size: 1.375rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: #0d1520;
+  color: #161616;
   margin: 0 0 1.5rem;
 }
 
@@ -158,7 +158,7 @@
 
 .checkIcon {
   flex-shrink: 0;
-  color: #0d1520;
+  color: #161616;
   margin-top: 2px;
 }
 
@@ -178,7 +178,7 @@
 .clinicCard {
   margin-top: 1rem;
   padding: 1.75rem 2rem;
-  background: #0d1520;
+  background: #161616;
   border-radius: 16px;
   color: white;
 }
@@ -208,7 +208,7 @@
   font-size: 1.875rem;
   font-weight: 800;
   letter-spacing: -0.025em;
-  color: #0d1520;
+  color: #161616;
   margin: 0 0 0.25rem;
 }
 

@@ -10,11 +10,10 @@ import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './Testimonials.module.css';
 
 /* ── Data ───────────────────────────────────────────────────── */
-const REVIEWS = [
+export const REVIEWS = [
   {
     name: 'Dimitrijs Jakovlevs',
     initial: 'D',
-    avatarBg: '#4285F4',
     timeAgo: 'Recent',
     categories: ['general', 'minor-surgery', 'laser'],
     review:
@@ -23,7 +22,6 @@ const REVIEWS = [
   {
     name: 'Daniela Angelova',
     initial: 'D',
-    avatarBg: '#0F9D58',
     timeAgo: 'Recent',
     categories: ['aesthetics', 'hydrafacial'],
     review:
@@ -32,7 +30,6 @@ const REVIEWS = [
   {
     name: 'Kestutis Astrauskas',
     initial: 'K',
-    avatarBg: '#9C27B0',
     timeAgo: 'Recent',
     categories: ['general', 'laser-snoring'],
     review:
@@ -41,7 +38,6 @@ const REVIEWS = [
   {
     name: 'Fran',
     initial: 'F',
-    avatarBg: '#FF7043',
     timeAgo: 'Recent',
     categories: ['general'],
     review:
@@ -50,7 +46,6 @@ const REVIEWS = [
   {
     name: 'Temesgen Beyen',
     initial: 'T',
-    avatarBg: '#34A853',
     timeAgo: 'Recent',
     categories: ['general'],
     review:
@@ -59,7 +54,6 @@ const REVIEWS = [
   {
     name: 'Sumaiya Hamed',
     initial: 'S',
-    avatarBg: '#1565C0',
     timeAgo: 'Recent',
     categories: ['general'],
     review:
@@ -68,7 +62,6 @@ const REVIEWS = [
   {
     name: 'Paul',
     initial: 'P',
-    avatarBg: '#F57F17',
     timeAgo: 'Recent',
     categories: ['general', 'aesthetics'],
     review:
@@ -77,7 +70,6 @@ const REVIEWS = [
   {
     name: 'Hannah Clauss',
     initial: 'H',
-    avatarBg: '#C2185B',
     timeAgo: 'Recent',
     categories: ['general'],
     review:
@@ -86,7 +78,6 @@ const REVIEWS = [
   {
     name: 'Rachel',
     initial: 'R',
-    avatarBg: '#00897B',
     timeAgo: 'Recent',
     categories: ['general', 'laser'],
     review:
@@ -95,7 +86,6 @@ const REVIEWS = [
   {
     name: 'Shanaz Parvin',
     initial: 'S',
-    avatarBg: '#455A64',
     timeAgo: 'Recent',
     categories: ['general', 'laser'],
     review:
@@ -104,7 +94,6 @@ const REVIEWS = [
   {
     name: 'Jayshree Pancholi',
     initial: 'J',
-    avatarBg: '#D32F2F',
     timeAgo: 'Recent',
     categories: ['general', 'laser'],
     review:
@@ -113,7 +102,6 @@ const REVIEWS = [
   {
     name: 'Taralyn Cox',
     initial: 'T',
-    avatarBg: '#6A1B9A',
     timeAgo: 'Recent',
     categories: ['general', 'aesthetics'],
     review:
@@ -122,7 +110,6 @@ const REVIEWS = [
   {
     name: 'Roshni Abi',
     initial: 'R',
-    avatarBg: '#00838F',
     timeAgo: 'Recent',
     categories: ['aesthetics', 'hydrafacial'],
     review:
@@ -131,7 +118,6 @@ const REVIEWS = [
   {
     name: 'Angelika B',
     initial: 'A',
-    avatarBg: '#F57C00',
     timeAgo: 'Recent',
     categories: ['general'],
     review:
@@ -140,7 +126,6 @@ const REVIEWS = [
   {
     name: 'Mehzabeen Warsi',
     initial: 'M',
-    avatarBg: '#1976D2',
     timeAgo: 'Recent',
     categories: ['aesthetics', 'hydrafacial'],
     review:
@@ -148,7 +133,7 @@ const REVIEWS = [
   },
 ];
 
-const PATIENT_VIDEOS = [
+export const PATIENT_VIDEOS = [
   { id: 'idcb1vywka', title: 'Customer Testimonial' },
   { id: 'onscmatqmy', title: 'Customer Testimonial, Oxana' },
   { id: 'fm142sxmlw', title: 'Customer Testimonial, Mahanoor' },
@@ -411,7 +396,7 @@ export default function Testimonials({
                       onToggle={() => toggleExpand(r.name)}
                     />
                     <div className={styles.cardFooter}>
-                      <div className={styles.avatar} style={{ background: r.avatarBg }} aria-hidden="true">
+                      <div className={styles.avatar} aria-hidden="true">
                         {r.initial}
                       </div>
                       <div className={styles.authorInfo}>

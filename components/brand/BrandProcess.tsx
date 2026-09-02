@@ -8,7 +8,7 @@ import Container from '@/components/ui/Container';
 import { fadeUp, VIEWPORT } from '@/lib/motion';
 import styles from './BrandProcess.module.css';
 
-const PILLARS = [
+export const PILLARS = [
   {
     tag:     'Our Mission',
     heading: 'A Fresh Perspective on Aesthetics & Well-being',
@@ -21,7 +21,7 @@ const PILLARS = [
   },
 ];
 
-const SLIDES = [
+export const SLIDES = [
   { src: '/images/Lumecca IPL Laser 2.png', alt: 'Lumecca IPL treatment at The One Clinic' },
   { src: '/images/Endolift 1.png',          alt: 'Endolift treatment at The One Clinic' },
   { src: '/images/Morpheus8 1.png',         alt: 'Morpheus8 treatment at The One Clinic' },

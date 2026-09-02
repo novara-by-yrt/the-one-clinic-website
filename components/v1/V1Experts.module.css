@@ -1,0 +1,202 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(232px, 1fr));
+  gap: clamp(26px, 3vw, 40px);
+  perspective: var(--v1-perspective);
+}
+
+.stage { transform-style: preserve-3d; }
+
+.card {
+  position: relative;
+  display: block;
+  height: 100%;
+  border-radius: var(--v1-r-inner);
+  overflow: hidden;
+  border: 1px solid var(--v1-border);
+  background: var(--v1-bg-raised);
+  /* Bezel: the card is an inner core sitting in a tray. The outer ring and
+     the inset highlight are drawn with shadows so the DOM stays flat. */
+  box-shadow:
+    0 0 0 var(--v1-bezel-pad) var(--v1-tray),
+    0 0 0 calc(var(--v1-bezel-pad) + 1px) var(--v1-tray-line),
+    var(--v1-inner-hi),
+    var(--v1-lift);
+  text-decoration: none;
+  color: inherit;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: box-shadow var(--v1-dur) var(--v1-ease),
+              border-color var(--v1-dur) var(--v1-ease),
+              transform var(--v1-dur) var(--v1-ease);
+}
+
+.card:hover {
+  border-color: var(--v1-accent-line);
+  box-shadow:
+    0 0 0 var(--v1-bezel-pad) var(--v1-tray),
+    0 0 0 calc(var(--v1-bezel-pad) + 1px) var(--v1-accent-line),
+    var(--v1-inner-hi),
+    var(--v1-lift-hi),
+    0 0 80px -22px var(--v1-accent-halo);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--v1-accent);
+  outline-offset: 3px;
+}
+
+.portrait {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #101014;
+}
+
+.img {
+  object-fit: cover;
+  object-position: center 18%;
+  transition: transform 1s var(--v1-ease), filter var(--v1-dur) var(--v1-ease);
+  filter: grayscale(0.5) contrast(1.02);
+}
+
+.card:hover .img {
+  transform: scale(1.07);
+  filter: grayscale(0) contrast(1.05);
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top,
+    rgb(8 8 10 / 0.96) 0%, rgb(8 8 10 / 0.9) 22%, rgb(8 8 10 / 0.66) 40%,
+    rgb(8 8 10 / 0.24) 62%, transparent 88%);
+}
+
+/* Gold hairline that sweeps up on hover */
+.edge {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  z-index: 3;
+  background: linear-gradient(90deg, transparent, var(--v1-accent), transparent);
+  transform: scaleX(0);
+  transform-origin: 50% 50%;
+  transition: transform var(--v1-dur) var(--v1-ease);
+}
+
+.card:hover .edge { transform: scaleX(1); }
+
+.meta {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 18px 18px 20px;
+  transform: translateZ(30px);
+}
+
+.name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: #fff;
+  text-wrap: balance;
+}
+
+.role {
+  margin: 0;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  line-height: 1.45;
+  /* 0.78 white on the scrim clears 4.5:1 comfortably */
+  color: rgb(255 255 255 / 0.78);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 6px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #ffffff;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity var(--v1-dur) var(--v1-ease),
+              transform var(--v1-dur) var(--v1-ease);
+}
+
+.card:hover .link,
+.card:focus-visible .link { opacity: 1; transform: translateY(0); }
+
+/* ── Footer CTA ──────────────────────────────────────────── */
+.more {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(28px, 3.5vw, 48px);
+}
+
+.moreBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 28px;
+  border: 1px solid var(--v1-border-strong);
+  border-radius: 100px;
+  color: var(--v1-fg);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: background var(--v1-dur-fast) var(--v1-ease),
+              border-color var(--v1-dur-fast) var(--v1-ease),
+              transform var(--v1-dur-fast) var(--v1-ease);
+}
+
+.moreBtn:hover {
+  background: var(--v1-sheen);
+  border-color: var(--v1-accent-line);
+  transform: translateY(-3px);
+}
+
+.moreBtn:focus-visible {
+  outline: 2px solid var(--v1-accent);
+  outline-offset: 3px;
+}
+
+/* Tablet: auto-fill only fits two 232px tracks in ~690px of content width,
+   which made the cards huge and the section 2.3 screens tall. Three fixed
+   columns keeps the portraits a sensible size and the section scannable.
+   Below 700px three columns would leave the cards too narrow for the name
+   and role, so that range falls back to the auto-fill default of two. */
+@media (min-width: 700px) and (max-width: 1023px) {
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 26px); }
+}
+
+@media (max-width: 620px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .meta { padding: 13px 13px 15px; }
+  .name { font-size: 0.875rem; }
+  .role { font-size: 0.6875rem; letter-spacing: 0.05em; }
+}
+
+@media (max-width: 360px) {
+  .grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .card:hover { transform: none !important; }
+  .card:hover .img { transform: none; }
+}

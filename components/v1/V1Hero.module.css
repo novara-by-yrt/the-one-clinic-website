@@ -1,0 +1,403 @@
+.hero {
+  position: relative;
+  min-height: min(100svh, 940px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--v1-black);
+  color: #fff;
+  perspective: var(--v1-perspective);
+  padding-block: clamp(96px, 12vh, 160px) clamp(72px, 9vh, 120px);
+}
+
+/* ── Parallax背 layers ─────────────────────────────────────── */
+.bgStage {
+  position: absolute;
+  inset: -6%;
+  z-index: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.bgSlide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.6s var(--v1-ease);
+}
+
+.bgSlideOn { opacity: 1; }
+
+.bgImg {
+  object-fit: cover;
+  object-position: center 28%;
+  filter: brightness(0.5) saturate(0.78) contrast(1.05);
+}
+
+.grade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(104deg, rgb(8 8 10 / 0.96) 0%, rgb(8 8 10 / 0.82) 34%,
+                    rgb(8 8 10 / 0.42) 62%, rgb(8 8 10 / 0.14) 100%),
+    linear-gradient(to top, rgb(8 8 10 / 0.98) 0%, rgb(8 8 10 / 0.28) 34%, transparent 62%);
+}
+
+.spot {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 46% 58% at 22% 46%,
+    rgb(255 255 255 / 0.1) 0%, transparent 68%);
+}
+
+/* Fine grain keeps the large flat gradients from banding on wide screens */
+.grain {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: radial-gradient(rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+
+/* ── Content ─────────────────────────────────────────────── */
+.inner {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: var(--v1-max);
+  margin-inline: auto;
+  padding-inline: var(--v1-pad-inline);
+  transform-style: preserve-3d;
+}
+
+.content {
+  max-width: 42rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(14px, 1.8vw, 20px);
+  transform-style: preserve-3d;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 7px 16px 7px 12px;
+  border: 1px solid rgb(255 255 255 / 0.16);
+  border-radius: 100px;
+  background: rgb(255 255 255 / 0.05);
+  backdrop-filter: blur(10px);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.78);
+}
+
+.eyebrowDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--v1-accent);
+  box-shadow: 0 0 0 3px rgb(255 255 255 / 0.16);
+}
+
+.headline {
+  margin: 0;
+  font-size: clamp(2.75rem, 8.4vw, 6.25rem);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 0.94;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  transform-style: preserve-3d;
+}
+
+.line {
+  display: block;
+  transform-origin: 50% 100%;
+}
+
+.lineAccent {
+  font-style: italic;
+  background: linear-gradient(96deg, #ffffff 0%, #d6d6dc 48%, #8e8e98 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* Painted text has no shadow of its own; this re-seats it on the image */
+  filter: drop-shadow(0 2px 18px rgb(255 255 255 / 0.18));
+}
+
+.tagline {
+  margin: 0;
+  font-size: clamp(1rem, 1.7vw, 1.25rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgb(255 255 255 / 0.92);
+}
+
+.sub {
+  margin: 0;
+  font-size: clamp(0.9375rem, 1.15vw, 1.0625rem);
+  line-height: 1.75;
+  color: rgb(255 255 255 / 0.7);
+  max-width: 34rem;
+}
+
+/* ── CTA ─────────────────────────────────────────────────── */
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: clamp(6px, 1vw, 12px);
+}
+
+.cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  padding: 13px 15px 13px 28px;
+  border: none;
+  border-radius: 100px;
+  background: #fff;
+  color: #08080a;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.045em;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 2px 14px rgb(255 255 255 / 0.14), 0 14px 40px rgb(0 0 0 / 0.5);
+  transition: transform var(--v1-dur-fast) var(--v1-ease),
+              box-shadow var(--v1-dur-fast) var(--v1-ease),
+              color var(--v1-dur) var(--v1-ease);
+}
+
+/* Gold wipe sweeps in from the left on hover */
+.cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(96deg, #26262c, #08080a);
+  transform: translateX(-101%);
+  transition: transform var(--v1-dur) var(--v1-ease);
+}
+
+.cta:hover {
+  transform: translateY(-3px);
+  /* Wipe covers the white pill, so the label has to flip with it */
+  color: #fff;
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.5), 0 22px 60px rgb(0 0 0 / 0.6);
+}
+
+.cta:hover::before { transform: translateX(0); }
+.cta:active { transform: translateY(-1px); }
+
+.cta > * { position: relative; z-index: 1; }
+
+
+/* Trailing icon sits in its own well rather than floating beside the label */
+.iconWell {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin-right: -10px;
+  border-radius: 50%;
+  background: rgb(8 8 10 / 0.08);
+  transition:
+    transform var(--v1-dur) var(--v1-ease),
+    background var(--v1-dur) var(--v1-ease);
+}
+
+.cta:hover .iconWell {
+  background: rgb(255 255 255 / 0.18);
+  /* Diagonal nudge reads as tension inside the button, not just a slide */
+  transform: translate(3px, -1px) scale(1.06);
+}
+
+.ctaArrow { transition: transform var(--v1-dur) var(--v1-ease); }
+.cta:active { transform: translateY(-1px) scale(0.985); }
+
+.ctaGhost {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 28px;
+  border: 1px solid rgb(255 255 255 / 0.24);
+  border-radius: 100px;
+  background: rgb(255 255 255 / 0.04);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.045em;
+  text-decoration: none;
+  transition: background var(--v1-dur-fast) var(--v1-ease),
+              border-color var(--v1-dur-fast) var(--v1-ease),
+              transform var(--v1-dur-fast) var(--v1-ease);
+}
+
+.ctaGhost:hover {
+  background: rgb(255 255 255 / 0.1);
+  border-color: rgb(255 255 255 / 0.45);
+  transform: translateY(-3px);
+}
+
+.cta:focus-visible,
+.ctaGhost:focus-visible {
+  outline: 2px solid var(--v1-accent);
+  outline-offset: 3px;
+}
+
+/* ── Trust cards ─────────────────────────────────────────── */
+.trustRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: clamp(14px, 2.4vw, 30px);
+  transform-style: preserve-3d;
+}
+
+.trustCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 15px 20px;
+  min-width: 168px;
+  border: 1px solid rgb(255 255 255 / 0.13);
+  border-radius: var(--v1-r);
+  background: linear-gradient(150deg, rgb(255 255 255 / 0.09), rgb(255 255 255 / 0.03));
+  backdrop-filter: blur(16px);
+  box-shadow: var(--v1-lift-dark-1);
+  transform-style: preserve-3d;
+  transition: border-color var(--v1-dur) var(--v1-ease),
+              box-shadow var(--v1-dur) var(--v1-ease),
+              transform var(--v1-dur) var(--v1-ease);
+}
+
+.trustCard:hover {
+  border-color: rgb(255 255 255 / 0.42);
+  box-shadow: var(--v1-lift-dark-2), 0 0 44px -8px rgb(255 255 255 / 0.2);
+}
+
+.trustHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.trustName {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.66);
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+  color: rgb(255 255 255 / 0.9);
+}
+
+.trustMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 0.8125rem;
+  color: rgb(255 255 255 / 0.62);
+}
+
+.score {
+  font-size: 1.0625rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.metaDot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.35);
+}
+
+/* ── Scroll cue ──────────────────────────────────────────── */
+.scrollCue {
+  position: absolute;
+  left: 50%;
+  bottom: 26px;
+  z-index: 4;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  pointer-events: none;
+}
+
+.scrollTrack {
+  width: 1px;
+  height: 44px;
+  background: rgb(255 255 255 / 0.2);
+  overflow: hidden;
+}
+
+.scrollBead {
+  display: block;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to bottom, transparent, rgb(255 255 255 / 0.85));
+  animation: bead 2.4s var(--v1-ease-in-out) infinite;
+}
+
+@keyframes bead {
+  0%   { transform: translateY(-110%); }
+  60%  { transform: translateY(260%); }
+  100% { transform: translateY(260%); }
+}
+
+.scrollLabel {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.42);
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .hero { min-height: auto; padding-block: clamp(92px, 16vh, 132px) clamp(64px, 9vh, 96px); }
+  .content { max-width: 100%; }
+  .grade {
+    background:
+      linear-gradient(to top, rgb(8 8 10 / 0.97) 0%, rgb(8 8 10 / 0.72) 42%, rgb(8 8 10 / 0.42) 100%);
+  }
+}
+
+@media (max-width: 560px) {
+  .trustRow { gap: 10px; }
+  .trustCard { min-width: 0; flex: 1 1 152px; padding: 13px 15px; }
+  .ctaRow { width: 100%; }
+  .cta, .ctaGhost { flex: 1 1 100%; justify-content: center; }
+  .scrollCue { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrollBead { animation: none; opacity: 0.6; }
+  .bgSlide { transition: none; }
+}

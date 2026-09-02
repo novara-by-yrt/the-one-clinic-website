@@ -80,8 +80,8 @@
   height: 120%;
   background: radial-gradient(
     ellipse at 35% 50%,
-    rgba(120, 90, 65, 0.22) 0%,
-    rgba(80, 60, 45, 0.08) 40%,
+    rgba(255, 255, 255, 0.16) 0%,
+    rgba(255, 255, 255, 0.06) 40%,
     transparent 70%
   );
   pointer-events: none;

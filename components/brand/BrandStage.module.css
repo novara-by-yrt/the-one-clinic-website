@@ -21,7 +21,7 @@
    */
   background:
     radial-gradient(ellipse 90% 55% at 18% 4%,  #F4F0E8 0%, transparent 62%),
-    radial-gradient(ellipse 65% 42% at 80% 94%, #EDE8DF 0%, transparent 58%),
+    radial-gradient(ellipse 65% 42% at 80% 94%, #e8e8e8 0%, transparent 58%),
     radial-gradient(ellipse 50% 50% at 50% 50%, #F6F4F0 0%, transparent 100%),
-    linear-gradient(158deg, #FAF8F5 0%, #F1EDE5 42%, #E9E3D8 100%);
+    linear-gradient(158deg, #FAF8F5 0%, #F1EDE5 42%, #e4e4e4 100%);
 }

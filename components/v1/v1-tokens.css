@@ -1,0 +1,162 @@
+/* ══════════════════════════════════════════════════════════════
+   V1 DESIGN TOKENS
+   A strictly monochrome black / gray / white system. Every section reads
+   its surface colours from --v1-* tokens that V1Section re-binds
+   per background, so one component works on all three surfaces.
+══════════════════════════════════════════════════════════════ */
+
+.v1-root {
+  /* ── Surfaces ── */
+  --v1-black: #08080a;
+  --v1-black-raised: #101014;
+  --v1-gray: #eceae6;
+  --v1-gray-raised: #f6f5f2;
+  --v1-white: #ffffff;
+  --v1-white-raised: #fafaf9;
+
+  /* ── Accent ──
+     The brand is black, white and grey only, so "accent" is not a hue —
+     it is the surface's own maximum contrast. Each surface below rebinds
+     these, which is why every dot, rule, focus ring and hover edge stays
+     on-brand without any component knowing which surface it sits on. ── */
+
+  /* ── Depth ──
+     Wide, low-opacity, multi-stop ambience rather than one dark drop.
+     A tight contact shadow anchors the object, a broad diffuse one gives
+     it a room to sit in. Harsh single shadows are what make a card read
+     as a rectangle on a page instead of an object above it. ── */
+  --v1-lift-1:
+    0 1px 2px rgb(0 0 0 / 0.04),
+    0 6px 14px -6px rgb(0 0 0 / 0.06),
+    0 22px 48px -20px rgb(0 0 0 / 0.10);
+  --v1-lift-2:
+    0 1px 2px rgb(0 0 0 / 0.05),
+    0 10px 24px -10px rgb(0 0 0 / 0.09),
+    0 36px 72px -28px rgb(0 0 0 / 0.16);
+  --v1-lift-3:
+    0 2px 4px rgb(0 0 0 / 0.06),
+    0 18px 40px -14px rgb(0 0 0 / 0.13),
+    0 60px 120px -40px rgb(0 0 0 / 0.24);
+  --v1-lift-dark-1:
+    0 1px 2px rgb(0 0 0 / 0.4),
+    0 8px 20px -8px rgb(0 0 0 / 0.5),
+    0 26px 56px -24px rgb(0 0 0 / 0.55);
+  --v1-lift-dark-2:
+    0 2px 4px rgb(0 0 0 / 0.45),
+    0 14px 32px -12px rgb(0 0 0 / 0.55),
+    0 44px 88px -32px rgb(0 0 0 / 0.62);
+  --v1-lift-dark-3:
+    0 3px 6px rgb(0 0 0 / 0.5),
+    0 24px 52px -18px rgb(0 0 0 / 0.6),
+    0 72px 144px -48px rgb(0 0 0 / 0.7);
+
+  /* ── Bezel ──
+     Nested-hardware look: an outer tray with a hairline, an inner core
+     inset from it, and concentric radii so the curves stay parallel.
+     --v1-r-inner is derived, never hand-picked. ── */
+  --v1-bezel-pad: 6px;
+  --v1-r-outer: 30px;
+  --v1-r-inner: calc(var(--v1-r-outer) - var(--v1-bezel-pad));
+
+  /* ── Motion: slow and expensive-feeling, never snappy ── */
+  --v1-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --v1-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --v1-dur-fast: 260ms;
+  --v1-dur: 520ms;
+  --v1-dur-slow: 780ms;
+
+  /* ── Perspective: shared so nested 3D reads as one space ── */
+  --v1-perspective: 1200px;
+
+  /* ── Radii & rhythm ── */
+  --v1-r-sm: 12px;
+  --v1-r: 20px;
+  --v1-r-lg: 30px;
+  /* Macro-whitespace: the design has to breathe for the content to read
+     as considered rather than packed. */
+  --v1-pad-block: clamp(96px, 12vw, 200px);
+  --v1-pad-inline: clamp(20px, 5vw, 72px);
+  --v1-max: 1400px;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SURFACE THEMES
+   Each sets the same six semantic tokens, so a card or heading
+   written once stays legible on black, gray and white alike.
+   Text pairs are all >= 4.5:1 against their own surface.
+══════════════════════════════════════════════════════════════ */
+
+.v1-surface-black {
+  --v1-bg: var(--v1-black);
+  --v1-bg-raised: var(--v1-black-raised);
+  --v1-fg: #ffffff;
+  /* 0.72 white on #08080a ~= 8.9:1 */
+  --v1-fg-muted: rgb(255 255 255 / 0.72);
+  --v1-fg-faint: rgb(255 255 255 / 0.46);
+  --v1-border: rgb(255 255 255 / 0.12);
+  --v1-border-strong: rgb(255 255 255 / 0.24);
+  --v1-lift: var(--v1-lift-dark-2);
+  --v1-lift-hi: var(--v1-lift-dark-3);
+  --v1-sheen: rgb(255 255 255 / 0.06);
+  --v1-accent: #ffffff;
+  --v1-accent-text: #ffffff;
+  --v1-accent-line: rgb(255 255 255 / 0.6);
+  --v1-accent-soft: rgb(255 255 255 / 0.14);
+  --v1-accent-halo: rgb(255 255 255 / 0.3);
+  /* Tray the card sits in, and the highlight along its top edge */
+  --v1-tray: rgb(255 255 255 / 0.045);
+  --v1-tray-line: rgb(255 255 255 / 0.09);
+  --v1-inner-hi: inset 0 1px 0 rgb(255 255 255 / 0.1);
+}
+
+.v1-surface-gray {
+  --v1-bg: var(--v1-gray);
+  --v1-bg-raised: var(--v1-gray-raised);
+  --v1-fg: #0b0b0d;
+  /* #4a4a52 on #eceae6 ~= 7.4:1 */
+  --v1-fg-muted: #4a4a52;
+  --v1-fg-faint: #5c5c66;
+  --v1-border: rgb(11 11 13 / 0.12);
+  --v1-border-strong: rgb(11 11 13 / 0.22);
+  --v1-lift: var(--v1-lift-2);
+  --v1-lift-hi: var(--v1-lift-3);
+  --v1-sheen: rgb(255 255 255 / 0.7);
+  --v1-accent: #0b0b0d;
+  --v1-accent-text: #0b0b0d;
+  --v1-accent-line: rgb(11 11 13 / 0.5);
+  --v1-accent-soft: rgb(11 11 13 / 0.1);
+  --v1-accent-halo: rgb(11 11 13 / 0.22);
+  --v1-tray: rgb(255 255 255 / 0.55);
+  --v1-tray-line: rgb(11 11 13 / 0.06);
+  --v1-inner-hi: inset 0 1px 0 rgb(255 255 255 / 0.9);
+}
+
+.v1-surface-white {
+  --v1-bg: var(--v1-white);
+  --v1-bg-raised: var(--v1-white-raised);
+  --v1-fg: #0b0b0d;
+  /* #4a4a52 on #ffffff ~= 8.4:1 */
+  --v1-fg-muted: #4a4a52;
+  --v1-fg-faint: #5c5c66;
+  --v1-border: rgb(11 11 13 / 0.10);
+  --v1-border-strong: rgb(11 11 13 / 0.20);
+  --v1-lift: var(--v1-lift-1);
+  --v1-lift-hi: var(--v1-lift-2);
+  --v1-sheen: rgb(255 255 255 / 0.9);
+  --v1-accent: #0b0b0d;
+  --v1-accent-text: #0b0b0d;
+  --v1-accent-line: rgb(11 11 13 / 0.5);
+  --v1-accent-soft: rgb(11 11 13 / 0.1);
+  --v1-accent-halo: rgb(11 11 13 / 0.2);
+  --v1-tray: rgb(11 11 13 / 0.028);
+  --v1-tray-line: rgb(11 11 13 / 0.05);
+  --v1-inner-hi: inset 0 1px 0 rgb(255 255 255 / 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v1-root {
+    --v1-dur-fast: 1ms;
+    --v1-dur: 1ms;
+    --v1-dur-slow: 1ms;
+  }
+}

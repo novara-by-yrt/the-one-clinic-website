@@ -3,6 +3,7 @@ import Script from 'next/script';
 import localFont from 'next/font/local';
 import MotionProvider from '@/components/providers/MotionProvider';
 import Header from '@/components/layout/Header';
+import V1Header from '@/components/v1/V1Header';
 import Footer from '@/components/layout/Footer';
 import LayoutShell from '@/components/layout/LayoutShell';
 import StickyCallbackCTA from '@/components/ui/StickyCallbackCTA';
@@ -139,6 +140,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <MotionProvider>
           <div className="site-wrapper">
             <Header />
+            {/* v1 routes swap the chrome: each header renders only on its own
+                routes. Both sit outside LayoutShell, whose .content creates a
+                stacking context that would trap them under the floating CTAs. */}
+            <V1Header />
             <LayoutShell footer={<Footer />}>
               <main id="main-content" tabIndex={-1}>
                 {children}

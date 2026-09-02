@@ -2,18 +2,13 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useRef } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Autoplay } from 'swiper/modules';
-import type { Swiper as SwiperType } from 'swiper';
+import CardFanCarousel, { type CardItem } from '@/components/ui/CardFanCarousel';
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion';
 import styles from './BrandTreatments.module.css';
 
-import 'swiper/css';
-import 'swiper/css/effect-coverflow';
-
-const SLIDES_BASE = [
+export const SLIDES_BASE = [
   {
     src:   '/images/Endolift1.png',
     title: 'Endolift',
@@ -53,8 +48,6 @@ const SLIDES_BASE = [
 ];
 
 const TOTAL = SLIDES_BASE.length;
-// Duplicate so coverflow loop has enough slides to fill both sides
-const SLIDES = [...SLIDES_BASE, ...SLIDES_BASE];
 
 const INFO_VARIANTS = {
   hidden: { opacity: 0, y: 14 },
@@ -63,9 +56,24 @@ const INFO_VARIANTS = {
 };
 
 export default function BrandTreatments() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const swiperRef = useRef<SwiperType | null>(null);
+  // Driven by the fan: the card in the centre, or the one being hovered.
+  const [activeIndex, setActiveIndex] = useState(TOTAL >> 1);
   const active = SLIDES_BASE[activeIndex % TOTAL] ?? SLIDES_BASE[0];
+
+  const cards: CardItem[] = useMemo(
+    () =>
+      SLIDES_BASE.map((slide) => ({
+        imgUrl: slide.src,
+        alt: slide.title,
+        title: slide.title,
+        linkUrl: slide.href,
+      })),
+    [],
+  );
+
+  const handleActiveChange = useCallback((index: number) => {
+    setActiveIndex(index);
+  }, []);
 
   return (
     <section className={styles.section} id="treatments">
@@ -112,109 +120,42 @@ export default function BrandTreatments() {
           </m.p>
         </m.div>
 
-        {/* ══ Bottom: dynamic info + carousel ══ */}
-        <div className={styles.bottomLayout}>
+        {/* ══ Fan carousel ══ */}
+        <div className={styles.fanWrap}>
+          <CardFanCarousel
+            cards={cards}
+            label="Popular treatments"
+            onActiveChange={handleActiveChange}
+          />
+        </div>
 
-          {/* ── Left: dynamic treatment info ── */}
-          <div className={styles.leftPanel}>
-            <AnimatePresence mode="wait">
-              <m.div
-                key={activeIndex}
-                className={styles.treatmentInfo}
-                variants={INFO_VARIANTS}
-                initial="hidden"
-                animate="show"
-                exit="exit"
-              >
-                <h3 className={styles.treatmentName}>{active.title}</h3>
-                <div className={styles.rule} aria-hidden="true" />
-                <p className={styles.treatmentDesc}>{active.desc}</p>
-                <Link
-                  href={active.href}
-                  className={styles.cta}
-                  aria-label={`Learn more about ${active.title}`}
-                >
-                  Learn More
-                  <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6"
-                      strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </Link>
-              </m.div>
-            </AnimatePresence>
-
-
-          </div>
-
-          {/* ── Right: 3D coverflow carousel ── */}
-          <div className={styles.carouselWrap}>
-            <Swiper
-              modules={[EffectCoverflow, Autoplay]}
-              effect="coverflow"
-              grabCursor
-              centeredSlides
-              loop
-              slidesPerView="auto"
-              slideToClickedSlide
-              autoplay={{ delay: 10000, disableOnInteraction: false, pauseOnMouseEnter: true }}
-              coverflowEffect={{
-                rotate:       22,
-                stretch:     -10,
-                depth:        180,
-                modifier:     1,
-                scale:        0.86,
-                slideShadows: true,
-              }}
-              className={styles.swiper}
-              onSwiper={(swiper) => { swiperRef.current = swiper; }}
-              onSlideChange={(swiper) => setActiveIndex(swiper.realIndex % TOTAL)}
+        {/* ══ Detail panel for the card in focus ══ */}
+        <div className={styles.detailPanel}>
+          <AnimatePresence mode="wait">
+            <m.div
+              key={activeIndex}
+              className={styles.treatmentInfo}
+              variants={INFO_VARIANTS}
+              initial="hidden"
+              animate="show"
+              exit="exit"
             >
-              {SLIDES.map((slide, i) => (
-                <SwiperSlide key={i} className={styles.slide}>
-                  <div className={styles.card} aria-label={slide.title}>
-                    <Image
-                      src={slide.src}
-                      alt={slide.title}
-                      fill
-                      className={styles.cardImg}
-                      sizes="(max-width: 768px) 160px, 220px"
-                      draggable={false}
-                    />
-                    <div className={styles.cardOverlay} aria-hidden="true" />
-                    <div className={styles.cardGlow}    aria-hidden="true" />
-                    <div className={styles.cardContent}>
-                      <span className={styles.cardTitle}>{slide.title}</span>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-
-            {/* Nav arrows */}
-            <div className={styles.navRow}>
-              <button
-                className={styles.navBtn}
-                aria-label="Previous treatment"
-                onClick={() => swiperRef.current?.slidePrev()}
+              <h3 className={styles.treatmentName}>{active.title}</h3>
+              <div className={styles.rule} aria-hidden="true" />
+              <p className={styles.treatmentDesc}>{active.desc}</p>
+              <Link
+                href={active.href}
+                className={styles.cta}
+                aria-label={`Learn more about ${active.title}`}
               >
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path d="M11 3.5L5.5 9L11 14.5" stroke="currentColor" strokeWidth="1.8"
+                Learn More
+                <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6"
                     strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-              </button>
-              <button
-                className={styles.navBtn}
-                aria-label="Next treatment"
-                onClick={() => swiperRef.current?.slideNext()}
-              >
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path d="M7 3.5L12.5 9L7 14.5" stroke="currentColor" strokeWidth="1.8"
-                    strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </button>
-            </div>
-          </div>
-
+              </Link>
+            </m.div>
+          </AnimatePresence>
         </div>
 
         {/* ══ Bottom CTA ══ */}

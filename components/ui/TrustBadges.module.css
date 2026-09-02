@@ -70,7 +70,7 @@
 }
 
 .light .platform {
-  color: #111827;
+  color: #181818;
 }
 
 .verified {
@@ -91,7 +91,7 @@
 
 .light .verified {
   background: #f3f4f6;
-  color: #6b7280;
+  color: #727272;
 }
 
 /* ── Stars row ── */
@@ -120,7 +120,7 @@
 }
 
 .light .score {
-  color: #111827;
+  color: #181818;
 }
 
 .dot {
@@ -149,7 +149,7 @@
 }
 
 .light .count {
-  color: #9ca3af;
+  color: #a2a2a2;
 }
 
 /* ── Vertical divider between panels ── */
