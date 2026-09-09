@@ -72,9 +72,12 @@
   --v2-tracking-label: 0.14em;
 
   /* ── Rhythm ──
-     VISUAL_DENSITY 2: gallery spacing. Section padding scales with the
-     viewport so mobile does not inherit desktop's air. */
-  --v2-section-y: clamp(4.5rem, 11vw, 10rem);
+     Applied to both edges of every section, so adjacent sections
+     produce twice this figure. At the old 10rem ceiling that was 317px
+     of empty page at every boundary, which read as unfinished rather
+     than airy. 6rem puts the boundaries near 190px: still generous,
+     but the page holds together. */
+  --v2-section-y: clamp(3.25rem, 6.5vw, 6rem);
   --v2-gutter: clamp(1.25rem, 5vw, 5rem);
   --v2-measure: 62ch;
 
@@ -115,16 +118,39 @@
   padding-inline: var(--v2-gutter);
 }
 
-/* Section headers are left-aligned and sit under a full-width rule.
-   That rule is the through-line of the page: it is what makes ten
-   different layouts read as one grid. */
+/* Section headers sit under a full-width rule. That rule is the
+   through-line of the page: it is what makes ten different layouts read
+   as one grid.
+
+   From 900px the header is a masthead rather than a stack: title in the
+   left column, supporting line in a fixed right column, both hanging
+   off the same rule and sharing a top baseline. Stacked, the title left
+   half the page empty on every section, which was the single largest
+   source of dead space on this layout. */
 .v2-sectionHead {
   border-top: var(--v2-rule-strong);
-  padding-top: clamp(1.25rem, 2.5vw, 2rem);
+  padding-top: clamp(1.125rem, 2vw, 1.625rem);
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: clamp(0.75rem, 1.5vw, 1.25rem);
-  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+  margin-bottom: clamp(1.75rem, 3.5vw, 3rem);
+}
+
+@media (min-width: 900px) {
+  .v2-sectionHead {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 30rem);
+    align-items: start;
+    column-gap: clamp(2rem, 5vw, 5rem);
+  }
+
+  /* The supporting line is optically heavy at the cap height of a
+     display heading, so it drops to sit on the heading's baseline. It
+     also fills its column here rather than keeping the 46ch measure it
+     needs when stacked full width. */
+  .v2-sectionHead > .v2-lead {
+    margin-top: 0.4rem;
+    max-width: none;
+  }
 }
 
 .v2-h2 {

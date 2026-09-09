@@ -144,5 +144,9 @@
   .cell:nth-child(6) .plate {
     aspect-ratio: auto;
     height: clamp(17rem, 25vw, 24rem);
+    /* flex: none, or the base `flex: 1 1 auto` lets a plate shrink to
+       make room for a caption that wraps to two lines, and the row's
+       image edges stop agreeing. */
+    flex: none;
   }
 }

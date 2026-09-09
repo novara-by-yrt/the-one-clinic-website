@@ -2,9 +2,7 @@ import WistiaFacade from '@/components/ui/WistiaFacade';
 import styles from './V2Story.module.css';
 
 /**
- * Two films, unequal. The live homepage runs them as a symmetrical pair;
- * giving the founder film the wider plate makes the section a
- * composition rather than a row.
+ * Two films on equal plates, tops and captions aligned.
  *
  * WistiaFacade is the project's existing lazy pattern for video: only a
  * poster renders until the visitor clicks, so none of the player
@@ -15,13 +13,11 @@ const FILMS = [
     id: 'hu75ttgmlm',
     title: 'TOC - Intro Video (LP)',
     caption: 'Our founders on why the clinic exists',
-    wide: true,
   },
   {
     id: 't8y82cnp5e',
     title: 'TOC - Patient Stories',
     caption: 'Patients on what changed for them',
-    wide: false,
   },
 ];
 
@@ -45,10 +41,7 @@ export default function V2Story() {
 
         <div className={styles.grid}>
           {FILMS.map((film) => (
-            <figure
-              key={film.id}
-              className={`${styles.item} ${film.wide ? styles.wide : styles.narrow}`}
-            >
+            <figure key={film.id} className={styles.item}>
               <div className={styles.player}>
                 <WistiaFacade
                   videoId={film.id}

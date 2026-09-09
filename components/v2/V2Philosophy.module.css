@@ -85,16 +85,37 @@
     aspect-ratio: 21 / 9;
   }
 
+  /* The panel used to be a 62%-wide block, which left roughly half the
+     section empty to its right and put its stat rule on a width that
+     matched nothing else on the page. It now spans the shell and holds
+     its own two-column grid, so the heading, the body copy and the
+     figure all sit on the same edges as every other section. */
   .panel {
-    /* Overlaps the bottom of the photograph. Width is capped so the
-       plate still reads as full-bleed on the right. */
-    width: min(70ch, 62%);
-    margin-top: clamp(-9rem, -8vw, -5rem);
-    padding: clamp(2.5rem, 4vw, 3.5rem) clamp(2.5rem, 4vw, 3.5rem) 0 0;
+    width: 100%;
+    margin-top: clamp(-8rem, -7vw, -4.5rem);
+    /* No right padding: the figure's rule has to reach the same right
+       edge as every section rule on the page. */
+    padding: clamp(2.5rem, 4vw, 3.5rem) 0 0 0;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: start;
+  }
+
+  .heading {
+    grid-column: 1;
+    max-width: 14ch;
+  }
+
+  .columns {
+    grid-column: 2;
+    /* Stacked in the right column rather than side by side: two
+       paragraphs at half of a half-column is too narrow a measure. */
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 46ch;
   }
 
   .figure {
-    justify-self: start;
-    min-width: 20rem;
+    grid-column: 1 / -1;
+    margin-top: clamp(1rem, 2vw, 2rem);
   }
 }

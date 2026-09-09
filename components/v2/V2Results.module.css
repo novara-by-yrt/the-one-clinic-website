@@ -7,15 +7,18 @@
   padding-block: var(--v2-section-y);
 }
 
+/* Contained rather than full-bleed. Running it edge to edge put the
+   plates on a different left edge from the section header above them
+   and from every other section on the page, which read as a misprint
+   rather than as a device. */
 .sheet {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   /* The gap IS the rule: paper showing through between plates. */
   gap: 1px;
   background: var(--v2-grey-300);
-  border-block: 1px solid var(--v2-grey-300);
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
+  border: 1px solid var(--v2-grey-300);
+  margin: 0;
   padding: 0;
   list-style: none;
 }
@@ -55,6 +58,10 @@
   .sheet {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
+
+  /* Stays square: the source composites are square and carry their own
+     "Before / After" labelling across the top, which a wider crop cuts
+     off. */
 
   .label {
     font-size: var(--v2-small);

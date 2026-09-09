@@ -59,28 +59,26 @@ export default function V2Results() {
             patients.
           </p>
         </header>
-      </div>
 
-      <ul className={styles.sheet}>
-        {RESULTS.map((r) => (
-          <li key={r.src} className={styles.cell}>
-            <span className={styles.plate}>
-              <Image
-                src={r.src}
-                alt={r.alt}
-                fill
-                loading="lazy"
-                quality={75}
-                sizes="(max-width: 700px) 50vw, 25vw"
-                className="v2-plate"
-              />
-            </span>
-            <span className={styles.label}>{r.label}</span>
-          </li>
-        ))}
-      </ul>
+        <ul className={styles.sheet}>
+          {RESULTS.map((r) => (
+            <li key={r.src} className={styles.cell}>
+              <span className={styles.plate}>
+                <Image
+                  src={r.src}
+                  alt={r.alt}
+                  fill
+                  loading="lazy"
+                  quality={75}
+                  sizes="(max-width: 700px) 50vw, 25vw"
+                  className="v2-plate"
+                />
+              </span>
+              <span className={styles.label}>{r.label}</span>
+            </li>
+          ))}
+        </ul>
 
-      <div className="v2-shell">
         <div className={styles.footer}>
           <Link href="/results" className="v2-link">
             See more results

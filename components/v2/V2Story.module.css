@@ -50,18 +50,15 @@
 
 @media (min-width: 900px) {
   .grid {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
+    /* Equal halves, tops aligned.
+
+       These were 7/5 with the narrow plate dropped below the wide one.
+       Because both hold a 16:9 crop, unequal widths gave unequal
+       heights, so the two captions landed on different baselines and
+       the section ended with a large hole under the smaller plate.
+       Equal columns put both plates and both captions on the same
+       lines. */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: start;
-  }
-
-  .wide {
-    grid-column: span 7;
-  }
-
-  .narrow {
-    grid-column: span 5;
-    /* Dropped against the wide plate so the pair reads as a composition
-       rather than as two equal tiles that happen to differ in width. */
-    margin-top: clamp(2rem, 5vw, 4rem);
   }
 }
