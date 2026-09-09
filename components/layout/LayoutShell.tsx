@@ -9,7 +9,7 @@ import {
   useSpring,
   useReducedMotion,
 } from 'framer-motion';
-import { isV1Route } from '@/components/v1/v1-routes';
+import { usesFlowFooter } from './footer-mode';
 import styles from './LayoutShell.module.css';
 
 interface LayoutShellProps {
@@ -30,7 +30,7 @@ export default function LayoutShell({ children, footer }: LayoutShellProps) {
    * and with width, so any fixed number would be wrong somewhere.
    */
   const [footerFits, setFooterFits] = useState(true);
-  const flowFooter = isV1Route(pathname) || !footerFits;
+  const flowFooter = usesFlowFooter(pathname) || !footerFits;
 
   // Measure the footer: publishes its height for the spacer, and decides
   // whether the fixed reveal can show all of it.
