@@ -3,15 +3,30 @@ import BookConsultationButton from '@/components/ui/BookConsultationButton';
 import styles from './V3Hero.module.css';
 
 /**
- * Full-bleed hero. The photograph establishes the room; the type sits in
- * its dark negative space behind a left-weighted scrim, so contrast is
- * guaranteed rather than dependent on where the image crops.
+ * Type on the left, a pair of treatment plates on the right.
  *
- * Every string is the live homepage's, unaltered. The review scores that
- * the live hero stacks under its button move to V3Proof directly below,
- * which is where a credibility strip belongs and keeps the hero to one
- * message.
+ * Replaces a single full-bleed photograph with copy scrimmed over it.
+ * Nothing is overlaid on an image here, so contrast is fixed by the
+ * ground rather than by how the photograph happens to crop at a given
+ * width, and the plates can carry their own colour.
+ *
+ * The ground stays ink because the site header renders white on
+ * transparent until the reader scrolls, on every route. A paper hero
+ * would leave the navigation invisible against it.
+ *
+ * Every string is the live homepage's, unaltered.
  */
+const PLATES = [
+  {
+    src: '/images/Lumecca IPL Laser 2.png',
+    alt: 'A Lumecca IPL laser treatment at The One Clinic',
+  },
+  {
+    src: '/images/Morpheus8 1.png',
+    alt: 'A Morpheus8 treatment at The One Clinic',
+  },
+];
+
 export default function V3Hero() {
   return (
     <section
@@ -19,27 +34,8 @@ export default function V3Hero() {
       data-section-theme="dark"
       aria-labelledby="v3-hero-title"
     >
-      <div className={styles.media} aria-hidden="true">
-        {/*
-          The one eager image on the page: it is the LCP element.
-          Next 16 deprecates `priority`, and its docs steer to
-          eager + fetchPriority whenever `loading` is set.
-        */}
-        <Image
-          src="/images/Updated Hero Background 2.png"
-          alt=""
-          fill
-          loading="eager"
-          fetchPriority="high"
-          quality={75}
-          sizes="100vw"
-          className={styles.image}
-        />
-        <div className={styles.scrim} />
-      </div>
-
-      <div className={styles.inner}>
-        <div className="v3-shell">
+      <div className="v3-shell">
+        <div className={styles.grid}>
           <div className={styles.copy}>
             <p className={styles.eyebrow}>Medical &amp; Aesthetic Care, Leicester</p>
 
@@ -59,6 +55,28 @@ export default function V3Hero() {
               </BookConsultationButton>
             </div>
           </div>
+
+          <ul className={styles.plates}>
+            {PLATES.map((plate, i) => (
+              <li key={plate.src} className={styles.plate}>
+                {/*
+                  Both sit above the fold, so both load eagerly; only the
+                  first is prioritised, as the likelier LCP candidate.
+                  Next 16 deprecates `priority` in favour of this pair.
+                */}
+                <Image
+                  src={plate.src}
+                  alt={plate.alt}
+                  fill
+                  loading="eager"
+                  fetchPriority={i === 0 ? 'high' : undefined}
+                  quality={75}
+                  sizes="(max-width: 1023px) 46vw, 24vw"
+                  className="v3-plate"
+                />
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
