@@ -1,0 +1,67 @@
+/* ── Story ──
+   Unequal video pair. Both plates are 16:9 so the two posters share a
+   crop; only the column widths differ. */
+
+.section {
+  padding-block: var(--v2-section-y);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.item {
+  margin: 0;
+  min-width: 0;
+}
+
+.player {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--v2-grey-100);
+}
+
+/* WistiaFacade renders the poster and, after a click, the iframe. Both
+   need to fill the plate. */
+.player > * {
+  width: 100%;
+  height: 100%;
+}
+
+.embed {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.caption {
+  padding-top: clamp(0.75rem, 1.2vw, 1rem);
+  margin-top: clamp(0.875rem, 1.5vw, 1.125rem);
+  border-top: var(--v2-rule);
+  font-size: var(--v2-small);
+  line-height: 1.5;
+  color: var(--v2-text-secondary);
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  .wide {
+    grid-column: span 7;
+  }
+
+  .narrow {
+    grid-column: span 5;
+    /* Dropped against the wide plate so the pair reads as a composition
+       rather than as two equal tiles that happen to differ in width. */
+    margin-top: clamp(2rem, 5vw, 4rem);
+  }
+}

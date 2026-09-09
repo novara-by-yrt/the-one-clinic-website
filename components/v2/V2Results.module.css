@@ -1,0 +1,63 @@
+/* ── Results contact sheet ──
+   Full-bleed and gapless. A 1px paper gap between plates reads as a
+   cut rather than as a gutter, which is what makes this a sheet and
+   not another card grid. */
+
+.section {
+  padding-block: var(--v2-section-y);
+}
+
+.sheet {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* The gap IS the rule: paper showing through between plates. */
+  gap: 1px;
+  background: var(--v2-grey-300);
+  border-block: 1px solid var(--v2-grey-300);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding: 0;
+  list-style: none;
+}
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--v2-paper);
+}
+
+.plate {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--v2-grey-100);
+}
+
+/* Caption sits below the plate, never over it: nothing is overlaid on
+   the photography anywhere on this page. */
+.label {
+  display: block;
+  padding: 0.75rem 0.875rem 0.875rem;
+  color: var(--v2-text-secondary);
+  font-size: var(--v2-micro);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.footer {
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+@media (min-width: 700px) {
+  .sheet {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .label {
+    font-size: var(--v2-small);
+    padding: 0.625rem 1rem;
+  }
+}

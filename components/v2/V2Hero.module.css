@@ -1,0 +1,113 @@
+/* ── Hero ──
+   Text left, one tall plate bleeding off the right edge. The bleed is
+   what makes this read as editorial rather than as a two-column band,
+   so the grid is deliberately not contained on the right. */
+
+.hero {
+  position: relative;
+  /* Full-bleed ink ground. The page's paper starts at the trust band. */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  background: var(--v2-ink);
+  color: var(--v2-on-ink);
+  /* The site header is fixed over the top of this, so the copy starts
+     below it. Capped well under the pt-24 ceiling. */
+  padding-top: clamp(6.5rem, 11vw, 8.5rem);
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+  padding-left: var(--v2-gutter);
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(2.25rem, 5vw, 3.5rem);
+  align-items: center;
+  max-width: calc(1440px - var(--v2-gutter));
+  margin-inline: auto;
+}
+
+.copy {
+  min-width: 0;
+  padding-right: var(--v2-gutter);
+}
+
+.headline {
+  margin: 0;
+  font-size: var(--v2-display);
+  font-weight: 500;
+  /* 1.02 rather than 1: the descender in "expertise" clips at 1. */
+  line-height: 1.02;
+  letter-spacing: var(--v2-tracking-display);
+  padding-bottom: 0.08em;
+  color: var(--v2-on-ink);
+  text-wrap: balance;
+}
+
+.subtext {
+  margin: clamp(1.25rem, 2.5vw, 1.75rem) 0 0;
+  max-width: 34ch;
+  font-size: var(--v2-lead);
+  line-height: 1.45;
+  /* 8.9:1 against --v2-ink. */
+  color: var(--v2-on-ink-secondary);
+  text-wrap: pretty;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+
+.plate {
+  position: relative;
+  width: 100%;
+  /* Landscape on mobile so the hero still fits one screen with the
+     copy above it; the tall crop only arrives with the two-column
+     layout, where it has a full column to stand in. */
+  aspect-ratio: 4 / 3;
+  background: var(--v2-ink-raised);
+}
+
+/* ── Tablet ── */
+@media (min-width: 700px) {
+  .plate {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* ── Desktop: split, plate bleeds right ── */
+@media (min-width: 900px) {
+  .hero {
+    display: flex;
+    align-items: center;
+    min-height: min(88dvh, 920px);
+    padding-bottom: clamp(3rem, 6vw, 5rem);
+  }
+
+  .grid {
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+  }
+
+  .copy {
+    padding-right: 0;
+  }
+
+  .plate {
+    /* The hero has no right padding, so the plate already runs to the
+       edge of the grid; past 1440px the grid's max-width holds it in,
+       which keeps the text column from stretching on very wide screens. */
+    aspect-ratio: auto;
+    height: min(74dvh, 720px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.02fr);
+  }
+}

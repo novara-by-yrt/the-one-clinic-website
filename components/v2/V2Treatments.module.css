@@ -1,0 +1,149 @@
+/* ── Treatment mosaic ──
+   Six named areas so the composition is declared in one place and the
+   markup order stays the reading order. Widths are deliberately uneven:
+   an even three-up would read as a stock feature row. */
+
+.section {
+  padding-block: var(--v2-section-y);
+}
+
+.mosaic {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(1.75rem, 3vw, 2.5rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cell {
+  min-width: 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.875rem, 1.5vw, 1.125rem);
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.plate {
+  position: relative;
+  display: block;
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--v2-grey-100);
+}
+
+.plate :global(.v2-plate) {
+  transition: transform 520ms var(--v2-ease), filter 520ms var(--v2-ease);
+}
+
+/* The only hover move on the page: a slow, small scale that signals the
+   whole tile is one target. No lift, no shadow, no overlay. */
+.card:hover .plate :global(.v2-plate),
+.card:focus-visible .plate :global(.v2-plate) {
+  transform: scale(1.03);
+  filter: grayscale(1) contrast(1.1);
+}
+
+.caption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3125rem;
+  padding-top: clamp(0.75rem, 1.2vw, 1rem);
+  border-top: var(--v2-rule);
+}
+
+.title {
+  font-size: var(--v2-h3);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: var(--v2-tracking-head);
+  text-wrap: balance;
+}
+
+.line {
+  font-size: var(--v2-small);
+  line-height: 1.5;
+  color: var(--v2-text-secondary);
+  text-wrap: pretty;
+}
+
+.card:hover .title,
+.card:focus-visible .title {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+.footer {
+  margin-top: clamp(2.5rem, 4vw, 3.5rem);
+  padding-top: clamp(1.25rem, 2vw, 1.75rem);
+  border-top: var(--v2-rule);
+}
+
+/* ── Tablet: two columns, still uneven via aspect ratio ── */
+@media (min-width: 700px) {
+  .mosaic {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Alternating crops keep a two-up grid from looking like a table. */
+  .cell:nth-child(4n + 1) .plate,
+  .cell:nth-child(4n + 4) .plate {
+    aspect-ratio: 4 / 5;
+  }
+
+  .cell:nth-child(4n + 2) .plate,
+  .cell:nth-child(4n + 3) .plate {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+/* ── Desktop: the real composition ── */
+@media (min-width: 1024px) {
+  .mosaic {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-areas:
+      'a a a a a a a b b b b b'
+      'a a a a a a a c c c c c'
+      'd d d d d e e e f f f f';
+  }
+
+  /* Placement lives here, not on the element, so markup order stays the
+     reading order and the areas map above is the only place the
+     composition is described. */
+  .cell:nth-child(1) { grid-area: a; }
+  .cell:nth-child(2) { grid-area: b; }
+  .cell:nth-child(3) { grid-area: c; }
+  .cell:nth-child(4) { grid-area: d; }
+  .cell:nth-child(5) { grid-area: e; }
+  .cell:nth-child(6) { grid-area: f; }
+
+  /* The tall cell fills its two rows rather than setting a ratio, so
+     its height is defined by the two cells beside it. */
+  .cell:nth-child(1) .plate {
+    aspect-ratio: auto;
+  }
+
+  .cell:nth-child(2) .plate,
+  .cell:nth-child(3) .plate {
+    aspect-ratio: 16 / 10;
+  }
+
+  /* Bottom row: an explicit height rather than a ratio. The three cells
+     have different widths, so a shared ratio would give them three
+     different heights and leave their captions on a ragged baseline. */
+  .cell:nth-child(4) .plate,
+  .cell:nth-child(5) .plate,
+  .cell:nth-child(6) .plate {
+    aspect-ratio: auto;
+    height: clamp(17rem, 25vw, 24rem);
+  }
+}

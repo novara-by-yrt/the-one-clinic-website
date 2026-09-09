@@ -1,0 +1,278 @@
+/* ══════════════════════════════════════════════════════════════
+   V2 DESIGN TOKENS
+
+   A light editorial monochrome system: paper ground, ink text, and a
+   grey scale that carries all hierarchy. No hue anywhere.
+
+   V2 differs from V1 structurally, not just tonally. V1 alternates
+   full-bleed black / grey / white surfaces and centres a chip above
+   every heading. V2 keeps one paper ground for the whole page, aligns
+   every section header left against a shared hairline grid, and spends
+   its contrast on photography and one closing ink block. So the tokens
+   below describe a single surface rather than a set of surfaces.
+══════════════════════════════════════════════════════════════ */
+
+.v2-root {
+  /* ── Ground and ink ──
+     Neither end of the ramp is pure: #000 on #fff has no depth left to
+     spend on the photography, which is where this design puts it. */
+  --v2-paper: #f7f7f6;
+  --v2-paper-raised: #fdfdfc;
+  --v2-ink: #0d0d0e;
+  --v2-ink-raised: #17171a;
+
+  /* ── Grey ramp ──
+     Contrast ratios against --v2-paper, for reference when choosing:
+     600 = 7.0:1, 500 = 4.8:1 (AA body floor), 400 = 3.2:1 (large text
+     and icons only), 300 and below are non-text only. */
+  --v2-grey-700: #3d3d40;
+  --v2-grey-600: #55555a;
+  --v2-grey-500: #6e6e74;
+  --v2-grey-400: #94949b;
+  --v2-grey-300: #c3c3c7;
+  --v2-grey-200: #dededf;
+  --v2-grey-100: #ebebea;
+
+  /* ── Text roles ── */
+  --v2-text: var(--v2-ink);
+  --v2-text-secondary: var(--v2-grey-600);
+  --v2-text-muted: var(--v2-grey-500);
+
+  /* On the closing ink block the ramp inverts. Only that one section
+     opts in, via .v2-onInk, so nothing else has to know it exists. */
+  --v2-on-ink: #f4f4f3;
+  --v2-on-ink-secondary: #b9b9bd;
+
+  /* ── Rules ──
+     The hairline is the structural motif of this design, so it is a
+     token rather than a repeated border declaration. */
+  --v2-rule: 1px solid var(--v2-grey-200);
+  --v2-rule-strong: 1px solid var(--v2-grey-300);
+  --v2-rule-ink: 1px solid rgb(255 255 255 / 0.16);
+
+  /* ── Type ──
+     Inter is the only typeface in the repo, and this build adds no new
+     assets, so the editorial register comes from scale, weight and
+     tracking rather than from a display face. Inter's optical sizing
+     does real work at the top of the ramp. */
+  --v2-font: var(--font-inter), 'Inter', system-ui, sans-serif;
+
+  --v2-display: clamp(2.5rem, 7.2vw, 5.75rem);
+  --v2-h2: clamp(1.875rem, 4vw, 3.25rem);
+  --v2-h3: clamp(1.25rem, 2vw, 1.625rem);
+  --v2-lead: clamp(1.0625rem, 1.5vw, 1.3125rem);
+  --v2-body: 1rem;
+  --v2-small: 0.875rem;
+  --v2-micro: 0.75rem;
+
+  --v2-tracking-display: -0.035em;
+  --v2-tracking-head: -0.022em;
+  --v2-tracking-label: 0.14em;
+
+  /* ── Rhythm ──
+     VISUAL_DENSITY 2: gallery spacing. Section padding scales with the
+     viewport so mobile does not inherit desktop's air. */
+  --v2-section-y: clamp(4.5rem, 11vw, 10rem);
+  --v2-gutter: clamp(1.25rem, 5vw, 5rem);
+  --v2-measure: 62ch;
+
+  /* ── Shape ──
+     SHAPE CONSISTENCY: this page is square. Every plate, image and
+     input is radius 0; the only exception is the pill focus ring on
+     round controls, of which there are none. Squareness is the point,
+     and it is what most separates V2 from the softened cards in V1. */
+  --v2-radius: 0px;
+
+  --v2-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --v2-duration: 260ms;
+
+  font-family: var(--v2-font);
+  background: var(--v2-paper);
+  color: var(--v2-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SHARED PRIMITIVES
+   Small enough that a module per piece would cost more than it saves,
+   and every section needs them.
+══════════════════════════════════════════════════════════════ */
+
+/* Anchor targets (#treatments, #results, #contact) must clear the fixed
+   site header when linked to directly. */
+.v2-root :where([id]) {
+  scroll-margin-top: 7rem;
+}
+
+/* Page-wide measure. Wider than the site's 1200px container: this
+   layout leans on the outer columns, so it needs the room. */
+.v2-shell {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: var(--v2-gutter);
+}
+
+/* Section headers are left-aligned and sit under a full-width rule.
+   That rule is the through-line of the page: it is what makes ten
+   different layouts read as one grid. */
+.v2-sectionHead {
+  border-top: var(--v2-rule-strong);
+  padding-top: clamp(1.25rem, 2.5vw, 2rem);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.v2-h2 {
+  margin: 0;
+  font-size: var(--v2-h2);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: var(--v2-tracking-head);
+  text-wrap: balance;
+}
+
+.v2-lead {
+  margin: 0;
+  max-width: 46ch;
+  font-size: var(--v2-lead);
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--v2-text-secondary);
+  text-wrap: pretty;
+}
+
+/* ── Controls ── */
+.v2-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  padding: 1rem 1.75rem;
+  border: 1px solid transparent;
+  border-radius: var(--v2-radius);
+  font: inherit;
+  font-size: var(--v2-small);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  /* CTA labels must never wrap: the primary label is three words and
+     the button is allowed to size to it. */
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background-color var(--v2-duration) var(--v2-ease),
+    color var(--v2-duration) var(--v2-ease),
+    border-color var(--v2-duration) var(--v2-ease),
+    transform 120ms var(--v2-ease);
+}
+
+.v2-btnPrimary {
+  background: var(--v2-ink);
+  color: var(--v2-on-ink);
+  border-color: var(--v2-ink);
+}
+
+.v2-btnPrimary:hover {
+  background: var(--v2-ink-raised);
+  border-color: var(--v2-ink-raised);
+}
+
+.v2-btnSecondary {
+  background: transparent;
+  color: var(--v2-ink);
+  border-color: var(--v2-grey-400);
+}
+
+.v2-btnSecondary:hover {
+  border-color: var(--v2-ink);
+  background: var(--v2-paper-raised);
+}
+
+/* Inverted pair, used only inside the closing ink block. */
+.v2-onInk .v2-btnPrimary {
+  background: var(--v2-on-ink);
+  color: var(--v2-ink);
+  border-color: var(--v2-on-ink);
+}
+
+.v2-onInk .v2-btnPrimary:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+}
+
+.v2-onInk .v2-btnSecondary {
+  color: var(--v2-on-ink);
+  border-color: rgb(255 255 255 / 0.42);
+}
+
+.v2-onInk .v2-btnSecondary:hover {
+  border-color: var(--v2-on-ink);
+  background: rgb(255 255 255 / 0.08);
+}
+
+.v2-btn:active {
+  transform: translateY(1px);
+}
+
+/* Text link with a rule that thickens on hover. Replaces the arrow
+   chips used across the live homepage. */
+.v2-link {
+  display: inline-block;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--v2-grey-400);
+  color: var(--v2-ink);
+  font-size: var(--v2-small);
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    border-color var(--v2-duration) var(--v2-ease),
+    color var(--v2-duration) var(--v2-ease);
+}
+
+.v2-link:hover {
+  border-color: var(--v2-ink);
+}
+
+.v2-onInk .v2-link {
+  color: var(--v2-on-ink);
+  border-bottom-color: rgb(255 255 255 / 0.42);
+}
+
+.v2-onInk .v2-link:hover {
+  border-bottom-color: var(--v2-on-ink);
+}
+
+/* ── Focus ──
+   Visible on every interactive element, on both grounds. */
+.v2-root :where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--v2-ink);
+  outline-offset: 3px;
+}
+
+.v2-onInk :where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline-color: var(--v2-on-ink);
+}
+
+/* ── Images ──
+   Photography is desaturated so a colour-mixed library of clinical and
+   portrait shots reads as one commissioned set. This is the only place
+   the design touches colour, and it removes it. */
+.v2-plate {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.04);
+}
+
+/* Static page: the only transitions are hover and focus responses to a
+   user action, so there is nothing for reduced-motion to disable beyond
+   collapsing those. */
+@media (prefers-reduced-motion: reduce) {
+  .v2-root * {
+    transition-duration: 1ms !important;
+  }
+}
