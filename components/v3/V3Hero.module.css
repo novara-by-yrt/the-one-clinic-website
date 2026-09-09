@@ -1,0 +1,135 @@
+/* ── Hero ──
+   Full-bleed image, type over its dark side behind a scrim. */
+
+.hero {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  min-height: min(92dvh, 940px);
+  display: flex;
+  align-items: flex-end;
+  background: var(--v3-ink);
+  color: var(--v3-on-dark);
+  overflow: hidden;
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Keeps the clinician in frame as the crop narrows. */
+  object-position: 78% center;
+  filter: grayscale(1) contrast(1.03);
+}
+
+/* Two-stop scrim: heavier at the bottom where the copy sits on mobile,
+   heavier at the left where it sits on desktop. Guarantees the text
+   contrast rather than relying on the photograph. */
+.scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to top,
+      rgb(11 11 12 / 0.92) 0%,
+      rgb(11 11 12 / 0.72) 38%,
+      rgb(11 11 12 / 0.34) 68%,
+      rgb(11 11 12 / 0.22) 100%
+    );
+}
+
+.inner {
+  position: relative;
+  width: 100%;
+  padding-top: clamp(7rem, 14vw, 10rem);
+  padding-bottom: clamp(3rem, 8vw, 6rem);
+}
+
+.copy {
+  max-width: 34rem;
+}
+
+.eyebrow {
+  margin: 0 0 clamp(1rem, 2.2vw, 1.75rem);
+  font-size: var(--v3-label);
+  font-weight: 500;
+  letter-spacing: var(--v3-track-label);
+  text-transform: uppercase;
+  /* 7.4:1 against the scrimmed image. */
+  color: var(--v3-on-dark-secondary);
+}
+
+.headline {
+  margin: 0;
+  font-size: var(--v3-display);
+  font-weight: 500;
+  /* 1.03 rather than 1: "Expertise" has a descender that clips at 1. */
+  line-height: 1.03;
+  letter-spacing: var(--v3-track-display);
+  padding-bottom: 0.06em;
+  color: var(--v3-on-dark);
+  text-wrap: balance;
+}
+
+/* Subordinate to the headline and set in the same family, so the two
+   read as one lockup rather than as two competing lines. */
+.tagline {
+  margin: clamp(0.75rem, 1.5vw, 1.125rem) 0 0;
+  font-size: clamp(1.125rem, 1.9vw, 1.5rem);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+  color: var(--v3-on-dark);
+}
+
+.subtext {
+  margin: clamp(1.25rem, 2.2vw, 1.75rem) 0 0;
+  max-width: 30ch;
+  font-size: var(--v3-lead);
+  line-height: 1.5;
+  color: var(--v3-on-dark-secondary);
+  text-wrap: pretty;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: clamp(1.75rem, 3.2vw, 2.5rem);
+}
+
+@media (min-width: 900px) {
+  .hero {
+    align-items: center;
+    min-height: min(88dvh, 900px);
+  }
+
+  .image {
+    object-position: center;
+  }
+
+  .scrim {
+    background:
+      linear-gradient(
+        to right,
+        rgb(11 11 12 / 0.9) 0%,
+        rgb(11 11 12 / 0.78) 38%,
+        rgb(11 11 12 / 0.4) 66%,
+        rgb(11 11 12 / 0.18) 100%
+      );
+  }
+
+  .inner {
+    padding-top: clamp(6rem, 9vw, 8rem);
+    padding-bottom: clamp(4rem, 7vw, 6rem);
+  }
+
+  .copy {
+    max-width: 38rem;
+  }
+}

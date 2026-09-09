@@ -1,0 +1,46 @@
+/* ── Story ──
+   Contained header at roughly two thirds width, then a pair of 16:9
+   plates at the full shell width. */
+
+.section {
+  padding-block: var(--v3-section-y);
+}
+
+.head {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.player {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--v3-radius);
+  background: var(--v3-grey-100);
+}
+
+/* The facade renders a poster, then an iframe once clicked. Both fill
+   the plate. */
+.player > * {
+  width: 100%;
+  height: 100%;
+}
+
+.embed {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

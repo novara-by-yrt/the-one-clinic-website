@@ -1,0 +1,60 @@
+/* ── Results ──
+   Square plates, one radius, caption below the image. Nothing is
+   overlaid on the photography. */
+
+.section {
+  padding-block: var(--v3-section-y);
+}
+
+.head {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.25rem) clamp(1.25rem, 2.2vw, 2rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  min-width: 0;
+}
+
+.plate {
+  position: relative;
+  display: block;
+  width: 100%;
+  /* The source composites are square and already carry their own
+     Before and After labelling, so a 1:1 crop shows them whole. */
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: var(--v3-radius);
+  background: var(--v3-grey-100);
+}
+
+.caption {
+  display: block;
+  padding-top: clamp(0.75rem, 1.2vw, 1rem);
+  font-size: var(--v3-small);
+  font-weight: 500;
+  color: var(--v3-text);
+}
+
+.footer {
+  margin-top: clamp(3rem, 5vw, 4.5rem);
+}
+
+@media (min-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

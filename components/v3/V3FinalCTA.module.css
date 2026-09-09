@@ -1,0 +1,40 @@
+/* ── Closing band ── */
+
+.section {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  background: var(--v3-ink);
+  color: var(--v3-on-dark);
+  padding-block: clamp(4.5rem, 10vw, 9rem);
+}
+
+.inner {
+  max-width: 44ch;
+}
+
+.heading {
+  margin: 0;
+  font-size: var(--v3-h2);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: var(--v3-track-head);
+  color: var(--v3-on-dark);
+  text-wrap: balance;
+}
+
+.subtext {
+  margin: clamp(1.125rem, 2vw, 1.625rem) 0 0;
+  max-width: 40ch;
+  font-size: var(--v3-lead);
+  line-height: 1.5;
+  /* 9.1:1 against --v3-ink. */
+  color: var(--v3-on-dark-secondary);
+  text-wrap: pretty;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: clamp(1.75rem, 3.2vw, 2.5rem);
+}

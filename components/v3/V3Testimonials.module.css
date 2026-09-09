@@ -1,0 +1,112 @@
+/* ── Review wall ──
+   CSS columns rather than a grid: the reviews vary a lot in length, and
+   columns let a short one sit under a long one instead of leaving the
+   ragged gaps a row-based grid would. */
+
+.section {
+  padding-block: var(--v3-section-y);
+}
+
+.head {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.wall {
+  columns: 1;
+  column-gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.card {
+  /* Cards must not be split across a column break. */
+  break-inside: avoid;
+  page-break-inside: avoid;
+  display: flow-root;
+  margin: 0 0 clamp(1.25rem, 2.5vw, 2rem);
+  padding: clamp(1.5rem, 2.6vw, 2rem);
+  border: 1px solid var(--v3-hairline);
+  border-radius: var(--v3-radius);
+  background: var(--v3-paper);
+}
+
+.quote {
+  margin: 0;
+}
+
+.para {
+  margin: 0;
+  font-size: var(--v3-small);
+  line-height: 1.65;
+  color: var(--v3-text-secondary);
+  text-wrap: pretty;
+}
+
+.para + .para {
+  margin-top: 0.875rem;
+}
+
+.attribution {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 0.75rem;
+  margin-top: clamp(1rem, 1.8vw, 1.375rem);
+  padding-top: clamp(0.875rem, 1.4vw, 1.125rem);
+  border-top: 1px solid var(--v3-hairline);
+}
+
+.name {
+  font-size: var(--v3-small);
+  font-weight: 500;
+  color: var(--v3-text);
+}
+
+.when {
+  font-size: var(--v3-label);
+  color: var(--v3-text-muted);
+}
+
+/* ── Patient films ── */
+.videos {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  margin-top: clamp(3rem, 6vw, 5rem);
+}
+
+.video {
+  position: relative;
+  width: 100%;
+  /* Portrait, matching how these films were shot. */
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  border-radius: var(--v3-radius);
+  background: var(--v3-grey-100);
+}
+
+.video > * {
+  width: 100%;
+  height: 100%;
+}
+
+.embed {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+@media (min-width: 768px) {
+  .wall {
+    columns: 2;
+  }
+
+  .videos {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .wall {
+    columns: 3;
+  }
+}

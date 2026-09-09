@@ -1,0 +1,88 @@
+/* ── Proof strip ──
+   No cards, no boxes, no pills. Two hairlines and a lot of air. */
+
+.section {
+  padding-block: clamp(3rem, 6vw, 5rem);
+}
+
+.scores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(2rem, 5vw, 4rem);
+  margin: 0 0 clamp(2rem, 4vw, 3rem);
+  padding: 0;
+  list-style: none;
+}
+
+.score {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.scoreValue {
+  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: var(--v3-track-head);
+  font-variant-numeric: tabular-nums;
+}
+
+.scoreMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1875rem;
+}
+
+.scorePlatform {
+  font-size: var(--v3-small);
+  font-weight: 500;
+}
+
+.scoreCount {
+  font-size: var(--v3-label);
+  color: var(--v3-text-muted);
+}
+
+.certLabel {
+  margin: clamp(2rem, 4vw, 3rem) 0 clamp(1.5rem, 3vw, 2.25rem);
+  font-size: var(--v3-label);
+  font-weight: 500;
+  letter-spacing: var(--v3-track-label);
+  text-transform: uppercase;
+  color: var(--v3-text-muted);
+}
+
+.logos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.logoImg {
+  width: auto;
+  max-width: 100%;
+  height: clamp(1.75rem, 3.6vw, 2.5rem);
+  object-fit: contain;
+  /* Marks arrive in mixed colour and weight; desaturating and evening
+     the density stops the row reading as a ransom note. */
+  filter: grayscale(1) contrast(1.1);
+  opacity: 0.6;
+}
+
+@media (min-width: 768px) {
+  .logos {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
