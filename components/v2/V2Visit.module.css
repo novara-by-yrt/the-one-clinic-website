@@ -108,9 +108,6 @@
   width: 100%;
   height: 100%;
   border: 0;
-  /* Google's tiles are the one asset that cannot be art-directed, so
-     they are desaturated to match the rest of the page. */
-  filter: grayscale(1) contrast(1.05);
 }
 
 @media (min-width: 900px) {

@@ -1,5 +1,4 @@
 import BrandHero         from '@/components/brand/BrandHero';
-import BrandVideoSection from '@/components/brand/BrandVideoSection';
 import LogoCarousel      from '@/components/sections/LogoCarousel';
 import BrandTreatmentsLazy from '@/components/brand/BrandTreatmentsLazy';
 import BrandProcess      from '@/components/brand/BrandProcess';
@@ -17,10 +16,11 @@ export default function Home() {
       <JsonLd schema={buildClinicSchema()} />
       <BrandHero />
       <LogoCarousel />
-      <BrandVideoSection />
       <BrandTreatmentsLazy />
       <BrandProcess />
-      <Testimonials showVideos />
+      {/* Reviews only: `showVideos` defaults to false, which drops the
+          patient-film grid and leaves the review carousel. */}
+      <Testimonials />
       <MeetTheExperts />
       <CaseStudiesLazy />
       <LeadForm />

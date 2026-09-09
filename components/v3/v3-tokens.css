@@ -2,7 +2,9 @@
    V3 DESIGN TOKENS
 
    Editorial lifestyle-publication language, on the site's existing
-   black / white / grey brand palette. No hue is introduced anywhere.
+   black / white / grey brand palette. The interface introduces no hue
+   of its own; the photography and the accreditation marks run in full
+   colour against it.
 
    V3 is deliberately not V2. V2 is a hairline-ruled contact sheet:
    square corners, no chips, condensed copy, ink at both ends. V3 is a
@@ -274,14 +276,13 @@
 }
 
 /* ── Imagery ──
-   Desaturated so a colour-mixed asset library reads as one commissioned
-   set and the page holds its black, white and grey palette. */
+   Photography runs in its own colour against a black, white and grey
+   interface, so the images are the page's only chromatic element. */
 .v3-plate {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(1) contrast(1.03);
 }
 
 .v3-hairline {

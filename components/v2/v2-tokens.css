@@ -1,8 +1,10 @@
 /* ══════════════════════════════════════════════════════════════
    V2 DESIGN TOKENS
 
-   A light editorial monochrome system: paper ground, ink text, and a
-   grey scale that carries all hierarchy. No hue anywhere.
+   A light editorial system: paper ground, ink text, and a grey scale
+   that carries all hierarchy. The interface itself uses no hue; the
+   photography and the accreditation marks run in full colour against
+   it.
 
    V2 differs from V1 structurally, not just tonally. V1 alternates
    full-bleed black / grey / white surfaces and centres a chip above
@@ -257,15 +259,14 @@
 }
 
 /* ── Images ──
-   Photography is desaturated so a colour-mixed library of clinical and
-   portrait shots reads as one commissioned set. This is the only place
-   the design touches colour, and it removes it. */
+   Photography runs in its own colour. The UI around it stays black,
+   white and grey, so the images are the only chromatic element on the
+   page and they carry it deliberately. */
 .v2-plate {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(1) contrast(1.04);
 }
 
 /* Static page: the only transitions are hover and focus responses to a

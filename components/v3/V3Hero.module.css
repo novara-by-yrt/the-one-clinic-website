@@ -24,7 +24,6 @@
   object-fit: cover;
   /* Keeps the clinician in frame as the crop narrows. */
   object-position: 78% center;
-  filter: grayscale(1) contrast(1.03);
 }
 
 /* Two-stop scrim: heavier at the bottom where the copy sits on mobile,

@@ -59,7 +59,7 @@
 /* ── Logos ──
    Logos only. No category label under any mark: the mark is the
    credibility, and the alt text carries the name for screen readers.
-   Grayscale keeps a colour-mixed set on the page's monochrome palette. */
+   Each mark runs in its own brand colour. */
 .logos {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -83,10 +83,6 @@
   height: clamp(1.75rem, 4vw, 2.5rem);
   object-fit: contain;
   object-position: left center;
-  filter: grayscale(1) contrast(1.1);
-  /* Marks are drawn at many different weights; evening them out stops
-     the row reading as a ransom note. */
-  opacity: 0.62;
 }
 
 @media (min-width: 700px) {

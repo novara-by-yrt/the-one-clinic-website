@@ -41,7 +41,7 @@
 }
 
 .plate :global(.v2-plate) {
-  transition: transform 520ms var(--v2-ease), filter 520ms var(--v2-ease);
+  transition: transform 520ms var(--v2-ease);
 }
 
 /* The only hover move on the page: a slow, small scale that signals the
@@ -49,7 +49,6 @@
 .card:hover .plate :global(.v2-plate),
 .card:focus-visible .plate :global(.v2-plate) {
   transform: scale(1.03);
-  filter: grayscale(1) contrast(1.1);
 }
 
 .caption {
