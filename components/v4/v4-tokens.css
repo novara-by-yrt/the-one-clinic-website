@@ -1,0 +1,144 @@
+/* ══════════════════════════════════════════════════════════════
+   V4 DESIGN TOKENS
+
+   A magazine of spreads. One template repeats for every section: a 1:1
+   image column beside a text column, the image side alternating as the
+   page scrolls, each spread sized to read as one screen.
+
+   Palette is the site's existing black, white and grey. The interface
+   introduces no hue of its own; the photography carries colour.
+
+   Unlike V2 (hairline grid) and V3 (contained headers over card grids),
+   V4 has no section headers at all: the eyebrow, headline, body and CTA
+   live inside every spread, which is why the type scale below is tuned
+   for a half-width column rather than a full-width measure.
+══════════════════════════════════════════════════════════════ */
+
+.v4-root {
+  /* ── Surfaces ── */
+  --v4-paper: #ffffff;
+  --v4-paper-alt: #f5f5f4;
+  --v4-ink: #0b0b0c;
+  --v4-ink-soft: #191919;
+
+  /* Contrast against --v4-paper: 700 = 10.4:1, 600 = 7.4:1,
+     500 = 5.1:1 (AA body floor), 400 = 3.2:1 (large text only). */
+  --v4-grey-700: #2e2e31;
+  --v4-grey-600: #494950;
+  --v4-grey-500: #68686f;
+  --v4-grey-400: #8e8e97;
+  --v4-grey-300: #c4c4c9;
+  --v4-grey-200: #e4e4e5;
+
+  --v4-text: var(--v4-ink);
+  --v4-text-secondary: var(--v4-grey-600);
+  --v4-text-muted: var(--v4-grey-500);
+
+  /* The two bracketing spreads invert. */
+  --v4-on-ink: #f5f5f4;
+  --v4-on-ink-secondary: #bebec3;
+
+  /* ── Type ──
+     Inter is the only face in the repo and this build adds no assets, so
+     the editorial register comes from case, tracking and scale. The
+     headline is set uppercase via text-transform, which keeps the copy
+     itself verbatim in the markup. */
+  --v4-font: var(--font-inter), 'Inter', system-ui, sans-serif;
+
+  /* Sized for a half-width column, not a full-width page. */
+  --v4-display: clamp(2rem, 3.4vw, 3.25rem);
+  --v4-lead: clamp(1.0625rem, 1.15vw, 1.1875rem);
+  --v4-body: clamp(1rem, 1.05vw, 1.0625rem);
+  --v4-label: 0.75rem;
+
+  --v4-track-display: 0.005em;
+  --v4-track-label: 0.18em;
+
+  /* ── Rhythm ── */
+  --v4-pad-y: clamp(3.5rem, 6vw, 5.5rem);
+  --v4-pad-x: clamp(1.5rem, 5vw, 5rem);
+  --v4-measure: 46ch;
+
+  /* ── Shape ──
+     Square plates and pill controls, which is the pairing the reference
+     uses: a hard-edged image against a fully rounded button. */
+  --v4-radius-plate: 0px;
+  --v4-radius-pill: 999px;
+
+  --v4-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --v4-duration: 220ms;
+
+  font-family: var(--v4-font);
+  background: var(--v4-paper);
+  color: var(--v4-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SHARED PRIMITIVES
+══════════════════════════════════════════════════════════════ */
+
+/* Pill CTA, one treatment reused on every spread. Solid ink with white
+   text on paper spreads, inverted on the two ink spreads. */
+.v4-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.0625rem 2.25rem;
+  border: 1px solid var(--v4-ink);
+  border-radius: var(--v4-radius-pill);
+  background: var(--v4-ink);
+  color: var(--v4-on-ink);
+  font: inherit;
+  font-size: var(--v4-label);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  /* Labels are short; none may wrap. */
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--v4-duration) var(--v4-ease),
+    color var(--v4-duration) var(--v4-ease),
+    border-color var(--v4-duration) var(--v4-ease),
+    transform 120ms var(--v4-ease);
+}
+
+.v4-cta:hover {
+  background: var(--v4-ink-soft);
+  border-color: var(--v4-ink-soft);
+}
+
+.v4-cta:active {
+  transform: translateY(1px);
+}
+
+.v4-onInk .v4-cta {
+  background: var(--v4-on-ink);
+  border-color: var(--v4-on-ink);
+  color: var(--v4-ink);
+}
+
+.v4-onInk .v4-cta:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+}
+
+/* ── Focus, visible on both grounds ── */
+.v4-root :where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--v4-ink);
+  outline-offset: 3px;
+}
+
+.v4-onInk :where(a, button, [tabindex]):focus-visible {
+  outline-color: var(--v4-on-ink);
+}
+
+/* Static page: hover and focus are the only transitions, so reduced
+   motion just collapses them. */
+@media (prefers-reduced-motion: reduce) {
+  .v4-root * {
+    transition-duration: 1ms !important;
+  }
+}
