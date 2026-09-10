@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import JsonLd from '@/lib/schema/JsonLd';
 import { buildClinicSchema } from '@/lib/schema/builders';
-import V4Hero from '@/components/v4/V4Hero';
-import V4Spread, { type Spread } from '@/components/v4/V4Spread';
+import V4Track from '@/components/v4/V4Track';
+import V4HeroPanel from '@/components/v4/V4HeroPanel';
+import V4Panel, { type Panel } from '@/components/v4/V4Panel';
+import V4ClosingPanel from '@/components/v4/V4ClosingPanel';
 import '@/components/v4/v4-tokens.css';
 
 export const metadata: Metadata = {
@@ -14,29 +16,26 @@ export const metadata: Metadata = {
 };
 
 /**
- * V4 - the homepage as a magazine of spreads.
+ * V4 - the homepage as a magazine that flips sideways.
  *
- * The page opens on a wide centred hero over a full-bleed background
- * image, then settles into the spread template: a 1:1 image column
- * beside a text column of eyebrow, headline, body and one pill CTA,
- * each spread sized to read as one screen. The image side alternates
- * down the page, which is where the editorial rhythm comes from; the
- * template itself never varies. That is a deliberate inversion of how
- * /v2 and /v3 work, where no two sections share a layout.
+ * On tablet-landscape and up the page is a single horizontal track of
+ * full-viewport panels, moved by native CSS scroll snapping; below that
+ * the track collapses to an ordinary vertical stack with each panel's
+ * image on top and its text beneath. See V4Track for the mechanics.
+ *
+ * Panel 1 is the cover: centred copy over a full-bleed image. Panels 2
+ * to 6 are the spread template, a 1:1 image column beside a text column,
+ * alternating which side the image sits on. Panel 7 closes the magazine
+ * and carries the site footer's content, because a horizontal track has
+ * no bottom for a footer to sit under.
  *
  * Copy is the live homepage's, unaltered. The headlines are set
  * uppercase in CSS rather than in these strings, so the wording here
  * still matches the homepage character for character.
- *
- * Grounds run ink, then light, then ink. The ink hero and ink closing
- * spread bracket the page, and the hero also gives the site header,
- * which renders white on transparent until the reader scrolls, a dark
- * band to sit on. Between them the light spreads alternate white and
- * off-white, which separates one spread from the next without leaving
- * the light family.
  */
-const SPREADS: Spread[] = [
+const PANELS: (Panel & { id: string })[] = [
   {
+    id: 'treatments',
     eyebrow: 'Medical Aesthetics & Health Care',
     headline: 'Our Popular Treatments',
     body: [
@@ -51,6 +50,7 @@ const SPREADS: Spread[] = [
     tone: 'paper',
   },
   {
+    id: 'mission',
     eyebrow: 'Our Mission',
     headline: 'A Fresh Perspective on Aesthetics & Well-being',
     body: [
@@ -65,6 +65,7 @@ const SPREADS: Spread[] = [
     tone: 'paperAlt',
   },
   {
+    id: 'clinic',
     eyebrow: 'Our Clinic',
     headline: 'A Space Built Entirely Around You',
     body: [
@@ -79,6 +80,7 @@ const SPREADS: Spread[] = [
     tone: 'paper',
   },
   {
+    id: 'reviews',
     eyebrow: 'Loved by Thousands',
     headline: 'What Our Customers Say',
     body: [
@@ -93,6 +95,7 @@ const SPREADS: Spread[] = [
     tone: 'paperAlt',
   },
   {
+    id: 'results',
     eyebrow: 'Patient Outcomes',
     headline: 'Real Transformations',
     body: [
@@ -109,34 +112,27 @@ const SPREADS: Spread[] = [
     imageSide: 'left',
     tone: 'paper',
   },
-  {
-    eyebrow: 'Take the First Step',
-    headline: 'Ready to Feel Your Best?',
-    body: [
-      'Our team is here to help. Book your consultation today and take control of your health and confidence.',
-    ],
-    cta: { label: 'Book Your Consultation' },
-    image: {
-      src: '/images/Juliane.jpg',
-      alt: 'A patient of The One Clinic receiving an aesthetic treatment',
-    },
-    imageSide: 'right',
-    tone: 'ink',
-  },
 ];
 
-const IDS = ['treatments', 'mission', 'clinic', 'reviews', 'results', 'book'];
+// Cover + spreads + closing panel.
+const TOTAL = PANELS.length + 2;
 
 export default function V4Page() {
   return (
     <div className="v4-root">
       <JsonLd schema={buildClinicSchema()} />
 
-      <V4Hero />
+      <V4Track count={TOTAL}>
+        <V4HeroPanel id="cover" />
 
-      {SPREADS.map((spread, i) => (
-        <V4Spread key={IDS[i]} id={IDS[i]} {...spread} />
-      ))}
+        {PANELS.map((panel, i) => (
+          // The first spread loads eagerly as well as the cover, so a
+          // fast flip off the cover never lands on a blank panel.
+          <V4Panel key={panel.id} {...panel} eager={i === 0} />
+        ))}
+
+        <V4ClosingPanel id="visit" />
+      </V4Track>
     </div>
   );
 }

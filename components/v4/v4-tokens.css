@@ -1,17 +1,13 @@
 /* ══════════════════════════════════════════════════════════════
    V4 DESIGN TOKENS
 
-   A magazine of spreads. One template repeats for every section: a 1:1
-   image column beside a text column, the image side alternating as the
-   page scrolls, each spread sized to read as one screen.
+   A magazine that flips sideways. On desktop the page is a single
+   horizontal track of full-viewport panels driven by native CSS scroll
+   snapping; below tablet-landscape the track collapses to an ordinary
+   vertical stack.
 
    Palette is the site's existing black, white and grey. The interface
    introduces no hue of its own; the photography carries colour.
-
-   Unlike V2 (hairline grid) and V3 (contained headers over card grids),
-   V4 has no section headers at all: the eyebrow, headline, body and CTA
-   live inside every spread, which is why the type scale below is tuned
-   for a half-width column rather than a full-width measure.
 ══════════════════════════════════════════════════════════════ */
 
 .v4-root {
@@ -34,7 +30,6 @@
   --v4-text-secondary: var(--v4-grey-600);
   --v4-text-muted: var(--v4-grey-500);
 
-  /* The two bracketing spreads invert. */
   --v4-on-ink: #f5f5f4;
   --v4-on-ink-secondary: #bebec3;
 
@@ -51,26 +46,31 @@
      Inter is the only face in the repo and this build adds no assets, so
      the editorial register comes from case, tracking and scale. The
      headline is set uppercase via text-transform, which keeps the copy
-     itself verbatim in the markup. */
+     itself verbatim in the markup.
+
+     Every size is capped in vh as well as vw: a panel is exactly one
+     viewport tall, so on a short laptop the type has to come down or the
+     copy will not fit its panel. */
   --v4-font: var(--font-inter), 'Inter', system-ui, sans-serif;
 
-  /* Sized for a half-width column, not a full-width page. */
-  --v4-display: clamp(2rem, 3.4vw, 3.25rem);
-  --v4-lead: clamp(1.0625rem, 1.15vw, 1.1875rem);
-  --v4-body: clamp(1rem, 1.05vw, 1.0625rem);
-  --v4-label: 0.75rem;
+  --v4-display: clamp(1.75rem, min(3vw, 4.4vh), 3rem);
+  --v4-lead: clamp(1rem, min(1.05vw, 1.9vh), 1.125rem);
+  --v4-body: clamp(0.9375rem, min(1vw, 1.75vh), 1.0625rem);
+  --v4-label: clamp(0.6875rem, min(0.8vw, 1.3vh), 0.75rem);
 
   --v4-track-display: 0.005em;
   --v4-track-label: 0.18em;
 
-  /* ── Rhythm ── */
-  --v4-pad-y: clamp(3.5rem, 6vw, 5.5rem);
-  --v4-pad-x: clamp(1.5rem, 5vw, 5rem);
-  --v4-measure: 46ch;
+  /* ── Rhythm ──
+     Panels clear the fixed site header at the top and the page indicator
+     at the bottom, because both float over every panel in horizontal
+     mode. */
+  --v4-pad-top: clamp(5.5rem, 11vh, 7.5rem);
+  --v4-pad-bottom: clamp(3.5rem, 8vh, 5.5rem);
+  --v4-pad-x: clamp(1.5rem, 4vw, 4.5rem);
+  --v4-measure: 44ch;
 
-  /* ── Shape ──
-     Square plates and pill controls, which is the pairing the reference
-     uses: a hard-edged image against a fully rounded button. */
+  /* ── Shape ── */
   --v4-radius-plate: 0px;
   --v4-radius-pill: 999px;
 
@@ -84,16 +84,33 @@
 }
 
 /* ══════════════════════════════════════════════════════════════
+   HORIZONTAL MODE SCROLL LOCK
+
+   Set by V4Track on the root element while the horizontal media query
+   matches, and removed when it stops matching or the route unmounts. The
+   track becomes the page's only scroll container, so the document itself
+   must not scroll vertically: without this the panels' 100dvh height
+   plus any chrome would leave a stray vertical scrollbar, and 100vw
+   would then be narrower than the panels.
+══════════════════════════════════════════════════════════════ */
+
+html.v4-horizontal,
+html.v4-horizontal body {
+  height: 100%;
+  overflow-y: hidden;
+}
+
+/* ══════════════════════════════════════════════════════════════
    SHARED PRIMITIVES
 ══════════════════════════════════════════════════════════════ */
 
-/* Pill CTA, one treatment reused on every spread. Solid ink with white
-   text on paper spreads, inverted on the two ink spreads. */
+/* Pill CTA, one treatment reused on every panel. Solid ink with white
+   text on paper panels, inverted on the ink ones. */
 .v4-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1.0625rem 2.25rem;
+  padding: 0.9375rem 2rem;
   border: 1px solid var(--v4-ink);
   border-radius: var(--v4-radius-pill);
   background: var(--v4-ink);
@@ -103,7 +120,6 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  /* Labels are short; none may wrap. */
   white-space: nowrap;
   text-decoration: none;
   cursor: pointer;
@@ -157,10 +173,29 @@
   outline-color: var(--v4-on-ink);
 }
 
-/* Static page: hover and focus are the only transitions, so reduced
-   motion just collapses them. */
 @media (prefers-reduced-motion: reduce) {
   .v4-root * {
     transition-duration: 1ms !important;
   }
+}
+
+/* ── Header theme sentinel ──
+   The site Header picks its treatment from an IntersectionObserver over
+   [data-section-theme]. In the horizontal track the panels are flush
+   neighbours, so the next panel's left edge touches the viewport's right
+   edge and Chromium reports it as intersecting too; with two panels in
+   one batch the Header's tie-break can settle on the one that is off
+   screen (measured: the paper panel before the ink closing panel took
+   the ink treatment, putting a near-white pill on a near-white panel).
+   Carrying the attribute on an element inset from the panel's sides
+   removes the tie, because only the panel actually filling the viewport
+   is ever reported. Full height, because the Header observes a band just
+   below the viewport top. */
+.v4-themeMark {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 25%;
+  right: 25%;
+  pointer-events: none;
 }

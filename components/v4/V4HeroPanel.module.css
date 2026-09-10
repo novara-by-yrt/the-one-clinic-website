@@ -1,27 +1,20 @@
-/* ── Hero ──
+/* ── Hero panel ──
    Full-bleed background image, centred content.
 
-   Responsive strategy, in order of what actually breaks:
-   1. The subject sits right of frame in the source, so `object-position`
-      moves right as the viewport narrows, keeping the face out from
-      behind the centred type for as long as possible.
-   2. Once it cannot (portrait phones), the scrim carries the contrast
-      instead. It is layered rather than a single flat wash: a base
-      that darkens the whole frame plus a vertical gradient weighted to
-      the middle, where the type sits.
-   3. Height is dvh-based with a cap, and the content is padded clear of
-      the fixed site header at every width.
+   The subject sits right of frame in the source, so `object-position`
+   moves right as the viewport narrows, keeping the face out from behind
+   the centred type for as long as possible. Once it cannot, the scrim
+   carries the contrast: layered rather than a single flat wash, so the
+   middle band where the type sits is darkest.
 */
 
-.hero {
+.panel {
   position: relative;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: min(100dvh, 940px);
-  padding: clamp(7rem, 14vw, 9.5rem) var(--v4-pad-x) clamp(3.5rem, 7vw, 5rem);
+  padding: var(--v4-pad-top) var(--v4-pad-x) var(--v4-pad-bottom);
   background: var(--v4-ink);
   color: var(--v4-on-ink);
   overflow: hidden;
@@ -36,7 +29,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Mobile: push the subject as far right as possible. */
+  /* Narrow viewports: push the subject as far right as possible. */
   object-position: 88% center;
 }
 
@@ -58,13 +51,12 @@
   position: relative;
   width: 100%;
   max-width: 46rem;
-  /* Centred block, centred text. */
   margin-inline: auto;
   text-align: center;
 }
 
 .eyebrow {
-  margin: 0 0 clamp(1.125rem, 2.2vw, 1.75rem);
+  margin: 0 0 clamp(1rem, 2.2vh, 1.75rem);
   font-size: var(--v4-label);
   font-weight: 600;
   letter-spacing: var(--v4-track-label);
@@ -74,7 +66,7 @@
 
 .headline {
   margin: 0;
-  font-size: clamp(2.25rem, 5.4vw, 4.25rem);
+  font-size: clamp(2rem, min(4.6vw, 6.4vh), 4rem);
   font-weight: 500;
   /* 1.08 rather than 1: "Expertise" has a descender that clips tighter. */
   line-height: 1.08;
@@ -86,8 +78,8 @@
 }
 
 .tagline {
-  margin: clamp(0.875rem, 1.6vw, 1.25rem) 0 0;
-  font-size: clamp(1.0625rem, 1.7vw, 1.375rem);
+  margin: clamp(0.75rem, 1.6vh, 1.25rem) 0 0;
+  font-size: clamp(1rem, min(1.6vw, 2.6vh), 1.375rem);
   font-weight: 400;
   line-height: 1.3;
   letter-spacing: -0.01em;
@@ -95,7 +87,7 @@
 }
 
 .subtext {
-  margin: clamp(1.125rem, 2vw, 1.625rem) auto 0;
+  margin: clamp(1rem, 2vh, 1.625rem) auto 0;
   max-width: 34ch;
   font-size: var(--v4-lead);
   line-height: 1.6;
@@ -106,11 +98,9 @@
 .actions {
   display: flex;
   flex-wrap: wrap;
-  /* Centred, and wrapping to a stack on the narrowest phones without
-     either button stretching. */
   justify-content: center;
   gap: 0.75rem;
-  margin-top: clamp(1.75rem, 3.2vw, 2.5rem);
+  margin-top: clamp(1.5rem, 3.2vh, 2.5rem);
 }
 
 @media (min-width: 700px) {
@@ -118,8 +108,8 @@
     object-position: 78% center;
   }
 
-  /* With more width the subject clears the type, so the wash can ease
-     off and let more of the photograph through. */
+  /* With more width the subject clears the type, so the wash eases off
+     and lets more of the photograph through. */
   .scrim {
     background:
       linear-gradient(
@@ -133,7 +123,17 @@
   }
 }
 
-@media (min-width: 1100px) {
+/* ── Horizontal mode ── */
+@media (min-width: 1024px) and (orientation: landscape) {
+  .panel {
+    flex: 0 0 100vw;
+    width: 100vw;
+    height: 100dvh;
+    min-height: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
   .image {
     object-position: 72% center;
   }

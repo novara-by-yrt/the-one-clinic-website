@@ -12,6 +12,15 @@
   overflow: clip;
 }
 
+/* Routes that render no site footer: the rounding and the clip exist
+   only to curve the page into the footer beneath it, so without one they
+   would just notch the corners of a full-viewport page. */
+.contentFlush {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  overflow: visible;
+}
+
 /* Transparent spacer that creates scroll room for the fixed footer.
    pointer-events:none ensures clicks pass straight through to the footer. */
 .footerSpacer {

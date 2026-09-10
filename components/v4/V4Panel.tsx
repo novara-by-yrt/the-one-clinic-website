@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import BookConsultationButton from '@/components/ui/BookConsultationButton';
-import styles from './V4Spread.module.css';
+import styles from './V4Panel.module.css';
 
-export type Spread = {
+export type Panel = {
   /** Small uppercase kicker above the headline. */
   eyebrow: string;
   headline: string;
@@ -12,34 +12,36 @@ export type Spread = {
   /** Omit `href` to open the site's booking modal instead of navigating. */
   cta: { label: string; href?: string };
   image: { src: string; alt: string };
-  /** Which side the image sits on at desktop. The page alternates it. */
+  /** Which side the image sits on in horizontal mode. The page alternates it. */
   imageSide: 'left' | 'right';
   tone?: 'paper' | 'paperAlt' | 'ink';
 };
 
-type Props = Spread & { id?: string };
+type Props = Panel & {
+  id: string;
+  /**
+   * Panel 1 loads eagerly; panel 2 also loads eagerly so a fast flip off
+   * the first panel never lands on a blank one. Everything further along
+   * is lazy.
+   */
+  eager?: boolean;
+};
 
 /**
- * One magazine spread: a 1:1 image column beside a text column.
+ * One panel of the magazine: a 1:1 image column beside a text column.
  *
- * This is the page's only section component. Every spread on /v4 is an
- * instance of it, which is the point of the layout: the template is
- * fixed and the rhythm comes from alternating which side the image sits
- * on. Nothing is layered over the photograph, so contrast is a property
- * of the ground rather than of the crop.
+ * The panel is a real <section> with a real heading and its content in
+ * reading order, so the horizontal presentation costs nothing in
+ * crawlability or screen-reader order. Markup order is image then text,
+ * which is also the order the vertical fallback stacks in; horizontal
+ * mode reorders the two columns visually only.
  *
- * The image is always rendered into a 1:1 box with object-fit cover, so
- * source images of any ratio centre-crop to a square rather than
- * letterboxing.
- *
- * Markup order is image then text, which is the order mobile stacks in.
- * Desktop reorders the two columns visually; the reading order carries
- * no meaning here, so nothing is lost to assistive technology.
- *
- * Every spread sits below the hero, so every spread image is lazy and
- * every heading is an h2; the page's h1 lives in V4Hero.
+ * The image always renders into a 1:1 box with object-fit cover, so
+ * source images of any ratio centre-crop to a square. In horizontal mode
+ * the square is additionally capped to the panel's usable height, so a
+ * short laptop shrinks the square rather than overflowing the panel.
  */
-export default function V4Spread({
+export default function V4Panel({
   eyebrow,
   headline,
   body,
@@ -48,26 +50,26 @@ export default function V4Spread({
   imageSide,
   tone = 'paper',
   id,
+  eager = false,
 }: Props) {
-  const headingId = id ? `${id}-title` : undefined;
-
   return (
     <section
       id={id}
       className={[
-        styles.spread,
+        styles.panel,
         styles[tone],
         imageSide === 'right' ? styles.imageRight : styles.imageLeft,
         tone === 'ink' ? 'v4-onInk' : '',
       ]
         .filter(Boolean)
         .join(' ')}
-      data-section-theme={tone === 'ink' ? 'dark' : 'light'}
-      aria-labelledby={headingId}
+      aria-labelledby={`${id}-title`}
     >
-      {/* The section paints the ground edge to edge; this inner grid is
-          what carries the column split and the max-width, so a capped
-          spread never leaves the page ground showing beside it. */}
+      <span
+        className="v4-themeMark"
+        data-section-theme={tone === 'ink' ? 'dark' : 'light'}
+        aria-hidden="true"
+      />
       <div className={styles.inner}>
         <div className={styles.media}>
           <div className={styles.plate}>
@@ -75,9 +77,9 @@ export default function V4Spread({
               src={image.src}
               alt={image.alt}
               fill
-              loading="lazy"
+              loading={eager ? 'eager' : 'lazy'}
               quality={75}
-              sizes="(max-width: 899px) 100vw, 48vw"
+              sizes="(max-width: 1023px) 100vw, 48vw"
               className={styles.image}
             />
           </div>
@@ -87,7 +89,7 @@ export default function V4Spread({
           <div className={styles.textInner}>
             <p className={styles.eyebrow}>{eyebrow}</p>
 
-            <h2 id={headingId} className={styles.headline}>
+            <h2 id={`${id}-title`} className={styles.headline}>
               {headline}
             </h2>
 

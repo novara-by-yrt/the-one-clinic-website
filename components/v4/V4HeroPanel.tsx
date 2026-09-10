@@ -1,34 +1,34 @@
 import Image from 'next/image';
 import { CLINIC_INFO } from '@/lib/clinic-info';
 import BookConsultationButton from '@/components/ui/BookConsultationButton';
-import styles from './V4Hero.module.css';
+import styles from './V4HeroPanel.module.css';
 
 /**
- * Centred hero over a full-bleed background image.
+ * The opening panel: centred copy over a full-bleed background image.
  *
- * The rest of /v4 is the two-column spread template; this is the one
- * section that breaks it, so the page opens on a single wide moment
- * before settling into the magazine rhythm.
+ * This is the one panel that is not a two-column split. It is kept that
+ * way deliberately, because it is the design agreed for the v4 opening
+ * and a cover works differently from the spreads that follow it: a
+ * magazine's cover is not one of its spreads.
  *
- * The photograph is monochrome in the source file, which keeps the
- * page's black, white and grey palette intact, and it is composed with
- * the subject to one side. It is positioned so that subject sits clear
- * of the centred type at desktop, and a layered scrim underneath
- * guarantees the contrast rather than leaving it to the crop, which is
- * what changes as the viewport narrows and the subject moves behind the
- * text.
+ * The photograph is monochrome in the source file, so the page's black,
+ * white and grey palette is untouched, and it is composed with the
+ * subject to one side. It is positioned so that subject sits clear of
+ * the centred type, and a layered scrim underneath guarantees the
+ * contrast rather than leaving it to the crop.
  *
  * Copy is the live homepage hero's, unaltered. Both button labels are
  * the homepage's own: the primary from the hero, the secondary from the
  * closing call to action.
  */
-export default function V4Hero() {
+export default function V4HeroPanel({ id }: { id: string }) {
   return (
     <section
-      className={`${styles.hero} v4-onInk`}
-      data-section-theme="dark"
-      aria-labelledby="v4-hero-title"
+      id={id}
+      className={`${styles.panel} v4-onInk`}
+      aria-labelledby={`${id}-title`}
     >
+      <span className="v4-themeMark" data-section-theme="dark" aria-hidden="true" />
       <div className={styles.media} aria-hidden="true">
         {/* The page's LCP element, so it loads eagerly and is
             prioritised. Next 16 deprecates `priority` in favour of
@@ -49,7 +49,7 @@ export default function V4Hero() {
       <div className={styles.inner}>
         <p className={styles.eyebrow}>Medical &amp; Aesthetic Care, Leicester</p>
 
-        <h1 id="v4-hero-title" className={styles.headline}>
+        <h1 id={`${id}-title`} className={styles.headline}>
           Where Expertise Meets Care
         </h1>
 

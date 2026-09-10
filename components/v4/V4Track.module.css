@@ -1,0 +1,186 @@
+/* ── Track ──
+   Vertical mode: a plain block, so the panels stack and the page
+   scrolls normally. Nothing from horizontal mode applies.
+*/
+
+.track {
+  display: block;
+}
+
+/* All horizontal chrome is hidden below the breakpoint: display:none
+   also takes the buttons out of the tab order, so vertical mode has
+   nothing extra to tab through. */
+.chrome {
+  display: none;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   HORIZONTAL MODE
+══════════════════════════════════════════════════════════════ */
+@media (min-width: 1024px) and (orientation: landscape) {
+  .track {
+    display: flex;
+    height: 100dvh;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    /* Stops a trackpad swipe at either end from triggering the browser's
+       back / forward gesture. */
+    overscroll-behavior-x: contain;
+    scroll-behavior: smooth;
+    /* The arrows and the indicator are the affordance; a scrollbar under
+       a full-bleed panel just reads as a rendering artefact. */
+    scrollbar-width: none;
+  }
+
+  .track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .chrome {
+    display: block;
+  }
+
+  /* ── Arrows ── */
+  .arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 40;
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid var(--v4-grey-300);
+    border-radius: var(--v4-radius-pill);
+    background: rgb(255 255 255 / 0.86);
+    backdrop-filter: blur(6px);
+    cursor: pointer;
+    transition:
+      background-color var(--v4-duration) var(--v4-ease),
+      border-color var(--v4-duration) var(--v4-ease),
+      opacity var(--v4-duration) var(--v4-ease);
+  }
+
+  .arrowPrev {
+    left: clamp(0.75rem, 1.6vw, 1.5rem);
+  }
+
+  .arrowNext {
+    right: clamp(0.75rem, 1.6vw, 1.5rem);
+  }
+
+  .arrow:hover:not(:disabled) {
+    background: #ffffff;
+    border-color: var(--v4-ink);
+  }
+
+  .arrow:disabled {
+    opacity: 0.32;
+    cursor: default;
+  }
+
+  /* A chevron drawn from two borders rather than an SVG icon: it is a
+     geometric mark, not an icon that belongs to a set. */
+  .arrowGlyph {
+    width: 0.625rem;
+    height: 0.625rem;
+    border-top: 1.5px solid var(--v4-ink);
+    border-right: 1.5px solid var(--v4-ink);
+  }
+
+  .arrowPrev .arrowGlyph {
+    transform: rotate(-135deg);
+    margin-left: -0.15rem;
+  }
+
+  .arrowNext .arrowGlyph {
+    transform: rotate(45deg);
+    margin-right: -0.15rem;
+  }
+
+  /* ── Page indicator ──
+     Bottom right: the site's floating call-back pill sits bottom centre
+     on every route and its WhatsApp button bottom left, and the latter
+     is z-index 80 to this layer's 40, so anything on that corner ends up
+     underneath it. The next arrow is vertically centred, so it does not
+     reach down here. */
+  .indicator {
+    position: fixed;
+    right: clamp(1rem, 2.4vw, 2.5rem);
+    bottom: clamp(1rem, 2.4vw, 2rem);
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 0.5rem 0.875rem;
+    border-radius: var(--v4-radius-pill);
+    background: rgb(255 255 255 / 0.86);
+    backdrop-filter: blur(6px);
+    border: 1px solid var(--v4-grey-200);
+  }
+
+  .count {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+    margin: 0;
+    font-size: var(--v4-label);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    font-variant-numeric: tabular-nums;
+    color: var(--v4-ink);
+  }
+
+  .countSep,
+  .countTotal {
+    color: var(--v4-text-muted);
+  }
+
+  .dashes {
+    display: flex;
+    align-items: center;
+    gap: 0.3125rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .dash {
+    display: block;
+    width: 1.125rem;
+    height: 2px;
+    padding: 0;
+    border: 0;
+    border-radius: 2px;
+    background: var(--v4-grey-300);
+    cursor: pointer;
+    transition: background-color var(--v4-duration) var(--v4-ease);
+  }
+
+  /* A larger invisible hit area, so a 2px-tall mark is still a
+     comfortable target. */
+  .dash::after {
+    content: '';
+    display: block;
+    height: 1.25rem;
+    margin-top: -0.625rem;
+  }
+
+  .dash:hover {
+    background: var(--v4-grey-500);
+  }
+
+  .dashOn {
+    background: var(--v4-ink);
+  }
+}
+
+/* Users who ask for reduced motion get instant jumps rather than a
+   smooth-scrolled travel across the panel. */
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    scroll-behavior: auto;
+  }
+}

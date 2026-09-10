@@ -1,0 +1,215 @@
+/* ── Closing panel ──
+   Carries the closing call to action and the footer's content, because
+   a horizontal track has no bottom for a footer to sit under.
+
+   Three stacked bands: the call to action, the details columns, then the
+   legal line. In horizontal mode the whole thing is sized to fit one
+   panel, so the type comes down and the bands tighten.
+*/
+
+.panel {
+  /* Anchors the .v4-themeMark sentinel. */
+  position: relative;
+  background: var(--v4-ink);
+  color: var(--v4-on-ink);
+  padding: clamp(3.5rem, 9vw, 5.5rem) var(--v4-pad-x);
+}
+
+.inner {
+  width: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+  display: grid;
+  gap: clamp(2.5rem, 5vh, 4rem);
+  align-content: center;
+}
+
+/* ── Call to action ── */
+.lead {
+  max-width: 44ch;
+}
+
+.eyebrow {
+  margin: 0 0 clamp(0.875rem, 2vh, 1.5rem);
+  font-size: var(--v4-label);
+  font-weight: 600;
+  letter-spacing: var(--v4-track-label);
+  text-transform: uppercase;
+  color: var(--v4-on-ink-secondary);
+}
+
+.headline {
+  margin: 0;
+  font-size: var(--v4-display);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: var(--v4-track-display);
+  text-transform: uppercase;
+  color: var(--v4-on-ink);
+  text-wrap: balance;
+}
+
+.body {
+  margin: clamp(0.875rem, 2vh, 1.375rem) 0 0;
+  max-width: 42ch;
+  font-size: var(--v4-body);
+  line-height: 1.65;
+  /* 8.4:1 against --v4-ink. */
+  color: var(--v4-on-ink-secondary);
+  text-wrap: pretty;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: clamp(1.25rem, 2.8vh, 2rem);
+}
+
+/* ── Details ── */
+.details {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(2rem, 4vh, 3rem);
+  padding-top: clamp(1.75rem, 3.5vh, 2.5rem);
+  border-top: 1px solid rgb(255 255 255 / 0.16);
+}
+
+.nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.block {
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+}
+
+.blockLabel {
+  margin: 0 0 0.25rem;
+  font-size: var(--v4-label);
+  font-weight: 600;
+  letter-spacing: var(--v4-track-label);
+  text-transform: uppercase;
+  color: var(--v4-on-ink-secondary);
+}
+
+.list {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link {
+  font-size: var(--v4-body);
+  line-height: 1.4;
+  color: var(--v4-on-ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--v4-duration) var(--v4-ease);
+  /* The email is long enough to overflow a narrow column. */
+  overflow-wrap: anywhere;
+  justify-self: start;
+}
+
+.link:hover {
+  border-bottom-color: var(--v4-on-ink);
+}
+
+.address {
+  margin: 0;
+  font-size: var(--v4-body);
+  line-height: 1.5;
+  font-style: normal;
+  color: var(--v4-on-ink-secondary);
+}
+
+/* ── Legal ── */
+.legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  padding-top: clamp(1.25rem, 2.5vh, 1.75rem);
+  border-top: 1px solid rgb(255 255 255 / 0.16);
+}
+
+.legalLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+}
+
+.legalLink {
+  font-size: var(--v4-label);
+  color: var(--v4-on-ink-secondary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color var(--v4-duration) var(--v4-ease);
+}
+
+.legalLink:hover {
+  color: var(--v4-on-ink);
+}
+
+.copyright {
+  margin: 0;
+  font-size: var(--v4-label);
+  letter-spacing: 0.04em;
+  color: var(--v4-on-ink-secondary);
+}
+
+@media (min-width: 700px) {
+  .details {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 2fr);
+    gap: clamp(2rem, 4vw, 4rem);
+  }
+}
+
+/* ── Horizontal mode ── */
+@media (min-width: 1024px) and (orientation: landscape) {
+  .panel {
+    flex: 0 0 100vw;
+    width: 100vw;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    overflow: hidden;
+    padding-top: var(--v4-pad-top);
+    padding-bottom: var(--v4-pad-bottom);
+  }
+
+  /* Two columns, like every spread before it, instead of three stacked
+     full-width bands. The stack does not fit a short panel: measured at
+     1024x640 it wanted 565px of a 496px box, and the panel's top padding
+     has to stay large enough to clear the fixed header, so the room has
+     to come from the layout rather than from the type. Pairing the call
+     to action with the details also gives the closing panel the same
+     rhythm as the spreads. */
+  .inner {
+    grid-template-columns: minmax(0, 47fr) minmax(0, 53fr);
+    column-gap: clamp(2.25rem, 4.5vw, 4.5rem);
+    row-gap: clamp(1.5rem, 4vh, 2.75rem);
+    align-items: start;
+  }
+
+  .details {
+    /* The column edge separates the two blocks here, so the horizontal
+       rule the stacked version needed would just be noise. */
+    padding-top: 0;
+    border-top: 0;
+    border-left: 1px solid rgb(255 255 255 / 0.16);
+    padding-left: clamp(2rem, 3.5vw, 3.5rem);
+  }
+
+  .legal {
+    grid-column: 1 / -1;
+  }
+}

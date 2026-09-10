@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { isV1Route } from '@/components/v1/v1-routes';
+import { isV4Route } from '@/components/v4/v4-routes';
 import { m, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -244,7 +245,19 @@ export default function Header() {
   const pillRef     = useRef<HTMLDivElement>(null);
 
   const headerTheme: Theme = sectionTheme === 'dark' ? 'light' : 'dark';
-  const theme: Theme       = !scrolled ? 'dark' : headerTheme;
+  /**
+   * At the very top of a page the header is deliberately a transparent
+   * bar with white text, which only works because every route opens on a
+   * dark section. The v4 magazine breaks the premise: it is a horizontal
+   * track, so the document never scrolls, `scrolled` never becomes true,
+   * and the header would sit on that transparent treatment over paper
+   * panels for the whole route - white on white. There, take the section
+   * theme from the start. Every other route is unaffected: isV4Route is
+   * false for them and this reads exactly as it did before.
+   */
+  const noPageScroll = isV4Route(pathname);
+  const settled: boolean   = scrolled || noPageScroll;
+  const theme: Theme       = !settled ? 'dark' : headerTheme;
 
   // ── Scroll detection ─────────────────────────────────────────
   useEffect(() => {
@@ -502,7 +515,7 @@ export default function Header() {
   // Placed after the hooks so hook order stays stable across routes.
   if (isV1Route(pathname)) return null;
 
-  const pillAnimate = getPillAnimate(scrolled, sectionTheme);
+  const pillAnimate = getPillAnimate(settled, sectionTheme);
   const anyMegaOpen = openDropdown !== null && !!NAV[openDropdown]?.groups;
 
   return (
@@ -513,7 +526,7 @@ export default function Header() {
           ref={pillRef}
           className={styles.pill}
           data-theme={theme}
-          data-scrolled={scrolled}
+          data-scrolled={settled}
           animate={pillAnimate}
           transition={PILL_TRANSITION}
         >
