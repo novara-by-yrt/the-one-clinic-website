@@ -25,15 +25,6 @@
   align-items: center;
 }
 
-/* The first spread starts below the fixed site header, so the header
-   sits over the section's own ground rather than over the photograph.
-   That matters because the header renders white on transparent until the
-   reader scrolls, on every route: over a bright image its navigation
-   would disappear. */
-.firstSpread .inner {
-  padding-top: clamp(5.5rem, 11vw, 8rem);
-}
-
 /* ── Tones ── */
 .paper {
   background: var(--v4-paper);
@@ -158,13 +149,6 @@
     max-height: 100dvh;
     max-width: 100dvh;
     margin-inline: auto;
-  }
-
-  /* The first spread's square also has to clear the header band above
-     it, or the spread runs past one screen. */
-  .firstSpread .plate {
-    max-height: calc(100dvh - 10rem);
-    max-width: calc(100dvh - 10rem);
   }
 
   /* Image left is the default DOM order. Image right swaps the two

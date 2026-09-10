@@ -38,6 +38,15 @@
   --v4-on-ink: #f5f5f4;
   --v4-on-ink-secondary: #bebec3;
 
+  /* Secondary text sitting over a photograph rather than over solid ink.
+     Lighter than --v4-on-ink-secondary on purpose: measured against the
+     hero's actual painted pixels, #bebec3 came in at 3.96:1 on the
+     eyebrow, because light-grey text against a dark photograph loses
+     contrast by being too dim rather than by the image being too bright.
+     This value measures 5.3:1 or better at every width while staying
+     subordinate to the headline's near-white. */
+  --v4-on-image-secondary: #dcdce0;
+
   /* ── Type ──
      Inter is the only face in the repo and this build adds no assets, so
      the editorial register comes from case, tracking and scale. The
@@ -123,6 +132,19 @@
 .v4-onInk .v4-cta:hover {
   background: #ffffff;
   border-color: #ffffff;
+}
+
+/* Secondary pill, used only where two actions sit together. Outlined
+   rather than filled, so the primary stays the one that reads first. */
+.v4-onInk .v4-ctaGhost {
+  background: transparent;
+  border-color: rgb(255 255 255 / 0.5);
+  color: var(--v4-on-ink);
+}
+
+.v4-onInk .v4-ctaGhost:hover {
+  background: rgb(255 255 255 / 0.12);
+  border-color: var(--v4-on-ink);
 }
 
 /* ── Focus, visible on both grounds ── */

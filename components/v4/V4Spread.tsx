@@ -17,13 +17,7 @@ export type Spread = {
   tone?: 'paper' | 'paperAlt' | 'ink';
 };
 
-type Props = Spread & {
-  /** The first spread carries the h1; the rest are h2. */
-  headingLevel?: 'h1' | 'h2';
-  /** True for the first spread only: its image is the LCP candidate. */
-  first?: boolean;
-  id?: string;
-};
+type Props = Spread & { id?: string };
 
 /**
  * One magazine spread: a 1:1 image column beside a text column.
@@ -41,6 +35,9 @@ type Props = Spread & {
  * Markup order is image then text, which is the order mobile stacks in.
  * Desktop reorders the two columns visually; the reading order carries
  * no meaning here, so nothing is lost to assistive technology.
+ *
+ * Every spread sits below the hero, so every spread image is lazy and
+ * every heading is an h2; the page's h1 lives in V4Hero.
  */
 export default function V4Spread({
   eyebrow,
@@ -50,11 +47,8 @@ export default function V4Spread({
   image,
   imageSide,
   tone = 'paper',
-  headingLevel = 'h2',
-  first = false,
   id,
 }: Props) {
-  const Heading = headingLevel;
   const headingId = id ? `${id}-title` : undefined;
 
   return (
@@ -64,7 +58,6 @@ export default function V4Spread({
         styles.spread,
         styles[tone],
         imageSide === 'right' ? styles.imageRight : styles.imageLeft,
-        first ? styles.firstSpread : '',
         tone === 'ink' ? 'v4-onInk' : '',
       ]
         .filter(Boolean)
@@ -82,11 +75,7 @@ export default function V4Spread({
               src={image.src}
               alt={image.alt}
               fill
-              /* The first spread is above the fold, so it loads eagerly
-                 and is prioritised; every other image is lazy. Next 16
-                 deprecates `priority` in favour of this pair. */
-              loading={first ? 'eager' : 'lazy'}
-              fetchPriority={first ? 'high' : undefined}
+              loading="lazy"
               quality={75}
               sizes="(max-width: 899px) 100vw, 48vw"
               className={styles.image}
@@ -98,9 +87,9 @@ export default function V4Spread({
           <div className={styles.textInner}>
             <p className={styles.eyebrow}>{eyebrow}</p>
 
-            <Heading id={headingId} className={styles.headline}>
+            <h2 id={headingId} className={styles.headline}>
               {headline}
-            </Heading>
+            </h2>
 
             <div className={styles.body}>
               {body.map((para) => (

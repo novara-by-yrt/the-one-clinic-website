@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import JsonLd from '@/lib/schema/JsonLd';
 import { buildClinicSchema } from '@/lib/schema/builders';
+import V4Hero from '@/components/v4/V4Hero';
 import V4Spread, { type Spread } from '@/components/v4/V4Spread';
 import '@/components/v4/v4-tokens.css';
 
@@ -15,39 +16,26 @@ export const metadata: Metadata = {
 /**
  * V4 - the homepage as a magazine of spreads.
  *
- * Every section is the same template: a 1:1 image column beside a text
- * column of eyebrow, headline, body and one pill CTA, each spread sized
- * to read as one screen. The image side alternates down the page, which
- * is where the editorial rhythm comes from; the template itself never
- * varies. That is a deliberate inversion of how /v2 and /v3 work, where
- * no two sections share a layout.
+ * The page opens on a wide centred hero over a full-bleed background
+ * image, then settles into the spread template: a 1:1 image column
+ * beside a text column of eyebrow, headline, body and one pill CTA,
+ * each spread sized to read as one screen. The image side alternates
+ * down the page, which is where the editorial rhythm comes from; the
+ * template itself never varies. That is a deliberate inversion of how
+ * /v2 and /v3 work, where no two sections share a layout.
  *
  * Copy is the live homepage's, unaltered. The headlines are set
  * uppercase in CSS rather than in these strings, so the wording here
  * still matches the homepage character for character.
  *
- * Grounds run ink, then light, then ink. The two ink spreads bracket the
- * page and the first one also gives the site header, which renders white
- * on transparent until the reader scrolls, a dark band to sit on.
- * Between them the light spreads alternate white and off-white, which
- * separates one spread from the next without leaving the light family.
+ * Grounds run ink, then light, then ink. The ink hero and ink closing
+ * spread bracket the page, and the hero also gives the site header,
+ * which renders white on transparent until the reader scrolls, a dark
+ * band to sit on. Between them the light spreads alternate white and
+ * off-white, which separates one spread from the next without leaving
+ * the light family.
  */
 const SPREADS: Spread[] = [
-  {
-    eyebrow: 'Medical & Aesthetic Care, Leicester',
-    headline: 'Where Expertise Meets Care',
-    body: [
-      'Empowering Happy Patients',
-      'Advanced medical, aesthetic and wellness care, all under one roof.',
-    ],
-    cta: { label: 'Book a Consultation' },
-    image: {
-      src: '/images/Profhilo (2).jpg',
-      alt: 'A patient receiving a Profhilo treatment at The One Clinic',
-    },
-    imageSide: 'left',
-    tone: 'ink',
-  },
   {
     eyebrow: 'Medical Aesthetics & Health Care',
     headline: 'Our Popular Treatments',
@@ -59,7 +47,7 @@ const SPREADS: Spread[] = [
       src: '/images/LumeccaIPL1.png',
       alt: 'A Lumecca IPL handpiece in use at The One Clinic',
     },
-    imageSide: 'right',
+    imageSide: 'left',
     tone: 'paper',
   },
   {
@@ -73,7 +61,7 @@ const SPREADS: Spread[] = [
       src: '/images/Doctor1.jpg',
       alt: 'A clinician at The One Clinic treating a patient',
     },
-    imageSide: 'left',
+    imageSide: 'right',
     tone: 'paperAlt',
   },
   {
@@ -87,7 +75,7 @@ const SPREADS: Spread[] = [
       src: '/images/Team Image.jpg',
       alt: 'The team at The One Clinic in Leicester',
     },
-    imageSide: 'right',
+    imageSide: 'left',
     tone: 'paper',
   },
   {
@@ -101,7 +89,7 @@ const SPREADS: Spread[] = [
       src: '/images/IV drip therapy1.png',
       alt: 'A patient of The One Clinic after IV drip therapy',
     },
-    imageSide: 'left',
+    imageSide: 'right',
     tone: 'paperAlt',
   },
   {
@@ -118,7 +106,7 @@ const SPREADS: Spread[] = [
       src: '/images/Endolift B-A.jpg',
       alt: 'Endolift before and after results',
     },
-    imageSide: 'right',
+    imageSide: 'left',
     tone: 'paper',
   },
   {
@@ -132,34 +120,22 @@ const SPREADS: Spread[] = [
       src: '/images/Juliane.jpg',
       alt: 'A patient of The One Clinic receiving an aesthetic treatment',
     },
-    imageSide: 'left',
+    imageSide: 'right',
     tone: 'ink',
   },
 ];
 
-const IDS = [
-  'intro',
-  'treatments',
-  'mission',
-  'clinic',
-  'reviews',
-  'results',
-  'book',
-];
+const IDS = ['treatments', 'mission', 'clinic', 'reviews', 'results', 'book'];
 
 export default function V4Page() {
   return (
     <div className="v4-root">
       <JsonLd schema={buildClinicSchema()} />
 
+      <V4Hero />
+
       {SPREADS.map((spread, i) => (
-        <V4Spread
-          key={IDS[i]}
-          id={IDS[i]}
-          {...spread}
-          headingLevel={i === 0 ? 'h1' : 'h2'}
-          first={i === 0}
-        />
+        <V4Spread key={IDS[i]} id={IDS[i]} {...spread} />
       ))}
     </div>
   );
