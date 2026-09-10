@@ -195,6 +195,22 @@ export default function V4Track({
     goToRef.current = goTo;
   }, [index, goTo]);
 
+  /* ── Reading position ──
+     Published as a root custom property rather than passed down: the
+     masthead is rendered from the root layout so that it can sit above
+     the track's stacking context, which puts it outside this tree
+     entirely. The hairline under the bar reads it as its fill. */
+  useEffect(() => {
+    const root = document.documentElement;
+    const last = Math.max(1, count - 1);
+    root.style.setProperty('--v4-progress', String(index / last));
+    return () => {
+      // Leaving the route must not leave a stale reading position behind
+      // for anything else that might read it.
+      root.style.removeProperty('--v4-progress');
+    };
+  }, [index, count]);
+
   /* ── Focus ──
      Tabbing through the panels works natively - the browser scrolls a
      focused control into view - but it scrolls by the smallest amount

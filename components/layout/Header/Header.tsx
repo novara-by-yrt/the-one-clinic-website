@@ -245,19 +245,7 @@ export default function Header() {
   const pillRef     = useRef<HTMLDivElement>(null);
 
   const headerTheme: Theme = sectionTheme === 'dark' ? 'light' : 'dark';
-  /**
-   * At the very top of a page the header is deliberately a transparent
-   * bar with white text, which only works because every route opens on a
-   * dark section. The v4 magazine breaks the premise: it is a horizontal
-   * track, so the document never scrolls, `scrolled` never becomes true,
-   * and the header would sit on that transparent treatment over paper
-   * panels for the whole route - white on white. There, take the section
-   * theme from the start. Every other route is unaffected: isV4Route is
-   * false for them and this reads exactly as it did before.
-   */
-  const noPageScroll = isV4Route(pathname);
-  const settled: boolean   = scrolled || noPageScroll;
-  const theme: Theme       = !settled ? 'dark' : headerTheme;
+  const theme: Theme       = !scrolled ? 'dark' : headerTheme;
 
   // ── Scroll detection ─────────────────────────────────────────
   useEffect(() => {
@@ -511,11 +499,19 @@ export default function Header() {
     );
   }
 
-  // The v1 concept ships its own header; stand down so the two never stack.
-  // Placed after the hooks so hook order stays stable across routes.
-  if (isV1Route(pathname)) return null;
+  // The v1 and v4 concepts ship their own headers; stand down so the two
+  // never stack. Placed after the hooks so hook order stays stable
+  // across routes.
+  //
+  // v4 needs its own for two reasons. The look: this pill is rounded,
+  // shadowed and floating, which is app chrome, where a magazine wants
+  // flat printed furniture. And the behaviour: the pill's top-of-page
+  // treatment is white text on a transparent bar, chosen off
+  // window.scrollY, which never leaves 0 on a horizontal track - so it
+  // would sit white-on-white over the paper panels for the whole route.
+  if (isV1Route(pathname) || isV4Route(pathname)) return null;
 
-  const pillAnimate = getPillAnimate(settled, sectionTheme);
+  const pillAnimate = getPillAnimate(scrolled, sectionTheme);
   const anyMegaOpen = openDropdown !== null && !!NAV[openDropdown]?.groups;
 
   return (
@@ -526,7 +522,7 @@ export default function Header() {
           ref={pillRef}
           className={styles.pill}
           data-theme={theme}
-          data-scrolled={settled}
+          data-scrolled={scrolled}
           animate={pillAnimate}
           transition={PILL_TRANSITION}
         >

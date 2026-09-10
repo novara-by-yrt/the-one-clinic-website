@@ -10,7 +10,13 @@
    introduces no hue of its own; the photography carries colour.
 ══════════════════════════════════════════════════════════════ */
 
-.v4-root {
+/* The token block is shared by the page and by the route's chrome. The
+   masthead is rendered from the root layout so it can sit above the
+   track's stacking context, which puts it outside .v4-root; it needs the
+   same palette and type scale without also taking .v4-root's paper
+   background, which would paint the bar white over the panels. */
+.v4-root,
+.v4-chrome {
   /* ── Surfaces ── */
   --v4-paper: #ffffff;
   --v4-paper-alt: #f5f5f4;
@@ -78,9 +84,13 @@
   --v4-duration: 220ms;
 
   font-family: var(--v4-font);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Surface colours belong to the page, not to the chrome. */
+.v4-root {
   background: var(--v4-paper);
   color: var(--v4-text);
-  -webkit-font-smoothing: antialiased;
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -164,7 +174,8 @@ html.v4-horizontal body {
 }
 
 /* ── Focus, visible on both grounds ── */
-.v4-root :where(a, button, [tabindex]):focus-visible {
+.v4-root :where(a, button, [tabindex]):focus-visible,
+.v4-chrome :where(a, button, [tabindex]):focus-visible {
   outline: 2px solid var(--v4-ink);
   outline-offset: 3px;
 }
@@ -174,7 +185,8 @@ html.v4-horizontal body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .v4-root * {
+  .v4-root *,
+  .v4-chrome * {
     transition-duration: 1ms !important;
   }
 }
