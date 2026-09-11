@@ -2,9 +2,9 @@
    V5 DESIGN TOKENS
 
    A magazine that flips sideways. On desktop the page is a single
-   horizontal track of full-viewport panels driven by native CSS scroll
-   snapping; below tablet-landscape the track collapses to an ordinary
-   vertical stack.
+   deck of cards stacked one behind the next, moved by the document's own
+   scroll; below tablet-landscape the deck collapses to an ordinary
+   stacked page.
 
    Palette is the site's existing black, white and grey. The interface
    introduces no hue of its own; the photography carries colour.
@@ -69,14 +69,13 @@
 
   /* ── Rhythm ──
      Panels clear the fixed site header at the top and the page indicator
-     at the bottom, because both float over every panel in horizontal
-     mode. */
+     at the bottom, because both float over every card. */
   --v5-pad-top: clamp(5.5rem, 11vh, 7.5rem);
   --v5-pad-bottom: clamp(3.5rem, 8vh, 5.5rem);
   --v5-pad-x: clamp(1.5rem, 4vw, 4.5rem);
   --v5-measure: 44ch;
 
-  /* ── Stage and depth (horizontal mode) ──
+  /* ── Stage and depth ──
      v5 is v4's magazine flown through 3D space. The slides are pages
      turning in front of the viewer, so unlike v4 they need a ground to
      turn against: a full-bleed white plane rotating over a white page
@@ -86,26 +85,37 @@
   --v5-stage: #16161a;
   --v5-stage-edge: rgb(255 255 255 / 0.14);
 
-  /* Slide geometry. Below 100vw on purpose: the angled neighbours are
-     what sell the depth, and a full-width slide hides them entirely. At
-     80vw with this gap each neighbour shows about 9vw of itself, which
-     is the sliver that reads as a receding page. */
-  --v5-slide-w: 80vw;
-  --v5-slide-gap: 1.25vw;
-  /* The floor is what bites on a short laptop, where 9vh is small: it
-     is set low enough that a 600px-tall viewport still leaves the
-     closing slide room for its content. */
-  --v5-inset-y: clamp(3.25rem, 9vh, 6.5rem);
+  /* Card geometry. Inset on all four sides so the stage shows around
+     the card: an edge is what lets the eye read depth at all, and a
+     full-bleed card has none. The floor on the vertical inset is what
+     bites on a short laptop, and is set low enough that a 600px-tall
+     viewport still leaves the closing card room for its content. */
+  --v5-inset-y: clamp(3.25rem, 7vh, 5.5rem);
+  --v5-gutter: clamp(1.5rem, 5vw, 6rem);
 
-  /* The depth extremes, reached when a slide is at the edge of its pass.
-     Deliberately strong: at rest the neighbours sit at the very ends of
-     the range, so anything timid here reads as a flat carousel. */
+  /* The depth extremes, reached a full viewport of scrolling either side
+     of a card's turn.
+
+     --v5-depth is how far back a card waits: 300px against a 1200px
+     perspective puts it at 0.8 of full size, which is plainly behind
+     without being a thumbnail. --v5-lift brings the leaving card
+     slightly toward the viewer as it goes, so it reads as being drawn
+     off the top of the deck rather than falling through it. The tilt is
+     small on purpose: the depth is the effect here, and a card that
+     yaws or pitches hard stops looking like a page and starts looking
+     like a trick. */
   --v5-perspective: 1200px;
   --v5-layer-perspective: 900px;
-  --v5-rotate: 18deg;
-  --v5-depth: 240px;
-  --v5-scale: 0.9;
-  --v5-dim: 0.42;
+  --v5-depth: 340px;
+  --v5-lift: 90px;
+  --v5-tilt: 7deg;
+  /* How far the waiting card is shaded down, so it reads as lying
+     further from the light. This is a scrim drawn on the card, not the
+     card's own opacity: opacity below 1 makes a card translucent, and a
+     translucent card lets the whole stack behind it show straight
+     through, which reads as a rendering fault rather than as depth. No
+     card on this page is ever anything but fully opaque. */
+  --v5-shade: 0.45;
 
   /* ── Shape ── */
   --v5-radius-plate: 0px;
@@ -124,10 +134,10 @@
   color: var(--v5-text);
 }
 
-/* In horizontal mode the slide is already inset clear of the masthead
-   and the indicator by --v5-inset-y, so its inner padding no longer has
-   to reserve room for them. That room goes back to the copy, which
-   needs it: the slide is 80vw rather than v4's 100vw. */
+/* A deck card is already inset clear of the masthead and the indicator
+   by --v5-inset-y, so its inner padding no longer has to reserve room
+   for them. That room goes back to the copy, which needs it: the card
+   is narrower than the viewport by two gutters. */
 @media (min-width: 1024px) and (orientation: landscape) {
   .v5-root {
     --v5-pad-top: clamp(2rem, 4.5vh, 3.25rem);
@@ -136,22 +146,9 @@
   }
 }
 
-/* ══════════════════════════════════════════════════════════════
-   HORIZONTAL MODE SCROLL LOCK
-
-   Set by V5Track on the root element while the horizontal media query
-   matches, and removed when it stops matching or the route unmounts. The
-   track becomes the page's only scroll container, so the document itself
-   must not scroll vertically: without this the panels' 100dvh height
-   plus any chrome would leave a stray vertical scrollbar, and 100vw
-   would then be narrower than the panels.
-══════════════════════════════════════════════════════════════ */
-
-html.v5-horizontal,
-html.v5-horizontal body {
-  height: 100%;
-  overflow-y: hidden;
-}
+/* The deck scrolls the document itself, so there is no scroll lock here
+   and no second scroll container. That is also what lets the cards be
+   sticky and the depth be clocked by scroll(root block). */
 
 /* ══════════════════════════════════════════════════════════════
    SHARED PRIMITIVES
@@ -235,17 +232,14 @@ html.v5-horizontal body {
 }
 
 /* ── Header theme sentinel ──
-   The site Header picks its treatment from an IntersectionObserver over
-   [data-section-theme]. In the horizontal track the panels are flush
-   neighbours, so the next panel's left edge touches the viewport's right
-   edge and Chromium reports it as intersecting too; with two panels in
-   one batch the Header's tie-break can settle on the one that is off
-   screen (measured: the paper panel before the ink closing panel took
-   the ink treatment, putting a near-white pill on a near-white panel).
-   Carrying the attribute on an element inset from the panel's sides
-   removes the tie, because only the panel actually filling the viewport
-   is ever reported. Full height, because the Header observes a band just
-   below the viewport top. */
+   The masthead picks its treatment from an IntersectionObserver over
+   [data-section-theme]. In the deck every card is stacked at the same
+   place, so several are level with the bar at once and the observer's
+   tie-break could settle on one that is behind. Carrying the attribute
+   on an inset element does not separate them here, but the masthead is
+   locked to the stage on this route anyway (see V5Header.module.css),
+   so the tie no longer decides anything visible. Kept for the vertical
+   fallback, where the sections really do follow one another. */
 .v5-themeMark {
   position: absolute;
   top: 0;
@@ -256,233 +250,295 @@ html.v5-horizontal body {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   THE DEPTH PASS
+   THE DECK
 
-   v5 is v4's magazine flown through 3D space. Each slide is a plane in
-   the stage's perspective, and the plane's own travel across the
-   viewport is the clock that drives it: `view-timeline-axis: inline`
-   on a horizontally scrolling track gives exactly the signal the effect
-   needs, the slide's distance from the centre of the scrollport,
-   normalised. Nothing here reads scroll position in script, and the
-   transforms run on the compositor rather than through style recalc.
+   The sections are a deck of cards seen face on, stacked one behind the
+   next. Scrolling lifts the top card away and the card that was sitting
+   behind it comes forward into its place. Depth, not travel: nothing
+   slides in from the side, and nothing yaws.
 
-   Progress 0 is the slide fully off to the right, 0.5 is dead centre,
-   1 is fully off to the left. That midpoint is exact for any slide
-   width: the cover range spans scrollport + slide, so half of it always
-   lands the slide's centre on the scrollport's centre.
+   Every card is sticky at the same place, so the whole deck occupies one
+   position on screen and the scroll only decides which card is in front.
+   The card that is in front resolves to `transform: none`, so the
+   section being read is composited without resampling and its type stays
+   pixel crisp.
 
-   These rules are global rather than module-scoped because the hero,
-   the spreads and the closing panel are three separate modules, and
-   CSS Modules renames @keyframes per module.
+   Each card is clocked by the document's own scroll through
+   `animation-timeline: scroll(root block)`, over a window of two
+   viewports centred on the card's turn: one viewport coming forward, one
+   viewport lifting away. That runs on the compositor with nothing
+   reading scroll position in script.
+
+   Perspective is applied per card, inside the transform, rather than on
+   an ancestor. For a card centred in the viewport the two are the same
+   picture, because its own vanishing point is already the middle of the
+   screen; what differs is the cost. An ancestor perspective makes a 3D
+   rendering context of whatever scrolls inside it, and a scroll
+   container that has to maintain one loses threaded scrolling: measured
+   at half the frame rate on the sideways version of this page.
 ══════════════════════════════════════════════════════════════ */
 @media (min-width: 1024px) and (orientation: landscape) {
-  .v5-slide {
-    /* Narrower than the viewport and inset top and bottom, so the stage
-       shows on all four sides. A full-bleed white plane rotating over a
-       white page shows nothing; the visible edge is the effect. */
-    flex: 0 0 var(--v5-slide-w);
-    width: var(--v5-slide-w);
-    height: calc(100dvh - var(--v5-inset-y) * 2);
-    /* Flat, deliberately, and this is the single most important line in
-       the file for how the page feels.
-
-       The slide still rotates in the track's shared perspective: that is
-       what foreshortens an off-centre page toward a vanishing point at
-       the middle of the screen, and it is why the neighbours read as
-       receding rather than as narrow rectangles. What it does not do is
-       open a 3D rendering context of its own.
-
-       Opening one costs half the frame rate. A scroll container that has
-       to maintain a 3D context for its children loses threaded
-       scrolling, and every frame of the scroll goes back through the
-       main thread. Measured on the same traverse, on the same machine:
-       v4 60fps, this page with preserve-3d slides 30fps median and 50ms
-       at the 95th percentile, this page with flat slides 60fps again.
-       The columns get their depth from their own perspective() instead,
-       below, which costs nothing.
-
-       The slide is still not clipped: the layers inside it scale
-       slightly forward and `overflow: hidden` would cut them. */
-    transform-style: flat;
-    border: 1px solid var(--v5-stage-edge);
-    view-timeline-name: --v5-slide;
-    view-timeline-axis: inline;
-    animation: v5Slide linear both;
-    animation-timeline: --v5-slide;
-    animation-range: cover 0% cover 100%;
+  .v5-deck {
+    position: relative;
+    background: var(--v5-stage);
   }
 
-  /* Promoted only while the slide is near the viewport. V5Track's
-     observer sets the flag and drops it again, so a page of slides does
-     not hold seven compositor layers at once.
+  .v5-slide {
+    position: sticky;
+    /* Inset on all four sides so the stage shows around the card. A
+       card with no visible edge cannot be seen to move in depth: the
+       edge is what the eye reads. */
+    top: var(--v5-inset-y);
+    height: calc(100dvh - var(--v5-inset-y) * 2);
+    width: calc(100% - var(--v5-gutter) * 2);
+    margin-inline: auto;
+    /* The card plus this margin is exactly one viewport, so one card is
+       one screen of scrolling and the animation ranges below can be
+       written in round viewport units. */
+    margin-bottom: calc(var(--v5-inset-y) * 2);
+    border: 1px solid var(--v5-stage-edge);
 
-     The layers inside it are promoted too, and that is a performance
-     fix rather than a formality. Without it Chromium re-rasterises a
-     layer every time its effective scale changes, and here the scale
-     changes every frame on a plate holding a photograph the width of
-     the slide: measured at 30fps median with 50ms at the 95th
-     percentile, against 60fps flat for the same traverse on v4.
-     Declaring the transform up front pins the raster scale and hands
-     the whole pass to the compositor. */
+    /* Earlier cards sit in front, which is what lets a later one emerge
+       from behind rather than slide over the top. */
+    z-index: calc(var(--v5-deck-count) - var(--i));
+
+    animation: v5Deck linear forwards;
+    animation-timeline: scroll(root block);
+    animation-range: calc((var(--i) - 1) * 100dvh) calc((var(--i) + 1) * 100dvh);
+    transform-origin: center 45%;
+  }
+
+  /* Promoted only while a card is near its turn. V5Track's observer sets
+     the flag and drops it again, so the deck does not hold every card on
+     its own compositor layer at once. */
   .v5-slide[data-near='true'],
   .v5-slide[data-near='true'] .v5-layerMedia,
   .v5-slide[data-near='true'] .v5-layerText {
     will-change: transform;
   }
 
-  /* At 50% the transform is `none`, not a rounded-off equivalent, so the
-     slide actually being read is composited without resampling and its
-     type stays pixel crisp.
+  /* 50% is the card's turn: in front, untransformed, being read.
+     Before that it waits behind, after it is drawn off the top.
 
-     The extremes look aggressive written down and are not. A slide at
-     rest beside the centred one sits at roughly 5% or 95% of this
-     range, so these values are very nearly what the neighbours show at
-     rest. Anything gentler reads as a flat carousel. */
-  @keyframes v5Slide {
+     translateY carries a whole viewport at both ends, for two different
+     reasons. Up to 50% it cancels the card's own position one screen
+     further down the page, so a card waiting its turn sits behind the
+     one in front rather than below it; the page scrolls the card the
+     rest of the way, and the two together hold it still on screen while
+     only its depth changes. That is why translateY has to keep moving
+     between 0% and 50% even where nothing else does. After 50% the card
+     is sticky-pinned and translateY is free, so it carries it up and off
+     the top edge.
+
+     A whole viewport rather than -100% of the card: a card is a viewport
+     minus its inset, so -100% left the waiting one two insets low and
+     visibly out of register.
+
+     The animation fills forwards only, never backwards. A card more than
+     one screen from its turn therefore carries no transform at all and
+     simply sits where the page put it, below the fold. Filling backwards
+     held it at the waiting transform instead, which pulled cards two and
+     three turns away up into the frame from underneath: measured at
+     1440x900, the third card appeared 471px above where it belonged and
+     cluttered the bottom of every transition.
+
+     The holds at 20% and 70% are what give the reader a card that stands
+     still. Without them every scroll position is mid-transition and the
+     page is only ever readable at one exact offset. With them a card is
+     in front for about four tenths of a screen of scrolling, and the two
+     cards change over in the rest. */
+  @keyframes v5Deck {
     0% {
-      transform: translate3d(0, 0, calc(var(--v5-depth) * -1))
-        rotateY(var(--v5-rotate)) scale(var(--v5-scale));
+      transform: perspective(var(--v5-perspective))
+        translate3d(0, -100dvh, calc(var(--v5-depth) * -1))
+        rotateX(var(--v5-tilt));
     }
-    50% {
+    20% {
+      transform: perspective(var(--v5-perspective))
+        translate3d(0, -60dvh, calc(var(--v5-depth) * -1))
+        rotateX(var(--v5-tilt));
+    }
+    50%,
+    70% {
       transform: none;
     }
     100% {
-      transform: translate3d(0, 0, calc(var(--v5-depth) * -1))
-        rotateY(calc(var(--v5-rotate) * -1)) scale(var(--v5-scale));
+      transform: perspective(var(--v5-perspective))
+        translate3d(0, -100dvh, var(--v5-lift))
+        rotateX(calc(var(--v5-tilt) * -0.8));
     }
   }
 
-  /* ── Layers inside the slide ──
-     The columns do not travel as one rigid board. The image rides
-     forward and lags the slide's movement; the copy sits back and leads
-     it. That counter-motion is the difference between a page with depth
-     in it and a rotated rectangle.
+  /* ── The shade ──
+     A wash of the stage's own colour, drawn on the card rather than
+     behind it, so a card that is further back is darker without ever
+     being see-through. It lifts as the card comes forward and is gone
+     by the time the card is being read. The card leaving is not shaded
+     at all: it is coming toward the viewer, and darkening it on the way
+     out would say the opposite. */
+  .v5-slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--v5-stage);
+    opacity: 0;
+    pointer-events: none;
+    animation: v5DeckShade linear forwards;
+    animation-timeline: scroll(root block);
+    animation-range: calc((var(--i) - 1) * 100dvh) calc((var(--i) + 1) * 100dvh);
+  }
 
-     Both resolve to `transform: none` and full opacity at centre, for
-     the same crispness reason as the slide. The opacity curve is the
-     depth cue: off centre the content washes toward the stage so the
-     slide being read is plainly the nearest. Opacity rather than a
-     filter, and on the columns rather than on the slide, because
-     opacity below 1 on the slide would flatten it and undo the depth
-     these rules exist to create. */
+  @keyframes v5DeckShade {
+    0%,
+    20% {
+      opacity: var(--v5-shade);
+    }
+    50%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  /* ── Layers inside the card ──
+     The image and the copy do not travel as one board: the image rides
+     a little forward and low, the copy sits back and high, and both
+     converge on nothing at the moment the card is in front. Small on
+     purpose. The card's own depth is the effect; this is the grain
+     inside it. */
   .v5-layerMedia,
   .v5-layerText {
-    animation-timeline: --v5-slide;
-    animation-range: cover 0% cover 100%;
-    animation-fill-mode: both;
+    animation-timeline: scroll(root block);
+    animation-range: calc((var(--i) - 1) * 100dvh) calc((var(--i) + 1) * 100dvh);
+    animation-fill-mode: forwards;
     animation-timing-function: linear;
   }
 
   .v5-layerMedia {
-    animation-name: v5Media;
+    animation-name: v5DeckMedia;
   }
 
   .v5-layerText {
-    animation-name: v5Text;
+    animation-name: v5DeckText;
   }
 
-  /* Each layer carries its own perspective() rather than borrowing the
-     stage's, because the slide between them is flat now. Shorter than
-     the stage's, so the modest Z difference between the image and the
-     copy still reads. */
-  @keyframes v5Media {
-    0% {
-      transform: perspective(var(--v5-layer-perspective)) translate3d(7%, 0, 56px);
-      opacity: var(--v5-dim);
+  @keyframes v5DeckMedia {
+    0%,
+    20% {
+      transform: perspective(var(--v5-layer-perspective)) translate3d(0, 3%, 30px);
     }
-    50% {
+    50%,
+    70% {
       transform: none;
-      opacity: 1;
     }
     100% {
-      transform: perspective(var(--v5-layer-perspective)) translate3d(-7%, 0, 56px);
-      opacity: var(--v5-dim);
+      transform: perspective(var(--v5-layer-perspective)) translate3d(0, -3%, 30px);
     }
   }
 
-  @keyframes v5Text {
-    0% {
-      transform: perspective(var(--v5-layer-perspective)) translate3d(-3.5%, 0, 18px);
-      opacity: var(--v5-dim);
+  @keyframes v5DeckText {
+    0%,
+    20% {
+      transform: perspective(var(--v5-layer-perspective)) translate3d(0, -2%, -14px);
     }
-    50% {
+    50%,
+    70% {
       transform: none;
-      opacity: 1;
     }
     100% {
-      transform: perspective(var(--v5-layer-perspective)) translate3d(3.5%, 0, 18px);
-      opacity: var(--v5-dim);
+      transform: perspective(var(--v5-layer-perspective)) translate3d(0, 2%, -14px);
     }
   }
 
   /* ── Fallback where scroll-driven animations are missing ──
-     V5Track sets data-depth="script" on the track when
-     CSS.supports says `animation-timeline: view()` is unavailable, and
-     then writes two numbers per slide from a rAF loop: --v5-p, the
-     signed distance from centre in slide-pitches clamped to -1..1, and
-     --v5-a, its magnitude. The geometry below is the same curve the
-     keyframes describe, so the two paths cannot drift apart in shape;
-     only which engine evaluates it changes. */
+     V5Track sets data-depth="script" on the deck when CSS.supports says
+     `animation-timeline: scroll()` is unavailable, and then writes two
+     numbers per card from a rAF loop: --v5-back, how far the card still
+     is from its turn, and --v5-away, how far past it. Both run 0 to 1,
+     and the geometry below is the same curve the keyframes describe, so
+     the two paths cannot drift apart in shape. */
   [data-depth='script'] .v5-slide {
     animation: none;
-    transform: translate3d(0, 0, calc(var(--v5-depth) * var(--v5-a, 0) * -1))
-      rotateY(calc(var(--v5-rotate) * var(--v5-p, 0) * -1))
-      scale(calc(1 - (1 - var(--v5-scale)) * var(--v5-a, 0)));
+    transform: perspective(var(--v5-perspective))
+      translate3d(
+        0,
+        calc(
+          var(--v5-shift, 0) * -100dvh + var(--v5-away, 0) * -100dvh
+        ),
+        calc(
+          var(--v5-back, 0) * (var(--v5-depth) * -1) + var(--v5-away, 0) *
+            var(--v5-lift)
+        )
+      )
+      rotateX(
+        calc(
+          var(--v5-back, 0) * var(--v5-tilt) + var(--v5-away, 0) *
+            var(--v5-tilt) * -0.8
+        )
+      );
+  }
+
+  [data-depth='script'] .v5-slide::after {
+    animation: none;
+    opacity: calc(var(--v5-back, 0) * var(--v5-shade));
   }
 
   [data-depth='script'] .v5-layerMedia {
     animation: none;
     transform: perspective(var(--v5-layer-perspective))
-      translate3d(calc(var(--v5-p, 0) * 7%), 0, calc(var(--v5-a, 0) * 56px));
-    opacity: calc(1 - (1 - var(--v5-dim)) * var(--v5-a, 0));
+      translate3d(
+        0,
+        calc((var(--v5-back, 0) - var(--v5-away, 0)) * 3%),
+        calc((var(--v5-back, 0) + var(--v5-away, 0)) * 30px)
+      );
   }
 
   [data-depth='script'] .v5-layerText {
     animation: none;
     transform: perspective(var(--v5-layer-perspective))
-      translate3d(calc(var(--v5-p, 0) * -3.5%), 0, calc(var(--v5-a, 0) * 18px));
-    opacity: calc(1 - (1 - var(--v5-dim)) * var(--v5-a, 0));
+      translate3d(
+        0,
+        calc((var(--v5-back, 0) - var(--v5-away, 0)) * -2%),
+        calc((var(--v5-back, 0) + var(--v5-away, 0)) * -14px)
+      );
   }
 }
 
 /* ══════════════════════════════════════════════════════════════
    REDUCED MOTION
 
-   Falls all the way back to v4: flat full-width slides, hard snap, no
-   perspective, no parallax, no depth cueing. Not a softened version of
-   the effect, the absence of it.
+   No deck, no depth, no sticky: the sections simply follow one another
+   down the page. Not a softened version of the effect, the absence of
+   it.
 ══════════════════════════════════════════════════════════════ */
 @media (min-width: 1024px) and (orientation: landscape) and (prefers-reduced-motion: reduce) {
-  /* Flat slides again, so scroll snapping works properly here: a snap
-     area is the transformed border box, and with no transform it is
-     simply the box. */
-  .v5-track {
-    scroll-snap-type: x mandatory;
+  .v5-deck {
+    background: var(--v5-paper);
   }
 
   .v5-slide {
-    flex-basis: 100vw;
-    width: 100vw;
+    position: static;
     height: 100dvh;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    transform: none;
+    width: 100%;
+    margin: 0;
     border: 0;
+    transform: none;
     animation: none;
-    view-timeline-name: none;
     will-change: auto;
+  }
+
+  .v5-slide::after {
+    content: none;
   }
 
   .v5-layerMedia,
   .v5-layerText {
     animation: none;
     transform: none;
-    opacity: 1;
   }
 
   .v5-root {
-    /* The inner padding has to clear the fixed masthead again, because
-       the flat slide is no longer inset below it. */
+    /* The card is no longer inset clear of the fixed masthead, so its
+       inner padding has to reserve room for it again. */
     --v5-pad-top: clamp(5.5rem, 11vh, 7.5rem);
     --v5-pad-bottom: clamp(3.5rem, 8vh, 5.5rem);
   }

@@ -121,16 +121,16 @@
 }
 
 /* ══════════════════════════════════════════════════════════════
-   HORIZONTAL MODE
+   DECK MODE
    Same query as V5Track and its JavaScript, so the layout and the
    behaviour can never disagree about which mode is active.
 ══════════════════════════════════════════════════════════════ */
 @media (min-width: 1024px) and (orientation: landscape) {
-  /* Slide geometry, the depth pass and the layer keyframes are global,
-     in v5-tokens.css: the hero, the spreads and the closing panel are
-     three different modules and CSS Modules scopes @keyframes names, so
-     a module-local animation could not be shared between them. This
-     file keeps only what is specific to a two-column spread. */
+  /* Card geometry, the depth pass and the layer keyframes are global, in
+     v5-tokens.css: the hero, the spreads and the closing card are three
+     different modules and CSS Modules scopes @keyframes names, so a
+     module-local animation could not be shared between them. This file
+     keeps only what is specific to a two-column spread. */
 
   .inner {
     /* 48/52. The text column takes the larger share because it carries

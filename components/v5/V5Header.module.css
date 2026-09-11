@@ -497,7 +497,7 @@
   }
 
   /* The overlay is the page's own scroll container here, because the
-     document itself does not scroll in horizontal mode. */
+     card behind it is not the page's scroll container. */
   .sheet {
     height: 100dvh;
   }

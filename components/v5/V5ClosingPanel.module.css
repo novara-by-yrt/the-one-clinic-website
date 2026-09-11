@@ -1,10 +1,10 @@
 /* ── Closing panel ──
    Carries the closing call to action and the footer's content, because
-   a horizontal track has no bottom for a footer to sit under.
+   the deck ends on this card rather than on a strip below the page.
 
    Three stacked bands: the call to action, the details columns, then the
-   legal line. In horizontal mode the whole thing is sized to fit one
-   panel, so the type comes down and the bands tighten.
+   legal line. In the deck the whole thing is sized to fit one card, so
+   the type comes down and the bands tighten.
 */
 
 .panel {
@@ -199,7 +199,7 @@
   }
 
   .details {
-    /* The column edge separates the two blocks here, so the horizontal
+    /* The column edge separates the two blocks here, so the
        rule the stacked version needed would just be noise. */
     padding-top: 0;
     border-top: 0;

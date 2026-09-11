@@ -1,74 +1,27 @@
-/* ── Track ──
-   Vertical mode: a plain block, so the panels stack and the page
-   scrolls normally. Nothing from horizontal mode applies.
+/* ── Deck ──
+   Below tablet-landscape: a plain block, so the sections follow one
+   another down the page and nothing from the deck applies.
 */
 
-.track {
+.deck {
   display: block;
 }
 
-/* All horizontal chrome is hidden below the breakpoint: display:none
-   also takes the buttons out of the tab order, so vertical mode has
-   nothing extra to tab through. */
 .chrome {
   display: none;
 }
 
 /* ══════════════════════════════════════════════════════════════
-   HORIZONTAL MODE
+   DECK MODE
 ══════════════════════════════════════════════════════════════ */
 @media (min-width: 1024px) and (orientation: landscape) {
-  .track {
-    display: flex;
-    align-items: center;
-    gap: var(--v5-slide-gap);
-    height: 100dvh;
-    overflow-x: auto;
-    overflow-y: hidden;
-    /* No CSS scroll snapping at all in 3D mode, and not as a stylistic
-       choice: a snap area is the element's border box AFTER transform,
-       so once the slides rotate and scale, every snap position depends
-       on the scroll offset that produced that transform. The target
-       moves as the scroll moves and the scroll settles short. Measured:
-       asking for 1170px landed on 941px, every time.
-
-       V5Track settles the track itself instead, from untransformed
-       layout geometry, which is the "no snap plus light inertia" this
-       page wants anyway: a swipe glides through the depth and eases
-       home rather than clicking from one slide to the next. Reduced
-       motion, where the slides are flat again, puts real snapping back
-       (see v5-tokens.css). */
-    scroll-snap-type: none;
-    /* Stops a trackpad swipe at either end from triggering the browser's
-       back / forward gesture. */
-    overscroll-behavior-x: contain;
-    scroll-behavior: smooth;
-    /* The arrows and the indicator are the affordance; a scrollbar under
-       a full-bleed panel just reads as a rendering artefact. */
-    scrollbar-width: none;
-
-    /* ── The 3D stage ──
-       The perspective sits on the scroller itself, which is the one
-       place it can sit. A scroll container cannot carry
-       transform-style: preserve-3d - any overflow other than visible
-       forces it flat - so perspective cannot be put on a wrapper and
-       reach the slides through it. Applied here it does reach them:
-       they are its direct children, and its perspective-origin stays
-       pinned to the middle of the viewport while they scroll past, so
-       the vanishing point is where the reader is looking.
-
-       The stage also needs a ground of its own. See --v5-stage. */
-    perspective: var(--v5-perspective);
-    perspective-origin: 50% 50%;
-    background: var(--v5-stage);
-
-    /* Half a viewport of clearance at each end, so the first and last
-       slides can reach the centre of the stage like every other one. */
-    padding-inline: calc((100vw - var(--v5-slide-w)) / 2);
-  }
-
-  .track::-webkit-scrollbar {
-    display: none;
+  .deck {
+    /* The deck is a plain block that happens to be as tall as its cards.
+       No scroll container of its own: the document scrolls, which is
+       what keeps the cards sticky and lets scroll(root block) clock the
+       depth. The ground the cards turn against lives on .v5-deck in
+       v5-tokens.css. */
+    display: block;
   }
 
   .chrome {
@@ -100,12 +53,20 @@
       opacity var(--v5-duration) var(--v5-ease);
   }
 
+  /* Stacked at the right edge rather than opposed at left and right:
+     the deck moves up and down now, and an arrow should point the way
+     the page goes. */
+  .arrowPrev,
+  .arrowNext {
+    right: clamp(0.75rem, 1.6vw, 1.5rem);
+  }
+
   .arrowPrev {
-    left: clamp(0.75rem, 1.6vw, 1.5rem);
+    top: calc(50% - 1.75rem);
   }
 
   .arrowNext {
-    right: clamp(0.75rem, 1.6vw, 1.5rem);
+    top: calc(50% + 1.75rem);
   }
 
   .arrow:hover:not(:disabled) {
@@ -128,13 +89,13 @@
   }
 
   .arrowPrev .arrowGlyph {
-    transform: rotate(-135deg);
-    margin-left: -0.15rem;
+    transform: rotate(-45deg);
+    margin-top: 0.15rem;
   }
 
   .arrowNext .arrowGlyph {
-    transform: rotate(45deg);
-    margin-right: -0.15rem;
+    transform: rotate(135deg);
+    margin-bottom: 0.15rem;
   }
 
   /* ── Page indicator ──
@@ -215,9 +176,5 @@
 }
 
 /* Users who ask for reduced motion get instant jumps rather than a
-   smooth-scrolled travel across the panel. */
-@media (prefers-reduced-motion: reduce) {
-  .track {
-    scroll-behavior: auto;
-  }
-}
+   smooth-scrolled travel down the deck. The jump itself is issued by
+   V5Track, which reads the same preference before it scrolls. */

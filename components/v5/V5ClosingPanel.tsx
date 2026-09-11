@@ -6,11 +6,11 @@ import styles from './V5ClosingPanel.module.css';
  * The last panel, which carries the closing call to action and the site
  * footer's content.
  *
- * A horizontal track has no bottom edge, so the site's own footer is
- * suppressed on this route (see components/layout/footer-mode.ts) and
- * its content lives here instead: contact details, the address, the
- * navigation columns and the legal links, all with the labels and
- * destinations the real footer uses.
+ * The site's own footer is suppressed on this route (see
+ * components/layout/footer-mode.ts), because the deck ends on this card
+ * rather than on a strip below the page. Its content lives here instead:
+ * contact details, the address, the navigation columns and the legal
+ * links, all with the labels and destinations the real footer uses.
  *
  * Copy is the live site's, unaltered: the heading block from the
  * homepage's closing call to action, the rest from the footer.
@@ -47,12 +47,14 @@ const LEGAL = [
   { href: '/complaints-policy', label: 'Complaints Policy' },
 ];
 
-export default function V5ClosingPanel({ id }: { id: string }) {
+export default function V5ClosingPanel({ id, slide }: { id: string; slide: number }) {
   return (
     <section
       id={id}
       className={`${styles.panel} v5-slide v5-onInk`}
       aria-labelledby={`${id}-title`}
+      // Its place in the deck; see V5Panel.
+      style={{ '--i': slide } as React.CSSProperties}
     >
       <span className="v5-themeMark" data-section-theme="dark" aria-hidden="true" />
       <div className={styles.inner}>

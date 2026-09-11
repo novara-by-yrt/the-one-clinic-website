@@ -12,7 +12,7 @@ export type Panel = {
   /** Omit `href` to open the site's booking modal instead of navigating. */
   cta: { label: string; href?: string };
   image: { src: string; alt: string };
-  /** Which side the image sits on in horizontal mode. The page alternates it. */
+  /** Which side the image sits on in the deck. The page alternates it. */
   imageSide: 'left' | 'right';
   tone?: 'paper' | 'paperAlt' | 'ink';
 };
@@ -25,19 +25,21 @@ type Props = Panel & {
    * is lazy.
    */
   eager?: boolean;
+  /** Its place in the deck, zero based. */
+  slide: number;
 };
 
 /**
  * One panel of the magazine: a 1:1 image column beside a text column.
  *
  * The panel is a real <section> with a real heading and its content in
- * reading order, so the horizontal presentation costs nothing in
+ * reading order, so the deck presentation costs nothing in
  * crawlability or screen-reader order. Markup order is image then text,
- * which is also the order the vertical fallback stacks in; horizontal
+ * which is also the order the plain stacked page reads in; the deck
  * mode reorders the two columns visually only.
  *
  * The image always renders into a 1:1 box with object-fit cover, so
- * source images of any ratio centre-crop to a square. In horizontal mode
+ * source images of any ratio centre-crop to a square. In the deck
  * the square is additionally capped to the panel's usable height, so a
  * short laptop shrinks the square rather than overflowing the panel.
  */
@@ -51,6 +53,7 @@ export default function V5Panel({
   tone = 'paper',
   id,
   eager = false,
+  slide,
 }: Props) {
   return (
     <section
@@ -67,6 +70,10 @@ export default function V5Panel({
         .filter(Boolean)
         .join(' ')}
       aria-labelledby={`${id}-title`}
+      // Its place in the deck, which the CSS needs twice: to put earlier
+      // cards in front, and to give this card the two-viewport window of
+      // scrolling that is its own turn.
+      style={{ '--i': slide } as React.CSSProperties}
     >
       <span
         className="v5-themeMark"

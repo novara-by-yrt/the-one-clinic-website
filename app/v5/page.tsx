@@ -18,16 +18,17 @@ export const metadata: Metadata = {
 /**
  * V5 - the homepage as a magazine that flips sideways.
  *
- * On tablet-landscape and up the page is a single horizontal track of
- * full-viewport panels, moved by native CSS scroll snapping; below that
- * the track collapses to an ordinary vertical stack with each panel's
- * image on top and its text beneath. See V5Track for the mechanics.
+ * On tablet-landscape and up the sections are a deck of cards stacked
+ * one behind the next: scrolling lifts the card in front away and the
+ * one waiting behind it comes forward. Below that the deck collapses to
+ * an ordinary stacked page with each section's image on top and its text
+ * beneath. See V5Track and v5-tokens.css for the mechanics.
  *
  * Panel 1 is the cover: centred copy over a full-bleed image. Panels 2
  * to 6 are the spread template, a 1:1 image column beside a text column,
  * alternating which side the image sits on. Panel 7 closes the magazine
- * and carries the site footer's content, because a horizontal track has
- * no bottom for a footer to sit under.
+ * and carries the site footer's content, because the deck ends on that
+ * card rather than on a strip below the page.
  *
  * Copy is the live homepage's, unaltered. The headlines are set
  * uppercase in CSS rather than in these strings, so the wording here
@@ -123,16 +124,16 @@ export default function V5Page() {
       <JsonLd schema={buildClinicSchema()} />
 
       <V5Track count={TOTAL}>
-        <V5HeroPanel id="cover" />
+        <V5HeroPanel id="cover" slide={0} />
 
         {PANELS.map((panel, i) => (
           // Two spreads load eagerly rather than v4's one: at 80vw a
           // neighbour is on screen at rest, so the window has to cover
           // what is visible beside the cover as well as what is next.
-          <V5Panel key={panel.id} {...panel} eager={i <= 1} />
+          <V5Panel key={panel.id} {...panel} eager={i <= 1} slide={i + 1} />
         ))}
 
-        <V5ClosingPanel id="visit" />
+        <V5ClosingPanel id="visit" slide={TOTAL - 1} />
       </V5Track>
     </div>
   );

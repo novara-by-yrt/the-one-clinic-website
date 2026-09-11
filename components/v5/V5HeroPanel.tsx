@@ -21,12 +21,14 @@ import styles from './V5HeroPanel.module.css';
  * the homepage's own: the primary from the hero, the secondary from the
  * closing call to action.
  */
-export default function V5HeroPanel({ id }: { id: string }) {
+export default function V5HeroPanel({ id, slide }: { id: string; slide: number }) {
   return (
     <section
       id={id}
       className={`${styles.panel} v5-slide v5-onInk`}
       aria-labelledby={`${id}-title`}
+      // Its place in the deck; see V5Panel.
+      style={{ '--i': slide } as React.CSSProperties}
     >
       <span className="v5-themeMark" data-section-theme="dark" aria-hidden="true" />
       <div className={`${styles.media} v5-layerMedia`} aria-hidden="true">
