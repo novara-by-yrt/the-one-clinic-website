@@ -22,14 +22,14 @@ export function usesFlowFooter(pathname: string | null): boolean {
 /**
  * Routes that render no site footer at all.
  *
- * /v4 is a horizontal track: it has no bottom edge for a footer to sit
- * under, and the document must not scroll vertically for the track to be
- * the page's only scroll container. Its last panel carries the footer's
- * content instead, so nothing is unreachable. It is therefore absent
- * from FLOW_FOOTER_ROUTES above: footer mode is moot when there is no
- * footer.
+ * /v4 and /v5 are horizontal tracks: they have no bottom edge for a
+ * footer to sit under, and the document must not scroll vertically for
+ * the track to be the page's only scroll container. Their last panel
+ * carries the footer's content instead, so nothing is unreachable. They
+ * are therefore absent from FLOW_FOOTER_ROUTES above: footer mode is
+ * moot when there is no footer.
  */
-export const HIDDEN_FOOTER_ROUTES = new Set<string>(['/v4']);
+export const HIDDEN_FOOTER_ROUTES = new Set<string>(['/v4', '/v5']);
 
 export function hidesSiteFooter(pathname: string | null): boolean {
   return !!pathname && HIDDEN_FOOTER_ROUTES.has(pathname);

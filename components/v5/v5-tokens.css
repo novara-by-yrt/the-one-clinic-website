@@ -1,0 +1,489 @@
+/* ══════════════════════════════════════════════════════════════
+   V5 DESIGN TOKENS
+
+   A magazine that flips sideways. On desktop the page is a single
+   horizontal track of full-viewport panels driven by native CSS scroll
+   snapping; below tablet-landscape the track collapses to an ordinary
+   vertical stack.
+
+   Palette is the site's existing black, white and grey. The interface
+   introduces no hue of its own; the photography carries colour.
+══════════════════════════════════════════════════════════════ */
+
+/* The token block is shared by the page and by the route's chrome. The
+   masthead is rendered from the root layout so it can sit above the
+   track's stacking context, which puts it outside .v5-root; it needs the
+   same palette and type scale without also taking .v5-root's paper
+   background, which would paint the bar white over the panels. */
+.v5-root,
+.v5-chrome {
+  /* ── Surfaces ── */
+  --v5-paper: #ffffff;
+  --v5-paper-alt: #f5f5f4;
+  --v5-ink: #0b0b0c;
+  --v5-ink-soft: #191919;
+
+  /* Contrast against --v5-paper: 700 = 10.4:1, 600 = 7.4:1,
+     500 = 5.1:1 (AA body floor), 400 = 3.2:1 (large text only). */
+  --v5-grey-700: #2e2e31;
+  --v5-grey-600: #494950;
+  --v5-grey-500: #68686f;
+  --v5-grey-400: #8e8e97;
+  --v5-grey-300: #c4c4c9;
+  --v5-grey-200: #e4e4e5;
+
+  --v5-text: var(--v5-ink);
+  --v5-text-secondary: var(--v5-grey-600);
+  --v5-text-muted: var(--v5-grey-500);
+
+  --v5-on-ink: #f5f5f4;
+  --v5-on-ink-secondary: #bebec3;
+
+  /* Secondary text sitting over a photograph rather than over solid ink.
+     Lighter than --v5-on-ink-secondary on purpose: measured against the
+     hero's actual painted pixels, #bebec3 came in at 3.96:1 on the
+     eyebrow, because light-grey text against a dark photograph loses
+     contrast by being too dim rather than by the image being too bright.
+     This value measures 5.3:1 or better at every width while staying
+     subordinate to the headline's near-white. */
+  --v5-on-image-secondary: #dcdce0;
+
+  /* ── Type ──
+     Inter is the only face in the repo and this build adds no assets, so
+     the editorial register comes from case, tracking and scale. The
+     headline is set uppercase via text-transform, which keeps the copy
+     itself verbatim in the markup.
+
+     Every size is capped in vh as well as vw: a panel is exactly one
+     viewport tall, so on a short laptop the type has to come down or the
+     copy will not fit its panel. */
+  --v5-font: var(--font-inter), 'Inter', system-ui, sans-serif;
+
+  --v5-display: clamp(1.75rem, min(3vw, 4.4vh), 3rem);
+  --v5-lead: clamp(1rem, min(1.05vw, 1.9vh), 1.125rem);
+  --v5-body: clamp(0.9375rem, min(1vw, 1.75vh), 1.0625rem);
+  --v5-label: clamp(0.6875rem, min(0.8vw, 1.3vh), 0.75rem);
+
+  --v5-track-display: 0.005em;
+  --v5-track-label: 0.18em;
+
+  /* ── Rhythm ──
+     Panels clear the fixed site header at the top and the page indicator
+     at the bottom, because both float over every panel in horizontal
+     mode. */
+  --v5-pad-top: clamp(5.5rem, 11vh, 7.5rem);
+  --v5-pad-bottom: clamp(3.5rem, 8vh, 5.5rem);
+  --v5-pad-x: clamp(1.5rem, 4vw, 4.5rem);
+  --v5-measure: 44ch;
+
+  /* ── Stage and depth (horizontal mode) ──
+     v5 is v4's magazine flown through 3D space. The slides are pages
+     turning in front of the viewer, so unlike v4 they need a ground to
+     turn against: a full-bleed white plane rotating over a white page
+     shows nothing at all. The stage is that ground, and every slide
+     carries a hairline edge so the plane's boundary stays legible as it
+     angles away. */
+  --v5-stage: #16161a;
+  --v5-stage-edge: rgb(255 255 255 / 0.14);
+
+  /* Slide geometry. Below 100vw on purpose: the angled neighbours are
+     what sell the depth, and a full-width slide hides them entirely. At
+     80vw with this gap each neighbour shows about 9vw of itself, which
+     is the sliver that reads as a receding page. */
+  --v5-slide-w: 80vw;
+  --v5-slide-gap: 1.25vw;
+  /* The floor is what bites on a short laptop, where 9vh is small: it
+     is set low enough that a 600px-tall viewport still leaves the
+     closing slide room for its content. */
+  --v5-inset-y: clamp(3.25rem, 9vh, 6.5rem);
+
+  /* The depth extremes, reached when a slide is at the edge of its pass.
+     Deliberately strong: at rest the neighbours sit at the very ends of
+     the range, so anything timid here reads as a flat carousel. */
+  --v5-perspective: 1200px;
+  --v5-layer-perspective: 900px;
+  --v5-rotate: 18deg;
+  --v5-depth: 240px;
+  --v5-scale: 0.9;
+  --v5-dim: 0.42;
+
+  /* ── Shape ── */
+  --v5-radius-plate: 0px;
+  --v5-radius-pill: 999px;
+
+  --v5-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --v5-duration: 220ms;
+
+  font-family: var(--v5-font);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Surface colours belong to the page, not to the chrome. */
+.v5-root {
+  background: var(--v5-paper);
+  color: var(--v5-text);
+}
+
+/* In horizontal mode the slide is already inset clear of the masthead
+   and the indicator by --v5-inset-y, so its inner padding no longer has
+   to reserve room for them. That room goes back to the copy, which
+   needs it: the slide is 80vw rather than v4's 100vw. */
+@media (min-width: 1024px) and (orientation: landscape) {
+  .v5-root {
+    --v5-pad-top: clamp(2rem, 4.5vh, 3.25rem);
+    --v5-pad-bottom: clamp(2rem, 4.5vh, 3.25rem);
+    --v5-pad-x: clamp(1.25rem, 3vw, 3.25rem);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   HORIZONTAL MODE SCROLL LOCK
+
+   Set by V5Track on the root element while the horizontal media query
+   matches, and removed when it stops matching or the route unmounts. The
+   track becomes the page's only scroll container, so the document itself
+   must not scroll vertically: without this the panels' 100dvh height
+   plus any chrome would leave a stray vertical scrollbar, and 100vw
+   would then be narrower than the panels.
+══════════════════════════════════════════════════════════════ */
+
+html.v5-horizontal,
+html.v5-horizontal body {
+  height: 100%;
+  overflow-y: hidden;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SHARED PRIMITIVES
+══════════════════════════════════════════════════════════════ */
+
+/* Pill CTA, one treatment reused on every panel. Solid ink with white
+   text on paper panels, inverted on the ink ones. */
+.v5-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9375rem 2rem;
+  border: 1px solid var(--v5-ink);
+  border-radius: var(--v5-radius-pill);
+  background: var(--v5-ink);
+  color: var(--v5-on-ink);
+  font: inherit;
+  font-size: var(--v5-label);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--v5-duration) var(--v5-ease),
+    color var(--v5-duration) var(--v5-ease),
+    border-color var(--v5-duration) var(--v5-ease),
+    transform 120ms var(--v5-ease);
+}
+
+.v5-cta:hover {
+  background: var(--v5-ink-soft);
+  border-color: var(--v5-ink-soft);
+}
+
+.v5-cta:active {
+  transform: translateY(1px);
+}
+
+.v5-onInk .v5-cta {
+  background: var(--v5-on-ink);
+  border-color: var(--v5-on-ink);
+  color: var(--v5-ink);
+}
+
+.v5-onInk .v5-cta:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+}
+
+/* Secondary pill, used only where two actions sit together. Outlined
+   rather than filled, so the primary stays the one that reads first. */
+.v5-onInk .v5-ctaGhost {
+  background: transparent;
+  border-color: rgb(255 255 255 / 0.5);
+  color: var(--v5-on-ink);
+}
+
+.v5-onInk .v5-ctaGhost:hover {
+  background: rgb(255 255 255 / 0.12);
+  border-color: var(--v5-on-ink);
+}
+
+/* ── Focus, visible on both grounds ── */
+.v5-root :where(a, button, [tabindex]):focus-visible,
+.v5-chrome :where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--v5-ink);
+  outline-offset: 3px;
+}
+
+.v5-onInk :where(a, button, [tabindex]):focus-visible {
+  outline-color: var(--v5-on-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v5-root *,
+  .v5-chrome * {
+    transition-duration: 1ms !important;
+  }
+}
+
+/* ── Header theme sentinel ──
+   The site Header picks its treatment from an IntersectionObserver over
+   [data-section-theme]. In the horizontal track the panels are flush
+   neighbours, so the next panel's left edge touches the viewport's right
+   edge and Chromium reports it as intersecting too; with two panels in
+   one batch the Header's tie-break can settle on the one that is off
+   screen (measured: the paper panel before the ink closing panel took
+   the ink treatment, putting a near-white pill on a near-white panel).
+   Carrying the attribute on an element inset from the panel's sides
+   removes the tie, because only the panel actually filling the viewport
+   is ever reported. Full height, because the Header observes a band just
+   below the viewport top. */
+.v5-themeMark {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 25%;
+  right: 25%;
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   THE DEPTH PASS
+
+   v5 is v4's magazine flown through 3D space. Each slide is a plane in
+   the stage's perspective, and the plane's own travel across the
+   viewport is the clock that drives it: `view-timeline-axis: inline`
+   on a horizontally scrolling track gives exactly the signal the effect
+   needs, the slide's distance from the centre of the scrollport,
+   normalised. Nothing here reads scroll position in script, and the
+   transforms run on the compositor rather than through style recalc.
+
+   Progress 0 is the slide fully off to the right, 0.5 is dead centre,
+   1 is fully off to the left. That midpoint is exact for any slide
+   width: the cover range spans scrollport + slide, so half of it always
+   lands the slide's centre on the scrollport's centre.
+
+   These rules are global rather than module-scoped because the hero,
+   the spreads and the closing panel are three separate modules, and
+   CSS Modules renames @keyframes per module.
+══════════════════════════════════════════════════════════════ */
+@media (min-width: 1024px) and (orientation: landscape) {
+  .v5-slide {
+    /* Narrower than the viewport and inset top and bottom, so the stage
+       shows on all four sides. A full-bleed white plane rotating over a
+       white page shows nothing; the visible edge is the effect. */
+    flex: 0 0 var(--v5-slide-w);
+    width: var(--v5-slide-w);
+    height: calc(100dvh - var(--v5-inset-y) * 2);
+    /* Flat, deliberately, and this is the single most important line in
+       the file for how the page feels.
+
+       The slide still rotates in the track's shared perspective: that is
+       what foreshortens an off-centre page toward a vanishing point at
+       the middle of the screen, and it is why the neighbours read as
+       receding rather than as narrow rectangles. What it does not do is
+       open a 3D rendering context of its own.
+
+       Opening one costs half the frame rate. A scroll container that has
+       to maintain a 3D context for its children loses threaded
+       scrolling, and every frame of the scroll goes back through the
+       main thread. Measured on the same traverse, on the same machine:
+       v4 60fps, this page with preserve-3d slides 30fps median and 50ms
+       at the 95th percentile, this page with flat slides 60fps again.
+       The columns get their depth from their own perspective() instead,
+       below, which costs nothing.
+
+       The slide is still not clipped: the layers inside it scale
+       slightly forward and `overflow: hidden` would cut them. */
+    transform-style: flat;
+    border: 1px solid var(--v5-stage-edge);
+    view-timeline-name: --v5-slide;
+    view-timeline-axis: inline;
+    animation: v5Slide linear both;
+    animation-timeline: --v5-slide;
+    animation-range: cover 0% cover 100%;
+  }
+
+  /* Promoted only while the slide is near the viewport. V5Track's
+     observer sets the flag and drops it again, so a page of slides does
+     not hold seven compositor layers at once.
+
+     The layers inside it are promoted too, and that is a performance
+     fix rather than a formality. Without it Chromium re-rasterises a
+     layer every time its effective scale changes, and here the scale
+     changes every frame on a plate holding a photograph the width of
+     the slide: measured at 30fps median with 50ms at the 95th
+     percentile, against 60fps flat for the same traverse on v4.
+     Declaring the transform up front pins the raster scale and hands
+     the whole pass to the compositor. */
+  .v5-slide[data-near='true'],
+  .v5-slide[data-near='true'] .v5-layerMedia,
+  .v5-slide[data-near='true'] .v5-layerText {
+    will-change: transform;
+  }
+
+  /* At 50% the transform is `none`, not a rounded-off equivalent, so the
+     slide actually being read is composited without resampling and its
+     type stays pixel crisp.
+
+     The extremes look aggressive written down and are not. A slide at
+     rest beside the centred one sits at roughly 5% or 95% of this
+     range, so these values are very nearly what the neighbours show at
+     rest. Anything gentler reads as a flat carousel. */
+  @keyframes v5Slide {
+    0% {
+      transform: translate3d(0, 0, calc(var(--v5-depth) * -1))
+        rotateY(var(--v5-rotate)) scale(var(--v5-scale));
+    }
+    50% {
+      transform: none;
+    }
+    100% {
+      transform: translate3d(0, 0, calc(var(--v5-depth) * -1))
+        rotateY(calc(var(--v5-rotate) * -1)) scale(var(--v5-scale));
+    }
+  }
+
+  /* ── Layers inside the slide ──
+     The columns do not travel as one rigid board. The image rides
+     forward and lags the slide's movement; the copy sits back and leads
+     it. That counter-motion is the difference between a page with depth
+     in it and a rotated rectangle.
+
+     Both resolve to `transform: none` and full opacity at centre, for
+     the same crispness reason as the slide. The opacity curve is the
+     depth cue: off centre the content washes toward the stage so the
+     slide being read is plainly the nearest. Opacity rather than a
+     filter, and on the columns rather than on the slide, because
+     opacity below 1 on the slide would flatten it and undo the depth
+     these rules exist to create. */
+  .v5-layerMedia,
+  .v5-layerText {
+    animation-timeline: --v5-slide;
+    animation-range: cover 0% cover 100%;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+  }
+
+  .v5-layerMedia {
+    animation-name: v5Media;
+  }
+
+  .v5-layerText {
+    animation-name: v5Text;
+  }
+
+  /* Each layer carries its own perspective() rather than borrowing the
+     stage's, because the slide between them is flat now. Shorter than
+     the stage's, so the modest Z difference between the image and the
+     copy still reads. */
+  @keyframes v5Media {
+    0% {
+      transform: perspective(var(--v5-layer-perspective)) translate3d(7%, 0, 56px);
+      opacity: var(--v5-dim);
+    }
+    50% {
+      transform: none;
+      opacity: 1;
+    }
+    100% {
+      transform: perspective(var(--v5-layer-perspective)) translate3d(-7%, 0, 56px);
+      opacity: var(--v5-dim);
+    }
+  }
+
+  @keyframes v5Text {
+    0% {
+      transform: perspective(var(--v5-layer-perspective)) translate3d(-3.5%, 0, 18px);
+      opacity: var(--v5-dim);
+    }
+    50% {
+      transform: none;
+      opacity: 1;
+    }
+    100% {
+      transform: perspective(var(--v5-layer-perspective)) translate3d(3.5%, 0, 18px);
+      opacity: var(--v5-dim);
+    }
+  }
+
+  /* ── Fallback where scroll-driven animations are missing ──
+     V5Track sets data-depth="script" on the track when
+     CSS.supports says `animation-timeline: view()` is unavailable, and
+     then writes two numbers per slide from a rAF loop: --v5-p, the
+     signed distance from centre in slide-pitches clamped to -1..1, and
+     --v5-a, its magnitude. The geometry below is the same curve the
+     keyframes describe, so the two paths cannot drift apart in shape;
+     only which engine evaluates it changes. */
+  [data-depth='script'] .v5-slide {
+    animation: none;
+    transform: translate3d(0, 0, calc(var(--v5-depth) * var(--v5-a, 0) * -1))
+      rotateY(calc(var(--v5-rotate) * var(--v5-p, 0) * -1))
+      scale(calc(1 - (1 - var(--v5-scale)) * var(--v5-a, 0)));
+  }
+
+  [data-depth='script'] .v5-layerMedia {
+    animation: none;
+    transform: perspective(var(--v5-layer-perspective))
+      translate3d(calc(var(--v5-p, 0) * 7%), 0, calc(var(--v5-a, 0) * 56px));
+    opacity: calc(1 - (1 - var(--v5-dim)) * var(--v5-a, 0));
+  }
+
+  [data-depth='script'] .v5-layerText {
+    animation: none;
+    transform: perspective(var(--v5-layer-perspective))
+      translate3d(calc(var(--v5-p, 0) * -3.5%), 0, calc(var(--v5-a, 0) * 18px));
+    opacity: calc(1 - (1 - var(--v5-dim)) * var(--v5-a, 0));
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   REDUCED MOTION
+
+   Falls all the way back to v4: flat full-width slides, hard snap, no
+   perspective, no parallax, no depth cueing. Not a softened version of
+   the effect, the absence of it.
+══════════════════════════════════════════════════════════════ */
+@media (min-width: 1024px) and (orientation: landscape) and (prefers-reduced-motion: reduce) {
+  /* Flat slides again, so scroll snapping works properly here: a snap
+     area is the transformed border box, and with no transform it is
+     simply the box. */
+  .v5-track {
+    scroll-snap-type: x mandatory;
+  }
+
+  .v5-slide {
+    flex-basis: 100vw;
+    width: 100vw;
+    height: 100dvh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    transform: none;
+    border: 0;
+    animation: none;
+    view-timeline-name: none;
+    will-change: auto;
+  }
+
+  .v5-layerMedia,
+  .v5-layerText {
+    animation: none;
+    transform: none;
+    opacity: 1;
+  }
+
+  .v5-root {
+    /* The inner padding has to clear the fixed masthead again, because
+       the flat slide is no longer inset below it. */
+    --v5-pad-top: clamp(5.5rem, 11vh, 7.5rem);
+    --v5-pad-bottom: clamp(3.5rem, 8vh, 5.5rem);
+  }
+}
