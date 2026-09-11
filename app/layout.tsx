@@ -6,6 +6,7 @@ import Header from '@/components/layout/Header';
 import V1Header from '@/components/v1/V1Header';
 import V4Header from '@/components/v4/V4Header';
 import V5Header from '@/components/v5/V5Header';
+import V6Header from '@/components/v6/V6Header';
 import Footer from '@/components/layout/Footer';
 import LayoutShell from '@/components/layout/LayoutShell';
 import StickyCallbackCTA from '@/components/ui/StickyCallbackCTA';
@@ -149,6 +150,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <V1Header />
             <V4Header />
             <V5Header />
+            <V6Header />
             <LayoutShell footer={<Footer />}>
               <main id="main-content" tabIndex={-1}>
                 {children}

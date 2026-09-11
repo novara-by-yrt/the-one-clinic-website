@@ -1,0 +1,510 @@
+/* ══════════════════════════════════════════════════════════════
+   V6 MASTHEAD
+
+   Flat, full bleed, hairline ruled. No radius, no shadow, no blur
+   panel: the site's pill hovers inside the viewport like app chrome,
+   and this route wants furniture printed on the page instead.
+
+   Its gutters are --v6-pad-x, the route's own gutter token, so the bar
+   is measured by the same rhythm as the panels rather than by a width of
+   its own.
+
+   Ink flips with the panel under the bar via [data-theme], set by
+   V6Header from the panels' [data-section-theme] sentinels.
+══════════════════════════════════════════════════════════════ */
+
+.shell {
+  position: fixed;
+  inset: 0 0 auto 0;
+  /* Above the WhatsApp float (80), the sticky call-back bar (90) and
+     --z-sticky (200), so an open contents overlay covers them instead of
+     being punctured by them. Same ceiling V1Header uses. */
+  z-index: 300;
+  /* The bar's own transparent stretches pass clicks to the panel. */
+  pointer-events: none;
+}
+
+/* ── Bar ── */
+.bar {
+  pointer-events: auto;
+  position: relative;
+  /* Must outrank .sheet or the close button ends up underneath it. */
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 3rem);
+  height: var(--v6-bar-h);
+  padding-inline: var(--v6-pad-x);
+}
+
+/* The bar sits over photography on the cover panel, so it carries a
+   ground of its own rather than relying on whatever is behind it. Flat
+   colour, no blur: a blurred pane is the pill's trick, and at this
+   height a wash reads as a printed band. */
+.bar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgb(255 255 255 / 0.92);
+  transition: background-color var(--v6-duration) var(--v6-ease);
+}
+
+.shell[data-theme='dark'] .bar::before {
+  background: rgb(11 11 12 / 0.9);
+}
+
+.bar > * {
+  position: relative;
+}
+
+/* ── Logo ── */
+.logo {
+  display: block;
+  flex: none;
+  line-height: 0;
+}
+
+.logoImg {
+  display: block;
+  width: auto;
+  height: clamp(2rem, 4.8vh, 3rem);
+  object-fit: contain;
+  /* The asset is a single-colour mark, so it is driven to solid ink or
+     solid paper rather than tinted. Same treatment the site header
+     gives it. */
+  filter: brightness(0);
+  transition: filter var(--v6-duration) var(--v6-ease);
+}
+
+.shell[data-theme='dark'] .logoImg {
+  filter: brightness(0) invert(1);
+}
+
+/* ── Quick links ── */
+.quick {
+  display: none;
+  margin-inline-start: auto;
+}
+
+.quickList {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, 2.4vw, 2.25rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.quickLink,
+.bookLabel,
+.contentsLabel {
+  font-size: var(--v6-label);
+  font-weight: 600;
+  letter-spacing: var(--v6-track-label);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.quickLink {
+  color: var(--v6-text-secondary);
+  text-decoration: none;
+  /* A rule that grows from the left on hover, rather than a colour
+     change alone: the same hairline vocabulary as the bar itself. */
+  padding-block: 0.35rem;
+  border-bottom: 1px solid transparent;
+  transition:
+    color var(--v6-duration) var(--v6-ease),
+    border-color var(--v6-duration) var(--v6-ease);
+}
+
+.quickLink:hover {
+  color: var(--v6-text);
+  border-bottom-color: var(--v6-ink);
+}
+
+.shell[data-theme='dark'] .quickLink {
+  color: var(--v6-on-ink-secondary);
+}
+
+.shell[data-theme='dark'] .quickLink:hover {
+  color: var(--v6-on-ink);
+  border-bottom-color: var(--v6-on-ink);
+}
+
+/* ── Actions ── */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.875rem, 2vw, 1.75rem);
+  margin-inline-start: auto;
+}
+
+/* The free space goes in front of whichever element leads the right
+   hand cluster. That is .quick once it appears (see the 1200px step,
+   which also drops this auto margin so the two stay one cluster) and
+   .actions on its own below that - .quick is hidden with display:none,
+   so a sibling selector on it would match at every width and leave the
+   controls stranded beside the logo. */
+
+.book,
+.contentsBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--v6-text);
+  cursor: pointer;
+  transition: color var(--v6-duration) var(--v6-ease);
+}
+
+.shell[data-theme='dark'] .book,
+.shell[data-theme='dark'] .contentsBtn {
+  color: var(--v6-on-ink);
+}
+
+/* The booking control is a tracked label with a rule under it, not a
+   second pill. The filled pill belongs to the panels' call to action;
+   the masthead should not compete with the spread it sits on. */
+.book {
+  border-bottom: 1px solid var(--v6-ink);
+}
+
+.shell[data-theme='dark'] .book {
+  border-bottom-color: var(--v6-on-ink);
+}
+
+.book svg {
+  transition: transform var(--v6-duration) var(--v6-ease);
+}
+
+.book:hover svg {
+  transform: translateX(3px);
+}
+
+.contentsBtn {
+  /* Set apart from the booking label by a hairline, the way a masthead
+     divides its furniture. */
+  padding-inline-start: clamp(0.875rem, 2vw, 1.75rem);
+  border-left: 1px solid var(--v6-grey-300);
+}
+
+/* Contents and Close are different lengths, and the bar is right
+   aligned, so without a floor the whole row shifts sideways each time
+   the overlay is toggled. */
+.contentsLabel {
+  min-width: 5.25rem;
+  text-align: right;
+}
+
+.shell[data-theme='dark'] .contentsBtn {
+  border-left-color: rgb(255 255 255 / 0.24);
+}
+
+/* Two rules that cross into an X when the contents are open. */
+.glyph {
+  display: grid;
+  gap: 4px;
+  width: 1.125rem;
+}
+
+.glyph span {
+  display: block;
+  height: 1px;
+  background: currentColor;
+  transition: transform var(--v6-duration) var(--v6-ease);
+}
+
+.shell[data-theme] .contentsBtn[aria-expanded='true'] .glyph span:first-child {
+  transform: translateY(2.5px) rotate(45deg);
+}
+
+.shell[data-theme] .contentsBtn[aria-expanded='true'] .glyph span:last-child {
+  transform: translateY(-2.5px) rotate(-45deg);
+}
+
+/* ── Rule, doubling as the reading position ── */
+.rule {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--v6-grey-200);
+}
+
+.shell[data-theme='dark'] .rule {
+  background: rgb(255 255 255 / 0.18);
+}
+
+.ruleFill {
+  display: block;
+  height: 100%;
+  background: var(--v6-ink);
+  /* Only meaningful while the spreads flip sideways: the media query at
+     the foot of this file turns it on. */
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 320ms var(--v6-ease);
+}
+
+.shell[data-theme='dark'] .ruleFill {
+  background: var(--v6-on-ink);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CONTENTS
+
+   The site nav hangs about forty links off two mega menus. Dropped over
+   a panel that is exactly one viewport tall they would bury it, so they
+   open as a contents page: one column per group, which is also what
+   balances them - Treatments alone is five groups.
+══════════════════════════════════════════════════════════════ */
+.sheet {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  pointer-events: auto;
+  height: 100dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--v6-ink);
+  color: var(--v6-on-ink);
+}
+
+.sheetInner {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 5vh, 3.5rem);
+  min-height: 100%;
+  padding: calc(var(--v6-bar-h) + clamp(1.75rem, 5vh, 3rem)) var(--v6-pad-x)
+    clamp(2rem, 6vh, 3.5rem);
+}
+
+/* A flowing index rather than a grid of blocks. The groups are very
+   unequal - About Our Clinic is three links, Medical Aesthetics is
+   twenty-five - and in a grid the tallest cell sets the row height, so
+   the short groups left a screen-deep void beneath them. Columns let the
+   content run on, which is how a printed index reads anyway; only the
+   heading is pinned to the list it belongs to. */
+.columns {
+  column-count: 1;
+  column-gap: clamp(1.5rem, 3vw, 3rem);
+}
+
+.column {
+  min-width: 0;
+  margin-bottom: clamp(1.5rem, 3.5vh, 2.25rem);
+}
+
+.columnKicker,
+.columnTitle {
+  break-after: avoid;
+}
+
+.columnKicker {
+  margin: 0 0 0.375rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: var(--v6-track-label);
+  text-transform: uppercase;
+  color: var(--v6-grey-400);
+}
+
+.columnTitle {
+  margin: 0 0 0.875rem;
+  padding-bottom: 0.625rem;
+  border-bottom: 1px solid rgb(255 255 255 / 0.18);
+  font-size: var(--v6-label);
+  font-weight: 600;
+  letter-spacing: var(--v6-track-label);
+  text-transform: uppercase;
+  color: var(--v6-on-ink);
+}
+
+.columnTitleLink {
+  color: inherit;
+  text-decoration: none;
+}
+
+.columnTitleLink:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.columnList {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.columnLink {
+  display: inline-block;
+  font-size: var(--v6-body);
+  line-height: 1.35;
+  /* 8.4:1 on --v6-ink. */
+  color: var(--v6-on-ink-secondary);
+  text-decoration: none;
+  transition: color var(--v6-duration) var(--v6-ease);
+}
+
+.columnLink:hover {
+  color: var(--v6-on-ink);
+}
+
+/* ── Foot of the contents ── */
+.sheetFoot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem 2rem;
+  margin-top: auto;
+  padding-top: clamp(1.5rem, 3.5vh, 2.25rem);
+  border-top: 1px solid rgb(255 255 255 / 0.18);
+}
+
+.looseList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem clamp(1.25rem, 2.4vw, 2.25rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.looseLink {
+  font-size: var(--v6-label);
+  font-weight: 600;
+  letter-spacing: var(--v6-track-label);
+  text-transform: uppercase;
+  color: var(--v6-on-ink-secondary);
+  text-decoration: none;
+  transition: color var(--v6-duration) var(--v6-ease);
+}
+
+.looseLink:hover {
+  color: var(--v6-on-ink);
+}
+
+/* Inverted, because the contents page is always ink. */
+.sheetCta {
+  border-color: var(--v6-on-ink);
+  background: var(--v6-on-ink);
+  color: var(--v6-ink);
+}
+
+.sheetCta:hover {
+  background: transparent;
+  color: var(--v6-on-ink);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE
+
+   The bar's contents drop out in order of how much the route needs
+   them: the long booking label first, then the quick links, then the
+   short booking label - the site already floats a CALL BACK / BOOK NOW
+   bar at the bottom of small screens, so the masthead does not have to
+   carry the booking action there at all. The logo and the contents
+   control are never dropped.
+══════════════════════════════════════════════════════════════ */
+
+.shell {
+  --v6-bar-h: 3.5rem;
+}
+
+@media (min-width: 600px) {
+  .shell {
+    --v6-bar-h: 4rem;
+  }
+
+  .columns {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 900px) {
+  .shell {
+    --v6-bar-h: 4.5rem;
+  }
+
+  .book {
+    display: inline-flex;
+  }
+
+  .columns {
+    column-count: 3;
+  }
+}
+
+@media (min-width: 1200px) {
+  .quick {
+    display: block;
+  }
+
+  /* .quick now carries the auto margin, so the links and the controls
+     travel to the right edge together rather than splitting the gap. */
+  .actions {
+    margin-inline-start: 0;
+  }
+
+  .columns {
+    column-count: 4;
+  }
+}
+
+@media (min-width: 1600px) {
+  .columns {
+    column-count: 5;
+  }
+}
+
+/* Below 900px the booking label leaves the bar: the sticky bottom bar
+   already carries BOOK NOW there, and two booking controls on one small
+   screen is one too many. */
+@media (max-width: 899px) {
+  .book {
+    display: none;
+  }
+
+  .contentsBtn {
+    padding-inline-start: 0;
+    border-left: 0;
+  }
+}
+
+@media (max-width: 460px) {
+  .bookLabelLong {
+    display: none;
+  }
+}
+
+/* ── Horizontal mode ──
+   The reading rule only means something while the page flips sideways;
+   in the vertical stack the browser's own scrollbar says where you are.
+   --v6-progress is published by V6Stage. */
+@media (min-width: 1024px) and (orientation: landscape) {
+  .ruleFill {
+    transform: scaleX(var(--v6-progress, 0));
+  }
+
+  /* The overlay is the page's own scroll container here, because the
+     section behind it is not the page's scroll container. */
+  .sheet {
+    height: 100dvh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ruleFill {
+    transition: none;
+  }
+}

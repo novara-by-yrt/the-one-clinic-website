@@ -1,0 +1,143 @@
+/* ── Stage and chrome ──
+   The stage itself is global (.v6-stage in v6-tokens.css) because the
+   sections have to agree with it about which mode is active. What lives
+   here is the chrome, which is deliberately a sibling of the stage and
+   never a child: a perspective element is a containing block for fixed
+   descendants, so anything fixed inside the stage would be pinned to the
+   stage rather than to the viewport, and clipped by its overflow.
+*/
+
+.stage {
+  display: block;
+}
+
+.spacer {
+  display: none;
+}
+
+.chrome {
+  display: none;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   STAGE MODE
+══════════════════════════════════════════════════════════════ */
+@media (min-width: 1024px) and (orientation: landscape) {
+  .chrome {
+    display: block;
+  }
+
+  /* ── Counter and rail ──
+     Bottom right. The site floats a WhatsApp button on the bottom left
+     and a call-back pill on the bottom centre of every route, and this
+     is the corner they leave alone. */
+  .indicator {
+    position: fixed;
+    right: clamp(1rem, 2.4vw, 2.5rem);
+    bottom: clamp(1rem, 2.4vw, 2rem);
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 0.5rem 0.875rem;
+    border-radius: var(--v6-radius-pill);
+    background: rgb(255 255 255 / 0.9);
+    border: 1px solid var(--v6-grey-200);
+  }
+
+  .count {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+    margin: 0;
+    font-size: var(--v6-label);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    /* So the number does not shuffle its own width as it counts. */
+    font-variant-numeric: tabular-nums;
+    color: var(--v6-ink);
+  }
+
+  .countSep,
+  .countTotal {
+    color: var(--v6-text-muted);
+  }
+
+  .rail {
+    display: flex;
+    align-items: center;
+    gap: 0.3125rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .tick {
+    display: block;
+    width: 1.125rem;
+    height: 2px;
+    padding: 0;
+    border: 0;
+    border-radius: 2px;
+    background: var(--v6-grey-300);
+    cursor: pointer;
+    transition: background-color var(--v6-duration) var(--v6-ease);
+  }
+
+  /* A larger invisible hit area, so a 2px mark is still a comfortable
+     target. */
+  .tick::after {
+    content: '';
+    display: block;
+    height: 1.25rem;
+    margin-top: -0.625rem;
+  }
+
+  .tick:hover {
+    background: var(--v6-grey-500);
+  }
+
+  .tickOn {
+    background: var(--v6-ink);
+  }
+
+  /* ── Scroll cue ──
+     Normally a tell, and normally banned. It earns its place here
+     because a fixed stage looks like a page that has finished loading
+     and stopped: nothing on the first screen suggests that the whole
+     mechanism is waiting on the scroll. It sits with the rest of the
+     chrome rather than centred, where the call-back pill already is,
+     and it leaves the moment the page moves. */
+  .cue {
+    position: fixed;
+    right: clamp(1rem, 2.4vw, 2.5rem);
+    bottom: calc(clamp(1rem, 2.4vw, 2rem) + 3.25rem);
+    z-index: 40;
+    margin: 0;
+    font-size: var(--v6-label);
+    font-weight: 600;
+    letter-spacing: var(--v6-track-label);
+    text-transform: uppercase;
+    color: var(--v6-on-ink-secondary);
+    transition:
+      opacity 400ms var(--v6-ease),
+      transform 400ms var(--v6-ease);
+  }
+
+  .cueGone {
+    opacity: 0;
+    transform: translateY(0.5rem);
+    pointer-events: none;
+  }
+}
+
+/* Anyone who asks for reduced motion gets the plain stacked page, and
+   the chrome goes with the stage. The counter would be frozen on the
+   first section otherwise: the handler that advances it bails out under
+   the same preference, and a counter stuck on 01 is worse than no
+   counter at all. */
+@media (prefers-reduced-motion: reduce) {
+  .chrome {
+    display: none;
+  }
+}

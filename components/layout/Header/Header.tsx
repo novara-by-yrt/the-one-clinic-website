@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { isV1Route } from '@/components/v1/v1-routes';
 import { isV4Route } from '@/components/v4/v4-routes';
 import { isV5Route } from '@/components/v5/v5-routes';
+import { isV6Route } from '@/components/v6/v6-routes';
 import { m, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -500,8 +501,8 @@ export default function Header() {
     );
   }
 
-  // The v1, v4 and v5 concepts ship their own headers; stand down so two
-  // never stack. Placed after the hooks so hook order stays stable
+  // The v1, v4, v5 and v6 concepts ship their own headers; stand down so
+  // two never stack. Placed after the hooks so hook order stays stable
   // across routes.
   //
   // v4 needs its own for two reasons. The look: this pill is rounded,
@@ -510,7 +511,13 @@ export default function Header() {
   // treatment is white text on a transparent bar, chosen off
   // window.scrollY, which never leaves 0 on a horizontal track - so it
   // would sit white-on-white over the paper panels for the whole route.
-  if (isV1Route(pathname) || isV4Route(pathname) || isV5Route(pathname)) return null;
+  if (
+    isV1Route(pathname) ||
+    isV4Route(pathname) ||
+    isV5Route(pathname) ||
+    isV6Route(pathname)
+  )
+    return null;
 
   const pillAnimate = getPillAnimate(scrolled, sectionTheme);
   const anyMegaOpen = openDropdown !== null && !!NAV[openDropdown]?.groups;
