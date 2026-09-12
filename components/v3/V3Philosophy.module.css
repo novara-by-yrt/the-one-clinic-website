@@ -1,0 +1,109 @@
+/* ── Philosophy spreads ──
+   Alternating image and text. On mobile both stack image-then-text, in
+   markup order, so the reading order never depends on the flip. */
+
+.section {
+  padding-block: var(--v3-section-y);
+  background: var(--v3-paper-alt);
+}
+
+.head {
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.spreads {
+  display: grid;
+  gap: clamp(3.5rem, 8vw, 7rem);
+}
+
+.spread {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(1.75rem, 4vw, 3rem);
+  align-items: center;
+}
+
+.media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--v3-radius);
+  background: var(--v3-grey-100);
+}
+
+.text {
+  min-width: 0;
+}
+
+.pillarHeading {
+  margin: 0;
+  font-size: var(--v3-h3);
+  font-weight: 500;
+  line-height: 1.18;
+  letter-spacing: var(--v3-track-head);
+  text-wrap: balance;
+}
+
+.pillarBody {
+  margin: clamp(0.875rem, 1.6vw, 1.25rem) 0 0;
+  /* Narrow measure: the reference sets body copy well short of the
+     column it sits in, and these are the longest paragraphs on the
+     page. */
+  max-width: 46ch;
+  font-size: var(--v3-body);
+  line-height: 1.68;
+  color: var(--v3-text-secondary);
+  text-wrap: pretty;
+}
+
+/* Credibility figure, placed cleanly rather than in a floating card as
+   the live page does. */
+.stat {
+  display: flex;
+  align-items: baseline;
+  gap: 0.875rem;
+  margin: clamp(3.5rem, 7vw, 6rem) 0 0;
+  padding-top: clamp(1.5rem, 2.5vw, 2rem);
+  border-top: 1px solid var(--v3-hairline);
+}
+
+.statValue {
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: var(--v3-track-head);
+  font-variant-numeric: tabular-nums;
+}
+
+.statLabel {
+  font-size: var(--v3-small);
+  color: var(--v3-text-muted);
+}
+
+@media (min-width: 900px) {
+  .spread {
+    /* Asymmetric: the image takes slightly more than half, so the text
+       column lands on a narrower measure without being set to one. */
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    gap: clamp(3rem, 6vw, 5.5rem);
+  }
+
+  .media {
+    aspect-ratio: 5 / 4;
+  }
+
+  /* Flip the visual order only; the DOM order is unchanged, so the
+     stacked mobile layout and the tab order both stay correct. */
+  .reversed .media {
+    order: 2;
+  }
+
+  .reversed .text {
+    order: 1;
+  }
+
+  .reversed {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  }
+}

@@ -1,0 +1,300 @@
+/* ══════════════════════════════════════════════════════════════
+   V3 DESIGN TOKENS
+
+   Editorial lifestyle-publication language, on the site's existing
+   black / white / grey brand palette. The interface introduces no hue
+   of its own; the photography and the accreditation marks run in full
+   colour against it.
+
+   V3 is deliberately not V2. V2 is a hairline-ruled contact sheet:
+   square corners, no chips, condensed copy, ink at both ends. V3 is a
+   magazine: soft-cornered cards on a warm-neutral paper, alternating
+   image and text spreads, the homepage copy carried verbatim including
+   its section labels, and a single reused CTA treatment.
+══════════════════════════════════════════════════════════════ */
+
+.v3-root {
+  /* ── Surfaces ──
+     Two greys only: the page ground and one recessed band used to
+     separate a section without inverting it. */
+  --v3-paper: #ffffff;
+  --v3-paper-alt: #f4f4f3;
+  --v3-ink: #0b0b0c;
+  --v3-ink-soft: #1a1a1c;
+
+  /* ── Grey ramp, contrast against --v3-paper ──
+     700 = 9.7:1, 600 = 7.3:1, 500 = 5.0:1 (AA body floor),
+     400 = 3.1:1 (large text only), 300 and below are non-text. */
+  --v3-grey-700: #2f2f33;
+  --v3-grey-600: #4a4a50;
+  --v3-grey-500: #6a6a71;
+  --v3-grey-400: #90909a;
+  --v3-grey-300: #c0c0c6;
+  --v3-grey-200: #e2e2e3;
+  --v3-grey-100: #eeeeed;
+
+  --v3-text: var(--v3-ink);
+  --v3-text-secondary: var(--v3-grey-600);
+  --v3-text-muted: var(--v3-grey-500);
+
+  /* On imagery and the closing band the ramp inverts. */
+  --v3-on-dark: #f6f6f5;
+  --v3-on-dark-secondary: #c6c6ca;
+
+  --v3-hairline: #e2e2e3;
+
+  /* ── Type ──
+     Inter is the only face in the repo and this build adds no assets,
+     so hierarchy is carried by size and weight, with tracking pulled in
+     at the top of the ramp the way a refined sans wants it. */
+  --v3-font: var(--font-inter), 'Inter', system-ui, sans-serif;
+
+  --v3-display: clamp(2.5rem, 6.4vw, 5rem);
+  --v3-h2: clamp(2rem, 4.2vw, 3.5rem);
+  --v3-h3: clamp(1.25rem, 2.1vw, 1.75rem);
+  --v3-h4: clamp(1.0625rem, 1.5vw, 1.25rem);
+  --v3-lead: clamp(1.0625rem, 1.4vw, 1.25rem);
+  --v3-body: 1rem;
+  --v3-small: 0.9375rem;
+  --v3-label: 0.75rem;
+
+  --v3-track-display: -0.03em;
+  --v3-track-head: -0.02em;
+  --v3-track-label: 0.16em;
+
+  /* ── Rhythm ──
+     Whitespace is the premium signal here, so section padding is the
+     largest single number in the system. It is applied to both edges of
+     every section, so adjacent sections produce twice this value: the
+     ceiling is set at 8rem to land those boundaries around 250px rather
+     than the 350px that reads as a void between two white sections. */
+  --v3-section-y: clamp(4rem, 9vw, 8rem);
+  --v3-gutter: clamp(1.25rem, 5vw, 4.5rem);
+
+  /* Narrow measure: body copy never runs the full column width. */
+  --v3-measure: 58ch;
+  --v3-measure-tight: 46ch;
+
+  /* ── Shape ──
+     One radius, everywhere, on every card, plate and control. */
+  --v3-radius: 14px;
+  --v3-radius-sm: 10px;
+
+  --v3-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --v3-duration: 240ms;
+
+  font-family: var(--v3-font);
+  background: var(--v3-paper);
+  color: var(--v3-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Anchor targets clear the fixed site header. */
+.v3-root :where([id]) {
+  scroll-margin-top: 7rem;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SHARED PRIMITIVES
+══════════════════════════════════════════════════════════════ */
+
+.v3-shell {
+  width: 100%;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding-inline: var(--v3-gutter);
+}
+
+/* The contained measure: roughly two thirds of the shell, used by any
+   block that should not run the full width. */
+.v3-shellNarrow {
+  width: 100%;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding-inline: var(--v3-gutter);
+}
+
+.v3-narrow {
+  max-width: 68%;
+}
+
+@media (max-width: 899px) {
+  .v3-narrow {
+    max-width: 100%;
+  }
+}
+
+/* ── Section label ──
+   The homepage copy carries a short label above most section headings.
+   Rendered as quiet letterspaced caps rather than a dotted pill, which
+   is what keeps the page from reading as a commercial clinic template. */
+.v3-label {
+  display: block;
+  margin: 0 0 clamp(1rem, 2vw, 1.5rem);
+  font-size: var(--v3-label);
+  font-weight: 500;
+  letter-spacing: var(--v3-track-label);
+  text-transform: uppercase;
+  color: var(--v3-text-muted);
+}
+
+.v3-onDark .v3-label {
+  color: var(--v3-on-dark-secondary);
+}
+
+.v3-h2 {
+  margin: 0;
+  font-size: var(--v3-h2);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: var(--v3-track-head);
+  text-wrap: balance;
+}
+
+.v3-lead {
+  margin: clamp(1.125rem, 2vw, 1.75rem) 0 0;
+  max-width: var(--v3-measure-tight);
+  font-size: var(--v3-lead);
+  line-height: 1.5;
+  color: var(--v3-text-secondary);
+  text-wrap: pretty;
+}
+
+.v3-onDark .v3-lead {
+  color: var(--v3-on-dark-secondary);
+}
+
+.v3-body {
+  margin: 0;
+  max-width: var(--v3-measure);
+  font-size: var(--v3-body);
+  line-height: 1.65;
+  color: var(--v3-text-secondary);
+  text-wrap: pretty;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CTA
+   One treatment, reused on every section. Solid ink by default, an
+   outlined sibling where two actions sit together, and an inverted
+   pair for use on imagery and the closing band.
+══════════════════════════════════════════════════════════════ */
+
+.v3-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.0625rem 2.125rem;
+  border: 1px solid transparent;
+  border-radius: var(--v3-radius-sm);
+  font: inherit;
+  font-size: var(--v3-small);
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  /* Labels are short enough to hold one line at every width. */
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--v3-duration) var(--v3-ease),
+    color var(--v3-duration) var(--v3-ease),
+    border-color var(--v3-duration) var(--v3-ease),
+    transform 120ms var(--v3-ease);
+}
+
+.v3-btnSolid {
+  background: var(--v3-ink);
+  color: var(--v3-on-dark);
+  border-color: var(--v3-ink);
+}
+
+.v3-btnSolid:hover {
+  background: var(--v3-ink-soft);
+  border-color: var(--v3-ink-soft);
+}
+
+.v3-btnOutline {
+  background: transparent;
+  color: var(--v3-ink);
+  border-color: var(--v3-grey-400);
+}
+
+.v3-btnOutline:hover {
+  border-color: var(--v3-ink);
+  background: var(--v3-paper-alt);
+}
+
+.v3-onDark .v3-btnSolid {
+  background: var(--v3-on-dark);
+  color: var(--v3-ink);
+  border-color: var(--v3-on-dark);
+}
+
+.v3-onDark .v3-btnSolid:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+}
+
+.v3-onDark .v3-btnOutline {
+  color: var(--v3-on-dark);
+  border-color: rgb(255 255 255 / 0.45);
+}
+
+.v3-onDark .v3-btnOutline:hover {
+  border-color: var(--v3-on-dark);
+  background: rgb(255 255 255 / 0.1);
+}
+
+.v3-btn:active {
+  transform: translateY(1px);
+}
+
+/* Quiet inline link, for "Learn More" style actions inside cards. */
+.v3-textLink {
+  display: inline-block;
+  padding-bottom: 0.1875rem;
+  border-bottom: 1px solid var(--v3-grey-400);
+  color: var(--v3-ink);
+  font-size: var(--v3-small);
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color var(--v3-duration) var(--v3-ease);
+}
+
+.v3-textLink:hover {
+  border-bottom-color: var(--v3-ink);
+}
+
+/* ── Focus ── */
+.v3-root :where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--v3-ink);
+  outline-offset: 3px;
+}
+
+.v3-onDark :where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline-color: var(--v3-on-dark);
+}
+
+/* ── Imagery ──
+   Photography runs in its own colour against a black, white and grey
+   interface, so the images are the page's only chromatic element. */
+.v3-plate {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.v3-hairline {
+  border: 0;
+  border-top: 1px solid var(--v3-hairline);
+  margin: 0;
+}
+
+/* Static page: hover and focus are the only transitions, so reduced
+   motion simply collapses them. */
+@media (prefers-reduced-motion: reduce) {
+  .v3-root * {
+    transition-duration: 1ms !important;
+  }
+}

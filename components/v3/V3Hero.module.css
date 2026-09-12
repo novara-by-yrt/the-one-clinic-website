@@ -1,0 +1,143 @@
+/* ── Hero ──
+   Ink ground, type left, a pair of equal treatment plates right.
+
+   Alignment rules that hold at every width:
+   - the copy starts on the shell's left edge, the same edge every
+     section header below it uses;
+   - the two plates are identical in ratio and share a grid row, so
+     their top and bottom edges always agree;
+   - nothing is layered over a photograph, so no scrim is needed and
+     contrast does not depend on the crop.
+*/
+
+.hero {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  background: var(--v3-ink);
+  color: var(--v3-on-dark);
+  /* Clears the fixed site header, then breathes. */
+  padding-top: clamp(6.5rem, 12vw, 9rem);
+  padding-bottom: clamp(3rem, 7vw, 5.5rem);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(2.25rem, 5vw, 3.5rem);
+  align-items: center;
+}
+
+/* ── Copy ── */
+.copy {
+  min-width: 0;
+}
+
+.eyebrow {
+  margin: 0 0 clamp(1rem, 2.2vw, 1.625rem);
+  font-size: var(--v3-label);
+  font-weight: 500;
+  letter-spacing: var(--v3-track-label);
+  text-transform: uppercase;
+  /* 7.4:1 against --v3-ink. */
+  color: var(--v3-on-dark-secondary);
+}
+
+.headline {
+  margin: 0;
+  font-size: var(--v3-display);
+  font-weight: 500;
+  /* 1.03 rather than 1: "Expertise" has a descender that clips at 1. */
+  line-height: 1.03;
+  letter-spacing: var(--v3-track-display);
+  padding-bottom: 0.06em;
+  color: var(--v3-on-dark);
+  text-wrap: balance;
+}
+
+/* Subordinate to the headline and in the same family, so the two read
+   as one lockup rather than as competing lines. */
+.tagline {
+  margin: clamp(0.75rem, 1.5vw, 1.125rem) 0 0;
+  font-size: clamp(1.125rem, 1.8vw, 1.4375rem);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+  color: var(--v3-on-dark);
+}
+
+.subtext {
+  margin: clamp(1.125rem, 2vw, 1.625rem) 0 0;
+  max-width: 32ch;
+  font-size: var(--v3-lead);
+  line-height: 1.5;
+  color: var(--v3-on-dark-secondary);
+  text-wrap: pretty;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: clamp(1.625rem, 3vw, 2.25rem);
+}
+
+/* ── Plates ──
+   Two equal cells. A shared aspect ratio is what keeps their edges
+   aligned; nothing here depends on the images being the same size. */
+.plates {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.75rem, 1.6vw, 1.25rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.plate {
+  position: relative;
+  min-width: 0;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: var(--v3-radius);
+  background: var(--v3-ink-soft);
+}
+
+/* ── Tablet ── */
+@media (min-width: 768px) {
+  .plates {
+    gap: clamp(1rem, 1.8vw, 1.5rem);
+  }
+}
+
+/* ── Desktop: side by side ── */
+@media (min-width: 1024px) {
+  .hero {
+    display: flex;
+    align-items: center;
+    /* Low enough that the content sets the height rather than leaving a
+       band of empty ink above and below it. */
+    min-height: min(78dvh, 800px);
+  }
+
+  .grid {
+    width: 100%;
+    /* Near-even split. The plates need real width, because two portraits
+       squeezed into a third of the page read as thumbnails rather than
+       as the hero image. */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.02fr);
+    gap: clamp(2.5rem, 4.5vw, 4rem);
+  }
+
+  .plate {
+    /* Tall portrait, so the pair stands to roughly the height of the
+       copy block beside it instead of floating in the middle of it. */
+    aspect-ratio: 7 / 12;
+  }
+}
+
+@media (min-width: 1440px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.96fr);
+  }
+}

@@ -5,102 +5,136 @@ import Image from 'next/image';
 import { m } from 'framer-motion';
 import { PILLARS, SLIDES } from '@/components/brand/BrandProcess';
 import V1Heading from './V1Heading';
-import { useTilt } from './useTilt';
 import styles from './V1Philosophy.module.css';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const VIEW = { once: true, margin: '-70px 0px' };
-const INTERVAL = 5000;
+const INTERVAL = 5200;
 
+/**
+ * Our Philosophy.
+ *
+ * Laid out as an editorial spread rather than the two-column split it
+ * used to be: masthead, then a band of frames, then the pillars as a
+ * ledger beneath. The page already spends its two-column budget on
+ * Contact, and a section whose whole job is to say who the clinic is
+ * reads better given the full measure than squeezed into half of it.
+ *
+ * The masthead's right-hand figure is the patient count. It is a
+ * statistic set as display type, not a second column of prose: the
+ * heading keeps the page's one voice, and the number fills the space
+ * beside it that a left-aligned heading would otherwise leave empty.
+ *
+ * The band is a filmstrip that opens rather than a single wide plate.
+ * Every image in SLIDES is a 3:4 portrait, and a full-measure landscape
+ * band crops them through the shoulders; four upright frames, one of
+ * them open, is the shape the photographs already are. The open frame
+ * is the only one in colour, which is the strongest signal a monochrome
+ * page has to spend.
+ *
+ * The frames and the pillars stay wired together - hovering a pillar
+ * opens its matching frame, and the frames themselves are buttons. That
+ * is the one interaction this section has, and it is what stops the
+ * media reading as decoration running on its own timer.
+ */
 export default function V1Philosophy() {
   const [slide, setSlide] = useState(0);
   const [hovered, setHovered] = useState<number | null>(null);
-  const canvas = useTilt<HTMLDivElement>({ max: 6, lift: 0 });
 
+  // A timeout keyed on the current frame rather than one standing
+  // interval: picking a frame by hand restarts the dwell instead of
+  // being cut short by whatever was left of the previous tick. Paused
+  // while a pillar or a frame is pinning the band, so nothing jumps
+  // out from under the pointer.
   useEffect(() => {
-    const t = setInterval(() => setSlide((i) => (i + 1) % SLIDES.length), INTERVAL);
-    return () => clearInterval(t);
-  }, []);
+    if (hovered !== null) return;
+    const t = setTimeout(() => setSlide((i) => (i + 1) % SLIDES.length), INTERVAL);
+    return () => clearTimeout(t);
+  }, [slide, hovered]);
 
-  // Hovering a pillar pins the stack to a matching frame, so the two
-  // columns feel wired together rather than animating independently.
   const active = hovered !== null ? hovered % SLIDES.length : slide;
-  const behind = (active + 1) % SLIDES.length;
 
   return (
     <div className={styles.layout}>
-      {/* ── Layered media stack ── */}
+      {/* ── Masthead ── */}
+      <div className={styles.masthead}>
+        <div className={styles.mastheadCopy}>
+          <V1Heading chip="About Us" title="Our" accent="Philosophy" align="left" />
+          <m.p
+            className={styles.lede}
+            initial={{ opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VIEW}
+            transition={{ duration: 0.85, delay: 0.18, ease: EASE }}
+          >
+            One Clinic Leicester, where a fresh approach to aesthetics meets genuine,
+            lasting care for every patient.
+          </m.p>
+        </div>
+
+        <m.p
+          className={styles.figure}
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={VIEW}
+          transition={{ duration: 0.85, delay: 0.3, ease: EASE }}
+        >
+          <span className={styles.figureNum}>2000+</span>
+          <span className={styles.figureLabel}>Patients Treated</span>
+        </m.p>
+      </div>
+
+      {/* ── Band ── */}
       <m.div
-        className={styles.media}
-        initial={{ opacity: 0, x: -44, rotateY: 10 }}
-        whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+        className={styles.band}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={VIEW}
         transition={{ duration: 1, ease: EASE }}
       >
-        <div className={styles.halo} aria-hidden="true" />
-        <div ref={canvas.ref} className={styles.canvas} {...canvas.tiltProps}>
-          <div className={`${styles.plate} ${styles.plateMain}`}>
-            {SLIDES.map((s, i) => (
-              <div key={s.src} className={`${styles.slide} ${i === active ? styles.slideOn : ''}`}>
-                <Image
-                  src={s.src}
-                  alt={i === active ? s.alt : ''}
-                  aria-hidden={i !== active}
-                  fill
-                  className={styles.img}
-                  sizes="(max-width: 560px) 100vw, (max-width: 980px) 460px, 520px"
-                />
-              </div>
-            ))}
-          </div>
-
-          <div className={`${styles.plate} ${styles.plateSub}`} aria-hidden="true">
-            {SLIDES.map((s, i) => (
-              <div key={s.src} className={`${styles.slide} ${i === behind ? styles.slideOn : ''}`}>
-                <Image src={s.src} alt="" fill className={styles.img} sizes="240px" />
-              </div>
-            ))}
-          </div>
-
-          <div className={styles.stat}>
-            <p className={styles.statNum}>2000+</p>
-            <p className={styles.statLabel}>Patients Treated</p>
-          </div>
-        </div>
+        {SLIDES.map((s, i) => (
+          <button
+            key={s.src}
+            type="button"
+            className={`${styles.frame} ${i === active ? styles.frameOn : ''}`}
+            aria-label={s.alt}
+            aria-pressed={i === active}
+            onClick={() => setSlide(i)}
+            onMouseEnter={() => setHovered(i)}
+            onMouseLeave={() => setHovered(null)}
+            onFocus={() => setHovered(i)}
+            onBlur={() => setHovered(null)}
+          >
+            <Image
+              src={s.src}
+              alt=""
+              fill
+              className={styles.img}
+              sizes="(max-width: 900px) 50vw, 560px"
+            />
+          </button>
+        ))}
       </m.div>
 
-      {/* ── Copy ── */}
-      <div className={styles.textCol}>
-        <V1Heading
-          chip="About Us"
-          title="Our"
-          accent="Philosophy"
-          sub="One Clinic Leicester, where a fresh approach to aesthetics meets genuine, lasting care for every patient."
-          align="left"
-        />
-
-        <div className={styles.pillars}>
-          {PILLARS.map((p, i) => (
-            <m.article
-              key={p.tag}
-              className={styles.pillar}
-              initial={{ opacity: 0, y: 30, rotateX: -10 }}
-              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-              viewport={VIEW}
-              transition={{ duration: 0.8, delay: i * 0.13, ease: EASE }}
-              whileHover={{ translateZ: 26, rotateY: -2 }}
-              onMouseEnter={() => setHovered(i)}
-              onMouseLeave={() => setHovered(null)}
-            >
-              <span className={styles.spine} aria-hidden="true" />
-              <div className={styles.pillarBody}>
-                <span className={styles.tag}>{p.tag}</span>
-                <h3 className={styles.pillarHeading}>{p.heading}</h3>
-                <p className={styles.pillarText}>{p.body}</p>
-              </div>
-            </m.article>
-          ))}
-        </div>
+      {/* ── Ledger ── */}
+      <div className={styles.ledger}>
+        {PILLARS.map((p, i) => (
+          <m.article
+            key={p.tag}
+            className={styles.pillar}
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VIEW}
+            transition={{ duration: 0.8, delay: i * 0.12, ease: EASE }}
+            onMouseEnter={() => setHovered(i)}
+            onMouseLeave={() => setHovered(null)}
+          >
+            <span className={styles.pillarRule} aria-hidden="true" />
+            <span className={styles.tag}>{p.tag}</span>
+            <h3 className={styles.pillarHeading}>{p.heading}</h3>
+            <p className={styles.pillarText}>{p.body}</p>
+          </m.article>
+        ))}
       </div>
     </div>
   );

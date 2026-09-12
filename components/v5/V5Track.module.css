@@ -1,0 +1,180 @@
+/* ── Deck ──
+   Below tablet-landscape: a plain block, so the sections follow one
+   another down the page and nothing from the deck applies.
+*/
+
+.deck {
+  display: block;
+}
+
+.chrome {
+  display: none;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   DECK MODE
+══════════════════════════════════════════════════════════════ */
+@media (min-width: 1024px) and (orientation: landscape) {
+  .deck {
+    /* The deck is a plain block that happens to be as tall as its cards.
+       No scroll container of its own: the document scrolls, which is
+       what keeps the cards sticky and lets scroll(root block) clock the
+       depth. The ground the cards turn against lives on .v5-deck in
+       v5-tokens.css. */
+    display: block;
+  }
+
+  .chrome {
+    display: block;
+  }
+
+  /* ── Arrows ── */
+  /* The chrome is a sibling of the track, not a child, so none of it is
+     inside the perspective element: no 3D context can capture a fixed
+     position or clip it. Verified rather than assumed. */
+  .arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 40;
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid var(--v5-grey-300);
+    border-radius: var(--v5-radius-pill);
+    background: rgb(255 255 255 / 0.86);
+    backdrop-filter: blur(6px);
+    cursor: pointer;
+    transition:
+      background-color var(--v5-duration) var(--v5-ease),
+      border-color var(--v5-duration) var(--v5-ease),
+      opacity var(--v5-duration) var(--v5-ease);
+  }
+
+  /* Stacked at the right edge rather than opposed at left and right:
+     the deck moves up and down now, and an arrow should point the way
+     the page goes. */
+  .arrowPrev,
+  .arrowNext {
+    right: clamp(0.75rem, 1.6vw, 1.5rem);
+  }
+
+  .arrowPrev {
+    top: calc(50% - 1.75rem);
+  }
+
+  .arrowNext {
+    top: calc(50% + 1.75rem);
+  }
+
+  .arrow:hover:not(:disabled) {
+    background: #ffffff;
+    border-color: var(--v5-ink);
+  }
+
+  .arrow:disabled {
+    opacity: 0.32;
+    cursor: default;
+  }
+
+  /* A chevron drawn from two borders rather than an SVG icon: it is a
+     geometric mark, not an icon that belongs to a set. */
+  .arrowGlyph {
+    width: 0.625rem;
+    height: 0.625rem;
+    border-top: 1.5px solid var(--v5-ink);
+    border-right: 1.5px solid var(--v5-ink);
+  }
+
+  .arrowPrev .arrowGlyph {
+    transform: rotate(-45deg);
+    margin-top: 0.15rem;
+  }
+
+  .arrowNext .arrowGlyph {
+    transform: rotate(135deg);
+    margin-bottom: 0.15rem;
+  }
+
+  /* ── Page indicator ──
+     Bottom right: the site's floating call-back pill sits bottom centre
+     on every route and its WhatsApp button bottom left, and the latter
+     is z-index 80 to this layer's 40, so anything on that corner ends up
+     underneath it. The next arrow is vertically centred, so it does not
+     reach down here. */
+  .indicator {
+    position: fixed;
+    right: clamp(1rem, 2.4vw, 2.5rem);
+    bottom: clamp(1rem, 2.4vw, 2rem);
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 0.5rem 0.875rem;
+    border-radius: var(--v5-radius-pill);
+    background: rgb(255 255 255 / 0.86);
+    backdrop-filter: blur(6px);
+    border: 1px solid var(--v5-grey-200);
+  }
+
+  .count {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+    margin: 0;
+    font-size: var(--v5-label);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    font-variant-numeric: tabular-nums;
+    color: var(--v5-ink);
+  }
+
+  .countSep,
+  .countTotal {
+    color: var(--v5-text-muted);
+  }
+
+  .dashes {
+    display: flex;
+    align-items: center;
+    gap: 0.3125rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .dash {
+    display: block;
+    width: 1.125rem;
+    height: 2px;
+    padding: 0;
+    border: 0;
+    border-radius: 2px;
+    background: var(--v5-grey-300);
+    cursor: pointer;
+    transition: background-color var(--v5-duration) var(--v5-ease);
+  }
+
+  /* A larger invisible hit area, so a 2px-tall mark is still a
+     comfortable target. */
+  .dash::after {
+    content: '';
+    display: block;
+    height: 1.25rem;
+    margin-top: -0.625rem;
+  }
+
+  .dash:hover {
+    background: var(--v5-grey-500);
+  }
+
+  .dashOn {
+    background: var(--v5-ink);
+  }
+}
+
+/* Users who ask for reduced motion get instant jumps rather than a
+   smooth-scrolled travel down the deck. The jump itself is issued by
+   V5Track, which reads the same preference before it scrolls. */

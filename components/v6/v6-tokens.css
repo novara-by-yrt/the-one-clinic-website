@@ -1,0 +1,330 @@
+/* ══════════════════════════════════════════════════════════════
+   V6 DESIGN TOKENS
+
+   A magazine that flips sideways. On desktop the page is a single
+   stack of full-viewport planes on a fixed stage, driven in depth by the
+   page's own scroll; below tablet-landscape the stage collapses to an
+   ordinary vertical page.
+
+   Palette is the site's existing black, white and grey. The interface
+   introduces no hue of its own; the photography carries colour.
+══════════════════════════════════════════════════════════════ */
+
+/* The token block is shared by the page and by the route's chrome. The
+   masthead is rendered from the root layout so it can sit above the
+   track's stacking context, which puts it outside .v6-root; it needs the
+   same palette and type scale without also taking .v6-root's paper
+   background, which would paint the bar white over the panels. */
+.v6-root,
+.v6-chrome {
+  /* ── Surfaces ── */
+  --v6-paper: #ffffff;
+  --v6-paper-alt: #f5f5f4;
+  --v6-ink: #0b0b0c;
+  --v6-ink-soft: #191919;
+
+  /* Contrast against --v6-paper: 700 = 10.4:1, 600 = 7.4:1,
+     500 = 5.1:1 (AA body floor), 400 = 3.2:1 (large text only). */
+  --v6-grey-700: #2e2e31;
+  --v6-grey-600: #494950;
+  --v6-grey-500: #68686f;
+  --v6-grey-400: #8e8e97;
+  --v6-grey-300: #c4c4c9;
+  --v6-grey-200: #e4e4e5;
+
+  --v6-text: var(--v6-ink);
+  --v6-text-secondary: var(--v6-grey-600);
+  --v6-text-muted: var(--v6-grey-500);
+
+  --v6-on-ink: #f5f5f4;
+  --v6-on-ink-secondary: #bebec3;
+
+  /* Secondary text sitting over a photograph rather than over solid ink.
+     Lighter than --v6-on-ink-secondary on purpose: measured against the
+     hero's actual painted pixels, #bebec3 came in at 3.96:1 on the
+     eyebrow, because light-grey text against a dark photograph loses
+     contrast by being too dim rather than by the image being too bright.
+     This value measures 5.3:1 or better at every width while staying
+     subordinate to the headline's near-white. */
+  --v6-on-image-secondary: #dcdce0;
+
+  /* ── Type ──
+     Inter is the only face in the repo and this build adds no assets, so
+     the editorial register comes from case, tracking and scale. The
+     headline is set uppercase via text-transform, which keeps the copy
+     itself verbatim in the markup.
+
+     Every size is capped in vh as well as vw: a panel is exactly one
+     viewport tall, so on a short laptop the type has to come down or the
+     copy will not fit its panel. */
+  --v6-font: var(--font-inter), 'Inter', system-ui, sans-serif;
+
+  --v6-display: clamp(1.75rem, min(3vw, 4.4vh), 3rem);
+  --v6-lead: clamp(1rem, min(1.05vw, 1.9vh), 1.125rem);
+  --v6-body: clamp(0.9375rem, min(1vw, 1.75vh), 1.0625rem);
+  --v6-label: clamp(0.6875rem, min(0.8vw, 1.3vh), 0.75rem);
+
+  --v6-track-display: 0.005em;
+  --v6-track-label: 0.18em;
+
+  /* ── Rhythm ──
+     Panels clear the fixed site header at the top and the page indicator
+     at the bottom, because both float over every section. */
+  --v6-pad-top: clamp(5.5rem, 11vh, 7.5rem);
+  --v6-pad-bottom: clamp(3.5rem, 8vh, 5.5rem);
+  --v6-pad-x: clamp(1.5rem, 4vw, 4.5rem);
+  --v6-measure: 44ch;
+
+  /* ── The stage ──
+     The sections are planes stacked in depth on a fixed stage, and the
+     numbers below are the whole of the effect. The arriving section
+     starts just over half size and 760px back; the leaving one rises,
+     enlarges past the camera and tilts away from the viewer. The tilt
+     is what sells it as depth rather than a zoom: without it the two
+     read as one image scaling. The leaving section stays opaque for most
+     of its exit and travels far enough to clear the frame, rather than
+     fading where it stands: it is larger than the section behind it, so
+     anything less than opaque puts two headlines on screen at once.
+
+     Kept here rather than in the script so the two dials the effect
+     actually turns on, how far back a section arrives from and how hard
+     the leaving one tilts, are a line of CSS rather than a constant
+     buried in a handler. */
+  /* The ground the planes play out on. They are inset by nothing, so
+     this shows only where a plane has lifted clear or has not yet
+     arrived, which is exactly where depth needs somewhere to be. */
+  --v6-stage: #111114;
+
+  --v6-perspective: 1300px;
+  --v6-arrive-scale: 0.52;
+  --v6-arrive-depth: 760px;
+  --v6-arrive-rise: 5;
+  --v6-exit-rise: 108;
+  --v6-exit-hold: 0.6;
+  --v6-exit-scale: 0.22;
+  --v6-exit-tilt: 11;
+  --v6-exit-span: 1.25;
+
+  /* ── Shape ── */
+  --v6-radius-plate: 0px;
+  --v6-radius-pill: 999px;
+
+  --v6-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --v6-duration: 220ms;
+
+  font-family: var(--v6-font);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Surface colours belong to the page, not to the chrome. */
+.v6-root {
+  background: var(--v6-paper);
+  color: var(--v6-text);
+}
+
+/* The stage is fixed and the spacer beside it provides the scroll, so
+   the document scrolls normally and there is no lock here. That is also
+   what keeps the wheel, the trackpad, the scrollbar, the space bar,
+   Page Up and Page Down, find-in-page and screen-reader navigation
+   working: none of them were taken away.
+*/
+
+/* ══════════════════════════════════════════════════════════════
+   SHARED PRIMITIVES
+══════════════════════════════════════════════════════════════ */
+
+/* Pill CTA, one treatment reused on every panel. Solid ink with white
+   text on paper panels, inverted on the ink ones. */
+.v6-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9375rem 2rem;
+  border: 1px solid var(--v6-ink);
+  border-radius: var(--v6-radius-pill);
+  background: var(--v6-ink);
+  color: var(--v6-on-ink);
+  font: inherit;
+  font-size: var(--v6-label);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--v6-duration) var(--v6-ease),
+    color var(--v6-duration) var(--v6-ease),
+    border-color var(--v6-duration) var(--v6-ease),
+    transform 120ms var(--v6-ease);
+}
+
+.v6-cta:hover {
+  background: var(--v6-ink-soft);
+  border-color: var(--v6-ink-soft);
+}
+
+.v6-cta:active {
+  transform: translateY(1px);
+}
+
+.v6-onInk .v6-cta {
+  background: var(--v6-on-ink);
+  border-color: var(--v6-on-ink);
+  color: var(--v6-ink);
+}
+
+.v6-onInk .v6-cta:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+}
+
+/* Secondary pill, used only where two actions sit together. Outlined
+   rather than filled, so the primary stays the one that reads first. */
+.v6-onInk .v6-ctaGhost {
+  background: transparent;
+  border-color: rgb(255 255 255 / 0.5);
+  color: var(--v6-on-ink);
+}
+
+.v6-onInk .v6-ctaGhost:hover {
+  background: rgb(255 255 255 / 0.12);
+  border-color: var(--v6-on-ink);
+}
+
+/* ── Focus, visible on both grounds ── */
+.v6-root :where(a, button, [tabindex]):focus-visible,
+.v6-chrome :where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--v6-ink);
+  outline-offset: 3px;
+}
+
+.v6-onInk :where(a, button, [tabindex]):focus-visible {
+  outline-color: var(--v6-on-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v6-root *,
+  .v6-chrome * {
+    transition-duration: 1ms !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   THE STAGE
+
+   The sections are planes stacked in depth on a fixed stage. Scrolling
+   lifts the plane in front up and away, tilting it back past the camera,
+   while the one behind rises out of depth and zooms into its place.
+
+   The stage is fixed and the spacer beside it carries the scroll height,
+   so the document scrolls the way a document does and the planes are
+   driven from that offset by V6Stage. Everything here is the resting
+   state and the geometry; the frame-by-frame numbers are written to
+   inline styles by the handler, because they are a continuous function
+   of scroll rather than a set of steps a keyframe could name.
+══════════════════════════════════════════════════════════════ */
+@media (min-width: 1024px) and (orientation: landscape) {
+  .v6-stage {
+    position: fixed;
+    inset: 0;
+    /* The stage is fixed, not a scroll container, so giving it a 3D
+       context costs nothing: a scroller that has to maintain one loses
+       threaded scrolling, and this is not one. */
+    perspective: var(--v6-perspective);
+    /* Slightly above centre. The eye reads a stack as being below its
+       own level, and planes lifting away from a high vanishing point
+       look like they are being taken off the top rather than thrown at
+       the viewer. */
+    perspective-origin: 50% 45%;
+    overflow: hidden;
+    background: var(--v6-stage);
+  }
+
+  .v6-section {
+    position: absolute;
+    inset: 0;
+    height: 100svh;
+    transform-origin: 50% 50%;
+    backface-visibility: hidden;
+    /* Inverted: the first section is in FRONT. The one leaving has to
+       sit above the one arriving, or lifting it away would reveal
+       nothing. --i comes from the page, --v6-count from the stage. */
+    z-index: calc(var(--v6-count) - var(--i));
+    /* A white section over a white section has no edge, and the layering
+       reads as flat no matter how much depth the transform carries. The
+       hairline draws the plane's boundary and the shadow gives it a
+       near side. Both are static: nothing here is ever animated, only
+       transform and opacity are. */
+    border-top: 1px solid var(--v6-grey-200);
+    border-bottom: 1px solid var(--v6-grey-200);
+    box-shadow: 0 32px 64px -28px rgb(11 11 12 / 0.55);
+  }
+
+  .v6-onInk.v6-section {
+    border-color: rgb(255 255 255 / 0.16);
+  }
+
+  /* The spacer is the scroll. One viewport per section, so the offset
+     the handler reads maps to a section index without arithmetic. */
+  .v6-spacer {
+    display: block;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   NO STAGE
+
+   Below tablet-landscape, and for anyone who asks for reduced motion,
+   the page is a plain vertical stack: the sections follow one another
+   down the document, image on top and text beneath, with no fixed
+   stage, no perspective, no transforms and no spacer. Not a softened
+   version of the effect, the absence of it.
+
+   The script bails out on the same two conditions, so there is no state
+   where one half of the page thinks it is on a stage and the other half
+   does not.
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 1023px), (orientation: portrait), (prefers-reduced-motion: reduce) {
+  .v6-stage {
+    position: static;
+    perspective: none;
+    overflow: visible;
+    background: none;
+  }
+
+  .v6-section {
+    position: relative;
+    inset: auto;
+    height: auto;
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    will-change: auto !important;
+    box-shadow: none;
+    border-top: 0;
+    border-bottom: 0;
+  }
+
+  .v6-spacer {
+    display: none;
+  }
+}
+
+/* ── Header theme sentinel ──
+   The site Header picks its treatment from an IntersectionObserver over
+   [data-section-theme]. On the stage every section occupies the same
+   box, so several are level with the bar at once and the observer's
+   tie-break could settle on one that is behind. Carrying the attribute
+   on an inset element does not separate them here, but the masthead is
+   locked to the stage on this route anyway (see V6Header.module.css),
+   so the tie no longer decides anything visible. Kept for the plain
+   stacked page, where the sections really do follow one another. */
+.v6-themeMark {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 25%;
+  right: 25%;
+  pointer-events: none;
+}

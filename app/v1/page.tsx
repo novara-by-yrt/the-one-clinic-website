@@ -27,14 +27,16 @@ export const metadata: Metadata = {
  * Surfaces run black → gray → white and repeat, so `surfaceAt(i)` is the
  * single source of that rhythm: reorder or insert a section and the
  * sequence stays correct without touching any colour by hand. The hero
- * owns its own full-bleed treatment and starts the cycle at black.
+ * sits outside it: it is white, and owns its own full-bleed image band.
  */
 export default function V1Page() {
   return (
     <div className="v1-root">
       <JsonLd schema={buildClinicSchema()} />
 
-      {/* 0 — black */}
+      {/* The hero is white, and owns its own full-bleed image band. The
+          rhythm below is unaffected: it is keyed off surfaceAt(i), not
+          off what came before it. */}
       <V1Hero />
 
       {/* Accreditation strip — the homepage carousel, unchanged. It reads as

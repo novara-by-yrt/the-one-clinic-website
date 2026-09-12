@@ -9,7 +9,7 @@ import {
   useSpring,
   useReducedMotion,
 } from 'framer-motion';
-import { isV1Route } from '@/components/v1/v1-routes';
+import { hidesSiteFooter, usesFlowFooter } from './footer-mode';
 import styles from './LayoutShell.module.css';
 
 interface LayoutShellProps {
@@ -30,7 +30,8 @@ export default function LayoutShell({ children, footer }: LayoutShellProps) {
    * and with width, so any fixed number would be wrong somewhere.
    */
   const [footerFits, setFooterFits] = useState(true);
-  const flowFooter = isV1Route(pathname) || !footerFits;
+  const hideFooter = hidesSiteFooter(pathname);
+  const flowFooter = usesFlowFooter(pathname) || !footerFits;
 
   // Measure the footer: publishes its height for the spacer, and decides
   // whether the fixed reveal can show all of it.
@@ -105,20 +106,31 @@ export default function LayoutShell({ children, footer }: LayoutShellProps) {
 
   return (
     <>
-      <div className={styles.content}>{children}</div>
-      {/* Spacer pushes the page height so the fixed footer is reachable by scroll,
-          but has pointer-events:none so it never blocks footer clicks.
-          Not needed when the footer is in normal flow — it carries its own height. */}
-      {!flowFooter && <div className={styles.footerSpacer} aria-hidden="true" />}
-      <m.div
-        ref={footerRef}
-        className={`${styles.footerFixed} ${flowFooter ? styles.footerFlow : ''}`}
-        // The reveal transform is what makes the footer a fixed layer; in flow
-        // mode it has to be omitted entirely, not just set to zero.
-        style={flowFooter ? undefined : { y, opacity }}
-      >
-        {footer}
-      </m.div>
+      {/* Routes with no site footer also lose the content wrapper's
+          rounded bottom corners and its clip, which exist only to round
+          the page into the footer below it. Left on, they would notch the
+          corners of a full-viewport page. */}
+      <div className={`${styles.content} ${hideFooter ? styles.contentFlush : ''}`}>
+        {children}
+      </div>
+
+      {!hideFooter && (
+        <>
+          {/* Spacer pushes the page height so the fixed footer is reachable by scroll,
+              but has pointer-events:none so it never blocks footer clicks.
+              Not needed when the footer is in normal flow — it carries its own height. */}
+          {!flowFooter && <div className={styles.footerSpacer} aria-hidden="true" />}
+          <m.div
+            ref={footerRef}
+            className={`${styles.footerFixed} ${flowFooter ? styles.footerFlow : ''}`}
+            // The reveal transform is what makes the footer a fixed layer; in flow
+            // mode it has to be omitted entirely, not just set to zero.
+            style={flowFooter ? undefined : { y, opacity }}
+          >
+            {footer}
+          </m.div>
+        </>
+      )}
     </>
   );
 }

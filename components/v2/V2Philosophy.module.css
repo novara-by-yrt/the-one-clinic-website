@@ -1,0 +1,121 @@
+/* ── Philosophy ──
+   Full-bleed plate, solid panel set into its lower edge. The panel is
+   opaque paper, never a scrim over the photograph, so contrast is fixed
+   regardless of how the image crops at a given width. */
+
+.section {
+  position: relative;
+  padding-bottom: var(--v2-section-y);
+}
+
+.bleed {
+  position: relative;
+  /* Escapes the shell to the viewport edges. `overflow-x: clip` on the
+     root keeps this from creating a horizontal scrollbar. */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  aspect-ratio: 3 / 2;
+  max-height: 78dvh;
+  background: var(--v2-grey-100);
+}
+
+.panel {
+  position: relative;
+  background: var(--v2-paper);
+  padding-top: clamp(1.75rem, 4vw, 3rem);
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.heading {
+  margin: 0;
+  max-width: 18ch;
+  font-size: var(--v2-h2);
+  font-weight: 500;
+  line-height: 1.06;
+  letter-spacing: var(--v2-tracking-head);
+  text-wrap: balance;
+}
+
+.columns {
+  display: grid;
+  gap: clamp(1rem, 2.5vw, 2rem);
+  max-width: 62ch;
+}
+
+.body {
+  margin: 0;
+  font-size: var(--v2-body);
+  line-height: 1.6;
+  color: var(--v2-text-secondary);
+  text-wrap: pretty;
+}
+
+.figure {
+  display: flex;
+  align-items: baseline;
+  gap: 0.625rem;
+  margin: 0;
+  padding-top: clamp(1rem, 2vw, 1.5rem);
+  border-top: var(--v2-rule);
+}
+
+.figureValue {
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: var(--v2-tracking-head);
+  font-variant-numeric: tabular-nums;
+}
+
+.figureLabel {
+  font-size: var(--v2-small);
+  color: var(--v2-text-muted);
+}
+
+@media (min-width: 700px) {
+  .columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ── Desktop: panel lifts into the plate ── */
+@media (min-width: 1024px) {
+  .bleed {
+    aspect-ratio: 21 / 9;
+  }
+
+  /* The panel used to be a 62%-wide block, which left roughly half the
+     section empty to its right and put its stat rule on a width that
+     matched nothing else on the page. It now spans the shell and holds
+     its own two-column grid, so the heading, the body copy and the
+     figure all sit on the same edges as every other section. */
+  .panel {
+    width: 100%;
+    margin-top: clamp(-8rem, -7vw, -4.5rem);
+    /* No right padding: the figure's rule has to reach the same right
+       edge as every section rule on the page. */
+    padding: clamp(2.5rem, 4vw, 3.5rem) 0 0 0;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: start;
+  }
+
+  .heading {
+    grid-column: 1;
+    max-width: 14ch;
+  }
+
+  .columns {
+    grid-column: 2;
+    /* Stacked in the right column rather than side by side: two
+       paragraphs at half of a half-column is too narrow a measure. */
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 46ch;
+  }
+
+  .figure {
+    grid-column: 1 / -1;
+    margin-top: clamp(1rem, 2vw, 2rem);
+  }
+}

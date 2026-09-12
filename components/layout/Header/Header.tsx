@@ -3,6 +3,9 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { isV1Route } from '@/components/v1/v1-routes';
+import { isV4Route } from '@/components/v4/v4-routes';
+import { isV5Route } from '@/components/v5/v5-routes';
+import { isV6Route } from '@/components/v6/v6-routes';
 import { m, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -244,7 +247,19 @@ export default function Header() {
   const pillRef     = useRef<HTMLDivElement>(null);
 
   const headerTheme: Theme = sectionTheme === 'dark' ? 'light' : 'dark';
-  const theme: Theme       = !scrolled ? 'dark' : headerTheme;
+  // `theme` names the surface the bar is sitting on, and the ink is the
+  // inverse of it. Scrolled, the bar has a pill of its own, which is the
+  // inverse of the section behind it. Unscrolled it has no background at
+  // all, so it is sitting directly on the section and has to take that
+  // section's own value.
+  //
+  // This used to be hard-coded to 'dark' for the unscrolled case, which
+  // was true only because every hero on the site was dark. The homepage
+  // hero is light now, and white ink on white paper is invisible until
+  // the reader scrolls. Every remaining hero still declares
+  // data-section-theme="dark", so this resolves to 'dark' for them
+  // exactly as before.
+  const theme: Theme       = !scrolled ? sectionTheme : headerTheme;
 
   // ── Scroll detection ─────────────────────────────────────────
   useEffect(() => {
@@ -498,9 +513,23 @@ export default function Header() {
     );
   }
 
-  // The v1 concept ships its own header; stand down so the two never stack.
-  // Placed after the hooks so hook order stays stable across routes.
-  if (isV1Route(pathname)) return null;
+  // The v1, v4, v5 and v6 concepts ship their own headers; stand down so
+  // two never stack. Placed after the hooks so hook order stays stable
+  // across routes.
+  //
+  // v4 needs its own for two reasons. The look: this pill is rounded,
+  // shadowed and floating, which is app chrome, where a magazine wants
+  // flat printed furniture. And the behaviour: the pill's top-of-page
+  // treatment is white text on a transparent bar, chosen off
+  // window.scrollY, which never leaves 0 on a horizontal track - so it
+  // would sit white-on-white over the paper panels for the whole route.
+  if (
+    isV1Route(pathname) ||
+    isV4Route(pathname) ||
+    isV5Route(pathname) ||
+    isV6Route(pathname)
+  )
+    return null;
 
   const pillAnimate = getPillAnimate(scrolled, sectionTheme);
   const anyMegaOpen = openDropdown !== null && !!NAV[openDropdown]?.groups;

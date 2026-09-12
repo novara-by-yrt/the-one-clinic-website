@@ -1,0 +1,113 @@
+/* ── Trust band ──
+   A quiet rule-bounded strip, not a section: no heading, no marquee.
+   It reads as a caption to the hero rather than as its own chapter. */
+
+.section {
+  padding-block: clamp(2.25rem, 4vw, 3.25rem);
+}
+
+.band {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(1.75rem, 4vw, 3rem);
+  padding-block: clamp(1.75rem, 3vw, 2.25rem);
+  border-top: var(--v2-rule-strong);
+  border-bottom: var(--v2-rule-strong);
+}
+
+/* ── Scores ── */
+.scores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1.75rem, 4vw, 3rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.score {
+  display: flex;
+  align-items: baseline;
+  gap: 0.625rem;
+}
+
+.scoreValue {
+  font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: var(--v2-tracking-head);
+  font-variant-numeric: tabular-nums;
+}
+
+.scoreMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.scorePlatform {
+  font-size: var(--v2-small);
+  font-weight: 500;
+  color: var(--v2-text);
+}
+
+.scoreCount {
+  font-size: var(--v2-micro);
+  color: var(--v2-text-muted);
+}
+
+/* ── Logos ──
+   Logos only. No category label under any mark: the mark is the
+   credibility, and the alt text carries the name for screen readers.
+   Each mark runs in its own brand colour. */
+.logos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 0;
+}
+
+.logoImg {
+  width: auto;
+  max-width: 100%;
+  height: clamp(1.75rem, 4vw, 2.5rem);
+  object-fit: contain;
+  object-position: left center;
+}
+
+@media (min-width: 700px) {
+  .logos {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .band {
+    /* Scores take their natural width on one line; the logo grid takes
+       everything left. The hole that used to sit in the middle of the
+       band came from the marks being right-aligned inside that grid,
+       not from the column split, so they are centred in their tracks
+       instead and spread across the full remaining width. */
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  .logos {
+    justify-items: center;
+  }
+
+  .logoImg {
+    object-position: center;
+  }
+}
