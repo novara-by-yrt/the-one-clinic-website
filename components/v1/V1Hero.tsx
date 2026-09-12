@@ -1,35 +1,125 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { m, useScroll, useTransform, useSpring, useReducedMotion } from 'framer-motion';
+import { m, useReducedMotion } from 'framer-motion';
 import { CLINIC_INFO } from '@/lib/clinic-info';
 import styles from './V1Hero.module.css';
 
-const BG_IMAGES = [
-  '/images/Updated Hero Background 1.png',
-  '/images/Updated Hero Background 2.png',
-];
-
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-/** Headline lines rise and rotate out of the page plane. */
-const LINE = {
-  hidden: { opacity: 0, y: '55%', rotateX: -58 },
-  show: { opacity: 1, y: '0%', rotateX: 0 },
-};
+/**
+ * How long a frame holds. The right reel opens on half of this and then
+ * settles into the same period, so the two are permanently interleaved
+ * and the band always has one frame settling and one frame still.
+ */
+const HOLD = 6800;
 
-const FADE = {
-  hidden: { opacity: 0, y: 22 },
-  show: { opacity: 1, y: 0 },
-};
+type Frame = { src: string; alt: string; caption: string; pos: string };
 
-/** Rating stars: the brand is monochrome, so they read by shape, not hue. */
+/**
+ * The two reels.
+ *
+ * Both open on the clinic itself, which is what the hero is
+ * introducing: the reception on the left, the building on the right.
+ * Pairing the interior with the exterior rather than with a second
+ * interior is deliberate - the first draft opened on two views of the
+ * same cream reception and the pair read as one photograph printed
+ * twice. From there the left reel stays inside and the right reel goes
+ * to the work. The lists are disjoint, so the two panels can never
+ * land on the same photograph.
+ *
+ * `pos` is the crop anchor. The band is landscape and every source
+ * here is square or upright, so a shared object-position cannot serve
+ * a room, a building and a portrait at once: centre keeps the ceiling
+ * and loses the sofa, the doorway and the face.
+ */
+const LEFT: Frame[] = [
+  {
+    src: '/images/location2.jpg',
+    alt: 'The reception at The One Clinic, Leicester',
+    caption: 'Reception',
+    pos: 'center 58%',
+  },
+  {
+    src: '/images/Team Image.jpg',
+    alt: 'The clinical team at The One Clinic',
+    caption: 'Our Team',
+    pos: 'center 30%',
+  },
+  {
+    src: '/images/Doctor2.jpg',
+    alt: 'A clinician performing a treatment at The One Clinic',
+    caption: 'In Treatment',
+    pos: 'center 34%',
+  },
+  {
+    src: '/images/location3.jpg',
+    alt: 'The reception desk at The One Clinic',
+    caption: 'The Front Desk',
+    pos: 'center 50%',
+  },
+];
+
+const RIGHT: Frame[] = [
+  {
+    src: '/images/location1.jpg',
+    alt: 'The One Clinic on DeMontfort Street, Leicester',
+    caption: '36 DeMontfort Street',
+    pos: 'center 62%',
+  },
+  {
+    src: '/images/Lumecca IPL Laser 2.png',
+    alt: 'A Lumecca IPL treatment at The One Clinic',
+    caption: 'Lumecca IPL',
+    pos: 'center 32%',
+  },
+  {
+    src: '/images/Doctor1.jpg',
+    alt: 'A consultation at The One Clinic',
+    caption: 'Consultation',
+    pos: 'center 34%',
+  },
+  {
+    src: '/images/Morpheus8 1.png',
+    alt: 'A Morpheus8 treatment at The One Clinic',
+    caption: 'Morpheus8',
+    pos: 'center 34%',
+  },
+];
+
+/**
+ * One reel's clock.
+ *
+ * Keyed on the frame it is showing, so any change restarts the hold,
+ * a hand-picked one included. An earlier draft ran both reels off a
+ * single metronome to keep them exactly interleaved, and measured the
+ * cost: a frame picked by hand was moved on 1.5s later because the
+ * shared clock was already most of the way through its beat. A full
+ * hold after a deliberate pick is worth more than a stagger held to
+ * the millisecond.
+ */
+function useReel(count: number, lead: number, run: boolean) {
+  const [index, setIndex] = useState(0);
+  const first = useRef(true);
+
+  useEffect(() => {
+    if (!run) return;
+    const wait = first.current ? lead : HOLD;
+    first.current = false;
+    const t = setTimeout(() => setIndex((v) => (v + 1) % count), wait);
+    return () => clearTimeout(t);
+  }, [index, run, count, lead]);
+
+  return [index, setIndex] as const;
+}
+
+/** Rating marks: the brand is monochrome, so they read by shape, not hue. */
 function Stars() {
   return (
-    <span className={styles.stars}>
+    <span className={styles.stars} aria-hidden="true">
       {Array.from({ length: 5 }).map((_, i) => (
-        <svg key={i} width="13" height="13" viewBox="0 0 24 24" aria-hidden="true">
+        <svg key={i} width="11" height="11" viewBox="0 0 24 24">
           <path
             fill="currentColor"
             d="M12 2l2.582 7.952H22.9l-6.832 4.962 2.608 8.024L12 18.012l-6.676 4.926 2.608-8.024L1.1 9.952H9.418z"
@@ -40,199 +130,228 @@ function Stars() {
   );
 }
 
-export default function V1Hero() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [bgIndex, setBgIndex] = useState(0);
-  const [mounted, setMounted] = useState(false);
-  const reduced = useReducedMotion();
+/**
+ * One reel.
+ *
+ * Frames are stacked and cross-faded, and only the ones that have been
+ * reached are in the DOM: the whole band sits above the fold, so
+ * loading="lazy" would not hold any of them back, and eight photographs
+ * on first paint is the difference between a fast hero and a slow one.
+ */
+function Panel({
+  frames,
+  index,
+  onPick,
+  eager,
+  label,
+}: {
+  frames: Frame[];
+  index: number;
+  onPick: (i: number) => void;
+  eager: boolean;
+  label: string;
+}) {
+  // Index 0 on the server and on the first client render, so hydration
+  // matches; the next frame joins as soon as the effect runs, ready for
+  // the first turn.
+  const [live, setLive] = useState<number[]>([0]);
 
   useEffect(() => {
-    setMounted(true);
-    const id = setInterval(() => setBgIndex((p) => (p + 1) % BG_IMAGES.length), 5200);
-    return () => clearInterval(id);
+    setLive((prev) => {
+      const next = (index + 1) % frames.length;
+      if (prev.includes(index) && prev.includes(next)) return prev;
+      return [...new Set([...prev, index, next])];
+    });
+  }, [index, frames.length]);
+
+  return (
+    <div className={styles.panel}>
+      {frames.map((f, i) =>
+        live.includes(i) ? (
+          <div
+            key={f.src}
+            className={`${styles.frame} ${i === index ? styles.frameOn : ''}`}
+          >
+            <Image
+              src={f.src}
+              alt={i === index ? f.alt : ''}
+              aria-hidden={i !== index}
+              fill
+              className={styles.img}
+              sizes="(max-width: 700px) 100vw, 50vw"
+              quality={75}
+              style={{ objectPosition: f.pos }}
+              preload={eager && i === 0}
+              fetchPriority={i === 0 ? 'high' : undefined}
+            />
+          </div>
+        ) : null,
+      )}
+
+      {/* The rule the reference draws inside the photograph. It is what
+          stops a full-bleed image reading as a background and makes it
+          read as a plate that was placed. */}
+      <span className={styles.inset} aria-hidden="true" />
+
+      <div className={styles.caption}>
+        <p className={styles.captionText} aria-live="off">
+          {frames[index].caption}
+        </p>
+
+        <ul className={styles.ticks} role="list" aria-label={label}>
+          {frames.map((f, i) => (
+            <li key={f.src}>
+              <button
+                type="button"
+                className={`${styles.tick} ${i === index ? styles.tickOn : ''}`}
+                onClick={() => onPick(i)}
+                aria-label={f.caption}
+                aria-current={i === index ? 'true' : undefined}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * The v1 hero.
+ *
+ * A masthead on paper over a full-bleed pair of reels, rather than copy
+ * floating on a darkened photograph. The type block is the only thing on
+ * the first screen that asks to be read, and the clinic itself carries
+ * everything below it.
+ *
+ * Each reel keeps its own clock, offset by half a hold, so one frame is
+ * always settling while the other is still. Picking a frame by hand
+ * restarts that reel's hold rather than dropping into the middle of one.
+ *
+ * They stop when the band leaves the screen, and it never starts at all
+ * for anyone who asks for reduced motion, who gets the opening frame of
+ * each reel and the marks to move between them by hand.
+ */
+export default function V1Hero() {
+  const bandRef = useRef<HTMLDivElement>(null);
+  const [onScreen, setOnScreen] = useState(true);
+  const still = useReducedMotion();
+  const run = !still && onScreen;
+
+  const [a, setA] = useReel(LEFT.length, HOLD, run);
+  const [b, setB] = useReel(RIGHT.length, HOLD / 2, run);
+
+  /* ── Pause off screen ──
+     The hero is the top of a very long page. Once it has scrolled away
+     there is nothing to see, and a timer that keeps re-rendering two
+     image stacks behind the reader is pure cost. */
+  useEffect(() => {
+    const el = bandRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => setOnScreen(entry.isIntersecting),
+      { rootMargin: '120px' },
+    );
+    io.observe(el);
+    return () => io.disconnect();
   }, []);
 
-  // Scroll parallax: the plate recedes while the copy drifts up, which
-  // separates the two depth planes as the section leaves.
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start start', 'end start'],
-  });
-  const soft = useSpring(scrollYProgress, { stiffness: 90, damping: 26, mass: 0.4 });
-  const plateZ = useTransform(soft, [0, 1], [0, -180]);
-  const plateY = useTransform(soft, [0, 1], ['0%', '12%']);
-  const copyY = useTransform(soft, [0, 1], ['0%', '-16%']);
-  const copyOpacity = useTransform(soft, [0, 0.72], [1, 0]);
-
-  const openModal = () =>
-    window.dispatchEvent(new CustomEvent('openBookConsultationModal'));
+  const openModal = useCallback(
+    () => window.dispatchEvent(new CustomEvent('openBookConsultationModal')),
+    [],
+  );
 
   return (
     <section
-      ref={sectionRef}
-      className={`${styles.hero} v1-surface-black`}
+      className={`${styles.hero} v1-surface-white`}
       aria-label="The One Clinic — medical and aesthetic care in Leicester"
-      data-section-theme="dark"
+      data-section-theme="light"
     >
-      {/* ── Receding background plate ── */}
-      <m.div
-        className={styles.bgStage}
-        style={reduced ? undefined : { translateZ: plateZ, y: plateY }}
-        aria-hidden="true"
-      >
-        {BG_IMAGES.map((src, i) =>
-          i === 0 || mounted ? (
-            <div
-              key={src}
-              className={`${styles.bgSlide} ${bgIndex === i ? styles.bgSlideOn : ''}`}
-            >
-              <Image
-                src={src}
-                alt=""
-                fill
-                preload={i === 0}
-                fetchPriority={i === 0 ? 'high' : undefined}
-                quality={72}
-                sizes="100vw"
-                className={styles.bgImg}
-              />
-            </div>
-          ) : null,
-        )}
-      </m.div>
-
-      <div className={styles.grade} aria-hidden="true" />
-      <div className={styles.spot} aria-hidden="true" />
-      <div className={styles.grain} aria-hidden="true" />
-
-      {/* ── Copy plane ── */}
-      <m.div
-        className={styles.inner}
-        style={reduced ? undefined : { y: copyY, opacity: copyOpacity }}
-      >
+      {/* ── Masthead ── */}
+      <div className={styles.inner}>
         <m.div
-          className={styles.content}
+          className={styles.copy}
           initial="hidden"
           animate="show"
-          transition={{ staggerChildren: 0.11, delayChildren: 0.12 }}
+          transition={{ staggerChildren: 0.1, delayChildren: 0.08 }}
         >
           <m.p
             className={styles.eyebrow}
-            variants={FADE}
+            variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } }}
             transition={{ duration: 0.7, ease: EASE }}
           >
-            <span className={styles.eyebrowDot} aria-hidden="true" />
             Medical &amp; Aesthetic Care, Leicester
           </m.p>
 
-          <h1 className={styles.headline}>
-            {['Where', 'Expertise'].map((word) => (
-              <m.span
-                key={word}
-                className={styles.line}
-                variants={LINE}
-                transition={{ duration: 1.05, ease: EASE }}
-              >
-                {word}
-              </m.span>
-            ))}
-            <m.span
-              className={`${styles.line} ${styles.lineAccent}`}
-              variants={LINE}
-              transition={{ duration: 1.05, ease: EASE }}
-            >
-              Meets Care
-            </m.span>
-          </h1>
-
-          <m.p
-            className={styles.tagline}
-            variants={FADE}
-            transition={{ duration: 0.75, ease: EASE }}
+          <m.h1
+            className={styles.headline}
+            variants={{
+              hidden: { opacity: 0, y: 24, filter: 'blur(8px)' },
+              show: { opacity: 1, y: 0, filter: 'blur(0px)' },
+            }}
+            transition={{ duration: 1, ease: EASE }}
           >
-            Empowering Happy Patients
-          </m.p>
+            Where Expertise Meets Care
+          </m.h1>
 
           <m.p
             className={styles.sub}
-            variants={FADE}
+            variants={{ hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0 } }}
             transition={{ duration: 0.75, ease: EASE }}
           >
             Advanced medical, aesthetic and wellness care, all under one roof.
           </m.p>
 
           <m.div
-            className={styles.ctaRow}
-            variants={FADE}
+            className={styles.actions}
+            variants={{ hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0 } }}
             transition={{ duration: 0.75, ease: EASE }}
           >
             <button type="button" className={styles.cta} onClick={openModal}>
-              <span>Book a Consultation</span>
-              <span className={styles.iconWell} aria-hidden="true">
-                <svg className={styles.ctaArrow} width="13" height="13"
-                     viewBox="0 0 15 15" fill="none">
-                  <path
-                    d="M2.5 7.5h10M8 3l4.5 4.5L8 12"
-                    stroke="currentColor" strokeWidth="1.9"
-                    strokeLinecap="round" strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
+              Book a Consultation
             </button>
-            <a href={`tel:${CLINIC_INFO.phone.tel}`} className={styles.ctaGhost}>
+            <a href={`tel:${CLINIC_INFO.phone.tel}`} className={styles.call}>
               {CLINIC_INFO.phone.display}
             </a>
           </m.div>
 
-          <m.div
-            className={styles.trustRow}
-            variants={FADE}
+          {/* Kept from the previous hero, but as a line of type rather
+              than two glass cards: the reference's whole argument is that
+              the first screen holds one thing to read, and a rating is a
+              footnote to the headline, not a second headline. */}
+          <m.p
+            className={styles.ratings}
+            variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}
             transition={{ duration: 0.8, ease: EASE }}
-            role="group"
-            aria-label="Review ratings"
           >
-            <div className={styles.trustCard}>
-              <div className={styles.trustHead}>
-                <svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                  <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                  <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                </svg>
-                <span className={styles.trustName}>Google</span>
-              </div>
+            <span className={styles.rating}>
               <Stars />
-              <p className={styles.trustMeta}>
-                <strong className={styles.score}>5.0</strong>
-                <span className={styles.metaDot} aria-hidden="true" />
-                120+ reviews
-              </p>
-            </div>
-
-            <div className={styles.trustCard}>
-              <div className={styles.trustHead}>
-                <svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fill="#00B67A" d="M12 2l2.582 7.952H22.9l-6.832 4.962 2.608 8.024L12 18.012l-6.676 4.926 2.608-8.024L1.1 9.952H9.418z"/>
-                </svg>
-                <span className={styles.trustName}>Trustpilot</span>
-              </div>
+              <span>
+                <strong>5.0</strong> Google, 120+ reviews
+              </span>
+            </span>
+            <span className={styles.ratingRule} aria-hidden="true" />
+            <span className={styles.rating}>
               <Stars />
-              <p className={styles.trustMeta}>
-                <strong className={styles.score}>4.7</strong>
-                <span className={styles.metaDot} aria-hidden="true" />
-                140+ reviews
-              </p>
-            </div>
-          </m.div>
+              <span>
+                <strong>4.7</strong> Trustpilot, 140+ reviews
+              </span>
+            </span>
+          </m.p>
         </m.div>
-      </m.div>
-
-      <div className={styles.scrollCue} aria-hidden="true">
-        <span className={styles.scrollTrack}>
-          <span className={styles.scrollBead} />
-        </span>
-        <span className={styles.scrollLabel}>Scroll</span>
       </div>
+
+      {/* ── The band ── */}
+      <m.div
+        ref={bandRef}
+        className={styles.band}
+        initial={{ opacity: 0, y: 28 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.1, delay: 0.24, ease: EASE }}
+      >
+        <Panel frames={LEFT} index={a} onPick={setA} eager label="The clinic" />
+        <Panel frames={RIGHT} index={b} onPick={setB} eager={false} label="Our work" />
+      </m.div>
     </section>
   );
 }
