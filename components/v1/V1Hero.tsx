@@ -15,6 +15,22 @@ const EASE = [0.22, 1, 0.36, 1] as const;
  */
 const HOLD = 6800;
 
+/**
+ * The colophon's second line.
+ *
+ * Built from CLINIC_INFO.hours rather than through formatHours(): the
+ * shared helper joins with a comma where a range dash belongs, so it
+ * returns "Monday , Friday" and "09:00 , 18:00". Fixing the helper
+ * would change every page that calls it, which is not this change's
+ * job, so this reads the same source data and formats it correctly.
+ */
+const span = (h: { open: string | null; close: string | null }) =>
+  h.open && h.close ? `${h.open}\u2013${h.close}` : 'Closed';
+
+const HOURS = `Mon\u2013Fri ${span(CLINIC_INFO.hours[0])} \u00b7 Sat ${span(
+  CLINIC_INFO.hours[5],
+)}`;
+
 type Frame = { src: string; alt: string; caption: string; pos: string };
 
 /**
@@ -275,13 +291,22 @@ export default function V1Hero() {
           animate="show"
           transition={{ staggerChildren: 0.1, delayChildren: 0.08 }}
         >
-          <m.p
-            className={styles.eyebrow}
+          {/* Kicker left, colophon right, on one rule. A left-aligned
+              headline on a 1256px measure leaves about 520px of empty
+              paper beside it; giving the top edge a second anchor is
+              what turns that gap into a margin rather than a hole. */}
+          <m.div
+            className={styles.topRow}
             variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } }}
             transition={{ duration: 0.7, ease: EASE }}
           >
-            Medical &amp; Aesthetic Care, Leicester
-          </m.p>
+            <p className={styles.eyebrow}>Medical &amp; Aesthetic Care, Leicester</p>
+
+            <p className={styles.colophon}>
+              <span className={styles.colophonPlace}>{CLINIC_INFO.address.display}</span>
+              <span className={styles.colophonHours}>{HOURS}</span>
+            </p>
+          </m.div>
 
           <m.h1
             className={styles.headline}

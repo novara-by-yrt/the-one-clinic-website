@@ -1,0 +1,403 @@
+/* ══════════════════════════════════════════════════════════
+   HOMEPAGE HERO — masthead with an L-shaped image band
+
+   The /v1 hero puts both plates in one strip under the copy, which
+   leaves about 520px of empty paper beside a left-aligned headline
+   and pushes the photographs most of the way below the fold. Here the
+   band turns the corner instead: a tall plate stands in that gap and
+   a wide one runs under the copy, so the first screen carries the
+   masthead and both photographs at once.
+══════════════════════════════════════════════════════════ */
+.hero {
+  display: grid;
+  /* The copy column is the wider of the two. A 50/50 split gives the
+     headline a 600px measure at 1440 and puts it back into three
+     lines, which is the problem this layout exists to solve. */
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+  grid-template-rows: auto auto;
+  background: var(--color-bg-light);
+  color: var(--color-text-dark);
+  /* The site header is fixed, full width and transparent at the top of
+     the page, so whatever is under it has to carry its ink. The old
+     hero was one dark photograph and white ink worked across the whole
+     bar; this one is paper on the left and a photograph on the right,
+     and no single ink colour works across both. Starting the grid below
+     the bar puts the header back on a single surface. Measured: 92px at
+     1280 and up, 76px below it. */
+  padding-top: 76px;
+}
+
+@media (min-width: 1280px) {
+  .hero { padding-top: 92px; }
+}
+
+/* ── Masthead ───────────────────────────────────────────── */
+.copy {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(14px, 1.4vw, 20px);
+  /* Only the copy sits on the page gutter. The plates bleed to their
+     own edge of the screen, which is what keeps the corner where the
+     two meet reading as one piece of cut paper. */
+  padding: clamp(40px, 6vh, 84px) clamp(28px, 4vw, 72px)
+           clamp(32px, 4vh, 56px) clamp(20px, 5vw, 72px);
+}
+
+.topRow {
+  align-self: stretch;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(20px, 2.5vw, 40px);
+  padding-bottom: clamp(12px, 1.4vw, 18px);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.colophon {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  text-align: right;
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
+.colophonPlace {
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+.colophonHours {
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.headline {
+  margin: 0;
+  font-size: clamp(1.875rem, 4.6vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  line-height: 1.04;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.sub {
+  margin: 0;
+  max-width: 32rem;
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  line-height: 1.65;
+  color: var(--color-text-muted);
+  text-wrap: pretty;
+}
+
+/* ── Actions ────────────────────────────────────────────── */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(14px, 1.8vw, 26px);
+  margin-top: clamp(4px, 0.8vw, 12px);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 18px 38px;
+  border: 0;
+  border-radius: 100px;
+  background: var(--color-black);
+  color: var(--color-white);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05), 0 10px 24px -10px rgb(0 0 0 / 0.2);
+  transition:
+    transform var(--duration-fast) var(--ease-default),
+    box-shadow var(--duration-fast) var(--ease-default);
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.06), 0 18px 40px -14px rgb(0 0 0 / 0.28);
+}
+
+.cta:active { transform: translateY(0); }
+
+/* The phone number is a real conversion path at a clinic, so it stays,
+   but as type on a rule rather than as a second pill. */
+.call {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-border-light);
+  padding-bottom: 3px;
+  transition: border-color var(--duration-base) var(--ease-default);
+}
+
+.call:hover { border-color: var(--color-black); }
+
+.cta:focus-visible,
+.call:focus-visible {
+  outline: 2px solid var(--color-black);
+  outline-offset: 4px;
+}
+
+/* ── Ratings ────────────────────────────────────────────── */
+.ratings {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(10px, 1.4vw, 18px);
+  margin: clamp(6px, 1vw, 14px) 0 0;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.rating strong {
+  font-weight: 700;
+  color: var(--color-text-dark);
+}
+
+.ratingRule {
+  width: 1px;
+  height: 14px;
+  background: var(--color-border-light);
+}
+
+.stars {
+  display: inline-flex;
+  gap: 1px;
+  color: var(--color-text-dark);
+}
+
+/* ── The L ──────────────────────────────────────────────────
+   The tall plate spans both rows, so its height is the copy plus the
+   wide plate and it needs no height of its own. The wide plate is the
+   only one that sets a size, which is what keeps the corner square at
+   every width.
+──────────────────────────────────────────────────────────── */
+.tallWrap {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  min-height: 0;
+}
+
+.wideWrap {
+  grid-column: 1;
+  grid-row: 2;
+  height: clamp(260px, 30vh, 380px);
+}
+
+.plate {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #f1f0ee;
+}
+
+/* A hairline of page between the two plates, so they read as one
+   sheet that was cut rather than as two cards. */
+.plateTall { border-left: 2px solid var(--color-bg-light); }
+.plateWide { border-top: 2px solid var(--color-bg-light); }
+
+.frame {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  /* Settles from a hair over-size to true across its hold, so a still
+     photograph has somewhere to go without anything moving fast
+     enough to notice. Transform only, so it composites. */
+  transform: scale(1.055);
+  transition:
+    opacity 1.2s var(--ease-out),
+    transform 9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.frameOn {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.img { object-fit: cover; }
+
+/* ── Inset rule and caption ─────────────────────────────────
+   Both sit on the photograph, so both need a floor of their own: the
+   reels run from a near-white reception to a dark treatment room, and
+   a plain white rule disappears on half of them.
+
+   They sit at the top of each plate. The site floats a WhatsApp button
+   at the bottom left of every route and a call-back pill at the bottom
+   centre, and a caption in either corner is behind one of them for as
+   long as the plate is near the foot of the screen.
+──────────────────────────────────────────────────────────── */
+.inset {
+  position: absolute;
+  inset: clamp(12px, 1.3vw, 22px);
+  z-index: 2;
+  pointer-events: none;
+  border: 1px solid rgb(255 255 255 / 0.55);
+  box-shadow: 0 0 7px rgb(0 0 0 / 0.16);
+}
+
+.caption {
+  position: absolute;
+  inset: clamp(12px, 1.3vw, 22px) clamp(12px, 1.3vw, 22px) auto;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: clamp(10px, 1vw, 16px) clamp(12px, 1.2vw, 18px) 38px;
+  background: linear-gradient(
+    to bottom,
+    rgb(8 8 10 / 0.52) 0%,
+    rgb(8 8 10 / 0.22) 48%,
+    transparent 100%
+  );
+}
+
+.captionText {
+  margin: 0;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 1px 3px rgb(0 0 0 / 0.55);
+}
+
+.ticks {
+  display: flex;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tick {
+  display: block;
+  width: 16px;
+  height: 2px;
+  padding: 0;
+  border: 0;
+  border-radius: 2px;
+  background: rgb(255 255 255 / 0.5);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.35);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-base) var(--ease-default),
+    width var(--duration-base) var(--ease-default);
+}
+
+/* A comfortable target around a 2px mark */
+.tick::after {
+  content: '';
+  display: block;
+  height: 22px;
+  margin-top: -10px;
+}
+
+.tick:hover { background: rgb(255 255 255 / 0.75); }
+
+.tickOn {
+  width: 28px;
+  background: #fff;
+}
+
+.tick:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 5px;
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════════════ */
+@media (max-width: 1180px) {
+  .headline { font-size: clamp(1.875rem, 5vw, 3.25rem); }
+  .wideWrap { height: clamp(240px, 26vh, 320px); }
+}
+
+/* The L needs two columns to be an L. Below this the copy would be
+   sharing the line with a plate narrower than the plate's own subject,
+   so the corner is unfolded into a stack: copy, tall plate, wide
+   plate. */
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+  }
+
+  .copy {
+    grid-column: 1;
+    grid-row: 1;
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  /* Stacked, the two plates are the whole scroll between the copy and
+     the next section, so they are shallower than they are side by
+     side: at 4/3 and 16/10 the hero measured 1626px on an 834px
+     tablet, which is a screen and a half of photographs. */
+  .tallWrap {
+    grid-column: 1;
+    grid-row: 2;
+    aspect-ratio: 3 / 2;
+  }
+
+  .wideWrap {
+    grid-column: 1;
+    grid-row: 3;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .topRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .colophon { text-align: left; }
+
+  .plateTall { border-left: 0; }
+}
+
+@media (max-width: 520px) {
+  .actions { width: 100%; }
+  .cta { flex: 1 1 100%; justify-content: center; }
+  .ratingRule { display: none; }
+  .rating { flex: 1 1 100%; }
+  .tallWrap { aspect-ratio: 1 / 1; }
+  .wideWrap { aspect-ratio: 4 / 3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* The reels do not advance on their own under this preference, so
+     the only thing left to quiet is the settle on a hand-picked
+     frame. */
+  .frame { transition: opacity 1ms; transform: none; }
+  .frameOn { transform: none; }
+}

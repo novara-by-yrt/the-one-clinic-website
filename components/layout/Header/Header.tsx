@@ -247,7 +247,19 @@ export default function Header() {
   const pillRef     = useRef<HTMLDivElement>(null);
 
   const headerTheme: Theme = sectionTheme === 'dark' ? 'light' : 'dark';
-  const theme: Theme       = !scrolled ? 'dark' : headerTheme;
+  // `theme` names the surface the bar is sitting on, and the ink is the
+  // inverse of it. Scrolled, the bar has a pill of its own, which is the
+  // inverse of the section behind it. Unscrolled it has no background at
+  // all, so it is sitting directly on the section and has to take that
+  // section's own value.
+  //
+  // This used to be hard-coded to 'dark' for the unscrolled case, which
+  // was true only because every hero on the site was dark. The homepage
+  // hero is light now, and white ink on white paper is invisible until
+  // the reader scrolls. Every remaining hero still declares
+  // data-section-theme="dark", so this resolves to 'dark' for them
+  // exactly as before.
+  const theme: Theme       = !scrolled ? sectionTheme : headerTheme;
 
   // ── Scroll detection ─────────────────────────────────────────
   useEffect(() => {

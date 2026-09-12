@@ -15,7 +15,7 @@
   color: var(--v1-fg);
   /* The masthead owns the top padding; the band runs to the section's
      bottom edge, so there is none underneath. */
-  padding-block: clamp(104px, 13vh, 144px) 0;
+  padding-block: clamp(100px, 12vh, 136px) 0;
 }
 
 /* ── Masthead ───────────────────────────────────────────── */
@@ -24,7 +24,7 @@
   max-width: var(--v1-max);
   margin-inline: auto;
   padding-inline: var(--v1-pad-inline);
-  padding-bottom: clamp(36px, 5vh, 64px);
+  padding-bottom: clamp(32px, 4.5vh, 56px);
 }
 
 .copy {
@@ -32,10 +32,49 @@
   flex-direction: column;
   align-items: flex-start;
   gap: clamp(14px, 1.6vw, 20px);
-  /* Short of the full measure on purpose. The empty right-hand side is
-     what makes the block read as placed on a page rather than as a
-     container that filled itself. */
-  max-width: 46rem;
+  /* The measure, not a column inside it. Capped at 46rem the headline
+     filled 736px of a 1256px line and left the rest empty; the block
+     now runs the full width and each child sets its own measure. */
+  max-width: none;
+}
+
+/* ── Top row ────────────────────────────────────────────────
+   Kicker on the left, colophon on the right, sharing one rule.
+──────────────────────────────────────────────────────────── */
+.topRow {
+  /* .copy is align-items: flex-start, so without this the row shrinks
+     to its own content and the rule stops short of the measure: it
+     ended at 1030px of a 1256px line and left the colophon floating in
+     the middle rather than sitting on the right edge. */
+  align-self: stretch;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(24px, 4vw, 64px);
+  padding-bottom: clamp(14px, 1.6vw, 20px);
+  border-bottom: 1px solid var(--v1-border);
+}
+
+.colophon {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  text-align: right;
+  /* Quieter than the kicker it balances: tracked caps on both ends of
+     the rule would read as two headings arguing across the page. */
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
+.colophonPlace {
+  font-weight: 600;
+  color: var(--v1-fg);
+}
+
+.colophonHours {
+  color: var(--v1-fg-muted);
+  font-variant-numeric: tabular-nums;
 }
 
 .eyebrow {
@@ -51,7 +90,11 @@
 
 .headline {
   margin: 0;
-  font-size: clamp(1.875rem, 4.4vw, 3.5rem);
+  /* Sized to the measure rather than to a column. Capped at 5.25rem
+     because "WHERE EXPERTISE" sets 13.1em wide: at 6rem that is
+     1258px against a 1256px line and the balance breaks it to three
+     lines instead of two. */
+  font-size: clamp(1.875rem, 6vw, 5.25rem);
   font-weight: 700;
   /* Capitals need the tracking opened back up: the display negative
      that suits mixed case closes the counters at this size. */
@@ -326,6 +369,18 @@
    are 349px wide against a 440px height, and below it they narrow
    faster than the band shortens. Stacked, each one gets the full
    width and the band stays the same total height. */
+/* The colophon stops being a counterweight once the kicker is most of
+   the line, so it drops under it and joins the left edge. */
+@media (max-width: 860px) {
+  .topRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .colophon { text-align: left; }
+}
+
 @media (max-width: 700px) {
   .hero { padding-block: clamp(96px, 14vh, 132px) 0; }
 
